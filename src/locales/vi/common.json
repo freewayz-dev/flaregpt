@@ -1,0 +1,236 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. Được xây dựng trên mạng lưới Flare Network.",
+    "disclaimer": "Không phải lời khuyên tài chính. Dữ liệu được cung cấp chỉ nhằm mục đích thông tin.",
+    "terms": "Điều khoản & Tuyên bố miễn trừ trách nhiệm"
+  },
+  "help": {
+    "contactSupport": "Liên hệ Hỗ trợ",
+    "faqs": [
+      {
+        "answer": "Ví của bạn có thể chưa được kết nối hoặc bảng điều khiển vẫn đang đồng bộ hóa dữ liệu blockchain. Xác minh rằng bạn đã chọn đúng ví và mạng.",
+        "question": "Tại sao số dư ví của tôi không hiển thị?"
+      },
+      {
+        "answer": "Dữ liệu thị trường được cập nhật tự động bằng nhà cung cấp dữ liệu đã định cấu hình. Tần suất cập nhật phụ thuộc vào nguồn và tính khả dụng của mạng.",
+        "question": "Giá FLR được cập nhật thường xuyên như thế nào?"
+      },
+      {
+        "answer": "Đảm bảo WFLR của bạn đã được ủy quyền và chu kỳ đó đủ điều kiện nhận thưởng. Một số phần thưởng có thể yêu cầu bạn chủ động nhận sau khi phân phối.",
+        "question": "Tại sao tôi không nhận được phần thưởng?"
+      },
+      {
+        "answer": "Sự hỗ trợ phụ thuộc vào các tích hợp có sẵn trong bảng điều khiển. Các ví Flare tương thích có thể được kết nối khi được hỗ trợ.",
+        "question": "Những ví nào được hỗ trợ?"
+      },
+      {
+        "answer": "Điều hướng đến phần ví và chọn Ngắt kết nối. Thao tác này chỉ xóa phiên làm việc trên bảng điều khiển và không ảnh hưởng đến tiền của bạn.",
+        "question": "Làm cách nào để ngắt kết nối ví của tôi?"
+      }
+    ],
+    "faqTitle": "Câu hỏi Thường gặp",
+    "featureGuides": "Hướng dẫn Tính năng",
+    "gettingStarted": "Bắt đầu",
+    "guides": [
+      {
+        "description": "Theo dõi giá FLR, chỉ số hệ sinh thái, hoạt động giao thức và hiệu suất danh mục đầu tư.",
+        "title": "Tổng quan"
+      },
+      {
+        "description": "Đặt câu hỏi về dữ liệu Flare, quản trị, giao thức và hoạt động ví.",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "Theo dõi các giao dịch chuyển tiền, yêu cầu nhận thưởng, ủy quyền và tương tác giao thức.",
+        "title": "Hoạt động Ví"
+      },
+      {
+        "description": "Giám sát phần thưởng đang tích lũy, trạng thái chu kỳ và yêu cầu phần thưởng.",
+        "title": "Phần thưởng FTSO"
+      },
+      {
+        "description": "Khám phá các cơ hội kiếm lợi nhuận trên các giao thức Flare được hỗ trợ.",
+        "title": "Lợi nhuận"
+      },
+      {
+        "description": "Xem xét các đề xuất, lịch sử bỏ phiếu và hoạt động quản trị đang diễn ra.",
+        "title": "Quản trị"
+      }
+    ],
+    "headerDesc": "Tìm hiểu cách sử dụng FlareGPT, quản lý ví, theo dõi phần thưởng và điều hướng các tính năng của hệ sinh thái.",
+    "noFaqs": "Không tìm thấy câu hỏi thường gặp phù hợp.",
+    "noGuides": "Không tìm thấy hướng dẫn phù hợp.",
+    "searchPlaceholder": "Tìm kiếm bài viết, câu hỏi thường gặp hoặc hướng dẫn...",
+    "searchSub": "Khám phá các hướng dẫn, câu hỏi thường gặp và giải thích tính năng để giúp bạn điều hướng hệ sinh thái Flare một cách hiệu quả.",
+    "searchTitle": "Mọi thứ bạn cần để bắt đầu",
+    "steps": [
+      {
+        "step": "01",
+        "text": "Truy cập số dư, phần thưởng, quản trị và dữ liệu giao thức.",
+        "title": "Kết nối Ví của Bạn"
+      },
+      {
+        "step": "02",
+        "text": "Theo dõi FLR, rFLR, SGB và tài sản hệ sinh thái ở cùng một nơi.",
+        "title": "Xem Tài sản của Bạn"
+      },
+      {
+        "step": "03",
+        "text": "Ủy quyền token cho các nhà cung cấp FTSO để kiếm phần thưởng.",
+        "title": "Ủy quyền WFLR"
+      },
+      {
+        "step": "04",
+        "text": "Giám sát các chu kỳ (epoch), tích lũy và yêu cầu nhận phần thưởng.",
+        "title": "Theo dõi Phần thưởng"
+      },
+      {
+        "step": "05",
+        "text": "Đặt câu hỏi về dữ liệu và hoạt động của Mạng lưới Flare.",
+        "title": "Sử dụng FLRGPT"
+      }
+    ],
+    "stillNeedHelp": "Bạn vẫn cần trợ giúp?",
+    "supportDesc": "Chúng tôi ở đây để giúp bạn tối ưu hóa trải nghiệm với FlareGPT. Nếu không tìm thấy thông tin cần thiết, hãy liên hệ và chúng tôi sẽ phản hồi sớm nhất có thể."
+  },
+  "navbar": {
+    "askFlareGPT": "Hỏi FlareGPT",
+    "mainnetStatus": "Mạng chính Flare"
+  },
+  "settings": {
+    "cards": {
+      "app": "Ứng dụng",
+      "blur": "Bộ lọc ánh sáng xanh",
+      "chartType": "Loại Biểu đồ",
+      "connectedWallets": "Ví đã kết nối",
+      "currency": "Hiển thị Tiền tệ",
+      "governanceAlerts": "Cảnh báo Quản trị",
+      "language": "Ngôn ngữ",
+      "links": "Liên kết",
+      "logout": "Đăng xuất",
+      "region": "Khu vực",
+      "rewardsAlerts": "Cảnh báo Phần thưởng",
+      "sessionTimeout": "Thời gian chờ Phiên",
+      "theme": "Giao diện",
+      "themeMode": "Chế độ Sáng / Tối",
+      "timeframe": "Khung Thời gian",
+      "walletCapacity": "Sức chứa của Ví"
+    },
+    "description": "Quản lý ví, tùy chọn, bản địa hóa và thiết lập hiển thị.",
+    "descriptions": {
+      "app": "Chỉ mục thẻ bản dựng phân phối gói đang hoạt động.",
+      "blur": "Giảm mỏi mắt với tông màu màn hình ấm áp",
+      "chartType": "Đặt kiểu hình học trực quan mặc định cho các ma trận hệ thống.",
+      "currency": "Chọn hiển thị loại tiền tệ cơ sở cho tài sản.",
+      "language": "Chọn ngôn ngữ xem mặc định cho giao diện của bạn.",
+      "links": "Tài liệu tham khảo toàn cầu và các liên kết tương tác với đội ngũ.",
+      "logout": "Thu hồi ngay lập tức quyền xác thực trên mọi nút đã kết nối.",
+      "region": "Điều chỉnh các nút dữ liệu để lọc các số liệu khu vực theo ngữ cảnh.",
+      "sessionTimeout": "Tự động chấm dứt các vòng lặp trạng thái xác thực phiên khi không hoạt động.",
+      "timeframe": "Xác định quy mô khoảng thời gian cửa sổ mặc định trên các biểu đồ trực quan.",
+      "walletCapacity": "Các giới hạn của hệ thống để theo dõi hạn mức phân bổ tài sản."
+    },
+    "notifications": {
+      "governance": "Cập nhật các đề xuất mới",
+      "rewards": "Bật thông báo nhận phần thưởng"
+    },
+    "options": {
+      "15m": "15 phút",
+      "1h": "1 giờ",
+      "30m": "30 phút",
+      "africa": "Châu Phi",
+      "america": "Châu Mỹ",
+      "area": "Vùng",
+      "asia": "Châu Á",
+      "candlestick": "Nến",
+      "europe": "Châu Âu",
+      "global": "Toàn cầu",
+      "high": "Cao",
+      "line": "Đường",
+      "low": "Thấp",
+      "medium": "Trung bình",
+      "never": "Không bao giờ",
+      "off": "Tắt"
+    },
+    "security": {
+      "logoutAll": "Đăng xuất khỏi tất cả thiết bị"
+    },
+    "subtitles": {
+      "About": "Tổng quan về hồ sơ triển khai hệ thống, quy tắc biên dịch và chỉ mục tài sản.",
+      "Display": "Sửa đổi cấu trúc công cụ trình diễn và các thành phần giao diện cốt lõi.",
+      "Notifications": "Quản lý các sự kiện ưu tiên của hệ thống và các điểm cuối theo dõi tuyến phân phối.",
+      "Preferences": "Cấu hình giao diện trực quan, bối cảnh khu vực và cơ chế ngôn ngữ.",
+      "Security": "Duy trì các rào cản phiên danh tính đang hoạt động và các quy tắc truy cập xác minh thông tin xác thực.",
+      "Wallets": "Kết nối và cấu trúc chữ ký trên các tài khoản phi tập trung bên ngoài toàn cầu."
+    },
+    "tabs": {
+      "About": "Giới thiệu",
+      "Display": "Hiển thị",
+      "Notifications": "Thông báo",
+      "Preferences": "Tùy chọn",
+      "Security": "Bảo mật",
+      "Wallets": "Ví"
+    },
+    "title": "Cài đặt",
+    "wallets": {
+      "active": "Hoạt động",
+      "add": "Thêm Ví ({{current}}/{{max}})",
+      "available": "Còn trống",
+      "connectAction": "Kết nối ví (Đã kết nối {{current}}, Còn lại {{remaining}})",
+      "connected": "Đã kết nối",
+      "empty": "Chưa có ví nào được kết nối",
+      "emptyTerminal": "Chưa có ví nào được kết nối. Kết nối các tài sản terminal của bạn để tiếp tục.",
+      "limit": "Bạn có thể kết nối tối đa {{max}} ví",
+      "limitReached": "Đã đạt giới hạn ví ({{current}}/{{max}})",
+      "maximum": "Tối đa",
+      "remainingSlots": "Số lượt còn lại"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "Kết nối Ví",
+    "disconnect": "Ngắt kết nối",
+    "FlareGPT": "FlareGPT",
+    "ftsoRewards": "Phần thưởng FTSO",
+    "fxrpPool": "Bể thanh khoản $fXRP",
+    "governance": "Quản trị",
+    "helpCenter": "Trung tâm Trợ giúp",
+    "notConnected": "Chưa kết nối",
+    "overview": "Tổng quan",
+    "rflrTracker": "Theo dõi rFLR",
+    "settings": "Cài đặt",
+    "walletActivity": "Hoạt động Ví",
+    "walletConnected": "Ví đã kết nối",
+    "yield": "Lợi nhuận"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "Giám sát thời gian thực các tương tác blockchain đến và đi.",
+      "title": "Hoạt động thiết bị cuối gần đây"
+    },
+    "stats": {
+      "gas": "Phí xăng dầu đã thanh toán",
+      "received": "Tổng tài sản đã nhận",
+      "sent": "Tổng tài sản đã gửi"
+    },
+    "status": {
+      "pending": "Đang chờ xử lý",
+      "success": "Thành công"
+    },
+    "table": {
+      "cols": {
+        "amount": "Số tiền",
+        "status": "Trạng thái",
+        "time": "Thời gian",
+        "txHash": "Tx Hash",
+        "type": "Loại"
+      },
+      "heading": "Lịch sử giao dịch",
+      "viewAll": "Xem toàn bộ lịch sử trên"
+    },
+    "type": {
+      "contract": "Thực hiện quy định",
+      "received": "Đã nhận",
+      "sent": "Đã gửi"
+    }
+  }
+}

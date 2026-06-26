@@ -1,0 +1,236 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. Flare Network üzerinde inşa edilmiştir.",
+    "disclaimer": "Yatırım tavsiyesi değildir. Veriler yalnızca bilgilendirme amaçlı sağlanmıştır.",
+    "terms": "Şartlar ve Sorumluluk Reddi"
+  },
+  "help": {
+    "contactSupport": "Destekle İletişime Geçin",
+    "faqs": [
+      {
+        "answer": "Cüzdanınız bağlı olmayabilir veya panel henüz blokzincir verilerini senkronize ediyor olabilir. Doğru cüzdan ve ağın seçildiğinden emin olun.",
+        "question": "Cüzdan bakiyem neden görünmüyor?"
+      },
+      {
+        "answer": "Piyasa verileri, yapılandırılmış veri sağlayıcısı kullanılarak otomatik olarak yenilenir. Güncelleme sıklığı kaynağa ve ağ kullanılabilirliğine bağlıdır.",
+        "question": "FLR fiyatı ne sıklıkla güncellenir?"
+      },
+      {
+        "answer": "WFLR'nizin delege edildiğinden ve dönemin ödüller için uygun olduğundan emin olun. Bazı ödüller dağıtımdan sonra talep edilmeyi gerektirebilir.",
+        "question": "Neden ödül alamıyorum?"
+      },
+      {
+        "answer": "Destek, paneldeki mevcut entegrasyonlara bağlıdır. Uyumlu Flare cüzdanları desteklendiğinde bağlanabilir.",
+        "question": "Hangi cüzdanlar destekleniyor?"
+      },
+      {
+        "answer": "Cüzdan bölümüne gidin ve Bağlantıyı Kes'i seçin. Bu işlem yalnızca panel oturumunu kaldırır ve fonlarınızı etkilemez.",
+        "question": "Cüzdanımı nasıl kesebilirim?"
+      }
+    ],
+    "faqTitle": "Sıkça Sorulan Sorular",
+    "featureGuides": "Özellik Kılavuzları",
+    "gettingStarted": "Başlarken",
+    "guides": [
+      {
+        "description": "FLR fiyatını, ekosistem metriklerini, protokol aktivitesini ve portföy performansını izleyin.",
+        "title": "Genel Bakış"
+      },
+      {
+        "description": "Flare verileri, yönetişim, protokoller ve cüzdan aktivitesi hakkında sorular sorun.",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "Transferleri, talepleri, delegasyonları ve protokol etkileşimlerini takip edin.",
+        "title": "Cüzdan Aktivitesi"
+      },
+      {
+        "description": "Biriken ödülleri, dönem durumunu ve ödül taleplerini izleyin.",
+        "title": "FTSO Ödülleri"
+      },
+      {
+        "description": "Desteklenen Flare protokollerindeki kazanç fırsatlarını keşfedin.",
+        "title": "Getiri"
+      },
+      {
+        "description": "Teklifleri, oylama geçmişini ve aktif yönetişim faaliyetlerini inceleyin.",
+        "title": "Yönetişim"
+      }
+    ],
+    "headerDesc": "FlareGPT'yi nasıl kullanacağınızı öğrenin, cüzdanları yönetin, ödülleri takip edin ve ekosistem özelliklerinde gezinin.",
+    "noFaqs": "Eşleşen SSS bulunamadı.",
+    "noGuides": "Eşleşen kılavuz bulunamadı.",
+    "searchPlaceholder": "Makaleleri, SSS'leri veya kurulum kılavuzlarını arayın...",
+    "searchSub": "Flare ekosisteminde verimli bir şekilde gezinmenize yardımcı olacak kılavuzları, SSS'leri ve özellik açıklamalarını keşfedin.",
+    "searchTitle": "Başlamak için ihtiyacınız olan her şey",
+    "steps": [
+      {
+        "step": "01",
+        "text": "Bakiyelere, ödüllere, yönetişime ve protokol verilerine erişin.",
+        "title": "Cüzdanınızı Bağlayın"
+      },
+      {
+        "step": "02",
+        "text": "FLR, rFLR, SGB ve ekosistem varlıklarını tek bir yerden takip edin.",
+        "title": "Varlıklarınızı Görüntüleyin"
+      },
+      {
+        "step": "03",
+        "text": "Ödül kazanmak için tokenleri FTSO sağlayıcılarına delege edin.",
+        "title": "WFLR Delege Edin"
+      },
+      {
+        "step": "04",
+        "text": "Dönemleri, tahakkukları ve ödül taleplerini izleyin.",
+        "title": "Ödülleri Takip Edin"
+      },
+      {
+        "step": "05",
+        "text": "Flare Network verileri ve aktiviteleri hakkında sorular sorun.",
+        "title": "FlareGPT Kullanın"
+      }
+    ],
+    "stillNeedHelp": "Hâlâ yardıma mı ihtiyacınız var?",
+    "supportDesc": "FlareGPT'den en iyi şekilde yararlanmanıza yardımcı olmak için buradayız. Aradığınızı bulamazsanız, bize ulaşın; mümkün olan en kısa sürede yanıt vereceğiz."
+  },
+  "navbar": {
+    "askFlareGPT": "FlareGPT'ye Sor",
+    "mainnetStatus": "Flare Ana Ağı"
+  },
+  "settings": {
+    "cards": {
+      "app": "Uygulama",
+      "blur": "Mavi Işık Filtresi",
+      "chartType": "Grafik Türü",
+      "connectedWallets": "Bağlı Cüzdanlar",
+      "currency": "Para Birimi Görünümü",
+      "governanceAlerts": "Yönetişim Uyarıları",
+      "language": "Dil",
+      "links": "Bağlantılar",
+      "logout": "Çıkış Yap",
+      "region": "Bölge",
+      "rewardsAlerts": "Ödül Uyarıları",
+      "sessionTimeout": "Oturum Zaman Aşımı",
+      "theme": "Tema",
+      "themeMode": "Açık / Koyu mod",
+      "timeframe": "Zaman Dilimi",
+      "walletCapacity": "Cüzdan Kapasitesi"
+    },
+    "description": "Cüzdanları, tercihleri, yerelleştirmeyi ve görünüm seçeneklerini yönetin.",
+    "descriptions": {
+      "app": "Aktif paket dağıtımı derleme etiketi dizini.",
+      "blur": "Sıcak bir ekran tonuyla göz yorgunluğunu azaltın",
+      "chartType": "Sistem matrisleri için varsayılan görsel stil geometrisini ayarlayın.",
+      "currency": "Varlık tabanlı para birimi görünümünü seçin.",
+      "language": "Varsayılan arayüz görüntüleme dilinizi seçin.",
+      "links": "Global dokümantasyon referansları ve ekip etkileşim bağlantıları.",
+      "logout": "Bağlı her düğümde kimlik doğrulama durumu izinlerini anında iptal edin.",
+      "region": "Bağlamsal bölgesel metrikleri filtrelemek için veri düğümlerini ayarlayın.",
+      "sessionTimeout": "Boşta kalma durumlarında oturum doğrulama döngülerini otomatik olarak sonlandırın.",
+      "timeframe": "Görsel grafiklerde varsayılan pencere dönemi ölçeklerini tanımlayın.",
+      "walletCapacity": "Tahsis kapasite havuzlarını izleyen sistem sınırları."
+    },
+    "notifications": {
+      "governance": "Teklif güncellemeleri",
+      "rewards": "Ödül bildirimlerini etkinleştir"
+    },
+    "options": {
+      "15m": "15 dakika",
+      "1h": "1 saat",
+      "30m": "30 dakika",
+      "africa": "Afrika",
+      "america": "Amerika",
+      "area": "Alan",
+      "asia": "Asya",
+      "candlestick": "Mum",
+      "europe": "Avrupa",
+      "global": "Küresel",
+      "high": "Yüksek",
+      "line": "Çizgi",
+      "low": "Düşük",
+      "medium": "Orta",
+      "never": "Asla",
+      "off": "Kapalı"
+    },
+    "security": {
+      "logoutAll": "Tüm Cihazlardan Çıkış Yap"
+    },
+    "subtitles": {
+      "About": "Sistemik dağıtım kayıtlarına, derleme kurallarına ve varlık dizinlerine genel bakış.",
+      "Display": "Sunum motoru yapılarını ve görsel temel bileşenleri değiştirin.",
+      "Notifications": "Sistemik öncelikli olayları ve teslimat rotası izleme uç noktalarını yönetin.",
+      "Preferences": "Arayüz görsellerini, bölge bağlamlarını ve dil mekaniklerini yapılandırın.",
+      "Security": "Etkin kimlik oturumu engellerini ve kimlik bilgileri doğrulama erişim kurallarını koruyun.",
+      "Wallets": "Küresel harici merkeziyetsiz hesaplar genelinde imzaları bağlayın ve yapılandırın."
+    },
+    "tabs": {
+      "About": "Hakkında",
+      "Display": "Görünüm",
+      "Notifications": "Bildirimler",
+      "Preferences": "Tercihler",
+      "Security": "Güvenlik",
+      "Wallets": "Cüzdanlar"
+    },
+    "title": "Ayarlar",
+    "wallets": {
+      "active": "Aktif",
+      "add": "Cüzdan Ekle ({{current}}/{{max}})",
+      "available": "Kullanılabilir",
+      "connectAction": "Cüzdan Bağla ({{current}} Bağlı, {{remaining}} Kalan)",
+      "connected": "Bağlı",
+      "empty": "Henüz cüzdan bağlanmadı",
+      "emptyTerminal": "Bağlı cüzdan yok. Devam etmek için terminal varlıklarınızı bağlayın.",
+      "limit": "En fazla {{max}} cüzdan bağlayabilirsiniz",
+      "limitReached": "Cüzdan Sınırına Ulaşıldı ({{current}}/{{max}})",
+      "maximum": "Maksimum",
+      "remainingSlots": "Kalan Yuvalar"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "Cüzdan Bağla",
+    "disconnect": "Bağlantıyı Kes",
+    "FlareGPT": "FlareGPT",
+    "ftsoRewards": "FTSO Ödülleri",
+    "fxrpPool": "$fXRP Havuzu",
+    "governance": "Yönetişim",
+    "helpCenter": "Yardım Merkezi",
+    "notConnected": "Bağlı değil",
+    "overview": "Genel Bakış",
+    "rflrTracker": "rFLR Takibi",
+    "settings": "Ayarlar",
+    "walletActivity": "Cüzdan Aktivitesi",
+    "walletConnected": "Cüzdan Bağlandı",
+    "yield": "Getiri"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "Gelen ve giden blockchain etkileşimlerinin gerçek zamanlı izlenmesi.",
+      "title": "Son Terminal Etkinliği"
+    },
+    "stats": {
+      "gas": "Ödenen Gaz Ücretleri",
+      "received": "Toplam Alınan Varlıklar",
+      "sent": "Toplam Gönderilen Varlıklar"
+    },
+    "status": {
+      "pending": "Bekleyen",
+      "success": "Başarılı"
+    },
+    "table": {
+      "cols": {
+        "amount": "Tutar",
+        "status": "Durum",
+        "time": "Saat",
+        "txHash": "TX HASH",
+        "type": "Tür"
+      },
+      "heading": "İşlem Günlüğü",
+      "viewAll": "Tüm Geçmişi Görüntüle"
+    },
+    "type": {
+      "contract": "SÖZLEŞMENİN YERİNE GETİRİLMESİ (",
+      "received": "Gelen",
+      "sent": "Gönderildi"
+    }
+  }
+}

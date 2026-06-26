@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flrgpt</title>
+
+    <!-- Google Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme");
+        const isDark = theme === "dark";
+
+        const root = document.documentElement;
+
+        if (isDark) root.classList.add("dark");
+        else root.classList.remove("dark");
+
+        root.classList.add("no-transition");
+
+        window.addEventListener("load", () => {
+          setTimeout(() => {
+            root.classList.remove("no-transition");
+          }, 50);
+        });
+      })();
+    </script>
+  </body>
+</html>

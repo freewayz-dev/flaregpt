@@ -1,0 +1,236 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. Desenvolvido na Flare Network.",
+    "disclaimer": "Não é um conselho financeiro. Os dados são fornecidos apenas para fins informativos.",
+    "terms": "Termos e Isenção de Responsabilidade"
+  },
+  "help": {
+    "contactSupport": "Contatar Suporte",
+    "faqs": [
+      {
+        "answer": "Sua carteira pode não estar conectada ou o painel ainda pode estar sincronizando os dados do blockchain. Verifique se a carteira e a rede corretas estão selecionadas.",
+        "question": "Por que o saldo da minha carteira não está aparecendo?"
+      },
+      {
+        "answer": "Os dados de mercado são atualizados automaticamente usando o provedor de dados configurado. A frequência depende da fonte e da disponibilidade da rede.",
+        "question": "Com que frequência o preço do FLR é atualizado?"
+      },
+      {
+        "answer": "Certifique-se de que seu WFLR está delegado e que a época é elegível para prêmios. Algumas recompensas podem exigir reivindicação após a distribuição.",
+        "question": "Por que não estou recebendo recompensas?"
+      },
+      {
+        "answer": "O suporte depende das integrações disponíveis no painel. Carteiras Flare compatíveis podem ser conectadas quando suportadas.",
+        "question": "Quais carteiras são suportadas?"
+      },
+      {
+        "answer": "Navegue até a seção da carteira e selecione Desconectar. Isso apenas remove a sessão do painel e não afeta seus fundos.",
+        "question": "Como faço para desconectar minha carteira?"
+      }
+    ],
+    "faqTitle": "Perguntas Frequentes",
+    "featureGuides": "Guias de Recursos",
+    "gettingStarted": "Primeiros Passos",
+    "guides": [
+      {
+        "description": "Monitore o preço do FLR, métricas do ecossistema, atividade do protocolo e desempenho do portfólio.",
+        "title": "Visão Geral"
+      },
+      {
+        "description": "Faça perguntas sobre dados da Flare, governança, protocolos e atividade da carteira.",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "Acompanhe transferências, reivindicações, delegações e interações de protocolos.",
+        "title": "Atividade da Carteira"
+      },
+      {
+        "description": "Monitore recompensas acumuladas, status da época e reivindicações de prêmios.",
+        "title": "Recompensas FTSO"
+      },
+      {
+        "description": "Descubra oportunidades de ganho em protocolos Flare suportados.",
+        "title": "Rendimento"
+      },
+      {
+        "description": "Revise propostas, histórico de votação e atividades de governança ativas.",
+        "title": "Governança"
+      }
+    ],
+    "headerDesc": "Aprenda a usar o FlareGPT, gerenciar carteiras, rastrear recompensas e navegar pelos recursos do ecossistema.",
+    "noFaqs": "Nenhuma pergunta frequente correspondente encontrada.",
+    "noGuides": "Nenhum guia correspondente encontrado.",
+    "searchPlaceholder": "Pesquisar artigos, perguntas frequentes ou guías...",
+    "searchSub": "Explore guias, perguntas frequentes e explicações de recursos para ajudá-lo a navegar no ecossistema Flare de forma eficiente.",
+    "searchTitle": "Tudo o que você precisa para começar",
+    "steps": [
+      {
+        "step": "01",
+        "text": "Acesse saldos, recompensas, governança e dados de protocolos.",
+        "title": "Conectar sua Carteira"
+      },
+      {
+        "step": "02",
+        "text": "Acompanhe FLR, rFLR, SGB e ativos do ecossistema em um só lugar.",
+        "title": "Ver seus Ativos"
+      },
+      {
+        "step": "03",
+        "text": "Delegue tokens para provedores FTSO para ganhar recompensas.",
+        "title": "Delegar WFLR"
+      },
+      {
+        "step": "04",
+        "text": "Monitore épocas, acúmulos e reivindicações de recompensas.",
+        "title": "Rastrear Recompensas"
+      },
+      {
+        "step": "05",
+        "text": "Faça perguntas sobre dados e atividades da Flare Network.",
+        "title": "Usar o FLRGPT"
+      }
+    ],
+    "stillNeedHelp": "Ainda precisa de ajuda?",
+    "supportDesc": "Estamos aqui para ajudar você a aproveitar ao máximo o FlareGPT. Se não encontrar o que procura, entre em contato e responderemos o mais rápido possível."
+  },
+  "navbar": {
+    "askFlareGPT": "Perguntar ao FlareGPT",
+    "mainnetStatus": "Rede Principal Flare"
+  },
+  "settings": {
+    "cards": {
+      "app": "Aplicativo",
+      "blur": "Filtro de luz azul",
+      "chartType": "Tipo de Gráfico",
+      "connectedWallets": "Carteiras Conectadas",
+      "currency": "Moeda de Exibição",
+      "governanceAlerts": "Alertas de Governança",
+      "language": "Idioma",
+      "links": "Ligações",
+      "logout": "Sair",
+      "region": "Região",
+      "rewardsAlerts": "Alertas de Recompensas",
+      "sessionTimeout": "Tempo Limite da Sessão",
+      "theme": "Tema",
+      "themeMode": "Modo Claro / Escuro",
+      "timeframe": "Período de Tempo",
+      "walletCapacity": "Capacidade da Carteira"
+    },
+    "description": "Gerencie carteiras, preferências, localização e opções de exibição.",
+    "descriptions": {
+      "app": "Índice de tags de compilação de distribuição de pacotes ativos.",
+      "blur": "Reduza a fadiga ocular com um tom de tela quente",
+      "chartType": "Defina a geometria do estilo visual de renderização padrão para matrizes do sistema.",
+      "currency": "Escolha a exibição da moeda base do ativo.",
+      "language": "Selecione o idioma de exibição padrão da interface.",
+      "links": "Referências de documentação global e links de interação da equipe.",
+      "logout": "Revogue instantaneamente as permissões de status de autenticação em cada nó conectado.",
+      "region": "Ajuste os nós de dados para filtrar métricas regionais contextuais.",
+      "sessionTimeout": "Encerre automaticamente os loops de status de validação de sessão durante períodos de inatividade.",
+      "timeframe": "Defina as escalas de período de janela padrão em gráficos visuais.",
+      "walletCapacity": "Limites do sistema que monitoram os pools de capacidade de alocação."
+    },
+    "notifications": {
+      "governance": "Atualizações de propostas",
+      "rewards": "Ativar notificações de recompensas"
+    },
+    "options": {
+      "15m": "15 minutos",
+      "1h": "1 hora",
+      "30m": "30 minutos",
+      "africa": "África",
+      "america": "América",
+      "area": "Área",
+      "asia": "Ásia",
+      "candlestick": "Vela",
+      "europe": "Europa",
+      "global": "Global",
+      "high": "Alto",
+      "line": "Linha",
+      "low": "Baixo",
+      "medium": "Médio",
+      "never": "Nunca",
+      "off": "Desativado"
+    },
+    "security": {
+      "logoutAll": "Desconectar Todos os Dispositivos"
+    },
+    "subtitles": {
+      "About": "Visão geral dos registros de implantação do sistema, regras de compilação e índices de ativos.",
+      "Display": "Modifique as estruturas do motor de apresentação e componentes visuais essenciais.",
+      "Notifications": "Gerencie eventos prioritários do sistema e pontos finais de rastreamento de rotas de entrega.",
+      "Preferences": "Configure os elementos visuais da interface, contextos de região e mecânica de idiomas.",
+      "Security": "Mantenha barreiras de sessão de identidade ativas e regras de acesso de verificação de credenciais.",
+      "Wallets": "Conecte e estruture assinaturas em contas descentralizadas externas globais."
+    },
+    "tabs": {
+      "About": "Sobre",
+      "Display": "Exibição",
+      "Notifications": "Notificações",
+      "Preferences": "Preferências",
+      "Security": "Segurança",
+      "Wallets": "Carteiras"
+    },
+    "title": "Configurações",
+    "wallets": {
+      "active": "Ativo",
+      "add": "Adicionar Carteira ({{current}}/{{max}})",
+      "available": "Disponível",
+      "connectAction": "Conectar carteira ({{current}} Conectadas, {{remaining}} Restantes)",
+      "connected": "Conectado",
+      "empty": "Nenhuma carteira conectada ainda",
+      "emptyTerminal": "Nenhuma carteira conectada. Conecte os ativos do seu terminal para continuar.",
+      "limit": "Você pode conectar até {{max}} carteiras",
+      "limitReached": "Limite de Carteiras Atingido ({{current}}/{{max}})",
+      "maximum": "Máximo",
+      "remainingSlots": "Slots restantes"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "Conectar Carteira",
+    "disconnect": "Desconectar",
+    "FlareGPT": "FlareGPT",
+    "ftsoRewards": "Recompensas FTSO",
+    "fxrpPool": "Pool $fXRP",
+    "governance": "Governança",
+    "helpCenter": "Central de Ajuda",
+    "notConnected": "Não conectado",
+    "overview": "Visão Geral",
+    "rflrTracker": "Rastreador rFLR",
+    "settings": "Configurações",
+    "walletActivity": "Atividade da Carteira",
+    "walletConnected": "Carteira Conectada",
+    "yield": "Rendimento"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "Monitoramento em tempo real de interações de entrada e saída de blockchain.",
+      "title": "Atividade recente do terminal"
+    },
+    "stats": {
+      "gas": "Taxas de gás pagas",
+      "received": "Total de ativos recebidos",
+      "sent": "Total de ativos enviados"
+    },
+    "status": {
+      "pending": "Pendente",
+      "success": "Operação concluída com êxito"
+    },
+    "table": {
+      "cols": {
+        "amount": "Amount",
+        "status": "Status",
+        "time": "Hora",
+        "txHash": "Tx Hash",
+        "type": "Tipo"
+      },
+      "heading": "Registro das Transações",
+      "viewAll": "Ver Histórico Completo"
+    },
+    "type": {
+      "contract": "Assinatura A) Contrato:",
+      "received": "Recebido",
+      "sent": "Enviado"
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. Construido sobre Flare Network.",
+    "disclaimer": "No es un consejo financiero. Los datos se proporcionan solo con fines informativos.",
+    "terms": "Términos y Descargo de Responsabilidad"
+  },
+  "help": {
+    "contactSupport": "Contactar Soporte",
+    "faqs": [
+      {
+        "answer": "Es posible que su billetera no esté conectada o que el tablero aún esté sincronizando los datos de la cadena de bloques. Verifique que la billetera y la red seleccionadas sean las correctas.",
+        "question": "¿Por qué no se muestra el saldo de mi billetera?"
+      },
+      {
+        "answer": "Los datos de mercado se actualizan automáticamente utilizando el proveedor de datos configurado. La frecuencia de actualización depende de la fuente y de la disponibilidad de la red.",
+        "question": "¿Con qué frecuencia se actualiza el precio de FLR?"
+      },
+      {
+        "answer": "Asegúrese de que su WFLR esté delegado y que la época sea elegible para recibir recompensas. Algunas de ellas pueden requerir ser reclamadas después de la distribución.",
+        "question": "¿Por qué no recibo recompensas?"
+      },
+      {
+        "answer": "La compatibilidad depende de las integraciones disponibles en el tablero. Las billeteras de Flare compatibles se pueden conectar cuando estén disponibles.",
+        "question": "¿Qué billeteras son compatibles?"
+      },
+      {
+        "answer": "Navegue a la sección de la billetera y seleccione Desconectar. Esto solo elimina la sesión del tablero y no afecta sus fondos.",
+        "question": "¿Cómo desconecto mi billetera?"
+      }
+    ],
+    "faqTitle": "Preguntas Frecuentes",
+    "featureGuides": "Guías de Funciones",
+    "gettingStarted": "Primeros Pasos",
+    "guides": [
+      {
+        "description": "Monitoree el precio de FLR, las métricas del ecosistema, la actividad del protocolo y el rendimiento de la cartera.",
+        "title": "Resumen"
+      },
+      {
+        "description": "Haga preguntas sobre los datos de Flare, la gobernanza, los protocolos y la actividad de la billetera.",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "Siga transferencias, reclamos, delegaciones e interacciones de protocolos.",
+        "title": "Actividad de la Billetera"
+      },
+      {
+        "description": "Monitoree las recompensas acumuladas, el estado de la época y los reclamos de recompensas.",
+        "title": "Recompensas FTSO"
+      },
+      {
+        "description": "Descubra oportunidades de ganancias en los protocolos de Flare compatibles.",
+        "title": "Rendimiento"
+      },
+      {
+        "description": "Revise las propuestas, el historial de votación y la actividad de gobernanza activa.",
+        "title": "Gobernanza"
+      }
+    ],
+    "headerDesc": "Aprenda a usar FlareGPT, administrar billeteras, rastrear recompensas y navegar por las funciones del ecosistema.",
+    "noFaqs": "No se encontraron preguntas frecuentes que coincidan.",
+    "noGuides": "No se encontraron guías que coincidan.",
+    "searchPlaceholder": "Buscar artículos, preguntas frecuentes o guías de configuración...",
+    "searchSub": "Explore guías, preguntas frecuentes y explicaciones de funciones para ayudarlo a navegar por el ecosistema de Flare de manera eficiente.",
+    "searchTitle": "Todo lo que necesitas para empezar",
+    "steps": [
+      {
+        "step": "01",
+        "text": "Acceda a saldos, recompensas, gobernanza y datos de protocolos.",
+        "title": "Conecte su Billetera"
+      },
+      {
+        "step": "02",
+        "text": "Siga FLR, rFLR, SGB y los activos del ecosistema en un solo lugar.",
+        "title": "Ver sus Activos"
+      },
+      {
+        "step": "03",
+        "text": "Delege tokens a proveedores de FTSO para ganar recompensas.",
+        "title": "Delegar WFLR"
+      },
+      {
+        "step": "04",
+        "text": "Monitoree épocas, acumulaciones y reclamos de recompensas.",
+        "title": "Rastrear Recompensas"
+      },
+      {
+        "step": "05",
+        "text": "Haga preguntas sobre los datos y la actividad de Flare Network.",
+        "title": "Usar FLRGPT"
+      }
+    ],
+    "stillNeedHelp": "¿Aún necesitas ayuda?",
+    "supportDesc": "Estamos aquí para ayudarlo a aprovechar al máximo FlareGPT. Si no puede encontrar lo que busca, comuníquese con nosotros y responderemos lo antes posible."
+  },
+  "navbar": {
+    "askFlareGPT": "Preguntar a FlareGPT",
+    "mainnetStatus": "Red Principal Flare"
+  },
+  "settings": {
+    "cards": {
+      "app": "Aplicación",
+      "blur": "Filtro de luz azul",
+      "chartType": "Tipo de Gráfico",
+      "connectedWallets": "Billeteras Conectadas",
+      "currency": "Moneda de Visualización",
+      "governanceAlerts": "Alertas de Gobernanza",
+      "language": "Idioma",
+      "links": "Enlaces",
+      "logout": "Cerrar Sesión",
+      "region": "Región",
+      "rewardsAlerts": "Alertas de Premios",
+      "sessionTimeout": "Tiempo de Espera de Sesión",
+      "theme": "Tema",
+      "themeMode": "Modo Claro / Oscuro",
+      "timeframe": "Período de Tiempo",
+      "walletCapacity": "Capacidad de Billetera"
+    },
+    "description": "Administre billeteras, preferencias, localización y opciones de pantalla.",
+    "descriptions": {
+      "app": "Índice de etiquetas de compilación de distribución de paquetes activos.",
+      "blur": "Reduce la fatiga visual con un tono de pantalla cálido",
+      "chartType": "Establezca la geometría del estilo visual de renderizado predeterminado para las matrices del sistema.",
+      "currency": "Elija la visualización de la moneda base del activo.",
+      "language": "Seleccione el idioma de visualización predeterminado de la interfaz.",
+      "links": "Referencias de documentación global y enlaces de interacción del equipo.",
+      "logout": "Revoque instantáneamente los permisos de estado de autenticación en cada nodo conectado.",
+      "region": "Ajuste los nodos de datos para filtrar métricas regionales contextuales.",
+      "sessionTimeout": "Finalice automáticamente los bucles de estado de validación de sesión durante los estados de inactividad.",
+      "timeframe": "Defina las escalas de período de ventana predeterminadas en los gráficos visuales.",
+      "walletCapacity": "Límites del sistema que controlan los grupos de capacidad de asignación."
+    },
+    "notifications": {
+      "governance": "Actualizaciones de propuestas",
+      "rewards": "Activar notificaciones de premios"
+    },
+    "options": {
+      "15m": "15 minutos",
+      "1h": "1 hora",
+      "30m": "30 minutos",
+      "africa": "África",
+      "america": "América",
+      "area": "Área",
+      "asia": "Asia",
+      "candlestick": "Velas",
+      "europe": "Europa",
+      "global": "Global",
+      "high": "Alto",
+      "line": "Línea",
+      "low": "Bajo",
+      "medium": "Medio",
+      "never": "Nunca",
+      "off": "Desactivado"
+    },
+    "security": {
+      "logoutAll": "Cerrar sesión en todos los dispositivos"
+    },
+    "subtitles": {
+      "About": "Descripción general de los registros de implementación del sistema, reglas de compilación e índices de activos.",
+      "Display": "Modifique las estructuras del motor de presentación y los componentes visuales principales.",
+      "Notifications": "Administre eventos prioritarios del sistema y puntos finales de seguimiento de rutas de entrega.",
+      "Preferences": "Configure los aspectos visuales de la interfaz, contextos de región y mecánica de idiomas.",
+      "Security": "Mantenga barreras de sesión de identidad activas y reglas de acceso de verificación de credenciales.",
+      "Wallets": "Conecte y estructure firmas a través de cuentas descentralizadas externas globales."
+    },
+    "tabs": {
+      "About": "Acerca de",
+      "Display": "Pantalla",
+      "Notifications": "Notificaciones",
+      "Preferences": "Preferencias",
+      "Security": "Seguridad",
+      "Wallets": "Billeteras"
+    },
+    "title": "Configuración",
+    "wallets": {
+      "active": "Activo",
+      "add": "Añadir Billetera ({{current}}/{{max}})",
+      "available": "Disponible",
+      "connectAction": "Conectar monedero ({{current}} Conectados, {{remaining}} Restantes)",
+      "connected": "Conectado",
+      "empty": "Aún no hay billeteras conectadas",
+      "emptyTerminal": "No hay ningún monedero conectado. Conecta tus activos de la terminal para continuar.",
+      "limit": "Puede conectar hasta {{max}} billeteras",
+      "limitReached": "Límite de Billeteras Alcanzado ({{current}}/{{max}})",
+      "maximum": "Máximo",
+      "remainingSlots": "Ranuras restantes"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "Conectar Billetera",
+    "disconnect": "Desconectar",
+    "FlareGPT": "LlamaradaGPT",
+    "ftsoRewards": "Premios FTSO",
+    "fxrpPool": "Pool $fXRP",
+    "governance": "Gobernanza",
+    "helpCenter": "Centro de Ayuda",
+    "notConnected": "No conectado",
+    "overview": "Resumen",
+    "rflrTracker": "Rastreador rFLR",
+    "settings": "Configuración",
+    "walletActivity": "Actividad de Billetera",
+    "walletConnected": "Billetera Conectada",
+    "yield": "Rendimiento"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "Monitoreo en tiempo real de las interacciones blockchain entrantes y salientes.",
+      "title": "Actividad terminal reciente"
+    },
+    "stats": {
+      "gas": "Tarifas de gas pagadas",
+      "received": "Activos totales recibidos",
+      "sent": "Total de activos enviados"
+    },
+    "status": {
+      "pending": "Pendiente",
+      "success": "Realizado con éxito"
+    },
+    "table": {
+      "cols": {
+        "amount": "Importe",
+        "status": "Sincronizar el estado de confirmación de la reserva con el pedido Woo correspondiente",
+        "time": "Time (tiempo)",
+        "txHash": "Tx Hash",
+        "type": "Tipo"
+      },
+      "heading": "Registro de transacciones",
+      "viewAll": "Ver historial completo"
+    },
+    "type": {
+      "contract": "Ejecución de contratos",
+      "received": "Recibido",
+      "sent": "Enviado"
+    }
+  }
+}

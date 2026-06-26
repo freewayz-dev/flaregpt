@@ -1,0 +1,236 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. Dibangun di atas Flare Network.",
+    "disclaimer": "Bukan saran finansial. Data disediakan hanya untuk tujuan informasi.",
+    "terms": "Ketentuan & Penafian"
+  },
+  "help": {
+    "contactSupport": "Hubungi Dukungan",
+    "faqs": [
+      {
+        "answer": "Dompet Anda mungkin belum terhubung, atau dasbor mungkin masih menyinkronkan data blockchain. Verifikasi bahwa dompet dan jaringan yang benar telah dipilih.",
+        "question": "Mengapa saldo dompet saya tidak muncul?"
+      },
+      {
+        "answer": "Data pasar diperbarui secara otomatis menggunakan penyedia data yang dikonfigurasi. Frekuensi pembaruan tergantung pada sumber dan ketersediaan jaringan.",
+        "question": "Seberapa sering harga FLR diperbarui?"
+      },
+      {
+        "answer": "Pastikan WFLR Anda didelegasikan dan epoch tersebut memenuhi syarat untuk menerima hadiah. Beberapa hadiah mungkin memerlukan klaim manual setelah distribusi.",
+        "question": "Mengapa saya tidak menerima hadiah?"
+      },
+      {
+        "answer": "Dukungan tergantung pada integrasi yang tersedia di dasbor. Dompet Flare yang kompatibel dapat dihubungkan jika didukung.",
+        "question": "Dompet apa saja yang didukung?"
+      },
+      {
+        "answer": "Navigasikan ke bagian dompet dan pilih Putuskan Sambungan. Ini hanya menghapus sesi dasbor dan tidak memengaruhi dana Anda.",
+        "question": "Bagaimana cara memutuskan sambungan dompet saya?"
+      }
+    ],
+    "faqTitle": "Pertanyaan yang Sering Diajukan",
+    "featureGuides": "Panduan Fitur",
+    "gettingStarted": "Memulai",
+    "guides": [
+      {
+        "description": "Pantau harga FLR, metrik ekosistem, aktivitas protokol, dan kinerja portofolio.",
+        "title": "Ikhtisar"
+      },
+      {
+        "description": "Ajukan pertanyaan tentang data Flare, tata kelola, protokol, dan aktivitas dompet.",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "Lacak transfer, klaim, delegasi, dan interaksi protokol.",
+        "title": "Aktivitas Dompet"
+      },
+      {
+        "description": "Pantau akumulasi hadiah, status epoch, dan klaim hadiah.",
+        "title": "Hadiah FTSO"
+      },
+      {
+        "description": "Temukan peluang penghasilan di berbagai protokol Flare yang didukung.",
+        "title": "Imbal Hasil"
+      },
+      {
+        "description": "Tinjau proposal, riwayat pemungutan suara, dan aktivitas tata kelola yang aktif.",
+        "title": "Tata Kelola"
+      }
+    ],
+    "headerDesc": "Pelajari cara menggunakan FlareGPT, mengelola dompet, melacak hadiah, dan menavigasi fitur ekosistem.",
+    "noFaqs": "Tidak ada SSS yang cocok ditemukan.",
+    "noGuides": "Tidak ada panduan yang cocok ditemukan.",
+    "searchPlaceholder": "Cari artikel, SSS, atau panduan pengaturan...",
+    "searchSub": "Jelajahi panduan, SSS, dan penjelasan fitur untuk membantu Anda menavigasi ekosistem Flare secara efisien.",
+    "searchTitle": "Semua yang Anda butuhkan untuk memulai",
+    "steps": [
+      {
+        "step": "01",
+        "text": "Akses saldo, hadiah, tata kelola, dan data protokol.",
+        "title": "Hubungkan Dompet Anda"
+      },
+      {
+        "step": "02",
+        "text": "Lacak FLR, rFLR, SGB, dan aset ekosistem dalam satu tempat.",
+        "title": "Lihat Kepemilikan Anda"
+      },
+      {
+        "step": "03",
+        "text": "Delegasikan token ke penyedia FTSO untuk mendapatkan hadiah.",
+        "title": "Delegasikan WFLR"
+      },
+      {
+        "step": "04",
+        "text": "Pantau epoch, akrual, dan klaim hadiah.",
+        "title": "Lacak Hadiah"
+      },
+      {
+        "step": "05",
+        "text": "Ajukan pertanyaan tentang data dan aktivitas Flare Network.",
+        "title": "Gunakan FLRGPT"
+      }
+    ],
+    "stillNeedHelp": "Masih butuh bantuan?",
+    "supportDesc": "Kami di sini untuk membantu Anda memaksimalkan FlareGPT. Jika Anda tidak dapat menemukan apa yang Anda cari, hubungi kami và kami akan merespons secepat mungkin."
+  },
+  "navbar": {
+    "askFlareGPT": "Tanya FlareGPT",
+    "mainnetStatus": "Mainnet Flare"
+  },
+  "settings": {
+    "cards": {
+      "app": "Aplikasi",
+      "blur": "Filter Cahaya Biru",
+      "chartType": "Jenis Grafik",
+      "connectedWallets": "Dompet Terhubung",
+      "currency": "Mata Uang Tampilan",
+      "governanceAlerts": "Pemberitahuan Tata Kelola",
+      "language": "Bahasa",
+      "links": "Tautan",
+      "logout": "Keluar",
+      "region": "Wilayah",
+      "rewardsAlerts": "Pemberitahuan Hadiah",
+      "sessionTimeout": "Batas Waktu Sesi",
+      "theme": "Tema",
+      "themeMode": "Mode Terang / Gelap",
+      "timeframe": "Rentang Waktu",
+      "walletCapacity": "Kapasitas Dompet"
+    },
+    "description": "Kelola dompet, preferensi, lokalisasi, dan opsi tampilan.",
+    "descriptions": {
+      "app": "Indeks tag build distribusi paket aktif.",
+      "blur": "Kurangi ketegangan mata dengan warna layar yang hangat",
+      "chartType": "Atur geometri gaya visual rendering default untuk matriks sistem.",
+      "currency": "Pilih tampilan mata uang dasar aset.",
+      "language": "Pilih bahasa tampilan antarmuka default Anda.",
+      "links": "Referensi dokumentasi global dan tautan interaksi tim.",
+      "logout": "Cabut izin status autentikasi secara instan di setiap node yang terhubung.",
+      "region": "Sesuaikan node data untuk memfilter metrik regional yang kontekstual.",
+      "sessionTimeout": "Akhiri loop status validasi sesi secara otomatis selama kondisi tidak aktif.",
+      "timeframe": "Tentukan skala periode jendela default pada grafik visual.",
+      "walletCapacity": "Batas sistem yang melacak alokasi kapasitas pool."
+    },
+    "notifications": {
+      "governance": "Pembaruan proposal baru",
+      "rewards": "Aktifkan notifikasi klaim hadiah"
+    },
+    "options": {
+      "15m": "15 menit",
+      "1h": "1 jam",
+      "30m": "30 menit",
+      "africa": "Afrika",
+      "america": "Amerika",
+      "area": "Kecamatan",
+      "asia": "Asia",
+      "candlestick": "Lilin",
+      "europe": "Eropa",
+      "global": "Global",
+      "high": "Tinggi",
+      "line": "Garis",
+      "low": "Rendah",
+      "medium": "Sedang",
+      "never": "Tidak Pernah",
+      "off": "Mati"
+    },
+    "security": {
+      "logoutAll": "Keluar dari semua perangkat"
+    },
+    "subtitles": {
+      "About": "Ikhtisar catatan penerapan sistem, aturan kompilasi, dan indeks aset.",
+      "Display": "Ubah struktur mesin presentasi dan komponen inti visual.",
+      "Notifications": "Kelola peristiwa prioritas sistem dan titik akhir pelacakan rute pengiriman.",
+      "Preferences": "Konfigurasikan visual antarmuka, konteks wilayah, dan mekanika bahasa.",
+      "Security": "Pertahankan hambatan sesi identitas aktif dan aturan akses verifikasi kredensial.",
+      "Wallets": "Hubungkan dan strukturkan tanda tangan di berbagai akun terdesentralisasi eksternal global."
+    },
+    "tabs": {
+      "About": "Tentang",
+      "Display": "Tampilan",
+      "Notifications": "Notifikasi",
+      "Preferences": "Preferensi",
+      "Security": "Keamanan",
+      "Wallets": "Dompet"
+    },
+    "title": "Pengaturan",
+    "wallets": {
+      "active": "Aktif",
+      "add": "Tambah Dompet ({{current}}/{{max}})",
+      "available": "Tersedia",
+      "connectAction": "Hubungkan Dompet ({{current}} Terhubung, {{remaining}} Tersisa)",
+      "connected": "Terhubung",
+      "empty": "Belum ada dompet yang terhubung",
+      "emptyTerminal": "Tidak ada dompet yang terhubung. Hubungkan aset terminal Anda để melanjutkan.",
+      "limit": "Anda dapat menghubungkan hingga {{max}} dompet",
+      "limitReached": "Batas Dompet Tercapai ({{current}}/{{max}})",
+      "maximum": "Maksimum",
+      "remainingSlots": "Slot Tersisa"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "Hubungkan Dompet",
+    "disconnect": "Putuskan Koneksi",
+    "FlareGPT": "FlareGPT",
+    "ftsoRewards": "Hadiah FTSO",
+    "fxrpPool": "Pool $fXRP",
+    "governance": "Tata Kelola",
+    "helpCenter": "Pusat Bantuan",
+    "notConnected": "Belum Terhubung",
+    "overview": "Ikhtisar",
+    "rflrTracker": "Pelacak rFLR",
+    "settings": "Pengaturan",
+    "walletActivity": "Aktivitas Dompet",
+    "walletConnected": "Dompet Terhubung",
+    "yield": "Imbal Hasil"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "Pemantauan real - time interaksi blockchain yang masuk dan keluar.",
+      "title": "Aktivitas Terminal Terbaru"
+    },
+    "stats": {
+      "gas": "Biaya Gas Dibayar",
+      "received": "Total Aset Diterima",
+      "sent": "Total Aset Terkirim"
+    },
+    "status": {
+      "pending": "Tertunda",
+      "success": "Berhasil"
+    },
+    "table": {
+      "cols": {
+        "amount": "Amount",
+        "status": "Status",
+        "time": "Waktu",
+        "txHash": "Hash Tx",
+        "type": "Tipe"
+      },
+      "heading": "Tidak Ada Log Transaksi",
+      "viewAll": "Lihat Riwayat Lengkap"
+    },
+    "type": {
+      "contract": "Pelaksanaan Kontrak",
+      "received": "Diterima",
+      "sent": "Terkirim"
+    }
+  }
+}

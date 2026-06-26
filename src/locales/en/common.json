@@ -1,0 +1,237 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. Built on Flare Network.",
+    "disclaimer": "Not financial advice. Data is provided for informational purposes only.",
+    "terms": "Terms & Disclaimer"
+  },
+  "help": {
+    "contactSupport": "Contact Support",
+    "faqs": [
+      {
+        "answer": "Your wallet may not be connected, or the dashboard may still be syncing blockchain data. Verify that the correct wallet and network are selected.",
+        "question": "Why is my wallet balance not showing?"
+      },
+      {
+        "answer": "Market data is refreshed automatically using the configured data provider. Update frequency depends on the source and network availability.",
+        "question": "How often is FLR price updated?"
+      },
+      {
+        "answer": "Ensure your WFLR is delegated and that the epoch is eligible for rewards. Some rewards may require claiming after distribution.",
+        "question": "Why am I not receiving rewards?"
+      },
+      {
+        "answer": "Support depends on the integrations available in the dashboard. Compatible Flare wallets can be connected when supported.",
+        "question": "What wallets are supported?"
+      },
+      {
+        "answer": "Navigate to the wallet section and select Disconnect. This only removes the dashboard session and does not affect your funds.",
+        "question": "How do I disconnect my wallet?"
+      }
+    ],
+    "faqTitle": "Frequently Asked Questions",
+    "featureGuides": "Feature Guides",
+    "gettingStarted": "Getting Started",
+    "guides": [
+      {
+        "description": "Monitor FLR price, ecosystem metrics, protocol activity, and portfolio performance.",
+        "title": "Overview"
+      },
+      {
+        "description": "Ask questions about Flare data, governance, protocols, and wallet activity.",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "Track transfers, claims, delegations, and protocol interactions.",
+        "title": "Wallet Activity"
+      },
+      {
+        "description": "Monitor accruing rewards, epoch status, and reward claims.",
+        "title": "FTSO Rewards"
+      },
+      {
+        "description": "Discover earning opportunities across supported Flare protocols.",
+        "title": "Yield"
+      },
+      {
+        "description": "Review proposals, voting history, and active governance activity.",
+        "title": "Governance"
+      }
+    ],
+    "headerDesc": "Learn how to use FlareGPT, manage wallets, track rewards, and navigate ecosystem features.",
+    "noFaqs": "No matching FAQs found.",
+    "noGuides": "No matching guides found.",
+    "searchPlaceholder": "Search articles, FAQs, or setup guides...",
+    "searchSub": "Explore guides, FAQs, and feature explanations to help you navigate the Flare ecosystem efficiently.",
+    "searchTitle": "Everything you need to get started",
+    "steps": [
+      {
+        "step": "01",
+        "text": "Access balances, rewards, governance, and protocol data.",
+        "title": "Connect Your Wallet"
+      },
+      {
+        "step": "02",
+        "text": "Track FLR, rFLR, SGB, and ecosystem assets in one place.",
+        "title": "View Your Holdings"
+      },
+      {
+        "step": "03",
+        "text": "Delegate tokens to FTSO providers to earn rewards.",
+        "title": "Delegate WFLR"
+      },
+      {
+        "step": "04",
+        "text": "Monitor epochs, accruals, and reward claims.",
+        "title": "Track Rewards"
+      },
+      {
+        "step": "05",
+        "text": "Ask questions about Flare Network data and activity.",
+        "title": "Use FLRGPT"
+      }
+    ],
+    "stillNeedHelp": "Still need help?",
+    "supportDesc": "We’re here to help you get the most out of FlareGPT. If you can’t find what you’re looking for, reach out and we’ll respond as quickly as possible."
+  },
+  "navbar": {
+    "askFlareGPT": "Ask FlareGPT",
+    "mainnetStatus": "Flare Mainnet"
+  },
+  "settings": {
+    "cards": {
+      "app": "App",
+      "blur": "Blue Light Filter",
+      "chartType": "Chart Type",
+      "connectedWallets": "Connected Wallets",
+      "currency": "Currency Display",
+      "governanceAlerts": "Governance Alerts",
+      "language": "Language",
+      "links": "Links",
+      "logout": "Logout",
+      "region": "Region",
+      "rewardsAlerts": "Rewards Alerts",
+      "sessionTimeout": "Session Timeout",
+      "theme": "Theme",
+      "themeMode": "Light / Dark mode",
+      "timeframe": "Timeframe",
+      "walletCapacity": "Wallet Capacity"
+    },
+    "description": "Manage wallets, preferences, localization, and display options.",
+    "descriptions": {
+      "app": "Active package distribution build tag index.",
+      "blur": "Reduce eye strain with a warm screen tint",
+      "chartType": "Set default rendering visual style geometry for system matrices.",
+      "currency": "Choose the asset base currency display.",
+      "language": "Select your default interface viewing language.",
+      "links": "Global documentation references and team interaction links.",
+      "logout": "Instantly revoke authentication state permissions across every connected node.",
+      "region": "Adjust data nodes to filter contextual regional metrics.",
+      "sessionTimeout": "Automatically terminate session validation status loops during idling states.",
+      "timeframe": "Define default window period scales on visual charts.",
+      "walletCapacity": "System limits tracking allocation capacity pools."
+    },
+    "notifications": {
+      "governance": "Proposal updates",
+      "rewards": "Enable reward notifications"
+    },
+    "options": {
+      "15m": "15 minutes",
+      "1h": "1 hour",
+      "30m": "30 minutes",
+      "africa": "Africa",
+      "america": "America",
+      "area": "Area",
+      "asia": "Asia",
+      "candlestick": "Candlestick",
+      "europe": "Europe",
+      "global": "Global",
+      "high": "High",
+      "line": "Line",
+      "low": "Low",
+      "medium": "Medium",
+      "never": "Never",
+      "off": "Off"
+    },
+    "security": {
+      "logoutAll": "Logout All Devices"
+    },
+    "subtitles": {
+      "About": "Overview systematic deployment records, compilation rules, and asset indexes.",
+      "Display": "Modify presentation engine structures and visual core components.",
+      "Notifications": "Manage systemic priority events and delivery route tracking endpoints.",
+      "Preferences": "Configure interface visuals, region contexts, and language mechanics.",
+      "Security": "Maintain active identity session barriers and credentials verification access rules.",
+      "Wallets": "Connect and structure signatures across global external decentralized accounts."
+    },
+    "tabs": {
+      "About": "About",
+      "Display": "Display",
+      "Notifications": "Notifications",
+      "Preferences": "Preferences",
+      "Security": "Security",
+      "Wallets": "Wallets"
+    },
+    "title": "Settings",
+    "wallets": {
+      "active": "Active",
+      "add": "Add Wallet ({{current}}/{{max}})",
+      "available": "Available",
+      "connectAction": "Connect Wallet ({{current}} Connected, {{remaining}} Remaining)",
+      "connected": "Connected",
+      "empty": "No wallets connected yet",
+      "emptyTerminal": "No wallet connected. Connect your terminal assets to continue.",
+      "limit": "You can connect up to {{max}} wallets",
+      "limitReached": "Wallet Limit Reached ({{current}}/{{max}})",
+      "maximum": "Maximum",
+      "remainingSlots": "Slots Remaining"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "Connect Wallet",
+    "disconnect": "Disconnect",
+    "FlareGPT": "FlareGPT",
+    "ftsoRewards": "FTSO Rewards",
+    "fxrpPool": "$fXRP Pool",
+    "governance": "Governance",
+    "helpCenter": "Help Center",
+    "notConnected": "Not connected",
+    "overview": "Overview",
+    "rflrTracker": "rFLR Tracker",
+    "settings": "Settings",
+    "walletActivity": "Wallet Activity",
+    "walletConnected": "Wallet Connected",
+    "yield": "Yield",
+    "feeds": "Feeds"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "Real-time monitoring of incoming and outgoing blockchain interactions.",
+      "title": "Recent Terminal Activity"
+    },
+    "stats": {
+      "gas": "Gas Fees Paid",
+      "received": "Total Received Assets",
+      "sent": "Total Sent Assets"
+    },
+    "status": {
+      "pending": "Pending",
+      "success": "Success"
+    },
+    "table": {
+      "cols": {
+        "amount": "Amount",
+        "status": "Status",
+        "time": "Time",
+        "txHash": "Tx Hash",
+        "type": "Type"
+      },
+      "heading": "Transaction Log",
+      "viewAll": "View Full History"
+    },
+    "type": {
+      "contract": "Contract Execution",
+      "received": "Received",
+      "sent": "Sent"
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. 基于 Flare Network 构建。",
+    "disclaimer": "非财务建议。所提供数据仅供参考之用。",
+    "terms": "条款与免责声明"
+  },
+  "help": {
+    "contactSupport": "联系支持",
+    "faqs": [
+      {
+        "answer": "您的钱包可能未连接，或者控制面板仍在同步区块链数据。请核对是否选择了正确的钱包和网络。",
+        "question": "为什么我的钱包余额不显示？"
+      },
+      {
+        "answer": "市场数据会使用配置的数据提供商自动刷新。更新频率取决于数据源和网络可用性。",
+        "question": "FLR 价格多长时间更新一次？"
+      },
+      {
+        "answer": "请确保您的 WFLR 已进行委托，并且该纪元符合奖励条件。某些奖励可能需要在分发后手动领取。",
+        "question": "为什么我没有收到奖励？"
+      },
+      {
+        "answer": "支持情况取决于控制面板中可用的集成项。兼容的 Flare 钱包可在支持时进行连接。",
+        "question": "支持哪些钱包？"
+      },
+      {
+        "answer": "导航至钱包区域并选择“断开连接”。这只会清除控制面板的登录状态，不会影响您的资金。",
+        "question": "如何断开我的钱包连接？"
+      }
+    ],
+    "faqTitle": "常见问题解答",
+    "featureGuides": "功能指南",
+    "gettingStarted": "开始使用",
+    "guides": [
+      {
+        "description": "监控 FLR 价格、生态系统指标、协议活动和投资组合表现。",
+        "title": "概述"
+      },
+      {
+        "description": "询问关于 Flare 数据、治理、协议和钱包活动的问题。",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "追踪转账、领取、委托和协议交互。",
+        "title": "钱包活动"
+      },
+      {
+        "description": "监控正在累积的奖励、纪元状态和奖励领取。",
+        "title": "FTSO 奖励"
+      },
+      {
+        "description": "在支持的 Flare 协议中发现获利机会。",
+        "title": "收益"
+      },
+      {
+        "description": "查看提案、投票历史和活跃的治理活动。",
+        "title": "治理"
+      }
+    ],
+    "headerDesc": "了解如何使用 FlareGPT、管理钱包、追踪奖励以及探索生态系统功能。",
+    "noFaqs": "未找到匹配的常见问题。",
+    "noGuides": "未找到匹配的指南。",
+    "searchPlaceholder": "搜索文章、常见问题解答或设置指南...",
+    "searchSub": "浏览指南、常见问题解答和功能说明，帮助您高效使用 Flare 生态系统。",
+    "searchTitle": "开始使用所需的一切",
+    "steps": [
+      {
+        "step": "01",
+        "text": "访问余额、奖励、治理和协议数据。",
+        "title": "连接您的钱包"
+      },
+      {
+        "step": "02",
+        "text": "在一处追踪 FLR、rFLR、SGB 和生态系统资产。",
+        "title": "查看您的资产"
+      },
+      {
+        "step": "03",
+        "text": "将代币委托给 FTSO 提供商以赚取奖励。",
+        "title": "委托 WFLR"
+      },
+      {
+        "step": "04",
+        "text": "监控纪元（Epoch）、累计情况和奖励领取状态。",
+        "title": "追踪奖励"
+      },
+      {
+        "step": "05",
+        "text": "询问关于 Flare 网络数据和活动的问题。",
+        "title": "使用 FLRGPT"
+      }
+    ],
+    "stillNeedHelp": "仍然需要帮助？",
+    "supportDesc": "我们在这里协助您充分享受 FlareGPT 带来的便利。如果找不到您需要的内容，请与我们联系，我们会尽快回复。"
+  },
+  "navbar": {
+    "askFlareGPT": "咨询 FlareGPT",
+    "mainnetStatus": "Flare 主网"
+  },
+  "settings": {
+    "cards": {
+      "app": "应用",
+      "blur": "蓝光滤镜",
+      "chartType": "图表类型",
+      "connectedWallets": "已连接钱包",
+      "currency": "货币显示",
+      "governanceAlerts": "治理通知",
+      "language": "语言",
+      "links": "链接",
+      "logout": "登出",
+      "region": "区域",
+      "rewardsAlerts": "奖励通知",
+      "sessionTimeout": "会话超时",
+      "theme": "主题",
+      "themeMode": "浅色 / 深色模式",
+      "timeframe": "时间范围",
+      "walletCapacity": "钱包容量"
+    },
+    "description": "管理钱包、偏好设置、本地化和显示选项。",
+    "descriptions": {
+      "app": "活动包分发构建标签索引。",
+      "blur": "开启暖色调屏幕以缓解眼部疲劳",
+      "chartType": "为系统矩阵设置默认的渲染视觉样式几何。",
+      "currency": "选择资产基础货币显示。",
+      "language": "选择您的默认界面显示语言。",
+      "links": "全局文档参考和团队互动链接。",
+      "logout": "立即撤销每个已连接节点上的身份验证状态权限。",
+      "region": "调整数据节点以过滤上下文区域指标。",
+      "sessionTimeout": "在空闲状态期间自动终止会话验证状态循环。",
+      "timeframe": "在视觉图表上定义默认的窗口周期比例。",
+      "walletCapacity": "追踪分配容量池的系统限制。"
+    },
+    "notifications": {
+      "governance": "提案更新",
+      "rewards": "启用奖励通知"
+    },
+    "options": {
+      "15m": "15分钟",
+      "1h": "1小时",
+      "30m": "30分钟",
+      "africa": "非洲",
+      "america": "美国",
+      "area": "面积图",
+      "asia": "亚洲",
+      "candlestick": "K线图",
+      "europe": "欧洲",
+      "global": "全球",
+      "high": "高",
+      "line": "折线图",
+      "low": "低",
+      "medium": "中",
+      "never": "从不",
+      "off": "关闭"
+    },
+    "security": {
+      "logoutAll": "登出所有设备"
+    },
+    "subtitles": {
+      "About": "概述系统部署记录、编译规则和资产索引。",
+      "Display": "修改展示引擎结构和视觉核心组件。",
+      "Notifications": "管理系统优先级事件和分发路由跟踪端点。",
+      "Preferences": "配置界面视觉、区域上下文和语言机制。",
+      "Security": "维护活动的身份会话屏障和凭据验证访问规则。",
+      "Wallets": "在全局外部去中心化账户中连接并结构化签名。"
+    },
+    "tabs": {
+      "About": "关于",
+      "Display": "显示",
+      "Notifications": "通知",
+      "Preferences": "偏好设置",
+      "Security": "安全",
+      "Wallets": "钱包"
+    },
+    "title": "设置",
+    "wallets": {
+      "active": "激活",
+      "add": "添加钱包 ({{current}}/{{max}})",
+      "available": "可用容量",
+      "connectAction": "连接钱包 (已连接 {{current}}, 剩余 {{remaining}})",
+      "connected": "已连接",
+      "empty": "尚未连接钱包",
+      "emptyTerminal": "未连接钱包。请连接您的终端资产以继续。",
+      "limit": "您最多可以连接 {{max}} 个钱包",
+      "limitReached": "达到钱包上限 ({{current}}/{{max}})",
+      "maximum": "最大容量",
+      "remainingSlots": "剩余槽位"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "连接钱包",
+    "disconnect": "断开连接",
+    "FlareGPT": "耀斑GPT",
+    "ftsoRewards": "FTSO 奖励",
+    "fxrpPool": "$fXRP 资金池",
+    "governance": "治理",
+    "helpCenter": "帮助中心",
+    "notConnected": "未连接",
+    "overview": "概述",
+    "rflrTracker": "rFLR tracker",
+    "settings": "设置",
+    "walletActivity": "钱包活动",
+    "walletConnected": "钱包已连接",
+    "yield": "收益率"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "实时监控传入和传出的区块链交互。",
+      "title": "最近的终端活动"
+    },
+    "stats": {
+      "gas": "支付的汽油费",
+      "received": "收到的资产总额",
+      "sent": "发送资产总额"
+    },
+    "status": {
+      "pending": "待定",
+      "success": "成功"
+    },
+    "table": {
+      "cols": {
+        "amount": "金额(元)",
+        "status": "状态",
+        "time": "时间",
+        "txHash": "Tx Hash",
+        "type": "类型"
+      },
+      "heading": "交易记录",
+      "viewAll": "查看完整历史"
+    },
+    "type": {
+      "contract": "合同执行",
+      "received": "已发放",
+      "sent": "发件箱"
+    }
+  }
+}

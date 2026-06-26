@@ -1,0 +1,236 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. Entwickelt auf Flare Network.",
+    "disclaimer": "Keine Finanzberatung. Die Daten dienen ausschließlich zu Informationszwecken.",
+    "terms": "Nutzungsbedingungen & Haftungsausschluss"
+  },
+  "help": {
+    "contactSupport": "Support kontaktieren",
+    "faqs": [
+      {
+        "answer": "Ihr Wallet ist möglicherweise nicht verbunden oder das Dashboard synchronisiert noch Blockchain-Daten. Überprüfen Sie das ausgewählte Wallet und Netzwerk.",
+        "question": "Warum wird mein Wallet-Guthaben nicht angezeigt?"
+      },
+      {
+        "answer": "Marktdaten werden automatisch über den konfigurierten Datenanbieter aktualisiert. Die Häufigkeit hängt von der Quelle und der Netzwerkverfügbarkeit ab.",
+        "question": "Wie oft wird der FLR-Preis aktualisiert?"
+      },
+      {
+        "answer": "Stellen Sie sicher, dass Ihr WFLR delegiert ist und die Epoche für Belohnungen berechtigt ist. Einige Belohnungen müssen nach der Verteilung beansprucht werden.",
+        "question": "Warum erhalte ich keine Belohnungen?"
+      },
+      {
+        "answer": "Die Unterstützung hängt von den im Dashboard verfügbaren Integrationen ab. Kompatible Flare-Wallets können verbunden werden, wenn sie unterstützt werden.",
+        "question": "Welche Wallets werden unterstützt?"
+      },
+      {
+        "answer": "Navigieren Sie zum Wallet-Bereich und wählen Sie Trennen. Dadurch wird nur die Dashboard-Sitzung entfernt und Ihr Guthaben nicht beeinflusst.",
+        "question": "Wie trenne ich mein Wallet?"
+      }
+    ],
+    "faqTitle": "Häufig gestellte Fragen",
+    "featureGuides": "Funktionsleitfäden",
+    "gettingStarted": "Erste Schritte",
+    "guides": [
+      {
+        "description": "Überwachen Sie den FLR-Preis, Ökosystem-Metriken, Protokollaktivitäten und die Portfolio-Performance.",
+        "title": "Übersicht"
+      },
+      {
+        "description": "Stellen Sie Fragen zu Flare-Daten, Governance, Protokollen und Wallet-Aktivitäten.",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "Verfolgen Sie Überweisungen, Ansprüche, Delegierungen und Protokollinteraktionen.",
+        "title": "Wallet-Aktivität"
+      },
+      {
+        "description": "Überwachen Sie anfallende Belohnungen, den Epochenstatus und Belohnungsansprüche.",
+        "title": "FTSO-Belohnungen"
+      },
+      {
+        "description": "Entdecken Sie Ertragsmöglichkeiten in unterstützten Flare-Protokollen.",
+        "title": "Rendite"
+      },
+      {
+        "description": "Überprüfen Sie Vorschläge, den Abstimmungsverlauf und aktive Governance-Aktivitäten.",
+        "title": "Regierungsführung"
+      }
+    ],
+    "headerDesc": "Erfahren Sie, wie Sie FlareGPT nutzen, Wallets verwalten, Belohnungen verfolgen und sich im Ökosystem zurechtfinden.",
+    "noFaqs": "Keine passenden FAQs gefunden.",
+    "noGuides": "Keine passenden Leitfäden gefunden.",
+    "searchPlaceholder": "Suchen Sie nach Artikeln, FAQs oder Anleitungen...",
+    "searchSub": "Entdecken Sie Leitfäden, FAQs und Funktionserklärungen, um sich effizient im Flare-Ökosystem zurechtzufinden.",
+    "searchTitle": "Alles, was Sie für den Einstieg brauchen",
+    "steps": [
+      {
+        "step": "01",
+        "text": "Greifen Sie auf Guthaben, Belohnungen, Governance und Protokolldaten zu.",
+        "title": "Wallet verbinden"
+      },
+      {
+        "step": "02",
+        "text": "Verfolgen Sie FLR, rFLR, SGB und Ökosystem-Assets an einem Ort.",
+        "title": "Bestände anzeigen"
+      },
+      {
+        "step": "03",
+        "text": "Delegieren Sie Token an FTSO-Anbieter, um Belohnungen zu verdienen.",
+        "title": "WFLR delegieren"
+      },
+      {
+        "step": "04",
+        "text": "Überwachen Sie Epochen, Abgrenzungen und Belohnungsansprüche.",
+        "title": "Belohnungen verfolgen"
+      },
+      {
+        "step": "05",
+        "text": "Stellen Sie Fragen zu Daten und Aktivitäten des Flare-Netzwerks.",
+        "title": "FlareGPT nutzen"
+      }
+    ],
+    "stillNeedHelp": "Brauchen Sie immer noch Hilfe?",
+    "supportDesc": "Wir sind hier, um Ihnen zu helfen, das Beste aus FlareGPT herauszuholen. Wenn Sie nicht finden, wonach Sie suchen, kontaktieren Sie uns."
+  },
+  "navbar": {
+    "askFlareGPT": "FlareGPT fragen",
+    "mainnetStatus": "Flare-Mainnet"
+  },
+  "settings": {
+    "cards": {
+      "app": "App",
+      "blur": "Blaulichtfilter",
+      "chartType": "Diagrammtyp",
+      "connectedWallets": "Verbundene Wallets",
+      "currency": "Währungsanzeige",
+      "governanceAlerts": "Governance-Alarme",
+      "language": "Sprache",
+      "links": "Links",
+      "logout": "Abmelden",
+      "region": "Region",
+      "rewardsAlerts": "Belohnungsalarme",
+      "sessionTimeout": "Sitzungs-Zeitlimit",
+      "theme": "Design",
+      "themeMode": "Hell- / Dunkelmodus",
+      "timeframe": "Zeitrahmen",
+      "walletCapacity": "Wallet-Kapazität"
+    },
+    "description": "Verwalten Sie Wallets, Präferenzen, Lokalisierung und Anzeigeoptionen.",
+    "descriptions": {
+      "app": "Aktiver Build-Tag-Index für die Paketverteilung.",
+      "blur": "Reduzieren Sie die Augenbelastung durch einen warmen Bildschirmton",
+      "chartType": "Legen Sie die standardmäßige visuelle Stilgeometrie für Systemmatrizen fest.",
+      "currency": "Wählen Sie die Anzeige der Asset-Basiswährung.",
+      "language": "Wählen Sie Ihre standardmäßige Anzeigesprache für die Benutzeroberfläche.",
+      "links": "Globale Dokumentationsreferenzen und Team-Interaktionslinks.",
+      "logout": "Widerrufen Sie Autorisierungsstatusberechtigungen auf jedem verbundenen Knoten sofort.",
+      "region": "Passen Sie Datenknoten an, um kontextuelle regionale Metriken zu filtern.",
+      "sessionTimeout": "Beenden Sie Sitzungsvalidierungsstatusschleifen bei Inaktivität automatisch.",
+      "timeframe": "Definieren Sie Standard-Fensterperiodenskalen in visuellen Diagrammen.",
+      "walletCapacity": "Systemgrenzen zur Verfolgung von Zuweisungskapazitätspools."
+    },
+    "notifications": {
+      "governance": "Vorschlags-Updates",
+      "rewards": "Belohnungsbenachrichtigungen aktivieren"
+    },
+    "options": {
+      "15m": "15 Minuten",
+      "1h": "1 Stunde",
+      "30m": "30 Minuten",
+      "africa": "Afrika",
+      "america": "Amerika",
+      "area": "Fläche",
+      "asia": "Asien",
+      "candlestick": "Kerze",
+      "europe": "Europa",
+      "global": "Global",
+      "high": "Hoch",
+      "line": "Linie",
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "never": "Nie",
+      "off": "Aus"
+    },
+    "security": {
+      "logoutAll": "Von allen Geräten abmelden"
+    },
+    "subtitles": {
+      "About": "Übersicht über systemische Bereitstellungsaufzeichnungen, Kompilierungsregeln und Asset-Indizes.",
+      "Display": "Ändern Sie die Strukturen der Präsentations-Engine und die visuellen Kernkomponenten.",
+      "Notifications": "Verwalten Sie systemische Prioritätsereignisse und Endpunkte zur Verfolgung von Lieferrouten.",
+      "Preferences": "Konfigurieren Sie Benutzeroberflächen-Visualisierungen, Regionenkontexte und Sprachmechaniken.",
+      "Security": "Aufrechterhaltung aktiver Identitätssitzungsbarrieren und Zugriffsregeln für die Überprüfung von Anmeldedaten.",
+      "Wallets": "Verbinden und strukturieren Sie Signaturen über globale externe dezentrale Konten hinweg."
+    },
+    "tabs": {
+      "About": "Über",
+      "Display": "Anzeige",
+      "Notifications": "Benachrichtigungen",
+      "Preferences": "Präferenzen",
+      "Security": "Sicherheit",
+      "Wallets": "Geldbörsen"
+    },
+    "title": "Einstellungen",
+    "wallets": {
+      "active": "Aktiv",
+      "add": "Wallet hinzufügen ({{current}}/{{max}})",
+      "available": "Verfügbar",
+      "connectAction": "Wallet verbinden ({{current}} Verbunden, {{remaining}} Verbleibend)",
+      "connected": "Verbunden",
+      "empty": "Noch keine Wallets verbunden",
+      "emptyTerminal": "Keine Wallet verbunden. Verbinden Sie Ihre Terminal-Assets, um fortzufahren.",
+      "limit": "Sie können bis zu {{max}} Wallets verbinden",
+      "limitReached": "Wallet-Limit erreicht ({{current}}/{{max}})",
+      "maximum": "Maximal",
+      "remainingSlots": "Verbleibende Slots"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "Wallet verbinden",
+    "disconnect": "Trennen",
+    "FlareGPT": "FlareGPT",
+    "ftsoRewards": "FTSO-Belohnungen",
+    "fxrpPool": "$fXRP-Pool",
+    "governance": "Regierungsführung",
+    "helpCenter": "Hilfe-Center",
+    "notConnected": "Nicht verbunden",
+    "overview": "Übersicht",
+    "rflrTracker": "rFLR-Tracker",
+    "settings": "Einstellungen",
+    "walletActivity": "Wallet-Aktivität",
+    "walletConnected": "Wallet verbunden",
+    "yield": "Rendite"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "Echtzeitüberwachung eingehender und ausgehender Blockchain-Interaktionen.",
+      "title": "Letzte Terminalaktivität"
+    },
+    "stats": {
+      "gas": "Bezahlte Gasgebühren",
+      "received": "Insgesamt erhaltene Vermögenswerte",
+      "sent": "Insgesamt gesendete Vermögenswerte"
+    },
+    "status": {
+      "pending": "Ausstehend",
+      "success": "Erfolg"
+    },
+    "table": {
+      "cols": {
+        "amount": "Betrag",
+        "status": "Status",
+        "time": "Zeit",
+        "txHash": "Tx-Hash",
+        "type": "Art"
+      },
+      "heading": "Transaktionsprotokoll",
+      "viewAll": "Kompletter Verlauf"
+    },
+    "type": {
+      "contract": "Vertragsdurchführung",
+      "received": "Erhalten",
+      "sent": "Gesendet"
+    }
+  }
+}

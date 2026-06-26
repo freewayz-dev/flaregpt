@@ -1,0 +1,236 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. Flare Network 上に構築。",
+    "disclaimer": "財務アドバイスではありません。データは情報提供のみを目的として提供されています。",
+    "terms": "利用規約と免責事項"
+  },
+  "help": {
+    "contactSupport": "サポートに連絡",
+    "faqs": [
+      {
+        "answer": "ウォレットが接続されていないか、ダッシュボードがブロックチェーンデータを同期中である可能性があります。正しいウォレットとネットワークが選択されているか確認してください。",
+        "question": "ウォレットの残高が表示されないのはなぜですか？"
+      },
+      {
+        "answer": "市場データは、設定されたデータプロバイダーを使用して自動的に更新されます。更新頻度は、ソースとネットワークの可用性によって異なります。",
+        "question": "FLR 価格はどのくらいの頻度で更新されますか？"
+      },
+      {
+        "answer": "WFLR が委譲されており、そのエポックが報酬の対象であるか確認してください。一部の報酬は、分配後に請求（クレーム）操作が必要です。",
+        "question": "報酬が受け取れないのはなぜですか？"
+      },
+      {
+        "answer": "サポート状況はダッシュボードで利用可能な統合機能によって異なります。互換性のある Flare ウォレットは、対応時に接続できます。",
+        "question": "どのウォレットがサポートされていますか？"
+      },
+      {
+        "answer": "ウォレットセクションに移動し、「切断」を選択します。これによりダッシュボードのセッションのみが削除され、資金には影響しません。",
+        "question": "ウォレットを切断するにはどうすればよいですか？"
+      }
+    ],
+    "faqTitle": "よくある質問",
+    "featureGuides": "機能ガイド",
+    "gettingStarted": "初めに",
+    "guides": [
+      {
+        "description": "FLR 価格、エコシステム指標、プロトコルアクティビティ、ポートフォリオパフォーマンスを監視します。",
+        "title": "概要"
+      },
+      {
+        "description": "Flare のデータ、ガバナンス、プロトコル、ウォレットのアクティビティについて質問します。",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "送金、請求、委譲、プロトコルとの相互作用を追跡します。",
+        "title": "ウォレットアクティビティ"
+      },
+      {
+        "description": "累積報酬、エポックステータス、報酬請求を監視します。",
+        "title": "FTSO 報酬"
+      },
+      {
+        "description": "サポートされている Flare プロトコル全体の収益機会を見つけます。",
+        "title": "イールド"
+      },
+      {
+        "description": "提案、投票履歴、現在のアクティブなガバナンス活動を確認します。",
+        "title": "ガバナンス"
+      }
+    ],
+    "headerDesc": "FlareGPT の使い方、ウォレットの管理、報酬の追跡、エコシステム機能の操作方法について説明します。",
+    "noFaqs": "一致する FAQ が見つかりません。",
+    "noGuides": "一致するガイドが見つかりません。",
+    "searchPlaceholder": "記事、FAQ、またはセットアップガイドを検索...",
+    "searchSub": "Flare エコシステムを効率的に操作するのに役立つガイド、FAQ、機能説明をご覧ください。",
+    "searchTitle": "始めるために必要なすべて",
+    "steps": [
+      {
+        "step": "01",
+        "text": "残高、報酬、ガバナンス、プロトコルデータにアクセスします。",
+        "title": "ウォレットを接続する"
+      },
+      {
+        "step": "02",
+        "text": "FLR、rFLR、SGB、およびエコシステム資産を一箇所で追跡します。",
+        "title": "保有資産を表示する"
+      },
+      {
+        "step": "03",
+        "text": "FTSO プロバイダーにトークンを委譲して報酬を獲得します。",
+        "title": "WFLR を委譲する"
+      },
+      {
+        "step": "04",
+        "text": "エポック、発生状況、報酬の請求を監視します。",
+        "title": "報酬を追跡する"
+      },
+      {
+        "step": "05",
+        "text": "Flare Network のデータやアクティビティについて質問します。",
+        "title": "FLRGPT を使用する"
+      }
+    ],
+    "stillNeedHelp": "まだヘルプが必要ですか？",
+    "supportDesc": "FlareGPT を最大限に活用していただけるようサポートいたします。お探しの情報が見つからない場合は、お気軽にお問い合わせください。迅速に対応いたします。"
+  },
+  "navbar": {
+    "askFlareGPT": "FlareGPTに質問",
+    "mainnetStatus": "Flareメインネット"
+  },
+  "settings": {
+    "cards": {
+      "app": "アプリ",
+      "blur": "ブルーライトフィルター",
+      "chartType": "チャートの種類",
+      "connectedWallets": "接続済ウォレット",
+      "currency": "通貨表示",
+      "governanceAlerts": "ガバナンスアラート",
+      "language": "言語",
+      "links": "リンク",
+      "logout": "ログアウト",
+      "region": "リージョン",
+      "rewardsAlerts": "報酬アラート",
+      "sessionTimeout": "セッションのタイムアウト",
+      "theme": "テーマ",
+      "themeMode": "ライト / ダークモード",
+      "timeframe": "期間",
+      "walletCapacity": "ウォレット容量"
+    },
+    "description": "ウォレット、環境設定、ローカライズ、表示オプションを管理します。",
+    "descriptions": {
+      "app": "アクティブなパッケージ配布のビルドタグインデックスです。",
+      "blur": "暖色系の画面で目の疲れを軽減します",
+      "chartType": "システムマトリックスのデフォルトのレンダリング視覚スタイルジオメトリを設定します。",
+      "currency": "資産の基準通貨表示を選択します。",
+      "language": "デフォルトのインターフェース表示言語を選択します。",
+      "links": "グローバルなドキュメント参照とチームのインタラクションリンクです。",
+      "logout": "接続されているすべてのノードで認証状態の権限を即座に破棄します。",
+      "region": "文脈に応じた地域メトリクスをフィルタリングするようにデータノードを調整します。",
+      "sessionTimeout": "アイドリング状態の間にセッション検証状態ループを自動的に終了します。",
+      "timeframe": "視覚チャートのデフォルトのウィンドウ期間スケールを定義します。",
+      "walletCapacity": "割り当て容量プールを追跡するシステム制限です。"
+    },
+    "notifications": {
+      "governance": "提案の更新",
+      "rewards": "報酬通知を有効にする"
+    },
+    "options": {
+      "15m": "15分",
+      "1h": "1時間",
+      "30m": "30分",
+      "africa": "アフリカ",
+      "america": "アメリカ",
+      "area": "エリア",
+      "asia": "アジア",
+      "candlestick": "ローソク足",
+      "europe": "ヨーロッパ",
+      "global": "グローバル",
+      "high": "高",
+      "line": "折れ線",
+      "low": "低",
+      "medium": "中",
+      "never": "なし",
+      "off": "オフ"
+    },
+    "security": {
+      "logoutAll": "すべてのデバイスからログアウト"
+    },
+    "subtitles": {
+      "About": "システム的な展開記録、コンパイルルール、および資産インデックスを概観します。",
+      "Display": "プレゼンテーションエンジンの構造と視覚的なコアコンポーネントを変更します。",
+      "Notifications": "システム的な優先イベントと配信ルート追跡エンドポイントを管理します。",
+      "Preferences": "インターフェースのビジュアル、リージョンのコンテキスト、および言語メカニズムを設定します。",
+      "Security": "アクティブなアイデンティティセッションの障壁と資格情報検証アクセスルールを維持します。",
+      "Wallets": "グローバルな外部の分散型アカウント間で署名を接続し、構造化します。"
+    },
+    "tabs": {
+      "About": "情報",
+      "Display": "表示",
+      "Notifications": "通知",
+      "Preferences": "環境設定",
+      "Security": "セキュリティ",
+      "Wallets": "ウォレット"
+    },
+    "title": "設定",
+    "wallets": {
+      "active": "アクティブ",
+      "add": "ウォレットを追加 ({{current}}/{{max}})",
+      "available": "利用可能",
+      "connectAction": "ウォレットを接続 (接続済み: {{current}}、残り: {{remaining}})",
+      "connected": "接続済",
+      "empty": "ウォレットはまだ接続されていません",
+      "emptyTerminal": "ウォレットが接続されていません。続行するにはターミナルアセットを接続してください。",
+      "limit": "最大 {{max}} 個のウォレットを接続できます",
+      "limitReached": "ウォレットの制限に達しました ({{current}}/{{max}})",
+      "maximum": "最大",
+      "remainingSlots": "残りのスロット"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "ウォレットを接続",
+    "disconnect": "接続解除",
+    "FlareGPT": "フレアGPT",
+    "ftsoRewards": "FTSO報酬",
+    "fxrpPool": "$fXRPプール",
+    "governance": "ガバナンス",
+    "helpCenter": "ヘルプセンター",
+    "notConnected": "未接続",
+    "overview": "概要",
+    "rflrTracker": "rFLRトラッカー",
+    "settings": "設定",
+    "walletActivity": "ウォレット活動",
+    "walletConnected": "ウォレット接続済",
+    "yield": "利回り"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "ブロックチェーンの送受信のリアルタイム監視。",
+      "title": "最近の端末アクティビティ"
+    },
+    "stats": {
+      "gas": "支払ったガス料金",
+      "received": "受領した資産の合計",
+      "sent": "送信されたアセットの合計"
+    },
+    "status": {
+      "pending": "保留中",
+      "success": "成功"
+    },
+    "table": {
+      "cols": {
+        "amount": "金額",
+        "status": "ステータス",
+        "time": "時刻",
+        "txHash": "Txハッシュ",
+        "type": "タイプ"
+      },
+      "heading": "TRANSACTION LOG",
+      "viewAll": "全履歴を表示"
+    },
+    "type": {
+      "contract": "契約締結日",
+      "received": "受け取り完了",
+      "sent": "送信済み"
+    }
+  }
+}

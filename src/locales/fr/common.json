@@ -1,0 +1,236 @@
+{
+  "footer": {
+    "copyright": "© {{year}} FlareGPT. Propulsé par Flare Network.",
+    "disclaimer": "Ceci n'est pas un conseil financier. Les données sont fournies à titre informatif uniquement.",
+    "terms": "Conditions d'utilisation & Clause de non-responsabilité"
+  },
+  "help": {
+    "contactSupport": "Contacter le Support",
+    "faqs": [
+      {
+        "answer": "Votre portefeuille n'est peut-être pas connecté, ou le tableau de bord est encore en train de synchroniser les données de la blockchain. Vérifiez que le bon portefeuille et le bon réseau sont sélectionnés.",
+        "question": "Pourquoi le solde de mon portefeuille ne s'affiche-t-il pas ?"
+      },
+      {
+        "answer": "Les données de marché sont actualisées automatiquement via le fournisseur configuré. La fréquence dépend de la source et de la disponibilité du réseau.",
+        "question": "À quelle fréquence le prix du FLR est-il mis à jour ?"
+      },
+      {
+        "answer": "Assurez-vous que vos WFLR sont délégués et que l'époque est éligible. Certaines récompenses nécessitent d'être réclamées après distribution.",
+        "question": "Pourquoi ne reçois-je pas de récompenses ?"
+      },
+      {
+        "answer": "La prise en charge dépend des intégrations disponibles. Les portefeuilles Flare compatibles peuvent être connectés lorsqu'ils sont pris en charge.",
+        "question": "Quels portefeuilles sont pris en charge ?"
+      },
+      {
+        "answer": "Accédez à la section portefeuille et sélectionnez Déconnecter. Cela supprime uniquement la session du tableau de bord sans affecter vos fonds.",
+        "question": "Comment déconnecter mon portefeuille ?"
+      }
+    ],
+    "faqTitle": "Foire Aux Questions",
+    "featureGuides": "Guides des Fonctionnalités",
+    "gettingStarted": "Prise en main",
+    "guides": [
+      {
+        "description": "Suivez le prix du FLR, les indicateurs de l'écosystème, l'activité des protocoles et les performances du portefeuille.",
+        "title": "Vue d'ensemble"
+      },
+      {
+        "description": "Posez des questions sur les données Flare, la gouvernance, les protocoles et l'activité du portefeuille.",
+        "title": "FLRGPT"
+      },
+      {
+        "description": "Suivez les transferts, les réclamations, les délégations et les interactions avec les protocoles.",
+        "title": "Activité du Portefeuille"
+      },
+      {
+        "description": "Suivez les récompenses accumulées, le statut de l'époque et les réclamations.",
+        "title": "Récompenses FTSO"
+      },
+      {
+        "description": "Découvrez les opportunités de rendement sur les protocoles Flare pris en charge.",
+        "title": "Rendement"
+      },
+      {
+        "description": "Consultez les propositions, l'historique des votes et l'activité de gouvernance en cours.",
+        "title": "Gouvernance"
+      }
+    ],
+    "headerDesc": "Apprenez à utiliser FlareGPT, à gérer vos portefeuilles, à suivre vos récompenses et à naviguer dans l'écosystème.",
+    "noFaqs": "Aucune FAQ correspondante trouvée.",
+    "noGuides": "Aucun guide correspondant trouvé.",
+    "searchPlaceholder": "Rechercher des articles, des FAQ ou des guides...",
+    "searchSub": "Explorez les guides, les FAQ et les explications des fonctionnalités pour vous aider à naviguer efficacement dans l'écosystème Flare.",
+    "searchTitle": "Tout ce dont vous avez besoin pour commencer",
+    "steps": [
+      {
+        "step": "01",
+        "text": "Accédez aux soldes, récompenses, gouvernance et données de protocole.",
+        "title": "Connectez votre Portefeuille"
+      },
+      {
+        "step": "02",
+        "text": "Suivez FLR, rFLR, SGB et les actifs de l'écosystème au même endroit.",
+        "title": "Consultez vos Avoirs"
+      },
+      {
+        "step": "03",
+        "text": "Déléguez des jetons aux fournisseurs FTSO pour gagner des récompenses.",
+        "title": "Déléguez vos WFLR"
+      },
+      {
+        "step": "04",
+        "text": "Surveillez les époques, les cumuls et les réclamations de récompenses.",
+        "title": "Suivez vos Récompenses"
+      },
+      {
+        "step": "05",
+        "text": "Posez des questions sur les données et l'activité du réseau Flare.",
+        "title": "Utilisez FLRGPT"
+      }
+    ],
+    "stillNeedHelp": "Besoin d'aide supplémentaire ?",
+    "supportDesc": "Nous sommes là pour vous aider à tirer le meilleur parti de FlareGPT. Si vous ne trouvez pas ce que vous cherchez, contactez-nous et nous vous répondrons dès que possibile."
+  },
+  "navbar": {
+    "askFlareGPT": "Demander à FlareGPT",
+    "mainnetStatus": "Réseau Principal Flare"
+  },
+  "settings": {
+    "cards": {
+      "app": "Application",
+      "blur": "Filtre de lumière bleue",
+      "chartType": "Type de Graphique",
+      "connectedWallets": "Portefeuilles Connectés",
+      "currency": "Devise d'Affichage",
+      "governanceAlerts": "Alertes de Gouvernance",
+      "language": "Langue",
+      "links": "Liens",
+      "logout": "Déconnexion",
+      "region": "Région",
+      "rewardsAlerts": "Alertes de Récompenses",
+      "sessionTimeout": "Expiration de la Session",
+      "theme": "Thème",
+      "themeMode": "Mode Clair / Sombre",
+      "timeframe": "Période",
+      "walletCapacity": "Capacité du Portefeuille"
+    },
+    "description": "Gérez les portefeuilles, les préférences, la localisation et les options d'affichage.",
+    "descriptions": {
+      "app": "Index des balises de build de distribution de paquets actifs.",
+      "blur": "Réduisez la fatigue oculaire avec une teinte d'écran chaude",
+      "chartType": "Définissez la géométrie par défaut du style visuel de rendu pour les matrices système.",
+      "currency": "Choisissez l'affichage de la devise de base de l'actif.",
+      "language": "Sélectionnez votre langue d'affichage de l'interface par défaut.",
+      "links": "Références de documentation globale et liens d'interaction de l'équipe.",
+      "logout": "Révoquez instantanément les autorisations d'état d'authentification sur chaque nœud connecté.",
+      "region": "Ajustez les nœuds de données pour filtrer les métriques régionales contextuelles.",
+      "sessionTimeout": "Terminez automatiquement les boucles d'état de validation de session pendant les états d'inactivité.",
+      "timeframe": "Définissez les échelles de période de fenêtre par défaut sur les graphiques visuels.",
+      "walletCapacity": "Limites systémiques suivant les pools de capacité d'allocation."
+    },
+    "notifications": {
+      "governance": "Mises à jour des propositions",
+      "rewards": "Activer les notifications de récompenses"
+    },
+    "options": {
+      "15m": "15 minutes",
+      "1h": "1 heure",
+      "30m": "30 minutes",
+      "africa": "Afrique",
+      "america": "Amérique",
+      "area": "Zone",
+      "asia": "Asie",
+      "candlestick": "Chandelier",
+      "europe": "Europe",
+      "global": "Mondial",
+      "high": "Élevé",
+      "line": "Ligne",
+      "low": "Faible",
+      "medium": "Moyen",
+      "never": "Jamais",
+      "off": "Désactivé"
+    },
+    "security": {
+      "logoutAll": "Déconnecter Tous les Appareils"
+    },
+    "subtitles": {
+      "About": "Aperçu des enregistrements de déploiement systémique, des règles de compilation et des index d'actifs.",
+      "Display": "Modifiez les structures du moteur de présentation et les composants visuels de base.",
+      "Notifications": "Gérez les événements prioritaires systémiques et les points finaux de suivi des itinéraires de livraison.",
+      "Preferences": "Configurez les éléments visuels de l'interface, les contextes régionaux et la mécanique des langues.",
+      "Security": "Maintenez les barrières de session d'identité actives et les règles d'accès de vérification des identifiants.",
+      "Wallets": "Connectez et structurez les signatures sur les comptes décentralisés externes mondiaux."
+    },
+    "tabs": {
+      "About": "À Propos",
+      "Display": "Affichage",
+      "Notifications": "Notifications",
+      "Preferences": "Préférences",
+      "Security": "Sécurité",
+      "Wallets": "Portefeuilles"
+    },
+    "title": "Paramètres",
+    "wallets": {
+      "active": "Actif",
+      "add": "Ajouter un Portefeuille ({{current}}/{{max}})",
+      "available": "Disponible",
+      "connectAction": "Connecter le portefeuille ({{current}} Connectés, {{remaining}} Restants)",
+      "connected": "Connecté",
+      "empty": "Aucun portefeuille connecté pour le moment",
+      "emptyTerminal": "Aucun portefeuille connecté. Connectez vos actifs du terminal pour continuer.",
+      "limit": "Vous pouvez connecter jusqu'à {{max}} portefeuilles",
+      "limitReached": "Limite de Portefeuilles Atteinte ({{current}}/{{max}})",
+      "maximum": "Maximum",
+      "remainingSlots": "Emplacements restants"
+    }
+  },
+  "sidebar": {
+    "connectWallet": "Connecter le Portefeuille",
+    "disconnect": "Déconnecter",
+    "FlareGPT": "FlareGPT",
+    "ftsoRewards": "Récompenses FTSO",
+    "fxrpPool": "Pool $fXRP",
+    "governance": "Gouvernance",
+    "helpCenter": "Centre d'Aide",
+    "notConnected": "Non connecté",
+    "overview": "Aperçu",
+    "rflrTracker": "Suivi rFLR",
+    "settings": "Paramètres",
+    "walletActivity": "Activité du Portefeuille",
+    "walletConnected": "Portefeuille Connecté",
+    "yield": "Rendement"
+  },
+  "wallet": {
+    "activity": {
+      "subtitle": "Surveillance en temps réel des interactions blockchain entrantes et sortantes.",
+      "title": "Activité récente du terminal"
+    },
+    "stats": {
+      "gas": "Frais de gaz payés",
+      "received": "Total des actifs reçus",
+      "sent": "Total des actifs envoyés"
+    },
+    "status": {
+      "pending": "En attente",
+      "success": "Réussis"
+    },
+    "table": {
+      "cols": {
+        "amount": "Montant",
+        "status": "Statut",
+        "time": "Heure",
+        "txHash": "Hash Tx :",
+        "type": "Type"
+      },
+      "heading": "Utilisation de mes chèques cadeaux",
+      "viewAll": "Afficher l'historique complet"
+    },
+    "type": {
+      "contract": "Exécution du contrat",
+      "received": "Reçues",
+      "sent": "Envoyé"
+    }
+  }
+}
