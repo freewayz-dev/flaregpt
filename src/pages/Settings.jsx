@@ -69,7 +69,7 @@ export default function Settings() {
 
   return (
     <div className="flex min-h-full flex-col">
-      <div className="flex-1 pb-16">
+      <div className="flex-1 pb-10">
         <div className="pt-3 lg:pt-0">
           <PageHeader
             title={t("settings.title")}
