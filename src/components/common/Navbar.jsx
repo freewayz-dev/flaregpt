@@ -92,7 +92,7 @@ export default function Navbar({
       {mobileMenuOpen && (
         <div
           onClick={() => setMobileMenuOpen(false)}
-          className="fixed inset-0 z-40 bg-black/10 backdrop-blur-[4px] lg:hidden transition-all duration-300 ease-in-out"
+          className="fixed left-0 right-0 top-12 bottom-0 z-40 bg-black/10 backdrop-blur-[3px] lg:hidden transition-all duration-300 ease-in-out"
         />
       )}
 

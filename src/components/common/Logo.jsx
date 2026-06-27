@@ -13,10 +13,10 @@ export const QuantumSparkLogo = () => {
       </div>
 
       {/* Text layout, unchanged from original */}
-      <div className="flex items-center tracking-tight text-sm leading-none font-medium">
+      <div className="flex items-center tracking-tight text-xs leading-none font-medium">
         {/* Black in Light Mode / White in Dark Mode */}
         <span className="text-black dark:text-white">
-          flaregpt
+          flareGPT
         </span>
         {/* Small space & custom color */}
         {/* <span className="ml-[2px] font-bold" style={{ color: '#E62058' }}>

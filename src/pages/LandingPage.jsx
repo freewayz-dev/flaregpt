@@ -1,6 +1,5 @@
-// src/pages/LandingPage.jsx
-
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
 
@@ -15,6 +14,7 @@ import {
   Square3Stack3DIcon,
   DocumentTextIcon,
 } from "@heroicons/react/24/outline";
+import { FadeIn } from "../components/common/MotionWrapper";
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ export default function LandingPage() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      // Show/Hide logic with buffer to prevent flickering
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setShowNav(false);
       } else {
@@ -54,97 +53,71 @@ export default function LandingPage() {
   const features = [
     {
       id: "01",
-
       icon: CpuChipIcon,
-
       title: "Ecosystem Intelligence",
-
       subtitle: "FlareGPT Context Engine",
-
       desc: "An advanced, data-aware language model environment directly mapped to active network state parameters. Query FTSO performance records, analyze data protocol changes, and pull immediate insights using smart context vectors.",
     },
 
     {
       id: "02",
-
       icon: CircleStackIcon,
-
       title: "Multi-Wallet Trackers",
-
       subtitle: "Non-Custodial Observability",
-
       desc: "Monitor your infrastructure configurations without exposing cryptographic signatures. Layer active hot or hardware wallets alongside read-only target watchlists to observe the health indices of all balances across a single interface.",
     },
 
     {
       id: "03",
-
       icon: ArrowTrendingUpIcon,
-
       title: "Yield & Automation",
-
       subtitle: "FTSO Reward Optimization",
-
       desc: "Track global delegation rewards, monitor active epochs, and evaluate the stability profiles of custom collateral pools like $fXRP. Optimize your delegation vectors dynamically using precision data feeds.",
     },
 
     {
       id: "04",
-
       icon: ShieldCheckIcon,
-
       title: "Governance Monitoring",
-
       subtitle: "Proposal Analytics",
-
       desc: "Stay ahead of ecosystem updates by monitoring structural proposals and real-time voting weights. Trace community distribution mandates and tracking updates without leaving your primary terminal panel workspace.",
     },
 
     {
       id: "05",
-
       icon: SparklesIcon,
-
       title: "Collateral Health Pools",
-
       subtitle: "fAssets Delta Watch",
-
       desc: "Deep analytics tracking stability mechanisms inside asset backing contracts. Receive real-time visibility into over-collateralization data loops and critical safety indices instantly.",
     },
 
     {
       id: "06",
-
       icon: Square3Stack3DIcon,
-
       title: "Native PWA Build",
-
       subtitle: "Zero Store Overhead",
-
       desc: "Deploy FlareOS directly onto your local mobile device workspace interface parameters straight from your rendering browser node frame context with high performance execution optimization.",
     },
   ];
 
   return (
     <div className="min-h-screen bg-[#F0F4F9] dark:bg-[#09090b] transition-colors duration-300">
-      {/* 🌤️ Celestial Light Effect */}
-
-      {/* 🔮 Background Grid Pattern Overlay */}
       <div className="fixed inset-0 pointer-events-none z-0">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1.5px,transparent_1.5px),linear-gradient(to_bottom,#e2e8f0_1.5px,transparent_1.5px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_40%,transparent_100%)] opacity-60 dark:opacity-35 pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1.5px,transparent_1.5px),linear-gradient(to_bottom,#e2e8f0_1.5px,transparent_1.5px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_40%,transparent_100%)] opacity-60 dark:opacity-35 pointer-events-none z-0" />
         <div className="absolute top-44 left-1/2 -translate-x-1/2 w-[550px] h-[550px] bg-[#E62058]/5 blur-[130px] rounded-full" />
       </div>
 
-      {/* <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1.5px,transparent_1.5px),linear-gradient(to_bottom,#e2e8f0_1.5px,transparent_1.5px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_40%,transparent_100%)] opacity-60 dark:opacity-35 pointer-events-none z-0" /> */}
-
-      {/* 🔴 Ambient Magenta Glow Layer */}
-
       <div className="absolute top-44 sm:top-52 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[550px] sm:h-[550px] bg-[#E62058]/10 dark:bg-[#E62058]/5 blur-[70px] sm:blur-[130px] rounded-full pointer-events-none z-30" />
 
-      {/* ─── 1. NAVIGATION HEADER ─── */}
-
-      <nav
-        className={`fixed top-0 w-full z-50 h-20 flex items-center backdrop-blur-md border-b border-[#E5E7EB] dark:border-[#1D1D20] transition-transform duration-300 ${showNav ? "translate-y-0" : "-translate-y-full"}`}
+      <motion.nav
+        initial={{ y: 0 }}
+        animate={{ y: showNav ? 0 : -100 }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
+        className="fixed top-0 w-full z-50 h-20 flex items-center backdrop-blur-md border-b border-[#E5E7EB] dark:border-[#1D1D20]"
       >
         <div className="w-full max-w-5xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-2 select-none">
@@ -190,213 +163,186 @@ export default function LandingPage() {
             </button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
-      <main className="relative z-10 pt-20">
-        {" "}
-        <section className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto px-6 py-24">
-          {" "}
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] dark:border-[#1D1D20] bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-md px-4 py-1.5 shadow-sm">
-            <SparklesIcon className="h-3.5 w-3.5 text-[#E62058]" />
+      <main className="relative z-10 md:pt-20 pt-14">
+        <FadeIn>
+          <section className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto px-6 py-24">
+            {" "}
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] dark:border-[#1D1D20] bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-md px-4 py-1.5 shadow-sm">
+              <SparklesIcon className="h-3.5 w-3.5 text-[#E62058]" />
 
-            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#475569] dark:text-[#A1A1AA]">
-              AI-Powered Flare Copilot
-            </span>
-          </div>
-          {/* Heading */}
-          <h1 className="mt-6 max-w-2xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F172A] dark:text-[#FAFAFA] select-none">
-            Everything{" "}
-            <span className="bg-gradient-to-r from-[#E62058] to-[#F03A6F] bg-clip-text text-transparent">
-              Flare.
-            </span>
-            <br />
-            Simplified.
-          </h1>
-          {/* Description */}
-          <p className="mt-6 max-w-lg text-sm sm:text-base leading-8 text-[#475569] dark:text-[#A1A1AA]">
-            Monitor wallets, track rewards, explore governance, discover yield
-            opportunities, and chat with FlareGPT—all from one clean,
-            intelligent dashboard.
-          </p>
-          {/* Supporting Text */}
-          <p className="mt-5 max-w-lg text-xs leading-6 text-[#94A3B8] dark:text-[#71717A]">
-            No wallet connection required. Explore the platform freely, then
-            connect whenever you're ready for personalized insights and future
-            on-chain features.
-          </p>
-          {/* CTA */}
-          <div className="mt-10 mb-20 flex flex-col sm:flex-row items-center gap-5">
-            <button
-              type="button"
-              onClick={() => navigate("/app")}
-              className="rounded-full bg-[#E62058] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#F03A6F] cursor-pointer"
-            >
-              Launch App
-            </button>
-
-            <button
-              type="button"
-              onClick={handleConnectWallet}
-              className="group flex items-center gap-2 text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA] transition-colors hover:text-[#E62058] dark:hover:text-[#F03A6F] cursor-pointer"
-            >
-              Connect Wallet
-              <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </button>
-          </div>
-        </section>
-        <div className="w-full border-y border-[#E5E7EB] dark:border-[#1D1D20] bg-white/50 dark:bg-black/20 backdrop-blur-sm">
-          <div className="max-w-4xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 divide-x divide-[#E5E7EB] dark:divide-[#1D1D20]">
-            {[
-              { val: "1.4M FLR", label: "Rewards" },
-              { val: "130+", label: "Wallets" },
-              { val: "167", label: "Providers" },
-              { val: "134", label: "Positions" },
-            ].map((s, i) => (
-              <div
-                key={i}
-                className="py-6 flex flex-col items-center text-center"
-              >
-                <span className="text-[9px] font-bold uppercase tracking-widest text-[#94A3B8]">
-                  {s.label}
-                </span>
-                <span className="mt-1 font-mono text-sm font-bold text-[#0F172A] dark:text-white">
-                  {s.val}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <section className="w-full max-w-5xl mx-auto px-4 py-28">
-          <div className="mb-16 text-center max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#E62058]/20 bg-[#E62058]/10 px-4 py-1.5 mb-5">
-              {/* <SparklesIcon className="h-3.5 w-3.5 text-[#E62058]" /> */}
-
-              <span className="font-mono text-[10px] tracking-[0.22em] uppercase font-bold text-[#E62058]">
-                What You Can Do
+              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#475569] dark:text-[#A1A1AA]">
+                AI-Powered Flare Copilot
               </span>
             </div>
-
-            <h2 className="text-4xl font-black max-w-xl mx-auto tracking-tight text-[#0F172A] dark:text-[#FAFAFA]">
-              Everything you need to navigate
-              <span className="block text-[#E62058]">the Flare ecosystem.</span>
-            </h2>
-
-            <p className="mt-5 max-w-md mx-auto text-sm leading-5 text-[#475569] dark:text-[#A1A1AA]">
-              From AI-powered insights and wallet tracking to governance,
-              rewards, and ecosystem analytics—FlareGPT brings every essential
-              tool together in one intelligent workspace.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((item, idx) => {
-              const Icon = item.icon;
-
-              return (
-                <div
-                  key={idx}
-                  className="
-
-group
-
-rounded-2xl
-
-border border-[#E5E7EB]
-
-dark:border-[#1D1D20]
-
-bg-[#FFFFFF]
-
-dark:bg-[#161619]
-
-p-6
-
-transition-all
-
-duration-300
-
-hover:border-[#E62058]/20
-
-hover:-translate-y-1
-
-"
-                >
-                  {/* Icon */}
-
-                  <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl bg-[#F3F4F6] dark:bg-[#1B1B1F] transition-colors group-hover:bg-[#E62058]/10">
-                    <Icon className="h-5 w-5 text-[#475569] dark:text-[#A1A1AA] group-hover:text-[#E62058]" />
-                  </div>
-
-                  {/* Content */}
-
-                  <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-2 text-[13px] text-[#94A3B8] dark:text-[#71717A]">
-                    {item.subtitle}
-                  </p>
-
-                  <p className="mt-5 text-sm leading-7 text-[#475569] dark:text-[#A1A1AA]">
-                    {item.desc}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-        <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <div className="relative overflow-hidden rounded-3xl border border-[#E5E7EB] dark:border-[#1D1D20] bg-gradient-to-b from-[#FFFFFF] to-[#F3F4F6] dark:from-[#161619] dark:to-[#121214] p-12 sm:p-16 shadow-xl">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#E62058]/10 dark:bg-[#E62058]/5 blur-[80px] rounded-full pointer-events-none" />
-
-            {/* <span className="font-mono text-[10px] tracking-widest text-[#E62058] uppercase font-bold">
-              Get Started
-            </span> */}
-
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#E62058]/20 bg-[#E62058]/10 px-4 py-1.5 mb-5">
-              {/* <SparklesIcon className="h-3.5 w-3.5 text-[#E62058]" /> */}
-
-              <span className="font-mono text-[10px] tracking-[0.22em] uppercase font-bold text-[#E62058]">
-                Get Started
+            {/* Heading */}
+            <h1 className="mt-6 max-w-2xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F172A] dark:text-[#FAFAFA] select-none">
+              Everything{" "}
+              <span className="bg-gradient-to-r from-[#E62058] to-[#F03A6F] bg-clip-text text-transparent">
+                Flare.
               </span>
-            </div>
-
-            <h2 className="mt-3 text-2xl sm:text-4xl font-black text-[#0F172A] dark:text-[#FAFAFA] tracking-tight max-w-md mx-auto leading-tight">
-              Ready to explore
-              <span className="block text-[#E62058]">FlareGPT?</span>
-            </h2>
-
-            <p className="mt-4 text-xs text-[#475569] dark:text-[#71717A] max-w-xs mx-auto leading-relaxed">
-              Launch the app instantly to explore wallets, rewards, governance,
-              and AI-powered insights. Connect your wallet anytime for a more
-              personalized experience.
+              <br />
+              Simplified.
+            </h1>
+            {/* Description */}
+            <p className="mt-6 max-w-lg text-sm sm:text-base leading-8 text-[#475569] dark:text-[#A1A1AA]">
+              Monitor wallets, track rewards, explore governance, discover yield
+              opportunities, and chat with FlareGPT, all from one clean,
+              intelligent dashboard.
             </p>
-
-            <div className="relative z-10 mt-10 flex flex-col items-center gap-5">
-              {/* Primary CTA */}
-
+            {/* Supporting Text */}
+            <p className="mt-5 max-w-lg text-xs leading-6 text-[#94A3B8] dark:text-[#71717A]">
+              No wallet connection required. Explore the platform freely, then
+              connect whenever you're ready for personalized insights and future
+              on-chain features.
+            </p>
+            {/* CTA */}
+            <div className="mt-10 mb-20 flex flex-col sm:flex-row items-center gap-5">
               <button
                 type="button"
                 onClick={() => navigate("/app")}
-                className="rounded-full bg-[#E62058] px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#F03A6F] shadow-lg shadow-[#E62058]/20 hover:shadow-[#E62058]/30 active:scale-[0.98]"
+                className="rounded-full bg-[#E62058] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#F03A6F] cursor-pointer"
               >
                 Launch App
               </button>
 
-              {/* Secondary CTA */}
-
               <button
                 type="button"
                 onClick={handleConnectWallet}
-                className="group flex items-center gap-2 text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA] transition-colors hover:text-[#E62058] dark:hover:text-[#F03A6F]"
+                className="group flex items-center gap-2 text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA] transition-colors hover:text-[#E62058] dark:hover:text-[#F03A6F] cursor-pointer"
               >
                 Connect Wallet
                 <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
             </div>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.2}>
+          <div className="w-full border-y border-[#E5E7EB] dark:border-[#1D1D20] bg-white/50 dark:bg-black/20 backdrop-blur-sm">
+            <div className="max-w-4xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 divide-x divide-[#E5E7EB] dark:divide-[#1D1D20]">
+              {[
+                { val: "1.4M FLR", label: "Rewards" },
+                { val: "130+", label: "Wallets" },
+                { val: "167", label: "Providers" },
+                { val: "134", label: "Positions" },
+              ].map((s, i) => (
+                <div
+                  key={i}
+                  className="py-6 flex flex-col items-center text-center"
+                >
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#94A3B8]">
+                    {s.label}
+                  </span>
+                  <span className="mt-1 font-mono text-sm font-bold text-[#0F172A] dark:text-white">
+                    {s.val}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
+
+        <section className="w-full max-w-5xl mx-auto px-4 py-28">
+          <FadeIn>
+            <div className="mb-16 text-center max-w-2xl mx-auto">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#E62058]/20 bg-[#E62058]/10 px-4 py-1.5 mb-5">
+                <span className="font-mono text-[10px] tracking-[0.22em] uppercase font-bold text-[#E62058]">
+                  What You Can Do
+                </span>
+              </div>
+
+              <h2 className="text-4xl font-black max-w-xl mx-auto tracking-tight text-[#0F172A] dark:text-[#FAFAFA]">
+                Everything you need to navigate
+                <span className="block text-[#E62058]">
+                  the Flare ecosystem.
+                </span>
+              </h2>
+
+              <p className="mt-5 max-w-md mx-auto text-sm leading-5 text-[#475569] dark:text-[#A1A1AA]">
+                From AI-powered insights and wallet tracking to governance,
+                rewards, and ecosystem analytics. FlareGPT brings every
+                essential tool together in one intelligent workspace.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <FadeIn key={idx} delay={idx * 0.1} className="h-full">
+                  <div
+                    key={idx}
+                    className="h-full group rounded-2xl border border-[#E5E7EB] dark:border-[#1D1D20] bg-[#FFFFFF] dark:bg-[#161619] p-6 transition-all duration-300 hover:border-[#E62058]/20 hover:-translate-y-1"
+                  >
+                    <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl bg-[#F3F4F6] dark:bg-[#1B1B1F] transition-colors group-hover:bg-[#E62058]/10">
+                      <Icon className="h-5 w-5 text-[#475569] dark:text-[#A1A1AA] group-hover:text-[#E62058]" />
+                    </div>
+
+                    <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-2 text-[13px] text-[#94A3B8] dark:text-[#71717A]">
+                      {item.subtitle}
+                    </p>
+
+                    <p className="mt-5 text-sm leading-7 text-[#475569] dark:text-[#A1A1AA]">
+                      {item.desc}
+                    </p>
+                  </div>
+                </FadeIn>
+              );
+            })}
           </div>
         </section>
+
+        <FadeIn delay={0.3}>
+          <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+            <div className="relative overflow-hidden rounded-3xl border border-[#E5E7EB] dark:border-[#1D1D20] bg-gradient-to-b from-[#FFFFFF] to-[#F3F4F6] dark:from-[#161619] dark:to-[#121214] p-12 sm:p-16 shadow-xl">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#E62058]/10 dark:bg-[#E62058]/5 blur-[80px] rounded-full pointer-events-none" />
+
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#E62058]/20 bg-[#E62058]/10 px-4 py-1.5 mb-5">
+                <span className="font-mono text-[10px] tracking-[0.22em] uppercase font-bold text-[#E62058]">
+                  Get Started
+                </span>
+              </div>
+
+              <h2 className="mt-3 text-2xl sm:text-4xl font-black text-[#0F172A] dark:text-[#FAFAFA] tracking-tight max-w-md mx-auto leading-tight">
+                Ready to explore
+                <span className="block text-[#E62058]">FlareGPT?</span>
+              </h2>
+
+              <p className="mt-4 text-xs text-[#475569] dark:text-[#71717A] max-w-xs mx-auto leading-relaxed">
+                Launch the app instantly to explore wallets, rewards,
+                governance, and AI-powered insights. Connect your wallet anytime
+                for a more personalized experience.
+              </p>
+
+              <div className="relative z-10 mt-10 flex flex-col items-center gap-5">
+                <button
+                  type="button"
+                  onClick={() => navigate("/app")}
+                  className="rounded-full bg-[#E62058] px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#F03A6F] shadow-lg shadow-[#E62058]/20 hover:shadow-[#E62058]/30 active:scale-[0.98]"
+                >
+                  Launch App
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleConnectWallet}
+                  className="group flex items-center gap-2 text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA] transition-colors hover:text-[#E62058] dark:hover:text-[#F03A6F]"
+                >
+                  Connect Wallet
+                  <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </button>
+              </div>
+            </div>
+          </section>
+        </FadeIn>
       </main>
 
       <footer className="w-full border-t border-[#E5E7EB] dark:border-[#1D1D20] bg-[#F0F4F9]/80 dark:bg-[#09090b]/80 backdrop-blur-md py-10">
@@ -421,7 +367,7 @@ hover:-translate-y-1
               className="flex items-center gap-1.5 hover:text-[#E62058] dark:hover:text-[#E62058] transition-colors group"
               aria-label="X (formerly Twitter)"
             >
-              <svg viewBox="0 0 24 24" className="h-3 w-3 fill-current">
+              <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </a>
@@ -431,7 +377,7 @@ hover:-translate-y-1
               onClick={() => navigate("/terms")}
               className="hover:text-[#E62058] dark:hover:text-[#E62058] transition-colors cursor-pointer"
             >
-              Terms & Conditions
+              Terms & Disclaimer
             </button>
 
             <button
@@ -446,7 +392,7 @@ hover:-translate-y-1
           </div>
 
           <p className="font-mono text-[9px] text-[#94A3B8] dark:text-[#71717A] font-bold">
-            &copy; 2026 FlareGPT. SYSTEM STATE SECURE.
+            © 2026 FlareGPT. Built on Flare Network.
           </p>
         </div>
       </footer>

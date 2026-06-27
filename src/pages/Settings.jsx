@@ -19,7 +19,6 @@ import {
 
 import ThemeToggle from "../components/common/ThemeToggle";
 import PageHeader from "../components/common/PageHeader";
-// import Footer from "../components/common/Footer";
 import CustomSelect from "../components/common/CustomSelect";
 
 // Import your unified Zustand global hooks
@@ -29,8 +28,12 @@ import { useDerivedWalletHub } from "../store/useWalletHubStore";
 // FIXED: Removed border classes to match the sleek borderless card design system
 const Card = ({ title, subtitle, children }) => (
   <div className="rounded-2xl bg-white p-5 shadow-sm dark:bg-[#161619]">
-    <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#FAFAFA]">{title}</h3>
-    <p className="text-[11px] text-[#475569] dark:text-[#A1A1AA] mt-0.5 mb-5">{subtitle}</p>
+    <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#FAFAFA]">
+      {title}
+    </h3>
+    <p className="text-[11px] text-[#475569] dark:text-[#A1A1AA] mt-0.5 mb-5">
+      {subtitle}
+    </p>
     {children}
   </div>
 );
@@ -38,10 +41,16 @@ const Card = ({ title, subtitle, children }) => (
 const RowItem = ({ icon: Icon, title, description, children }) => (
   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 first:pt-0 last:pb-0">
     <div className="flex gap-3 items-start">
-      {Icon && <Icon className="h-4 w-4 text-slate-400 dark:text-zinc-600 shrink-0 mt-0.5" />}
+      {Icon && (
+        <Icon className="h-4 w-4 text-slate-400 dark:text-zinc-600 shrink-0 mt-0.5" />
+      )}
       <div>
-        <h4 className="text-xs font-semibold text-[#0F172A] dark:text-[#FAFAFA]">{title}</h4>
-        <p className="text-[11px] text-[#475569] dark:text-[#A1A1AA] mt-0.5 leading-relaxed">{description}</p>
+        <h4 className="text-xs font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
+          {title}
+        </h4>
+        <p className="text-[11px] text-[#475569] dark:text-[#A1A1AA] mt-0.5 leading-relaxed">
+          {description}
+        </p>
       </div>
     </div>
     <div className="shrink-0">{children}</div>
@@ -77,9 +86,8 @@ export default function Settings() {
           />
         </div>
 
-        <div className="mx-auto w-full max-w-[1440px]">
+        <div className="mx-auto w-full max-w-[1440px] md:px-7 px-0">
           <div className="flex flex-col gap-6 md:flex-row items-start">
-            
             {/* Tab Navigation */}
             <aside className="w-full shrink-0 md:w-56 lg:w-64 md:sticky md:top-6 z-10">
               <nav className="flex flex-row gap-1 overflow-x-auto pb-2 md:pb-0 md:flex-col scrollbar-none select-none snap-x mask-gradient-right md:mask-none">
@@ -106,11 +114,7 @@ export default function Settings() {
                       <div
                         className={`
                           absolute inset-0 rounded-xl pointer-events-none index-0 transition-opacity duration-100
-                          ${
-                            isActive
-                              ? "opacity-100"
-                              : "opacity-0"
-                          }
+                          ${isActive ? "opacity-100" : "opacity-0"}
                         `}
                       />
 
@@ -145,7 +149,6 @@ export default function Settings() {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 }
@@ -180,11 +183,11 @@ function Preferences() {
   ];
 
   const currencyOptions = [
-    { value: "USD", labelKey: "USD" },
+    { value: "AUD", labelKey: "AUD" },
     { value: "EUR", labelKey: "EUR" },
-    { value: "NGN", labelKey: "NGN" },
     { value: "GBP", labelKey: "GBP" },
-    { value: "JPY", labelKey: "JPY" },
+    { value: "RUB", labelKey: "RUB" },
+    { value: "USD", labelKey: "USD" },
   ];
 
   const blueLightOptions = [
@@ -194,14 +197,20 @@ function Preferences() {
     { value: "High", labelKey: "settings.options.high" },
   ];
 
-  const currentLanguage = languageOptions.find((lang) => lang.code === i18n.language) || languageOptions[0];
+  const currentLanguage =
+    languageOptions.find((lang) => lang.code === i18n.language) ||
+    languageOptions[0];
   const [region, setRegion] = useState(regionOptions[0]);
   const [currency, setCurrency] = useState(currencyOptions[0]);
 
   const blueLightLevel = useUIStore((state) => state.blueLightLevel);
-  const updateBlueLightLevel = useUIStore((state) => state.updateBlueLightLevel);
+  const updateBlueLightLevel = useUIStore(
+    (state) => state.updateBlueLightLevel,
+  );
 
-  const currentBlueLight = blueLightOptions.find((option) => option.value === blueLightLevel) || blueLightOptions[0];
+  const currentBlueLight =
+    blueLightOptions.find((option) => option.value === blueLightLevel) ||
+    blueLightOptions[0];
 
   const handleBlueLightChange = (option) => updateBlueLightLevel(option.value);
   const handleLanguageChange = (selectedOption) => {
@@ -221,13 +230,24 @@ function Preferences() {
   }));
 
   return (
-    <Card title={t("settings.tabs.Preferences")} subtitle={t("settings.subtitles.Preferences")}>
+    <Card
+      title={t("settings.tabs.Preferences")}
+      subtitle={t("settings.subtitles.Preferences")}
+    >
       <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
-        <RowItem icon={PaintBrushIcon} title={t("settings.cards.theme")} description={t("settings.cards.themeMode")}>
+        <RowItem
+          icon={PaintBrushIcon}
+          title={t("settings.cards.theme")}
+          description={t("settings.cards.themeMode")}
+        >
           <ThemeToggle />
         </RowItem>
 
-        <RowItem icon={GlobeAltIcon} title={t("settings.cards.language")} description={t("settings.descriptions.language")}>
+        <RowItem
+          icon={GlobeAltIcon}
+          title={t("settings.cards.language")}
+          description={t("settings.descriptions.language")}
+        >
           <div className="w-full sm:w-56">
             <CustomSelect
               options={localizedLanguageOptions}
@@ -240,7 +260,11 @@ function Preferences() {
           </div>
         </RowItem>
 
-        <RowItem icon={GlobeAltIcon} title={t("settings.cards.region")} description={t("settings.descriptions.region")}>
+        <RowItem
+          icon={GlobeAltIcon}
+          title={t("settings.cards.region")}
+          description={t("settings.descriptions.region")}
+        >
           <div className="w-full sm:w-56">
             <CustomSelect
               options={formatOptions(regionOptions)}
@@ -250,7 +274,11 @@ function Preferences() {
           </div>
         </RowItem>
 
-        <RowItem icon={CurrencyDollarIcon} title={t("settings.cards.currency")} description={t("settings.descriptions.currency")}>
+        <RowItem
+          icon={CurrencyDollarIcon}
+          title={t("settings.cards.currency")}
+          description={t("settings.descriptions.currency")}
+        >
           <div className="w-full sm:w-56">
             <CustomSelect
               options={formatOptions(currencyOptions)}
@@ -260,7 +288,11 @@ function Preferences() {
           </div>
         </RowItem>
 
-        <RowItem icon={SparklesIcon} title={t("settings.cards.blur")} description={t("settings.descriptions.blur")}>
+        <RowItem
+          icon={SparklesIcon}
+          title={t("settings.cards.blur")}
+          description={t("settings.descriptions.blur")}
+        >
           <div className="w-full sm:w-56">
             <CustomSelect
               options={formatOptions(blueLightOptions)}
@@ -280,16 +312,16 @@ function Preferences() {
 function Wallets() {
   const { t } = useTranslation();
   const { address: connectedAddress, isConnected } = useAccount();
-  
-  const { 
-    allWallets, 
-    trackedWallets, 
-    addTrackedWallet, 
-    removeTrackedWallet, 
-    maxSlots, 
-    remainingSlots 
+
+  const {
+    allWallets,
+    trackedWallets,
+    addTrackedWallet,
+    removeTrackedWallet,
+    maxSlots,
+    remainingSlots,
   } = useDerivedWalletHub(connectedAddress, isConnected);
-  
+
   const [inputAddress, setInputAddress] = useState("");
   const [inputLabel, setInputLabel] = useState("");
   const [errorText, setErrorText] = useState("");
@@ -301,19 +333,23 @@ function Wallets() {
     setErrorText("");
 
     if (!inputAddress.startsWith("0x") || inputAddress.length !== 42) {
-      setErrorText("Please enter a valid Flare EVM network address (starting with 0x).");
+      setErrorText(
+        "Please enter a valid Flare EVM network address (starting with 0x).",
+      );
       return;
     }
 
     const success = addTrackedWallet(
-      inputAddress.trim(), 
+      inputAddress.trim(),
       inputLabel.trim() || "Watchlist Wallet",
       connectedAddress,
-      isConnected
+      isConnected,
     );
-    
+
     if (!success) {
-      setErrorText("Address registration failed. Check if it is a duplicate or if slots are filled.");
+      setErrorText(
+        "Address registration failed. Check if it is a duplicate or if slots are filled.",
+      );
       return;
     }
 
@@ -323,7 +359,10 @@ function Wallets() {
 
   return (
     <div className="space-y-6">
-      <Card title={t("settings.cards.connectedWallets")} subtitle="Manage your active Web3 connections and read-only portfolio tracking accounts.">
+      <Card
+        title={t("settings.cards.connectedWallets")}
+        subtitle="Manage your active Web3 connections and read-only portfolio tracking accounts."
+      >
         {allWallets.length === 0 ? (
           <div className="py-8 text-center rounded-2xl bg-[#F3F4F6] dark:bg-[#1B1B1F] px-4">
             <WalletIcon className="h-8 w-8 mx-auto text-[#94A3B8] dark:text-[#71717A] mb-2" />
@@ -354,18 +393,30 @@ function Wallets() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className={`inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium ${
-                    wallet.type === "connected" ? "bg-emerald-500/10 text-emerald-500" : "bg-amber-500/10 text-amber-500"
-                  }`}>
-                    {wallet.type === "connected" ? "Live Connected" : "Read-Only"}
+                  <span
+                    className={`inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium ${
+                      wallet.type === "connected"
+                        ? "bg-emerald-500/10 text-emerald-500"
+                        : "bg-amber-500/10 text-amber-500"
+                    }`}
+                  >
+                    {wallet.type === "connected"
+                      ? "Live Connected"
+                      : "Read-Only"}
                   </span>
-                  
+
                   {wallet.type === "tracked" && (
                     <button
                       type="button"
-                      onClick={() => removeTrackedWallet(wallet.address, connectedAddress, isConnected)}
+                      onClick={() =>
+                        removeTrackedWallet(
+                          wallet.address,
+                          connectedAddress,
+                          isConnected,
+                        )
+                      }
                       className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#E62058] hover:bg-[#E62058]/10 dark:text-[#71717A] dark:hover:text-[#E62058] dark:hover:bg-[#E62058]/10 transition-colors duration-150 cursor-pointer"
                     >
                       <TrashIcon className="h-4 w-4" />
@@ -377,9 +428,14 @@ function Wallets() {
           </div>
         )}
 
-        <form onSubmit={handleSave} className="mt-6 pt-6 border-t border-[#E5E7EB] dark:border-[#1D1D20] space-y-3">
-          <h4 className="text-xs font-bold text-[#0F172A] dark:text-[#FAFAFA]">Add Watchlist Portfolio Account</h4>
-          
+        <form
+          onSubmit={handleSave}
+          className="mt-6 pt-6 border-t border-[#E5E7EB] dark:border-[#1D1D20] space-y-3"
+        >
+          <h4 className="text-xs font-bold text-[#0F172A] dark:text-[#FAFAFA]">
+            Add Watchlist Portfolio Account
+          </h4>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <input
               type="text"
@@ -397,7 +453,11 @@ function Wallets() {
             />
           </div>
 
-          {errorText && <p className="text-[10px] text-[#E62058] tracking-wide font-medium">{errorText}</p>}
+          {errorText && (
+            <p className="text-[10px] text-[#E62058] tracking-wide font-medium">
+              {errorText}
+            </p>
+          )}
 
           <button
             type="submit"
@@ -412,13 +472,22 @@ function Wallets() {
             `}
           >
             {remainingSlots === 0
-              ? t("settings.wallets.limitReached", { current: totalCount, max: maxSlots })
-              : t("settings.wallets.connectAction", { current: totalCount, remaining: remainingSlots })}
+              ? t("settings.wallets.limitReached", {
+                  current: totalCount,
+                  max: maxSlots,
+                })
+              : t("settings.wallets.connectAction", {
+                  current: totalCount,
+                  remaining: remainingSlots,
+                })}
           </button>
         </form>
       </Card>
 
-      <Card title={t("settings.cards.walletCapacity")} subtitle={t("settings.descriptions.walletCapacity")}>
+      <Card
+        title={t("settings.cards.walletCapacity")}
+        subtitle={t("settings.descriptions.walletCapacity")}
+      >
         <div className="space-y-4">
           <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
             <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#1B1B1F]">
@@ -462,12 +531,21 @@ function Wallets() {
 function Notifications() {
   const { t } = useTranslation();
   return (
-    <Card title={t("settings.tabs.Notifications")} subtitle={t("settings.subtitles.Notifications")}>
+    <Card
+      title={t("settings.tabs.Notifications")}
+      subtitle={t("settings.subtitles.Notifications")}
+    >
       <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
-        <RowItem title={t("settings.cards.rewardsAlerts")} description={t("settings.notifications.rewards")}>
+        <RowItem
+          title={t("settings.cards.rewardsAlerts")}
+          description={t("settings.notifications.rewards")}
+        >
           <Toggle />
         </RowItem>
-        <RowItem title={t("settings.cards.governanceAlerts")} description={t("settings.notifications.governance")}>
+        <RowItem
+          title={t("settings.cards.governanceAlerts")}
+          description={t("settings.notifications.governance")}
+        >
           <Toggle />
         </RowItem>
       </div>
@@ -501,16 +579,33 @@ function Display() {
     }));
 
   return (
-    <Card title={t("settings.tabs.Display")} subtitle={t("settings.subtitles.Display")}>
+    <Card
+      title={t("settings.tabs.Display")}
+      subtitle={t("settings.subtitles.Display")}
+    >
       <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
-        <RowItem title={t("settings.cards.chartType")} description={t("settings.descriptions.chartType")}>
+        <RowItem
+          title={t("settings.cards.chartType")}
+          description={t("settings.descriptions.chartType")}
+        >
           <div className="w-full sm:w-56">
-            <CustomSelect options={formatOptions(chartOptions)} selectedValue={{ ...chart, label: t(chart.labelKey) }} onChange={setChart} />
+            <CustomSelect
+              options={formatOptions(chartOptions)}
+              selectedValue={{ ...chart, label: t(chart.labelKey) }}
+              onChange={setChart}
+            />
           </div>
         </RowItem>
-        <RowItem title={t("settings.cards.timeframe")} description={t("settings.descriptions.timeframe")}>
+        <RowItem
+          title={t("settings.cards.timeframe")}
+          description={t("settings.descriptions.timeframe")}
+        >
           <div className="w-full sm:w-56">
-            <CustomSelect options={formatOptions(timeframeOptions)} selectedValue={{ ...timeframe, label: timeframe.labelKey }} onChange={setTimeframe} />
+            <CustomSelect
+              options={formatOptions(timeframeOptions)}
+              selectedValue={{ ...timeframe, label: timeframe.labelKey }}
+              onChange={setTimeframe}
+            />
           </div>
         </RowItem>
       </div>
@@ -527,17 +622,31 @@ function Security() {
     { value: "Never", labelKey: "settings.options.never" },
   ];
   const [timeout, setTimeoutState] = useState(timeoutOptions[1]);
-  const formatOptions = (opts) => opts.map((o) => ({ ...o, label: t(o.labelKey) }));
+  const formatOptions = (opts) =>
+    opts.map((o) => ({ ...o, label: t(o.labelKey) }));
 
   return (
-    <Card title={t("settings.tabs.Security")} subtitle={t("settings.subtitles.Security")}>
+    <Card
+      title={t("settings.tabs.Security")}
+      subtitle={t("settings.subtitles.Security")}
+    >
       <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
-        <RowItem title={t("settings.cards.sessionTimeout")} description={t("settings.descriptions.sessionTimeout")}>
+        <RowItem
+          title={t("settings.cards.sessionTimeout")}
+          description={t("settings.descriptions.sessionTimeout")}
+        >
           <div className="w-full sm:w-56">
-            <CustomSelect options={formatOptions(timeoutOptions)} selectedValue={{ ...timeout, label: t(timeout.labelKey) }} onChange={setTimeoutState} />
+            <CustomSelect
+              options={formatOptions(timeoutOptions)}
+              selectedValue={{ ...timeout, label: t(timeout.labelKey) }}
+              onChange={setTimeoutState}
+            />
           </div>
         </RowItem>
-        <RowItem title={t("settings.cards.logout")} description={t("settings.descriptions.logout")}>
+        <RowItem
+          title={t("settings.cards.logout")}
+          description={t("settings.descriptions.logout")}
+        >
           <button className="flex items-center gap-2 justify-center w-full sm:w-auto rounded-xl bg-[#F3F4F6] dark:bg-[#121214] px-4 py-2 text-sm font-medium text-[#0F172A] dark:text-[#FAFAFA] hover:bg-[#E5E7EB] dark:hover:bg-[#1B1B1F] transition duration-150 cursor-pointer select-none">
             <ArrowRightOnRectangleIcon className="h-4 w-4 text-[#94A3B8] dark:text-[#71717A]" />
             <span>{t("settings.security.logoutAll")}</span>
@@ -551,20 +660,35 @@ function Security() {
 function About() {
   const { t } = useTranslation();
   return (
-    <Card title={t("settings.tabs.About")} subtitle={t("settings.subtitles.About")}>
+    <Card
+      title={t("settings.tabs.About")}
+      subtitle={t("settings.subtitles.About")}
+    >
       <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
-        <RowItem title={t("settings.cards.app")} description={t("settings.descriptions.app")}>
+        <RowItem
+          title={t("settings.cards.app")}
+          description={t("settings.descriptions.app")}
+        >
           <span className="text-sm font-mono bg-[#F3F4F6] dark:bg-[#1B1B1F] px-2.5 py-1 rounded-lg text-[#475569] dark:text-[#A1A1AA]">
             v1.0.0
           </span>
         </RowItem>
-        <RowItem title={t("settings.cards.links")} description={t("settings.descriptions.links")}>
+        <RowItem
+          title={t("settings.cards.links")}
+          description={t("settings.descriptions.links")}
+        >
           <div className="flex gap-4 text-sm text-[#E62058] font-medium select-none">
-            <a className="hover:text-[#F03A6F] cursor-pointer transition-colors duration-150">Twitter</a>
+            <a className="hover:text-[#F03A6F] cursor-pointer transition-colors duration-150">
+              Twitter
+            </a>
             <span className="text-[#E5E7EB] dark:text-[#1D1D20]">•</span>
-            <a className="hover:text-[#F03A6F] cursor-pointer transition-colors duration-150">Docs</a>
+            <a className="hover:text-[#F03A6F] cursor-pointer transition-colors duration-150">
+              Docs
+            </a>
             <span className="text-[#E5E7EB] dark:text-[#1D1D20]">•</span>
-            <a className="hover:text-[#F03A6F] cursor-pointer transition-colors duration-150">GitHub</a>
+            <a className="hover:text-[#F03A6F] cursor-pointer transition-colors duration-150">
+              GitHub
+            </a>
           </div>
         </RowItem>
       </div>
