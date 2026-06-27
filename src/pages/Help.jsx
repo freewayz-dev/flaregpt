@@ -64,7 +64,7 @@ export default function Help() {
   }, [searchQuery, guidesList]);
 
   return (
-    <div className="space-y-6">
+    <div className="">
       <div className="pt-3 lg:pt-0">
         <PageHeader
           title={t("sidebar.helpCenter")}

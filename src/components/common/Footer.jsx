@@ -10,9 +10,9 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="max-w-[1440px] mx-auto w-full bg-[#F0F4F9] dark:bg-[#09090b] py-3.5 px-6">
-      <div className="">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <footer className="">
+    <div className="mx-auto max-w-[1440px] px-6 py-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             {/* Copyright Text - Light: Secondary (#475569) | Dark: Secondary (#A1A1AA) */}
             <p className="text-[10px] font-medium text-[#475569] dark:text-[#A1A1AA]">

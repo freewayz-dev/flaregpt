@@ -16,7 +16,7 @@ export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen bg-[#F0F4F9] dark:bg-[#09090b]">
+    <div className="flex h-screen">
       <Sidebar
         collapsed={isSidebarCollapsed}
         setCollapsed={setIsSidebarCollapsed}
@@ -33,8 +33,8 @@ export default function DashboardLayout() {
         />
 
         {/* Everything below the navbar scrolls */}
-        <main className="flex-1 overflow-y-auto">
-          <div className="min-h-full flex flex-col p-4">
+        <main className="flex-1 overflow-y-auto bg-[#F0F4F9] dark:bg-[#09090b]">
+          <div className="flex min-h-full flex-col p-4">
             {/* Page */}
             <div className="flex-1">
               <Suspense fallback={null}>
