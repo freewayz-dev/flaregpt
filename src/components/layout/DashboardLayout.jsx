@@ -36,7 +36,8 @@ export default function DashboardLayout() {
         <main className="flex-1 overflow-y-auto">
           <div className="flex min-h-full flex-col">
             {/* Page */}
-            <div className="flex-1 p-4 lg:p-4">
+            <div className="p-4 lg:p-4">
+              {" "}
               <Suspense fallback={null}>
                 <Outlet />
               </Suspense>
