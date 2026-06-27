@@ -3,6 +3,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import BlueLightOverlay from "./components/common/BlueLightOverlay";
 import AppRoutes from "./routes/AppRoutes";
 
+
 function App() {
   return (
     <>

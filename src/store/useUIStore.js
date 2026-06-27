@@ -1,8 +1,5 @@
-// src/store/useUIStore.js
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { startTransition } from "react";
-import { flushSync } from "react-dom";
 
 export const useUIStore = create()(
   persist(
@@ -14,38 +11,32 @@ export const useUIStore = create()(
       toggleTheme: () => {
         const nextMode = !get().darkMode;
 
-        // 1. Force the DOM transition class and classList toggle synchronously
-        // This prevents the visual flicker of the wrong theme
-        flushSync(() => {
-          document.documentElement.classList.add("no-transition");
-          document.documentElement.classList.toggle("dark", nextMode);
-        });
+        // 1. Add a class that disables transitions globally
+        document.documentElement.classList.add("no-transition");
 
-        // 2. Use startTransition to update React state
-        // This prevents the "Suspense/Sync Input" error during navigation
-        startTransition(() => {
-          set({ darkMode: nextMode });
-        });
+        // 2. Toggle the dark mode
+        document.documentElement.classList.toggle("dark", nextMode);
 
-        // 3. Remove the CSS class after the paint
+        // 3. Update state
+        set({ darkMode: nextMode });
+
+        // 4. Force a repaint and remove the class
+        // setTimeout ensures the browser finishes the class swap before re-enabling transitions
         setTimeout(() => {
           document.documentElement.classList.remove("no-transition");
-        }, 20);
+        }, 50);
       },
 
       updateBlueLightLevel: (level) => set({ blueLightLevel: level }),
-      setSettingsActiveTab: (tabId) => {
-        startTransition(() => {
-          set({ settingsActiveTab: tabId });
-        });
-      },
+      setSettingsActiveTab: (tabId) => set({ settingsActiveTab: tabId }),
     }),
     {
       name: "flaregpt_ui_preferences",
       onRehydrateStorage: () => (state) => {
-        const isDark = state ? state.darkMode : false;
-        document.documentElement.classList.toggle("dark", isDark);
+        if (state) {
+          document.documentElement.classList.toggle("dark", state.darkMode);
+        }
       },
-    }
-  )
+    },
+  ),
 );

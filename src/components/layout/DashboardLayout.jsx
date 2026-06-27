@@ -5,6 +5,7 @@ import Sidebar from "../common/Sidebar";
 import Navbar from "../common/Navbar";
 import FlareWidget from "../common/FlareWidget";
 import Footer from "../common/Footer";
+import GlobalSpinner from "../common/GlobalSpinner";
 
 export default function DashboardLayout() {
   const [flareWidgetOpen, setFlareWidgetOpen] = useState(false);
@@ -32,17 +33,14 @@ export default function DashboardLayout() {
           setSidebarOpen={setSidebarOpen}
         />
 
-        {/* Everything below the navbar scrolls */}
         <main className="flex-1 overflow-y-auto overscroll-contain">
-          <div className="flex min-h-full flex-col p-4">
-            {/* Page */}
+          <div className="flex min-h-full flex-col md:p-4 p-5">
             <div className="flex-1">
-              <Suspense fallback={null}>
+              <Suspense fallback={<GlobalSpinner />}>
                 <Outlet />
               </Suspense>
             </div>
 
-            {/* Shared footer */}
             <Footer />
           </div>
         </main>

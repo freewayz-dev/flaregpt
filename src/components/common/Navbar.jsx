@@ -96,7 +96,7 @@ export default function Navbar({
         />
       )}
 
-      <header className="sticky top-0 z-30 h-12 w-full grid grid-cols-3 lg:flex lg:items-center lg:justify-between px-2 xl:px-4 bg-transparent transition-colors duration-200">
+      <header className="sticky top-0 z-30 h-12 w-full grid grid-cols-3 lg:flex lg:items-center lg:justify-between px-3 pt-2 md:pt-0 xl:px-4 bg-transparent transition-colors duration-200">
         
         {/* LEFT ZONE */}
         <div className="flex items-center justify-start min-w-0">
