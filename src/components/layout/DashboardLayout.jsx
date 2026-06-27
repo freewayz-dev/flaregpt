@@ -16,7 +16,7 @@ export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-dvh overflow-hidden">
       <Sidebar
         collapsed={isSidebarCollapsed}
         setCollapsed={setIsSidebarCollapsed}
@@ -24,7 +24,7 @@ export default function DashboardLayout() {
         setOpen={setSidebarOpen}
       />
 
-      <div className="flex flex-1 flex-col min-h-0">
+      <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
         <Navbar
           flareWidgetOpen={flareWidgetOpen}
           setFlareWidgetOpen={setFlareWidgetOpen}
@@ -33,7 +33,7 @@ export default function DashboardLayout() {
         />
 
         {/* Everything below the navbar scrolls */}
-        <main className="flex-1 overflow-y-auto bg-[#F0F4F9] dark:bg-[#09090b]">
+        <main className="flex-1 overflow-y-auto bg-[#F03A6F]/5 dark:bg-[#09090b] overscroll-contain">
           <div className="flex min-h-full flex-col p-4">
             {/* Page */}
             <div className="flex-1">
