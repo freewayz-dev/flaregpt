@@ -10,7 +10,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="mt-auto w-full bg-[#F0F4F9] dark:bg-[#09090b] py-3.5">
+    <footer className="mt-auto max-w-[1440px] mx-auto w-full bg-[#F0F4F9] dark:bg-[#09090b] py-3.5 px-6">
       <div className="">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">

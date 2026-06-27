@@ -14,7 +14,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import PageHeader from "../components/common/PageHeader";
-import Footer from "../components/common/Footer";
+// import Footer from "../components/common/Footer";
 
 const GUIDE_ICONS = [
   BookOpenIcon,
@@ -253,7 +253,7 @@ export default function Help() {
 
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

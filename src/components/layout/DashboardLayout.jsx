@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import Sidebar from "../common/Sidebar";
 import Navbar from "../common/Navbar";
 import FlareWidget from "../common/FlareWidget";
-// import Footer from "../common/Footer";
+import Footer from "../common/Footer";
 
 export default function DashboardLayout() {
   const [flareWidgetOpen, setFlareWidgetOpen] = useState(false);
@@ -13,12 +13,10 @@ export default function DashboardLayout() {
     return localStorage.getItem("sidebar-collapsed") === "true";
   });
 
-  // 2. Add mobile sidebar drawer state drawer handle
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="flex h-screen bg-[#F0F4F9] dark:bg-[#09090b]">
-      {/* 3. Pass values down to your Sidebar control nodes */}
       <Sidebar
         collapsed={isSidebarCollapsed}
         setCollapsed={setIsSidebarCollapsed}
@@ -26,8 +24,7 @@ export default function DashboardLayout() {
         setOpen={setSidebarOpen}
       />
 
-      <div className="flex flex-1 flex-col overflow-hidden">
-        {/* 4. Supply Navbar with layout metrics */}
+      <div className="flex flex-1 flex-col min-h-0">
         <Navbar
           flareWidgetOpen={flareWidgetOpen}
           setFlareWidgetOpen={setFlareWidgetOpen}
@@ -35,18 +32,25 @@ export default function DashboardLayout() {
           setSidebarOpen={setSidebarOpen}
         />
 
-        <main className="flex-1 overflow-y-auto p-4 lg:p-4">
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
+        {/* Everything below the navbar scrolls */}
+        <main className="flex-1 overflow-y-auto">
+          <div className="flex min-h-full flex-col">
+            {/* Page */}
+            <div className="flex-1 p-4 lg:p-4">
+              <Suspense fallback={null}>
+                <Outlet />
+              </Suspense>
+            </div>
+
+            {/* Shared footer */}
+            <Footer />
+          </div>
         </main>
 
         <FlareWidget
           open={flareWidgetOpen}
           onClose={() => setFlareWidgetOpen(false)}
         />
-
-        {/* <Footer/> */}
       </div>
     </div>
   );

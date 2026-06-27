@@ -19,7 +19,7 @@ import {
 
 import ThemeToggle from "../components/common/ThemeToggle";
 import PageHeader from "../components/common/PageHeader";
-import Footer from "../components/common/Footer";
+// import Footer from "../components/common/Footer";
 import CustomSelect from "../components/common/CustomSelect";
 
 // Import your unified Zustand global hooks
@@ -145,7 +145,7 @@ export default function Settings() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
