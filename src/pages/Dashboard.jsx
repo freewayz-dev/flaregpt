@@ -1,5 +1,5 @@
 import StatCard from "../components/cards/StatCard";
-import Footer from "../components/common/Footer";
+// import Footer from "../components/common/Footer";
 import PageHeader from "../components/common/PageHeader";
 
 export default function Dashboard() {
@@ -159,7 +159,7 @@ export default function Dashboard() {
 
     </div>
 
-      <Footer/>
+      {/* <Footer/> */}
 
     </>
   );
