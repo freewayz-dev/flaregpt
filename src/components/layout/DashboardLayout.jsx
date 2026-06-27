@@ -34,10 +34,9 @@ export default function DashboardLayout() {
 
         {/* Everything below the navbar scrolls */}
         <main className="flex-1 overflow-y-auto">
-          <div className="flex min-h-full flex-col">
+          <div className="min-h-full flex flex-col p-4">
             {/* Page */}
-            <div className="p-4 lg:p-4">
-              {" "}
+            <div className="flex-1">
               <Suspense fallback={null}>
                 <Outlet />
               </Suspense>
