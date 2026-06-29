@@ -35,7 +35,7 @@ export default function FLRGPT() {
         description="Flare Intelligence Chat Interface"
       />
 
-      <div className="flex h-full gap-4 pb-14 px-8">
+      <div className="flex h-full gap-4 pb-14 md:px-8">
         {/* LEFT - CHAT AREA */}
         <div
           className="
@@ -90,7 +90,7 @@ export default function FLRGPT() {
 
               bg-slate-50
               px-3 py-2
-              text-sm
+              text-base
 
               outline-none
 
