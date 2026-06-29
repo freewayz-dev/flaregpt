@@ -146,7 +146,7 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
 
       {/* Core Component Frame Container */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 h-full flex flex-col bg-[#FFFFFF] shadow-[0_1px_3px_rgba(0,0,0,0.01)] dark:bg-[#161619] border-r border-[#E5E7EB] dark:border-[#1D1D20]/40 transform lg:static lg:translate-x-0
+        className={`fixed inset-y-0 left-0 z-50 h-full flex flex-col bg-[#FFFFFF] shadow-[0_1px_3px_rgba(0,0,0,0.01)] dark:bg-[#161619] border-r border-[#E5E7EB] dark:border-[#1D1D20] transform lg:static lg:translate-x-0
           transition-[width,transform] duration-300 ease-in-out
           w-[240px] ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
           ${open ? "translate-x-0" : "-translate-x-full"}

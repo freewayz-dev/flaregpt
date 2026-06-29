@@ -96,7 +96,7 @@ export default function Navbar({
         />
       )}
 
-      <header className="sticky top-0 z-30 h-12 w-full grid grid-cols-3 lg:flex lg:items-center lg:justify-between pt-2 md:pt-0 xl:px-4 bg-transparent transition-colors duration-200">
+      <header className="sticky top-0 z-30 h-12 w-full grid grid-cols-3 lg:flex lg:items-center lg:justify-between pt-2 px-2 md:pt-0 xl:px-4 bg-transparent transition-colors duration-200">
         
         {/* LEFT ZONE */}
         <div className="flex items-center justify-start min-w-0">
@@ -106,8 +106,8 @@ export default function Navbar({
             className="p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] lg:hidden cursor-pointer shrink-0"
           >
             <svg
-              width="24"
-              height="24"
+              width="25"
+              height="25"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@ export default function Navbar({
 
           <div className="hidden lg:block min-w-0">
             <h1
-              className={`text-[13px] font-bold text-[#0F172A] dark:text-[#FAFAFA] truncate transition-all duration-200 ${
+              className={`text-[13px] pl-2 font-bold text-[#0F172A] dark:text-[#FAFAFA] truncate transition-all duration-200 ${
                 isSidebarCollapsed
                   ? "opacity-100 translate-x-0"
                   : "lg:opacity-0 lg:-translate-x-2 pointer-events-none"
@@ -275,8 +275,8 @@ export default function Navbar({
               <XMarkIcon className="h-6 w-6 text-[#E62058]" />
             ) : (
               <svg
-                width="24"
-                height="24"
+                width="25"
+                height="25"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
