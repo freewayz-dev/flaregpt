@@ -123,7 +123,7 @@ export default function FlareWidget({ open, onClose }) {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask FlareGPT..."
-                  className="flex-1 rounded-xl border px-3 py-2 text-sm border-[#E5E7EB] bg-[#FFFFFF] text-[#0F172A] placeholder-[#94A3B8] outline-none focus:border-[#E62058] dark:border-none dark:bg-[#121214] dark:text-[#FAFAFA] dark:placeholder-[#71717A] focus:ring-1 focus:ring-[#E62058] dark:focus:ring-1 dark:focus:ring-[#E62058] transition-colors"
+                  className="flex-1 rounded-xl border px-3 py-2 text-base border-[#E5E7EB] bg-[#FFFFFF] text-[#0F172A] placeholder-[#94A3B8] outline-none focus:border-[#E62058] dark:border-none dark:bg-[#121214] dark:text-[#FAFAFA] dark:placeholder-[#71717A] focus:ring-1 focus:ring-[#E62058] dark:focus:ring-1 dark:focus:ring-[#E62058] transition-colors"
                 />
 
                 <button
