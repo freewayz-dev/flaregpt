@@ -86,7 +86,7 @@ export default function Settings() {
           />
         </div>
 
-        <div className="mx-auto w-full max-w-[1440px] md:px-7 px-0">
+        <div className="mx-auto w-full max-w-[1440px]">
           <div className="flex flex-col gap-6 md:flex-row items-start">
             {/* Tab Navigation */}
             <aside className="w-full shrink-0 md:w-56 lg:w-64 md:sticky md:top-6 z-10">
@@ -442,14 +442,14 @@ function Wallets() {
               placeholder="Account Name Label (e.g., Cold Storage)"
               value={inputLabel}
               onChange={(e) => setInputLabel(e.target.value)}
-              className="w-full bg-[#F3F4F6] dark:bg-[#1B1B1F] px-3 py-2 text-xs rounded-xl border border-transparent focus:border-[#E62058]/30 outline-none text-[#0F172A] dark:text-[#FAFAFA]"
+              className="w-full bg-[#F3F4F6] dark:bg-[#1B1B1F] px-3 py-2 text-base rounded-xl border border-transparent focus:border-[#E62058]/30 outline-none text-[#0F172A] dark:text-[#FAFAFA]"
             />
             <input
               type="text"
               placeholder="0x... Flare Wallet Address"
               value={inputAddress}
               onChange={(e) => setInputAddress(e.target.value)}
-              className="w-full bg-[#F3F4F6] dark:bg-[#1B1B1F] px-3 py-2 text-xs font-mono rounded-xl border border-transparent focus:border-[#E62058]/30 outline-none text-[#0F172A] dark:text-[#FAFAFA]"
+              className="w-full bg-[#F3F4F6] dark:bg-[#1B1B1F] px-3 py-2 text-base font-mono rounded-xl border border-transparent focus:border-[#E62058]/30 outline-none text-[#0F172A] dark:text-[#FAFAFA]"
             />
           </div>
 

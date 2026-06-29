@@ -10,7 +10,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="pb-6 md:pb-0">
+    <footer className="pb-3 md:pb-0">
       <div className="mx-auto max-w-[1440px]">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between justify-center items-center text-center md:text-left">
           <div className="space-y-1">
