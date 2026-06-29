@@ -96,7 +96,7 @@ export default function Navbar({
         />
       )}
 
-      <header className="sticky top-0 z-30 h-12 w-full grid grid-cols-3 lg:flex lg:items-center lg:justify-between px-3 pt-2 md:pt-0 xl:px-4 bg-transparent transition-colors duration-200">
+      <header className="sticky top-0 z-30 h-12 w-full grid grid-cols-3 lg:flex lg:items-center lg:justify-between pt-2 md:pt-0 xl:px-4 bg-transparent transition-colors duration-200">
         
         {/* LEFT ZONE */}
         <div className="flex items-center justify-start min-w-0">
@@ -106,8 +106,8 @@ export default function Navbar({
             className="p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] lg:hidden cursor-pointer shrink-0"
           >
             <svg
-              width="26"
-              height="26"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -275,8 +275,8 @@ export default function Navbar({
               <XMarkIcon className="h-6 w-6 text-[#E62058]" />
             ) : (
               <svg
-                width="28"
-                height="28"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -384,7 +384,7 @@ export default function Navbar({
       <button
         type="button"
         onClick={() => setFlareWidgetOpen(!flareWidgetOpen)}
-        className="lg:hidden fixed bottom-5 right-5 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-br from-[#E62058] to-[#F03A6F] text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
+        className="lg:hidden fixed bottom-10 right-5 z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-[#E62058] to-[#F03A6F] text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
         aria-label={t("navbar.askFlareGPT")}
       >
         <ChatBubbleLeftRightIcon className="h-5 w-5" />

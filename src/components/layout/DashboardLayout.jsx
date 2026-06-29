@@ -34,7 +34,7 @@ export default function DashboardLayout() {
         />
 
         <main className="flex-1 overflow-y-auto overscroll-contain">
-          <div className="flex min-h-full flex-col md:p-4 p-5">
+          <div className="flex min-h-full flex-col md:p-4 p-2">
             <div className="flex-1">
               <Suspense fallback={<GlobalSpinner />}>
                 <Outlet />

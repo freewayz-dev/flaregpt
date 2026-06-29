@@ -63,7 +63,7 @@ export default function Help() {
   }, [searchQuery, guidesList]);
 
   return (
-    <div className="pb-10">
+    <div className="pb-12">
       <div className="pt-3 lg:pt-0">
         <PageHeader
           title={t("sidebar.helpCenter")}
@@ -71,7 +71,7 @@ export default function Help() {
         />
       </div>
 
-      <div className="mx-auto max-w-[1440px] sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
+      <div className="mx-auto max-w-[1440px] space-y-6 sm:space-y-8">
         {/* SEARCH EXPLORER HUB - Card: #FFFFFF | Dark Card: #161619 */}
         <div className="relative rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#161619] overflow-hidden">
           <div className="relative z-10 max-w-xl">
