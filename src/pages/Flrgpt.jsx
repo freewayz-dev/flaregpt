@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PageHeader from "../components/common/PageHeader";
-import Footer from "../components/common/Footer";
 
 export default function FLRGPT() {
   const [messages, setMessages] = useState([
@@ -31,8 +30,12 @@ export default function FLRGPT() {
 
   return (
     <>
-   
-      <div className="flex h-full gap-4 pb-14">
+      <PageHeader
+        title="flrgpt"
+        description="Flare Intelligence Chat Interface"
+      />
+
+      <div className="flex h-full gap-4 pb-14 px-8">
         {/* LEFT - CHAT AREA */}
         <div
           className="
@@ -45,17 +48,6 @@ export default function FLRGPT() {
         dark:border-[#27272A]
       "
         >
-          {/* HEADER */}
-          <div className="border-b border-slate-200 dark:border-[#27272A] p-4">
-            <h2 className="text-sm font-semibold text-slate-900 dark:text-white">
-              flrgpt
-            </h2>
-
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Flare Intelligence Chat Interface
-            </p>
-          </div>
-
           {/* MESSAGES */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((msg, i) => (
@@ -173,7 +165,6 @@ export default function FLRGPT() {
         </div>
       </div>
 
-      <Footer />
     </>
   );
 }

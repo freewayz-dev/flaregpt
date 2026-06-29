@@ -14,7 +14,6 @@ import {
 } from "@heroicons/react/24/outline";
 
 import PageHeader from "../components/common/PageHeader";
-// import Footer from "../components/common/Footer";
 
 const GUIDE_ICONS = [
   BookOpenIcon,
@@ -96,7 +95,7 @@ export default function Help() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t("help.searchPlaceholder")}
-                className="block w-full rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] py-2 pl-9 pr-4 text-sm text-[#0F172A] placeholder-[#94A3B8] focus:border-[#E62058] focus:outline-none focus:ring-1 focus:ring-[#E62058] dark:border-none dark:bg-[#121214] dark:text-[#FAFAFA] dark:placeholder-[#71717A] dark:focus:ring-1 dark:focus:ring-[#E62058]"
+                className="block w-full rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] py-2 pl-9 pr-4 text-base text-[#0F172A] placeholder-[#94A3B8] focus:border-[#E62058] focus:outline-none focus:ring-1 focus:ring-[#E62058] dark:border-none dark:bg-[#121214] dark:text-[#FAFAFA] dark:placeholder-[#71717A] dark:focus:ring-1 dark:focus:ring-[#E62058]"
               />
             </div>
           </div>
