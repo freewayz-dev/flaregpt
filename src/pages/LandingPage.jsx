@@ -2,12 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
-
-import flareLogo from "../assets/icons/fl.png";
-import openLogo from "../assets/icons/image.png";
-import walletConnectLogo from "../assets/wallets/icon.png";
-import bifrostLogo from "../assets/wallets/bifrost.jpeg";
-
+import { CheckIcon } from "lucide-react";
 import {
   ArrowRightIcon,
   CommandLineIcon,
@@ -22,10 +17,15 @@ import {
   ChatBubbleLeftRightIcon,
   BoltIcon,
 } from "@heroicons/react/24/outline";
-import { FadeIn } from "../components/common/MotionWrapper";
-import { CheckIcon } from "lucide-react";
-import AIPhoneMockup from "../components/flrgptwidget/AIPhoneMockup";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+
+import { FadeIn } from "../components/common/MotionWrapper";
+import AIPhoneMockup from "../components/flrgptwidget/AIPhoneMockup";
+
+import flareLogo from "../assets/icons/fl.png";
+import openLogo from "../assets/icons/image.png";
+import walletConnectLogo from "../assets/wallets/icon.png";
+import bifrostLogo from "../assets/wallets/bifrost.jpeg";
 
 export default function LandingPage() {
   const [open, setOpen] = useState(null);
@@ -34,8 +34,6 @@ export default function LandingPage() {
   const [isConnecting, setIsConnecting] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  // const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,128 +61,6 @@ export default function LandingPage() {
       setIsConnecting(false);
     }
   };
-
-  const features = [
-    {
-      id: "01",
-      icon: CpuChipIcon,
-      title: "Personal AI Assistant",
-      subtitle: "Ask anything about your wallets",
-      desc: "Chat with an AI that understands the Flare ecosystem. Analyze your portfolio, explain transactions, discover opportunities, and get answers tailored to the wallets you choose to track.",
-    },
-
-    {
-      id: "02",
-      icon: CircleStackIcon,
-      title: "Multi-Wallet Tracking",
-      subtitle: "Monitor everything in one place",
-      desc: "Add one or multiple wallets to track balances, holdings, rewards, and activity from a single dashboard. No more switching between explorers or tools.",
-    },
-
-    {
-      id: "03",
-      icon: ArrowTrendingUpIcon,
-      title: "Rewards & Delegations",
-      subtitle: "Never miss rewards again",
-      desc: "Track accruing rewards, view unclaimed rewards, monitor delegations, and know the best time to claim while minimizing gas fees.",
-    },
-
-    {
-      id: "04",
-      icon: ShieldCheckIcon,
-      title: "Governance",
-      subtitle: "Stay informed",
-      desc: "Follow active proposals, browse governance history, and understand what's happening across the Flare network without leaving the dashboard.",
-    },
-
-    {
-      id: "05",
-      icon: SparklesIcon,
-      title: "Live Network Insights",
-      subtitle: "Powered by real-time data",
-      desc: "Monitor FLR price, ecosystem activity, protocols, network statistics, wallet activity, and other live data from across the Flare ecosystem.",
-    },
-
-    {
-      id: "06",
-      icon: Square3Stack3DIcon,
-      title: "Smart Alerts",
-      subtitle: "Be notified at the right time",
-      desc: "Receive alerts for low gas fees, reward opportunities, wallet activity, and important ecosystem events so you never miss what matters.",
-    },
-  ];
-
-  const items = [
-    {
-      icon: SparklesIcon,
-
-      title: "Wallet-native intelligence",
-
-      desc: "FlareGPT understands your wallets, balances, rewards, and governance activity without manual checking or dashboards.",
-    },
-
-    {
-      icon: ChatBubbleLeftRightIcon,
-
-      title: "Natural language control",
-
-      desc: "Ask questions like you would a human. No filters, no navigation—just direct answers about your on-chain activity.",
-    },
-
-    {
-      icon: BoltIcon,
-
-      title: "Real-time insights",
-
-      desc: "Get instant updates on rewards, gas fees, and opportunities so you can act at the right moment, not after it passes.",
-    },
-
-    {
-      icon: ShieldCheckIcon,
-
-      title: "Built for security",
-
-      desc: "Read-only intelligence layer that never touches your funds. You stay in full control of every action.",
-    },
-  ];
-
-  const faqs = [
-    {
-      q: "What is FlareGPT?",
-
-      a: "FlareGPT is an AI layer that connects to your wallets and turns on-chain data into simple, actionable insights in real time.",
-    },
-
-    {
-      q: "Is FlareGPT custodial?",
-
-      a: "No. FlareGPT is fully non-custodial. It can read your wallet data but never holds or moves your funds.",
-    },
-
-    {
-      q: "Which wallets and networks are supported?",
-
-      a: "FlareGPT works with major Web3 wallets and is built primarily for the Flare ecosystem, with more integrations being added over time.",
-    },
-
-    {
-      q: "Do I need multiple wallets to use it?",
-
-      a: "No. You can connect a single wallet or multiple wallets. FlareGPT aggregates everything into one unified view.",
-    },
-
-    {
-      q: "How does FlareGPT use my data?",
-
-      a: "Your data is used only to generate insights and responses. Nothing is sold, shared, or used outside your session context.",
-    },
-
-    {
-      q: "Can FlareGPT execute transactions?",
-
-      a: "Not directly. It can guide you and prepare recommendations, but all actions must be confirmed by you in your wallet.",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-[#F0F4F9] dark:bg-[#09090b] transition-colors duration-300">
@@ -421,12 +297,12 @@ export default function LandingPage() {
                   <div>
                     {/* Desktop Badge */}
                     <div className="lg:pl-20">
-                    <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:border-[#1D1D20] dark:bg-[#161619]/80">
-                      <SparklesIcon className="h-3.5 w-3.5 text-[#E62058]" />
+                      <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:border-[#1D1D20] dark:bg-[#161619]/80">
+                        <SparklesIcon className="h-3.5 w-3.5 text-[#E62058]" />
 
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E62058]">
-                        AI Assistant
-                      </span>
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#E62058]">
+                          AI Assistant
+                        </span>
                       </div>
                     </div>
 
@@ -477,12 +353,10 @@ export default function LandingPage() {
           >
             <FadeIn>
               <div className="mb-10 text-center max-w-2xl mx-auto">
-                <h2 className="text-2xl font-black max-w-xl capitalize pt-4 mx-auto tracking-tight text-[#0F172A] dark:text-[#FAFAFA]">
-                  <h2 className="text-2xl font-black tracking-tight capitalize text-[#0F172A] dark:text-white">
-                    Everything you need for
-                    <br />
-                    the <span className="text-[#E62058]">Flare</span> ecosystem.
-                  </h2>{" "}
+                <h2 className="text-2xl font-black max-w-xl pt-4 mx-auto tracking-tight text-[#0F172A] dark:text-[#FAFAFA]">
+                  Everything you need for
+                  <br />
+                  the <span className="text-[#E62058]">flare</span> ecosystem.
                 </h2>
 
                 <p className="mt-4 max-w-xl mx-auto text-sm leading-6 text-[#475569] dark:text-[#A1A1AA]">
@@ -530,7 +404,7 @@ export default function LandingPage() {
               {/* Header */}
 
               <div className="text-center">
-                <h2 className="text-2xl font-black capitalize tracking-tight text-[#0F172A] dark:text-white">
+                <h2 className="text-2xl font-black tracking-tight text-[#0F172A] dark:text-white">
                   Frequently asked
                   <span className="block">questions.</span>
                 </h2>
@@ -604,7 +478,7 @@ export default function LandingPage() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#E62058]/10 dark:bg-[#E62058]/5 blur-[80px] rounded-full pointer-events-none" />
 
               {/* Heading */}
-              <h2 className="mt-3 text-3xl capitalize font-black tracking-tight text-[#0F172A] dark:text-[#FAFAFA] max-w-lg mx-auto leading-tight">
+              <h2 className="mt-3 text-3xl font-black tracking-tight text-[#0F172A] dark:text-[#FAFAFA] max-w-lg mx-auto leading-tight">
                 Everything you need to manage
                 <span className="block">your Flare portfolio.</span>
               </h2>
@@ -644,24 +518,49 @@ export default function LandingPage() {
         <footer className="relative w-full border-t border-[#E5E7EB]/70 dark:border-[#1D1D20] bg-white/5 dark:bg-white/[0.03] backdrop-blur-2xl">
           <div className="mx-auto max-w-5xl py-12 px-4 xl:px-0">
             {/* Ecosystem */}
+            {/* Ecosystem */}
             <div className="flex flex-col items-center gap-8 pb-12">
               <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#64748B] dark:text-[#71717A]">
                 Powered by trusted technologies
               </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-4">
+              {/* Mobile */}
+              {/* Mobile */}
+              <div className="flex w-full items-start justify-between md:hidden">
                 {EcosystemPartners.map((partner) => (
                   <div
                     key={partner.name}
-                    className="group flex h-11 items-center gap-3 rounded-xl border border-white/25 dark:border-white/10 bg-white/25 dark:bg-white/[0.05] px-4 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] transition-all hover:border-[#E62058]/40 hover:bg-[#E62058]/10"
+                    className="flex w-16 flex-col items-center gap-2"
+                  >
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#E5E7EB] bg-white dark:border-[#1D1D20] dark:bg-[#161619]">
+                      <img
+                        src={partner.logo}
+                        alt={partner.name}
+                        className="h-6 w-6 rounded-full object-contain"
+                      />
+                    </div>
+
+                    <span className="text-center text-[9px] font-semibold leading-tight text-[#64748B] dark:text-[#A1A1AA]">
+                      {partner.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop */}
+              <div className="hidden flex-wrap items-center justify-center gap-4 md:flex">
+                {EcosystemPartners.map((partner) => (
+                  <div
+                    key={partner.name}
+                    className="group flex h-11 items-center gap-3 rounded-xl border border-white/25 bg-white/25 px-4 shadow-[0_8px_30px_rgba(0,0,0,0.05)] backdrop-blur-xl transition-all hover:border-[#E62058]/40 hover:bg-[#E62058]/10 dark:border-white/10 dark:bg-white/[0.05] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
                   >
                     <img
                       src={partner.logo}
                       alt={partner.name}
-                      className="h-6 w-6 object-contain rounded-full transition-transform duration-200 group-hover:scale-110"
+                      className="h-6 w-6 rounded-full object-contain transition-transform duration-200 group-hover:scale-110"
                     />
 
-                    <span className="text-[11px] font-bold text-[#475569] dark:text-[#A1A1AA] group-hover:text-[#0F172A] dark:group-hover:text-white">
+                    <span className="text-[11px] font-bold text-[#475569] transition-colors group-hover:text-[#0F172A] dark:text-[#A1A1AA] dark:group-hover:text-white">
                       {partner.name}
                     </span>
                   </div>
@@ -739,26 +638,125 @@ export default function LandingPage() {
   );
 }
 
+const features = [
+  {
+    id: "01",
+    icon: CpuChipIcon,
+    title: "Personal AI Assistant",
+    subtitle: "Ask anything about your wallets",
+    desc: "Chat with an AI that understands the Flare ecosystem. Analyze your portfolio, explain transactions, discover opportunities, and get answers tailored to the wallets you choose to track.",
+  },
+  {
+    id: "02",
+    icon: CircleStackIcon,
+    title: "Multi-Wallet Tracking",
+    subtitle: "Monitor everything in one place",
+    desc: "Add one or multiple wallets to track balances, holdings, rewards, and activity from a single dashboard. No more switching between explorers or tools.",
+  },
+  {
+    id: "03",
+    icon: ArrowTrendingUpIcon,
+    title: "Rewards & Delegations",
+    subtitle: "Never miss rewards again",
+    desc: "Track accruing rewards, view unclaimed rewards, monitor delegations, and know the best time to claim while minimizing gas fees.",
+  },
+  {
+    id: "04",
+    icon: ShieldCheckIcon,
+    title: "Governance",
+    subtitle: "Stay informed",
+    desc: "Follow active proposals, browse governance history, and understand what's happening across the Flare network without leaving the dashboard.",
+  },
+  {
+    id: "05",
+    icon: SparklesIcon,
+    title: "Live Network Insights",
+    subtitle: "Powered by real-time data",
+    desc: "Monitor FLR price, ecosystem activity, protocols, network statistics, wallet activity, and other live data from across the Flare ecosystem.",
+  },
+  {
+    id: "06",
+    icon: Square3Stack3DIcon,
+    title: "Smart Alerts",
+    subtitle: "Be notified at the right time",
+    desc: "Receive alerts for low gas fees, reward opportunities, wallet activity, and important ecosystem events so you never miss what matters.",
+  },
+];
+
+const items = [
+  {
+    icon: SparklesIcon,
+    title: "Wallet-native intelligence",
+    desc: "FlareGPT understands your wallets, balances, rewards, and governance activity without manual checking or dashboards.",
+  },
+
+  {
+    icon: ChatBubbleLeftRightIcon,
+    title: "Natural language control",
+    desc: "Ask questions like you would a human. No filters, no navigation—just direct answers about your on-chain activity.",
+  },
+
+  {
+    icon: BoltIcon,
+    title: "Real-time insights",
+    desc: "Get instant updates on rewards, gas fees, and opportunities so you can act at the right moment, not after it passes.",
+  },
+
+  {
+    icon: ShieldCheckIcon,
+    title: "Built for security",
+    desc: "Read-only intelligence layer that never touches your funds. You stay in full control of every action.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What is FlareGPT?",
+    a: "FlareGPT is an AI layer that connects to your wallets and turns on-chain data into simple, actionable insights in real time.",
+  },
+
+  {
+    q: "Is FlareGPT custodial?",
+    a: "No. FlareGPT is fully non-custodial. It can read your wallet data but never holds or moves your funds.",
+  },
+
+  {
+    q: "Which wallets and networks are supported?",
+    a: "FlareGPT works with major Web3 wallets and is built primarily for the Flare ecosystem, with more integrations being added over time.",
+  },
+
+  {
+    q: "Do I need multiple wallets to use it?",
+    a: "No. You can connect a single wallet or multiple wallets. FlareGPT aggregates everything into one unified view.",
+  },
+
+  {
+    q: "How does FlareGPT use my data?",
+    a: "Your data is used only to generate insights and responses. Nothing is sold, shared, or used outside your session context.",
+  },
+
+  {
+    q: "Can FlareGPT execute transactions?",
+    a: "Not directly. It can guide you and prepare recommendations, but all actions must be confirmed by you in your wallet.",
+  },
+];
+
 const EcosystemPartners = [
   {
     name: "Flare",
-
     logo: flareLogo,
   },
   {
     name: "OpenAI",
-
     logo: openLogo,
   },
   {
     name: "WalletConnect",
-
     logo: walletConnectLogo,
   },
 
   {
     name: "Bifrost Wallet",
-
     logo: bifrostLogo,
   },
 ];
