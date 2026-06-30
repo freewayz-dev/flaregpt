@@ -20,7 +20,7 @@ export default function AppRoutes() {
 
         <Route path="/app" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="flrgpt" element={<FLRGPT />} />
+          <Route path="flare-gpt" element={<FLRGPT />} />
           <Route path="wallet" element={<WalletActivity />} />
           <Route path="settings" element={<Settings />} />
           <Route path="help" element={<Help />} />

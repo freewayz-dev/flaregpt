@@ -1,35 +1,38 @@
 // src/config/web3Config.js
-import { createConfig, http } from 'wagmi';
-import { mainnet } from 'wagmi/chains'; // 🟢 ADDED: Mainnet as a fallback root definition
-import { injected, walletConnect } from 'wagmi/connectors';
+import { createConfig, http } from "wagmi";
+import { mainnet } from "wagmi/chains"; // 🟢 ADDED: Mainnet as a fallback root definition
+import { injected, walletConnect } from "wagmi/connectors";
 
 export const flare = {
   id: 14,
-  name: 'Flare',
-  nativeCurrency: { name: 'Flare', symbol: 'FLR', decimals: 18 },
+  name: "Flare",
+  nativeCurrency: { name: "Flare", symbol: "FLR", decimals: 18 },
   rpcUrls: {
-    default: { http: ['https://flare-api.flare.network/ext/C/rpc'] },
+    default: { http: ["https://flare-api.flare.network/ext/C/rpc"] },
   },
   blockExplorers: {
-    default: { name: 'FlareScan', url: 'https://flarescan.com' },
+    default: { name: "FlareScan", url: "https://flarescan.com" },
   },
 };
 
 export const web3Config = createConfig({
-  // 🟢 CHANGED: Include mainnet in the configuration array so the app architecture 
+  // 🟢 CHANGED: Include mainnet in the configuration array so the app architecture
   // natively understands how to fallback to a standard namespace block when handshaking.
   chains: [flare, mainnet],
   connectors: [
     injected(), // Natively catches Bifrost, MetaMask, Rabby, etc.
-    walletConnect({ 
-      projectId: '771106bc829c38d05731ab4af6c2bc38', // Get from cloud.walletconnect.com
+    walletConnect({
+      projectId: "771106bc829c38d05731ab4af6c2bc38", // Get from cloud.walletconnect.com
       showQrModal: true,
       qrModalOptions: {
-        themeMode: 'dark',
+        themeMode: "auto",
+        themeVariables: {
+          "--w3m-accent": "#E62058", // This will change the button/accent color to your brand color
+        },
       },
-      // 🟢 FIXED: Wagmi v2 checks this property directly at the root option level, 
+      // 🟢 FIXED: Wagmi v2 checks this property directly at the root option level,
       // not inside an "ethereumProviderOptions" block!
-      isNewChainsStale: false, 
+      isNewChainsStale: false,
     }),
   ],
   transports: {

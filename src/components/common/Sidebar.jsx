@@ -40,7 +40,7 @@ const links = [
   },
   {
     translationKey: "FlareGPT",
-    path: "/app/flrgpt", // 🟢 UPDATED
+    path: "/app/flare-gpt", // 🟢 UPDATED
     icon: ChatBubbleLeftRightIcon,
     prefetch: prefetchFlareGPT,
   },
