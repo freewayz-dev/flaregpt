@@ -20,7 +20,7 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 import { FadeIn } from "../components/common/MotionWrapper";
-import AIPhoneMockup from "../components/flrgptwidget/AIPhoneMockup";
+import AIPhoneMockup from "../components/common/AIPhoneMockup";
 
 import flareLogo from "../assets/icons/fl.png";
 import openLogo from "../assets/icons/image.png";
@@ -225,7 +225,7 @@ export default function LandingPage() {
           <section className="relative w-full py-8">
             <div className="w-full border-y border-white/40 dark:border-white/5 bg-white/55 dark:bg-white/[0.03] backdrop-blur-xl">
               <div className="max-w-5xl mx-auto px-6 py-8">
-                <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-[#E5E7EB]/60 dark:divide-[#1D1D20]">
+                <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4 lg:gap-y-0 lg:divide-x lg:divide-[#E5E7EB]/60 dark:lg:divide-[#1D1D20]">
                   {[
                     {
                       value: "1.42M",
@@ -247,9 +247,9 @@ export default function LandingPage() {
                   ].map((item) => (
                     <div
                       key={item.title}
-                      className="px-6 py-8 text-center transition-colors hover:bg-[#E62058]/5"
+                      className="px-6 py-4 text-center transition-colors hover:bg-[#E62058]/5 lg:py-8"
                     >
-                      <div className="text-2xl sm:text-3xl font-black tracking-tight text-[#0F172A] dark:text-[#FAFAFA]">
+                      <div className="text-2xl font-black tracking-tight text-[#0F172A] dark:text-[#FAFAFA] sm:text-3xl">
                         {item.value}
 
                         {item.suffix && (
