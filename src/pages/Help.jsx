@@ -13,7 +13,7 @@ import {
   QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 
-import PageHeader from "../components/common/PageHeader";
+import PageHeader from "@/components/common/PageHeader";
 
 const GUIDE_ICONS = [
   BookOpenIcon,
@@ -73,9 +73,9 @@ export default function Help() {
 
       <div className="mx-auto max-w-[1440px] space-y-6 sm:space-y-8">
         {/* SEARCH EXPLORER HUB - Card: #FFFFFF | Dark Card: #161619 */}
-        <div className="relative rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F] overflow-hidden">
+        <div className="relative rounded-2xl bg-surface-card p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none overflow-hidden">
           <div className="relative z-10 max-w-xl">
-            <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
+            <h2 className="text-base font-semibold text-ink-primary">
               {t("help.searchTitle")}
             </h2>
             <p className="mt-1 text-xs text-[#475569] dark:text-[#6D7A86]">
@@ -95,7 +95,7 @@ export default function Help() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t("help.searchPlaceholder")}
-                className="block w-full rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] py-2 pl-9 pr-4 text-base text-[#0F172A] placeholder-[#94A3B8] focus:border-[#E62058] focus:outline-none focus:ring-1 focus:ring-[#E62058] dark:border-none dark:bg-[#21242B] dark:text-[#FAFAFA] dark:placeholder-[#71717A] dark:focus:ring-1 dark:focus:ring-[#E62058]"
+                className="block w-full rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] py-2 pl-9 pr-4 text-base text-ink-primary placeholder-ink-muted focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand dark:border-none dark:bg-[#21242B] dark:focus:ring-1 dark:focus:ring-brand"
               />
             </div>
           </div>
@@ -103,12 +103,12 @@ export default function Help() {
 
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-3">
           {/* GETTING STARTED TRACK - Card: #FFFFFF | Dark Card: #161619 */}
-          <div className="order-2 lg:order-1 lg:col-span-1 flex flex-col rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F]">
+          <div className="order-2 lg:order-1 lg:col-span-1 flex flex-col rounded-2xl bg-surface-card p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
             <div className="flex items-center gap-2 mb-6 shrink-0">
-              <div className="p-1.5 rounded-lg bg-[#E62058]/10 text-[#E62058]">
+              <div className="p-1.5 rounded-lg bg-brand/10 text-brand">
                 <QuestionMarkCircleIcon className="h-4 w-4" />
               </div>
-              <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
+              <h3 className="text-sm font-semibold text-ink-primary">
                 {t("help.gettingStarted")}
               </h3>
             </div>
@@ -118,11 +118,11 @@ export default function Help() {
               {stepsList.map((item, index) => (
                 <div key={index} className="relative pl-6 group">
                   {/* Step Badge - Nested Card: #F3F4F6 | Dark Nested Card: #1B1B1F */}
-                  <div className="absolute -left-[15px] top-0.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#FFFFFF] bg-[#F3F4F6] text-[10px] font-bold text-[#475569] transition-colors duration-150 group-hover:border-[#E62058]/30 group-hover:bg-[#E62058]/10 group-hover:text-[#E62058] dark:border-[#161619] dark:bg-[#1B1B1F] dark:text-[#6D7A86] dark:group-hover:text-[#E62058]">
+                  <div className="absolute -left-[15px] top-0.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#FFFFFF] bg-surface-subtle text-[10px] font-bold text-[#475569] transition-colors duration-150 group-hover:border-brand/30 group-hover:bg-brand/10 group-hover:text-brand dark:border-[#161619] dark:text-[#6D7A86] dark:group-hover:text-brand">
                     {item.step}
                   </div>
                   <div>
-                    <h4 className="text-xs font-medium text-[#475569] dark:text-[#FAFAFA] transition-colors group-hover:text-[#E62058]">
+                    <h4 className="text-xs font-medium text-[#475569] dark:text-[#FAFAFA] transition-colors group-hover:text-brand">
                       {item.title}
                     </h4>
                     <p className="mt-1 text-[11px] leading-relaxed text-[#94A3B8] dark:text-[#6D7A86]">
@@ -137,18 +137,18 @@ export default function Help() {
           {/* FEATURE ARTICLES PANEL MATRIX */}
           <div className="order-1 lg:order-2 lg:col-span-2 flex flex-col space-y-6">
             {/* Card Background - Card: #FFFFFF | Dark Card: #161619 */}
-            <div className="rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F]">
+            <div className="rounded-2xl bg-surface-card p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
               {" "}
               <div className="flex items-center gap-2 mb-5 shrink-0">
-                <div className="p-1.5 rounded-lg bg-[#E62058]/10 text-[#E62058]">
+                <div className="p-1.5 rounded-lg bg-brand/10 text-brand">
                   <BookOpenIcon className="h-4 w-4" />
                 </div>
-                <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
+                <h3 className="text-sm font-semibold text-ink-primary">
                   {t("help.featureGuides")}
                 </h3>
               </div>
               {guidesList.length === 0 ? (
-                <p className="text-xs text-[#94A3B8] py-4 dark:text-[#71717A]">
+                <p className="text-xs text-ink-muted py-4">
                   {t("help.noGuides")}
                 </p>
               ) : (
@@ -160,12 +160,12 @@ export default function Help() {
                       /* Feature Items - Nested Card: #F3F4F6 | Dark Nested Card: #1B1B1F */
                       <div
                         key={index}
-                        className="group relative rounded-xl border border-[#E5E7EB]/40 p-4 bg-[#F3F4F6] hover:bg-[#F3F4F6]/80 transition duration-150 dark:bg-[#21242B] dark:border-none dark:hover:ring-1 dark:hover:ring-[#E62058]/20"
+                        className="group relative rounded-xl border border-[#E5E7EB]/40 p-4 bg-[#F3F4F6] hover:bg-[#F3F4F6]/80 transition duration-150 dark:bg-[#21242B] dark:border-none dark:hover:ring-1 dark:hover:ring-brand/20"
                       >
-                        <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#FFFFFF] border border-[#E5E7EB] text-[#475569] group-hover:text-[#E62058] group-hover:bg-[#E62058]/5 group-hover:border-[#E62058]/10 transition-colors dark:bg-[#121214] dark:border-none dark:text-[#71717A]">
+                        <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#FFFFFF] border border-[#E5E7EB] text-[#475569] group-hover:text-brand group-hover:bg-brand/5 group-hover:border-brand/10 transition-colors dark:bg-[#121214] dark:border-none dark:text-[#71717A]">
                           <IconComponent className="h-4 w-4 transition-transform duration-200 group-hover:scale-105" />
                         </div>
-                        <h4 className="text-xs font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
+                        <h4 className="text-xs font-semibold text-ink-primary">
                           {guide.title}
                         </h4>
                         <p className="mt-1 text-[11px] leading-relaxed text-[#475569] dark:text-[#6D7A86]">
@@ -181,12 +181,12 @@ export default function Help() {
         </div>
 
         {/* FAQ PANEL SECTION - Card: #FFFFFF | Dark Card: #161619 */}
-        <div className="rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F]">
+        <div className="rounded-2xl bg-surface-card p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
           <div className="flex items-center gap-2 mb-5">
-            <div className="p-1.5 rounded-lg bg-[#E62058]/10 text-[#E62058]">
+            <div className="p-1.5 rounded-lg bg-brand/10 text-brand">
               <ChatBubbleBottomCenterTextIcon className="h-4 w-4" />
             </div>
-            <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
+            <h3 className="text-sm font-semibold text-ink-primary">
               {t("help.faqTitle")}
             </h3>
           </div>
@@ -210,18 +210,15 @@ export default function Help() {
                       onClick={() => setOpenFaq(isOpen ? null : index)}
                       className="flex w-full items-center justify-between gap-4 px-4 py-3.5 text-left outline-none cursor-pointer group"
                     >
-                      <span className="text-xs font-medium text-[#475569] group-hover:text-[#0F172A] dark:text-[#FAFAFA] dark:group-hover:text-[#FAFAFA] transition-colors">
+                      <span className="text-xs font-medium text-[#475569] group-hover:text-ink-primary dark:group-hover:text-[#FAFAFA] transition-colors">
                         {faq.question}
                       </span>
                       <div
-                        className={`
-                            flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border transition-all duration-200
-                            ${
-                              isOpen
-                                ? "bg-[#E62058]/5 border-[#E62058]/20 text-[#E62058]"
-                                : "bg-[#FFFFFF] border-[#E5E7EB] text-[#475569] group-hover:text-[#E62058] group-hover:bg-[#E62058]/5 group-hover:border-[#E62058]/20 dark:bg-[#121214] dark:border-none dark:text-[#71717A]"
-                            }
-                          `}
+                        className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border transition-all duration-200 ${
+                          isOpen
+                            ? "bg-brand/5 border-brand/20 text-brand"
+                            : "bg-[#FFFFFF] border-[#E5E7EB] text-[#475569] group-hover:text-brand group-hover:bg-brand/5 group-hover:border-brand/20 dark:bg-[#121214] dark:border-none dark:text-[#71717A]"
+                        }`}
                       >
                         <ChevronDownIcon
                           className={`h-3.5 w-3.5 transition-transform duration-200 ease-out ${isOpen ? "rotate-180" : ""}`}
@@ -234,7 +231,7 @@ export default function Help() {
                     >
                       <div className="overflow-hidden">
                         {/* Inner Panel Divider - Divider: #E5E7EB | Dark Divider: #1D1D20 */}
-                        <div className="px-4 pb-4 pt-1 border-t border-[#E5E7EB]/60 dark:border-[#1D1D20]/50">
+                        <div className="px-4 pb-4 pt-1 border-t border-line/60">
                           <p className="text-xs leading-relaxed text-[#475569] dark:text-[#6D7A86]">
                             {faq.answer}
                           </p>
@@ -249,10 +246,10 @@ export default function Help() {
         </div>
 
         {/* ESCALATION HELPDESK ROW PANEL - Card: #FFFFFF | Dark Card: #161619 */}
-        <div className="rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F]">
+        <div className="rounded-2xl bg-surface-card p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
+              <h3 className="text-sm font-semibold text-ink-primary">
                 {t("help.stillNeedHelp")}
               </h3>
               <p className="mt-1 text-xs text-[#475569] dark:text-[#6D7A86] max-w-lg">
@@ -261,7 +258,7 @@ export default function Help() {
             </div>
             <button
               type="button"
-              className="w-full sm:w-auto rounded-xl bg-[#E62058] px-4 py-2 text-xs font-medium text-white hover:bg-[#F03A6F] active:scale-[0.99] shadow-sm transition duration-150 cursor-pointer text-center"
+              className="w-full sm:w-auto rounded-xl bg-brand px-4 py-2 text-xs font-medium text-white hover:bg-brand-hover active:scale-[0.99] shadow-sm transition duration-150 cursor-pointer text-center"
             >
               {t("help.contactSupport")}
             </button>

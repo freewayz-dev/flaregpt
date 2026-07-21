@@ -2,7 +2,8 @@
   "footer": {
     "copyright": "© {{year}} FlareGPT. Flare Network 上に構築。",
     "disclaimer": "財務アドバイスではありません。データは情報提供のみを目的として提供されています。",
-    "terms": "利用規約と免責事項"
+    "terms": "利用規約と免責事項",
+    "donate": "寄付"
   },
   "help": {
     "contactSupport": "サポートに連絡",
@@ -95,7 +96,10 @@
   },
   "navbar": {
     "askFlareGPT": "FlareGPTに質問",
-    "mainnetStatus": "Flareメインネット"
+    "mainnetStatus": "Flareメインネット",
+    "dropdownTitle": "アクティブなターゲットビュー",
+    "noTrackedNodes": "追跡されたノードはありません。",
+    "noWallet": "サイフはない"
   },
   "settings": {
     "cards": {
@@ -183,7 +187,21 @@
       "limit": "最大 {{max}} 個のウォレットを接続できます",
       "limitReached": "ウォレットの制限に達しました ({{current}}/{{max}})",
       "maximum": "最大",
-      "remainingSlots": "残りのスロット"
+      "remainingSlots": "残りのスロット",
+      "addFormTitle": "ウォッチリストポートフォリオアカウントを追加",
+      "addressPlaceholder": "0 x...フレアウォレットアドレス",
+      "invalidAddress": "有効なFLARE EVMネットワークアドレス（ 0 xで始まる）を入力してください。",
+      "labelPlaceholder": "口座名義ラベル（コールドストレージなど）",
+      "liveConnected": "ライブ接続",
+      "manageSubtitle": "アクティブなWeb 3接続と読み取り専用ポートフォリオトラッキングアカウントを管理します。",
+      "readOnly": "èª­ã¿åãå°ç¨",
+      "registrationFailed": "住所登録に失敗しました。重複しているかどうか、またはスロットが埋まっているかどうかを確認してください。",
+      "tracked": "追跡済み"
+    },
+    "links": {
+      "docs": "ドックス",
+      "github": "GitHub",
+      "twitter": "Ｔｗｉｔｔｅｒ"
     }
   },
   "sidebar": {
@@ -200,7 +218,9 @@
     "settings": "設定",
     "walletActivity": "ウォレット活動",
     "walletConnected": "ウォレット接続済",
-    "yield": "利回り"
+    "yield": "利回り",
+    "loops": "ループ",
+    "feeds": "RSSフィード"
   },
   "wallet": {
     "activity": {
@@ -232,5 +252,46 @@
       "received": "受け取り完了",
       "sent": "送信済み"
     }
+  },
+  "comingSoon": {
+    "badge": "近日公開",
+    "description": "この機能は現在開発中です。しばらくしてから再度ご確認ください。"
+  },
+  "connectModal": {
+    "errors": {
+      "generic": "予期せぬ接続摩擦が発生しました。もう一度お試しいただくか、別のウォレットをご利用ください。",
+      "pending": "接続要求はすでに開いています。ウォレット拡張パネルを開いてください。",
+      "rejected": "ウォレットで接続リクエストがキャンセルされました。",
+      "wrongNetwork": "ウォレットのアクティブなネットワークをFlare Mainnetに切り替えてください。"
+    },
+    "mobileHint": "モバイルでは、ウォレットのビルトインブラウザでFlareGPTを開き、最高の接続エクスペリエンスを実現します。",
+    "recommended": "オススメ",
+    "subtitle": "お好みのウォレットを選択して、Flareネットワークに接続します。",
+    "title": "ウォレットに接続する"
+  },
+  "flareWidget": {
+    "back": "戻る",
+    "chatHistory": "チャット履歴",
+    "close": "閉じる",
+    "collapse": "折りたたむ",
+    "expand": "展開",
+    "historyTitle": "チャット履歴",
+    "inputPlaceholder": "FlareGPTにお尋ねください...",
+    "liveBanner": "FLAREメインネット•ライブアシスタント",
+    "mockHistory": [
+      "FLR価格分析",
+      "ウォレットの設定に関するヘルプ",
+      "利回り戦略",
+      "ガバナンスの議論"
+    ],
+    "newChat": "新しいチャット",
+    "send": "送信",
+    "suggestions": [
+      "今日のFLR価格はいくらですか？",
+      "ウォレット残高",
+      "FTSOの特典を獲得するにはどうすればよいですか？",
+      "FLAREネットワークの説明",
+      "最新のガバナンス提案"
+    ]
   }
 }

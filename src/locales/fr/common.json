@@ -2,7 +2,8 @@
   "footer": {
     "copyright": "© {{year}} FlareGPT. Propulsé par Flare Network.",
     "disclaimer": "Ceci n'est pas un conseil financier. Les données sont fournies à titre informatif uniquement.",
-    "terms": "Conditions d'utilisation & Clause de non-responsabilité"
+    "terms": "Conditions d'utilisation & Clause de non-responsabilité",
+    "donate": "Faire un don&#10;"
   },
   "help": {
     "contactSupport": "Contacter le Support",
@@ -95,7 +96,10 @@
   },
   "navbar": {
     "askFlareGPT": "Demander à FlareGPT",
-    "mainnetStatus": "Réseau Principal Flare"
+    "mainnetStatus": "Réseau Principal Flare",
+    "dropdownTitle": "Vue cible active",
+    "noTrackedNodes": "Aucun nœud suivi.",
+    "noWallet": "Pas de portefeuille"
   },
   "settings": {
     "cards": {
@@ -183,7 +187,21 @@
       "limit": "Vous pouvez connecter jusqu'à {{max}} portefeuilles",
       "limitReached": "Limite de Portefeuilles Atteinte ({{current}}/{{max}})",
       "maximum": "Maximum",
-      "remainingSlots": "Emplacements restants"
+      "remainingSlots": "Emplacements restants",
+      "addFormTitle": "Ajouter un compte de portefeuille de liste de surveillance",
+      "addressPlaceholder": "0x... Adresse du portefeuille Flare",
+      "invalidAddress": "Veuillez saisir une adresse réseau Flare EVM valide (commençant par 0x).",
+      "labelPlaceholder": "Étiquette du nom du compte (par exemple, stockage à froid)",
+      "liveConnected": "Connecté en direct",
+      "manageSubtitle": "Gérez vos connexions Web3 actives et vos comptes de suivi de portefeuille en lecture seule.",
+      "readOnly": "Lecture seule",
+      "registrationFailed": "Échec de l'enregistrement de l'adresse. Vérifiez s'il s'agit d'un doublon ou si des créneaux sont remplis.",
+      "tracked": "Suivi"
+    },
+    "links": {
+      "docs": "Doc",
+      "github": "Github",
+      "twitter": "Twitter"
     }
   },
   "sidebar": {
@@ -200,7 +218,8 @@
     "settings": "Paramètres",
     "walletActivity": "Activité du Portefeuille",
     "walletConnected": "Portefeuille Connecté",
-    "yield": "Rendement"
+    "loops": "Rendement",
+    "feeds": "Flux"
   },
   "wallet": {
     "activity": {
@@ -232,5 +251,46 @@
       "received": "Reçues",
       "sent": "Envoyé"
     }
+  },
+  "comingSoon": {
+    "badge": "Prochainement",
+    "description": "Nous développons cette fonctionnalité. Revenez bientôt."
+  },
+  "connectModal": {
+    "errors": {
+      "generic": "Une friction de connexion inattendue s'est produite. Veuillez réessayer ou utiliser un autre portefeuille.",
+      "pending": "Une demande de connexion est déjà ouverte. Veuillez ouvrir le panneau d'extension de votre portefeuille.",
+      "rejected": "La demande de connexion a été annulée dans votre portefeuille.",
+      "wrongNetwork": "Veuillez basculer le réseau actif de votre portefeuille vers Flare Mainnet."
+    },
+    "mobileHint": "Sur mobile, ouvrez FlareGPT dans le navigateur intégré de votre portefeuille pour une meilleure expérience de connexion.",
+    "recommended": "Recommandé",
+    "subtitle": "Sélectionnez votre portefeuille préféré pour vous connecter au réseau Flare.",
+    "title": "Connecter le portefeuille"
+  },
+  "flareWidget": {
+    "back": "Retour",
+    "chatHistory": "L’historique des conversations",
+    "close": "Fermer",
+    "collapse": "Réduire",
+    "expand": "Développer",
+    "historyTitle": "Historique du chat",
+    "inputPlaceholder": "Demandez à FlareGPT...",
+    "liveBanner": "Flare Mainnet • Assistant en direct",
+    "mockHistory": [
+      "Analyse des prix",
+      "Aide à la configuration du portefeuille",
+      "Stratégies de rendement",
+      "Discussion sur la gouvernance"
+    ],
+    "newChat": "Nouvelle discussion",
+    "send": "Envoyer",
+    "suggestions": [
+      "Quel est le prix du flr aujourd'hui ?",
+      "Solde de portefeuille",
+      "Comment puis-je gagner des récompenses FTSO ?",
+      "Expliquer le réseau Flare",
+      "Dernières propositions de gouvernance"
+    ]
   }
 }

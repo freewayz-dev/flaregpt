@@ -1,7 +1,49 @@
 {
+  "comingSoon": {
+    "badge": "Coming Soon",
+    "description": "We're building this feature. Check back soon."
+  },
+  "connectModal": {
+    "errors": {
+      "generic": "An unexpected connection friction occurred. Please try again or use another wallet.",
+      "pending": "A connection request is already open. Please open your wallet extension panel.",
+      "rejected": "Connection request was cancelled in your wallet.",
+      "wrongNetwork": "Please switch your wallet's active network to Flare Mainnet."
+    },
+    "mobileHint": "On mobile, open FlareGPT in your wallet's built-in browser for the best connection experience.",
+    "recommended": "Recommended",
+    "subtitle": "Select your preferred wallet to connect to the Flare Network.",
+    "title": "Connect Wallet"
+  },
+  "flareWidget": {
+    "back": "Back",
+    "chatHistory": "Chat history",
+    "close": "Close",
+    "collapse": "Collapse",
+    "expand": "Expand",
+    "historyTitle": "Chat History",
+    "inputPlaceholder": "Ask FlareGPT...",
+    "liveBanner": "Flare Mainnet • Live Assistant",
+    "mockHistory": [
+      "FLR price analysis",
+      "Wallet setup help",
+      "Yield strategies",
+      "Governance discussion"
+    ],
+    "newChat": "New chat",
+    "send": "Send",
+    "suggestions": [
+      "What is FLR price today?",
+      "Show wallet balance",
+      "How do I earn FTSO rewards?",
+      "Explain Flare Network",
+      "Latest governance proposals"
+    ]
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Built on Flare Network.",
     "disclaimer": "Not financial advice. Data is provided for informational purposes only.",
+    "donate": "Donate",
     "terms": "Terms & Disclaimer"
   },
   "help": {
@@ -95,7 +137,11 @@
   },
   "navbar": {
     "askFlareGPT": "Ask FlareGPT",
-    "mainnetStatus": "Flare Mainnet"
+    "configureInSettings": "Configure in Settings",
+    "dropdownTitle": "Active Target View",
+    "mainnetStatus": "Flare Mainnet",
+    "noTrackedNodes": "No tracked nodes.",
+    "noWallet": "No Wallet"
   },
   "settings": {
     "cards": {
@@ -117,6 +163,11 @@
       "walletCapacity": "Wallet Capacity"
     },
     "description": "Manage wallets, preferences, localization, and display options.",
+    "links": {
+      "docs": "Docs",
+      "github": "GitHub",
+      "twitter": "Twitter"
+    },
     "descriptions": {
       "app": "Active package distribution build tag index.",
       "blur": "Reduce eye strain with a warm screen tint",
@@ -175,15 +226,24 @@
     "wallets": {
       "active": "Active",
       "add": "Add Wallet ({{current}}/{{max}})",
+      "addFormTitle": "Add Watchlist Portfolio Account",
+      "addressPlaceholder": "0x... Flare Wallet Address",
       "available": "Available",
       "connectAction": "Connect Wallet ({{current}} Connected, {{remaining}} Remaining)",
       "connected": "Connected",
       "empty": "No wallets connected yet",
       "emptyTerminal": "No wallet connected. Connect your terminal assets to continue.",
+      "invalidAddress": "Please enter a valid Flare EVM network address (starting with 0x).",
+      "labelPlaceholder": "Account Name Label (e.g., Cold Storage)",
       "limit": "You can connect up to {{max}} wallets",
       "limitReached": "Wallet Limit Reached ({{current}}/{{max}})",
+      "liveConnected": "Live Connected",
+      "manageSubtitle": "Manage your active Web3 connections and read-only portfolio tracking accounts.",
       "maximum": "Maximum",
-      "remainingSlots": "Slots Remaining"
+      "readOnly": "Read-Only",
+      "registrationFailed": "Address registration failed. Check if it is a duplicate or if slots are filled.",
+      "remainingSlots": "Slots Remaining",
+      "tracked": "Tracked"
     }
   },
   "sidebar": {
@@ -191,16 +251,16 @@
     "disconnect": "Disconnect",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Rewards",
-    "fxrpPool": "$fXRP Pool",
+    "fxrpPool": "Defi Protocols",
     "governance": "Governance",
     "helpCenter": "Help Center",
     "notConnected": "Not connected",
     "overview": "Overview",
-    "rflrTracker": "rFLR Tracker",
+    "rflrTracker": "rFLR Vesting",
     "settings": "Settings",
     "walletActivity": "Wallet Activity",
     "walletConnected": "Wallet Connected",
-    "yield": "Yield",
+    "loops": "Loops",
     "feeds": "Feeds"
   },
   "wallet": {

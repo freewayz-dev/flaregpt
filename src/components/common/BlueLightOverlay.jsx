@@ -1,4 +1,4 @@
-import { useUIStore } from "../../store/useUIStore";
+import { useUIStore } from "@/store/useUIStore";
 
 export default function BlueLightOverlay() {
   // Selectively subscribe to the live blue light state value

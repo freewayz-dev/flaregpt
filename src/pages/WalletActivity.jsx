@@ -1,14 +1,14 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
-import { 
-  ArrowUpRightIcon, 
-  ArrowDownLeftIcon, 
+import {
+  ArrowUpRightIcon,
+  ArrowDownLeftIcon,
   CircleStackIcon,
   ArrowPathIcon,
   CheckCircleIcon,
-  XCircleIcon
+  XCircleIcon,
 } from "@heroicons/react/24/outline";
-import StatCard from "../components/cards/StatCard";
+
+import StatCard from "@/components/cards/StatCard";
 
 const WalletActivity = () => {
   const { t } = useTranslation();

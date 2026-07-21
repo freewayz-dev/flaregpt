@@ -1,35 +1,24 @@
 import { Outlet } from "react-router-dom";
 import { Suspense, useState } from "react";
 
-import Sidebar from "../common/Sidebar";
-import Navbar from "../common/Navbar";
-import FlareWidget from "../common/FlareWidget";
-import Footer from "../common/Footer";
-import GlobalSpinner from "../common/GlobalSpinner";
+import Sidebar from "./Sidebar";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import FlareWidget from "@/components/common/FlareWidget";
+import GlobalSpinner from "@/components/common/GlobalSpinner";
 
 export default function DashboardLayout() {
   const [flareWidgetOpen, setFlareWidgetOpen] = useState(false);
-
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
-    return localStorage.getItem("sidebar-collapsed") === "true";
-  });
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="flex h-dvh overflow-hidden bg-[#F0F4F9] dark:bg-[#101115]">
-      <Sidebar
-        collapsed={isSidebarCollapsed}
-        setCollapsed={setIsSidebarCollapsed}
-        open={sidebarOpen}
-        setOpen={setSidebarOpen}
-      />
+      <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
 
       <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
         <Navbar
           flareWidgetOpen={flareWidgetOpen}
           setFlareWidgetOpen={setFlareWidgetOpen}
-          isSidebarCollapsed={isSidebarCollapsed}
           setSidebarOpen={setSidebarOpen}
         />
 

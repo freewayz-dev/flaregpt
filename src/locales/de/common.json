@@ -2,7 +2,8 @@
   "footer": {
     "copyright": "© {{year}} FlareGPT. Entwickelt auf Flare Network.",
     "disclaimer": "Keine Finanzberatung. Die Daten dienen ausschließlich zu Informationszwecken.",
-    "terms": "Nutzungsbedingungen & Haftungsausschluss"
+    "terms": "Nutzungsbedingungen & Haftungsausschluss",
+    "donate": "Spenden"
   },
   "help": {
     "contactSupport": "Support kontaktieren",
@@ -95,7 +96,10 @@
   },
   "navbar": {
     "askFlareGPT": "FlareGPT fragen",
-    "mainnetStatus": "Flare-Mainnet"
+    "mainnetStatus": "Flare-Mainnet",
+    "dropdownTitle": "Aktive Zielansicht",
+    "noTrackedNodes": "Keine verfolgten Knoten.",
+    "noWallet": "Kein Wallet"
   },
   "settings": {
     "cards": {
@@ -183,7 +187,21 @@
       "limit": "Sie können bis zu {{max}} Wallets verbinden",
       "limitReached": "Wallet-Limit erreicht ({{current}}/{{max}})",
       "maximum": "Maximal",
-      "remainingSlots": "Verbleibende Slots"
+      "remainingSlots": "Verbleibende Slots",
+      "addFormTitle": "Watchlist-Portfolio-Konto hinzufügen",
+      "addressPlaceholder": "0x... Flare Wallet-Adresse",
+      "invalidAddress": "Bitte geben Sie eine gültige Flare EVM-Netzwerkadresse ein (beginnend mit 0x).",
+      "labelPlaceholder": "Bezeichnung des Kontonamens (z. B. Kühllager)",
+      "liveConnected": "Live Connected",
+      "manageSubtitle": "Verwalten Sie Ihre aktiven Web3-Verbindungen und schreibgeschützten Portfolio-Tracking-Konten.",
+      "readOnly": "Nur Lesen",
+      "registrationFailed": "Adressregistrierung fehlgeschlagen. Überprüfen Sie, ob es sich um ein Duplikat handelt oder ob Steckplätze belegt sind.",
+      "tracked": "Verfolgt"
+    },
+    "links": {
+      "docs": "Docs",
+      "github": "GitHub",
+      "twitter": "Twitter"
     }
   },
   "sidebar": {
@@ -200,7 +218,8 @@
     "settings": "Einstellungen",
     "walletActivity": "Wallet-Aktivität",
     "walletConnected": "Wallet verbunden",
-    "yield": "Rendite"
+    "loops": "Rendite",
+    "feeds": "Feeds"
   },
   "wallet": {
     "activity": {
@@ -232,5 +251,46 @@
       "received": "Erhalten",
       "sent": "Gesendet"
     }
+  },
+  "comingSoon": {
+    "badge": "Demnächst verfügbar",
+    "description": "Wir entwickeln diese Funktion. Schau bald wieder vorbei."
+  },
+  "connectModal": {
+    "errors": {
+      "generic": "Eine unerwartete Verbindungsreibung ist aufgetreten. Bitte versuchen Sie es erneut oder verwenden Sie ein anderes Wallet.",
+      "pending": "Eine Verbindungsanfrage ist bereits offen. Bitte öffnen Sie Ihre Brieftaschenerweiterung.",
+      "rejected": "Die Verbindungsanfrage in Ihrem Wallet wurde abgebrochen.",
+      "wrongNetwork": "Bitte schalten Sie das aktive Netzwerk Ihrer Brieftasche auf Flare Mainnet um."
+    },
+    "mobileHint": "Öffnen Sie FlareGPT auf dem Handy im integrierten Browser Ihrer Brieftasche, um die beste Verbindungserfahrung zu erzielen.",
+    "recommended": "Empfohlen",
+    "subtitle": "Wählen Sie Ihr bevorzugtes Wallet aus, um sich mit dem Flare Network zu verbinden.",
+    "title": "Wallet verbinden"
+  },
+  "flareWidget": {
+    "back": "Zurück",
+    "chatHistory": " Chat-Verlauf",
+    "close": "Schließen",
+    "collapse": "Ausblenden",
+    "expand": "Erweitern",
+    "historyTitle": "Chat-Verlauf",
+    "inputPlaceholder": "Fragen Sie FlareGPT...",
+    "liveBanner": "Flare Mainnet • Live-Assistent",
+    "mockHistory": [
+      "Preisanalyse",
+      "Hilfe zur Wallet-Einrichtung",
+      "Ertragsstrategien",
+      "Governance-Diskussion"
+    ],
+    "newChat": "Neuer Chat",
+    "send": "Senden",
+    "suggestions": [
+      "Was ist der FLR-Preis heute?",
+      "Kontostand",
+      "Wie verdiene ich FTSO-Belohnungen?",
+      "Erkläre das Flare-Netzwerk",
+      "Neueste Governance-Vorschläge"
+    ]
   }
 }

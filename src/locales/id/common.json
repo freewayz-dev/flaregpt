@@ -2,7 +2,8 @@
   "footer": {
     "copyright": "© {{year}} FlareGPT. Dibangun di atas Flare Network.",
     "disclaimer": "Bukan saran finansial. Data disediakan hanya untuk tujuan informasi.",
-    "terms": "Ketentuan & Penafian"
+    "terms": "Ketentuan & Penafian",
+    "donate": ""
   },
   "help": {
     "contactSupport": "Hubungi Dukungan",
@@ -95,7 +96,10 @@
   },
   "navbar": {
     "askFlareGPT": "Tanya FlareGPT",
-    "mainnetStatus": "Mainnet Flare"
+    "mainnetStatus": "Mainnet Flare",
+    "dropdownTitle": "",
+    "noTrackedNodes": "",
+    "noWallet": ""
   },
   "settings": {
     "cards": {
@@ -183,7 +187,21 @@
       "limit": "Anda dapat menghubungkan hingga {{max}} dompet",
       "limitReached": "Batas Dompet Tercapai ({{current}}/{{max}})",
       "maximum": "Maksimum",
-      "remainingSlots": "Slot Tersisa"
+      "remainingSlots": "Slot Tersisa",
+      "addFormTitle": "",
+      "addressPlaceholder": "",
+      "invalidAddress": "",
+      "labelPlaceholder": "",
+      "liveConnected": "",
+      "manageSubtitle": "",
+      "readOnly": "",
+      "registrationFailed": "",
+      "tracked": ""
+    },
+    "links": {
+      "docs": "",
+      "github": "",
+      "twitter": ""
     }
   },
   "sidebar": {
@@ -200,7 +218,9 @@
     "settings": "Pengaturan",
     "walletActivity": "Aktivitas Dompet",
     "walletConnected": "Dompet Terhubung",
-    "yield": "Imbal Hasil"
+    "yield": "Imbal Hasil",
+    "loops": "",
+    "feeds": ""
   },
   "wallet": {
     "activity": {
@@ -232,5 +252,46 @@
       "received": "Diterima",
       "sent": "Terkirim"
     }
+  },
+  "comingSoon": {
+    "badge": "Segera",
+    "description": "Kami sedang membangun fitur ini. Segera periksa kembali."
+  },
+  "connectModal": {
+    "errors": {
+      "generic": "Terjadi gesekan koneksi yang tidak terduga. Silakan coba lagi atau gunakan dompet lain.",
+      "pending": "Permintaan koneksi sudah terbuka. Silakan buka panel ekstensi dompet Anda.",
+      "rejected": "Permintaan koneksi dibatalkan di dompet Anda.",
+      "wrongNetwork": ""
+    },
+    "mobileHint": "",
+    "recommended": "",
+    "subtitle": "",
+    "title": ""
+  },
+  "flareWidget": {
+    "back": "",
+    "chatHistory": "",
+    "close": "",
+    "collapse": "",
+    "expand": "",
+    "historyTitle": "",
+    "inputPlaceholder": "",
+    "liveBanner": "",
+    "mockHistory": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "newChat": "",
+    "send": "",
+    "suggestions": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   }
 }

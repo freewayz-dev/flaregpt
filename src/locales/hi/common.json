@@ -2,7 +2,8 @@
   "footer": {
     "copyright": "© {{year}} FlareGPT. फ्लेयर नेटवर्क (Flare Network) पर निर्मित।",
     "disclaimer": "वित्तीय सलाह नहीं है। डेटा केवल सूचनात्मक उद्देश्यों के लिए प्रदान किया गया है।",
-    "terms": "नियम और अस्वीकरण"
+    "terms": "नियम और अस्वीकरण",
+    "donate": ""
   },
   "help": {
     "contactSupport": "सहायता टीम से संपर्क करें",
@@ -95,7 +96,10 @@
   },
   "navbar": {
     "askFlareGPT": "FlareGPT से पूछें",
-    "mainnetStatus": "फ्लेयर मेननेट"
+    "mainnetStatus": "फ्लेयर मेननेट",
+    "dropdownTitle": "",
+    "noTrackedNodes": "",
+    "noWallet": ""
   },
   "settings": {
     "cards": {
@@ -183,7 +187,21 @@
       "limit": "आप अधिकतम {{max}} वॉलेट कनेक्ट कर सकते हैं",
       "limitReached": "वॉलेट सीमा समाप्त ({{current}}/{{max}})",
       "maximum": "अधिकतम",
-      "remainingSlots": "शेष स्लॉट"
+      "remainingSlots": "शेष स्लॉट",
+      "addFormTitle": "",
+      "addressPlaceholder": "",
+      "invalidAddress": "",
+      "labelPlaceholder": "",
+      "liveConnected": "",
+      "manageSubtitle": "",
+      "readOnly": "",
+      "registrationFailed": "",
+      "tracked": ""
+    },
+    "links": {
+      "docs": "",
+      "github": "",
+      "twitter": ""
     }
   },
   "sidebar": {
@@ -200,7 +218,9 @@
     "settings": "सेटिंग्स",
     "walletActivity": "वॉलेट गतिविधि",
     "walletConnected": "वॉलेट कनेक्ट हो गया",
-    "yield": "यील्ड"
+    "yield": "यील्ड",
+    "loops": "",
+    "feeds": ""
   },
   "wallet": {
     "activity": {
@@ -232,5 +252,46 @@
       "received": "प्राप्त किया गया",
       "sent": "भेजी- डाक"
     }
+  },
+  "comingSoon": {
+    "badge": "",
+    "description": ""
+  },
+  "connectModal": {
+    "errors": {
+      "generic": "",
+      "pending": "",
+      "rejected": "",
+      "wrongNetwork": ""
+    },
+    "mobileHint": "",
+    "recommended": "",
+    "subtitle": "",
+    "title": ""
+  },
+  "flareWidget": {
+    "back": "",
+    "chatHistory": "",
+    "close": "",
+    "collapse": "",
+    "expand": "",
+    "historyTitle": "",
+    "inputPlaceholder": "",
+    "liveBanner": "",
+    "mockHistory": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "newChat": "",
+    "send": "",
+    "suggestions": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   }
 }

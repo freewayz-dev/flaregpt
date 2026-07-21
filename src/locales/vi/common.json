@@ -2,7 +2,8 @@
   "footer": {
     "copyright": "© {{year}} FlareGPT. Được xây dựng trên mạng lưới Flare Network.",
     "disclaimer": "Không phải lời khuyên tài chính. Dữ liệu được cung cấp chỉ nhằm mục đích thông tin.",
-    "terms": "Điều khoản & Tuyên bố miễn trừ trách nhiệm"
+    "terms": "Điều khoản & Tuyên bố miễn trừ trách nhiệm",
+    "donate": "Ủng hộ"
   },
   "help": {
     "contactSupport": "Liên hệ Hỗ trợ",
@@ -95,7 +96,10 @@
   },
   "navbar": {
     "askFlareGPT": "Hỏi FlareGPT",
-    "mainnetStatus": "Mạng chính Flare"
+    "mainnetStatus": "Mạng chính Flare",
+    "dropdownTitle": "Chế độ xem mục tiêu đang hoạt động",
+    "noTrackedNodes": "Không có nút được theo dõi.",
+    "noWallet": "Không có ví"
   },
   "settings": {
     "cards": {
@@ -183,7 +187,21 @@
       "limit": "Bạn có thể kết nối tối đa {{max}} ví",
       "limitReached": "Đã đạt giới hạn ví ({{current}}/{{max}})",
       "maximum": "Tối đa",
-      "remainingSlots": "Số lượt còn lại"
+      "remainingSlots": "Số lượt còn lại",
+      "addFormTitle": "Thêm tài khoản danh mục đầu tư danh sách theo dõi",
+      "addressPlaceholder": "0x... Địa chỉ ví Flare",
+      "invalidAddress": "Vui lòng nhập địa chỉ mạng Flare EVM hợp lệ (bắt đầu bằng 0x).",
+      "labelPlaceholder": "Nhãn tên tài khoản (ví dụ: Kho lạnh)",
+      "liveConnected": "Đã kết nối trực tiếp",
+      "manageSubtitle": "Quản lý các kết nối Web3 đang hoạt động và tài khoản theo dõi danh mục đầu tư chỉ đọc của bạn.",
+      "readOnly": "Chỉ đọc",
+      "registrationFailed": "Đăng ký địa chỉ không thành công. Kiểm tra xem nó có phải là một bản sao hoặc nếu các vị trí được lấp đầy.",
+      "tracked": "Đã theo"
+    },
+    "links": {
+      "docs": "Tài liệu",
+      "github": "Github",
+      "twitter": "Twitter"
     }
   },
   "sidebar": {
@@ -200,7 +218,9 @@
     "settings": "Cài đặt",
     "walletActivity": "Hoạt động Ví",
     "walletConnected": "Ví đã kết nối",
-    "yield": "Lợi nhuận"
+    "yield": "Lợi nhuận",
+    "loops": "Vòng lặp",
+    "feeds": "Các nguồn dữ liệu"
   },
   "wallet": {
     "activity": {
@@ -232,5 +252,46 @@
       "received": "Đã nhận",
       "sent": "Đã gửi"
     }
+  },
+  "comingSoon": {
+    "badge": "Sắp chiếu",
+    "description": "Chúng tôi đang xây dựng tính năng này. Hãy kiểm tra lại sau ít phút."
+  },
+  "connectModal": {
+    "errors": {
+      "generic": "Đã xảy ra ma sát kết nối không mong muốn. Vui lòng thử lại hoặc sử dụng ví khác.",
+      "pending": "Yêu cầu kết nối đã được mở. Vui lòng mở bảng điều khiển tiện ích mở rộng ví của bạn.",
+      "rejected": "Yêu cầu kết nối đã bị hủy trong ví của bạn.",
+      "wrongNetwork": "Vui lòng chuyển mạng đang hoạt động của ví của bạn sang Flare Mainnet."
+    },
+    "mobileHint": "Trên thiết bị di động, hãy mở FlareGPT trong trình duyệt tích hợp sẵn trong ví của bạn để có trải nghiệm kết nối tốt nhất.",
+    "recommended": "Được đề xuất",
+    "subtitle": "Chọn ví ưa thích của bạn để kết nối với Flare Network.",
+    "title": "Liên kết ví"
+  },
+  "flareWidget": {
+    "back": "Quay lại",
+    "chatHistory": "Lịch sử trò chuyện",
+    "close": "Đóng",
+    "collapse": "Thu gọn",
+    "expand": "Mở rộng",
+    "historyTitle": "Lịch sử trò chuyện",
+    "inputPlaceholder": "Hỏi FlareGPT...",
+    "liveBanner": "Flare Mainnet • Trợ lý trực tiếp",
+    "mockHistory": [
+      "phân tích giá cả",
+      "Cài đặt ví",
+      "Chiến lược lợi nhuận",
+      "Thảo luận về quản trị"
+    ],
+    "newChat": "Obrolan baru",
+    "send": "Gửi",
+    "suggestions": [
+      "Giá FLR hôm nay là bao nhiêu?",
+      "Số dư ví",
+      "Làm thế nào để nhận phần thưởng FTSO?",
+      "Giải thích về Flare Network",
+      "Đề xuất quản trị mới nhất"
+    ]
   }
 }

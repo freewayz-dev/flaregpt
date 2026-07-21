@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useConnect, useAccount } from "wagmi";
+import { useTranslation } from "react-i18next";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-import bifrostImg from "../../assets/wallets/bifrost.jpeg";
-import rabbyImg from "../../assets/wallets/rabby.png";
-import walletConnectImg from "../../assets/wallets/icon.png";
-import metamask from "../../assets/wallets/MetaMask_Fox.svg.png";
+import bifrostImg from "@/assets/wallets/bifrost.jpeg";
+import rabbyImg from "@/assets/wallets/rabby.png";
+import walletConnectImg from "@/assets/wallets/icon.png";
+import metamask from "@/assets/wallets/MetaMask_Fox.svg.png";
 
 const VISUAL_WALLETS = [
   {
@@ -38,22 +39,23 @@ const VISUAL_WALLETS = [
   },
 ];
 
-const getFriendlyErrorMessage = (error) => {
+const getFriendlyErrorMessage = (error, t) => {
   if (!error) return null;
   const msg = error.message.toLowerCase();
   if (msg.includes("user rejected") || msg.includes("denied")) {
-    return "Connection request was cancelled in your wallet.";
+    return t("connectModal.errors.rejected");
   }
   if (msg.includes("already pending")) {
-    return "A connection request is already open. Please open your wallet extension panel.";
+    return t("connectModal.errors.pending");
   }
   if (msg.includes("chain") || msg.includes("network")) {
-    return "Please switch your wallet's active network to Flare Mainnet.";
+    return t("connectModal.errors.wrongNetwork");
   }
-  return "An unexpected connection friction occurred. Please try again or use another wallet.";
+  return t("connectModal.errors.generic");
 };
 
 export default function ConnectWalletModal({ isOpen, onClose }) {
+  const { t } = useTranslation();
   const { connect, connectors, error, isPending } = useConnect();
   const { isConnected } = useAccount();
 
@@ -112,19 +114,19 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
       >
         <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-gray-300 dark:bg-zinc-800 sm:hidden" />
 
-        <div className="flex items-center justify-between pb-4 border-b border-[#E5E7EB] dark:border-[#1D1D20]">
+        <div className="flex items-center justify-between pb-4 border-b border-line">
           <div>
-            <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#FAFAFA]">
-              Connect Wallet
+            <h3 className="text-sm font-bold text-ink-primary">
+              {t("connectModal.title")}
             </h3>
-            <p className="text-[11px] text-[#475569] dark:text-[#A1A1AA] mt-0.5">
-              Select your preferred wallet to connect to the Flare Network.{" "}
+            <p className="text-[11px] text-ink-secondary mt-0.5">
+              {t("connectModal.subtitle")}
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-1 text-[#475569] hover:bg-[#F3F4F6] dark:text-[#A1A1AA] dark:hover:bg-[#1B1B1F] transition-colors cursor-pointer"
+            className="rounded-lg p-1 text-ink-secondary hover:bg-surface-subtle transition-colors cursor-pointer"
           >
             <XMarkIcon className="h-4 w-4" />
           </button>
@@ -137,24 +139,16 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
               type="button"
               disabled={isPending}
               onClick={() => handleConnect(wallet.id)}
-              className="w-full flex items-center justify-between rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-4 py-3 text-xs font-medium text-[#4F5B66] hover:bg-[#F3F4F6] hover:text-[#0F172A] transition-all cursor-pointer disabled:opacity-50 dark:border-none dark:bg-[#1B1B1F] dark:text-[#A1A1AA] dark:hover:bg-[#222227] dark:hover:text-[#FAFAFA]"
+              className="w-full flex items-center justify-between rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-4 py-3 text-xs font-medium text-[#4F5B66] hover:bg-surface-subtle hover:text-ink-primary transition-all cursor-pointer disabled:opacity-50 dark:border-none dark:text-[#A1A1AA] dark:hover:bg-[#222227]"
             >
               <div className="flex items-center gap-3">
                 <WalletImage src={wallet.src} alt={wallet.name} />
                 <span className="tracking-wide">{wallet.name}</span>
-                {/* <div className="w-6 h-6 flex items-center justify-center shrink-0 overflow-hidden">
-                  <img
-                    src={wallet.src}
-                    alt={`${wallet.name} logo`}
-                    className="h-5 w-5 object-contain rounded-md"
-                  />
-                </div>
-                <span className="tracking-wide">{wallet.name}</span> */}
               </div>
 
               {wallet.recommended && (
-                <span className="text-[9px] font-semibold bg-[#E62058]/10 text-[#E62058] px-2 py-0.5 rounded-md">
-                  Recommended
+                <span className="text-[9px] font-semibold bg-brand/10 text-brand px-2 py-0.5 rounded-md">
+                  {t("connectModal.recommended")}
                 </span>
               )}
             </button>
@@ -162,14 +156,13 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
         </div>
 
         {error && (
-          <p className="mt-3 text-center text-[10px] text-[#E62058] bg-[#E62058]/10 p-2 rounded-lg font-medium tracking-wide">
-            {getFriendlyErrorMessage(error)}
+          <p className="mt-3 text-center text-[10px] text-brand bg-brand/10 p-2 rounded-lg font-medium tracking-wide">
+            {getFriendlyErrorMessage(error, t)}
           </p>
         )}
 
-        <div className="mt-5 text-[10px] text-[#94A3B8] dark:text-[#71717A] text-center leading-relaxed">
-          On mobile, open FlareGPT in your wallet's built-in browser for the
-          best connection experience.
+        <div className="mt-5 text-[10px] text-ink-muted text-center leading-relaxed">
+          {t("connectModal.mobileHint")}
         </div>
       </div>
     </div>

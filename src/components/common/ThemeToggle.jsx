@@ -1,5 +1,5 @@
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import { useUIStore } from "../../store/useUIStore";
+import { useUIStore } from "@/store/useUIStore";
 
 export default function ThemeToggle() {
   const darkMode = useUIStore((state) => state.darkMode);
@@ -13,27 +13,27 @@ export default function ThemeToggle() {
     >
       <div
         className={`absolute top-0.5 bottom-0.5 rounded-lg bg-white dark:bg-[#161619] shadow-sm w-[32px] transition-all duration-300 ease-out ${
-          darkMode ? "left-[36px]" : "left-[3px]"
-        }`}
+ darkMode ? "left-[36px]" : "left-[3px]"
+ }`}
       />
 
       <div className="relative z-10 flex items-center justify-center w-8 h-full">
         <SunIcon
           className={`h-4 w-4 transition-colors duration-300 ${
-            !darkMode
-              ? "text-[#E62058]"
-              : "text-[#475569] dark:text-[#A1A1AA]"
-          }`}
+ !darkMode
+ ? "text-brand"
+ : "text-ink-secondary"
+ }`}
         />
       </div>
 
       <div className="relative z-10 flex items-center justify-center w-8 h-full">
         <MoonIcon
           className={`h-4 w-4 transition-colors duration-300 ${
-            darkMode
-              ? "text-[#E62058]"
-              : "text-[#475569] dark:text-[#A1A1AA]"
-          }`}
+ darkMode
+ ? "text-brand"
+ : "text-ink-secondary"
+ }`}
         />
       </div>
     </button>

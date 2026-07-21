@@ -1,6 +1,6 @@
 // src/config/web3Config.js
 import { createConfig, http } from "wagmi";
-import { mainnet } from "wagmi/chains"; // 🟢 ADDED: Mainnet as a fallback root definition
+import { mainnet } from "wagmi/chains";
 import { injected, walletConnect } from "wagmi/connectors";
 
 export const flare = {
@@ -16,7 +16,6 @@ export const flare = {
 };
 
 export const web3Config = createConfig({
-  // 🟢 CHANGED: Include mainnet in the configuration array so the app architecture
   // natively understands how to fallback to a standard namespace block when handshaking.
   chains: [flare, mainnet],
   connectors: [
@@ -30,7 +29,6 @@ export const web3Config = createConfig({
           "--w3m-accent": "#E62058", // This will change the button/accent color to your brand color
         },
       },
-      // 🟢 FIXED: Wagmi v2 checks this property directly at the root option level,
       // not inside an "ethereumProviderOptions" block!
       isNewChainsStale: false,
     }),

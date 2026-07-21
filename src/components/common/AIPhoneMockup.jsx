@@ -39,7 +39,7 @@ export default function AIPhoneMockup() {
             <div className="absolute left-1/2 top-3 h-7 w-28 -translate-x-1/2 rounded-full border border-white/10 bg-black" />
 
             {/* Header */}
-            <div className="border-b border-[#E5E7EB] px-5 pb-4 pt-8 dark:border-[#1D1D20]">
+            <div className="border-b border-line px-5 pb-4 pt-8">
               <p className="text-[11px] uppercase tracking-[0.22em] text-[#64748B] dark:text-[#71717A]">
                 FlareGPT
               </p>
@@ -56,7 +56,7 @@ export default function AIPhoneMockup() {
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 pt-5 pb-28 text-[13px] space-y-4 scrollbar-none">
               {" "}
-              <div className="ml-auto max-w-[82%] rounded-3xl rounded-br-md bg-[#E62058] px-4 py-3 text-white">
+              <div className="ml-auto max-w-[82%] rounded-3xl rounded-br-md bg-brand px-4 py-3 text-white">
                 Analyze my wallet
               </div>
               <div className="max-w-[92%] rounded-3xl rounded-bl-md border border-[#E5E7EB] bg-[#F8FAFC] px-4 py-4 leading-6 text-[#334155] dark:border-[#232327] dark:bg-[#17171A] dark:text-[#E4E4E7]">
@@ -77,7 +77,7 @@ export default function AIPhoneMockup() {
                 Overall, your wallet is healthy with no unusual activity
                 detected.
               </div>
-              <div className="ml-auto max-w-[82%] rounded-3xl rounded-br-md bg-[#E62058] px-4 py-3 text-white">
+              <div className="ml-auto max-w-[82%] rounded-3xl rounded-br-md bg-brand px-4 py-3 text-white">
                 Should I claim now?
               </div>
               <div className="max-w-[92%] rounded-3xl rounded-bl-md border border-[#E5E7EB] bg-[#F8FAFC] px-4 py-4 leading-6 text-[#334155] dark:border-[#232327] dark:bg-[#17171A] dark:text-[#E4E4E7]">
@@ -106,7 +106,7 @@ export default function AIPhoneMockup() {
                       Recommendation
                     </span>
 
-                    <span className="font-semibold text-[#E62058]">
+                    <span className="font-semibold text-brand">
                       Claim Now
                     </span>
                   </div>
@@ -121,7 +121,7 @@ export default function AIPhoneMockup() {
                   Ask FlareGPT...
                 </span>
 
-                <div className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#E62058]">
+                <div className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-brand">
                   <ArrowRightIcon className="h-4 w-4 text-white" />
                 </div>
               </div>

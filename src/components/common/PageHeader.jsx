@@ -9,7 +9,7 @@ export default function PageHeader({
       <div className="space-y-1">
         <div className="flex items-center gap-2">
           {/* Main Title - Light: Primary (#0F172A) | Dark: Primary (#FAFAFA) */}
-          <h2 className="text-xl font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
+          <h2 className="text-xl font-semibold text-ink-primary">
             {title}
           </h2>
         </div>

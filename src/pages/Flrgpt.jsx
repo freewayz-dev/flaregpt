@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PageHeader from "../components/common/PageHeader";
+import PageHeader from "@/components/common/PageHeader";
 
 export default function FLRGPT() {
   const [messages, setMessages] = useState([
@@ -37,17 +37,7 @@ export default function FLRGPT() {
 
       <div className="flex h-full gap-4">
         {/* LEFT - CHAT AREA */}
-        <div
-          className="
-        flex flex-col flex-1
-        rounded-2xl
-        border border-slate-200
-        bg-white
-
-        dark:bg-[#1A1A1A]
-        dark:border-[#27272A]
-      "
-        >
+        <div className="flex flex-col flex-1 rounded-2xl border border-slate-200 bg-white dark:bg-[#1A1A1A] dark:border-[#27272A]">
           {/* MESSAGES */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((msg, i) => (
@@ -58,18 +48,11 @@ export default function FLRGPT() {
                 }`}
               >
                 <div
-                  className={`
-                  max-w-[75%]
-                  rounded-2xl
-                  px-4 py-3
-                  text-sm
-
-                  ${
+                  className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm ${
                     msg.role === "user"
-                      ? "bg-[#E62058] text-white"
+                      ? "bg-brand text-white"
                       : "bg-slate-100 text-slate-800 dark:bg-[#0A0A0A] dark:text-slate-200"
-                  }
-                `}
+                  }`}
                 >
                   {msg.content}
                 </div>
@@ -83,34 +66,12 @@ export default function FLRGPT() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about FLR, rewards, wallets..."
-              className="
-              flex-1
-              rounded-xl
-              border border-slate-200
-
-              bg-slate-50
-              px-3 py-2
-              text-base
-
-              outline-none
-
-              dark:bg-[#0A0A0A]
-              dark:border-[#27272A]
-              dark:text-white
-            "
+              className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-base outline-none dark:bg-[#0A0A0A] dark:border-[#27272A] dark:text-white"
             />
 
             <button
               onClick={sendMessage}
-              className="
-              rounded-xl
-              bg-[#E62058]
-              px-4 py-2
-              text-sm
-              text-white
-              hover:bg-[#d81e52]
-              transition
-            "
+              className="rounded-xl bg-brand px-4 py-2 text-sm text-white hover:bg-[#d81e52] transition"
             >
               Send
             </button>
@@ -118,19 +79,7 @@ export default function FLRGPT() {
         </div>
 
         {/* RIGHT - CONTEXT PANEL */}
-        <div
-          className="
-        hidden lg:block
-        w-80
-        rounded-2xl
-        border border-slate-200
-        bg-white
-        p-4
-
-        dark:bg-[#1A1A1A]
-        dark:border-[#27272A]
-      "
-        >
+        <div className="hidden lg:block w-80 rounded-2xl border border-slate-200 bg-white p-4 dark:bg-[#1A1A1A] dark:border-[#27272A]">
           <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">
             Portfolio Context
           </h3>
@@ -164,7 +113,6 @@ export default function FLRGPT() {
           </div>
         </div>
       </div>
-
     </>
   );
 }

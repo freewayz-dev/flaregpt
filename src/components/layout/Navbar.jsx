@@ -1,6 +1,6 @@
 // src/components/layout/Navbar.jsx
 import { useState, useRef, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // 🟢 ADDED: useNavigate
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAccount } from "wagmi";
 import {
@@ -9,23 +9,22 @@ import {
   ChatBubbleLeftRightIcon,
   XMarkIcon,
   CurrencyDollarIcon,
-  PlusIcon, // 🟢 ADDED: Micro Icon reference
+  PlusIcon,
 } from "@heroicons/react/24/outline";
 
-import { useDerivedWalletHub } from "../../store/useWalletHubStore";
-import { useUIStore } from "../../store/useUIStore"; // 🟢 ADDED: Import UI store
+import { useDerivedWalletHub } from "@/store/useWalletHubStore";
+import { useUIStore } from "@/store/useUIStore";
 
 export default function Navbar({
   flareWidgetOpen,
   setFlareWidgetOpen,
   setSidebarOpen,
-  isSidebarCollapsed,
 }) {
   const location = useLocation();
-  const navigate = useNavigate(); // 🟢 ADDED: router instance
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
-  // 🟢 ADDED: Tab configuration state setter
+  const isSidebarCollapsed = useUIStore((state) => state.sidebarCollapsed);
   const setSettingsActiveTab = useUIStore((state) => state.setSettingsActiveTab);
 
   // Controls
@@ -75,7 +74,6 @@ export default function Navbar({
     return t("sidebar.FlareGPT");
   };
 
-  // 🟢 ADDED: Reusable handler to trigger state update + redirect safely
   const handleConfigureWalletsRedirect = () => {
     setSettingsActiveTab("Wallets");
     setWalletMenuOpen(false);
@@ -125,7 +123,7 @@ export default function Navbar({
 
           <div className="hidden lg:block min-w-0">
             <h1
-              className={`text-[13px] pl-2 font-bold text-[#0F172A] dark:text-[#FAFAFA] truncate transition-all duration-200 ${
+              className={`text-[13px] pl-2 font-bold text-ink-primary truncate transition-all duration-200 ${
                 isSidebarCollapsed
                   ? "opacity-100 translate-x-0"
                   : "lg:opacity-0 lg:-translate-x-2 pointer-events-none"
@@ -138,7 +136,7 @@ export default function Navbar({
 
         {/* MIDDLE ZONE */}
         <div className="flex items-center justify-center lg:hidden min-w-0">
-          <h1 className="text-[13px] font-bold text-[#0F172A] dark:text-[#FAFAFA] truncate tracking-tight">
+          <h1 className="text-[13px] font-bold text-ink-primary truncate tracking-tight">
             {getNavbarTitle()}
           </h1>
         </div>
@@ -150,7 +148,7 @@ export default function Navbar({
             <button
               type="button"
               onClick={() => setFlareWidgetOpen(!flareWidgetOpen)}
-              className="px-2.5 py-1.5 rounded-lg border border-[#E62058]/30 bg-[#E62058]/10 text-[#E62058] text-[10px] lg:text-[10.5px] font-semibold hover:bg-[#E62058] hover:text-white transition-all shadow-sm cursor-pointer"
+              className="px-2.5 py-1.5 rounded-lg border border-brand/30 bg-brand/10 text-brand text-[10px] lg:text-[10.5px] font-semibold hover:bg-brand hover:text-white transition-all shadow-sm cursor-pointer"
             >
               {t("navbar.askFlareGPT")}
             </button>
@@ -195,18 +193,17 @@ export default function Navbar({
                     : "opacity-0 scale-95 -translate-y-1 pointer-events-none"
                 }`}
               >
-                <div className="px-1.5 py-1 border-b border-[#E5E7EB] dark:border-[#1D1D20] mb-1 flex items-center justify-between gap-2">
+                <div className="px-1.5 py-1 border-b border-line mb-1 flex items-center justify-between gap-2">
                   <p className="text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
                     {t("navbar.dropdownTitle", "Active Target View")}
                   </p>
                   <div className="text-[8px] font-black text-slate-400 dark:text-[#6D7A86] tracking-wider uppercase whitespace-nowrap">
-                    Flare Mainnet
+                    {t("navbar.mainnetStatus")}
                   </div>
                 </div>
 
                 {/* Wallets Conditional View List */}
                 {allWallets.length === 0 ? (
-                  /* 🟢 CHANGED: Replaced static text block with actionable contextual layout */
                   <div className="p-3 text-center space-y-2">
                     <p className="text-slate-400 dark:text-[#6D7A86] text-[9.5px] leading-relaxed">
                       {t("navbar.noTrackedNodes", "No tracked nodes.")}
@@ -214,10 +211,10 @@ export default function Navbar({
                     <button
                       type="button"
                       onClick={handleConfigureWalletsRedirect}
-                      className="w-full flex items-center justify-center gap-1 py-1.5 rounded-lg bg-[#E62058] hover:bg-[#F03A6F] text-white text-[9.5px] font-semibold transition-colors cursor-pointer"
+                      className="w-full flex items-center justify-center gap-1 py-1.5 rounded-lg bg-brand hover:bg-brand-hover text-white text-[9.5px] font-semibold transition-colors cursor-pointer"
                     >
                       <PlusIcon className="h-3 w-3" />
-                      Configure in Settings
+                      {t("navbar.configureInSettings")}
                     </button>
                   </div>
                 ) : (
@@ -232,8 +229,8 @@ export default function Navbar({
                         }}
                         className={`w-full text-left flex items-center justify-between p-2 rounded-lg transition-colors cursor-pointer text-[10px] ${
                           activeAddress === wallet.address
-                            ? "bg-[#E62058]/10 text-[#E62058] font-bold"
-                            : "hover:bg-slate-50 dark:hover:bg-[#1B1B1F] text-[#475569] dark:text-[#A1A1AA]"
+                            ? "bg-brand/10 text-brand font-bold"
+                            : "hover:bg-slate-50 dark:hover:bg-[#1B1B1F] text-ink-secondary"
                         }`}
                       >
                         <div className="min-w-0 flex items-center gap-2">
@@ -260,7 +257,7 @@ export default function Navbar({
             <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-50 dark:bg-[#191A1F] border border-slate-100 dark:border-none text-slate-500 dark:text-[#6D7A86] shrink-0">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="tracking-wide uppercase text-[8.5px] font-bold">
-                Flare Mainnet 
+                {t("navbar.mainnetStatus")}
               </span>
             </div>
           </div>
@@ -272,7 +269,7 @@ export default function Navbar({
             className="mobile-trigger-btn lg:hidden rounded-lg p-1 text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-[#1B1B1F] transition-colors cursor-pointer z-50 relative"
           >
             {mobileMenuOpen ? (
-              <XMarkIcon className="h-6 w-6 text-[#E62058]" />
+              <XMarkIcon className="h-6 w-6 text-brand" />
             ) : (
               <svg
                 width="25"
@@ -297,7 +294,7 @@ export default function Navbar({
 
       {/* ================= MOBILE/TABLET SYSTEM OVERLAY MENU PANEL ================= */}
       <div
-        className={`lg:hidden fixed left-4 right-4 top-16 z-50 rounded-2xl border border-slate-100 dark:border-none bg-[#FFFFFF] dark:bg-[#191A1F] p-4 shadow-2xl transition-all duration-300 transform-gpu ${
+        className={`lg:hidden fixed left-4 right-4 top-16 z-50 rounded-2xl border border-slate-100 dark:border-none bg-surface-card p-4 shadow-2xl transition-all duration-300 transform-gpu ${
           mobileMenuOpen
             ? "opacity-100 scale-100 translate-y-0"
             : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
@@ -309,7 +306,7 @@ export default function Navbar({
             <div className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
               <span className="text-[10px] font-black tracking-wider uppercase text-slate-400 dark:text-[#6D7A86]">
-                Flare Mainnet
+                {t("navbar.mainnetStatus")}
               </span>
             </div>
             <div className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-600 dark:text-zinc-300 bg-slate-50 dark:bg-[#21242B] px-2 py-0.5 rounded-md">
@@ -324,7 +321,6 @@ export default function Navbar({
             </label>
 
             {allWallets.length === 0 ? (
-              /* 🟢 CHANGED: Replaced static text block with actionable context buttons for Mobile layout version */
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#1B1B1F]/40 text-center border border-dashed border-slate-100 dark:border-none space-y-2.5">
                 <p className="text-slate-400 dark:text-[#6D7A86] text-[10px]">
                   {t("navbar.noTrackedNodes", "No tracked nodes.")}
@@ -332,10 +328,10 @@ export default function Navbar({
                 <button
                   type="button"
                   onClick={handleConfigureWalletsRedirect}
-                  className="w-full py-2 rounded-xl bg-[#E62058] hover:bg-[#F03A6F] text-white text-[11px] font-semibold transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                  className="w-full py-2 rounded-xl bg-brand hover:bg-brand-hover text-white text-[11px] font-semibold transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <PlusIcon className="h-3.5 w-3.5" />
-                  Configure in Settings
+                  {t("navbar.configureInSettings")}
                 </button>
               </div>
             ) : (
@@ -350,7 +346,7 @@ export default function Navbar({
                     }}
                     className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all border dark:border-none text-left ${
                       activeAddress === wallet.address
-                        ? "bg-[#E62058]/10 border-[#E62058]/20 text-[#E62058] font-bold"
+                        ? "bg-brand/10 border-brand/20 text-brand font-bold"
                         : "bg-slate-50/50 dark:bg-[#21242B] border-transparent text-slate-600 dark:text-[#6D7A86]"
                     }`}
                   >
@@ -367,10 +363,10 @@ export default function Navbar({
                     </div>
                     <span
                       className={`h-1.5 w-1.5 rounded-full shrink-0 ml-2 ${
-                        wallet.type === "connected"
-                          ? "bg-emerald-500"
-                          : "bg-amber-400"
-                      }`}
+                      wallet.type === "connected"
+                        ? "bg-emerald-500"
+                        : "bg-amber-400"
+                    }`}
                     />
                   </button>
                 ))}
@@ -384,7 +380,7 @@ export default function Navbar({
       <button
         type="button"
         onClick={() => setFlareWidgetOpen(!flareWidgetOpen)}
-        className="lg:hidden fixed bottom-10 right-5 z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-[#E62058] to-[#F03A6F] text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
+        className="lg:hidden fixed bottom-10 right-5 z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-brand to-brand-hover text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
         aria-label={t("navbar.askFlareGPT")}
       >
         <ChatBubbleLeftRightIcon className="h-5 w-5" />

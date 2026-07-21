@@ -14,6 +14,7 @@ export const useUIStore = create()(
       // Other UI settings
       blueLightLevel: "Off",
       settingsActiveTab: "Preferences",
+      sidebarCollapsed: false,
 
       toggleTheme: () => {
         const nextMode = !get().darkMode;
@@ -36,6 +37,9 @@ export const useUIStore = create()(
 
       setSettingsActiveTab: (tabId) =>
         set({ settingsActiveTab: tabId }),
+
+      toggleSidebarCollapsed: () =>
+        set((state) => ({ sidebarCollapsed: !state.sidebarCollapsed })),
     }),
     {
       name: "flaregpt_ui_preferences",

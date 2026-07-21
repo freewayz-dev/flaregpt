@@ -2,7 +2,8 @@
   "footer": {
     "copyright": "© {{year}} FlareGPT. 基于 Flare Network 构建。",
     "disclaimer": "非财务建议。所提供数据仅供参考之用。",
-    "terms": "条款与免责声明"
+    "terms": "条款与免责声明",
+    "donate": "捐献"
   },
   "help": {
     "contactSupport": "联系支持",
@@ -95,7 +96,10 @@
   },
   "navbar": {
     "askFlareGPT": "咨询 FlareGPT",
-    "mainnetStatus": "Flare 主网"
+    "mainnetStatus": "Flare 主网",
+    "dropdownTitle": "活动目标视图",
+    "noTrackedNodes": "没有跟踪的节点。",
+    "noWallet": "无钱包"
   },
   "settings": {
     "cards": {
@@ -183,7 +187,21 @@
       "limit": "您最多可以连接 {{max}} 个钱包",
       "limitReached": "达到钱包上限 ({{current}}/{{max}})",
       "maximum": "最大容量",
-      "remainingSlots": "剩余槽位"
+      "remainingSlots": "剩余槽位",
+      "addFormTitle": "添加关注列表投资组合账户",
+      "addressPlaceholder": "0x... Flare钱包地址",
+      "invalidAddress": "请输入有效的Flare EVM网络地址（从0x开始）。",
+      "labelPlaceholder": "账户名称标签（例如，冷藏）",
+      "liveConnected": "实时连接",
+      "manageSubtitle": "管理您的活动Web3连接和只读投资组合跟踪帐户。",
+      "readOnly": "只读",
+      "registrationFailed": "地址注册失败。请检查地址是否重复或是否已填充空位。",
+      "tracked": "已追踪"
+    },
+    "links": {
+      "docs": "文档批注",
+      "github": "GitHub 代码库",
+      "twitter": "推特"
     }
   },
   "sidebar": {
@@ -200,7 +218,9 @@
     "settings": "设置",
     "walletActivity": "钱包活动",
     "walletConnected": "钱包已连接",
-    "yield": "收益率"
+    "yield": "收益率",
+    "loops": "循环",
+    "feeds": "馈送"
   },
   "wallet": {
     "activity": {
@@ -232,5 +252,46 @@
       "received": "已发放",
       "sent": "发件箱"
     }
+  },
+  "comingSoon": {
+    "badge": "敬请期待",
+    "description": "我们正在构建此功能。请稍后再回来查看。"
+  },
+  "connectModal": {
+    "errors": {
+      "generic": "发生意外的连接摩擦。请重试或使用其他钱包。",
+      "pending": "连接请求已打开。请打开您的钱包扩展面板。",
+      "rejected": "您的钱包中的连接请求已取消。",
+      "wrongNetwork": "请将钱包的活动网络切换到Flare主网。"
+    },
+    "mobileHint": "在移动设备上，在钱包的内置浏览器中打开FlareGPT ，以获得最佳连接体验。",
+    "recommended": "推荐AI",
+    "subtitle": "选择您的首选钱包以连接到Flare网络。",
+    "title": "连接钱包"
+  },
+  "flareWidget": {
+    "back": "回到",
+    "chatHistory": "对话历史",
+    "close": "关闭",
+    "collapse": "折叠",
+    "expand": "展开",
+    "historyTitle": "对话历史",
+    "inputPlaceholder": "询问FlareGPT……",
+    "liveBanner": "FLARE主网•实时助手",
+    "mockHistory": [
+      "FLR价格分析",
+      "钱包设置帮助",
+      "收益率策略",
+      "治理讨论"
+    ],
+    "newChat": "新的聊天",
+    "send": "傳送",
+    "suggestions": [
+      "今天的FLR价格是多少？",
+      "钱包余额",
+      "如何赚取FTSO奖励？",
+      "解释FLARE网络",
+      "最新治理提案"
+    ]
   }
 }

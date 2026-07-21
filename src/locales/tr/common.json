@@ -2,7 +2,8 @@
   "footer": {
     "copyright": "© {{year}} FlareGPT. Flare Network üzerinde inşa edilmiştir.",
     "disclaimer": "Yatırım tavsiyesi değildir. Veriler yalnızca bilgilendirme amaçlı sağlanmıştır.",
-    "terms": "Şartlar ve Sorumluluk Reddi"
+    "terms": "Şartlar ve Sorumluluk Reddi",
+    "donate": "Bağış yap"
   },
   "help": {
     "contactSupport": "Destekle İletişime Geçin",
@@ -95,7 +96,10 @@
   },
   "navbar": {
     "askFlareGPT": "FlareGPT'ye Sor",
-    "mainnetStatus": "Flare Ana Ağı"
+    "mainnetStatus": "Flare Ana Ağı",
+    "dropdownTitle": "Etkin Hedef Görünümü",
+    "noTrackedNodes": "İzlenen düğüm yok.",
+    "noWallet": "Cüzdan Yok"
   },
   "settings": {
     "cards": {
@@ -183,7 +187,21 @@
       "limit": "En fazla {{max}} cüzdan bağlayabilirsiniz",
       "limitReached": "Cüzdan Sınırına Ulaşıldı ({{current}}/{{max}})",
       "maximum": "Maksimum",
-      "remainingSlots": "Kalan Yuvalar"
+      "remainingSlots": "Kalan Yuvalar",
+      "addFormTitle": "İzleme Listesi Portföy Hesabı Ekle",
+      "addressPlaceholder": "0x... Flare Cüzdan Adresi",
+      "invalidAddress": "Lütfen geçerli bir Flare EVM ağ adresi girin (0x ile başlayarak).",
+      "labelPlaceholder": "Hesap Adı Etiketi (ör. Soğuk Hava Deposu)",
+      "liveConnected": "Canlı Bağlantılı",
+      "manageSubtitle": "Aktif Web3 bağlantılarınızı ve salt okunur portföy takip hesaplarınızı yönetin.",
+      "readOnly": "Salt Okunur",
+      "registrationFailed": "Adres kaydı başarısız oldu. Yinelenen olup olmadığını veya yuvaların dolu olup olmadığını kontrol edin.",
+      "tracked": "İzlenen"
+    },
+    "links": {
+      "docs": "Dokümanlar",
+      "github": "GitHub",
+      "twitter": "Twitter"
     }
   },
   "sidebar": {
@@ -200,7 +218,9 @@
     "settings": "Ayarlar",
     "walletActivity": "Cüzdan Aktivitesi",
     "walletConnected": "Cüzdan Bağlandı",
-    "yield": "Getiri"
+    "yield": "Getiri",
+    "loops": "Döngüler",
+    "feeds": "Bildirimler"
   },
   "wallet": {
     "activity": {
@@ -232,5 +252,46 @@
       "received": "Gelen",
       "sent": "Gönderildi"
     }
+  },
+  "comingSoon": {
+    "badge": "Çok Yakında",
+    "description": "Bu özelliği geliştiriyoruz. Kısa süre sonra tekrar kontrol edin."
+  },
+  "connectModal": {
+    "errors": {
+      "generic": "Beklenmedik bir bağlantı sürtünmesi meydana geldi. Lütfen tekrar deneyin veya başka bir cüzdan kullanın.",
+      "pending": "Bir bağlantı isteği zaten açık. Lütfen cüzdan uzantı panelinizi açın.",
+      "rejected": "Cüzdanınızdaki bağlantı isteği iptal edildi.",
+      "wrongNetwork": "Lütfen cüzdanınızın aktif ağını Flare Mainnet olarak değiştirin."
+    },
+    "mobileHint": "Mobil cihazlarda, en iyi bağlantı deneyimi için cüzdanınızın yerleşik tarayıcısında FlareGPT'yi açın.",
+    "recommended": "Önerilen",
+    "subtitle": "Flare Ağına bağlanmak için tercih ettiğiniz cüzdanı seçin.",
+    "title": "Cüzdanınızı Bağlayın"
+  },
+  "flareWidget": {
+    "back": "Geri",
+    "chatHistory": "Sohbet Geçmişi",
+    "close": "Kapat",
+    "collapse": "Çökme",
+    "expand": "Genişlet",
+    "historyTitle": "Sohbet Geçmişi",
+    "inputPlaceholder": "FlareGPT'ye sorun...",
+    "liveBanner": "Flare Mainnet • Canlı Asistan",
+    "mockHistory": [
+      "Fiyat Analizi ",
+      "Cüzdan kurulumu yardımı",
+      "Verim stratejileri",
+      "Yönetişim tartışması"
+    ],
+    "newChat": "Yeni sohbet",
+    "send": "Gönder",
+    "suggestions": [
+      "Bugünkü FLR fiyatı nedir?",
+      "Cüzdan bakiyesi",
+      "FTSO ödüllerini nasıl kazanırım?",
+      "Flare Ağını Açıklayın",
+      "En son yönetişim teklifleri"
+    ]
   }
 }

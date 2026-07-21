@@ -1,6 +1,6 @@
 // src/components/layout/Sidebar.jsx
 import { useState } from "react";
-import { useLocation, Link, useNavigate } from "react-router-dom"; // 🟢 ADDED: useNavigate
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAccount, useDisconnect } from "wagmi";
 import {
@@ -19,86 +19,85 @@ import {
   GiftIcon,
 } from "@heroicons/react/24/outline";
 
-import FlareGptSimpleLogo from "./Logo";
-import ConnectWalletModal from "./ConnectWalletModal";
-import Logo from "../../assets/icons/fl.png";
-import { useUIStore } from "../../store/useUIStore"; // 🟢 ADDED: Import UI store
+import FlareGptSimpleLogo from "@/components/common/Logo";
+import ConnectWalletModal from "@/components/common/ConnectWalletModal";
+import Logo from "@/assets/icons/fl.png";
+import { useUIStore } from "@/store/useUIStore";
 
 // Asynchronous route code chunk-splitting anchors
-const prefetchDashboard = () => import("../../pages/Dashboard");
-const prefetchFlareGPT = () => import("../../pages/Flrgpt");
-const prefetchWallet = () => import("../../pages/WalletActivity");
-const prefetchSettings = () => import("../../pages/Settings");
-const prefetchHelp = () => import("../../pages/Help");
+const prefetchDashboard = () => import("@/pages/Dashboard");
+const prefetchFlareGPT = () => import("@/pages/Flrgpt");
+const prefetchWallet = () => import("@/pages/WalletActivity");
+const prefetchSettings = () => import("@/pages/Settings");
+const prefetchHelp = () => import("@/pages/Help");
 
 const links = [
   {
     translationKey: "overview",
-    path: "/app", // 🟢 UPDATED: Points to your dashboard index route endpoint directly
+    path: "/app",
     icon: Squares2X2Icon,
     prefetch: prefetchDashboard,
   },
   {
     translationKey: "FlareGPT",
-    path: "/app/flare-gpt", // 🟢 UPDATED
+    path: "/app/flare-gpt",
     icon: ChatBubbleLeftRightIcon,
     prefetch: prefetchFlareGPT,
   },
   {
     translationKey: "walletActivity",
-    path: "/app/wallet", // 🟢 UPDATED
+    path: "/app/wallet",
     icon: WalletIcon,
     prefetch: prefetchWallet,
   },
   {
     translationKey: "ftsoRewards",
-    path: "/app/rewards", // 🟢 UPDATED
+    path: "/app/rewards",
     icon: GiftIcon,
   },
   {
-    translationKey: "yield",
-    path: "/app/yield", // 🟢 UPDATED
+    translationKey: "loops",
+    path: "/app/loops",
     icon: ArrowTrendingUpIcon,
   },
   {
     translationKey: "rflrTracker",
-    path: "/app/rflr", // 🟢 UPDATED
+    path: "/app/rflr",
     icon: ChartBarIcon,
+  },
+  
+  {
+    translationKey: "fxrpPool",
+    path: "/app/fxrp",
+    icon: CurrencyDollarIcon,
   },
   {
     translationKey: "governance",
-    path: "/app/governance", // 🟢 UPDATED
+    path: "/app/governance",
     icon: ShieldCheckIcon,
   },
   {
-    translationKey: "fxrpPool",
-    path: "/app/fxrp", // 🟢 UPDATED
-    icon: CurrencyDollarIcon,
-  },
-  {
-    translationKey: "feeds",
-    path: "/app/feeds", // 🟢 UPDATED
-    icon: CurrencyDollarIcon,
-  },
-  {
     translationKey: "settings",
-    path: "/app/settings", // 🟢 UPDATED
+    path: "/app/settings",
     icon: Cog6ToothIcon,
     prefetch: prefetchSettings,
   },
   {
     translationKey: "helpCenter",
-    path: "/app/help", // 🟢 UPDATED
+    path: "/app/help",
     icon: QuestionMarkCircleIcon,
     prefetch: prefetchHelp,
   },
 ];
-export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
+export default function Sidebar({ open, setOpen }) {
   const { t } = useTranslation();
   const location = useLocation();
-  const navigate = useNavigate(); // 🟢 ADDED: router hook
+  const navigate = useNavigate();
 
-  // 🟢 ADDED: Tab management setter action
+  const collapsed = useUIStore((state) => state.sidebarCollapsed);
+  const toggleSidebarCollapsed = useUIStore(
+    (state) => state.toggleSidebarCollapsed,
+  );
   const setSettingsActiveTab = useUIStore(
     (state) => state.setSettingsActiveTab,
   );
@@ -118,16 +117,6 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
 
   const isActive = (path) => location.pathname === path;
 
-  // Intercept the toggle to write cleanly to context and localStorage simultaneously
-  const handleToggleCollapse = () => {
-    setCollapsed((prev) => {
-      const nextState = !prev;
-      localStorage.setItem("sidebar-collapsed", nextState);
-      return nextState;
-    });
-  };
-
-  // 🟢 ADDED: Smooth routing navigation utility handler
   const handleDeepLinkToWallets = () => {
     setSettingsActiveTab("Wallets");
     setOpen(false); // Close mobile drawer if open
@@ -146,7 +135,7 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
 
       {/* Core Component Frame Container */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 h-full flex flex-col bg-[#FFFFFF] shadow-[0_1px_3px_rgba(0,0,0,0.01)] dark:bg-[#191A1F] border-r border-[#E5E7EB] dark:border-[#1D1D20] transform lg:static lg:translate-x-0
+        className={`fixed inset-y-0 left-0 z-50 h-full flex flex-col bg-surface-card shadow-[0_1px_3px_rgba(0,0,0,0.01)] border-r border-line transform lg:static lg:translate-x-0
           transition-[width,transform] duration-300 ease-in-out
           w-[240px] ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
           ${open ? "translate-x-0" : "-translate-x-full"}
@@ -164,8 +153,8 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
             <div className="ml-auto flex items-center gap-2">
               <button
                 type="button"
-                onClick={handleToggleCollapse}
-                className="hidden lg:flex h-8 w-8 items-center justify-center rounded-lg text-[#475569] dark:text-[#A1A1AA] hover:bg-[#F3F4F6] dark:hover:bg-[#1B1B1F] cursor-pointer"
+                onClick={toggleSidebarCollapsed}
+                className="hidden lg:flex h-8 w-8 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-subtle cursor-pointer"
               >
                 <ChevronDoubleLeftIcon className="h-4 w-4" />
               </button>
@@ -173,7 +162,7 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="lg:hidden p-1 rounded-lg text-[#475569] hover:bg-[#F3F4F6] dark:text-[#A1A1AA] dark:hover:bg-[#1B1B1F] cursor-pointer"
+                className="lg:hidden p-1 rounded-lg text-ink-secondary hover:bg-surface-subtle cursor-pointer"
               >
                 <XMarkIcon className="h-5 w-5" />
               </button>
@@ -183,13 +172,13 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
           {/* Symmetrical Collapsed Indicator view */}
           {collapsed && (
             <div className="hidden lg:flex flex-col items-center gap-3 pt-1.5">
-              <div className="relative w-5 h-5 flex items-center justify-center rounded-xl bg-[#E62058] shadow-md flex-shrink-0 overflow-hidden">
+              <div className="relative w-5 h-5 flex items-center justify-center rounded-xl bg-brand shadow-md flex-shrink-0 overflow-hidden">
                 <img alt="Logo" src={Logo} />
               </div>
               <button
                 type="button"
-                onClick={handleToggleCollapse}
-                className="h-8 w-8 pl-2 items-center justify-center rounded-lg text-[#475569] dark:text-[#A1A1AA] hover:bg-[#F3F4F6] dark:hover:bg-[#1B1B1F] hover:text-[#0F172A] dark:hover:text-[#FAFAFA] transition-colors cursor-pointer"
+                onClick={toggleSidebarCollapsed}
+                className="h-8 w-8 pl-2 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-subtle hover:text-ink-primary transition-colors cursor-pointer"
               >
                 <ChevronDoubleRightIcon className="h-4 w-4" />
               </button>
@@ -215,8 +204,8 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
                   px-3 gap-3 ${collapsed ? "lg:justify-center lg:px-2 lg:gap-0" : ""}
                   ${
                     active
-                      ? "relative bg-[#E62058]/15 text-[#E62058]"
-                      : "text-[#475569] hover:bg-[#F3F4F6] hover:text-[#0F172A] dark:text-[#6D7A86] dark:hover:bg-[#1B1B1F] dark:hover:text-[#FAFAFA]"
+                      ? "relative bg-brand/15 text-brand"
+                      : "text-[#475569] hover:bg-surface-subtle hover:text-ink-primary dark:text-[#6D7A86]"
                   }
                 `}
               >
@@ -235,13 +224,13 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
             <div className={`space-y-2 ${collapsed ? "lg:hidden" : ""}`}>
               {!isConnected ? (
                 <>
-                  <p className="text-xs text-[#475569] dark:text-[#A1A1AA]">
+                  <p className="text-xs text-ink-secondary">
                     Not Connected
                   </p>
                   <button
                     type="button"
                     onClick={() => setModalOpen(true)}
-                    className="w-full rounded-xl bg-[#E62058] px-3 py-2 text-xs font-medium text-white hover:bg-[#F03A6F] transition-colors shadow-sm cursor-pointer"
+                    className="w-full rounded-xl bg-brand px-3 py-2 text-xs font-medium text-white hover:bg-brand-hover transition-colors shadow-sm cursor-pointer"
                   >
                     Connect Wallet
                   </button>
@@ -252,11 +241,10 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
                     <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
                       Active: {formatAddress(address)}
                     </p>
-                    {/* 🟢 ADDED: Minimal sub-border action link button for managing/adding tracking variables */}
                     <button
                       type="button"
                       onClick={handleDeepLinkToWallets}
-                      className="text-left text-[10px] text-slate-400 dark:text-zinc-500 hover:text-[#E62058] dark:hover:text-[#E62058] transition-colors cursor-pointer w-fit font-medium"
+                      className="text-left text-[10px] text-slate-400 dark:text-zinc-500 hover:text-brand dark:hover:text-brand transition-colors cursor-pointer w-fit font-medium"
                     >
                       + Add Watchlist Wallet
                     </button>
@@ -264,7 +252,7 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
                   <button
                     type="button"
                     onClick={() => disconnect()}
-                    className="w-full rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-3 py-2 text-xs text-[#475569] hover:bg-[#F3F4F6] hover:text-[#0F172A] dark:border-none dark:bg-[#1B1B1F] dark:text-[#A1A1AA] dark:hover:bg-[#1B1B1F]/70 transition-colors cursor-pointer"
+                    className="w-full rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-3 py-2 text-xs text-ink-secondary hover:bg-surface-subtle hover:text-[#0F172A] dark:border-none dark:hover:bg-[#1B1B1F]/70 transition-colors cursor-pointer"
                   >
                     Disconnect
                   </button>
@@ -279,7 +267,7 @@ export default function Sidebar({ collapsed, setCollapsed, open, setOpen }) {
                 onClick={() =>
                   isConnected ? disconnect() : setModalOpen(true)
                 }
-                className="hidden lg:flex w-full justify-center rounded-xl p-3 bg-[#E62058]/10 text-[#E62058] cursor-pointer"
+                className="hidden lg:flex w-full justify-center rounded-xl p-3 bg-brand/10 text-brand cursor-pointer"
               >
                 <WalletIcon className="h-5 w-5" />
               </button>
