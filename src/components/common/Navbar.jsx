@@ -96,7 +96,7 @@ export default function Navbar({
         />
       )}
 
-      <header className="sticky top-0 z-30 h-12 w-full grid grid-cols-3 lg:flex lg:items-center lg:justify-between pt-2 px-2 md:pt-0 xl:px-4 bg-transparent transition-colors duration-200">
+      <header className="sticky top-0 z-30 h-12 w-full grid grid-cols-3 lg:flex lg:items-center lg:justify-between pt-2 px-2 md:pt-0 xl:px-4 bg-inherit transition-colors duration-200">
         
         {/* LEFT ZONE */}
         <div className="flex items-center justify-start min-w-0">
@@ -189,17 +189,17 @@ export default function Navbar({
 
               {/* Desktop Dropdown Panel Card */}
               <div
-                className={`absolute right-0 mt-2 w-56 origin-top-right rounded-xl bg-[#FFFFFF] border border-[#E5E7EB] p-2 shadow-xl dark:bg-[#161619] dark:border-none z-50 space-y-1 transition-all duration-200 ${
+                className={`absolute right-0 mt-2 w-56 origin-top-right rounded-xl bg-[#FFFFFF] border border-[#E5E7EB] p-2 shadow-xl dark:bg-[#21242B] dark:border-none z-50 space-y-1 transition-all duration-200 ${
                   walletMenuOpen
                     ? "opacity-100 scale-100 translate-y-0"
                     : "opacity-0 scale-95 -translate-y-1 pointer-events-none"
                 }`}
               >
                 <div className="px-1.5 py-1 border-b border-[#E5E7EB] dark:border-[#1D1D20] mb-1 flex items-center justify-between gap-2">
-                  <p className="text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#71717A] font-bold">
+                  <p className="text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
                     {t("navbar.dropdownTitle", "Active Target View")}
                   </p>
-                  <div className="text-[8px] font-black text-slate-400 dark:text-zinc-500 tracking-wider uppercase whitespace-nowrap">
+                  <div className="text-[8px] font-black text-slate-400 dark:text-[#6D7A86] tracking-wider uppercase whitespace-nowrap">
                     Flare Mainnet
                   </div>
                 </div>
@@ -208,7 +208,7 @@ export default function Navbar({
                 {allWallets.length === 0 ? (
                   /* 🟢 CHANGED: Replaced static text block with actionable contextual layout */
                   <div className="p-3 text-center space-y-2">
-                    <p className="text-slate-400 dark:text-[#71717A] text-[9.5px] leading-relaxed">
+                    <p className="text-slate-400 dark:text-[#6D7A86] text-[9.5px] leading-relaxed">
                       {t("navbar.noTrackedNodes", "No tracked nodes.")}
                     </p>
                     <button
@@ -257,10 +257,10 @@ export default function Navbar({
               </div>
             </div>
 
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-50 dark:bg-[#1B1B1F] border border-slate-100 dark:border-none text-slate-500 dark:text-zinc-400 shrink-0">
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-50 dark:bg-[#191A1F] border border-slate-100 dark:border-none text-slate-500 dark:text-[#6D7A86] shrink-0">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="tracking-wide uppercase text-[8.5px] font-bold">
-                Flare Mainnet
+                Flare Mainnet 
               </span>
             </div>
           </div>
@@ -297,7 +297,7 @@ export default function Navbar({
 
       {/* ================= MOBILE/TABLET SYSTEM OVERLAY MENU PANEL ================= */}
       <div
-        className={`lg:hidden fixed left-4 right-4 top-16 z-50 rounded-2xl border border-slate-100 dark:border-none bg-[#FFFFFF] dark:bg-[#131316] p-4 shadow-2xl transition-all duration-300 transform-gpu ${
+        className={`lg:hidden fixed left-4 right-4 top-16 z-50 rounded-2xl border border-slate-100 dark:border-none bg-[#FFFFFF] dark:bg-[#191A1F] p-4 shadow-2xl transition-all duration-300 transform-gpu ${
           mobileMenuOpen
             ? "opacity-100 scale-100 translate-y-0"
             : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
@@ -305,28 +305,28 @@ export default function Navbar({
         ref={mobileMenuRef}
       >
         <div className="space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#1D1D20]/60">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#2B2F36]">
             <div className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              <span className="text-[10px] font-black tracking-wider uppercase text-slate-400 dark:text-zinc-500">
+              <span className="text-[10px] font-black tracking-wider uppercase text-slate-400 dark:text-[#6D7A86]">
                 Flare Mainnet
               </span>
             </div>
-            <div className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-600 dark:text-zinc-300 bg-slate-50 dark:bg-[#1B1B1F] px-2 py-0.5 rounded-md">
+            <div className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-600 dark:text-zinc-300 bg-slate-50 dark:bg-[#21242B] px-2 py-0.5 rounded-md">
               <CurrencyDollarIcon className="h-3 w-3 text-emerald-500" />
               <span>FLR: $0.0182</span>
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] dark:text-[#71717A] block px-1">
+            <label className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] block px-1">
               {t("navbar.dropdownTitle", "Active Target View")}
             </label>
 
             {allWallets.length === 0 ? (
               /* 🟢 CHANGED: Replaced static text block with actionable context buttons for Mobile layout version */
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#1B1B1F]/40 text-center border border-dashed border-slate-100 dark:border-none space-y-2.5">
-                <p className="text-slate-400 dark:text-[#71717A] text-[10px]">
+                <p className="text-slate-400 dark:text-[#6D7A86] text-[10px]">
                   {t("navbar.noTrackedNodes", "No tracked nodes.")}
                 </p>
                 <button
@@ -351,7 +351,7 @@ export default function Navbar({
                     className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all border dark:border-none text-left ${
                       activeAddress === wallet.address
                         ? "bg-[#E62058]/10 border-[#E62058]/20 text-[#E62058] font-bold"
-                        : "bg-slate-50/50 dark:bg-[#1B1B1F]/40 border-transparent text-slate-600 dark:text-[#A1A1AA]"
+                        : "bg-slate-50/50 dark:bg-[#21242B] border-transparent text-slate-600 dark:text-[#6D7A86]"
                     }`}
                   >
                     <div className="min-w-0 flex items-center gap-2.5">

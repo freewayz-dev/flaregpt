@@ -73,12 +73,12 @@ export default function Help() {
 
       <div className="mx-auto max-w-[1440px] space-y-6 sm:space-y-8">
         {/* SEARCH EXPLORER HUB - Card: #FFFFFF | Dark Card: #161619 */}
-        <div className="relative rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#161619] overflow-hidden">
+        <div className="relative rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F] overflow-hidden">
           <div className="relative z-10 max-w-xl">
             <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
               {t("help.searchTitle")}
             </h2>
-            <p className="mt-1 text-xs text-[#475569] dark:text-[#71717A]">
+            <p className="mt-1 text-xs text-[#475569] dark:text-[#6D7A86]">
               {t("help.searchSub")}
             </p>
 
@@ -86,7 +86,7 @@ export default function Help() {
             <div className="mt-4 relative rounded-xl shadow-sm w-full max-w-md">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <MagnifyingGlassIcon
-                  className="h-4 w-4 text-[#94A3B8] dark:text-[#71717A]"
+                  className="h-4 w-4 text-[#94A3B8] dark:text-[#6D7A86]"
                   aria-hidden="true"
                 />
               </div>
@@ -95,7 +95,7 @@ export default function Help() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t("help.searchPlaceholder")}
-                className="block w-full rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] py-2 pl-9 pr-4 text-base text-[#0F172A] placeholder-[#94A3B8] focus:border-[#E62058] focus:outline-none focus:ring-1 focus:ring-[#E62058] dark:border-none dark:bg-[#121214] dark:text-[#FAFAFA] dark:placeholder-[#71717A] dark:focus:ring-1 dark:focus:ring-[#E62058]"
+                className="block w-full rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] py-2 pl-9 pr-4 text-base text-[#0F172A] placeholder-[#94A3B8] focus:border-[#E62058] focus:outline-none focus:ring-1 focus:ring-[#E62058] dark:border-none dark:bg-[#21242B] dark:text-[#FAFAFA] dark:placeholder-[#71717A] dark:focus:ring-1 dark:focus:ring-[#E62058]"
               />
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function Help() {
 
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-3">
           {/* GETTING STARTED TRACK - Card: #FFFFFF | Dark Card: #161619 */}
-          <div className="order-2 lg:order-1 lg:col-span-1 flex flex-col rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#161619]">
+          <div className="order-2 lg:order-1 lg:col-span-1 flex flex-col rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F]">
             <div className="flex items-center gap-2 mb-6 shrink-0">
               <div className="p-1.5 rounded-lg bg-[#E62058]/10 text-[#E62058]">
                 <QuestionMarkCircleIcon className="h-4 w-4" />
@@ -114,18 +114,18 @@ export default function Help() {
             </div>
 
             {/* Timeline Track - Divider: #E5E7EB | Dark Divider: #1D1D20 */}
-            <div className="relative flex-1 border-l border-[#E5E7EB] dark:border-[#1D1D20] ml-3.5 space-y-6">
+            <div className="relative flex-1 border-l border-[#E5E7EB] dark:border-[#2B2F36] ml-3.5 space-y-6">
               {stepsList.map((item, index) => (
                 <div key={index} className="relative pl-6 group">
                   {/* Step Badge - Nested Card: #F3F4F6 | Dark Nested Card: #1B1B1F */}
-                  <div className="absolute -left-[15px] top-0.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#FFFFFF] bg-[#F3F4F6] text-[10px] font-bold text-[#475569] transition-colors duration-150 group-hover:border-[#E62058]/30 group-hover:bg-[#E62058]/10 group-hover:text-[#E62058] dark:border-[#161619] dark:bg-[#1B1B1F] dark:text-[#A1A1AA] dark:group-hover:text-[#E62058]">
+                  <div className="absolute -left-[15px] top-0.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#FFFFFF] bg-[#F3F4F6] text-[10px] font-bold text-[#475569] transition-colors duration-150 group-hover:border-[#E62058]/30 group-hover:bg-[#E62058]/10 group-hover:text-[#E62058] dark:border-[#161619] dark:bg-[#1B1B1F] dark:text-[#6D7A86] dark:group-hover:text-[#E62058]">
                     {item.step}
                   </div>
                   <div>
-                    <h4 className="text-xs font-medium text-[#475569] dark:text-[#A1A1AA] transition-colors group-hover:text-[#E62058]">
+                    <h4 className="text-xs font-medium text-[#475569] dark:text-[#FAFAFA] transition-colors group-hover:text-[#E62058]">
                       {item.title}
                     </h4>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#94A3B8] dark:text-[#71717A]">
+                    <p className="mt-1 text-[11px] leading-relaxed text-[#94A3B8] dark:text-[#6D7A86]">
                       {item.text}
                     </p>
                   </div>
@@ -137,7 +137,7 @@ export default function Help() {
           {/* FEATURE ARTICLES PANEL MATRIX */}
           <div className="order-1 lg:order-2 lg:col-span-2 flex flex-col space-y-6">
             {/* Card Background - Card: #FFFFFF | Dark Card: #161619 */}
-            <div className="rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#161619]">
+            <div className="rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F]">
               {" "}
               <div className="flex items-center gap-2 mb-5 shrink-0">
                 <div className="p-1.5 rounded-lg bg-[#E62058]/10 text-[#E62058]">
@@ -160,7 +160,7 @@ export default function Help() {
                       /* Feature Items - Nested Card: #F3F4F6 | Dark Nested Card: #1B1B1F */
                       <div
                         key={index}
-                        className="group relative rounded-xl border border-[#E5E7EB]/40 p-4 bg-[#F3F4F6] hover:bg-[#F3F4F6]/80 transition duration-150 dark:bg-[#1B1B1F] dark:border-none dark:hover:ring-1 dark:hover:ring-[#E62058]/20"
+                        className="group relative rounded-xl border border-[#E5E7EB]/40 p-4 bg-[#F3F4F6] hover:bg-[#F3F4F6]/80 transition duration-150 dark:bg-[#21242B] dark:border-none dark:hover:ring-1 dark:hover:ring-[#E62058]/20"
                       >
                         <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#FFFFFF] border border-[#E5E7EB] text-[#475569] group-hover:text-[#E62058] group-hover:bg-[#E62058]/5 group-hover:border-[#E62058]/10 transition-colors dark:bg-[#121214] dark:border-none dark:text-[#71717A]">
                           <IconComponent className="h-4 w-4 transition-transform duration-200 group-hover:scale-105" />
@@ -168,7 +168,7 @@ export default function Help() {
                         <h4 className="text-xs font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
                           {guide.title}
                         </h4>
-                        <p className="mt-1 text-[11px] leading-relaxed text-[#475569] dark:text-[#A1A1AA]">
+                        <p className="mt-1 text-[11px] leading-relaxed text-[#475569] dark:text-[#6D7A86]">
                           {guide.description}
                         </p>
                       </div>
@@ -181,7 +181,7 @@ export default function Help() {
         </div>
 
         {/* FAQ PANEL SECTION - Card: #FFFFFF | Dark Card: #161619 */}
-        <div className="rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#161619]">
+        <div className="rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F]">
           <div className="flex items-center gap-2 mb-5">
             <div className="p-1.5 rounded-lg bg-[#E62058]/10 text-[#E62058]">
               <ChatBubbleBottomCenterTextIcon className="h-4 w-4" />
@@ -192,7 +192,7 @@ export default function Help() {
           </div>
 
           {filteredFaqs.length === 0 ? (
-            <p className="text-xs text-[#94A3B8] py-2 dark:text-[#71717A]">
+            <p className="text-xs text-[#94A3B8] py-2 dark:text-[#FAFAFA]">
               {t("help.noFaqs")}
             </p>
           ) : (
@@ -203,14 +203,14 @@ export default function Help() {
                   /* Accordion Row - Nested Card: #F3F4F6 | Dark Nested Card: #1B1B1F */
                   <div
                     key={index}
-                    className="rounded-xl border border-[#E5E7EB]/50 bg-[#F3F4F6] transition-colors duration-150 dark:border-none dark:bg-[#1B1B1F]"
+                    className="rounded-xl border border-[#E5E7EB]/50 bg-[#F3F4F6] transition-colors duration-150 dark:border-none dark:bg-[#21242B]"
                   >
                     <button
                       type="button"
                       onClick={() => setOpenFaq(isOpen ? null : index)}
                       className="flex w-full items-center justify-between gap-4 px-4 py-3.5 text-left outline-none cursor-pointer group"
                     >
-                      <span className="text-xs font-medium text-[#475569] group-hover:text-[#0F172A] dark:text-[#A1A1AA] dark:group-hover:text-[#FAFAFA] transition-colors">
+                      <span className="text-xs font-medium text-[#475569] group-hover:text-[#0F172A] dark:text-[#FAFAFA] dark:group-hover:text-[#FAFAFA] transition-colors">
                         {faq.question}
                       </span>
                       <div
@@ -235,7 +235,7 @@ export default function Help() {
                       <div className="overflow-hidden">
                         {/* Inner Panel Divider - Divider: #E5E7EB | Dark Divider: #1D1D20 */}
                         <div className="px-4 pb-4 pt-1 border-t border-[#E5E7EB]/60 dark:border-[#1D1D20]/50">
-                          <p className="text-xs leading-relaxed text-[#475569] dark:text-[#71717A]">
+                          <p className="text-xs leading-relaxed text-[#475569] dark:text-[#6D7A86]">
                             {faq.answer}
                           </p>
                         </div>
@@ -249,13 +249,13 @@ export default function Help() {
         </div>
 
         {/* ESCALATION HELPDESK ROW PANEL - Card: #FFFFFF | Dark Card: #161619 */}
-        <div className="rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#161619]">
+        <div className="rounded-2xl bg-[#FFFFFF] p-5 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none dark:bg-[#191A1F]">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
                 {t("help.stillNeedHelp")}
               </h3>
-              <p className="mt-1 text-xs text-[#475569] dark:text-[#71717A] max-w-lg">
+              <p className="mt-1 text-xs text-[#475569] dark:text-[#6D7A86] max-w-lg">
                 {t("help.supportDesc")}
               </p>
             </div>

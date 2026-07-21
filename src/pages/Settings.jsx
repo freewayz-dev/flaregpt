@@ -27,11 +27,11 @@ import { useDerivedWalletHub } from "../store/useWalletHubStore";
 
 // FIXED: Removed border classes to match the sleek borderless card design system
 const Card = ({ title, subtitle, children }) => (
-  <div className="rounded-2xl bg-white p-5 shadow-sm dark:bg-[#161619]">
+  <div className="rounded-2xl bg-white p-5 shadow-sm dark:bg-[#191A1F]">
     <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#FAFAFA]">
       {title}
     </h3>
-    <p className="text-[11px] text-[#475569] dark:text-[#A1A1AA] mt-0.5 mb-5">
+    <p className="text-[11px] text-[#475569] dark:text-[#6D7A86] mt-0.5 mb-5">
       {subtitle}
     </p>
     {children}
@@ -42,13 +42,13 @@ const RowItem = ({ icon: Icon, title, description, children }) => (
   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 first:pt-0 last:pb-0">
     <div className="flex gap-3 items-start">
       {Icon && (
-        <Icon className="h-4 w-4 text-slate-400 dark:text-zinc-600 shrink-0 mt-0.5" />
+        <Icon className="h-4 w-4 text-slate-400 dark:text-[#6D7A86] shrink-0 mt-0.5" />
       )}
       <div>
         <h4 className="text-xs font-semibold text-[#0F172A] dark:text-[#FAFAFA]">
           {title}
         </h4>
-        <p className="text-[11px] text-[#475569] dark:text-[#A1A1AA] mt-0.5 leading-relaxed">
+        <p className="text-[11px] text-[#475569] dark:text-[#6D7A86] mt-0.5 leading-relaxed">
           {description}
         </p>
       </div>
@@ -106,8 +106,8 @@ export default function Settings() {
                         relative flex items-center gap-2.5 px-3.5 py-2.5 md:py-3 text-xs rounded-xl cursor-pointer group shrink-0 snap-center transition-colors duration-150 ease-out outline-none
                         ${
                           isActive
-                            ? "bg-[#FFFFFF] dark:bg-[#161619] text-[#E62058] font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.01)]"
-                            : "text-[#475569] hover:text-[#0F172A] dark:text-[#A1A1AA] dark:hover:text-[#FAFAFA] hover:bg-[#F3F4F6] dark:hover:bg-[#1B1B1F] font-medium"
+                            ? "bg-[#FFFFFF] dark:bg-[#191A1F] text-[#E62058] font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.01)]"
+                            : "text-[#475569] hover:text-[#0F172A] dark:text-[#6D7A86] dark:hover:text-[#FAFAFA] hover:bg-[#F3F4F6] dark:hover:bg-[#1B1B1F] font-medium"
                         } 
                         after:content-[attr(data-text)] after:block after:font-semibold after:h-0 after:overflow-hidden after:visibility-hidden`}
                     >
@@ -122,7 +122,7 @@ export default function Settings() {
                         className={`h-4 w-4 shrink-0 index-10 transition-transform duration-200 ease-out group-hover:scale-105 ${
                           isActive
                             ? "text-[#E62058]"
-                            : "text-[#94A3B8] dark:text-[#71717A]"
+                            : "text-[#94A3B8] dark:text-[#6D7A86]"
                         }`}
                       />
 
@@ -234,7 +234,7 @@ function Preferences() {
       title={t("settings.tabs.Preferences")}
       subtitle={t("settings.subtitles.Preferences")}
     >
-      <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
+      <div className="divide-y divide-[#E5E7EB] dark:divide-[#262A30]">
         <RowItem
           icon={PaintBrushIcon}
           title={t("settings.cards.theme")}
@@ -369,7 +369,7 @@ function Wallets() {
             <p className="text-sm font-medium text-[#0F172A] dark:text-[#FAFAFA]">
               {t("settings.wallets.emptyTerminal")}
             </p>
-            <p className="mt-0.5 text-xs text-[#475569] dark:text-[#A1A1AA]">
+            <p className="mt-0.5 text-xs text-[#475569] dark:text-[#6D7A86]">
               {t("settings.wallets.limit", { max: maxSlots })}
             </p>
           </div>
@@ -378,17 +378,17 @@ function Wallets() {
             {allWallets.map((wallet) => (
               <div
                 key={wallet.address}
-                className="flex items-center justify-between gap-4 rounded-xl bg-[#F3F4F6] dark:bg-[#1B1B1F] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.01)]"
+                className="flex items-center justify-between gap-4 rounded-xl bg-[#F3F4F6] dark:bg-[#21242B] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.01)]"
               >
                 <div className="min-w-0 flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-white dark:bg-[#121214] text-[#475569] dark:text-[#A1A1AA]">
+                  <div className="p-2 rounded-lg bg-white dark:bg-[#121214] text-[#475569] dark:text-[#6D7A86]">
                     <WalletIcon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0">
                     <p className="text-sm font-medium text-[#0F172A] dark:text-[#FAFAFA] truncate">
                       {wallet.label}
                     </p>
-                    <p className="text-xs font-mono text-[#94A3B8] dark:text-[#71717A] mt-0.5 truncate">
+                    <p className="text-xs font-mono text-[#94A3B8] dark:text-[#6D7A86] mt-0.5 truncate">
                       {wallet.address}
                     </p>
                   </div>
@@ -417,7 +417,7 @@ function Wallets() {
                           isConnected,
                         )
                       }
-                      className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#E62058] hover:bg-[#E62058]/10 dark:text-[#71717A] dark:hover:text-[#E62058] dark:hover:bg-[#E62058]/10 transition-colors duration-150 cursor-pointer"
+                      className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#E62058] hover:bg-[#E62058]/10 dark:text-[#6D7A86] dark:hover:text-[#E62058] dark:hover:bg-[#E62058]/10 transition-colors duration-150 cursor-pointer"
                     >
                       <TrashIcon className="h-4 w-4" />
                     </button>
@@ -442,14 +442,14 @@ function Wallets() {
               placeholder="Account Name Label (e.g., Cold Storage)"
               value={inputLabel}
               onChange={(e) => setInputLabel(e.target.value)}
-              className="w-full bg-[#F3F4F6] dark:bg-[#1B1B1F] px-3 py-2 text-base rounded-xl border border-transparent focus:border-[#E62058]/30 outline-none text-[#0F172A] dark:text-[#FAFAFA]"
+              className="w-full bg-[#F3F4F6] dark:bg-[#21242B] px-3 py-2 text-base rounded-xl border border-transparent focus:border-[#E62058]/30 outline-none text-[#0F172A] dark:text-[#FAFAFA]"
             />
             <input
               type="text"
               placeholder="0x... Flare Wallet Address"
               value={inputAddress}
               onChange={(e) => setInputAddress(e.target.value)}
-              className="w-full bg-[#F3F4F6] dark:bg-[#1B1B1F] px-3 py-2 text-base font-mono rounded-xl border border-transparent focus:border-[#E62058]/30 outline-none text-[#0F172A] dark:text-[#FAFAFA]"
+              className="w-full bg-[#F3F4F6] dark:bg-[#21242B] px-3 py-2 text-base font-mono rounded-xl border border-transparent focus:border-[#E62058]/30 outline-none text-[#0F172A] dark:text-[#FAFAFA]"
             />
           </div>
 
@@ -490,24 +490,24 @@ function Wallets() {
       >
         <div className="space-y-4">
           <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
-            <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#1B1B1F]">
-              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#94A3B8] dark:text-[#71717A]">
+            <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#21242B]">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#94A3B8] dark:text-[#6D7A86]">
                 {t("settings.wallets.maximum")}
               </p>
               <p className="text-base sm:text-lg font-semibold text-[#0F172A] dark:text-[#FAFAFA] mt-0.5">
                 {maxSlots}
               </p>
             </div>
-            <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#1B1B1F]">
-              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#94A3B8] dark:text-[#71717A]">
+            <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#21242B]">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#94A3B8] dark:text-[#6D7A86]">
                 Pasted
               </p>
               <p className="text-base sm:text-lg font-semibold text-[#0F172A] dark:text-[#FAFAFA] mt-0.5">
                 {totalCount}
               </p>
             </div>
-            <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#1B1B1F]">
-              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#94A3B8] dark:text-[#71717A]">
+            <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#21242B]">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#94A3B8] dark:text-[#6D7A86]">
                 {t("settings.wallets.remainingSlots")}
               </p>
               <p className="text-base sm:text-lg font-semibold text-[#E62058] mt-0.5">
@@ -535,7 +535,7 @@ function Notifications() {
       title={t("settings.tabs.Notifications")}
       subtitle={t("settings.subtitles.Notifications")}
     >
-      <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
+      <div className="divide-y divide-[#E5E7EB] dark:divide-[#262A30]">
         <RowItem
           title={t("settings.cards.rewardsAlerts")}
           description={t("settings.notifications.rewards")}
@@ -583,7 +583,7 @@ function Display() {
       title={t("settings.tabs.Display")}
       subtitle={t("settings.subtitles.Display")}
     >
-      <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
+      <div className="divide-y divide-[#E5E7EB] dark:divide-[#262A30]">
         <RowItem
           title={t("settings.cards.chartType")}
           description={t("settings.descriptions.chartType")}
@@ -630,7 +630,7 @@ function Security() {
       title={t("settings.tabs.Security")}
       subtitle={t("settings.subtitles.Security")}
     >
-      <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
+      <div className="divide-y divide-[#E5E7EB] dark:divide-[#262A30]">
         <RowItem
           title={t("settings.cards.sessionTimeout")}
           description={t("settings.descriptions.sessionTimeout")}
@@ -664,7 +664,7 @@ function About() {
       title={t("settings.tabs.About")}
       subtitle={t("settings.subtitles.About")}
     >
-      <div className="divide-y divide-[#E5E7EB] dark:divide-[#1D1D20]">
+      <div className="divide-y divide-[#E5E7EB] dark:divide-[#262A30]">
         <RowItem
           title={t("settings.cards.app")}
           description={t("settings.descriptions.app")}

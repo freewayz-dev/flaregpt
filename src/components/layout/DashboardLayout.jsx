@@ -17,7 +17,7 @@ export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-dvh overflow-hidden bg-[#F0F4F9] dark:bg-[#09090b]">
+    <div className="flex h-dvh overflow-hidden bg-[#F0F4F9] dark:bg-[#101115]">
       <Sidebar
         collapsed={isSidebarCollapsed}
         setCollapsed={setIsSidebarCollapsed}

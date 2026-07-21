@@ -63,7 +63,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F4F9] dark:bg-[#09090b] transition-colors duration-300">
+    <div className="min-h-screen bg-[#F0F4F9] dark:bg-[#101115] transition-colors duration-300">
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1.5px,transparent_1.5px),linear-gradient(to_bottom,#e2e8f0_1.5px,transparent_1.5px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_40%,transparent_100%)] opacity-60 dark:opacity-35 pointer-events-none z-0" />
         <div className="absolute top-44 left-1/2 -translate-x-1/2 w-[550px] h-[550px] bg-[#E62058]/5 blur-[130px] rounded-full" />
