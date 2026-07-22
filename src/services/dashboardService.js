@@ -1,46 +1,57 @@
-// Placeholder data layer for the dashboard. No backend exists yet, so each
-// function below simulates a network round trip and resolves with mock data
-// shaped the way the real API is expected to respond. Swap the body of each
-// function for a real request (e.g. `axios.get("/api/dashboard/stats")`) once
-// a backend exists — the call sites (see hooks/queries/useDashboardQueries.js)
-// don't need to change.
+import { flareApi, coingeckoApi } from "@/services/apiClient";
 
-const MOCK_LATENCY_MS = 500;
-
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-const MOCK_MARKET_STATS = [
-  { id: "flr-price", title: "FLR Price", value: "$0.034", change: "+5.2%" },
-  { id: "market-cap", title: "Market Cap", value: "$2.4B", change: "+2.4%" },
-  { id: "tvl", title: "TVL", value: "$450M", change: "+7.1%" },
-  { id: "protocols", title: "Protocols", value: "32", change: "+3" },
-];
-
-const MOCK_ACTIVITY = [
-  { id: "1", label: "Whale moved 5M FLR" },
-  { id: "2", label: "New governance proposal created" },
-  { id: "3", label: "Rewards claimed" },
-  { id: "4", label: "Delegation updated" },
-];
-
-const MOCK_HOLDINGS = [
-  { symbol: "FLR", allocationPct: 65 },
-  { symbol: "SGB", allocationPct: 15 },
-  { symbol: "rFLR", allocationPct: 12 },
-  { symbol: "Others", allocationPct: 8 },
-];
-
-export async function fetchMarketStats() {
-  await delay(MOCK_LATENCY_MS);
-  return MOCK_MARKET_STATS;
+export async function fetchHealth() {
+  const { data } = await flareApi.get("/health");
+  return data;
 }
 
-export async function fetchRecentActivity() {
-  await delay(MOCK_LATENCY_MS);
-  return MOCK_ACTIVITY;
+export async function fetchGasPrice() {
+  const { data } = await flareApi.get("/gas-price");
+  return data;
 }
 
-export async function fetchHoldings() {
-  await delay(MOCK_LATENCY_MS);
-  return MOCK_HOLDINGS;
+export async function fetchMarketOverview() {
+  const { data } = await flareApi.get("/api/v1/overview/market");
+  return data;
+}
+
+export async function fetchWalletBalances(walletAddress) {
+  const { data } = await flareApi.get(
+    `/api/v1/portfolio/balances/${walletAddress}`,
+  );
+  return data;
+}
+
+export async function fetchFtsoPortfolio(walletAddress) {
+  const { data } = await flareApi.get(
+    `/api/v1/portfolio/ftso/${walletAddress}`,
+  );
+  return data;
+}
+
+// FlareGPT's own API only exposes a current spot price, not a time series,
+// so historical FLR/USD price data comes from CoinGecko's public market
+// API instead (no key required, Flare's coin id is "flare-networks").
+export async function fetchFlrPriceHistory(days = 7) {
+  const { data } = await coingeckoApi.get(
+    "/coins/flare-networks/market_chart",
+    { params: { vs_currency: "usd", days } },
+  );
+  return data.prices.map(([timestamp, price]) => ({ timestamp, price }));
+}
+
+// Candlestick mode needs real open/high/low/close data, which the plain
+// price-history endpoint above doesn't have — CoinGecko's /ohlc endpoint
+// does.
+export async function fetchFlrOhlc(days = 7) {
+  const { data } = await coingeckoApi.get("/coins/flare-networks/ohlc", {
+    params: { vs_currency: "usd", days },
+  });
+  return data.map(([timestamp, open, high, low, close]) => ({
+    timestamp,
+    open,
+    high,
+    low,
+    close,
+  }));
 }

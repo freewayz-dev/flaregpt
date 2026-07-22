@@ -15,6 +15,9 @@
     "subtitle": "Select your preferred wallet to connect to the Flare Network.",
     "title": "Connect Wallet"
   },
+  "dashboard": {
+    "description": "Live Flare network data, price charts, and wallet activity at a glance."
+  },
   "flareWidget": {
     "back": "Back",
     "chatHistory": "Chat history",

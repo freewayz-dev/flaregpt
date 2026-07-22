@@ -4,8 +4,24 @@
 export const queryKeys = {
   dashboard: {
     all: ["dashboard"],
-    stats: () => [...queryKeys.dashboard.all, "stats"],
-    activity: () => [...queryKeys.dashboard.all, "activity"],
-    holdings: () => [...queryKeys.dashboard.all, "holdings"],
+    health: () => [...queryKeys.dashboard.all, "health"],
+    gasPrice: () => [...queryKeys.dashboard.all, "gasPrice"],
+    marketOverview: () => [...queryKeys.dashboard.all, "marketOverview"],
+    walletBalances: (address) => [
+      ...queryKeys.dashboard.all,
+      "walletBalances",
+      address,
+    ],
+    ftsoPortfolio: (address) => [
+      ...queryKeys.dashboard.all,
+      "ftsoPortfolio",
+      address,
+    ],
+    flrPriceHistory: (days) => [
+      ...queryKeys.dashboard.all,
+      "flrPriceHistory",
+      days,
+    ],
+    flrOhlc: (days) => [...queryKeys.dashboard.all, "flrOhlc", days],
   },
 };

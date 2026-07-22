@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { CheckIcon } from "lucide-react";
@@ -24,23 +24,6 @@ import bifrostLogo from "@/assets/wallets/bifrost.jpeg";
 export default function LandingPage() {
   const [open, setOpen] = useState(null);
   const navigate = useNavigate();
-  const [showNav, setShowNav] = useState(true);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        setShowNav(false);
-      } else {
-        setShowNav(true);
-      }
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="min-h-screen bg-[#F0F4F9] dark:bg-[#101115] transition-colors duration-300">
@@ -51,16 +34,7 @@ export default function LandingPage() {
 
       <div className="absolute top-44 sm:top-52 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[550px] sm:h-[550px] bg-brand/10 dark:bg-brand/5 blur-[70px] sm:blur-[130px] rounded-full pointer-events-none z-30" />
 
-      <motion.nav
-        initial={{ y: 0 }}
-        animate={{ y: showNav ? 0 : -100 }}
-        transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 30,
-        }}
-        className="fixed top-4 left-0 right-0 z-50 px-4 xl:px-0"
-      >
+      <nav className="relative z-50 mt-4 px-4 xl:px-0">
         <div className="mx-auto grid h-[64px] md:h-[72px] w-full max-w-5xl grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center rounded-2xl border border-line/70 bg-white/5 dark:bg-white/[0.03] backdrop-blur-2xl px-3 md:px-4 shadow-lg shadow-black/5 dark:shadow-black/20">
           {/* Logo */}
           <button
@@ -125,11 +99,11 @@ export default function LandingPage() {
             </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
-      <main className="relative z-10 md:pt-20">
+      <main className="relative z-10">
         <FadeIn>
-          <section className="flex flex-col items-center px-4 xl:px-0 justify-center text-center max-w-5xl mx-auto md:pt-36 pt-36 pb-28">
+          <section className="flex flex-col items-center px-4 xl:px-0 justify-center text-center max-w-5xl mx-auto pt-12 md:pt-16 pb-28">
             <div className="inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-md px-4 py-1.5 shadow-sm">
               <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-secondary">
                 Built for the Flare Network

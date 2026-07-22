@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import GlobalSpinner from "@/components/common/GlobalSpinner";
+import DashboardSkeleton from "@/pages/Dashboard/DashboardSkeleton";
 
 const LandingPage = lazy(() => import("@/pages/LandingPage"));
 const Terms = lazy(() => import("@/pages/Terms"));
@@ -25,7 +26,14 @@ export default function AppRoutes() {
         <Route path="/terms" element={<Terms />} />
 
         <Route path="/app" element={<DashboardLayout />}>
-          <Route index element={<Dashboard />} />
+          <Route
+            index
+            element={
+              <Suspense fallback={<DashboardSkeleton />}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
           <Route path="flare-gpt" element={<FLRGPT />} />
           <Route path="wallet" element={<WalletActivity />} />
           <Route path="settings" element={<Settings />} />

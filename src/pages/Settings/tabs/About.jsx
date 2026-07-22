@@ -10,7 +10,7 @@ export default function About() {
       title={t("settings.tabs.About")}
       subtitle={t("settings.subtitles.About")}
     >
-      <div className="divide-y divide-[#E5E7EB] dark:divide-[#262A30]">
+      <div className="divide-y divide-divider">
         <RowItem
           title={t("settings.cards.app")}
           description={t("settings.descriptions.app")}

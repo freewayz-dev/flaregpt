@@ -6,8 +6,12 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import FlareWidget from "@/components/common/FlareWidget";
 import GlobalSpinner from "@/components/common/GlobalSpinner";
+import { useAuthSync } from "@/hooks/useAuthSync";
 
 export default function DashboardLayout() {
+  // Connecting a wallet anywhere in the app shell doubles as signing in.
+  useAuthSync();
+
   const [flareWidgetOpen, setFlareWidgetOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 

@@ -28,10 +28,16 @@ export default {
         },
         // Default border color.
         line: withOpacity("--color-line"),
+        // Divider color for divide-x/divide-y separators between list rows —
+        // a distinct role from `line` (outer card borders), even though they
+        // share a light-mode value.
+        divider: withOpacity("--color-divider"),
         // Surface (background) tokens.
         surface: {
           card: withOpacity("--color-surface-card"),
+          "card-hover": withOpacity("--color-surface-card-hover"),
           subtle: withOpacity("--color-surface-subtle"),
+          inset: withOpacity("--color-surface-inset"),
         },
       },
     },

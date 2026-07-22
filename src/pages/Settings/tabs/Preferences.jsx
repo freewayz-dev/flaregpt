@@ -62,7 +62,12 @@ export default function Preferences() {
     languageOptions.find((lang) => lang.code === i18n.language) ||
     languageOptions[0];
   const [region, setRegion] = useState(regionOptions[0]);
-  const [currency, setCurrency] = useState(currencyOptions[0]);
+
+  const currencyCode = useUIStore((state) => state.currency);
+  const setCurrencyCode = useUIStore((state) => state.setCurrency);
+  const currentCurrency =
+    currencyOptions.find((c) => c.value === currencyCode) ||
+    currencyOptions[currencyOptions.length - 1];
 
   const blueLightLevel = useUIStore((state) => state.blueLightLevel);
   const updateBlueLightLevel = useUIStore(
@@ -96,7 +101,7 @@ export default function Preferences() {
       title={t("settings.tabs.Preferences")}
       subtitle={t("settings.subtitles.Preferences")}
     >
-      <div className="divide-y divide-[#E5E7EB] dark:divide-[#262A30]">
+      <div className="divide-y divide-divider">
         <RowItem
           icon={PaintBrushIcon}
           title={t("settings.cards.theme")}
@@ -144,8 +149,11 @@ export default function Preferences() {
           <div className="w-full sm:w-56">
             <CustomSelect
               options={formatOptions(currencyOptions)}
-              selectedValue={{ ...currency, label: currency.labelKey }}
-              onChange={setCurrency}
+              selectedValue={{
+                ...currentCurrency,
+                label: currentCurrency.labelKey,
+              }}
+              onChange={(option) => setCurrencyCode(option.value)}
             />
           </div>
         </RowItem>

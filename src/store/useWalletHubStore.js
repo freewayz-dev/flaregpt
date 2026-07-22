@@ -97,6 +97,12 @@ export function useDerivedWalletHub(connectedAddress, isConnected) {
     reconcileActiveAddress(allWallets);
   }, [allWallets, activeAddress, reconcileActiveAddress]);
 
+  const activeWallet = allWallets.find((w) => w.address === activeAddress);
+  // The connected wallet can perform authenticated actions (claim rewards,
+  // sign transactions, later: save chat history). Tracked wallets are
+  // read-only — viewing their data never implies the ability to act on it.
+  const isActivePrimary = activeWallet?.type === "connected";
+
   return {
     trackedWallets,
     activeAddress,
@@ -106,5 +112,6 @@ export function useDerivedWalletHub(connectedAddress, isConnected) {
     removeTrackedWallet,
     allWallets,
     remainingSlots: maxSlots - trackedWallets.length,
+    isActivePrimary,
   };
 }

@@ -16,6 +16,12 @@ export const useUIStore = create()(
       settingsActiveTab: "Preferences",
       sidebarCollapsed: false,
 
+      // Display preferences — drive the dashboard's charts and currency
+      // formatting everywhere a USD-denominated value is shown.
+      currency: "USD",
+      chartType: "Area",
+      timeframe: "7D",
+
       toggleTheme: () => {
         const nextMode = !get().darkMode;
 
@@ -40,6 +46,10 @@ export const useUIStore = create()(
 
       toggleSidebarCollapsed: () =>
         set((state) => ({ sidebarCollapsed: !state.sidebarCollapsed })),
+
+      setCurrency: (currency) => set({ currency }),
+      setChartType: (chartType) => set({ chartType }),
+      setTimeframe: (timeframe) => set({ timeframe }),
     }),
     {
       name: "flaregpt_ui_preferences",

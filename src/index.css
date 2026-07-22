@@ -18,9 +18,12 @@
   --color-ink-muted: 148 163 184; /* #94A3B8 */
 
   --color-line: 229 231 235; /* #E5E7EB */
+  --color-divider: 229 231 235; /* #E5E7EB */
 
   --color-surface-card: 255 255 255; /* #FFFFFF */
   --color-surface-subtle: 243 244 246; /* #F3F4F6 */
+  --color-surface-inset: 243 244 246; /* #F3F4F6 — nested cards + skeleton shimmer */
+  --color-surface-card-hover: 248 250 252; /* #F8FAFC */
 }
 
 html.dark {
@@ -29,9 +32,12 @@ html.dark {
   --color-ink-muted: 113 113 122; /* #71717A */
 
   --color-line: 29 29 32; /* #1D1D20 */
+  --color-divider: 30 33 38; /* #1E2126 — subtle, low-contrast against surface-card */
 
   --color-surface-card: 25 26 31; /* #191A1F */
   --color-surface-subtle: 27 27 31; /* #1B1B1F */
+  --color-surface-inset: 33 36 43; /* #21242B — nested cards + skeleton shimmer */
+  --color-surface-card-hover: 37 42 49; /* #252A31 */
 }
 
 @layer base {
@@ -87,4 +93,23 @@ html {
 }
 .animate-indeterminate-bar {
   animation: indeterminate-bar 1.5s infinite linear;
+}
+
+/* Skeleton shimmer — a moving highlight band swept across a base fill that's
+   deliberately a different color from the surrounding card, so the loading
+   shape reads clearly instead of blending into the card background. */
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.skeleton {
+  background-color: rgb(var(--color-surface-inset));
+  background-image: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.8s ease-in-out infinite;
 }

@@ -23,7 +23,7 @@ export default function Security() {
       title={t("settings.tabs.Security")}
       subtitle={t("settings.subtitles.Security")}
     >
-      <div className="divide-y divide-[#E5E7EB] dark:divide-[#262A30]">
+      <div className="divide-y divide-divider">
         <RowItem
           title={t("settings.cards.sessionTimeout")}
           description={t("settings.descriptions.sessionTimeout")}
