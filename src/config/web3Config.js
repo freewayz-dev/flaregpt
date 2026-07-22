@@ -26,7 +26,13 @@ export const web3Config = createConfig({
       qrModalOptions: {
         themeMode: "auto",
         themeVariables: {
-          "--w3m-accent": "#E62058", // This will change the button/accent color to your brand color
+          // Match the app's design tokens (src/index.css) instead of the
+          // modal's own defaults, so it doesn't look like a bolted-on
+          // third-party widget. These reference the same CSS custom
+          // properties every card uses, so they automatically track
+          // light/dark mode instead of duplicating a hardcoded value.
+          "--wcm-accent-color": "#E62058",
+          "--wcm-background-color": "rgb(var(--color-surface-card))",
         },
       },
       // not inside an "ethereumProviderOptions" block!

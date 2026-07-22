@@ -110,7 +110,7 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
       />
 
       <div
-        className={`relative w-full bg-[#FFFFFF] border border-[#E5E7EB] dark:border-none p-5 shadow-xl transition-all duration-200 ease-out dark:bg-[#161619] rounded-t-2xl max-w-none transform-gpu sm:relative sm:rounded-2xl sm:max-w-lg ${transitionStyles}`}
+        className={`relative w-full bg-surface-card border border-[#E5E7EB] dark:border-none p-5 shadow-xl transition-all duration-200 ease-out rounded-t-2xl max-w-none transform-gpu sm:relative sm:rounded-2xl sm:max-w-lg ${transitionStyles}`}
       >
         <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-gray-300 dark:bg-zinc-800 sm:hidden" />
 
@@ -139,7 +139,7 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
               type="button"
               disabled={isPending}
               onClick={() => handleConnect(wallet.id)}
-              className="w-full flex items-center justify-between rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-4 py-3 text-xs font-medium text-[#4F5B66] hover:bg-surface-subtle hover:text-ink-primary transition-all cursor-pointer disabled:opacity-50 dark:border-none dark:text-[#A1A1AA] dark:hover:bg-[#222227]"
+              className="w-full flex items-center justify-between rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-4 py-3 text-xs font-medium text-[#4F5B66] hover:bg-surface-subtle hover:text-ink-primary transition-all cursor-pointer disabled:opacity-50 dark:border-none dark:bg-surface-inset dark:text-[#A1A1AA] dark:hover:bg-surface-card-hover"
             >
               <div className="flex items-center gap-3">
                 <WalletImage src={wallet.src} alt={wallet.name} />
@@ -182,7 +182,7 @@ function WalletImage({ src, alt }) {
         src={src}
         alt={alt}
         onLoad={() => setIsLoaded(true)}
-        className={`h-5 w-5 object-contain transition-opacity duration-500 ${
+        className={`h-5 w-5 object-contain transition-opacity rounded-md duration-500 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       />
