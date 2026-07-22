@@ -11,11 +11,24 @@ import {
 } from "@/services/dashboardService";
 import { queryKeys } from "@/services/queryKeys";
 
+// A capped retry/backoff for the global (non-wallet-specific) endpoints.
+// Without this, the app-wide default (retry: 1 with React Query's default
+// up-to-30s backoff) combined with a 15s axios timeout meant a single flaky
+// request could sit "loading" for close to a minute before finally
+// surfacing an error — which reads as an infinite hang to a user, even
+// though it does eventually resolve. Bounding both the retry count and the
+// backoff delay makes every card's error+retry UI show up promptly instead.
+const QUICK_RESILIENCE = {
+  retry: 1,
+  retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 5_000),
+};
+
 export function useHealth() {
   return useQuery({
     queryKey: queryKeys.dashboard.health(),
     queryFn: fetchHealth,
     staleTime: 60_000,
+    ...QUICK_RESILIENCE,
   });
 }
 
@@ -27,6 +40,7 @@ export function useGasPrice() {
     queryKey: queryKeys.dashboard.gasPrice(),
     queryFn: fetchGasPrice,
     refetchInterval: 20_000,
+    ...QUICK_RESILIENCE,
   });
 }
 
@@ -35,6 +49,7 @@ export function useMarketOverview() {
     queryKey: queryKeys.dashboard.marketOverview(),
     queryFn: fetchMarketOverview,
     refetchInterval: 60_000,
+    ...QUICK_RESILIENCE,
   });
 }
 

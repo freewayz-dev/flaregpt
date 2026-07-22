@@ -1,17 +1,17 @@
-import { motion } from "framer-motion";
-
-// Animates in once on mount rather than on scroll-into-view. Scroll-triggered
-// reveals (whileInView) depend on IntersectionObserver timing that's flaky on
-// mobile browsers when the address bar collapses mid-scroll and resizes the
-// viewport — content could end up stuck at opacity 0. Mount-based animation
-// has no such failure mode: it always resolves to visible.
+// Fades content in on mount using a pure CSS animation instead of
+// framer-motion. This component used to render a `motion.div` per instance —
+// harmless on desktop, but the landing page mounts 10+ of these at once, and
+// each one was a separate JS-driven animation for framer-motion to schedule
+// and tick on every frame. On real mobile hardware that showed up as visible
+// jank on first paint and meaningfully higher CPU/battery usage. A CSS
+// `animation` accomplishes the identical visual result (fade + rise) but
+// runs on the compositor thread and starts as soon as the browser paints the
+// element, without waiting for React effects or a JS animation loop.
 export const FadeIn = ({ children, delay = 0, className = "" }) => (
-  <motion.div
-    className={className}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay, ease: "easeOut" }}
+  <div
+    className={`animate-fade-in-up ${className}`}
+    style={{ animationDelay: `${delay}s` }}
   >
     {children}
-  </motion.div>
+  </div>
 );

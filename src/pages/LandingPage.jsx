@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { CheckIcon } from "lucide-react";
@@ -15,6 +15,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 import { FadeIn } from "@/components/common/MotionWrapper";
 import AIPhoneMockup from "@/components/common/AIPhoneMockup";
+import LandingNavbar from "@/components/common/LandingNavbar";
 
 import flareLogo from "@/assets/icons/fl.png";
 import openLogo from "@/assets/icons/image.png";
@@ -25,83 +26,32 @@ export default function LandingPage() {
   const [open, setOpen] = useState(null);
   const navigate = useNavigate();
 
+  // Warm the Dashboard route's JS chunk while the visitor is still reading
+  // the landing page, so clicking "Launch App" doesn't have to wait for a
+  // fresh network fetch + parse of that chunk on top of the route
+  // transition itself. Deferred with requestIdleCallback so it never
+  // competes with the landing page's own first paint for the main thread.
+  useEffect(() => {
+    const prefetch = () => import("@/pages/Dashboard");
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(prefetch);
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = setTimeout(prefetch, 2000);
+    return () => clearTimeout(id);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#F0F4F9] dark:bg-[#101115] transition-colors duration-300">
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1.5px,transparent_1.5px),linear-gradient(to_bottom,#e2e8f0_1.5px,transparent_1.5px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_40%,transparent_100%)] opacity-60 dark:opacity-35 pointer-events-none z-0" />
-        <div className="absolute top-44 left-1/2 -translate-x-1/2 w-[550px] h-[550px] bg-brand/5 blur-[130px] rounded-full" />
       </div>
 
-      <div className="absolute top-44 sm:top-52 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[550px] sm:h-[550px] bg-brand/10 dark:bg-brand/5 blur-[70px] sm:blur-[130px] rounded-full pointer-events-none z-30" />
+      <div className="absolute top-44 sm:top-52 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[550px] sm:h-[550px] bg-brand/10 dark:bg-brand/5 blur-[70px] sm:blur-[110px] rounded-full pointer-events-none z-30" />
 
-      <nav className="relative z-50 mt-4 px-4 xl:px-0">
-        <div className="mx-auto grid h-[64px] md:h-[72px] w-full max-w-5xl grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center rounded-2xl border border-line/70 bg-white/5 dark:bg-white/[0.03] backdrop-blur-2xl px-3 md:px-4 shadow-lg shadow-black/5 dark:shadow-black/20">
-          {/* Logo */}
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-2 md:gap-3 select-none justify-self-start"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 rounded-lg md:rounded-xl bg-brand/5 blur-md" />
+      <LandingNavbar />
 
-              <div className="relative flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-lg md:rounded-xl bg-brand shadow-lg shadow-brand/20">
-                <span className="font-black text-xs md:text-sm tracking-tight text-white">
-                  F
-                </span>
-              </div>
-            </div>
-
-            <span className="text-sm md:text-base font-black tracking-tight text-ink-primary">
-              FlareGPT
-            </span>
-          </button>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex justify-self-center items-center rounded-full border border-line bg-[#F8FAFC]/80 dark:bg-[#121214]/80 px-2 py-2 backdrop-blur-sm">
-            {[
-              {
-                label: "Features",
-                id: "features",
-              },
-              {
-                label: "AI",
-                id: "ai",
-              },
-              {
-                label: "FAQ",
-                id: "faq",
-              },
-            ].map((item) => (
-              <button
-                key={item.id}
-                onClick={() =>
-                  document
-                    .getElementById(item.id)
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group relative rounded-full px-5 py-2 text-[13px] font-medium text-ink-secondary transition-colors hover:text-brand dark:hover:text-brand"
-              >
-                {item.label}
-
-                <span className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-brand transition-all duration-300 group-hover:w-8" />
-              </button>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="justify-self-end">
-            <button
-              onClick={() => navigate("/app")}
-              className="group flex items-center gap-1.5 md:gap-2 rounded-full bg-brand px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-[13px] font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20"
-            >
-              Launch App
-              <ArrowRightIcon className="h-3.5 w-3.5 md:h-4 md:w-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      <main className="relative z-10">
+      <main className="relative z-10 pt-20 md:pt-24">
         <FadeIn>
           <section className="flex flex-col items-center px-4 xl:px-0 justify-center text-center max-w-5xl mx-auto pt-12 md:pt-16 pb-28">
             <div className="inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-md px-4 py-1.5 shadow-sm">

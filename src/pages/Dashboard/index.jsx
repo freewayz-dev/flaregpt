@@ -1,8 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { useGasPrice, useMarketOverview } from "@/hooks/queries/useDashboardQueries";
 import PageHeader from "@/components/common/PageHeader";
-import DashboardSkeleton from "@/pages/Dashboard/DashboardSkeleton";
 import ApiStatusBadge from "@/pages/Dashboard/components/ApiStatusBadge";
 import StatRow from "@/pages/Dashboard/components/StatRow";
 import FlrPriceChart from "@/pages/Dashboard/components/FlrPriceChart";
@@ -11,19 +9,19 @@ import WalletBalancesCard from "@/pages/Dashboard/components/WalletBalancesCard"
 import FtsoPortfolioCard from "@/pages/Dashboard/components/FtsoPortfolioCard";
 import ClaimsAndDelegationsSection from "@/pages/Dashboard/components/ClaimsAndDelegationsSection";
 
+// Deliberately does not fetch or gate on any query itself. Every section
+// below (StatRow, FlrPriceChart, NetworkActivityChart, the wallet cards,
+// Claims/Delegations) fetches and gates its own data independently, so a
+// single slow or failing request only ever affects its own card — never the
+// rest of the page. Previously this component blocked the entire page
+// behind useGasPrice/useMarketOverview specifically, which meant a hiccup on
+// either of those two endpoints hid PageHeader, the charts, and every other
+// card that had nothing to do with them. DashboardSkeleton still exists as
+// the route-level Suspense fallback for the lazy-loaded chunk itself (see
+// AppRoutes.jsx) — that's a different, legitimate use of a full-page
+// skeleton (the JS hasn't downloaded yet, not "a request is slow").
 export default function Dashboard() {
   const { t } = useTranslation();
-  const { data: gasPrice, isLoading: gasLoading } = useGasPrice();
-  const { data: marketOverview, isLoading: marketLoading } = useMarketOverview();
-
-  // Gate the whole page behind the core, always-fetched data (not the
-  // wallet-specific cards, which manage their own state since they depend
-  // on whether a wallet is connected). Rendering the identical skeleton here
-  // and as the route's Suspense fallback means the user sees one continuous
-  // loading state, not a spinner that gets swapped for a different skeleton.
-  if (gasLoading || marketLoading) {
-    return <DashboardSkeleton />;
-  }
 
   return (
     <div className="space-y-5 sm:space-y-6 pb-14">
@@ -35,7 +33,7 @@ export default function Dashboard() {
         />
       </div>
 
-      <StatRow marketOverview={marketOverview} />
+      <StatRow />
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         <div className="min-w-0 lg:col-span-2">

@@ -1,3 +1,4 @@
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import {
   AreaChart,
   Area,
@@ -107,7 +108,9 @@ export default function FlrPriceChart() {
 
   const priceHistoryQuery = useFlrPriceHistory(days);
   const ohlcQuery = useFlrOhlc(days);
-  const { data, isLoading, isError } = isCandlestick ? ohlcQuery : priceHistoryQuery;
+  const { data, isLoading, isError, isFetching, refetch } = isCandlestick
+    ? ohlcQuery
+    : priceHistoryQuery;
 
   const formatPrice = (value) =>
     formatCurrency(value, { minimumFractionDigits: 4, maximumFractionDigits: 4 });
@@ -162,8 +165,24 @@ export default function FlrPriceChart() {
 
       <div className="h-56 sm:h-64 mt-4 min-w-0">
         {isError || !data?.length ? (
-          <div className="h-full flex items-center justify-center text-sm text-red-500 text-center px-4">
-            Couldn't load FLR price history.
+          <div className="h-full flex flex-col items-center justify-center text-center px-4">
+            <p className="text-sm font-medium text-ink-primary">
+              Couldn't load FLR price history
+            </p>
+            <p className="mt-0.5 text-xs text-ink-muted">
+              This is usually a temporary network hiccup.
+            </p>
+            <button
+              type="button"
+              onClick={() => refetch()}
+              disabled={isFetching}
+              className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand hover:bg-brand/20 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ArrowPathIcon
+                className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`}
+              />
+              {isFetching ? "Retrying…" : "Retry"}
+            </button>
           </div>
         ) : isCandlestick ? (
           <ResponsiveContainer width="100%" height="100%">
