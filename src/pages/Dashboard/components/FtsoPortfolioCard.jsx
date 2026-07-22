@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useAccount } from "wagmi";
 import { toast } from "react-toastify";
 import { GiftIcon, LockClosedIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
@@ -24,6 +25,7 @@ function Row({ label, value, highlight = false }) {
 }
 
 export default function FtsoPortfolioCard() {
+  const { t } = useTranslation();
   const { address: connectedAddress, isConnected } = useAccount();
   const { activeAddress, isActivePrimary } = useDerivedWalletHub(
     connectedAddress,
@@ -41,7 +43,7 @@ export default function FtsoPortfolioCard() {
     // No claim contract/API exists yet — this demonstrates the permission
     // boundary (only the connected wallet can act) without pretending a
     // real transaction happens.
-    toast.info("Claiming isn't available yet — coming soon.");
+    toast.info(t("dashboard.ftso.claimComingSoon"));
   };
 
   if (activeAddress && !isError && (isLoading || !hasData)) {
@@ -52,18 +54,18 @@ export default function FtsoPortfolioCard() {
     <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-sm font-semibold text-ink-primary">
-          FTSO Delegation
+          {t("dashboard.ftso.title")}
         </h3>
         {activeAddress &&
           !isError &&
           (isActivePrimary ? (
             <span className="text-[10px] font-semibold uppercase tracking-wide text-emerald-500">
-              Connected
+              {t("dashboard.ftso.connected")}
             </span>
           ) : (
             <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-ink-muted">
               <LockClosedIcon className="h-3 w-3" />
-              Read-only
+              {t("dashboard.ftso.readOnly")}
             </span>
           ))}
       </div>
@@ -72,19 +74,19 @@ export default function FtsoPortfolioCard() {
         <div className="py-8 text-center rounded-2xl bg-surface-inset px-4">
           <GiftIcon className="h-8 w-8 mx-auto text-ink-muted mb-2" />
           <p className="text-sm font-medium text-ink-primary">
-            No wallet selected
+            {t("dashboard.common.noWalletSelected")}
           </p>
           <p className="mt-0.5 text-xs text-ink-muted">
-            Connect or add a wallet in Settings to see rewards.
+            {t("dashboard.ftso.connectToSeeRewards")}
           </p>
         </div>
       ) : isError ? (
         <div className="py-6 text-center rounded-2xl bg-surface-inset px-4">
           <p className="text-sm font-medium text-ink-primary">
-            Couldn't load FTSO portfolio
+            {t("dashboard.ftso.couldntLoad")}
           </p>
           <p className="mt-0.5 text-xs text-ink-muted">
-            This is usually a temporary network hiccup.
+            {t("dashboard.common.networkHiccup")}
           </p>
           <button
             type="button"
@@ -95,27 +97,27 @@ export default function FtsoPortfolioCard() {
             <ArrowPathIcon
               className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`}
             />
-            {isFetching ? "Retrying…" : "Retry"}
+            {isFetching ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
           </button>
         </div>
       ) : (
         <>
           <div className="divide-y divide-divider">
             <Row
-              label="Delegated WFLR"
+              label={t("dashboard.ftso.delegatedWflr")}
               value={formatAmount(data.ftso_infrastructure.user_wflr_balance)}
             />
             <Row
-              label="Unclaimed FLR"
+              label={t("dashboard.ftso.unclaimedFlr")}
               value={formatAmount(unclaimed)}
               highlight
             />
             <Row
-              label="Active Delegations"
+              label={t("dashboard.ftso.activeDelegations")}
               value={data.active_delegations.length}
             />
             <Row
-              label="Est. Hourly Earning"
+              label={t("dashboard.ftso.estHourlyEarning")}
               value={`${formatAmount(data.realtime_estimation.estimated_hourly_earning)} FLR`}
             />
           </div>
@@ -126,9 +128,9 @@ export default function FtsoPortfolioCard() {
             onClick={handleClaim}
             title={
               !isActivePrimary
-                ? "Switch to your connected wallet to claim rewards"
+                ? t("dashboard.ftso.switchToClaim")
                 : unclaimed <= 0
-                  ? "No unclaimed rewards yet"
+                  ? t("dashboard.ftso.noUnclaimedYet")
                   : undefined
             }
             className={`mt-4 w-full rounded-xl py-2.5 text-sm font-medium transition-colors duration-150 ${
@@ -137,7 +139,7 @@ export default function FtsoPortfolioCard() {
                 : "bg-surface-inset text-ink-muted cursor-not-allowed"
             }`}
           >
-            {isActivePrimary ? "Claim Rewards" : "Read-only — cannot claim"}
+            {isActivePrimary ? t("dashboard.ftso.claimRewards") : t("dashboard.ftso.readOnlyCannotClaim")}
           </button>
         </>
       )}

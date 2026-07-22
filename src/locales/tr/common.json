@@ -99,7 +99,8 @@
     "mainnetStatus": "Flare Ana Ağı",
     "dropdownTitle": "Etkin Hedef Görünümü",
     "noTrackedNodes": "İzlenen düğüm yok.",
-    "noWallet": "Cüzdan Yok"
+    "noWallet": "Cüzdan Yok",
+    "configureInSettings": "Ayarlar'da Yapılandır"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "Bağlantıyı Kes",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Ödülleri",
-    "fxrpPool": "$fXRP Havuzu",
+    "fxrpPool": "Defi Protokolleri",
     "governance": "Yönetişim",
     "helpCenter": "Yardım Merkezi",
     "notConnected": "Bağlı değil",
@@ -220,7 +221,10 @@
     "walletConnected": "Cüzdan Bağlandı",
     "yield": "Getiri",
     "loops": "Döngüler",
-    "feeds": "Bildirimler"
+    "feeds": "Bildirimler",
+    "donate": "Bağış yap",
+    "addWatchlistWallet": "+ İzleme Listesi Cüzdanı Ekle",
+    "activeWallet": "Aktif: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -293,5 +297,76 @@
       "Flare Ağını Açıklayın",
       "En son yönetişim teklifleri"
     ]
+  },
+  "dashboard": {
+    "description": "Bir bakışta Live Flare ağ verileri, fiyat grafikleri ve cüzdan etkinliği.",
+    "common": {
+      "retry": "Tekrar dene",
+      "retrying": "Yeniden deneniyor...",
+      "networkHiccup": "Bu genellikle geçici bir ağ hıçkırığıdır.",
+      "noWalletSelected": "Cüzdan seçilmedi",
+      "yes": "Evet",
+      "no": "Hayır"
+    },
+    "stats": {
+      "flrPrice": "FLR Fiyatı",
+      "marketCap": "Dolaşımdaki Coin",
+      "volume24h": "24 saatlik Hacim",
+      "tvl": "TVL",
+      "couldntLoad": "Pazara genel bakış yüklenemedi"
+    },
+    "chart": {
+      "couldntLoad": "FLR fiyat geçmişi yüklenemedi"
+    },
+    "networkActivity": {
+      "title": "Ağ Etkinliği",
+      "live": "Canlı",
+      "gwei": "Gwei",
+      "gasPrice": "Gaz ücreti",
+      "tps": "TPS",
+      "couldntLoad": "Ağ verileri yüklenemedi",
+      "collectingSamples": "Canlı örneklerin toplanması — yeni veriler geldikçe çizelge doldurulur."
+    },
+    "walletBalances": {
+      "title": "Cüzdan Bakiyeleri",
+      "connectToSeeBalances": "Bakiyeleri görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
+      "couldntLoad": "Cüzdan bakiyeleri yüklenemedi"
+    },
+    "ftso": {
+      "title": "FTSO Heyeti",
+      "connected": "Bağlandı",
+      "readOnly": " (read only)",
+      "connectToSeeRewards": "Ödülleri görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
+      "couldntLoad": "FTSO portföyü yüklenemedi",
+      "delegatedWflr": "Yetkilendirilmiş WFLR",
+      "unclaimedFlr": "Sahipsiz FLR",
+      "activeDelegations": "Aktif Delegasyonlar",
+      "estHourlyEarning": "Tahmini Saatlik Kazanç",
+      "claimRewards": "Ödülleri Al",
+      "readOnlyCannotClaim": "Salt okunur — talep edilemez",
+      "switchToClaim": "Ödülleri almak için bağlı cüzdanınıza geçin",
+      "noUnclaimedYet": "Henüz talep edilmemiş ödül yok",
+      "claimComingSoon": "Henüz talepte bulunulamıyor. Çok yakında."
+    },
+    "claimsHistory": {
+      "title": "Talep Geçmişi",
+      "connectToSee": "Talep geçmişini görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
+      "couldntLoad": "Talep geçmişi yüklenemedi",
+      "emptyTitle": "Sahipsiz dönem yok",
+      "emptyDescription": "Hepiniz bitirdiniz — talep edilecek bekleyen bir ödül dönemi yok."
+    },
+    "delegationsBreakdown": {
+      "title": "Delegasyon Dökümü",
+      "tabLabel": "Yetkilendirmeler",
+      "connectToSee": "Temsilcileri görmek için Ayarlar'dan bir cüzdan bağlayın veya ekleyin.",
+      "couldntLoad": "Yetkilendirmeler yüklenemedi",
+      "emptyTitle": "Etkin temsilci yok",
+      "emptyDescription": "Ödül kazanmaya başlamak için WFLR'yi bir FTSO sağlayıcısına devredin."
+    },
+    "apiStatus": {
+      "checking": "API durumu kontrol ediliyor...",
+      "operational": "Tüm sistemler çalışır durumda",
+      "degraded": "API bozulmuş"
+    }
   }
 }

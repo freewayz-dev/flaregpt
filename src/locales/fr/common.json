@@ -3,7 +3,7 @@
     "copyright": "© {{year}} FlareGPT. Propulsé par Flare Network.",
     "disclaimer": "Ceci n'est pas un conseil financier. Les données sont fournies à titre informatif uniquement.",
     "terms": "Conditions d'utilisation & Clause de non-responsabilité",
-    "donate": "Faire un don&#10;"
+    "donate": "Faire un don"
   },
   "help": {
     "contactSupport": "Contacter le Support",
@@ -99,7 +99,8 @@
     "mainnetStatus": "Réseau Principal Flare",
     "dropdownTitle": "Vue cible active",
     "noTrackedNodes": "Aucun nœud suivi.",
-    "noWallet": "Pas de portefeuille"
+    "noWallet": "Pas de portefeuille",
+    "configureInSettings": "Configurer dans les paramètres"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "Déconnecter",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Récompenses FTSO",
-    "fxrpPool": "Pool $fXRP",
+    "fxrpPool": "Protocoles Defi",
     "governance": "Gouvernance",
     "helpCenter": "Centre d'Aide",
     "notConnected": "Non connecté",
@@ -219,7 +220,10 @@
     "walletActivity": "Activité du Portefeuille",
     "walletConnected": "Portefeuille Connecté",
     "loops": "Rendement",
-    "feeds": "Flux"
+    "feeds": "Flux",
+    "donate": "Faire un don",
+    "addWatchlistWallet": "+ Ajouter un portefeuille de liste de surveillance",
+    "activeWallet": "Actif : {{address}}"
   },
   "wallet": {
     "activity": {
@@ -292,5 +296,76 @@
       "Expliquer le réseau Flare",
       "Dernières propositions de gouvernance"
     ]
+  },
+  "dashboard": {
+    "description": "Les données du réseau Live Flare, les graphiques de prix et l'activité du portefeuille en un coup d'œil.",
+    "common": {
+      "retry": "Réessayer",
+      "retrying": "Essayer à nouveau...",
+      "networkHiccup": "Il s'agit généralement d'un hoquet temporaire du réseau.",
+      "noWalletSelected": "Aucun portefeuille sélectionné",
+      "yes": "Oui",
+      "no": "Non"
+    },
+    "stats": {
+      "flrPrice": "Prix FLR",
+      "marketCap": "Capitalisation du marché",
+      "volume24h": "Volume en 24 h",
+      "tvl": "TVL",
+      "couldntLoad": "Impossible de charger la vue d'ensemble du marché"
+    },
+    "chart": {
+      "couldntLoad": "Impossible de charger l'historique des prix FLR"
+    },
+    "networkActivity": {
+      "title": "Activité réseau",
+      "live": "Direct",
+      "gwei": "Gwei",
+      "gasPrice": "prix du gaz",
+      "tps": "TPS",
+      "couldntLoad": "Impossible de charger les données réseau",
+      "collectingSamples": "Collecte d'échantillons vivants — le graphique se remplit à mesure que de nouvelles données arrivent."
+    },
+    "walletBalances": {
+      "title": "Balances de portefeuille",
+      "connectToSeeBalances": "Connectez-vous ou ajoutez un portefeuille dans Paramètres pour voir les soldes.",
+      "couldntLoad": "Impossible de charger les soldes du portefeuille"
+    },
+    "ftso": {
+      "title": "Délégation FTSO",
+      "connected": "Connecté",
+      "readOnly": "Lecture seule",
+      "connectToSeeRewards": "Connectez-vous ou ajoutez un portefeuille dans Paramètres pour voir les récompenses.",
+      "couldntLoad": "Impossible de charger le portefeuille FTSO",
+      "delegatedWflr": "WFLR délégué",
+      "unclaimedFlr": "FLR non réclamé",
+      "activeDelegations": "Délégations actives",
+      "estHourlyEarning": "Gain horaire est.",
+      "claimRewards": "Réclamez des récompenses",
+      "readOnlyCannotClaim": "Lecture seule — ne peut pas réclamer",
+      "switchToClaim": "Passez à votre portefeuille connecté pour réclamer des récompenses",
+      "noUnclaimedYet": "Aucune récompense non réclamée pour le moment",
+      "claimComingSoon": "La réclamation n'est pas encore disponible. Bientôt disponible."
+    },
+    "claimsHistory": {
+      "title": "Relevé d'informations",
+      "connectToSee": "Connectez-vous ou ajoutez un portefeuille dans les paramètres pour voir l'historique des réclamations.",
+      "couldntLoad": "Impossible de charger l'historique des réclamations",
+      "emptyTitle": "Aucune époque non revendiquée",
+      "emptyDescription": "Vous êtes tous rattrapés — il n'y a pas d'époques de récompense en attente à réclamer."
+    },
+    "delegationsBreakdown": {
+      "title": "Répartition des délégations",
+      "tabLabel": "Délégations",
+      "connectToSee": "Connectez-vous ou ajoutez un portefeuille dans Paramètres pour voir les délégations.",
+      "couldntLoad": "Impossible de charger les délégations",
+      "emptyTitle": "Aucune délégation active",
+      "emptyDescription": "Déléguez WFLR à un fournisseur FTSO pour commencer à gagner des récompenses."
+    },
+    "apiStatus": {
+      "checking": "Vérification de l'état de l'API...",
+      "operational": "Tous les systèmes sont opérationnels",
+      "degraded": "Dégradé"
+    }
   }
 }

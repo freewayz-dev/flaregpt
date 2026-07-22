@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useAccount } from "wagmi";
 import { WalletIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
@@ -10,6 +11,7 @@ function formatAmount(value) {
 }
 
 export default function WalletBalancesCard() {
+  const { t } = useTranslation();
   const { address: connectedAddress, isConnected } = useAccount();
   const { activeAddress } = useDerivedWalletHub(connectedAddress, isConnected);
   const { data, isLoading, isError, isFetching, refetch } =
@@ -22,26 +24,26 @@ export default function WalletBalancesCard() {
   return (
     <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <h3 className="text-sm font-semibold text-ink-primary mb-4">
-        Wallet Balances
+        {t("dashboard.walletBalances.title")}
       </h3>
 
       {!activeAddress ? (
         <div className="py-8 text-center rounded-2xl bg-surface-inset px-4">
           <WalletIcon className="h-8 w-8 mx-auto text-ink-muted mb-2" />
           <p className="text-sm font-medium text-ink-primary">
-            No wallet selected
+            {t("dashboard.common.noWalletSelected")}
           </p>
           <p className="mt-0.5 text-xs text-ink-muted">
-            Connect or add a wallet in Settings to see balances.
+            {t("dashboard.walletBalances.connectToSeeBalances")}
           </p>
         </div>
       ) : isError ? (
         <div className="py-6 text-center rounded-2xl bg-surface-inset px-4">
           <p className="text-sm font-medium text-ink-primary">
-            Couldn't load wallet balances
+            {t("dashboard.walletBalances.couldntLoad")}
           </p>
           <p className="mt-0.5 text-xs text-ink-muted">
-            This is usually a temporary network hiccup.
+            {t("dashboard.common.networkHiccup")}
           </p>
           <button
             type="button"
@@ -52,7 +54,7 @@ export default function WalletBalancesCard() {
             <ArrowPathIcon
               className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`}
             />
-            {isFetching ? "Retrying…" : "Retry"}
+            {isFetching ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
           </button>
         </div>
       ) : (

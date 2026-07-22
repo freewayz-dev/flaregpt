@@ -99,7 +99,8 @@
     "mainnetStatus": "Flare 메인넷",
     "dropdownTitle": "활성 타겟 보기",
     "noTrackedNodes": "추적된 노드가 없습니다.",
-    "noWallet": "지갑 없음"
+    "noWallet": "지갑 없음",
+    "configureInSettings": "설정에서 구성"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "연결 해제",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO 보상",
-    "fxrpPool": "$fXRP 풀",
+    "fxrpPool": "Defi 프로토콜",
     "governance": "거버넌스",
     "helpCenter": "고객센터",
     "notConnected": "연결 안 됨",
@@ -220,7 +221,10 @@
     "walletConnected": "지갑 연결됨",
     "yield": "수익률",
     "loops": "루프 번호",
-    "feeds": "피드"
+    "feeds": "피드",
+    "donate": "기부",
+    "addWatchlistWallet": "+ 관심 목록 지갑 추가",
+    "activeWallet": "활성: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -293,5 +297,76 @@
       "FLARE 네트워크 설명",
       "최신 거버넌스 제안"
     ]
+  },
+  "dashboard": {
+    "description": "실시간 Flare 네트워크 데이터, 가격 차트 및 지갑 활동을 한눈에 볼 수 있습니다.",
+    "common": {
+      "retry": "다시 시도",
+      "retrying": "\"재시도\"",
+      "networkHiccup": "이것은 일반적으로 일시적인 네트워크 문제입니다.",
+      "noWalletSelected": "지갑이 선택되지 않았습니다",
+      "yes": "예",
+      "no": "아니오"
+    },
+    "stats": {
+      "flrPrice": "FLR 가격",
+      "marketCap": "시가총액",
+      "volume24h": "24H 거래량",
+      "tvl": "보유하고 있습니다.",
+      "couldntLoad": "시장 개요를 로드할 수 없습니다"
+    },
+    "chart": {
+      "couldntLoad": "FLR 가격 기록을 로드할 수 없습니다"
+    },
+    "networkActivity": {
+      "title": "네트워크 활동 정지",
+      "live": "라이브",
+      "gwei": "Gwei",
+      "gasPrice": "가스 가격",
+      "tps": "TPS",
+      "couldntLoad": "네트워크 데이터를 로드할 수 없습니다",
+      "collectingSamples": "실시간 샘플 수집 — 새로운 데이터가 도착하면 차트가 채워집니다."
+    },
+    "walletBalances": {
+      "title": "지갑 잔액",
+      "connectToSeeBalances": "잔액을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
+      "couldntLoad": "지갑 잔액을 로드할 수 없습니다"
+    },
+    "ftso": {
+      "title": "FTSO 위임",
+      "connected": "연결됨",
+      "readOnly": "읽기 전용",
+      "connectToSeeRewards": "리워드를 확인하려면 설정에서 지갑을 연결하거나 추가하세요.",
+      "couldntLoad": "FTSO 포트폴리오를 로드할 수 없습니다",
+      "delegatedWflr": "위임된 WFLR",
+      "unclaimedFlr": "미청구 FLR",
+      "activeDelegations": "활성 위임",
+      "estHourlyEarning": "예상 시간당 수입",
+      "claimRewards": "보상 받기",
+      "readOnlyCannotClaim": "읽기 전용 — 소유권 주장 불가",
+      "switchToClaim": "보상을 받으려면 연결된 지갑으로 전환하세요",
+      "noUnclaimedYet": "아직 수령하지 않은 리워드가 없습니다",
+      "claimComingSoon": "신청은 아직 불가능합니다. 곧 시작됩니다."
+    },
+    "claimsHistory": {
+      "title": "\"보너스 포인트\" 이용 내역",
+      "connectToSee": "청구 내역을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
+      "couldntLoad": "청구 내역을 불러올 수 없습니다",
+      "emptyTitle": "청구되지 않은 에포크 없음",
+      "emptyDescription": "모두 확인되었습니다. 보류 중인 보상 시대는 없습니다."
+    },
+    "delegationsBreakdown": {
+      "title": "위임 내역",
+      "tabLabel": "위임",
+      "connectToSee": "위임을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
+      "couldntLoad": "위임을 로드할 수 없습니다",
+      "emptyTitle": "활성 위임 없음",
+      "emptyDescription": "보상을 받기 시작하려면 WFLR을 FTSO 제공자에게 위임하십시오."
+    },
+    "apiStatus": {
+      "checking": "API 상태 확인 중...",
+      "operational": "모든 시스템이 작동합니다.",
+      "degraded": "API 성능 저하"
+    }
   }
 }

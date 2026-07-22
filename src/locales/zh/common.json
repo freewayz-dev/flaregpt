@@ -99,7 +99,8 @@
     "mainnetStatus": "Flare 主网",
     "dropdownTitle": "活动目标视图",
     "noTrackedNodes": "没有跟踪的节点。",
-    "noWallet": "无钱包"
+    "noWallet": "无钱包",
+    "configureInSettings": "在设置中配置"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "断开连接",
     "FlareGPT": "耀斑GPT",
     "ftsoRewards": "FTSO 奖励",
-    "fxrpPool": "$fXRP 资金池",
+    "fxrpPool": "Defi方案",
     "governance": "治理",
     "helpCenter": "帮助中心",
     "notConnected": "未连接",
@@ -220,7 +221,10 @@
     "walletConnected": "钱包已连接",
     "yield": "收益率",
     "loops": "循环",
-    "feeds": "馈送"
+    "feeds": "馈送",
+    "donate": "捐献",
+    "addWatchlistWallet": "+添加关注列表钱包",
+    "activeWallet": "有效： {{address}}"
   },
   "wallet": {
     "activity": {
@@ -293,5 +297,76 @@
       "解释FLARE网络",
       "最新治理提案"
     ]
+  },
+  "dashboard": {
+    "description": "实时Flare网络数据、价格图表和钱包活动一目了然。",
+    "common": {
+      "retry": "再次挑战",
+      "retrying": "重试中",
+      "networkHiccup": "这通常是一个临时的网络打嗝。",
+      "noWalletSelected": "未选择钱包",
+      "yes": "是",
+      "no": "否"
+    },
+    "stats": {
+      "flrPrice": "FLR价格",
+      "marketCap": "市场价值",
+      "volume24h": "24小时量",
+      "tvl": "TVL",
+      "couldntLoad": "无法加载市场概览"
+    },
+    "chart": {
+      "couldntLoad": "无法加载FLR价格历史记录"
+    },
+    "networkActivity": {
+      "title": "网络活动",
+      "live": "Live",
+      "gwei": "Gwei",
+      "gasPrice": "用气价格",
+      "tps": "第三人射击游戏",
+      "couldntLoad": "无法加载网络数据",
+      "collectingSamples": "收集实时样本—图表在新数据到达时填写。"
+    },
+    "walletBalances": {
+      "title": "钱包余额",
+      "connectToSeeBalances": "在“设置”中连接或添加钱包以查看余额。",
+      "couldntLoad": "无法加载钱包余额"
+    },
+    "ftso": {
+      "title": "FTSO委托",
+      "connected": "已連線",
+      "readOnly": "只读",
+      "connectToSeeRewards": "在“设置”中关联或添加钱包，即可查看奖励。",
+      "couldntLoad": "无法加载FTSO投资组合",
+      "delegatedWflr": "委派WFLR",
+      "unclaimedFlr": "无人认领的FLR",
+      "activeDelegations": "活动委派",
+      "estHourlyEarning": "预计每小时收入",
+      "claimRewards": "Claim Rewards",
+      "readOnlyCannotClaim": "只读—无法声明",
+      "switchToClaim": "切换到已连接的钱包以领取奖励",
+      "noUnclaimedYet": "尚无未领取的奖励",
+      "claimComingSoon": "领取功能尚不可用，即将推出。"
+    },
+    "claimsHistory": {
+      "title": "索赔历史记录",
+      "connectToSee": "在“设置”中连接或添加钱包以查看索赔历史记录。",
+      "couldntLoad": "无法加载索赔历史记录",
+      "emptyTitle": "没有无人认领的纪元",
+      "emptyDescription": "大功告成！没有待领取的奖励纪元。"
+    },
+    "delegationsBreakdown": {
+      "title": "委派分解",
+      "tabLabel": "委派",
+      "connectToSee": "在“设置”中连接或添加钱包以查看委派。",
+      "couldntLoad": "无法加载委派",
+      "emptyTitle": "没有活动的委派",
+      "emptyDescription": "将WFLR委托给FTSO提供商，开始赚取奖励。"
+    },
+    "apiStatus": {
+      "checking": "正在检查API状态...",
+      "operational": "所有系统运行正常",
+      "degraded": "API已降级"
+    }
   }
 }

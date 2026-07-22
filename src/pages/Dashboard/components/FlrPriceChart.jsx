@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import {
   AreaChart,
@@ -97,6 +98,7 @@ function CandlestickTooltip({ active, payload, formatPrice }) {
 }
 
 export default function FlrPriceChart() {
+  const { t } = useTranslation();
   const timeframe = useUIStore((state) => state.timeframe);
   const setTimeframe = useUIStore((state) => state.setTimeframe);
   const chartType = useUIStore((state) => state.chartType);
@@ -127,7 +129,7 @@ export default function FlrPriceChart() {
     <div className="h-full min-w-0 rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <h3 className="text-sm font-semibold text-ink-primary">FLR Price</h3>
+          <h3 className="text-sm font-semibold text-ink-primary">{t("dashboard.stats.flrPrice")}</h3>
           {latest != null && (
             <p className="mt-1 text-2xl font-bold text-ink-primary truncate">
               {formatPrice(latest)}
@@ -139,6 +141,9 @@ export default function FlrPriceChart() {
                 >
                   {changePct >= 0 ? "+" : ""}
                   {changePct.toFixed(2)}%
+                  <span className="ml-1 text-ink-muted font-normal">
+                    ({timeframe})
+                  </span>
                 </span>
               )}
             </p>
@@ -167,10 +172,10 @@ export default function FlrPriceChart() {
         {isError || !data?.length ? (
           <div className="h-full flex flex-col items-center justify-center text-center px-4">
             <p className="text-sm font-medium text-ink-primary">
-              Couldn't load FLR price history
+              {t("dashboard.chart.couldntLoad")}
             </p>
             <p className="mt-0.5 text-xs text-ink-muted">
-              This is usually a temporary network hiccup.
+              {t("dashboard.common.networkHiccup")}
             </p>
             <button
               type="button"
@@ -181,7 +186,7 @@ export default function FlrPriceChart() {
               <ArrowPathIcon
                 className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`}
               />
-              {isFetching ? "Retrying…" : "Retry"}
+              {isFetching ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
             </button>
           </div>
         ) : isCandlestick ? (

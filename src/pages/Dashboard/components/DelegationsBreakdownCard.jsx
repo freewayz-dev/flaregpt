@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useAccount } from "wagmi";
 import { Square3Stack3DIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
@@ -8,6 +9,7 @@ import GenericTable from "@/pages/Dashboard/components/shared/GenericTable";
 import TableCardSkeleton from "@/pages/Dashboard/components/skeletons/TableCardSkeleton";
 
 export default function DelegationsBreakdownCard() {
+  const { t } = useTranslation();
   const { address: connectedAddress, isConnected } = useAccount();
   const { activeAddress } = useDerivedWalletHub(connectedAddress, isConnected);
   const { data, isLoading, isError, isFetching, refetch } =
@@ -20,22 +22,22 @@ export default function DelegationsBreakdownCard() {
   return (
     <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <h3 className="text-sm font-semibold text-ink-primary mb-4">
-        Delegations Breakdown
+        {t("dashboard.delegationsBreakdown.title")}
       </h3>
 
       {!activeAddress ? (
         <WalletEmptyState
           icon={Square3Stack3DIcon}
-          title="No wallet selected"
-          description="Connect or add a wallet in Settings to see delegations."
+          title={t("dashboard.common.noWalletSelected")}
+          description={t("dashboard.delegationsBreakdown.connectToSee")}
         />
       ) : isError ? (
         <div className="py-6 text-center rounded-2xl bg-surface-inset px-4">
           <p className="text-sm font-medium text-ink-primary">
-            Couldn't load delegations
+            {t("dashboard.delegationsBreakdown.couldntLoad")}
           </p>
           <p className="mt-0.5 text-xs text-ink-muted">
-            This is usually a temporary network hiccup.
+            {t("dashboard.common.networkHiccup")}
           </p>
           <button
             type="button"
@@ -46,15 +48,15 @@ export default function DelegationsBreakdownCard() {
             <ArrowPathIcon
               className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`}
             />
-            {isFetching ? "Retrying…" : "Retry"}
+            {isFetching ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
           </button>
         </div>
       ) : (
         <GenericTable
           items={data.active_delegations}
           emptyIcon={Square3Stack3DIcon}
-          emptyTitle="No active delegations"
-          emptyDescription="Delegate WFLR to an FTSO provider to start earning rewards."
+          emptyTitle={t("dashboard.delegationsBreakdown.emptyTitle")}
+          emptyDescription={t("dashboard.delegationsBreakdown.emptyDescription")}
         />
       )}
     </div>

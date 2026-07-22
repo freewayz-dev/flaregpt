@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   CurrencyDollarIcon,
   ChartBarIcon,
@@ -7,21 +8,16 @@ import {
 } from "@heroicons/react/24/outline";
 
 import StatCard from "@/components/cards/StatCard";
-import { usePercentChange } from "@/hooks/usePercentChange";
 import { useCurrency } from "@/hooks/useCurrency";
 import { useMarketOverview } from "@/hooks/queries/useDashboardQueries";
 import StatCardSkeleton from "@/pages/Dashboard/components/skeletons/StatCardSkeleton";
-
-function formatPercent(value) {
-  if (value == null) return undefined;
-  return `${value >= 0 ? "+" : ""}${value.toFixed(2)}%`;
-}
 
 // Fetches its own data (rather than receiving it as a prop from Dashboard)
 // so a slow or failing market-overview request only ever affects these 4
 // cards — never blocks PageHeader, the charts, or the wallet cards below,
 // which all gate on entirely different queries.
 export default function StatRow() {
+  const { t } = useTranslation();
   const { formatCurrency } = useCurrency();
   const {
     data: marketOverview,
@@ -35,13 +31,6 @@ export default function StatRow() {
   const marketCap = marketOverview?.market_metrics?.market_cap_usd;
   const volume = marketOverview?.market_metrics?.volume_24h_usd;
   const tvl = marketOverview?.chain_infrastructure?.aggregate_tvl_usd;
-
-  // Genuine deltas computed between consecutive live polls of this same
-  // endpoint (refetched every 60s) — not fabricated percentages. Called
-  // unconditionally, before the loading/error early returns below, since
-  // hooks must run in the same order on every render.
-  const priceChange = usePercentChange(price);
-  const tvlChange = usePercentChange(tvl);
 
   if (isLoading) {
     return (
@@ -57,10 +46,10 @@ export default function StatRow() {
     return (
       <div className="rounded-2xl bg-surface-card p-6 text-center shadow-sm border border-[#E5E7EB] dark:border-none">
         <p className="text-sm font-medium text-ink-primary">
-          Couldn't load market overview
+          {t("dashboard.stats.couldntLoad")}
         </p>
         <p className="mt-0.5 text-xs text-ink-muted">
-          This is usually a temporary network hiccup.
+          {t("dashboard.common.networkHiccup")}
         </p>
         <button
           type="button"
@@ -71,7 +60,7 @@ export default function StatRow() {
           <ArrowPathIcon
             className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`}
           />
-          {isFetching ? "Retrying…" : "Retry"}
+          {isFetching ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
         </button>
       </div>
     );
@@ -80,28 +69,35 @@ export default function StatRow() {
   const formatCompact = (value) =>
     formatCurrency(value, { notation: "compact", maximumFractionDigits: 2 });
 
+  // No card here shows a percent change: the API only ever returns a
+  // current spot value, never a historical baseline to compare against, so
+  // there's no real change to compute. An earlier version derived one from
+  // the delta between two consecutive 60s polls — but for a value that
+  // barely moves minute-to-minute, that's just measuring API rounding noise,
+  // not real price movement, and it routinely disagreed with FlrPriceChart's
+  // genuine timeframe-based change (which compares two points days apart).
+  // "Live" on the price card means what it says: this is the current spot
+  // value, refreshed every 60s — not "up/down since a moment ago".
   const cards = [
     {
-      title: "FLR Price",
+      title: t("dashboard.stats.flrPrice"),
       value: formatCurrency(price, { minimumFractionDigits: 5, maximumFractionDigits: 5 }),
-      change: formatPercent(priceChange),
       icon: CurrencyDollarIcon,
       live: true,
     },
     {
-      title: "Market Cap",
+      title: t("dashboard.stats.marketCap"),
       value: formatCompact(marketCap),
       icon: ChartBarIcon,
     },
     {
-      title: "24h Volume",
+      title: t("dashboard.stats.volume24h"),
       value: formatCompact(volume),
       icon: ArrowsRightLeftIcon,
     },
     {
-      title: "TVL",
+      title: t("dashboard.stats.tvl"),
       value: formatCompact(tvl),
-      change: formatPercent(tvlChange),
       icon: BanknotesIcon,
     },
   ];

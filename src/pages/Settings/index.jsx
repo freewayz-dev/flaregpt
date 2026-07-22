@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import {
-  Cog8ToothIcon,
+  AdjustmentsHorizontalIcon,
   WalletIcon,
   BellIcon,
   ChartBarIcon,
@@ -18,7 +18,7 @@ import Security from "@/pages/Settings/tabs/Security";
 import About from "@/pages/Settings/tabs/About";
 
 const tabs = [
-  { id: "Preferences", icon: Cog8ToothIcon },
+  { id: "Preferences", icon: AdjustmentsHorizontalIcon },
   { id: "Wallets", icon: WalletIcon },
   { id: "Notifications", icon: BellIcon },
   { id: "Display", icon: ChartBarIcon },
@@ -63,7 +63,7 @@ export default function Settings() {
                         ${
                           isActive
                             ? "bg-surface-card text-brand font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.01)]"
-                            : "text-[#475569] hover:text-ink-primary dark:text-[#6D7A86] hover:bg-surface-subtle font-medium"
+                            : "text-[#475569] hover:text-ink-primary dark:text-[#6D7A86] dark:hover:text-white hover:bg-surface-card-hover font-medium"
                         }
                         after:content-[attr(data-text)] after:block after:font-semibold after:h-0 after:overflow-hidden after:visibility-hidden`}
                     >

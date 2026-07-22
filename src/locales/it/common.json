@@ -99,7 +99,8 @@
     "mainnetStatus": "Mainnet Flare",
     "dropdownTitle": "Visualizzazione target attiva",
     "noTrackedNodes": "Nessun nodo tracciato.",
-    "noWallet": "Nessun portafoglio"
+    "noWallet": "Nessun portafoglio",
+    "configureInSettings": "Configura in Impostazioni"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "Disconnetti",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Premi FTSO",
-    "fxrpPool": "Pool $fXRP",
+    "fxrpPool": "Protocolli Defi",
     "governance": "Governance",
     "helpCenter": "Centro Assistenza",
     "notConnected": "Non connesso",
@@ -220,7 +221,10 @@
     "walletConnected": "Wallet Connesso",
     "yield": "Rendimento",
     "loops": "Cicli",
-    "feeds": "Feeds"
+    "feeds": "Feeds",
+    "donate": "Dona",
+    "addWatchlistWallet": "+ Aggiungi portafoglio Watchlist",
+    "activeWallet": "Attivo: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -293,5 +297,76 @@
       "Spiegare Flare Network",
       "Ultime proposte di governance"
     ]
+  },
+  "dashboard": {
+    "description": "Dati della rete Live Flare, grafici dei prezzi e attività del portafoglio a colpo d'occhio.",
+    "common": {
+      "retry": "Riprova",
+      "retrying": "Ritentare",
+      "networkHiccup": "Questo di solito è un singhiozzo temporaneo della rete.",
+      "noWalletSelected": "Nessun portafoglio selezionato",
+      "yes": "Sì",
+      "no": "No"
+    },
+    "stats": {
+      "flrPrice": "Prezzo FLR",
+      "marketCap": "Market Cap",
+      "volume24h": "Volume 24h",
+      "tvl": "TVL",
+      "couldntLoad": "Impossibile caricare la panoramica del mercato"
+    },
+    "chart": {
+      "couldntLoad": "Impossibile caricare la cronologia dei prezzi FLR"
+    },
+    "networkActivity": {
+      "title": "Network Activity",
+      "live": "Live",
+      "gwei": "Gwei",
+      "gasPrice": "Prezzo Gas",
+      "tps": "TPS",
+      "couldntLoad": "Impossibile caricare i dati di rete",
+      "collectingSamples": "Raccolta di campioni in tempo reale: il grafico viene compilato all'arrivo di nuovi dati."
+    },
+    "walletBalances": {
+      "title": "Saldi del portafoglio",
+      "connectToSeeBalances": "Collega o aggiungi un portafoglio nelle Impostazioni per visualizzare i saldi.",
+      "couldntLoad": "Impossibile caricare i saldi del portafoglio"
+    },
+    "ftso": {
+      "title": "Delega FTSO",
+      "connected": "Connesso",
+      "readOnly": "Sola lettura",
+      "connectToSeeRewards": "Collega o aggiungi un portafoglio nelle Impostazioni per visualizzare le ricompense.",
+      "couldntLoad": "Impossibile caricare il portafoglio FTSO",
+      "delegatedWflr": "WFLR delegato",
+      "unclaimedFlr": "FLR non riscosso",
+      "activeDelegations": "Deleghe attive",
+      "estHourlyEarning": "Guadagno orario stimato",
+      "claimRewards": "Riscuoti Ricompense",
+      "readOnlyCannotClaim": "Sola lettura — non può richiedere",
+      "switchToClaim": "Passa al tuo portafoglio connesso per richiedere i premi",
+      "noUnclaimedYet": "Ancora nessuna ricompensa non riscossa",
+      "claimComingSoon": "La riscossione non è ancora disponibile — presto disponibile."
+    },
+    "claimsHistory": {
+      "title": "Storico sinistri",
+      "connectToSee": "Collega o aggiungi un portafoglio nelle Impostazioni per visualizzare la cronologia dei reclami.",
+      "couldntLoad": "Impossibile caricare la cronologia dei reclami",
+      "emptyTitle": "Nessuna epoca non reclamata",
+      "emptyDescription": "Sei al passo: non ci sono epoche di ricompensa in sospeso da riscuotere."
+    },
+    "delegationsBreakdown": {
+      "title": "Ripartizione delle deleghe",
+      "tabLabel": "Deleghe",
+      "connectToSee": "Collega o aggiungi un portafoglio in Impostazioni per visualizzare le deleghe.",
+      "couldntLoad": "Impossibile caricare le deleghe",
+      "emptyTitle": "Nessuna delega attiva",
+      "emptyDescription": "Delega WFLR a un fornitore FTSO per iniziare a guadagnare ricompense."
+    },
+    "apiStatus": {
+      "checking": "Verifica dello stato dell'API in corso...",
+      "operational": "Tutti i sistemi operativi",
+      "degraded": "API degradata"
+    }
   }
 }

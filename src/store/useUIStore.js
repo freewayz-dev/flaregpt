@@ -25,6 +25,16 @@ export const useUIStore = create()(
       toggleTheme: () => {
         const nextMode = !get().darkMode;
 
+        // A real CSS cross-fade was tried here and reverted: many components
+        // use `border ... dark:border-none` (border-style is a discrete
+        // property, so toggling it can't animate — it pops), and React
+        // components subscribed to this store don't all re-render in the
+        // same commit, so different parts of the UI visibly updated at
+        // slightly different moments. Both would need wide, invasive changes
+        // across many components to fix properly. Suppressing transitions
+        // for one frame around the toggle avoids all of that at the cost of
+        // an instant switch rather than a cross-fade — a better trade-off
+        // than a smooth-but-glitchy transition.
         document.documentElement.classList.add("no-transition");
         document.documentElement.classList.toggle("dark", nextMode);
 

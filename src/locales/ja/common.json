@@ -99,7 +99,8 @@
     "mainnetStatus": "Flareメインネット",
     "dropdownTitle": "アクティブなターゲットビュー",
     "noTrackedNodes": "追跡されたノードはありません。",
-    "noWallet": "サイフはない"
+    "noWallet": "サイフはない",
+    "configureInSettings": "設定で設定"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "接続解除",
     "FlareGPT": "フレアGPT",
     "ftsoRewards": "FTSO報酬",
-    "fxrpPool": "$fXRPプール",
+    "fxrpPool": "Defiプロトコル",
     "governance": "ガバナンス",
     "helpCenter": "ヘルプセンター",
     "notConnected": "未接続",
@@ -220,7 +221,10 @@
     "walletConnected": "ウォレット接続済",
     "yield": "利回り",
     "loops": "ループ",
-    "feeds": "RSSフィード"
+    "feeds": "RSSフィード",
+    "donate": "寄付",
+    "addWatchlistWallet": "+ウォッチリストウォレットを追加",
+    "activeWallet": "有効：{{address}}"
   },
   "wallet": {
     "activity": {
@@ -293,5 +297,76 @@
       "FLAREネットワークの説明",
       "最新のガバナンス提案"
     ]
+  },
+  "dashboard": {
+    "description": "ライブフレアネットワークデータ、価格チャート、ウォレットアクティビティを一目で確認できます。",
+    "common": {
+      "retry": "再試行",
+      "retrying": "再試行",
+      "networkHiccup": "これは通常、一時的なネットワーク障害です。",
+      "noWalletSelected": "ウォレットが選択されていません",
+      "yes": "あり",
+      "no": "なし"
+    },
+    "stats": {
+      "flrPrice": "FLR価格",
+      "marketCap": "時価総額",
+      "volume24h": "24時間ボリューム",
+      "tvl": "TVL",
+      "couldntLoad": "市場概要を読み込めませんでした"
+    },
+    "chart": {
+      "couldntLoad": "FLRの料金履歴を読み込めませんでした"
+    },
+    "networkActivity": {
+      "title": "ネットワークアクティビティ",
+      "live": "ライブ",
+      "gwei": "Gwei",
+      "gasPrice": "ガス価格",
+      "tps": "TPS（トランザクション件数/秒）",
+      "couldntLoad": "ネットワークデータを読み込めませんでした",
+      "collectingSamples": "ライブサンプルの収集—チャートは新しいデータが到着したら埋めます。"
+    },
+    "walletBalances": {
+      "title": "ウォレット残高",
+      "connectToSeeBalances": "[設定]でウォレットを接続または追加して、残高を確認します。",
+      "couldntLoad": "ウォレットの残高を読み込めませんでした"
+    },
+    "ftso": {
+      "title": "FTSO委任",
+      "connected": "接続済み",
+      "readOnly": "読み取り専用",
+      "connectToSeeRewards": "[設定]でウォレットを接続または追加すると、特典が表示されます。",
+      "couldntLoad": "FTSOポートフォリオを読み込めませんでした",
+      "delegatedWflr": "委任されたWFLR",
+      "unclaimedFlr": "未請求のFLR",
+      "activeDelegations": "アクティブな委任",
+      "estHourlyEarning": "時間あたりの予想収入",
+      "claimRewards": "報酬受取：",
+      "readOnlyCannotClaim": "読み取り専用—申し立てはできません",
+      "switchToClaim": "接続されたウォレットに切り替えて特典を受け取りましょう",
+      "noUnclaimedYet": "まだ受け取っていない報酬はありません",
+      "claimComingSoon": "申し立てはまだ利用できません。まもなく開始されます。"
+    },
+    "claimsHistory": {
+      "title": "クレーム履歴",
+      "connectToSee": "[設定]でウォレットを接続または追加して、請求履歴を表示します。",
+      "couldntLoad": "請求履歴を読み込めませんでした",
+      "emptyTitle": "未取得のエポックはありません",
+      "emptyDescription": "すべて追いつきました。取得できる保留中の報酬エポックはありません。"
+    },
+    "delegationsBreakdown": {
+      "title": "委任の内訳",
+      "tabLabel": "委任者",
+      "connectToSee": "委任を表示するには、[設定]でウォレットを接続または追加します。",
+      "couldntLoad": "委任を読み込めませんでした",
+      "emptyTitle": "有効な委任はありません",
+      "emptyDescription": "FTSOプロバイダーにWFLRを委任して、報酬を獲得しましょう。"
+    },
+    "apiStatus": {
+      "checking": "APIステータスを確認しています...",
+      "operational": "システム正常動作",
+      "degraded": "APIが低下しました"
+    }
   }
 }

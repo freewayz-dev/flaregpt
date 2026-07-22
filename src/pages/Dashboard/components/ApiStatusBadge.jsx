@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
+
 import { useHealth } from "@/hooks/queries/useDashboardQueries";
 
 export default function ApiStatusBadge() {
+  const { t } = useTranslation();
   const { data, isLoading, isError } = useHealth();
   const isHealthy = !isError && data?.status === "ok";
 
@@ -11,10 +14,10 @@ export default function ApiStatusBadge() {
       : "bg-red-500";
 
   const label = isLoading
-    ? "Checking API status..."
+    ? t("dashboard.apiStatus.checking")
     : isHealthy
-      ? "All systems operational"
-      : "API degraded";
+      ? t("dashboard.apiStatus.operational")
+      : t("dashboard.apiStatus.degraded");
 
   return (
     <div className="flex items-center gap-1.5 text-[11px] font-medium text-ink-muted">

@@ -3,7 +3,7 @@
     "copyright": "© {{year}} FlareGPT. تم التطوير على شبكة Flare Network.",
     "disclaimer": "ليست استشارة مالية. البيانات المقدمة هي لأغراض معلوماتية فقط.",
     "terms": "الشروط وإخلاء المسؤولية",
-    "donate": "تَبرَّع "
+    "donate": "تَبرَّع"
   },
   "help": {
     "contactSupport": "الاتصال بالدعم",
@@ -99,7 +99,8 @@
     "mainnetStatus": "شبكة Flare الرئيسية",
     "dropdownTitle": "عرض الهدف النشط",
     "noTrackedNodes": "لا توجد عقد مجنزرة.",
-    "noWallet": "لا توجد محفظة"
+    "noWallet": "لا توجد محفظة",
+    "configureInSettings": "التكوين في الإعدادات"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "قطع الاتصال",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "مكافآت FTSO",
-    "fxrpPool": "مجمع $fXRP",
+    "fxrpPool": "بروتوكولات Defi",
     "governance": "الحوكمة",
     "helpCenter": "مركز المساعدة",
     "notConnected": "غير متصل",
@@ -219,7 +220,10 @@
     "walletActivity": "نشاط المحفظة",
     "walletConnected": "المحفظة متصلة",
     "loops": "العائد",
-    "feeds": "خلاصات"
+    "feeds": "خلاصات",
+    "donate": "تَبرَّع",
+    "addWatchlistWallet": "+ إضافة محفظة قائمة المتابعة",
+    "activeWallet": "نشط: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -292,5 +296,76 @@
       "شرح شبكة التوهج",
       "أحدث مقترحات الحوكمة"
     ]
+  },
+  "dashboard": {
+    "description": "نظرة سريعة على بيانات شبكة Flare الحية ومخططات الأسعار ونشاط المحفظة.",
+    "common": {
+      "retry": "أعد المحاولة",
+      "retrying": "جارٍ إعادة المحاولة ...",
+      "networkHiccup": "عادة ما يكون هذا زوبعة مؤقتة في الشبكة.",
+      "noWalletSelected": "لم يتم تحديد محفظة",
+      "yes": "نعم",
+      "no": "لا"
+    },
+    "stats": {
+      "flrPrice": "سعر FLR",
+      "marketCap": "رأس مال السوق",
+      "volume24h": "حجم التداول على مدار 24 ساعة",
+      "tvl": "TVL",
+      "couldntLoad": "تعذر تحميل نظرة عامة على السوق"
+    },
+    "chart": {
+      "couldntLoad": "تعذر تحميل سجل أسعار الطابق الأرضي"
+    },
+    "networkActivity": {
+      "title": "نشاط الشبكة.",
+      "live": "[ترجمة المصطلح: Live]",
+      "gwei": "جوي",
+      "gasPrice": "سعر الغاز",
+      "tps": "مستشعر موضع الدواسة / مستشعر موضع البخاخ",
+      "couldntLoad": "تعذر تحميل بيانات الشبكة",
+      "collectingSamples": "جمع عينات حية — يملأ المخطط عند وصول بيانات جديدة."
+    },
+    "walletBalances": {
+      "title": "أرصدة المحفظة",
+      "connectToSeeBalances": "قم بتوصيل أو إضافة محفظة في الإعدادات لرؤية الأرصدة.",
+      "couldntLoad": "تعذر تحميل أرصدة المحفظة"
+    },
+    "ftso": {
+      "title": "وفد FTSO",
+      "connected": "[ترجمة المصطلح: Connected]",
+      "readOnly": "للقراءة فقط",
+      "connectToSeeRewards": "قم بتوصيل محفظة أو إضافتها في الإعدادات لرؤية المكافآت.",
+      "couldntLoad": "تعذر تحميل محفظة FTSO",
+      "delegatedWflr": "تفويض WFLR",
+      "unclaimedFlr": "الطابق الأرضي غير المطالب به",
+      "activeDelegations": "الوفود النشطة",
+      "estHourlyEarning": "الدخل المقدر بالساعة",
+      "claimRewards": "المطالبة بالجوائز",
+      "readOnlyCannotClaim": "للقراءة فقط — لا يمكن المطالبة",
+      "switchToClaim": "قم بالتبديل إلى محفظتك المتصلة للمطالبة بالمكافآت",
+      "noUnclaimedYet": "لا توجد مكافآت لم تتم المطالبة بها بعد",
+      "claimComingSoon": "المطالبة غير متاحة بعد — قريبًا."
+    },
+    "claimsHistory": {
+      "title": "سجل المطالبات",
+      "connectToSee": "قم بتوصيل محفظة أو إضافتها في الإعدادات للاطلاع على سجل المطالبات.",
+      "couldntLoad": "تعذر تحميل سجل المطالبات",
+      "emptyTitle": "لا توجد حقب لم يطالب بها أحد",
+      "emptyDescription": "لقد علقت جميعًا — لا توجد فترات مكافآت معلقة للمطالبة بها."
+    },
+    "delegationsBreakdown": {
+      "title": "تفاصيل الوفود",
+      "tabLabel": "البعثات",
+      "connectToSee": "قم بتوصيل أو إضافة محفظة في الإعدادات لرؤية التفويضات.",
+      "couldntLoad": "تعذر تحميل التفويضات",
+      "emptyTitle": "لا توجد وفود نشطة",
+      "emptyDescription": "قم بتفويض WFLR إلى مزود FTSO لبدء كسب المكافآت."
+    },
+    "apiStatus": {
+      "checking": "جارٍ التحقق من حالة واجهة برمجة التطبيقات...",
+      "operational": "\"جميع الأنظمة جاهزة للعمل.\"",
+      "degraded": "API متدهور"
+    }
   }
 }

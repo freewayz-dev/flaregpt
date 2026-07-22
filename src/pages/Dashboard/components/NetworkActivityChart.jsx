@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { LineChart, Line, ResponsiveContainer, YAxis, Tooltip } from "recharts";
 
@@ -6,6 +7,7 @@ import { useLiveSeries } from "@/hooks/useLiveSeries";
 import NetworkActivityChartSkeleton from "@/pages/Dashboard/components/skeletons/NetworkActivityChartSkeleton";
 
 export default function NetworkActivityChart() {
+  const { t } = useTranslation();
   const { data, isLoading, isError, isFetching, dataUpdatedAt, refetch } =
     useGasPrice();
   // Builds a real rolling chart in-memory from each live poll of /gas-price
@@ -21,13 +23,13 @@ export default function NetworkActivityChart() {
   if (isError) {
     return (
       <div className="h-full flex flex-col rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
-        <h3 className="text-sm font-semibold text-ink-primary">Network Activity</h3>
+        <h3 className="text-sm font-semibold text-ink-primary">{t("dashboard.networkActivity.title")}</h3>
         <div className="flex-1 flex flex-col items-center justify-center text-center px-4 py-6">
           <p className="text-sm font-medium text-ink-primary">
-            Couldn't load network data
+            {t("dashboard.networkActivity.couldntLoad")}
           </p>
           <p className="mt-0.5 text-xs text-ink-muted">
-            This is usually a temporary network hiccup.
+            {t("dashboard.common.networkHiccup")}
           </p>
           <button
             type="button"
@@ -38,7 +40,7 @@ export default function NetworkActivityChart() {
             <ArrowPathIcon
               className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`}
             />
-            {isFetching ? "Retrying…" : "Retry"}
+            {isFetching ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
           </button>
         </div>
       </div>
@@ -52,10 +54,10 @@ export default function NetworkActivityChart() {
   return (
     <div className="h-full flex flex-col rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-ink-primary">Network Activity</h3>
+        <h3 className="text-sm font-semibold text-ink-primary">{t("dashboard.networkActivity.title")}</h3>
         <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-500">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          Live
+          {t("dashboard.networkActivity.live")}
         </span>
       </div>
 
@@ -63,15 +65,15 @@ export default function NetworkActivityChart() {
         <div>
           <p className="text-2xl font-bold text-ink-primary">
             {data.gas_gwei.toFixed(0)}
-            <span className="ml-1 text-sm font-medium text-ink-muted">Gwei</span>
+            <span className="ml-1 text-sm font-medium text-ink-muted">{t("dashboard.networkActivity.gwei")}</span>
           </p>
-          <p className="text-[11px] text-ink-muted mt-0.5">Gas Price</p>
+          <p className="text-[11px] text-ink-muted mt-0.5">{t("dashboard.networkActivity.gasPrice")}</p>
         </div>
         <div>
           <p className="text-lg font-semibold text-ink-primary">
             {data.network_tps.toFixed(2)}
           </p>
-          <p className="text-[11px] text-ink-muted mt-0.5">TPS</p>
+          <p className="text-[11px] text-ink-muted mt-0.5">{t("dashboard.networkActivity.tps")}</p>
         </div>
       </div>
 
@@ -81,7 +83,7 @@ export default function NetworkActivityChart() {
             <LineChart data={series}>
               <YAxis hide domain={["auto", "auto"]} />
               <Tooltip
-                labelFormatter={(t) => new Date(t).toLocaleTimeString()}
+                labelFormatter={(ts) => new Date(ts).toLocaleTimeString()}
                 formatter={(v) => [v == null ? "—" : `${v.toFixed(0)} Gwei`, "Gas"]}
                 contentStyle={{ borderRadius: 12, border: "none", fontSize: 12 }}
               />
@@ -97,7 +99,7 @@ export default function NetworkActivityChart() {
           </ResponsiveContainer>
         ) : (
           <div className="h-full flex items-center justify-center text-xs text-ink-muted text-center px-4">
-            Collecting live samples — chart fills in as new data arrives.
+            {t("dashboard.networkActivity.collectingSamples")}
           </div>
         )}
       </div>

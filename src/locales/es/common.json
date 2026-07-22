@@ -3,7 +3,7 @@
     "copyright": "© {{year}} FlareGPT. Construido sobre Flare Network.",
     "disclaimer": "No es un consejo financiero. Los datos se proporcionan solo con fines informativos.",
     "terms": "Términos y Descargo de Responsabilidad",
-    "donate": "Donar "
+    "donate": "Donar"
   },
   "help": {
     "contactSupport": "Contactar Soporte",
@@ -99,7 +99,8 @@
     "mainnetStatus": "Red Principal Flare",
     "dropdownTitle": "Setpoint activo",
     "noTrackedNodes": "No hay nodos rastreados.",
-    "noWallet": "Sin monedero"
+    "noWallet": "Sin monedero",
+    "configureInSettings": "Configurar en Ajustes"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "Desconectar",
     "FlareGPT": "LlamaradaGPT",
     "ftsoRewards": "Premios FTSO",
-    "fxrpPool": "Pool $fXRP",
+    "fxrpPool": "Defi Protocols",
     "governance": "Gobernanza",
     "helpCenter": "Centro de Ayuda",
     "notConnected": "No conectado",
@@ -219,7 +220,10 @@
     "walletActivity": "Actividad de Billetera",
     "walletConnected": "Billetera Conectada",
     "loops": "Rendimiento",
-    "feeds": "Feeds"
+    "feeds": "Feeds",
+    "donate": "Donar",
+    "addWatchlistWallet": "+ Añadir cartera de lista de seguimiento",
+    "activeWallet": "Activo: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -292,5 +296,76 @@
       "Explicar Flare Network",
       "Últimas propuestas de gobernanza"
     ]
+  },
+  "dashboard": {
+    "description": "Datos de red, gráficos de precios y actividad de billetera de Live Flare de un vistazo.",
+    "common": {
+      "retry": "Reintentar",
+      "retrying": "Reintentando...",
+      "networkHiccup": "Esto suele ser un contratiempo temporal de la red.",
+      "noWalletSelected": "No se ha seleccionado ningún monedero",
+      "yes": "Sí",
+      "no": "No"
+    },
+    "stats": {
+      "flrPrice": "Precio FLR",
+      "marketCap": "Market Cap",
+      "volume24h": "Volumen de 24 horas",
+      "tvl": "TVL",
+      "couldntLoad": "No se ha podido cargar la descripción general del mercado"
+    },
+    "chart": {
+      "couldntLoad": "No se ha podido cargar el historial de precios de FLR"
+    },
+    "networkActivity": {
+      "title": "Actividad de la red",
+      "live": "En directo",
+      "gwei": "Gwei",
+      "gasPrice": "precio del gas",
+      "tps": "TPS",
+      "couldntLoad": "No se han podido cargar los datos de red",
+      "collectingSamples": "Recolección de muestras en vivo: el gráfico se completa a medida que llegan nuevos datos."
+    },
+    "walletBalances": {
+      "title": "Saldos de billetera",
+      "connectToSeeBalances": "Conecta o añade un monedero en Configuración para ver los saldos.",
+      "couldntLoad": "No se han podido cargar los saldos del monedero"
+    },
+    "ftso": {
+      "title": "Delegación FTSO",
+      "connected": "Conectado",
+      "readOnly": "Solo lectura",
+      "connectToSeeRewards": "Conecta o añade un monedero en Configuración para ver las recompensas.",
+      "couldntLoad": "No se ha podido cargar la cartera de FTSO",
+      "delegatedWflr": "WFLR delegado",
+      "unclaimedFlr": "FLR no reclamada",
+      "activeDelegations": "Delegaciones activas",
+      "estHourlyEarning": "Ganancias por hora estimadas",
+      "claimRewards": "Reclamar recompensa",
+      "readOnlyCannotClaim": "Solo lectura: no se puede reclamar",
+      "switchToClaim": "Cambia a tu monedero conectado para reclamar recompensas",
+      "noUnclaimedYet": "Aún no hay recompensas no reclamadas",
+      "claimComingSoon": "La reclamación aún no está disponible. Próximamente."
+    },
+    "claimsHistory": {
+      "title": "Historial de reclamaciones",
+      "connectToSee": "Conecta o añade un monedero en Configuración para ver el historial de reclamaciones.",
+      "couldntLoad": "No se ha podido cargar el historial de reclamaciones",
+      "emptyTitle": "Sin épocas no reclamadas",
+      "emptyDescription": "Estás al día: no hay épocas de recompensas pendientes para reclamar."
+    },
+    "delegationsBreakdown": {
+      "title": "Desglose de delegaciones",
+      "tabLabel": "Delegaciones",
+      "connectToSee": "Conecta o añade un monedero en Configuración para ver las delegaciones.",
+      "couldntLoad": "No se han podido cargar las delegaciones",
+      "emptyTitle": "Delegaciones activas",
+      "emptyDescription": "Delega WFLR a un proveedor de FTSO para comenzar a ganar recompensas."
+    },
+    "apiStatus": {
+      "checking": "Comprobando el estado de la API...",
+      "operational": "Todos los sistemas operativos",
+      "degraded": "API degradada"
+    }
   }
 }

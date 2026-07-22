@@ -43,18 +43,56 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-[#F0F4F9] dark:bg-[#101115] transition-colors duration-300">
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1.5px,transparent_1.5px),linear-gradient(to_bottom,#e2e8f0_1.5px,transparent_1.5px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_40%,transparent_100%)] opacity-60 dark:opacity-35 pointer-events-none z-0" />
-      </div>
+      {/* Grid + ambient glow layer is scoped to this wrapper (nav + main
+          only), not the whole page, and fades out over its last 15% via the
+          mask below — so it never shows through behind the footer, which
+          has its own (near-transparent) background that's meant to read as
+          "the grid has ended" rather than have the grid bleed through it. */}
+      <div className="relative overflow-x-hidden">
+        {/* All ambient glows sit at z-0, and the grid sits at z-[5] — above
+            every glow, below all real content (main is z-10). That ordering
+            is what makes the grid read consistently everywhere, including
+            the hero: previously the hero glow was z-30 (above the grid),
+            so it visually washed the grid out only in that one section. */}
+        <div className="absolute top-44 sm:top-52 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[550px] sm:h-[550px] bg-brand/10 dark:bg-brand/8 blur-[70px] sm:blur-[110px] rounded-full pointer-events-none z-0" />
 
-      <div className="absolute top-44 sm:top-52 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[550px] sm:h-[550px] bg-brand/10 dark:bg-brand/5 blur-[70px] sm:blur-[110px] rounded-full pointer-events-none z-30" />
+        {/* Three more subtle glows staggered down the page (roughly the AI,
+            features, and FAQ sections) and offset left/right of center, so
+            the ambient brand-color wash keeps a continuous, organic presence
+            as the user scrolls instead of only bookending the hero and the
+            CTA section further down. Each one is modest on its own — the
+            "flowing" effect comes from spacing them out, not from any single
+            glow being prominent. */}
+        <div className="absolute top-[22%] left-[35%] -translate-x-1/2 w-[320px] h-[320px] sm:w-[450px] sm:h-[450px] bg-brand/12 dark:bg-brand/10 blur-[90px] sm:blur-[110px] rounded-full pointer-events-none z-0" />
+        <div className="absolute top-[48%] left-[65%] -translate-x-1/2 w-[350px] h-[350px] sm:w-[500px] sm:h-[500px] bg-brand/12 dark:bg-brand/10 blur-[90px] sm:blur-[120px] rounded-full pointer-events-none z-0" />
+        <div className="absolute top-[72%] left-[35%] -translate-x-1/2 w-[300px] h-[300px] sm:w-[420px] sm:h-[420px] bg-brand/12 dark:bg-brand/10 blur-[80px] sm:blur-[100px] rounded-full pointer-events-none z-0" />
 
-      <LandingNavbar />
+        {/* Grid pattern sits above every glow (z-[5]) so it reads at the
+            same strength everywhere the glows pass behind it, including the
+            hero — and still below all real content (main is z-10).
+            Two nested masks (rather than one combined gradient) so the
+            vertical and horizontal fades multiply correctly: the outer div
+            fades the top (blending into the navbar) and bottom (fading out
+            before the footer); the inner div fades the left/right edges so
+            the grid doesn't end with a hard vertical line at the viewport
+            boundary. (There used to be a radial vignette mask here instead —
+            centered at 50% of the *entire* page height, which faded out both
+            the hero and the CTA section at once, leaving only the vertical
+            middle of the page at full strength. Removed rather than
+            re-tuned, since a vignette anchored to total page height drifts
+            out of sync as content is added.) */}
+        <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,#000_5%,#000_92%,transparent_100%)]">
+          <div className="absolute inset-0 [mask-image:linear-gradient(to_right,transparent_0%,#000_6%,#000_94%,transparent_100%)]">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1.5px,transparent_1.5px),linear-gradient(to_bottom,#e2e8f0_1.5px,transparent_1.5px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-45 dark:opacity-25" />
+          </div>
+        </div>
 
-      <main className="relative z-10 pt-20 md:pt-24">
+        <LandingNavbar />
+
+        <main className="relative z-10 pt-20 md:pt-24">
         <FadeIn>
           <section className="flex flex-col items-center px-4 xl:px-0 justify-center text-center max-w-5xl mx-auto pt-12 md:pt-16 pb-28">
-            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-md px-4 py-1.5 shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-xl px-4 py-1.5 shadow-sm">
               <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-secondary">
                 Built for the Flare Network
               </span>
@@ -127,7 +165,7 @@ export default function LandingPage() {
 
         <FadeIn delay={0.2}>
           <section className="relative w-full py-8">
-            <div className="w-full border-y border-white/40 dark:border-white/5 bg-white/55 dark:bg-white/[0.03] backdrop-blur-xl">
+            <div className="relative w-full border-y border-line/70 bg-white/5 dark:bg-white/[0.03] backdrop-blur-md">
               <div className="max-w-5xl mx-auto px-6 py-8">
                 <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4 lg:gap-y-0 lg:divide-x lg:divide-line/60">
                   {[
@@ -178,7 +216,7 @@ export default function LandingPage() {
         <FadeIn delay={0.2}>
           <section
             id="ai"
-            className="overflow-x-hidden px-4 pt-24 xl:px-0 lg:pt-28"
+            className="overflow-x-hidden px-4 pt-10 xl:px-0 lg:pt-28"
           >
             <div className="mx-auto max-w-5xl">
               <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-20">
@@ -413,18 +451,17 @@ export default function LandingPage() {
           </section>
         </FadeIn>
       </main>
+      </div>
 
       <FadeIn delay={0.3}>
-        <footer className="relative w-full border-t border-line/70 bg-white/5 dark:bg-white/[0.03] backdrop-blur-2xl">
+        <footer className="relative w-full border-t border-line/70 bg-white/5 dark:bg-white/[0.03] backdrop-blur-md">
           <div className="mx-auto max-w-5xl py-12 px-4 xl:px-0">
-            {/* Ecosystem */}
             {/* Ecosystem */}
             <div className="flex flex-col items-center gap-8 pb-12">
               <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#64748B] dark:text-[#71717A]">
                 Powered by trusted technologies
               </p>
 
-              {/* Mobile */}
               {/* Mobile */}
               <div className="flex w-full items-start justify-between md:hidden">
                 {EcosystemPartners.map((partner) => (

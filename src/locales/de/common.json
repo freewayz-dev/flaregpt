@@ -99,7 +99,8 @@
     "mainnetStatus": "Flare-Mainnet",
     "dropdownTitle": "Aktive Zielansicht",
     "noTrackedNodes": "Keine verfolgten Knoten.",
-    "noWallet": "Kein Wallet"
+    "noWallet": "Kein Wallet",
+    "configureInSettings": "In den Einstellungen konfigurieren"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "Trennen",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO-Belohnungen",
-    "fxrpPool": "$fXRP-Pool",
+    "fxrpPool": "Defi-Protokolle",
     "governance": "Regierungsführung",
     "helpCenter": "Hilfe-Center",
     "notConnected": "Nicht verbunden",
@@ -219,7 +220,10 @@
     "walletActivity": "Wallet-Aktivität",
     "walletConnected": "Wallet verbunden",
     "loops": "Rendite",
-    "feeds": "Feeds"
+    "feeds": "Feeds",
+    "donate": "Spenden",
+    "addWatchlistWallet": "+ Watchlist-Wallet hinzufügen",
+    "activeWallet": "Aktiv: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -292,5 +296,76 @@
       "Erkläre das Flare-Netzwerk",
       "Neueste Governance-Vorschläge"
     ]
+  },
+  "dashboard": {
+    "description": "Live Flare-Netzwerkdaten, Preisdiagramme und Wallet-Aktivitäten auf einen Blick.",
+    "common": {
+      "retry": "Erneut versuchen",
+      "retrying": "Erneuter Versuch ",
+      "networkHiccup": "Dies ist in der Regel ein vorübergehender Netzwerk-Schluckauf.",
+      "noWalletSelected": "Kein Wallet ausgewählt",
+      "yes": "Ja",
+      "no": "Nr."
+    },
+    "stats": {
+      "flrPrice": "FLR-Preis",
+      "marketCap": "Marktkapitalisierung",
+      "volume24h": "24h Volumen",
+      "tvl": "TVL",
+      "couldntLoad": "Marktübersicht konnte nicht geladen werden"
+    },
+    "chart": {
+      "couldntLoad": "FLR-Preisverlauf konnte nicht geladen werden"
+    },
+    "networkActivity": {
+      "title": "Netzwerkaktivität:",
+      "live": "Live",
+      "gwei": "Gwei",
+      "gasPrice": "Gaspreis:",
+      "tps": "TPS",
+      "couldntLoad": "Netzwerkdaten konnten nicht geladen werden",
+      "collectingSamples": "Sammeln von Live-Proben — das Diagramm wird ausgefüllt, wenn neue Daten eintreffen."
+    },
+    "walletBalances": {
+      "title": "Wallet-Guthaben",
+      "connectToSeeBalances": "Verbinden oder fügen Sie ein Wallet in den Einstellungen hinzu, um Salden anzuzeigen.",
+      "couldntLoad": "Wallet-Salden konnten nicht geladen werden"
+    },
+    "ftso": {
+      "title": "FTSO-Delegation",
+      "connected": "Verbunden",
+      "readOnly": "Nur lesen",
+      "connectToSeeRewards": "Verbinden oder fügen Sie ein Wallet in den Einstellungen hinzu, um Prämien zu sehen.",
+      "couldntLoad": "FTSO-Portfolio konnte nicht geladen werden",
+      "delegatedWflr": "Delegierte WFLR",
+      "unclaimedFlr": "Nicht beanspruchte FLR",
+      "activeDelegations": "Aktive Delegationen",
+      "estHourlyEarning": "Stundenlohn",
+      "claimRewards": "Belohnungen abholen",
+      "readOnlyCannotClaim": "Schreibgeschützt — kann nicht beansprucht werden",
+      "switchToClaim": "Wechseln Sie zu Ihrem verbundenen Wallet, um Prämien einzufordern",
+      "noUnclaimedYet": "Noch keine nicht beanspruchten Belohnungen",
+      "claimComingSoon": "Die Beantragung ist noch nicht verfügbar — demnächst."
+    },
+    "claimsHistory": {
+      "title": "Schadenverlauf:",
+      "connectToSee": "Verbinden oder fügen Sie ein Wallet in den Einstellungen hinzu, um den Forderungsverlauf anzuzeigen.",
+      "couldntLoad": "Schadenverlauf konnte nicht geladen werden",
+      "emptyTitle": "Keine nicht beanspruchten Epochen",
+      "emptyDescription": "Sie sind alle eingeholt — es gibt keine ausstehenden Belohnungsepochen, die Sie in Anspruch nehmen können."
+    },
+    "delegationsBreakdown": {
+      "title": "Aufschlüsselung der Delegationen",
+      "tabLabel": "Delegationen",
+      "connectToSee": "Verbinden oder fügen Sie ein Wallet in den Einstellungen hinzu, um Delegationen anzuzeigen.",
+      "couldntLoad": "Delegationen konnten nicht geladen werden",
+      "emptyTitle": "Keine aktiven Delegationen",
+      "emptyDescription": "Delegieren Sie WFLR an einen FTSO-Anbieter, um Prämien zu verdienen."
+    },
+    "apiStatus": {
+      "checking": "API-Status wird überprüft...",
+      "operational": "Alle Systeme betriebsbereit.",
+      "degraded": "API verschlechtert"
+    }
   }
 }

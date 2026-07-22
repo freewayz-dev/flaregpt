@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
 
 // Renders a table whose columns are derived from whatever keys are actually
@@ -13,9 +15,9 @@ function humanizeKey(key) {
     .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-function formatCell(value) {
+function formatCell(value, yesLabel, noLabel) {
   if (value == null || value === "") return "—";
-  if (typeof value === "boolean") return value ? "Yes" : "No";
+  if (typeof value === "boolean") return value ? yesLabel : noLabel;
   if (typeof value === "string") {
     if (/^0x[a-fA-F0-9]{40}$/.test(value)) {
       return `${value.slice(0, 6)}...${value.slice(-4)}`;
@@ -39,6 +41,8 @@ export default function GenericTable({
   emptyTitle,
   emptyDescription,
 }) {
+  const { t } = useTranslation();
+
   if (!items?.length) {
     return (
       <WalletEmptyState
@@ -50,6 +54,8 @@ export default function GenericTable({
   }
 
   const columns = Object.keys(items[0]);
+  const yesLabel = t("dashboard.common.yes");
+  const noLabel = t("dashboard.common.no");
 
   return (
     <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
@@ -74,7 +80,7 @@ export default function GenericTable({
                   key={col}
                   className="py-2.5 pr-4 text-ink-primary font-medium whitespace-nowrap"
                 >
-                  {formatCell(item[col])}
+                  {formatCell(item[col], yesLabel, noLabel)}
                 </td>
               ))}
             </tr>

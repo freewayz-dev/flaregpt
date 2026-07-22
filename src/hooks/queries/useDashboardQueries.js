@@ -81,11 +81,27 @@ export function useFtsoPortfolio(walletAddress) {
   });
 }
 
+// CoinGecko's public API (no key, shared rate-limit pool across everyone
+// using it anonymously) returns 429 when that limit is hit — common enough
+// in practice to design for explicitly rather than treat as exceptional. A
+// 429 is worth waiting out with backoff since it self-resolves; a definitive
+// 4xx like 404 never will, so retrying it is just wasted time in front of
+// the user before the error+retry UI shows up.
+const COINGECKO_RESILIENCE = {
+  retry: (failureCount, error) => {
+    const status = error?.response?.status;
+    if (status && status !== 429 && status >= 400 && status < 500) return false;
+    return failureCount < 2;
+  },
+  retryDelay: (attempt) => Math.min(2000 * 2 ** attempt, 15_000),
+};
+
 export function useFlrPriceHistory(days) {
   return useQuery({
     queryKey: queryKeys.dashboard.flrPriceHistory(days),
     queryFn: () => fetchFlrPriceHistory(days),
     staleTime: 5 * 60_000,
+    ...COINGECKO_RESILIENCE,
   });
 }
 
@@ -94,5 +110,6 @@ export function useFlrOhlc(days) {
     queryKey: queryKeys.dashboard.flrOhlc(days),
     queryFn: () => fetchFlrOhlc(days),
     staleTime: 5 * 60_000,
+    ...COINGECKO_RESILIENCE,
   });
 }

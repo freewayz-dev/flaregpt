@@ -99,7 +99,8 @@
     "mainnetStatus": "Rede Principal Flare",
     "dropdownTitle": "Visualização de Alvo Ativo",
     "noTrackedNodes": "Sem nós rastreados.",
-    "noWallet": "Sem carteira"
+    "noWallet": "Sem carteira",
+    "configureInSettings": "Configurar em Definições"
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "Desconectar",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Recompensas FTSO",
-    "fxrpPool": "Pool $fXRP",
+    "fxrpPool": "Protocolos Defi",
     "governance": "Governança",
     "helpCenter": "Central de Ajuda",
     "notConnected": "Não conectado",
@@ -220,7 +221,10 @@
     "walletConnected": "Carteira Conectada",
     "yield": "Rendimento",
     "loops": "Loops/rotações",
-    "feeds": "Rações"
+    "feeds": "Rações",
+    "donate": "Doar",
+    "addWatchlistWallet": "+ Adicionar Carteira da Lista de Observação",
+    "activeWallet": "Ativo: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -293,5 +297,76 @@
       "Explicar a Rede de Queimadores",
       "Últimas propostas de governança"
     ]
+  },
+  "dashboard": {
+    "description": "Dados da rede do Live Flare, gráficos de preços e atividade da carteira em resumo.",
+    "common": {
+      "retry": "Tentar novamente",
+      "retrying": "A tentar novamente...",
+      "networkHiccup": "Isso geralmente é um soluço temporário da rede.",
+      "noWalletSelected": "Nenhuma carteira selecionada",
+      "yes": "Sim",
+      "no": "Não"
+    },
+    "stats": {
+      "flrPrice": "Preço FLR",
+      "marketCap": "Market Cap",
+      "volume24h": "Volume 24h",
+      "tvl": "TVL",
+      "couldntLoad": "Não foi possível carregar a visão geral do mercado"
+    },
+    "chart": {
+      "couldntLoad": "Não foi possível carregar o histórico de preços FLR"
+    },
+    "networkActivity": {
+      "title": "Atividade de Disco / Rede",
+      "live": "Disponível",
+      "gwei": "Gwei",
+      "gasPrice": "Preço do gás",
+      "tps": "TPS",
+      "couldntLoad": "Não foi possível carregar os dados da rede",
+      "collectingSamples": "Coleta de amostras ao vivo — o gráfico é preenchido à medida que novos dados chegam."
+    },
+    "walletBalances": {
+      "title": "Saldos da carteira",
+      "connectToSeeBalances": "Associe ou adicione uma carteira nas Definições para ver os saldos.",
+      "couldntLoad": "Não foi possível carregar os saldos da carteira"
+    },
+    "ftso": {
+      "title": "Delegação FTSO",
+      "connected": "Conectado",
+      "readOnly": "Apenas visualização",
+      "connectToSeeRewards": "Associe ou adicione uma carteira nas Definições para ver as recompensas.",
+      "couldntLoad": "Não foi possível carregar o portfólio FTSO",
+      "delegatedWflr": "Delegado WFLR",
+      "unclaimedFlr": "FLR não reivindicado",
+      "activeDelegations": "Delegações Ativas",
+      "estHourlyEarning": "Rendimento Horário Est.",
+      "claimRewards": "\"Reivindicar prémios\"",
+      "readOnlyCannotClaim": "Somente leitura — não é possível reivindicar",
+      "switchToClaim": "Mude para a sua carteira conectada para resgatar recompensas",
+      "noUnclaimedYet": "Ainda não há recompensas não reclamadas",
+      "claimComingSoon": "A reivindicação ainda não está disponível — em breve."
+    },
+    "claimsHistory": {
+      "title": "Histórico de reclamações",
+      "connectToSee": "Associe ou adicione uma carteira nas Definições para ver o histórico de reclamações.",
+      "couldntLoad": "Não foi possível carregar o histórico de reclamações",
+      "emptyTitle": "Nenhuma época não reclamada",
+      "emptyDescription": "Você está em dia — não há épocas de recompensas pendentes para reivindicar."
+    },
+    "delegationsBreakdown": {
+      "title": "Discriminação das delegações",
+      "tabLabel": "Delegações",
+      "connectToSee": "Associe ou adicione uma carteira nas Definições para ver as delegações.",
+      "couldntLoad": "Não foi possível carregar as delegações",
+      "emptyTitle": "Sem delegações ativas",
+      "emptyDescription": "Delegue a WFLR a um provedor de FTSO para começar a ganhar recompensas."
+    },
+    "apiStatus": {
+      "checking": "A verificar o estado da API...",
+      "operational": "Todos os Sistemas Operacionais ",
+      "degraded": "API degradado"
+    }
   }
 }

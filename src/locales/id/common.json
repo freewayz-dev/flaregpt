@@ -3,7 +3,7 @@
     "copyright": "© {{year}} FlareGPT. Dibangun di atas Flare Network.",
     "disclaimer": "Bukan saran finansial. Data disediakan hanya untuk tujuan informasi.",
     "terms": "Ketentuan & Penafian",
-    "donate": ""
+    "donate": "Beri donasi"
   },
   "help": {
     "contactSupport": "Hubungi Dukungan",
@@ -97,9 +97,10 @@
   "navbar": {
     "askFlareGPT": "Tanya FlareGPT",
     "mainnetStatus": "Mainnet Flare",
-    "dropdownTitle": "",
-    "noTrackedNodes": "",
-    "noWallet": ""
+    "dropdownTitle": "Tampilan Target Aktif",
+    "noTrackedNodes": "Tidak ada node yang dilacak.",
+    "noWallet": "Tidak ada Dompet",
+    "configureInSettings": "Konfigurasikan di Pengaturan"
   },
   "settings": {
     "cards": {
@@ -188,20 +189,20 @@
       "limitReached": "Batas Dompet Tercapai ({{current}}/{{max}})",
       "maximum": "Maksimum",
       "remainingSlots": "Slot Tersisa",
-      "addFormTitle": "",
-      "addressPlaceholder": "",
-      "invalidAddress": "",
-      "labelPlaceholder": "",
-      "liveConnected": "",
-      "manageSubtitle": "",
-      "readOnly": "",
-      "registrationFailed": "",
-      "tracked": ""
+      "addFormTitle": "Tambahkan Akun Portofolio Daftar Pantau",
+      "addressPlaceholder": "0x... Alamat Flare Wallet",
+      "invalidAddress": "Masukkan alamat jaringan EVM Flare yang valid (dimulai dengan 0x).",
+      "labelPlaceholder": "Label Nama Akun (misalnya, Cold Storage)",
+      "liveConnected": "Terhubung Langsung",
+      "manageSubtitle": "Kelola koneksi Web3 aktif Anda dan akun pelacakan portofolio hanya baca.",
+      "readOnly": "Hanya-Baca",
+      "registrationFailed": "Pendaftaran alamat gagal. Periksa apakah itu duplikat atau apakah slot diisi.",
+      "tracked": "Dilacak"
     },
     "links": {
-      "docs": "",
-      "github": "",
-      "twitter": ""
+      "docs": "Dokumentasi",
+      "github": "Github",
+      "twitter": "Twitter"
     }
   },
   "sidebar": {
@@ -209,7 +210,7 @@
     "disconnect": "Putuskan Koneksi",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Hadiah FTSO",
-    "fxrpPool": "Pool $fXRP",
+    "fxrpPool": "Protokol Defi",
     "governance": "Tata Kelola",
     "helpCenter": "Pusat Bantuan",
     "notConnected": "Belum Terhubung",
@@ -219,8 +220,11 @@
     "walletActivity": "Aktivitas Dompet",
     "walletConnected": "Dompet Terhubung",
     "yield": "Imbal Hasil",
-    "loops": "",
-    "feeds": ""
+    "loops": "Loop",
+    "feeds": "Umpan",
+    "donate": "Beri donasi",
+    "addWatchlistWallet": "+ Tambahkan Dompet Daftar Pantau",
+    "activeWallet": "Aktif: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -262,36 +266,107 @@
       "generic": "Terjadi gesekan koneksi yang tidak terduga. Silakan coba lagi atau gunakan dompet lain.",
       "pending": "Permintaan koneksi sudah terbuka. Silakan buka panel ekstensi dompet Anda.",
       "rejected": "Permintaan koneksi dibatalkan di dompet Anda.",
-      "wrongNetwork": ""
+      "wrongNetwork": "Harap alihkan jaringan aktif dompet Anda ke Flare Mainnet."
     },
-    "mobileHint": "",
-    "recommended": "",
-    "subtitle": "",
-    "title": ""
+    "mobileHint": "Di ponsel, buka FlareGPT di browser bawaan dompet Anda untuk pengalaman koneksi terbaik.",
+    "recommended": "Direkomendasikan",
+    "subtitle": "Pilih dompet pilihan Anda untuk terhubung ke Jaringan Flare.",
+    "title": "Hubungkan Dompet"
   },
   "flareWidget": {
-    "back": "",
-    "chatHistory": "",
-    "close": "",
-    "collapse": "",
-    "expand": "",
-    "historyTitle": "",
-    "inputPlaceholder": "",
-    "liveBanner": "",
+    "back": "Kembali",
+    "chatHistory": "Riwayat obrolan",
+    "close": "Tutup",
+    "collapse": "Ciutkan",
+    "expand": "Bentangkan",
+    "historyTitle": "Riwayat Obrolan",
+    "inputPlaceholder": "Tanya FlareGPT...",
+    "liveBanner": "Flare Mainnet • Asisten Langsung",
     "mockHistory": [
-      "",
-      "",
-      "",
-      ""
+      "Analisis harga FlR",
+      "Bantuan penyiapan dompet",
+      "Strategi hasil",
+      "Diskusi tata kelola"
     ],
-    "newChat": "",
-    "send": "",
+    "newChat": "Obrolan baru",
+    "send": "Kirim",
     "suggestions": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "Berapa harga FlR hari ini?",
+      "Saldo Dompet",
+      "Bagaimana cara mendapatkan hadiah FTSO?",
+      "Menjelaskan Flare Network",
+      "Proposal tata kelola terbaru"
     ]
+  },
+  "dashboard": {
+    "description": "Sekilas data jaringan Flare Langsung, grafik harga, dan aktivitas dompet.",
+    "common": {
+      "retry": "Coba lagi",
+      "retrying": "Mencoba lagi.\n\n",
+      "networkHiccup": "Ini biasanya cegukan jaringan sementara.",
+      "noWalletSelected": "Tidak ada dompet dipilih",
+      "yes": "Ya",
+      "no": "No"
+    },
+    "stats": {
+      "flrPrice": "Harga FLR",
+      "marketCap": "Kap Pasar",
+      "volume24h": "Volume 24 jam",
+      "tvl": "TVL",
+      "couldntLoad": "Tidak dapat memuat ikhtisar pasar"
+    },
+    "chart": {
+      "couldntLoad": "Tidak dapat memuat riwayat harga FLR"
+    },
+    "networkActivity": {
+      "title": "Aktivitas Jaringan",
+      "live": "Langsung",
+      "gwei": "Gwei",
+      "gasPrice": "harga gas",
+      "tps": "TPS",
+      "couldntLoad": "Tidak dapat memuat data jaringan",
+      "collectingSamples": "Mengumpulkan sampel langsung — grafik terisi saat data baru tiba."
+    },
+    "walletBalances": {
+      "title": "Saldo Dompet",
+      "connectToSeeBalances": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat saldo.",
+      "couldntLoad": "Tidak dapat memuat saldo dompet"
+    },
+    "ftso": {
+      "title": "Delegasi FTSO",
+      "connected": "Tersambung",
+      "readOnly": "Hanya-baca",
+      "connectToSeeRewards": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat hadiah.",
+      "couldntLoad": "Tidak dapat memuat portofolio FTSO",
+      "delegatedWflr": "WFLR yang Didelegasikan",
+      "unclaimedFlr": "FLR yang tidak diklaim",
+      "activeDelegations": "Delegasi Aktif",
+      "estHourlyEarning": "Penghasilan Per Jam Est.",
+      "claimRewards": "Klaim Hadiah",
+      "readOnlyCannotClaim": "Hanya baca — tidak dapat mengklaim",
+      "switchToClaim": "Beralih ke dompet Anda yang terhubung untuk mengklaim hadiah",
+      "noUnclaimedYet": "Belum ada hadiah yang belum diklaim",
+      "claimComingSoon": "Klaim belum tersedia — segera hadir."
+    },
+    "claimsHistory": {
+      "title": "Riwayat Klaim",
+      "connectToSee": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat riwayat klaim.",
+      "couldntLoad": "Tidak dapat memuat riwayat klaim",
+      "emptyTitle": "Tidak ada zaman yang tidak diklaim",
+      "emptyDescription": "Anda semua terjebak — tidak ada periode hadiah yang tertunda untuk diklaim."
+    },
+    "delegationsBreakdown": {
+      "title": "Perincian Delegasi",
+      "tabLabel": "Delegasi",
+      "connectToSee": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat delegasi.",
+      "couldntLoad": "Tidak dapat memuat delegasi",
+      "emptyTitle": "Tidak ada delegasi aktif",
+      "emptyDescription": "Delegasikan WFLR ke penyedia FTSO untuk mulai mendapatkan hadiah."
+    },
+    "apiStatus": {
+      "checking": "Memeriksa status api...",
+      "operational": "Semua sistem beroperasi",
+      "degraded": "Api terdegradasi"
+    }
   }
 }

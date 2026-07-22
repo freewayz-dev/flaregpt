@@ -99,7 +99,8 @@
     "mainnetStatus": "Mạng chính Flare",
     "dropdownTitle": "Chế độ xem mục tiêu đang hoạt động",
     "noTrackedNodes": "Không có nút được theo dõi.",
-    "noWallet": "Không có ví"
+    "noWallet": "Không có ví",
+    "configureInSettings": "Cài đặt nó trong Cài đặt."
   },
   "settings": {
     "cards": {
@@ -209,7 +210,7 @@
     "disconnect": "Ngắt kết nối",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Phần thưởng FTSO",
-    "fxrpPool": "Bể thanh khoản $fXRP",
+    "fxrpPool": "Giao thức DEFI",
     "governance": "Quản trị",
     "helpCenter": "Trung tâm Trợ giúp",
     "notConnected": "Chưa kết nối",
@@ -220,7 +221,10 @@
     "walletConnected": "Ví đã kết nối",
     "yield": "Lợi nhuận",
     "loops": "Vòng lặp",
-    "feeds": "Các nguồn dữ liệu"
+    "feeds": "Các nguồn dữ liệu",
+    "donate": "Ủng hộ",
+    "addWatchlistWallet": "+ Thêm Ví Danh sách theo dõi",
+    "activeWallet": "Hoạt động: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -293,5 +297,76 @@
       "Giải thích về Flare Network",
       "Đề xuất quản trị mới nhất"
     ]
+  },
+  "dashboard": {
+    "description": "Dữ liệu mạng Live Flare, biểu đồ giá và hoạt động của ví trong nháy mắt.",
+    "common": {
+      "retry": "Thử lại",
+      "retrying": "Đang thử lại…",
+      "networkHiccup": "Đây thường là trục trặc mạng tạm thời.",
+      "noWalletSelected": "Không có ví nào được chọn",
+      "yes": "Có",
+      "no": "Không"
+    },
+    "stats": {
+      "flrPrice": "Giá FLR",
+      "marketCap": "Vốn hóa thị trường",
+      "volume24h": "Khối lượng 24h",
+      "tvl": "TVL",
+      "couldntLoad": "Không thể tải tổng quan thị trường"
+    },
+    "chart": {
+      "couldntLoad": "Không thể tải lịch sử giá FLR"
+    },
+    "networkActivity": {
+      "title": "Hoạt động thông tin mạng",
+      "live": "Trực tiếp",
+      "gwei": "Gwei",
+      "gasPrice": "giá gas",
+      "tps": "TPS",
+      "couldntLoad": "Không thể tải dữ liệu mạng",
+      "collectingSamples": "Thu thập mẫu trực tiếp — điền vào biểu đồ khi dữ liệu mới đến."
+    },
+    "walletBalances": {
+      "title": "Số dư Ví",
+      "connectToSeeBalances": "Kết nối hoặc thêm ví trong Cài đặt để xem số dư.",
+      "couldntLoad": "Không thể tải số dư ví"
+    },
+    "ftso": {
+      "title": "Phái đoàn FTSO",
+      "connected": "Đã kết nối",
+      "readOnly": "Chỉ đọc",
+      "connectToSeeRewards": "Kết nối hoặc thêm ví trong Cài đặt để xem phần thưởng.",
+      "couldntLoad": "Không thể tải danh mục đầu tư FTSO",
+      "delegatedWflr": "WFLR được ủy quyền",
+      "unclaimedFlr": "FLR chưa được xác nhận quyền sở hữu",
+      "activeDelegations": "Ủy quyền đang hoạt động",
+      "estHourlyEarning": "Thu nhập hàng giờ ước tính",
+      "claimRewards": "Nhận phần thưởng",
+      "readOnlyCannotClaim": "Chỉ đọc — không thể xác nhận quyền sở hữu",
+      "switchToClaim": "Chuyển sang ví đã kết nối của bạn để nhận phần thưởng",
+      "noUnclaimedYet": "Chưa có phần thưởng nào chưa được nhận",
+      "claimComingSoon": "Yêu cầu chưa khả dụng — sắp ra mắt."
+    },
+    "claimsHistory": {
+      "title": "Lịch sử Xác nhận quyền sở hữu",
+      "connectToSee": "Kết nối hoặc thêm ví trong Cài đặt để xem lịch sử xác nhận quyền sở hữu.",
+      "couldntLoad": "Không thể tải lịch sử xác nhận quyền sở hữu",
+      "emptyTitle": "Không có kỷ nguyên chưa được xác nhận quyền sở hữu",
+      "emptyDescription": "Tất cả các bạn đã bắt kịp — không có giai đoạn phần thưởng đang chờ xử lý nào để nhận."
+    },
+    "delegationsBreakdown": {
+      "title": "Phân tích Ủy quyền",
+      "tabLabel": "Ủy quyền",
+      "connectToSee": "Kết nối hoặc thêm ví trong Cài đặt để xem các ủy quyền.",
+      "couldntLoad": "Không thể tải nhiệm vụ",
+      "emptyTitle": "Không có ủy quyền đang hoạt động",
+      "emptyDescription": "Ủy quyền WFLR cho nhà cung cấp FTSO để bắt đầu kiếm phần thưởng."
+    },
+    "apiStatus": {
+      "checking": "Đang kiểm tra trạng thái API...",
+      "operational": "Toàn bộ hệ thống đều hoạt động.",
+      "degraded": "API bị suy giảm"
+    }
   }
 }

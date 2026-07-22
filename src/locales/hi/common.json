@@ -3,7 +3,7 @@
     "copyright": "© {{year}} FlareGPT. फ्लेयर नेटवर्क (Flare Network) पर निर्मित।",
     "disclaimer": "वित्तीय सलाह नहीं है। डेटा केवल सूचनात्मक उद्देश्यों के लिए प्रदान किया गया है।",
     "terms": "नियम और अस्वीकरण",
-    "donate": ""
+    "donate": "दान करें"
   },
   "help": {
     "contactSupport": "सहायता टीम से संपर्क करें",
@@ -97,9 +97,10 @@
   "navbar": {
     "askFlareGPT": "FlareGPT से पूछें",
     "mainnetStatus": "फ्लेयर मेननेट",
-    "dropdownTitle": "",
-    "noTrackedNodes": "",
-    "noWallet": ""
+    "dropdownTitle": "सक्रिय लक्ष्य दृश्य",
+    "noTrackedNodes": "कोई ट्रैक नोड्स नहीं।",
+    "noWallet": "कोई वॉलेट नहीं",
+    "configureInSettings": "सेटिंग में कॉन्फ़िगर करें"
   },
   "settings": {
     "cards": {
@@ -188,20 +189,20 @@
       "limitReached": "वॉलेट सीमा समाप्त ({{current}}/{{max}})",
       "maximum": "अधिकतम",
       "remainingSlots": "शेष स्लॉट",
-      "addFormTitle": "",
-      "addressPlaceholder": "",
-      "invalidAddress": "",
-      "labelPlaceholder": "",
-      "liveConnected": "",
-      "manageSubtitle": "",
-      "readOnly": "",
-      "registrationFailed": "",
-      "tracked": ""
+      "addFormTitle": "वॉचलिस्ट पोर्टफ़ोलियो अकाउंट जोड़ें",
+      "addressPlaceholder": "0x... फ्लेयर वॉलेट का पता",
+      "invalidAddress": "कृपया एक मान्य फ्लेयर ईवीएम नेटवर्क पता दर्ज करें (0x से शुरू)।",
+      "labelPlaceholder": "अकाउंट का नाम लेबल (जैसे, कोल्ड स्टोरेज)",
+      "liveConnected": "लाइव कनेक्टेड",
+      "manageSubtitle": "अपने सक्रिय Web3 कनेक्शन और केवल पढ़ने के लिए पोर्टफोलियो ट्रैकिंग खाते प्रबंधित करें।",
+      "readOnly": "सिर्फ पढ़ने योग्य",
+      "registrationFailed": "पते का रजिस्ट्रेशन नहीं हो सका। जाँच लें कि यह डुप्लीकेट है या स्लॉट भरे गए हैं।",
+      "tracked": "ट्रैक किया गया"
     },
     "links": {
-      "docs": "",
-      "github": "",
-      "twitter": ""
+      "docs": "डॉक्स",
+      "github": "GitHub",
+      "twitter": "Twitter"
     }
   },
   "sidebar": {
@@ -209,7 +210,7 @@
     "disconnect": "डिस्कनेक्ट करें",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO पुरस्कार",
-    "fxrpPool": "$fXRP पूल",
+    "fxrpPool": "डेफी प्रोटोकॉल",
     "governance": "गवर्नेंस",
     "helpCenter": "सहायता केंद्र",
     "notConnected": "कनेक्टेड नहीं है",
@@ -219,8 +220,11 @@
     "walletActivity": "वॉलेट गतिविधि",
     "walletConnected": "वॉलेट कनेक्ट हो गया",
     "yield": "यील्ड",
-    "loops": "",
-    "feeds": ""
+    "loops": "लूप",
+    "feeds": "फ़ीड्स",
+    "donate": "दान करें",
+    "addWatchlistWallet": "+ वॉचलिस्ट वॉलेट जोड़ें",
+    "activeWallet": "सक्रिय: {{address}}"
   },
   "wallet": {
     "activity": {
@@ -254,44 +258,115 @@
     }
   },
   "comingSoon": {
-    "badge": "",
-    "description": ""
+    "badge": "जल्द ही आ रही हैं",
+    "description": "हम यह सुविधा बना रहे हैं। जल्द ही फिर से देखें।"
   },
   "connectModal": {
     "errors": {
-      "generic": "",
-      "pending": "",
-      "rejected": "",
-      "wrongNetwork": ""
+      "generic": "एक अप्रत्याशित कनेक्शन घर्षण हुआ। कृपया फिर से कोशिश करें या किसी दूसरे वॉलेट का इस्तेमाल करें।",
+      "pending": "कनेक्शन का अनुरोध पहले से ही खुला है। कृपया अपना वॉलेट एक्सटेंशन पैनल खोलें।",
+      "rejected": "आपके वॉलेट में कनेक्शन का अनुरोध कैंसिल कर दिया गया था।",
+      "wrongNetwork": "कृपया अपने वॉलेट के सक्रिय नेटवर्क को फ्लेयर मेननेट पर स्विच करें।"
     },
-    "mobileHint": "",
-    "recommended": "",
-    "subtitle": "",
-    "title": ""
+    "mobileHint": "मोबाइल पर, सबसे अच्छे कनेक्शन अनुभव के लिए अपने वॉलेट के बिल्ट - इन ब्राउज़र में FlareGPT खोलें।",
+    "recommended": "अनुशंसित",
+    "subtitle": "फ़्लेयर नेटवर्क से कनेक्ट करने के लिए अपना पसंदीदा वॉलेट चुनें।",
+    "title": "Wallet कनेक्ट करें"
   },
   "flareWidget": {
-    "back": "",
-    "chatHistory": "",
-    "close": "",
-    "collapse": "",
-    "expand": "",
-    "historyTitle": "",
-    "inputPlaceholder": "",
-    "liveBanner": "",
+    "back": "वापस जाएँ",
+    "chatHistory": "चैट का इतिहास",
+    "close": "बंद करें",
+    "collapse": "संक्षिप्त करें",
+    "expand": "विस्तार करना",
+    "historyTitle": "चैट का इतिहास",
+    "inputPlaceholder": "FlareGPT से पूछें...",
+    "liveBanner": "फ्लेयर मेननेट • लाइव असिस्टेंट",
     "mockHistory": [
-      "",
-      "",
-      "",
-      ""
+      "FLR मूल्य विश्लेषण",
+      "वॉलेट सेटअप में मदद",
+      "यील्ड की रणनीतियाँ",
+      "शासन पर चर्चा"
     ],
-    "newChat": "",
-    "send": "",
+    "newChat": "नई चैट",
+    "send": "भेजें",
     "suggestions": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "आज FLR की कीमत क्या है?",
+      "वॉलेट बैलेंस",
+      "मैं FTSO रिवॉर्ड कैसे कमाऊँ?",
+      "फ्लेयर नेटवर्क की व्याख्या करें",
+      "नवीनतम शासन प्रस्ताव"
     ]
+  },
+  "dashboard": {
+    "description": "लाइव फ़्लेयर नेटवर्क डेटा, मूल्य चार्ट और वॉलेट गतिविधि एक नज़र में।",
+    "common": {
+      "retry": "वरी कोशिश कयो",
+      "retrying": "फिर से कोशिश कर रहा है",
+      "networkHiccup": "यह आमतौर पर एक अस्थायी नेटवर्क हिचकी है।",
+      "noWalletSelected": "कोई वॉलेट नहीं चुना गया",
+      "yes": "हाँ",
+      "no": "नहीं"
+    },
+    "stats": {
+      "flrPrice": "FLR मूल्य",
+      "marketCap": "मार्केट कैप",
+      "volume24h": "24 घंटे वॉल्यूम",
+      "tvl": "TVL",
+      "couldntLoad": "बाज़ार की झलक लोड नहीं की जा सकी"
+    },
+    "chart": {
+      "couldntLoad": "FLR किराया इतिहास लोड नहीं किया जा सका"
+    },
+    "networkActivity": {
+      "title": "नेटवर्क गतिविधि",
+      "live": "आंसुओं की हद तक अपना जीवन जिएं",
+      "gwei": "ग्वेई",
+      "gasPrice": "गैस की कीमत",
+      "tps": "टोयोटा प्रोडक्टिव सिस्टम",
+      "couldntLoad": "नेटवर्क डेटा लोड नहीं किया जा सका",
+      "collectingSamples": "लाइव सैंपल इकट्ठा करना — नया डेटा आते ही चार्ट भर जाता है।"
+    },
+    "walletBalances": {
+      "title": "वॉलेट बैलेंस",
+      "connectToSeeBalances": "बैलेंस देखने के लिए सेटिंग में वॉलेट कनेक्ट करें या जोड़ें।",
+      "couldntLoad": "वॉलेट बैलेंस लोड नहीं किया जा सका"
+    },
+    "ftso": {
+      "title": "एफटीएसओ प्रतिनिधिमंडल",
+      "connected": "कनेक्टेड",
+      "readOnly": "सिर्फ पढ़ने के लिए",
+      "connectToSeeRewards": "रिवॉर्ड देखने के लिए सेटिंग में वॉलेट कनेक्ट करें या जोड़ें।",
+      "couldntLoad": "FTSO पोर्टफ़ोलियो लोड नहीं किया जा सका",
+      "delegatedWflr": "प्रत्यायोजित WFLR",
+      "unclaimedFlr": "लावारिस FLR",
+      "activeDelegations": "सक्रिय प्रतिनिधिमंडल",
+      "estHourlyEarning": "अनुमानित प्रति घंटा कमाई",
+      "claimRewards": "इनाम की मांग करें",
+      "readOnlyCannotClaim": "सिर्फ़ पढ़ने के लिए — क्लेम नहीं किया जा सकता",
+      "switchToClaim": "रिवॉर्ड क्लेम करने के लिए अपने कनेक्टेड वॉलेट पर स्विच करें",
+      "noUnclaimedYet": "अभी तक कोई क्लेम नहीं किया गया रिवॉर्ड नहीं मिला है",
+      "claimComingSoon": "दावा अभी तक उपलब्ध नहीं है — जल्द ही आ रहा है।"
+    },
+    "claimsHistory": {
+      "title": "दावा इतिहास",
+      "connectToSee": "दावा इतिहास देखने के लिए सेटिंग में एक वॉलेट कनेक्ट करें या जोड़ें।",
+      "couldntLoad": "दावा इतिहास लोड नहीं किया जा सका",
+      "emptyTitle": "कोई लावारिस युग नहीं",
+      "emptyDescription": "आप सब कुछ समझ गए हैं — क्लेम करने के लिए रिवॉर्ड का कोई पेंडिंग समय नहीं है।"
+    },
+    "delegationsBreakdown": {
+      "title": "प्रतिनिधिमंडल का ब्यौरा",
+      "tabLabel": "प्रतिनिधिमंडल",
+      "connectToSee": "प्रतिनिधिमंडल देखने के लिए सेटिंग में एक वॉलेट कनेक्ट करें या जोड़ें।",
+      "couldntLoad": "डेलिगेशन लोड नहीं किया जा सका",
+      "emptyTitle": "कोई सक्रिय प्रतिनिधिमंडल नहीं",
+      "emptyDescription": "रिवॉर्ड कमाना शुरू करने के लिए WFLR को FTSO प्रोवाइडर के पास भेजें।"
+    },
+    "apiStatus": {
+      "checking": "एपीआई स्थिति की जांच की जा रही है...",
+      "operational": "सभी सिस्टम चालू हैं",
+      "degraded": "एपीआई (API) को खराब किया गया"
+    }
   }
 }

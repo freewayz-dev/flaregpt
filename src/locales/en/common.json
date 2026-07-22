@@ -16,7 +16,75 @@
     "title": "Connect Wallet"
   },
   "dashboard": {
-    "description": "Live Flare network data, price charts, and wallet activity at a glance."
+    "description": "Live Flare network data, price charts, and wallet activity at a glance.",
+    "common": {
+      "retry": "Retry",
+      "retrying": "Retrying…",
+      "networkHiccup": "This is usually a temporary network hiccup.",
+      "noWalletSelected": "No wallet selected",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "stats": {
+      "flrPrice": "FLR Price",
+      "marketCap": "Market Cap",
+      "volume24h": "24h Volume",
+      "tvl": "TVL",
+      "couldntLoad": "Couldn't load market overview"
+    },
+    "chart": {
+      "couldntLoad": "Couldn't load FLR price history"
+    },
+    "networkActivity": {
+      "title": "Network Activity",
+      "live": "Live",
+      "gwei": "Gwei",
+      "gasPrice": "Gas Price",
+      "tps": "TPS",
+      "couldntLoad": "Couldn't load network data",
+      "collectingSamples": "Collecting live samples — chart fills in as new data arrives."
+    },
+    "walletBalances": {
+      "title": "Wallet Balances",
+      "connectToSeeBalances": "Connect or add a wallet in Settings to see balances.",
+      "couldntLoad": "Couldn't load wallet balances"
+    },
+    "ftso": {
+      "title": "FTSO Delegation",
+      "connected": "Connected",
+      "readOnly": "Read-only",
+      "connectToSeeRewards": "Connect or add a wallet in Settings to see rewards.",
+      "couldntLoad": "Couldn't load FTSO portfolio",
+      "delegatedWflr": "Delegated WFLR",
+      "unclaimedFlr": "Unclaimed FLR",
+      "activeDelegations": "Active Delegations",
+      "estHourlyEarning": "Est. Hourly Earning",
+      "claimRewards": "Claim Rewards",
+      "readOnlyCannotClaim": "Read-only — cannot claim",
+      "switchToClaim": "Switch to your connected wallet to claim rewards",
+      "noUnclaimedYet": "No unclaimed rewards yet",
+      "claimComingSoon": "Claiming isn't available yet — coming soon."
+    },
+    "claimsHistory": {
+      "title": "Claims History",
+      "connectToSee": "Connect or add a wallet in Settings to see claim history.",
+      "couldntLoad": "Couldn't load claims history",
+      "emptyTitle": "No unclaimed epochs",
+      "emptyDescription": "You're all caught up — there are no pending reward epochs to claim."
+    },
+    "delegationsBreakdown": {
+      "title": "Delegations Breakdown",
+      "tabLabel": "Delegations",
+      "connectToSee": "Connect or add a wallet in Settings to see delegations.",
+      "couldntLoad": "Couldn't load delegations",
+      "emptyTitle": "No active delegations",
+      "emptyDescription": "Delegate WFLR to an FTSO provider to start earning rewards."
+    },
+    "apiStatus": {
+      "checking": "Checking API status...",
+      "operational": "All systems operational",
+      "degraded": "API degraded"
+    }
   },
   "flareWidget": {
     "back": "Back",
@@ -264,7 +332,10 @@
     "walletActivity": "Wallet Activity",
     "walletConnected": "Wallet Connected",
     "loops": "Loops",
-    "feeds": "Feeds"
+    "feeds": "Feeds",
+    "donate": "Donate",
+    "addWatchlistWallet": "+ Add Watchlist Wallet",
+    "activeWallet": "Active: {{address}}"
   },
   "wallet": {
     "activity": {

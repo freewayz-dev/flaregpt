@@ -6,17 +6,18 @@ import { useAccount, useDisconnect } from "wagmi";
 import {
   WalletIcon,
   ChatBubbleLeftRightIcon,
-  ChartBarIcon,
+  ClockIcon,
   ShieldCheckIcon,
   Cog6ToothIcon,
   XMarkIcon,
   QuestionMarkCircleIcon,
-  CurrencyDollarIcon,
+  Square3Stack3DIcon,
   Squares2X2Icon,
-  ArrowTrendingUpIcon,
+  ArrowPathIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
   GiftIcon,
+  HeartIcon,
 } from "@heroicons/react/24/outline";
 
 import FlareGptSimpleLogo from "@/components/common/Logo";
@@ -31,6 +32,11 @@ const prefetchWallet = () => import("@/pages/WalletActivity");
 const prefetchSettings = () => import("@/pages/Settings");
 const prefetchHelp = () => import("@/pages/Help");
 
+// Ordered by expected importance/frequency: the home view, then the
+// fully-functional core features (AI chat, wallet tracking, reward
+// claiming, governance), then the not-yet-built "coming soon" stubs grouped
+// together, then the utility pages (settings/help) that convention places
+// last in most dashboard products.
 const links = [
   {
     translationKey: "overview",
@@ -56,25 +62,29 @@ const links = [
     icon: GiftIcon,
   },
   {
+    translationKey: "governance",
+    path: "/app/governance",
+    icon: ShieldCheckIcon,
+  },
+  {
     translationKey: "loops",
     path: "/app/loops",
-    icon: ArrowTrendingUpIcon,
+    icon: ArrowPathIcon,
   },
   {
     translationKey: "rflrTracker",
     path: "/app/rflr",
-    icon: ChartBarIcon,
+    icon: ClockIcon,
   },
-  
   {
     translationKey: "fxrpPool",
     path: "/app/fxrp",
-    icon: CurrencyDollarIcon,
+    icon: Square3Stack3DIcon,
   },
   {
-    translationKey: "governance",
-    path: "/app/governance",
-    icon: ShieldCheckIcon,
+    translationKey: "donate",
+    path: "/app/donate",
+    icon: HeartIcon,
   },
   {
     translationKey: "settings",
@@ -154,7 +164,7 @@ export default function Sidebar({ open, setOpen }) {
               <button
                 type="button"
                 onClick={toggleSidebarCollapsed}
-                className="hidden lg:flex h-8 w-8 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-subtle cursor-pointer"
+                className="hidden lg:flex h-8 w-8 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer"
               >
                 <ChevronDoubleLeftIcon className="h-4 w-4" />
               </button>
@@ -162,7 +172,7 @@ export default function Sidebar({ open, setOpen }) {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="lg:hidden p-1 rounded-lg text-ink-secondary hover:bg-surface-subtle cursor-pointer"
+                className="lg:hidden p-1 rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer"
               >
                 <XMarkIcon className="h-5 w-5" />
               </button>
@@ -178,7 +188,7 @@ export default function Sidebar({ open, setOpen }) {
               <button
                 type="button"
                 onClick={toggleSidebarCollapsed}
-                className="h-8 w-8 pl-2 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-subtle hover:text-ink-primary transition-colors cursor-pointer"
+                className="h-8 w-8 pl-2 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary transition-colors cursor-pointer"
               >
                 <ChevronDoubleRightIcon className="h-4 w-4" />
               </button>
@@ -205,7 +215,7 @@ export default function Sidebar({ open, setOpen }) {
                   ${
                     active
                       ? "relative bg-brand/15 text-brand"
-                      : "text-[#475569] hover:bg-surface-subtle hover:text-ink-primary dark:text-[#6D7A86]"
+                      : "text-[#475569] hover:bg-surface-card-hover hover:text-ink-primary dark:text-[#6D7A86] dark:hover:text-white"
                   }
                 `}
               >
@@ -225,36 +235,36 @@ export default function Sidebar({ open, setOpen }) {
               {!isConnected ? (
                 <>
                   <p className="text-xs text-ink-secondary">
-                    Not Connected
+                    {t("sidebar.notConnected")}
                   </p>
                   <button
                     type="button"
                     onClick={() => setModalOpen(true)}
                     className="w-full rounded-xl bg-brand px-3 py-2 text-xs font-medium text-white hover:bg-brand-hover transition-colors shadow-sm cursor-pointer"
                   >
-                    Connect Wallet
+                    {t("sidebar.connectWallet")}
                   </button>
                 </>
               ) : (
                 <>
                   <div className="flex flex-col gap-0.5">
                     <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
-                      Active: {formatAddress(address)}
+                      {t("sidebar.activeWallet", { address: formatAddress(address) })}
                     </p>
                     <button
                       type="button"
                       onClick={handleDeepLinkToWallets}
                       className="text-left text-[10px] text-slate-400 dark:text-zinc-500 hover:text-brand dark:hover:text-brand transition-colors cursor-pointer w-fit font-medium"
                     >
-                      + Add Watchlist Wallet
+                      {t("sidebar.addWatchlistWallet")}
                     </button>
                   </div>
                   <button
                     type="button"
                     onClick={() => disconnect()}
-                    className="w-full rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-3 py-2 text-xs text-ink-secondary hover:bg-surface-subtle hover:text-[#0F172A] dark:border-none dark:hover:bg-[#1B1B1F]/70 transition-colors cursor-pointer"
+                    className="w-full rounded-xl border border-[#E5E7EB] dark:border-none bg-[#FFFFFF] dark:bg-surface-inset px-3 py-2 text-xs text-ink-secondary hover:bg-surface-subtle dark:hover:bg-surface-card-hover hover:text-ink-primary dark:hover:text-white transition-colors cursor-pointer"
                   >
-                    Disconnect
+                    {t("sidebar.disconnect")}
                   </button>
                 </>
               )}
