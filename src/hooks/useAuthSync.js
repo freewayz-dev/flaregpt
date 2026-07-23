@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 
 import { useAuthStore } from "@/store/useAuthStore";
 
@@ -8,7 +8,7 @@ import { useAuthStore } from "@/store/useAuthStore";
 // later (e.g. sign-a-message-then-verify) only requires changing
 // services/authService.js, not any component that reads useAuthStore.
 export function useAuthSync() {
-  const { address, isConnected } = useAccount();
+  const { address, isConnected } = useConnection();
   const signIn = useAuthStore((state) => state.signIn);
   const signOut = useAuthStore((state) => state.signOut);
   const authAddress = useAuthStore((state) => state.address);

@@ -263,16 +263,26 @@
   },
   "connectModal": {
     "errors": {
+      "braveBlocked": {
+        "title": "WalletConnect tampaknya diblokir oleh Brave Shields.",
+        "tryTitle": "Coba salah satu langkah berikut:",
+        "shieldsOff": "Matikan Brave Shields untuk situs ini dan coba lagi.",
+        "privateWindow": "Buka situs ini di Jendela Privat Brave.",
+        "useChrome": "Gunakan Google Chrome atau browser lain yang didukung jika masalah berlanjut."
+      },
       "generic": "Terjadi gesekan koneksi yang tidak terduga. Silakan coba lagi atau gunakan dompet lain.",
       "pending": "Permintaan koneksi sudah terbuka. Silakan buka panel ekstensi dompet Anda.",
       "rejected": "Permintaan koneksi dibatalkan di dompet Anda.",
+      "timeout": "Tidak dapat menjangkau WalletConnect. Periksa koneksi Anda dan coba lagi.",
       "wrongNetwork": "Harap alihkan jaringan aktif dompet Anda ke Flare Mainnet."
     },
+    "install": "Instal",
     "mobileHint": "Di ponsel, buka FlareGPT di browser bawaan dompet Anda untuk pengalaman koneksi terbaik.",
     "connecting": "Menghubungkan…",
     "recommended": "Direkomendasikan",
     "subtitle": "Pilih dompet pilihan Anda untuk terhubung ke Jaringan Flare.",
-    "title": "Hubungkan Dompet"
+    "title": "Hubungkan Dompet",
+    "viaWalletConnect": "Melalui WalletConnect"
   },
   "flareWidget": {
     "back": "Kembali",

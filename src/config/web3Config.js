@@ -74,6 +74,11 @@ export const web3Config = createConfig({
       },
       // not inside an "ethereumProviderOptions" block!
       isNewChainsStale: false,
+      // Analytics/telemetry (pulse.walletconnect.org) reads as a tracker to
+      // ad/tracker blockers like Brave Shields — turning it off removes one
+      // request those tools are likely to block, without touching the
+      // actual pairing/relay traffic the connection depends on.
+      telemetryEnabled: false,
     }),
   ],
   transports: {

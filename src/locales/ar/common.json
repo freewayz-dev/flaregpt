@@ -262,16 +262,26 @@
   },
   "connectModal": {
     "errors": {
+      "braveBlocked": {
+        "title": "يبدو أن WalletConnect محظور بواسطة Brave Shields.",
+        "tryTitle": "جرّب أحد الخيارات التالية:",
+        "shieldsOff": "أوقف تشغيل Brave Shields لهذا الموقع وحاول مرة أخرى.",
+        "privateWindow": "افتح الموقع في نافذة Brave خاصة.",
+        "useChrome": "استخدم Google Chrome أو متصفحًا آخر مدعومًا إذا استمرت المشكلة."
+      },
       "generic": "حدث احتكاك غير متوقع في الاتصال. يرجى المحاولة مرة أخرى أو استخدام محفظة أخرى.",
       "pending": "طلب الاتصال مفتوح بالفعل. يرجى فتح لوحة تمديد محفظتك.",
       "rejected": "تم إلغاء طلب الاتصال في محفظتك.",
+      "timeout": "تعذّر الوصول إلى WalletConnect. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
       "wrongNetwork": "يرجى تبديل شبكة محفظتك النشطة إلى Flare Mainnet."
     },
+    "install": "تثبيت",
     "mobileHint": "على الهاتف المحمول، افتح FlareGPT في متصفح محفظتك المدمج للحصول على أفضل تجربة اتصال.",
     "connecting": "جارٍ الاتصال…",
     "recommended": "الخيار المقترح",
     "subtitle": "اختر محفظتك المفضلة للاتصال بشبكة Flare.",
-    "title": "ربط المحفظة"
+    "title": "ربط المحفظة",
+    "viaWalletConnect": "عبر WalletConnect"
   },
   "flareWidget": {
     "back": "[ترجمة المصطلح: Back]",

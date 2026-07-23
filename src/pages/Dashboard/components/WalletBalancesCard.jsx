@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { WalletIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
@@ -12,7 +12,7 @@ function formatAmount(value) {
 
 export default function WalletBalancesCard() {
   const { t } = useTranslation();
-  const { address: connectedAddress, isConnected } = useAccount();
+  const { address: connectedAddress, isConnected } = useConnection();
   const { activeAddress } = useDerivedWalletHub(connectedAddress, isConnected);
   const { data, isLoading, isError, isFetching, refetch } =
     useWalletBalances(activeAddress);

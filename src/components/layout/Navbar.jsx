@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import {
   ChevronDownIcon,
   WalletIcon,
@@ -34,7 +34,7 @@ export default function Navbar({
   const dropdownRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
-  const { address: connectedAddress, isConnected } = useAccount();
+  const { address: connectedAddress, isConnected } = useConnection();
 
   const { activeAddress, allWallets, switchActiveAddress } =
     useDerivedWalletHub(connectedAddress, isConnected);

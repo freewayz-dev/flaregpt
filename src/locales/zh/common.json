@@ -263,16 +263,26 @@
   },
   "connectModal": {
     "errors": {
+      "braveBlocked": {
+        "title": "WalletConnect 似乎被 Brave Shields 屏蔽了。",
+        "tryTitle": "请尝试以下方法之一：",
+        "shieldsOff": "为此网站关闭 Brave Shields 后重试。",
+        "privateWindow": "在 Brave 隐私窗口中打开此网站。",
+        "useChrome": "如果问题仍然存在，请使用 Google Chrome 或其他受支持的浏览器。"
+      },
       "generic": "发生意外的连接摩擦。请重试或使用其他钱包。",
       "pending": "连接请求已打开。请打开您的钱包扩展面板。",
       "rejected": "您的钱包中的连接请求已取消。",
+      "timeout": "无法连接到WalletConnect。请检查您的网络连接后重试。",
       "wrongNetwork": "请将钱包的活动网络切换到Flare主网。"
     },
+    "install": "安装",
     "mobileHint": "在移动设备上，在钱包的内置浏览器中打开FlareGPT ，以获得最佳连接体验。",
     "connecting": "连接中…",
     "recommended": "推荐AI",
     "subtitle": "选择您的首选钱包以连接到Flare网络。",
-    "title": "连接钱包"
+    "title": "连接钱包",
+    "viaWalletConnect": "通过WalletConnect"
   },
   "flareWidget": {
     "back": "回到",

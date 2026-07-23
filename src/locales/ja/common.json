@@ -263,16 +263,26 @@
   },
   "connectModal": {
     "errors": {
+      "braveBlocked": {
+        "title": "WalletConnectがBrave Shieldsによってブロックされているようです。",
+        "tryTitle": "以下のいずれかをお試しください:",
+        "shieldsOff": "このサイトのBrave Shieldsをオフにして再試行してください。",
+        "privateWindow": "サイトをBraveのプライベートウィンドウで開いてください。",
+        "useChrome": "問題が解決しない場合は、Google Chromeまたは他のサポートされているブラウザをご利用ください。"
+      },
       "generic": "予期せぬ接続摩擦が発生しました。もう一度お試しいただくか、別のウォレットをご利用ください。",
       "pending": "接続要求はすでに開いています。ウォレット拡張パネルを開いてください。",
       "rejected": "ウォレットで接続リクエストがキャンセルされました。",
+      "timeout": "WalletConnectに接続できませんでした。接続を確認して再試行してください。",
       "wrongNetwork": "ウォレットのアクティブなネットワークをFlare Mainnetに切り替えてください。"
     },
+    "install": "インストール",
     "mobileHint": "モバイルでは、ウォレットのビルトインブラウザでFlareGPTを開き、最高の接続エクスペリエンスを実現します。",
     "connecting": "接続中…",
     "recommended": "オススメ",
     "subtitle": "お好みのウォレットを選択して、Flareネットワークに接続します。",
-    "title": "ウォレットに接続する"
+    "title": "ウォレットに接続する",
+    "viaWalletConnect": "WalletConnect経由"
   },
   "flareWidget": {
     "back": "戻る",

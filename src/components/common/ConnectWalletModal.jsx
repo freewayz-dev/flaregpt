@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useConnect, useAccount } from "wagmi";
+import { useEffect, useRef, useState } from "react";
+import { useConnect, useConnectors, useConnection } from "wagmi";
 import { useTranslation } from "react-i18next";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -9,15 +9,43 @@ import walletConnectImg from "@/assets/wallets/icon.png";
 import metamask from "@/assets/wallets/MetaMask_Fox.svg.png";
 import { findInjectedProvider } from "@/config/web3Config";
 
-// `connectorId` is the targeted injected connector to use (see
-// web3Config.js) when `flag` is detected on window.ethereum — the fast path
-// for a desktop extension or a wallet's own mobile in-app browser. When it
-// isn't detected (e.g. a plain mobile browser, which has no concept of
-// "extensions" at all), handleConnect falls back to the walletConnect
-// connector instead of disabling the button: WalletConnect's own modal
-// already renders a QR code on desktop or a deep-link wallet picker on
-// mobile, so tapping "MetaMask" without the extension still gets you to the
-// real MetaMask app instead of a dead end.
+// A stuck relay/network on WalletConnect's side leaves its connect() promise
+// hanging forever with no error — this bounds how long any single attempt
+// gets before we give up and let the user retry.
+const CONNECT_TIMEOUT_MS = 30_000;
+
+const isMobileDevice = () =>
+  typeof navigator !== "undefined" &&
+  /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+// Brave's user agent deliberately mimics Chrome's for compatibility, so it
+// can't be sniffed from the UA string — navigator.brave.isBrave() is Brave's
+// own recommended feature-detection API instead.
+// https://github.com/brave/brave-browser/wiki/Detecting-Brave-(for-Websites)
+const isBraveBrowser = async () => {
+  try {
+    return !!(navigator.brave && (await navigator.brave.isBrave()));
+  } catch {
+    return false;
+  }
+};
+
+// MetaMask's own universal link — well-documented and stable — jumps
+// straight into the app on mobile using the same WalletConnect pairing URI
+// that would otherwise sit in a QR code. Rabby and Bifrost don't have a
+// deep-link format that can be cited with the same confidence, so they keep
+// using WalletConnect's own picker on mobile instead.
+const metaMaskMobileDeepLink = (uri) =>
+  `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
+
+// `connectorId` is the targeted injected connector (see web3Config.js) used
+// when `flag` is detected on window.ethereum — the fast path for a desktop
+// extension or a wallet's own mobile in-app browser. `installUrl` is only
+// set for wallets with a real, citable desktop extension: when neither is
+// detected on desktop, clicking sends the user to install it directly
+// rather than silently substituting a different connection method. Bifrost
+// has no confirmed desktop extension, so it has no installUrl and keeps
+// falling back to WalletConnect on desktop, same as before.
 const VISUAL_WALLETS = [
   {
     id: "bifrost",
@@ -36,6 +64,8 @@ const VISUAL_WALLETS = [
     type: "svg",
     src: metamask,
     recommended: false,
+    installUrl: "https://metamask.io/download/",
+    mobileDeepLink: metaMaskMobileDeepLink,
   },
   {
     id: "rabby",
@@ -45,6 +75,7 @@ const VISUAL_WALLETS = [
     type: "img",
     src: rabbyImg,
     recommended: false,
+    installUrl: "https://rabby.io",
   },
   {
     id: "walletconnect",
@@ -74,8 +105,12 @@ const getFriendlyErrorMessage = (error, t) => {
 
 export default function ConnectWalletModal({ isOpen, onClose }) {
   const { t } = useTranslation();
-  const { connect, connectors, error, isPending, reset } = useConnect();
-  const { isConnected } = useAccount();
+  // `connect`/`connectAsync`/`connectors` on useConnect()'s return are
+  // deprecated in favor of the underlying mutation's own `mutate`/
+  // `mutateAsync` and the separate useConnectors() hook.
+  const { mutateAsync: connectAsync, error, isPending, reset } = useConnect();
+  const connectors = useConnectors();
+  const { isConnected } = useConnection();
 
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [animate, setAnimate] = useState(false);
@@ -84,6 +119,16 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
   // same walletConnect connector when neither extension is installed, but
   // clicking one shouldn't make the other look like it's connecting too.
   const [pendingWalletId, setPendingWalletId] = useState(null);
+  // 'generic' | 'brave' | null — kept as a kind rather than a pre-translated
+  // string so a language switch while the message is showing still renders
+  // correctly, and so the richer Brave-specific block below can pick its own
+  // markup instead of being forced into a single flat string.
+  const [timeoutKind, setTimeoutKind] = useState(null);
+  // Set right before a mobile MetaMask fallback attempt starts; consumed by
+  // the display_uri listener below to redirect into the app the instant a
+  // pairing URI exists, instead of waiting for the user to find MetaMask in
+  // WalletConnect's own picker.
+  const pendingDeepLinkRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -111,6 +156,8 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
     if (!isOpen) {
       reset();
       setPendingWalletId(null);
+      setTimeoutKind(null);
+      pendingDeepLinkRef.current = null;
     }
   }, [isOpen, reset]);
 
@@ -120,23 +167,89 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
+  // The walletConnect connector emits the pairing URI as a 'display_uri'
+  // message on its own emitter the moment it's ready — the same event that
+  // feeds its QR code — intercepted here so a mobile MetaMask fallback can
+  // jump straight into the app instead of showing the QR/picker first.
+  useEffect(() => {
+    const wcConnector = connectors.find((c) => c.id === "walletConnect");
+    if (!wcConnector) return;
+
+    const handleMessage = (event) => {
+      if (event.type === "display_uri" && pendingDeepLinkRef.current) {
+        window.location.href = pendingDeepLinkRef.current(event.data);
+        pendingDeepLinkRef.current = null;
+      }
+    };
+    wcConnector.emitter.on("message", handleMessage);
+    return () => wcConnector.emitter.off("message", handleMessage);
+  }, [connectors]);
+
   if (!shouldRender) return null;
 
-  const resolveConnectorId = (wallet) =>
-    wallet.flag && findInjectedProvider(window, wallet.flag)
-      ? wallet.connectorId
-      : "walletConnect";
+  const runConnect = async (connector, walletId) => {
+    reset();
+    setTimeoutKind(null);
+    setPendingWalletId(walletId);
+
+    let timedOut = false;
+    const timeoutId = setTimeout(async () => {
+      timedOut = true;
+      reset();
+      setPendingWalletId(null);
+      pendingDeepLinkRef.current = null;
+      // A stuck WalletConnect attempt is the exact symptom of Brave Shields
+      // (or a similar tracker/ad blocker) silently dropping its relay
+      // traffic — only worth checking (and only relevant to show) when
+      // WalletConnect is the connector that actually got stuck, not an
+      // injected-wallet attempt timing out for some unrelated reason.
+      const brave =
+        connector.id === "walletConnect" && (await isBraveBrowser());
+      setTimeoutKind(brave ? "brave" : "generic");
+      // reset() only clears our own mutation state — WalletConnect's QR
+      // modal is a separate widget that doesn't know we gave up, so it'd
+      // otherwise stay open on top of our error message. Tearing down the
+      // stuck session closes it too.
+      connector.disconnect?.().catch(() => {});
+    }, CONNECT_TIMEOUT_MS);
+
+    try {
+      await connectAsync({ connector });
+    } catch {
+      // Real rejections (user cancelled, wrong network, etc.) already
+      // surface through wagmi's own `error` state below.
+    } finally {
+      clearTimeout(timeoutId);
+      if (!timedOut) setPendingWalletId(null);
+    }
+  };
 
   const handleConnect = (wallet) => {
-    // Clear out any previous stuck/failed attempt first so picking a
-    // different wallet always works immediately, even if an earlier
-    // connect() call never settled.
-    reset();
-    setPendingWalletId(wallet.id);
-    const connector = connectors.find(
-      (c) => c.id === resolveConnectorId(wallet),
-    );
-    if (connector) connect({ connector });
+    const detected = !!(wallet.flag && findInjectedProvider(window, wallet.flag));
+    const mobile = isMobileDevice();
+
+    if (detected) {
+      const connector = connectors.find((c) => c.id === wallet.connectorId);
+      if (connector) runConnect(connector, wallet.id);
+      return;
+    }
+
+    // Desktop, extension not found: send the user to install it rather
+    // than silently substituting a different, more confusing connection
+    // method (only wallets with a confirmed real desktop extension get an
+    // installUrl — see VISUAL_WALLETS above).
+    if (!mobile && wallet.installUrl) {
+      window.open(wallet.installUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    // Mobile fallback (or a desktop wallet with no extension to install,
+    // i.e. Bifrost): reach it through WalletConnect instead.
+    if (mobile && wallet.mobileDeepLink) {
+      pendingDeepLinkRef.current = wallet.mobileDeepLink;
+    }
+    const wcConnector = connectors.find((c) => c.id === "walletConnect");
+    if (wcConnector) runConnect(wcConnector, wallet.id);
   };
 
   const transitionStyles = animate
@@ -181,6 +294,21 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
             // other wallet stays clickable so a stuck or failed attempt on
             // one connector never blocks trying a different one.
             const isConnectingThis = isPending && pendingWalletId === wallet.id;
+            const mobile = isMobileDevice();
+            const isDetected = !!(wallet.flag && findInjectedProvider(window, wallet.flag));
+            const willInstall =
+              !isConnectingThis && wallet.installUrl && !mobile && !isDetected;
+            // Bifrost (and Rabby on mobile) have no extension/deep-link to
+            // fall back to, so they're reached through WalletConnect's own
+            // picker — flagged up front rather than only discovering it
+            // after tapping, since it's a different flow from every other
+            // button's "connect directly" behavior.
+            const willUseWalletConnect =
+              !isConnectingThis &&
+              !willInstall &&
+              !isDetected &&
+              wallet.connectorId !== "walletConnect" &&
+              !(mobile && wallet.mobileDeepLink);
 
             return (
               <button
@@ -199,6 +327,14 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
                   <span className="text-[9px] font-semibold bg-surface-subtle text-ink-muted px-2 py-0.5 rounded-md dark:bg-surface-card-hover">
                     {t("connectModal.connecting")}
                   </span>
+                ) : willInstall ? (
+                  <span className="text-[9px] font-semibold bg-surface-subtle text-ink-muted px-2 py-0.5 rounded-md dark:bg-surface-card-hover">
+                    {t("connectModal.install")}
+                  </span>
+                ) : willUseWalletConnect ? (
+                  <span className="text-[9px] font-semibold bg-surface-subtle text-ink-muted px-2 py-0.5 rounded-md dark:bg-surface-card-hover">
+                    {t("connectModal.viaWalletConnect")}
+                  </span>
                 ) : (
                   wallet.recommended && (
                     <span className="text-[9px] font-semibold bg-brand/10 text-brand px-2 py-0.5 rounded-md">
@@ -211,10 +347,28 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
           })}
         </div>
 
-        {error && (
-          <p className="mt-3 text-center text-[10px] text-brand bg-brand/10 p-2 rounded-lg font-medium tracking-wide">
-            {getFriendlyErrorMessage(error, t)}
-          </p>
+        {timeoutKind === "brave" ? (
+          <div className="mt-3 text-[10px] text-brand bg-brand/10 p-3 rounded-lg tracking-wide">
+            <p className="font-semibold">
+              {t("connectModal.errors.braveBlocked.title")}
+            </p>
+            <p className="mt-1.5 font-medium">
+              {t("connectModal.errors.braveBlocked.tryTitle")}
+            </p>
+            <ul className="mt-1 list-disc list-inside space-y-0.5 font-medium">
+              <li>{t("connectModal.errors.braveBlocked.shieldsOff")}</li>
+              <li>{t("connectModal.errors.braveBlocked.privateWindow")}</li>
+              <li>{t("connectModal.errors.braveBlocked.useChrome")}</li>
+            </ul>
+          </div>
+        ) : (
+          (timeoutKind || error) && (
+            <p className="mt-3 text-center text-[10px] text-brand bg-brand/10 p-2 rounded-lg font-medium tracking-wide">
+              {timeoutKind === "generic"
+                ? t("connectModal.errors.timeout")
+                : getFriendlyErrorMessage(error, t)}
+            </p>
+          )
         )}
 
         <div className="mt-5 text-[10px] text-ink-muted text-center leading-relaxed">

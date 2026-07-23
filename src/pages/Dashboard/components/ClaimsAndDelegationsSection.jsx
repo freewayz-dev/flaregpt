@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { ClockIcon, Square3Stack3DIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
@@ -19,7 +19,7 @@ import DelegationsBreakdownCard from "@/pages/Dashboard/components/DelegationsBr
 function MobileTabs() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("claims");
-  const { address: connectedAddress, isConnected } = useAccount();
+  const { address: connectedAddress, isConnected } = useConnection();
   const { activeAddress } = useDerivedWalletHub(connectedAddress, isConnected);
   const { data, isLoading, isError, isFetching, refetch } =
     useFtsoPortfolio(activeAddress);

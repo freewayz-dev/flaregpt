@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { ClockIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
@@ -10,7 +10,7 @@ import TableCardSkeleton from "@/pages/Dashboard/components/skeletons/TableCardS
 
 export default function ClaimsHistoryCard() {
   const { t } = useTranslation();
-  const { address: connectedAddress, isConnected } = useAccount();
+  const { address: connectedAddress, isConnected } = useConnection();
   const { activeAddress } = useDerivedWalletHub(connectedAddress, isConnected);
   const { data, isLoading, isError, isFetching, refetch } =
     useFtsoPortfolio(activeAddress);

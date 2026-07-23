@@ -5,16 +5,26 @@
   },
   "connectModal": {
     "errors": {
+      "braveBlocked": {
+        "title": "WalletConnect appears to be blocked by Brave Shields.",
+        "tryTitle": "Try one of the following:",
+        "shieldsOff": "Turn off Brave Shields for this site and try again.",
+        "privateWindow": "Open the site in a Brave Private Window.",
+        "useChrome": "Use Google Chrome or another supported browser if the issue persists."
+      },
       "generic": "An unexpected connection friction occurred. Please try again or use another wallet.",
       "pending": "A connection request is already open. Please open your wallet extension panel.",
       "rejected": "Connection request was cancelled in your wallet.",
+      "timeout": "Couldn't reach WalletConnect. Please check your connection and try again.",
       "wrongNetwork": "Please switch your wallet's active network to Flare Mainnet."
     },
+    "install": "Install",
     "mobileHint": "On mobile, open FlareGPT in your wallet's built-in browser for the best connection experience.",
     "connecting": "Connecting…",
     "recommended": "Recommended",
     "subtitle": "Select your preferred wallet to connect to the Flare Network.",
-    "title": "Connect Wallet"
+    "title": "Connect Wallet",
+    "viaWalletConnect": "Via WalletConnect"
   },
   "dashboard": {
     "description": "Live Flare network data, price charts, and wallet activity at a glance.",

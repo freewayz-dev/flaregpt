@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useAccount, useDisconnect } from "wagmi";
+import { useConnection, useDisconnect } from "wagmi";
 import {
   WalletIcon,
   ChatBubbleLeftRightIcon,
@@ -116,7 +116,7 @@ export default function Sidebar({ open, setOpen }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   // Real Wagmi Account State variables
-  const { address, isConnected } = useAccount();
+  const { address, isConnected } = useConnection();
   const { disconnect } = useDisconnect();
 
   // Format long wallet addresses for your minimalist UI (e.g. 0x71C...3A90)

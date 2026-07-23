@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { WalletIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
@@ -8,7 +8,7 @@ import Card from "@/pages/Settings/components/Card";
 
 export default function Wallets() {
   const { t } = useTranslation();
-  const { address: connectedAddress, isConnected } = useAccount();
+  const { address: connectedAddress, isConnected } = useConnection();
 
   const {
     allWallets,

@@ -263,16 +263,26 @@
   },
   "connectModal": {
     "errors": {
+      "braveBlocked": {
+        "title": "WalletConnect, Brave Shields tarafından engelleniyor gibi görünüyor.",
+        "tryTitle": "Aşağıdakilerden birini deneyin:",
+        "shieldsOff": "Bu site için Brave Shields'ı kapatıp tekrar deneyin.",
+        "privateWindow": "Siteyi bir Brave Gizli Penceresinde açın.",
+        "useChrome": "Sorun devam ederse Google Chrome veya desteklenen başka bir tarayıcı kullanın."
+      },
       "generic": "Beklenmedik bir bağlantı sürtünmesi meydana geldi. Lütfen tekrar deneyin veya başka bir cüzdan kullanın.",
       "pending": "Bir bağlantı isteği zaten açık. Lütfen cüzdan uzantı panelinizi açın.",
       "rejected": "Cüzdanınızdaki bağlantı isteği iptal edildi.",
+      "timeout": "WalletConnect'e ulaşılamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
       "wrongNetwork": "Lütfen cüzdanınızın aktif ağını Flare Mainnet olarak değiştirin."
     },
+    "install": "Yükle",
     "mobileHint": "Mobil cihazlarda, en iyi bağlantı deneyimi için cüzdanınızın yerleşik tarayıcısında FlareGPT'yi açın.",
     "connecting": "Bağlanıyor…",
     "recommended": "Önerilen",
     "subtitle": "Flare Ağına bağlanmak için tercih ettiğiniz cüzdanı seçin.",
-    "title": "Cüzdanınızı Bağlayın"
+    "title": "Cüzdanınızı Bağlayın",
+    "viaWalletConnect": "WalletConnect üzerinden"
   },
   "flareWidget": {
     "back": "Geri",

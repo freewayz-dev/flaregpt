@@ -262,16 +262,26 @@
   },
   "connectModal": {
     "errors": {
+      "braveBlocked": {
+        "title": "Parece que WalletConnect está bloqueado por Brave Shields.",
+        "tryTitle": "Prueba una de las siguientes opciones:",
+        "shieldsOff": "Desactiva Brave Shields para este sitio e inténtalo de nuevo.",
+        "privateWindow": "Abre el sitio en una ventana privada de Brave.",
+        "useChrome": "Usa Google Chrome u otro navegador compatible si el problema persiste."
+      },
       "generic": "Se ha producido una fricción de conexión inesperada. Inténtalo de nuevo o utiliza otro monedero.",
       "pending": "Ya hay una solicitud de conexión abierta. Abre el panel de extensión de tu monedero.",
       "rejected": "La solicitud de conexión se ha cancelado en tu monedero.",
+      "timeout": "No se pudo conectar con WalletConnect. Comprueba tu conexión e inténtalo de nuevo.",
       "wrongNetwork": "Cambia la red activa de tu monedero a Flare Mainnet."
     },
+    "install": "Instalar",
     "mobileHint": "En el móvil, abre FlareGPT en el navegador integrado de tu monedero para disfrutar de la mejor experiencia de conexión.",
     "connecting": "Conectando…",
     "recommended": "Recomendaciones",
     "subtitle": "Selecciona tu monedero preferido para conectarte a Flare Network.",
-    "title": "Conectar la billetera"
+    "title": "Conectar la billetera",
+    "viaWalletConnect": "Vía WalletConnect"
   },
   "flareWidget": {
     "back": "Atrás",

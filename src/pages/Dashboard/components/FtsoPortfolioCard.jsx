@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { toast } from "react-toastify";
 import { GiftIcon, LockClosedIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
@@ -26,7 +26,7 @@ function Row({ label, value, highlight = false }) {
 
 export default function FtsoPortfolioCard() {
   const { t } = useTranslation();
-  const { address: connectedAddress, isConnected } = useAccount();
+  const { address: connectedAddress, isConnected } = useConnection();
   const { activeAddress, isActivePrimary } = useDerivedWalletHub(
     connectedAddress,
     isConnected,
