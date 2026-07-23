@@ -271,13 +271,16 @@
         "useChrome": "Use o Google Chrome ou outro navegador compatível se o problema persistir."
       },
       "generic": "Ocorreu um atrito inesperado na ligação. Tente novamente ou use outra carteira.",
+      "providerGone": "Esta carteira não parece mais responder — pode ter sido atualizada ou removida. Atualizar a página deve resolver isso.",
       "pending": "Um pedido de ligação já está aberto. Abra o painel de extensão da sua carteira.",
       "rejected": "O pedido de ligação foi cancelado na sua carteira.",
       "timeout": "Não foi possível alcançar o WalletConnect. Verifique sua conexão e tente novamente.",
       "wrongNetwork": "Mude a rede ativa da sua carteira para a Flare Mainnet."
     },
     "install": "Instalar",
-    "mobileHint": "No celular, abra o FlareGPT no navegador integrado da sua carteira para ter a melhor experiência de conexão.",
+    "installHint": "Ainda não vê a sua carteira? Atualizar a página pode ajudar.",
+    "refresh": "Atualizar",
+    "mobileHint": "No celular, abra o FlareGPT no navegador integrado da sua carteira para ter a melhor experiência de conexão. Ao escanear um código QR, use o scanner próprio do seu aplicativo de carteira em vez da câmera do telefone para uma conexão mais confiável.",
     "connecting": "Conectando…",
     "recommended": "Recomendado",
     "subtitle": "Selecione a sua carteira preferida para se ligar à Rede Flare.",

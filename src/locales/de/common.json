@@ -270,13 +270,16 @@
         "useChrome": "Verwenden Sie Google Chrome oder einen anderen unterstützten Browser, falls das Problem weiterhin besteht."
       },
       "generic": "Eine unerwartete Verbindungsreibung ist aufgetreten. Bitte versuchen Sie es erneut oder verwenden Sie ein anderes Wallet.",
+      "providerGone": "Diese Wallet scheint nicht mehr zu reagieren — möglicherweise wurde sie aktualisiert oder entfernt. Ein Neuladen der Seite sollte das beheben.",
       "pending": "Eine Verbindungsanfrage ist bereits offen. Bitte öffnen Sie Ihre Brieftaschenerweiterung.",
       "rejected": "Die Verbindungsanfrage in Ihrem Wallet wurde abgebrochen.",
       "timeout": "WalletConnect konnte nicht erreicht werden. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
       "wrongNetwork": "Bitte schalten Sie das aktive Netzwerk Ihrer Brieftasche auf Flare Mainnet um."
     },
     "install": "Installieren",
-    "mobileHint": "Öffnen Sie FlareGPT auf dem Handy im integrierten Browser Ihrer Brieftasche, um die beste Verbindungserfahrung zu erzielen.",
+    "installHint": "Sehen Sie Ihre Wallet immer noch nicht? Ein Neuladen der Seite könnte helfen.",
+    "refresh": "Aktualisieren",
+    "mobileHint": "Öffnen Sie FlareGPT auf dem Handy im integrierten Browser Ihrer Brieftasche, um die beste Verbindungserfahrung zu erzielen. Verwenden Sie beim Scannen eines QR-Codes den eigenen Scanner Ihrer Wallet-App anstelle der Kamera Ihres Telefons für eine zuverlässigere Verbindung.",
     "connecting": "Verbinde…",
     "recommended": "Empfohlen",
     "subtitle": "Wählen Sie Ihr bevorzugtes Wallet aus, um sich mit dem Flare Network zu verbinden.",

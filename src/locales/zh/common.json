@@ -271,13 +271,16 @@
         "useChrome": "如果问题仍然存在，请使用 Google Chrome 或其他受支持的浏览器。"
       },
       "generic": "发生意外的连接摩擦。请重试或使用其他钱包。",
+      "providerGone": "此钱包似乎不再响应——可能已更新或被移除。刷新页面应该可以解决此问题。",
       "pending": "连接请求已打开。请打开您的钱包扩展面板。",
       "rejected": "您的钱包中的连接请求已取消。",
       "timeout": "无法连接到WalletConnect。请检查您的网络连接后重试。",
       "wrongNetwork": "请将钱包的活动网络切换到Flare主网。"
     },
     "install": "安装",
-    "mobileHint": "在移动设备上，在钱包的内置浏览器中打开FlareGPT ，以获得最佳连接体验。",
+    "installHint": "仍然看不到您的钱包？刷新页面可能会有帮助。",
+    "refresh": "刷新",
+    "mobileHint": "在移动设备上，在钱包的内置浏览器中打开FlareGPT ，以获得最佳连接体验。扫描二维码时，请使用您钱包应用自带的扫描功能，而不是手机相机，以获得更可靠的连接。",
     "connecting": "连接中…",
     "recommended": "推荐AI",
     "subtitle": "选择您的首选钱包以连接到Flare网络。",

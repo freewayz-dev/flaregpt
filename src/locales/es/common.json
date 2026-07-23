@@ -270,13 +270,16 @@
         "useChrome": "Usa Google Chrome u otro navegador compatible si el problema persiste."
       },
       "generic": "Se ha producido una fricción de conexión inesperada. Inténtalo de nuevo o utiliza otro monedero.",
+      "providerGone": "Este monedero ya no parece responder — es posible que se haya actualizado o eliminado. Actualizar la página debería solucionarlo.",
       "pending": "Ya hay una solicitud de conexión abierta. Abre el panel de extensión de tu monedero.",
       "rejected": "La solicitud de conexión se ha cancelado en tu monedero.",
       "timeout": "No se pudo conectar con WalletConnect. Comprueba tu conexión e inténtalo de nuevo.",
       "wrongNetwork": "Cambia la red activa de tu monedero a Flare Mainnet."
     },
     "install": "Instalar",
-    "mobileHint": "En el móvil, abre FlareGPT en el navegador integrado de tu monedero para disfrutar de la mejor experiencia de conexión.",
+    "installHint": "¿Sigues sin ver tu monedero? Actualizar la página puede ayudar.",
+    "refresh": "Actualizar",
+    "mobileHint": "En el móvil, abre FlareGPT en el navegador integrado de tu monedero para disfrutar de la mejor experiencia de conexión. Al escanear un código QR, utiliza el escáner propio de tu aplicación de monedero en lugar de la cámara de tu teléfono para una conexión más fiable.",
     "connecting": "Conectando…",
     "recommended": "Recomendaciones",
     "subtitle": "Selecciona tu monedero preferido para conectarte a Flare Network.",

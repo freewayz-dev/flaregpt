@@ -270,13 +270,16 @@
         "useChrome": "Utilisez Google Chrome ou un autre navigateur pris en charge si le problème persiste."
       },
       "generic": "Une friction de connexion inattendue s'est produite. Veuillez réessayer ou utiliser un autre portefeuille.",
+      "providerGone": "Ce portefeuille ne semble plus répondre — il a peut-être été mis à jour ou supprimé. Actualiser la page devrait résoudre le problème.",
       "pending": "Une demande de connexion est déjà ouverte. Veuillez ouvrir le panneau d'extension de votre portefeuille.",
       "rejected": "La demande de connexion a été annulée dans votre portefeuille.",
       "timeout": "Impossible de joindre WalletConnect. Vérifiez votre connexion et réessayez.",
       "wrongNetwork": "Veuillez basculer le réseau actif de votre portefeuille vers Flare Mainnet."
     },
     "install": "Installer",
-    "mobileHint": "Sur mobile, ouvrez FlareGPT dans le navigateur intégré de votre portefeuille pour une meilleure expérience de connexion.",
+    "installHint": "Vous ne voyez toujours pas votre portefeuille ? Actualiser la page peut aider.",
+    "refresh": "Actualiser",
+    "mobileHint": "Sur mobile, ouvrez FlareGPT dans le navigateur intégré de votre portefeuille pour une meilleure expérience de connexion. Lors du scan d'un code QR, utilisez le scanner intégré de votre application de portefeuille plutôt que l'appareil photo de votre téléphone pour une connexion plus fiable.",
     "connecting": "Connexion…",
     "recommended": "Recommandé",
     "subtitle": "Sélectionnez votre portefeuille préféré pour vous connecter au réseau Flare.",

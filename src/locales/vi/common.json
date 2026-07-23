@@ -271,13 +271,16 @@
         "useChrome": "Sử dụng Google Chrome hoặc trình duyệt được hỗ trợ khác nếu sự cố vẫn tiếp diễn."
       },
       "generic": "Đã xảy ra ma sát kết nối không mong muốn. Vui lòng thử lại hoặc sử dụng ví khác.",
+      "providerGone": "Ví này có vẻ không còn phản hồi nữa — có thể đã được cập nhật hoặc gỡ bỏ. Làm mới trang sẽ khắc phục điều này.",
       "pending": "Yêu cầu kết nối đã được mở. Vui lòng mở bảng điều khiển tiện ích mở rộng ví của bạn.",
       "rejected": "Yêu cầu kết nối đã bị hủy trong ví của bạn.",
       "timeout": "Không thể kết nối với WalletConnect. Vui lòng kiểm tra kết nối của bạn và thử lại.",
       "wrongNetwork": "Vui lòng chuyển mạng đang hoạt động của ví của bạn sang Flare Mainnet."
     },
     "install": "Cài đặt",
-    "mobileHint": "Trên thiết bị di động, hãy mở FlareGPT trong trình duyệt tích hợp sẵn trong ví của bạn để có trải nghiệm kết nối tốt nhất.",
+    "installHint": "Vẫn không thấy ví của bạn? Làm mới trang có thể hữu ích.",
+    "refresh": "Làm mới",
+    "mobileHint": "Trên thiết bị di động, hãy mở FlareGPT trong trình duyệt tích hợp sẵn trong ví của bạn để có trải nghiệm kết nối tốt nhất. Khi quét mã QR, hãy dùng máy quét riêng của ứng dụng ví thay vì camera điện thoại để có kết nối đáng tin cậy hơn.",
     "connecting": "Đang kết nối…",
     "recommended": "Được đề xuất",
     "subtitle": "Chọn ví ưa thích của bạn để kết nối với Flare Network.",

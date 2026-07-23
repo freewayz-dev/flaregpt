@@ -271,13 +271,16 @@
         "useChrome": "Sorun devam ederse Google Chrome veya desteklenen başka bir tarayıcı kullanın."
       },
       "generic": "Beklenmedik bir bağlantı sürtünmesi meydana geldi. Lütfen tekrar deneyin veya başka bir cüzdan kullanın.",
+      "providerGone": "Bu cüzdan artık yanıt vermiyor gibi görünüyor — güncellenmiş veya kaldırılmış olabilir. Sayfayı yenilemek bunu düzeltmelidir.",
       "pending": "Bir bağlantı isteği zaten açık. Lütfen cüzdan uzantı panelinizi açın.",
       "rejected": "Cüzdanınızdaki bağlantı isteği iptal edildi.",
       "timeout": "WalletConnect'e ulaşılamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
       "wrongNetwork": "Lütfen cüzdanınızın aktif ağını Flare Mainnet olarak değiştirin."
     },
     "install": "Yükle",
-    "mobileHint": "Mobil cihazlarda, en iyi bağlantı deneyimi için cüzdanınızın yerleşik tarayıcısında FlareGPT'yi açın.",
+    "installHint": "Hâlâ cüzdanınızı görmüyor musunuz? Sayfayı yenilemek yardımcı olabilir.",
+    "refresh": "Yenile",
+    "mobileHint": "Mobil cihazlarda, en iyi bağlantı deneyimi için cüzdanınızın yerleşik tarayıcısında FlareGPT'yi açın. Bir QR kodunu tararken, daha güvenilir bir bağlantı için telefonunuzun kamerası yerine cüzdan uygulamanızın kendi tarayıcısını kullanın.",
     "connecting": "Bağlanıyor…",
     "recommended": "Önerilen",
     "subtitle": "Flare Ağına bağlanmak için tercih ettiğiniz cüzdanı seçin.",

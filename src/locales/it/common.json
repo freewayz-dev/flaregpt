@@ -271,13 +271,16 @@
         "useChrome": "Usa Google Chrome o un altro browser supportato se il problema persiste."
       },
       "generic": "Si è verificato un attrito di connessione imprevisto. Riprova o utilizza un altro portafoglio.",
+      "providerGone": "Questo portafoglio non sembra più rispondere — potrebbe essere stato aggiornato o rimosso. Aggiornare la pagina dovrebbe risolvere il problema.",
       "pending": "Una richiesta di connessione è già aperta. Apri il pannello delle estensioni del portafoglio.",
       "rejected": "La richiesta di connessione è stata annullata nel tuo portafoglio.",
       "timeout": "Impossibile raggiungere WalletConnect. Controlla la tua connessione e riprova.",
       "wrongNetwork": "Passa alla rete attiva del tuo portafoglio su Flare Mainnet."
     },
     "install": "Installa",
-    "mobileHint": "Su dispositivi mobili, apri FlareGPT nel browser integrato del tuo portafoglio per la migliore esperienza di connessione.",
+    "installHint": "Ancora non vedi il tuo portafoglio? Aggiornare la pagina potrebbe aiutare.",
+    "refresh": "Aggiorna",
+    "mobileHint": "Su dispositivi mobili, apri FlareGPT nel browser integrato del tuo portafoglio per la migliore esperienza di connessione. Quando scansioni un codice QR, usa lo scanner integrato della tua app portafoglio anziché la fotocamera del telefono per una connessione più affidabile.",
     "connecting": "Connessione…",
     "recommended": "Consigliato",
     "subtitle": "Seleziona il tuo portafoglio preferito per connetterti a Flare Network.",

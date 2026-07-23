@@ -130,8 +130,17 @@ function resolveConnector(connectors, wallet) {
   );
 }
 
+// wagmi throws this specific, stable error (name + message both fixed
+// strings in @wagmi/core) when a connector's getProvider() comes back
+// empty — exactly what happens if an extension is uninstalled or disabled
+// while the page is still open and its injected object stops responding.
+const isProviderGoneError = (error) =>
+  error?.name === "ProviderNotFoundError" ||
+  error?.message?.toLowerCase().includes("provider not found");
+
 const getFriendlyErrorMessage = (error, t) => {
   if (!error) return null;
+  if (isProviderGoneError(error)) return t("connectModal.errors.providerGone");
   const msg = error.message.toLowerCase();
   if (msg.includes("user rejected") || msg.includes("denied")) {
     return t("connectModal.errors.rejected");
@@ -166,6 +175,21 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
   // correctly, and so the richer Brave-specific block below can pick its own
   // markup instead of being forced into a single flat string.
   const [timeoutKind, setTimeoutKind] = useState(null);
+  // Set when the user clicks "Install" for a wallet with no extension
+  // detected yet; used to show a targeted "still don't see it?" hint if
+  // they come back to this tab and it's still undetected, rather than
+  // nagging on every unrelated tab switch.
+  const [awaitingInstallId, setAwaitingInstallId] = useState(null);
+  const [showInstallHint, setShowInstallHint] = useState(false);
+  // Bumped (never read directly) on focus/visibility regain purely to force
+  // a re-render — detection is computed live from window.ethereum/connectors
+  // on every render, so this is enough to pick up a wallet extension that
+  // finished injecting while this tab was in the background. Chrome doesn't
+  // retroactively run a newly-installed extension's content script in tabs
+  // that were already open, so this only helps wallets whose own injection
+  // logic supports it — it's a genuine, if partial, improvement rather than
+  // a full guarantee, which no page-level code can provide.
+  const [, setRefreshTick] = useState(0);
 
   useEffect(() => {
     if (isOpen) {
@@ -194,6 +218,8 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
       reset();
       setPendingWalletId(null);
       setTimeoutKind(null);
+      setAwaitingInstallId(null);
+      setShowInstallHint(false);
     }
   }, [isOpen, reset]);
 
@@ -202,6 +228,34 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
     if (isOpen) window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
+
+  // Re-checked on focus/visibility regain rather than continuously, since
+  // that's the moment most likely to follow a trip to the extension store —
+  // both a cheap live re-render (helps any wallet whose injection does
+  // support waking up in an already-open tab) and, if the user specifically
+  // just clicked "Install" for a wallet that's still undetected, a targeted
+  // one-time hint instead of silence.
+  useEffect(() => {
+    if (!isOpen) return;
+    const recheck = () => {
+      if (document.visibilityState !== "visible") return;
+      setRefreshTick((tick) => tick + 1);
+      if (!awaitingInstallId) return;
+      const wallet = VISUAL_WALLETS.find((w) => w.id === awaitingInstallId);
+      if (wallet && isWalletDetected(connectors, wallet)) {
+        setAwaitingInstallId(null);
+        setShowInstallHint(false);
+      } else {
+        setShowInstallHint(true);
+      }
+    };
+    window.addEventListener("focus", recheck);
+    document.addEventListener("visibilitychange", recheck);
+    return () => {
+      window.removeEventListener("focus", recheck);
+      document.removeEventListener("visibilitychange", recheck);
+    };
+  }, [isOpen, awaitingInstallId, connectors]);
 
   if (!shouldRender) return null;
 
@@ -246,6 +300,8 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
     const mobile = isMobileDevice();
 
     if (detected) {
+      setAwaitingInstallId(null);
+      setShowInstallHint(false);
       const connector = resolveConnector(connectors, wallet);
       if (connector) runConnect(connector, wallet.id);
       return;
@@ -257,6 +313,8 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
     // installUrl — see VISUAL_WALLETS above).
     if (!mobile && wallet.installUrl) {
       window.open(wallet.installUrl, "_blank", "noopener,noreferrer");
+      setAwaitingInstallId(wallet.id);
+      setShowInstallHint(false);
       return;
     }
 
@@ -363,6 +421,19 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
           })}
         </div>
 
+        {showInstallHint && (
+          <div className="mt-3 flex items-center justify-between gap-2 text-[10px] text-ink-secondary bg-surface-subtle p-3 rounded-lg dark:bg-surface-card-hover">
+            <span>{t("connectModal.installHint")}</span>
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              className="shrink-0 font-semibold text-brand hover:underline cursor-pointer"
+            >
+              {t("connectModal.refresh")}
+            </button>
+          </div>
+        )}
+
         {timeoutKind === "brave" ? (
           <div className="mt-3 text-[10px] text-brand bg-brand/10 p-3 rounded-lg tracking-wide">
             <p className="font-semibold">
@@ -378,13 +449,25 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
             </ul>
           </div>
         ) : (
-          (timeoutKind || error) && (
+          (timeoutKind || error) &&
+          (isProviderGoneError(error) ? (
+            <div className="mt-3 flex items-center justify-between gap-2 text-[10px] text-brand bg-brand/10 p-2 rounded-lg font-medium tracking-wide">
+              <span>{getFriendlyErrorMessage(error, t)}</span>
+              <button
+                type="button"
+                onClick={() => window.location.reload()}
+                className="shrink-0 font-semibold hover:underline cursor-pointer"
+              >
+                {t("connectModal.refresh")}
+              </button>
+            </div>
+          ) : (
             <p className="mt-3 text-center text-[10px] text-brand bg-brand/10 p-2 rounded-lg font-medium tracking-wide">
               {timeoutKind === "generic"
                 ? t("connectModal.errors.timeout")
                 : getFriendlyErrorMessage(error, t)}
             </p>
-          )
+          ))
         )}
 
         <div className="mt-5 text-[10px] text-ink-muted text-center leading-relaxed">
