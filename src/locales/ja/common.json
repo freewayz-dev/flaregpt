@@ -269,7 +269,7 @@
       "wrongNetwork": "ウォレットのアクティブなネットワークをFlare Mainnetに切り替えてください。"
     },
     "mobileHint": "モバイルでは、ウォレットのビルトインブラウザでFlareGPTを開き、最高の接続エクスペリエンスを実現します。",
-    "notDetected": "検出されません",
+    "connecting": "接続中…",
     "recommended": "オススメ",
     "subtitle": "お好みのウォレットを選択して、Flareネットワークに接続します。",
     "title": "ウォレットに接続する"

@@ -269,7 +269,7 @@
       "wrongNetwork": "Lütfen cüzdanınızın aktif ağını Flare Mainnet olarak değiştirin."
     },
     "mobileHint": "Mobil cihazlarda, en iyi bağlantı deneyimi için cüzdanınızın yerleşik tarayıcısında FlareGPT'yi açın.",
-    "notDetected": "Algılanmadı",
+    "connecting": "Bağlanıyor…",
     "recommended": "Önerilen",
     "subtitle": "Flare Ağına bağlanmak için tercih ettiğiniz cüzdanı seçin.",
     "title": "Cüzdanınızı Bağlayın"

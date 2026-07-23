@@ -269,7 +269,7 @@
       "wrongNetwork": "Passa alla rete attiva del tuo portafoglio su Flare Mainnet."
     },
     "mobileHint": "Su dispositivi mobili, apri FlareGPT nel browser integrato del tuo portafoglio per la migliore esperienza di connessione.",
-    "notDetected": "Non rilevato",
+    "connecting": "Connessione…",
     "recommended": "Consigliato",
     "subtitle": "Seleziona il tuo portafoglio preferito per connetterti a Flare Network.",
     "title": "Connetti il Portafoglio"

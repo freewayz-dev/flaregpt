@@ -268,7 +268,7 @@
       "wrongNetwork": "Cambia la red activa de tu monedero a Flare Mainnet."
     },
     "mobileHint": "En el móvil, abre FlareGPT en el navegador integrado de tu monedero para disfrutar de la mejor experiencia de conexión.",
-    "notDetected": "No detectado",
+    "connecting": "Conectando…",
     "recommended": "Recomendaciones",
     "subtitle": "Selecciona tu monedero preferido para conectarte a Flare Network.",
     "title": "Conectar la billetera"

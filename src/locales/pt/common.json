@@ -269,7 +269,7 @@
       "wrongNetwork": "Mude a rede ativa da sua carteira para a Flare Mainnet."
     },
     "mobileHint": "No celular, abra o FlareGPT no navegador integrado da sua carteira para ter a melhor experiência de conexão.",
-    "notDetected": "Não detectado",
+    "connecting": "Conectando…",
     "recommended": "Recomendado",
     "subtitle": "Selecione a sua carteira preferida para se ligar à Rede Flare.",
     "title": "Conectar Carteira"

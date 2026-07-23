@@ -269,7 +269,7 @@
       "wrongNetwork": "Vui lòng chuyển mạng đang hoạt động của ví của bạn sang Flare Mainnet."
     },
     "mobileHint": "Trên thiết bị di động, hãy mở FlareGPT trong trình duyệt tích hợp sẵn trong ví của bạn để có trải nghiệm kết nối tốt nhất.",
-    "notDetected": "Không phát hiện",
+    "connecting": "Đang kết nối…",
     "recommended": "Được đề xuất",
     "subtitle": "Chọn ví ưa thích của bạn để kết nối với Flare Network.",
     "title": "Liên kết ví"

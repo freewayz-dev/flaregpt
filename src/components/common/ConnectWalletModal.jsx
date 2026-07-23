@@ -9,10 +9,15 @@ import walletConnectImg from "@/assets/wallets/icon.png";
 import metamask from "@/assets/wallets/MetaMask_Fox.svg.png";
 import { findInjectedProvider } from "@/config/web3Config";
 
-// `connectorId` maps each button to its own targeted connector (see
-// web3Config.js), and `flag` is the injected-provider property that proves
-// that specific wallet is actually installed. WalletConnect has neither: it
-// never touches window.ethereum, so it's always available.
+// `connectorId` is the targeted injected connector to use (see
+// web3Config.js) when `flag` is detected on window.ethereum — the fast path
+// for a desktop extension or a wallet's own mobile in-app browser. When it
+// isn't detected (e.g. a plain mobile browser, which has no concept of
+// "extensions" at all), handleConnect falls back to the walletConnect
+// connector instead of disabling the button: WalletConnect's own modal
+// already renders a QR code on desktop or a deep-link wallet picker on
+// mobile, so tapping "MetaMask" without the extension still gets you to the
+// real MetaMask app instead of a dead end.
 const VISUAL_WALLETS = [
   {
     id: "bifrost",
@@ -69,29 +74,21 @@ const getFriendlyErrorMessage = (error, t) => {
 
 export default function ConnectWalletModal({ isOpen, onClose }) {
   const { t } = useTranslation();
-  const { connect, connectors, error, isPending } = useConnect();
+  const { connect, connectors, error, isPending, reset } = useConnect();
   const { isConnected } = useAccount();
 
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [animate, setAnimate] = useState(false);
-  const [availability, setAvailability] = useState({});
+  // Tracks which specific button was clicked, independent of which
+  // connector it resolved to — MetaMask and Rabby can both fall back to the
+  // same walletConnect connector when neither extension is installed, but
+  // clicking one shouldn't make the other look like it's connecting too.
+  const [pendingWalletId, setPendingWalletId] = useState(null);
 
   useEffect(() => {
     if (isOpen) {
       setShouldRender(true);
       const timer = setTimeout(() => setAnimate(true), 20);
-
-      // Re-checked every time the modal opens rather than once at mount, so
-      // an extension installed (or a wallet's in-app browser opened) after
-      // the app first loaded is picked up without a full page reload.
-      const next = {};
-      for (const wallet of VISUAL_WALLETS) {
-        next[wallet.id] = wallet.flag
-          ? !!findInjectedProvider(window, wallet.flag)
-          : true;
-      }
-      setAvailability(next);
-
       return () => clearTimeout(timer);
     } else {
       setAnimate(false);
@@ -104,6 +101,19 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
     if (isConnected && isOpen) onClose();
   }, [isConnected, isOpen, onClose]);
 
+  // WalletConnect's own provider doesn't always reject cleanly when its QR
+  // modal is dismissed without pairing, which used to leave `isPending`
+  // (and therefore every wallet button) stuck disabled for the rest of the
+  // session. Resetting the mutation whenever the modal closes guarantees a
+  // clean slate the next time it opens, regardless of whether that
+  // underlying promise ever actually settles.
+  useEffect(() => {
+    if (!isOpen) {
+      reset();
+      setPendingWalletId(null);
+    }
+  }, [isOpen, reset]);
+
   useEffect(() => {
     const handleEscape = (e) => e.key === "Escape" && onClose();
     if (isOpen) window.addEventListener("keydown", handleEscape);
@@ -112,9 +122,20 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
 
   if (!shouldRender) return null;
 
+  const resolveConnectorId = (wallet) =>
+    wallet.flag && findInjectedProvider(window, wallet.flag)
+      ? wallet.connectorId
+      : "walletConnect";
+
   const handleConnect = (wallet) => {
-    if (wallet.flag && !availability[wallet.id]) return;
-    const connector = connectors.find((c) => c.id === wallet.connectorId);
+    // Clear out any previous stuck/failed attempt first so picking a
+    // different wallet always works immediately, even if an earlier
+    // connect() call never settled.
+    reset();
+    setPendingWalletId(wallet.id);
+    const connector = connectors.find(
+      (c) => c.id === resolveConnectorId(wallet),
+    );
     if (connector) connect({ connector });
   };
 
@@ -156,13 +177,16 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
 
         <div className="mt-4 space-y-2 pb-4 sm:pb-0">
           {VISUAL_WALLETS.map((wallet) => {
-            const available = wallet.flag ? !!availability[wallet.id] : true;
+            // Only the button actually being connected shows as busy — every
+            // other wallet stays clickable so a stuck or failed attempt on
+            // one connector never blocks trying a different one.
+            const isConnectingThis = isPending && pendingWalletId === wallet.id;
 
             return (
               <button
                 key={wallet.id}
                 type="button"
-                disabled={isPending || !available}
+                disabled={isConnectingThis}
                 onClick={() => handleConnect(wallet)}
                 className="w-full flex items-center justify-between rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-4 py-3 text-xs font-medium text-[#4F5B66] hover:bg-surface-subtle hover:text-ink-primary transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#FFFFFF] dark:border-none dark:bg-surface-inset dark:text-[#A1A1AA] dark:hover:bg-surface-card-hover dark:disabled:hover:bg-surface-inset"
               >
@@ -171,9 +195,9 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
                   <span className="tracking-wide">{wallet.name}</span>
                 </div>
 
-                {!available ? (
+                {isConnectingThis ? (
                   <span className="text-[9px] font-semibold bg-surface-subtle text-ink-muted px-2 py-0.5 rounded-md dark:bg-surface-card-hover">
-                    {t("connectModal.notDetected")}
+                    {t("connectModal.connecting")}
                   </span>
                 ) : (
                   wallet.recommended && (
