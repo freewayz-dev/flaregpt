@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useConnect, useConnectors, useConnection } from "wagmi";
 import { useTranslation } from "react-i18next";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -30,14 +30,6 @@ const isBraveBrowser = async () => {
   }
 };
 
-// MetaMask's own universal link — well-documented and stable — jumps
-// straight into the app on mobile using the same WalletConnect pairing URI
-// that would otherwise sit in a QR code. Rabby and Bifrost don't have a
-// deep-link format that can be cited with the same confidence, so they keep
-// using WalletConnect's own picker on mobile instead.
-const metaMaskMobileDeepLink = (uri) =>
-  `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
-
 // `connectorId` is the targeted injected connector (see web3Config.js) used
 // when `flag` is detected on window.ethereum — the fast path for a desktop
 // extension or a wallet's own mobile in-app browser. `installUrl` is only
@@ -46,6 +38,22 @@ const metaMaskMobileDeepLink = (uri) =>
 // rather than silently substituting a different connection method. Bifrost
 // has no confirmed desktop extension, so it has no installUrl and keeps
 // falling back to WalletConnect on desktop, same as before.
+//
+// None of these carry a mobile deep-link of their own (a previous version
+// of this file redirected MetaMask to https://metamask.app.link/... on
+// mobile) — deliberately removed. That link is a Branch.io universal link,
+// and universal links only bypass their own "Open App" landing page when
+// the navigation is a direct, synchronous consequence of a real tap; ours
+// fired from a JS event handler reacting to the async display_uri event,
+// which iOS/Android correctly refuse to treat as a trusted user gesture, so
+// it always fell through to Branch's fallback page — one MORE tap than just
+// letting WalletConnect's own modal handle it. Confirmed directly: tapping
+// a wallet inside WalletConnect's own grid fires a raw custom-scheme
+// navigation (e.g. metamask://wc?uri=...) with no landing page at all,
+// because that tap genuinely is a trusted user gesture. Letting every
+// wallet fall back to the same shared modal is the most reliable option
+// available without hand-rolling a second, unofficial WalletConnect
+// provider instance per wallet.
 const VISUAL_WALLETS = [
   {
     id: "bifrost",
@@ -65,7 +73,6 @@ const VISUAL_WALLETS = [
     src: metamask,
     recommended: false,
     installUrl: "https://metamask.io/download/",
-    mobileDeepLink: metaMaskMobileDeepLink,
   },
   {
     id: "rabby",
@@ -124,11 +131,6 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
   // correctly, and so the richer Brave-specific block below can pick its own
   // markup instead of being forced into a single flat string.
   const [timeoutKind, setTimeoutKind] = useState(null);
-  // Set right before a mobile MetaMask fallback attempt starts; consumed by
-  // the display_uri listener below to redirect into the app the instant a
-  // pairing URI exists, instead of waiting for the user to find MetaMask in
-  // WalletConnect's own picker.
-  const pendingDeepLinkRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -157,7 +159,6 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
       reset();
       setPendingWalletId(null);
       setTimeoutKind(null);
-      pendingDeepLinkRef.current = null;
     }
   }, [isOpen, reset]);
 
@@ -166,24 +167,6 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
     if (isOpen) window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
-
-  // The walletConnect connector emits the pairing URI as a 'display_uri'
-  // message on its own emitter the moment it's ready — the same event that
-  // feeds its QR code — intercepted here so a mobile MetaMask fallback can
-  // jump straight into the app instead of showing the QR/picker first.
-  useEffect(() => {
-    const wcConnector = connectors.find((c) => c.id === "walletConnect");
-    if (!wcConnector) return;
-
-    const handleMessage = (event) => {
-      if (event.type === "display_uri" && pendingDeepLinkRef.current) {
-        window.location.href = pendingDeepLinkRef.current(event.data);
-        pendingDeepLinkRef.current = null;
-      }
-    };
-    wcConnector.emitter.on("message", handleMessage);
-    return () => wcConnector.emitter.off("message", handleMessage);
-  }, [connectors]);
 
   if (!shouldRender) return null;
 
@@ -197,7 +180,6 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
       timedOut = true;
       reset();
       setPendingWalletId(null);
-      pendingDeepLinkRef.current = null;
       // A stuck WalletConnect attempt is the exact symptom of Brave Shields
       // (or a similar tracker/ad blocker) silently dropping its relay
       // traffic — only worth checking (and only relevant to show) when
@@ -244,10 +226,10 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
     }
 
     // Mobile fallback (or a desktop wallet with no extension to install,
-    // i.e. Bifrost): reach it through WalletConnect instead.
-    if (mobile && wallet.mobileDeepLink) {
-      pendingDeepLinkRef.current = wallet.mobileDeepLink;
-    }
+    // i.e. Bifrost): reach it through WalletConnect's own modal, which
+    // shows a native, tap-driven wallet picker on mobile — see the note on
+    // VISUAL_WALLETS above for why this isn't shortcut with a custom
+    // redirect.
     const wcConnector = connectors.find((c) => c.id === "walletConnect");
     if (wcConnector) runConnect(wcConnector, wallet.id);
   };
@@ -298,17 +280,16 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
             const isDetected = !!(wallet.flag && findInjectedProvider(window, wallet.flag));
             const willInstall =
               !isConnectingThis && wallet.installUrl && !mobile && !isDetected;
-            // Bifrost (and Rabby on mobile) have no extension/deep-link to
-            // fall back to, so they're reached through WalletConnect's own
-            // picker — flagged up front rather than only discovering it
-            // after tapping, since it's a different flow from every other
+            // Any undetected wallet other than an installable desktop
+            // extension is reached through WalletConnect's own modal —
+            // flagged up front rather than only discovering it after
+            // tapping, since it's a different flow from every other
             // button's "connect directly" behavior.
             const willUseWalletConnect =
               !isConnectingThis &&
               !willInstall &&
               !isDetected &&
-              wallet.connectorId !== "walletConnect" &&
-              !(mobile && wallet.mobileDeepLink);
+              wallet.connectorId !== "walletConnect";
 
             return (
               <button
