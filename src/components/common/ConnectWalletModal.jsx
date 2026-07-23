@@ -7,10 +7,17 @@ import bifrostImg from "@/assets/wallets/bifrost.jpeg";
 import rabbyImg from "@/assets/wallets/rabby.png";
 import walletConnectImg from "@/assets/wallets/icon.png";
 import metamask from "@/assets/wallets/MetaMask_Fox.svg.png";
+import { findInjectedProvider } from "@/config/web3Config";
 
+// `connectorId` maps each button to its own targeted connector (see
+// web3Config.js), and `flag` is the injected-provider property that proves
+// that specific wallet is actually installed. WalletConnect has neither: it
+// never touches window.ethereum, so it's always available.
 const VISUAL_WALLETS = [
   {
     id: "bifrost",
+    connectorId: "bifrost",
+    flag: "isBifrost",
     name: "Bifrost Wallet",
     type: "img",
     src: bifrostImg,
@@ -18,6 +25,8 @@ const VISUAL_WALLETS = [
   },
   {
     id: "metamask",
+    connectorId: "metaMask",
+    flag: "isMetaMask",
     name: "MetaMask",
     type: "svg",
     src: metamask,
@@ -25,6 +34,8 @@ const VISUAL_WALLETS = [
   },
   {
     id: "rabby",
+    connectorId: "rabby",
+    flag: "isRabby",
     name: "Rabby Wallet",
     type: "img",
     src: rabbyImg,
@@ -32,6 +43,8 @@ const VISUAL_WALLETS = [
   },
   {
     id: "walletconnect",
+    connectorId: "walletConnect",
+    flag: null,
     name: "WalletConnect",
     type: "img",
     src: walletConnectImg,
@@ -61,11 +74,24 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
 
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [animate, setAnimate] = useState(false);
+  const [availability, setAvailability] = useState({});
 
   useEffect(() => {
     if (isOpen) {
       setShouldRender(true);
       const timer = setTimeout(() => setAnimate(true), 20);
+
+      // Re-checked every time the modal opens rather than once at mount, so
+      // an extension installed (or a wallet's in-app browser opened) after
+      // the app first loaded is picked up without a full page reload.
+      const next = {};
+      for (const wallet of VISUAL_WALLETS) {
+        next[wallet.id] = wallet.flag
+          ? !!findInjectedProvider(window, wallet.flag)
+          : true;
+      }
+      setAvailability(next);
+
       return () => clearTimeout(timer);
     } else {
       setAnimate(false);
@@ -86,14 +112,10 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
 
   if (!shouldRender) return null;
 
-  const handleConnect = (walletId) => {
-    if (walletId === "walletconnect") {
-      const wcConnector = connectors.find((c) => c.id === "walletConnect");
-      if (wcConnector) connect({ connector: wcConnector });
-    } else {
-      const injectedConnector = connectors.find((c) => c.id === "injected");
-      if (injectedConnector) connect({ connector: injectedConnector });
-    }
+  const handleConnect = (wallet) => {
+    if (wallet.flag && !availability[wallet.id]) return;
+    const connector = connectors.find((c) => c.id === wallet.connectorId);
+    if (connector) connect({ connector });
   };
 
   const transitionStyles = animate
@@ -133,26 +155,36 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
         </div>
 
         <div className="mt-4 space-y-2 pb-4 sm:pb-0">
-          {VISUAL_WALLETS.map((wallet) => (
-            <button
-              key={wallet.id}
-              type="button"
-              disabled={isPending}
-              onClick={() => handleConnect(wallet.id)}
-              className="w-full flex items-center justify-between rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-4 py-3 text-xs font-medium text-[#4F5B66] hover:bg-surface-subtle hover:text-ink-primary transition-all cursor-pointer disabled:opacity-50 dark:border-none dark:bg-surface-inset dark:text-[#A1A1AA] dark:hover:bg-surface-card-hover"
-            >
-              <div className="flex items-center gap-3">
-                <WalletImage src={wallet.src} alt={wallet.name} />
-                <span className="tracking-wide">{wallet.name}</span>
-              </div>
+          {VISUAL_WALLETS.map((wallet) => {
+            const available = wallet.flag ? !!availability[wallet.id] : true;
 
-              {wallet.recommended && (
-                <span className="text-[9px] font-semibold bg-brand/10 text-brand px-2 py-0.5 rounded-md">
-                  {t("connectModal.recommended")}
-                </span>
-              )}
-            </button>
-          ))}
+            return (
+              <button
+                key={wallet.id}
+                type="button"
+                disabled={isPending || !available}
+                onClick={() => handleConnect(wallet)}
+                className="w-full flex items-center justify-between rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-4 py-3 text-xs font-medium text-[#4F5B66] hover:bg-surface-subtle hover:text-ink-primary transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#FFFFFF] dark:border-none dark:bg-surface-inset dark:text-[#A1A1AA] dark:hover:bg-surface-card-hover dark:disabled:hover:bg-surface-inset"
+              >
+                <div className="flex items-center gap-3">
+                  <WalletImage src={wallet.src} alt={wallet.name} />
+                  <span className="tracking-wide">{wallet.name}</span>
+                </div>
+
+                {!available ? (
+                  <span className="text-[9px] font-semibold bg-surface-subtle text-ink-muted px-2 py-0.5 rounded-md dark:bg-surface-card-hover">
+                    {t("connectModal.notDetected")}
+                  </span>
+                ) : (
+                  wallet.recommended && (
+                    <span className="text-[9px] font-semibold bg-brand/10 text-brand px-2 py-0.5 rounded-md">
+                      {t("connectModal.recommended")}
+                    </span>
+                  )
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {error && (

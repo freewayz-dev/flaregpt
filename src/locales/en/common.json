@@ -11,6 +11,7 @@
       "wrongNetwork": "Please switch your wallet's active network to Flare Mainnet."
     },
     "mobileHint": "On mobile, open FlareGPT in your wallet's built-in browser for the best connection experience.",
+    "notDetected": "Not detected",
     "recommended": "Recommended",
     "subtitle": "Select your preferred wallet to connect to the Flare Network.",
     "title": "Connect Wallet"

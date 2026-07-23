@@ -268,6 +268,7 @@
       "wrongNetwork": "Bitte schalten Sie das aktive Netzwerk Ihrer Brieftasche auf Flare Mainnet um."
     },
     "mobileHint": "Öffnen Sie FlareGPT auf dem Handy im integrierten Browser Ihrer Brieftasche, um die beste Verbindungserfahrung zu erzielen.",
+    "notDetected": "Nicht erkannt",
     "recommended": "Empfohlen",
     "subtitle": "Wählen Sie Ihr bevorzugtes Wallet aus, um sich mit dem Flare Network zu verbinden.",
     "title": "Wallet verbinden"

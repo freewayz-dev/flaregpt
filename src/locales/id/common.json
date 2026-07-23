@@ -269,6 +269,7 @@
       "wrongNetwork": "Harap alihkan jaringan aktif dompet Anda ke Flare Mainnet."
     },
     "mobileHint": "Di ponsel, buka FlareGPT di browser bawaan dompet Anda untuk pengalaman koneksi terbaik.",
+    "notDetected": "Tidak terdeteksi",
     "recommended": "Direkomendasikan",
     "subtitle": "Pilih dompet pilihan Anda untuk terhubung ke Jaringan Flare.",
     "title": "Hubungkan Dompet"

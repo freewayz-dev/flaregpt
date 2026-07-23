@@ -269,6 +269,7 @@
       "wrongNetwork": "请将钱包的活动网络切换到Flare主网。"
     },
     "mobileHint": "在移动设备上，在钱包的内置浏览器中打开FlareGPT ，以获得最佳连接体验。",
+    "notDetected": "未检测到",
     "recommended": "推荐AI",
     "subtitle": "选择您的首选钱包以连接到Flare网络。",
     "title": "连接钱包"

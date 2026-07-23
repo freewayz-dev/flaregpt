@@ -269,6 +269,7 @@
       "wrongNetwork": "지갑의 활성 네트워크를 Flare Mainnet으로 전환하십시오."
     },
     "mobileHint": "모바일에서 지갑의 내장 브라우저에서 FlareGPT를 열어 최상의 연결 경험을 누리세요.",
+    "notDetected": "감지되지 않음",
     "recommended": "추천",
     "subtitle": "선호하는 지갑을 선택하여 Flare 네트워크에 연결합니다.",
     "title": "지갑 연결"
