@@ -59,6 +59,7 @@ const VISUAL_WALLETS = [
     id: "bifrost",
     connectorId: "bifrost",
     flag: "isBifrost",
+    rdns: "com.bifrostwallet",
     name: "Bifrost Wallet",
     type: "img",
     src: bifrostImg,
@@ -68,6 +69,7 @@ const VISUAL_WALLETS = [
     id: "metamask",
     connectorId: "metaMask",
     flag: "isMetaMask",
+    rdns: "io.metamask",
     name: "MetaMask",
     type: "svg",
     src: metamask,
@@ -78,6 +80,7 @@ const VISUAL_WALLETS = [
     id: "rabby",
     connectorId: "rabby",
     flag: "isRabby",
+    rdns: "io.rabby",
     name: "Rabby Wallet",
     type: "img",
     src: rabbyImg,
@@ -91,12 +94,41 @@ const VISUAL_WALLETS = [
     id: "walletconnect",
     connectorId: "walletConnect",
     flag: null,
+    rdns: null,
     name: "WalletConnect",
     type: "img",
     src: walletConnectImg,
     recommended: false,
   },
 ];
+
+// wagmi auto-discovers EIP-6963-announced providers (multiInjectedProviderDiscovery,
+// enabled by default) as separate connectors keyed by each wallet's `rdns`,
+// independent of whichever extension currently occupies `window.ethereum`.
+// Checked first since it's strictly more reliable than our own
+// window.ethereum probing below: confirmed that a wallet occupying
+// window.ethereum (Rabby, in testing) can leave a genuinely-installed
+// MetaMask undiscoverable via any window.ethereum-based check — since
+// wagmi's own "metaMask" target only searches window.ethereum.providers[]
+// once that array exists — while EIP-6963 finds it regardless of who owns
+// that global. This is exactly what caused "unexpected connection friction"
+// clicking MetaMask directly, while it worked when selected through
+// Rabby's own wallet picker (which enumerates EIP-6963 providers itself).
+function findRdnsConnector(connectors, rdns) {
+  return rdns ? connectors.find((c) => c.id === rdns) : undefined;
+}
+
+function isWalletDetected(connectors, wallet) {
+  if (findRdnsConnector(connectors, wallet.rdns)) return true;
+  return !!(wallet.flag && findInjectedProvider(window, wallet.flag));
+}
+
+function resolveConnector(connectors, wallet) {
+  return (
+    findRdnsConnector(connectors, wallet.rdns) ||
+    connectors.find((c) => c.id === wallet.connectorId)
+  );
+}
 
 const getFriendlyErrorMessage = (error, t) => {
   if (!error) return null;
@@ -210,11 +242,11 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
   };
 
   const handleConnect = (wallet) => {
-    const detected = !!(wallet.flag && findInjectedProvider(window, wallet.flag));
+    const detected = isWalletDetected(connectors, wallet);
     const mobile = isMobileDevice();
 
     if (detected) {
-      const connector = connectors.find((c) => c.id === wallet.connectorId);
+      const connector = resolveConnector(connectors, wallet);
       if (connector) runConnect(connector, wallet.id);
       return;
     }
@@ -280,7 +312,7 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
             // one connector never blocks trying a different one.
             const isConnectingThis = isPending && pendingWalletId === wallet.id;
             const mobile = isMobileDevice();
-            const isDetected = !!(wallet.flag && findInjectedProvider(window, wallet.flag));
+            const isDetected = isWalletDetected(connectors, wallet);
             const willInstall =
               !isConnectingThis && wallet.installUrl && !mobile && !isDetected;
             // Any undetected wallet other than an installable desktop

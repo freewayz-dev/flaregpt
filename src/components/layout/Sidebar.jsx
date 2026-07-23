@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useConnection, useDisconnect } from "wagmi";
+import { useConnection, useConnections, useDisconnect } from "wagmi";
 import {
   WalletIcon,
   ChatBubbleLeftRightIcon,
@@ -117,7 +117,29 @@ export default function Sidebar({ open, setOpen }) {
 
   // Real Wagmi Account State variables
   const { address, isConnected } = useConnection();
-  const { disconnect } = useDisconnect();
+  // `disconnect`/`disconnectAsync` on useDisconnect()'s return are
+  // deprecated in favor of the underlying mutation's own `mutate`/
+  // `mutateAsync`.
+  const { mutateAsync: disconnectAsync } = useDisconnect();
+  const connections = useConnections();
+
+  // wagmi can end up with more than one connector "connected" at once —
+  // e.g. both Rabby and MetaMask still authorized at the extension level
+  // from an earlier session — even though only one is ever shown as
+  // `current`. Disconnecting just the current one leaves the other's
+  // entry in wagmi's internal connections map, and wagmi's own disconnect
+  // action then silently promotes that leftover entry to `current`
+  // instead of going to a disconnected state — no new handshake, no
+  // permission prompt, just the previous wallet's address reappearing.
+  // Disconnecting every active connection here guarantees nothing is left
+  // to fall back to, so the next connect attempt always starts fresh.
+  const disconnectAll = async () => {
+    for (const connection of connections) {
+      await disconnectAsync({ connector: connection.connector }).catch(
+        () => {},
+      );
+    }
+  };
 
   // Format long wallet addresses for your minimalist UI (e.g. 0x71C...3A90)
   const formatAddress = (addr) => {
@@ -261,7 +283,7 @@ export default function Sidebar({ open, setOpen }) {
                   </div>
                   <button
                     type="button"
-                    onClick={() => disconnect()}
+                    onClick={disconnectAll}
                     className="w-full rounded-xl border border-[#E5E7EB] dark:border-none bg-[#FFFFFF] dark:bg-surface-inset px-3 py-2 text-xs text-ink-secondary hover:bg-surface-subtle dark:hover:bg-surface-card-hover hover:text-ink-primary dark:hover:text-white transition-colors cursor-pointer"
                   >
                     {t("sidebar.disconnect")}
@@ -275,7 +297,7 @@ export default function Sidebar({ open, setOpen }) {
               <button
                 type="button"
                 onClick={() =>
-                  isConnected ? disconnect() : setModalOpen(true)
+                  isConnected ? disconnectAll() : setModalOpen(true)
                 }
                 className="hidden lg:flex w-full justify-center rounded-xl p-3 bg-brand/10 text-brand cursor-pointer"
               >
