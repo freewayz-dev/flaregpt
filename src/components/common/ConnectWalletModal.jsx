@@ -82,7 +82,10 @@ const VISUAL_WALLETS = [
     type: "img",
     src: rabbyImg,
     recommended: false,
-    installUrl: "https://rabby.io",
+    // Chrome Web Store URL, confirmed via WalletConnect's own Explorer
+    // listing for Rabby rather than guessed.
+    installUrl:
+      "https://chrome.google.com/webstore/detail/rabby/acmacodkjbdgmoleebolmdjonilkdbch",
   },
   {
     id: "walletconnect",

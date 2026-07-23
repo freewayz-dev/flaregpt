@@ -71,6 +71,15 @@ export const web3Config = createConfig({
           "--wcm-accent-color": "#E62058",
           "--wcm-background-color": "rgb(var(--color-surface-card))",
         },
+        // Pins Bifrost and Rabby to the top of WalletConnect's own wallet
+        // grid (shown on mobile, and alongside the QR on desktop) instead
+        // of requiring the user to search for them every time — IDs are
+        // each wallet's real WalletConnect Explorer listing id, confirmed
+        // via https://explorer-api.walletconnect.com/v3/wallets?projectId=<id>&search=<name>.
+        explorerRecommendedWalletIds: [
+          "37a686ab6223cd42e2886ed6e5477fce100a4fb565dcd57ed4f81f7c12e93053", // Bifrost Wallet
+          "18388be9ac2d02726dbac9777c96efaac06d744b2f6d580fccdd4127a6d01fd1", // Rabby
+        ],
       },
       // not inside an "ethereumProviderOptions" block!
       isNewChainsStale: false,
