@@ -4,6 +4,7 @@ import { WalletIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useWalletBalances } from "@/hooks/queries/useDashboardQueries";
+import TokenIcon from "@/components/common/TokenIcon";
 import WalletBalancesCardSkeleton from "@/pages/Dashboard/components/skeletons/WalletBalancesCardSkeleton";
 
 function formatAmount(value) {
@@ -61,7 +62,10 @@ export default function WalletBalancesCard() {
         <div className="grid grid-cols-2 gap-3">
           {Object.entries(data.balances).map(([symbol, amount]) => (
             <div key={symbol} className="rounded-xl bg-surface-inset p-3">
-              <p className="text-xs text-ink-muted">{symbol}</p>
+              <p className="flex items-center gap-1.5 text-xs text-ink-muted">
+                <TokenIcon symbol={symbol} size={14} />
+                {symbol}
+              </p>
               <p className="mt-1 text-lg font-semibold text-ink-primary truncate">
                 {formatAmount(amount)}
               </p>

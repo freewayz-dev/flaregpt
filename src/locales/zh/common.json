@@ -382,5 +382,71 @@
       "operational": "所有系统运行正常",
       "degraded": "API已降级"
     }
+  },
+  "defiProtocols": {
+    "description": "比较收益策略,并跟踪您在 MXRPY、Sceptre 和 Firelight 金库中的持仓。",
+    "common": {
+      "addressCopied": "地址已复制到剪贴板",
+      "copyFailed": "无法复制地址",
+      "connectToSeePosition": "连接钱包以查看您的持仓",
+      "contract": "合约",
+      "proxyContract": "代理合约",
+      "poolOwnership": "资金池占比",
+      "protocolDetails": "协议详情",
+      "yourBalance": "您的余额",
+      "redeemableValue": "可赎回价值"
+    },
+    "explorer": {
+      "title": "协议浏览器",
+      "subtitle": "选择一个协议以查看您的持仓和详情"
+    },
+    "kpis": {
+      "protocolsTracked": "已追踪协议",
+      "bestApr": "最佳可用年化收益率",
+      "activePositions": "活跃持仓"
+    },
+    "mxrpy": {
+      "title": "MXRPY 金库",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "无法加载您的 MXRPY 持仓",
+      "circulatingCaption": "流通中 {{shares}} 份额 · {{decimals}} 位小数",
+      "yourShares": "您的凭证份额",
+      "category": "收益金库"
+    },
+    "sceptre": {
+      "title": "Sceptre 流动性质押",
+      "subtitle": "sFLR 流动性质押",
+      "couldntLoad": "无法加载您的 Sceptre 持仓",
+      "exchangeRateLabel": "sFLR / FLR 汇率",
+      "totalMinted": "已铸造份额总量",
+      "backedFlr": "底层担保 FLR",
+      "category": "流动性质押"
+    },
+    "firelight": {
+      "title": "Firelight 金库",
+      "subtitle": "资本保护金库",
+      "couldntLoad": "无法加载您的 Firelight 持仓",
+      "backingLabel": "资产支持倍数",
+      "circulatingSupply": "流通供应量",
+      "underlyingReserve": "底层储备",
+      "insuranceRobust": "保险: 稳健",
+      "category": "保险"
+    },
+    "strategies": {
+      "title": "策略对比",
+      "subtitle": "查看您的 FLR 在不同策略下的表现",
+      "amountLabel": "比较金额",
+      "apr": "年化收益率",
+      "colStrategy": "策略",
+      "colYield": "预估收益 (FLR)",
+      "colTerms": "条款",
+      "compoundingLabel": "复利方式",
+      "couldntLoad": "无法加载策略对比",
+      "highestApr": "最高年化收益率",
+      "lockupDays": "锁定 {{count}} 天",
+      "lockupHours": "锁定 {{count}} 小时",
+      "noLockup": "无锁定期",
+      "verdict": "FlareGPT 结论"
+    }
   }
 }

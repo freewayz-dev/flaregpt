@@ -381,5 +381,71 @@
       "operational": "\"جميع الأنظمة جاهزة للعمل.\"",
       "degraded": "API متدهور"
     }
+  },
+  "defiProtocols": {
+    "description": "قارن استراتيجيات العائد وتتبع مراكزك عبر خزائن MXRPY وSceptre وFirelight.",
+    "common": {
+      "addressCopied": "تم نسخ العنوان إلى الحافظة",
+      "copyFailed": "تعذر نسخ العنوان",
+      "connectToSeePosition": "قم بتوصيل محفظة لرؤية مركزك",
+      "contract": "العقد",
+      "proxyContract": "عقد الوكيل",
+      "poolOwnership": "حصة الملكية في المجمع",
+      "protocolDetails": "تفاصيل البروتوكول",
+      "yourBalance": "رصيدك",
+      "redeemableValue": "القيمة القابلة للاسترداد"
+    },
+    "explorer": {
+      "title": "مستكشف البروتوكولات",
+      "subtitle": "اختر بروتوكولاً لعرض مركزك والتفاصيل"
+    },
+    "kpis": {
+      "protocolsTracked": "البروتوكولات المتابَعة",
+      "bestApr": "أفضل معدل عائد سنوي متاح",
+      "activePositions": "المراكز النشطة"
+    },
+    "mxrpy": {
+      "title": "خزنة MXRPY",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "تعذر تحميل مركزك في MXRPY",
+      "circulatingCaption": "{{shares}} حصة متداولة · {{decimals}} خانات عشرية",
+      "yourShares": "حصص الإيصال الخاصة بك",
+      "category": "خزنة العائد"
+    },
+    "sceptre": {
+      "title": "Sceptre Liquid Staking",
+      "subtitle": "تكديس سائل لـ sFLR",
+      "couldntLoad": "تعذر تحميل مركزك في Sceptre",
+      "exchangeRateLabel": "سعر صرف sFLR / FLR",
+      "totalMinted": "إجمالي الحصص المصدرة",
+      "backedFlr": "FLR الأساسي المضمون",
+      "category": "التكديس السائل"
+    },
+    "firelight": {
+      "title": "خزنة Firelight",
+      "subtitle": "خزنة حماية رأس المال",
+      "couldntLoad": "تعذر تحميل مركزك في Firelight",
+      "backingLabel": "مضاعف ضمان الأصول",
+      "circulatingSupply": "العرض المتداول",
+      "underlyingReserve": "الاحتياطي الأساسي",
+      "insuranceRobust": "التأمين: قوي",
+      "category": "التأمين"
+    },
+    "strategies": {
+      "title": "مقارنة الاستراتيجيات",
+      "subtitle": "اطّلع على أداء FLR المحتمل عبر الاستراتيجيات المختلفة",
+      "amountLabel": "قارن مقابل",
+      "apr": "معدل العائد السنوي",
+      "colStrategy": "الاستراتيجية",
+      "colYield": "العائد المقدر (FLR)",
+      "colTerms": "الشروط",
+      "compoundingLabel": "التركيب",
+      "couldntLoad": "تعذر تحميل مقارنة الاستراتيجيات",
+      "highestApr": "أعلى معدل عائد سنوي",
+      "lockupDays": "قفل لمدة {{count}} يوم",
+      "lockupHours": "قفل لمدة {{count}} ساعة",
+      "noLockup": "بدون قفل",
+      "verdict": "تقييم FlareGPT"
+    }
   }
 }

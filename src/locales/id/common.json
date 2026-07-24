@@ -382,5 +382,71 @@
       "operational": "Semua sistem beroperasi",
       "degraded": "Api terdegradasi"
     }
+  },
+  "defiProtocols": {
+    "description": "Bandingkan strategi imbal hasil dan pantau posisi Anda di vault MXRPY, Sceptre, dan Firelight.",
+    "common": {
+      "addressCopied": "Alamat disalin ke clipboard",
+      "copyFailed": "Gagal menyalin alamat",
+      "connectToSeePosition": "Hubungkan wallet untuk melihat posisi Anda",
+      "contract": "Kontrak",
+      "proxyContract": "Kontrak Proxy",
+      "poolOwnership": "Kepemilikan Pool",
+      "protocolDetails": "Detail protokol",
+      "yourBalance": "Saldo Anda",
+      "redeemableValue": "Nilai yang Dapat Ditukarkan"
+    },
+    "explorer": {
+      "title": "Penjelajah Protokol",
+      "subtitle": "Pilih protokol untuk melihat posisi dan detail Anda"
+    },
+    "kpis": {
+      "protocolsTracked": "Protokol Terlacak",
+      "bestApr": "APR Terbaik Tersedia",
+      "activePositions": "Posisi Aktif"
+    },
+    "mxrpy": {
+      "title": "MXRPY Vault",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "Posisi MXRPY Anda gagal dimuat",
+      "circulatingCaption": "{{shares}} saham beredar · {{decimals}} desimal",
+      "yourShares": "Saham Tanda Terima Anda",
+      "category": "Yield Vault"
+    },
+    "sceptre": {
+      "title": "Sceptre Liquid Staking",
+      "subtitle": "Liquid staking sFLR",
+      "couldntLoad": "Posisi Sceptre Anda gagal dimuat",
+      "exchangeRateLabel": "Kurs sFLR / FLR",
+      "totalMinted": "Total Saham Diterbitkan",
+      "backedFlr": "FLR Pendukung Dasar",
+      "category": "Liquid Staking"
+    },
+    "firelight": {
+      "title": "Firelight Vault",
+      "subtitle": "Vault perlindungan modal",
+      "couldntLoad": "Posisi Firelight Anda gagal dimuat",
+      "backingLabel": "Pengganda jaminan aset",
+      "circulatingSupply": "Pasokan Beredar",
+      "underlyingReserve": "Cadangan Dasar",
+      "insuranceRobust": "Asuransi: Kuat",
+      "category": "Asuransi"
+    },
+    "strategies": {
+      "title": "Perbandingan Strategi",
+      "subtitle": "Lihat bagaimana FLR Anda dapat berkinerja di berbagai strategi",
+      "amountLabel": "Bandingkan untuk",
+      "apr": "APR",
+      "colStrategy": "Strategi",
+      "colYield": "Est. Imbal Hasil (FLR)",
+      "colTerms": "Ketentuan",
+      "compoundingLabel": "Bunga Majemuk",
+      "couldntLoad": "Perbandingan strategi gagal dimuat",
+      "highestApr": "APR Tertinggi",
+      "lockupDays": "Lock-up {{count}} hari",
+      "lockupHours": "Lock-up {{count}} jam",
+      "noLockup": "Tanpa lock-up",
+      "verdict": "Penilaian FlareGPT"
+    }
   }
 }

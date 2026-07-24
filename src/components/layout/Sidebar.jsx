@@ -31,6 +31,7 @@ const prefetchFlareGPT = () => import("@/pages/Flrgpt");
 const prefetchWallet = () => import("@/pages/WalletActivity");
 const prefetchSettings = () => import("@/pages/Settings");
 const prefetchHelp = () => import("@/pages/Help");
+const prefetchDefiProtocols = () => import("@/pages/DefiProtocols");
 
 // Ordered by expected importance/frequency: the home view, then the
 // fully-functional core features (AI chat, wallet tracking, reward
@@ -80,6 +81,7 @@ const links = [
     translationKey: "fxrpPool",
     path: "/app/fxrp",
     icon: Square3Stack3DIcon,
+    prefetch: prefetchDefiProtocols,
   },
   {
     translationKey: "donate",

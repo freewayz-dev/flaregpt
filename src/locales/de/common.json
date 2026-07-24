@@ -381,5 +381,71 @@
       "operational": "Alle Systeme betriebsbereit.",
       "degraded": "API verschlechtert"
     }
+  },
+  "defiProtocols": {
+    "description": "Vergleiche Ertragsstrategien und verfolge deine Positionen in den MXRPY-, Sceptre- und Firelight-Vaults.",
+    "common": {
+      "addressCopied": "Adresse in die Zwischenablage kopiert",
+      "copyFailed": "Adresse konnte nicht kopiert werden",
+      "connectToSeePosition": "Verbinde eine Wallet, um deine Position zu sehen",
+      "contract": "Vertrag",
+      "proxyContract": "Proxy-Vertrag",
+      "poolOwnership": "Pool-Anteil",
+      "protocolDetails": "Protokolldetails",
+      "yourBalance": "Dein Guthaben",
+      "redeemableValue": "Einlösbarer Wert"
+    },
+    "explorer": {
+      "title": "Protokoll-Explorer",
+      "subtitle": "Wähle ein Protokoll, um deine Position und Details zu sehen"
+    },
+    "kpis": {
+      "protocolsTracked": "Erfasste Protokolle",
+      "bestApr": "Beste verfügbare APR",
+      "activePositions": "Aktive Positionen"
+    },
+    "mxrpy": {
+      "title": "MXRPY Vault",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "Deine MXRPY-Position konnte nicht geladen werden",
+      "circulatingCaption": "{{shares}} Anteile im Umlauf · {{decimals}} Dezimalstellen",
+      "yourShares": "Deine Receipt-Anteile",
+      "category": "Yield-Vault"
+    },
+    "sceptre": {
+      "title": "Sceptre Liquid Staking",
+      "subtitle": "sFLR Liquid Staking",
+      "couldntLoad": "Deine Sceptre-Position konnte nicht geladen werden",
+      "exchangeRateLabel": "sFLR / FLR Kurs",
+      "totalMinted": "Insgesamt geprägte Anteile",
+      "backedFlr": "Zugrunde liegendes FLR",
+      "category": "Liquid Staking"
+    },
+    "firelight": {
+      "title": "Firelight Vault",
+      "subtitle": "Kapitalschutz-Vault",
+      "couldntLoad": "Deine Firelight-Position konnte nicht geladen werden",
+      "backingLabel": "Vermögensdeckungsfaktor",
+      "circulatingSupply": "Umlaufversorgung",
+      "underlyingReserve": "Zugrunde liegende Reserve",
+      "insuranceRobust": "Versicherung: Robust",
+      "category": "Versicherung"
+    },
+    "strategies": {
+      "title": "Strategievergleich",
+      "subtitle": "Sieh, wie sich dein FLR in verschiedenen Strategien entwickeln könnte",
+      "amountLabel": "Vergleichen für",
+      "apr": "APR",
+      "colStrategy": "Strategie",
+      "colYield": "Gesch. Ertrag (FLR)",
+      "colTerms": "Konditionen",
+      "compoundingLabel": "Zinseszins",
+      "couldntLoad": "Strategievergleich konnte nicht geladen werden",
+      "highestApr": "Höchste APR",
+      "lockupDays": "{{count}} Tage Sperrfrist",
+      "lockupHours": "{{count}}Std. Sperrfrist",
+      "noLockup": "Keine Sperrfrist",
+      "verdict": "FlareGPT-Einschätzung"
+    }
   }
 }

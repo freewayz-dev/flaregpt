@@ -24,4 +24,22 @@ export const queryKeys = {
     ],
     flrOhlc: (days) => [...queryKeys.dashboard.all, "flrOhlc", days],
   },
+  // One key builder per protocol vault, all namespaced under "vaults" so a
+  // wallet disconnect/switch can invalidate every vault query at once if
+  // ever needed. New protocols (Clearpool, Spectra, Morpho, ...) just add
+  // another builder here alongside their fetch function and hook.
+  defiProtocols: {
+    all: ["defiProtocols"],
+    vaults: (protocolId, address) => [
+      ...queryKeys.defiProtocols.all,
+      "vaults",
+      protocolId,
+      address,
+    ],
+    compareStrategies: (amountFlr) => [
+      ...queryKeys.defiProtocols.all,
+      "compareStrategies",
+      amountFlr,
+    ],
+  },
 };

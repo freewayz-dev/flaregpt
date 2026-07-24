@@ -382,5 +382,71 @@
       "operational": "Toàn bộ hệ thống đều hoạt động.",
       "degraded": "API bị suy giảm"
     }
+  },
+  "defiProtocols": {
+    "description": "So sánh các chiến lược sinh lời và theo dõi vị thế của bạn trên các vault MXRPY, Sceptre và Firelight.",
+    "common": {
+      "addressCopied": "Đã sao chép địa chỉ vào clipboard",
+      "copyFailed": "Không thể sao chép địa chỉ",
+      "connectToSeePosition": "Kết nối ví để xem vị thế của bạn",
+      "contract": "Hợp đồng",
+      "proxyContract": "Hợp đồng Proxy",
+      "poolOwnership": "Tỷ lệ sở hữu Pool",
+      "protocolDetails": "Chi tiết giao thức",
+      "yourBalance": "Số dư của bạn",
+      "redeemableValue": "Giá trị Có thể Quy đổi"
+    },
+    "explorer": {
+      "title": "Trình khám phá Giao thức",
+      "subtitle": "Chọn một giao thức để xem vị thế và chi tiết của bạn"
+    },
+    "kpis": {
+      "protocolsTracked": "Giao thức Đang theo dõi",
+      "bestApr": "APR Tốt nhất Hiện có",
+      "activePositions": "Vị thế Đang hoạt động"
+    },
+    "mxrpy": {
+      "title": "MXRPY Vault",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "Không thể tải vị thế MXRPY của bạn",
+      "circulatingCaption": "{{shares}} cổ phần đang lưu hành · {{decimals}} chữ số thập phân",
+      "yourShares": "Cổ phần Biên nhận của bạn",
+      "category": "Vault Sinh lời"
+    },
+    "sceptre": {
+      "title": "Sceptre Liquid Staking",
+      "subtitle": "Staking thanh khoản sFLR",
+      "couldntLoad": "Không thể tải vị thế Sceptre của bạn",
+      "exchangeRateLabel": "Tỷ giá sFLR / FLR",
+      "totalMinted": "Tổng Cổ phần Đã phát hành",
+      "backedFlr": "FLR Bảo chứng Cơ sở",
+      "category": "Staking Thanh khoản"
+    },
+    "firelight": {
+      "title": "Firelight Vault",
+      "subtitle": "Vault bảo vệ vốn",
+      "couldntLoad": "Không thể tải vị thế Firelight của bạn",
+      "backingLabel": "Hệ số bảo chứng tài sản",
+      "circulatingSupply": "Nguồn cung Lưu hành",
+      "underlyingReserve": "Dự trữ Cơ sở",
+      "insuranceRobust": "Bảo hiểm: Vững chắc",
+      "category": "Bảo hiểm"
+    },
+    "strategies": {
+      "title": "So sánh Chiến lược",
+      "subtitle": "Xem FLR của bạn có thể sinh lời như thế nào ở từng chiến lược",
+      "amountLabel": "So sánh cho",
+      "apr": "APR",
+      "colStrategy": "Chiến lược",
+      "colYield": "Lợi nhuận Ư.tính (FLR)",
+      "colTerms": "Điều khoản",
+      "compoundingLabel": "Lãi kép",
+      "couldntLoad": "Không thể tải so sánh chiến lược",
+      "highestApr": "APR Cao nhất",
+      "lockupDays": "Khóa {{count}} ngày",
+      "lockupHours": "Khóa {{count}} giờ",
+      "noLockup": "Không khóa",
+      "verdict": "Nhận định của FlareGPT"
+    }
   }
 }

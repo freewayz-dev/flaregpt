@@ -1,35 +1,63 @@
-export default function StatCard({ title, value, change, icon: Icon, live = false }) {
+export default function StatCard({
+  title,
+  value,
+  change,
+  icon: Icon,
+  live = false,
+  // Both default off so every existing caller (Dashboard's StatRow) renders
+  // exactly as before — these are opt-in for callers that want a KPI to
+  // stand out (emphasis) or a leaner card when the footer slot always goes
+  // unused (compact), rather than a change to StatCard's default look.
+  emphasis = false,
+  compact = false,
+}) {
   const isNegative = typeof change === "string" && change.trim().startsWith("-");
 
   return (
-    <div className="rounded-2xl bg-surface-card hover:bg-surface-card-hover p-4 shadow-sm border border-[#E5E7EB] dark:border-none shrink-0 transition-colors duration-150">
+    <div className="h-full rounded-2xl bg-surface-card hover:bg-surface-card-hover p-4 shadow-sm border border-[#E5E7EB] dark:border-none shrink-0 transition-colors duration-150">
       <div className="flex items-center justify-between gap-2">
         <p className="text-xs text-ink-secondary truncate">{title}</p>
-        {Icon && <Icon className="h-3.5 w-3.5 text-ink-muted shrink-0" />}
+        {Icon && (
+          <Icon
+            className={`h-3.5 w-3.5 shrink-0 ${emphasis ? "text-brand-text" : "text-ink-muted"}`}
+          />
+        )}
       </div>
 
-      <h3 className="mt-1.5 text-xl font-bold text-ink-primary truncate">
+      {/* Emphasis is color-only, not a larger size — a bigger font here
+          would make this card's intrinsic height differ from its siblings
+          in the same row, which is exactly the "cards aren't equal height"
+          bug a size-based emphasis caused before. */}
+      <h3
+        className={`mt-1.5 text-xl font-bold truncate ${
+          emphasis ? "text-brand-text" : "text-ink-primary"
+        }`}
+      >
         {value}
       </h3>
 
-      {/* Fixed-height footer slot so all stat cards are the same height
-          whether or not they have a change/live indicator to show. */}
-      <div className="mt-1 h-5 flex items-center">
-        {change ? (
-          <span
-            className={`text-xs font-medium ${
-              isNegative ? "text-red-500" : "text-emerald-500"
-            }`}
-          >
-            {change}
-          </span>
-        ) : live ? (
-          <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-500">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Live
-          </span>
-        ) : null}
-      </div>
+      {/* Fixed-height footer slot so all stat cards in a row are the same
+          height whether or not they have a change/live indicator to show —
+          skipped entirely in `compact` mode for a row where nothing ever
+          fills it. */}
+      {!compact && (
+        <div className="mt-1 h-5 flex items-center">
+          {change ? (
+            <span
+              className={`text-xs font-medium ${
+                isNegative ? "text-red-500" : "text-emerald-500"
+              }`}
+            >
+              {change}
+            </span>
+          ) : live ? (
+            <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-500">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Live
+            </span>
+          ) : null}
+        </div>
+      )}
     </div>
   );
 }

@@ -382,5 +382,71 @@
       "operational": "सभी सिस्टम चालू हैं",
       "degraded": "एपीआई (API) को खराब किया गया"
     }
+  },
+  "defiProtocols": {
+    "description": "MXRPY, Sceptre और Firelight वॉल्ट्स में यील्ड स्ट्रैटेजी की तुलना करें और अपनी पोजीशन ट्रैक करें।",
+    "common": {
+      "addressCopied": "पता क्लिपबोर्ड पर कॉपी हो गया",
+      "copyFailed": "पता कॉपी नहीं हो सका",
+      "connectToSeePosition": "अपनी पोजीशन देखने के लिए वॉलेट कनेक्ट करें",
+      "contract": "कॉन्ट्रैक्ट",
+      "proxyContract": "प्रॉक्सी कॉन्ट्रैक्ट",
+      "poolOwnership": "पूल स्वामित्व",
+      "protocolDetails": "प्रोटोकॉल विवरण",
+      "yourBalance": "आपका बैलेंस",
+      "redeemableValue": "भुनाने योग्य मूल्य"
+    },
+    "explorer": {
+      "title": "प्रोटोकॉल एक्सप्लोरर",
+      "subtitle": "अपनी पोजीशन और विवरण देखने के लिए एक प्रोटोकॉल चुनें"
+    },
+    "kpis": {
+      "protocolsTracked": "ट्रैक किए गए प्रोटोकॉल",
+      "bestApr": "सर्वश्रेष्ठ उपलब्ध APR",
+      "activePositions": "सक्रिय पोजीशन"
+    },
+    "mxrpy": {
+      "title": "MXRPY वॉल्ट",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "आपकी MXRPY पोजीशन लोड नहीं हो सकी",
+      "circulatingCaption": "प्रचलन में {{shares}} शेयर · {{decimals}} दशमलव",
+      "yourShares": "आपके रसीद शेयर",
+      "category": "यील्ड वॉल्ट"
+    },
+    "sceptre": {
+      "title": "Sceptre Liquid Staking",
+      "subtitle": "sFLR लिक्विड स्टेकिंग",
+      "couldntLoad": "आपकी Sceptre पोजीशन लोड नहीं हो सकी",
+      "exchangeRateLabel": "sFLR / FLR दर",
+      "totalMinted": "कुल जारी शेयर",
+      "backedFlr": "अंतर्निहित समर्थित FLR",
+      "category": "लिक्विड स्टेकिंग"
+    },
+    "firelight": {
+      "title": "Firelight वॉल्ट",
+      "subtitle": "पूंजी सुरक्षा वॉल्ट",
+      "couldntLoad": "आपकी Firelight पोजीशन लोड नहीं हो सकी",
+      "backingLabel": "एसेट बैकिंग मल्टीप्लायर",
+      "circulatingSupply": "प्रचलन आपूर्ति",
+      "underlyingReserve": "अंतर्निहित रिज़र्व",
+      "insuranceRobust": "बीमा: मजबूत",
+      "category": "बीमा"
+    },
+    "strategies": {
+      "title": "स्ट्रैटेजी तुलना",
+      "subtitle": "देखें कि विभिन्न स्ट्रैटेजी में आपका FLR कैसा प्रदर्शन कर सकता है",
+      "amountLabel": "इसके लिए तुलना करें",
+      "apr": "APR",
+      "colStrategy": "स्ट्रैटेजी",
+      "colYield": "अनुमानित प्रतिफल (FLR)",
+      "colTerms": "शर्तें",
+      "compoundingLabel": "चक्रवृद्धि",
+      "couldntLoad": "स्ट्रैटेजी तुलना लोड नहीं हो सकी",
+      "highestApr": "सबसे अधिक APR",
+      "lockupDays": "{{count}} दिन लॉक-अप",
+      "lockupHours": "{{count}} घंटे लॉक-अप",
+      "noLockup": "कोई लॉक-अप नहीं",
+      "verdict": "FlareGPT निर्णय"
+    }
   }
 }

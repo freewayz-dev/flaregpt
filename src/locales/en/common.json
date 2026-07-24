@@ -100,6 +100,72 @@
       "degraded": "API degraded"
     }
   },
+  "defiProtocols": {
+    "description": "Compare yield strategies and track your positions across MXRPY, Sceptre, and Firelight vaults.",
+    "common": {
+      "addressCopied": "Address copied to clipboard",
+      "copyFailed": "Couldn't copy address",
+      "connectToSeePosition": "Connect a wallet to see your position",
+      "contract": "Contract",
+      "proxyContract": "Proxy Contract",
+      "poolOwnership": "Pool Ownership",
+      "protocolDetails": "Protocol details",
+      "yourBalance": "Your Balance",
+      "redeemableValue": "Redeemable Value"
+    },
+    "explorer": {
+      "title": "Protocol Explorer",
+      "subtitle": "Select a protocol to view your position and details"
+    },
+    "kpis": {
+      "protocolsTracked": "Protocols Tracked",
+      "bestApr": "Best APR Available",
+      "activePositions": "Active Positions"
+    },
+    "mxrpy": {
+      "title": "MXRPY Vault",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "Couldn't load your MXRPY position",
+      "circulatingCaption": "{{shares}} shares in circulation · {{decimals}} decimals",
+      "yourShares": "Your Receipt Shares",
+      "category": "Yield Vault"
+    },
+    "sceptre": {
+      "title": "Sceptre Liquid Staking",
+      "subtitle": "sFLR liquid staking",
+      "couldntLoad": "Couldn't load your Sceptre position",
+      "exchangeRateLabel": "sFLR / FLR rate",
+      "totalMinted": "Total Minted Shares",
+      "backedFlr": "Underlying Backed FLR",
+      "category": "Liquid Staking"
+    },
+    "firelight": {
+      "title": "Firelight Vault",
+      "subtitle": "Capital protection vault",
+      "couldntLoad": "Couldn't load your Firelight position",
+      "backingLabel": "Asset backing multiplier",
+      "circulatingSupply": "Circulating Supply",
+      "underlyingReserve": "Underlying Reserve",
+      "insuranceRobust": "Insurance: Robust",
+      "category": "Insurance"
+    },
+    "strategies": {
+      "title": "Strategy Comparison",
+      "subtitle": "See how your FLR could perform across strategies",
+      "amountLabel": "Compare for",
+      "apr": "APR",
+      "colStrategy": "Strategy",
+      "colYield": "Est. Yield (FLR)",
+      "colTerms": "Terms",
+      "compoundingLabel": "Compounding",
+      "couldntLoad": "Couldn't load strategy comparison",
+      "highestApr": "Highest APR",
+      "lockupDays": "{{count}} days lock-up",
+      "lockupHours": "{{count}}h lock-up",
+      "noLockup": "No lock-up",
+      "verdict": "FlareGPT Verdict"
+    }
+  },
   "flareWidget": {
     "back": "Back",
     "chatHistory": "Chat history",

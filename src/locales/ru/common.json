@@ -382,5 +382,71 @@
       "operational": "Функционирование всех систем",
       "degraded": "АФИ деградировал"
     }
+  },
+  "defiProtocols": {
+    "description": "Сравнивайте доходные стратегии и отслеживайте свои позиции в хранилищах MXRPY, Sceptre и Firelight.",
+    "common": {
+      "addressCopied": "Адрес скопирован в буфер обмена",
+      "copyFailed": "Не удалось скопировать адрес",
+      "connectToSeePosition": "Подключите кошелёк, чтобы увидеть свою позицию",
+      "contract": "Контракт",
+      "proxyContract": "Прокси-контракт",
+      "poolOwnership": "Доля в пуле",
+      "protocolDetails": "Детали протокола",
+      "yourBalance": "Ваш баланс",
+      "redeemableValue": "Стоимость к погашению"
+    },
+    "explorer": {
+      "title": "Обозреватель протоколов",
+      "subtitle": "Выберите протокол, чтобы увидеть позицию и детали"
+    },
+    "kpis": {
+      "protocolsTracked": "Отслеживаемые протоколы",
+      "bestApr": "Лучший доступный APR",
+      "activePositions": "Активные позиции"
+    },
+    "mxrpy": {
+      "title": "Хранилище MXRPY",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "Не удалось загрузить вашу позицию MXRPY",
+      "circulatingCaption": "{{shares}} долей в обращении · {{decimals}} десятичных знаков",
+      "yourShares": "Ваши доли-расписки",
+      "category": "Доходный Vault"
+    },
+    "sceptre": {
+      "title": "Sceptre Liquid Staking",
+      "subtitle": "Ликвидный стейкинг sFLR",
+      "couldntLoad": "Не удалось загрузить вашу позицию Sceptre",
+      "exchangeRateLabel": "Курс sFLR / FLR",
+      "totalMinted": "Всего выпущено долей",
+      "backedFlr": "Обеспечивающий FLR",
+      "category": "Ликвидный стейкинг"
+    },
+    "firelight": {
+      "title": "Хранилище Firelight",
+      "subtitle": "Хранилище защиты капитала",
+      "couldntLoad": "Не удалось загрузить вашу позицию Firelight",
+      "backingLabel": "Мультипликатор обеспечения активами",
+      "circulatingSupply": "Объём в обращении",
+      "underlyingReserve": "Базовый резерв",
+      "insuranceRobust": "Страхование: устойчиво",
+      "category": "Страхование"
+    },
+    "strategies": {
+      "title": "Сравнение стратегий",
+      "subtitle": "Узнайте, как ваш FLR может работать в разных стратегиях",
+      "amountLabel": "Сравнить для",
+      "apr": "APR",
+      "colStrategy": "Стратегия",
+      "colYield": "Оценка дохода (FLR)",
+      "colTerms": "Условия",
+      "compoundingLabel": "Капитализация",
+      "couldntLoad": "Не удалось загрузить сравнение стратегий",
+      "highestApr": "Наивысший APR",
+      "lockupDays": "Блокировка на {{count}} дн.",
+      "lockupHours": "Блокировка на {{count}} ч.",
+      "noLockup": "Без блокировки",
+      "verdict": "Заключение FlareGPT"
+    }
   }
 }

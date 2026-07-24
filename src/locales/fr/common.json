@@ -381,5 +381,71 @@
       "operational": "Tous les systèmes sont opérationnels",
       "degraded": "Dégradé"
     }
+  },
+  "defiProtocols": {
+    "description": "Compare les stratégies de rendement et suis tes positions sur les vaults MXRPY, Sceptre et Firelight.",
+    "common": {
+      "addressCopied": "Adresse copiée dans le presse-papiers",
+      "copyFailed": "Impossible de copier l'adresse",
+      "connectToSeePosition": "Connecte un portefeuille pour voir ta position",
+      "contract": "Contrat",
+      "proxyContract": "Contrat Proxy",
+      "poolOwnership": "Part du Pool",
+      "protocolDetails": "Détails du protocole",
+      "yourBalance": "Ton Solde",
+      "redeemableValue": "Valeur Rachetable"
+    },
+    "explorer": {
+      "title": "Explorateur de Protocoles",
+      "subtitle": "Sélectionne un protocole pour voir ta position et ses détails"
+    },
+    "kpis": {
+      "protocolsTracked": "Protocoles Suivis",
+      "bestApr": "Meilleur APR Disponible",
+      "activePositions": "Positions Actives"
+    },
+    "mxrpy": {
+      "title": "MXRPY Vault",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "Impossible de charger ta position MXRPY",
+      "circulatingCaption": "{{shares}} parts en circulation · {{decimals}} décimales",
+      "yourShares": "Tes Parts de Reçu",
+      "category": "Vault de Rendement"
+    },
+    "sceptre": {
+      "title": "Sceptre Liquid Staking",
+      "subtitle": "Staking liquide sFLR",
+      "couldntLoad": "Impossible de charger ta position Sceptre",
+      "exchangeRateLabel": "Taux sFLR / FLR",
+      "totalMinted": "Total des Parts Émises",
+      "backedFlr": "FLR Sous-jacent Garanti",
+      "category": "Staking Liquide"
+    },
+    "firelight": {
+      "title": "Firelight Vault",
+      "subtitle": "Vault de protection du capital",
+      "couldntLoad": "Impossible de charger ta position Firelight",
+      "backingLabel": "Multiplicateur de couverture d'actifs",
+      "circulatingSupply": "Offre en Circulation",
+      "underlyingReserve": "Réserve Sous-jacente",
+      "insuranceRobust": "Assurance : Robuste",
+      "category": "Assurance"
+    },
+    "strategies": {
+      "title": "Comparaison des Stratégies",
+      "subtitle": "Découvre comment ton FLR pourrait performer selon les stratégies",
+      "amountLabel": "Comparer pour",
+      "apr": "APR",
+      "colStrategy": "Stratégie",
+      "colYield": "Rendement Est. (FLR)",
+      "colTerms": "Conditions",
+      "compoundingLabel": "Capitalisation",
+      "couldntLoad": "Impossible de charger la comparaison des stratégies",
+      "highestApr": "APR le plus élevé",
+      "lockupDays": "{{count}} jours de blocage",
+      "lockupHours": "{{count}}h de blocage",
+      "noLockup": "Aucun blocage",
+      "verdict": "Verdict de FlareGPT"
+    }
   }
 }

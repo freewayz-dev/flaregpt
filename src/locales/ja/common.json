@@ -382,5 +382,71 @@
       "operational": "システム正常動作",
       "degraded": "APIが低下しました"
     }
+  },
+  "defiProtocols": {
+    "description": "MXRPY、Sceptre、Firelightの各ボールトで利回り戦略を比較し、ポジションを追跡できます。",
+    "common": {
+      "addressCopied": "アドレスをクリップボードにコピーしました",
+      "copyFailed": "アドレスをコピーできませんでした",
+      "connectToSeePosition": "ポジションを表示するにはウォレットを接続してください",
+      "contract": "コントラクト",
+      "proxyContract": "プロキシコントラクト",
+      "poolOwnership": "プール保有比率",
+      "protocolDetails": "プロトコル詳細",
+      "yourBalance": "残高",
+      "redeemableValue": "償還可能価値"
+    },
+    "explorer": {
+      "title": "プロトコルエクスプローラー",
+      "subtitle": "プロトコルを選択してポジションと詳細を表示します"
+    },
+    "kpis": {
+      "protocolsTracked": "追跡中のプロトコル",
+      "bestApr": "利用可能な最高APR",
+      "activePositions": "アクティブなポジション"
+    },
+    "mxrpy": {
+      "title": "MXRPY ボールト",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "MXRPYポジションを読み込めませんでした",
+      "circulatingCaption": "流通シェア{{shares}}件 · 小数点以下{{decimals}}桁",
+      "yourShares": "保有レシートシェア",
+      "category": "イールドボールト"
+    },
+    "sceptre": {
+      "title": "Sceptre リキッドステーキング",
+      "subtitle": "sFLR リキッドステーキング",
+      "couldntLoad": "Sceptreポジションを読み込めませんでした",
+      "exchangeRateLabel": "sFLR / FLR レート",
+      "totalMinted": "発行済みシェア総数",
+      "backedFlr": "裏付けとなるFLR",
+      "category": "リキッドステーキング"
+    },
+    "firelight": {
+      "title": "Firelight ボールト",
+      "subtitle": "資本保護ボールト",
+      "couldntLoad": "Firelightポジションを読み込めませんでした",
+      "backingLabel": "資産裏付け倍率",
+      "circulatingSupply": "流通供給量",
+      "underlyingReserve": "裏付け準備金",
+      "insuranceRobust": "保険: 健全",
+      "category": "保険"
+    },
+    "strategies": {
+      "title": "戦略比較",
+      "subtitle": "各戦略でFLRがどのようなパフォーマンスを発揮するか確認できます",
+      "amountLabel": "比較する金額",
+      "apr": "APR",
+      "colStrategy": "戦略",
+      "colYield": "予想利回り (FLR)",
+      "colTerms": "条件",
+      "compoundingLabel": "複利方式",
+      "couldntLoad": "戦略比較を読み込めませんでした",
+      "highestApr": "最高APR",
+      "lockupDays": "ロックアップ{{count}}日",
+      "lockupHours": "ロックアップ{{count}}時間",
+      "noLockup": "ロックアップなし",
+      "verdict": "FlareGPTの見解"
+    }
   }
 }

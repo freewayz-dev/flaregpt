@@ -382,5 +382,71 @@
       "operational": "모든 시스템이 작동합니다.",
       "degraded": "API 성능 저하"
     }
+  },
+  "defiProtocols": {
+    "description": "MXRPY, Sceptre, Firelight 볼트에서 수익 전략을 비교하고 포지션을 추적하세요.",
+    "common": {
+      "addressCopied": "주소가 클립보드에 복사되었습니다",
+      "copyFailed": "주소를 복사하지 못했습니다",
+      "connectToSeePosition": "포지션을 보려면 지갑을 연결하세요",
+      "contract": "컨트랙트",
+      "proxyContract": "프록시 컨트랙트",
+      "poolOwnership": "풀 지분율",
+      "protocolDetails": "프로토콜 세부정보",
+      "yourBalance": "내 잔액",
+      "redeemableValue": "상환 가능 가치"
+    },
+    "explorer": {
+      "title": "프로토콜 탐색기",
+      "subtitle": "프로토콜을 선택하여 포지션과 세부정보를 확인하세요"
+    },
+    "kpis": {
+      "protocolsTracked": "추적 중인 프로토콜",
+      "bestApr": "이용 가능한 최고 APR",
+      "activePositions": "활성 포지션"
+    },
+    "mxrpy": {
+      "title": "MXRPY 볼트",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "MXRPY 포지션을 불러오지 못했습니다",
+      "circulatingCaption": "유통 중인 지분 {{shares}}개 · 소수점 {{decimals}}자리",
+      "yourShares": "보유 리시트 지분",
+      "category": "수익 볼트"
+    },
+    "sceptre": {
+      "title": "Sceptre 리퀴드 스테이킹",
+      "subtitle": "sFLR 리퀴드 스테이킹",
+      "couldntLoad": "Sceptre 포지션을 불러오지 못했습니다",
+      "exchangeRateLabel": "sFLR / FLR 환율",
+      "totalMinted": "총 발행 지분",
+      "backedFlr": "기초 담보 FLR",
+      "category": "리퀴드 스테이킹"
+    },
+    "firelight": {
+      "title": "Firelight 볼트",
+      "subtitle": "자본 보호 볼트",
+      "couldntLoad": "Firelight 포지션을 불러오지 못했습니다",
+      "backingLabel": "자산 담보 배수",
+      "circulatingSupply": "유통 공급량",
+      "underlyingReserve": "기초 준비금",
+      "insuranceRobust": "보험: 견고함",
+      "category": "보험"
+    },
+    "strategies": {
+      "title": "전략 비교",
+      "subtitle": "전략별로 FLR이 어떻게 수익을 낼 수 있는지 확인하세요",
+      "amountLabel": "비교 금액",
+      "apr": "APR",
+      "colStrategy": "전략",
+      "colYield": "예상 수익 (FLR)",
+      "colTerms": "조건",
+      "compoundingLabel": "복리 방식",
+      "couldntLoad": "전략 비교를 불러오지 못했습니다",
+      "highestApr": "최고 APR",
+      "lockupDays": "{{count}}일 락업",
+      "lockupHours": "{{count}}시간 락업",
+      "noLockup": "락업 없음",
+      "verdict": "FlareGPT 평가"
+    }
   }
 }

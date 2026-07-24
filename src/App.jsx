@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { MotionConfig } from "framer-motion";
 
 import BlueLightOverlay from "./components/common/BlueLightOverlay";
 import AppRoutes from "./routes/AppRoutes";
@@ -31,8 +32,13 @@ function App() {
 
   return (
     <ErrorBoundary FallbackComponent={GlobalErrorFallback}>
-      <BlueLightOverlay />
-      <AppRoutes />
+      {/* "user" makes every Framer Motion animation app-wide respect
+          prefers-reduced-motion automatically, rather than each accordion/
+          transition needing its own opt-in. */}
+      <MotionConfig reducedMotion="user">
+        <BlueLightOverlay />
+        <AppRoutes />
+      </MotionConfig>
     </ErrorBoundary>
   );
 }

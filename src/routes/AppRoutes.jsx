@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import GlobalSpinner from "@/components/common/GlobalSpinner";
 import DashboardSkeleton from "@/pages/Dashboard/DashboardSkeleton";
+import DefiProtocolsSkeleton from "@/pages/DefiProtocols/DefiProtocolsSkeleton";
 
 const LandingPage = lazy(() => import("@/pages/LandingPage"));
 const Terms = lazy(() => import("@/pages/Terms"));
@@ -14,6 +15,7 @@ const FLRGPT = lazy(() => import("@/pages/Flrgpt"));
 const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Settings = lazy(() => import("@/pages/Settings"));
 const Help = lazy(() => import("@/pages/Help"));
+const DefiProtocols = lazy(() => import("@/pages/DefiProtocols"));
 const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
 
 export default function AppRoutes() {
@@ -52,7 +54,11 @@ export default function AppRoutes() {
           />
           <Route
             path="fxrp"
-            element={<ComingSoon title={t("sidebar.fxrpPool")} />}
+            element={
+              <Suspense fallback={<DefiProtocolsSkeleton />}>
+                <DefiProtocols />
+              </Suspense>
+            }
           />
           <Route
             path="governance"

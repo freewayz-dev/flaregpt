@@ -33,7 +33,8 @@ initI18n().then(() => {
             <ToastContainer
               position="top-center"
               autoClose={3000}
-              theme="colored"
+              theme="light"
+              toastClassName="app-toast"
             />
             <App />
           </BrowserRouter>

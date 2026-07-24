@@ -18,6 +18,11 @@ export default {
         brand: {
           DEFAULT: withOpacity("--color-brand"),
           hover: withOpacity("--color-brand-hover"),
+          // Contrast-safe variant for brand-colored text at small sizes
+          // (e.g. APR figures) — flips per theme, unlike DEFAULT/hover which
+          // are for fills (buttons, badges) where text-on-background
+          // contrast doesn't apply the same way.
+          text: withOpacity("--color-brand-text"),
         },
         // Text tokens — value flips automatically via the `dark` class,
         // so components no longer need a separate `dark:text-*` utility.

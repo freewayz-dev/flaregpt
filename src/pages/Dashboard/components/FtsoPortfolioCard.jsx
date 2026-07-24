@@ -5,23 +5,11 @@ import { GiftIcon, LockClosedIcon, ArrowPathIcon } from "@heroicons/react/24/out
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useFtsoPortfolio } from "@/hooks/queries/useDashboardQueries";
+import TokenRow from "@/components/common/TokenRow";
 import FtsoPortfolioCardSkeleton from "@/pages/Dashboard/components/skeletons/FtsoPortfolioCardSkeleton";
 
 function formatAmount(value) {
   return Number(value).toLocaleString(undefined, { maximumFractionDigits: 4 });
-}
-
-function Row({ label, value, highlight = false }) {
-  return (
-    <div className="flex items-center justify-between py-2 first:pt-0 last:pb-0">
-      <span className="text-xs text-ink-muted">{label}</span>
-      <span
-        className={`text-sm font-semibold ${highlight ? "text-brand" : "text-ink-primary"}`}
-      >
-        {value}
-      </span>
-    </div>
-  );
 }
 
 export default function FtsoPortfolioCard() {
@@ -103,20 +91,23 @@ export default function FtsoPortfolioCard() {
       ) : (
         <>
           <div className="divide-y divide-divider">
-            <Row
+            <TokenRow
+              symbol="WFLR"
               label={t("dashboard.ftso.delegatedWflr")}
               value={formatAmount(data.ftso_infrastructure.user_wflr_balance)}
             />
-            <Row
+            <TokenRow
+              symbol="FLR"
               label={t("dashboard.ftso.unclaimedFlr")}
               value={formatAmount(unclaimed)}
               highlight
             />
-            <Row
+            <TokenRow
               label={t("dashboard.ftso.activeDelegations")}
               value={data.active_delegations.length}
             />
-            <Row
+            <TokenRow
+              symbol="FLR"
               label={t("dashboard.ftso.estHourlyEarning")}
               value={`${formatAmount(data.realtime_estimation.estimated_hourly_earning)} FLR`}
             />

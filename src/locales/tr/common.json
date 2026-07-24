@@ -382,5 +382,71 @@
       "operational": "Tüm sistemler çalışır durumda",
       "degraded": "API bozulmuş"
     }
+  },
+  "defiProtocols": {
+    "description": "MXRPY, Sceptre ve Firelight kasalarında getiri stratejilerini karşılaştırın ve pozisyonlarınızı takip edin.",
+    "common": {
+      "addressCopied": "Adres panoya kopyalandı",
+      "copyFailed": "Adres kopyalanamadı",
+      "connectToSeePosition": "Pozisyonunuzu görmek için bir cüzdan bağlayın",
+      "contract": "Sözleşme",
+      "proxyContract": "Proxy Sözleşme",
+      "poolOwnership": "Havuz Payı",
+      "protocolDetails": "Protokol detayları",
+      "yourBalance": "Bakiyeniz",
+      "redeemableValue": "İtfa Edilebilir Değer"
+    },
+    "explorer": {
+      "title": "Protokol Gezgini",
+      "subtitle": "Pozisyonunuzu ve detayları görmek için bir protokol seçin"
+    },
+    "kpis": {
+      "protocolsTracked": "Takip Edilen Protokoller",
+      "bestApr": "Mevcut En İyi APR",
+      "activePositions": "Aktif Pozisyonlar"
+    },
+    "mxrpy": {
+      "title": "MXRPY Kasası",
+      "subtitle": "Monarq XRP Yield Vault",
+      "couldntLoad": "MXRPY pozisyonunuz yüklenemedi",
+      "circulatingCaption": "Dolaşımda {{shares}} pay · {{decimals}} ondalık basamak",
+      "yourShares": "Makbuz Paylarınız",
+      "category": "Getiri Kasası"
+    },
+    "sceptre": {
+      "title": "Sceptre Liquid Staking",
+      "subtitle": "sFLR likit stake",
+      "couldntLoad": "Sceptre pozisyonunuz yüklenemedi",
+      "exchangeRateLabel": "sFLR / FLR kuru",
+      "totalMinted": "Toplam Basılan Pay",
+      "backedFlr": "Dayanak Teminatlı FLR",
+      "category": "Likit Stake"
+    },
+    "firelight": {
+      "title": "Firelight Kasası",
+      "subtitle": "Sermaye koruma kasası",
+      "couldntLoad": "Firelight pozisyonunuz yüklenemedi",
+      "backingLabel": "Varlık teminat çarpanı",
+      "circulatingSupply": "Dolaşımdaki Arz",
+      "underlyingReserve": "Dayanak Rezerv",
+      "insuranceRobust": "Sigorta: Güçlü",
+      "category": "Sigorta"
+    },
+    "strategies": {
+      "title": "Strateji Karşılaştırması",
+      "subtitle": "FLR'nizin farklı stratejilerde nasıl performans gösterebileceğini görün",
+      "amountLabel": "Karşılaştırma tutarı",
+      "apr": "APR",
+      "colStrategy": "Strateji",
+      "colYield": "Tah. Getiri (FLR)",
+      "colTerms": "Koşullar",
+      "compoundingLabel": "Bileşik Faiz",
+      "couldntLoad": "Strateji karşılaştırması yüklenemedi",
+      "highestApr": "En Yüksek APR",
+      "lockupDays": "{{count}} gün kilit",
+      "lockupHours": "{{count}} saat kilit",
+      "noLockup": "Kilit yok",
+      "verdict": "FlareGPT Değerlendirmesi"
+    }
   }
 }
