@@ -293,29 +293,48 @@
     "viaWalletConnect": "WalletConnect 경유"
   },
   "flareWidget": {
-    "back": "뒤로",
     "chatHistory": "채팅 기록",
     "close": "닫기",
     "collapse": "접기",
     "expand": "확장",
-    "historyTitle": "채팅 기록",
-    "inputPlaceholder": "FlareGPT에 문의...",
-    "liveBanner": "플레어 메인넷 • 라이브 어시스턴트",
-    "mockHistory": [
-      "FLR 가격 분석",
-      "지갑 설정 도움말",
-      "수익률 전략",
-      "거버넌스 논의"
-    ],
     "newChat": "새로운 채팅",
-    "send": "보내기",
-    "suggestions": [
-      "현재 FLR 가격은 얼마인가요?",
-      "월렛 잔액",
-      "FTSO 보상은 어떻게 받나요?",
-      "FLARE 네트워크 설명",
-      "최신 거버넌스 제안"
-    ]
+    "openFullPage": "전체 페이지 열기"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "내 지갑 분석하기",
+      "increaseRewards": "FTSO 보상을 늘리려면 어떻게 해야 하나요?",
+      "explainDelegations": "내 위임 설명하기",
+      "compareProtocols": "Sceptre와 Firelight 비교",
+      "rewardsDecreased": "보상이 왜 감소했나요?",
+      "stakingOpportunities": "내 스테이킹 기회 보기"
+    },
+    "wallet": {
+      "analyzing": "분석 대상:",
+      "general": "일반",
+      "generalHint": "지갑 컨텍스트 없음"
+    },
+    "empty": {
+      "title": "FlareGPT에게 무엇이든 물어보세요",
+      "subtitle": "지갑, 보상, 위임 또는 Flare 생태계에 대한 답변을 받아보세요."
+    },
+    "composer": {
+      "placeholder": "FlareGPT에게 물어보기...",
+      "send": "보내기",
+      "stop": "생성 중지",
+      "disclaimer": "FlareGPT는 실수를 할 수 있습니다. 중요한 정보는 행동하기 전에 확인하세요."
+    },
+    "actions": {
+      "copy": "복사",
+      "regenerate": "응답 재생성"
+    },
+    "jumpToLatest": "최신으로 이동",
+    "history": {
+      "title": "기록",
+      "newChat": "새 채팅",
+      "empty": "아직 대화가 없습니다.",
+      "untitled": "새 대화"
+    }
   },
   "dashboard": {
     "description": "실시간 Flare 네트워크 데이터, 가격 차트 및 지갑 활동을 한눈에 볼 수 있습니다.",

@@ -293,29 +293,48 @@
     "viaWalletConnect": "Via WalletConnect"
   },
   "flareWidget": {
-    "back": "Voltar",
     "chatHistory": "Histórico da conversação",
     "close": "Fechar",
     "collapse": "Fechar",
     "expand": "Expandir",
-    "historyTitle": "Histórico do Chat",
-    "inputPlaceholder": "Perguntar ao FlareGPT...",
-    "liveBanner": "Flare Mainnet • Assistente ao vivo",
-    "mockHistory": [
-      "Análise de preços FLR",
-      "Ajuda na configuração da carteira",
-      "Estratégias de rendimento",
-      "Discussão sobre governança"
-    ],
     "newChat": "Novo Chat",
-    "send": "Enviar",
-    "suggestions": [
-      "Qual é o preço do FLR hoje?",
-      "Saldo da carteira",
-      "Como faço para ganhar recompensas FTSO?",
-      "Explicar a Rede de Queimadores",
-      "Últimas propostas de governança"
-    ]
+    "openFullPage": "Abrir página completa"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "Analisar minha carteira",
+      "increaseRewards": "Como posso aumentar minhas recompensas de FTSO?",
+      "explainDelegations": "Explicar minhas delegações",
+      "compareProtocols": "Comparar Sceptre e Firelight",
+      "rewardsDecreased": "Por que minhas recompensas diminuíram?",
+      "stakingOpportunities": "Mostrar minhas oportunidades de staking"
+    },
+    "wallet": {
+      "analyzing": "Analisando:",
+      "general": "Geral",
+      "generalHint": "Sem contexto de carteira"
+    },
+    "empty": {
+      "title": "Pergunte qualquer coisa ao FlareGPT",
+      "subtitle": "Obtenha respostas sobre sua carteira, recompensas, delegações ou o ecossistema Flare."
+    },
+    "composer": {
+      "placeholder": "Pergunte ao FlareGPT...",
+      "send": "Enviar",
+      "stop": "Parar geração",
+      "disclaimer": "O FlareGPT pode cometer erros. Verifique informações importantes antes de agir com base nelas."
+    },
+    "actions": {
+      "copy": "Copiar",
+      "regenerate": "Regenerar resposta"
+    },
+    "jumpToLatest": "Ir para o mais recente",
+    "history": {
+      "title": "Histórico",
+      "newChat": "Nova conversa",
+      "empty": "Ainda não há conversas.",
+      "untitled": "Nova conversa"
+    }
   },
   "dashboard": {
     "description": "Dados da rede do Live Flare, gráficos de preços e atividade da carteira em resumo.",

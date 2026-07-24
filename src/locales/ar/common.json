@@ -292,29 +292,48 @@
     "viaWalletConnect": "عبر WalletConnect"
   },
   "flareWidget": {
-    "back": "[ترجمة المصطلح: Back]",
     "chatHistory": "سجل المحادثة",
     "close": "خاتمة",
     "collapse": "هبوط",
     "expand": "إظهار الرقم بالكامل",
-    "historyTitle": "تاريخ المحادثة",
-    "inputPlaceholder": "اسأل FlareGPT...",
-    "liveBanner": "شبكة رئيسية مضيئة • مساعد مباشر",
-    "mockHistory": [
-      "تحليل السعر",
-      "تعليمات إعداد المحفظة",
-      "استراتيجيات العائد",
-      "مناقشة الحوكمة"
-    ],
     "newChat": "محادثة جديدة",
-    "send": "[ترجمة المصطلح: Send]",
-    "suggestions": [
-      "ما هو سعر أرض الواقع اليوم ؟",
-      "رصيد المحفظة",
-      "كيف أكسب مكافآت FTSO ؟",
-      "شرح شبكة التوهج",
-      "أحدث مقترحات الحوكمة"
-    ]
+    "openFullPage": "فتح الصفحة الكاملة"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "تحليل محفظتي",
+      "increaseRewards": "كيف يمكنني زيادة مكافآت FTSO الخاصة بي؟",
+      "explainDelegations": "اشرح تفويضاتي",
+      "compareProtocols": "قارن بين Sceptre وFirelight",
+      "rewardsDecreased": "لماذا انخفضت مكافآتي؟",
+      "stakingOpportunities": "أظهر فرص التخزين الخاصة بي"
+    },
+    "wallet": {
+      "analyzing": "جارٍ التحليل:",
+      "general": "عام",
+      "generalHint": "بدون سياق محفظة"
+    },
+    "empty": {
+      "title": "اسأل FlareGPT أي شيء",
+      "subtitle": "احصل على إجابات حول محفظتك أو مكافآتك أو تفويضاتك أو نظام Flare البيئي."
+    },
+    "composer": {
+      "placeholder": "اسأل FlareGPT...",
+      "send": "إرسال",
+      "stop": "إيقاف التوليد",
+      "disclaimer": "قد يرتكب FlareGPT أخطاء. تحقق من المعلومات المهمة قبل التصرف بناءً عليها."
+    },
+    "actions": {
+      "copy": "نسخ",
+      "regenerate": "إعادة إنشاء الرد"
+    },
+    "jumpToLatest": "الانتقال إلى الأحدث",
+    "history": {
+      "title": "السجل",
+      "newChat": "محادثة جديدة",
+      "empty": "لا توجد محادثات بعد.",
+      "untitled": "محادثة جديدة"
+    }
   },
   "dashboard": {
     "description": "نظرة سريعة على بيانات شبكة Flare الحية ومخططات الأسعار ونشاط المحفظة.",

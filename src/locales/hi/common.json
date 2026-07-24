@@ -293,29 +293,48 @@
     "viaWalletConnect": "WalletConnect के ज़रिए"
   },
   "flareWidget": {
-    "back": "वापस जाएँ",
     "chatHistory": "चैट का इतिहास",
     "close": "बंद करें",
     "collapse": "संक्षिप्त करें",
     "expand": "विस्तार करना",
-    "historyTitle": "चैट का इतिहास",
-    "inputPlaceholder": "FlareGPT से पूछें...",
-    "liveBanner": "फ्लेयर मेननेट • लाइव असिस्टेंट",
-    "mockHistory": [
-      "FLR मूल्य विश्लेषण",
-      "वॉलेट सेटअप में मदद",
-      "यील्ड की रणनीतियाँ",
-      "शासन पर चर्चा"
-    ],
     "newChat": "नई चैट",
-    "send": "भेजें",
-    "suggestions": [
-      "आज FLR की कीमत क्या है?",
-      "वॉलेट बैलेंस",
-      "मैं FTSO रिवॉर्ड कैसे कमाऊँ?",
-      "फ्लेयर नेटवर्क की व्याख्या करें",
-      "नवीनतम शासन प्रस्ताव"
-    ]
+    "openFullPage": "पूरा पेज खोलें"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "मेरा वॉलेट विश्लेषण करें",
+      "increaseRewards": "मैं अपने FTSO रिवॉर्ड्स कैसे बढ़ा सकता हूँ?",
+      "explainDelegations": "मेरी डेलिगेशन समझाएं",
+      "compareProtocols": "Sceptre बनाम Firelight की तुलना करें",
+      "rewardsDecreased": "मेरे रिवॉर्ड्स क्यों घटे?",
+      "stakingOpportunities": "मेरे स्टेकिंग अवसर दिखाएं"
+    },
+    "wallet": {
+      "analyzing": "विश्लेषण कर रहे हैं:",
+      "general": "सामान्य",
+      "generalHint": "कोई वॉलेट संदर्भ नहीं"
+    },
+    "empty": {
+      "title": "FlareGPT से कुछ भी पूछें",
+      "subtitle": "अपने वॉलेट, रिवॉर्ड्स, डेलिगेशन या Flare इकोसिस्टम के बारे में उत्तर पाएं।"
+    },
+    "composer": {
+      "placeholder": "FlareGPT से पूछें...",
+      "send": "भेजें",
+      "stop": "जनरेट करना रोकें",
+      "disclaimer": "FlareGPT गलतियाँ कर सकता है। कार्रवाई करने से पहले महत्वपूर्ण जानकारी सत्यापित करें।"
+    },
+    "actions": {
+      "copy": "कॉपी करें",
+      "regenerate": "उत्तर फिर से बनाएं"
+    },
+    "jumpToLatest": "नवीनतम पर जाएं",
+    "history": {
+      "title": "इतिहास",
+      "newChat": "नई चैट",
+      "empty": "अभी तक कोई बातचीत नहीं।",
+      "untitled": "नई बातचीत"
+    }
   },
   "dashboard": {
     "description": "लाइव फ़्लेयर नेटवर्क डेटा, मूल्य चार्ट और वॉलेट गतिविधि एक नज़र में।",

@@ -217,29 +217,48 @@
     }
   },
   "flareWidget": {
-    "back": "Back",
     "chatHistory": "Chat history",
     "close": "Close",
     "collapse": "Collapse",
     "expand": "Expand",
-    "historyTitle": "Chat History",
-    "inputPlaceholder": "Ask FlareGPT...",
-    "liveBanner": "Flare Mainnet • Live Assistant",
-    "mockHistory": [
-      "FLR price analysis",
-      "Wallet setup help",
-      "Yield strategies",
-      "Governance discussion"
-    ],
     "newChat": "New chat",
-    "send": "Send",
-    "suggestions": [
-      "What is FLR price today?",
-      "Show wallet balance",
-      "How do I earn FTSO rewards?",
-      "Explain Flare Network",
-      "Latest governance proposals"
-    ]
+    "openFullPage": "Open full page"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "Analyze my wallet",
+      "increaseRewards": "How can I increase my FTSO rewards?",
+      "explainDelegations": "Explain my delegations",
+      "compareProtocols": "Compare Sceptre vs Firelight",
+      "rewardsDecreased": "Why did my rewards decrease?",
+      "stakingOpportunities": "Show my staking opportunities"
+    },
+    "wallet": {
+      "analyzing": "Analyzing:",
+      "general": "General",
+      "generalHint": "No wallet context"
+    },
+    "empty": {
+      "title": "Ask FlareGPT anything",
+      "subtitle": "Get answers about your wallet, rewards, delegations, or the Flare ecosystem."
+    },
+    "composer": {
+      "placeholder": "Ask FlareGPT...",
+      "send": "Send",
+      "stop": "Stop generating",
+      "disclaimer": "FlareGPT can make mistakes. Verify important information before acting on it."
+    },
+    "actions": {
+      "copy": "Copy",
+      "regenerate": "Regenerate response"
+    },
+    "jumpToLatest": "Jump to latest",
+    "history": {
+      "title": "History",
+      "newChat": "New chat",
+      "empty": "No conversations yet.",
+      "untitled": "New conversation"
+    }
   },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Built on Flare Network.",

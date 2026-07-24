@@ -293,29 +293,48 @@
     "viaWalletConnect": "WalletConnect経由"
   },
   "flareWidget": {
-    "back": "戻る",
     "chatHistory": "チャット履歴",
     "close": "閉じる",
     "collapse": "折りたたむ",
     "expand": "展開",
-    "historyTitle": "チャット履歴",
-    "inputPlaceholder": "FlareGPTにお尋ねください...",
-    "liveBanner": "FLAREメインネット•ライブアシスタント",
-    "mockHistory": [
-      "FLR価格分析",
-      "ウォレットの設定に関するヘルプ",
-      "利回り戦略",
-      "ガバナンスの議論"
-    ],
     "newChat": "新しいチャット",
-    "send": "送信",
-    "suggestions": [
-      "今日のFLR価格はいくらですか？",
-      "ウォレット残高",
-      "FTSOの特典を獲得するにはどうすればよいですか？",
-      "FLAREネットワークの説明",
-      "最新のガバナンス提案"
-    ]
+    "openFullPage": "フルページを開く"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "ウォレットを分析",
+      "increaseRewards": "FTSO報酬を増やすには?",
+      "explainDelegations": "デリゲーションを説明して",
+      "compareProtocols": "SceptreとFirelightを比較",
+      "rewardsDecreased": "報酬が減った理由は?",
+      "stakingOpportunities": "ステーキングの機会を見せて"
+    },
+    "wallet": {
+      "analyzing": "分析対象:",
+      "general": "一般",
+      "generalHint": "ウォレットのコンテキストなし"
+    },
+    "empty": {
+      "title": "FlareGPTに何でも聞いてください",
+      "subtitle": "ウォレット、報酬、デリゲーション、Flareエコシステムについて回答を得られます。"
+    },
+    "composer": {
+      "placeholder": "FlareGPTに質問...",
+      "send": "送信",
+      "stop": "生成を停止",
+      "disclaimer": "FlareGPTは間違えることがあります。重要な情報は行動する前に確認してください。"
+    },
+    "actions": {
+      "copy": "コピー",
+      "regenerate": "回答を再生成"
+    },
+    "jumpToLatest": "最新へ移動",
+    "history": {
+      "title": "履歴",
+      "newChat": "新しいチャット",
+      "empty": "まだ会話がありません。",
+      "untitled": "新しい会話"
+    }
   },
   "dashboard": {
     "description": "ライブフレアネットワークデータ、価格チャート、ウォレットアクティビティを一目で確認できます。",

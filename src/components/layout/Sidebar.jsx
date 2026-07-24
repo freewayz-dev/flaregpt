@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
 import {
   WalletIcon,
-  ChatBubbleLeftRightIcon,
+  SparklesIcon,
   ClockIcon,
   ShieldCheckIcon,
   Cog6ToothIcon,
@@ -27,7 +27,6 @@ import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 // Asynchronous route code chunk-splitting anchors
 const prefetchDashboard = () => import("@/pages/Dashboard");
 const prefetchFlareGPT = () => import("@/pages/Flrgpt");
-const prefetchWallet = () => import("@/pages/WalletActivity");
 const prefetchSettings = () => import("@/pages/Settings");
 const prefetchHelp = () => import("@/pages/Help");
 const prefetchDonate = () => import("@/pages/Donate");
@@ -48,14 +47,13 @@ const links = [
   {
     translationKey: "FlareGPT",
     path: "/app/flare-gpt",
-    icon: ChatBubbleLeftRightIcon,
+    icon: SparklesIcon,
     prefetch: prefetchFlareGPT,
   },
   {
     translationKey: "walletActivity",
     path: "/app/wallet",
     icon: WalletIcon,
-    prefetch: prefetchWallet,
   },
   {
     translationKey: "ftsoRewards",

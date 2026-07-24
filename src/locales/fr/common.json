@@ -292,29 +292,48 @@
     "viaWalletConnect": "Via WalletConnect"
   },
   "flareWidget": {
-    "back": "Retour",
     "chatHistory": "L’historique des conversations",
     "close": "Fermer",
     "collapse": "Réduire",
     "expand": "Développer",
-    "historyTitle": "Historique du chat",
-    "inputPlaceholder": "Demandez à FlareGPT...",
-    "liveBanner": "Flare Mainnet • Assistant en direct",
-    "mockHistory": [
-      "Analyse des prix",
-      "Aide à la configuration du portefeuille",
-      "Stratégies de rendement",
-      "Discussion sur la gouvernance"
-    ],
     "newChat": "Nouvelle discussion",
-    "send": "Envoyer",
-    "suggestions": [
-      "Quel est le prix du flr aujourd'hui ?",
-      "Solde de portefeuille",
-      "Comment puis-je gagner des récompenses FTSO ?",
-      "Expliquer le réseau Flare",
-      "Dernières propositions de gouvernance"
-    ]
+    "openFullPage": "Ouvrir la page complète"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "Analyser mon portefeuille",
+      "increaseRewards": "Comment puis-je augmenter mes récompenses FTSO ?",
+      "explainDelegations": "Expliquer mes délégations",
+      "compareProtocols": "Comparer Sceptre et Firelight",
+      "rewardsDecreased": "Pourquoi mes récompenses ont-elles diminué ?",
+      "stakingOpportunities": "Afficher mes opportunités de staking"
+    },
+    "wallet": {
+      "analyzing": "Analyse :",
+      "general": "Général",
+      "generalHint": "Aucun contexte de portefeuille"
+    },
+    "empty": {
+      "title": "Demandez n'importe quoi à FlareGPT",
+      "subtitle": "Obtenez des réponses sur votre portefeuille, vos récompenses, vos délégations ou l'écosystème Flare."
+    },
+    "composer": {
+      "placeholder": "Demander à FlareGPT...",
+      "send": "Envoyer",
+      "stop": "Arrêter la génération",
+      "disclaimer": "FlareGPT peut faire des erreurs. Vérifiez les informations importantes avant d'agir en conséquence."
+    },
+    "actions": {
+      "copy": "Copier",
+      "regenerate": "Régénérer la réponse"
+    },
+    "jumpToLatest": "Aller au dernier message",
+    "history": {
+      "title": "Historique",
+      "newChat": "Nouvelle discussion",
+      "empty": "Aucune conversation pour le moment.",
+      "untitled": "Nouvelle conversation"
+    }
   },
   "dashboard": {
     "description": "Les données du réseau Live Flare, les graphiques de prix et l'activité du portefeuille en un coup d'œil.",

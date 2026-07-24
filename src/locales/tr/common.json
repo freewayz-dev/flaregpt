@@ -293,29 +293,48 @@
     "viaWalletConnect": "WalletConnect üzerinden"
   },
   "flareWidget": {
-    "back": "Geri",
     "chatHistory": "Sohbet Geçmişi",
     "close": "Kapat",
     "collapse": "Çökme",
     "expand": "Genişlet",
-    "historyTitle": "Sohbet Geçmişi",
-    "inputPlaceholder": "FlareGPT'ye sorun...",
-    "liveBanner": "Flare Mainnet • Canlı Asistan",
-    "mockHistory": [
-      "Fiyat Analizi ",
-      "Cüzdan kurulumu yardımı",
-      "Verim stratejileri",
-      "Yönetişim tartışması"
-    ],
     "newChat": "Yeni sohbet",
-    "send": "Gönder",
-    "suggestions": [
-      "Bugünkü FLR fiyatı nedir?",
-      "Cüzdan bakiyesi",
-      "FTSO ödüllerini nasıl kazanırım?",
-      "Flare Ağını Açıklayın",
-      "En son yönetişim teklifleri"
-    ]
+    "openFullPage": "Tam sayfayı aç"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "Cüzdanımı analiz et",
+      "increaseRewards": "FTSO ödüllerimi nasıl artırabilirim?",
+      "explainDelegations": "Delegasyonlarımı açıkla",
+      "compareProtocols": "Sceptre ile Firelight'ı karşılaştır",
+      "rewardsDecreased": "Ödüllerim neden azaldı?",
+      "stakingOpportunities": "Staking fırsatlarımı göster"
+    },
+    "wallet": {
+      "analyzing": "Analiz ediliyor:",
+      "general": "Genel",
+      "generalHint": "Cüzdan bağlamı yok"
+    },
+    "empty": {
+      "title": "FlareGPT'ye istediğinizi sorun",
+      "subtitle": "Cüzdanınız, ödülleriniz, delegasyonlarınız veya Flare ekosistemi hakkında yanıt alın."
+    },
+    "composer": {
+      "placeholder": "FlareGPT'ye sor...",
+      "send": "Gönder",
+      "stop": "Üretimi durdur",
+      "disclaimer": "FlareGPT hata yapabilir. Harekete geçmeden önce önemli bilgileri doğrulayın."
+    },
+    "actions": {
+      "copy": "Kopyala",
+      "regenerate": "Yanıtı yeniden oluştur"
+    },
+    "jumpToLatest": "En yeniye git",
+    "history": {
+      "title": "Geçmiş",
+      "newChat": "Yeni sohbet",
+      "empty": "Henüz konuşma yok.",
+      "untitled": "Yeni konuşma"
+    }
   },
   "dashboard": {
     "description": "Bir bakışta Live Flare ağ verileri, fiyat grafikleri ve cüzdan etkinliği.",

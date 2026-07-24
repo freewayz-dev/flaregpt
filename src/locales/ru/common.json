@@ -293,29 +293,48 @@
     "viaWalletConnect": "Через WalletConnect"
   },
   "flareWidget": {
-    "back": "Назад",
     "chatHistory": "История чата",
     "close": "Закрыть",
     "collapse": "Свернуть",
     "expand": "Развернуть",
-    "historyTitle": "История чата",
-    "inputPlaceholder": "Спросить FlareGPT...",
-    "liveBanner": "Flare Mainnet • Live Assistant",
-    "mockHistory": [
-      "Анализ ценовой конъюнктуры",
-      "Справка по настройке кошелька",
-      "Стратегии доходности",
-      "Обсуждение управления"
-    ],
     "newChat": "Новый чат",
-    "send": "Отправить",
-    "suggestions": [
-      "Какова цена FLR сегодня?",
-      "Баланс кошелька",
-      "Как получить вознаграждение FTSO?",
-      "Объясните сеть факела",
-      "Последние предложения по управлению"
-    ]
+    "openFullPage": "Открыть полную страницу"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "Проанализировать мой кошелёк",
+      "increaseRewards": "Как увеличить мои награды FTSO?",
+      "explainDelegations": "Объяснить мои делегирования",
+      "compareProtocols": "Сравнить Sceptre и Firelight",
+      "rewardsDecreased": "Почему мои награды уменьшились?",
+      "stakingOpportunities": "Показать мои возможности стейкинга"
+    },
+    "wallet": {
+      "analyzing": "Анализируется:",
+      "general": "Общее",
+      "generalHint": "Без контекста кошелька"
+    },
+    "empty": {
+      "title": "Спросите FlareGPT о чём угодно",
+      "subtitle": "Получайте ответы о вашем кошельке, наградах, делегированиях или экосистеме Flare."
+    },
+    "composer": {
+      "placeholder": "Спросить FlareGPT...",
+      "send": "Отправить",
+      "stop": "Остановить генерацию",
+      "disclaimer": "FlareGPT может допускать ошибки. Проверяйте важную информацию, прежде чем действовать на её основе."
+    },
+    "actions": {
+      "copy": "Копировать",
+      "regenerate": "Перегенерировать ответ"
+    },
+    "jumpToLatest": "Перейти к последнему",
+    "history": {
+      "title": "История",
+      "newChat": "Новый чат",
+      "empty": "Пока нет разговоров.",
+      "untitled": "Новый разговор"
+    }
   },
   "dashboard": {
     "description": "Краткий обзор данных сети Live Flare, ценовых графиков и активности кошелька.",

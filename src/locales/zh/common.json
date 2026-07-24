@@ -293,29 +293,48 @@
     "viaWalletConnect": "通过WalletConnect"
   },
   "flareWidget": {
-    "back": "回到",
     "chatHistory": "对话历史",
     "close": "关闭",
     "collapse": "折叠",
     "expand": "展开",
-    "historyTitle": "对话历史",
-    "inputPlaceholder": "询问FlareGPT……",
-    "liveBanner": "FLARE主网•实时助手",
-    "mockHistory": [
-      "FLR价格分析",
-      "钱包设置帮助",
-      "收益率策略",
-      "治理讨论"
-    ],
     "newChat": "新的聊天",
-    "send": "傳送",
-    "suggestions": [
-      "今天的FLR价格是多少？",
-      "钱包余额",
-      "如何赚取FTSO奖励？",
-      "解释FLARE网络",
-      "最新治理提案"
-    ]
+    "openFullPage": "打开完整页面"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "分析我的钱包",
+      "increaseRewards": "如何提高我的 FTSO 奖励?",
+      "explainDelegations": "解释我的委托",
+      "compareProtocols": "比较 Sceptre 和 Firelight",
+      "rewardsDecreased": "我的奖励为什么减少了?",
+      "stakingOpportunities": "显示我的质押机会"
+    },
+    "wallet": {
+      "analyzing": "正在分析:",
+      "general": "通用",
+      "generalHint": "无钱包上下文"
+    },
+    "empty": {
+      "title": "向 FlareGPT 提问任何问题",
+      "subtitle": "获取关于您的钱包、奖励、委托或 Flare 生态系统的解答。"
+    },
+    "composer": {
+      "placeholder": "向 FlareGPT 提问...",
+      "send": "发送",
+      "stop": "停止生成",
+      "disclaimer": "FlareGPT 可能会出错。在采取重要行动前请核实相关信息。"
+    },
+    "actions": {
+      "copy": "复制",
+      "regenerate": "重新生成回答"
+    },
+    "jumpToLatest": "跳转到最新",
+    "history": {
+      "title": "历史记录",
+      "newChat": "新对话",
+      "empty": "暂无对话。",
+      "untitled": "新对话"
+    }
   },
   "dashboard": {
     "description": "实时Flare网络数据、价格图表和钱包活动一目了然。",

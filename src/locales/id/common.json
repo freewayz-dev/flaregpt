@@ -293,29 +293,48 @@
     "viaWalletConnect": "Melalui WalletConnect"
   },
   "flareWidget": {
-    "back": "Kembali",
     "chatHistory": "Riwayat obrolan",
     "close": "Tutup",
     "collapse": "Ciutkan",
     "expand": "Bentangkan",
-    "historyTitle": "Riwayat Obrolan",
-    "inputPlaceholder": "Tanya FlareGPT...",
-    "liveBanner": "Flare Mainnet • Asisten Langsung",
-    "mockHistory": [
-      "Analisis harga FlR",
-      "Bantuan penyiapan dompet",
-      "Strategi hasil",
-      "Diskusi tata kelola"
-    ],
     "newChat": "Obrolan baru",
-    "send": "Kirim",
-    "suggestions": [
-      "Berapa harga FlR hari ini?",
-      "Saldo Dompet",
-      "Bagaimana cara mendapatkan hadiah FTSO?",
-      "Menjelaskan Flare Network",
-      "Proposal tata kelola terbaru"
-    ]
+    "openFullPage": "Buka halaman penuh"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "Analisis dompet saya",
+      "increaseRewards": "Bagaimana cara meningkatkan reward FTSO saya?",
+      "explainDelegations": "Jelaskan delegasi saya",
+      "compareProtocols": "Bandingkan Sceptre vs Firelight",
+      "rewardsDecreased": "Mengapa reward saya menurun?",
+      "stakingOpportunities": "Tampilkan peluang staking saya"
+    },
+    "wallet": {
+      "analyzing": "Menganalisis:",
+      "general": "Umum",
+      "generalHint": "Tanpa konteks dompet"
+    },
+    "empty": {
+      "title": "Tanyakan apa saja ke FlareGPT",
+      "subtitle": "Dapatkan jawaban tentang dompet, reward, delegasi, atau ekosistem Flare Anda."
+    },
+    "composer": {
+      "placeholder": "Tanya FlareGPT...",
+      "send": "Kirim",
+      "stop": "Hentikan pembuatan",
+      "disclaimer": "FlareGPT dapat membuat kesalahan. Verifikasi informasi penting sebelum menindaklanjutinya."
+    },
+    "actions": {
+      "copy": "Salin",
+      "regenerate": "Buat ulang respons"
+    },
+    "jumpToLatest": "Lompat ke terbaru",
+    "history": {
+      "title": "Riwayat",
+      "newChat": "Obrolan baru",
+      "empty": "Belum ada percakapan.",
+      "untitled": "Percakapan baru"
+    }
   },
   "dashboard": {
     "description": "Sekilas data jaringan Flare Langsung, grafik harga, dan aktivitas dompet.",

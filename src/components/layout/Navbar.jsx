@@ -7,28 +7,26 @@ import { toast } from "react-toastify";
 import {
   ChevronDownIcon,
   WalletIcon,
-  ChatBubbleLeftRightIcon,
+  SparklesIcon,
   XMarkIcon,
   CurrencyDollarIcon,
   Cog6ToothIcon,
   ArrowRightOnRectangleIcon,
-  ClipboardIcon,
-  CheckIcon,
 } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useUIStore } from "@/store/useUIStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
-
-function shortenAddress(address) {
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
-}
+import { shortenAddress } from "@/utils/address";
+import WalletBadge from "@/components/common/WalletBadge";
+import WalletRow from "@/components/common/WalletRow";
 
 export default function Navbar({
   flareWidgetOpen,
   setFlareWidgetOpen,
   setSidebarOpen,
   onOpenWalletModal,
+  hideAskFlareGpt = false,
 }) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -227,13 +225,15 @@ export default function Navbar({
         <div className="flex items-center justify-end gap-2 lg:gap-3 font-medium tracking-normal select-none shrink-0">
           
           <div className="hidden lg:flex items-center gap-2 lg:gap-3">
-            <button
-              type="button"
-              onClick={() => setFlareWidgetOpen(!flareWidgetOpen)}
-              className="px-2.5 py-1.5 rounded-lg border border-brand/30 bg-brand/10 text-brand text-[10px] lg:text-[10.5px] font-semibold hover:bg-brand hover:text-white transition-all shadow-sm cursor-pointer"
-            >
-              {t("navbar.askFlareGPT")}
-            </button>
+            {!hideAskFlareGpt && (
+              <button
+                type="button"
+                onClick={() => setFlareWidgetOpen(!flareWidgetOpen)}
+                className="px-2.5 py-1.5 rounded-lg border border-brand/30 bg-brand/10 text-brand text-[10px] lg:text-[10.5px] font-semibold hover:bg-brand hover:text-white transition-all shadow-sm cursor-pointer"
+              >
+                {t("navbar.askFlareGPT")}
+              </button>
+            )}
 
             {/* Account Selector Dropdown */}
             <div className="relative" ref={dropdownRef}>
@@ -474,108 +474,16 @@ export default function Navbar({
       </div>
 
       {/* MOBILE FLOATING ACTION BUTTON (FAB) */}
-      <button
-        type="button"
-        onClick={() => setFlareWidgetOpen(!flareWidgetOpen)}
-        className="lg:hidden fixed bottom-10 right-5 z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-brand to-brand-hover text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
-        aria-label={t("navbar.askFlareGPT")}
-      >
-        <ChatBubbleLeftRightIcon className="h-5 w-5" />
-      </button>
+      {!hideAskFlareGpt && (
+        <button
+          type="button"
+          onClick={() => setFlareWidgetOpen(!flareWidgetOpen)}
+          className="lg:hidden fixed bottom-10 right-5 z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-brand to-brand-hover text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
+          aria-label={t("navbar.askFlareGPT")}
+        >
+          <SparklesIcon className="h-5 w-5" />
+        </button>
+      )}
     </>
-  );
-}
-
-// Small colored text pill communicating a wallet's permanent type (Primary
-// vs Watchlist) — deliberately separate from the active-row highlight
-// below, since a wallet's type never changes but which one is active does.
-// Reused on both the collapsed trigger button and every dropdown row so
-// the same visual language means the same thing everywhere.
-function WalletBadge({ tone, text }) {
-  return (
-    <span
-      className={`shrink-0 rounded px-1 py-0.5 text-[8px] font-bold uppercase tracking-wide ${
-        tone === "primary"
-          ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
-          : "bg-amber-500/15 text-amber-600 dark:text-amber-400"
-      }`}
-    >
-      {text}
-    </span>
-  );
-}
-
-// One row in the desktop dropdown — used for both the Primary wallet slot
-// and every Watchlist row. Neither carries a per-row type badge: each row
-// already lives inside a section explicitly labeled "Primary Wallet" or
-// "Watchlist", so a badge here would just repeat the section header
-// (that redundancy is exactly what prompted showing an address instead of
-// the word "Primary" below). The collapsed trigger button is the one
-// place a badge earns its keep, since it has no section header for
-// context. `isActive` drives the highlight independent of the row's
-// title, so switching to a watchlist wallet never looks like anything
-// else changed about it.
-//
-// The Primary row shows a shortened address as its title rather than
-// `wallet.label` (always the hardcoded "Primary Wallet" string today,
-// since there's no nickname system for the connected wallet) — same
-// reasoning as the collapsed button. Watchlist rows keep their nickname.
-function WalletRow({ wallet, isActive, copiedAddress, onSelect, onCopy, variant = "desktop" }) {
-  const justCopied = copiedAddress === wallet.address;
-  const isMobile = variant === "mobile";
-  const displayName =
-    wallet.type === "connected" ? shortenAddress(wallet.address) : wallet.label;
-
-  // A <div role="button"> rather than a real <button> — it contains its
-  // own nested copy <button>, and a <button> can never legally contain
-  // another <button> (nested interactive elements are invalid HTML and
-  // browsers handle the resulting DOM inconsistently). Same reasoning as
-  // the address block in Donate's HeroReceiveCard.
-  return (
-    <div
-      role="button"
-      tabIndex={0}
-      onClick={onSelect}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onSelect();
-        }
-      }}
-      className={`w-full text-left flex items-center justify-between gap-2 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
-        isMobile
-          ? "p-2.5 rounded-xl border dark:border-none text-[11px]"
-          : "p-2 rounded-lg text-[10px]"
-      } ${
-        isActive
-          ? isMobile
-            ? "bg-brand/10 border-brand/20 text-brand font-bold"
-            : "bg-brand/10 text-brand font-bold"
-          : isMobile
-            ? "bg-slate-50/50 dark:bg-[#21242B] border-transparent text-slate-600 dark:text-[#6D7A86]"
-            : "hover:bg-slate-50 dark:hover:bg-[#1B1B1F] text-ink-secondary"
-      }`}
-    >
-      <div className={`min-w-0 flex items-center ${isMobile ? "gap-2.5" : "gap-2"}`}>
-        <WalletIcon className={`opacity-60 shrink-0 ${isMobile ? "h-3.5 w-3.5" : "h-3 w-3"}`} />
-        <div className="min-w-0 truncate">
-          <p className="font-semibold truncate leading-tight">{displayName}</p>
-          <p className="font-mono text-[9px] opacity-70 truncate mt-0.5">
-            {wallet.address}
-          </p>
-        </div>
-      </div>
-      <button
-        type="button"
-        onClick={(e) => onCopy(e, wallet.address)}
-        className="shrink-0 p-1 rounded-md text-current opacity-60 hover:opacity-100 hover:bg-black/5 dark:hover:bg-white/10 transition-all cursor-pointer"
-      >
-        {justCopied ? (
-          <CheckIcon className="h-3 w-3 text-emerald-500" />
-        ) : (
-          <ClipboardIcon className="h-3 w-3" />
-        )}
-      </button>
-    </div>
   );
 }

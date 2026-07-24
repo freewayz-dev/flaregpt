@@ -293,29 +293,48 @@
     "viaWalletConnect": "Tramite WalletConnect"
   },
   "flareWidget": {
-    "back": "Indietro",
     "chatHistory": "Cronologia chat",
     "close": "Chiudi",
     "collapse": "Riduci",
     "expand": "Espandi",
-    "historyTitle": "Archivio chat",
-    "inputPlaceholder": "Chiedi a FlareGPT...",
-    "liveBanner": "Flare Mainnet • Live Assistant",
-    "mockHistory": [
-      "Analisi prezzi FLR",
-      "Guida alla configurazione del portafoglio",
-      "Strategie di rendimento",
-      "Discussione sulla governance"
-    ],
     "newChat": "Nuova chat",
-    "send": "Invia",
-    "suggestions": [
-      "Qual è il prezzo FLR oggi?",
-      "Saldo del portafoglio",
-      "Come si guadagnano i premi FTSO?",
-      "Spiegare Flare Network",
-      "Ultime proposte di governance"
-    ]
+    "openFullPage": "Apri pagina completa"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "Analizza il mio wallet",
+      "increaseRewards": "Come posso aumentare le mie ricompense FTSO?",
+      "explainDelegations": "Spiega le mie delegazioni",
+      "compareProtocols": "Confronta Sceptre e Firelight",
+      "rewardsDecreased": "Perché le mie ricompense sono diminuite?",
+      "stakingOpportunities": "Mostra le mie opportunità di staking"
+    },
+    "wallet": {
+      "analyzing": "Analisi in corso:",
+      "general": "Generale",
+      "generalHint": "Nessun contesto wallet"
+    },
+    "empty": {
+      "title": "Chiedi qualsiasi cosa a FlareGPT",
+      "subtitle": "Ottieni risposte sul tuo wallet, le ricompense, le delegazioni o l'ecosistema Flare."
+    },
+    "composer": {
+      "placeholder": "Chiedi a FlareGPT...",
+      "send": "Invia",
+      "stop": "Interrompi generazione",
+      "disclaimer": "FlareGPT può commettere errori. Verifica le informazioni importanti prima di agire di conseguenza."
+    },
+    "actions": {
+      "copy": "Copia",
+      "regenerate": "Rigenera risposta"
+    },
+    "jumpToLatest": "Vai all'ultimo messaggio",
+    "history": {
+      "title": "Cronologia",
+      "newChat": "Nuova chat",
+      "empty": "Nessuna conversazione ancora.",
+      "untitled": "Nuova conversazione"
+    }
   },
   "dashboard": {
     "description": "Dati della rete Live Flare, grafici dei prezzi e attività del portafoglio a colpo d'occhio.",

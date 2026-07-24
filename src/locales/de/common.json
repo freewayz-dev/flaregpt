@@ -292,29 +292,48 @@
     "viaWalletConnect": "Über WalletConnect"
   },
   "flareWidget": {
-    "back": "Zurück",
     "chatHistory": " Chat-Verlauf",
     "close": "Schließen",
     "collapse": "Ausblenden",
     "expand": "Erweitern",
-    "historyTitle": "Chat-Verlauf",
-    "inputPlaceholder": "Fragen Sie FlareGPT...",
-    "liveBanner": "Flare Mainnet • Live-Assistent",
-    "mockHistory": [
-      "Preisanalyse",
-      "Hilfe zur Wallet-Einrichtung",
-      "Ertragsstrategien",
-      "Governance-Diskussion"
-    ],
     "newChat": "Neuer Chat",
-    "send": "Senden",
-    "suggestions": [
-      "Was ist der FLR-Preis heute?",
-      "Kontostand",
-      "Wie verdiene ich FTSO-Belohnungen?",
-      "Erkläre das Flare-Netzwerk",
-      "Neueste Governance-Vorschläge"
-    ]
+    "openFullPage": "Vollständige Seite öffnen"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "Meine Wallet analysieren",
+      "increaseRewards": "Wie kann ich meine FTSO-Rewards erhöhen?",
+      "explainDelegations": "Meine Delegationen erklären",
+      "compareProtocols": "Sceptre mit Firelight vergleichen",
+      "rewardsDecreased": "Warum sind meine Rewards gesunken?",
+      "stakingOpportunities": "Meine Staking-Möglichkeiten zeigen"
+    },
+    "wallet": {
+      "analyzing": "Analysiere:",
+      "general": "Allgemein",
+      "generalHint": "Kein Wallet-Kontext"
+    },
+    "empty": {
+      "title": "Frag FlareGPT irgendetwas",
+      "subtitle": "Erhalte Antworten zu deiner Wallet, Rewards, Delegationen oder dem Flare-Ökosystem."
+    },
+    "composer": {
+      "placeholder": "Frag FlareGPT...",
+      "send": "Senden",
+      "stop": "Generierung stoppen",
+      "disclaimer": "FlareGPT kann Fehler machen. Überprüfe wichtige Informationen, bevor du danach handelst."
+    },
+    "actions": {
+      "copy": "Kopieren",
+      "regenerate": "Antwort neu generieren"
+    },
+    "jumpToLatest": "Zum Neuesten springen",
+    "history": {
+      "title": "Verlauf",
+      "newChat": "Neuer Chat",
+      "empty": "Noch keine Unterhaltungen.",
+      "untitled": "Neue Unterhaltung"
+    }
   },
   "dashboard": {
     "description": "Live Flare-Netzwerkdaten, Preisdiagramme und Wallet-Aktivitäten auf einen Blick.",

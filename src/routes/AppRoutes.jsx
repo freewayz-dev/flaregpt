@@ -12,7 +12,6 @@ const Terms = lazy(() => import("@/pages/Terms"));
 
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const FLRGPT = lazy(() => import("@/pages/Flrgpt"));
-const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Settings = lazy(() => import("@/pages/Settings"));
 const Help = lazy(() => import("@/pages/Help"));
 const DefiProtocols = lazy(() => import("@/pages/DefiProtocols"));
@@ -38,7 +37,10 @@ export default function AppRoutes() {
             }
           />
           <Route path="flare-gpt" element={<FLRGPT />} />
-          <Route path="wallet" element={<WalletActivity />} />
+          <Route
+            path="wallet"
+            element={<ComingSoon title={t("sidebar.walletActivity")} />}
+          />
           <Route path="settings" element={<Settings />} />
           <Route path="help" element={<Help />} />
           <Route

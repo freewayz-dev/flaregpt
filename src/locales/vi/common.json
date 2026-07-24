@@ -293,29 +293,48 @@
     "viaWalletConnect": "Qua WalletConnect"
   },
   "flareWidget": {
-    "back": "Quay lại",
     "chatHistory": "Lịch sử trò chuyện",
     "close": "Đóng",
     "collapse": "Thu gọn",
     "expand": "Mở rộng",
-    "historyTitle": "Lịch sử trò chuyện",
-    "inputPlaceholder": "Hỏi FlareGPT...",
-    "liveBanner": "Flare Mainnet • Trợ lý trực tiếp",
-    "mockHistory": [
-      "phân tích giá cả",
-      "Cài đặt ví",
-      "Chiến lược lợi nhuận",
-      "Thảo luận về quản trị"
-    ],
     "newChat": "Obrolan baru",
-    "send": "Gửi",
-    "suggestions": [
-      "Giá FLR hôm nay là bao nhiêu?",
-      "Số dư ví",
-      "Làm thế nào để nhận phần thưởng FTSO?",
-      "Giải thích về Flare Network",
-      "Đề xuất quản trị mới nhất"
-    ]
+    "openFullPage": "Mở trang đầy đủ"
+  },
+  "flrgpt": {
+    "prompts": {
+      "analyzeWallet": "Phân tích ví của tôi",
+      "increaseRewards": "Làm sao để tăng phần thưởng FTSO của tôi?",
+      "explainDelegations": "Giải thích các ủy quyền của tôi",
+      "compareProtocols": "So sánh Sceptre và Firelight",
+      "rewardsDecreased": "Tại sao phần thưởng của tôi giảm?",
+      "stakingOpportunities": "Hiển thị cơ hội staking của tôi"
+    },
+    "wallet": {
+      "analyzing": "Đang phân tích:",
+      "general": "Chung",
+      "generalHint": "Không có ngữ cảnh ví"
+    },
+    "empty": {
+      "title": "Hỏi FlareGPT bất cứ điều gì",
+      "subtitle": "Nhận câu trả lời về ví, phần thưởng, ủy quyền hoặc hệ sinh thái Flare của bạn."
+    },
+    "composer": {
+      "placeholder": "Hỏi FlareGPT...",
+      "send": "Gửi",
+      "stop": "Dừng tạo phản hồi",
+      "disclaimer": "FlareGPT có thể mắc lỗi. Hãy xác minh thông tin quan trọng trước khi hành động theo đó."
+    },
+    "actions": {
+      "copy": "Sao chép",
+      "regenerate": "Tạo lại phản hồi"
+    },
+    "jumpToLatest": "Đến tin mới nhất",
+    "history": {
+      "title": "Lịch sử",
+      "newChat": "Cuộc trò chuyện mới",
+      "empty": "Chưa có cuộc trò chuyện nào.",
+      "untitled": "Cuộc trò chuyện mới"
+    }
   },
   "dashboard": {
     "description": "Dữ liệu mạng Live Flare, biểu đồ giá và hoạt động của ví trong nháy mắt.",
