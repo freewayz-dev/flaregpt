@@ -166,6 +166,56 @@
       "verdict": "FlareGPT Verdict"
     }
   },
+  "donate": {
+    "title": "Support FlareGPT",
+    "description": "Your support helps keep FlareGPT free, independent, and constantly improving.",
+    "hero": {
+      "addressLabel": "Wallet Address",
+      "tapToCopy": "Tap to copy",
+      "copyAddress": "Copy Address",
+      "copied": "Copied",
+      "addressCopied": "Address copied to clipboard",
+      "copyFailed": "Couldn't copy address",
+      "viewOnExplorer": "View on {{explorer}}",
+      "multisigNote": "Secured by a multi-signature wallet",
+      "qrTitle": "QR code for the {{symbol}} donation wallet address"
+    },
+    "warning": {
+      "title": "{{network}} assets only.",
+      "body": "Only send {{symbol}} or other {{network}} tokens to this address. Assets sent from other networks cannot be recovered."
+    },
+    "amounts": {
+      "title": "Suggested Amounts",
+      "subtitle": "Every contribution helps — here are a few ideas to get started.",
+      "impactTier1": "A day of API costs",
+      "impactTier2": "A week of hosting",
+      "impactTier3": "A month of infrastructure",
+      "impactTier4": "New protocol integrations",
+      "copiedToast": "Address copied. Thank you for considering a {{amount}} {{symbol}} donation."
+    },
+    "funding": {
+      "title": "Funding Transparency",
+      "subtitle": "An open look at what it costs to keep FlareGPT running — no pressure, just visibility.",
+      "monthlyInfrastructure": "Monthly Infrastructure",
+      "developmentFund": "Development Fund",
+      "raisedOfGoal": "{{raised}} raised of {{goal}} goal"
+    },
+    "received": {
+      "title": "Donations Received",
+      "subtitle": "Total contributions received across every supported network.",
+      "demoData": "Demo data"
+    },
+    "support": {
+      "title": "What Your Support Funds",
+      "infra": "API & Infrastructure",
+      "integrations": "New Protocol Integrations",
+      "free": "Keeping FlareGPT Free",
+      "development": "Continued Development"
+    },
+    "closing": {
+      "message": "Thank you for helping keep FlareGPT independent. Every contribution, big or small, genuinely helps."
+    }
+  },
   "flareWidget": {
     "back": "Back",
     "chatHistory": "Chat history",
@@ -288,11 +338,16 @@
   },
   "navbar": {
     "askFlareGPT": "Ask FlareGPT",
-    "configureInSettings": "Configure in Settings",
-    "dropdownTitle": "Active Target View",
     "mainnetStatus": "Flare Mainnet",
-    "noTrackedNodes": "No tracked nodes.",
-    "noWallet": "No Wallet"
+    "connectWallet": "Connect Wallet",
+    "primaryWalletSection": "Primary Wallet",
+    "badgePrimary": "Primary",
+    "badgeWatchlist": "Watchlist",
+    "disconnectWallet": "Disconnect Wallet",
+    "configureWatchlistWallets": "Configure Watchlist Wallets",
+    "watchlistSection": "Watchlist ({{current}}/{{max}})",
+    "addressCopied": "Address copied to clipboard",
+    "copyFailed": "Couldn't copy address"
   },
   "settings": {
     "cards": {

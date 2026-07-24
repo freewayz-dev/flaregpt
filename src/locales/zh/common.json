@@ -97,10 +97,15 @@
   "navbar": {
     "askFlareGPT": "咨询 FlareGPT",
     "mainnetStatus": "Flare 主网",
-    "dropdownTitle": "活动目标视图",
-    "noTrackedNodes": "没有跟踪的节点。",
-    "noWallet": "无钱包",
-    "configureInSettings": "在设置中配置"
+    "connectWallet": "连接钱包",
+    "primaryWalletSection": "主钱包",
+    "badgePrimary": "主要",
+    "badgeWatchlist": "关注列表",
+    "disconnectWallet": "断开钱包连接",
+    "configureWatchlistWallets": "管理关注列表钱包",
+    "watchlistSection": "关注列表 ({{current}}/{{max}})",
+    "addressCopied": "地址已复制到剪贴板",
+    "copyFailed": "无法复制地址"
   },
   "settings": {
     "cards": {
@@ -447,6 +452,56 @@
       "lockupHours": "锁定 {{count}} 小时",
       "noLockup": "无锁定期",
       "verdict": "FlareGPT 结论"
+    }
+  },
+  "donate": {
+    "title": "支持 FlareGPT",
+    "description": "您的支持有助于让 FlareGPT 保持免费、独立并不断改进。",
+    "hero": {
+      "addressLabel": "钱包地址",
+      "tapToCopy": "点击复制",
+      "copyAddress": "复制地址",
+      "copied": "已复制",
+      "addressCopied": "地址已复制到剪贴板",
+      "copyFailed": "无法复制地址",
+      "viewOnExplorer": "在 {{explorer}} 上查看",
+      "multisigNote": "由多重签名钱包保护",
+      "qrTitle": "{{symbol}} 捐赠钱包地址的二维码"
+    },
+    "warning": {
+      "title": "仅限 {{network}} 资产。",
+      "body": "请仅向此地址发送 {{symbol}} 或其他 {{network}} 代币。从其他网络发送的资产将无法找回。"
+    },
+    "amounts": {
+      "title": "建议金额",
+      "subtitle": "每一份贡献都很重要 — 这里有一些参考建议。",
+      "impactTier1": "一天的 API 费用",
+      "impactTier2": "一周的托管费用",
+      "impactTier3": "一个月的基础设施费用",
+      "impactTier4": "新协议集成",
+      "copiedToast": "地址已复制。感谢您考虑捐赠 {{amount}} {{symbol}}。"
+    },
+    "funding": {
+      "title": "资金透明度",
+      "subtitle": "公开展示维持 FlareGPT 运行的成本 — 不是筹款压力,只是透明信息。",
+      "monthlyInfrastructure": "每月基础设施",
+      "developmentFund": "开发基金",
+      "raisedOfGoal": "已筹集 {{raised}},目标 {{goal}}"
+    },
+    "received": {
+      "title": "已收到的捐赠",
+      "subtitle": "每个支持网络收到的总贡献。",
+      "demoData": "演示数据"
+    },
+    "support": {
+      "title": "您的支持将用于",
+      "infra": "API 与基础设施",
+      "integrations": "新协议集成",
+      "free": "保持 FlareGPT 免费",
+      "development": "持续开发"
+    },
+    "closing": {
+      "message": "感谢您帮助 FlareGPT 保持独立。无论贡献大小,都真正有帮助。"
     }
   }
 }

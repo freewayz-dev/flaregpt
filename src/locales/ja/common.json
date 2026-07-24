@@ -97,10 +97,15 @@
   "navbar": {
     "askFlareGPT": "FlareGPTに質問",
     "mainnetStatus": "Flareメインネット",
-    "dropdownTitle": "アクティブなターゲットビュー",
-    "noTrackedNodes": "追跡されたノードはありません。",
-    "noWallet": "サイフはない",
-    "configureInSettings": "設定で設定"
+    "connectWallet": "ウォレットを接続",
+    "primaryWalletSection": "プライマリウォレット",
+    "badgePrimary": "プライマリ",
+    "badgeWatchlist": "ウォッチリスト",
+    "disconnectWallet": "ウォレットを切断",
+    "configureWatchlistWallets": "ウォッチリストウォレットを設定",
+    "watchlistSection": "ウォッチリスト ({{current}}/{{max}})",
+    "addressCopied": "アドレスをクリップボードにコピーしました",
+    "copyFailed": "アドレスをコピーできませんでした"
   },
   "settings": {
     "cards": {
@@ -447,6 +452,56 @@
       "lockupHours": "ロックアップ{{count}}時間",
       "noLockup": "ロックアップなし",
       "verdict": "FlareGPTの見解"
+    }
+  },
+  "donate": {
+    "title": "FlareGPTを支援する",
+    "description": "あなたのご支援がFlareGPTを無料かつ独立した形で維持し、継続的な改善を可能にします。",
+    "hero": {
+      "addressLabel": "ウォレットアドレス",
+      "tapToCopy": "タップしてコピー",
+      "copyAddress": "アドレスをコピー",
+      "copied": "コピーしました",
+      "addressCopied": "アドレスをクリップボードにコピーしました",
+      "copyFailed": "アドレスをコピーできませんでした",
+      "viewOnExplorer": "{{explorer}}で見る",
+      "multisigNote": "マルチシグウォレットにより保護されています",
+      "qrTitle": "{{symbol}}寄付用ウォレットアドレスのQRコード"
+    },
+    "warning": {
+      "title": "{{network}}の資産のみ。",
+      "body": "このアドレスには{{symbol}}または他の{{network}}トークンのみを送金してください。他のネットワークから送られた資産は復元できません。"
+    },
+    "amounts": {
+      "title": "推奨金額",
+      "subtitle": "どんな貢献も助けになります — 始めるためのいくつかのアイデアです。",
+      "impactTier1": "1日分のAPIコスト",
+      "impactTier2": "1週間分のホスティング",
+      "impactTier3": "1か月分のインフラ",
+      "impactTier4": "新しいプロトコル統合",
+      "copiedToast": "アドレスをコピーしました。{{amount}} {{symbol}}のご寄付をご検討いただきありがとうございます。"
+    },
+    "funding": {
+      "title": "資金の透明性",
+      "subtitle": "FlareGPTの運用にかかる費用を公開しています — 強制ではなく、透明性のためです。",
+      "monthlyInfrastructure": "月次インフラ費用",
+      "developmentFund": "開発資金",
+      "raisedOfGoal": "目標{{goal}}のうち{{raised}}達成"
+    },
+    "received": {
+      "title": "受け取った寄付",
+      "subtitle": "サポートされているすべてのネットワークで受け取った合計貢献額。",
+      "demoData": "デモデータ"
+    },
+    "support": {
+      "title": "支援の使い道",
+      "infra": "API・インフラ",
+      "integrations": "新しいプロトコル統合",
+      "free": "FlareGPTを無料に保つ",
+      "development": "継続的な開発"
+    },
+    "closing": {
+      "message": "FlareGPTの独立性を保つのにご協力いただきありがとうございます。大小を問わず、すべてのご支援が本当に助けになります。"
     }
   }
 }

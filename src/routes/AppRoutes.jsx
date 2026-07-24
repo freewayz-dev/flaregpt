@@ -16,6 +16,7 @@ const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Settings = lazy(() => import("@/pages/Settings"));
 const Help = lazy(() => import("@/pages/Help"));
 const DefiProtocols = lazy(() => import("@/pages/DefiProtocols"));
+const Donate = lazy(() => import("@/pages/Donate"));
 const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
 
 export default function AppRoutes() {
@@ -64,10 +65,7 @@ export default function AppRoutes() {
             path="governance"
             element={<ComingSoon title={t("sidebar.governance")} />}
           />
-          <Route
-            path="donate"
-            element={<ComingSoon title={t("footer.donate")} />}
-          />
+          <Route path="donate" element={<Donate />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />

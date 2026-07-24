@@ -1,8 +1,7 @@
 // src/components/layout/Sidebar.jsx
-import { useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useConnection, useConnections, useDisconnect } from "wagmi";
+import { useConnection } from "wagmi";
 import {
   WalletIcon,
   ChatBubbleLeftRightIcon,
@@ -21,9 +20,9 @@ import {
 } from "@heroicons/react/24/outline";
 
 import FlareGptSimpleLogo from "@/components/common/Logo";
-import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import Logo from "@/assets/icons/fl.png";
 import { useUIStore } from "@/store/useUIStore";
+import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 
 // Asynchronous route code chunk-splitting anchors
 const prefetchDashboard = () => import("@/pages/Dashboard");
@@ -31,6 +30,7 @@ const prefetchFlareGPT = () => import("@/pages/Flrgpt");
 const prefetchWallet = () => import("@/pages/WalletActivity");
 const prefetchSettings = () => import("@/pages/Settings");
 const prefetchHelp = () => import("@/pages/Help");
+const prefetchDonate = () => import("@/pages/Donate");
 const prefetchDefiProtocols = () => import("@/pages/DefiProtocols");
 
 // Ordered by expected importance/frequency: the home view, then the
@@ -87,6 +87,7 @@ const links = [
     translationKey: "donate",
     path: "/app/donate",
     icon: HeartIcon,
+    prefetch: prefetchDonate,
   },
   {
     translationKey: "settings",
@@ -101,7 +102,7 @@ const links = [
     prefetch: prefetchHelp,
   },
 ];
-export default function Sidebar({ open, setOpen }) {
+export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
@@ -114,34 +115,9 @@ export default function Sidebar({ open, setOpen }) {
     (state) => state.setSettingsActiveTab,
   );
 
-  // Local-only state managed within the Modal overlay system boundary
-  const [modalOpen, setModalOpen] = useState(false);
-
   // Real Wagmi Account State variables
   const { address, isConnected } = useConnection();
-  // `disconnect`/`disconnectAsync` on useDisconnect()'s return are
-  // deprecated in favor of the underlying mutation's own `mutate`/
-  // `mutateAsync`.
-  const { mutateAsync: disconnectAsync } = useDisconnect();
-  const connections = useConnections();
-
-  // wagmi can end up with more than one connector "connected" at once —
-  // e.g. both Rabby and MetaMask still authorized at the extension level
-  // from an earlier session — even though only one is ever shown as
-  // `current`. Disconnecting just the current one leaves the other's
-  // entry in wagmi's internal connections map, and wagmi's own disconnect
-  // action then silently promotes that leftover entry to `current`
-  // instead of going to a disconnected state — no new handshake, no
-  // permission prompt, just the previous wallet's address reappearing.
-  // Disconnecting every active connection here guarantees nothing is left
-  // to fall back to, so the next connect attempt always starts fresh.
-  const disconnectAll = async () => {
-    for (const connection of connections) {
-      await disconnectAsync({ connector: connection.connector }).catch(
-        () => {},
-      );
-    }
-  };
+  const disconnectAll = useDisconnectAllWallets();
 
   // Format long wallet addresses for your minimalist UI (e.g. 0x71C...3A90)
   const formatAddress = (addr) => {
@@ -263,7 +239,7 @@ export default function Sidebar({ open, setOpen }) {
                   </p>
                   <button
                     type="button"
-                    onClick={() => setModalOpen(true)}
+                    onClick={onOpenWalletModal}
                     className="w-full rounded-xl bg-brand px-3 py-2 text-xs font-medium text-white hover:bg-brand-hover transition-colors shadow-sm cursor-pointer"
                   >
                     {t("sidebar.connectWallet")}
@@ -299,7 +275,7 @@ export default function Sidebar({ open, setOpen }) {
               <button
                 type="button"
                 onClick={() =>
-                  isConnected ? disconnectAll() : setModalOpen(true)
+                  isConnected ? disconnectAll() : onOpenWalletModal()
                 }
                 className="hidden lg:flex w-full justify-center rounded-xl p-3 bg-brand/10 text-brand cursor-pointer"
               >
@@ -309,11 +285,6 @@ export default function Sidebar({ open, setOpen }) {
           </div>
         </div>
       </aside>
-
-      <ConnectWalletModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-      />
     </>
   );
 }

@@ -97,10 +97,15 @@
   "navbar": {
     "askFlareGPT": "FlareGPT'ye Sor",
     "mainnetStatus": "Flare Ana Ağı",
-    "dropdownTitle": "Etkin Hedef Görünümü",
-    "noTrackedNodes": "İzlenen düğüm yok.",
-    "noWallet": "Cüzdan Yok",
-    "configureInSettings": "Ayarlar'da Yapılandır"
+    "connectWallet": "Cüzdan Bağla",
+    "primaryWalletSection": "Birincil Cüzdan",
+    "badgePrimary": "Birincil",
+    "badgeWatchlist": "İzleme Listesi",
+    "disconnectWallet": "Cüzdan Bağlantısını Kes",
+    "configureWatchlistWallets": "İzleme Listesi Cüzdanlarını Yapılandır",
+    "watchlistSection": "İzleme Listesi ({{current}}/{{max}})",
+    "addressCopied": "Adres panoya kopyalandı",
+    "copyFailed": "Adres kopyalanamadı"
   },
   "settings": {
     "cards": {
@@ -447,6 +452,56 @@
       "lockupHours": "{{count}} saat kilit",
       "noLockup": "Kilit yok",
       "verdict": "FlareGPT Değerlendirmesi"
+    }
+  },
+  "donate": {
+    "title": "FlareGPT'yi Destekle",
+    "description": "Desteğiniz FlareGPT'nin ücretsiz, bağımsız kalmasına ve sürekli gelişmesine yardımcı olur.",
+    "hero": {
+      "addressLabel": "Cüzdan Adresi",
+      "tapToCopy": "Kopyalamak için dokun",
+      "copyAddress": "Adresi Kopyala",
+      "copied": "Kopyalandı",
+      "addressCopied": "Adres panoya kopyalandı",
+      "copyFailed": "Adres kopyalanamadı",
+      "viewOnExplorer": "{{explorer}}'de Görüntüle",
+      "multisigNote": "Çoklu imza cüzdanla korunmaktadır",
+      "qrTitle": "{{symbol}} bağış cüzdan adresi için QR kodu"
+    },
+    "warning": {
+      "title": "Yalnızca {{network}} varlıkları.",
+      "body": "Bu adrese yalnızca {{symbol}} veya diğer {{network}} tokenlerini gönderin. Başka ağlardan gönderilen varlıklar kurtarılamaz."
+    },
+    "amounts": {
+      "title": "Önerilen Tutarlar",
+      "subtitle": "Her katkı önemlidir — başlamak için birkaç fikir.",
+      "impactTier1": "Bir günlük API maliyeti",
+      "impactTier2": "Bir haftalık barındırma",
+      "impactTier3": "Bir aylık altyapı",
+      "impactTier4": "Yeni protokol entegrasyonları",
+      "copiedToast": "Adres kopyalandı. {{amount}} {{symbol}} bağış düşündüğünüz için teşekkürler."
+    },
+    "funding": {
+      "title": "Finansman Şeffaflığı",
+      "subtitle": "FlareGPT'yi çalışır tutmanın maliyetine dair açık bir bakış — baskı değil, sadece şeffaflık.",
+      "monthlyInfrastructure": "Aylık Altyapı",
+      "developmentFund": "Geliştirme Fonu",
+      "raisedOfGoal": "{{goal}} hedefinden {{raised}} toplandı"
+    },
+    "received": {
+      "title": "Alınan Bağışlar",
+      "subtitle": "Desteklenen her ağda alınan toplam katkılar.",
+      "demoData": "Demo veri"
+    },
+    "support": {
+      "title": "Desteğiniz Neyi Finanse Ediyor",
+      "infra": "API ve Altyapı",
+      "integrations": "Yeni Protokol Entegrasyonları",
+      "free": "FlareGPT'yi Ücretsiz Tutmak",
+      "development": "Sürekli Geliştirme"
+    },
+    "closing": {
+      "message": "FlareGPT'yi bağımsız tutmaya yardımcı olduğunuz için teşekkürler. Büyük ya da küçük, her katkı gerçekten yardımcı oluyor."
     }
   }
 }

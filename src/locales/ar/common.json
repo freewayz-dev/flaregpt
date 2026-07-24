@@ -97,10 +97,15 @@
   "navbar": {
     "askFlareGPT": "اسأل FlareGPT",
     "mainnetStatus": "شبكة Flare الرئيسية",
-    "dropdownTitle": "عرض الهدف النشط",
-    "noTrackedNodes": "لا توجد عقد مجنزرة.",
-    "noWallet": "لا توجد محفظة",
-    "configureInSettings": "التكوين في الإعدادات"
+    "connectWallet": "ربط المحفظة",
+    "primaryWalletSection": "المحفظة الأساسية",
+    "badgePrimary": "أساسية",
+    "badgeWatchlist": "قائمة المراقبة",
+    "disconnectWallet": "قطع اتصال المحفظة",
+    "configureWatchlistWallets": "إعداد محافظ قائمة المراقبة",
+    "watchlistSection": "قائمة المراقبة ({{current}}/{{max}})",
+    "addressCopied": "تم نسخ العنوان إلى الحافظة",
+    "copyFailed": "تعذر نسخ العنوان"
   },
   "settings": {
     "cards": {
@@ -446,6 +451,56 @@
       "lockupHours": "قفل لمدة {{count}} ساعة",
       "noLockup": "بدون قفل",
       "verdict": "تقييم FlareGPT"
+    }
+  },
+  "donate": {
+    "title": "ادعم FlareGPT",
+    "description": "دعمك يساعد في إبقاء FlareGPT مجانيًا ومستقلاً ومتطورًا باستمرار.",
+    "hero": {
+      "addressLabel": "عنوان المحفظة",
+      "tapToCopy": "اضغط للنسخ",
+      "copyAddress": "نسخ العنوان",
+      "copied": "تم النسخ",
+      "addressCopied": "تم نسخ العنوان إلى الحافظة",
+      "copyFailed": "تعذر نسخ العنوان",
+      "viewOnExplorer": "عرض على {{explorer}}",
+      "multisigNote": "محمية بمحفظة متعددة التوقيع",
+      "qrTitle": "رمز QR لعنوان محفظة التبرعات بعملة {{symbol}}"
+    },
+    "warning": {
+      "title": "أصول {{network}} فقط.",
+      "body": "أرسل فقط {{symbol}} أو رموز {{network}} الأخرى إلى هذا العنوان. الأصول المُرسلة من شبكات أخرى لا يمكن استردادها."
+    },
+    "amounts": {
+      "title": "المبالغ المقترحة",
+      "subtitle": "كل مساهمة تُحدث فرقًا — إليك بعض الأفكار للبدء.",
+      "impactTier1": "يوم واحد من تكاليف API",
+      "impactTier2": "أسبوع واحد من الاستضافة",
+      "impactTier3": "شهر واحد من البنية التحتية",
+      "impactTier4": "تكاملات بروتوكولات جديدة",
+      "copiedToast": "تم نسخ العنوان. شكرًا لتفكيرك في التبرع بمبلغ {{amount}} {{symbol}}."
+    },
+    "funding": {
+      "title": "شفافية التمويل",
+      "subtitle": "نظرة شفافة على تكلفة إبقاء FlareGPT يعمل — لا ضغط، فقط شفافية.",
+      "monthlyInfrastructure": "البنية التحتية الشهرية",
+      "developmentFund": "صندوق التطوير",
+      "raisedOfGoal": "تم جمع {{raised}} من هدف {{goal}}"
+    },
+    "received": {
+      "title": "التبرعات المستلمة",
+      "subtitle": "إجمالي المساهمات المستلمة عبر كل شبكة مدعومة.",
+      "demoData": "بيانات تجريبية"
+    },
+    "support": {
+      "title": "فيما يُستخدم دعمك",
+      "infra": "API والبنية التحتية",
+      "integrations": "تكاملات بروتوكولات جديدة",
+      "free": "إبقاء FlareGPT مجانيًا",
+      "development": "التطوير المستمر"
+    },
+    "closing": {
+      "message": "شكرًا لمساعدتك في إبقاء FlareGPT مستقلاً. كل مساهمة، كبيرة كانت أم صغيرة، تُحدث فرقًا حقيقيًا."
     }
   }
 }

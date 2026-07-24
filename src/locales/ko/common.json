@@ -97,10 +97,15 @@
   "navbar": {
     "askFlareGPT": "FlareGPT에 질문하기",
     "mainnetStatus": "Flare 메인넷",
-    "dropdownTitle": "활성 타겟 보기",
-    "noTrackedNodes": "추적된 노드가 없습니다.",
-    "noWallet": "지갑 없음",
-    "configureInSettings": "설정에서 구성"
+    "connectWallet": "지갑 연결",
+    "primaryWalletSection": "기본 지갑",
+    "badgePrimary": "기본",
+    "badgeWatchlist": "워치리스트",
+    "disconnectWallet": "지갑 연결 해제",
+    "configureWatchlistWallets": "워치리스트 지갑 설정",
+    "watchlistSection": "워치리스트 ({{current}}/{{max}})",
+    "addressCopied": "주소가 클립보드에 복사되었습니다",
+    "copyFailed": "주소를 복사하지 못했습니다"
   },
   "settings": {
     "cards": {
@@ -447,6 +452,56 @@
       "lockupHours": "{{count}}시간 락업",
       "noLockup": "락업 없음",
       "verdict": "FlareGPT 평가"
+    }
+  },
+  "donate": {
+    "title": "FlareGPT 후원하기",
+    "description": "여러분의 후원은 FlareGPT를 무료로, 독립적으로, 그리고 계속해서 발전하도록 돕습니다.",
+    "hero": {
+      "addressLabel": "지갑 주소",
+      "tapToCopy": "탭하여 복사",
+      "copyAddress": "주소 복사",
+      "copied": "복사됨",
+      "addressCopied": "주소가 클립보드에 복사되었습니다",
+      "copyFailed": "주소를 복사하지 못했습니다",
+      "viewOnExplorer": "{{explorer}}에서 보기",
+      "multisigNote": "다중 서명 지갑으로 보호됨",
+      "qrTitle": "{{symbol}} 후원 지갑 주소 QR 코드"
+    },
+    "warning": {
+      "title": "{{network}} 자산만 가능합니다.",
+      "body": "이 주소로는 {{symbol}} 또는 다른 {{network}} 토큰만 보내주세요. 다른 네트워크에서 보낸 자산은 복구할 수 없습니다."
+    },
+    "amounts": {
+      "title": "추천 금액",
+      "subtitle": "모든 후원이 도움이 됩니다 — 시작하기 좋은 몇 가지 아이디어입니다.",
+      "impactTier1": "하루 치 API 비용",
+      "impactTier2": "일주일 치 호스팅",
+      "impactTier3": "한 달 치 인프라",
+      "impactTier4": "새로운 프로토콜 통합",
+      "copiedToast": "주소가 복사되었습니다. {{amount}} {{symbol}} 후원을 고려해 주셔서 감사합니다."
+    },
+    "funding": {
+      "title": "자금 투명성",
+      "subtitle": "FlareGPT 운영 비용에 대한 투명한 안내입니다 — 압박이 아닌 투명성을 위한 것입니다.",
+      "monthlyInfrastructure": "월간 인프라",
+      "developmentFund": "개발 기금",
+      "raisedOfGoal": "목표 {{goal}} 중 {{raised}} 모금"
+    },
+    "received": {
+      "title": "받은 후원금",
+      "subtitle": "지원되는 모든 네트워크에서 받은 총 후원금입니다.",
+      "demoData": "데모 데이터"
+    },
+    "support": {
+      "title": "후원금이 사용되는 곳",
+      "infra": "API 및 인프라",
+      "integrations": "새로운 프로토콜 통합",
+      "free": "FlareGPT 무료 유지",
+      "development": "지속적인 개발"
+    },
+    "closing": {
+      "message": "FlareGPT의 독립성을 지켜주셔서 감사합니다. 크든 작든 모든 후원이 진심으로 큰 도움이 됩니다."
     }
   }
 }

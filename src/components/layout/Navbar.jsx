@@ -3,22 +3,32 @@ import { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
+import { toast } from "react-toastify";
 import {
   ChevronDownIcon,
   WalletIcon,
   ChatBubbleLeftRightIcon,
   XMarkIcon,
   CurrencyDollarIcon,
-  PlusIcon,
+  Cog6ToothIcon,
+  ArrowRightOnRectangleIcon,
+  ClipboardIcon,
+  CheckIcon,
 } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useUIStore } from "@/store/useUIStore";
+import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
+
+function shortenAddress(address) {
+  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+}
 
 export default function Navbar({
   flareWidgetOpen,
   setFlareWidgetOpen,
   setSidebarOpen,
+  onOpenWalletModal,
 }) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -30,13 +40,18 @@ export default function Navbar({
   // Controls
   const [walletMenuOpen, setWalletMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // Address currently showing a "Copied" confirmation on its row's copy
+  // icon — a single string rather than per-row booleans, since only one
+  // row can ever be mid-confirmation at a time.
+  const [copiedAddress, setCopiedAddress] = useState(null);
 
   const dropdownRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
   const { address: connectedAddress, isConnected } = useConnection();
+  const disconnectAll = useDisconnectAllWallets();
 
-  const { activeAddress, allWallets, switchActiveAddress } =
+  const { activeAddress, allWallets, switchActiveAddress, maxSlots } =
     useDerivedWalletHub(connectedAddress, isConnected);
 
   useEffect(() => {
@@ -81,9 +96,76 @@ export default function Navbar({
     navigate("/app/settings");
   };
 
+  const handleOpenWalletModal = () => {
+    setWalletMenuOpen(false);
+    setMobileMenuOpen(false);
+    onOpenWalletModal();
+  };
+
+  const handleDisconnect = () => {
+    setWalletMenuOpen(false);
+    setMobileMenuOpen(false);
+    disconnectAll();
+  };
+
+  const handleSwitchActive = (address) => {
+    switchActiveAddress(address);
+    setWalletMenuOpen(false);
+    setMobileMenuOpen(false);
+  };
+
+  const handleCopyAddress = async (event, address) => {
+    // Rows are clickable (switches the active wallet), so the copy icon
+    // inside a row must stop that click from also firing — copying an
+    // address shouldn't as a side effect also switch what's active.
+    event.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(address);
+      setCopiedAddress(address);
+      toast.success(t("navbar.addressCopied", "Address copied to clipboard"));
+      setTimeout(() => setCopiedAddress(null), 2000);
+    } catch {
+      toast.error(t("navbar.copyFailed", "Couldn't copy address"));
+    }
+  };
+
+  // Primary (the connected wallet, if any) and watchlist wallets are
+  // rendered as two distinct sections rather than one flat list, so the
+  // dropdown's shape stays identical whether or not a wallet is connected
+  // — only the Primary slot's content changes.
+  const primaryWallet = allWallets.find((w) => w.type === "connected");
+  const watchlistWallets = allWallets.filter((w) => w.type === "tracked");
   const activeWalletObject = allWallets.find(
     (w) => w.address === activeAddress,
   );
+
+  // The button always reflects whatever is actually driving the
+  // dashboard right now (the active wallet), not just whether a Primary
+  // wallet happens to be connected — a watchlist wallet can be active with
+  // no Primary connected at all, and the button should say so rather than
+  // falling back to a generic "Connect Wallet" that would misrepresent the
+  // dashboard as showing nothing.
+  //
+  // The Primary wallet has no nickname system (deferred — see the Donate
+  // page's precedent of using placeholders rather than half-built
+  // features), so showing a literal "Primary Wallet" label next to a
+  // "Primary" badge said the same thing twice with zero identifying
+  // information. The shortened address fills that slot with something
+  // real instead. Watchlist wallets keep their nickname, since a
+  // user-chosen label there is genuinely distinct from the "Watchlist"
+  // badge (identity vs. access level) and — with up to 5 tracked wallets —
+  // easier to tell apart at a glance than similar-looking hex strings.
+  const buttonLabel = activeWalletObject
+    ? activeWalletObject.type === "connected"
+      ? shortenAddress(activeWalletObject.address)
+      : activeWalletObject.label
+    : t("navbar.connectWallet", "Connect Wallet");
+
+  const buttonBadge = activeWalletObject
+    ? activeWalletObject.type === "connected"
+      ? { text: t("navbar.badgePrimary", "Primary"), tone: "primary" }
+      : { text: t("navbar.badgeWatchlist", "Watchlist"), tone: "watchlist" }
+    : null;
 
   return (
     <>
@@ -158,13 +240,9 @@ export default function Navbar({
               <button
                 type="button"
                 onClick={() => setWalletMenuOpen(!walletMenuOpen)}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg cursor-pointer transition-all border dark:border-none text-[10px] lg:text-[10.5px] ${
-                  activeWalletObject?.type === "connected"
-                    ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                    : activeWalletObject?.type === "tracked"
-                      ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                      : "bg-slate-100 dark:bg-[#1B1B1F] text-slate-500 dark:text-zinc-400"
-                }`}
+                aria-haspopup="true"
+                aria-expanded={walletMenuOpen}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg cursor-pointer transition-all border dark:border-none text-[10px] lg:text-[10.5px] bg-slate-100 dark:bg-[#1B1B1F] text-slate-600 dark:text-zinc-300"
               >
                 <span
                   className={`h-1.5 w-1.5 rounded-full shrink-0 ${
@@ -175,11 +253,10 @@ export default function Navbar({
                         : "bg-slate-400 dark:bg-zinc-600"
                   }`}
                 />
-                <span className="font-mono tracking-wide">
-                  {activeAddress
-                    ? `${activeAddress.slice(0, 4)}...${activeAddress.slice(-4)}`
-                    : t("navbar.noWallet", "No Wallet")}
-                </span>
+                <span className="max-w-[92px] truncate">{buttonLabel}</span>
+                {buttonBadge && (
+                  <WalletBadge tone={buttonBadge.tone} text={buttonBadge.text} />
+                )}
                 <ChevronDownIcon
                   className={`h-2.5 w-2.5 opacity-60 transition-transform duration-200 ${walletMenuOpen ? "rotate-180" : ""}`}
                 />
@@ -187,68 +264,75 @@ export default function Navbar({
 
               {/* Desktop Dropdown Panel Card */}
               <div
-                className={`absolute right-0 mt-2 w-56 origin-top-right rounded-xl bg-[#FFFFFF] border border-[#E5E7EB] p-2 shadow-xl dark:bg-[#21242B] dark:border-none z-50 space-y-1 transition-all duration-200 ${
+                className={`absolute right-0 mt-2 w-64 origin-top-right rounded-xl bg-[#FFFFFF] border border-[#E5E7EB] p-2 shadow-xl dark:bg-[#21242B] dark:border-none z-50 space-y-1 transition-all duration-200 ${
                   walletMenuOpen
                     ? "opacity-100 scale-100 translate-y-0"
                     : "opacity-0 scale-95 -translate-y-1 pointer-events-none"
                 }`}
               >
-                <div className="px-1.5 py-1 border-b border-line mb-1 flex items-center justify-between gap-2">
-                  <p className="text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
-                    {t("navbar.dropdownTitle", "Active Target View")}
-                  </p>
-                  <div className="text-[8px] font-black text-slate-400 dark:text-[#6D7A86] tracking-wider uppercase whitespace-nowrap">
-                    {t("navbar.mainnetStatus")}
-                  </div>
-                </div>
+                <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
+                  {t("navbar.primaryWalletSection")}
+                </p>
 
-                {/* Wallets Conditional View List */}
-                {allWallets.length === 0 ? (
-                  <div className="p-3 text-center space-y-2">
-                    <p className="text-slate-400 dark:text-[#6D7A86] text-[9.5px] leading-relaxed">
-                      {t("navbar.noTrackedNodes", "No tracked nodes.")}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={handleConfigureWalletsRedirect}
-                      className="w-full flex items-center justify-center gap-1 py-1.5 rounded-lg bg-brand hover:bg-brand-hover text-white text-[9.5px] font-semibold transition-colors cursor-pointer"
-                    >
-                      <PlusIcon className="h-3 w-3" />
-                      {t("navbar.configureInSettings")}
-                    </button>
-                  </div>
+                {primaryWallet ? (
+                  <WalletRow
+                    wallet={primaryWallet}
+                    isActive={activeAddress === primaryWallet.address}
+                    copiedAddress={copiedAddress}
+                    onSelect={() => handleSwitchActive(primaryWallet.address)}
+                    onCopy={handleCopyAddress}
+                  />
                 ) : (
-                  <div className="max-h-48 overflow-y-auto space-y-0.5 scrollbar-none">
-                    {allWallets.map((wallet) => (
-                      <button
-                        key={wallet.address}
-                        type="button"
-                        onClick={() => {
-                          switchActiveAddress(wallet.address);
-                          setWalletMenuOpen(false);
-                        }}
-                        className={`w-full text-left flex items-center justify-between p-2 rounded-lg transition-colors cursor-pointer text-[10px] ${
-                          activeAddress === wallet.address
-                            ? "bg-brand/10 text-brand font-bold"
-                            : "hover:bg-slate-50 dark:hover:bg-[#1B1B1F] text-ink-secondary"
-                        }`}
-                      >
-                        <div className="min-w-0 flex items-center gap-2">
-                          <WalletIcon className="h-3 w-3 opacity-60" />
-                          <div className="min-w-0 truncate">
-                            <p className="font-semibold truncate leading-tight">
-                              {wallet.label}
-                            </p>
-                            <p className="font-mono text-[9px] opacity-70 truncate mt-0.5">
-                              {wallet.address}
-                            </p>
-                          </div>
-                        </div>
-                        <span
-                          className={`h-1.5 w-1.5 rounded-full shrink-0 ml-1.5 ${wallet.type === "connected" ? "bg-emerald-500" : "bg-amber-400"}`}
+                  <button
+                    type="button"
+                    onClick={handleOpenWalletModal}
+                    className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg bg-brand hover:bg-brand-hover text-white text-[10.5px] font-semibold transition-colors cursor-pointer"
+                  >
+                    <WalletIcon className="h-3.5 w-3.5" />
+                    {t("navbar.connectWallet")}
+                  </button>
+                )}
+
+                {primaryWallet && (
+                  <button
+                    type="button"
+                    onClick={handleDisconnect}
+                    className="w-full flex items-center gap-2 px-2 py-2 rounded-lg text-[10px] text-ink-secondary hover:bg-slate-50 hover:text-red-500 dark:hover:bg-[#1B1B1F] dark:hover:text-red-400 transition-colors cursor-pointer"
+                  >
+                    <ArrowRightOnRectangleIcon className="h-3.5 w-3.5 opacity-70" />
+                    {t("navbar.disconnectWallet")}
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  onClick={handleConfigureWalletsRedirect}
+                  className="w-full flex items-center gap-2 px-2 py-2 rounded-lg text-[10px] text-ink-secondary hover:bg-slate-50 hover:text-ink-primary dark:hover:bg-[#1B1B1F] dark:hover:text-white transition-colors cursor-pointer border-t border-line mt-1 pt-2"
+                >
+                  <Cog6ToothIcon className="h-3.5 w-3.5 opacity-70" />
+                  {t("navbar.configureWatchlistWallets")}
+                </button>
+
+                {watchlistWallets.length > 0 && (
+                  <div className="border-t border-line mt-1 pt-1.5">
+                    <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
+                      {t("navbar.watchlistSection", {
+                        current: watchlistWallets.length,
+                        max: maxSlots,
+                      })}
+                    </p>
+                    <div className="max-h-40 overflow-y-auto space-y-0.5 scrollbar-none">
+                      {watchlistWallets.map((wallet) => (
+                        <WalletRow
+                          key={wallet.address}
+                          wallet={wallet}
+                          isActive={activeAddress === wallet.address}
+                          copiedAddress={copiedAddress}
+                          onSelect={() => handleSwitchActive(wallet.address)}
+                          onCopy={handleCopyAddress}
                         />
-                      </button>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -315,61 +399,74 @@ export default function Navbar({
             </div>
           </div>
 
-          <div className="space-y-2">
-            <label className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] block px-1">
-              {t("navbar.dropdownTitle", "Active Target View")}
-            </label>
+          <div className="space-y-3">
+            <div className="space-y-1.5">
+              <label className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] block px-1">
+                {t("navbar.primaryWalletSection")}
+              </label>
 
-            {allWallets.length === 0 ? (
-              <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#1B1B1F]/40 text-center border border-dashed border-slate-100 dark:border-none space-y-2.5">
-                <p className="text-slate-400 dark:text-[#6D7A86] text-[10px]">
-                  {t("navbar.noTrackedNodes", "No tracked nodes.")}
-                </p>
+              {primaryWallet ? (
+                <WalletRow
+                  wallet={primaryWallet}
+                  isActive={activeAddress === primaryWallet.address}
+                  copiedAddress={copiedAddress}
+                  onSelect={() => handleSwitchActive(primaryWallet.address)}
+                  onCopy={handleCopyAddress}
+                  variant="mobile"
+                />
+              ) : (
                 <button
                   type="button"
-                  onClick={handleConfigureWalletsRedirect}
-                  className="w-full py-2 rounded-xl bg-brand hover:bg-brand-hover text-white text-[11px] font-semibold transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                  onClick={handleOpenWalletModal}
+                  className="w-full py-2.5 rounded-xl bg-brand hover:bg-brand-hover text-white text-[11px] font-semibold transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                 >
-                  <PlusIcon className="h-3.5 w-3.5" />
-                  {t("navbar.configureInSettings")}
+                  <WalletIcon className="h-3.5 w-3.5" />
+                  {t("navbar.connectWallet")}
                 </button>
-              </div>
-            ) : (
-              <div className="max-h-40 overflow-y-auto space-y-1 pr-1 scrollbar-none">
-                {allWallets.map((wallet) => (
-                  <button
-                    key={wallet.address}
-                    type="button"
-                    onClick={() => {
-                      switchActiveAddress(wallet.address);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`w-full flex items-center justify-between p-2.5 rounded-xl transition-all border dark:border-none text-left ${
-                      activeAddress === wallet.address
-                        ? "bg-brand/10 border-brand/20 text-brand font-bold"
-                        : "bg-slate-50/50 dark:bg-[#21242B] border-transparent text-slate-600 dark:text-[#6D7A86]"
-                    }`}
-                  >
-                    <div className="min-w-0 flex items-center gap-2.5">
-                      <WalletIcon className="h-3.5 w-3.5 opacity-60" />
-                      <div className="min-w-0 truncate">
-                        <p className="text-[11px] font-semibold truncate leading-tight">
-                          {wallet.label}
-                        </p>
-                        <p className="font-mono text-[9px] opacity-60 truncate mt-0.5">
-                          {wallet.address}
-                        </p>
-                      </div>
-                    </div>
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full shrink-0 ml-2 ${
-                      wallet.type === "connected"
-                        ? "bg-emerald-500"
-                        : "bg-amber-400"
-                    }`}
+              )}
+
+              {primaryWallet && (
+                <button
+                  type="button"
+                  onClick={handleDisconnect}
+                  className="w-full flex items-center justify-center gap-1.5 py-2 rounded-xl text-[11px] text-ink-secondary hover:text-red-500 dark:hover:text-red-400 transition-colors cursor-pointer"
+                >
+                  <ArrowRightOnRectangleIcon className="h-3.5 w-3.5 opacity-70" />
+                  {t("navbar.disconnectWallet")}
+                </button>
+              )}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleConfigureWalletsRedirect}
+              className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl border border-slate-100 dark:border-[#2B2F36] text-[11px] text-ink-secondary hover:text-ink-primary transition-colors cursor-pointer"
+            >
+              <Cog6ToothIcon className="h-3.5 w-3.5 opacity-70" />
+              {t("navbar.configureWatchlistWallets")}
+            </button>
+
+            {watchlistWallets.length > 0 && (
+              <div className="space-y-1.5 pt-1 border-t border-slate-100 dark:border-[#2B2F36]">
+                <label className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] block px-1 pt-2">
+                  {t("navbar.watchlistSection", {
+                    current: watchlistWallets.length,
+                    max: maxSlots,
+                  })}
+                </label>
+                <div className="max-h-40 overflow-y-auto space-y-1 pr-1 scrollbar-none">
+                  {watchlistWallets.map((wallet) => (
+                    <WalletRow
+                      key={wallet.address}
+                      wallet={wallet}
+                      isActive={activeAddress === wallet.address}
+                      copiedAddress={copiedAddress}
+                      onSelect={() => handleSwitchActive(wallet.address)}
+                      onCopy={handleCopyAddress}
+                      variant="mobile"
                     />
-                  </button>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -386,5 +483,99 @@ export default function Navbar({
         <ChatBubbleLeftRightIcon className="h-5 w-5" />
       </button>
     </>
+  );
+}
+
+// Small colored text pill communicating a wallet's permanent type (Primary
+// vs Watchlist) — deliberately separate from the active-row highlight
+// below, since a wallet's type never changes but which one is active does.
+// Reused on both the collapsed trigger button and every dropdown row so
+// the same visual language means the same thing everywhere.
+function WalletBadge({ tone, text }) {
+  return (
+    <span
+      className={`shrink-0 rounded px-1 py-0.5 text-[8px] font-bold uppercase tracking-wide ${
+        tone === "primary"
+          ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+          : "bg-amber-500/15 text-amber-600 dark:text-amber-400"
+      }`}
+    >
+      {text}
+    </span>
+  );
+}
+
+// One row in the desktop dropdown — used for both the Primary wallet slot
+// and every Watchlist row. Neither carries a per-row type badge: each row
+// already lives inside a section explicitly labeled "Primary Wallet" or
+// "Watchlist", so a badge here would just repeat the section header
+// (that redundancy is exactly what prompted showing an address instead of
+// the word "Primary" below). The collapsed trigger button is the one
+// place a badge earns its keep, since it has no section header for
+// context. `isActive` drives the highlight independent of the row's
+// title, so switching to a watchlist wallet never looks like anything
+// else changed about it.
+//
+// The Primary row shows a shortened address as its title rather than
+// `wallet.label` (always the hardcoded "Primary Wallet" string today,
+// since there's no nickname system for the connected wallet) — same
+// reasoning as the collapsed button. Watchlist rows keep their nickname.
+function WalletRow({ wallet, isActive, copiedAddress, onSelect, onCopy, variant = "desktop" }) {
+  const justCopied = copiedAddress === wallet.address;
+  const isMobile = variant === "mobile";
+  const displayName =
+    wallet.type === "connected" ? shortenAddress(wallet.address) : wallet.label;
+
+  // A <div role="button"> rather than a real <button> — it contains its
+  // own nested copy <button>, and a <button> can never legally contain
+  // another <button> (nested interactive elements are invalid HTML and
+  // browsers handle the resulting DOM inconsistently). Same reasoning as
+  // the address block in Donate's HeroReceiveCard.
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={onSelect}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect();
+        }
+      }}
+      className={`w-full text-left flex items-center justify-between gap-2 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
+        isMobile
+          ? "p-2.5 rounded-xl border dark:border-none text-[11px]"
+          : "p-2 rounded-lg text-[10px]"
+      } ${
+        isActive
+          ? isMobile
+            ? "bg-brand/10 border-brand/20 text-brand font-bold"
+            : "bg-brand/10 text-brand font-bold"
+          : isMobile
+            ? "bg-slate-50/50 dark:bg-[#21242B] border-transparent text-slate-600 dark:text-[#6D7A86]"
+            : "hover:bg-slate-50 dark:hover:bg-[#1B1B1F] text-ink-secondary"
+      }`}
+    >
+      <div className={`min-w-0 flex items-center ${isMobile ? "gap-2.5" : "gap-2"}`}>
+        <WalletIcon className={`opacity-60 shrink-0 ${isMobile ? "h-3.5 w-3.5" : "h-3 w-3"}`} />
+        <div className="min-w-0 truncate">
+          <p className="font-semibold truncate leading-tight">{displayName}</p>
+          <p className="font-mono text-[9px] opacity-70 truncate mt-0.5">
+            {wallet.address}
+          </p>
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={(e) => onCopy(e, wallet.address)}
+        className="shrink-0 p-1 rounded-md text-current opacity-60 hover:opacity-100 hover:bg-black/5 dark:hover:bg-white/10 transition-all cursor-pointer"
+      >
+        {justCopied ? (
+          <CheckIcon className="h-3 w-3 text-emerald-500" />
+        ) : (
+          <ClipboardIcon className="h-3 w-3" />
+        )}
+      </button>
+    </div>
   );
 }

@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import FlareWidget from "@/components/common/FlareWidget";
+import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import { useAuthSync } from "@/hooks/useAuthSync";
 
 // GlobalSpinner is h-screen, which is correct for AppRoutes' top-level
@@ -26,17 +27,27 @@ export default function DashboardLayout() {
 
   const [flareWidgetOpen, setFlareWidgetOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  // Lifted here (rather than owned by Sidebar alone) so both Sidebar's
+  // footer control and Navbar's wallet dropdown can open the same single
+  // modal instance instead of each mounting its own.
+  const [walletModalOpen, setWalletModalOpen] = useState(false);
+  const openWalletModal = () => setWalletModalOpen(true);
 
   return (
     <div className="h-dvh overflow-hidden bg-[#F0F4F9] dark:bg-[#101115]">
       <div className="relative flex h-full mx-auto max-w-[1440px] transform-gpu">
-        <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
+        <Sidebar
+          open={sidebarOpen}
+          setOpen={setSidebarOpen}
+          onOpenWalletModal={openWalletModal}
+        />
 
         <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
           <Navbar
             flareWidgetOpen={flareWidgetOpen}
             setFlareWidgetOpen={setFlareWidgetOpen}
             setSidebarOpen={setSidebarOpen}
+            onOpenWalletModal={openWalletModal}
           />
 
           <main className="flex-1 overflow-y-auto overscroll-contain">
@@ -57,6 +68,11 @@ export default function DashboardLayout() {
           />
         </div>
       </div>
+
+      <ConnectWalletModal
+        isOpen={walletModalOpen}
+        onClose={() => setWalletModalOpen(false)}
+      />
     </div>
   );
 }

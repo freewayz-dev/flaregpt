@@ -97,10 +97,15 @@
   "navbar": {
     "askFlareGPT": "Preguntar a FlareGPT",
     "mainnetStatus": "Red Principal Flare",
-    "dropdownTitle": "Setpoint activo",
-    "noTrackedNodes": "No hay nodos rastreados.",
-    "noWallet": "Sin monedero",
-    "configureInSettings": "Configurar en Ajustes"
+    "connectWallet": "Conectar Billetera",
+    "primaryWalletSection": "Billetera Principal",
+    "badgePrimary": "Principal",
+    "badgeWatchlist": "Watchlist",
+    "disconnectWallet": "Desconectar Billetera",
+    "configureWatchlistWallets": "Configurar Billeteras de Watchlist",
+    "watchlistSection": "Watchlist ({{current}}/{{max}})",
+    "addressCopied": "Dirección copiada al portapapeles",
+    "copyFailed": "No se pudo copiar la dirección"
   },
   "settings": {
     "cards": {
@@ -446,6 +451,56 @@
       "lockupHours": "{{count}}h de bloqueo",
       "noLockup": "Sin bloqueo",
       "verdict": "Veredicto de FlareGPT"
+    }
+  },
+  "donate": {
+    "title": "Apoya a FlareGPT",
+    "description": "Tu apoyo ayuda a mantener FlareGPT gratuito, independiente y en constante mejora.",
+    "hero": {
+      "addressLabel": "Dirección de la Wallet",
+      "tapToCopy": "Toca para copiar",
+      "copyAddress": "Copiar Dirección",
+      "copied": "Copiado",
+      "addressCopied": "Dirección copiada al portapapeles",
+      "copyFailed": "No se pudo copiar la dirección",
+      "viewOnExplorer": "Ver en {{explorer}}",
+      "multisigNote": "Protegida por una wallet multifirma",
+      "qrTitle": "Código QR de la dirección de la wallet de donaciones en {{symbol}}"
+    },
+    "warning": {
+      "title": "Solo activos de {{network}}.",
+      "body": "Envía únicamente {{symbol}} u otros tokens de {{network}} a esta dirección. Los activos enviados desde otras redes no se pueden recuperar."
+    },
+    "amounts": {
+      "title": "Montos Sugeridos",
+      "subtitle": "Cada contribución ayuda — aquí tienes algunas ideas para empezar.",
+      "impactTier1": "Un día de costos de API",
+      "impactTier2": "Una semana de hosting",
+      "impactTier3": "Un mes de infraestructura",
+      "impactTier4": "Nuevas integraciones de protocolos",
+      "copiedToast": "Dirección copiada. Gracias por considerar una donación de {{amount}} {{symbol}}."
+    },
+    "funding": {
+      "title": "Transparencia de Financiamiento",
+      "subtitle": "Una mirada abierta a lo que cuesta mantener FlareGPT en funcionamiento — sin presión, solo transparencia.",
+      "monthlyInfrastructure": "Infraestructura Mensual",
+      "developmentFund": "Fondo de Desarrollo",
+      "raisedOfGoal": "{{raised}} recaudados de la meta de {{goal}}"
+    },
+    "received": {
+      "title": "Donaciones Recibidas",
+      "subtitle": "Contribuciones totales recibidas en cada red compatible.",
+      "demoData": "Datos de demostración"
+    },
+    "support": {
+      "title": "En Qué se Invierte tu Apoyo",
+      "infra": "API e Infraestructura",
+      "integrations": "Nuevas Integraciones de Protocolos",
+      "free": "Mantener FlareGPT Gratuito",
+      "development": "Desarrollo Continuo"
+    },
+    "closing": {
+      "message": "Gracias por ayudar a mantener FlareGPT independiente. Cada contribución, grande o pequeña, realmente ayuda."
     }
   }
 }

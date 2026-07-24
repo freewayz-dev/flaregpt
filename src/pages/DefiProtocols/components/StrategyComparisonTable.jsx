@@ -7,7 +7,6 @@ import {
   ArrowPathIcon,
   ChevronDownIcon,
   ArrowTrendingUpIcon,
-  SparklesIcon,
 } from "@heroicons/react/24/outline";
 
 import { useCompareStrategies } from "@/hooks/queries/useDefiProtocolsQueries";
@@ -49,8 +48,7 @@ function VerdictCallout({ strategy, t }) {
   return (
     <div className="px-5 py-4 sm:px-8">
       <div className="flex items-center gap-1.5">
-        <SparklesIcon className="h-3.5 w-3.5 shrink-0 text-brand-text" />
-        <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-text">
+        <p className="text-[11px] font-semibold uppercase tracking-wide text-brand">
           {t("defiProtocols.strategies.verdict")}
         </p>
       </div>
@@ -94,14 +92,14 @@ function StrategyMobileCard({ strategyKey, strategy, isBest, isOpen, onToggle, t
         </div>
 
         {isBest && (
-          <span className="inline-flex w-fit shrink-0 items-center gap-1 rounded-md bg-brand/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand-text">
+          <span className="inline-flex w-fit shrink-0 items-center gap-1 rounded-md bg-brand/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand">
             <ArrowTrendingUpIcon className="h-3 w-3" />
             {t("defiProtocols.strategies.highestApr")}
           </span>
         )}
 
         <div className="flex items-center gap-3">
-          <span className="text-lg font-bold tabular-nums text-brand-text">
+          <span className="text-lg font-bold tabular-nums text-brand">
             {aprValue.toFixed(1)}%
           </span>
           <span className="flex items-center gap-1 text-sm font-medium tabular-nums text-emerald-500">
@@ -227,7 +225,7 @@ export default function StrategyComparisonTable() {
             type="button"
             onClick={() => refetch()}
             disabled={isFetching}
-            className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand-text hover:bg-brand/20 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand hover:bg-brand/20 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <ArrowPathIcon
               className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`}
@@ -325,7 +323,7 @@ export default function StrategyComparisonTable() {
                               {strategy.display_name}
                             </span>
                             {isBest && (
-                              <span className="inline-flex shrink-0 items-center gap-1 rounded-md bg-brand/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand-text">
+                              <span className="inline-flex shrink-0 items-center gap-1 rounded-md bg-brand/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand">
                                 <ArrowTrendingUpIcon className="h-3 w-3" />
                                 {t("defiProtocols.strategies.highestApr")}
                               </span>
@@ -334,7 +332,7 @@ export default function StrategyComparisonTable() {
                         </td>
                         <td className="py-3.5">
                           <div className="flex items-center gap-2.5">
-                            <span className="text-sm font-bold tabular-nums text-brand-text">
+                            <span className="text-sm font-bold tabular-nums text-brand">
                               {aprValue.toFixed(1)}%
                             </span>
                             <AprMeter value={aprValue} max={maxApr} />

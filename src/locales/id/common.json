@@ -97,10 +97,15 @@
   "navbar": {
     "askFlareGPT": "Tanya FlareGPT",
     "mainnetStatus": "Mainnet Flare",
-    "dropdownTitle": "Tampilan Target Aktif",
-    "noTrackedNodes": "Tidak ada node yang dilacak.",
-    "noWallet": "Tidak ada Dompet",
-    "configureInSettings": "Konfigurasikan di Pengaturan"
+    "connectWallet": "Hubungkan Dompet",
+    "primaryWalletSection": "Dompet Utama",
+    "badgePrimary": "Utama",
+    "badgeWatchlist": "Watchlist",
+    "disconnectWallet": "Putuskan Dompet",
+    "configureWatchlistWallets": "Atur Dompet Watchlist",
+    "watchlistSection": "Watchlist ({{current}}/{{max}})",
+    "addressCopied": "Alamat disalin ke clipboard",
+    "copyFailed": "Gagal menyalin alamat"
   },
   "settings": {
     "cards": {
@@ -447,6 +452,56 @@
       "lockupHours": "Lock-up {{count}} jam",
       "noLockup": "Tanpa lock-up",
       "verdict": "Penilaian FlareGPT"
+    }
+  },
+  "donate": {
+    "title": "Dukung FlareGPT",
+    "description": "Dukungan Anda membantu menjaga FlareGPT tetap gratis, independen, dan terus berkembang.",
+    "hero": {
+      "addressLabel": "Alamat Wallet",
+      "tapToCopy": "Ketuk untuk menyalin",
+      "copyAddress": "Salin Alamat",
+      "copied": "Tersalin",
+      "addressCopied": "Alamat disalin ke clipboard",
+      "copyFailed": "Gagal menyalin alamat",
+      "viewOnExplorer": "Lihat di {{explorer}}",
+      "multisigNote": "Diamankan oleh wallet multi-tanda tangan",
+      "qrTitle": "Kode QR untuk alamat wallet donasi {{symbol}}"
+    },
+    "warning": {
+      "title": "Hanya aset {{network}}.",
+      "body": "Hanya kirim {{symbol}} atau token {{network}} lainnya ke alamat ini. Aset yang dikirim dari jaringan lain tidak dapat dipulihkan."
+    },
+    "amounts": {
+      "title": "Jumlah yang Disarankan",
+      "subtitle": "Setiap kontribusi membantu — berikut beberapa ide untuk memulai.",
+      "impactTier1": "Biaya API satu hari",
+      "impactTier2": "Hosting satu minggu",
+      "impactTier3": "Infrastruktur satu bulan",
+      "impactTier4": "Integrasi protokol baru",
+      "copiedToast": "Alamat disalin. Terima kasih telah mempertimbangkan donasi {{amount}} {{symbol}}."
+    },
+    "funding": {
+      "title": "Transparansi Pendanaan",
+      "subtitle": "Gambaran terbuka tentang biaya menjalankan FlareGPT — tanpa tekanan, hanya transparansi.",
+      "monthlyInfrastructure": "Infrastruktur Bulanan",
+      "developmentFund": "Dana Pengembangan",
+      "raisedOfGoal": "{{raised}} terkumpul dari target {{goal}}"
+    },
+    "received": {
+      "title": "Donasi Diterima",
+      "subtitle": "Total kontribusi yang diterima di setiap jaringan yang didukung.",
+      "demoData": "Data demo"
+    },
+    "support": {
+      "title": "Yang Didanai oleh Dukungan Anda",
+      "infra": "API & Infrastruktur",
+      "integrations": "Integrasi Protokol Baru",
+      "free": "Menjaga FlareGPT Tetap Gratis",
+      "development": "Pengembangan Berkelanjutan"
+    },
+    "closing": {
+      "message": "Terima kasih telah membantu menjaga FlareGPT tetap independen. Setiap kontribusi, besar atau kecil, sungguh membantu."
     }
   }
 }

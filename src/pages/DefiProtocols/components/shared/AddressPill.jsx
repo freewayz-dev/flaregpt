@@ -34,7 +34,7 @@ export default function AddressPill({ label, address }) {
         type="button"
         onClick={handleCopy}
         title={address}
-        className="flex items-center gap-1.5 rounded-md px-1.5 py-0.5 text-xs font-medium text-ink-primary hover:bg-surface-card-hover hover:text-brand-text transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+        className="flex items-center gap-1.5 rounded-md px-1.5 py-0.5 text-xs font-medium text-ink-primary hover:bg-surface-card-hover hover:text-brand transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
       >
         <span className="font-mono tracking-tight">{truncate(address)}</span>
         {copied ? (

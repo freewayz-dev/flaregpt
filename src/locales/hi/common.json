@@ -97,10 +97,15 @@
   "navbar": {
     "askFlareGPT": "FlareGPT से पूछें",
     "mainnetStatus": "फ्लेयर मेननेट",
-    "dropdownTitle": "सक्रिय लक्ष्य दृश्य",
-    "noTrackedNodes": "कोई ट्रैक नोड्स नहीं।",
-    "noWallet": "कोई वॉलेट नहीं",
-    "configureInSettings": "सेटिंग में कॉन्फ़िगर करें"
+    "connectWallet": "वॉलेट कनेक्ट करें",
+    "primaryWalletSection": "प्राइमरी वॉलेट",
+    "badgePrimary": "प्राइमरी",
+    "badgeWatchlist": "वॉचलिस्ट",
+    "disconnectWallet": "वॉलेट डिस्कनेक्ट करें",
+    "configureWatchlistWallets": "वॉचलिस्ट वॉलेट कॉन्फ़िगर करें",
+    "watchlistSection": "वॉचलिस्ट ({{current}}/{{max}})",
+    "addressCopied": "पता क्लिपबोर्ड पर कॉपी हो गया",
+    "copyFailed": "पता कॉपी नहीं हो सका"
   },
   "settings": {
     "cards": {
@@ -447,6 +452,56 @@
       "lockupHours": "{{count}} घंटे लॉक-अप",
       "noLockup": "कोई लॉक-अप नहीं",
       "verdict": "FlareGPT निर्णय"
+    }
+  },
+  "donate": {
+    "title": "FlareGPT का समर्थन करें",
+    "description": "आपका समर्थन FlareGPT को मुफ़्त, स्वतंत्र और लगातार बेहतर बनाए रखने में मदद करता है।",
+    "hero": {
+      "addressLabel": "वॉलेट पता",
+      "tapToCopy": "कॉपी करने के लिए टैप करें",
+      "copyAddress": "पता कॉपी करें",
+      "copied": "कॉपी हो गया",
+      "addressCopied": "पता क्लिपबोर्ड पर कॉपी हो गया",
+      "copyFailed": "पता कॉपी नहीं हो सका",
+      "viewOnExplorer": "{{explorer}} पर देखें",
+      "multisigNote": "मल्टी-सिग्नेचर वॉलेट द्वारा सुरक्षित",
+      "qrTitle": "{{symbol}} दान वॉलेट पते के लिए QR कोड"
+    },
+    "warning": {
+      "title": "केवल {{network}} एसेट्स।",
+      "body": "इस पते पर केवल {{symbol}} या अन्य {{network}} टोकन भेजें। अन्य नेटवर्क से भेजे गए एसेट्स की भरपाई नहीं हो सकती।"
+    },
+    "amounts": {
+      "title": "सुझाई गई राशियाँ",
+      "subtitle": "हर योगदान मायने रखता है — शुरुआत के लिए कुछ सुझाव।",
+      "impactTier1": "एक दिन की API लागत",
+      "impactTier2": "एक सप्ताह की होस्टिंग",
+      "impactTier3": "एक महीने का इंफ्रास्ट्रक्चर",
+      "impactTier4": "नए प्रोटोकॉल इंटीग्रेशन",
+      "copiedToast": "पता कॉपी हो गया। {{amount}} {{symbol}} दान पर विचार करने के लिए धन्यवाद।"
+    },
+    "funding": {
+      "title": "फंडिंग पारदर्शिता",
+      "subtitle": "FlareGPT को चलाने में लगने वाली लागत की एक खुली झलक — कोई दबाव नहीं, केवल पारदर्शिता।",
+      "monthlyInfrastructure": "मासिक इंफ्रास्ट्रक्चर",
+      "developmentFund": "विकास कोष",
+      "raisedOfGoal": "{{goal}} लक्ष्य में से {{raised}} जुटाए गए"
+    },
+    "received": {
+      "title": "प्राप्त दान",
+      "subtitle": "हर समर्थित नेटवर्क पर प्राप्त कुल योगदान।",
+      "demoData": "डेमो डेटा"
+    },
+    "support": {
+      "title": "आपका समर्थन किसके लिए उपयोग होता है",
+      "infra": "API और इंफ्रास्ट्रक्चर",
+      "integrations": "नए प्रोटोकॉल इंटीग्रेशन",
+      "free": "FlareGPT को मुफ़्त रखना",
+      "development": "निरंतर विकास"
+    },
+    "closing": {
+      "message": "FlareGPT को स्वतंत्र बनाए रखने में मदद करने के लिए धन्यवाद। हर योगदान, छोटा हो या बड़ा, वाकई मददगार है।"
     }
   }
 }

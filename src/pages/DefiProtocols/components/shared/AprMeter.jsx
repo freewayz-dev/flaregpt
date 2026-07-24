@@ -8,7 +8,7 @@ export default function AprMeter({ value, max }) {
   return (
     <div className="h-1.5 w-14 shrink-0 rounded-full bg-surface-inset overflow-hidden">
       <div
-        className="h-full rounded-full bg-brand"
+        className="h-full rounded-full bg-gradient-to-r from-brand to-brand-hover"
         style={{ width: `${pct}%` }}
       />
     </div>

@@ -97,10 +97,15 @@
   "navbar": {
     "askFlareGPT": "Hỏi FlareGPT",
     "mainnetStatus": "Mạng chính Flare",
-    "dropdownTitle": "Chế độ xem mục tiêu đang hoạt động",
-    "noTrackedNodes": "Không có nút được theo dõi.",
-    "noWallet": "Không có ví",
-    "configureInSettings": "Cài đặt nó trong Cài đặt."
+    "connectWallet": "Kết nối Ví",
+    "primaryWalletSection": "Ví Chính",
+    "badgePrimary": "Chính",
+    "badgeWatchlist": "Danh sách theo dõi",
+    "disconnectWallet": "Ngắt kết nối Ví",
+    "configureWatchlistWallets": "Cấu hình Ví trong Danh sách theo dõi",
+    "watchlistSection": "Danh sách theo dõi ({{current}}/{{max}})",
+    "addressCopied": "Đã sao chép địa chỉ vào clipboard",
+    "copyFailed": "Không thể sao chép địa chỉ"
   },
   "settings": {
     "cards": {
@@ -447,6 +452,56 @@
       "lockupHours": "Khóa {{count}} giờ",
       "noLockup": "Không khóa",
       "verdict": "Nhận định của FlareGPT"
+    }
+  },
+  "donate": {
+    "title": "Ủng hộ FlareGPT",
+    "description": "Sự ủng hộ của bạn giúp FlareGPT luôn miễn phí, độc lập và không ngừng cải tiến.",
+    "hero": {
+      "addressLabel": "Địa chỉ Ví",
+      "tapToCopy": "Chạm để sao chép",
+      "copyAddress": "Sao chép Địa chỉ",
+      "copied": "Đã sao chép",
+      "addressCopied": "Đã sao chép địa chỉ vào clipboard",
+      "copyFailed": "Không thể sao chép địa chỉ",
+      "viewOnExplorer": "Xem trên {{explorer}}",
+      "multisigNote": "Được bảo vệ bởi ví đa chữ ký",
+      "qrTitle": "Mã QR cho địa chỉ ví quyên góp {{symbol}}"
+    },
+    "warning": {
+      "title": "Chỉ tài sản {{network}}.",
+      "body": "Chỉ gửi {{symbol}} hoặc các token {{network}} khác đến địa chỉ này. Tài sản gửi từ các mạng khác không thể khôi phục."
+    },
+    "amounts": {
+      "title": "Số Tiền Đề Xuất",
+      "subtitle": "Mọi đóng góp đều có ý nghĩa — đây là một vài gợi ý để bắt đầu.",
+      "impactTier1": "Một ngày chi phí API",
+      "impactTier2": "Một tuần lưu trữ",
+      "impactTier3": "Một tháng hạ tầng",
+      "impactTier4": "Tích hợp giao thức mới",
+      "copiedToast": "Đã sao chép địa chỉ. Cảm ơn bạn đã cân nhắc quyên góp {{amount}} {{symbol}}."
+    },
+    "funding": {
+      "title": "Minh Bạch Quỹ",
+      "subtitle": "Một cái nhìn minh bạch về chi phí vận hành FlareGPT — không áp lực, chỉ là sự minh bạch.",
+      "monthlyInfrastructure": "Hạ Tầng Hàng Tháng",
+      "developmentFund": "Quỹ Phát Triển",
+      "raisedOfGoal": "Đã quyên góp {{raised}} trên mục tiêu {{goal}}"
+    },
+    "received": {
+      "title": "Quyên Góp Đã Nhận",
+      "subtitle": "Tổng đóng góp đã nhận trên mỗi mạng được hỗ trợ.",
+      "demoData": "Dữ liệu demo"
+    },
+    "support": {
+      "title": "Khoản Ủng Hộ Của Bạn Được Dùng Để",
+      "infra": "API & Hạ tầng",
+      "integrations": "Tích hợp Giao thức Mới",
+      "free": "Giữ FlareGPT Miễn phí",
+      "development": "Phát triển Liên tục"
+    },
+    "closing": {
+      "message": "Cảm ơn bạn đã giúp FlareGPT giữ được sự độc lập. Mọi đóng góp, dù lớn hay nhỏ, đều thực sự hữu ích."
     }
   }
 }

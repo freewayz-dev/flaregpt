@@ -19,7 +19,7 @@ export default function StatCard({
         <p className="text-xs text-ink-secondary truncate">{title}</p>
         {Icon && (
           <Icon
-            className={`h-3.5 w-3.5 shrink-0 ${emphasis ? "text-brand-text" : "text-ink-muted"}`}
+            className={`h-3.5 w-3.5 shrink-0 ${emphasis ? "text-brand" : "text-ink-muted"}`}
           />
         )}
       </div>
@@ -30,7 +30,7 @@ export default function StatCard({
           bug a size-based emphasis caused before. */}
       <h3
         className={`mt-1.5 text-xl font-bold truncate ${
-          emphasis ? "text-brand-text" : "text-ink-primary"
+          emphasis ? "text-brand" : "text-ink-primary"
         }`}
       >
         {value}

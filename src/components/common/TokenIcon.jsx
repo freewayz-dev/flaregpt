@@ -1,5 +1,8 @@
 import flrUrl from "@/assets/tokens/flr.svg?url";
 import xrpUrl from "@/assets/tokens/xrp.svg?url";
+import sgbUrl from "@/assets/tokens/sgb.svg?url";
+import btcUrl from "@/assets/tokens/btc.svg?url";
+import dogeUrl from "@/assets/tokens/doge.svg?url";
 import sceptreUrl from "@/assets/protocols/sceptre.svg?url";
 import firelightUrl from "@/assets/protocols/firelight.png";
 import mxrpyUrl from "@/assets/protocols/mxrpy.svg?url";
@@ -14,6 +17,9 @@ const TOKEN_ICONS = {
   WFLR: flrUrl,
   XRP: xrpUrl,
   FXRP: xrpUrl,
+  SGB: sgbUrl,
+  BTC: btcUrl,
+  DOGE: dogeUrl,
   SFLR: sceptreUrl,
   STXRP: firelightUrl,
   MXRPY: mxrpyUrl,
