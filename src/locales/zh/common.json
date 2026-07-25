@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "管理关注列表钱包",
     "watchlistSection": "关注列表 ({{current}}/{{max}})",
     "addressCopied": "地址已复制到剪贴板",
-    "copyFailed": "无法复制地址"
+    "copyFailed": "无法复制地址",
+    "flareGptFabHint": "FlareGPT 现在从这里打开"
   },
   "settings": {
     "cards": {

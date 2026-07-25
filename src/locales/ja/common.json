@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "ウォッチリストウォレットを設定",
     "watchlistSection": "ウォッチリスト ({{current}}/{{max}})",
     "addressCopied": "アドレスをクリップボードにコピーしました",
-    "copyFailed": "アドレスをコピーできませんでした"
+    "copyFailed": "アドレスをコピーできませんでした",
+    "flareGptFabHint": "FlareGPTはここから開くようになりました"
   },
   "settings": {
     "cards": {

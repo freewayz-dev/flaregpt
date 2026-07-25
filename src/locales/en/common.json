@@ -372,7 +372,8 @@
     "configureWatchlistWallets": "Configure Watchlist Wallets",
     "watchlistSection": "Watchlist ({{current}}/{{max}})",
     "addressCopied": "Address copied to clipboard",
-    "copyFailed": "Couldn't copy address"
+    "copyFailed": "Couldn't copy address",
+    "flareGptFabHint": "FlareGPT now opens from here"
   },
   "settings": {
     "cards": {

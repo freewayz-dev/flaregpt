@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "Configurar Billeteras de Watchlist",
     "watchlistSection": "Watchlist ({{current}}/{{max}})",
     "addressCopied": "Dirección copiada al portapapeles",
-    "copyFailed": "No se pudo copiar la dirección"
+    "copyFailed": "No se pudo copiar la dirección",
+    "flareGptFabHint": "FlareGPT ahora se abre desde aquí"
   },
   "settings": {
     "cards": {

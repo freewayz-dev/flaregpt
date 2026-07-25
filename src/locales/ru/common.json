@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "Настроить кошельки списка отслеживания",
     "watchlistSection": "Список отслеживания ({{current}}/{{max}})",
     "addressCopied": "Адрес скопирован в буфер обмена",
-    "copyFailed": "Не удалось скопировать адрес"
+    "copyFailed": "Не удалось скопировать адрес",
+    "flareGptFabHint": "FlareGPT теперь открывается отсюда"
   },
   "settings": {
     "cards": {

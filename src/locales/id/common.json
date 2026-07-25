@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "Atur Dompet Watchlist",
     "watchlistSection": "Watchlist ({{current}}/{{max}})",
     "addressCopied": "Alamat disalin ke clipboard",
-    "copyFailed": "Gagal menyalin alamat"
+    "copyFailed": "Gagal menyalin alamat",
+    "flareGptFabHint": "FlareGPT sekarang dibuka dari sini"
   },
   "settings": {
     "cards": {

@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "워치리스트 지갑 설정",
     "watchlistSection": "워치리스트 ({{current}}/{{max}})",
     "addressCopied": "주소가 클립보드에 복사되었습니다",
-    "copyFailed": "주소를 복사하지 못했습니다"
+    "copyFailed": "주소를 복사하지 못했습니다",
+    "flareGptFabHint": "이제 여기서 FlareGPT를 열 수 있어요"
   },
   "settings": {
     "cards": {

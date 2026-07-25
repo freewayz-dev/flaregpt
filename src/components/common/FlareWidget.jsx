@@ -47,8 +47,13 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
     : "sm:w-[400px]";
 
   const handleOpenFullPage = () => {
-    onClose();
-    navigate("/app/flare-gpt");
+    // `skipBack` + `replace` rather than the normal close-then-push: on
+    // mobile the widget may own a dummy history entry for back-button
+    // safety (see DashboardLayout), and racing an async `history.back()`
+    // against this navigation could pop the wrong entry. Replacing the
+    // current entry with the real route absorbs the dummy cleanly instead.
+    onClose({ skipBack: true });
+    navigate("/app/flare-gpt", { replace: true });
   };
 
   return (
@@ -108,7 +113,7 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
 
           <button
             type="button"
-            onClick={onClose}
+            onClick={() => onClose()}
             className="rounded-lg p-1 transition-colors hover:bg-surface-subtle cursor-pointer"
             title={t("flareWidget.close")}
           >

@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "Watchlist-Wallets verwalten",
     "watchlistSection": "Watchlist ({{current}}/{{max}})",
     "addressCopied": "Adresse in die Zwischenablage kopiert",
-    "copyFailed": "Adresse konnte nicht kopiert werden"
+    "copyFailed": "Adresse konnte nicht kopiert werden",
+    "flareGptFabHint": "FlareGPT wird jetzt von hier geöffnet"
   },
   "settings": {
     "cards": {

@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "वॉचलिस्ट वॉलेट कॉन्फ़िगर करें",
     "watchlistSection": "वॉचलिस्ट ({{current}}/{{max}})",
     "addressCopied": "पता क्लिपबोर्ड पर कॉपी हो गया",
-    "copyFailed": "पता कॉपी नहीं हो सका"
+    "copyFailed": "पता कॉपी नहीं हो सका",
+    "flareGptFabHint": "FlareGPT अब यहां से खुलता है"
   },
   "settings": {
     "cards": {

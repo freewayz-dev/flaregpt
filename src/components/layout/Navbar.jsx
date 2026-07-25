@@ -16,14 +16,16 @@ import {
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useUIStore } from "@/store/useUIStore";
+import { useFlareGptStore } from "@/store/useFlareGptStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 import { shortenAddress } from "@/utils/address";
 import WalletBadge from "@/components/common/WalletBadge";
 import WalletRow from "@/components/common/WalletRow";
 
+const FAB_HINT_SEEN_KEY = "flrgpt_fab_hint_seen";
+
 export default function Navbar({
-  flareWidgetOpen,
-  setFlareWidgetOpen,
+  onToggleFlareWidget,
   setSidebarOpen,
   onOpenWalletModal,
   hideAskFlareGpt = false,
@@ -42,6 +44,33 @@ export default function Navbar({
   // icon — a single string rather than per-row booleans, since only one
   // row can ever be mid-confirmation at a time.
   const [copiedAddress, setCopiedAddress] = useState(null);
+
+  // The FlareGPT sidebar link is now desktop-only (see Sidebar.jsx) — the
+  // one person who might go looking for it in the old spot is someone who
+  // already has a conversation in this browser, i.e. a returning user, not
+  // a first-time visitor. This nudge targets exactly that person, once,
+  // then never again (persisted in localStorage, not this component's
+  // state, so it survives reloads).
+  const hasFlareGptHistory = useFlareGptStore((s) => s.conversations.length > 0);
+  const [showFabHint, setShowFabHint] = useState(false);
+
+  useEffect(() => {
+    if (hasFlareGptHistory && !localStorage.getItem(FAB_HINT_SEEN_KEY)) {
+      setShowFabHint(true);
+    }
+  }, [hasFlareGptHistory]);
+
+  const dismissFabHint = () => {
+    localStorage.setItem(FAB_HINT_SEEN_KEY, "1");
+    setShowFabHint(false);
+  };
+
+  useEffect(() => {
+    if (!showFabHint) return;
+    const timer = setTimeout(dismissFabHint, 6000);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showFabHint]);
 
   const dropdownRef = useRef(null);
   const mobileMenuRef = useRef(null);
@@ -228,7 +257,7 @@ export default function Navbar({
             {!hideAskFlareGpt && (
               <button
                 type="button"
-                onClick={() => setFlareWidgetOpen(!flareWidgetOpen)}
+                onClick={onToggleFlareWidget}
                 className="px-2.5 py-1.5 rounded-lg border border-brand/30 bg-brand/10 text-brand text-[10px] lg:text-[10.5px] font-semibold hover:bg-brand hover:text-white transition-all shadow-sm cursor-pointer"
               >
                 {t("navbar.askFlareGPT")}
@@ -475,14 +504,29 @@ export default function Navbar({
 
       {/* MOBILE FLOATING ACTION BUTTON (FAB) */}
       {!hideAskFlareGpt && (
-        <button
-          type="button"
-          onClick={() => setFlareWidgetOpen(!flareWidgetOpen)}
-          className="lg:hidden fixed bottom-10 right-5 z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-brand to-brand-hover text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
-          aria-label={t("navbar.askFlareGPT")}
-        >
-          <SparklesIcon className="h-5 w-5" />
-        </button>
+        <>
+          {showFabHint && (
+            <div
+              role="status"
+              onClick={dismissFabHint}
+              className="lg:hidden fixed bottom-[104px] right-5 z-30 max-w-[190px] rounded-xl bg-ink-primary px-3 py-2 text-[11px] font-medium leading-snug text-white shadow-xl cursor-pointer"
+            >
+              {t("navbar.flareGptFabHint")}
+              <span className="absolute -bottom-1 right-6 h-2.5 w-2.5 rotate-45 bg-ink-primary" />
+            </div>
+          )}
+          <button
+            type="button"
+            onClick={() => {
+              dismissFabHint();
+              onToggleFlareWidget();
+            }}
+            className="lg:hidden fixed bottom-10 right-5 z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-brand to-brand-hover text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
+            aria-label={t("navbar.askFlareGPT")}
+          >
+            <SparklesIcon className="h-5 w-5" />
+          </button>
+        </>
       )}
     </>
   );

@@ -43,10 +43,16 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
+    if (e.key !== "Enter" || e.shiftKey) return;
+    // A mobile soft keyboard's Enter/Return key is a natural newline key —
+    // hijacking it to send would make longer prompts impossible to write
+    // without accidentally submitting mid-thought. Desktop keeps the
+    // standard chat-app convention (Enter sends, Shift+Enter for a
+    // newline); only touch devices get newline-always, send-button-only.
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    if (isTouchDevice) return;
+    e.preventDefault();
+    handleSend();
   };
 
   return (

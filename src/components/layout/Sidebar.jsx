@@ -49,6 +49,13 @@ const links = [
     path: "/app/flare-gpt",
     icon: SparklesIcon,
     prefetch: prefetchFlareGPT,
+    // The mobile FAB (see Navbar.jsx) is a full parity entry point to the
+    // exact same experience — on mobile the widget renders full-screen,
+    // identical to this page, so a second nav row to it is pure
+    // redundancy there. Desktop's widget stays a compact floating panel
+    // (a genuinely different shape than the full page), so both entry
+    // points earn their place there.
+    hideOnMobile: true,
   },
   {
     translationKey: "walletActivity",
@@ -208,7 +215,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
                 onFocus={link.prefetch}
                 onClick={() => setOpen(false)}
                 className={`
-                  flex items-center rounded-xl py-3 text-xs font-medium transition-colors duration-150
+                  ${link.hideOnMobile ? "hidden lg:flex" : "flex"} items-center rounded-xl py-3 text-xs font-medium transition-colors duration-150
                   px-3 gap-3 ${collapsed ? "lg:justify-center lg:px-2 lg:gap-0" : ""}
                   ${
                     active

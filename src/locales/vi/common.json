@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "Cấu hình Ví trong Danh sách theo dõi",
     "watchlistSection": "Danh sách theo dõi ({{current}}/{{max}})",
     "addressCopied": "Đã sao chép địa chỉ vào clipboard",
-    "copyFailed": "Không thể sao chép địa chỉ"
+    "copyFailed": "Không thể sao chép địa chỉ",
+    "flareGptFabHint": "FlareGPT giờ đây mở từ đây"
   },
   "settings": {
     "cards": {

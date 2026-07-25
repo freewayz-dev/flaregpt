@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "İzleme Listesi Cüzdanlarını Yapılandır",
     "watchlistSection": "İzleme Listesi ({{current}}/{{max}})",
     "addressCopied": "Adres panoya kopyalandı",
-    "copyFailed": "Adres kopyalanamadı"
+    "copyFailed": "Adres kopyalanamadı",
+    "flareGptFabHint": "FlareGPT artık buradan açılıyor"
   },
   "settings": {
     "cards": {

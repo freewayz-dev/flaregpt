@@ -1,5 +1,5 @@
-import { Outlet, useLocation } from "react-router-dom";
-import { Suspense, useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Suspense, useEffect, useRef, useState } from "react";
 
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
@@ -26,6 +26,7 @@ export default function DashboardLayout() {
   useAuthSync();
 
   const location = useLocation();
+  const navigate = useNavigate();
   // The floating "Ask FlareGPT" entry points exist so the assistant is
   // reachable from any *other* page — tapping "Ask FlareGPT" while
   // already on the dedicated FlareGPT page would be a redundant, slightly
@@ -33,6 +34,75 @@ export default function DashboardLayout() {
   const isFlareGptPage = location.pathname.startsWith("/app/flare-gpt");
 
   const [flareWidgetOpen, setFlareWidgetOpen] = useState(false);
+  // Now that mobile relies on the widget as its *only* entry point (the
+  // sidebar link is hidden below `lg`, see Sidebar.jsx), the widget's
+  // mobile full-screen mode needs to behave like any other full-screen
+  // mobile surface: hardware/gesture back should close it, not navigate
+  // the page underneath it away. Opening it pushes a history entry only
+  // when it's actually rendering full-screen (FlareWidget's own `sm:`
+  // breakpoint, not the wider `lg` used for nav visibility) — a desktop/
+  // tablet floating panel isn't a full-screen takeover and back-button
+  // hijacking isn't the expected behavior for it.
+  const flareWidgetHistoryOwnedRef = useRef(false);
+
+  useEffect(() => {
+    if (!flareWidgetOpen) return;
+    const isFullScreenWidget = window.matchMedia("(max-width: 639px)").matches;
+    if (!isFullScreenWidget) return;
+
+    window.history.pushState({ flareGptWidget: true }, "");
+    flareWidgetHistoryOwnedRef.current = true;
+
+    const handlePopState = () => {
+      flareWidgetHistoryOwnedRef.current = false;
+      setFlareWidgetOpen(false);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [flareWidgetOpen]);
+
+  // `skipBack` lets a caller that's about to navigate elsewhere (opening
+  // the full page from inside the widget) reset the open state without
+  // racing an async `history.back()` against its own navigation — the
+  // real route's `replace` then cleanly absorbs the dummy entry instead.
+  const closeFlareWidget = ({ skipBack = false } = {}) => {
+    if (flareWidgetHistoryOwnedRef.current) {
+      flareWidgetHistoryOwnedRef.current = false;
+      if (skipBack) {
+        setFlareWidgetOpen(false);
+      } else {
+        window.history.back();
+      }
+    } else {
+      setFlareWidgetOpen(false);
+    }
+  };
+
+  const toggleFlareWidget = () => {
+    if (flareWidgetOpen) {
+      closeFlareWidget();
+    } else {
+      setFlareWidgetOpen(true);
+    }
+  };
+
+  // Consumes the signal `/app/flare-gpt` (see Flrgpt/index.jsx) leaves
+  // behind when it redirects a sub-`lg` landing here instead of rendering
+  // the dedicated page — opens the widget once, then strips the param so
+  // a later refresh of the same URL doesn't reopen it every time.
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get("openFlareGpt") !== "1") return;
+    setFlareWidgetOpen(true);
+    params.delete("openFlareGpt");
+    const nextSearch = params.toString();
+    navigate(
+      { pathname: location.pathname, search: nextSearch ? `?${nextSearch}` : "" },
+      { replace: true },
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.search]);
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   // Lifted here (rather than owned by Sidebar alone) so both Sidebar's
   // footer control and Navbar's wallet dropdown can open the same single
@@ -73,8 +143,7 @@ export default function DashboardLayout() {
 
         <div className="flex flex-1 flex-col min-w-0 overflow-hidden">
           <Navbar
-            flareWidgetOpen={flareWidgetOpen}
-            setFlareWidgetOpen={setFlareWidgetOpen}
+            onToggleFlareWidget={toggleFlareWidget}
             setSidebarOpen={setSidebarOpen}
             onOpenWalletModal={openWalletModal}
             hideAskFlareGpt={isFlareGptPage}
@@ -131,7 +200,7 @@ export default function DashboardLayout() {
           {!isFlareGptPage && (
             <FlareWidget
               open={flareWidgetOpen}
-              onClose={() => setFlareWidgetOpen(false)}
+              onClose={closeFlareWidget}
               onOpenWalletModal={openWalletModal}
             />
           )}

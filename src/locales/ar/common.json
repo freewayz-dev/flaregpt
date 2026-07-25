@@ -105,7 +105,8 @@
     "configureWatchlistWallets": "إعداد محافظ قائمة المراقبة",
     "watchlistSection": "قائمة المراقبة ({{current}}/{{max}})",
     "addressCopied": "تم نسخ العنوان إلى الحافظة",
-    "copyFailed": "تعذر نسخ العنوان"
+    "copyFailed": "تعذر نسخ العنوان",
+    "flareGptFabHint": "يفتح FlareGPT الآن من هنا"
   },
   "settings": {
     "cards": {
