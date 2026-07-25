@@ -103,7 +103,12 @@ export default function DashboardLayout() {
               that at the root instead of patching heights further down. */}
           {isFlareGptPage ? (
             <main className="flex-1 overflow-hidden">
-              <div className="h-full flex flex-col md:p-6 p-4">
+              {/* Bottom padding trimmed relative to other pages: Composer
+                  already supplies its own bottom padding (including a
+                  safe-area inset on mobile), so a full, symmetric `p-6`/
+                  `p-4` here would double up and read as an oversized gap
+                  beneath the input. */}
+              <div className="h-full flex flex-col px-4 pt-4 pb-2 md:px-6 md:pt-6 md:pb-3">
                 <Suspense fallback={<RouteLoadingFallback />}>
                   <Outlet context={{ openWalletModal }} />
                 </Suspense>

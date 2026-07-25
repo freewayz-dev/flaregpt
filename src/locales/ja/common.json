@@ -326,14 +326,20 @@
     },
     "actions": {
       "copy": "コピー",
-      "regenerate": "回答を再生成"
+      "regenerate": "回答を再生成",
+      "copied": "メッセージをコピーしました",
+      "copyFailed": "コピーに失敗しました"
     },
     "jumpToLatest": "最新へ移動",
     "history": {
       "title": "履歴",
       "newChat": "新しいチャット",
       "empty": "まだ会話がありません。",
-      "untitled": "新しい会話"
+      "untitled": "新しい会話",
+      "pin": "会話をピン留め",
+      "unpin": "ピン留めを解除",
+      "searchPlaceholder": "会話を検索...",
+      "noResults": "会話が見つかりません"
     }
   },
   "dashboard": {

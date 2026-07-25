@@ -17,6 +17,7 @@ function makeConversation(walletAddress) {
     id: makeId(),
     title: null,
     walletAddress: walletAddress ?? null,
+    isPinned: false,
     createdAt: Date.now(),
     updatedAt: Date.now(),
     messages: [],
@@ -52,6 +53,13 @@ export const useFlareGptStore = create()(
           conversations: state.conversations.filter((c) => c.id !== id),
           activeConversationId:
             state.activeConversationId === id ? null : state.activeConversationId,
+        })),
+
+      togglePinConversation: (id) =>
+        set((state) => ({
+          conversations: state.conversations.map((c) =>
+            c.id === id ? { ...c, isPinned: !c.isPinned } : c,
+          ),
         })),
 
       // Ensures an active conversation exists (creating one scoped to

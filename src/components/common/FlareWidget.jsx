@@ -39,6 +39,7 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
     startNewConversation,
     switchConversation,
     deleteConversation,
+    togglePinConversation,
   } = useFlareGptConversation();
 
   const widthClasses = expanded
@@ -129,6 +130,7 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
         activeConversationId={activeConversation?.id ?? null}
         onSelectConversation={switchConversation}
         onDeleteConversation={deleteConversation}
+        onTogglePinConversation={togglePinConversation}
         onNewChat={startNewConversation}
         compactEmptyState
       />

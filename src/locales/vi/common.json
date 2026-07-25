@@ -326,14 +326,20 @@
     },
     "actions": {
       "copy": "Sao chép",
-      "regenerate": "Tạo lại phản hồi"
+      "regenerate": "Tạo lại phản hồi",
+      "copied": "Đã sao chép tin nhắn",
+      "copyFailed": "Sao chép không thành công"
     },
     "jumpToLatest": "Đến tin mới nhất",
     "history": {
       "title": "Lịch sử",
       "newChat": "Cuộc trò chuyện mới",
       "empty": "Chưa có cuộc trò chuyện nào.",
-      "untitled": "Cuộc trò chuyện mới"
+      "untitled": "Cuộc trò chuyện mới",
+      "pin": "Ghim cuộc trò chuyện",
+      "unpin": "Bỏ ghim",
+      "searchPlaceholder": "Tìm kiếm cuộc trò chuyện...",
+      "noResults": "Không tìm thấy cuộc trò chuyện nào"
     }
   },
   "dashboard": {

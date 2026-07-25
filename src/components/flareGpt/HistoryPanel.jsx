@@ -1,5 +1,13 @@
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { XMarkIcon, TrashIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
+import {
+  XMarkIcon,
+  TrashIcon,
+  ChatBubbleLeftRightIcon,
+  MagnifyingGlassIcon,
+  MapPinIcon as MapPinIconOutline,
+} from "@heroicons/react/24/outline";
+import { MapPinIcon as MapPinIconSolid } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { shortenAddress } from "@/utils/address";
@@ -30,10 +38,28 @@ export default function HistoryPanel({
   activeConversationId,
   onSelect,
   onDelete,
+  onTogglePin,
   onNewChat,
 }) {
   const { t, i18n } = useTranslation();
-  const sorted = [...conversations].sort((a, b) => b.updatedAt - a.updatedAt);
+  const [query, setQuery] = useState("");
+
+  const sorted = useMemo(
+    () =>
+      [...conversations].sort((a, b) => {
+        if (!!a.isPinned !== !!b.isPinned) return a.isPinned ? -1 : 1;
+        return b.updatedAt - a.updatedAt;
+      }),
+    [conversations],
+  );
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return sorted;
+    return sorted.filter((c) =>
+      (c.title || t("flrgpt.history.untitled")).toLowerCase().includes(q),
+    );
+  }, [sorted, query, t]);
 
   return (
     <AnimatePresence>
@@ -56,7 +82,7 @@ export default function HistoryPanel({
             </button>
           </div>
 
-          <div className="p-3 shrink-0">
+          <div className="p-3 pb-0 shrink-0 space-y-2">
             <button
               type="button"
               onClick={onNewChat}
@@ -65,15 +91,32 @@ export default function HistoryPanel({
               <ChatBubbleLeftRightIcon className="h-3.5 w-3.5" />
               {t("flrgpt.history.newChat")}
             </button>
+
+            {sorted.length > 0 && (
+              <div className="relative">
+                <MagnifyingGlassIcon className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-ink-muted" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder={t("flrgpt.history.searchPlaceholder")}
+                  className="w-full rounded-xl bg-surface-inset pl-8 pr-3 py-2 text-xs text-ink-primary placeholder-ink-muted outline-none focus:ring-2 focus:ring-brand/30 transition-shadow"
+                />
+              </div>
+            )}
           </div>
 
-          <div className="flex-1 overflow-y-auto px-3 pb-3 space-y-1 scrollbar-none">
+          <div className="flex-1 overflow-y-auto p-3 space-y-1 scrollbar-none">
             {sorted.length === 0 ? (
               <div className="py-10 text-center">
                 <p className="text-xs text-ink-muted">{t("flrgpt.history.empty")}</p>
               </div>
+            ) : filtered.length === 0 ? (
+              <div className="py-10 text-center">
+                <p className="text-xs text-ink-muted">{t("flrgpt.history.noResults")}</p>
+              </div>
             ) : (
-              sorted.map((conv) => {
+              filtered.map((conv) => {
                 const isActive = conv.id === activeConversationId;
                 return (
                   <div
@@ -91,35 +134,61 @@ export default function HistoryPanel({
                       isActive ? "bg-brand/10" : "hover:bg-surface-subtle"
                     }`}
                   >
-                    <div className="min-w-0">
-                      <p
-                        className={`text-sm font-medium truncate ${
-                          isActive ? "text-brand" : "text-ink-primary"
-                        }`}
-                      >
-                        {conv.title || t("flrgpt.history.untitled")}
-                      </p>
-                      <div className="flex items-center gap-1.5 mt-0.5">
-                        <span className="text-[10px] text-ink-muted">
-                          {formatRelativeTime(conv.updatedAt, i18n.language)}
-                        </span>
-                        {conv.walletAddress && (
-                          <span className="text-[10px] text-ink-muted font-mono">
-                            · {shortenAddress(conv.walletAddress)}
+                    <div className="min-w-0 flex items-start gap-1">
+                      {conv.isPinned && (
+                        <MapPinIconSolid className="h-3 w-3 mt-1 shrink-0 text-brand" />
+                      )}
+                      <div className="min-w-0">
+                        <p
+                          className={`text-sm font-medium truncate ${
+                            isActive ? "text-brand" : "text-ink-primary"
+                          }`}
+                        >
+                          {conv.title || t("flrgpt.history.untitled")}
+                        </p>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          <span className="text-[10px] text-ink-muted">
+                            {formatRelativeTime(conv.updatedAt, i18n.language)}
                           </span>
-                        )}
+                          {conv.walletAddress && (
+                            <span className="text-[10px] text-ink-muted font-mono">
+                              · {shortenAddress(conv.walletAddress)}
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onDelete(conv.id);
-                      }}
-                      className="shrink-0 p-1 rounded-md text-ink-muted opacity-0 group-hover:opacity-100 hover:text-red-500 hover:bg-red-500/10 transition-all cursor-pointer"
-                    >
-                      <TrashIcon className="h-3.5 w-3.5" />
-                    </button>
+                    <div className="shrink-0 flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-all">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onTogglePin(conv.id);
+                        }}
+                        title={
+                          conv.isPinned
+                            ? t("flrgpt.history.unpin")
+                            : t("flrgpt.history.pin")
+                        }
+                        className="p-1 rounded-md text-ink-muted hover:text-brand hover:bg-brand/10 transition-colors cursor-pointer"
+                      >
+                        {conv.isPinned ? (
+                          <MapPinIconSolid className="h-3.5 w-3.5 text-brand" />
+                        ) : (
+                          <MapPinIconOutline className="h-3.5 w-3.5" />
+                        )}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onDelete(conv.id);
+                        }}
+                        className="p-1 rounded-md text-ink-muted hover:text-red-500 hover:bg-red-500/10 transition-colors cursor-pointer"
+                      >
+                        <TrashIcon className="h-3.5 w-3.5" />
+                      </button>
+                    </div>
                   </div>
                 );
               })

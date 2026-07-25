@@ -325,14 +325,20 @@
     },
     "actions": {
       "copy": "Copiar",
-      "regenerate": "Regenerar respuesta"
+      "regenerate": "Regenerar respuesta",
+      "copied": "Mensaje copiado",
+      "copyFailed": "Error al copiar"
     },
     "jumpToLatest": "Ir a lo último",
     "history": {
       "title": "Historial",
       "newChat": "Nuevo chat",
       "empty": "Aún no hay conversaciones.",
-      "untitled": "Nueva conversación"
+      "untitled": "Nueva conversación",
+      "pin": "Fijar conversación",
+      "unpin": "Dejar de fijar",
+      "searchPlaceholder": "Buscar conversaciones...",
+      "noResults": "No se encontraron conversaciones"
     }
   },
   "dashboard": {

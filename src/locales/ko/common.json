@@ -326,14 +326,20 @@
     },
     "actions": {
       "copy": "복사",
-      "regenerate": "응답 재생성"
+      "regenerate": "응답 재생성",
+      "copied": "메시지가 복사되었습니다",
+      "copyFailed": "복사에 실패했습니다"
     },
     "jumpToLatest": "최신으로 이동",
     "history": {
       "title": "기록",
       "newChat": "새 채팅",
       "empty": "아직 대화가 없습니다.",
-      "untitled": "새 대화"
+      "untitled": "새 대화",
+      "pin": "대화 고정",
+      "unpin": "고정 해제",
+      "searchPlaceholder": "대화 검색...",
+      "noResults": "대화를 찾을 수 없습니다"
     }
   },
   "dashboard": {

@@ -22,6 +22,7 @@ export default function ChatPane({
   activeConversationId,
   onSelectConversation,
   onDeleteConversation,
+  onTogglePinConversation,
   onNewChat,
   compactEmptyState = false,
 }) {
@@ -49,6 +50,7 @@ export default function ChatPane({
           onCloseHistory();
         }}
         onDelete={onDeleteConversation}
+        onTogglePin={onTogglePinConversation}
         onNewChat={() => {
           onNewChat();
           onCloseHistory();

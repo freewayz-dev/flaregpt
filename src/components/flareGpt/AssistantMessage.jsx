@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { ClipboardIcon, CheckIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
@@ -35,7 +35,12 @@ function renderBlock(block, index) {
 // Regenerate only ever appears on the most recent assistant message
 // (re-running an older one would imply a branching history this product
 // doesn't have yet).
-export default function AssistantMessage({ message, isLast, onRegenerate }) {
+// Memoized for the same reason as UserMessage: the store only replaces
+// the object for the message actively streaming, so unrelated siblings
+// (including any embedded ChartBlocks — real recharts SVGs, not cheap to
+// re-render) shouldn't re-render on every ~45ms word-chunk tick of the
+// active reply.
+function AssistantMessage({ message, isLast, onRegenerate }) {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
@@ -50,10 +55,10 @@ export default function AssistantMessage({ message, isLast, onRegenerate }) {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      toast.success(t("navbar.addressCopied"));
+      toast.success(t("flrgpt.actions.copied"));
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error(t("navbar.copyFailed"));
+      toast.error(t("flrgpt.actions.copyFailed"));
     }
   };
 
@@ -105,3 +110,5 @@ export default function AssistantMessage({ message, isLast, onRegenerate }) {
     </div>
   );
 }
+
+export default memo(AssistantMessage);

@@ -326,14 +326,20 @@
     },
     "actions": {
       "copy": "कॉपी करें",
-      "regenerate": "उत्तर फिर से बनाएं"
+      "regenerate": "उत्तर फिर से बनाएं",
+      "copied": "संदेश कॉपी किया गया",
+      "copyFailed": "कॉपी करने में विफल"
     },
     "jumpToLatest": "नवीनतम पर जाएं",
     "history": {
       "title": "इतिहास",
       "newChat": "नई चैट",
       "empty": "अभी तक कोई बातचीत नहीं।",
-      "untitled": "नई बातचीत"
+      "untitled": "नई बातचीत",
+      "pin": "बातचीत पिन करें",
+      "unpin": "पिन हटाएं",
+      "searchPlaceholder": "बातचीत खोजें...",
+      "noResults": "कोई बातचीत नहीं मिली"
     }
   },
   "dashboard": {

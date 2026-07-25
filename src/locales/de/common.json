@@ -325,14 +325,20 @@
     },
     "actions": {
       "copy": "Kopieren",
-      "regenerate": "Antwort neu generieren"
+      "regenerate": "Antwort neu generieren",
+      "copied": "Nachricht kopiert",
+      "copyFailed": "Kopieren fehlgeschlagen"
     },
     "jumpToLatest": "Zum Neuesten springen",
     "history": {
       "title": "Verlauf",
       "newChat": "Neuer Chat",
       "empty": "Noch keine Unterhaltungen.",
-      "untitled": "Neue Unterhaltung"
+      "untitled": "Neue Unterhaltung",
+      "pin": "Unterhaltung anheften",
+      "unpin": "Anheftung aufheben",
+      "searchPlaceholder": "Unterhaltungen durchsuchen...",
+      "noResults": "Keine Unterhaltungen gefunden"
     }
   },
   "dashboard": {

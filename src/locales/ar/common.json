@@ -325,14 +325,20 @@
     },
     "actions": {
       "copy": "نسخ",
-      "regenerate": "إعادة إنشاء الرد"
+      "regenerate": "إعادة إنشاء الرد",
+      "copied": "تم نسخ الرسالة",
+      "copyFailed": "فشل النسخ"
     },
     "jumpToLatest": "الانتقال إلى الأحدث",
     "history": {
       "title": "السجل",
       "newChat": "محادثة جديدة",
       "empty": "لا توجد محادثات بعد.",
-      "untitled": "محادثة جديدة"
+      "untitled": "محادثة جديدة",
+      "pin": "تثبيت المحادثة",
+      "unpin": "إلغاء التثبيت",
+      "searchPlaceholder": "البحث في المحادثات...",
+      "noResults": "لم يتم العثور على محادثات"
     }
   },
   "dashboard": {

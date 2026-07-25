@@ -29,7 +29,16 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
     setValue("");
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
-      textareaRef.current.focus();
+      // On touch devices, refocusing immediately keeps the on-screen
+      // keyboard open after send — the opposite of the "return to resting
+      // position" feel premium chat apps have. Desktop keeps refocusing
+      // so typing the next message doesn't require re-clicking the input.
+      const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+      if (isTouchDevice) {
+        textareaRef.current.blur();
+      } else {
+        textareaRef.current.focus();
+      }
     }
   };
 
@@ -41,12 +50,12 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
   };
 
   return (
-    <div className="border-t border-line p-3 sm:p-4 shrink-0">
+    <div className="border-t border-line px-3 pt-3 pb-[calc(0.625rem+env(safe-area-inset-bottom))] sm:p-4 shrink-0">
       <div className="mx-auto max-w-3xl">
         <div className="mb-2">
           <WalletContextPill onOpenWalletModal={onOpenWalletModal} />
         </div>
-        <div className="flex items-end gap-2 rounded-2xl border border-[#E5E7EB] dark:border-none bg-surface-inset p-2 focus-within:ring-2 focus-within:ring-brand/30 transition-shadow">
+        <div className="flex items-end gap-2 rounded-2xl border border-[#E5E7EB] dark:border-none bg-surface-inset p-1.5 sm:p-2 focus-within:ring-2 focus-within:ring-brand/30 transition-shadow">
           <textarea
             ref={textareaRef}
             rows={1}
@@ -54,7 +63,7 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             placeholder={t("flrgpt.composer.placeholder")}
-            className="flex-1 resize-none bg-transparent px-2 py-2 text-sm text-ink-primary placeholder-ink-muted outline-none"
+            className="flex-1 resize-none bg-transparent px-2 py-1.5 sm:py-2 text-base sm:text-sm text-ink-primary placeholder-ink-muted outline-none"
             style={{ maxHeight: MAX_TEXTAREA_HEIGHT }}
           />
           {isGenerating ? (

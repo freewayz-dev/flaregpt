@@ -29,6 +29,7 @@ export function useFlareGptConversation() {
   const startNewConversation = useFlareGptStore((s) => s.startNewConversation);
   const switchConversation = useFlareGptStore((s) => s.switchConversation);
   const deleteConversation = useFlareGptStore((s) => s.deleteConversation);
+  const togglePinConversation = useFlareGptStore((s) => s.togglePinConversation);
 
   const { effectiveAddress, effectiveWallet } = useFlareGptWalletContext();
 
@@ -188,5 +189,6 @@ export function useFlareGptConversation() {
     startNewConversation,
     switchConversation,
     deleteConversation,
+    togglePinConversation,
   };
 }

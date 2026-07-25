@@ -326,14 +326,20 @@
     },
     "actions": {
       "copy": "复制",
-      "regenerate": "重新生成回答"
+      "regenerate": "重新生成回答",
+      "copied": "消息已复制",
+      "copyFailed": "复制失败"
     },
     "jumpToLatest": "跳转到最新",
     "history": {
       "title": "历史记录",
       "newChat": "新对话",
       "empty": "暂无对话。",
-      "untitled": "新对话"
+      "untitled": "新对话",
+      "pin": "置顶对话",
+      "unpin": "取消置顶",
+      "searchPlaceholder": "搜索对话...",
+      "noResults": "未找到对话"
     }
   },
   "dashboard": {

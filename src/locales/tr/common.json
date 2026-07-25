@@ -326,14 +326,20 @@
     },
     "actions": {
       "copy": "Kopyala",
-      "regenerate": "Yanıtı yeniden oluştur"
+      "regenerate": "Yanıtı yeniden oluştur",
+      "copied": "Mesaj kopyalandı",
+      "copyFailed": "Kopyalama başarısız"
     },
     "jumpToLatest": "En yeniye git",
     "history": {
       "title": "Geçmiş",
       "newChat": "Yeni sohbet",
       "empty": "Henüz konuşma yok.",
-      "untitled": "Yeni konuşma"
+      "untitled": "Yeni konuşma",
+      "pin": "Sohbeti sabitle",
+      "unpin": "Sabitlemeyi kaldır",
+      "searchPlaceholder": "Sohbetlerde ara...",
+      "noResults": "Sohbet bulunamadı"
     }
   },
   "dashboard": {

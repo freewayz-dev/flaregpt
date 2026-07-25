@@ -37,11 +37,12 @@ export default function FLRGPT() {
     startNewConversation,
     switchConversation,
     deleteConversation,
+    togglePinConversation,
   } = useFlareGptConversation();
 
   return (
     <div className="h-full flex flex-col">
-      <div className="flex items-center justify-end gap-1.5 pb-3 shrink-0">
+      <div className="flex items-center justify-end gap-1.5 pb-2 sm:pb-3 shrink-0">
         <button
           type="button"
           onClick={() => setHistoryOpen((open) => !open)}
@@ -76,6 +77,7 @@ export default function FLRGPT() {
           activeConversationId={activeConversation?.id ?? null}
           onSelectConversation={switchConversation}
           onDeleteConversation={deleteConversation}
+          onTogglePinConversation={togglePinConversation}
           onNewChat={startNewConversation}
         />
       </div>

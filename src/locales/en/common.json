@@ -250,14 +250,20 @@
     },
     "actions": {
       "copy": "Copy",
-      "regenerate": "Regenerate response"
+      "regenerate": "Regenerate response",
+      "copied": "Message copied",
+      "copyFailed": "Copy failed"
     },
     "jumpToLatest": "Jump to latest",
     "history": {
       "title": "History",
       "newChat": "New chat",
       "empty": "No conversations yet.",
-      "untitled": "New conversation"
+      "untitled": "New conversation",
+      "pin": "Pin conversation",
+      "unpin": "Unpin conversation",
+      "searchPlaceholder": "Search conversations...",
+      "noResults": "No conversations found"
     }
   },
   "footer": {

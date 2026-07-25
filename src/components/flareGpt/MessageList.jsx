@@ -27,8 +27,24 @@ export default function MessageList({ messages, onRegenerate }) {
     return () => el.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const lastMessage = messages[messages.length - 1];
+  const isActivelyStreaming =
+    lastMessage?.role === "assistant" && lastMessage.status !== "complete";
+
   useEffect(() => {
-    if (autoScroll) bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    // `smooth` re-triggers a fresh scroll animation on every call — fine
+    // for a single discrete event (send, switch conversation), but this
+    // effect also fires on every ~45ms word-chunk tick while a response
+    // streams in, which stacked smooth animations on top of each other
+    // and was a real source of scroll jank on long transcripts. Instant
+    // scroll during streaming keeps the transcript pinned to the bottom
+    // without fighting itself; smooth is reserved for the non-streaming
+    // case (e.g. a message that arrives complete in one shot).
+    if (autoScroll) {
+      bottomRef.current?.scrollIntoView({
+        behavior: isActivelyStreaming ? "auto" : "smooth",
+      });
+    }
     // messages' identity changes on every streamed block update too (the
     // store replaces the array immutably), which is exactly what keeps
     // this scrolling during an in-progress response, not just on send.
@@ -46,7 +62,11 @@ export default function MessageList({ messages, onRegenerate }) {
     <div className="relative flex-1 min-h-0">
       <div
         ref={containerRef}
-        className="h-full overflow-y-auto px-4 sm:px-6 py-6 scrollbar-none"
+        className="h-full overflow-y-auto overscroll-contain px-4 sm:px-6 py-6 scrollbar-none"
+        style={{
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 28px)",
+          maskImage: "linear-gradient(to bottom, transparent, black 28px)",
+        }}
       >
         <div className="mx-auto max-w-3xl space-y-6">
           <AnimatePresence initial={false}>

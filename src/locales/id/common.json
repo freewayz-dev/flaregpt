@@ -326,14 +326,20 @@
     },
     "actions": {
       "copy": "Salin",
-      "regenerate": "Buat ulang respons"
+      "regenerate": "Buat ulang respons",
+      "copied": "Pesan disalin",
+      "copyFailed": "Gagal menyalin"
     },
     "jumpToLatest": "Lompat ke terbaru",
     "history": {
       "title": "Riwayat",
       "newChat": "Obrolan baru",
       "empty": "Belum ada percakapan.",
-      "untitled": "Percakapan baru"
+      "untitled": "Percakapan baru",
+      "pin": "Sematkan percakapan",
+      "unpin": "Lepas sematan",
+      "searchPlaceholder": "Cari percakapan...",
+      "noResults": "Tidak ada percakapan ditemukan"
     }
   },
   "dashboard": {

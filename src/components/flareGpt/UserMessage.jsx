@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 // Right-aligned, bg-brand/white text — the same pairing already proven on
 // every primary button in this app, so no new contrast question here.
-export default function UserMessage({ message }) {
+//
+// Memoized because the store only ever replaces the *one* message object
+// being streamed — every other message keeps its prior reference — but
+// without memo, React would still re-invoke every sibling's render on
+// every ~45ms streaming tick of the active response. On a long
+// conversation that's redundant work piling up for the entire duration of
+// every reply, not just this component's own re-render.
+function UserMessage({ message }) {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
@@ -13,10 +20,10 @@ export default function UserMessage({ message }) {
     try {
       await navigator.clipboard.writeText(message.content);
       setCopied(true);
-      toast.success(t("navbar.addressCopied"));
+      toast.success(t("flrgpt.actions.copied"));
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error(t("navbar.copyFailed"));
+      toast.error(t("flrgpt.actions.copyFailed"));
     }
   };
 
@@ -43,3 +50,5 @@ export default function UserMessage({ message }) {
     </div>
   );
 }
+
+export default memo(UserMessage);
