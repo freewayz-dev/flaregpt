@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { PaperAirplaneIcon, StopIcon } from "@heroicons/react/24/outline";
 
@@ -10,6 +10,20 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
   const { t } = useTranslation();
   const [value, setValue] = useState("");
   const textareaRef = useRef(null);
+
+  // Auto-focus on mount so the page/widget opens ready to type — but only
+  // on desktop. On a touch device, focusing a text input immediately opens
+  // the on-screen keyboard and shifts the whole layout the instant the
+  // surface appears, before the visitor has actually asked to type
+  // anything; that's the opposite of "ready to use," it's a jarring first
+  // moment. Same pointer:coarse check used elsewhere in this file for the
+  // same reason (blur-on-send).
+  useEffect(() => {
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    if (!isTouchDevice) {
+      textareaRef.current?.focus();
+    }
+  }, []);
 
   const canSend = value.trim().length > 0 && !isGenerating;
 
@@ -61,7 +75,7 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
         <div className="mb-2">
           <WalletContextPill onOpenWalletModal={onOpenWalletModal} />
         </div>
-        <div className="flex items-end gap-2 rounded-2xl border border-[#E5E7EB] dark:border-none bg-surface-inset p-1.5 sm:p-2 focus-within:ring-2 focus-within:ring-brand/30 transition-shadow">
+        <div className="flex items-end gap-2 rounded-2xl border border-[#E5E7EB] dark:border-none bg-surface-inset p-1.5 sm:p-2 focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2">
           <textarea
             ref={textareaRef}
             rows={1}

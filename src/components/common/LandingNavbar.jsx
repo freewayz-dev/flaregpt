@@ -62,7 +62,7 @@ export default function LandingNavbar() {
         {/* Logo */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2 md:gap-3 select-none justify-self-start"
+          className="flex items-center gap-2 md:gap-3 select-none justify-self-start rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
         >
           <div className="relative">
             <div className="absolute inset-0 rounded-lg md:rounded-xl bg-brand/5 blur-md" />
@@ -89,7 +89,7 @@ export default function LandingNavbar() {
                   .getElementById(item.id)
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="group relative rounded-full px-5 py-2 text-[13px] font-medium text-ink-secondary transition-colors hover:text-brand dark:hover:text-brand"
+              className="group relative rounded-full px-5 py-2 text-[13px] font-medium text-ink-secondary transition-colors hover:text-brand dark:hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
             >
               {item.label}
 
@@ -102,7 +102,7 @@ export default function LandingNavbar() {
         <div className="justify-self-end">
           <button
             onClick={() => navigate("/app")}
-            className="group flex items-center gap-1.5 md:gap-2 rounded-full bg-brand px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-[13px] font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20"
+            className="group flex items-center gap-1.5 md:gap-2 rounded-full bg-brand px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-[13px] font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
           >
             Launch App
             <ArrowRightIcon className="h-3.5 w-3.5 md:h-4 md:w-4 transition-transform duration-200 group-hover:translate-x-1" />

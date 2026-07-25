@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useConnection } from "wagmi";
 import { CheckIcon } from "lucide-react";
 import {
   ArrowRightIcon,
@@ -10,21 +10,75 @@ import {
   ShieldCheckIcon,
   SparklesIcon,
   Square3Stack3DIcon,
+  RocketLaunchIcon,
+  EyeIcon,
+  WalletIcon,
+  ChatBubbleLeftRightIcon,
+  GiftIcon,
+  HeartIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 import { FadeIn } from "@/components/common/MotionWrapper";
-import AIPhoneMockup from "@/components/common/AIPhoneMockup";
+import LandingAIDemo from "@/components/common/LandingAIDemo";
 import LandingNavbar from "@/components/common/LandingNavbar";
+import ConnectWalletModal from "@/components/common/ConnectWalletModal";
+import { useUIStore } from "@/store/useUIStore";
+import { shortenAddress } from "@/utils/address";
 
 import flareLogo from "@/assets/icons/fl.png";
 import openLogo from "@/assets/icons/image.png";
 import walletConnectLogo from "@/assets/wallets/icon.png";
 import bifrostLogo from "@/assets/wallets/bifrost.jpeg";
+import overviewLight from "@/assets/showcase/overview-light.png";
+import overviewDark from "@/assets/showcase/overview-dark.png";
+import defiLight from "@/assets/showcase/defi-light.png";
+import defiDark from "@/assets/showcase/defi-dark.png";
 
 export default function LandingPage() {
   const [open, setOpen] = useState(null);
+  const [walletModalOpen, setWalletModalOpen] = useState(false);
   const navigate = useNavigate();
+  const darkMode = useUIStore((s) => s.darkMode);
+  const { address, isConnected } = useConnection();
+
+  // Wallet connection doubles as sign-in app-wide (see useAuthSync), so
+  // completing it *from the landing page specifically* should carry
+  // through to the destination that implies, rather than leaving the
+  // visitor sitting on the marketing page next to a now-pointless
+  // "Connect Wallet" button. The ref is armed only while a connection
+  // attempt started here is actually in flight, so it can't fire from an
+  // unrelated connection event (e.g. another tab) and can't fire from
+  // already being connected on mount (handled separately by the button's
+  // own label below, not a redirect).
+  //
+  // `closeWalletModal` only clears the flag when *not yet* connected —
+  // ConnectWalletModal auto-closes itself the instant `isConnected` flips
+  // true, and as the child, its effect runs before this component's own
+  // effect below in the same commit. Clearing the flag unconditionally
+  // here would race that auto-close and clear it before the effect ever
+  // gets to read it, silently killing the redirect. Only a genuine
+  // cancel (closing while still disconnected) resets it.
+  const awaitingConnectRef = useRef(false);
+
+  const openWalletModal = () => {
+    awaitingConnectRef.current = true;
+    setWalletModalOpen(true);
+  };
+
+  const closeWalletModal = () => {
+    if (!isConnected) {
+      awaitingConnectRef.current = false;
+    }
+    setWalletModalOpen(false);
+  };
+
+  useEffect(() => {
+    if (isConnected && awaitingConnectRef.current) {
+      awaitingConnectRef.current = false;
+      navigate("/app");
+    }
+  }, [isConnected, navigate]);
 
   // Warm the Dashboard route's JS chunk while the visitor is still reading
   // the landing page, so clicking "Launch App" doesn't have to wait for a
@@ -89,16 +143,16 @@ export default function LandingPage() {
 
         <LandingNavbar />
 
-        <main className="relative z-10 pt-20 md:pt-24">
+        <main className="relative z-10 pt-24 md:pt-28">
         <FadeIn>
-          <section className="flex flex-col items-center px-4 xl:px-0 justify-center text-center max-w-5xl mx-auto pt-12 md:pt-16 pb-28">
+          <section className="flex flex-col items-center px-4 xl:px-0 justify-center text-center max-w-5xl mx-auto pt-20 md:pt-28 pb-28">
             <div className="inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-xl px-4 py-1.5 shadow-sm">
               <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-secondary">
                 Built for the Flare Network
               </span>
             </div>
 
-            <h1 className="mt-7 max-w-3xl text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight text-ink-primary select-none">
+            <h1 className="mt-7 max-w-3xl font-display text-5xl sm:text-6xl font-bold leading-[1.05] tracking-tight text-ink-primary select-none">
               Everything{" "}
               <span className="bg-gradient-to-r from-brand to-brand-hover bg-clip-text text-transparent">
                 Flare.
@@ -113,37 +167,45 @@ export default function LandingPage() {
               your Flare portfolio, all from one intelligent platform.
             </p>
 
-            <p className="mt-5 max-w-md text-xs sm:text-xs md:leading-7 leading-6 text-ink-muted">
-              Start exploring instantly without connecting a wallet. Add one or
-              multiple wallets anytime to unlock personalized AI insights,
-              portfolio analysis, reward tracking, and wallet-specific
-              recommendations.
-            </p>
-
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-5">
               <button
                 type="button"
                 onClick={() => navigate("/app")}
-                className="rounded-full bg-brand px-7 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 cursor-pointer"
+                className="rounded-full bg-brand px-7 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 Launch App
               </button>
 
               <button
                 type="button"
-                onClick={() =>
-                  document
-                    .getElementById("ai")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group flex items-center gap-2 text-sm font-semibold text-ink-primary transition-colors hover:text-brand dark:hover:text-brand-hover cursor-pointer"
+                onClick={() => (isConnected ? navigate("/app") : openWalletModal())}
+                className="group flex items-center gap-2 text-sm font-semibold text-ink-primary transition-colors hover:text-brand dark:hover:text-brand-hover cursor-pointer rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
-                Connect Wallet
+                {isConnected ? (
+                  <>
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Continue as {shortenAddress(address)}
+                  </>
+                ) : (
+                  "Connect Wallet"
+                )}
                 <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
             </div>
 
-            <div className="mt-20 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-[10px] text-ink-muted">
+            {/* Non-custodial trust signal — previously only mentioned inside
+                a collapsed FAQ answer nobody may ever open. Surfaced here,
+                right beside the CTAs, since custody is a primary anxiety
+                for exactly the audience landing on a wallet-connected
+                product, not a footnote to bury. */}
+            <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/60 dark:bg-[#161619]/60 backdrop-blur-md px-4 py-1.5">
+              <ShieldCheckIcon className="h-3.5 w-3.5 text-emerald-500" />
+              <span className="text-[11px] font-medium text-ink-secondary">
+                Non-custodial — FlareGPT never holds or moves your funds
+              </span>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-[10px] text-ink-muted">
               {[
                 "No wallet required",
                 "Supports multiple wallets",
@@ -165,7 +227,15 @@ export default function LandingPage() {
 
         <FadeIn delay={0.2}>
           <section className="relative w-full py-8">
-            <div className="relative w-full border-y border-line/70 bg-white/5 dark:bg-white/[0.03] backdrop-blur-md">
+            {/* Solid, opaque surface rather than the near-transparent
+                bg-white/5 this used to be — that was translucent enough
+                that the page's own background grid (positioned behind
+                `main` but visually showing through anything not fully
+                opaque) bled through it. `bg-surface-card` (the same
+                elevated-card token feature/FAQ cards use) rather than a
+                flat match of the page background, so this reads as its
+                own distinct surface instead of just a gap in the grid. */}
+            <div className="relative w-full border-y border-line/70 bg-surface-card">
               <div className="max-w-5xl mx-auto px-6 py-8">
                 <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4 lg:gap-y-0 lg:divide-x lg:divide-line/60">
                   {[
@@ -219,9 +289,23 @@ export default function LandingPage() {
             className="overflow-x-hidden px-4 pt-10 xl:px-0 lg:pt-28"
           >
             <div className="mx-auto max-w-5xl">
-              <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-20">
-                {/* Phone - Mobile First */}
-                <div className="order-1 flex flex-col items-center lg:order-2">
+              {/* `items-start`, not `items-center`: the demo card has no
+                  badge above it at desktop, so centering by each column's
+                  *total* height still left the copy's badge/heading
+                  starting well below the demo card's own top edge — two
+                  boxes correctly centered on each other, but their actual
+                  content starting at visibly different points. Top-
+                  aligning both columns' boxes is what actually makes them
+                  read as sharing a common start. */}
+              <div className="grid items-start gap-6 lg:grid-cols-2 lg:gap-20">
+                {/* Demo stays first on mobile (shown before any explanation
+                    — this product's most differentiating asset gets seen
+                    first when scrolling top-to-bottom) but moves to the
+                    right column on desktop via `lg:order-2`, with copy
+                    taking the left. `lg:pr-20` (was `lg:pl-20` when this
+                    was the left column) now pulls it inward from its new
+                    right edge instead. */}
+                <div className="order-1 flex flex-col items-center lg:order-2 lg:pr-20">
                   {/* Mobile Badge */}
                   <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-[#161619]/80 lg:hidden">
                     <SparklesIcon className="h-3.5 w-3.5 text-brand" />
@@ -231,10 +315,12 @@ export default function LandingPage() {
                     </span>
                   </div>
 
-                  <AIPhoneMockup />
+                  <LandingAIDemo />
                 </div>
 
-                {/* Content */}
+                {/* Content — now the left column on desktop (`lg:order-1`),
+                    so its `lg:pl-*` (was `lg:pr-20`) pulls inward from its
+                    new left edge, mirroring the demo's own inward pull. */}
                 <FadeIn className="order-2 text-center lg:order-1 lg:text-left">
                   <div>
                     {/* Desktop Badge */}
@@ -248,7 +334,7 @@ export default function LandingPage() {
                       </div>
                     </div>
 
-                    <h2 className="mt-6 text-2xl font-black tracking-tight text-[#0F172A] dark:text-white lg:pl-20">
+                    <h2 className="mt-6 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-[#0F172A] dark:text-white lg:pl-20">
                       Your smartest guide to
                       <span className="block">everything in your wallet.</span>
                     </h2>
@@ -295,10 +381,10 @@ export default function LandingPage() {
           >
             <FadeIn>
               <div className="mb-10 text-center max-w-2xl mx-auto">
-                <h2 className="text-2xl font-black max-w-xl pt-4 mx-auto tracking-tight text-ink-primary">
-                  Everything you need for
+                <h2 className="font-display max-w-xl pt-4 mx-auto text-2xl sm:text-3xl font-semibold tracking-tight text-ink-primary">
+                  One dashboard for the whole
                   <br />
-                  the <span className="text-brand">flare</span> ecosystem.
+                  <span className="text-brand">Flare</span> ecosystem.
                 </h2>
 
                 <p className="mt-4 max-w-xl mx-auto text-sm leading-6 text-ink-secondary">
@@ -306,6 +392,48 @@ export default function LandingPage() {
                   get AI-powered insights, all from one place.
                 </p>
               </div>
+            </FadeIn>
+
+            {/* Real product screenshots — the feature grid below makes five
+                claims (wallet tracking, rewards, governance, live data,
+                alerts) in text alone; these give at least the two most
+                data-dense of them actual visual proof, the way Stripe/
+                Vercel-tier product pages always show real UI rather than
+                icon-plus-paragraph cards only.
+
+                Theme-matched to whichever mode the visitor is currently
+                in, rather than a fixed pair — a light-mode screenshot
+                inside a dark-mode page reads as a stray bright rectangle,
+                not a deliberate choice, and undercuts the sense that dark
+                mode was actually designed for rather than just supported.
+                A deliberate "show both themes at once" composition could
+                work too, but only if explicitly framed as demonstrating
+                theme support (its own caption, side-by-side by design) —
+                doing it implicitly here would just read as an oversight. */}
+            <FadeIn className="mb-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
+              {[
+                { src: darkMode ? overviewDark : overviewLight, alt: "FlareGPT dashboard overview showing live FLR price and network stats", caption: "Live network data, always current" },
+                { src: darkMode ? defiDark : defiLight, alt: "FlareGPT DeFi protocol comparison showing yield strategies across Sceptre, Firelight, and MXRPY", caption: "Compare yield strategies at a glance" },
+              ].map((shot) => (
+                <div
+                  key={shot.caption}
+                  className="overflow-hidden rounded-2xl border-2 border-brand/30 bg-surface-card shadow-sm"
+                >
+                  <div className="overflow-hidden border-b border-brand/30">
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      width={2384}
+                      height={1355}
+                      className="w-full aspect-[2384/1355] object-cover object-top"
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="px-5 py-3.5 text-[13px] font-medium text-ink-secondary">
+                    {shot.caption}
+                  </p>
+                </div>
+              ))}
             </FadeIn>
 
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -340,13 +468,96 @@ export default function LandingPage() {
           </section>
         </FadeIn>
 
+        {/* HOW IT WORKS */}
         <FadeIn delay={0.2}>
-          <section id="faq" className="pt-32 px-4 xl:px-0">
+          <section className="w-full max-w-5xl mx-auto pt-28 md:pt-32 px-4 xl:px-0">
+            <div className="mb-14 text-center max-w-xl mx-auto">
+              <h2 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-ink-primary">
+                From zero to insights in minutes.
+              </h2>
+              <p className="mt-4 text-sm leading-6 text-ink-secondary">
+                No signup, no wallet required to start — connect one whenever
+                you're ready for personalized answers.
+              </p>
+            </div>
+
+            {/* Below `lg`, five full-width stacked blocks read as a wall of
+                text rather than a quick sequence — a connected vertical
+                timeline keeps every step visible at a glance (unlike a
+                swipeable carousel, which trades scannability for novelty)
+                while still giving the section a considered visual device
+                instead of plain stacked cards. Each connector is sized by
+                flex-1 within its own row rather than one absolutely-
+                positioned line spanning the whole list, so it self-adjusts
+                to whatever height that step's description actually needs
+                instead of assuming every step is the same height. */}
+            <div className="space-y-0 lg:hidden">
+              {howItWorks.map((step, idx) => {
+                const Icon = step.icon;
+                const isLast = idx === howItWorks.length - 1;
+                return (
+                  <div key={step.title} className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface-card shadow-sm">
+                        <Icon className="h-5 w-5 text-brand" />
+                      </div>
+                      {!isLast && <div className="my-2 w-px flex-1 bg-line" />}
+                    </div>
+                    <div className={isLast ? "pb-1" : "pb-8"}>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
+                        Step {idx + 1}
+                      </span>
+                      <h3 className="mt-1 text-sm font-semibold text-ink-primary">
+                        {step.title}
+                      </h3>
+                      <p className="mt-1.5 text-[13px] leading-6 text-ink-secondary">
+                        {step.desc}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Desktop keeps the horizontal row with its own connecting
+                line — unrelated to the mobile timeline above, not a
+                responsive reflow of the same markup. */}
+            <div className="relative hidden lg:grid lg:grid-cols-5 lg:gap-4">
+              <div className="pointer-events-none absolute top-6 left-[10%] right-[10%] h-px bg-line" />
+
+              {howItWorks.map((step, idx) => {
+                const Icon = step.icon;
+                return (
+                  <div key={step.title} className="relative flex flex-col items-center text-center">
+                    <div className="relative z-10 flex flex-col items-center">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface-card shadow-sm">
+                        <Icon className="h-5 w-5 text-brand" />
+                      </div>
+                      <span className="mt-3 text-[11px] font-bold uppercase tracking-wider text-ink-muted">
+                        Step {idx + 1}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-3 text-sm font-semibold text-ink-primary">
+                      {step.title}
+                    </h3>
+                    <p className="mt-1.5 max-w-[200px] text-[13px] leading-6 text-ink-secondary">
+                      {step.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.2}>
+          <section id="faq" className="pt-28 md:pt-32 px-4 xl:px-0">
             <div className="max-w-3xl mx-auto">
               {/* Header */}
 
               <div className="text-center">
-                <h2 className="text-2xl font-black tracking-tight text-[#0F172A] dark:text-white">
+                <h2 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-[#0F172A] dark:text-white">
                   Frequently asked
                   <span className="block">questions.</span>
                 </h2>
@@ -362,6 +573,7 @@ export default function LandingPage() {
               <div className="mt-10 space-y-3">
                 {faqs.map((item, index) => {
                   const isOpen = open === index;
+                  const panelId = `faq-panel-${index}`;
 
                   return (
                     <div
@@ -372,40 +584,56 @@ export default function LandingPage() {
 
                       <button
                         onClick={() => setOpen(isOpen ? null : index)}
-                        className="w-full flex items-center justify-between px-5 py-4 text-left"
+                        aria-expanded={isOpen}
+                        aria-controls={panelId}
+                        className="w-full flex items-center justify-between px-5 py-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:-outline-offset-2"
                       >
                         <span className="text-sm font-semibold text-[#0F172A] dark:text-white">
                           {item.q}
                         </span>
 
                         <ChevronDownIcon
-                          className={`h-4 w-4 text-[#71717A] transition-transform duration-300 ${
+                          aria-hidden="true"
+                          className={`h-4 w-4 shrink-0 text-[#71717A] transition-transform duration-300 ${
  isOpen ? "rotate-180" : ""
  }`}
                         />
                       </button>
 
-                      {/* Answer (animated) */}
-
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{
-                              duration: 0.25,
-
-                              ease: "easeInOut",
-                            }}
-                            className="px-5 overflow-hidden"
+                      {/* Answer — a CSS grid-template-rows transition
+                          (0fr -> 1fr) instead of framer-motion's
+                          height:"auto" animation, which needs to mount and
+                          measure the content's natural height before it
+                          can animate to it. Measuring actual click-to-
+                          motion timing showed both techniques share the
+                          same ~40ms gap before anything visibly moves —
+                          that's ordinary React render/paint latency, not
+                          specific to either animation approach, and well
+                          under the ~100ms threshold where a delay reads as
+                          sluggish. The real, controllable lever turned out
+                          to be total duration, not the technique: this was
+                          shortened from 250ms to 180ms so the whole open/
+                          close completes noticeably faster. Kept as CSS
+                          rather than reverted to framer-motion anyway,
+                          since it drops this page's last framer-motion
+                          dependency for a technique that needs no JS
+                          measurement step at all. */}
+                      <div
+                        id={panelId}
+                        role="region"
+                        className="grid transition-[grid-template-rows] duration-[180ms] ease-in-out"
+                        style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                      >
+                        <div className="overflow-hidden">
+                          <div
+                            className={`px-5 pb-5 text-sm leading-6 text-[#64748B] dark:text-[#A1A1AA] transition-opacity duration-150 ${
+                              isOpen ? "opacity-100 delay-75" : "opacity-0"
+                            }`}
                           >
-                            <div className="pb-5 text-sm leading-6 text-[#64748B] dark:text-[#A1A1AA]">
-                              {item.a}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                            {item.a}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   );
                 })}
@@ -415,11 +643,11 @@ export default function LandingPage() {
         </FadeIn>
 
         <FadeIn delay={0.3}>
-          <section className="w-full max-w-5xl mx-auto pt-48 md:pb-28 pb-32 text-center px-4 xl:px-0">
+          <section className="w-full max-w-5xl mx-auto pt-36 md:pt-40 md:pb-28 pb-32 text-center px-4 xl:px-0">
             <div className="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-b from-[#FFFFFF] to-[#F3F4F6] dark:from-[#161619] dark:to-[#121214] p-6 sm:p-16 shadow-xl">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand/10 dark:bg-brand/5 blur-[80px] rounded-full pointer-events-none" />
 
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-ink-primary max-w-lg mx-auto leading-tight">
+              <h2 className="mt-3 font-display text-3xl sm:text-4xl font-semibold tracking-tight text-ink-primary max-w-lg mx-auto leading-tight">
                 Everything you need to manage
                 <span className="block">your Flare portfolio.</span>
               </h2>
@@ -436,9 +664,9 @@ export default function LandingPage() {
                 <button
                   type="button"
                   onClick={() => navigate("/app")}
-                  className="rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-brand-hover shadow-lg shadow-brand/20 hover:shadow-brand/30 active:scale-[0.98]"
+                  className="rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-brand-hover shadow-lg shadow-brand/20 hover:shadow-brand/30 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                 >
-                  Open Dashboard
+                  Launch App
                 </button>
 
 
@@ -535,23 +763,24 @@ export default function LandingPage() {
                 <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 font-mono text-[11px] font-bold text-[#64748B] dark:text-[#A1A1AA] sm:justify-end">
                   <button
                     onClick={() => navigate("/app")}
-                    className="transition-colors hover:text-brand"
+                    className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
-                    App
+                    Launch App
                   </button>
 
                   <button
                     onClick={() => navigate("/terms")}
-                    className="transition-colors hover:text-brand"
+                    className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     Terms
                   </button>
 
                   <button
                     onClick={() => navigate("/app/donate")}
-                    className="rounded-full px-3 py-1.5 text-brand transition-all hover:bg-brand hover:text-white"
+                    className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-brand transition-all hover:bg-brand hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
-                    Donate ♥
+                    Donate
+                    <HeartIcon className="h-3 w-3" />
                   </button>
 
                   <a
@@ -559,7 +788,7 @@ export default function LandingPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="X (formerly Twitter)"
-                    className="transition-colors hover:text-brand"
+                    className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -571,9 +800,39 @@ export default function LandingPage() {
           </div>
         </footer>
       </FadeIn>
+
+      <ConnectWalletModal isOpen={walletModalOpen} onClose={closeWalletModal} />
     </div>
   );
 }
+
+const howItWorks = [
+  {
+    icon: RocketLaunchIcon,
+    title: "Launch the app",
+    desc: "No signup, no install — open the dashboard straight from your browser.",
+  },
+  {
+    icon: EyeIcon,
+    title: "Explore instantly",
+    desc: "Browse live network data, protocols, and rewards before connecting anything.",
+  },
+  {
+    icon: WalletIcon,
+    title: "Connect a wallet",
+    desc: "Add one or several, anytime — nothing is required up front.",
+  },
+  {
+    icon: ChatBubbleLeftRightIcon,
+    title: "Ask FlareGPT",
+    desc: "Get plain-English answers about your balances, rewards, and activity.",
+  },
+  {
+    icon: GiftIcon,
+    title: "Manage rewards",
+    desc: "Know exactly when to claim, delegate, or adjust your position.",
+  },
+];
 
 const features = [
   {

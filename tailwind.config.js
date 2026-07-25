@@ -12,6 +12,10 @@ export default {
     extend: {
       fontFamily: {
         Inter: ["Inter", "sans-serif"],
+        // Display face for large headings only (hero, section headers) —
+        // body/UI copy stays on Inter everywhere, including the rest of
+        // the dashboard, so this is additive rather than a site-wide swap.
+        display: ["Plus Jakarta Sans", "Inter", "sans-serif"],
       },
       colors: {
         // Brand accent — identical in light and dark mode.
