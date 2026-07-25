@@ -10,7 +10,7 @@ import AssistantMessage from "@/components/flareGpt/AssistantMessage";
 // up to re-read something, auto-scroll stops and a "Jump to latest" pill
 // appears instead of yanking them back down — the single most-skipped
 // detail in chat UIs, so worth getting right explicitly.
-export default function MessageList({ messages, onRegenerate }) {
+export default function MessageList({ messages, onRegenerate, scrollRequestId }) {
   const { t } = useTranslation();
   const containerRef = useRef(null);
   const bottomRef = useRef(null);
@@ -50,6 +50,19 @@ export default function MessageList({ messages, onRegenerate }) {
     // this scrolling during an in-progress response, not just on send.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
+
+  // Sending or regenerating should always land the view at the bottom,
+  // even if the user was scrolled up reading older messages — distinct
+  // from the effect above, which only *keeps* following if already at
+  // the bottom. `scrollRequestId` only bumps for actions *this* user
+  // just took (see useFlareGptConversation), so anything that could
+  // append messages without that — a hypothetical background update —
+  // wouldn't trigger this and would leave their scroll position alone.
+  useEffect(() => {
+    if (!scrollRequestId) return;
+    setAutoScroll(true);
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [scrollRequestId]);
 
   const lastAssistantId = [...messages].reverse().find((m) => m.role === "assistant")?.id;
 

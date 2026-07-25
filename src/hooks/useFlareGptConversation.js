@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { useFlareGptStore, makeId } from "@/store/useFlareGptStore";
 import { getPlaceholderResponse, matchPromptId } from "@/data/flareGptPrompts";
@@ -40,6 +40,17 @@ export function useFlareGptConversation() {
   const messages = activeConversation?.messages ?? [];
   const lastMessage = messages[messages.length - 1];
   const isGenerating = lastMessage?.role === "assistant" && lastMessage.status !== "complete";
+
+  // Bumped only when *this* view's user explicitly sends or regenerates —
+  // MessageList uses it to force a jump to the bottom that overrides
+  // wherever they'd scrolled to, as distinct from the passive "keep
+  // following if already at the bottom" behavior it uses for every other
+  // update (including this same message continuing to stream in).
+  // Anything that could append messages without this user having
+  // triggered it here — a hypothetical background sync, say — simply
+  // wouldn't bump this, so their scroll position would be left alone.
+  const [scrollRequestId, setScrollRequestId] = useState(0);
+  const requestScrollToBottom = () => setScrollRequestId((n) => n + 1);
 
   // Tracks the in-flight reveal so it can be cancelled (Stop) or fast-
   // forwarded (unmount) without leaving a message stuck mid-stream.
@@ -150,6 +161,7 @@ export function useFlareGptConversation() {
   const send = (text, explicitPromptId) => {
     const trimmed = text.trim();
     if (!trimmed || isGenerating) return;
+    requestScrollToBottom();
 
     const userMessage = {
       id: makeId(),
@@ -173,6 +185,7 @@ export function useFlareGptConversation() {
     if (!activeConversation || isGenerating) return;
     const lastUser = [...messages].reverse().find((m) => m.role === "user");
     if (!lastUser) return;
+    requestScrollToBottom();
     removeLastAssistantMessage(activeConversation.id);
     const promptId = matchPromptId(lastUser.content);
     generateResponse(activeConversation.id, promptId);
@@ -190,5 +203,6 @@ export function useFlareGptConversation() {
     switchConversation,
     deleteConversation,
     togglePinConversation,
+    scrollRequestId,
   };
 }

@@ -68,6 +68,7 @@ export default function FLRGPT() {
     switchConversation,
     deleteConversation,
     togglePinConversation,
+    scrollRequestId,
   } = useFlareGptConversation();
 
   // The redirect above fires before paint, but skip mounting the (fairly
@@ -114,6 +115,7 @@ export default function FLRGPT() {
           onDeleteConversation={deleteConversation}
           onTogglePinConversation={togglePinConversation}
           onNewChat={startNewConversation}
+          scrollRequestId={scrollRequestId}
         />
       </div>
     </div>

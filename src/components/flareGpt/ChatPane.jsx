@@ -24,6 +24,7 @@ export default function ChatPane({
   onDeleteConversation,
   onTogglePinConversation,
   onNewChat,
+  scrollRequestId,
   compactEmptyState = false,
 }) {
   const hasMessages = messages.length > 0;
@@ -33,7 +34,11 @@ export default function ChatPane({
   return (
     <div className="relative flex flex-1 min-h-0 flex-col">
       {hasMessages ? (
-        <MessageList messages={messages} onRegenerate={onRegenerate} />
+        <MessageList
+          messages={messages}
+          onRegenerate={onRegenerate}
+          scrollRequestId={scrollRequestId}
+        />
       ) : (
         <EmptyState onSelectPrompt={handleSelectPrompt} compact={compactEmptyState} />
       )}
