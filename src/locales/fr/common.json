@@ -234,7 +234,87 @@
   "wallet": {
     "activity": {
       "subtitle": "Surveillance en temps réel des interactions blockchain entrantes et sortantes.",
-      "title": "Activité récente du terminal"
+      "title": "Activité récente du terminal",
+      "description": "Chaque transaction indexée de votre wallet actif, groupée et consultable.",
+      "refresh": "Actualiser",
+      "connectToSee": "Connectez ou sélectionnez un wallet pour voir son activité de transactions.",
+      "couldntLoad": "Impossible de charger l'activité du wallet.",
+      "notifier": {
+        "ready": "L'activité de votre wallet a fini de se charger."
+      },
+      "loading": {
+        "title": "Indexation de l'activité de votre wallet",
+        "subtitle": "Les portefeuilles volumineux peuvent prendre plusieurs minutes lors du premier chargement. N'hésitez pas à explorer le reste du tableau de bord — nous vous préviendrons dès que ce sera prêt.",
+        "elapsed": "{{seconds}}s écoulées"
+      },
+      "empty": {
+        "title": "Aucune activité pour le moment",
+        "description": "Ce wallet n'a aucune transaction indexée."
+      },
+      "noResults": {
+        "title": "Aucune transaction correspondante",
+        "description": "Essayez d'ajuster votre recherche ou vos filtres."
+      },
+      "kpi": {
+        "totalTransactions": "Transactions totales",
+        "uniqueAssets": "Actifs uniques",
+        "walletAge": "Ancienneté du wallet",
+        "walletAgeYears": "{{count}} ans",
+        "walletAgeMonths": "{{count}} mois",
+        "walletAgeDays": "{{count}} jours",
+        "lastActive": "Dernière activité",
+        "justNow": "À l'instant",
+        "minutesAgo": "il y a {{count}} min",
+        "hoursAgo": "il y a {{count}} h",
+        "daysAgo": "il y a {{count}} j"
+      },
+      "insights": {
+        "title": "Aperçus rapides",
+        "mostUsedAsset": "Actif le plus utilisé",
+        "mostCommonAction": "Action la plus fréquente",
+        "mostActiveDay": "Jour le plus actif",
+        "mostActiveMonth": "Mois le plus actif",
+        "txCount": "{{count}} transactions"
+      },
+      "charts": {
+        "activityByDay": "Activité par jour",
+        "activityByDaySubtitle": "Nombre de transactions par jour",
+        "assetBreakdown": "Répartition par actif",
+        "assetBreakdownSubtitle": "Nombre de transactions par actif",
+        "actionBreakdown": "Répartition par action",
+        "actionBreakdownSubtitle": "Nombre de transactions par type d'action",
+        "tabActivity": "Activité",
+        "tabAssets": "Actifs",
+        "tabActions": "Actions"
+      },
+      "toolbar": {
+        "searchPlaceholder": "Rechercher par hash ou actif...",
+        "sort": {
+          "newest": "Plus récentes",
+          "oldest": "Plus anciennes",
+          "amount": "Montant"
+        },
+        "exportCsv": "Exporter en CSV",
+        "exportJson": "Exporter en JSON",
+        "export": "Exporter"
+      },
+      "feed": {
+        "ariaLabel": "Affichage de {{shown}} transactions sur {{total}}"
+      },
+      "drawer": {
+        "title": "Détails de la transaction",
+        "previous": "Transaction précédente",
+        "next": "Transaction suivante",
+        "close": "Fermer",
+        "action": "Action",
+        "asset": "Actif",
+        "blockNumber": "Numéro de bloc",
+        "timestamp": "Horodatage",
+        "transactionHash": "Hash de la transaction",
+        "hashCopied": "Hash de transaction copié",
+        "copyFailed": "Impossible de copier le hash",
+        "viewOnExplorer": "Voir sur FlareScan"
+      }
     },
     "stats": {
       "gas": "Frais de gaz payés",
@@ -339,7 +419,10 @@
       "pin": "Épingler la conversation",
       "unpin": "Détacher la conversation",
       "searchPlaceholder": "Rechercher des conversations...",
-      "noResults": "Aucune conversation trouvée"
+      "noResults": "Aucune conversation trouvée",
+      "moreActions": "Plus d'actions",
+      "delete": "Supprimer la conversation",
+      "pinLimitReached": "Vous pouvez épingler jusqu'à {{count}} conversations — détachez-en une d'abord."
     }
   },
   "dashboard": {

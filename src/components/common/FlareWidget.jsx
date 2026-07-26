@@ -41,11 +41,20 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
     deleteConversation,
     togglePinConversation,
     scrollRequestId,
+    focusRequestId,
   } = useFlareGptConversation();
 
   const widthClasses = expanded
     ? "sm:w-[680px]"
     : "sm:w-[400px]";
+
+  // Same fix as the full page: the header's own New Chat button used to
+  // leave history open underneath a freshly-started blank conversation —
+  // only the history panel's *internal* New Chat button closed it.
+  const handleNewChat = () => {
+    setHistoryOpen(false);
+    startNewConversation();
+  };
 
   const handleOpenFullPage = () => {
     // `skipBack` + `replace` rather than the normal close-then-push: on
@@ -92,7 +101,7 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
         <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             type="button"
-            onClick={startNewConversation}
+            onClick={handleNewChat}
             className="rounded-lg p-1 transition-colors hover:bg-surface-subtle cursor-pointer"
             title={t("flareWidget.newChat")}
           >
@@ -139,6 +148,7 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
         onTogglePinConversation={togglePinConversation}
         onNewChat={startNewConversation}
         scrollRequestId={scrollRequestId}
+        focusRequestId={focusRequestId}
         compactEmptyState
       />
     </aside>

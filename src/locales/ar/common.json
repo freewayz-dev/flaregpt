@@ -234,7 +234,87 @@
   "wallet": {
     "activity": {
       "subtitle": "مراقبة تفاعلات البلوك تشين الواردة والصادرة في الوقت الفعلي.",
-      "title": "النشاط النهائي الأخير"
+      "title": "النشاط النهائي الأخير",
+      "description": "كل معاملة مفهرسة في محفظتك النشطة، مجمّعة وقابلة للبحث.",
+      "refresh": "تحديث",
+      "connectToSee": "اتصل بمحفظة أو اخترها لرؤية نشاط معاملاتها.",
+      "couldntLoad": "تعذّر تحميل نشاط المحفظة.",
+      "notifier": {
+        "ready": "انتهى تحميل نشاط محفظتك."
+      },
+      "loading": {
+        "title": "جارٍ فهرسة نشاط محفظتك",
+        "subtitle": "قد تستغرق المحافظ الكبيرة بضع دقائق عند التحميل الأول. لا تتردد في استكشاف باقي لوحة التحكم — سنُعلمك عند الانتهاء.",
+        "elapsed": "مرّت {{seconds}} ثانية"
+      },
+      "empty": {
+        "title": "لا يوجد نشاط بعد",
+        "description": "لا تحتوي هذه المحفظة على معاملات مفهرسة."
+      },
+      "noResults": {
+        "title": "لا توجد معاملات مطابقة",
+        "description": "حاول تعديل بحثك أو عوامل التصفية."
+      },
+      "kpi": {
+        "totalTransactions": "إجمالي المعاملات",
+        "uniqueAssets": "الأصول الفريدة",
+        "walletAge": "عمر المحفظة",
+        "walletAgeYears": "{{count}} سنة",
+        "walletAgeMonths": "{{count}} أشهر",
+        "walletAgeDays": "{{count}} أيام",
+        "lastActive": "آخر نشاط",
+        "justNow": "الآن",
+        "minutesAgo": "منذ {{count}} دقيقة",
+        "hoursAgo": "منذ {{count}} ساعة",
+        "daysAgo": "منذ {{count}} يوم"
+      },
+      "insights": {
+        "title": "رؤى سريعة",
+        "mostUsedAsset": "الأصل الأكثر استخدامًا",
+        "mostCommonAction": "الإجراء الأكثر شيوعًا",
+        "mostActiveDay": "أكثر الأيام نشاطًا",
+        "mostActiveMonth": "أكثر الأشهر نشاطًا",
+        "txCount": "{{count}} معاملة"
+      },
+      "charts": {
+        "activityByDay": "النشاط حسب اليوم",
+        "activityByDaySubtitle": "عدد المعاملات لكل يوم",
+        "assetBreakdown": "توزيع الأصول",
+        "assetBreakdownSubtitle": "عدد المعاملات حسب الأصل",
+        "actionBreakdown": "توزيع الإجراءات",
+        "actionBreakdownSubtitle": "عدد المعاملات حسب نوع الإجراء",
+        "tabActivity": "النشاط",
+        "tabAssets": "الأصول",
+        "tabActions": "الإجراءات"
+      },
+      "toolbar": {
+        "searchPlaceholder": "البحث حسب الهاش أو الأصل...",
+        "sort": {
+          "newest": "الأحدث",
+          "oldest": "الأقدم",
+          "amount": "المبلغ"
+        },
+        "exportCsv": "تصدير CSV",
+        "exportJson": "تصدير JSON",
+        "export": "تصدير"
+      },
+      "feed": {
+        "ariaLabel": "عرض {{shown}} من {{total}} معاملة"
+      },
+      "drawer": {
+        "title": "تفاصيل المعاملة",
+        "previous": "المعاملة السابقة",
+        "next": "المعاملة التالية",
+        "close": "إغلاق",
+        "action": "الإجراء",
+        "asset": "الأصل",
+        "blockNumber": "رقم الكتلة",
+        "timestamp": "الطابع الزمني",
+        "transactionHash": "هاش المعاملة",
+        "hashCopied": "تم نسخ هاش المعاملة",
+        "copyFailed": "تعذّر نسخ الهاش",
+        "viewOnExplorer": "عرض على FlareScan"
+      }
     },
     "stats": {
       "gas": "رسوم الغاز المدفوعة",
@@ -339,7 +419,10 @@
       "pin": "تثبيت المحادثة",
       "unpin": "إلغاء التثبيت",
       "searchPlaceholder": "البحث في المحادثات...",
-      "noResults": "لم يتم العثور على محادثات"
+      "noResults": "لم يتم العثور على محادثات",
+      "moreActions": "المزيد من الإجراءات",
+      "delete": "حذف المحادثة",
+      "pinLimitReached": "يمكنك تثبيت ما يصل إلى {{count}} محادثات — قم بإلغاء تثبيت واحدة أولاً."
     }
   },
   "dashboard": {

@@ -234,7 +234,87 @@
   "wallet": {
     "activity": {
       "subtitle": "Echtzeitüberwachung eingehender und ausgehender Blockchain-Interaktionen.",
-      "title": "Letzte Terminalaktivität"
+      "title": "Letzte Terminalaktivität",
+      "description": "Jede indizierte Transaktion deiner aktiven Wallet, gruppiert und durchsuchbar.",
+      "refresh": "Aktualisieren",
+      "connectToSee": "Verbinde oder wähle eine Wallet, um ihre Transaktionsaktivität zu sehen.",
+      "couldntLoad": "Wallet-Aktivität konnte nicht geladen werden.",
+      "notifier": {
+        "ready": "Deine Wallet-Aktivität wurde vollständig geladen."
+      },
+      "loading": {
+        "title": "Wallet-Aktivität wird indiziert",
+        "subtitle": "Große Wallets können beim ersten Laden einige Minuten dauern. Erkunde gerne den Rest des Dashboards — wir informieren dich, sobald es fertig ist.",
+        "elapsed": "{{seconds}}s vergangen"
+      },
+      "empty": {
+        "title": "Noch keine Aktivität",
+        "description": "Diese Wallet hat keine indizierten Transaktionen."
+      },
+      "noResults": {
+        "title": "Keine passenden Transaktionen",
+        "description": "Passe deine Suche oder Filter an."
+      },
+      "kpi": {
+        "totalTransactions": "Transaktionen gesamt",
+        "uniqueAssets": "Eindeutige Assets",
+        "walletAge": "Wallet-Alter",
+        "walletAgeYears": "{{count}} Jahre",
+        "walletAgeMonths": "{{count}} Monate",
+        "walletAgeDays": "{{count}} Tage",
+        "lastActive": "Zuletzt aktiv",
+        "justNow": "Gerade eben",
+        "minutesAgo": "vor {{count}} Min.",
+        "hoursAgo": "vor {{count}} Std.",
+        "daysAgo": "vor {{count}} Tagen"
+      },
+      "insights": {
+        "title": "Kurzeinblicke",
+        "mostUsedAsset": "Meistgenutztes Asset",
+        "mostCommonAction": "Häufigste Aktion",
+        "mostActiveDay": "Aktivster Tag",
+        "mostActiveMonth": "Aktivster Monat",
+        "txCount": "{{count}} Transaktionen"
+      },
+      "charts": {
+        "activityByDay": "Aktivität pro Tag",
+        "activityByDaySubtitle": "Transaktionsanzahl pro Tag",
+        "assetBreakdown": "Asset-Aufschlüsselung",
+        "assetBreakdownSubtitle": "Transaktionsanzahl nach Asset",
+        "actionBreakdown": "Aktionsaufschlüsselung",
+        "actionBreakdownSubtitle": "Transaktionsanzahl nach Aktionstyp",
+        "tabActivity": "Aktivität",
+        "tabAssets": "Assets",
+        "tabActions": "Aktionen"
+      },
+      "toolbar": {
+        "searchPlaceholder": "Nach Hash oder Asset suchen...",
+        "sort": {
+          "newest": "Neueste",
+          "oldest": "Älteste",
+          "amount": "Betrag"
+        },
+        "exportCsv": "CSV exportieren",
+        "exportJson": "JSON exportieren",
+        "export": "Exportieren"
+      },
+      "feed": {
+        "ariaLabel": "{{shown}} von {{total}} Transaktionen angezeigt"
+      },
+      "drawer": {
+        "title": "Transaktionsdetails",
+        "previous": "Vorherige Transaktion",
+        "next": "Nächste Transaktion",
+        "close": "Schließen",
+        "action": "Aktion",
+        "asset": "Asset",
+        "blockNumber": "Blocknummer",
+        "timestamp": "Zeitstempel",
+        "transactionHash": "Transaktions-Hash",
+        "hashCopied": "Transaktions-Hash kopiert",
+        "copyFailed": "Hash konnte nicht kopiert werden",
+        "viewOnExplorer": "Auf FlareScan ansehen"
+      }
     },
     "stats": {
       "gas": "Bezahlte Gasgebühren",
@@ -339,7 +419,10 @@
       "pin": "Unterhaltung anheften",
       "unpin": "Anheftung aufheben",
       "searchPlaceholder": "Unterhaltungen durchsuchen...",
-      "noResults": "Keine Unterhaltungen gefunden"
+      "noResults": "Keine Unterhaltungen gefunden",
+      "moreActions": "Weitere Aktionen",
+      "delete": "Unterhaltung löschen",
+      "pinLimitReached": "Du kannst maximal {{count}} Unterhaltungen anheften — hebe zuerst eine Anheftung auf."
     }
   },
   "dashboard": {

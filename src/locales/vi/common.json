@@ -235,7 +235,87 @@
   "wallet": {
     "activity": {
       "subtitle": "Giám sát thời gian thực các tương tác blockchain đến và đi.",
-      "title": "Hoạt động thiết bị cuối gần đây"
+      "title": "Hoạt động thiết bị cuối gần đây",
+      "description": "Mọi giao dịch đã lập chỉ mục của ví đang hoạt động, được nhóm và có thể tìm kiếm.",
+      "refresh": "Làm mới",
+      "connectToSee": "Kết nối hoặc chọn một ví để xem hoạt động giao dịch của ví đó.",
+      "couldntLoad": "Không thể tải hoạt động của ví.",
+      "notifier": {
+        "ready": "Hoạt động ví của bạn đã tải xong."
+      },
+      "loading": {
+        "title": "Đang lập chỉ mục hoạt động ví của bạn",
+        "subtitle": "Các ví lớn có thể mất vài phút khi tải lần đầu. Hãy thoải mái khám phá phần còn lại của bảng điều khiển — chúng tôi sẽ báo khi đã sẵn sàng.",
+        "elapsed": "đã trôi qua {{seconds}}s"
+      },
+      "empty": {
+        "title": "Chưa có hoạt động nào",
+        "description": "Ví này không có giao dịch nào được lập chỉ mục."
+      },
+      "noResults": {
+        "title": "Không có giao dịch phù hợp",
+        "description": "Hãy thử điều chỉnh tìm kiếm hoặc bộ lọc của bạn."
+      },
+      "kpi": {
+        "totalTransactions": "Tổng số giao dịch",
+        "uniqueAssets": "Tài sản riêng biệt",
+        "walletAge": "Tuổi ví",
+        "walletAgeYears": "{{count}} năm",
+        "walletAgeMonths": "{{count}} tháng",
+        "walletAgeDays": "{{count}} ngày",
+        "lastActive": "Hoạt động gần nhất",
+        "justNow": "Vừa xong",
+        "minutesAgo": "{{count}} phút trước",
+        "hoursAgo": "{{count}} giờ trước",
+        "daysAgo": "{{count}} ngày trước"
+      },
+      "insights": {
+        "title": "Thông tin nhanh",
+        "mostUsedAsset": "Tài sản dùng nhiều nhất",
+        "mostCommonAction": "Hành động phổ biến nhất",
+        "mostActiveDay": "Ngày hoạt động nhiều nhất",
+        "mostActiveMonth": "Tháng hoạt động nhiều nhất",
+        "txCount": "{{count}} giao dịch"
+      },
+      "charts": {
+        "activityByDay": "Hoạt động theo ngày",
+        "activityByDaySubtitle": "Số lượng giao dịch mỗi ngày",
+        "assetBreakdown": "Phân tích theo tài sản",
+        "assetBreakdownSubtitle": "Số lượng giao dịch theo tài sản",
+        "actionBreakdown": "Phân tích theo hành động",
+        "actionBreakdownSubtitle": "Số lượng giao dịch theo loại hành động",
+        "tabActivity": "Hoạt động",
+        "tabAssets": "Tài sản",
+        "tabActions": "Hành động"
+      },
+      "toolbar": {
+        "searchPlaceholder": "Tìm theo hash hoặc tài sản...",
+        "sort": {
+          "newest": "Mới nhất",
+          "oldest": "Cũ nhất",
+          "amount": "Số lượng"
+        },
+        "exportCsv": "Xuất CSV",
+        "exportJson": "Xuất JSON",
+        "export": "Xuất"
+      },
+      "feed": {
+        "ariaLabel": "Đang hiển thị {{shown}} trong tổng số {{total}} giao dịch"
+      },
+      "drawer": {
+        "title": "Chi tiết giao dịch",
+        "previous": "Giao dịch trước",
+        "next": "Giao dịch tiếp theo",
+        "close": "Đóng",
+        "action": "Hành động",
+        "asset": "Tài sản",
+        "blockNumber": "Số khối",
+        "timestamp": "Dấu thời gian",
+        "transactionHash": "Hash giao dịch",
+        "hashCopied": "Đã sao chép hash giao dịch",
+        "copyFailed": "Không thể sao chép hash",
+        "viewOnExplorer": "Xem trên FlareScan"
+      }
     },
     "stats": {
       "gas": "Phí xăng dầu đã thanh toán",
@@ -340,7 +420,10 @@
       "pin": "Ghim cuộc trò chuyện",
       "unpin": "Bỏ ghim",
       "searchPlaceholder": "Tìm kiếm cuộc trò chuyện...",
-      "noResults": "Không tìm thấy cuộc trò chuyện nào"
+      "noResults": "Không tìm thấy cuộc trò chuyện nào",
+      "moreActions": "Thao tác khác",
+      "delete": "Xóa cuộc trò chuyện",
+      "pinLimitReached": "Bạn chỉ có thể ghim tối đa {{count}} cuộc trò chuyện — hãy bỏ ghim một cuộc trước."
     }
   },
   "dashboard": {

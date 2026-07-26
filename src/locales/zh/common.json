@@ -235,7 +235,87 @@
   "wallet": {
     "activity": {
       "subtitle": "实时监控传入和传出的区块链交互。",
-      "title": "最近的终端活动"
+      "title": "最近的终端活动",
+      "description": "您当前活跃钱包的所有已索引交易，按分组呈现且可搜索。",
+      "refresh": "刷新",
+      "connectToSee": "连接或选择一个钱包以查看其交易活动。",
+      "couldntLoad": "无法加载钱包活动。",
+      "notifier": {
+        "ready": "您的钱包活动已加载完成。"
+      },
+      "loading": {
+        "title": "正在为您的钱包活动建立索引",
+        "subtitle": "大型钱包首次加载可能需要几分钟。您可以先浏览仪表盘的其他部分——准备好后我们会通知您。",
+        "elapsed": "已用时 {{seconds}} 秒"
+      },
+      "empty": {
+        "title": "暂无活动",
+        "description": "该钱包没有已索引的交易。"
+      },
+      "noResults": {
+        "title": "没有匹配的交易",
+        "description": "请尝试调整搜索或筛选条件。"
+      },
+      "kpi": {
+        "totalTransactions": "交易总数",
+        "uniqueAssets": "独立资产数",
+        "walletAge": "钱包年龄",
+        "walletAgeYears": "{{count}} 年",
+        "walletAgeMonths": "{{count}} 个月",
+        "walletAgeDays": "{{count}} 天",
+        "lastActive": "最近活动",
+        "justNow": "刚刚",
+        "minutesAgo": "{{count}} 分钟前",
+        "hoursAgo": "{{count}} 小时前",
+        "daysAgo": "{{count}} 天前"
+      },
+      "insights": {
+        "title": "快速洞察",
+        "mostUsedAsset": "最常用资产",
+        "mostCommonAction": "最常见操作",
+        "mostActiveDay": "最活跃的一天",
+        "mostActiveMonth": "最活跃的月份",
+        "txCount": "{{count}} 笔交易"
+      },
+      "charts": {
+        "activityByDay": "每日活动",
+        "activityByDaySubtitle": "每日交易数量",
+        "assetBreakdown": "资产分布",
+        "assetBreakdownSubtitle": "按资产统计的交易数量",
+        "actionBreakdown": "操作类型分布",
+        "actionBreakdownSubtitle": "按操作类型统计的交易数量",
+        "tabActivity": "活动",
+        "tabAssets": "资产",
+        "tabActions": "操作"
+      },
+      "toolbar": {
+        "searchPlaceholder": "按哈希或资产搜索...",
+        "sort": {
+          "newest": "最新",
+          "oldest": "最旧",
+          "amount": "金额"
+        },
+        "exportCsv": "导出 CSV",
+        "exportJson": "导出 JSON",
+        "export": "导出"
+      },
+      "feed": {
+        "ariaLabel": "显示 {{total}} 笔交易中的 {{shown}} 笔"
+      },
+      "drawer": {
+        "title": "交易详情",
+        "previous": "上一笔交易",
+        "next": "下一笔交易",
+        "close": "关闭",
+        "action": "操作",
+        "asset": "资产",
+        "blockNumber": "区块编号",
+        "timestamp": "时间戳",
+        "transactionHash": "交易哈希",
+        "hashCopied": "交易哈希已复制",
+        "copyFailed": "无法复制哈希",
+        "viewOnExplorer": "在 FlareScan 上查看"
+      }
     },
     "stats": {
       "gas": "支付的汽油费",
@@ -340,7 +420,10 @@
       "pin": "置顶对话",
       "unpin": "取消置顶",
       "searchPlaceholder": "搜索对话...",
-      "noResults": "未找到对话"
+      "noResults": "未找到对话",
+      "moreActions": "更多操作",
+      "delete": "删除对话",
+      "pinLimitReached": "最多只能置顶 {{count}} 个对话——请先取消一个置顶。"
     }
   },
   "dashboard": {

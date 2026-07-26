@@ -235,7 +235,87 @@
   "wallet": {
     "activity": {
       "subtitle": "Monitoraggio in tempo reale delle interazioni blockchain in entrata e in uscita.",
-      "title": "Attività recente del terminale"
+      "title": "Attività recente del terminale",
+      "description": "Ogni transazione indicizzata del tuo wallet attivo, raggruppata e ricercabile.",
+      "refresh": "Aggiorna",
+      "connectToSee": "Connetti o seleziona un wallet per vedere la sua attività di transazioni.",
+      "couldntLoad": "Impossibile caricare l'attività del wallet.",
+      "notifier": {
+        "ready": "Il caricamento dell'attività del tuo wallet è terminato."
+      },
+      "loading": {
+        "title": "Indicizzazione dell'attività del wallet",
+        "subtitle": "I wallet di grandi dimensioni possono richiedere alcuni minuti al primo caricamento. Esplora pure il resto della dashboard — ti avviseremo quando sarà pronto.",
+        "elapsed": "{{seconds}}s trascorsi"
+      },
+      "empty": {
+        "title": "Ancora nessuna attività",
+        "description": "Questo wallet non ha transazioni indicizzate."
+      },
+      "noResults": {
+        "title": "Nessuna transazione corrispondente",
+        "description": "Prova a modificare la ricerca o i filtri."
+      },
+      "kpi": {
+        "totalTransactions": "Transazioni totali",
+        "uniqueAssets": "Asset unici",
+        "walletAge": "Anzianità del wallet",
+        "walletAgeYears": "{{count}} anni",
+        "walletAgeMonths": "{{count}} mesi",
+        "walletAgeDays": "{{count}} giorni",
+        "lastActive": "Ultima attività",
+        "justNow": "Proprio ora",
+        "minutesAgo": "{{count}} min fa",
+        "hoursAgo": "{{count}} h fa",
+        "daysAgo": "{{count}} g fa"
+      },
+      "insights": {
+        "title": "Approfondimenti rapidi",
+        "mostUsedAsset": "Asset più usato",
+        "mostCommonAction": "Azione più comune",
+        "mostActiveDay": "Giorno più attivo",
+        "mostActiveMonth": "Mese più attivo",
+        "txCount": "{{count}} transazioni"
+      },
+      "charts": {
+        "activityByDay": "Attività per giorno",
+        "activityByDaySubtitle": "Numero di transazioni al giorno",
+        "assetBreakdown": "Ripartizione per asset",
+        "assetBreakdownSubtitle": "Numero di transazioni per asset",
+        "actionBreakdown": "Ripartizione per azione",
+        "actionBreakdownSubtitle": "Numero di transazioni per tipo di azione",
+        "tabActivity": "Attività",
+        "tabAssets": "Asset",
+        "tabActions": "Azioni"
+      },
+      "toolbar": {
+        "searchPlaceholder": "Cerca per hash o asset...",
+        "sort": {
+          "newest": "Più recenti",
+          "oldest": "Meno recenti",
+          "amount": "Importo"
+        },
+        "exportCsv": "Esporta CSV",
+        "exportJson": "Esporta JSON",
+        "export": "Esporta"
+      },
+      "feed": {
+        "ariaLabel": "Visualizzazione di {{shown}} transazioni su {{total}}"
+      },
+      "drawer": {
+        "title": "Dettagli transazione",
+        "previous": "Transazione precedente",
+        "next": "Transazione successiva",
+        "close": "Chiudi",
+        "action": "Azione",
+        "asset": "Asset",
+        "blockNumber": "Numero blocco",
+        "timestamp": "Timestamp",
+        "transactionHash": "Hash della transazione",
+        "hashCopied": "Hash della transazione copiato",
+        "copyFailed": "Impossibile copiare l'hash",
+        "viewOnExplorer": "Visualizza su FlareScan"
+      }
     },
     "stats": {
       "gas": "Commissioni gas pagate",
@@ -340,7 +420,10 @@
       "pin": "Fissa conversazione",
       "unpin": "Rimuovi fissaggio",
       "searchPlaceholder": "Cerca conversazioni...",
-      "noResults": "Nessuna conversazione trovata"
+      "noResults": "Nessuna conversazione trovata",
+      "moreActions": "Altre azioni",
+      "delete": "Elimina conversazione",
+      "pinLimitReached": "Puoi fissare fino a {{count}} conversazioni — rimuovi prima un fissaggio."
     }
   },
   "dashboard": {

@@ -263,7 +263,10 @@
       "pin": "Pin conversation",
       "unpin": "Unpin conversation",
       "searchPlaceholder": "Search conversations...",
-      "noResults": "No conversations found"
+      "noResults": "No conversations found",
+      "moreActions": "More actions",
+      "delete": "Delete conversation",
+      "pinLimitReached": "You can pin up to {{count}} conversations — unpin one first."
     }
   },
   "footer": {
@@ -501,7 +504,87 @@
   "wallet": {
     "activity": {
       "subtitle": "Real-time monitoring of incoming and outgoing blockchain interactions.",
-      "title": "Recent Terminal Activity"
+      "title": "Recent Terminal Activity",
+      "description": "Every indexed transaction for your active wallet, grouped and searchable.",
+      "refresh": "Refresh",
+      "connectToSee": "Connect or select a wallet to see its transaction activity.",
+      "couldntLoad": "Couldn't load wallet activity.",
+      "notifier": {
+        "ready": "Your wallet activity has finished loading."
+      },
+      "loading": {
+        "title": "Indexing your wallet activity",
+        "subtitle": "Large wallets can take a few minutes on first load. Feel free to explore the rest of the dashboard — we'll let you know when it's ready.",
+        "elapsed": "{{seconds}}s elapsed"
+      },
+      "empty": {
+        "title": "No activity yet",
+        "description": "This wallet has no indexed transactions."
+      },
+      "noResults": {
+        "title": "No matching transactions",
+        "description": "Try adjusting your search or filters."
+      },
+      "kpi": {
+        "totalTransactions": "Total Transactions",
+        "uniqueAssets": "Unique Assets",
+        "walletAge": "Wallet Age",
+        "walletAgeYears": "{{count}} years",
+        "walletAgeMonths": "{{count}} months",
+        "walletAgeDays": "{{count}} days",
+        "lastActive": "Last Active",
+        "justNow": "Just now",
+        "minutesAgo": "{{count}}m ago",
+        "hoursAgo": "{{count}}h ago",
+        "daysAgo": "{{count}}d ago"
+      },
+      "insights": {
+        "title": "Quick Insights",
+        "mostUsedAsset": "Most Used Asset",
+        "mostCommonAction": "Most Common Action",
+        "mostActiveDay": "Most Active Day",
+        "mostActiveMonth": "Most Active Month",
+        "txCount": "{{count}} transactions"
+      },
+      "charts": {
+        "activityByDay": "Activity by Day",
+        "activityByDaySubtitle": "Transaction count per day",
+        "assetBreakdown": "Asset Breakdown",
+        "assetBreakdownSubtitle": "Transaction count by asset",
+        "actionBreakdown": "Action Breakdown",
+        "actionBreakdownSubtitle": "Transaction count by action type",
+        "tabActivity": "Activity",
+        "tabAssets": "Assets",
+        "tabActions": "Actions"
+      },
+      "toolbar": {
+        "searchPlaceholder": "Search by hash or asset...",
+        "sort": {
+          "newest": "Newest",
+          "oldest": "Oldest",
+          "amount": "Amount"
+        },
+        "exportCsv": "Export CSV",
+        "exportJson": "Export JSON",
+        "export": "Export"
+      },
+      "feed": {
+        "ariaLabel": "Showing {{shown}} of {{total}} transactions"
+      },
+      "drawer": {
+        "title": "Transaction Details",
+        "previous": "Previous transaction",
+        "next": "Next transaction",
+        "close": "Close",
+        "action": "Action",
+        "asset": "Asset",
+        "blockNumber": "Block Number",
+        "timestamp": "Timestamp",
+        "transactionHash": "Transaction Hash",
+        "hashCopied": "Transaction hash copied",
+        "copyFailed": "Couldn't copy hash",
+        "viewOnExplorer": "View on FlareScan"
+      }
     },
     "stats": {
       "gas": "Gas Fees Paid",

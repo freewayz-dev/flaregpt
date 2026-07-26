@@ -25,6 +25,7 @@ export default function ChatPane({
   onTogglePinConversation,
   onNewChat,
   scrollRequestId,
+  focusRequestId,
   compactEmptyState = false,
 }) {
   const hasMessages = messages.length > 0;
@@ -43,7 +44,13 @@ export default function ChatPane({
         <EmptyState onSelectPrompt={handleSelectPrompt} compact={compactEmptyState} />
       )}
 
-      <Composer onSend={onSend} isGenerating={isGenerating} onStop={onStop} onOpenWalletModal={onOpenWalletModal} />
+      <Composer
+        onSend={onSend}
+        isGenerating={isGenerating}
+        onStop={onStop}
+        onOpenWalletModal={onOpenWalletModal}
+        focusRequestId={focusRequestId}
+      />
 
       <HistoryPanel
         open={historyOpen}

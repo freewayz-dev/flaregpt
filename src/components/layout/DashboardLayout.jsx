@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import FlareWidget from "@/components/common/FlareWidget";
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import { useAuthSync } from "@/hooks/useAuthSync";
+import { useWalletActivityNotifier } from "@/hooks/useWalletActivityNotifier";
 
 // GlobalSpinner is h-screen, which is correct for AppRoutes' top-level
 // fallback (rendered before any layout exists) but would briefly exceed
@@ -24,6 +25,9 @@ function RouteLoadingFallback() {
 export default function DashboardLayout() {
   // Connecting a wallet anywhere in the app shell doubles as signing in.
   useAuthSync();
+  // R15: keeps watching a large wallet's activity fetch even after the
+  // page that started it unmounts — see the hook for why.
+  useWalletActivityNotifier();
 
   const location = useLocation();
   const navigate = useNavigate();

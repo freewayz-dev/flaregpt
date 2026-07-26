@@ -6,6 +6,7 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import GlobalSpinner from "@/components/common/GlobalSpinner";
 import DashboardSkeleton from "@/pages/Dashboard/DashboardSkeleton";
 import DefiProtocolsSkeleton from "@/pages/DefiProtocols/DefiProtocolsSkeleton";
+import WalletActivitySkeleton from "@/pages/WalletActivity/WalletActivitySkeleton";
 
 const LandingPage = lazy(() => import("@/pages/LandingPage"));
 const Terms = lazy(() => import("@/pages/Terms"));
@@ -15,6 +16,7 @@ const FLRGPT = lazy(() => import("@/pages/Flrgpt"));
 const Settings = lazy(() => import("@/pages/Settings"));
 const Help = lazy(() => import("@/pages/Help"));
 const DefiProtocols = lazy(() => import("@/pages/DefiProtocols"));
+const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Donate = lazy(() => import("@/pages/Donate"));
 const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
 
@@ -39,7 +41,11 @@ export default function AppRoutes() {
           <Route path="flare-gpt" element={<FLRGPT />} />
           <Route
             path="wallet"
-            element={<ComingSoon title={t("sidebar.walletActivity")} />}
+            element={
+              <Suspense fallback={<WalletActivitySkeleton />}>
+                <WalletActivity />
+              </Suspense>
+            }
           />
           <Route path="settings" element={<Settings />} />
           <Route path="help" element={<Help />} />

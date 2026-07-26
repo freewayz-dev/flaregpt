@@ -35,21 +35,35 @@ function formatCell(value, yesLabel, noLabel) {
   return String(value);
 }
 
+// `height` is fixed, not a max-height — real ledgers now range from a
+// couple of rows to 20+ (FTSO unclaimed epochs), and when this table sits
+// beside a sibling card in a grid (Claims History next to Delegations
+// Breakdown on Overview), a growing table used to force the whole card
+// taller than its neighbor, which then stretched to match under the
+// grid's default alignment — a big card next to a mostly-empty one. A
+// fixed height applied to *both* the table and the empty state means
+// every card built on GenericTable is the same height regardless of how
+// many rows it actually has: a short table leaves quiet space below it
+// rather than shrinking the card, and a long one scrolls internally
+// rather than growing it.
 export default function GenericTable({
   items,
   emptyIcon,
   emptyTitle,
   emptyDescription,
+  height = "320px",
 }) {
   const { t } = useTranslation();
 
   if (!items?.length) {
     return (
-      <WalletEmptyState
-        icon={emptyIcon}
-        title={emptyTitle}
-        description={emptyDescription}
-      />
+      <div className="flex items-center justify-center" style={{ height }}>
+        <WalletEmptyState
+          icon={emptyIcon}
+          title={emptyTitle}
+          description={emptyDescription}
+        />
+      </div>
     );
   }
 
@@ -58,9 +72,12 @@ export default function GenericTable({
   const noLabel = t("dashboard.common.no");
 
   return (
-    <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
+    <div
+      className="overflow-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none overscroll-contain"
+      style={{ height }}
+    >
       <table className="w-full text-left text-xs">
-        <thead>
+        <thead className="sticky top-0 z-10 bg-surface-card">
           <tr className="border-b border-divider">
             {columns.map((col) => (
               <th

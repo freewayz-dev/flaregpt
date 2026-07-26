@@ -26,7 +26,7 @@ export function useFlareGptConversation() {
   const storeSendMessage = useFlareGptStore((s) => s.sendMessage);
   const updateMessage = useFlareGptStore((s) => s.updateMessage);
   const removeLastAssistantMessage = useFlareGptStore((s) => s.removeLastAssistantMessage);
-  const startNewConversation = useFlareGptStore((s) => s.startNewConversation);
+  const storeStartNewConversation = useFlareGptStore((s) => s.startNewConversation);
   const switchConversation = useFlareGptStore((s) => s.switchConversation);
   const deleteConversation = useFlareGptStore((s) => s.deleteConversation);
   const togglePinConversation = useFlareGptStore((s) => s.togglePinConversation);
@@ -51,6 +51,17 @@ export function useFlareGptConversation() {
   // wouldn't bump this, so their scroll position would be left alone.
   const [scrollRequestId, setScrollRequestId] = useState(0);
   const requestScrollToBottom = () => setScrollRequestId((n) => n + 1);
+
+  // Bumped whenever a new, blank conversation starts here — Composer
+  // watches this to return keyboard focus to itself, so "New Chat" feels
+  // like one continuous action (clear the slate, land back in a place
+  // that's ready to type) rather than requiring a manual re-click into
+  // the input afterward.
+  const [focusRequestId, setFocusRequestId] = useState(0);
+  const startNewConversation = () => {
+    storeStartNewConversation();
+    setFocusRequestId((n) => n + 1);
+  };
 
   // Tracks the in-flight reveal so it can be cancelled (Stop) or fast-
   // forwarded (unmount) without leaving a message stuck mid-stream.
@@ -204,5 +215,6 @@ export function useFlareGptConversation() {
     deleteConversation,
     togglePinConversation,
     scrollRequestId,
+    focusRequestId,
   };
 }

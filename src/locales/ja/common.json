@@ -235,7 +235,87 @@
   "wallet": {
     "activity": {
       "subtitle": "ブロックチェーンの送受信のリアルタイム監視。",
-      "title": "最近の端末アクティビティ"
+      "title": "最近の端末アクティビティ",
+      "description": "アクティブなウォレットのインデックス済みトランザクションをすべて、グループ化して検索できます。",
+      "refresh": "更新",
+      "connectToSee": "取引アクティビティを表示するには、ウォレットを接続または選択してください。",
+      "couldntLoad": "ウォレットアクティビティを読み込めませんでした。",
+      "notifier": {
+        "ready": "ウォレットアクティビティの読み込みが完了しました。"
+      },
+      "loading": {
+        "title": "ウォレットアクティビティをインデックス中",
+        "subtitle": "大きなウォレットは初回読み込みに数分かかることがあります。ダッシュボードの他の部分を自由に見て回ってください — 準備ができたらお知らせします。",
+        "elapsed": "{{seconds}}秒経過"
+      },
+      "empty": {
+        "title": "まだアクティビティがありません",
+        "description": "このウォレットにはインデックス済みの取引がありません。"
+      },
+      "noResults": {
+        "title": "一致する取引がありません",
+        "description": "検索条件やフィルターを調整してみてください。"
+      },
+      "kpi": {
+        "totalTransactions": "総取引数",
+        "uniqueAssets": "ユニークな資産",
+        "walletAge": "ウォレットの経過期間",
+        "walletAgeYears": "{{count}}年",
+        "walletAgeMonths": "{{count}}か月",
+        "walletAgeDays": "{{count}}日",
+        "lastActive": "最終アクティビティ",
+        "justNow": "たった今",
+        "minutesAgo": "{{count}}分前",
+        "hoursAgo": "{{count}}時間前",
+        "daysAgo": "{{count}}日前"
+      },
+      "insights": {
+        "title": "クイックインサイト",
+        "mostUsedAsset": "最も使用された資産",
+        "mostCommonAction": "最も一般的なアクション",
+        "mostActiveDay": "最も活発な日",
+        "mostActiveMonth": "最も活発な月",
+        "txCount": "{{count}}件の取引"
+      },
+      "charts": {
+        "activityByDay": "日別アクティビティ",
+        "activityByDaySubtitle": "1日あたりの取引数",
+        "assetBreakdown": "資産別内訳",
+        "assetBreakdownSubtitle": "資産別の取引数",
+        "actionBreakdown": "アクション別内訳",
+        "actionBreakdownSubtitle": "アクション種類別の取引数",
+        "tabActivity": "アクティビティ",
+        "tabAssets": "資産",
+        "tabActions": "操作"
+      },
+      "toolbar": {
+        "searchPlaceholder": "ハッシュまたは資産で検索...",
+        "sort": {
+          "newest": "新しい順",
+          "oldest": "古い順",
+          "amount": "金額"
+        },
+        "exportCsv": "CSVをエクスポート",
+        "exportJson": "JSONをエクスポート",
+        "export": "エクスポート"
+      },
+      "feed": {
+        "ariaLabel": "{{total}}件中{{shown}}件の取引を表示中"
+      },
+      "drawer": {
+        "title": "取引の詳細",
+        "previous": "前の取引",
+        "next": "次の取引",
+        "close": "閉じる",
+        "action": "アクション",
+        "asset": "資産",
+        "blockNumber": "ブロック番号",
+        "timestamp": "タイムスタンプ",
+        "transactionHash": "取引ハッシュ",
+        "hashCopied": "取引ハッシュをコピーしました",
+        "copyFailed": "ハッシュをコピーできませんでした",
+        "viewOnExplorer": "FlareScanで表示"
+      }
     },
     "stats": {
       "gas": "支払ったガス料金",
@@ -340,7 +420,10 @@
       "pin": "会話をピン留め",
       "unpin": "ピン留めを解除",
       "searchPlaceholder": "会話を検索...",
-      "noResults": "会話が見つかりません"
+      "noResults": "会話が見つかりません",
+      "moreActions": "その他の操作",
+      "delete": "会話を削除",
+      "pinLimitReached": "ピン留めできる会話は最大{{count}}件です — 先にどれかのピン留めを解除してください。"
     }
   },
   "dashboard": {

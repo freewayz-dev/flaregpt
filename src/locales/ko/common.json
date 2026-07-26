@@ -235,7 +235,87 @@
   "wallet": {
     "activity": {
       "subtitle": "들어오고 나가는 블록 체인 상호 작용에 대한 실시간 모니터링.",
-      "title": "최근 터미널 활동"
+      "title": "최근 터미널 활동",
+      "description": "활성 지갑의 모든 색인된 거래를 그룹화하여 검색할 수 있습니다.",
+      "refresh": "새로고침",
+      "connectToSee": "거래 활동을 보려면 지갑을 연결하거나 선택하세요.",
+      "couldntLoad": "지갑 활동을 불러올 수 없습니다.",
+      "notifier": {
+        "ready": "지갑 활동 불러오기가 완료되었습니다."
+      },
+      "loading": {
+        "title": "지갑 활동 색인 중",
+        "subtitle": "큰 지갑은 처음 불러올 때 몇 분 정도 걸릴 수 있습니다. 대시보드의 다른 부분을 자유롭게 둘러보세요 — 준비되면 알려드리겠습니다.",
+        "elapsed": "{{seconds}}초 경과"
+      },
+      "empty": {
+        "title": "아직 활동이 없습니다",
+        "description": "이 지갑에는 색인된 거래가 없습니다."
+      },
+      "noResults": {
+        "title": "일치하는 거래가 없습니다",
+        "description": "검색어나 필터를 조정해 보세요."
+      },
+      "kpi": {
+        "totalTransactions": "총 거래 수",
+        "uniqueAssets": "고유 자산",
+        "walletAge": "지갑 사용 기간",
+        "walletAgeYears": "{{count}}년",
+        "walletAgeMonths": "{{count}}개월",
+        "walletAgeDays": "{{count}}일",
+        "lastActive": "마지막 활동",
+        "justNow": "방금 전",
+        "minutesAgo": "{{count}}분 전",
+        "hoursAgo": "{{count}}시간 전",
+        "daysAgo": "{{count}}일 전"
+      },
+      "insights": {
+        "title": "빠른 인사이트",
+        "mostUsedAsset": "가장 많이 사용된 자산",
+        "mostCommonAction": "가장 흔한 작업",
+        "mostActiveDay": "가장 활발한 날",
+        "mostActiveMonth": "가장 활발한 달",
+        "txCount": "거래 {{count}}건"
+      },
+      "charts": {
+        "activityByDay": "일별 활동",
+        "activityByDaySubtitle": "일별 거래 수",
+        "assetBreakdown": "자산별 분석",
+        "assetBreakdownSubtitle": "자산별 거래 수",
+        "actionBreakdown": "작업별 분석",
+        "actionBreakdownSubtitle": "작업 유형별 거래 수",
+        "tabActivity": "활동",
+        "tabAssets": "자산",
+        "tabActions": "작업"
+      },
+      "toolbar": {
+        "searchPlaceholder": "해시 또는 자산으로 검색...",
+        "sort": {
+          "newest": "최신순",
+          "oldest": "오래된순",
+          "amount": "금액"
+        },
+        "exportCsv": "CSV 내보내기",
+        "exportJson": "JSON 내보내기",
+        "export": "내보내기"
+      },
+      "feed": {
+        "ariaLabel": "전체 {{total}}건 중 {{shown}}건 표시 중"
+      },
+      "drawer": {
+        "title": "거래 세부정보",
+        "previous": "이전 거래",
+        "next": "다음 거래",
+        "close": "닫기",
+        "action": "작업",
+        "asset": "자산",
+        "blockNumber": "블록 번호",
+        "timestamp": "타임스탬프",
+        "transactionHash": "거래 해시",
+        "hashCopied": "거래 해시가 복사되었습니다",
+        "copyFailed": "해시를 복사할 수 없습니다",
+        "viewOnExplorer": "FlareScan에서 보기"
+      }
     },
     "stats": {
       "gas": "지불된 주유비",
@@ -340,7 +420,10 @@
       "pin": "대화 고정",
       "unpin": "고정 해제",
       "searchPlaceholder": "대화 검색...",
-      "noResults": "대화를 찾을 수 없습니다"
+      "noResults": "대화를 찾을 수 없습니다",
+      "moreActions": "추가 작업",
+      "delete": "대화 삭제",
+      "pinLimitReached": "최대 {{count}}개의 대화만 고정할 수 있습니다 — 먼저 하나를 고정 해제하세요."
     }
   },
   "dashboard": {

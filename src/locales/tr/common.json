@@ -235,7 +235,87 @@
   "wallet": {
     "activity": {
       "subtitle": "Gelen ve giden blockchain etkileşimlerinin gerçek zamanlı izlenmesi.",
-      "title": "Son Terminal Etkinliği"
+      "title": "Son Terminal Etkinliği",
+      "description": "Aktif cüzdanınızdaki her dizine eklenmiş işlem, gruplandırılmış ve aranabilir şekilde.",
+      "refresh": "Yenile",
+      "connectToSee": "İşlem etkinliğini görmek için bir cüzdan bağlayın veya seçin.",
+      "couldntLoad": "Cüzdan etkinliği yüklenemedi.",
+      "notifier": {
+        "ready": "Cüzdan etkinliğinizin yüklenmesi tamamlandı."
+      },
+      "loading": {
+        "title": "Cüzdan etkinliğiniz dizine ekleniyor",
+        "subtitle": "Büyük cüzdanlar ilk yüklemede birkaç dakika sürebilir. Bu sırada panonun geri kalanını rahatça inceleyebilirsiniz — hazır olduğunda size haber vereceğiz.",
+        "elapsed": "{{seconds}}sn geçti"
+      },
+      "empty": {
+        "title": "Henüz etkinlik yok",
+        "description": "Bu cüzdanda dizine eklenmiş işlem yok."
+      },
+      "noResults": {
+        "title": "Eşleşen işlem yok",
+        "description": "Arama veya filtrelerinizi ayarlamayı deneyin."
+      },
+      "kpi": {
+        "totalTransactions": "Toplam İşlem",
+        "uniqueAssets": "Benzersiz Varlıklar",
+        "walletAge": "Cüzdan Yaşı",
+        "walletAgeYears": "{{count}} yıl",
+        "walletAgeMonths": "{{count}} ay",
+        "walletAgeDays": "{{count}} gün",
+        "lastActive": "Son Aktif",
+        "justNow": "Az önce",
+        "minutesAgo": "{{count}} dk önce",
+        "hoursAgo": "{{count}} sa önce",
+        "daysAgo": "{{count}} gün önce"
+      },
+      "insights": {
+        "title": "Hızlı İçgörüler",
+        "mostUsedAsset": "En Çok Kullanılan Varlık",
+        "mostCommonAction": "En Yaygın İşlem",
+        "mostActiveDay": "En Aktif Gün",
+        "mostActiveMonth": "En Aktif Ay",
+        "txCount": "{{count}} işlem"
+      },
+      "charts": {
+        "activityByDay": "Güne Göre Etkinlik",
+        "activityByDaySubtitle": "Gün başına işlem sayısı",
+        "assetBreakdown": "Varlık Dağılımı",
+        "assetBreakdownSubtitle": "Varlığa göre işlem sayısı",
+        "actionBreakdown": "İşlem Türü Dağılımı",
+        "actionBreakdownSubtitle": "İşlem türüne göre işlem sayısı",
+        "tabActivity": "Etkinlik",
+        "tabAssets": "Varlıklar",
+        "tabActions": "İşlemler"
+      },
+      "toolbar": {
+        "searchPlaceholder": "Hash veya varlığa göre ara...",
+        "sort": {
+          "newest": "En Yeni",
+          "oldest": "En Eski",
+          "amount": "Tutar"
+        },
+        "exportCsv": "CSV Dışa Aktar",
+        "exportJson": "JSON Dışa Aktar",
+        "export": "Dışa Aktar"
+      },
+      "feed": {
+        "ariaLabel": "{{total}} işlemden {{shown}} tanesi gösteriliyor"
+      },
+      "drawer": {
+        "title": "İşlem Ayrıntıları",
+        "previous": "Önceki işlem",
+        "next": "Sonraki işlem",
+        "close": "Kapat",
+        "action": "İşlem",
+        "asset": "Varlık",
+        "blockNumber": "Blok Numarası",
+        "timestamp": "Zaman Damgası",
+        "transactionHash": "İşlem Hash'i",
+        "hashCopied": "İşlem hash'i kopyalandı",
+        "copyFailed": "Hash kopyalanamadı",
+        "viewOnExplorer": "FlareScan'de Görüntüle"
+      }
     },
     "stats": {
       "gas": "Ödenen Gaz Ücretleri",
@@ -340,7 +420,10 @@
       "pin": "Sohbeti sabitle",
       "unpin": "Sabitlemeyi kaldır",
       "searchPlaceholder": "Sohbetlerde ara...",
-      "noResults": "Sohbet bulunamadı"
+      "noResults": "Sohbet bulunamadı",
+      "moreActions": "Diğer işlemler",
+      "delete": "Sohbeti sil",
+      "pinLimitReached": "En fazla {{count}} sohbet sabitleyebilirsiniz — önce birini sabitlemeden çıkarın."
     }
   },
   "dashboard": {

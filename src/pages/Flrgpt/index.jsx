@@ -69,7 +69,18 @@ export default function FLRGPT() {
     deleteConversation,
     togglePinConversation,
     scrollRequestId,
+    focusRequestId,
   } = useFlareGptConversation();
+
+  // Tapping "New Chat" while history is open should read as one seamless
+  // action — close the panel, then start the blank conversation — rather
+  // than starting a new chat silently underneath a still-open history
+  // list (the panel used to only close via its *own* internal New Chat
+  // button, not this toolbar one, which is exactly the gap this fixes).
+  const handleNewChat = () => {
+    setHistoryOpen(false);
+    startNewConversation();
+  };
 
   // The redirect above fires before paint, but skip mounting the (fairly
   // heavy) ChatPane tree entirely rather than rendering it for one frame
@@ -90,7 +101,7 @@ export default function FLRGPT() {
         </button>
         <button
           type="button"
-          onClick={startNewConversation}
+          onClick={handleNewChat}
           title={t("flrgpt.history.newChat")}
           aria-label={t("flrgpt.history.newChat")}
           className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand/10 text-brand hover:bg-brand/20 transition-colors cursor-pointer"
@@ -116,6 +127,7 @@ export default function FLRGPT() {
           onTogglePinConversation={togglePinConversation}
           onNewChat={startNewConversation}
           scrollRequestId={scrollRequestId}
+          focusRequestId={focusRequestId}
         />
       </div>
     </div>

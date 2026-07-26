@@ -6,7 +6,7 @@ import WalletContextPill from "@/components/flareGpt/WalletContextPill";
 
 const MAX_TEXTAREA_HEIGHT = 160;
 
-export default function Composer({ onSend, isGenerating, onStop, onOpenWalletModal }) {
+export default function Composer({ onSend, isGenerating, onStop, onOpenWalletModal, focusRequestId }) {
   const { t } = useTranslation();
   const [value, setValue] = useState("");
   const textareaRef = useRef(null);
@@ -24,6 +24,22 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
       textareaRef.current?.focus();
     }
   }, []);
+
+  // "New Chat" should feel like one seamless action — history panel
+  // closes, a blank conversation starts, and the composer is where you'd
+  // land next, so focus returns here automatically rather than requiring
+  // a manual click back into the input. Same mount-time guard as above:
+  // skip on touch devices so tapping "New Chat" doesn't pop the on-screen
+  // keyboard as a side effect. Guards against the initial render's default
+  // value (0) so this doesn't *also* fire once on mount alongside the
+  // effect above.
+  useEffect(() => {
+    if (!focusRequestId) return;
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    if (!isTouchDevice) {
+      textareaRef.current?.focus();
+    }
+  }, [focusRequestId]);
 
   const canSend = value.trim().length > 0 && !isGenerating;
 

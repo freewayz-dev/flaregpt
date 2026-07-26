@@ -31,6 +31,7 @@ const prefetchSettings = () => import("@/pages/Settings");
 const prefetchHelp = () => import("@/pages/Help");
 const prefetchDonate = () => import("@/pages/Donate");
 const prefetchDefiProtocols = () => import("@/pages/DefiProtocols");
+const prefetchWalletActivity = () => import("@/pages/WalletActivity");
 
 // Ordered by expected importance/frequency: the home view, then the
 // fully-functional core features (AI chat, wallet tracking, reward
@@ -61,6 +62,7 @@ const links = [
     translationKey: "walletActivity",
     path: "/app/wallet",
     icon: WalletIcon,
+    prefetch: prefetchWalletActivity,
   },
   {
     translationKey: "ftsoRewards",

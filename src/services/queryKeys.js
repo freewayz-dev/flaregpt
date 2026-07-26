@@ -42,4 +42,13 @@ export const queryKeys = {
       amountFlr,
     ],
   },
+  // `all` alone (no address) lets a future paginated version invalidate
+  // every page for a wallet at once. `activity(address)` is the key for
+  // today's single-shot fetch; a future cursor-paginated version would key
+  // each page as `[...activity(address), cursor]` without touching this
+  // shape's callers.
+  walletActivity: {
+    all: ["walletActivity"],
+    activity: (address) => [...queryKeys.walletActivity.all, "activity", address],
+  },
 };

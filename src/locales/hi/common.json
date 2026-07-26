@@ -235,7 +235,87 @@
   "wallet": {
     "activity": {
       "subtitle": "इनकमिंग और आउटगोइंग ब्लॉकचेन इंटरैक्शन की रीयल - टाइम मॉनिटरिंग।",
-      "title": "हाल की टर्मिनल गतिविधि"
+      "title": "हाल की टर्मिनल गतिविधि",
+      "description": "आपके सक्रिय वॉलेट का हर इंडेक्स किया गया लेनदेन, समूहीकृत और खोजने योग्य।",
+      "refresh": "रीफ़्रेश करें",
+      "connectToSee": "लेनदेन गतिविधि देखने के लिए वॉलेट कनेक्ट करें या चुनें।",
+      "couldntLoad": "वॉलेट गतिविधि लोड नहीं हो सकी।",
+      "notifier": {
+        "ready": "आपकी वॉलेट गतिविधि लोड हो चुकी है।"
+      },
+      "loading": {
+        "title": "आपकी वॉलेट गतिविधि इंडेक्स की जा रही है",
+        "subtitle": "बड़े वॉलेट में पहली बार लोड होने में कुछ मिनट लग सकते हैं। बेझिझक डैशबोर्ड के बाकी हिस्से देखें — तैयार होने पर हम आपको बताएंगे।",
+        "elapsed": "{{seconds}}s बीत गए"
+      },
+      "empty": {
+        "title": "अभी तक कोई गतिविधि नहीं",
+        "description": "इस वॉलेट में कोई इंडेक्स किया गया लेनदेन नहीं है।"
+      },
+      "noResults": {
+        "title": "कोई मिलान लेनदेन नहीं",
+        "description": "अपनी खोज या फ़िल्टर समायोजित करने का प्रयास करें।"
+      },
+      "kpi": {
+        "totalTransactions": "कुल लेनदेन",
+        "uniqueAssets": "अद्वितीय एसेट",
+        "walletAge": "वॉलेट आयु",
+        "walletAgeYears": "{{count}} वर्ष",
+        "walletAgeMonths": "{{count}} महीने",
+        "walletAgeDays": "{{count}} दिन",
+        "lastActive": "अंतिम सक्रियता",
+        "justNow": "अभी अभी",
+        "minutesAgo": "{{count}} मिनट पहले",
+        "hoursAgo": "{{count}} घंटे पहले",
+        "daysAgo": "{{count}} दिन पहले"
+      },
+      "insights": {
+        "title": "त्वरित जानकारी",
+        "mostUsedAsset": "सबसे अधिक उपयोग किया गया एसेट",
+        "mostCommonAction": "सबसे सामान्य कार्रवाई",
+        "mostActiveDay": "सबसे सक्रिय दिन",
+        "mostActiveMonth": "सबसे सक्रिय महीना",
+        "txCount": "{{count}} लेनदेन"
+      },
+      "charts": {
+        "activityByDay": "दिन के अनुसार गतिविधि",
+        "activityByDaySubtitle": "प्रति दिन लेनदेन की संख्या",
+        "assetBreakdown": "एसेट विभाजन",
+        "assetBreakdownSubtitle": "एसेट के अनुसार लेनदेन की संख्या",
+        "actionBreakdown": "कार्रवाई विभाजन",
+        "actionBreakdownSubtitle": "कार्रवाई प्रकार के अनुसार लेनदेन की संख्या",
+        "tabActivity": "गतिविधि",
+        "tabAssets": "एसेट",
+        "tabActions": "कार्रवाइयां"
+      },
+      "toolbar": {
+        "searchPlaceholder": "हैश या एसेट से खोजें...",
+        "sort": {
+          "newest": "नवीनतम",
+          "oldest": "सबसे पुराना",
+          "amount": "राशि"
+        },
+        "exportCsv": "CSV निर्यात करें",
+        "exportJson": "JSON निर्यात करें",
+        "export": "निर्यात करें"
+      },
+      "feed": {
+        "ariaLabel": "{{total}} में से {{shown}} लेनदेन दिखाए जा रहे हैं"
+      },
+      "drawer": {
+        "title": "लेनदेन विवरण",
+        "previous": "पिछला लेनदेन",
+        "next": "अगला लेनदेन",
+        "close": "बंद करें",
+        "action": "कार्रवाई",
+        "asset": "एसेट",
+        "blockNumber": "ब्लॉक नंबर",
+        "timestamp": "टाइमस्टैम्प",
+        "transactionHash": "लेनदेन हैश",
+        "hashCopied": "लेनदेन हैश कॉपी किया गया",
+        "copyFailed": "हैश कॉपी नहीं हो सका",
+        "viewOnExplorer": "FlareScan पर देखें"
+      }
     },
     "stats": {
       "gas": "गैस शुल्क का भुगतान किया गया",
@@ -340,7 +420,10 @@
       "pin": "बातचीत पिन करें",
       "unpin": "पिन हटाएं",
       "searchPlaceholder": "बातचीत खोजें...",
-      "noResults": "कोई बातचीत नहीं मिली"
+      "noResults": "कोई बातचीत नहीं मिली",
+      "moreActions": "अधिक विकल्प",
+      "delete": "बातचीत हटाएं",
+      "pinLimitReached": "आप अधिकतम {{count}} बातचीत पिन कर सकते हैं — पहले किसी एक को अनपिन करें।"
     }
   },
   "dashboard": {

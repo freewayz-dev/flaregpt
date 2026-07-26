@@ -235,7 +235,87 @@
   "wallet": {
     "activity": {
       "subtitle": "Pemantauan real - time interaksi blockchain yang masuk dan keluar.",
-      "title": "Aktivitas Terminal Terbaru"
+      "title": "Aktivitas Terminal Terbaru",
+      "description": "Setiap transaksi yang terindeks untuk wallet aktif Anda, dikelompokkan dan dapat dicari.",
+      "refresh": "Segarkan",
+      "connectToSee": "Hubungkan atau pilih wallet untuk melihat aktivitas transaksinya.",
+      "couldntLoad": "Aktivitas wallet tidak dapat dimuat.",
+      "notifier": {
+        "ready": "Aktivitas wallet Anda selesai dimuat."
+      },
+      "loading": {
+        "title": "Mengindeks aktivitas wallet Anda",
+        "subtitle": "Wallet besar bisa memakan waktu beberapa menit saat pertama kali dimuat. Silakan jelajahi bagian dasbor lainnya — kami akan memberi tahu Anda saat sudah siap.",
+        "elapsed": "{{seconds}}d berlalu"
+      },
+      "empty": {
+        "title": "Belum ada aktivitas",
+        "description": "Wallet ini tidak memiliki transaksi terindeks."
+      },
+      "noResults": {
+        "title": "Tidak ada transaksi yang cocok",
+        "description": "Coba sesuaikan pencarian atau filter Anda."
+      },
+      "kpi": {
+        "totalTransactions": "Total Transaksi",
+        "uniqueAssets": "Aset Unik",
+        "walletAge": "Usia Wallet",
+        "walletAgeYears": "{{count}} tahun",
+        "walletAgeMonths": "{{count}} bulan",
+        "walletAgeDays": "{{count}} hari",
+        "lastActive": "Terakhir Aktif",
+        "justNow": "Baru saja",
+        "minutesAgo": "{{count}} menit lalu",
+        "hoursAgo": "{{count}} jam lalu",
+        "daysAgo": "{{count}} hari lalu"
+      },
+      "insights": {
+        "title": "Wawasan Cepat",
+        "mostUsedAsset": "Aset Paling Sering Digunakan",
+        "mostCommonAction": "Aksi Paling Umum",
+        "mostActiveDay": "Hari Paling Aktif",
+        "mostActiveMonth": "Bulan Paling Aktif",
+        "txCount": "{{count}} transaksi"
+      },
+      "charts": {
+        "activityByDay": "Aktivitas per Hari",
+        "activityByDaySubtitle": "Jumlah transaksi per hari",
+        "assetBreakdown": "Rincian Aset",
+        "assetBreakdownSubtitle": "Jumlah transaksi per aset",
+        "actionBreakdown": "Rincian Aksi",
+        "actionBreakdownSubtitle": "Jumlah transaksi berdasarkan jenis aksi",
+        "tabActivity": "Aktivitas",
+        "tabAssets": "Aset",
+        "tabActions": "Tindakan"
+      },
+      "toolbar": {
+        "searchPlaceholder": "Cari berdasarkan hash atau aset...",
+        "sort": {
+          "newest": "Terbaru",
+          "oldest": "Terlama",
+          "amount": "Jumlah"
+        },
+        "exportCsv": "Ekspor CSV",
+        "exportJson": "Ekspor JSON",
+        "export": "Ekspor"
+      },
+      "feed": {
+        "ariaLabel": "Menampilkan {{shown}} dari {{total}} transaksi"
+      },
+      "drawer": {
+        "title": "Detail Transaksi",
+        "previous": "Transaksi sebelumnya",
+        "next": "Transaksi berikutnya",
+        "close": "Tutup",
+        "action": "Aksi",
+        "asset": "Aset",
+        "blockNumber": "Nomor Blok",
+        "timestamp": "Stempel Waktu",
+        "transactionHash": "Hash Transaksi",
+        "hashCopied": "Hash transaksi disalin",
+        "copyFailed": "Tidak dapat menyalin hash",
+        "viewOnExplorer": "Lihat di FlareScan"
+      }
     },
     "stats": {
       "gas": "Biaya Gas Dibayar",
@@ -340,7 +420,10 @@
       "pin": "Sematkan percakapan",
       "unpin": "Lepas sematan",
       "searchPlaceholder": "Cari percakapan...",
-      "noResults": "Tidak ada percakapan ditemukan"
+      "noResults": "Tidak ada percakapan ditemukan",
+      "moreActions": "Tindakan lainnya",
+      "delete": "Hapus percakapan",
+      "pinLimitReached": "Anda dapat menyematkan maksimal {{count}} percakapan — lepas sematan salah satu terlebih dahulu."
     }
   },
   "dashboard": {

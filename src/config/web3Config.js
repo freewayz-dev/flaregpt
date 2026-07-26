@@ -15,6 +15,13 @@ export const flare = {
   },
 };
 
+// Reads the same `blockExplorers.default.url` wagmi already uses for chain
+// metadata, rather than a second hardcoded "https://flarescan.com" string
+// living alongside it — one source of truth for the explorer's base URL.
+export function getFlarescanTxUrl(transactionHash) {
+  return `${flare.blockExplorers.default.url}/tx/${transactionHash}`;
+}
+
 // wagmi's `injected()` connector only auto-detects the generic
 // `window.ethereum` provider (whichever extension grabbed that global
 // first). Its own multi-provider matcher (used internally for built-in
