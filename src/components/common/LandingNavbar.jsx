@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
+import { ROUTES } from "@/config/routes";
+
 const NAV_ITEMS = [
   { label: "Features", id: "features" },
   { label: "AI", id: "ai" },
@@ -101,7 +103,7 @@ export default function LandingNavbar() {
         {/* CTA */}
         <div className="justify-self-end">
           <button
-            onClick={() => navigate("/app")}
+            onClick={() => navigate(ROUTES.app)}
             className="group flex items-center gap-1.5 md:gap-2 rounded-full bg-brand px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-[13px] font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
           >
             Launch App

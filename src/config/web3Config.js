@@ -84,7 +84,6 @@ function isRealMetaMask(provider) {
 }
 
 export const web3Config = createConfig({
-  // natively understands how to fallback to a standard namespace block when handshaking.
   chains: [flare, mainnet],
   connectors: [
     // Each wallet gets its OWN connector, targeted at its actual injected
@@ -155,6 +154,6 @@ export const web3Config = createConfig({
   ],
   transports: {
     [flare.id]: http(),
-    [mainnet.id]: http(), // Fallback RPC initialization link
+    [mainnet.id]: http(),
   },
 });

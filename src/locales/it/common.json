@@ -6,14 +6,13 @@
     "donate": "Dona"
   },
   "help": {
-    "contactSupport": "Contatta il Supporto",
     "faqs": [
       {
         "answer": "Il wallet potrebbe non essere connesso o la dashboard potrebbe essere ancora in fase di sincronizzazione con la blockchain. Verifica che siano selezionati il wallet e la rete corretti.",
         "question": "Perché il saldo del mio wallet no viene visualizzato?"
       },
       {
-        "answer": "I dati di mercato si aggiornano automaticamente tramite il provider configurato. La frequenza dipende dalla fonte e dalla disponibilità della rete.",
+        "answer": "Ogni 60 secondi mentre la pagina Panoramica è aperta.",
         "question": "Ogni quanto viene aggiornato il prezzo di FLR?"
       },
       {
@@ -21,7 +20,7 @@
         "question": "Perché non ricevo i premi?"
       },
       {
-        "answer": "Il supporto dipende dalle integrazioni disponibili nella dashboard. I wallet Flare compatibili possono essere connessi quando supportati.",
+        "answer": "MetaMask, Rabby Wallet e Bifrost Wallet come estensioni del browser, oltre a qualsiasi wallet compatibile con WalletConnect per dispositivi mobili o wallet hardware.",
         "question": "Quali wallet sono supportati?"
       },
       {
@@ -32,47 +31,21 @@
     "faqTitle": "Domande Frequenti",
     "featureGuides": "Guide alle Funzionalità",
     "gettingStarted": "Per Iniziare",
-    "guides": [
-      {
-        "description": "Monitora il prezzo di FLR, le metriche dell'ecosistema, l'attività del protocollo e le prestazioni del portafoglio.",
-        "title": "Panoramica"
-      },
-      {
-        "description": "Fai domande sui dati di Flare, sulla governance, sui protocolli e sull'attività del wallet.",
-        "title": "FLRGPT"
-      },
-      {
-        "description": "Traccia trasferimenti, richieste, deleghe e interazioni con i protocolli.",
-        "title": "Attività del Wallet"
-      },
-      {
-        "description": "Monitora i premi accumulati, lo stato dell'epoca e le richieste di riscatto.",
-        "title": "Premi FTSO"
-      },
-      {
-        "description": "Scopri opportunità di guadagno sui protocolli Flare supportati.",
-        "title": "Rendimento"
-      },
-      {
-        "description": "Esamina le proposte, la cronologia dei voti e l'attività di governance attiva.",
-        "title": "Governance"
-      }
-    ],
-    "headerDesc": "Scopri come utilizzare FlareGPT, gestire i wallet, monitorare i premi e navigare tra le funzionalità dell'ecosistema.",
-    "noFaqs": "Nessuna FAQ corrispondente trovata.",
-    "noGuides": "Nessuna guida corrispondente trovata.",
-    "searchPlaceholder": "Cerca articoli, FAQ o guide di configurazione...",
-    "searchSub": "Esplora guide, FAQ e spiegazioni delle funzionalità per aiutarti a navigare nell'ecosistema Flare in modo efficiente.",
+    "headerDesc": "Guide, risposte e assistenza per sfruttare al meglio la tua dashboard FlareGPT.",
+    "noFaqs": "Nessuna FAQ corrisponde alla tua ricerca.",
+    "noGuides": "Nessuna guida corrisponde alla tua ricerca.",
+    "searchPlaceholder": "Cerca guide o FAQ...",
+    "searchSub": "Cerca guide alle funzionalità e FAQ, oppure trova un altro modo per contattarci.",
     "searchTitle": "Tutto ciò di cui hai bisogno per iniziare",
     "steps": [
       {
         "step": "01",
-        "text": "Accedi a saldi, premi, governance e dati del protocollo.",
+        "text": "Accedi a saldi, ricompense e dati sui protocolli in tutta la dashboard.",
         "title": "Connetti il tuo Wallet"
       },
       {
         "step": "02",
-        "text": "Monitora FLR, rFLR, SGB e gli asset dell'ecosistema in un unico posto.",
+        "text": "Monitora FLR, WFLR, sFLR e altri asset supportati in un unico posto.",
         "title": "Visualizza i tuoi Asset"
       },
       {
@@ -88,11 +61,22 @@
       {
         "step": "05",
         "text": "Fai domande sui dati e sulle attività di Flare Network.",
-        "title": "Usa FLRGPT"
+        "title": "Usa FlareGPT"
       }
     ],
     "stillNeedHelp": "Hai ancora bisogno di aiuto?",
-    "supportDesc": "Siamo qui per aiutarti a ottenere il massimo da FlareGPT. Se non trovi quello che cerchi, contattaci e ti risponderemo il prima possibile."
+    "supportDesc": "Al momento il modo più rapido per contattarci è X. Il supporto via email e Telegram arriverà presto.",
+    "searchClear": "Cancella ricerca",
+    "flareGptGuideDescription": "Fai domande sul tuo wallet, sulle ricompense e sulla rete Flare in linguaggio semplice.",
+    "askFlareGptLead": "Non hai trovato quello che cercavi?",
+    "askFlareGptCta": "Chiedi aiuto a FlareGPT",
+    "contact": {
+      "twitterLabel": "X (Twitter)",
+      "twitterHint": "Seguici e inviaci un messaggio",
+      "telegramLabel": "Telegram",
+      "emailLabel": "Email",
+      "comingSoon": "Prossimamente"
+    }
   },
   "navbar": {
     "askFlareGPT": "Chiedi a FlareGPT",

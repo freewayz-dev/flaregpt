@@ -6,14 +6,13 @@
     "donate": "捐献"
   },
   "help": {
-    "contactSupport": "联系支持",
     "faqs": [
       {
         "answer": "您的钱包可能未连接，或者控制面板仍在同步区块链数据。请核对是否选择了正确的钱包和网络。",
         "question": "为什么我的钱包余额不显示？"
       },
       {
-        "answer": "市场数据会使用配置的数据提供商自动刷新。更新频率取决于数据源和网络可用性。",
+        "answer": "在“概览”页面打开期间，每 60 秒更新一次。",
         "question": "FLR 价格多长时间更新一次？"
       },
       {
@@ -21,7 +20,7 @@
         "question": "为什么我没有收到奖励？"
       },
       {
-        "answer": "支持情况取决于控制面板中可用的集成项。兼容的 Flare 钱包可在支持时进行连接。",
+        "answer": "浏览器扩展形式的 MetaMask、Rabby Wallet 和 Bifrost Wallet，以及适用于移动端或硬件钱包的任何兼容 WalletConnect 的钱包。",
         "question": "支持哪些钱包？"
       },
       {
@@ -32,47 +31,21 @@
     "faqTitle": "常见问题解答",
     "featureGuides": "功能指南",
     "gettingStarted": "开始使用",
-    "guides": [
-      {
-        "description": "监控 FLR 价格、生态系统指标、协议活动和投资组合表现。",
-        "title": "概述"
-      },
-      {
-        "description": "询问关于 Flare 数据、治理、协议和钱包活动的问题。",
-        "title": "FLRGPT"
-      },
-      {
-        "description": "追踪转账、领取、委托和协议交互。",
-        "title": "钱包活动"
-      },
-      {
-        "description": "监控正在累积的奖励、纪元状态和奖励领取。",
-        "title": "FTSO 奖励"
-      },
-      {
-        "description": "在支持的 Flare 协议中发现获利机会。",
-        "title": "收益"
-      },
-      {
-        "description": "查看提案、投票历史和活跃的治理活动。",
-        "title": "治理"
-      }
-    ],
-    "headerDesc": "了解如何使用 FlareGPT、管理钱包、追踪奖励以及探索生态系统功能。",
-    "noFaqs": "未找到匹配的常见问题。",
-    "noGuides": "未找到匹配的指南。",
-    "searchPlaceholder": "搜索文章、常见问题解答或设置指南...",
-    "searchSub": "浏览指南、常见问题解答和功能说明，帮助您高效使用 Flare 生态系统。",
+    "headerDesc": "指南、解答与支持，助你充分利用 FlareGPT 仪表盘。",
+    "noFaqs": "没有与搜索匹配的常见问题。",
+    "noGuides": "没有与搜索匹配的指南。",
+    "searchPlaceholder": "搜索指南或常见问题...",
+    "searchSub": "搜索功能指南和常见问题，或通过其他方式联系我们。",
     "searchTitle": "开始使用所需的一切",
     "steps": [
       {
         "step": "01",
-        "text": "访问余额、奖励、治理和协议数据。",
+        "text": "在整个仪表盘中访问余额、奖励和协议数据。",
         "title": "连接您的钱包"
       },
       {
         "step": "02",
-        "text": "在一处追踪 FLR、rFLR、SGB 和生态系统资产。",
+        "text": "在同一处追踪 FLR、WFLR、sFLR 及其他受支持的资产。",
         "title": "查看您的资产"
       },
       {
@@ -88,11 +61,22 @@
       {
         "step": "05",
         "text": "询问关于 Flare 网络数据和活动的问题。",
-        "title": "使用 FLRGPT"
+        "title": "使用 FlareGPT"
       }
     ],
     "stillNeedHelp": "仍然需要帮助？",
-    "supportDesc": "我们在这里协助您充分享受 FlareGPT 带来的便利。如果找不到您需要的内容，请与我们联系，我们会尽快回复。"
+    "supportDesc": "目前联系我们最快的方式是通过 X。邮箱与 Telegram 支持即将上线。",
+    "searchClear": "清除搜索",
+    "flareGptGuideDescription": "用自然语言询问你的钱包、奖励和 Flare 网络相关问题。",
+    "askFlareGptLead": "没有找到你想要的答案？",
+    "askFlareGptCta": "向 FlareGPT 提问",
+    "contact": {
+      "twitterLabel": "X (Twitter)",
+      "twitterHint": "关注我们并给我们发消息",
+      "telegramLabel": "Telegram",
+      "emailLabel": "邮箱",
+      "comingSoon": "即将推出"
+    }
   },
   "navbar": {
     "askFlareGPT": "咨询 FlareGPT",

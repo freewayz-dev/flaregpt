@@ -5,6 +5,7 @@ import { ClockIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 
 import ChatPane from "@/components/flareGpt/ChatPane";
 import { useFlareGptConversation } from "@/hooks/useFlareGptConversation";
+import { ROUTES } from "@/config/routes";
 
 // Below `lg` (1024px — the same breakpoint Sidebar.jsx uses to hide this
 // route's own nav link), FlareGPT is reached exclusively as the FAB-opened
@@ -51,7 +52,7 @@ export default function FLRGPT() {
     // the widget once it mounts at the redirect target.
     const params = new URLSearchParams(location.search);
     params.set("openFlareGpt", "1");
-    navigate(`/app?${params.toString()}`, { replace: true });
+    navigate(`${ROUTES.app}?${params.toString()}`, { replace: true });
     // Intentionally mount-only — see isMobileLanding's comment above.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

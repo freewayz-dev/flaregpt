@@ -8,6 +8,7 @@ import FlareWidget from "@/components/common/FlareWidget";
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import { useAuthSync } from "@/hooks/useAuthSync";
 import { useWalletActivityNotifier } from "@/hooks/useWalletActivityNotifier";
+import { ROUTES } from "@/config/routes";
 
 // GlobalSpinner is h-screen, which is correct for AppRoutes' top-level
 // fallback (rendered before any layout exists) but would briefly exceed
@@ -35,7 +36,7 @@ export default function DashboardLayout() {
   // reachable from any *other* page — tapping "Ask FlareGPT" while
   // already on the dedicated FlareGPT page would be a redundant, slightly
   // confusing affordance pointing at the thing you're already looking at.
-  const isFlareGptPage = location.pathname.startsWith("/app/flare-gpt");
+  const isFlareGptPage = location.pathname.startsWith(ROUTES.flareGpt);
 
   const [flareWidgetOpen, setFlareWidgetOpen] = useState(false);
   // Now that mobile relies on the widget as its *only* entry point (the

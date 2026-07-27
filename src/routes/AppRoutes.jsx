@@ -7,6 +7,7 @@ import GlobalSpinner from "@/components/common/GlobalSpinner";
 import DashboardSkeleton from "@/pages/Dashboard/DashboardSkeleton";
 import DefiProtocolsSkeleton from "@/pages/DefiProtocols/DefiProtocolsSkeleton";
 import WalletActivitySkeleton from "@/pages/WalletActivity/WalletActivitySkeleton";
+import { ROUTES, APP_SEGMENTS } from "@/config/routes";
 
 const LandingPage = lazy(() => import("@/pages/LandingPage"));
 const Terms = lazy(() => import("@/pages/Terms"));
@@ -21,11 +22,11 @@ const Donate = lazy(() => import("@/pages/Donate"));
 const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
 
 const LANDING_PAGE_PATHS = {
-  "flare-gpt": "/app/flare-gpt",
-  wallet: "/app/wallet",
-  rewards: "/app/rewards",
-  rflr: "/app/rflr",
-  defi: "/app/defi",
+  "flare-gpt": ROUTES.flareGpt,
+  wallet: ROUTES.walletActivity,
+  rewards: ROUTES.ftsoRewards,
+  rflr: ROUTES.rflrTracker,
+  defi: ROUTES.defiProtocols,
 };
 
 // Module-level, not component state: it needs to survive exactly once per
@@ -93,36 +94,36 @@ export default function AppRoutes() {
   return (
     <Suspense fallback={<GlobalSpinner />}>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/terms" element={<Terms />} />
+        <Route path={ROUTES.landing} element={<LandingPage />} />
+        <Route path={ROUTES.terms} element={<Terms />} />
 
-        <Route path="/app" element={<DashboardLayout />}>
+        <Route path={ROUTES.app} element={<DashboardLayout />}>
           <Route index element={<DashboardIndexRoute />} />
-          <Route path="flare-gpt" element={<FLRGPT />} />
+          <Route path={APP_SEGMENTS.flareGpt} element={<FLRGPT />} />
           <Route
-            path="wallet"
+            path={APP_SEGMENTS.walletActivity}
             element={
               <Suspense fallback={<WalletActivitySkeleton />}>
                 <WalletActivity />
               </Suspense>
             }
           />
-          <Route path="settings" element={<Settings />} />
-          <Route path="help" element={<Help />} />
+          <Route path={APP_SEGMENTS.settings} element={<Settings />} />
+          <Route path={APP_SEGMENTS.help} element={<Help />} />
           <Route
-            path="rewards"
+            path={APP_SEGMENTS.ftsoRewards}
             element={<ComingSoon title={t("sidebar.ftsoRewards")} />}
           />
           <Route
-            path="loops"
+            path={APP_SEGMENTS.loops}
             element={<ComingSoon title={t("sidebar.loops")} />}
           />
           <Route
-            path="rflr"
+            path={APP_SEGMENTS.rflrTracker}
             element={<ComingSoon title={t("sidebar.rflrTracker")} />}
           />
           <Route
-            path="defi"
+            path={APP_SEGMENTS.defiProtocols}
             element={
               <Suspense fallback={<DefiProtocolsSkeleton />}>
                 <DefiProtocols />
@@ -130,13 +131,13 @@ export default function AppRoutes() {
             }
           />
           <Route
-            path="governance"
+            path={APP_SEGMENTS.governance}
             element={<ComingSoon title={t("sidebar.governance")} />}
           />
-          <Route path="donate" element={<Donate />} />
+          <Route path={APP_SEGMENTS.donate} element={<Donate />} />
         </Route>
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to={ROUTES.landing} replace />} />
       </Routes>
     </Suspense>
   );

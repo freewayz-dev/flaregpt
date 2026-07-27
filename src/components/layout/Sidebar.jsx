@@ -3,112 +3,18 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
 import {
-  WalletIcon,
-  SparklesIcon,
-  ClockIcon,
-  ShieldCheckIcon,
-  Cog6ToothIcon,
   XMarkIcon,
-  QuestionMarkCircleIcon,
-  Square3Stack3DIcon,
-  Squares2X2Icon,
-  ArrowPathIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
-  GiftIcon,
-  HeartIcon,
 } from "@heroicons/react/24/outline";
 
 import FlareGptSimpleLogo from "@/components/common/Logo";
 import Logo from "@/assets/icons/fl.png";
 import { useUIStore } from "@/store/useUIStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
+import { NAV_LINKS as links } from "@/config/navigation";
+import { ROUTES } from "@/config/routes";
 
-// Asynchronous route code chunk-splitting anchors
-const prefetchDashboard = () => import("@/pages/Dashboard");
-const prefetchFlareGPT = () => import("@/pages/Flrgpt");
-const prefetchSettings = () => import("@/pages/Settings");
-const prefetchHelp = () => import("@/pages/Help");
-const prefetchDonate = () => import("@/pages/Donate");
-const prefetchDefiProtocols = () => import("@/pages/DefiProtocols");
-const prefetchWalletActivity = () => import("@/pages/WalletActivity");
-
-// Ordered by expected importance/frequency: the home view, then the
-// fully-functional core features (AI chat, wallet tracking, reward
-// claiming, governance), then the not-yet-built "coming soon" stubs grouped
-// together, then the utility pages (settings/help) that convention places
-// last in most dashboard products.
-const links = [
-  {
-    translationKey: "overview",
-    path: "/app",
-    icon: Squares2X2Icon,
-    prefetch: prefetchDashboard,
-  },
-  {
-    translationKey: "FlareGPT",
-    path: "/app/flare-gpt",
-    icon: SparklesIcon,
-    prefetch: prefetchFlareGPT,
-    // The mobile FAB (see Navbar.jsx) is a full parity entry point to the
-    // exact same experience — on mobile the widget renders full-screen,
-    // identical to this page, so a second nav row to it is pure
-    // redundancy there. Desktop's widget stays a compact floating panel
-    // (a genuinely different shape than the full page), so both entry
-    // points earn their place there.
-    hideOnMobile: true,
-  },
-  {
-    translationKey: "walletActivity",
-    path: "/app/wallet",
-    icon: WalletIcon,
-    prefetch: prefetchWalletActivity,
-  },
-  {
-    translationKey: "ftsoRewards",
-    path: "/app/rewards",
-    icon: GiftIcon,
-  },
-  {
-    translationKey: "governance",
-    path: "/app/governance",
-    icon: ShieldCheckIcon,
-  },
-  {
-    translationKey: "loops",
-    path: "/app/loops",
-    icon: ArrowPathIcon,
-  },
-  {
-    translationKey: "rflrTracker",
-    path: "/app/rflr",
-    icon: ClockIcon,
-  },
-  {
-    translationKey: "defiProtocols",
-    path: "/app/defi",
-    icon: Square3Stack3DIcon,
-    prefetch: prefetchDefiProtocols,
-  },
-  {
-    translationKey: "donate",
-    path: "/app/donate",
-    icon: HeartIcon,
-    prefetch: prefetchDonate,
-  },
-  {
-    translationKey: "settings",
-    path: "/app/settings",
-    icon: Cog6ToothIcon,
-    prefetch: prefetchSettings,
-  },
-  {
-    translationKey: "helpCenter",
-    path: "/app/help",
-    icon: QuestionMarkCircleIcon,
-    prefetch: prefetchHelp,
-  },
-];
 export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
   const { t } = useTranslation();
   const location = useLocation();
@@ -136,8 +42,8 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
 
   const handleDeepLinkToWallets = () => {
     setSettingsActiveTab("Wallets");
-    setOpen(false); // Close mobile drawer if open
-    navigate("/app/settings");
+    setOpen(false);
+    navigate(ROUTES.settings);
   };
 
   return (
@@ -163,7 +69,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
           <div
             className={`flex items-center justify-between pl-1 ${collapsed ? "lg:hidden" : ""}`}
           >
-            <Link to="/">
+            <Link to={ROUTES.landing}>
               <FlareGptSimpleLogo />
             </Link>
 

@@ -483,7 +483,6 @@ function WalletImage({ src, alt }) {
 
   return (
     <div className="relative w-6 h-6 flex items-center justify-center shrink-0 overflow-hidden rounded-md bg-slate-100 dark:bg-slate-800">
-      {/* Blur placeholder effect */}
       {!isLoaded && (
         <div className="absolute inset-0 animate-pulse bg-slate-200 dark:bg-slate-700 blur-sm" />
       )}

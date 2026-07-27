@@ -21,6 +21,7 @@ import { useUIStore } from "@/store/useUIStore";
 import { useFlareGptStore } from "@/store/useFlareGptStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 import { shortenAddress } from "@/utils/address";
+import { ROUTES } from "@/config/routes";
 import WalletBadge from "@/components/common/WalletBadge";
 import WalletRow from "@/components/common/WalletRow";
 
@@ -106,16 +107,15 @@ export default function Navbar({
   const getNavbarTitle = () => {
     const path = location.pathname.toLowerCase().replace(/\/$/, "");
 
-    if (path === "" || path === "/app") return t("sidebar.overview");
-    if (path.includes("flrgpt")) return t("sidebar.FlareGPT");
-    if (path.includes("wallet")) return t("sidebar.walletActivity");
-    if (path.includes("rewards")) return t("sidebar.ftsoRewards");
-    if (path.includes("yield")) return t("sidebar.yield");
-    if (path.includes("rflr")) return t("sidebar.rflrTracker");
-    if (path.includes("governance")) return t("sidebar.governance");
-    if (path.includes("defi")) return t("sidebar.defiProtocols");
-    if (path.includes("settings")) return t("sidebar.settings");
-    if (path.includes("help")) return t("sidebar.helpCenter");
+    if (path === "" || path === ROUTES.app) return t("sidebar.overview");
+    if (path === ROUTES.flareGpt) return t("sidebar.FlareGPT");
+    if (path === ROUTES.walletActivity) return t("sidebar.walletActivity");
+    if (path === ROUTES.ftsoRewards) return t("sidebar.ftsoRewards");
+    if (path === ROUTES.rflrTracker) return t("sidebar.rflrTracker");
+    if (path === ROUTES.governance) return t("sidebar.governance");
+    if (path === ROUTES.defiProtocols) return t("sidebar.defiProtocols");
+    if (path === ROUTES.settings) return t("sidebar.settings");
+    if (path === ROUTES.help) return t("sidebar.helpCenter");
 
     return t("sidebar.FlareGPT");
   };
@@ -124,7 +124,7 @@ export default function Navbar({
     setSettingsActiveTab("Wallets");
     setWalletMenuOpen(false);
     setMobileMenuOpen(false);
-    navigate("/app/settings");
+    navigate(ROUTES.settings);
   };
 
   const handleOpenWalletModal = () => {

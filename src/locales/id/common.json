@@ -6,14 +6,13 @@
     "donate": "Beri donasi"
   },
   "help": {
-    "contactSupport": "Hubungi Dukungan",
     "faqs": [
       {
         "answer": "Dompet Anda mungkin belum terhubung, atau dasbor mungkin masih menyinkronkan data blockchain. Verifikasi bahwa dompet dan jaringan yang benar telah dipilih.",
         "question": "Mengapa saldo dompet saya tidak muncul?"
       },
       {
-        "answer": "Data pasar diperbarui secara otomatis menggunakan penyedia data yang dikonfigurasi. Frekuensi pembaruan tergantung pada sumber dan ketersediaan jaringan.",
+        "answer": "Setiap 60 detik selama halaman Overview terbuka.",
         "question": "Seberapa sering harga FLR diperbarui?"
       },
       {
@@ -21,7 +20,7 @@
         "question": "Mengapa saya tidak menerima hadiah?"
       },
       {
-        "answer": "Dukungan tergantung pada integrasi yang tersedia di dasbor. Dompet Flare yang kompatibel dapat dihubungkan jika didukung.",
+        "answer": "MetaMask, Rabby Wallet, dan Bifrost Wallet sebagai ekstensi browser, serta dompet apa pun yang kompatibel dengan WalletConnect untuk perangkat seluler atau dompet perangkat keras.",
         "question": "Dompet apa saja yang didukung?"
       },
       {
@@ -32,47 +31,21 @@
     "faqTitle": "Pertanyaan yang Sering Diajukan",
     "featureGuides": "Panduan Fitur",
     "gettingStarted": "Memulai",
-    "guides": [
-      {
-        "description": "Pantau harga FLR, metrik ekosistem, aktivitas protokol, dan kinerja portofolio.",
-        "title": "Ikhtisar"
-      },
-      {
-        "description": "Ajukan pertanyaan tentang data Flare, tata kelola, protokol, dan aktivitas dompet.",
-        "title": "FLRGPT"
-      },
-      {
-        "description": "Lacak transfer, klaim, delegasi, dan interaksi protokol.",
-        "title": "Aktivitas Dompet"
-      },
-      {
-        "description": "Pantau akumulasi hadiah, status epoch, dan klaim hadiah.",
-        "title": "Hadiah FTSO"
-      },
-      {
-        "description": "Temukan peluang penghasilan di berbagai protokol Flare yang didukung.",
-        "title": "Imbal Hasil"
-      },
-      {
-        "description": "Tinjau proposal, riwayat pemungutan suara, dan aktivitas tata kelola yang aktif.",
-        "title": "Tata Kelola"
-      }
-    ],
-    "headerDesc": "Pelajari cara menggunakan FlareGPT, mengelola dompet, melacak hadiah, dan menavigasi fitur ekosistem.",
-    "noFaqs": "Tidak ada SSS yang cocok ditemukan.",
-    "noGuides": "Tidak ada panduan yang cocok ditemukan.",
-    "searchPlaceholder": "Cari artikel, SSS, atau panduan pengaturan...",
-    "searchSub": "Jelajahi panduan, SSS, dan penjelasan fitur untuk membantu Anda menavigasi ekosistem Flare secara efisien.",
+    "headerDesc": "Panduan, jawaban, dan dukungan untuk memaksimalkan dasbor FlareGPT Anda.",
+    "noFaqs": "Tidak ada FAQ yang cocok dengan pencarian Anda.",
+    "noGuides": "Tidak ada panduan yang cocok dengan pencarian Anda.",
+    "searchPlaceholder": "Cari panduan atau FAQ...",
+    "searchSub": "Cari panduan fitur dan FAQ, atau temukan cara lain untuk menghubungi kami.",
     "searchTitle": "Semua yang Anda butuhkan untuk memulai",
     "steps": [
       {
         "step": "01",
-        "text": "Akses saldo, hadiah, tata kelola, dan data protokol.",
+        "text": "Akses saldo, reward, dan data protokol di seluruh dasbor.",
         "title": "Hubungkan Dompet Anda"
       },
       {
         "step": "02",
-        "text": "Lacak FLR, rFLR, SGB, dan aset ekosistem dalam satu tempat.",
+        "text": "Pantau FLR, WFLR, sFLR, dan aset lain yang didukung di satu tempat.",
         "title": "Lihat Kepemilikan Anda"
       },
       {
@@ -88,11 +61,22 @@
       {
         "step": "05",
         "text": "Ajukan pertanyaan tentang data dan aktivitas Flare Network.",
-        "title": "Gunakan FLRGPT"
+        "title": "Gunakan FlareGPT"
       }
     ],
     "stillNeedHelp": "Masih butuh bantuan?",
-    "supportDesc": "Kami di sini untuk membantu Anda memaksimalkan FlareGPT. Jika Anda tidak dapat menemukan apa yang Anda cari, hubungi kami và kami akan merespons secepat mungkin."
+    "supportDesc": "Cara tercepat menghubungi kami saat ini adalah melalui X. Dukungan email dan Telegram akan segera hadir.",
+    "searchClear": "Hapus pencarian",
+    "flareGptGuideDescription": "Ajukan pertanyaan tentang dompet, reward, dan jaringan Flare Anda dengan bahasa sehari-hari.",
+    "askFlareGptLead": "Tidak menemukan yang Anda cari?",
+    "askFlareGptCta": "Tanyakan pada FlareGPT",
+    "contact": {
+      "twitterLabel": "X (Twitter)",
+      "twitterHint": "Ikuti kami dan kirim pesan",
+      "telegramLabel": "Telegram",
+      "emailLabel": "Email",
+      "comingSoon": "Segera hadir"
+    }
   },
   "navbar": {
     "askFlareGPT": "Tanya FlareGPT",

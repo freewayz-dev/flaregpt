@@ -6,14 +6,13 @@
     "donate": "Ủng hộ"
   },
   "help": {
-    "contactSupport": "Liên hệ Hỗ trợ",
     "faqs": [
       {
         "answer": "Ví của bạn có thể chưa được kết nối hoặc bảng điều khiển vẫn đang đồng bộ hóa dữ liệu blockchain. Xác minh rằng bạn đã chọn đúng ví và mạng.",
         "question": "Tại sao số dư ví của tôi không hiển thị?"
       },
       {
-        "answer": "Dữ liệu thị trường được cập nhật tự động bằng nhà cung cấp dữ liệu đã định cấu hình. Tần suất cập nhật phụ thuộc vào nguồn và tính khả dụng của mạng.",
+        "answer": "Cứ 60 giây một lần khi trang Tổng quan đang mở.",
         "question": "Giá FLR được cập nhật thường xuyên như thế nào?"
       },
       {
@@ -21,7 +20,7 @@
         "question": "Tại sao tôi không nhận được phần thưởng?"
       },
       {
-        "answer": "Sự hỗ trợ phụ thuộc vào các tích hợp có sẵn trong bảng điều khiển. Các ví Flare tương thích có thể được kết nối khi được hỗ trợ.",
+        "answer": "MetaMask, Rabby Wallet và Bifrost Wallet dưới dạng tiện ích mở rộng trình duyệt, cùng với bất kỳ ví nào tương thích WalletConnect cho thiết bị di động hoặc ví cứng.",
         "question": "Những ví nào được hỗ trợ?"
       },
       {
@@ -32,47 +31,21 @@
     "faqTitle": "Câu hỏi Thường gặp",
     "featureGuides": "Hướng dẫn Tính năng",
     "gettingStarted": "Bắt đầu",
-    "guides": [
-      {
-        "description": "Theo dõi giá FLR, chỉ số hệ sinh thái, hoạt động giao thức và hiệu suất danh mục đầu tư.",
-        "title": "Tổng quan"
-      },
-      {
-        "description": "Đặt câu hỏi về dữ liệu Flare, quản trị, giao thức và hoạt động ví.",
-        "title": "FLRGPT"
-      },
-      {
-        "description": "Theo dõi các giao dịch chuyển tiền, yêu cầu nhận thưởng, ủy quyền và tương tác giao thức.",
-        "title": "Hoạt động Ví"
-      },
-      {
-        "description": "Giám sát phần thưởng đang tích lũy, trạng thái chu kỳ và yêu cầu phần thưởng.",
-        "title": "Phần thưởng FTSO"
-      },
-      {
-        "description": "Khám phá các cơ hội kiếm lợi nhuận trên các giao thức Flare được hỗ trợ.",
-        "title": "Lợi nhuận"
-      },
-      {
-        "description": "Xem xét các đề xuất, lịch sử bỏ phiếu và hoạt động quản trị đang diễn ra.",
-        "title": "Quản trị"
-      }
-    ],
-    "headerDesc": "Tìm hiểu cách sử dụng FlareGPT, quản lý ví, theo dõi phần thưởng và điều hướng các tính năng của hệ sinh thái.",
-    "noFaqs": "Không tìm thấy câu hỏi thường gặp phù hợp.",
-    "noGuides": "Không tìm thấy hướng dẫn phù hợp.",
-    "searchPlaceholder": "Tìm kiếm bài viết, câu hỏi thường gặp hoặc hướng dẫn...",
-    "searchSub": "Khám phá các hướng dẫn, câu hỏi thường gặp và giải thích tính năng để giúp bạn điều hướng hệ sinh thái Flare một cách hiệu quả.",
+    "headerDesc": "Hướng dẫn, câu trả lời và hỗ trợ để bạn tận dụng tối đa bảng điều khiển FlareGPT.",
+    "noFaqs": "Không có câu hỏi thường gặp nào khớp với tìm kiếm của bạn.",
+    "noGuides": "Không có hướng dẫn nào khớp với tìm kiếm của bạn.",
+    "searchPlaceholder": "Tìm kiếm hướng dẫn hoặc câu hỏi thường gặp...",
+    "searchSub": "Tìm kiếm hướng dẫn tính năng và câu hỏi thường gặp, hoặc tìm cách khác để liên hệ với chúng tôi.",
     "searchTitle": "Mọi thứ bạn cần để bắt đầu",
     "steps": [
       {
         "step": "01",
-        "text": "Truy cập số dư, phần thưởng, quản trị và dữ liệu giao thức.",
+        "text": "Truy cập số dư, phần thưởng và dữ liệu giao thức trên toàn bộ bảng điều khiển.",
         "title": "Kết nối Ví của Bạn"
       },
       {
         "step": "02",
-        "text": "Theo dõi FLR, rFLR, SGB và tài sản hệ sinh thái ở cùng một nơi.",
+        "text": "Theo dõi FLR, WFLR, sFLR và các tài sản được hỗ trợ khác tại một nơi.",
         "title": "Xem Tài sản của Bạn"
       },
       {
@@ -88,11 +61,22 @@
       {
         "step": "05",
         "text": "Đặt câu hỏi về dữ liệu và hoạt động của Mạng lưới Flare.",
-        "title": "Sử dụng FLRGPT"
+        "title": "Sử dụng FlareGPT"
       }
     ],
     "stillNeedHelp": "Bạn vẫn cần trợ giúp?",
-    "supportDesc": "Chúng tôi ở đây để giúp bạn tối ưu hóa trải nghiệm với FlareGPT. Nếu không tìm thấy thông tin cần thiết, hãy liên hệ và chúng tôi sẽ phản hồi sớm nhất có thể."
+    "supportDesc": "Cách nhanh nhất để liên hệ với chúng tôi hiện tại là qua X. Hỗ trợ qua Email và Telegram sẽ sớm ra mắt.",
+    "searchClear": "Xóa tìm kiếm",
+    "flareGptGuideDescription": "Đặt câu hỏi về ví, phần thưởng và mạng Flare bằng ngôn ngữ tự nhiên.",
+    "askFlareGptLead": "Không tìm thấy điều bạn cần?",
+    "askFlareGptCta": "Hỏi FlareGPT để được trợ giúp",
+    "contact": {
+      "twitterLabel": "X (Twitter)",
+      "twitterHint": "Theo dõi và gửi tin nhắn cho chúng tôi",
+      "telegramLabel": "Telegram",
+      "emailLabel": "Email",
+      "comingSoon": "Sắp ra mắt"
+    }
   },
   "navbar": {
     "askFlareGPT": "Hỏi FlareGPT",

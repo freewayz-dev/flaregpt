@@ -8,7 +8,6 @@ export default function PageHeader({
     <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between w-full mx-auto max-w-[1440px]">
       <div className="space-y-1">
         <div className="flex items-center gap-2">
-          {/* Main Title - Light: Primary (#0F172A) | Dark: Primary (#FAFAFA) */}
           <h2 className="text-xl font-semibold text-ink-primary">
             {title}
           </h2>

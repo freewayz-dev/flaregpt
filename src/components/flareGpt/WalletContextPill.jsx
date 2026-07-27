@@ -12,6 +12,7 @@ import {
 import { useFlareGptWalletContext } from "@/hooks/useFlareGptWalletContext";
 import { useUIStore } from "@/store/useUIStore";
 import { shortenAddress } from "@/utils/address";
+import { ROUTES } from "@/config/routes";
 import WalletBadge from "@/components/common/WalletBadge";
 import WalletRow from "@/components/common/WalletRow";
 
@@ -84,7 +85,7 @@ export default function WalletContextPill({ onOpenWalletModal }) {
   const handleConfigureWallets = () => {
     setSettingsActiveTab("Wallets");
     setOpen(false);
-    navigate("/app/settings");
+    navigate(ROUTES.settings);
   };
 
   return (

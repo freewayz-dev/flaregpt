@@ -6,14 +6,13 @@
     "donate": "기부"
   },
   "help": {
-    "contactSupport": "지원팀에 문의",
     "faqs": [
       {
         "answer": "지갑이 연결되지 않았거나 대시보드가 아직 블록체인 데이터를 동기화 중일 수 있습니다. 올바른 지갑과 네트워크가 선택되었는지 확인하세요.",
         "question": "지갑 잔액이 표시되지 않는 이유는 무엇인가요?"
       },
       {
-        "answer": "시장 데이터는 구성된 데이터 공급자를 사용하여 자동으로 새로 고쳐집니다. 업데이트 빈도는 소스 및 네트워크 가용성에 따라 다릅니다.",
+        "answer": "개요 페이지가 열려 있는 동안 60초마다 갱신됩니다.",
         "question": "FLR 가격은 얼마나 자주 업데이트되나요?"
       },
       {
@@ -21,7 +20,7 @@
         "question": "보상을 받지 못하는 이유는 무엇인가요?"
       },
       {
-        "answer": "지원은 대시보드에서 사용 가능한 통합 항목에 따라 다릅니다. 호환되는 Flare 지갑은 지원 시 연결할 수 있습니다.",
+        "answer": "브라우저 확장 프로그램인 MetaMask, Rabby Wallet, Bifrost Wallet과 모바일 또는 하드웨어 지갑을 위한 WalletConnect 호환 지갑을 지원합니다.",
         "question": "어떤 지갑이 지원되나요?"
       },
       {
@@ -32,47 +31,21 @@
     "faqTitle": "자주 묻는 질문",
     "featureGuides": "기능 가이드",
     "gettingStarted": "시작하기",
-    "guides": [
-      {
-        "description": "FLR 가격, 에코시스템 지표, 프로토콜 활동 및 포트폴리오 성과를 모니터링합니다.",
-        "title": "개요"
-      },
-      {
-        "description": "Flare 데이터, 거버넌스, 프로토콜 및 지갑 활동에 대해 질문하세요.",
-        "title": "FLRGPT"
-      },
-      {
-        "description": "전송, 청구, 위임 및 프로토콜 상호작용을 추적합니다.",
-        "title": "지갑 활동"
-      },
-      {
-        "description": "누적되는 보상, 에포크 상태 및 보상 청구를 모니터링합니다.",
-        "title": "FTSO 보상"
-      },
-      {
-        "description": "지원되는 Flare 프로토콜 전반에서 수익 기회를 발견하세요.",
-        "title": "수익률"
-      },
-      {
-        "description": "제안서, 투표 투표 이력 및 활발한 거버넌스 활동을 검토합니다.",
-        "title": "거버넌스"
-      }
-    ],
-    "headerDesc": "FlareGPT 사용법, 지갑 관리, 보상 추적 및 에코시스템 기능 탐색 방법을 알아보세요.",
-    "noFaqs": "일치하는 FAQ가 없습니다.",
-    "noGuides": "일치하는 가이드가 없습니다.",
-    "searchPlaceholder": "문서, FAQ 또는 설정 가이드 검색...",
-    "searchSub": "Flare 에코시스템을 효율적으로 탐색하는 데 도움이 되는 가이드, FAQ 및 기능 설명을 확인하세요.",
+    "headerDesc": "FlareGPT 대시보드를 최대한 활용할 수 있도록 안내와 답변, 지원을 제공합니다.",
+    "noFaqs": "검색과 일치하는 FAQ가 없습니다.",
+    "noGuides": "검색과 일치하는 가이드가 없습니다.",
+    "searchPlaceholder": "가이드 또는 FAQ 검색...",
+    "searchSub": "기능 가이드와 FAQ를 검색하거나 다른 방법으로 문의해 보세요.",
     "searchTitle": "시작하는 데 필요한 모든 것",
     "steps": [
       {
         "step": "01",
-        "text": "잔액, 보상, 거버넌스 및 프로토콜 데이터에 액세스합니다.",
+        "text": "대시보드 전체에서 잔액, 보상, 프로토콜 데이터에 액세스하세요.",
         "title": "지갑 연결"
       },
       {
         "step": "02",
-        "text": "FLR, rFLR, SGB 및 에코시스템 자산을 한곳에서 추적합니다.",
+        "text": "FLR, WFLR, sFLR 등 지원되는 자산을 한 곳에서 확인하세요.",
         "title": "보유 자산 확인"
       },
       {
@@ -88,11 +61,22 @@
       {
         "step": "05",
         "text": "Flare 네트워크 데이터 및 활동에 대해 질문하세요.",
-        "title": "FLRGPT 사용"
+        "title": "FlareGPT 사용하기"
       }
     ],
     "stillNeedHelp": "여전히 도움이 필요하신가요?",
-    "supportDesc": "FlareGPT를 최대한 활용하실 수 있도록 도와드립니다. 찾으시는 내용이 없다면 지원팀에 문의해 주시면 신속하게 답변해 드리겠습니다."
+    "supportDesc": "현재 가장 빠르게 연락할 수 있는 방법은 X입니다. 이메일과 텔레그램 지원은 곧 제공될 예정입니다.",
+    "searchClear": "검색 지우기",
+    "flareGptGuideDescription": "지갑, 보상, Flare 네트워크에 대해 자연스러운 언어로 질문하세요.",
+    "askFlareGptLead": "찾으시는 답을 찾지 못하셨나요?",
+    "askFlareGptCta": "FlareGPT에게 물어보기",
+    "contact": {
+      "twitterLabel": "X (Twitter)",
+      "twitterHint": "팔로우하고 메시지를 보내보세요",
+      "telegramLabel": "Telegram",
+      "emailLabel": "이메일",
+      "comingSoon": "출시 예정"
+    }
   },
   "navbar": {
     "askFlareGPT": "FlareGPT에 질문하기",

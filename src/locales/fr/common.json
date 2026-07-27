@@ -6,14 +6,13 @@
     "donate": "Faire un don"
   },
   "help": {
-    "contactSupport": "Contacter le Support",
     "faqs": [
       {
         "answer": "Votre portefeuille n'est peut-être pas connecté, ou le tableau de bord est encore en train de synchroniser les données de la blockchain. Vérifiez que le bon portefeuille et le bon réseau sont sélectionnés.",
         "question": "Pourquoi le solde de mon portefeuille ne s'affiche-t-il pas ?"
       },
       {
-        "answer": "Les données de marché sont actualisées automatiquement via le fournisseur configuré. La fréquence dépend de la source et de la disponibilité du réseau.",
+        "answer": "Toutes les 60 secondes tant que la page Aperçu est ouverte.",
         "question": "À quelle fréquence le prix du FLR est-il mis à jour ?"
       },
       {
@@ -21,7 +20,7 @@
         "question": "Pourquoi ne reçois-je pas de récompenses ?"
       },
       {
-        "answer": "La prise en charge dépend des intégrations disponibles. Les portefeuilles Flare compatibles peuvent être connectés lorsqu'ils sont pris en charge.",
+        "answer": "MetaMask, Rabby Wallet et Bifrost Wallet en tant qu'extensions de navigateur, ainsi que tout portefeuille compatible WalletConnect pour mobile ou portefeuille matériel.",
         "question": "Quels portefeuilles sont pris en charge ?"
       },
       {
@@ -32,47 +31,21 @@
     "faqTitle": "Foire Aux Questions",
     "featureGuides": "Guides des Fonctionnalités",
     "gettingStarted": "Prise en main",
-    "guides": [
-      {
-        "description": "Suivez le prix du FLR, les indicateurs de l'écosystème, l'activité des protocoles et les performances du portefeuille.",
-        "title": "Vue d'ensemble"
-      },
-      {
-        "description": "Posez des questions sur les données Flare, la gouvernance, les protocoles et l'activité du portefeuille.",
-        "title": "FLRGPT"
-      },
-      {
-        "description": "Suivez les transferts, les réclamations, les délégations et les interactions avec les protocoles.",
-        "title": "Activité du Portefeuille"
-      },
-      {
-        "description": "Suivez les récompenses accumulées, le statut de l'époque et les réclamations.",
-        "title": "Récompenses FTSO"
-      },
-      {
-        "description": "Découvrez les opportunités de rendement sur les protocoles Flare pris en charge.",
-        "title": "Rendement"
-      },
-      {
-        "description": "Consultez les propositions, l'historique des votes et l'activité de gouvernance en cours.",
-        "title": "Gouvernance"
-      }
-    ],
-    "headerDesc": "Apprenez à utiliser FlareGPT, à gérer vos portefeuilles, à suivre vos récompenses et à naviguer dans l'écosystème.",
-    "noFaqs": "Aucune FAQ correspondante trouvée.",
-    "noGuides": "Aucun guide correspondant trouvé.",
-    "searchPlaceholder": "Rechercher des articles, des FAQ ou des guides...",
-    "searchSub": "Explorez les guides, les FAQ et les explications des fonctionnalités pour vous aider à naviguer efficacement dans l'écosystème Flare.",
+    "headerDesc": "Guides, réponses et assistance pour tirer le meilleur parti de votre tableau de bord FlareGPT.",
+    "noFaqs": "Aucune FAQ ne correspond à votre recherche.",
+    "noGuides": "Aucun guide ne correspond à votre recherche.",
+    "searchPlaceholder": "Rechercher des guides ou des FAQ...",
+    "searchSub": "Recherchez des guides de fonctionnalités et des FAQ, ou trouvez un autre moyen de nous contacter.",
     "searchTitle": "Tout ce dont vous avez besoin pour commencer",
     "steps": [
       {
         "step": "01",
-        "text": "Accédez aux soldes, récompenses, gouvernance et données de protocole.",
+        "text": "Accédez aux soldes, récompenses et données des protocoles dans tout le tableau de bord.",
         "title": "Connectez votre Portefeuille"
       },
       {
         "step": "02",
-        "text": "Suivez FLR, rFLR, SGB et les actifs de l'écosystème au même endroit.",
+        "text": "Suivez FLR, WFLR, sFLR et d'autres actifs pris en charge en un seul endroit.",
         "title": "Consultez vos Avoirs"
       },
       {
@@ -88,11 +61,22 @@
       {
         "step": "05",
         "text": "Posez des questions sur les données et l'activité du réseau Flare.",
-        "title": "Utilisez FLRGPT"
+        "title": "Utiliser FlareGPT"
       }
     ],
     "stillNeedHelp": "Besoin d'aide supplémentaire ?",
-    "supportDesc": "Nous sommes là pour vous aider à tirer le meilleur parti de FlareGPT. Si vous ne trouvez pas ce que vous cherchez, contactez-nous et nous vous répondrons dès que possibile."
+    "supportDesc": "Pour l'instant, le moyen le plus rapide de nous joindre est X. L'assistance par e-mail et Telegram arrive bientôt.",
+    "searchClear": "Effacer la recherche",
+    "flareGptGuideDescription": "Posez des questions sur votre portefeuille, vos récompenses et le réseau Flare en langage simple.",
+    "askFlareGptLead": "Vous n'avez pas trouvé ce que vous cherchiez ?",
+    "askFlareGptCta": "Demandez de l'aide à FlareGPT",
+    "contact": {
+      "twitterLabel": "X (Twitter)",
+      "twitterHint": "Suivez-nous et envoyez-nous un message",
+      "telegramLabel": "Telegram",
+      "emailLabel": "E-mail",
+      "comingSoon": "Bientôt disponible"
+    }
   },
   "navbar": {
     "askFlareGPT": "Demander à FlareGPT",

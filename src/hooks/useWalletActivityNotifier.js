@@ -5,8 +5,7 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 import { queryKeys } from "@/services/queryKeys";
-
-const WALLET_ACTIVITY_PATH = "/app/wallet";
+import { ROUTES } from "@/config/routes";
 
 // R15: a large wallet's activity fetch can run for minutes (see
 // useWalletActivityQueries.js — deliberately not cancelled on unmount), so
@@ -41,7 +40,7 @@ export function useWalletActivityNotifier() {
       const { query } = event;
       if (query.queryKey[0] !== queryKeys.walletActivity.all[0]) return;
 
-      const onWalletPage = locationRef.current.startsWith(WALLET_ACTIVITY_PATH);
+      const onWalletPage = locationRef.current.startsWith(ROUTES.walletActivity);
       const hash = query.queryHash;
 
       if (query.state.fetchStatus === "fetching" && !onWalletPage) {
@@ -56,7 +55,7 @@ export function useWalletActivityNotifier() {
       if (onWalletPage) return;
 
       toast.success(t("wallet.activity.notifier.ready"), {
-        onClick: () => navigateRef.current(WALLET_ACTIVITY_PATH),
+        onClick: () => navigateRef.current(ROUTES.walletActivity),
       });
     });
 

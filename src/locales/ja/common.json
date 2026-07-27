@@ -6,14 +6,13 @@
     "donate": "寄付"
   },
   "help": {
-    "contactSupport": "サポートに連絡",
     "faqs": [
       {
         "answer": "ウォレットが接続されていないか、ダッシュボードがブロックチェーンデータを同期中である可能性があります。正しいウォレットとネットワークが選択されているか確認してください。",
         "question": "ウォレットの残高が表示されないのはなぜですか？"
       },
       {
-        "answer": "市場データは、設定されたデータプロバイダーを使用して自動的に更新されます。更新頻度は、ソースとネットワークの可用性によって異なります。",
+        "answer": "概要ページを開いている間、60秒ごとに更新されます。",
         "question": "FLR 価格はどのくらいの頻度で更新されますか？"
       },
       {
@@ -21,7 +20,7 @@
         "question": "報酬が受け取れないのはなぜですか？"
       },
       {
-        "answer": "サポート状況はダッシュボードで利用可能な統合機能によって異なります。互換性のある Flare ウォレットは、対応時に接続できます。",
+        "answer": "ブラウザ拡張機能としてのMetaMask、Rabby Wallet、Bifrost Walletに加え、モバイルやハードウェアウォレット向けのWalletConnect対応ウォレットもご利用いただけます。",
         "question": "どのウォレットがサポートされていますか？"
       },
       {
@@ -32,47 +31,21 @@
     "faqTitle": "よくある質問",
     "featureGuides": "機能ガイド",
     "gettingStarted": "初めに",
-    "guides": [
-      {
-        "description": "FLR 価格、エコシステム指標、プロトコルアクティビティ、ポートフォリオパフォーマンスを監視します。",
-        "title": "概要"
-      },
-      {
-        "description": "Flare のデータ、ガバナンス、プロトコル、ウォレットのアクティビティについて質問します。",
-        "title": "FLRGPT"
-      },
-      {
-        "description": "送金、請求、委譲、プロトコルとの相互作用を追跡します。",
-        "title": "ウォレットアクティビティ"
-      },
-      {
-        "description": "累積報酬、エポックステータス、報酬請求を監視します。",
-        "title": "FTSO 報酬"
-      },
-      {
-        "description": "サポートされている Flare プロトコル全体の収益機会を見つけます。",
-        "title": "イールド"
-      },
-      {
-        "description": "提案、投票履歴、現在のアクティブなガバナンス活動を確認します。",
-        "title": "ガバナンス"
-      }
-    ],
-    "headerDesc": "FlareGPT の使い方、ウォレットの管理、報酬の追跡、エコシステム機能の操作方法について説明します。",
-    "noFaqs": "一致する FAQ が見つかりません。",
-    "noGuides": "一致するガイドが見つかりません。",
-    "searchPlaceholder": "記事、FAQ、またはセットアップガイドを検索...",
-    "searchSub": "Flare エコシステムを効率的に操作するのに役立つガイド、FAQ、機能説明をご覧ください。",
+    "headerDesc": "FlareGPTダッシュボードを最大限に活用するためのガイド、回答、サポートです。",
+    "noFaqs": "検索に一致するFAQが見つかりません。",
+    "noGuides": "検索に一致するガイドが見つかりません。",
+    "searchPlaceholder": "ガイドやFAQを検索...",
+    "searchSub": "機能ガイドやFAQを検索するか、他の方法でお問い合わせください。",
     "searchTitle": "始めるために必要なすべて",
     "steps": [
       {
         "step": "01",
-        "text": "残高、報酬、ガバナンス、プロトコルデータにアクセスします。",
+        "text": "ダッシュボード全体で残高、報酬、プロトコルデータにアクセスできます。",
         "title": "ウォレットを接続する"
       },
       {
         "step": "02",
-        "text": "FLR、rFLR、SGB、およびエコシステム資産を一箇所で追跡します。",
+        "text": "FLR、WFLR、sFLRなどの対応資産を一箇所でまとめて確認できます。",
         "title": "保有資産を表示する"
       },
       {
@@ -88,11 +61,22 @@
       {
         "step": "05",
         "text": "Flare Network のデータやアクティビティについて質問します。",
-        "title": "FLRGPT を使用する"
+        "title": "FlareGPTを使う"
       }
     ],
     "stillNeedHelp": "まだヘルプが必要ですか？",
-    "supportDesc": "FlareGPT を最大限に活用していただけるようサポートいたします。お探しの情報が見つからない場合は、お気軽にお問い合わせください。迅速に対応いたします。"
+    "supportDesc": "現在、最も早く連絡が取れる方法はXです。メールとTelegramでのサポートは近日公開予定です。",
+    "searchClear": "検索をクリア",
+    "flareGptGuideDescription": "ウォレットや報酬、Flareネットワークについて、自然な言葉で質問できます。",
+    "askFlareGptLead": "お探しのものが見つかりませんでしたか？",
+    "askFlareGptCta": "FlareGPTに聞いてみる",
+    "contact": {
+      "twitterLabel": "X (Twitter)",
+      "twitterHint": "フォローしてメッセージを送りましょう",
+      "telegramLabel": "Telegram",
+      "emailLabel": "メール",
+      "comingSoon": "近日公開"
+    }
   },
   "navbar": {
     "askFlareGPT": "FlareGPTに質問",

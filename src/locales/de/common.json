@@ -6,14 +6,13 @@
     "donate": "Spenden"
   },
   "help": {
-    "contactSupport": "Support kontaktieren",
     "faqs": [
       {
         "answer": "Ihr Wallet ist möglicherweise nicht verbunden oder das Dashboard synchronisiert noch Blockchain-Daten. Überprüfen Sie das ausgewählte Wallet und Netzwerk.",
         "question": "Warum wird mein Wallet-Guthaben nicht angezeigt?"
       },
       {
-        "answer": "Marktdaten werden automatisch über den konfigurierten Datenanbieter aktualisiert. Die Häufigkeit hängt von der Quelle und der Netzwerkverfügbarkeit ab.",
+        "answer": "Alle 60 Sekunden, solange die Übersichtsseite geöffnet ist.",
         "question": "Wie oft wird der FLR-Preis aktualisiert?"
       },
       {
@@ -21,7 +20,7 @@
         "question": "Warum erhalte ich keine Belohnungen?"
       },
       {
-        "answer": "Die Unterstützung hängt von den im Dashboard verfügbaren Integrationen ab. Kompatible Flare-Wallets können verbunden werden, wenn sie unterstützt werden.",
+        "answer": "MetaMask, Rabby Wallet und Bifrost Wallet als Browsererweiterungen sowie jede WalletConnect-kompatible Wallet für Mobilgeräte oder Hardware-Wallets.",
         "question": "Welche Wallets werden unterstützt?"
       },
       {
@@ -32,47 +31,21 @@
     "faqTitle": "Häufig gestellte Fragen",
     "featureGuides": "Funktionsleitfäden",
     "gettingStarted": "Erste Schritte",
-    "guides": [
-      {
-        "description": "Überwachen Sie den FLR-Preis, Ökosystem-Metriken, Protokollaktivitäten und die Portfolio-Performance.",
-        "title": "Übersicht"
-      },
-      {
-        "description": "Stellen Sie Fragen zu Flare-Daten, Governance, Protokollen und Wallet-Aktivitäten.",
-        "title": "FLRGPT"
-      },
-      {
-        "description": "Verfolgen Sie Überweisungen, Ansprüche, Delegierungen und Protokollinteraktionen.",
-        "title": "Wallet-Aktivität"
-      },
-      {
-        "description": "Überwachen Sie anfallende Belohnungen, den Epochenstatus und Belohnungsansprüche.",
-        "title": "FTSO-Belohnungen"
-      },
-      {
-        "description": "Entdecken Sie Ertragsmöglichkeiten in unterstützten Flare-Protokollen.",
-        "title": "Rendite"
-      },
-      {
-        "description": "Überprüfen Sie Vorschläge, den Abstimmungsverlauf und aktive Governance-Aktivitäten.",
-        "title": "Regierungsführung"
-      }
-    ],
-    "headerDesc": "Erfahren Sie, wie Sie FlareGPT nutzen, Wallets verwalten, Belohnungen verfolgen und sich im Ökosystem zurechtfinden.",
-    "noFaqs": "Keine passenden FAQs gefunden.",
-    "noGuides": "Keine passenden Leitfäden gefunden.",
-    "searchPlaceholder": "Suchen Sie nach Artikeln, FAQs oder Anleitungen...",
-    "searchSub": "Entdecken Sie Leitfäden, FAQs und Funktionserklärungen, um sich effizient im Flare-Ökosystem zurechtzufinden.",
+    "headerDesc": "Anleitungen, Antworten und Support, damit Sie Ihr FlareGPT-Dashboard optimal nutzen.",
+    "noFaqs": "Keine FAQs entsprechen Ihrer Suche.",
+    "noGuides": "Keine Anleitungen entsprechen Ihrer Suche.",
+    "searchPlaceholder": "Anleitungen oder FAQs durchsuchen ...",
+    "searchSub": "Durchsuchen Sie Funktionsanleitungen und FAQs oder finden Sie einen anderen Weg, uns zu erreichen.",
     "searchTitle": "Alles, was Sie für den Einstieg brauchen",
     "steps": [
       {
         "step": "01",
-        "text": "Greifen Sie auf Guthaben, Belohnungen, Governance und Protokolldaten zu.",
+        "text": "Erhalten Sie Zugriff auf Guthaben, Prämien und Protokolldaten im gesamten Dashboard.",
         "title": "Wallet verbinden"
       },
       {
         "step": "02",
-        "text": "Verfolgen Sie FLR, rFLR, SGB und Ökosystem-Assets an einem Ort.",
+        "text": "Behalten Sie FLR, WFLR, sFLR und weitere unterstützte Assets an einem Ort im Blick.",
         "title": "Bestände anzeigen"
       },
       {
@@ -92,7 +65,18 @@
       }
     ],
     "stillNeedHelp": "Brauchen Sie immer noch Hilfe?",
-    "supportDesc": "Wir sind hier, um Ihnen zu helfen, das Beste aus FlareGPT herauszuholen. Wenn Sie nicht finden, wonach Sie suchen, kontaktieren Sie uns."
+    "supportDesc": "Der schnellste Weg, uns aktuell zu erreichen, ist X. E-Mail- und Telegram-Support folgen in Kürze.",
+    "searchClear": "Suche löschen",
+    "flareGptGuideDescription": "Stellen Sie in einfacher Sprache Fragen zu Ihrem Wallet, Prämien und dem Flare-Netzwerk.",
+    "askFlareGptLead": "Nicht gefunden, wonach Sie gesucht haben?",
+    "askFlareGptCta": "FlareGPT um Hilfe bitten",
+    "contact": {
+      "twitterLabel": "X (Twitter)",
+      "twitterHint": "Folgen Sie uns und schreiben Sie uns eine Nachricht",
+      "telegramLabel": "Telegram",
+      "emailLabel": "E-Mail",
+      "comingSoon": "Demnächst verfügbar"
+    }
   },
   "navbar": {
     "askFlareGPT": "FlareGPT fragen",

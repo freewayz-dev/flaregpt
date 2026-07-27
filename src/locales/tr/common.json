@@ -6,14 +6,13 @@
     "donate": "Bağış yap"
   },
   "help": {
-    "contactSupport": "Destekle İletişime Geçin",
     "faqs": [
       {
         "answer": "Cüzdanınız bağlı olmayabilir veya panel henüz blokzincir verilerini senkronize ediyor olabilir. Doğru cüzdan ve ağın seçildiğinden emin olun.",
         "question": "Cüzdan bakiyem neden görünmüyor?"
       },
       {
-        "answer": "Piyasa verileri, yapılandırılmış veri sağlayıcısı kullanılarak otomatik olarak yenilenir. Güncelleme sıklığı kaynağa ve ağ kullanılabilirliğine bağlıdır.",
+        "answer": "Genel Bakış sayfası açıkken her 60 saniyede bir.",
         "question": "FLR fiyatı ne sıklıkla güncellenir?"
       },
       {
@@ -21,7 +20,7 @@
         "question": "Neden ödül alamıyorum?"
       },
       {
-        "answer": "Destek, paneldeki mevcut entegrasyonlara bağlıdır. Uyumlu Flare cüzdanları desteklendiğinde bağlanabilir.",
+        "answer": "Tarayıcı eklentisi olarak MetaMask, Rabby Wallet ve Bifrost Wallet; mobil veya donanım cüzdanları için ise WalletConnect uyumlu herhangi bir cüzdan.",
         "question": "Hangi cüzdanlar destekleniyor?"
       },
       {
@@ -32,47 +31,21 @@
     "faqTitle": "Sıkça Sorulan Sorular",
     "featureGuides": "Özellik Kılavuzları",
     "gettingStarted": "Başlarken",
-    "guides": [
-      {
-        "description": "FLR fiyatını, ekosistem metriklerini, protokol aktivitesini ve portföy performansını izleyin.",
-        "title": "Genel Bakış"
-      },
-      {
-        "description": "Flare verileri, yönetişim, protokoller ve cüzdan aktivitesi hakkında sorular sorun.",
-        "title": "FLRGPT"
-      },
-      {
-        "description": "Transferleri, talepleri, delegasyonları ve protokol etkileşimlerini takip edin.",
-        "title": "Cüzdan Aktivitesi"
-      },
-      {
-        "description": "Biriken ödülleri, dönem durumunu ve ödül taleplerini izleyin.",
-        "title": "FTSO Ödülleri"
-      },
-      {
-        "description": "Desteklenen Flare protokollerindeki kazanç fırsatlarını keşfedin.",
-        "title": "Getiri"
-      },
-      {
-        "description": "Teklifleri, oylama geçmişini ve aktif yönetişim faaliyetlerini inceleyin.",
-        "title": "Yönetişim"
-      }
-    ],
-    "headerDesc": "FlareGPT'yi nasıl kullanacağınızı öğrenin, cüzdanları yönetin, ödülleri takip edin ve ekosistem özelliklerinde gezinin.",
-    "noFaqs": "Eşleşen SSS bulunamadı.",
-    "noGuides": "Eşleşen kılavuz bulunamadı.",
-    "searchPlaceholder": "Makaleleri, SSS'leri veya kurulum kılavuzlarını arayın...",
-    "searchSub": "Flare ekosisteminde verimli bir şekilde gezinmenize yardımcı olacak kılavuzları, SSS'leri ve özellik açıklamalarını keşfedin.",
+    "headerDesc": "FlareGPT panonuzdan en iyi şekilde yararlanmanız için rehberler, yanıtlar ve destek.",
+    "noFaqs": "Aramanızla eşleşen SSS bulunamadı.",
+    "noGuides": "Aramanızla eşleşen rehber bulunamadı.",
+    "searchPlaceholder": "Rehberlerde veya SSS'de ara...",
+    "searchSub": "Özellik rehberlerinde ve SSS'de arama yapın veya bize ulaşmanın başka bir yolunu bulun.",
     "searchTitle": "Başlamak için ihtiyacınız olan her şey",
     "steps": [
       {
         "step": "01",
-        "text": "Bakiyelere, ödüllere, yönetişime ve protokol verilerine erişin.",
+        "text": "Panonun tamamında bakiyelere, ödüllere ve protokol verilerine erişin.",
         "title": "Cüzdanınızı Bağlayın"
       },
       {
         "step": "02",
-        "text": "FLR, rFLR, SGB ve ekosistem varlıklarını tek bir yerden takip edin.",
+        "text": "FLR, WFLR, sFLR ve desteklenen diğer varlıkları tek bir yerden takip edin.",
         "title": "Varlıklarınızı Görüntüleyin"
       },
       {
@@ -88,11 +61,22 @@
       {
         "step": "05",
         "text": "Flare Network verileri ve aktiviteleri hakkında sorular sorun.",
-        "title": "FlareGPT Kullanın"
+        "title": "FlareGPT'yi kullanın"
       }
     ],
     "stillNeedHelp": "Hâlâ yardıma mı ihtiyacınız var?",
-    "supportDesc": "FlareGPT'den en iyi şekilde yararlanmanıza yardımcı olmak için buradayız. Aradığınızı bulamazsanız, bize ulaşın; mümkün olan en kısa sürede yanıt vereceğiz."
+    "supportDesc": "Şu anda bize ulaşmanın en hızlı yolu X. E-posta ve Telegram desteği yakında geliyor.",
+    "searchClear": "Aramayı temizle",
+    "flareGptGuideDescription": "Cüzdanınız, ödülleriniz ve Flare ağı hakkında sade bir dille soru sorun.",
+    "askFlareGptLead": "Aradığınızı bulamadınız mı?",
+    "askFlareGptCta": "FlareGPT'ye sorun",
+    "contact": {
+      "twitterLabel": "X (Twitter)",
+      "twitterHint": "Bizi takip edin ve mesaj gönderin",
+      "telegramLabel": "Telegram",
+      "emailLabel": "E-posta",
+      "comingSoon": "Yakında"
+    }
   },
   "navbar": {
     "askFlareGPT": "FlareGPT'ye Sor",

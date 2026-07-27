@@ -11,6 +11,7 @@ import {
 
 import ChatPane from "@/components/flareGpt/ChatPane";
 import { useFlareGptConversation } from "@/hooks/useFlareGptConversation";
+import { ROUTES } from "@/config/routes";
 
 // An extension of the full FlareGPT page, not a separate product: this
 // renders the exact same ChatPane (message list, composer, wallet pill,
@@ -63,7 +64,7 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
     // against this navigation could pop the wrong entry. Replacing the
     // current entry with the real route absorbs the dummy cleanly instead.
     onClose({ skipBack: true });
-    navigate("/app/flare-gpt", { replace: true });
+    navigate(ROUTES.flareGpt, { replace: true });
   };
 
   return (

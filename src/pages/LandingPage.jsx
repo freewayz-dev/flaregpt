@@ -25,6 +25,7 @@ import LandingNavbar from "@/components/common/LandingNavbar";
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import { useUIStore } from "@/store/useUIStore";
 import { shortenAddress } from "@/utils/address";
+import { ROUTES } from "@/config/routes";
 
 import flareLogo from "@/assets/icons/fl.png";
 import openLogo from "@/assets/icons/image.png";
@@ -76,7 +77,7 @@ export default function LandingPage() {
   useEffect(() => {
     if (isConnected && awaitingConnectRef.current) {
       awaitingConnectRef.current = false;
-      navigate("/app");
+      navigate(ROUTES.app);
     }
   }, [isConnected, navigate]);
 
@@ -170,7 +171,7 @@ export default function LandingPage() {
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-5">
               <button
                 type="button"
-                onClick={() => navigate("/app")}
+                onClick={() => navigate(ROUTES.app)}
                 className="rounded-full bg-brand px-7 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 Launch App
@@ -178,7 +179,7 @@ export default function LandingPage() {
 
               <button
                 type="button"
-                onClick={() => (isConnected ? navigate("/app") : openWalletModal())}
+                onClick={() => (isConnected ? navigate(ROUTES.app) : openWalletModal())}
                 className="group flex items-center gap-2 text-sm font-semibold text-ink-primary transition-colors hover:text-brand dark:hover:text-brand-hover cursor-pointer rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 {isConnected ? (
@@ -663,7 +664,7 @@ export default function LandingPage() {
               <div className="relative z-10 mt-10 flex flex-col items-center gap-5">
                 <button
                   type="button"
-                  onClick={() => navigate("/app")}
+                  onClick={() => navigate(ROUTES.app)}
                   className="rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-brand-hover shadow-lg shadow-brand/20 hover:shadow-brand/30 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                 >
                   Launch App
@@ -762,21 +763,21 @@ export default function LandingPage() {
                 {/* Navigation */}
                 <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 font-mono text-[11px] font-bold text-[#64748B] dark:text-[#A1A1AA] sm:justify-end">
                   <button
-                    onClick={() => navigate("/app")}
+                    onClick={() => navigate(ROUTES.app)}
                     className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     Launch App
                   </button>
 
                   <button
-                    onClick={() => navigate("/terms")}
+                    onClick={() => navigate(ROUTES.terms)}
                     className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     Terms
                   </button>
 
                   <button
-                    onClick={() => navigate("/app/donate")}
+                    onClick={() => navigate(ROUTES.donate)}
                     className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-brand transition-all hover:bg-brand hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     Donate
