@@ -154,56 +154,58 @@ export default function Settings() {
   };
 
   return (
-    <div className="flex min-h-full flex-col">
-      <div className="flex-1 pb-10">
-        <div className="pt-3 lg:pt-0">
-          <PageHeader
-            title={t("settings.title")}
-            description={t("settings.description")}
-          />
-        </div>
+    <div className="pb-14">
+      <div className="pt-3 lg:pt-0">
+        <PageHeader
+          title={t("settings.title")}
+          description={t("settings.description")}
+        />
+      </div>
 
-        <div className="mx-auto w-full max-w-[1440px]">
-          <div className="flex flex-col gap-6 md:flex-row items-start">
-            {/* Tab Navigation */}
-            <aside className="w-full shrink-0 md:w-56 lg:w-64 md:sticky md:top-6 z-10">
-              {/* Mobile: flat horizontal scroll, group order preserved but
-                  no header labels — a scrolling strip doesn't have the
-                  vertical room to show them without adding a second row.
-                  The edge fade (see buildEdgeFadeMask) is what actually
-                  signals "more tabs this way" — a static class name here
-                  once existed for this but was never backed by real CSS,
-                  which is exactly why the scrollability wasn't obvious. */}
-              <nav
-                ref={mobileNavRef}
-                className="flex md:hidden flex-row gap-1 overflow-x-auto pb-2 scrollbar-none select-none snap-x"
-                style={{
-                  WebkitMaskImage: buildEdgeFadeMask(mobileScrollEdges),
-                  maskImage: buildEdgeFadeMask(mobileScrollEdges),
-                }}
-              >
-                {allTabs.map(renderTabButton)}
-              </nav>
+      <div className="mx-auto w-full max-w-[1440px]">
+        <div className="flex flex-col gap-6 md:flex-row items-start">
+          {/* Tab Navigation */}
+          <aside className="w-full shrink-0 md:w-56 lg:w-64 md:sticky md:top-6 z-10">
+            {/* Mobile: flat horizontal scroll, group order preserved but
+                no header labels — a scrolling strip doesn't have the
+                vertical room to show them without adding a second row.
+                The edge fade (see buildEdgeFadeMask) is what actually
+                signals "more tabs this way" — a static class name here
+                once existed for this but was never backed by real CSS,
+                which is exactly why the scrollability wasn't obvious. */}
+            <nav
+              ref={mobileNavRef}
+              className="flex md:hidden flex-row gap-1 overflow-x-auto pb-2 scrollbar-none select-none snap-x"
+              style={{
+                WebkitMaskImage: buildEdgeFadeMask(mobileScrollEdges),
+                maskImage: buildEdgeFadeMask(mobileScrollEdges),
+              }}
+            >
+              {allTabs.map(renderTabButton)}
+            </nav>
 
-              {/* Desktop: grouped vertical list with section labels. */}
-              <nav className="hidden md:flex md:flex-col md:gap-4">
-                {groups.map((group) => (
-                  <div key={group.labelKey} className="space-y-1">
-                    <p className="px-3.5 text-[10px] font-bold uppercase tracking-wider text-ink-muted">
-                      {t(group.labelKey)}
-                    </p>
-                    {group.tabs.map(renderTabButton)}
-                  </div>
-                ))}
-              </nav>
-            </aside>
+            {/* Desktop: grouped vertical list with section labels. */}
+            <nav className="hidden md:flex md:flex-col md:gap-4">
+              {groups.map((group) => (
+                <div key={group.labelKey} className="space-y-1">
+                  <p className="px-3.5 text-[10px] font-bold uppercase tracking-wider text-ink-muted">
+                    {t(group.labelKey)}
+                  </p>
+                  {group.tabs.map(renderTabButton)}
+                </div>
+              ))}
+            </nav>
+          </aside>
 
-            {/* Workspace Canvas Area */}
-            <main className="flex-1 w-full max-w-3xl">
-              <div className="space-y-6">
-                <ActiveComponent />
-              </div>
-            </main>
+          {/* Workspace Canvas Area — a plain div, not a second <main>: this
+              already sits inside DashboardLayout's own <main>, and two
+              <main> landmarks in one document is invalid, unlike every
+              sibling page (Overview, Wallet Activity, DeFi Protocols,
+              Donate, Help), none of which nest one here either. */}
+          <div className="flex-1 w-full max-w-3xl">
+            <div className="space-y-6">
+              <ActiveComponent />
+            </div>
           </div>
         </div>
       </div>
