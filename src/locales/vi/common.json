@@ -106,7 +106,10 @@
     "watchlistSection": "Danh sách theo dõi ({{current}}/{{max}})",
     "addressCopied": "Đã sao chép địa chỉ vào clipboard",
     "copyFailed": "Không thể sao chép địa chỉ",
-    "flareGptFabHint": "FlareGPT giờ đây mở từ đây"
+    "flareGptFabHint": "FlareGPT giờ đây mở từ đây",
+    "hideBalances": "Ẩn số dư",
+    "showBalances": "Hiện số dư",
+    "balancesHiddenLabel": "Số dư đã ẩn"
   },
   "settings": {
     "cards": {
@@ -119,13 +122,18 @@
       "language": "Ngôn ngữ",
       "links": "Liên kết",
       "logout": "Đăng xuất",
-      "region": "Khu vực",
       "rewardsAlerts": "Cảnh báo Phần thưởng",
       "sessionTimeout": "Thời gian chờ Phiên",
       "theme": "Giao diện",
       "themeMode": "Chế độ Sáng / Tối",
       "timeframe": "Khung Thời gian",
-      "walletCapacity": "Sức chứa của Ví"
+      "walletCapacity": "Sức chứa của Ví",
+      "walletPreferences": "Tùy chọn ví",
+      "defaultWallet": "Ví mặc định",
+      "defaultLandingPage": "Trang bắt đầu mặc định",
+      "tableDensity": "Mật độ bảng",
+      "reduceMotion": "Giảm chuyển động",
+      "hideBalances": "Ẩn số dư ví"
     },
     "description": "Quản lý ví, tùy chọn, bản địa hóa và thiết lập hiển thị.",
     "descriptions": {
@@ -136,10 +144,16 @@
       "language": "Chọn ngôn ngữ xem mặc định cho giao diện của bạn.",
       "links": "Tài liệu tham khảo toàn cầu và các liên kết tương tác với đội ngũ.",
       "logout": "Thu hồi ngay lập tức quyền xác thực trên mọi nút đã kết nối.",
-      "region": "Điều chỉnh các nút dữ liệu để lọc các số liệu khu vực theo ngữ cảnh.",
       "sessionTimeout": "Tự động chấm dứt các vòng lặp trạng thái xác thực phiên khi không hoạt động.",
       "timeframe": "Xác định quy mô khoảng thời gian cửa sổ mặc định trên các biểu đồ trực quan.",
-      "walletCapacity": "Các giới hạn của hệ thống để theo dõi hạn mức phân bổ tài sản."
+      "walletCapacity": "Các giới hạn của hệ thống để theo dõi hạn mức phân bổ tài sản.",
+      "theme": "Chọn Sáng, Tối, hoặc theo cài đặt hệ thống của bạn.",
+      "walletPreferences": "Chọn ví nào bảng điều khiển sẽ mở cùng.",
+      "defaultWallet": "Ví này sẽ hoạt động bất cứ khi nào không thể khôi phục phiên trước đó.",
+      "defaultLandingPage": "Chọn trang nào sẽ mở đầu tiên khi bạn khởi chạy ứng dụng.",
+      "tableDensity": "Khoảng cách thoải mái hoặc chế độ xem gọn hơn cho các bảng dày đặc.",
+      "reduceMotion": "Giảm thiểu hoạt ảnh ngay cả khi hệ điều hành của bạn không có tùy chọn nào được đặt.",
+      "hideBalances": "Làm mờ số dư và số tiền trên toàn bộ trang tổng quan để bảo mật."
     },
     "notifications": {
       "governance": "Cập nhật các đề xuất mới",
@@ -161,26 +175,35 @@
       "low": "Thấp",
       "medium": "Trung bình",
       "never": "Không bao giờ",
-      "off": "Tắt"
+      "off": "Tắt",
+      "comfortable": "Thoải mái",
+      "compact": "Gọn"
     },
     "security": {
       "logoutAll": "Đăng xuất khỏi tất cả thiết bị"
     },
     "subtitles": {
       "About": "Tổng quan về hồ sơ triển khai hệ thống, quy tắc biên dịch và chỉ mục tài sản.",
-      "Display": "Sửa đổi cấu trúc công cụ trình diễn và các thành phần giao diện cốt lõi.",
+      "Display": "Cá nhân hóa chế độ xem mặc định và cách hiển thị dữ liệu bảng điều khiển.",
       "Notifications": "Quản lý các sự kiện ưu tiên của hệ thống và các điểm cuối theo dõi tuyến phân phối.",
-      "Preferences": "Cấu hình giao diện trực quan, bối cảnh khu vực và cơ chế ngôn ngữ.",
+      "Preferences": "Tùy chọn ngôn ngữ và tiền tệ.",
       "Security": "Duy trì các rào cản phiên danh tính đang hoạt động và các quy tắc truy cập xác minh thông tin xác thực.",
-      "Wallets": "Kết nối và cấu trúc chữ ký trên các tài khoản phi tập trung bên ngoài toàn cầu."
+      "Wallets": "Kết nối và cấu trúc chữ ký trên các tài khoản phi tập trung bên ngoài toàn cầu.",
+      "Appearance": "Chọn giao diện của FlareGPT.",
+      "Accessibility": "Điều chỉnh tùy chọn chuyển động và tương tác.",
+      "FlareGpt": "Quản lý cách FlareGPT ghi nhớ các cuộc trò chuyện của bạn."
     },
     "tabs": {
       "About": "Giới thiệu",
-      "Display": "Hiển thị",
+      "Display": "Bảng điều khiển",
       "Notifications": "Thông báo",
-      "Preferences": "Tùy chọn",
+      "Preferences": "Chung",
       "Security": "Bảo mật",
-      "Wallets": "Ví"
+      "Wallets": "Ví",
+      "Appearance": "Giao diện",
+      "Accessibility": "Trợ năng",
+      "FlareGpt": "FlareGPT",
+      "DataStorage": "Dữ liệu & Lưu trữ"
     },
     "title": "Cài đặt",
     "wallets": {
@@ -203,12 +226,48 @@
       "manageSubtitle": "Quản lý các kết nối Web3 đang hoạt động và tài khoản theo dõi danh mục đầu tư chỉ đọc của bạn.",
       "readOnly": "Chỉ đọc",
       "registrationFailed": "Đăng ký địa chỉ không thành công. Kiểm tra xem nó có phải là một bản sao hoặc nếu các vị trí được lấp đầy.",
-      "tracked": "Đã theo"
+      "tracked": "Đã theo",
+      "remove": "Xóa",
+      "confirmRemove": "Xác nhận xóa?",
+      "noDefaultSelected": "Chưa chọn",
+      "rename": "Đổi tên",
+      "cancelRename": "Hủy"
     },
     "links": {
       "docs": "Tài liệu",
       "github": "Github",
       "twitter": "Twitter"
+    },
+    "groups": {
+      "personalization": "Cá nhân hóa",
+      "walletsAndData": "Ví & Dữ liệu",
+      "account": "Tài khoản"
+    },
+    "appearance": {
+      "light": "Sáng",
+      "dark": "Tối",
+      "system": "Hệ thống"
+    },
+    "flareGpt": {
+      "followDashboard": "Theo ví bảng điều khiển",
+      "general": "Chung (không có ví)",
+      "syncStatusTitle": "Trạng thái đồng bộ",
+      "syncStatusConnected": "Đã kết nối — lịch sử sẽ đồng bộ trên các thiết bị khi tính năng đồng bộ tài khoản khả dụng.",
+      "syncStatusGuest": "Cuộc trò chuyện là tạm thời và sẽ không tồn tại sau khi làm mới hoặc đổi thiết bị."
+    },
+    "dataStorage": {
+      "localTitle": "Dữ liệu cục bộ",
+      "localSubtitle": "Chỉ được lưu trong trình duyệt này — xóa ngay lập tức và an toàn.",
+      "walletCache": "Bộ nhớ đệm hoạt động ví",
+      "walletCacheDescription": "Xóa lịch sử giao dịch đã lưu trong bộ nhớ đệm — lần truy cập tiếp theo sẽ tải lại.",
+      "conversations": "Cuộc trò chuyện FlareGPT",
+      "conversationsDescription": "Xóa mọi cuộc trò chuyện được lưu trong trình duyệt này.",
+      "clear": "Xóa",
+      "confirmClear": "Xác nhận?",
+      "accountTitle": "Dữ liệu tài khoản",
+      "accountSubtitle": "Dữ liệu đồng bộ với backend, khả dụng khi tính năng đồng bộ tài khoản ra mắt.",
+      "accountUnavailable": "Chưa khả dụng",
+      "accountUnavailableDescription": "Phần này sẽ cho phép bạn quản lý lịch sử FlareGPT đồng bộ với backend khi tính năng đồng bộ tài khoản hoạt động."
     }
   },
   "sidebar": {
@@ -216,7 +275,7 @@
     "disconnect": "Ngắt kết nối",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Phần thưởng FTSO",
-    "fxrpPool": "Giao thức DEFI",
+    "defiProtocols": "Giao thức DEFI",
     "governance": "Quản trị",
     "helpCenter": "Trung tâm Trợ giúp",
     "notConnected": "Chưa kết nối",

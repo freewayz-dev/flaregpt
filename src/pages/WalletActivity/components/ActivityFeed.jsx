@@ -2,10 +2,15 @@ import { useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useVirtualizer } from "@tanstack/react-virtual";
 
+import { useUIStore } from "@/store/useUIStore";
 import TransactionRow from "@/pages/WalletActivity/components/TransactionRow";
 
 const HEADER_HEIGHT = 36;
-const ROW_HEIGHT = 56;
+// Must stay in sync with TransactionRow's own padding for each density —
+// the virtualizer positions every row by this estimate alone (no
+// measureElement pass), so a mismatch between this number and the row's
+// actual rendered height would show up as visible gaps or overlap.
+const ROW_HEIGHT = { comfortable: 56, compact: 44 };
 
 // Flattens {label, items[]} day groups into one array the virtualizer can
 // walk linearly — a day header is just another row type with its own
@@ -44,13 +49,15 @@ function DayHeader({ label }) {
 // choice for a first pass and is easy to revisit later.
 export default function ActivityFeed({ groups, selectedActionId, onSelect, totalCount, shownCount }) {
   const { t } = useTranslation();
+  const density = useUIStore((state) => state.tableDensity);
+  const rowHeight = ROW_HEIGHT[density] ?? ROW_HEIGHT.comfortable;
   const parentRef = useRef(null);
   const flatItems = useMemo(() => flattenGroups(groups), [groups]);
 
   const virtualizer = useVirtualizer({
     count: flatItems.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: (index) => (flatItems[index].kind === "header" ? HEADER_HEIGHT : ROW_HEIGHT),
+    estimateSize: (index) => (flatItems[index].kind === "header" ? HEADER_HEIGHT : rowHeight),
     overscan: 12,
   });
 
@@ -84,6 +91,7 @@ export default function ActivityFeed({ groups, selectedActionId, onSelect, total
                   item={flatItem.item}
                   isSelected={flatItem.item.actionId === selectedActionId}
                   onSelect={onSelect}
+                  compact={density === "compact"}
                 />
               )}
             </div>

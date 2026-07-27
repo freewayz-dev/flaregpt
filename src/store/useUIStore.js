@@ -22,25 +22,44 @@ export const useUIStore = create()(
       chartType: "Area",
       timeframe: "7D",
 
-      toggleTheme: () => {
-        const nextMode = !get().darkMode;
+      // Personalization additions: which route the index route lands on
+      // ("overview" = today's default, unchanged behavior), and a global
+      // row-density knob every dense table (GenericTable, Wallet Activity's
+      // feed) reads rather than each maintaining its own.
+      defaultLandingPage: "overview",
+      tableDensity: "comfortable",
 
-        // A real CSS cross-fade was tried here and reverted: many components
-        // use `border ... dark:border-none` (border-style is a discrete
-        // property, so toggling it can't animate — it pops), and React
-        // components subscribed to this store don't all re-render in the
-        // same commit, so different parts of the UI visibly updated at
-        // slightly different moments. Both would need wide, invasive changes
-        // across many components to fix properly. Suppressing transitions
-        // for one frame around the toggle avoids all of that at the cost of
-        // an instant switch rather than a cross-fade — a better trade-off
-        // than a smooth-but-glitchy transition.
+      // Off by default — framer-motion's own `reducedMotion="user"`
+      // (see App.jsx) already defers to the OS's prefers-reduced-motion,
+      // which covers most people who want less motion. This is only for
+      // someone whose OS has no such preference set but who still wants
+      // this app specifically to cut its animations — a narrower,
+      // additive override, not a replacement for the OS-level default.
+      reduceMotionOverride: false,
+
+      // A quick, reversible privacy screen for shoulder-surfing situations
+      // (a shared desk, a screen share) — not a security boundary, so it's
+      // a single global flag rather than a per-field reveal. Toggled from
+      // an eye icon in the navbar (the point-of-need location) and mirrored
+      // in Settings for discoverability; both drive the same value.
+      hideBalances: false,
+
+      // Same three-state model the FOUC-prevention script in index.html
+      // and this store's own onRehydrateStorage already read — this just
+      // exposes it as an explicit, re-selectable action instead of the
+      // binary toggleTheme, which could only ever move *away* from
+      // "System" and had no path back. `hasThemeOverride: false` again
+      // means "follow the OS," so a user is never stuck having to guess
+      // their own OS setting to get back to it.
+      setAppearance: (mode) => {
+        const nextDarkMode = mode === "system" ? getSystemPreference() : mode === "dark";
+
         document.documentElement.classList.add("no-transition");
-        document.documentElement.classList.toggle("dark", nextMode);
+        document.documentElement.classList.toggle("dark", nextDarkMode);
 
         set({
-          darkMode: nextMode,
-          hasThemeOverride: true,
+          darkMode: nextDarkMode,
+          hasThemeOverride: mode !== "system",
         });
 
         setTimeout(() => {
@@ -60,6 +79,10 @@ export const useUIStore = create()(
       setCurrency: (currency) => set({ currency }),
       setChartType: (chartType) => set({ chartType }),
       setTimeframe: (timeframe) => set({ timeframe }),
+      setDefaultLandingPage: (page) => set({ defaultLandingPage: page }),
+      setTableDensity: (density) => set({ tableDensity: density }),
+      setReduceMotionOverride: (value) => set({ reduceMotionOverride: value }),
+      toggleHideBalances: () => set((state) => ({ hideBalances: !state.hideBalances })),
     }),
     {
       name: "flaregpt_ui_preferences",

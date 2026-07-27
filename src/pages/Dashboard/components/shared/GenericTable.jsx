@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 
+import { useUIStore } from "@/store/useUIStore";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
 
 // Renders a table whose columns are derived from whatever keys are actually
@@ -54,6 +55,7 @@ export default function GenericTable({
   height = "320px",
 }) {
   const { t } = useTranslation();
+  const isCompact = useUIStore((state) => state.tableDensity) === "compact";
 
   if (!items?.length) {
     return (
@@ -95,7 +97,9 @@ export default function GenericTable({
               {columns.map((col) => (
                 <td
                   key={col}
-                  className="py-2.5 pr-4 text-ink-primary font-medium whitespace-nowrap"
+                  className={`pr-4 text-ink-primary font-medium whitespace-nowrap ${
+                    isCompact ? "py-1.5" : "py-2.5"
+                  }`}
                 >
                   {formatCell(item[col], yesLabel, noLabel)}
                 </td>

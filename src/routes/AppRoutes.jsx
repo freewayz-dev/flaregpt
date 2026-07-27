@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import DashboardLayout from "@/components/layout/DashboardLayout";
@@ -20,6 +20,73 @@ const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Donate = lazy(() => import("@/pages/Donate"));
 const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
 
+const LANDING_PAGE_PATHS = {
+  "flare-gpt": "/app/flare-gpt",
+  wallet: "/app/wallet",
+  rewards: "/app/rewards",
+  rflr: "/app/rflr",
+  defi: "/app/defi",
+};
+
+// Module-level, not component state: it needs to survive exactly once per
+// real page load and then get out of the way — not fire again every time
+// in-app navigation (e.g. clicking "Overview" in the sidebar, which is
+// this same /app index route) brings the user back here. A stored
+// "flare-gpt" default redirecting on *every* visit to this route would
+// make Overview permanently unreachable via the sidebar, since both are
+// literally the same URL. Resets naturally on a full reload/new tab
+// (the module re-evaluates), which is exactly what "default landing page"
+// should mean — where you land fresh, not where every click on Overview
+// secretly goes.
+let hasAppliedLandingRedirect = false;
+
+// Deliberately not `useUIStore(...)` here — zustand's `persist` middleware
+// defers hydration to a microtask even for synchronous storage like
+// localStorage, so the store's *first* render always sees its in-code
+// default ("overview"), not whatever was actually saved. Reading localStorage
+// directly sidesteps that: it's synchronously correct on the very first
+// render, no microtask delay to race against.
+function readPersistedLandingPage() {
+  try {
+    const raw = localStorage.getItem("flaregpt_ui_preferences");
+    return raw ? JSON.parse(raw)?.state?.defaultLandingPage : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function DashboardIndexRoute() {
+  // The redirect decision is computed once via useState's lazy initializer
+  // (read-only against the module flag) and never re-derived from the
+  // mutable flag directly in the render body. That mutation is deferred to
+  // an effect. This matters because React 18 StrictMode double-invokes
+  // component render bodies in dev to catch impure renders — an earlier
+  // version mutated `hasAppliedLandingRedirect` inline in the render body,
+  // so the first invocation set the flag and returned <Navigate>, but the
+  // immediate second invocation (same commit) saw the flag already true and
+  // returned <Dashboard> instead, silently swallowing the redirect on every
+  // load. Confirmed live: the redirect never fired under `npm run dev`.
+  const [redirectPath] = useState(() =>
+    hasAppliedLandingRedirect
+      ? null
+      : (LANDING_PAGE_PATHS[readPersistedLandingPage()] ?? null),
+  );
+
+  useEffect(() => {
+    hasAppliedLandingRedirect = true;
+  }, []);
+
+  if (redirectPath) {
+    return <Navigate to={redirectPath} replace />;
+  }
+
+  return (
+    <Suspense fallback={<DashboardSkeleton />}>
+      <Dashboard />
+    </Suspense>
+  );
+}
+
 export default function AppRoutes() {
   const { t } = useTranslation();
 
@@ -30,14 +97,7 @@ export default function AppRoutes() {
         <Route path="/terms" element={<Terms />} />
 
         <Route path="/app" element={<DashboardLayout />}>
-          <Route
-            index
-            element={
-              <Suspense fallback={<DashboardSkeleton />}>
-                <Dashboard />
-              </Suspense>
-            }
-          />
+          <Route index element={<DashboardIndexRoute />} />
           <Route path="flare-gpt" element={<FLRGPT />} />
           <Route
             path="wallet"
@@ -62,7 +122,7 @@ export default function AppRoutes() {
             element={<ComingSoon title={t("sidebar.rflrTracker")} />}
           />
           <Route
-            path="fxrp"
+            path="defi"
             element={
               <Suspense fallback={<DefiProtocolsSkeleton />}>
                 <DefiProtocols />

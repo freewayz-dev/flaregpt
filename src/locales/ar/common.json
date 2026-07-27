@@ -106,7 +106,10 @@
     "watchlistSection": "قائمة المراقبة ({{current}}/{{max}})",
     "addressCopied": "تم نسخ العنوان إلى الحافظة",
     "copyFailed": "تعذر نسخ العنوان",
-    "flareGptFabHint": "يفتح FlareGPT الآن من هنا"
+    "flareGptFabHint": "يفتح FlareGPT الآن من هنا",
+    "hideBalances": "إخفاء الأرصدة",
+    "showBalances": "إظهار الأرصدة",
+    "balancesHiddenLabel": "الأرصدة مخفية"
   },
   "settings": {
     "cards": {
@@ -119,13 +122,18 @@
       "language": "اللغة",
       "links": "الروابط",
       "logout": "تسجيل الخروج",
-      "region": "المنطقة",
       "rewardsAlerts": "تنبيهات المكافآت",
       "sessionTimeout": "انتهاء مهلة الجلسة",
       "theme": "المظهر",
       "themeMode": "الوضع الفاتح / الداكن",
       "timeframe": "الإطار الزمني",
-      "walletCapacity": "سعة المحفظة"
+      "walletCapacity": "سعة المحفظة",
+      "walletPreferences": "تفضيلات المحفظة",
+      "defaultWallet": "المحفظة الافتراضية",
+      "defaultLandingPage": "صفحة البداية الافتراضية",
+      "tableDensity": "كثافة الجدول",
+      "reduceMotion": "تقليل الحركة",
+      "hideBalances": "إخفاء أرصدة المحفظة"
     },
     "description": "إدارة المحافظ، التفضيلات، الموقع، وخيارات العرض.",
     "descriptions": {
@@ -136,10 +144,16 @@
       "language": "اختر لغة عرض الواجهة الافتراضية الخاصة بك.",
       "links": "مراجع الوثائق العالمية وروابط تفاعل الفريق.",
       "logout": "إلغاء أذونات حالة المصادقة فورًا عبر كل عقدة متصلة.",
-      "region": "اضبط عقد البيانات لتصفية المقاييس الإقليمية السياقية.",
       "sessionTimeout": "إنهاء حلقات حالة التحقق من صحة الجلسة تلقائيًا أثناء حالات الخمول.",
       "timeframe": "تحديد مقاييس فترة النافذة الافتراضية على الرسوم البيانية المرئية.",
-      "walletCapacity": "حدود النظام التي تتبع مجمعات سعة التخصيص."
+      "walletCapacity": "حدود النظام التي تتبع مجمعات سعة التخصيص.",
+      "theme": "اختر فاتحًا أو داكنًا، أو اتبع إعداد نظامك.",
+      "walletPreferences": "اختر المحفظة التي تُفتح بها لوحة التحكم.",
+      "defaultWallet": "تصبح هذه المحفظة نشطة عندما لا يمكن استعادة جلسة سابقة.",
+      "defaultLandingPage": "اختر الصفحة التي تُفتح أولاً عند تشغيل التطبيق.",
+      "tableDensity": "تباعد مريح أو عرض أكثر إحكامًا للجداول الكثيفة.",
+      "reduceMotion": "تقليل الحركات إلى الحد الأدنى حتى إذا لم يكن نظام التشغيل لديك يحتوي على تفضيل محدد.",
+      "hideBalances": "تمويه الأرصدة والمبالغ في جميع أنحاء لوحة التحكم للخصوصية."
     },
     "notifications": {
       "governance": "تحديثات المقترحات",
@@ -161,26 +175,35 @@
       "low": "منخفض",
       "medium": "متوسط",
       "never": "أبداً",
-      "off": "معطل"
+      "off": "معطل",
+      "comfortable": "مريح",
+      "compact": "مضغوط"
     },
     "security": {
       "logoutAll": "تسجيل الخروج من جميع الأجهزة"
     },
     "subtitles": {
       "About": "نظرة عامة على سجلات النشر النظامية، وقواعد الترجمة، وفهارس الأصول.",
-      "Display": "تعديل هياكل محرك العرض والمكونات المرئية الأساسية.",
+      "Display": "خصّص العرض الافتراضي وكيفية عرض بيانات لوحة التحكم.",
       "Notifications": "إدارة الأحداث ذات الأولوية النظامية ونقاط نهاية تتبع مسار التسليم.",
-      "Preferences": "تكوين مرئيات الواجهة، وسياقات المنطقة، وآليات اللغة.",
+      "Preferences": "تفضيلات اللغة والعملة.",
       "Security": "الحفاظ على حواجز جلسات الهوية النشطة وقواعد الوصول للتحقق من أوراق الاعتماد.",
-      "Wallets": "ربط وبناء التواقيع عبر الحسابات اللامركزية الخارجية العالمية."
+      "Wallets": "ربط وبناء التواقيع عبر الحسابات اللامركزية الخارجية العالمية.",
+      "Appearance": "اختر شكل FlareGPT.",
+      "Accessibility": "اضبط تفضيلات الحركة والتفاعل.",
+      "FlareGpt": "أدر كيفية تذكر FlareGPT لمحادثاتك."
     },
     "tabs": {
       "About": "حول",
-      "Display": "العرض",
+      "Display": "لوحة التحكم",
       "Notifications": "الإشعارات",
-      "Preferences": "التفضيلات",
+      "Preferences": "عام",
       "Security": "الأمان",
-      "Wallets": "المحافظ"
+      "Wallets": "المحافظ",
+      "Appearance": "المظهر",
+      "Accessibility": "إمكانية الوصول",
+      "FlareGpt": "FlareGPT",
+      "DataStorage": "البيانات والتخزين"
     },
     "title": "الإعدادات",
     "wallets": {
@@ -203,12 +226,48 @@
       "manageSubtitle": "قم بإدارة اتصالات Web3 النشطة وحسابات تتبع المحفظة للقراءة فقط.",
       "readOnly": "للقراءة فقط",
       "registrationFailed": "فشل تسجيل العنوان. تحقق مما إذا كان مكررًا أو إذا تم ملء الخانات.",
-      "tracked": "متعقب"
+      "tracked": "متعقب",
+      "remove": "إزالة",
+      "confirmRemove": "تأكيد الإزالة؟",
+      "noDefaultSelected": "لم يتم التحديد",
+      "rename": "إعادة تسمية",
+      "cancelRename": "إلغاء"
     },
     "links": {
       "docs": "مستندات",
       "github": "GitHub",
       "twitter": "منصة التدوين المصغر: تويتر"
+    },
+    "groups": {
+      "personalization": "التخصيص",
+      "walletsAndData": "المحافظ والبيانات",
+      "account": "الحساب"
+    },
+    "appearance": {
+      "light": "فاتح",
+      "dark": "داكن",
+      "system": "النظام"
+    },
+    "flareGpt": {
+      "followDashboard": "اتباع محفظة لوحة التحكم",
+      "general": "عام (بدون محفظة)",
+      "syncStatusTitle": "حالة المزامنة",
+      "syncStatusConnected": "متصل — ستتم مزامنة السجل عبر الأجهزة بمجرد توفر مزامنة الحساب.",
+      "syncStatusGuest": "المحادثات مؤقتة ولن تبقى بعد التحديث أو تغيير الجهاز."
+    },
+    "dataStorage": {
+      "localTitle": "البيانات المحلية",
+      "localSubtitle": "مخزّنة في هذا المتصفح فقط — مسحها فوري وآمن.",
+      "walletCache": "ذاكرة التخزين المؤقت لنشاط المحفظة",
+      "walletCacheDescription": "يمسح سجل المعاملات المخزن مؤقتًا — ستتم إعادة جلبه في الزيارة التالية.",
+      "conversations": "محادثات FlareGPT",
+      "conversationsDescription": "يمسح كل محادثة مخزنة في هذا المتصفح.",
+      "clear": "مسح",
+      "confirmClear": "تأكيد؟",
+      "accountTitle": "بيانات الحساب",
+      "accountSubtitle": "بيانات مزامنة مع الخادم، ستتوفر عند إطلاق مزامنة الحساب.",
+      "accountUnavailable": "غير متاح بعد",
+      "accountUnavailableDescription": "سيتيح لك هذا القسم إدارة سجل FlareGPT المتزامن مع الخادم بمجرد تفعيل مزامنة الحساب."
     }
   },
   "sidebar": {
@@ -216,7 +275,7 @@
     "disconnect": "قطع الاتصال",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "مكافآت FTSO",
-    "fxrpPool": "بروتوكولات Defi",
+    "defiProtocols": "بروتوكولات Defi",
     "governance": "الحوكمة",
     "helpCenter": "مركز المساعدة",
     "notConnected": "غير متصل",

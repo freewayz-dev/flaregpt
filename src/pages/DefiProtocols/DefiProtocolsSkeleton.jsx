@@ -15,7 +15,7 @@ export default function DefiProtocolsSkeleton() {
     <div className="space-y-8 pb-14">
       <div className="pt-3 lg:pt-0">
         <PageHeader
-          title={t("sidebar.fxrpPool")}
+          title={t("sidebar.defiProtocols")}
           description={t("defiProtocols.description")}
         />
       </div>

@@ -106,7 +106,10 @@
     "watchlistSection": "ウォッチリスト ({{current}}/{{max}})",
     "addressCopied": "アドレスをクリップボードにコピーしました",
     "copyFailed": "アドレスをコピーできませんでした",
-    "flareGptFabHint": "FlareGPTはここから開くようになりました"
+    "flareGptFabHint": "FlareGPTはここから開くようになりました",
+    "hideBalances": "残高を非表示",
+    "showBalances": "残高を表示",
+    "balancesHiddenLabel": "残高は非表示です"
   },
   "settings": {
     "cards": {
@@ -119,13 +122,18 @@
       "language": "言語",
       "links": "リンク",
       "logout": "ログアウト",
-      "region": "リージョン",
       "rewardsAlerts": "報酬アラート",
       "sessionTimeout": "セッションのタイムアウト",
       "theme": "テーマ",
       "themeMode": "ライト / ダークモード",
       "timeframe": "期間",
-      "walletCapacity": "ウォレット容量"
+      "walletCapacity": "ウォレット容量",
+      "walletPreferences": "ウォレット設定",
+      "defaultWallet": "デフォルトウォレット",
+      "defaultLandingPage": "デフォルトのランディングページ",
+      "tableDensity": "テーブル密度",
+      "reduceMotion": "モーションを減らす",
+      "hideBalances": "ウォレット残高を非表示"
     },
     "description": "ウォレット、環境設定、ローカライズ、表示オプションを管理します。",
     "descriptions": {
@@ -136,10 +144,16 @@
       "language": "デフォルトのインターフェース表示言語を選択します。",
       "links": "グローバルなドキュメント参照とチームのインタラクションリンクです。",
       "logout": "接続されているすべてのノードで認証状態の権限を即座に破棄します。",
-      "region": "文脈に応じた地域メトリクスをフィルタリングするようにデータノードを調整します。",
       "sessionTimeout": "アイドリング状態の間にセッション検証状態ループを自動的に終了します。",
       "timeframe": "視覚チャートのデフォルトのウィンドウ期間スケールを定義します。",
-      "walletCapacity": "割り当て容量プールを追跡するシステム制限です。"
+      "walletCapacity": "割り当て容量プールを追跡するシステム制限です。",
+      "theme": "ライト、ダーク、またはシステム設定に従うかを選択します。",
+      "walletPreferences": "ダッシュボードがどのウォレットで開くかを選択します。",
+      "defaultWallet": "以前のセッションを復元できない場合、このウォレットがアクティブになります。",
+      "defaultLandingPage": "アプリ起動時に最初に開くページを選択します。",
+      "tableDensity": "密なテーブル向けの快適な間隔、またはよりコンパクトな表示。",
+      "reduceMotion": "OSに設定がない場合でも、アニメーションを最小限に抑えます。",
+      "hideBalances": "プライバシー保護のため、ダッシュボード全体の残高と金額をぼかします。"
     },
     "notifications": {
       "governance": "提案の更新",
@@ -161,26 +175,35 @@
       "low": "低",
       "medium": "中",
       "never": "なし",
-      "off": "オフ"
+      "off": "オフ",
+      "comfortable": "快適",
+      "compact": "コンパクト"
     },
     "security": {
       "logoutAll": "すべてのデバイスからログアウト"
     },
     "subtitles": {
       "About": "システム的な展開記録、コンパイルルール、および資産インデックスを概観します。",
-      "Display": "プレゼンテーションエンジンの構造と視覚的なコアコンポーネントを変更します。",
+      "Display": "デフォルトビューとダッシュボードデータの表示方法をカスタマイズします。",
       "Notifications": "システム的な優先イベントと配信ルート追跡エンドポイントを管理します。",
-      "Preferences": "インターフェースのビジュアル、リージョンのコンテキスト、および言語メカニズムを設定します。",
+      "Preferences": "言語と通貨の設定。",
       "Security": "アクティブなアイデンティティセッションの障壁と資格情報検証アクセスルールを維持します。",
-      "Wallets": "グローバルな外部の分散型アカウント間で署名を接続し、構造化します。"
+      "Wallets": "グローバルな外部の分散型アカウント間で署名を接続し、構造化します。",
+      "Appearance": "FlareGPTの見た目を選択します。",
+      "Accessibility": "モーションと操作の設定を調整します。",
+      "FlareGpt": "FlareGPTが会話をどのように記憶するかを管理します。"
     },
     "tabs": {
       "About": "情報",
-      "Display": "表示",
+      "Display": "ダッシュボード",
       "Notifications": "通知",
-      "Preferences": "環境設定",
+      "Preferences": "一般",
       "Security": "セキュリティ",
-      "Wallets": "ウォレット"
+      "Wallets": "ウォレット",
+      "Appearance": "外観",
+      "Accessibility": "アクセシビリティ",
+      "FlareGpt": "FlareGPT",
+      "DataStorage": "データとストレージ"
     },
     "title": "設定",
     "wallets": {
@@ -203,12 +226,48 @@
       "manageSubtitle": "アクティブなWeb 3接続と読み取り専用ポートフォリオトラッキングアカウントを管理します。",
       "readOnly": "èª­ã¿åãå°ç¨",
       "registrationFailed": "住所登録に失敗しました。重複しているかどうか、またはスロットが埋まっているかどうかを確認してください。",
-      "tracked": "追跡済み"
+      "tracked": "追跡済み",
+      "remove": "削除",
+      "confirmRemove": "削除を確認しますか？",
+      "noDefaultSelected": "未選択",
+      "rename": "名前を変更",
+      "cancelRename": "キャンセル"
     },
     "links": {
       "docs": "ドックス",
       "github": "GitHub",
       "twitter": "Ｔｗｉｔｔｅｒ"
+    },
+    "groups": {
+      "personalization": "パーソナライズ",
+      "walletsAndData": "ウォレットとデータ",
+      "account": "アカウント"
+    },
+    "appearance": {
+      "light": "ライト",
+      "dark": "ダーク",
+      "system": "システム"
+    },
+    "flareGpt": {
+      "followDashboard": "ダッシュボードのウォレットに従う",
+      "general": "一般（ウォレットなし）",
+      "syncStatusTitle": "同期ステータス",
+      "syncStatusConnected": "接続済み — アカウント同期が利用可能になると、履歴はデバイス間で同期されます。",
+      "syncStatusGuest": "会話は一時的なもので、更新やデバイス変更後は保持されません。"
+    },
+    "dataStorage": {
+      "localTitle": "ローカルデータ",
+      "localSubtitle": "このブラウザのみに保存されます — 削除は即時かつ安全です。",
+      "walletCache": "ウォレットアクティビティキャッシュ",
+      "walletCacheDescription": "キャッシュされた取引履歴を削除します — 次回訪問時に再取得されます。",
+      "conversations": "FlareGPTの会話",
+      "conversationsDescription": "このブラウザに保存されているすべての会話を削除します。",
+      "clear": "削除",
+      "confirmClear": "確認しますか？",
+      "accountTitle": "アカウントデータ",
+      "accountSubtitle": "バックエンドと同期されたデータ。アカウント同期が開始されると利用可能になります。",
+      "accountUnavailable": "まだ利用できません",
+      "accountUnavailableDescription": "このセクションでは、アカウント同期が開始されると、バックエンドと同期されたFlareGPTの履歴を管理できるようになります。"
     }
   },
   "sidebar": {
@@ -216,7 +275,7 @@
     "disconnect": "接続解除",
     "FlareGPT": "フレアGPT",
     "ftsoRewards": "FTSO報酬",
-    "fxrpPool": "Defiプロトコル",
+    "defiProtocols": "Defiプロトコル",
     "governance": "ガバナンス",
     "helpCenter": "ヘルプセンター",
     "notConnected": "未接続",

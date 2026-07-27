@@ -9,8 +9,16 @@ export const useWalletHubStore = create()(
       trackedWallets: [],
       activeAddress: "",
       maxSlots: 5,
+      // Distinct from `activeAddress` (whatever's active *right now*,
+      // which sticks to however a session left off): this is an explicit,
+      // user-pinned choice that only ever matters as the fallback below,
+      // when there's no valid prior session to restore — first-ever
+      // visit, or the previously-active wallet was removed. Switching
+      // wallets mid-session never touches this value.
+      preferredDefaultAddress: "",
 
       switchActiveAddress: (addr) => set({ activeAddress: addr }),
+      setPreferredDefaultAddress: (addr) => set({ preferredDefaultAddress: addr }),
 
       addTrackedWallet: (address, label, connectedAddress, isConnected) => {
         const { trackedWallets, maxSlots } = get();
@@ -26,6 +34,15 @@ export const useWalletHubStore = create()(
           trackedWallets: [...trackedWallets, { address, label: label || "Watchlist Account" }]
         });
         return true;
+      },
+
+      renameTrackedWallet: (address, newLabel) => {
+        const { trackedWallets } = get();
+        set({
+          trackedWallets: trackedWallets.map((w) =>
+            w.address === address ? { ...w, label: newLabel } : w,
+          ),
+        });
       },
 
       removeTrackedWallet: (addressToRemove, connectedAddress, isConnected) => {
@@ -49,11 +66,13 @@ export const useWalletHubStore = create()(
       // Keeps activeAddress pointed at a wallet that's still in the combined list.
       // Called from an effect (see useDerivedWalletHub), never during render.
       reconcileActiveAddress: (allWallets) => {
-        const { activeAddress } = get();
+        const { activeAddress, preferredDefaultAddress } = get();
         const isStillAvailable = allWallets.some(w => w.address === activeAddress);
         if (isStillAvailable && activeAddress) return;
 
-        const fallback = allWallets[0]?.address ?? "";
+        const preferredIsAvailable = allWallets.some(w => w.address === preferredDefaultAddress);
+        const fallback =
+          (preferredIsAvailable && preferredDefaultAddress) || allWallets[0]?.address || "";
         if (fallback !== activeAddress) set({ activeAddress: fallback });
       },
     }),
@@ -68,9 +87,12 @@ export function useDerivedWalletHub(connectedAddress, isConnected) {
   const trackedWallets = useWalletHubStore((state) => state.trackedWallets);
   const activeAddress = useWalletHubStore((state) => state.activeAddress);
   const maxSlots = useWalletHubStore((state) => state.maxSlots);
+  const preferredDefaultAddress = useWalletHubStore((state) => state.preferredDefaultAddress);
   const switchActiveAddress = useWalletHubStore((state) => state.switchActiveAddress);
+  const setPreferredDefaultAddress = useWalletHubStore((state) => state.setPreferredDefaultAddress);
   const addTrackedWallet = useWalletHubStore((state) => state.addTrackedWallet);
   const removeTrackedWallet = useWalletHubStore((state) => state.removeTrackedWallet);
+  const renameTrackedWallet = useWalletHubStore((state) => state.renameTrackedWallet);
   const reconcileActiveAddress = useWalletHubStore((state) => state.reconcileActiveAddress);
 
   const allWallets = useMemo(() => {
@@ -107,9 +129,12 @@ export function useDerivedWalletHub(connectedAddress, isConnected) {
     trackedWallets,
     activeAddress,
     maxSlots,
+    preferredDefaultAddress,
     switchActiveAddress,
+    setPreferredDefaultAddress,
     addTrackedWallet,
     removeTrackedWallet,
+    renameTrackedWallet,
     allWallets,
     remainingSlots: maxSlots - trackedWallets.length,
     isActivePrimary,

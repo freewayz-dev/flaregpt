@@ -1,15 +1,8 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  GlobeAltIcon,
-  SparklesIcon,
-  CurrencyDollarIcon,
-  PaintBrushIcon,
-} from "@heroicons/react/24/outline";
+import { GlobeAltIcon, SparklesIcon, CurrencyDollarIcon } from "@heroicons/react/24/outline";
 
 import { loadLanguage } from "@/i18n";
 import { useUIStore } from "@/store/useUIStore";
-import ThemeToggle from "@/components/common/ThemeToggle";
 import CustomSelect from "@/components/common/CustomSelect";
 import Card from "@/pages/Settings/components/Card";
 import RowItem from "@/pages/Settings/components/RowItem";
@@ -25,7 +18,7 @@ export default function Preferences() {
     { value: "it", code: "it", labelKey: "Italiano", flag: "🇮🇹" },
     { value: "fr", code: "fr", labelKey: "Français", flag: "🇫🇷" },
     { value: "de", code: "de", labelKey: "Deutsch", flag: "🇩🇪" },
-    { value: "ru", code: "ru", labelKey: "Русский", flag: "🇺🇸" },
+    { value: "ru", code: "ru", labelKey: "Русский", flag: "🇷🇺" },
     { value: "vi", code: "vi", labelKey: "Tiếng Việt", flag: "🇻🇳" },
     { value: "id", code: "id", labelKey: "Bahasa Indonesia", flag: "🇮🇩" },
     { value: "hi", code: "hi", labelKey: "हिन्दी", flag: "🇮🇳" },
@@ -33,14 +26,6 @@ export default function Preferences() {
     { value: "ja", code: "ja", labelKey: "日本語", flag: "🇯🇵" },
     { value: "ko", code: "ko", labelKey: "한국어", flag: "🇰🇷" },
     { value: "ar", code: "ar", labelKey: "العربية", flag: "🇦🇪" },
-  ];
-
-  const regionOptions = [
-    { value: "Global", labelKey: "settings.options.global" },
-    { value: "Africa", labelKey: "settings.options.africa" },
-    { value: "Europe", labelKey: "settings.options.europe" },
-    { value: "Asia", labelKey: "settings.options.asia" },
-    { value: "America", labelKey: "settings.options.america" },
   ];
 
   const currencyOptions = [
@@ -61,7 +46,6 @@ export default function Preferences() {
   const currentLanguage =
     languageOptions.find((lang) => lang.code === i18n.language) ||
     languageOptions[0];
-  const [region, setRegion] = useState(regionOptions[0]);
 
   const currencyCode = useUIStore((state) => state.currency);
   const setCurrencyCode = useUIStore((state) => state.setCurrency);
@@ -103,14 +87,6 @@ export default function Preferences() {
     >
       <div className="divide-y divide-divider">
         <RowItem
-          icon={PaintBrushIcon}
-          title={t("settings.cards.theme")}
-          description={t("settings.cards.themeMode")}
-        >
-          <ThemeToggle />
-        </RowItem>
-
-        <RowItem
           icon={GlobeAltIcon}
           title={t("settings.cards.language")}
           description={t("settings.descriptions.language")}
@@ -123,20 +99,6 @@ export default function Preferences() {
                 label: `${currentLanguage.flag} ${currentLanguage.labelKey}`,
               }}
               onChange={handleLanguageChange}
-            />
-          </div>
-        </RowItem>
-
-        <RowItem
-          icon={GlobeAltIcon}
-          title={t("settings.cards.region")}
-          description={t("settings.descriptions.region")}
-        >
-          <div className="w-full sm:w-56">
-            <CustomSelect
-              options={formatOptions(regionOptions)}
-              selectedValue={{ ...region, label: t(region.labelKey) }}
-              onChange={setRegion}
             />
           </div>
         </RowItem>

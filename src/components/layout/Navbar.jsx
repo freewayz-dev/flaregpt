@@ -12,6 +12,8 @@ import {
   CurrencyDollarIcon,
   Cog6ToothIcon,
   ArrowRightOnRectangleIcon,
+  EyeIcon,
+  EyeSlashIcon,
 } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
@@ -36,6 +38,8 @@ export default function Navbar({
 
   const isSidebarCollapsed = useUIStore((state) => state.sidebarCollapsed);
   const setSettingsActiveTab = useUIStore((state) => state.setSettingsActiveTab);
+  const hideBalances = useUIStore((state) => state.hideBalances);
+  const toggleHideBalances = useUIStore((state) => state.toggleHideBalances);
 
   // Controls
   const [walletMenuOpen, setWalletMenuOpen] = useState(false);
@@ -109,7 +113,7 @@ export default function Navbar({
     if (path.includes("yield")) return t("sidebar.yield");
     if (path.includes("rflr")) return t("sidebar.rflrTracker");
     if (path.includes("governance")) return t("sidebar.governance");
-    if (path.includes("fxrp")) return t("sidebar.fxrpPool");
+    if (path.includes("defi")) return t("sidebar.defiProtocols");
     if (path.includes("settings")) return t("sidebar.settings");
     if (path.includes("help")) return t("sidebar.helpCenter");
 
@@ -252,7 +256,21 @@ export default function Navbar({
 
         {/* RIGHT ZONE */}
         <div className="flex items-center justify-end gap-2 lg:gap-3 font-medium tracking-normal select-none shrink-0">
-          
+
+          <button
+            type="button"
+            onClick={toggleHideBalances}
+            title={hideBalances ? t("navbar.showBalances") : t("navbar.hideBalances")}
+            aria-pressed={hideBalances}
+            className="p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] cursor-pointer shrink-0"
+          >
+            {hideBalances ? (
+              <EyeSlashIcon className="h-[18px] w-[18px]" />
+            ) : (
+              <EyeIcon className="h-[18px] w-[18px]" />
+            )}
+          </button>
+
           <div className="hidden lg:flex items-center gap-2 lg:gap-3">
             {!hideAskFlareGpt && (
               <button

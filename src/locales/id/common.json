@@ -106,7 +106,10 @@
     "watchlistSection": "Watchlist ({{current}}/{{max}})",
     "addressCopied": "Alamat disalin ke clipboard",
     "copyFailed": "Gagal menyalin alamat",
-    "flareGptFabHint": "FlareGPT sekarang dibuka dari sini"
+    "flareGptFabHint": "FlareGPT sekarang dibuka dari sini",
+    "hideBalances": "Sembunyikan saldo",
+    "showBalances": "Tampilkan saldo",
+    "balancesHiddenLabel": "Saldo disembunyikan"
   },
   "settings": {
     "cards": {
@@ -119,13 +122,18 @@
       "language": "Bahasa",
       "links": "Tautan",
       "logout": "Keluar",
-      "region": "Wilayah",
       "rewardsAlerts": "Pemberitahuan Hadiah",
       "sessionTimeout": "Batas Waktu Sesi",
       "theme": "Tema",
       "themeMode": "Mode Terang / Gelap",
       "timeframe": "Rentang Waktu",
-      "walletCapacity": "Kapasitas Dompet"
+      "walletCapacity": "Kapasitas Dompet",
+      "walletPreferences": "Preferensi Wallet",
+      "defaultWallet": "Wallet Default",
+      "defaultLandingPage": "Halaman Awal Default",
+      "tableDensity": "Kepadatan Tabel",
+      "reduceMotion": "Kurangi Gerakan",
+      "hideBalances": "Sembunyikan Saldo Dompet"
     },
     "description": "Kelola dompet, preferensi, lokalisasi, dan opsi tampilan.",
     "descriptions": {
@@ -136,10 +144,16 @@
       "language": "Pilih bahasa tampilan antarmuka default Anda.",
       "links": "Referensi dokumentasi global dan tautan interaksi tim.",
       "logout": "Cabut izin status autentikasi secara instan di setiap node yang terhubung.",
-      "region": "Sesuaikan node data untuk memfilter metrik regional yang kontekstual.",
       "sessionTimeout": "Akhiri loop status validasi sesi secara otomatis selama kondisi tidak aktif.",
       "timeframe": "Tentukan skala periode jendela default pada grafik visual.",
-      "walletCapacity": "Batas sistem yang melacak alokasi kapasitas pool."
+      "walletCapacity": "Batas sistem yang melacak alokasi kapasitas pool.",
+      "theme": "Pilih Terang, Gelap, atau ikuti pengaturan sistem Anda.",
+      "walletPreferences": "Pilih wallet mana yang digunakan dasbor saat dibuka.",
+      "defaultWallet": "Wallet ini menjadi aktif setiap kali sesi sebelumnya tidak dapat dipulihkan.",
+      "defaultLandingPage": "Pilih halaman mana yang terbuka pertama saat Anda meluncurkan aplikasi.",
+      "tableDensity": "Jarak nyaman atau tampilan lebih ringkas untuk tabel padat.",
+      "reduceMotion": "Minimalkan animasi meskipun sistem operasi Anda tidak memiliki preferensi yang diatur.",
+      "hideBalances": "Buramkan saldo dan jumlah di seluruh dasbor demi privasi."
     },
     "notifications": {
       "governance": "Pembaruan proposal baru",
@@ -161,26 +175,35 @@
       "low": "Rendah",
       "medium": "Sedang",
       "never": "Tidak Pernah",
-      "off": "Mati"
+      "off": "Mati",
+      "comfortable": "Nyaman",
+      "compact": "Ringkas"
     },
     "security": {
       "logoutAll": "Keluar dari semua perangkat"
     },
     "subtitles": {
       "About": "Ikhtisar catatan penerapan sistem, aturan kompilasi, dan indeks aset.",
-      "Display": "Ubah struktur mesin presentasi dan komponen inti visual.",
+      "Display": "Personalisasikan tampilan default Anda dan cara data dasbor ditampilkan.",
       "Notifications": "Kelola peristiwa prioritas sistem dan titik akhir pelacakan rute pengiriman.",
-      "Preferences": "Konfigurasikan visual antarmuka, konteks wilayah, dan mekanika bahasa.",
+      "Preferences": "Preferensi bahasa dan mata uang.",
       "Security": "Pertahankan hambatan sesi identitas aktif dan aturan akses verifikasi kredensial.",
-      "Wallets": "Hubungkan dan strukturkan tanda tangan di berbagai akun terdesentralisasi eksternal global."
+      "Wallets": "Hubungkan dan strukturkan tanda tangan di berbagai akun terdesentralisasi eksternal global.",
+      "Appearance": "Pilih tampilan FlareGPT.",
+      "Accessibility": "Sesuaikan preferensi gerakan dan interaksi.",
+      "FlareGpt": "Kelola bagaimana FlareGPT mengingat percakapan Anda."
     },
     "tabs": {
       "About": "Tentang",
-      "Display": "Tampilan",
+      "Display": "Dasbor",
       "Notifications": "Notifikasi",
-      "Preferences": "Preferensi",
+      "Preferences": "Umum",
       "Security": "Keamanan",
-      "Wallets": "Dompet"
+      "Wallets": "Dompet",
+      "Appearance": "Tampilan",
+      "Accessibility": "Aksesibilitas",
+      "FlareGpt": "FlareGPT",
+      "DataStorage": "Data & Penyimpanan"
     },
     "title": "Pengaturan",
     "wallets": {
@@ -203,12 +226,48 @@
       "manageSubtitle": "Kelola koneksi Web3 aktif Anda dan akun pelacakan portofolio hanya baca.",
       "readOnly": "Hanya-Baca",
       "registrationFailed": "Pendaftaran alamat gagal. Periksa apakah itu duplikat atau apakah slot diisi.",
-      "tracked": "Dilacak"
+      "tracked": "Dilacak",
+      "remove": "Hapus",
+      "confirmRemove": "Konfirmasi hapus?",
+      "noDefaultSelected": "Belum dipilih",
+      "rename": "Ganti nama",
+      "cancelRename": "Batal"
     },
     "links": {
       "docs": "Dokumentasi",
       "github": "Github",
       "twitter": "Twitter"
+    },
+    "groups": {
+      "personalization": "Personalisasi",
+      "walletsAndData": "Wallet & Data",
+      "account": "Akun"
+    },
+    "appearance": {
+      "light": "Terang",
+      "dark": "Gelap",
+      "system": "Sistem"
+    },
+    "flareGpt": {
+      "followDashboard": "Ikuti wallet dasbor",
+      "general": "Umum (tanpa wallet)",
+      "syncStatusTitle": "Status Sinkronisasi",
+      "syncStatusConnected": "Terhubung — riwayat akan disinkronkan di semua perangkat setelah sinkronisasi akun tersedia.",
+      "syncStatusGuest": "Percakapan bersifat sementara dan tidak akan bertahan setelah refresh atau ganti perangkat."
+    },
+    "dataStorage": {
+      "localTitle": "Data Lokal",
+      "localSubtitle": "Hanya disimpan di browser ini — menghapusnya instan dan aman.",
+      "walletCache": "Cache Aktivitas Wallet",
+      "walletCacheDescription": "Menghapus riwayat transaksi yang di-cache — kunjungan berikutnya akan mengambilnya lagi.",
+      "conversations": "Percakapan FlareGPT",
+      "conversationsDescription": "Menghapus semua percakapan yang tersimpan di browser ini.",
+      "clear": "Hapus",
+      "confirmClear": "Konfirmasi?",
+      "accountTitle": "Data Akun",
+      "accountSubtitle": "Data tersinkron backend, tersedia setelah sinkronisasi akun diluncurkan.",
+      "accountUnavailable": "Belum tersedia",
+      "accountUnavailableDescription": "Bagian ini akan memungkinkan Anda mengelola riwayat FlareGPT yang tersinkron backend setelah sinkronisasi akun aktif."
     }
   },
   "sidebar": {
@@ -216,7 +275,7 @@
     "disconnect": "Putuskan Koneksi",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Hadiah FTSO",
-    "fxrpPool": "Protokol Defi",
+    "defiProtocols": "Protokol Defi",
     "governance": "Tata Kelola",
     "helpCenter": "Pusat Bantuan",
     "notConnected": "Belum Terhubung",

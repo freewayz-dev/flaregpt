@@ -106,7 +106,10 @@
     "watchlistSection": "Watchlist ({{current}}/{{max}})",
     "addressCopied": "Adresse copiée dans le presse-papiers",
     "copyFailed": "Impossible de copier l'adresse",
-    "flareGptFabHint": "FlareGPT s'ouvre maintenant ici"
+    "flareGptFabHint": "FlareGPT s'ouvre maintenant ici",
+    "hideBalances": "Masquer les soldes",
+    "showBalances": "Afficher les soldes",
+    "balancesHiddenLabel": "Soldes masqués"
   },
   "settings": {
     "cards": {
@@ -119,13 +122,18 @@
       "language": "Langue",
       "links": "Liens",
       "logout": "Déconnexion",
-      "region": "Région",
       "rewardsAlerts": "Alertes de Récompenses",
       "sessionTimeout": "Expiration de la Session",
       "theme": "Thème",
       "themeMode": "Mode Clair / Sombre",
       "timeframe": "Période",
-      "walletCapacity": "Capacité du Portefeuille"
+      "walletCapacity": "Capacité du Portefeuille",
+      "walletPreferences": "Préférences de wallet",
+      "defaultWallet": "Wallet par défaut",
+      "defaultLandingPage": "Page d'accueil par défaut",
+      "tableDensity": "Densité des tableaux",
+      "reduceMotion": "Réduire les animations",
+      "hideBalances": "Masquer les soldes du portefeuille"
     },
     "description": "Gérez les portefeuilles, les préférences, la localisation et les options d'affichage.",
     "descriptions": {
@@ -136,10 +144,16 @@
       "language": "Sélectionnez votre langue d'affichage de l'interface par défaut.",
       "links": "Références de documentation globale et liens d'interaction de l'équipe.",
       "logout": "Révoquez instantanément les autorisations d'état d'authentification sur chaque nœud connecté.",
-      "region": "Ajustez les nœuds de données pour filtrer les métriques régionales contextuelles.",
       "sessionTimeout": "Terminez automatiquement les boucles d'état de validation de session pendant les états d'inactivité.",
       "timeframe": "Définissez les échelles de période de fenêtre par défaut sur les graphiques visuels.",
-      "walletCapacity": "Limites systémiques suivant les pools de capacité d'allocation."
+      "walletCapacity": "Limites systémiques suivant les pools de capacité d'allocation.",
+      "theme": "Choisissez Clair, Sombre, ou suivez le réglage de votre système.",
+      "walletPreferences": "Choisissez avec quel wallet le tableau de bord s'ouvre.",
+      "defaultWallet": "Ce wallet devient actif lorsqu'une session précédente ne peut pas être restaurée.",
+      "defaultLandingPage": "Choisissez quelle page s'ouvre en premier au lancement de l'application.",
+      "tableDensity": "Espacement confortable ou vue compacte pour les tableaux denses.",
+      "reduceMotion": "Minimise les animations même si votre système d'exploitation n'a aucune préférence définie.",
+      "hideBalances": "Floute les soldes et montants dans tout le tableau de bord pour préserver votre confidentialité."
     },
     "notifications": {
       "governance": "Mises à jour des propositions",
@@ -161,26 +175,35 @@
       "low": "Faible",
       "medium": "Moyen",
       "never": "Jamais",
-      "off": "Désactivé"
+      "off": "Désactivé",
+      "comfortable": "Confortable",
+      "compact": "Compact"
     },
     "security": {
       "logoutAll": "Déconnecter Tous les Appareils"
     },
     "subtitles": {
       "About": "Aperçu des enregistrements de déploiement systémique, des règles de compilation et des index d'actifs.",
-      "Display": "Modifiez les structures du moteur de présentation et les composants visuels de base.",
+      "Display": "Personnalisez votre vue par défaut et l'affichage des données du tableau de bord.",
       "Notifications": "Gérez les événements prioritaires systémiques et les points finaux de suivi des itinéraires de livraison.",
-      "Preferences": "Configurez les éléments visuels de l'interface, les contextes régionaux et la mécanique des langues.",
+      "Preferences": "Préférences de langue et de devise.",
       "Security": "Maintenez les barrières de session d'identité actives et les règles d'accès de vérification des identifiants.",
-      "Wallets": "Connectez et structurez les signatures sur les comptes décentralisés externes mondiaux."
+      "Wallets": "Connectez et structurez les signatures sur les comptes décentralisés externes mondiaux.",
+      "Appearance": "Choisissez l'apparence de FlareGPT.",
+      "Accessibility": "Ajustez les préférences de mouvement et d'interaction.",
+      "FlareGpt": "Gérez la façon dont FlareGPT mémorise vos conversations."
     },
     "tabs": {
       "About": "À Propos",
-      "Display": "Affichage",
+      "Display": "Tableau de bord",
       "Notifications": "Notifications",
-      "Preferences": "Préférences",
+      "Preferences": "Général",
       "Security": "Sécurité",
-      "Wallets": "Portefeuilles"
+      "Wallets": "Portefeuilles",
+      "Appearance": "Apparence",
+      "Accessibility": "Accessibilité",
+      "FlareGpt": "FlareGPT",
+      "DataStorage": "Données et stockage"
     },
     "title": "Paramètres",
     "wallets": {
@@ -203,12 +226,48 @@
       "manageSubtitle": "Gérez vos connexions Web3 actives et vos comptes de suivi de portefeuille en lecture seule.",
       "readOnly": "Lecture seule",
       "registrationFailed": "Échec de l'enregistrement de l'adresse. Vérifiez s'il s'agit d'un doublon ou si des créneaux sont remplis.",
-      "tracked": "Suivi"
+      "tracked": "Suivi",
+      "remove": "Supprimer",
+      "confirmRemove": "Confirmer la suppression ?",
+      "noDefaultSelected": "Aucun sélectionné",
+      "rename": "Renommer",
+      "cancelRename": "Annuler"
     },
     "links": {
       "docs": "Doc",
       "github": "Github",
       "twitter": "Twitter"
+    },
+    "groups": {
+      "personalization": "Personnalisation",
+      "walletsAndData": "Wallets et données",
+      "account": "Compte"
+    },
+    "appearance": {
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système"
+    },
+    "flareGpt": {
+      "followDashboard": "Suivre le wallet du tableau de bord",
+      "general": "Général (aucun wallet)",
+      "syncStatusTitle": "État de synchronisation",
+      "syncStatusConnected": "Connecté — l'historique se synchronisera entre appareils une fois la synchronisation de compte disponible.",
+      "syncStatusGuest": "Les conversations sont temporaires et ne survivront pas à une actualisation ou un changement d'appareil."
+    },
+    "dataStorage": {
+      "localTitle": "Données locales",
+      "localSubtitle": "Stockées uniquement dans ce navigateur — les effacer est instantané et sans risque.",
+      "walletCache": "Cache d'activité du wallet",
+      "walletCacheDescription": "Efface l'historique des transactions en cache — la prochaine visite le récupérera à nouveau.",
+      "conversations": "Conversations FlareGPT",
+      "conversationsDescription": "Efface toutes les conversations stockées dans ce navigateur.",
+      "clear": "Effacer",
+      "confirmClear": "Confirmer ?",
+      "accountTitle": "Données du compte",
+      "accountSubtitle": "Données synchronisées avec le backend, disponibles au lancement de la synchronisation de compte.",
+      "accountUnavailable": "Pas encore disponible",
+      "accountUnavailableDescription": "Cette section vous permettra de gérer l'historique FlareGPT synchronisé avec le backend une fois la synchronisation de compte active."
     }
   },
   "sidebar": {
@@ -216,7 +275,7 @@
     "disconnect": "Déconnecter",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Récompenses FTSO",
-    "fxrpPool": "Protocoles Defi",
+    "defiProtocols": "Protocoles Defi",
     "governance": "Gouvernance",
     "helpCenter": "Centre d'Aide",
     "notConnected": "Non connecté",

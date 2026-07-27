@@ -225,7 +225,7 @@ export default function LandingAIDemo() {
               }
             }}
             placeholder="Ask FlareGPT..."
-            className="flex-1 bg-transparent px-2.5 py-2 text-sm text-ink-primary placeholder-ink-muted outline-none"
+            className="flex-1 bg-transparent px-2.5 py-2 text-base sm:text-sm text-ink-primary placeholder-ink-muted outline-none"
           />
           <button
             type="button"

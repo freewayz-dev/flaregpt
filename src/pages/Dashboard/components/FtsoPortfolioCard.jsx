@@ -6,6 +6,7 @@ import { GiftIcon, LockClosedIcon, ArrowPathIcon } from "@heroicons/react/24/out
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useFtsoPortfolio } from "@/hooks/queries/useDashboardQueries";
 import TokenRow from "@/components/common/TokenRow";
+import SensitiveValue from "@/components/common/SensitiveValue";
 import FtsoPortfolioCardSkeleton from "@/pages/Dashboard/components/skeletons/FtsoPortfolioCardSkeleton";
 
 function formatAmount(value) {
@@ -94,12 +95,12 @@ export default function FtsoPortfolioCard() {
             <TokenRow
               symbol="WFLR"
               label={t("dashboard.ftso.delegatedWflr")}
-              value={formatAmount(data.ftso_infrastructure.user_wflr_balance)}
+              value={<SensitiveValue>{formatAmount(data.ftso_infrastructure.user_wflr_balance)}</SensitiveValue>}
             />
             <TokenRow
               symbol="FLR"
               label={t("dashboard.ftso.unclaimedFlr")}
-              value={formatAmount(unclaimed)}
+              value={<SensitiveValue>{formatAmount(unclaimed)}</SensitiveValue>}
               highlight
             />
             <TokenRow
@@ -109,7 +110,7 @@ export default function FtsoPortfolioCard() {
             <TokenRow
               symbol="FLR"
               label={t("dashboard.ftso.estHourlyEarning")}
-              value={`${formatAmount(data.realtime_estimation.estimated_hourly_earning)} FLR`}
+              value={<SensitiveValue>{`${formatAmount(data.realtime_estimation.estimated_hourly_earning)} FLR`}</SensitiveValue>}
             />
           </div>
 

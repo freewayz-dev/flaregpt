@@ -106,7 +106,10 @@
     "watchlistSection": "İzleme Listesi ({{current}}/{{max}})",
     "addressCopied": "Adres panoya kopyalandı",
     "copyFailed": "Adres kopyalanamadı",
-    "flareGptFabHint": "FlareGPT artık buradan açılıyor"
+    "flareGptFabHint": "FlareGPT artık buradan açılıyor",
+    "hideBalances": "Bakiyeleri gizle",
+    "showBalances": "Bakiyeleri göster",
+    "balancesHiddenLabel": "Bakiyeler gizlendi"
   },
   "settings": {
     "cards": {
@@ -119,13 +122,18 @@
       "language": "Dil",
       "links": "Bağlantılar",
       "logout": "Çıkış Yap",
-      "region": "Bölge",
       "rewardsAlerts": "Ödül Uyarıları",
       "sessionTimeout": "Oturum Zaman Aşımı",
       "theme": "Tema",
       "themeMode": "Açık / Koyu mod",
       "timeframe": "Zaman Dilimi",
-      "walletCapacity": "Cüzdan Kapasitesi"
+      "walletCapacity": "Cüzdan Kapasitesi",
+      "walletPreferences": "Cüzdan Tercihleri",
+      "defaultWallet": "Varsayılan Cüzdan",
+      "defaultLandingPage": "Varsayılan Açılış Sayfası",
+      "tableDensity": "Tablo Yoğunluğu",
+      "reduceMotion": "Hareketi Azalt",
+      "hideBalances": "Cüzdan Bakiyelerini Gizle"
     },
     "description": "Cüzdanları, tercihleri, yerelleştirmeyi ve görünüm seçeneklerini yönetin.",
     "descriptions": {
@@ -136,10 +144,16 @@
       "language": "Varsayılan arayüz görüntüleme dilinizi seçin.",
       "links": "Global dokümantasyon referansları ve ekip etkileşim bağlantıları.",
       "logout": "Bağlı her düğümde kimlik doğrulama durumu izinlerini anında iptal edin.",
-      "region": "Bağlamsal bölgesel metrikleri filtrelemek için veri düğümlerini ayarlayın.",
       "sessionTimeout": "Boşta kalma durumlarında oturum doğrulama döngülerini otomatik olarak sonlandırın.",
       "timeframe": "Görsel grafiklerde varsayılan pencere dönemi ölçeklerini tanımlayın.",
-      "walletCapacity": "Tahsis kapasite havuzlarını izleyen sistem sınırları."
+      "walletCapacity": "Tahsis kapasite havuzlarını izleyen sistem sınırları.",
+      "theme": "Açık, Koyu seçin veya sistem ayarınızı takip edin.",
+      "walletPreferences": "Panonun hangi cüzdanla açılacağını seçin.",
+      "defaultWallet": "Önceki bir oturum geri yüklenemediğinde bu cüzdan etkin hale gelir.",
+      "defaultLandingPage": "Uygulamayı başlattığınızda hangi sayfanın önce açılacağını seçin.",
+      "tableDensity": "Yoğun tablolar için rahat boşluk veya daha kompakt bir görünüm.",
+      "reduceMotion": "İşletim sisteminizde bir tercih ayarlanmamış olsa bile animasyonları en aza indirin.",
+      "hideBalances": "Gizlilik için gösterge panosundaki bakiyeleri ve tutarları bulanıklaştırır."
     },
     "notifications": {
       "governance": "Teklif güncellemeleri",
@@ -161,26 +175,35 @@
       "low": "Düşük",
       "medium": "Orta",
       "never": "Asla",
-      "off": "Kapalı"
+      "off": "Kapalı",
+      "comfortable": "Rahat",
+      "compact": "Kompakt"
     },
     "security": {
       "logoutAll": "Tüm Cihazlardan Çıkış Yap"
     },
     "subtitles": {
       "About": "Sistemik dağıtım kayıtlarına, derleme kurallarına ve varlık dizinlerine genel bakış.",
-      "Display": "Sunum motoru yapılarını ve görsel temel bileşenleri değiştirin.",
+      "Display": "Varsayılan görünümünüzü ve pano verilerinin nasıl gösterildiğini kişiselleştirin.",
       "Notifications": "Sistemik öncelikli olayları ve teslimat rotası izleme uç noktalarını yönetin.",
-      "Preferences": "Arayüz görsellerini, bölge bağlamlarını ve dil mekaniklerini yapılandırın.",
+      "Preferences": "Dil ve para birimi tercihleri.",
       "Security": "Etkin kimlik oturumu engellerini ve kimlik bilgileri doğrulama erişim kurallarını koruyun.",
-      "Wallets": "Küresel harici merkeziyetsiz hesaplar genelinde imzaları bağlayın ve yapılandırın."
+      "Wallets": "Küresel harici merkeziyetsiz hesaplar genelinde imzaları bağlayın ve yapılandırın.",
+      "Appearance": "FlareGPT'nin nasıl görüneceğini seçin.",
+      "Accessibility": "Hareket ve etkileşim tercihlerini ayarlayın.",
+      "FlareGpt": "FlareGPT'nin konuşmalarınızı nasıl hatırladığını yönetin."
     },
     "tabs": {
       "About": "Hakkında",
-      "Display": "Görünüm",
+      "Display": "Pano",
       "Notifications": "Bildirimler",
-      "Preferences": "Tercihler",
+      "Preferences": "Genel",
       "Security": "Güvenlik",
-      "Wallets": "Cüzdanlar"
+      "Wallets": "Cüzdanlar",
+      "Appearance": "Görünüm",
+      "Accessibility": "Erişilebilirlik",
+      "FlareGpt": "FlareGPT",
+      "DataStorage": "Veri ve Depolama"
     },
     "title": "Ayarlar",
     "wallets": {
@@ -203,12 +226,48 @@
       "manageSubtitle": "Aktif Web3 bağlantılarınızı ve salt okunur portföy takip hesaplarınızı yönetin.",
       "readOnly": "Salt Okunur",
       "registrationFailed": "Adres kaydı başarısız oldu. Yinelenen olup olmadığını veya yuvaların dolu olup olmadığını kontrol edin.",
-      "tracked": "İzlenen"
+      "tracked": "İzlenen",
+      "remove": "Kaldır",
+      "confirmRemove": "Kaldırma onaylansın mı?",
+      "noDefaultSelected": "Seçilmedi",
+      "rename": "Yeniden adlandır",
+      "cancelRename": "İptal"
     },
     "links": {
       "docs": "Dokümanlar",
       "github": "GitHub",
       "twitter": "Twitter"
+    },
+    "groups": {
+      "personalization": "Kişiselleştirme",
+      "walletsAndData": "Cüzdanlar ve Veri",
+      "account": "Hesap"
+    },
+    "appearance": {
+      "light": "Açık",
+      "dark": "Koyu",
+      "system": "Sistem"
+    },
+    "flareGpt": {
+      "followDashboard": "Pano cüzdanını takip et",
+      "general": "Genel (cüzdan yok)",
+      "syncStatusTitle": "Senkronizasyon Durumu",
+      "syncStatusConnected": "Bağlandı — hesap senkronizasyonu kullanılabilir olduğunda geçmiş cihazlar arasında senkronize edilecek.",
+      "syncStatusGuest": "Konuşmalar geçicidir ve yenileme veya cihaz değişikliğinde kalıcı olmaz."
+    },
+    "dataStorage": {
+      "localTitle": "Yerel Veri",
+      "localSubtitle": "Yalnızca bu tarayıcıda saklanır — temizlemek anında ve güvenlidir.",
+      "walletCache": "Cüzdan Etkinliği Önbelleği",
+      "walletCacheDescription": "Önbelleğe alınmış işlem geçmişini temizler — bir sonraki ziyarette yeniden alınacaktır.",
+      "conversations": "FlareGPT Konuşmaları",
+      "conversationsDescription": "Bu tarayıcıda saklanan tüm konuşmaları temizler.",
+      "clear": "Temizle",
+      "confirmClear": "Onaylansın mı?",
+      "accountTitle": "Hesap Verisi",
+      "accountSubtitle": "Hesap senkronizasyonu başladığında kullanılabilir olacak backend'de senkronize veriler.",
+      "accountUnavailable": "Henüz kullanılamıyor",
+      "accountUnavailableDescription": "Hesap senkronizasyonu etkin olduğunda bu bölüm, backend'de senkronize edilen FlareGPT geçmişini yönetmenizi sağlayacak."
     }
   },
   "sidebar": {
@@ -216,7 +275,7 @@
     "disconnect": "Bağlantıyı Kes",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Ödülleri",
-    "fxrpPool": "Defi Protokolleri",
+    "defiProtocols": "Defi Protokolleri",
     "governance": "Yönetişim",
     "helpCenter": "Yardım Merkezi",
     "notConnected": "Bağlı değil",

@@ -85,8 +85,8 @@ const links = [
     icon: ClockIcon,
   },
   {
-    translationKey: "fxrpPool",
-    path: "/app/fxrp",
+    translationKey: "defiProtocols",
+    path: "/app/defi",
     icon: Square3Stack3DIcon,
     prefetch: prefetchDefiProtocols,
   },

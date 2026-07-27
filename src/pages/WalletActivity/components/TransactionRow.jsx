@@ -37,7 +37,7 @@ function formatTime(timestampSeconds) {
 // chevron only shows below `sm`: on desktop, hover is already a clear
 // affordance a row is clickable; there's no hover on a touch screen, so
 // mobile gets an explicit, persistent "this opens something" cue instead.
-function TransactionRow({ item, isSelected, onSelect }) {
+function TransactionRow({ item, isSelected, onSelect, compact = false }) {
   const direction = getActionDirection(item.action_tag);
   const DirectionIcon = DIRECTION_ICON[direction];
 
@@ -46,12 +46,16 @@ function TransactionRow({ item, isSelected, onSelect }) {
       type="button"
       onClick={() => onSelect(item.actionId)}
       aria-current={isSelected ? "true" : undefined}
-      className={`flex h-full w-full items-center gap-3 border-b border-divider px-4 py-2.5 text-left transition-colors cursor-pointer focus-visible:outline focus-visible:-outline-offset-2 focus-visible:outline-2 focus-visible:outline-brand/50 ${
-        isSelected ? "bg-brand/10" : "hover:bg-surface-inset"
-      }`}
+      className={`flex h-full w-full items-center gap-3 border-b border-divider text-left transition-colors cursor-pointer focus-visible:outline focus-visible:-outline-offset-2 focus-visible:outline-2 focus-visible:outline-brand/50 ${
+        compact ? "px-4 py-1" : "px-4 py-2.5"
+      } ${isSelected ? "bg-brand/10" : "hover:bg-surface-inset"}`}
     >
-      <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${DIRECTION_BG[direction]}`}>
-        <DirectionIcon className={`h-4 w-4 ${DIRECTION_COLOR[direction]}`} />
+      <div
+        className={`flex shrink-0 items-center justify-center rounded-lg ${DIRECTION_BG[direction]} ${
+          compact ? "h-6 w-6" : "h-8 w-8"
+        }`}
+      >
+        <DirectionIcon className={`${compact ? "h-3.5 w-3.5" : "h-4 w-4"} ${DIRECTION_COLOR[direction]}`} />
       </div>
 
       <div className="min-w-0 flex-1">

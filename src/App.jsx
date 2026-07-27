@@ -7,6 +7,8 @@ import AppRoutes from "./routes/AppRoutes";
 import { useUIStore } from "./store/useUIStore";
 
 function App() {
+  const reduceMotionOverride = useUIStore((state) => state.reduceMotionOverride);
+
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -32,10 +34,14 @@ function App() {
 
   return (
     <ErrorBoundary FallbackComponent={GlobalErrorFallback}>
-      {/* "user" makes every Framer Motion animation app-wide respect
-          prefers-reduced-motion automatically, rather than each accordion/
-          transition needing its own opt-in. */}
-      <MotionConfig reducedMotion="user">
+      {/* "user" (the default) makes every Framer Motion animation app-wide
+          respect the OS's prefers-reduced-motion automatically, rather
+          than each accordion/transition needing its own opt-in.
+          `reduceMotionOverride` (Settings > Accessibility) forces "always"
+          on top of that for someone whose OS has no such preference set
+          but still wants this app specifically to cut its animations —
+          additive to the OS default, not a replacement for it. */}
+      <MotionConfig reducedMotion={reduceMotionOverride ? "always" : "user"}>
         <BlueLightOverlay />
         <AppRoutes />
       </MotionConfig>

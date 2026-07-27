@@ -106,7 +106,10 @@
     "watchlistSection": "关注列表 ({{current}}/{{max}})",
     "addressCopied": "地址已复制到剪贴板",
     "copyFailed": "无法复制地址",
-    "flareGptFabHint": "FlareGPT 现在从这里打开"
+    "flareGptFabHint": "FlareGPT 现在从这里打开",
+    "hideBalances": "隐藏余额",
+    "showBalances": "显示余额",
+    "balancesHiddenLabel": "余额已隐藏"
   },
   "settings": {
     "cards": {
@@ -119,13 +122,18 @@
       "language": "语言",
       "links": "链接",
       "logout": "登出",
-      "region": "区域",
       "rewardsAlerts": "奖励通知",
       "sessionTimeout": "会话超时",
       "theme": "主题",
       "themeMode": "浅色 / 深色模式",
       "timeframe": "时间范围",
-      "walletCapacity": "钱包容量"
+      "walletCapacity": "钱包容量",
+      "walletPreferences": "钱包偏好设置",
+      "defaultWallet": "默认钱包",
+      "defaultLandingPage": "默认起始页面",
+      "tableDensity": "表格密度",
+      "reduceMotion": "减少动效",
+      "hideBalances": "隐藏钱包余额"
     },
     "description": "管理钱包、偏好设置、本地化和显示选项。",
     "descriptions": {
@@ -136,10 +144,16 @@
       "language": "选择您的默认界面显示语言。",
       "links": "全局文档参考和团队互动链接。",
       "logout": "立即撤销每个已连接节点上的身份验证状态权限。",
-      "region": "调整数据节点以过滤上下文区域指标。",
       "sessionTimeout": "在空闲状态期间自动终止会话验证状态循环。",
       "timeframe": "在视觉图表上定义默认的窗口周期比例。",
-      "walletCapacity": "追踪分配容量池的系统限制。"
+      "walletCapacity": "追踪分配容量池的系统限制。",
+      "theme": "选择浅色、深色，或跟随系统设置。",
+      "walletPreferences": "选择仪表盘打开时使用的钱包。",
+      "defaultWallet": "当无法恢复先前会话时，此钱包将成为活动钱包。",
+      "defaultLandingPage": "选择启动应用时首先打开的页面。",
+      "tableDensity": "舒适间距，或用于密集表格的更紧凑视图。",
+      "reduceMotion": "即使操作系统未设置相关偏好，也最大限度地减少动画效果。",
+      "hideBalances": "为保护隐私，模糊显示仪表盘中的余额和金额。"
     },
     "notifications": {
       "governance": "提案更新",
@@ -161,26 +175,35 @@
       "low": "低",
       "medium": "中",
       "never": "从不",
-      "off": "关闭"
+      "off": "关闭",
+      "comfortable": "舒适",
+      "compact": "紧凑"
     },
     "security": {
       "logoutAll": "登出所有设备"
     },
     "subtitles": {
       "About": "概述系统部署记录、编译规则和资产索引。",
-      "Display": "修改展示引擎结构和视觉核心组件。",
+      "Display": "个性化您的默认视图以及仪表盘数据的显示方式。",
       "Notifications": "管理系统优先级事件和分发路由跟踪端点。",
-      "Preferences": "配置界面视觉、区域上下文和语言机制。",
+      "Preferences": "语言和货币偏好设置。",
       "Security": "维护活动的身份会话屏障和凭据验证访问规则。",
-      "Wallets": "在全局外部去中心化账户中连接并结构化签名。"
+      "Wallets": "在全局外部去中心化账户中连接并结构化签名。",
+      "Appearance": "选择 FlareGPT 的外观。",
+      "Accessibility": "调整动效和交互偏好设置。",
+      "FlareGpt": "管理 FlareGPT 记住您对话的方式。"
     },
     "tabs": {
       "About": "关于",
-      "Display": "显示",
+      "Display": "仪表盘",
       "Notifications": "通知",
-      "Preferences": "偏好设置",
+      "Preferences": "通用",
       "Security": "安全",
-      "Wallets": "钱包"
+      "Wallets": "钱包",
+      "Appearance": "外观",
+      "Accessibility": "无障碍",
+      "FlareGpt": "FlareGPT",
+      "DataStorage": "数据与存储"
     },
     "title": "设置",
     "wallets": {
@@ -203,12 +226,48 @@
       "manageSubtitle": "管理您的活动Web3连接和只读投资组合跟踪帐户。",
       "readOnly": "只读",
       "registrationFailed": "地址注册失败。请检查地址是否重复或是否已填充空位。",
-      "tracked": "已追踪"
+      "tracked": "已追踪",
+      "remove": "移除",
+      "confirmRemove": "确认移除？",
+      "noDefaultSelected": "未选择",
+      "rename": "重命名",
+      "cancelRename": "取消"
     },
     "links": {
       "docs": "文档批注",
       "github": "GitHub 代码库",
       "twitter": "推特"
+    },
+    "groups": {
+      "personalization": "个性化",
+      "walletsAndData": "钱包与数据",
+      "account": "账户"
+    },
+    "appearance": {
+      "light": "浅色",
+      "dark": "深色",
+      "system": "跟随系统"
+    },
+    "flareGpt": {
+      "followDashboard": "跟随仪表盘钱包",
+      "general": "通用（无钱包）",
+      "syncStatusTitle": "同步状态",
+      "syncStatusConnected": "已连接 — 账户同步功能上线后，历史记录将在设备间同步。",
+      "syncStatusGuest": "对话是临时的，刷新或更换设备后将不会保留。"
+    },
+    "dataStorage": {
+      "localTitle": "本地数据",
+      "localSubtitle": "仅存储在此浏览器中 — 清除操作即时且安全。",
+      "walletCache": "钱包活动缓存",
+      "walletCacheDescription": "清除缓存的交易历史记录 — 下次访问时将重新获取。",
+      "conversations": "FlareGPT 对话",
+      "conversationsDescription": "清除此浏览器中存储的所有对话。",
+      "clear": "清除",
+      "confirmClear": "确认？",
+      "accountTitle": "账户数据",
+      "accountSubtitle": "后端同步数据，将在账户同步功能上线后可用。",
+      "accountUnavailable": "暂不可用",
+      "accountUnavailableDescription": "账户同步功能上线后，此部分将允许您管理后端同步的 FlareGPT 历史记录。"
     }
   },
   "sidebar": {
@@ -216,7 +275,7 @@
     "disconnect": "断开连接",
     "FlareGPT": "耀斑GPT",
     "ftsoRewards": "FTSO 奖励",
-    "fxrpPool": "Defi方案",
+    "defiProtocols": "Defi方案",
     "governance": "治理",
     "helpCenter": "帮助中心",
     "notConnected": "未连接",

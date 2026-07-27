@@ -376,7 +376,10 @@
     "watchlistSection": "Watchlist ({{current}}/{{max}})",
     "addressCopied": "Address copied to clipboard",
     "copyFailed": "Couldn't copy address",
-    "flareGptFabHint": "FlareGPT now opens from here"
+    "flareGptFabHint": "FlareGPT now opens from here",
+    "hideBalances": "Hide balances",
+    "showBalances": "Show balances",
+    "balancesHiddenLabel": "Balances hidden"
   },
   "settings": {
     "cards": {
@@ -389,13 +392,18 @@
       "language": "Language",
       "links": "Links",
       "logout": "Logout",
-      "region": "Region",
       "rewardsAlerts": "Rewards Alerts",
       "sessionTimeout": "Session Timeout",
       "theme": "Theme",
       "themeMode": "Light / Dark mode",
       "timeframe": "Timeframe",
-      "walletCapacity": "Wallet Capacity"
+      "walletCapacity": "Wallet Capacity",
+      "walletPreferences": "Wallet Preferences",
+      "defaultWallet": "Default Wallet",
+      "defaultLandingPage": "Default Landing Page",
+      "tableDensity": "Table Density",
+      "reduceMotion": "Reduce Motion",
+      "hideBalances": "Hide Wallet Balances"
     },
     "description": "Manage wallets, preferences, localization, and display options.",
     "links": {
@@ -411,10 +419,16 @@
       "language": "Select your default interface viewing language.",
       "links": "Global documentation references and team interaction links.",
       "logout": "Instantly revoke authentication state permissions across every connected node.",
-      "region": "Adjust data nodes to filter contextual regional metrics.",
       "sessionTimeout": "Automatically terminate session validation status loops during idling states.",
       "timeframe": "Define default window period scales on visual charts.",
-      "walletCapacity": "System limits tracking allocation capacity pools."
+      "walletCapacity": "System limits tracking allocation capacity pools.",
+      "theme": "Choose Light, Dark, or follow your system setting.",
+      "walletPreferences": "Choose which wallet the dashboard opens with.",
+      "defaultWallet": "This wallet becomes active whenever a previous session can't be restored.",
+      "defaultLandingPage": "Choose which page opens first when you launch the app.",
+      "tableDensity": "Comfortable spacing or a tighter, compact view for dense tables.",
+      "reduceMotion": "Minimize animations even if your operating system has no preference set.",
+      "hideBalances": "Blur balances and amounts across the dashboard for privacy."
     },
     "notifications": {
       "governance": "Proposal updates",
@@ -436,26 +450,35 @@
       "low": "Low",
       "medium": "Medium",
       "never": "Never",
-      "off": "Off"
+      "off": "Off",
+      "comfortable": "Comfortable",
+      "compact": "Compact"
     },
     "security": {
       "logoutAll": "Logout All Devices"
     },
     "subtitles": {
       "About": "Overview systematic deployment records, compilation rules, and asset indexes.",
-      "Display": "Modify presentation engine structures and visual core components.",
+      "Display": "Personalize your default view and how dashboard data is displayed.",
       "Notifications": "Manage systemic priority events and delivery route tracking endpoints.",
-      "Preferences": "Configure interface visuals, region contexts, and language mechanics.",
+      "Preferences": "Language and currency preferences.",
       "Security": "Maintain active identity session barriers and credentials verification access rules.",
-      "Wallets": "Connect and structure signatures across global external decentralized accounts."
+      "Wallets": "Connect and structure signatures across global external decentralized accounts.",
+      "Appearance": "Choose how FlareGPT looks.",
+      "Accessibility": "Adjust motion and interaction preferences.",
+      "FlareGpt": "Manage how FlareGPT remembers your conversations."
     },
     "tabs": {
       "About": "About",
-      "Display": "Display",
+      "Display": "Dashboard",
       "Notifications": "Notifications",
-      "Preferences": "Preferences",
+      "Preferences": "General",
       "Security": "Security",
-      "Wallets": "Wallets"
+      "Wallets": "Wallets",
+      "Appearance": "Appearance",
+      "Accessibility": "Accessibility",
+      "FlareGpt": "FlareGPT",
+      "DataStorage": "Data & Storage"
     },
     "title": "Settings",
     "wallets": {
@@ -478,7 +501,43 @@
       "readOnly": "Read-Only",
       "registrationFailed": "Address registration failed. Check if it is a duplicate or if slots are filled.",
       "remainingSlots": "Slots Remaining",
-      "tracked": "Tracked"
+      "tracked": "Tracked",
+      "remove": "Remove",
+      "confirmRemove": "Confirm remove?",
+      "noDefaultSelected": "None selected",
+      "rename": "Rename",
+      "cancelRename": "Cancel"
+    },
+    "groups": {
+      "personalization": "Personalization",
+      "walletsAndData": "Wallets & Data",
+      "account": "Account"
+    },
+    "appearance": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "flareGpt": {
+      "followDashboard": "Follow dashboard wallet",
+      "general": "General (no wallet)",
+      "syncStatusTitle": "Sync Status",
+      "syncStatusConnected": "Connected — history will sync across devices once account sync is available.",
+      "syncStatusGuest": "Conversations are temporary and won't survive a refresh or device change."
+    },
+    "dataStorage": {
+      "localTitle": "Local Data",
+      "localSubtitle": "Stored in this browser only — clearing it is instant and safe.",
+      "walletCache": "Wallet Activity Cache",
+      "walletCacheDescription": "Clears the cached transaction history — the next visit will re-fetch it.",
+      "conversations": "FlareGPT Conversations",
+      "conversationsDescription": "Clears every conversation stored in this browser.",
+      "clear": "Clear",
+      "confirmClear": "Confirm?",
+      "accountTitle": "Account Data",
+      "accountSubtitle": "Backend-synced data, available once account sync ships.",
+      "accountUnavailable": "Not available yet",
+      "accountUnavailableDescription": "This section will let you manage backend-synced FlareGPT history once account sync is live."
     }
   },
   "sidebar": {
@@ -486,7 +545,7 @@
     "disconnect": "Disconnect",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Rewards",
-    "fxrpPool": "Defi Protocols",
+    "defiProtocols": "Defi Protocols",
     "governance": "Governance",
     "helpCenter": "Help Center",
     "notConnected": "Not connected",

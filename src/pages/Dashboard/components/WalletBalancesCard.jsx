@@ -5,6 +5,7 @@ import { WalletIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useWalletBalances } from "@/hooks/queries/useDashboardQueries";
 import TokenIcon from "@/components/common/TokenIcon";
+import SensitiveValue from "@/components/common/SensitiveValue";
 import WalletBalancesCardSkeleton from "@/pages/Dashboard/components/skeletons/WalletBalancesCardSkeleton";
 
 function formatAmount(value) {
@@ -67,7 +68,7 @@ export default function WalletBalancesCard() {
                 {symbol}
               </p>
               <p className="mt-1 text-lg font-semibold text-ink-primary truncate">
-                {formatAmount(amount)}
+                <SensitiveValue>{formatAmount(amount)}</SensitiveValue>
               </p>
             </div>
           ))}

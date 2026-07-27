@@ -106,7 +106,10 @@
     "watchlistSection": "워치리스트 ({{current}}/{{max}})",
     "addressCopied": "주소가 클립보드에 복사되었습니다",
     "copyFailed": "주소를 복사하지 못했습니다",
-    "flareGptFabHint": "이제 여기서 FlareGPT를 열 수 있어요"
+    "flareGptFabHint": "이제 여기서 FlareGPT를 열 수 있어요",
+    "hideBalances": "잔액 숨기기",
+    "showBalances": "잔액 표시",
+    "balancesHiddenLabel": "잔액이 숨겨짐"
   },
   "settings": {
     "cards": {
@@ -119,13 +122,18 @@
       "language": "언어",
       "links": "링크",
       "logout": "로그아웃",
-      "region": "지역",
       "rewardsAlerts": "보상 알림",
       "sessionTimeout": "세션 타임아웃",
       "theme": "테마",
       "themeMode": "라이트 / 다크 모드",
       "timeframe": "기간",
-      "walletCapacity": "지갑 용량"
+      "walletCapacity": "지갑 용량",
+      "walletPreferences": "지갑 환경설정",
+      "defaultWallet": "기본 지갑",
+      "defaultLandingPage": "기본 시작 페이지",
+      "tableDensity": "테이블 밀도",
+      "reduceMotion": "모션 줄이기",
+      "hideBalances": "지갑 잔액 숨기기"
     },
     "description": "지갑, 기본 설정, 지역화 및 디스플레이 옵션을 관리합니다.",
     "descriptions": {
@@ -136,10 +144,16 @@
       "language": "기본 인터페이스 보기 언어를 선택합니다.",
       "links": "글로벌 문서 참조 및 팀 상호 작용 링크입니다.",
       "logout": "연결된 모든 노드에서 인증 상태 권한을 즉시 취소합니다.",
-      "region": "컨텍스트 지역 메트릭을 필터링하도록 데이터 노드를 조정합니다.",
       "sessionTimeout": "유휴 상태 동안 세션 유효성 검사 루프를 자동으로 종료합니다.",
       "timeframe": "시각적 차트의 기본 창 기간 배율을 정의합니다.",
-      "walletCapacity": "할당 용량 풀을 추적하는 시스템 제한입니다."
+      "walletCapacity": "할당 용량 풀을 추적하는 시스템 제한입니다.",
+      "theme": "라이트, 다크 중에서 선택하거나 시스템 설정을 따르세요.",
+      "walletPreferences": "대시보드가 열릴 때 사용할 지갑을 선택하세요.",
+      "defaultWallet": "이전 세션을 복원할 수 없을 때 이 지갑이 활성화됩니다.",
+      "defaultLandingPage": "앱을 실행할 때 먼저 열릴 페이지를 선택하세요.",
+      "tableDensity": "편안한 간격 또는 밀집된 테이블을 위한 더 조밀한 보기.",
+      "reduceMotion": "운영체제에 설정이 없더라도 애니메이션을 최소화합니다.",
+      "hideBalances": "개인정보 보호를 위해 대시보드 전체의 잔액과 금액을 흐리게 표시합니다."
     },
     "notifications": {
       "governance": "제안 업데이트",
@@ -161,26 +175,35 @@
       "low": "낮음",
       "medium": "중간",
       "never": "안 함",
-      "off": "꺼짐"
+      "off": "꺼짐",
+      "comfortable": "편안하게",
+      "compact": "조밀하게"
     },
     "security": {
       "logoutAll": "모든 기기에서 로그아웃"
     },
     "subtitles": {
       "About": "시스템 배포 기록, 컴파일 규칙 및 자산 인덱스를 개요합니다.",
-      "Display": "프레젠테이션 엔진 구조 및 시각적 핵심 구성 요소를 수정합니다.",
+      "Display": "기본 보기와 대시보드 데이터 표시 방식을 개인화하세요.",
       "Notifications": "시스템 우선순위 이벤트 및 전달 경로 추적 엔드포인트를 관리합니다.",
-      "Preferences": "인터페이스 비주얼, 지역 컨텍스트 및 언어 메커니즘을 구성합니다.",
+      "Preferences": "언어 및 통화 환경설정.",
       "Security": "활성 ID 세션 장벽 및 자격 증명 확인 액세스 규칙을 유지합니다.",
-      "Wallets": "글로벌 외부 탈중앙화 계정에서 서명을 연결하고 구조화합니다."
+      "Wallets": "글로벌 외부 탈중앙화 계정에서 서명을 연결하고 구조화합니다.",
+      "Appearance": "FlareGPT의 모양을 선택하세요.",
+      "Accessibility": "모션 및 상호작용 환경설정을 조정하세요.",
+      "FlareGpt": "FlareGPT가 대화를 기억하는 방식을 관리하세요."
     },
     "tabs": {
       "About": "정보",
-      "Display": "디스플레이",
+      "Display": "대시보드",
       "Notifications": "알림",
-      "Preferences": "기본 설정",
+      "Preferences": "일반",
       "Security": "보안",
-      "Wallets": "지갑"
+      "Wallets": "지갑",
+      "Appearance": "화면",
+      "Accessibility": "접근성",
+      "FlareGpt": "FlareGPT",
+      "DataStorage": "데이터 및 저장공간"
     },
     "title": "설정",
     "wallets": {
@@ -203,12 +226,48 @@
       "manageSubtitle": "활성 Web3 연결 및 읽기 전용 포트폴리오 추적 계정을 관리합니다.",
       "readOnly": "ì½ê¸° ì ì©",
       "registrationFailed": "주소 등록에 실패했습니다. 중복인지 또는 슬롯이 채워졌는지 확인하십시오.",
-      "tracked": "추적됨"
+      "tracked": "추적됨",
+      "remove": "삭제",
+      "confirmRemove": "삭제를 확인할까요?",
+      "noDefaultSelected": "선택 안 됨",
+      "rename": "이름 바꾸기",
+      "cancelRename": "취소"
     },
     "links": {
       "docs": "프리미엄 지원",
       "github": "GitHub",
       "twitter": "Twitter"
+    },
+    "groups": {
+      "personalization": "개인화",
+      "walletsAndData": "지갑 및 데이터",
+      "account": "계정"
+    },
+    "appearance": {
+      "light": "라이트",
+      "dark": "다크",
+      "system": "시스템"
+    },
+    "flareGpt": {
+      "followDashboard": "대시보드 지갑 따르기",
+      "general": "일반 (지갑 없음)",
+      "syncStatusTitle": "동기화 상태",
+      "syncStatusConnected": "연결됨 — 계정 동기화가 제공되면 기록이 기기 간에 동기화됩니다.",
+      "syncStatusGuest": "대화는 일시적이며 새로고침이나 기기 변경 시 사라집니다."
+    },
+    "dataStorage": {
+      "localTitle": "로컬 데이터",
+      "localSubtitle": "이 브라우저에만 저장됩니다 — 지우는 것은 즉각적이고 안전합니다.",
+      "walletCache": "지갑 활동 캐시",
+      "walletCacheDescription": "캐시된 거래 기록을 지웁니다 — 다음 방문 시 다시 가져옵니다.",
+      "conversations": "FlareGPT 대화",
+      "conversationsDescription": "이 브라우저에 저장된 모든 대화를 지웁니다.",
+      "clear": "지우기",
+      "confirmClear": "확인할까요?",
+      "accountTitle": "계정 데이터",
+      "accountSubtitle": "백엔드와 동기화된 데이터로, 계정 동기화가 시작되면 제공됩니다.",
+      "accountUnavailable": "아직 사용할 수 없음",
+      "accountUnavailableDescription": "계정 동기화가 활성화되면 이 섹션에서 백엔드와 동기화된 FlareGPT 기록을 관리할 수 있습니다."
     }
   },
   "sidebar": {
@@ -216,7 +275,7 @@
     "disconnect": "연결 해제",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO 보상",
-    "fxrpPool": "Defi 프로토콜",
+    "defiProtocols": "Defi 프로토콜",
     "governance": "거버넌스",
     "helpCenter": "고객센터",
     "notConnected": "연결 안 됨",

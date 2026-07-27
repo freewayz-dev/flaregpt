@@ -55,6 +55,14 @@ export const useFlareGptStore = create()(
             state.activeConversationId === id ? null : state.activeConversationId,
         })),
 
+      // Settings > Data & Storage's "Clear conversations" action — every
+      // conversation lives in this browser's local storage today
+      // regardless of connection state (no backend sync yet), so this is
+      // a real, complete, immediate clear rather than a partial "guest
+      // only" wipe that would leave some conversations behind.
+      clearAllConversations: () =>
+        set({ conversations: [], activeConversationId: null }),
+
       togglePinConversation: (id) =>
         set((state) => ({
           conversations: state.conversations.map((c) =>
