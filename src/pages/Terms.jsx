@@ -7,7 +7,7 @@ export default function Terms() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#F0F4F9] dark:bg-[#101115] px-4 py-16">
+    <div className="min-h-dvh bg-[#F0F4F9] dark:bg-[#101115] px-4 py-16">
       <div className="mx-auto max-w-2xl">
         <button
           type="button"

@@ -66,7 +66,7 @@ export default function ActivityFeed({ groups, selectedActionId, onSelect, total
       ref={parentRef}
       role="list"
       aria-label={t("wallet.activity.feed.ariaLabel", { shown: shownCount, total: totalCount })}
-      className="h-[70vh] min-h-[420px] overflow-y-auto overscroll-contain rounded-2xl bg-surface-card border border-[#E5E7EB] dark:border-none shadow-sm scrollbar-none"
+      className="h-[70dvh] min-h-[420px] overflow-y-auto overscroll-contain rounded-2xl bg-surface-card border border-[#E5E7EB] dark:border-none shadow-sm scrollbar-none"
     >
       <div style={{ height: virtualizer.getTotalSize(), position: "relative", width: "100%" }}>
         {virtualizer.getVirtualItems().map((virtualRow) => {

@@ -97,7 +97,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F0F4F9] dark:bg-[#101115] transition-colors duration-300">
+    <div className="min-h-dvh bg-[#F0F4F9] dark:bg-[#101115] transition-colors duration-300">
       {/* Grid + ambient glow layer is scoped to this wrapper (nav + main
           only), not the whole page, and fades out over its last 15% via the
           mask below — so it never shows through behind the footer, which

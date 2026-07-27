@@ -56,12 +56,26 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
         `}
       />
 
-      {/* Core Component Frame Container */}
+      {/* Core Component Frame Container.
+          The bare `transform` utility (Tailwind's pre-JIT marker class) was
+          dropped — `translate-x-*`/`lg:translate-x-0` below already set the
+          full `transform` property on their own in JIT mode, so it did
+          nothing. What's NOT removable: any non-`none` transform (even an
+          identity translate(0,0), which this always computes to, mobile or
+          desktop) makes this element the containing block for any
+          `position: fixed` descendant, anchoring it to *this* box instead
+          of the real viewport — precisely the bug DashboardLayout's own
+          history with FlareWidget already hit once. That's fine as long as
+          nothing fixed-positioned is ever nested inside this sidebar (true
+          today — logo, nav links, footer wallet button only); if that ever
+          changes, render the new element via createPortal(document.body)
+          instead, the same fix already used for WalletActivity's
+          TransactionDrawer, rather than nesting it here. */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 h-full flex flex-col bg-surface-card shadow-[0_1px_3px_rgba(0,0,0,0.01)] border-r border-line transform lg:static lg:translate-x-0
+        className={`fixed inset-y-0 left-0 z-50 h-full flex flex-col bg-surface-card shadow-[0_1px_3px_rgba(0,0,0,0.01)] border-r border-line lg:static
           transition-[width,transform] duration-300 ease-in-out
           w-[240px] ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
-          ${open ? "translate-x-0" : "-translate-x-full"}
+          ${open ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0
         `}
       >
         {/* Header Block Panel */}

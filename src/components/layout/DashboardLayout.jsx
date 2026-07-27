@@ -10,7 +10,7 @@ import { useAuthSync } from "@/hooks/useAuthSync";
 import { useWalletActivityNotifier } from "@/hooks/useWalletActivityNotifier";
 import { ROUTES } from "@/config/routes";
 
-// GlobalSpinner is h-screen, which is correct for AppRoutes' top-level
+// GlobalSpinner is h-dvh, which is correct for AppRoutes' top-level
 // fallback (rendered before any layout exists) but would briefly exceed
 // main's actual available height here, popping main's own scrollbar in and
 // out on every route change. This fallback just centers within whatever
