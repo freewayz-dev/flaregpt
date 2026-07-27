@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { useUIStore } from "@/store/useUIStore";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
+import SensitiveValue from "@/components/common/SensitiveValue";
 
 // Renders a table whose columns are derived from whatever keys are actually
 // present on the first item, rather than hardcoded field names. The FlareGPT
@@ -94,16 +95,30 @@ export default function GenericTable({
         <tbody className="divide-y divide-divider">
           {items.map((item, i) => (
             <tr key={i} className="hover:bg-surface-inset transition-colors">
-              {columns.map((col) => (
-                <td
-                  key={col}
-                  className={`pr-4 text-ink-primary font-medium whitespace-nowrap ${
-                    isCompact ? "py-1.5" : "py-2.5"
-                  }`}
-                >
-                  {formatCell(item[col], yesLabel, noLabel)}
-                </td>
-              ))}
+              {columns.map((col) => {
+                const raw = item[col];
+                const formatted = formatCell(raw, yesLabel, noLabel);
+                // Every row here is this wallet's own claims/delegations
+                // ledger — a numeric cell is a reward or stake amount, not
+                // an identifier, so it's exactly the kind of figure the
+                // hide-balances toggle exists for. Non-numeric cells (an
+                // address, a date, a status) carry no balance information
+                // and stay visible regardless.
+                return (
+                  <td
+                    key={col}
+                    className={`pr-4 text-ink-primary font-medium whitespace-nowrap ${
+                      isCompact ? "py-1.5" : "py-2.5"
+                    }`}
+                  >
+                    {typeof raw === "number" ? (
+                      <SensitiveValue>{formatted}</SensitiveValue>
+                    ) : (
+                      formatted
+                    )}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>

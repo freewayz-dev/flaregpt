@@ -154,7 +154,7 @@ export default function Wallets() {
                             setEditingAddress(null);
                           }
                         }}
-                        className="w-full max-w-[220px] bg-white dark:bg-[#121214] px-2 py-1 text-sm font-medium text-ink-primary rounded-lg border border-brand/40 outline-none"
+                        className="block w-full max-w-[220px] bg-transparent px-0 py-0 text-base sm:text-sm leading-5 font-medium text-ink-primary border-b border-brand/40 outline-none"
                       />
                     ) : (
                       <p className="text-sm font-medium text-ink-primary truncate">

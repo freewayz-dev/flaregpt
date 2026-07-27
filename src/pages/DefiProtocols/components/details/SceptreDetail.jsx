@@ -8,6 +8,7 @@ import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwners
 import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
 import TokenIcon from "@/components/common/TokenIcon";
 import TokenRow from "@/components/common/TokenRow";
+import SensitiveValue from "@/components/common/SensitiveValue";
 import DetailSkeleton from "@/pages/DefiProtocols/components/skeletons/DetailSkeleton";
 
 function formatAmount(value, maxFractionDigits = 4) {
@@ -98,13 +99,13 @@ export default function SceptreDetail({
           <TokenRow
             symbol="SFLR"
             label={t("defiProtocols.common.yourBalance")}
-            value={`${formatAmount(balance)} sFLR`}
+            value={<SensitiveValue>{`${formatAmount(balance)} sFLR`}</SensitiveValue>}
             highlight={balance > 0}
           />
           <TokenRow
             symbol="FLR"
             label={t("defiProtocols.common.redeemableValue")}
-            value={`${formatAmount(redeemable)} FLR`}
+            value={<SensitiveValue>{`${formatAmount(redeemable)} FLR`}</SensitiveValue>}
             highlight={redeemable > 0}
           />
         </div>

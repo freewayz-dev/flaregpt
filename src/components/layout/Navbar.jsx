@@ -282,7 +282,20 @@ export default function Navbar({
               </button>
             )}
 
-            {/* Account Selector Dropdown */}
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-50 dark:bg-[#191A1F] border border-slate-100 dark:border-none text-slate-500 dark:text-[#6D7A86] shrink-0">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="tracking-wide uppercase text-[8.5px] font-bold">
+                {t("navbar.mainnetStatus")}
+              </span>
+            </div>
+
+            {/* Account Selector Dropdown — rightmost: the highest-consequence,
+                most interactive control in this cluster (it changes what the
+                entire dashboard shows), so it anchors the position closest to
+                where users expect an account/profile menu to live. Everything
+                to its left decreases in either frequency of use (the privacy
+                eye toggle) or interactivity (the network badge has no menu at
+                all) as it moves away from that anchor. */}
             <div className="relative" ref={dropdownRef}>
               <button
                 type="button"
@@ -383,13 +396,6 @@ export default function Navbar({
                   </div>
                 )}
               </div>
-            </div>
-
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-50 dark:bg-[#191A1F] border border-slate-100 dark:border-none text-slate-500 dark:text-[#6D7A86] shrink-0">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="tracking-wide uppercase text-[8.5px] font-bold">
-                {t("navbar.mainnetStatus")}
-              </span>
             </div>
           </div>
 

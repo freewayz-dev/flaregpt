@@ -6,6 +6,7 @@ import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
+import SensitiveValue from "@/components/common/SensitiveValue";
 import { PROTOCOLS } from "@/pages/DefiProtocols/protocols";
 
 function formatAmount(value, maxFractionDigits = 4) {
@@ -49,7 +50,10 @@ function ProtocolListRow({ protocol, isActive, onClick, balance, t }) {
           )}
           {t(protocol.subtitleKey)}
           {balance != null && (
-            <span className="text-ink-secondary"> · {balance}</span>
+            <span className="text-ink-secondary">
+              {" "}
+              · <SensitiveValue>{balance}</SensitiveValue>
+            </span>
           )}
         </p>
       </div>

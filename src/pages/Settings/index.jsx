@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   AdjustmentsHorizontalIcon,
@@ -67,6 +68,22 @@ const groups = [
 
 const allTabs = groups.flatMap((g) => g.tabs);
 
+// A fade at whichever edge still has more tabs beyond it — the classic
+// "this scrolls" affordance (iOS Settings, most native tab bars) rather
+// than a static arrow icon competing for attention. Masks the row's own
+// content to transparent (matching MessageList's technique elsewhere in
+// this app) instead of painting a solid-color overlay, so it never needs
+// to guess the exact background color behind it and can't visibly seam
+// against it. Recomputed on scroll/resize so each fade disappears exactly
+// once its side is fully scrolled into view.
+function buildEdgeFadeMask({ atStart, atEnd }, fadeSize = "28px") {
+  const leftStop = atStart ? "0px" : fadeSize;
+  const rightStop = atEnd ? "0px" : fadeSize;
+  return `linear-gradient(to right, ${
+    atStart ? "black" : "transparent"
+  }, black ${leftStop}, black calc(100% - ${rightStop}), ${atEnd ? "black" : "transparent"})`;
+}
+
 export default function Settings() {
   // Bind navigation state straight to persistent store selectors
   const activeTab = useUIStore((state) => state.settingsActiveTab);
@@ -74,6 +91,29 @@ export default function Settings() {
   const { t } = useTranslation();
 
   const ActiveComponent = allTabs.find((tab) => tab.id === activeTab)?.Component ?? Preferences;
+
+  const mobileNavRef = useRef(null);
+  const [mobileScrollEdges, setMobileScrollEdges] = useState({ atStart: true, atEnd: false });
+
+  useEffect(() => {
+    const el = mobileNavRef.current;
+    if (!el) return;
+
+    const updateEdges = () => {
+      setMobileScrollEdges({
+        atStart: el.scrollLeft <= 4,
+        atEnd: el.scrollLeft + el.clientWidth >= el.scrollWidth - 4,
+      });
+    };
+
+    updateEdges();
+    el.addEventListener("scroll", updateEdges, { passive: true });
+    window.addEventListener("resize", updateEdges);
+    return () => {
+      el.removeEventListener("scroll", updateEdges);
+      window.removeEventListener("resize", updateEdges);
+    };
+  }, []);
 
   const renderTabButton = (tab) => {
     const isActive = activeTab === tab.id;
@@ -129,8 +169,19 @@ export default function Settings() {
             <aside className="w-full shrink-0 md:w-56 lg:w-64 md:sticky md:top-6 z-10">
               {/* Mobile: flat horizontal scroll, group order preserved but
                   no header labels — a scrolling strip doesn't have the
-                  vertical room to show them without adding a second row. */}
-              <nav className="flex md:hidden flex-row gap-1 overflow-x-auto pb-2 scrollbar-none select-none snap-x mask-gradient-right">
+                  vertical room to show them without adding a second row.
+                  The edge fade (see buildEdgeFadeMask) is what actually
+                  signals "more tabs this way" — a static class name here
+                  once existed for this but was never backed by real CSS,
+                  which is exactly why the scrollability wasn't obvious. */}
+              <nav
+                ref={mobileNavRef}
+                className="flex md:hidden flex-row gap-1 overflow-x-auto pb-2 scrollbar-none select-none snap-x"
+                style={{
+                  WebkitMaskImage: buildEdgeFadeMask(mobileScrollEdges),
+                  maskImage: buildEdgeFadeMask(mobileScrollEdges),
+                }}
+              >
                 {allTabs.map(renderTabButton)}
               </nav>
 

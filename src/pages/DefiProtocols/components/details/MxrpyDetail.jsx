@@ -5,6 +5,7 @@ import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptySta
 import AddressPill from "@/pages/DefiProtocols/components/shared/AddressPill";
 import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
 import TokenIcon from "@/components/common/TokenIcon";
+import SensitiveValue from "@/components/common/SensitiveValue";
 import DetailSkeleton from "@/pages/DefiProtocols/components/skeletons/DetailSkeleton";
 
 function formatAmount(value, maxFractionDigits = 4) {
@@ -78,7 +79,7 @@ export default function MxrpyDetail({
         <div className="flex items-baseline gap-2">
           <TokenIcon symbol="MXRPY" size={18} />
           <p className="text-3xl font-bold text-ink-primary">
-            {formatAmount(shares)}{" "}
+            <SensitiveValue>{formatAmount(shares)}</SensitiveValue>{" "}
             <span className="text-lg font-semibold text-ink-muted">
               {data.token_symbol}
             </span>

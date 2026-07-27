@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import TokenIcon from "@/components/common/TokenIcon";
+import SensitiveValue from "@/components/common/SensitiveValue";
 import { getActionDirection, formatActionLabel } from "@/pages/WalletActivity/utils/deriveActivity";
 
 const DIRECTION_ICON = { out: ArrowUpRightIcon, in: ArrowDownLeftIcon, neutral: ArrowsRightLeftIcon };
@@ -70,8 +71,10 @@ function TransactionRow({ item, isSelected, onSelect, compact = false }) {
       </div>
 
       <p className={`shrink-0 text-sm font-semibold tabular-nums ${DIRECTION_COLOR[direction]}`}>
-        {direction === "out" ? "-" : direction === "in" ? "+" : ""}
-        {formatAmount(item.amount)}
+        <SensitiveValue>
+          {direction === "out" ? "-" : direction === "in" ? "+" : ""}
+          {formatAmount(item.amount)}
+        </SensitiveValue>
       </p>
 
       <ChevronRightIcon className="h-3.5 w-3.5 shrink-0 text-ink-muted sm:hidden" aria-hidden="true" />

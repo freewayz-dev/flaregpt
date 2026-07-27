@@ -8,6 +8,7 @@ import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwners
 import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
 import TokenIcon from "@/components/common/TokenIcon";
 import TokenRow from "@/components/common/TokenRow";
+import SensitiveValue from "@/components/common/SensitiveValue";
 import DetailSkeleton from "@/pages/DefiProtocols/components/skeletons/DetailSkeleton";
 
 function formatAmount(value, maxFractionDigits = 4) {
@@ -98,13 +99,13 @@ export default function FirelightDetail({
           <TokenRow
             symbol="STXRP"
             label={t("defiProtocols.common.yourBalance")}
-            value={`${formatAmount(balance)} ${data.receipt_token}`}
+            value={<SensitiveValue>{`${formatAmount(balance)} ${data.receipt_token}`}</SensitiveValue>}
             highlight={balance > 0}
           />
           <TokenRow
             symbol="FXRP"
             label={t("defiProtocols.common.redeemableValue")}
-            value={`${formatAmount(redeemable)} fXRP`}
+            value={<SensitiveValue>{`${formatAmount(redeemable)} fXRP`}</SensitiveValue>}
             highlight={redeemable > 0}
           />
         </div>

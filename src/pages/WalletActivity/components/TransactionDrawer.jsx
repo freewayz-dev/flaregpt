@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import TokenIcon from "@/components/common/TokenIcon";
+import SensitiveValue from "@/components/common/SensitiveValue";
 import { getFlarescanTxUrl } from "@/config/web3Config";
 import { getActionDirection, formatActionLabel } from "@/pages/WalletActivity/utils/deriveActivity";
 
@@ -160,8 +161,10 @@ export default function TransactionDrawer({ item, hasPrev, hasNext, onPrev, onNe
               <TokenIcon symbol={item.asset} size={28} />
               <div>
                 <p className="text-base font-bold text-ink-primary">
-                  {direction === "out" ? "-" : direction === "in" ? "+" : ""}
-                  {Number(item.amount).toLocaleString(undefined, { maximumFractionDigits: 8 })}{" "}
+                  <SensitiveValue>
+                    {direction === "out" ? "-" : direction === "in" ? "+" : ""}
+                    {Number(item.amount).toLocaleString(undefined, { maximumFractionDigits: 8 })}
+                  </SensitiveValue>{" "}
                   {item.asset}
                 </p>
                 <p className="text-xs text-ink-muted">{formatActionLabel(item.action_tag)}</p>
