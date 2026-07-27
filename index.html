@@ -56,10 +56,43 @@
 
         root.classList.add("no-transition");
 
-        window.addEventListener("load", () => {
-          setTimeout(() => {
-            root.classList.remove("no-transition");
-          }, 50);
+        // Removing this only needs the initial paint to have settled, not a
+        // full `load` (which waits on every sub-resource — fonts included —
+        // finishing). `load` can legitimately never fire: a slow/stalled
+        // font request, or the tab being backgrounded/frozen mid-fetch
+        // (exactly what happens if a phone gets locked or the browser is
+        // switched away from right after opening this page), pauses or
+        // cancels that fetch indefinitely. Since `.no-transition *` applies
+        // `transition: none !important` to *every element in the document*
+        // and `<html>` is never recreated by client-side navigation, a
+        // `load` that never fires means every CSS transition in the app —
+        // every drawer, modal, and hover state — silently stops animating
+        // for the rest of that tab's life, on every page, until a hard
+        // reload. `DOMContentLoaded` (or a flat timeout if that's already
+        // passed) removes the dependency on external resources entirely,
+        // and the outer timeout is an unconditional last-resort fallback so
+        // this can never get stuck no matter what does or doesn't fire.
+        function clearNoTransition() {
+          root.classList.remove("no-transition");
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", () => setTimeout(clearNoTransition, 50));
+        } else {
+          setTimeout(clearNoTransition, 50);
+        }
+        setTimeout(clearNoTransition, 2000);
+
+        // A backgrounded/frozen tab can also come back via the
+        // back-forward cache instead of a real reload — the browser
+        // restores the exact JS/DOM state it froze, including whatever
+        // this class was at the moment it froze, and fires none of the
+        // events above again (no DOMContentLoaded, no load). `pageshow`
+        // is what *does* fire on a bfcache restore (`event.persisted`
+        // is true for it specifically), so this is the one path capable
+        // of reviving a stuck class that every other listener here
+        // can't reach.
+        window.addEventListener("pageshow", (event) => {
+          if (event.persisted) clearNoTransition();
         });
       })();
     </script>
