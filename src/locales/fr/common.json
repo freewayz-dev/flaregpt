@@ -93,7 +93,12 @@
     "flareGptFabHint": "FlareGPT s'ouvre maintenant ici",
     "hideBalances": "Masquer les soldes",
     "showBalances": "Afficher les soldes",
-    "balancesHiddenLabel": "Soldes masqués"
+    "balancesHiddenLabel": "Soldes masqués",
+    "signIn": "Se connecter",
+    "signingIn": "Connexion en cours…",
+    "signInPrompt": "Signez un message pour vérifier ce portefeuille et continuer.",
+    "badgeSignIn": "Se connecter",
+    "signInBackgroundHint": "Votre portefeuille connecté doit se connecter"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "Liens",
       "logout": "Déconnexion",
       "rewardsAlerts": "Alertes de Récompenses",
-      "sessionTimeout": "Expiration de la Session",
       "theme": "Thème",
       "themeMode": "Mode Clair / Sombre",
       "timeframe": "Période",
@@ -127,8 +131,7 @@
       "currency": "Choisissez l'affichage de la devise de base de l'actif.",
       "language": "Sélectionnez votre langue d'affichage de l'interface par défaut.",
       "links": "Références de documentation globale et liens d'interaction de l'équipe.",
-      "logout": "Révoquez instantanément les autorisations d'état d'authentification sur chaque nœud connecté.",
-      "sessionTimeout": "Terminez automatiquement les boucles d'état de validation de session pendant les états d'inactivité.",
+      "logout": "Vous déconnecte de FlareGPT sur cet appareil. Vous devrez signer un nouveau message pour vous reconnecter.",
       "timeframe": "Définissez les échelles de période de fenêtre par défaut sur les graphiques visuels.",
       "walletCapacity": "Limites systémiques suivant les pools de capacité d'allocation.",
       "theme": "Choisissez Clair, Sombre, ou suivez le réglage de votre système.",
@@ -144,9 +147,6 @@
       "rewards": "Activer les notifications de récompenses"
     },
     "options": {
-      "15m": "15 minutes",
-      "1h": "1 heure",
-      "30m": "30 minutes",
       "africa": "Afrique",
       "america": "Amérique",
       "area": "Zone",
@@ -158,13 +158,13 @@
       "line": "Ligne",
       "low": "Faible",
       "medium": "Moyen",
-      "never": "Jamais",
       "off": "Désactivé",
       "comfortable": "Confortable",
       "compact": "Compact"
     },
     "security": {
-      "logoutAll": "Déconnecter Tous les Appareils"
+      "logout": "Se déconnecter",
+      "confirmLogout": "Confirmer ?"
     },
     "subtitles": {
       "About": "Aperçu des enregistrements de déploiement systémique, des règles de compilation et des index d'actifs.",
@@ -272,7 +272,9 @@
     "feeds": "Flux",
     "donate": "Faire un don",
     "addWatchlistWallet": "+ Ajouter un portefeuille de liste de surveillance",
-    "activeWallet": "Actif : {{address}}"
+    "activeWallet": "Actif : {{address}}",
+    "signInRequired": "Connexion requise",
+    "signInRequiredHint": "Utilisez le menu du portefeuille dans la barre supérieure pour vous connecter."
   },
   "wallet": {
     "activity": {

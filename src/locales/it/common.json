@@ -93,7 +93,12 @@
     "flareGptFabHint": "FlareGPT ora si apre da qui",
     "hideBalances": "Nascondi saldi",
     "showBalances": "Mostra saldi",
-    "balancesHiddenLabel": "Saldi nascosti"
+    "balancesHiddenLabel": "Saldi nascosti",
+    "signIn": "Accedi",
+    "signingIn": "Accesso in corso…",
+    "signInPrompt": "Firma un messaggio per verificare questo wallet e continuare.",
+    "badgeSignIn": "Accedi",
+    "signInBackgroundHint": "Il tuo wallet connesso deve accedere"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "Link",
       "logout": "Disconnessione",
       "rewardsAlerts": "Avvisi Premi",
-      "sessionTimeout": "Timeout Sessione",
       "theme": "Tema",
       "themeMode": "Modalità Chiaro / Scuro",
       "timeframe": "Arco Temporale",
@@ -127,8 +131,7 @@
       "currency": "Scegli la visualizzazione della valuta di base dell'asset.",
       "language": "Seleziona la lingua di visualizzazione dell'interfaccia predefinita.",
       "links": "Riferimenti alla documentazione globale e link di interazione del team.",
-      "logout": "Revoca istantaneamente i permessi dello stato di autenticazione su ogni nodo connesso.",
-      "sessionTimeout": "Termina automaticamente i cicli di stato di validazione della sessione durante gli stati di inattività.",
+      "logout": "Disconnette da FlareGPT su questo dispositivo. Dovrai firmare un nuovo messaggio per accedere di nuovo.",
       "timeframe": "Definisci le scale del periodo della finestra predefinite sui grafici visivi.",
       "walletCapacity": "Limiti di sistema che monitorano i pool di capacità di allocazione.",
       "theme": "Scegli Chiaro, Scuro, o segui l'impostazione del tuo sistema.",
@@ -144,9 +147,6 @@
       "rewards": "Attiva notifiche premi"
     },
     "options": {
-      "15m": "15 minuti",
-      "1h": "1 ora",
-      "30m": "30 minuti",
       "africa": "Africa",
       "america": "America",
       "area": "Area",
@@ -158,13 +158,13 @@
       "line": "Linea",
       "low": "Basso",
       "medium": "Medio",
-      "never": "Mai",
       "off": "Disattivato",
       "comfortable": "Confortevole",
       "compact": "Compatto"
     },
     "security": {
-      "logoutAll": "Disconnetti Tutti i Dispositivi"
+      "logout": "Esci",
+      "confirmLogout": "Confermare?"
     },
     "subtitles": {
       "About": "Panoramica dei record di implementazione sistemica, regole di compilazione e indici degli asset.",
@@ -273,7 +273,9 @@
     "feeds": "Feeds",
     "donate": "Dona",
     "addWatchlistWallet": "+ Aggiungi portafoglio Watchlist",
-    "activeWallet": "Attivo: {{address}}"
+    "activeWallet": "Attivo: {{address}}",
+    "signInRequired": "Accesso richiesto",
+    "signInRequiredHint": "Usa il menu del wallet nella barra superiore per accedere."
   },
   "wallet": {
     "activity": {

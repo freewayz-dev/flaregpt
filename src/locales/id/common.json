@@ -93,7 +93,12 @@
     "flareGptFabHint": "FlareGPT sekarang dibuka dari sini",
     "hideBalances": "Sembunyikan saldo",
     "showBalances": "Tampilkan saldo",
-    "balancesHiddenLabel": "Saldo disembunyikan"
+    "balancesHiddenLabel": "Saldo disembunyikan",
+    "signIn": "Masuk",
+    "signingIn": "Sedang masuk…",
+    "signInPrompt": "Tanda tangani pesan untuk memverifikasi dompet ini dan lanjutkan.",
+    "badgeSignIn": "Masuk",
+    "signInBackgroundHint": "Dompet Anda yang terhubung perlu masuk"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "Tautan",
       "logout": "Keluar",
       "rewardsAlerts": "Pemberitahuan Hadiah",
-      "sessionTimeout": "Batas Waktu Sesi",
       "theme": "Tema",
       "themeMode": "Mode Terang / Gelap",
       "timeframe": "Rentang Waktu",
@@ -127,8 +131,7 @@
       "currency": "Pilih tampilan mata uang dasar aset.",
       "language": "Pilih bahasa tampilan antarmuka default Anda.",
       "links": "Referensi dokumentasi global dan tautan interaksi tim.",
-      "logout": "Cabut izin status autentikasi secara instan di setiap node yang terhubung.",
-      "sessionTimeout": "Akhiri loop status validasi sesi secara otomatis selama kondisi tidak aktif.",
+      "logout": "Keluar dari FlareGPT di perangkat ini. Anda perlu menandatangani pesan baru untuk masuk kembali.",
       "timeframe": "Tentukan skala periode jendela default pada grafik visual.",
       "walletCapacity": "Batas sistem yang melacak alokasi kapasitas pool.",
       "theme": "Pilih Terang, Gelap, atau ikuti pengaturan sistem Anda.",
@@ -144,9 +147,6 @@
       "rewards": "Aktifkan notifikasi klaim hadiah"
     },
     "options": {
-      "15m": "15 menit",
-      "1h": "1 jam",
-      "30m": "30 menit",
       "africa": "Afrika",
       "america": "Amerika",
       "area": "Kecamatan",
@@ -158,13 +158,13 @@
       "line": "Garis",
       "low": "Rendah",
       "medium": "Sedang",
-      "never": "Tidak Pernah",
       "off": "Mati",
       "comfortable": "Nyaman",
       "compact": "Ringkas"
     },
     "security": {
-      "logoutAll": "Keluar dari semua perangkat"
+      "logout": "Keluar",
+      "confirmLogout": "Konfirmasi?"
     },
     "subtitles": {
       "About": "Ikhtisar catatan penerapan sistem, aturan kompilasi, dan indeks aset.",
@@ -273,7 +273,9 @@
     "feeds": "Umpan",
     "donate": "Beri donasi",
     "addWatchlistWallet": "+ Tambahkan Dompet Daftar Pantau",
-    "activeWallet": "Aktif: {{address}}"
+    "activeWallet": "Aktif: {{address}}",
+    "signInRequired": "Perlu masuk",
+    "signInRequiredHint": "Gunakan menu dompet di bilah atas untuk masuk."
   },
   "wallet": {
     "activity": {

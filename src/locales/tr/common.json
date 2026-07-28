@@ -93,7 +93,12 @@
     "flareGptFabHint": "FlareGPT artık buradan açılıyor",
     "hideBalances": "Bakiyeleri gizle",
     "showBalances": "Bakiyeleri göster",
-    "balancesHiddenLabel": "Bakiyeler gizlendi"
+    "balancesHiddenLabel": "Bakiyeler gizlendi",
+    "signIn": "Giriş Yap",
+    "signingIn": "Giriş yapılıyor…",
+    "signInPrompt": "Devam etmek için bu cüzdanı doğrulayan bir mesajı imzalayın.",
+    "badgeSignIn": "Giriş Yap",
+    "signInBackgroundHint": "Bağlı cüzdanınızın giriş yapması gerekiyor"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "Bağlantılar",
       "logout": "Çıkış Yap",
       "rewardsAlerts": "Ödül Uyarıları",
-      "sessionTimeout": "Oturum Zaman Aşımı",
       "theme": "Tema",
       "themeMode": "Açık / Koyu mod",
       "timeframe": "Zaman Dilimi",
@@ -127,8 +131,7 @@
       "currency": "Varlık tabanlı para birimi görünümünü seçin.",
       "language": "Varsayılan arayüz görüntüleme dilinizi seçin.",
       "links": "Global dokümantasyon referansları ve ekip etkileşim bağlantıları.",
-      "logout": "Bağlı her düğümde kimlik doğrulama durumu izinlerini anında iptal edin.",
-      "sessionTimeout": "Boşta kalma durumlarında oturum doğrulama döngülerini otomatik olarak sonlandırın.",
+      "logout": "Bu cihazda FlareGPT oturumunu kapatır. Tekrar giriş yapmak için yeni bir mesajı imzalamanız gerekir.",
       "timeframe": "Görsel grafiklerde varsayılan pencere dönemi ölçeklerini tanımlayın.",
       "walletCapacity": "Tahsis kapasite havuzlarını izleyen sistem sınırları.",
       "theme": "Açık, Koyu seçin veya sistem ayarınızı takip edin.",
@@ -144,9 +147,6 @@
       "rewards": "Ödül bildirimlerini etkinleştir"
     },
     "options": {
-      "15m": "15 dakika",
-      "1h": "1 saat",
-      "30m": "30 dakika",
       "africa": "Afrika",
       "america": "Amerika",
       "area": "Alan",
@@ -158,13 +158,13 @@
       "line": "Çizgi",
       "low": "Düşük",
       "medium": "Orta",
-      "never": "Asla",
       "off": "Kapalı",
       "comfortable": "Rahat",
       "compact": "Kompakt"
     },
     "security": {
-      "logoutAll": "Tüm Cihazlardan Çıkış Yap"
+      "logout": "Çıkış Yap",
+      "confirmLogout": "Onayla?"
     },
     "subtitles": {
       "About": "Sistemik dağıtım kayıtlarına, derleme kurallarına ve varlık dizinlerine genel bakış.",
@@ -273,7 +273,9 @@
     "feeds": "Bildirimler",
     "donate": "Bağış yap",
     "addWatchlistWallet": "+ İzleme Listesi Cüzdanı Ekle",
-    "activeWallet": "Aktif: {{address}}"
+    "activeWallet": "Aktif: {{address}}",
+    "signInRequired": "Giriş gerekli",
+    "signInRequiredHint": "Giriş yapmak için üst çubuktaki cüzdan menüsünü kullanın."
   },
   "wallet": {
     "activity": {

@@ -93,7 +93,12 @@
     "flareGptFabHint": "이제 여기서 FlareGPT를 열 수 있어요",
     "hideBalances": "잔액 숨기기",
     "showBalances": "잔액 표시",
-    "balancesHiddenLabel": "잔액이 숨겨짐"
+    "balancesHiddenLabel": "잔액이 숨겨짐",
+    "signIn": "로그인",
+    "signingIn": "로그인 중…",
+    "signInPrompt": "이 지갑을 확인하고 계속하려면 메시지에 서명하세요.",
+    "badgeSignIn": "로그인",
+    "signInBackgroundHint": "연결된 지갑이 로그인해야 합니다"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "링크",
       "logout": "로그아웃",
       "rewardsAlerts": "보상 알림",
-      "sessionTimeout": "세션 타임아웃",
       "theme": "테마",
       "themeMode": "라이트 / 다크 모드",
       "timeframe": "기간",
@@ -127,8 +131,7 @@
       "currency": "자산 기준 통화 표시를 선택합니다.",
       "language": "기본 인터페이스 보기 언어를 선택합니다.",
       "links": "글로벌 문서 참조 및 팀 상호 작용 링크입니다.",
-      "logout": "연결된 모든 노드에서 인증 상태 권한을 즉시 취소합니다.",
-      "sessionTimeout": "유휴 상태 동안 세션 유효성 검사 루프를 자동으로 종료합니다.",
+      "logout": "이 기기에서 FlareGPT 로그아웃합니다. 다시 로그인하려면 새 메시지에 서명해야 합니다.",
       "timeframe": "시각적 차트의 기본 창 기간 배율을 정의합니다.",
       "walletCapacity": "할당 용량 풀을 추적하는 시스템 제한입니다.",
       "theme": "라이트, 다크 중에서 선택하거나 시스템 설정을 따르세요.",
@@ -144,9 +147,6 @@
       "rewards": "보상 알림 활성화"
     },
     "options": {
-      "15m": "15분",
-      "1h": "1시간",
-      "30m": "30분",
       "africa": "아프리카",
       "america": "아메리카",
       "area": "영역형",
@@ -158,13 +158,13 @@
       "line": "선형",
       "low": "낮음",
       "medium": "중간",
-      "never": "안 함",
       "off": "꺼짐",
       "comfortable": "편안하게",
       "compact": "조밀하게"
     },
     "security": {
-      "logoutAll": "모든 기기에서 로그아웃"
+      "logout": "로그아웃",
+      "confirmLogout": "확인할까요?"
     },
     "subtitles": {
       "About": "시스템 배포 기록, 컴파일 규칙 및 자산 인덱스를 개요합니다.",
@@ -273,7 +273,9 @@
     "feeds": "피드",
     "donate": "기부",
     "addWatchlistWallet": "+ 관심 목록 지갑 추가",
-    "activeWallet": "활성: {{address}}"
+    "activeWallet": "활성: {{address}}",
+    "signInRequired": "로그인 필요",
+    "signInRequiredHint": "로그인하려면 상단 표시줄의 지갑 메뉴를 사용하세요."
   },
   "wallet": {
     "activity": {

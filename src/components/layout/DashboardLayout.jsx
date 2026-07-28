@@ -6,7 +6,6 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import FlareWidget from "@/components/common/FlareWidget";
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
-import { useAuthSync } from "@/hooks/useAuthSync";
 import { useWalletActivityNotifier } from "@/hooks/useWalletActivityNotifier";
 import { ROUTES } from "@/config/routes";
 
@@ -24,8 +23,9 @@ function RouteLoadingFallback() {
 }
 
 export default function DashboardLayout() {
-  // Connecting a wallet anywhere in the app shell doubles as signing in.
-  useAuthSync();
+  // Auth sync itself is mounted at the App root now (see App.jsx) — wagmi's
+  // connection state isn't scoped to this layout, so the hook that reacts
+  // to it shouldn't be either.
   // R15: keeps watching a large wallet's activity fetch even after the
   // page that started it unmounts — see the hook for why.
   useWalletActivityNotifier();

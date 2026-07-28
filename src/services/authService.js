@@ -1,23 +1,33 @@
-// Placeholder auth layer — no backend exists yet. Each function simulates a
-// network round trip so the real API can be dropped in later (see
-// store/useAuthStore.js and hooks/useAuthSync.js) without changing any call
-// sites. Connecting a wallet is meant to double as signing in: once a real
-// endpoint exists, it likely verifies a signed message from `address`
-// rather than trusting the address alone.
+import { flareApi } from "@/services/apiClient";
 
-const MOCK_LATENCY_MS = 300;
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-export async function signIn(address) {
-  await delay(MOCK_LATENCY_MS);
-  return {
-    address,
-    token: `mock-session-${address}`,
-    authenticatedAt: Date.now(),
-  };
+// The backend remembers which nonce it issued for `address` server-side,
+// so `verifySignature` only ever needs to send the signature back — never
+// the nonce/message itself. Assumed response shape (not yet confirmed
+// against a live backend): { "message": "<exact string to sign>" }. If the
+// real endpoint instead returns a bare nonce and expects the client to
+// format its own sign-in message, this is the one place that needs to
+// change — nothing else references the response shape directly.
+export async function requestNonce(address) {
+  const { data } = await flareApi.post("/api/v1/auth/nonce", { address });
+  return data;
 }
 
-export async function signOut() {
-  await delay(MOCK_LATENCY_MS);
-  return true;
+export async function verifySignature(address, signature) {
+  const { data } = await flareApi.post("/api/v1/auth/verify", {
+    address,
+    signature,
+  });
+  return data;
+}
+
+// No params: the Authorization header is attached automatically by
+// apiClient's request interceptor, which reads the current token straight
+// from useAuthStore — same as every other authenticated call.
+export async function getCurrentUser() {
+  const { data } = await flareApi.get("/api/v1/auth/me");
+  return data;
+}
+
+export async function logout() {
+  await flareApi.post("/api/v1/auth/logout");
 }

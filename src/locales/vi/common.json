@@ -93,7 +93,12 @@
     "flareGptFabHint": "FlareGPT giờ đây mở từ đây",
     "hideBalances": "Ẩn số dư",
     "showBalances": "Hiện số dư",
-    "balancesHiddenLabel": "Số dư đã ẩn"
+    "balancesHiddenLabel": "Số dư đã ẩn",
+    "signIn": "Đăng nhập",
+    "signingIn": "Đang đăng nhập…",
+    "signInPrompt": "Ký một tin nhắn để xác minh ví này và tiếp tục.",
+    "badgeSignIn": "Đăng nhập",
+    "signInBackgroundHint": "Ví đã kết nối của bạn cần đăng nhập"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "Liên kết",
       "logout": "Đăng xuất",
       "rewardsAlerts": "Cảnh báo Phần thưởng",
-      "sessionTimeout": "Thời gian chờ Phiên",
       "theme": "Giao diện",
       "themeMode": "Chế độ Sáng / Tối",
       "timeframe": "Khung Thời gian",
@@ -127,8 +131,7 @@
       "currency": "Chọn hiển thị loại tiền tệ cơ sở cho tài sản.",
       "language": "Chọn ngôn ngữ xem mặc định cho giao diện của bạn.",
       "links": "Tài liệu tham khảo toàn cầu và các liên kết tương tác với đội ngũ.",
-      "logout": "Thu hồi ngay lập tức quyền xác thực trên mọi nút đã kết nối.",
-      "sessionTimeout": "Tự động chấm dứt các vòng lặp trạng thái xác thực phiên khi không hoạt động.",
+      "logout": "Đăng xuất khỏi FlareGPT trên thiết bị này. Bạn sẽ cần ký một tin nhắn mới để đăng nhập lại.",
       "timeframe": "Xác định quy mô khoảng thời gian cửa sổ mặc định trên các biểu đồ trực quan.",
       "walletCapacity": "Các giới hạn của hệ thống để theo dõi hạn mức phân bổ tài sản.",
       "theme": "Chọn Sáng, Tối, hoặc theo cài đặt hệ thống của bạn.",
@@ -144,9 +147,6 @@
       "rewards": "Bật thông báo nhận phần thưởng"
     },
     "options": {
-      "15m": "15 phút",
-      "1h": "1 giờ",
-      "30m": "30 phút",
       "africa": "Châu Phi",
       "america": "Châu Mỹ",
       "area": "Vùng",
@@ -158,13 +158,13 @@
       "line": "Đường",
       "low": "Thấp",
       "medium": "Trung bình",
-      "never": "Không bao giờ",
       "off": "Tắt",
       "comfortable": "Thoải mái",
       "compact": "Gọn"
     },
     "security": {
-      "logoutAll": "Đăng xuất khỏi tất cả thiết bị"
+      "logout": "Đăng xuất",
+      "confirmLogout": "Xác nhận?"
     },
     "subtitles": {
       "About": "Tổng quan về hồ sơ triển khai hệ thống, quy tắc biên dịch và chỉ mục tài sản.",
@@ -273,7 +273,9 @@
     "feeds": "Các nguồn dữ liệu",
     "donate": "Ủng hộ",
     "addWatchlistWallet": "+ Thêm Ví Danh sách theo dõi",
-    "activeWallet": "Hoạt động: {{address}}"
+    "activeWallet": "Hoạt động: {{address}}",
+    "signInRequired": "Cần đăng nhập",
+    "signInRequiredHint": "Sử dụng menu ví ở thanh trên cùng để đăng nhập."
   },
   "wallet": {
     "activity": {

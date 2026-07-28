@@ -93,7 +93,12 @@
     "flareGptFabHint": "FlareGPTはここから開くようになりました",
     "hideBalances": "残高を非表示",
     "showBalances": "残高を表示",
-    "balancesHiddenLabel": "残高は非表示です"
+    "balancesHiddenLabel": "残高は非表示です",
+    "signIn": "サインイン",
+    "signingIn": "サインイン中…",
+    "signInPrompt": "このウォレットを確認して続行するには、メッセージに署名してください。",
+    "badgeSignIn": "サインイン",
+    "signInBackgroundHint": "接続中のウォレットはサインインが必要です"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "リンク",
       "logout": "ログアウト",
       "rewardsAlerts": "報酬アラート",
-      "sessionTimeout": "セッションのタイムアウト",
       "theme": "テーマ",
       "themeMode": "ライト / ダークモード",
       "timeframe": "期間",
@@ -127,8 +131,7 @@
       "currency": "資産の基準通貨表示を選択します。",
       "language": "デフォルトのインターフェース表示言語を選択します。",
       "links": "グローバルなドキュメント参照とチームのインタラクションリンクです。",
-      "logout": "接続されているすべてのノードで認証状態の権限を即座に破棄します。",
-      "sessionTimeout": "アイドリング状態の間にセッション検証状態ループを自動的に終了します。",
+      "logout": "この端末でFlareGPTからサインアウトします。再度サインインするには新しいメッセージへの署名が必要です。",
       "timeframe": "視覚チャートのデフォルトのウィンドウ期間スケールを定義します。",
       "walletCapacity": "割り当て容量プールを追跡するシステム制限です。",
       "theme": "ライト、ダーク、またはシステム設定に従うかを選択します。",
@@ -144,9 +147,6 @@
       "rewards": "報酬通知を有効にする"
     },
     "options": {
-      "15m": "15分",
-      "1h": "1時間",
-      "30m": "30分",
       "africa": "アフリカ",
       "america": "アメリカ",
       "area": "エリア",
@@ -158,13 +158,13 @@
       "line": "折れ線",
       "low": "低",
       "medium": "中",
-      "never": "なし",
       "off": "オフ",
       "comfortable": "快適",
       "compact": "コンパクト"
     },
     "security": {
-      "logoutAll": "すべてのデバイスからログアウト"
+      "logout": "ログアウト",
+      "confirmLogout": "確認しますか？"
     },
     "subtitles": {
       "About": "システム的な展開記録、コンパイルルール、および資産インデックスを概観します。",
@@ -273,7 +273,9 @@
     "feeds": "RSSフィード",
     "donate": "寄付",
     "addWatchlistWallet": "+ウォッチリストウォレットを追加",
-    "activeWallet": "有効：{{address}}"
+    "activeWallet": "有効：{{address}}",
+    "signInRequired": "サインインが必要です",
+    "signInRequiredHint": "サインインするには、上部バーのウォレットメニューを使用してください。"
   },
   "wallet": {
     "activity": {

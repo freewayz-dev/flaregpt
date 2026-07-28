@@ -363,7 +363,12 @@
     "flareGptFabHint": "FlareGPT now opens from here",
     "hideBalances": "Hide balances",
     "showBalances": "Show balances",
-    "balancesHiddenLabel": "Balances hidden"
+    "balancesHiddenLabel": "Balances hidden",
+    "signIn": "Sign In",
+    "signingIn": "Signing in…",
+    "signInPrompt": "Sign a message to verify this wallet and continue.",
+    "badgeSignIn": "Sign In",
+    "signInBackgroundHint": "Your connected wallet needs to sign in"
   },
   "settings": {
     "cards": {
@@ -377,7 +382,6 @@
       "links": "Links",
       "logout": "Logout",
       "rewardsAlerts": "Rewards Alerts",
-      "sessionTimeout": "Session Timeout",
       "theme": "Theme",
       "themeMode": "Light / Dark mode",
       "timeframe": "Timeframe",
@@ -402,8 +406,7 @@
       "currency": "Choose the asset base currency display.",
       "language": "Select your default interface viewing language.",
       "links": "Global documentation references and team interaction links.",
-      "logout": "Instantly revoke authentication state permissions across every connected node.",
-      "sessionTimeout": "Automatically terminate session validation status loops during idling states.",
+      "logout": "Sign out of FlareGPT on this device. You'll need to sign a new message to sign back in.",
       "timeframe": "Define default window period scales on visual charts.",
       "walletCapacity": "System limits tracking allocation capacity pools.",
       "theme": "Choose Light, Dark, or follow your system setting.",
@@ -419,9 +422,6 @@
       "rewards": "Enable reward notifications"
     },
     "options": {
-      "15m": "15 minutes",
-      "1h": "1 hour",
-      "30m": "30 minutes",
       "africa": "Africa",
       "america": "America",
       "area": "Area",
@@ -433,13 +433,13 @@
       "line": "Line",
       "low": "Low",
       "medium": "Medium",
-      "never": "Never",
       "off": "Off",
       "comfortable": "Comfortable",
       "compact": "Compact"
     },
     "security": {
-      "logoutAll": "Logout All Devices"
+      "logout": "Log Out",
+      "confirmLogout": "Confirm?"
     },
     "subtitles": {
       "About": "Overview systematic deployment records, compilation rules, and asset indexes.",
@@ -542,7 +542,9 @@
     "feeds": "Feeds",
     "donate": "Donate",
     "addWatchlistWallet": "+ Add Watchlist Wallet",
-    "activeWallet": "Active: {{address}}"
+    "activeWallet": "Active: {{address}}",
+    "signInRequired": "Sign-in required",
+    "signInRequiredHint": "Use the wallet menu in the top bar to sign in."
   },
   "wallet": {
     "activity": {

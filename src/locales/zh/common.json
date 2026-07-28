@@ -93,7 +93,12 @@
     "flareGptFabHint": "FlareGPT 现在从这里打开",
     "hideBalances": "隐藏余额",
     "showBalances": "显示余额",
-    "balancesHiddenLabel": "余额已隐藏"
+    "balancesHiddenLabel": "余额已隐藏",
+    "signIn": "登录",
+    "signingIn": "正在登录…",
+    "signInPrompt": "签署一条消息以验证此钱包并继续。",
+    "badgeSignIn": "登录",
+    "signInBackgroundHint": "您连接的钱包需要登录"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "链接",
       "logout": "登出",
       "rewardsAlerts": "奖励通知",
-      "sessionTimeout": "会话超时",
       "theme": "主题",
       "themeMode": "浅色 / 深色模式",
       "timeframe": "时间范围",
@@ -127,8 +131,7 @@
       "currency": "选择资产基础货币显示。",
       "language": "选择您的默认界面显示语言。",
       "links": "全局文档参考和团队互动链接。",
-      "logout": "立即撤销每个已连接节点上的身份验证状态权限。",
-      "sessionTimeout": "在空闲状态期间自动终止会话验证状态循环。",
+      "logout": "在此设备上退出 FlareGPT 登录。重新登录时需要重新签署一条消息。",
       "timeframe": "在视觉图表上定义默认的窗口周期比例。",
       "walletCapacity": "追踪分配容量池的系统限制。",
       "theme": "选择浅色、深色，或跟随系统设置。",
@@ -144,9 +147,6 @@
       "rewards": "启用奖励通知"
     },
     "options": {
-      "15m": "15分钟",
-      "1h": "1小时",
-      "30m": "30分钟",
       "africa": "非洲",
       "america": "美国",
       "area": "面积图",
@@ -158,13 +158,13 @@
       "line": "折线图",
       "low": "低",
       "medium": "中",
-      "never": "从不",
       "off": "关闭",
       "comfortable": "舒适",
       "compact": "紧凑"
     },
     "security": {
-      "logoutAll": "登出所有设备"
+      "logout": "退出登录",
+      "confirmLogout": "确认？"
     },
     "subtitles": {
       "About": "概述系统部署记录、编译规则和资产索引。",
@@ -273,7 +273,9 @@
     "feeds": "馈送",
     "donate": "捐献",
     "addWatchlistWallet": "+添加关注列表钱包",
-    "activeWallet": "有效： {{address}}"
+    "activeWallet": "有效： {{address}}",
+    "signInRequired": "需要登录",
+    "signInRequiredHint": "使用顶部栏中的钱包菜单登录。"
   },
   "wallet": {
     "activity": {

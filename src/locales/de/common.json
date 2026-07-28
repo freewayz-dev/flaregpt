@@ -93,7 +93,12 @@
     "flareGptFabHint": "FlareGPT wird jetzt von hier geöffnet",
     "hideBalances": "Guthaben ausblenden",
     "showBalances": "Guthaben anzeigen",
-    "balancesHiddenLabel": "Guthaben ausgeblendet"
+    "balancesHiddenLabel": "Guthaben ausgeblendet",
+    "signIn": "Anmelden",
+    "signingIn": "Anmeldung läuft…",
+    "signInPrompt": "Signiere eine Nachricht, um diese Wallet zu verifizieren und fortzufahren.",
+    "badgeSignIn": "Anmelden",
+    "signInBackgroundHint": "Deine verbundene Wallet muss sich anmelden"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "Links",
       "logout": "Abmelden",
       "rewardsAlerts": "Belohnungsalarme",
-      "sessionTimeout": "Sitzungs-Zeitlimit",
       "theme": "Design",
       "themeMode": "Hell- / Dunkelmodus",
       "timeframe": "Zeitrahmen",
@@ -127,8 +131,7 @@
       "currency": "Wählen Sie die Anzeige der Asset-Basiswährung.",
       "language": "Wählen Sie Ihre standardmäßige Anzeigesprache für die Benutzeroberfläche.",
       "links": "Globale Dokumentationsreferenzen und Team-Interaktionslinks.",
-      "logout": "Widerrufen Sie Autorisierungsstatusberechtigungen auf jedem verbundenen Knoten sofort.",
-      "sessionTimeout": "Beenden Sie Sitzungsvalidierungsstatusschleifen bei Inaktivität automatisch.",
+      "logout": "Meldet Sie auf diesem Gerät von FlareGPT ab. Zum erneuten Anmelden müssen Sie eine neue Nachricht signieren.",
       "timeframe": "Definieren Sie Standard-Fensterperiodenskalen in visuellen Diagrammen.",
       "walletCapacity": "Systemgrenzen zur Verfolgung von Zuweisungskapazitätspools.",
       "theme": "Wähle Hell, Dunkel oder folge deiner Systemeinstellung.",
@@ -144,9 +147,6 @@
       "rewards": "Belohnungsbenachrichtigungen aktivieren"
     },
     "options": {
-      "15m": "15 Minuten",
-      "1h": "1 Stunde",
-      "30m": "30 Minuten",
       "africa": "Afrika",
       "america": "Amerika",
       "area": "Fläche",
@@ -158,13 +158,13 @@
       "line": "Linie",
       "low": "Niedrig",
       "medium": "Mittel",
-      "never": "Nie",
       "off": "Aus",
       "comfortable": "Komfortabel",
       "compact": "Kompakt"
     },
     "security": {
-      "logoutAll": "Von allen Geräten abmelden"
+      "logout": "Abmelden",
+      "confirmLogout": "Bestätigen?"
     },
     "subtitles": {
       "About": "Übersicht über systemische Bereitstellungsaufzeichnungen, Kompilierungsregeln und Asset-Indizes.",
@@ -272,7 +272,9 @@
     "feeds": "Feeds",
     "donate": "Spenden",
     "addWatchlistWallet": "+ Watchlist-Wallet hinzufügen",
-    "activeWallet": "Aktiv: {{address}}"
+    "activeWallet": "Aktiv: {{address}}",
+    "signInRequired": "Anmeldung erforderlich",
+    "signInRequiredHint": "Nutze das Wallet-Menü in der oberen Leiste, um dich anzumelden."
   },
   "wallet": {
     "activity": {

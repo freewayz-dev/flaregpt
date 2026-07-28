@@ -93,7 +93,12 @@
     "flareGptFabHint": "FlareGPT ahora se abre desde aquí",
     "hideBalances": "Ocultar saldos",
     "showBalances": "Mostrar saldos",
-    "balancesHiddenLabel": "Saldos ocultos"
+    "balancesHiddenLabel": "Saldos ocultos",
+    "signIn": "Iniciar sesión",
+    "signingIn": "Iniciando sesión…",
+    "signInPrompt": "Firma un mensaje para verificar esta billetera y continuar.",
+    "badgeSignIn": "Iniciar sesión",
+    "signInBackgroundHint": "Tu billetera conectada necesita iniciar sesión"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "Enlaces",
       "logout": "Cerrar Sesión",
       "rewardsAlerts": "Alertas de Premios",
-      "sessionTimeout": "Tiempo de Espera de Sesión",
       "theme": "Tema",
       "themeMode": "Modo Claro / Oscuro",
       "timeframe": "Período de Tiempo",
@@ -127,8 +131,7 @@
       "currency": "Elija la visualización de la moneda base del activo.",
       "language": "Seleccione el idioma de visualización predeterminado de la interfaz.",
       "links": "Referencias de documentación global y enlaces de interacción del equipo.",
-      "logout": "Revoque instantáneamente los permisos de estado de autenticación en cada nodo conectado.",
-      "sessionTimeout": "Finalice automáticamente los bucles de estado de validación de sesión durante los estados de inactividad.",
+      "logout": "Cierra tu sesión de FlareGPT en este dispositivo. Deberás firmar un nuevo mensaje para volver a iniciar sesión.",
       "timeframe": "Defina las escalas de período de ventana predeterminadas en los gráficos visuales.",
       "walletCapacity": "Límites del sistema que controlan los grupos de capacidad de asignación.",
       "theme": "Elige Claro, Oscuro o sigue la configuración de tu sistema.",
@@ -144,9 +147,6 @@
       "rewards": "Activar notificaciones de premios"
     },
     "options": {
-      "15m": "15 minutos",
-      "1h": "1 hora",
-      "30m": "30 minutos",
       "africa": "África",
       "america": "América",
       "area": "Área",
@@ -158,13 +158,13 @@
       "line": "Línea",
       "low": "Bajo",
       "medium": "Medio",
-      "never": "Nunca",
       "off": "Desactivado",
       "comfortable": "Cómodo",
       "compact": "Compacto"
     },
     "security": {
-      "logoutAll": "Cerrar sesión en todos los dispositivos"
+      "logout": "Cerrar sesión",
+      "confirmLogout": "¿Confirmar?"
     },
     "subtitles": {
       "About": "Descripción general de los registros de implementación del sistema, reglas de compilación e índices de activos.",
@@ -272,7 +272,9 @@
     "feeds": "Feeds",
     "donate": "Donar",
     "addWatchlistWallet": "+ Añadir cartera de lista de seguimiento",
-    "activeWallet": "Activo: {{address}}"
+    "activeWallet": "Activo: {{address}}",
+    "signInRequired": "Se requiere iniciar sesión",
+    "signInRequiredHint": "Usa el menú de la billetera en la barra superior para iniciar sesión."
   },
   "wallet": {
     "activity": {

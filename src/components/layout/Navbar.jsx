@@ -20,6 +20,7 @@ import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useUIStore } from "@/store/useUIStore";
 import { useFlareGptStore } from "@/store/useFlareGptStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { shortenAddress } from "@/utils/address";
 import { ROUTES } from "@/config/routes";
 import WalletBadge from "@/components/common/WalletBadge";
@@ -82,6 +83,7 @@ export default function Navbar({
 
   const { address: connectedAddress, isConnected } = useConnection();
   const disconnectAll = useDisconnectAllWallets();
+  const { isCurrentWalletSignedIn, isAuthenticating, signIn } = useAuthStatus();
 
   const { activeAddress, allWallets, switchActiveAddress, maxSlots } =
     useDerivedWalletHub(connectedAddress, isConnected);
@@ -186,17 +188,50 @@ export default function Navbar({
   // user-chosen label there is genuinely distinct from the "Watchlist"
   // badge (identity vs. access level) and — with up to 5 tracked wallets —
   // easier to tell apart at a glance than similar-looking hex strings.
+  // Whether the wallet that's actually *connected* needs to sign in — this
+  // is a property of the connection itself (mirrors Sidebar.jsx's identical
+  // check), completely independent of which wallet the dashboard happens to
+  // be displaying right now. A watchlist wallet can be active while the
+  // connected wallet sits signed out in the background; that combination
+  // must still surface a way to sign in, since switching *back* to the
+  // connected wallet first was exactly the confusing extra step this fixes.
+  const connectedWalletNeedsSignIn = isConnected && !isCurrentWalletSignedIn;
+
+  // Whether the *active* slot specifically is the one needing sign-in —
+  // only true when the connected wallet is also what's currently active.
+  // This (not the check above) is what the trigger's own label/badge reacts
+  // to, so switching to a watchlist wallet still shows its own "Watchlist"
+  // badge rather than a "Sign In" badge that would misrepresent what's
+  // actually active.
+  const activeWalletNeedsSignIn =
+    activeWalletObject?.type === "connected" && connectedWalletNeedsSignIn;
+
+  // The trigger's label always names the wallet actually driving the
+  // dashboard — connection and authentication are separate states (see
+  // useAuthStatus.js), and turning the label itself into "Sign In" would
+  // collapse that distinction back into one, plus hide which wallet needs
+  // it. The badge is what carries the "needs sign-in" signal instead.
   const buttonLabel = activeWalletObject
     ? activeWalletObject.type === "connected"
       ? shortenAddress(activeWalletObject.address)
       : activeWalletObject.label
     : t("navbar.connectWallet", "Connect Wallet");
 
-  const buttonBadge = activeWalletObject
-    ? activeWalletObject.type === "connected"
-      ? { text: t("navbar.badgePrimary", "Primary"), tone: "primary" }
-      : { text: t("navbar.badgeWatchlist", "Watchlist"), tone: "watchlist" }
-    : null;
+  const buttonBadge = activeWalletNeedsSignIn
+    ? { text: t("navbar.badgeSignIn", "Sign In"), tone: "warning" }
+    : activeWalletObject
+      ? activeWalletObject.type === "connected"
+        ? { text: t("navbar.badgePrimary", "Primary"), tone: "primary" }
+        : { text: t("navbar.badgeWatchlist", "Watchlist"), tone: "watchlist" }
+      : null;
+
+  // Surfaced only in the case the badge above can't: a watchlist wallet is
+  // active (so the badge is rightly showing "Watchlist"), but the connected
+  // wallet still needs attention in the background. A small corner dot on
+  // the trigger itself is what lets a user notice this without having to
+  // open the dropdown first.
+  const showBackgroundSignInHint =
+    connectedWalletNeedsSignIn && !activeWalletNeedsSignIn;
 
   return (
     <>
@@ -302,15 +337,32 @@ export default function Navbar({
                 onClick={() => setWalletMenuOpen(!walletMenuOpen)}
                 aria-haspopup="true"
                 aria-expanded={walletMenuOpen}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg cursor-pointer transition-all border dark:border-none text-[10px] lg:text-[10.5px] bg-slate-100 dark:bg-[#1B1B1F] text-slate-600 dark:text-zinc-300"
+                title={
+                  showBackgroundSignInHint
+                    ? t(
+                        "navbar.signInBackgroundHint",
+                        "Your connected wallet needs to sign in",
+                      )
+                    : undefined
+                }
+                className={`relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-all border text-[10px] lg:text-[10.5px] cursor-pointer ${
+                  activeWalletNeedsSignIn
+                    ? "border-brand/30 bg-brand/10 text-brand hover:bg-brand hover:text-white"
+                    : "dark:border-none bg-slate-100 dark:bg-[#1B1B1F] text-slate-600 dark:text-zinc-300"
+                }`}
               >
+                {showBackgroundSignInHint && (
+                  <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-brand ring-2 ring-white dark:ring-[#0B0B0D] animate-pulse" />
+                )}
                 <span
                   className={`h-1.5 w-1.5 rounded-full shrink-0 ${
-                    activeWalletObject?.type === "connected"
-                      ? "bg-emerald-500 animate-pulse"
-                      : activeWalletObject?.type === "tracked"
-                        ? "bg-amber-500"
-                        : "bg-slate-400 dark:bg-zinc-600"
+                    activeWalletNeedsSignIn
+                      ? "bg-brand animate-pulse"
+                      : activeWalletObject?.type === "connected"
+                        ? "bg-emerald-500 animate-pulse"
+                        : activeWalletObject?.type === "tracked"
+                          ? "bg-amber-500"
+                          : "bg-slate-400 dark:bg-zinc-600"
                   }`}
                 />
                 <span className="max-w-[92px] truncate">{buttonLabel}</span>
@@ -351,6 +403,33 @@ export default function Navbar({
                     <WalletIcon className="h-3.5 w-3.5" />
                     {t("navbar.connectWallet")}
                   </button>
+                )}
+
+                {/* The wallet row above always shows the connected wallet —
+                    switching wallets must stay possible even while signed
+                    out, since disconnecting/reconnecting isn't required to
+                    fix this. This banner is the one place sign-in is
+                    actually triggered from; nothing else in the app repeats
+                    it. */}
+                {connectedWalletNeedsSignIn && (
+                  <div className="rounded-lg bg-brand/10 border border-brand/20 p-2 space-y-1.5">
+                    <p className="text-[10px] text-brand font-medium leading-snug">
+                      {t(
+                        "navbar.signInPrompt",
+                        "Sign a message to verify this wallet and continue.",
+                      )}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={signIn}
+                      disabled={isAuthenticating}
+                      className="w-full flex items-center justify-center gap-1.5 py-1.5 rounded-lg bg-brand hover:bg-brand-hover disabled:opacity-60 disabled:cursor-not-allowed text-white text-[10.5px] font-semibold transition-colors cursor-pointer"
+                    >
+                      {isAuthenticating
+                        ? t("navbar.signingIn", "Signing in…")
+                        : t("navbar.signIn", "Sign In")}
+                    </button>
+                  </div>
                 )}
 
                 {primaryWallet && (
@@ -476,6 +555,27 @@ export default function Navbar({
                   <WalletIcon className="h-3.5 w-3.5" />
                   {t("navbar.connectWallet")}
                 </button>
+              )}
+
+              {connectedWalletNeedsSignIn && (
+                <div className="rounded-xl bg-brand/10 border border-brand/20 p-2.5 space-y-2">
+                  <p className="text-[10.5px] text-brand font-medium leading-snug">
+                    {t(
+                      "navbar.signInPrompt",
+                      "Sign a message to verify this wallet and continue.",
+                    )}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={signIn}
+                    disabled={isAuthenticating}
+                    className="w-full py-2 rounded-lg bg-brand hover:bg-brand-hover disabled:opacity-60 disabled:cursor-not-allowed text-white text-[11px] font-semibold transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                  >
+                    {isAuthenticating
+                      ? t("navbar.signingIn", "Signing in…")
+                      : t("navbar.signIn", "Sign In")}
+                  </button>
+                </div>
               )}
 
               {primaryWallet && (

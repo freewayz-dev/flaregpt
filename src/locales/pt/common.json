@@ -93,7 +93,12 @@
     "flareGptFabHint": "O FlareGPT agora abre por aqui",
     "hideBalances": "Ocultar saldos",
     "showBalances": "Mostrar saldos",
-    "balancesHiddenLabel": "Saldos ocultos"
+    "balancesHiddenLabel": "Saldos ocultos",
+    "signIn": "Entrar",
+    "signingIn": "Entrando…",
+    "signInPrompt": "Assine uma mensagem para verificar esta carteira e continuar.",
+    "badgeSignIn": "Entrar",
+    "signInBackgroundHint": "Sua carteira conectada precisa entrar"
   },
   "settings": {
     "cards": {
@@ -107,7 +112,6 @@
       "links": "Ligações",
       "logout": "Sair",
       "rewardsAlerts": "Alertas de Recompensas",
-      "sessionTimeout": "Tempo Limite da Sessão",
       "theme": "Tema",
       "themeMode": "Modo Claro / Escuro",
       "timeframe": "Período de Tempo",
@@ -127,8 +131,7 @@
       "currency": "Escolha a exibição da moeda base do ativo.",
       "language": "Selecione o idioma de exibição padrão da interface.",
       "links": "Referências de documentação global e links de interação da equipe.",
-      "logout": "Revogue instantaneamente as permissões de status de autenticação em cada nó conectado.",
-      "sessionTimeout": "Encerre automaticamente os loops de status de validação de sessão durante períodos de inatividade.",
+      "logout": "Encerra sua sessão do FlareGPT neste dispositivo. Você precisará assinar uma nova mensagem para entrar novamente.",
       "timeframe": "Defina as escalas de período de janela padrão em gráficos visuais.",
       "walletCapacity": "Limites do sistema que monitoram os pools de capacidade de alocação.",
       "theme": "Escolha Claro, Escuro, ou siga a configuração do seu sistema.",
@@ -144,9 +147,6 @@
       "rewards": "Ativar notificações de recompensas"
     },
     "options": {
-      "15m": "15 minutos",
-      "1h": "1 hora",
-      "30m": "30 minutos",
       "africa": "África",
       "america": "América",
       "area": "Área",
@@ -158,13 +158,13 @@
       "line": "Linha",
       "low": "Baixo",
       "medium": "Médio",
-      "never": "Nunca",
       "off": "Desativado",
       "comfortable": "Confortável",
       "compact": "Compacto"
     },
     "security": {
-      "logoutAll": "Desconectar Todos os Dispositivos"
+      "logout": "Sair",
+      "confirmLogout": "Confirmar?"
     },
     "subtitles": {
       "About": "Visão geral dos registros de implantação do sistema, regras de compilação e índices de ativos.",
@@ -273,7 +273,9 @@
     "feeds": "Rações",
     "donate": "Doar",
     "addWatchlistWallet": "+ Adicionar Carteira da Lista de Observação",
-    "activeWallet": "Ativo: {{address}}"
+    "activeWallet": "Ativo: {{address}}",
+    "signInRequired": "Login necessário",
+    "signInRequiredHint": "Use o menu da carteira na barra superior para entrar."
   },
   "wallet": {
     "activity": {

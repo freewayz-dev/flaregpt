@@ -5,9 +5,19 @@ import { MotionConfig } from "framer-motion";
 import BlueLightOverlay from "./components/common/BlueLightOverlay";
 import AppRoutes from "./routes/AppRoutes";
 import { useUIStore } from "./store/useUIStore";
+import { useAuthSync } from "./hooks/useAuthSync";
 
 function App() {
   const reduceMotionOverride = useUIStore((state) => state.reduceMotionOverride);
+
+  // Mounted at the app root, not inside DashboardLayout: wagmi's connection
+  // state is global, and a wallet can be connected from the landing page
+  // (before DashboardLayout ever renders) just as easily as from inside
+  // the dashboard. Scoping this to DashboardLayout would leave the sign-in
+  // flow un-mounted for that entire path, relying on the landing page's
+  // own post-connect redirect to eventually reach it rather than reacting
+  // the moment a wallet actually connects.
+  useAuthSync();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");

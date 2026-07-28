@@ -6,12 +6,14 @@ import {
   XMarkIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
+  WalletIcon,
 } from "@heroicons/react/24/outline";
 
 import FlareGptSimpleLogo from "@/components/common/Logo";
 import Logo from "@/assets/icons/fl.png";
 import { useUIStore } from "@/store/useUIStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { NAV_LINKS as links } from "@/config/navigation";
 import { ROUTES } from "@/config/routes";
 
@@ -31,6 +33,13 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
   // Real Wagmi Account State variables
   const { address, isConnected } = useConnection();
   const disconnectAll = useDisconnectAllWallets();
+  const { isCurrentWalletSignedIn } = useAuthStatus();
+  // Wallet connection and authentication are separate states — being
+  // connected-but-signed-out is a real, expected state (right after
+  // logout), not an error one. The actual "Sign In" action lives only in
+  // the Navbar's account dropdown; this footer just reflects the status so
+  // there's never more than one Sign In control on screen at once.
+  const needsSignIn = isConnected && !isCurrentWalletSignedIn;
 
   // Format long wallet addresses for your minimalist UI (e.g. 0x71C...3A90)
   const formatAddress = (addr) => {
@@ -172,6 +181,27 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
                     {t("sidebar.connectWallet")}
                   </button>
                 </>
+              ) : needsSignIn ? (
+                <>
+                  <div className="flex flex-col gap-0.5">
+                    <p className="text-xs text-brand font-medium">
+                      {t("sidebar.signInRequired", "Sign-in required")}
+                    </p>
+                    <p className="text-[10px] text-slate-400 dark:text-zinc-500 leading-snug">
+                      {t(
+                        "sidebar.signInRequiredHint",
+                        "Use the wallet menu in the top bar to sign in.",
+                      )}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={disconnectAll}
+                    className="w-full rounded-xl border border-[#E5E7EB] dark:border-none bg-[#FFFFFF] dark:bg-surface-inset px-3 py-2 text-xs text-ink-secondary hover:bg-surface-subtle dark:hover:bg-surface-card-hover hover:text-ink-primary dark:hover:text-white transition-colors cursor-pointer"
+                  >
+                    {t("sidebar.disconnect")}
+                  </button>
+                </>
               ) : (
                 <>
                   <div className="flex flex-col gap-0.5">
@@ -201,10 +231,11 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
             {collapsed && (
               <button
                 type="button"
-                onClick={() =>
-                  isConnected ? disconnectAll() : onOpenWalletModal()
-                }
-                className="hidden lg:flex w-full justify-center rounded-xl p-3 bg-brand/10 text-brand cursor-pointer"
+                onClick={() => (isConnected ? disconnectAll() : onOpenWalletModal())}
+                title={needsSignIn ? t("sidebar.signInRequired", "Sign-in required") : undefined}
+                className={`hidden lg:flex w-full justify-center rounded-xl p-3 cursor-pointer ${
+                  needsSignIn ? "bg-brand text-white" : "bg-brand/10 text-brand"
+                }`}
               >
                 <WalletIcon className="h-5 w-5" />
               </button>
