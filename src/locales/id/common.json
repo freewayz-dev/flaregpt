@@ -215,7 +215,16 @@
       "confirmRemove": "Konfirmasi hapus?",
       "noDefaultSelected": "Belum dipilih",
       "rename": "Ganti nama",
-      "cancelRename": "Batal"
+      "cancelRename": "Batal",
+      "connectActionUnlimited": "Tambah Dompet ({{current}} Dilacak)",
+      "noLimit": "Tambahkan dompet sebanyak yang Anda inginkan.",
+      "duplicateAddress": "Alamat ini sudah ada di watchlist Anda.",
+      "guestLimitTitle": "Masuk untuk melacak lebih banyak dompet",
+      "guestLimitBenefitSync": "Sinkronkan watchlist Anda di semua perangkat",
+      "guestLimitBenefitMore": "Simpan lebih dari 3 dompet",
+      "guestLimitBenefitBackup": "Jaga watchlist Anda tetap tercadangkan",
+      "searchPlaceholder": "Cari di {{count}} dompet...",
+      "noSearchResults": "Tidak ada dompet yang cocok dengan pencarian Anda."
     },
     "links": {
       "docs": "Dokumentasi",

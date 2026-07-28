@@ -215,7 +215,16 @@
       "confirmRemove": "삭제를 확인할까요?",
       "noDefaultSelected": "선택 안 됨",
       "rename": "이름 바꾸기",
-      "cancelRename": "취소"
+      "cancelRename": "취소",
+      "connectActionUnlimited": "지갑 추가 ({{current}}개 추적 중)",
+      "noLimit": "원하는 만큼 지갑을 추가하세요.",
+      "duplicateAddress": "이 주소는 이미 관심 목록에 있습니다.",
+      "guestLimitTitle": "더 많은 지갑을 추적하려면 로그인하세요",
+      "guestLimitBenefitSync": "기기 간 관심 목록 동기화",
+      "guestLimitBenefitMore": "3개 이상의 지갑 저장",
+      "guestLimitBenefitBackup": "관심 목록 백업 유지",
+      "searchPlaceholder": "{{count}}개 지갑 검색...",
+      "noSearchResults": "검색과 일치하는 지갑이 없습니다."
     },
     "links": {
       "docs": "프리미엄 지원",

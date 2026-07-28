@@ -215,7 +215,16 @@
       "confirmRemove": "确认移除？",
       "noDefaultSelected": "未选择",
       "rename": "重命名",
-      "cancelRename": "取消"
+      "cancelRename": "取消",
+      "connectActionUnlimited": "添加钱包（已追踪 {{current}} 个）",
+      "noLimit": "可添加任意数量的钱包。",
+      "duplicateAddress": "该地址已在您的关注列表中。",
+      "guestLimitTitle": "登录以追踪更多钱包",
+      "guestLimitBenefitSync": "跨设备同步您的关注列表",
+      "guestLimitBenefitMore": "保存 3 个以上的钱包",
+      "guestLimitBenefitBackup": "为您的关注列表保留备份",
+      "searchPlaceholder": "在 {{count}} 个钱包中搜索...",
+      "noSearchResults": "没有与您的搜索匹配的钱包。"
     },
     "links": {
       "docs": "文档批注",

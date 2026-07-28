@@ -27,7 +27,7 @@ export default function WalletContextPill({ onOpenWalletModal }) {
   const navigate = useNavigate();
   const setSettingsActiveTab = useUIStore((s) => s.setSettingsActiveTab);
 
-  const { allWallets, effectiveAddress, effectiveWallet, setAiWalletAddress } =
+  const { allWallets, effectiveAddress, effectiveWallet, setAiWalletAddress, maxSlots } =
     useFlareGptWalletContext();
 
   const [open, setOpen] = useState(false);
@@ -147,7 +147,10 @@ export default function WalletContextPill({ onOpenWalletModal }) {
         {watchlistWallets.length > 0 && (
           <div className="border-t border-line pt-1 mt-1">
             <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
-              {t("navbar.watchlistSection", { current: watchlistWallets.length, max: 5 })}
+              {t("navbar.watchlistSection", {
+                current: watchlistWallets.length,
+                max: Number.isFinite(maxSlots) ? maxSlots : "∞",
+              })}
             </p>
             <div className="max-h-32 overflow-y-auto space-y-0.5 scrollbar-none">
               {watchlistWallets.map((wallet) => (

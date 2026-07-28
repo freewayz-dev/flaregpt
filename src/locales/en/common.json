@@ -480,7 +480,16 @@
       "confirmRemove": "Confirm remove?",
       "noDefaultSelected": "None selected",
       "rename": "Rename",
-      "cancelRename": "Cancel"
+      "cancelRename": "Cancel",
+      "connectActionUnlimited": "Add Wallet ({{current}} Tracked)",
+      "noLimit": "Add as many wallets as you like.",
+      "duplicateAddress": "This address is already on your watchlist.",
+      "guestLimitTitle": "Sign in to track more wallets",
+      "guestLimitBenefitSync": "Sync your watchlist across devices",
+      "guestLimitBenefitMore": "Store more than 3 wallets",
+      "guestLimitBenefitBackup": "Keep your watchlist backed up",
+      "searchPlaceholder": "Search {{count}} wallets...",
+      "noSearchResults": "No wallets match your search."
     },
     "groups": {
       "personalization": "Personalization",

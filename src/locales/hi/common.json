@@ -215,7 +215,16 @@
       "confirmRemove": "हटाने की पुष्टि करें?",
       "noDefaultSelected": "कोई चयनित नहीं",
       "rename": "नाम बदलें",
-      "cancelRename": "रद्द करें"
+      "cancelRename": "रद्द करें",
+      "connectActionUnlimited": "वॉलेट जोड़ें ({{current}} ट्रैक किए गए)",
+      "noLimit": "जितने चाहें उतने वॉलेट जोड़ें।",
+      "duplicateAddress": "यह पता पहले से ही आपकी वॉचलिस्ट में है।",
+      "guestLimitTitle": "अधिक वॉलेट ट्रैक करने के लिए साइन इन करें",
+      "guestLimitBenefitSync": "अपनी वॉचलिस्ट को सभी डिवाइस पर सिंक करें",
+      "guestLimitBenefitMore": "3 से अधिक वॉलेट स्टोर करें",
+      "guestLimitBenefitBackup": "अपनी वॉचलिस्ट को बैकअप में रखें",
+      "searchPlaceholder": "{{count}} वॉलेट में खोजें...",
+      "noSearchResults": "आपकी खोज से कोई वॉलेट मेल नहीं खाता।"
     },
     "links": {
       "docs": "डॉक्स",

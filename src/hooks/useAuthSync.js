@@ -46,7 +46,7 @@ async function attemptSignIn(address, signMessageAsync) {
 // already connected but unauthenticated) goes through the manual `signIn`
 // export instead, driven by a UI action rather than a connection event.
 export function useAuthSync() {
-  const { address, isConnected } = useConnection();
+  const { address, isConnected, isReconnecting } = useConnection();
   // `signMessage`/`signMessageAsync` on useSignMessage()'s own return are
   // deprecated in favor of the underlying mutation's `mutate`/`mutateAsync`
   // — same pattern already used for useConnect()/useDisconnect() elsewhere
@@ -92,6 +92,27 @@ export function useAuthSync() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // wagmi's own `isReconnecting` status is briefly `true` exactly once per
+  // page load — specifically when it's silently restoring a connection the
+  // wallet already had (`reconnectOnMount`), as opposed to `isConnecting`
+  // for a real, explicit connect() call. Captured in a ref (not read
+  // directly where it's consulted below) because by the time `isConnected`
+  // itself becomes true, wagmi has already moved past 'reconnecting' —
+  // these are mutually exclusive statuses, so this is the only way to
+  // remember it happened at all.
+  const hadSilentAutoReconnectRef = useRef(false);
+  useEffect(() => {
+    if (isReconnecting) hadSilentAutoReconnectRef.current = true;
+  }, [isReconnecting]);
+
+  // Never reset once set (unlike prevConnectionRef below, which cycles
+  // back through a disconnected-looking snapshot on every real
+  // disconnect) — this is specifically "has this page load ever seen any
+  // connection at all yet", used only to scope the silent-reconnect skip
+  // to the very first one, so a later genuine reconnect or wallet switch
+  // in the same session is never affected by how the *first* one arrived.
+  const hasEverConnectedRef = useRef(false);
+
   // Tracks the *previous* connection snapshot so this effect can tell "the
   // wallet just connected (or switched addresses)" apart from "I'm still
   // connected as the same address, but something else — namely `token` —
@@ -105,7 +126,9 @@ export function useAuthSync() {
     const prev = prevConnectionRef.current;
     const connectionChanged =
       prev.isConnected !== isConnected || prev.address !== address;
+    const isFirstConnectionEver = isConnected && !hasEverConnectedRef.current;
     prevConnectionRef.current = { isConnected, address };
+    if (isConnected) hasEverConnectedRef.current = true;
 
     if (!isConnected || !address) return;
     if (token && authenticatedAddress?.toLowerCase() === address.toLowerCase()) {
@@ -116,6 +139,16 @@ export function useAuthSync() {
     // `authenticatedAddress` changed while the connection itself was
     // untouched (a logout does exactly that).
     if (!connectionChanged) return;
+
+    // A silent restore of a wallet the user never actually clicked
+    // anything for (typically: they logged out but never disconnected the
+    // wallet itself, then refreshed the page) must never by itself demand
+    // a fresh signature — only an explicit action does (the manual `signIn`
+    // export, wired to a real "Sign In" button). Scoped to the very first
+    // connection this mount ever observes: a later explicit reconnect or
+    // wallet switch always proceeds normally even if this page load's own
+    // initial restore happened to be silent.
+    if (isFirstConnectionEver && hadSilentAutoReconnectRef.current) return;
 
     attemptSignIn(address, signMessageAsync);
   }, [isConnected, address, token, authenticatedAddress, signMessageAsync]);

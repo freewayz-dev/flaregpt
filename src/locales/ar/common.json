@@ -215,7 +215,16 @@
       "confirmRemove": "تأكيد الإزالة؟",
       "noDefaultSelected": "لم يتم التحديد",
       "rename": "إعادة تسمية",
-      "cancelRename": "إلغاء"
+      "cancelRename": "إلغاء",
+      "connectActionUnlimited": "إضافة محفظة ({{current}} متتبَّعة)",
+      "noLimit": "أضف أي عدد تريده من المحافظ.",
+      "duplicateAddress": "هذا العنوان موجود بالفعل في قائمة المتابعة الخاصة بك.",
+      "guestLimitTitle": "سجّل الدخول لتتبع المزيد من المحافظ",
+      "guestLimitBenefitSync": "مزامنة قائمة المتابعة عبر أجهزتك",
+      "guestLimitBenefitMore": "تخزين أكثر من 3 محافظ",
+      "guestLimitBenefitBackup": "الحفاظ على نسخة احتياطية من قائمة المتابعة",
+      "searchPlaceholder": "بحث في {{count}} محفظة...",
+      "noSearchResults": "لا توجد محافظ تطابق بحثك."
     },
     "links": {
       "docs": "مستندات",

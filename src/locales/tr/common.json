@@ -215,7 +215,16 @@
       "confirmRemove": "Kaldırma onaylansın mı?",
       "noDefaultSelected": "Seçilmedi",
       "rename": "Yeniden adlandır",
-      "cancelRename": "İptal"
+      "cancelRename": "İptal",
+      "connectActionUnlimited": "Cüzdan Ekle ({{current}} izleniyor)",
+      "noLimit": "İstediğiniz kadar cüzdan ekleyin.",
+      "duplicateAddress": "Bu adres zaten izleme listenizde.",
+      "guestLimitTitle": "Daha fazla cüzdan izlemek için giriş yapın",
+      "guestLimitBenefitSync": "İzleme listenizi cihazlar arasında senkronize edin",
+      "guestLimitBenefitMore": "3'ten fazla cüzdan saklayın",
+      "guestLimitBenefitBackup": "İzleme listenizi yedekli tutun",
+      "searchPlaceholder": "{{count}} cüzdanda ara...",
+      "noSearchResults": "Aramanızla eşleşen cüzdan yok."
     },
     "links": {
       "docs": "Dokümanlar",

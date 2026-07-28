@@ -215,7 +215,16 @@
       "confirmRemove": "Entfernen bestätigen?",
       "noDefaultSelected": "Keine Auswahl",
       "rename": "Umbenennen",
-      "cancelRename": "Abbrechen"
+      "cancelRename": "Abbrechen",
+      "connectActionUnlimited": "Wallet hinzufügen ({{current}} verfolgt)",
+      "noLimit": "Füge so viele Wallets hinzu, wie du möchtest.",
+      "duplicateAddress": "Diese Adresse steht bereits auf deiner Watchlist.",
+      "guestLimitTitle": "Melde dich an, um mehr Wallets zu verfolgen",
+      "guestLimitBenefitSync": "Synchronisiere deine Watchlist geräteübergreifend",
+      "guestLimitBenefitMore": "Speichere mehr als 3 Wallets",
+      "guestLimitBenefitBackup": "Halte deine Watchlist gesichert",
+      "searchPlaceholder": "{{count}} Wallets durchsuchen...",
+      "noSearchResults": "Keine Wallets entsprechen deiner Suche."
     },
     "links": {
       "docs": "Docs",

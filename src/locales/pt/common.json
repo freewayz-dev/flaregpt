@@ -215,7 +215,16 @@
       "confirmRemove": "Confirmar remoção?",
       "noDefaultSelected": "Nenhuma selecionada",
       "rename": "Renomear",
-      "cancelRename": "Cancelar"
+      "cancelRename": "Cancelar",
+      "connectActionUnlimited": "Adicionar carteira ({{current}} rastreadas)",
+      "noLimit": "Adicione quantas carteiras quiser.",
+      "duplicateAddress": "Este endereço já está na sua lista de observação.",
+      "guestLimitTitle": "Entre para rastrear mais carteiras",
+      "guestLimitBenefitSync": "Sincronize sua lista entre dispositivos",
+      "guestLimitBenefitMore": "Guarde mais de 3 carteiras",
+      "guestLimitBenefitBackup": "Mantenha sua lista com backup",
+      "searchPlaceholder": "Pesquisar em {{count}} carteiras...",
+      "noSearchResults": "Nenhuma carteira corresponde à sua pesquisa."
     },
     "links": {
       "docs": "Docs",

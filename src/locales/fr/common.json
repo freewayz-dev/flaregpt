@@ -215,7 +215,16 @@
       "confirmRemove": "Confirmer la suppression ?",
       "noDefaultSelected": "Aucun sélectionné",
       "rename": "Renommer",
-      "cancelRename": "Annuler"
+      "cancelRename": "Annuler",
+      "connectActionUnlimited": "Ajouter un portefeuille ({{current}} suivis)",
+      "noLimit": "Ajoutez autant de portefeuilles que vous le souhaitez.",
+      "duplicateAddress": "Cette adresse figure déjà dans votre liste de suivi.",
+      "guestLimitTitle": "Connectez-vous pour suivre plus de portefeuilles",
+      "guestLimitBenefitSync": "Synchronisez votre liste de suivi entre appareils",
+      "guestLimitBenefitMore": "Stockez plus de 3 portefeuilles",
+      "guestLimitBenefitBackup": "Gardez votre liste de suivi sauvegardée",
+      "searchPlaceholder": "Rechercher parmi {{count}} portefeuilles...",
+      "noSearchResults": "Aucun portefeuille ne correspond à votre recherche."
     },
     "links": {
       "docs": "Doc",

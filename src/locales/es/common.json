@@ -215,7 +215,16 @@
       "confirmRemove": "¿Confirmar eliminación?",
       "noDefaultSelected": "Ninguna seleccionada",
       "rename": "Renombrar",
-      "cancelRename": "Cancelar"
+      "cancelRename": "Cancelar",
+      "connectActionUnlimited": "Añadir billetera ({{current}} en seguimiento)",
+      "noLimit": "Añade tantas billeteras como quieras.",
+      "duplicateAddress": "Esta dirección ya está en tu lista de seguimiento.",
+      "guestLimitTitle": "Inicia sesión para seguir más billeteras",
+      "guestLimitBenefitSync": "Sincroniza tu lista de seguimiento entre dispositivos",
+      "guestLimitBenefitMore": "Guarda más de 3 billeteras",
+      "guestLimitBenefitBackup": "Mantén tu lista de seguimiento respaldada",
+      "searchPlaceholder": "Buscar entre {{count}} billeteras...",
+      "noSearchResults": "Ninguna billetera coincide con tu búsqueda."
     },
     "links": {
       "docs": "Docs",

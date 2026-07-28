@@ -6,6 +6,7 @@ import BlueLightOverlay from "./components/common/BlueLightOverlay";
 import AppRoutes from "./routes/AppRoutes";
 import { useUIStore } from "./store/useUIStore";
 import { useAuthSync } from "./hooks/useAuthSync";
+import { useWatchlistSync } from "./hooks/useWatchlistSync";
 
 function App() {
   const reduceMotionOverride = useUIStore((state) => state.reduceMotionOverride);
@@ -18,6 +19,10 @@ function App() {
   // own post-connect redirect to eventually reach it rather than reacting
   // the moment a wallet actually connects.
   useAuthSync();
+  // Same mount point as useAuthSync — the guest -> account watchlist merge
+  // (see useWatchlistSync.js) needs to react to a sign-in wherever it
+  // happens, not just from inside the dashboard.
+  useWatchlistSync();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");

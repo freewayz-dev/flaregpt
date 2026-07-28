@@ -51,4 +51,11 @@ export const queryKeys = {
     all: ["walletActivity"],
     activity: (address) => [...queryKeys.walletActivity.all, "activity", address],
   },
+  // Authenticated users only (see useWalletHubStore.js) — a guest's
+  // watchlist lives entirely in localStorage and never goes through
+  // react-query at all.
+  watchlist: {
+    all: ["watchlist"],
+    list: () => [...queryKeys.watchlist.all, "list"],
+  },
 };

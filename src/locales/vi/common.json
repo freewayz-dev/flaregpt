@@ -215,7 +215,16 @@
       "confirmRemove": "Xác nhận xóa?",
       "noDefaultSelected": "Chưa chọn",
       "rename": "Đổi tên",
-      "cancelRename": "Hủy"
+      "cancelRename": "Hủy",
+      "connectActionUnlimited": "Thêm ví ({{current}} đang theo dõi)",
+      "noLimit": "Thêm bao nhiêu ví tùy thích.",
+      "duplicateAddress": "Địa chỉ này đã có trong danh sách theo dõi của bạn.",
+      "guestLimitTitle": "Đăng nhập để theo dõi thêm ví",
+      "guestLimitBenefitSync": "Đồng bộ danh sách theo dõi trên nhiều thiết bị",
+      "guestLimitBenefitMore": "Lưu trữ hơn 3 ví",
+      "guestLimitBenefitBackup": "Sao lưu danh sách theo dõi của bạn",
+      "searchPlaceholder": "Tìm kiếm trong {{count}} ví...",
+      "noSearchResults": "Không có ví nào khớp với tìm kiếm của bạn."
     },
     "links": {
       "docs": "Tài liệu",

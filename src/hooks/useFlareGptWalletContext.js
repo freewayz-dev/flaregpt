@@ -16,7 +16,7 @@ import { useFlareGptStore } from "@/store/useFlareGptStore";
 // the dashboard's active wallet either way.
 export function useFlareGptWalletContext() {
   const { address: connectedAddress, isConnected } = useConnection();
-  const { allWallets, activeAddress: dashboardActiveAddress } = useDerivedWalletHub(
+  const { allWallets, activeAddress: dashboardActiveAddress, maxSlots } = useDerivedWalletHub(
     connectedAddress,
     isConnected,
   );
@@ -29,5 +29,5 @@ export function useFlareGptWalletContext() {
     ? (allWallets.find((w) => w.address === effectiveAddress) ?? null)
     : null;
 
-  return { allWallets, effectiveAddress, effectiveWallet, setAiWalletAddress };
+  return { allWallets, effectiveAddress, effectiveWallet, setAiWalletAddress, maxSlots };
 }

@@ -215,7 +215,16 @@
       "confirmRemove": "Подтвердить удаление?",
       "noDefaultSelected": "Не выбрано",
       "rename": "Переименовать",
-      "cancelRename": "Отмена"
+      "cancelRename": "Отмена",
+      "connectActionUnlimited": "Добавить кошелёк (отслеживается: {{current}})",
+      "noLimit": "Добавляйте сколько угодно кошельков.",
+      "duplicateAddress": "Этот адрес уже в вашем списке отслеживания.",
+      "guestLimitTitle": "Войдите, чтобы отслеживать больше кошельков",
+      "guestLimitBenefitSync": "Синхронизируйте список отслеживания между устройствами",
+      "guestLimitBenefitMore": "Храните более 3 кошельков",
+      "guestLimitBenefitBackup": "Сохраняйте резервную копию списка",
+      "searchPlaceholder": "Поиск среди {{count}} кошельков...",
+      "noSearchResults": "Нет кошельков, соответствующих запросу."
     },
     "links": {
       "docs": "Документы",

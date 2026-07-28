@@ -457,7 +457,7 @@ export default function Navbar({
                     <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
                       {t("navbar.watchlistSection", {
                         current: watchlistWallets.length,
-                        max: maxSlots,
+                        max: Number.isFinite(maxSlots) ? maxSlots : "∞",
                       })}
                     </p>
                     <div className="max-h-40 overflow-y-auto space-y-0.5 scrollbar-none">
@@ -604,7 +604,7 @@ export default function Navbar({
                 <label className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] block px-1 pt-2">
                   {t("navbar.watchlistSection", {
                     current: watchlistWallets.length,
-                    max: maxSlots,
+                    max: Number.isFinite(maxSlots) ? maxSlots : "∞",
                   })}
                 </label>
                 <div className="max-h-40 overflow-y-auto space-y-1 pr-1 scrollbar-none">

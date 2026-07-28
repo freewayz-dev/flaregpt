@@ -215,7 +215,16 @@
       "confirmRemove": "削除を確認しますか？",
       "noDefaultSelected": "未選択",
       "rename": "名前を変更",
-      "cancelRename": "キャンセル"
+      "cancelRename": "キャンセル",
+      "connectActionUnlimited": "ウォレットを追加（{{current}}件を追跡中）",
+      "noLimit": "好きなだけウォレットを追加できます。",
+      "duplicateAddress": "このアドレスはすでにウォッチリストに登録されています。",
+      "guestLimitTitle": "サインインしてさらにウォレットを追跡",
+      "guestLimitBenefitSync": "デバイス間でウォッチリストを同期",
+      "guestLimitBenefitMore": "3件を超えるウォレットを保存",
+      "guestLimitBenefitBackup": "ウォッチリストをバックアップ",
+      "searchPlaceholder": "{{count}}件のウォレットを検索...",
+      "noSearchResults": "検索に一致するウォレットがありません。"
     },
     "links": {
       "docs": "ドックス",
