@@ -217,11 +217,9 @@
     }
   },
   "flareWidget": {
-    "chatHistory": "Chat history",
     "close": "Close",
     "collapse": "Collapse",
     "expand": "Expand",
-    "newChat": "New chat",
     "openFullPage": "Open full page"
   },
   "flrgpt": {
@@ -234,9 +232,7 @@
       "stakingOpportunities": "Show my staking opportunities"
     },
     "wallet": {
-      "analyzing": "Analyzing:",
-      "general": "General",
-      "generalHint": "No wallet context"
+      "analyzing": "Analyzing:"
     },
     "empty": {
       "title": "Ask FlareGPT anything",
@@ -255,19 +251,13 @@
       "copyFailed": "Copy failed"
     },
     "jumpToLatest": "Jump to latest",
-    "history": {
-      "title": "History",
-      "newChat": "New chat",
-      "empty": "No conversations yet.",
-      "untitled": "New conversation",
-      "pin": "Pin conversation",
-      "unpin": "Unpin conversation",
-      "searchPlaceholder": "Search conversations...",
-      "noResults": "No conversations found",
-      "moreActions": "More actions",
-      "delete": "Delete conversation",
-      "pinLimitReached": "You can pin up to {{count}} conversations — unpin one first."
-    }
+    "clearChat": {
+      "button": "Clear Chat",
+      "confirm": "Confirm?",
+      "failed": "Couldn't clear chat — please try again."
+    },
+    "historyLoadFailed": "Couldn't load your chat history.",
+    "sendError": "Something went wrong — please try again."
   },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Built on Flare Network.",
@@ -515,13 +505,12 @@
       "walletCache": "Wallet Activity Cache",
       "walletCacheDescription": "Clears the cached transaction history — the next visit will re-fetch it.",
       "conversations": "FlareGPT Conversations",
-      "conversationsDescription": "Clears every conversation stored in this browser.",
+      "conversationsDescription": "Clears your FlareGPT chat history from your account. This can't be undone.",
       "clear": "Clear",
       "confirmClear": "Confirm?",
       "accountTitle": "Account Data",
-      "accountSubtitle": "Backend-synced data, available once account sync ships.",
-      "accountUnavailable": "Not available yet",
-      "accountUnavailableDescription": "This section will let you manage backend-synced FlareGPT history once account sync is live."
+      "accountSubtitle": "Synced to your account on the backend.",
+      "conversationsClearFailed": "Couldn't clear chat history — please try again."
     }
   },
   "sidebar": {

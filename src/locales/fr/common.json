@@ -245,13 +245,12 @@
       "walletCache": "Cache d'activité du wallet",
       "walletCacheDescription": "Efface l'historique des transactions en cache — la prochaine visite le récupérera à nouveau.",
       "conversations": "Conversations FlareGPT",
-      "conversationsDescription": "Efface toutes les conversations stockées dans ce navigateur.",
+      "conversationsDescription": "Efface l'historique de discussion FlareGPT de votre compte. Cette action est irréversible.",
       "clear": "Effacer",
       "confirmClear": "Confirmer ?",
       "accountTitle": "Données du compte",
-      "accountSubtitle": "Données synchronisées avec le backend, disponibles au lancement de la synchronisation de compte.",
-      "accountUnavailable": "Pas encore disponible",
-      "accountUnavailableDescription": "Cette section vous permettra de gérer l'historique FlareGPT synchronisé avec le backend une fois la synchronisation de compte active."
+      "accountSubtitle": "Synchronisé avec votre compte sur le serveur.",
+      "conversationsClearFailed": "Impossible d'effacer l'historique de discussion — veuillez réessayer."
     }
   },
   "sidebar": {
@@ -418,11 +417,9 @@
     "viaWalletConnect": "Via WalletConnect"
   },
   "flareWidget": {
-    "chatHistory": "L’historique des conversations",
     "close": "Fermer",
     "collapse": "Réduire",
     "expand": "Développer",
-    "newChat": "Nouvelle discussion",
     "openFullPage": "Ouvrir la page complète"
   },
   "flrgpt": {
@@ -435,9 +432,7 @@
       "stakingOpportunities": "Afficher mes opportunités de staking"
     },
     "wallet": {
-      "analyzing": "Analyse :",
-      "general": "Général",
-      "generalHint": "Aucun contexte de portefeuille"
+      "analyzing": "Analyse :"
     },
     "empty": {
       "title": "Demandez n'importe quoi à FlareGPT",
@@ -456,19 +451,13 @@
       "copyFailed": "Échec de la copie"
     },
     "jumpToLatest": "Aller au dernier message",
-    "history": {
-      "title": "Historique",
-      "newChat": "Nouvelle discussion",
-      "empty": "Aucune conversation pour le moment.",
-      "untitled": "Nouvelle conversation",
-      "pin": "Épingler la conversation",
-      "unpin": "Détacher la conversation",
-      "searchPlaceholder": "Rechercher des conversations...",
-      "noResults": "Aucune conversation trouvée",
-      "moreActions": "Plus d'actions",
-      "delete": "Supprimer la conversation",
-      "pinLimitReached": "Vous pouvez épingler jusqu'à {{count}} conversations — détachez-en une d'abord."
-    }
+    "clearChat": {
+      "button": "Effacer la discussion",
+      "confirm": "Confirmer ?",
+      "failed": "Impossible d'effacer la discussion — veuillez réessayer."
+    },
+    "historyLoadFailed": "Impossible de charger votre historique de discussion.",
+    "sendError": "Une erreur est survenue — veuillez réessayer."
   },
   "dashboard": {
     "description": "Les données du réseau Live Flare, les graphiques de prix et l'activité du portefeuille en un coup d'œil.",

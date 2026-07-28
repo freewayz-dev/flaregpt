@@ -1,7 +1,6 @@
 import EmptyState from "@/components/flareGpt/EmptyState";
 import MessageList from "@/components/flareGpt/MessageList";
 import Composer from "@/components/flareGpt/Composer";
-import HistoryPanel from "@/components/flareGpt/HistoryPanel";
 
 // Everything below the surface-specific header (page top bar vs. drawer
 // header) — rendered identically by both the full page and the side
@@ -12,29 +11,32 @@ import HistoryPanel from "@/components/flareGpt/HistoryPanel";
 export default function ChatPane({
   messages,
   isGenerating,
+  isLoadingHistory,
   onSend,
   onStop,
   onRegenerate,
   onOpenWalletModal,
-  historyOpen,
-  onCloseHistory,
-  conversations,
-  activeConversationId,
-  onSelectConversation,
-  onDeleteConversation,
-  onTogglePinConversation,
-  onNewChat,
   scrollRequestId,
   focusRequestId,
   compactEmptyState = false,
 }) {
   const hasMessages = messages.length > 0;
 
-  const handleSelectPrompt = (id, text) => onSend(text, id);
+  const handleSelectPrompt = (_id, text) => onSend(text);
 
   return (
     <div className="relative flex flex-1 min-h-0 flex-col">
-      {hasMessages ? (
+      {isLoadingHistory ? (
+        // The real backend can be slow to answer the very first request in
+        // a while (a cold-started instance took well over a minute during
+        // testing) — showing the empty-state greeting during that window
+        // would misrepresent an account that actually has history as a
+        // blank slate, and a message sent in that gap would land ahead of
+        // history that hasn't arrived yet.
+        <div className="flex-1 flex items-center justify-center">
+          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-brand" />
+        </div>
+      ) : hasMessages ? (
         <MessageList
           messages={messages}
           onRegenerate={onRegenerate}
@@ -50,23 +52,7 @@ export default function ChatPane({
         onStop={onStop}
         onOpenWalletModal={onOpenWalletModal}
         focusRequestId={focusRequestId}
-      />
-
-      <HistoryPanel
-        open={historyOpen}
-        onClose={onCloseHistory}
-        conversations={conversations}
-        activeConversationId={activeConversationId}
-        onSelect={(id) => {
-          onSelectConversation(id);
-          onCloseHistory();
-        }}
-        onDelete={onDeleteConversation}
-        onTogglePin={onTogglePinConversation}
-        onNewChat={() => {
-          onNewChat();
-          onCloseHistory();
-        }}
+        disabled={isLoadingHistory}
       />
     </div>
   );

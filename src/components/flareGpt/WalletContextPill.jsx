@@ -2,12 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import {
-  ChevronUpIcon,
-  GlobeAltIcon,
-  WalletIcon,
-  Cog6ToothIcon,
-} from "@heroicons/react/24/outline";
+import { ChevronUpIcon, WalletIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
 
 import { useFlareGptWalletContext } from "@/hooks/useFlareGptWalletContext";
 import { useUIStore } from "@/store/useUIStore";
@@ -23,9 +18,10 @@ import WalletRow from "@/components/common/WalletRow";
 // "context for what I'm about to ask" rather than another dashboard
 // widget. Reuses the exact same Primary/Watchlist row and badge
 // components as the Navbar's wallet dropdown so switching surfaces never
-// requires learning a new pattern — plus one addition specific to chat:
-// an explicit "General" option, since not every question is wallet-
-// specific.
+// requires learning a new pattern. Every question is answered in the
+// context of some wallet — Primary (whichever wallet is actually
+// connected) or a Specific watchlist wallet — there's no "General/no
+// wallet" mode, since the backend always has some wallet in mind anyway.
 export default function WalletContextPill({ onOpenWalletModal }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -48,22 +44,24 @@ export default function WalletContextPill({ onOpenWalletModal }) {
 
   const primaryWallet = allWallets.find((w) => w.type === "connected");
   const watchlistWallets = allWallets.filter((w) => w.type === "tracked");
-  const isGeneral = effectiveAddress === null;
 
-  const label = isGeneral
-    ? t("flrgpt.wallet.general")
-    : effectiveWallet
-      ? effectiveWallet.type === "connected"
-        ? shortenAddress(effectiveWallet.address)
-        : effectiveWallet.label
-      : t("flrgpt.wallet.general");
+  // This pill only ever renders for a signed-in user (see Composer.jsx),
+  // but being signed in doesn't guarantee a wallet is currently active —
+  // the wallet can be disconnected while still authenticated, and there
+  // may be no watchlist wallets either. That's the same "nothing to show
+  // yet" state as everywhere else in the app, so it reuses the same
+  // "Connect Wallet" copy rather than inventing a separate label for it.
+  const label = effectiveWallet
+    ? effectiveWallet.type === "connected"
+      ? shortenAddress(effectiveWallet.address)
+      : effectiveWallet.label
+    : t("navbar.connectWallet");
 
-  const badge =
-    !isGeneral && effectiveWallet
-      ? effectiveWallet.type === "connected"
-        ? { text: t("navbar.badgePrimary"), tone: "primary" }
-        : { text: t("navbar.badgeWatchlist"), tone: "watchlist" }
-      : null;
+  const badge = effectiveWallet
+    ? effectiveWallet.type === "connected"
+      ? { text: t("navbar.badgePrimary"), tone: "primary" }
+      : { text: t("navbar.badgeWatchlist"), tone: "watchlist" }
+    : null;
 
   const handleSelect = (address) => {
     setAiWalletAddress(address);
@@ -97,15 +95,15 @@ export default function WalletContextPill({ onOpenWalletModal }) {
         aria-expanded={open}
         className="flex items-center gap-1.5 rounded-full border border-slate-100 bg-slate-50 px-2.5 py-1.5 text-[11px] dark:border-none dark:bg-[#191A1F] cursor-pointer hover:bg-slate-100 dark:hover:bg-[#1F2027] transition-colors"
       >
-        {isGeneral ? (
-          <GlobeAltIcon className="h-3.5 w-3.5 text-ink-muted shrink-0" />
-        ) : (
-          <span
-            className={`h-1.5 w-1.5 rounded-full shrink-0 ${
-              effectiveWallet?.type === "connected" ? "bg-emerald-500 animate-pulse" : "bg-amber-500"
-            }`}
-          />
-        )}
+        <span
+          className={`h-1.5 w-1.5 rounded-full shrink-0 ${
+            !effectiveWallet
+              ? "bg-slate-400 dark:bg-zinc-600"
+              : effectiveWallet.type === "connected"
+                ? "bg-emerald-500 animate-pulse"
+                : "bg-amber-500"
+          }`}
+        />
         <span className="text-ink-muted">{t("flrgpt.wallet.analyzing")}</span>
         <span className="font-semibold text-ink-primary max-w-[120px] truncate">{label}</span>
         {badge && <WalletBadge tone={badge.tone} text={badge.text} />}
@@ -121,30 +119,7 @@ export default function WalletContextPill({ onOpenWalletModal }) {
             : "opacity-0 scale-95 translate-y-1 pointer-events-none"
         }`}
       >
-        <div
-          role="button"
-          tabIndex={0}
-          onClick={() => handleSelect(null)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              handleSelect(null);
-            }
-          }}
-          className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer transition-colors text-[11px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
-            isGeneral
-              ? "bg-brand/10 text-brand font-bold"
-              : "hover:bg-slate-50 dark:hover:bg-[#1B1B1F] text-ink-secondary"
-          }`}
-        >
-          <GlobeAltIcon className="h-3.5 w-3.5 opacity-70" />
-          <div>
-            <p className="font-semibold leading-tight">{t("flrgpt.wallet.general")}</p>
-            <p className="text-[9px] opacity-70">{t("flrgpt.wallet.generalHint")}</p>
-          </div>
-        </div>
-
-        <p className="px-1.5 pt-1 pb-0.5 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold border-t border-line">
+        <p className="px-1.5 pb-0.5 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
           {t("navbar.primaryWalletSection")}
         </p>
         {primaryWallet ? (

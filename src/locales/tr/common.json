@@ -245,13 +245,12 @@
       "walletCache": "Cüzdan Etkinliği Önbelleği",
       "walletCacheDescription": "Önbelleğe alınmış işlem geçmişini temizler — bir sonraki ziyarette yeniden alınacaktır.",
       "conversations": "FlareGPT Konuşmaları",
-      "conversationsDescription": "Bu tarayıcıda saklanan tüm konuşmaları temizler.",
+      "conversationsDescription": "Hesabınızdaki FlareGPT sohbet geçmişini temizler. Bu işlem geri alınamaz.",
       "clear": "Temizle",
       "confirmClear": "Onaylansın mı?",
       "accountTitle": "Hesap Verisi",
-      "accountSubtitle": "Hesap senkronizasyonu başladığında kullanılabilir olacak backend'de senkronize veriler.",
-      "accountUnavailable": "Henüz kullanılamıyor",
-      "accountUnavailableDescription": "Hesap senkronizasyonu etkin olduğunda bu bölüm, backend'de senkronize edilen FlareGPT geçmişini yönetmenizi sağlayacak."
+      "accountSubtitle": "Sunucudaki hesabınızla senkronize edilir.",
+      "conversationsClearFailed": "Sohbet geçmişi temizlenemedi — lütfen tekrar deneyin."
     }
   },
   "sidebar": {
@@ -419,11 +418,9 @@
     "viaWalletConnect": "WalletConnect üzerinden"
   },
   "flareWidget": {
-    "chatHistory": "Sohbet Geçmişi",
     "close": "Kapat",
     "collapse": "Çökme",
     "expand": "Genişlet",
-    "newChat": "Yeni sohbet",
     "openFullPage": "Tam sayfayı aç"
   },
   "flrgpt": {
@@ -436,9 +433,7 @@
       "stakingOpportunities": "Staking fırsatlarımı göster"
     },
     "wallet": {
-      "analyzing": "Analiz ediliyor:",
-      "general": "Genel",
-      "generalHint": "Cüzdan bağlamı yok"
+      "analyzing": "Analiz ediliyor:"
     },
     "empty": {
       "title": "FlareGPT'ye istediğinizi sorun",
@@ -457,19 +452,13 @@
       "copyFailed": "Kopyalama başarısız"
     },
     "jumpToLatest": "En yeniye git",
-    "history": {
-      "title": "Geçmiş",
-      "newChat": "Yeni sohbet",
-      "empty": "Henüz konuşma yok.",
-      "untitled": "Yeni konuşma",
-      "pin": "Sohbeti sabitle",
-      "unpin": "Sabitlemeyi kaldır",
-      "searchPlaceholder": "Sohbetlerde ara...",
-      "noResults": "Sohbet bulunamadı",
-      "moreActions": "Diğer işlemler",
-      "delete": "Sohbeti sil",
-      "pinLimitReached": "En fazla {{count}} sohbet sabitleyebilirsiniz — önce birini sabitlemeden çıkarın."
-    }
+    "clearChat": {
+      "button": "Sohbeti Temizle",
+      "confirm": "Onaylıyor musunuz?",
+      "failed": "Sohbet temizlenemedi — lütfen tekrar deneyin."
+    },
+    "historyLoadFailed": "Sohbet geçmişiniz yüklenemedi.",
+    "sendError": "Bir şeyler ters gitti — lütfen tekrar deneyin."
   },
   "dashboard": {
     "description": "Bir bakışta Live Flare ağ verileri, fiyat grafikleri ve cüzdan etkinliği.",

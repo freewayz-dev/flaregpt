@@ -245,13 +245,12 @@
       "walletCache": "वॉलेट गतिविधि कैश",
       "walletCacheDescription": "कैश किए गए लेनदेन इतिहास को साफ़ करता है — अगली बार यह फिर से प्राप्त होगा।",
       "conversations": "FlareGPT बातचीत",
-      "conversationsDescription": "इस ब्राउज़र में संग्रहीत हर बातचीत को साफ़ करता है।",
+      "conversationsDescription": "आपके खाते से FlareGPT चैट इतिहास साफ़ करता है। इसे पूर्ववत नहीं किया जा सकता।",
       "clear": "साफ़ करें",
       "confirmClear": "पुष्टि करें?",
       "accountTitle": "खाता डेटा",
-      "accountSubtitle": "बैकएंड-सिंक किया गया डेटा, खाता सिंक लॉन्च होने पर उपलब्ध होगा।",
-      "accountUnavailable": "अभी उपलब्ध नहीं",
-      "accountUnavailableDescription": "खाता सिंक लाइव होने पर यह सेक्शन आपको बैकएंड-सिंक किए गए FlareGPT इतिहास को प्रबंधित करने देगा।"
+      "accountSubtitle": "सर्वर पर आपके खाते के साथ सिंक किया गया।",
+      "conversationsClearFailed": "चैट इतिहास साफ़ नहीं हो सका — कृपया फिर से प्रयास करें।"
     }
   },
   "sidebar": {
@@ -419,11 +418,9 @@
     "viaWalletConnect": "WalletConnect के ज़रिए"
   },
   "flareWidget": {
-    "chatHistory": "चैट का इतिहास",
     "close": "बंद करें",
     "collapse": "संक्षिप्त करें",
     "expand": "विस्तार करना",
-    "newChat": "नई चैट",
     "openFullPage": "पूरा पेज खोलें"
   },
   "flrgpt": {
@@ -436,9 +433,7 @@
       "stakingOpportunities": "मेरे स्टेकिंग अवसर दिखाएं"
     },
     "wallet": {
-      "analyzing": "विश्लेषण कर रहे हैं:",
-      "general": "सामान्य",
-      "generalHint": "कोई वॉलेट संदर्भ नहीं"
+      "analyzing": "विश्लेषण कर रहे हैं:"
     },
     "empty": {
       "title": "FlareGPT से कुछ भी पूछें",
@@ -457,19 +452,13 @@
       "copyFailed": "कॉपी करने में विफल"
     },
     "jumpToLatest": "नवीनतम पर जाएं",
-    "history": {
-      "title": "इतिहास",
-      "newChat": "नई चैट",
-      "empty": "अभी तक कोई बातचीत नहीं।",
-      "untitled": "नई बातचीत",
-      "pin": "बातचीत पिन करें",
-      "unpin": "पिन हटाएं",
-      "searchPlaceholder": "बातचीत खोजें...",
-      "noResults": "कोई बातचीत नहीं मिली",
-      "moreActions": "अधिक विकल्प",
-      "delete": "बातचीत हटाएं",
-      "pinLimitReached": "आप अधिकतम {{count}} बातचीत पिन कर सकते हैं — पहले किसी एक को अनपिन करें।"
-    }
+    "clearChat": {
+      "button": "चैट साफ़ करें",
+      "confirm": "पुष्टि करें?",
+      "failed": "चैट साफ़ नहीं हो सकी — कृपया फिर से प्रयास करें।"
+    },
+    "historyLoadFailed": "आपका चैट इतिहास लोड नहीं हो सका।",
+    "sendError": "कुछ गड़बड़ हो गई — कृपया फिर से प्रयास करें।"
   },
   "dashboard": {
     "description": "लाइव फ़्लेयर नेटवर्क डेटा, मूल्य चार्ट और वॉलेट गतिविधि एक नज़र में।",

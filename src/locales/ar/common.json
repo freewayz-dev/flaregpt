@@ -245,13 +245,12 @@
       "walletCache": "ذاكرة التخزين المؤقت لنشاط المحفظة",
       "walletCacheDescription": "يمسح سجل المعاملات المخزن مؤقتًا — ستتم إعادة جلبه في الزيارة التالية.",
       "conversations": "محادثات FlareGPT",
-      "conversationsDescription": "يمسح كل محادثة مخزنة في هذا المتصفح.",
+      "conversationsDescription": "يمسح سجل محادثات FlareGPT من حسابك. لا يمكن التراجع عن هذا الإجراء.",
       "clear": "مسح",
       "confirmClear": "تأكيد؟",
       "accountTitle": "بيانات الحساب",
-      "accountSubtitle": "بيانات مزامنة مع الخادم، ستتوفر عند إطلاق مزامنة الحساب.",
-      "accountUnavailable": "غير متاح بعد",
-      "accountUnavailableDescription": "سيتيح لك هذا القسم إدارة سجل FlareGPT المتزامن مع الخادم بمجرد تفعيل مزامنة الحساب."
+      "accountSubtitle": "مُتزامن مع حسابك على الخادم.",
+      "conversationsClearFailed": "تعذّر مسح سجل المحادثات — يرجى المحاولة مرة أخرى."
     }
   },
   "sidebar": {
@@ -418,11 +417,9 @@
     "viaWalletConnect": "عبر WalletConnect"
   },
   "flareWidget": {
-    "chatHistory": "سجل المحادثة",
     "close": "خاتمة",
     "collapse": "هبوط",
     "expand": "إظهار الرقم بالكامل",
-    "newChat": "محادثة جديدة",
     "openFullPage": "فتح الصفحة الكاملة"
   },
   "flrgpt": {
@@ -435,9 +432,7 @@
       "stakingOpportunities": "أظهر فرص التخزين الخاصة بي"
     },
     "wallet": {
-      "analyzing": "جارٍ التحليل:",
-      "general": "عام",
-      "generalHint": "بدون سياق محفظة"
+      "analyzing": "جارٍ التحليل:"
     },
     "empty": {
       "title": "اسأل FlareGPT أي شيء",
@@ -456,19 +451,13 @@
       "copyFailed": "فشل النسخ"
     },
     "jumpToLatest": "الانتقال إلى الأحدث",
-    "history": {
-      "title": "السجل",
-      "newChat": "محادثة جديدة",
-      "empty": "لا توجد محادثات بعد.",
-      "untitled": "محادثة جديدة",
-      "pin": "تثبيت المحادثة",
-      "unpin": "إلغاء التثبيت",
-      "searchPlaceholder": "البحث في المحادثات...",
-      "noResults": "لم يتم العثور على محادثات",
-      "moreActions": "المزيد من الإجراءات",
-      "delete": "حذف المحادثة",
-      "pinLimitReached": "يمكنك تثبيت ما يصل إلى {{count}} محادثات — قم بإلغاء تثبيت واحدة أولاً."
-    }
+    "clearChat": {
+      "button": "مسح المحادثة",
+      "confirm": "تأكيد؟",
+      "failed": "تعذّر مسح المحادثة — يرجى المحاولة مرة أخرى."
+    },
+    "historyLoadFailed": "تعذّر تحميل سجل محادثاتك.",
+    "sendError": "حدث خطأ ما — يرجى المحاولة مرة أخرى."
   },
   "dashboard": {
     "description": "نظرة سريعة على بيانات شبكة Flare الحية ومخططات الأسعار ونشاط المحفظة.",

@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
   XMarkIcon,
-  ClockIcon,
-  PencilSquareIcon,
+  TrashIcon,
+  CheckIcon,
   ArrowsPointingOutIcon,
   ArrowsPointingInIcon,
 } from "@heroicons/react/24/outline";
@@ -13,11 +13,13 @@ import ChatPane from "@/components/flareGpt/ChatPane";
 import { useFlareGptConversation } from "@/hooks/useFlareGptConversation";
 import { ROUTES } from "@/config/routes";
 
+const CONFIRM_WINDOW_MS = 3000;
+
 // An extension of the full FlareGPT page, not a separate product: this
-// renders the exact same ChatPane (message list, composer, wallet pill,
-// history panel) reading the exact same useFlareGptStore, so a
-// conversation started here is the same conversation you'd see by
-// navigating to /app/flare-gpt — not a lookalike, the same thread.
+// renders the exact same ChatPane (message list, composer, wallet pill)
+// reading the exact same useFlareGptStore, so a conversation started here
+// is the same conversation you'd see by navigating to /app/flare-gpt — not
+// a lookalike, the same thread (and the same single backend-held history).
 //
 // Mobile is true full-screen (zero insets) rather than a floating card
 // with dashboard edges peeking around it — a widget that still shows the
@@ -27,35 +29,38 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
-  const [historyOpen, setHistoryOpen] = useState(false);
 
   const {
-    conversations,
-    activeConversation,
     messages,
     isGenerating,
+    isLoadingHistory,
     send,
     stop,
     regenerate,
-    startNewConversation,
-    switchConversation,
-    deleteConversation,
-    togglePinConversation,
+    clearChat,
     scrollRequestId,
     focusRequestId,
   } = useFlareGptConversation();
 
+  const [confirmingClear, setConfirmingClear] = useState(false);
+  const confirmTimerRef = useRef(null);
+  useEffect(() => () => clearTimeout(confirmTimerRef.current), []);
+
+  const handleClearClick = () => {
+    if (confirmingClear) {
+      clearTimeout(confirmTimerRef.current);
+      setConfirmingClear(false);
+      clearChat();
+      return;
+    }
+    setConfirmingClear(true);
+    clearTimeout(confirmTimerRef.current);
+    confirmTimerRef.current = setTimeout(() => setConfirmingClear(false), CONFIRM_WINDOW_MS);
+  };
+
   const widthClasses = expanded
     ? "sm:w-[680px]"
     : "sm:w-[400px]";
-
-  // Same fix as the full page: the header's own New Chat button used to
-  // leave history open underneath a freshly-started blank conversation —
-  // only the history panel's *internal* New Chat button closed it.
-  const handleNewChat = () => {
-    setHistoryOpen(false);
-    startNewConversation();
-  };
 
   const handleOpenFullPage = () => {
     // `skipBack` + `replace` rather than the normal close-then-push: on
@@ -79,35 +84,32 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
     >
       {/* HEADER */}
       <div className="flex items-center justify-between border-b border-line px-3 py-2.5 sm:py-2 shrink-0">
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setHistoryOpen((open) => !open)}
-            className="rounded-lg p-1 transition-colors hover:bg-surface-subtle cursor-pointer"
-            title={t("flareWidget.chatHistory")}
-          >
-            <ClockIcon className="h-5 w-5 text-ink-secondary" />
-          </button>
-
-          <button
-            type="button"
-            onClick={handleOpenFullPage}
-            className="text-sm font-semibold text-ink-primary hover:text-brand-text transition-colors cursor-pointer"
-            title={t("flareWidget.openFullPage")}
-          >
-            FlareGPT
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={handleOpenFullPage}
+          className="text-sm font-semibold text-ink-primary hover:text-brand-text transition-colors cursor-pointer"
+          title={t("flareWidget.openFullPage")}
+        >
+          FlareGPT
+        </button>
 
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <button
-            type="button"
-            onClick={handleNewChat}
-            className="rounded-lg p-1 transition-colors hover:bg-surface-subtle cursor-pointer"
-            title={t("flareWidget.newChat")}
-          >
-            <PencilSquareIcon className="h-5 w-5 text-brand" />
-          </button>
+          {messages.length > 0 && (
+            <button
+              type="button"
+              onClick={handleClearClick}
+              className={`rounded-lg p-1 transition-colors cursor-pointer ${
+                confirmingClear ? "bg-red-500/10" : "hover:bg-surface-subtle"
+              }`}
+              title={confirmingClear ? t("flrgpt.clearChat.confirm") : t("flrgpt.clearChat.button")}
+            >
+              {confirmingClear ? (
+                <CheckIcon className="h-5 w-5 text-red-500" />
+              ) : (
+                <TrashIcon className="h-5 w-5 text-ink-secondary" />
+              )}
+            </button>
+          )}
 
           <button
             type="button"
@@ -136,18 +138,11 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
       <ChatPane
         messages={messages}
         isGenerating={isGenerating}
+        isLoadingHistory={isLoadingHistory}
         onSend={send}
         onStop={stop}
         onRegenerate={regenerate}
         onOpenWalletModal={onOpenWalletModal}
-        historyOpen={historyOpen}
-        onCloseHistory={() => setHistoryOpen(false)}
-        conversations={conversations}
-        activeConversationId={activeConversation?.id ?? null}
-        onSelectConversation={switchConversation}
-        onDeleteConversation={deleteConversation}
-        onTogglePinConversation={togglePinConversation}
-        onNewChat={startNewConversation}
         scrollRequestId={scrollRequestId}
         focusRequestId={focusRequestId}
         compactEmptyState

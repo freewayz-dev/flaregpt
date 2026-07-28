@@ -245,13 +245,12 @@
       "walletCache": "Cache de Atividade da Wallet",
       "walletCacheDescription": "Limpa o histórico de transações em cache — a próxima visita irá buscá-lo novamente.",
       "conversations": "Conversas do FlareGPT",
-      "conversationsDescription": "Limpa todas as conversas armazenadas neste navegador.",
+      "conversationsDescription": "Limpa o histórico de chat do FlareGPT da sua conta. Esta ação não pode ser desfeita.",
       "clear": "Limpar",
       "confirmClear": "Confirmar?",
       "accountTitle": "Dados da Conta",
-      "accountSubtitle": "Dados sincronizados com o backend, disponíveis assim que a sincronização de conta for lançada.",
-      "accountUnavailable": "Ainda não disponível",
-      "accountUnavailableDescription": "Esta seção permitirá gerenciar o histórico do FlareGPT sincronizado com o backend assim que a sincronização de conta estiver ativa."
+      "accountSubtitle": "Sincronizado com sua conta no servidor.",
+      "conversationsClearFailed": "Não foi possível limpar o histórico de chat — tente novamente."
     }
   },
   "sidebar": {
@@ -419,11 +418,9 @@
     "viaWalletConnect": "Via WalletConnect"
   },
   "flareWidget": {
-    "chatHistory": "Histórico da conversação",
     "close": "Fechar",
     "collapse": "Fechar",
     "expand": "Expandir",
-    "newChat": "Novo Chat",
     "openFullPage": "Abrir página completa"
   },
   "flrgpt": {
@@ -436,9 +433,7 @@
       "stakingOpportunities": "Mostrar minhas oportunidades de staking"
     },
     "wallet": {
-      "analyzing": "Analisando:",
-      "general": "Geral",
-      "generalHint": "Sem contexto de carteira"
+      "analyzing": "Analisando:"
     },
     "empty": {
       "title": "Pergunte qualquer coisa ao FlareGPT",
@@ -457,19 +452,13 @@
       "copyFailed": "Falha ao copiar"
     },
     "jumpToLatest": "Ir para o mais recente",
-    "history": {
-      "title": "Histórico",
-      "newChat": "Nova conversa",
-      "empty": "Ainda não há conversas.",
-      "untitled": "Nova conversa",
-      "pin": "Fixar conversa",
-      "unpin": "Desafixar conversa",
-      "searchPlaceholder": "Pesquisar conversas...",
-      "noResults": "Nenhuma conversa encontrada",
-      "moreActions": "Mais ações",
-      "delete": "Excluir conversa",
-      "pinLimitReached": "Você pode fixar até {{count}} conversas — desafixe uma primeiro."
-    }
+    "clearChat": {
+      "button": "Limpar chat",
+      "confirm": "Confirmar?",
+      "failed": "Não foi possível limpar o chat — tente novamente."
+    },
+    "historyLoadFailed": "Não foi possível carregar seu histórico de chat.",
+    "sendError": "Algo deu errado — tente novamente."
   },
   "dashboard": {
     "description": "Dados da rede do Live Flare, gráficos de preços e atividade da carteira em resumo.",

@@ -245,13 +245,12 @@
       "walletCache": "Cache Attività Wallet",
       "walletCacheDescription": "Cancella la cronologia delle transazioni in cache — la prossima visita la recupererà di nuovo.",
       "conversations": "Conversazioni FlareGPT",
-      "conversationsDescription": "Cancella ogni conversazione memorizzata in questo browser.",
+      "conversationsDescription": "Cancella la cronologia chat di FlareGPT dal tuo account. Questa azione non può essere annullata.",
       "clear": "Cancella",
       "confirmClear": "Confermare?",
       "accountTitle": "Dati Account",
-      "accountSubtitle": "Dati sincronizzati con il backend, disponibili al lancio della sincronizzazione account.",
-      "accountUnavailable": "Non ancora disponibile",
-      "accountUnavailableDescription": "Questa sezione ti permetterà di gestire la cronologia FlareGPT sincronizzata con il backend una volta attiva la sincronizzazione account."
+      "accountSubtitle": "Sincronizzato con il tuo account sul server.",
+      "conversationsClearFailed": "Impossibile cancellare la cronologia chat: riprova."
     }
   },
   "sidebar": {
@@ -419,11 +418,9 @@
     "viaWalletConnect": "Tramite WalletConnect"
   },
   "flareWidget": {
-    "chatHistory": "Cronologia chat",
     "close": "Chiudi",
     "collapse": "Riduci",
     "expand": "Espandi",
-    "newChat": "Nuova chat",
     "openFullPage": "Apri pagina completa"
   },
   "flrgpt": {
@@ -436,9 +433,7 @@
       "stakingOpportunities": "Mostra le mie opportunità di staking"
     },
     "wallet": {
-      "analyzing": "Analisi in corso:",
-      "general": "Generale",
-      "generalHint": "Nessun contesto wallet"
+      "analyzing": "Analisi in corso:"
     },
     "empty": {
       "title": "Chiedi qualsiasi cosa a FlareGPT",
@@ -457,19 +452,13 @@
       "copyFailed": "Copia non riuscita"
     },
     "jumpToLatest": "Vai all'ultimo messaggio",
-    "history": {
-      "title": "Cronologia",
-      "newChat": "Nuova chat",
-      "empty": "Nessuna conversazione ancora.",
-      "untitled": "Nuova conversazione",
-      "pin": "Fissa conversazione",
-      "unpin": "Rimuovi fissaggio",
-      "searchPlaceholder": "Cerca conversazioni...",
-      "noResults": "Nessuna conversazione trovata",
-      "moreActions": "Altre azioni",
-      "delete": "Elimina conversazione",
-      "pinLimitReached": "Puoi fissare fino a {{count}} conversazioni — rimuovi prima un fissaggio."
-    }
+    "clearChat": {
+      "button": "Cancella chat",
+      "confirm": "Confermare?",
+      "failed": "Impossibile cancellare la chat: riprova."
+    },
+    "historyLoadFailed": "Impossibile caricare la cronologia chat.",
+    "sendError": "Qualcosa è andato storto: riprova."
   },
   "dashboard": {
     "description": "Dati della rete Live Flare, grafici dei prezzi e attività del portafoglio a colpo d'occhio.",

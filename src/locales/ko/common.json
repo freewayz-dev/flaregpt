@@ -245,13 +245,12 @@
       "walletCache": "지갑 활동 캐시",
       "walletCacheDescription": "캐시된 거래 기록을 지웁니다 — 다음 방문 시 다시 가져옵니다.",
       "conversations": "FlareGPT 대화",
-      "conversationsDescription": "이 브라우저에 저장된 모든 대화를 지웁니다.",
+      "conversationsDescription": "계정에서 FlareGPT 채팅 기록을 삭제합니다. 이 작업은 되돌릴 수 없습니다.",
       "clear": "지우기",
       "confirmClear": "확인할까요?",
       "accountTitle": "계정 데이터",
-      "accountSubtitle": "백엔드와 동기화된 데이터로, 계정 동기화가 시작되면 제공됩니다.",
-      "accountUnavailable": "아직 사용할 수 없음",
-      "accountUnavailableDescription": "계정 동기화가 활성화되면 이 섹션에서 백엔드와 동기화된 FlareGPT 기록을 관리할 수 있습니다."
+      "accountSubtitle": "서버의 계정과 동기화됩니다.",
+      "conversationsClearFailed": "채팅 기록을 지우지 못했습니다. 다시 시도해 주세요."
     }
   },
   "sidebar": {
@@ -419,11 +418,9 @@
     "viaWalletConnect": "WalletConnect 경유"
   },
   "flareWidget": {
-    "chatHistory": "채팅 기록",
     "close": "닫기",
     "collapse": "접기",
     "expand": "확장",
-    "newChat": "새로운 채팅",
     "openFullPage": "전체 페이지 열기"
   },
   "flrgpt": {
@@ -436,9 +433,7 @@
       "stakingOpportunities": "내 스테이킹 기회 보기"
     },
     "wallet": {
-      "analyzing": "분석 대상:",
-      "general": "일반",
-      "generalHint": "지갑 컨텍스트 없음"
+      "analyzing": "분석 대상:"
     },
     "empty": {
       "title": "FlareGPT에게 무엇이든 물어보세요",
@@ -457,19 +452,13 @@
       "copyFailed": "복사에 실패했습니다"
     },
     "jumpToLatest": "최신으로 이동",
-    "history": {
-      "title": "기록",
-      "newChat": "새 채팅",
-      "empty": "아직 대화가 없습니다.",
-      "untitled": "새 대화",
-      "pin": "대화 고정",
-      "unpin": "고정 해제",
-      "searchPlaceholder": "대화 검색...",
-      "noResults": "대화를 찾을 수 없습니다",
-      "moreActions": "추가 작업",
-      "delete": "대화 삭제",
-      "pinLimitReached": "최대 {{count}}개의 대화만 고정할 수 있습니다 — 먼저 하나를 고정 해제하세요."
-    }
+    "clearChat": {
+      "button": "채팅 지우기",
+      "confirm": "확인하시겠습니까?",
+      "failed": "채팅을 지우지 못했습니다. 다시 시도해 주세요."
+    },
+    "historyLoadFailed": "채팅 기록을 불러오지 못했습니다.",
+    "sendError": "문제가 발생했습니다. 다시 시도해 주세요."
   },
   "dashboard": {
     "description": "실시간 Flare 네트워크 데이터, 가격 차트 및 지갑 활동을 한눈에 볼 수 있습니다.",

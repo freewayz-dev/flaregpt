@@ -245,13 +245,12 @@
       "walletCache": "Bộ nhớ đệm hoạt động ví",
       "walletCacheDescription": "Xóa lịch sử giao dịch đã lưu trong bộ nhớ đệm — lần truy cập tiếp theo sẽ tải lại.",
       "conversations": "Cuộc trò chuyện FlareGPT",
-      "conversationsDescription": "Xóa mọi cuộc trò chuyện được lưu trong trình duyệt này.",
+      "conversationsDescription": "Xóa lịch sử trò chuyện FlareGPT khỏi tài khoản của bạn. Không thể hoàn tác.",
       "clear": "Xóa",
       "confirmClear": "Xác nhận?",
       "accountTitle": "Dữ liệu tài khoản",
-      "accountSubtitle": "Dữ liệu đồng bộ với backend, khả dụng khi tính năng đồng bộ tài khoản ra mắt.",
-      "accountUnavailable": "Chưa khả dụng",
-      "accountUnavailableDescription": "Phần này sẽ cho phép bạn quản lý lịch sử FlareGPT đồng bộ với backend khi tính năng đồng bộ tài khoản hoạt động."
+      "accountSubtitle": "Được đồng bộ với tài khoản của bạn trên máy chủ.",
+      "conversationsClearFailed": "Không thể xóa lịch sử trò chuyện — vui lòng thử lại."
     }
   },
   "sidebar": {
@@ -419,11 +418,9 @@
     "viaWalletConnect": "Qua WalletConnect"
   },
   "flareWidget": {
-    "chatHistory": "Lịch sử trò chuyện",
     "close": "Đóng",
     "collapse": "Thu gọn",
     "expand": "Mở rộng",
-    "newChat": "Obrolan baru",
     "openFullPage": "Mở trang đầy đủ"
   },
   "flrgpt": {
@@ -436,9 +433,7 @@
       "stakingOpportunities": "Hiển thị cơ hội staking của tôi"
     },
     "wallet": {
-      "analyzing": "Đang phân tích:",
-      "general": "Chung",
-      "generalHint": "Không có ngữ cảnh ví"
+      "analyzing": "Đang phân tích:"
     },
     "empty": {
       "title": "Hỏi FlareGPT bất cứ điều gì",
@@ -457,19 +452,13 @@
       "copyFailed": "Sao chép không thành công"
     },
     "jumpToLatest": "Đến tin mới nhất",
-    "history": {
-      "title": "Lịch sử",
-      "newChat": "Cuộc trò chuyện mới",
-      "empty": "Chưa có cuộc trò chuyện nào.",
-      "untitled": "Cuộc trò chuyện mới",
-      "pin": "Ghim cuộc trò chuyện",
-      "unpin": "Bỏ ghim",
-      "searchPlaceholder": "Tìm kiếm cuộc trò chuyện...",
-      "noResults": "Không tìm thấy cuộc trò chuyện nào",
-      "moreActions": "Thao tác khác",
-      "delete": "Xóa cuộc trò chuyện",
-      "pinLimitReached": "Bạn chỉ có thể ghim tối đa {{count}} cuộc trò chuyện — hãy bỏ ghim một cuộc trước."
-    }
+    "clearChat": {
+      "button": "Xóa cuộc trò chuyện",
+      "confirm": "Xác nhận?",
+      "failed": "Không thể xóa cuộc trò chuyện — vui lòng thử lại."
+    },
+    "historyLoadFailed": "Không thể tải lịch sử trò chuyện của bạn.",
+    "sendError": "Đã xảy ra sự cố — vui lòng thử lại."
   },
   "dashboard": {
     "description": "Dữ liệu mạng Live Flare, biểu đồ giá và hoạt động của ví trong nháy mắt.",

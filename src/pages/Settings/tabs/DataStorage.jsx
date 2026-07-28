@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
-import { CircleStackIcon, ChatBubbleLeftRightIcon, LockClosedIcon } from "@heroicons/react/24/outline";
+import { CircleStackIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 
 import { useFlareGptStore } from "@/store/useFlareGptStore";
+import * as chatService from "@/services/chatService";
 import { queryKeys } from "@/services/queryKeys";
 import Card from "@/pages/Settings/components/Card";
 import RowItem from "@/pages/Settings/components/RowItem";
@@ -26,19 +28,18 @@ function ClearButton({ armed, onClick, label, confirmLabel }) {
   );
 }
 
-// Two tiers, not one — "clearing my cache" and "deleting my account's
-// synced data" are very different stakes, and conflating them under one
-// generic "Data" bucket would hide that difference. Local Data is
-// everything this browser holds regardless of sign-in state (the
-// Wallet Activity query cache, UI preferences, and — until backend sync
-// ships — every FlareGPT conversation, guest or not) and is safe to clear
-// instantly. Account Data is reserved for what the backend will hold once
-// it exists; shown as a locked placeholder rather than hidden entirely, so
-// the roadmap is visible without pretending it's already usable.
+// Two tiers, not one — "clearing my cache" and "clearing what my account
+// holds on the backend" are very different stakes, and conflating them
+// under one generic "Data" bucket would hide that difference. Local Data
+// is everything this browser holds regardless of sign-in state (currently
+// just the Wallet Activity query cache) and is safe to clear instantly.
+// FlareGPT's chat history moved here from Local Data once it became the
+// first real backend-synced data this app has — clearing it now actually
+// deletes it from the account, not just this browser.
 export default function DataStorage() {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
-  const clearAllConversations = useFlareGptStore((s) => s.clearAllConversations);
+  const clearMessages = useFlareGptStore((s) => s.clearMessages);
 
   const [armed, setArmed] = useState(null);
   const timerRef = useRef(null);
@@ -61,6 +62,20 @@ export default function DataStorage() {
     arm(key);
   };
 
+  // The backend holds one continuous chat history per account (no local-
+  // only guest state left to fall back on), so this now has to succeed
+  // against the real endpoint before the local store is cleared — clearing
+  // local state on a failed request would just have it reappear on the
+  // next history fetch.
+  const clearConversations = async () => {
+    try {
+      await chatService.clearChatHistory();
+      clearMessages();
+    } catch {
+      toast.error(t("settings.dataStorage.conversationsClearFailed"));
+    }
+  };
+
   return (
     <div className="space-y-6">
       <Card title={t("settings.dataStorage.localTitle")} subtitle={t("settings.dataStorage.localSubtitle")}>
@@ -81,7 +96,11 @@ export default function DataStorage() {
               confirmLabel={t("settings.dataStorage.confirmClear")}
             />
           </RowItem>
+        </div>
+      </Card>
 
+      <Card title={t("settings.dataStorage.accountTitle")} subtitle={t("settings.dataStorage.accountSubtitle")}>
+        <div className="divide-y divide-divider">
           <RowItem
             icon={ChatBubbleLeftRightIcon}
             title={t("settings.dataStorage.conversations")}
@@ -89,19 +108,11 @@ export default function DataStorage() {
           >
             <ClearButton
               armed={armed === "conversations"}
-              onClick={() => handleClick("conversations", clearAllConversations)}
+              onClick={() => handleClick("conversations", clearConversations)}
               label={t("settings.dataStorage.clear")}
               confirmLabel={t("settings.dataStorage.confirmClear")}
             />
           </RowItem>
-        </div>
-      </Card>
-
-      <Card title={t("settings.dataStorage.accountTitle")} subtitle={t("settings.dataStorage.accountSubtitle")}>
-        <div className="flex items-center gap-3 rounded-2xl bg-surface-inset px-4 py-6 text-center justify-center flex-col">
-          <LockClosedIcon className="h-6 w-6 text-ink-muted" />
-          <p className="text-sm font-medium text-ink-primary">{t("settings.dataStorage.accountUnavailable")}</p>
-          <p className="text-xs text-ink-muted max-w-sm">{t("settings.dataStorage.accountUnavailableDescription")}</p>
         </div>
       </Card>
     </div>

@@ -245,13 +245,12 @@
       "walletCache": "ウォレットアクティビティキャッシュ",
       "walletCacheDescription": "キャッシュされた取引履歴を削除します — 次回訪問時に再取得されます。",
       "conversations": "FlareGPTの会話",
-      "conversationsDescription": "このブラウザに保存されているすべての会話を削除します。",
+      "conversationsDescription": "アカウントからFlareGPTのチャット履歴を削除します。この操作は元に戻せません。",
       "clear": "削除",
       "confirmClear": "確認しますか？",
       "accountTitle": "アカウントデータ",
-      "accountSubtitle": "バックエンドと同期されたデータ。アカウント同期が開始されると利用可能になります。",
-      "accountUnavailable": "まだ利用できません",
-      "accountUnavailableDescription": "このセクションでは、アカウント同期が開始されると、バックエンドと同期されたFlareGPTの履歴を管理できるようになります。"
+      "accountSubtitle": "サーバー上のアカウントと同期されています。",
+      "conversationsClearFailed": "チャット履歴を削除できませんでした。もう一度お試しください。"
     }
   },
   "sidebar": {
@@ -419,11 +418,9 @@
     "viaWalletConnect": "WalletConnect経由"
   },
   "flareWidget": {
-    "chatHistory": "チャット履歴",
     "close": "閉じる",
     "collapse": "折りたたむ",
     "expand": "展開",
-    "newChat": "新しいチャット",
     "openFullPage": "フルページを開く"
   },
   "flrgpt": {
@@ -436,9 +433,7 @@
       "stakingOpportunities": "ステーキングの機会を見せて"
     },
     "wallet": {
-      "analyzing": "分析対象:",
-      "general": "一般",
-      "generalHint": "ウォレットのコンテキストなし"
+      "analyzing": "分析対象:"
     },
     "empty": {
       "title": "FlareGPTに何でも聞いてください",
@@ -457,19 +452,13 @@
       "copyFailed": "コピーに失敗しました"
     },
     "jumpToLatest": "最新へ移動",
-    "history": {
-      "title": "履歴",
-      "newChat": "新しいチャット",
-      "empty": "まだ会話がありません。",
-      "untitled": "新しい会話",
-      "pin": "会話をピン留め",
-      "unpin": "ピン留めを解除",
-      "searchPlaceholder": "会話を検索...",
-      "noResults": "会話が見つかりません",
-      "moreActions": "その他の操作",
-      "delete": "会話を削除",
-      "pinLimitReached": "ピン留めできる会話は最大{{count}}件です — 先にどれかのピン留めを解除してください。"
-    }
+    "clearChat": {
+      "button": "チャットを削除",
+      "confirm": "確認しますか?",
+      "failed": "チャットを削除できませんでした。もう一度お試しください。"
+    },
+    "historyLoadFailed": "チャット履歴を読み込めませんでした。",
+    "sendError": "問題が発生しました。もう一度お試しください。"
   },
   "dashboard": {
     "description": "ライブフレアネットワークデータ、価格チャート、ウォレットアクティビティを一目で確認できます。",

@@ -245,13 +245,12 @@
       "walletCache": "Cache Aktivitas Wallet",
       "walletCacheDescription": "Menghapus riwayat transaksi yang di-cache — kunjungan berikutnya akan mengambilnya lagi.",
       "conversations": "Percakapan FlareGPT",
-      "conversationsDescription": "Menghapus semua percakapan yang tersimpan di browser ini.",
+      "conversationsDescription": "Menghapus riwayat obrolan FlareGPT dari akun Anda. Tindakan ini tidak dapat dibatalkan.",
       "clear": "Hapus",
       "confirmClear": "Konfirmasi?",
       "accountTitle": "Data Akun",
-      "accountSubtitle": "Data tersinkron backend, tersedia setelah sinkronisasi akun diluncurkan.",
-      "accountUnavailable": "Belum tersedia",
-      "accountUnavailableDescription": "Bagian ini akan memungkinkan Anda mengelola riwayat FlareGPT yang tersinkron backend setelah sinkronisasi akun aktif."
+      "accountSubtitle": "Disinkronkan dengan akun Anda di server.",
+      "conversationsClearFailed": "Gagal menghapus riwayat obrolan — silakan coba lagi."
     }
   },
   "sidebar": {
@@ -419,11 +418,9 @@
     "viaWalletConnect": "Melalui WalletConnect"
   },
   "flareWidget": {
-    "chatHistory": "Riwayat obrolan",
     "close": "Tutup",
     "collapse": "Ciutkan",
     "expand": "Bentangkan",
-    "newChat": "Obrolan baru",
     "openFullPage": "Buka halaman penuh"
   },
   "flrgpt": {
@@ -436,9 +433,7 @@
       "stakingOpportunities": "Tampilkan peluang staking saya"
     },
     "wallet": {
-      "analyzing": "Menganalisis:",
-      "general": "Umum",
-      "generalHint": "Tanpa konteks dompet"
+      "analyzing": "Menganalisis:"
     },
     "empty": {
       "title": "Tanyakan apa saja ke FlareGPT",
@@ -457,19 +452,13 @@
       "copyFailed": "Gagal menyalin"
     },
     "jumpToLatest": "Lompat ke terbaru",
-    "history": {
-      "title": "Riwayat",
-      "newChat": "Obrolan baru",
-      "empty": "Belum ada percakapan.",
-      "untitled": "Percakapan baru",
-      "pin": "Sematkan percakapan",
-      "unpin": "Lepas sematan",
-      "searchPlaceholder": "Cari percakapan...",
-      "noResults": "Tidak ada percakapan ditemukan",
-      "moreActions": "Tindakan lainnya",
-      "delete": "Hapus percakapan",
-      "pinLimitReached": "Anda dapat menyematkan maksimal {{count}} percakapan — lepas sematan salah satu terlebih dahulu."
-    }
+    "clearChat": {
+      "button": "Hapus Obrolan",
+      "confirm": "Konfirmasi?",
+      "failed": "Gagal menghapus obrolan — silakan coba lagi."
+    },
+    "historyLoadFailed": "Riwayat obrolan Anda gagal dimuat.",
+    "sendError": "Terjadi kesalahan — silakan coba lagi."
   },
   "dashboard": {
     "description": "Sekilas data jaringan Flare Langsung, grafik harga, dan aktivitas dompet.",

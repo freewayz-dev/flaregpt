@@ -3,11 +3,13 @@ import { useTranslation } from "react-i18next";
 import { PaperAirplaneIcon, StopIcon } from "@heroicons/react/24/outline";
 
 import WalletContextPill from "@/components/flareGpt/WalletContextPill";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
 
 const MAX_TEXTAREA_HEIGHT = 160;
 
-export default function Composer({ onSend, isGenerating, onStop, onOpenWalletModal, focusRequestId }) {
+export default function Composer({ onSend, isGenerating, onStop, onOpenWalletModal, focusRequestId, disabled = false }) {
   const { t } = useTranslation();
+  const { hasSession } = useAuthStatus();
   const [value, setValue] = useState("");
   const textareaRef = useRef(null);
 
@@ -41,7 +43,7 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
     }
   }, [focusRequestId]);
 
-  const canSend = value.trim().length > 0 && !isGenerating;
+  const canSend = value.trim().length > 0 && !isGenerating && !disabled;
 
   const autoGrow = (el) => {
     el.style.height = "auto";
@@ -88,9 +90,15 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
   return (
     <div className="border-t border-line px-3 pt-3 pb-[calc(0.625rem+env(safe-area-inset-bottom))] sm:p-4 shrink-0">
       <div className="mx-auto max-w-3xl">
-        <div className="mb-2">
-          <WalletContextPill onOpenWalletModal={onOpenWalletModal} />
-        </div>
+        {/* Wallet-aware context only makes sense for a signed-in user — a
+            guest has no account for the backend to scope answers to, and
+            their messages aren't persisted anyway (see useFlareGptStore.js),
+            so there's nothing here for the pill to represent. */}
+        {hasSession && (
+          <div className="mb-2">
+            <WalletContextPill onOpenWalletModal={onOpenWalletModal} />
+          </div>
+        )}
         <div className="flex items-end gap-2 rounded-2xl border border-[#E5E7EB] dark:border-none bg-surface-inset p-1.5 sm:p-2 focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2">
           <textarea
             ref={textareaRef}
@@ -98,8 +106,9 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
             value={value}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
+            disabled={disabled}
             placeholder={t("flrgpt.composer.placeholder")}
-            className="flex-1 resize-none bg-transparent px-2 py-1.5 sm:py-2 text-base sm:text-sm text-ink-primary placeholder-ink-muted outline-none"
+            className="flex-1 resize-none bg-transparent px-2 py-1.5 sm:py-2 text-base sm:text-sm text-ink-primary placeholder-ink-muted outline-none disabled:opacity-60"
             style={{ maxHeight: MAX_TEXTAREA_HEIGHT }}
           />
           {isGenerating ? (

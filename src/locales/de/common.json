@@ -245,13 +245,12 @@
       "walletCache": "Wallet-Aktivitäts-Cache",
       "walletCacheDescription": "Löscht den zwischengespeicherten Transaktionsverlauf — beim nächsten Besuch wird er neu abgerufen.",
       "conversations": "FlareGPT-Unterhaltungen",
-      "conversationsDescription": "Löscht jede in diesem Browser gespeicherte Unterhaltung.",
+      "conversationsDescription": "Löscht deinen FlareGPT-Chatverlauf aus deinem Konto. Dies kann nicht rückgängig gemacht werden.",
       "clear": "Löschen",
       "confirmClear": "Bestätigen?",
       "accountTitle": "Kontodaten",
-      "accountSubtitle": "Backend-synchronisierte Daten, verfügbar sobald die Kontosynchronisierung live ist.",
-      "accountUnavailable": "Noch nicht verfügbar",
-      "accountUnavailableDescription": "Dieser Bereich ermöglicht die Verwaltung backend-synchronisierter FlareGPT-Verläufe, sobald die Kontosynchronisierung live ist."
+      "accountSubtitle": "Mit deinem Konto auf dem Server synchronisiert.",
+      "conversationsClearFailed": "Chatverlauf konnte nicht gelöscht werden – bitte versuche es erneut."
     }
   },
   "sidebar": {
@@ -418,11 +417,9 @@
     "viaWalletConnect": "Über WalletConnect"
   },
   "flareWidget": {
-    "chatHistory": " Chat-Verlauf",
     "close": "Schließen",
     "collapse": "Ausblenden",
     "expand": "Erweitern",
-    "newChat": "Neuer Chat",
     "openFullPage": "Vollständige Seite öffnen"
   },
   "flrgpt": {
@@ -435,9 +432,7 @@
       "stakingOpportunities": "Meine Staking-Möglichkeiten zeigen"
     },
     "wallet": {
-      "analyzing": "Analysiere:",
-      "general": "Allgemein",
-      "generalHint": "Kein Wallet-Kontext"
+      "analyzing": "Analysiere:"
     },
     "empty": {
       "title": "Frag FlareGPT irgendetwas",
@@ -456,19 +451,13 @@
       "copyFailed": "Kopieren fehlgeschlagen"
     },
     "jumpToLatest": "Zum Neuesten springen",
-    "history": {
-      "title": "Verlauf",
-      "newChat": "Neuer Chat",
-      "empty": "Noch keine Unterhaltungen.",
-      "untitled": "Neue Unterhaltung",
-      "pin": "Unterhaltung anheften",
-      "unpin": "Anheftung aufheben",
-      "searchPlaceholder": "Unterhaltungen durchsuchen...",
-      "noResults": "Keine Unterhaltungen gefunden",
-      "moreActions": "Weitere Aktionen",
-      "delete": "Unterhaltung löschen",
-      "pinLimitReached": "Du kannst maximal {{count}} Unterhaltungen anheften — hebe zuerst eine Anheftung auf."
-    }
+    "clearChat": {
+      "button": "Chat löschen",
+      "confirm": "Bestätigen?",
+      "failed": "Chat konnte nicht gelöscht werden – bitte versuche es erneut."
+    },
+    "historyLoadFailed": "Dein Chatverlauf konnte nicht geladen werden.",
+    "sendError": "Etwas ist schiefgelaufen – bitte versuche es erneut."
   },
   "dashboard": {
     "description": "Live Flare-Netzwerkdaten, Preisdiagramme und Wallet-Aktivitäten auf einen Blick.",

@@ -57,7 +57,7 @@ export default function Navbar({
   // a first-time visitor. This nudge targets exactly that person, once,
   // then never again (persisted in localStorage, not this component's
   // state, so it survives reloads).
-  const hasFlareGptHistory = useFlareGptStore((s) => s.conversations.length > 0);
+  const hasFlareGptHistory = useFlareGptStore((s) => s.messages.length > 0);
   const [showFabHint, setShowFabHint] = useState(false);
 
   useEffect(() => {

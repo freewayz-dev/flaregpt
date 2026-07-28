@@ -1,11 +1,13 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
-import { ClockIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
+import { TrashIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 import ChatPane from "@/components/flareGpt/ChatPane";
 import { useFlareGptConversation } from "@/hooks/useFlareGptConversation";
 import { ROUTES } from "@/config/routes";
+
+const CONFIRM_WINDOW_MS = 3000;
 
 // Below `lg` (1024px — the same breakpoint Sidebar.jsx uses to hide this
 // route's own nav link), FlareGPT is reached exclusively as the FAB-opened
@@ -30,8 +32,8 @@ function isMobileLanding() {
 // — every other page here is a dashboard widget (stats, tables), which is
 // what the card convention is for; a conversation isn't a widget, and no
 // reference chat product (ChatGPT, Claude) boxes its conversation in a
-// bordered card. Just a slim, title-free icon row for History/New Chat,
-// then the conversation sits directly on the dashboard's own canvas.
+// bordered card. Just a slim, title-free icon row for Clear Chat, then
+// the conversation sits directly on the dashboard's own canvas.
 //
 // `h-full flex flex-col` so the chat pane gets a real, bounded height to
 // manage its own internal scrolling (message list) with the composer
@@ -42,7 +44,6 @@ export default function FLRGPT() {
   const { openWalletModal } = useOutletContext();
   const navigate = useNavigate();
   const location = useLocation();
-  const [historyOpen, setHistoryOpen] = useState(false);
   const [shouldRedirectToWidget] = useState(isMobileLanding);
 
   useLayoutEffect(() => {
@@ -58,29 +59,36 @@ export default function FLRGPT() {
   }, []);
 
   const {
-    conversations,
-    activeConversation,
     messages,
     isGenerating,
+    isLoadingHistory,
     send,
     stop,
     regenerate,
-    startNewConversation,
-    switchConversation,
-    deleteConversation,
-    togglePinConversation,
+    clearChat,
     scrollRequestId,
     focusRequestId,
   } = useFlareGptConversation();
 
-  // Tapping "New Chat" while history is open should read as one seamless
-  // action — close the panel, then start the blank conversation — rather
-  // than starting a new chat silently underneath a still-open history
-  // list (the panel used to only close via its *own* internal New Chat
-  // button, not this toolbar one, which is exactly the gap this fixes).
-  const handleNewChat = () => {
-    setHistoryOpen(false);
-    startNewConversation();
+  // Same inline arm-then-confirm pattern used for Logout and other
+  // consequential-but-not-catastrophic actions elsewhere in this app —
+  // clearing the account's entire chat history is real and irreversible
+  // (there's no per-conversation undo, the backend has only one history to
+  // clear), so a single accidental tap shouldn't be enough to trigger it.
+  const [confirmingClear, setConfirmingClear] = useState(false);
+  const confirmTimerRef = useRef(null);
+  useEffect(() => () => clearTimeout(confirmTimerRef.current), []);
+
+  const handleClearClick = () => {
+    if (confirmingClear) {
+      clearTimeout(confirmTimerRef.current);
+      setConfirmingClear(false);
+      clearChat();
+      return;
+    }
+    setConfirmingClear(true);
+    clearTimeout(confirmTimerRef.current);
+    confirmTimerRef.current = setTimeout(() => setConfirmingClear(false), CONFIRM_WINDOW_MS);
   };
 
   // The redirect above fires before paint, but skip mounting the (fairly
@@ -91,42 +99,36 @@ export default function FLRGPT() {
   return (
     <div className="h-full flex flex-col">
       <div className="flex items-center justify-end gap-1.5 pb-2 sm:pb-3 shrink-0">
-        <button
-          type="button"
-          onClick={() => setHistoryOpen((open) => !open)}
-          title={t("flrgpt.history.title")}
-          aria-label={t("flrgpt.history.title")}
-          className="flex h-8 w-8 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary transition-colors cursor-pointer"
-        >
-          <ClockIcon className="h-5 w-5" />
-        </button>
-        <button
-          type="button"
-          onClick={handleNewChat}
-          title={t("flrgpt.history.newChat")}
-          aria-label={t("flrgpt.history.newChat")}
-          className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand/10 text-brand hover:bg-brand/20 transition-colors cursor-pointer"
-        >
-          <PencilSquareIcon className="h-5 w-5" />
-        </button>
+        {messages.length > 0 && (
+          <button
+            type="button"
+            onClick={handleClearClick}
+            title={confirmingClear ? t("flrgpt.clearChat.confirm") : t("flrgpt.clearChat.button")}
+            aria-label={confirmingClear ? t("flrgpt.clearChat.confirm") : t("flrgpt.clearChat.button")}
+            className={`flex h-8 w-8 items-center justify-center rounded-lg transition-colors cursor-pointer ${
+              confirmingClear
+                ? "bg-red-500/10 text-red-500 hover:bg-red-500/20"
+                : "text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary"
+            }`}
+          >
+            {confirmingClear ? (
+              <CheckIcon className="h-4 w-4" />
+            ) : (
+              <TrashIcon className="h-4 w-4" />
+            )}
+          </button>
+        )}
       </div>
 
       <div className="flex-1 min-h-0 flex flex-col">
         <ChatPane
           messages={messages}
           isGenerating={isGenerating}
+          isLoadingHistory={isLoadingHistory}
           onSend={send}
           onStop={stop}
           onRegenerate={regenerate}
           onOpenWalletModal={openWalletModal}
-          historyOpen={historyOpen}
-          onCloseHistory={() => setHistoryOpen(false)}
-          conversations={conversations}
-          activeConversationId={activeConversation?.id ?? null}
-          onSelectConversation={switchConversation}
-          onDeleteConversation={deleteConversation}
-          onTogglePinConversation={togglePinConversation}
-          onNewChat={startNewConversation}
           scrollRequestId={scrollRequestId}
           focusRequestId={focusRequestId}
         />
