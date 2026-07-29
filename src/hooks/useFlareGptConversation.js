@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useFlareGptStore, makeId } from "@/store/useFlareGptStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import * as chatService from "@/services/chatService";
+import { streamChatMessage } from "@/services/chatSocket";
 import { queryKeys } from "@/services/queryKeys";
 import { useDeleteConversation } from "@/hooks/queries/useChatQueries";
 import { useFlareGptWalletContext } from "@/hooks/useFlareGptWalletContext";
@@ -50,6 +51,12 @@ function deriveTitleFromMessage(text) {
   const collapsed = text.trim().replace(/\s+/g, " ");
   return collapsed.length > 60 ? `${collapsed.slice(0, 57)}...` : collapsed;
 }
+
+// Distinguishes "the user hit Stop" from a genuine stream failure inside
+// requestReply's catch block — stop() already did the cleanup (removing
+// the bubble), so this just needs to short-circuit the error toast/rollback
+// path rather than double-handle it.
+class ChatCancelled extends Error {}
 
 // The backend has no structured wallet-address field on the chat endpoint
 // at all (confirmed live) — the only way it ever reasons about a specific
@@ -181,17 +188,17 @@ export function useFlareGptConversation() {
   const [focusRequestId, setFocusRequestId] = useState(0);
   const requestFocus = () => setFocusRequestId((n) => n + 1);
 
-  // Tracks the in-flight request so Stop can actually cancel it (there's no
-  // streaming to fast-forward — the real endpoint returns one full reply —
-  // so "stop" just means "cancel and remove the pending bubble"). The same
-  // controller also guards the lazy conversation-creation step below it,
-  // so hitting Stop the instant a brand-new thread's first message is sent
-  // cancels both rather than leaving an orphaned empty conversation behind
-  // from a create call that already landed.
-  const abortControllerRef = useRef(null);
+  // Tracks the in-flight request so Stop can actually cancel it: `cancelled`
+  // guards the lazy conversation-creation step (hitting Stop the instant a
+  // brand-new thread's first message is sent must cancel both, not leave an
+  // orphaned empty conversation behind from a create call that already
+  // landed), `streamHandle` closes the live socket, and `reject` settles the
+  // pending promise below so requestReply's own await doesn't hang forever
+  // waiting for a `done`/`error` frame that a closed socket will never emit.
+  const activeRequestRef = useRef(null);
 
   useEffect(() => {
-    return () => abortControllerRef.current?.abort();
+    return () => activeRequestRef.current?.streamHandle?.cancel();
   }, []);
 
   const requestReply = async (userText, guestHistory) => {
@@ -204,8 +211,8 @@ export function useFlareGptConversation() {
     };
     appendMessage(assistantMessage);
 
-    const controller = new AbortController();
-    abortControllerRef.current = controller;
+    const requestState = { cancelled: false, streamHandle: null, reject: null };
+    activeRequestRef.current = requestState;
 
     // Tracks whether *this* call is the one that created the conversation
     // (as opposed to sending into one that already existed) — needed so a
@@ -222,23 +229,36 @@ export function useFlareGptConversation() {
         // a fresh thread ever calls this, so a curious click that goes
         // nowhere never leaves an empty conversation behind.
         const created = await chatService.createConversation(deriveTitleFromMessage(userText));
-        if (controller.signal.aborted) return;
+        if (requestState.cancelled) return;
         conversationId = created.id;
         justCreatedConversationId = conversationId;
         useFlareGptStore.getState().setActiveConversationId(conversationId);
         queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
       }
 
-      const { response } = await chatService.sendChatMessage(withWalletContext(userText, effectiveWallet), {
-        conversationId: hasSession ? conversationId : null,
-        history: hasSession ? undefined : guestHistory,
-        signal: controller.signal,
+      // Once a conversation exists, the socket recalls its own server-side
+      // context the same way REST already did (confirmed live: a follow-up
+      // sent with only `conversation_id` — no `history` — still correctly
+      // recalled prior turns) — `history` only matters for a guest, where
+      // the client is the only place that context lives at all.
+      let fullText = "";
+      await new Promise((resolve, reject) => {
+        requestState.reject = reject;
+        requestState.streamHandle = streamChatMessage(withWalletContext(userText, effectiveWallet), {
+          address: effectiveWallet?.address,
+          conversationId: hasSession ? conversationId : null,
+          history: hasSession ? undefined : guestHistory,
+          onStatus: (label) => updateMessage(assistantMessage.id, { statusText: label }),
+          onToken: (chunk) => {
+            fullText += chunk;
+            updateMessage(assistantMessage.id, { status: "streaming", blocks: toTextBlocks(fullText) });
+          },
+          onDone: resolve,
+          onError: reject,
+        });
       });
 
-      updateMessage(assistantMessage.id, {
-        status: "complete",
-        blocks: toTextBlocks(response),
-      });
+      updateMessage(assistantMessage.id, { status: "complete", statusText: null });
 
       // Keeps the switcher's message_count/updated_at (and therefore
       // recency ordering) current without a manual refresh.
@@ -246,7 +266,7 @@ export function useFlareGptConversation() {
         queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
       }
     } catch (error) {
-      if (error.code === "ERR_CANCELED") return; // stop() already handled the message
+      if (error instanceof ChatCancelled) return; // stop() already handled the message
 
       removeLastAssistantMessage();
 
@@ -267,7 +287,7 @@ export function useFlareGptConversation() {
 
       toast.error(t("flrgpt.sendError"));
     } finally {
-      abortControllerRef.current = null;
+      activeRequestRef.current = null;
     }
   };
 
@@ -304,7 +324,12 @@ export function useFlareGptConversation() {
   };
 
   const stop = () => {
-    abortControllerRef.current?.abort();
+    const requestState = activeRequestRef.current;
+    if (requestState) {
+      requestState.cancelled = true;
+      requestState.streamHandle?.cancel();
+      requestState.reject?.(new ChatCancelled());
+    }
     removeLastAssistantMessage();
   };
 

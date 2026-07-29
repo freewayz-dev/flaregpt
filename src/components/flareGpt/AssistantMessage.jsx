@@ -70,7 +70,7 @@ function AssistantMessage({ message, isLast, onRegenerate }) {
 
       <div className="min-w-0 flex-1 group">
         {isThinking ? (
-          <ThinkingIndicator />
+          <ThinkingIndicator label={message.statusText} />
         ) : (
           <div className="space-y-3">
             {message.blocks.map(renderBlock)}

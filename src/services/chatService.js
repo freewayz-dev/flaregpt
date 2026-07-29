@@ -1,24 +1,5 @@
 import { flareApi } from "@/services/apiClient";
 
-// Once a conversation exists, the backend remembers its own context —
-// confirmed live: a follow-up sent with `conversation_id` set and `history:
-// []` still correctly recalled the prior exchange. So `history` only ever
-// matters for a guest (no auth, no conversation to attach to, nothing
-// persisted server-side — see useFlareGptStore.js), where the client is
-// the only place that context lives at all. Sending both would just be
-// redundant for an authenticated send, not wrong, but omitting it keeps
-// the payload honest about what's actually driving the reply.
-export async function sendChatMessage(message, { conversationId, history, signal } = {}) {
-  const body = { message };
-  if (conversationId) {
-    body.conversation_id = conversationId;
-  } else if (history) {
-    body.history = history;
-  }
-  const { data } = await flareApi.post("/api/v1/chat", body, { signal });
-  return data; // { response, conversation_id }
-}
-
 // Response: { conversations: [{ id, title, created_at, updated_at,
 // message_count }, ...] } — metadata only, no messages (see
 // fetchConversation for the full thread).
