@@ -75,7 +75,7 @@ function AssistantMessage({ message, isLast, onRegenerate }) {
           <div className="space-y-3">
             {message.blocks.map(renderBlock)}
             {isStreaming && (
-              <span className="inline-block h-3.5 w-1.5 bg-brand/60 animate-pulse rounded-sm align-middle" />
+              <span className="inline-block h-4 w-1.5 bg-brand/60 animate-pulse rounded-sm align-middle" />
             )}
           </div>
         )}

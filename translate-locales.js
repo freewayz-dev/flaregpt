@@ -39,8 +39,15 @@ async function fetchTranslation(text, targetLang) {
     const response = await fetch(url);
     const data = await response.json();
     
-    if (data && data.responseData && data.responseData.translatedText) {
-      return data.responseData.translatedText;
+    const translated = data?.responseData?.translatedText;
+    // MyMemory's free tier returns its rate-limit notice *as* translatedText
+    // (HTTP 200, not an error status) once the daily quota is used up — a
+    // plain truthy check let that literal warning string get written into
+    // a locale file as if it were a real translation. Treating it as a
+    // failure here falls through to the empty-string "retry next time"
+    // path below instead.
+    if (translated && !translated.includes('MYMEMORY WARNING')) {
+      return translated;
     }
     return null;
   } catch (err) {

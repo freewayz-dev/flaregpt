@@ -1,11 +1,317 @@
 {
+  "comingSoon": {
+    "badge": "敬请期待",
+    "description": "我们正在构建此功能。请稍后再回来查看。"
+  },
+  "connectModal": {
+    "connecting": "连接中…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "在 Brave 隐私窗口中打开此网站。",
+        "shieldsOff": "为此网站关闭 Brave Shields 后重试。",
+        "title": "WalletConnect 似乎被 Brave Shields 屏蔽了。",
+        "tryTitle": "请尝试以下方法之一：",
+        "useChrome": "如果问题仍然存在，请使用 Google Chrome 或其他受支持的浏览器。"
+      },
+      "generic": "发生意外的连接摩擦。请重试或使用其他钱包。",
+      "pending": "连接请求已打开。请打开您的钱包扩展面板。",
+      "providerGone": "此钱包似乎不再响应。它可能已被更新或删除。刷新页面应该可以解决此问题。",
+      "rejected": "您的钱包中的连接请求已取消。",
+      "timeout": "无法连接到WalletConnect。请检查您的网络连接后重试。",
+      "wrongNetwork": "请将钱包的活动网络切换到Flare主网。"
+    },
+    "install": "安装",
+    "installHint": "仍然看不到您的钱包？刷新页面可能会有帮助。",
+    "mobileHint": "在移动设备上，在钱包的内置浏览器中打开FlareGPT ，以获得最佳连接体验。扫描二维码时，请使用您钱包应用自带的扫描功能，而不是手机相机，以获得更可靠的连接。",
+    "recommended": "推荐AI",
+    "refresh": "刷新",
+    "subtitle": "选择您的首选钱包以连接到Flare网络。",
+    "title": "连接钱包",
+    "viaWalletConnect": "通过WalletConnect"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "正在检查API状态...",
+      "degraded": "API已降级",
+      "operational": "所有系统运行正常"
+    },
+    "chart": {
+      "couldntLoad": "无法加载FLR价格历史记录"
+    },
+    "claimsHistory": {
+      "connectToSee": "在“设置”中连接或添加钱包以查看索赔历史记录。",
+      "couldntLoad": "无法加载索赔历史记录",
+      "emptyDescription": "您已完成所有操作。没有待领取的奖励纪元。",
+      "emptyTitle": "没有无人认领的纪元",
+      "title": "索赔历史记录"
+    },
+    "common": {
+      "networkHiccup": "这通常是一个临时的网络打嗝。",
+      "no": "否",
+      "noWalletSelected": "未选择钱包",
+      "retry": "再次挑战",
+      "retrying": "重试中",
+      "yes": "是"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "在“设置”中连接或添加钱包以查看委派。",
+      "couldntLoad": "无法加载委派",
+      "emptyDescription": "将WFLR委托给FTSO提供商，开始赚取奖励。",
+      "emptyTitle": "没有活动的委派",
+      "tabLabel": "委派",
+      "title": "委派分解"
+    },
+    "description": "实时Flare网络数据、价格图表和钱包活动一目了然。",
+    "ftso": {
+      "activeDelegations": "活动委派",
+      "claimComingSoon": "领取功能尚不可用。即将推出。",
+      "claimRewards": "Claim Rewards",
+      "connected": "已連線",
+      "connectToSeeRewards": "在“设置”中关联或添加钱包，即可查看奖励。",
+      "couldntLoad": "无法加载FTSO投资组合",
+      "delegatedWflr": "委派WFLR",
+      "estHourlyEarning": "预计每小时收入",
+      "noUnclaimedYet": "尚无未领取的奖励",
+      "readOnly": "只读",
+      "readOnlyCannotClaim": "只读，无法领取",
+      "switchToClaim": "切换到已连接的钱包以领取奖励",
+      "title": "FTSO委托",
+      "unclaimedFlr": "无人认领的FLR"
+    },
+    "networkActivity": {
+      "collectingSamples": "收集实时样本。当新数据到达时，图表填充。",
+      "couldntLoad": "无法加载网络数据",
+      "gasPrice": "用气价格",
+      "gwei": "Gwei",
+      "live": "Live",
+      "title": "网络活动",
+      "tps": "第三人射击游戏"
+    },
+    "stats": {
+      "couldntLoad": "无法加载市场概览",
+      "flrPrice": "FLR价格",
+      "marketCap": "市场价值",
+      "tvl": "TVL",
+      "volume24h": "24小时量"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "在“设置”中连接或添加钱包以查看余额。",
+      "couldntLoad": "无法加载钱包余额",
+      "title": "钱包余额"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "地址已复制",
+      "connectToSeePosition": "连接钱包以查看您的持仓",
+      "contract": "合约",
+      "copyFailed": "无法复制地址",
+      "poolOwnership": "资金池占比",
+      "protocolDetails": "协议详情",
+      "proxyContract": "代理合约",
+      "redeemableValue": "可赎回价值",
+      "yourBalance": "您的余额"
+    },
+    "description": "比较收益策略,并跟踪您在 MXRPY、Sceptre 和 Firelight 金库中的持仓。",
+    "explorer": {
+      "subtitle": "选择一个协议以查看您的持仓和详情",
+      "title": "协议浏览器"
+    },
+    "firelight": {
+      "backingLabel": "资产支持倍数",
+      "category": "保险",
+      "circulatingSupply": "流通供应量",
+      "couldntLoad": "无法加载您的 Firelight 持仓",
+      "insuranceRobust": "保险: 稳健",
+      "subtitle": "资本保护金库",
+      "title": "Firelight 金库",
+      "underlyingReserve": "底层储备"
+    },
+    "kpis": {
+      "activePositions": "活跃持仓",
+      "bestApr": "最佳可用年化收益率",
+      "protocolsTracked": "已追踪协议"
+    },
+    "mxrpy": {
+      "category": "收益金库",
+      "circulatingCaption": "流通中 {{shares}} 份额 · {{decimals}} 位小数",
+      "couldntLoad": "无法加载您的 MXRPY 持仓",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "MXRPY 金库",
+      "yourShares": "您的凭证份额"
+    },
+    "sceptre": {
+      "backedFlr": "底层担保 FLR",
+      "category": "流动性质押",
+      "couldntLoad": "无法加载您的 Sceptre 持仓",
+      "exchangeRateLabel": "sFLR / FLR 汇率",
+      "subtitle": "sFLR 流动性质押",
+      "title": "Sceptre 流动性质押",
+      "totalMinted": "已铸造份额总量"
+    },
+    "strategies": {
+      "amountLabel": "比较金额",
+      "apr": "年化收益率",
+      "colStrategy": "策略",
+      "colTerms": "条款",
+      "colYield": "预估收益 (FLR)",
+      "compoundingLabel": "复利方式",
+      "couldntLoad": "无法加载策略对比",
+      "highestApr": "最高年化收益率",
+      "lockupDays": "锁定 {{count}} 天",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
+      "lockupHours": "锁定 {{count}} 小时",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "无锁定期",
+      "subtitle": "查看您的 FLR 在不同策略下的表现",
+      "title": "策略对比",
+      "verdict": "FlareGPT 结论",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "地址已复制。感谢您考虑捐赠 {{amount}} {{symbol}}。",
+      "impactTier1": "一天的 API 费用",
+      "impactTier2": "一周的托管费用",
+      "impactTier3": "一个月的基础设施费用",
+      "impactTier4": "新协议集成",
+      "subtitle": "每笔捐款都能提供帮助。以下是一些入门建议。",
+      "title": "建议金额"
+    },
+    "closing": {
+      "message": "感谢您帮助 FlareGPT 保持独立。无论贡献大小,都真正有帮助。"
+    },
+    "description": "您的支持有助于让 FlareGPT 保持免费、独立并不断改进。",
+    "funding": {
+      "developmentFund": "开发基金",
+      "monthlyInfrastructure": "每月基础设施",
+      "raisedOfGoal": "已筹集 {{raised}},目标 {{goal}}",
+      "subtitle": "公开了解保持FlareGPT运行的成本。没有压力，只有能见度。",
+      "title": "资金透明度"
+    },
+    "hero": {
+      "addressCopied": "地址已复制",
+      "addressLabel": "钱包地址",
+      "copied": "已复制",
+      "copyAddress": "复制地址",
+      "copyFailed": "无法复制地址",
+      "multisigNote": "由多重签名钱包保护",
+      "qrTitle": "{{symbol}} 捐赠钱包地址的二维码",
+      "tapToCopy": "点击复制",
+      "viewOnExplorer": "在 {{explorer}} 上查看"
+    },
+    "received": {
+      "demoData": "演示数据",
+      "subtitle": "每个支持网络收到的总贡献。",
+      "title": "已收到的捐赠"
+    },
+    "support": {
+      "development": "持续开发",
+      "free": "保持 FlareGPT 免费",
+      "infra": "API 与基础设施",
+      "integrations": "新协议集成",
+      "title": "您的支持将用于"
+    },
+    "title": "支持 FlareGPT",
+    "warning": {
+      "body": "请仅向此地址发送 {{symbol}} 或其他 {{network}} 代币。从其他网络发送的资产将无法找回。",
+      "title": "仅限 {{network}} 资产。"
+    }
+  },
+  "flareWidget": {
+    "close": "关闭",
+    "collapse": "折叠",
+    "expand": "展开",
+    "openFullPage": "打开完整页面"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "消息已复制",
+      "copy": "复制",
+      "copyFailed": "复制失败",
+      "regenerate": "重新生成回答"
+    },
+    "composer": {
+      "disclaimer": "FlareGPT 可能会出错。在采取重要行动前请核实相关信息。",
+      "placeholder": "向 FlareGPT 提问...",
+      "send": "发送",
+      "stop": "停止生成"
+    },
+    "deleteConversation": {
+      "button": "删除对话",
+      "confirm": "确认？"
+    },
+    "deleteConversationFailed": "无法删除此对话。请重试。",
+    "empty": {
+      "subtitle": "获取关于您的钱包、奖励、委托或 Flare 生态系统的解答。",
+      "title": "向 FlareGPT 提问任何问题"
+    },
+    "guestMode": {
+      "cta": "登录以同步历史记录并解锁钱包分析",
+      "notice": "访客模式·对话未保存。"
+    },
+    "history": {
+      "cancelRename": "取消",
+      "delete": "删除",
+      "empty": "暂无对话",
+      "moreActions": "更多操作",
+      "newChat": "新对话",
+      "noResults": "没有与您的搜索匹配的对话",
+      "openButton": "历史记录",
+      "pin": "置顶",
+      "pinLimitReached": "最多可置顶 {{count}} 个对话",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "重命名",
+      "renameFailed": "无法重命名此对话。",
+      "saveRename": "保存",
+      "searchPlaceholder": "搜索对话...",
+      "title": "聊天记录",
+      "unpin": "取消置顶",
+      "untitled": "无标题",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+    },
+    "historyLoadFailed": "无法加载聊天记录。",
+    "jumpToLatest": "跳转到最新",
+    "newChat": "新对话",
+    "prompts": {
+      "analyzeWallet": "分析我的钱包",
+      "compareProtocols": "比较 Sceptre 和 Firelight",
+      "explainDelegations": "解释我的委托",
+      "increaseRewards": "如何提高我的 FTSO 奖励?",
+      "rewardsDecreased": "我的奖励为什么减少了?",
+      "stakingOpportunities": "显示我的质押机会"
+    },
+    "sendError": "已出错，再试一次。",
+    "wallet": {
+      "analyzing": "正在分析:",
+      "guestLabel": "钱包分析",
+      "locked": {
+        "body": "登录以让FlareGPT自动读取您的主要和关注列表钱包，而不是在每个问题中输入地址。",
+        "connectCta": "连接钱包",
+        "signInCta": "登陆",
+        "signingIn": "在您的钱包中确认…",
+        "title": "解锁钱包分析"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. 基于 Flare Network 构建。",
     "disclaimer": "非财务建议。所提供数据仅供参考之用。",
-    "terms": "条款与免责声明",
-    "donate": "捐献"
+    "donate": "捐献",
+    "terms": "条款与免责声明"
   },
   "help": {
+    "askFlareGptCta": "向 FlareGPT 提问",
+    "askFlareGptLead": "没有找到你想要的答案？",
+    "contact": {
+      "comingSoon": "即将推出",
+      "emailLabel": "邮箱",
+      "telegramLabel": "Telegram",
+      "twitterHint": "关注我们并给我们发消息",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "您的钱包可能未连接，或者控制面板仍在同步区块链数据。请核对是否选择了正确的钱包和网络。",
@@ -30,10 +336,12 @@
     ],
     "faqTitle": "常见问题解答",
     "featureGuides": "功能指南",
+    "flareGptGuideDescription": "用自然语言询问你的钱包、奖励和 Flare 网络相关问题。",
     "gettingStarted": "开始使用",
     "headerDesc": "指南、解答与支持，助你充分利用 FlareGPT 仪表盘。",
     "noFaqs": "没有与搜索匹配的常见问题。",
     "noGuides": "没有与搜索匹配的指南。",
+    "searchClear": "清除搜索",
     "searchPlaceholder": "搜索指南或常见问题...",
     "searchSub": "搜索功能指南和常见问题，或通过其他方式联系我们。",
     "searchTitle": "开始使用所需的一切",
@@ -65,63 +373,70 @@
       }
     ],
     "stillNeedHelp": "仍然需要帮助？",
-    "supportDesc": "目前联系我们最快的方式是通过 X。邮箱与 Telegram 支持即将上线。",
-    "searchClear": "清除搜索",
-    "flareGptGuideDescription": "用自然语言询问你的钱包、奖励和 Flare 网络相关问题。",
-    "askFlareGptLead": "没有找到你想要的答案？",
-    "askFlareGptCta": "向 FlareGPT 提问",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "关注我们并给我们发消息",
-      "telegramLabel": "Telegram",
-      "emailLabel": "邮箱",
-      "comingSoon": "即将推出"
-    }
+    "supportDesc": "目前联系我们最快的方式是通过 X。邮箱与 Telegram 支持即将上线。"
   },
   "navbar": {
+    "addressCopied": "地址已复制",
     "askFlareGPT": "咨询 FlareGPT",
-    "mainnetStatus": "Flare 主网",
-    "connectWallet": "连接钱包",
-    "primaryWalletSection": "主钱包",
     "badgePrimary": "主要",
+    "badgeSignIn": "登录",
     "badgeWatchlist": "关注列表",
-    "disconnectWallet": "断开钱包连接",
+    "balancesHiddenLabel": "余额已隐藏",
     "configureWatchlistWallets": "管理关注列表钱包",
-    "watchlistSection": "关注列表 ({{current}}/{{max}})",
-    "addressCopied": "地址已复制到剪贴板",
+    "connectWallet": "连接钱包",
     "copyFailed": "无法复制地址",
+    "disconnectWallet": "断开钱包连接",
     "flareGptFabHint": "FlareGPT 现在从这里打开",
     "hideBalances": "隐藏余额",
+    "mainnetStatus": "Flare 主网",
+    "primaryWalletSection": "主钱包",
     "showBalances": "显示余额",
-    "balancesHiddenLabel": "余额已隐藏",
     "signIn": "登录",
+    "signInBackgroundHint": "您连接的钱包需要登录",
     "signingIn": "正在登录…",
     "signInPrompt": "签署一条消息以验证此钱包并继续。",
-    "badgeSignIn": "登录",
-    "signInBackgroundHint": "您连接的钱包需要登录"
+    "watchlistSection": "关注列表 ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "深色",
+      "light": "浅色",
+      "system": "跟随系统"
+    },
     "cards": {
       "app": "应用",
       "blur": "蓝光滤镜",
       "chartType": "图表类型",
       "connectedWallets": "已连接钱包",
       "currency": "货币显示",
+      "defaultLandingPage": "默认起始页面",
+      "defaultWallet": "默认钱包",
       "governanceAlerts": "治理通知",
+      "hideBalances": "隐藏钱包余额",
       "language": "语言",
       "links": "链接",
       "logout": "登出",
+      "reduceMotion": "减少动效",
       "rewardsAlerts": "奖励通知",
+      "tableDensity": "表格密度",
       "theme": "主题",
       "themeMode": "浅色 / 深色模式",
       "timeframe": "时间范围",
       "walletCapacity": "钱包容量",
-      "walletPreferences": "钱包偏好设置",
-      "defaultWallet": "默认钱包",
-      "defaultLandingPage": "默认起始页面",
-      "tableDensity": "表格密度",
-      "reduceMotion": "减少动效",
-      "hideBalances": "隐藏钱包余额"
+      "walletPreferences": "钱包偏好设置"
+    },
+    "dataStorage": {
+      "accountSubtitle": "与服务器上的账户同步。",
+      "accountTitle": "账户数据",
+      "clear": "清除",
+      "confirmClear": "确认？",
+      "conversations": "FlareGPT 对话",
+      "conversationsClearFailed": "无法清除聊天记录。请重试。",
+      "conversationsDescription": "从您的账户中清除 FlareGPT 聊天记录。此操作无法撤销。",
+      "localSubtitle": "仅存储在此浏览器中。清除它是即时和安全的。",
+      "localTitle": "本地数据",
+      "walletCache": "钱包活动缓存",
+      "walletCacheDescription": "清除缓存的交易记录。下次访问时将重新获取。"
     },
     "description": "管理钱包、偏好设置、本地化和显示选项。",
     "descriptions": {
@@ -129,18 +444,33 @@
       "blur": "开启暖色调屏幕以缓解眼部疲劳",
       "chartType": "为系统矩阵设置默认的渲染视觉样式几何。",
       "currency": "选择资产基础货币显示。",
+      "defaultLandingPage": "选择启动应用时首先打开的页面。",
+      "defaultWallet": "当无法恢复先前会话时，此钱包将成为活动钱包。",
+      "hideBalances": "为保护隐私，模糊显示仪表盘中的余额和金额。",
       "language": "选择您的默认界面显示语言。",
       "links": "全局文档参考和团队互动链接。",
       "logout": "在此设备上退出 FlareGPT 登录。重新登录时需要重新签署一条消息。",
+      "reduceMotion": "即使操作系统未设置相关偏好，也最大限度地减少动画效果。",
+      "tableDensity": "舒适间距，或用于密集表格的更紧凑视图。",
+      "theme": "选择浅色、深色，或跟随系统设置。",
       "timeframe": "在视觉图表上定义默认的窗口周期比例。",
       "walletCapacity": "追踪分配容量池的系统限制。",
-      "theme": "选择浅色、深色，或跟随系统设置。",
-      "walletPreferences": "选择仪表盘打开时使用的钱包。",
-      "defaultWallet": "当无法恢复先前会话时，此钱包将成为活动钱包。",
-      "defaultLandingPage": "选择启动应用时首先打开的页面。",
-      "tableDensity": "舒适间距，或用于密集表格的更紧凑视图。",
-      "reduceMotion": "即使操作系统未设置相关偏好，也最大限度地减少动画效果。",
-      "hideBalances": "为保护隐私，模糊显示仪表盘中的余额和金额。"
+      "walletPreferences": "选择仪表盘打开时使用的钱包。"
+    },
+    "flareGpt": {
+      "syncStatusConnected": "已登录。您的对话会在每个设备和浏览器之间同步。",
+      "syncStatusGuest": "对话仅临时保存在此浏览器中，不会被保存。登录以保留对话。",
+      "syncStatusTitle": "同步状态"
+    },
+    "groups": {
+      "account": "账户",
+      "personalization": "个性化",
+      "walletsAndData": "钱包与数据"
+    },
+    "links": {
+      "docs": "文档批注",
+      "github": "GitHub 代码库",
+      "twitter": "推特"
     },
     "notifications": {
       "governance": "提案更新",
@@ -152,224 +482,201 @@
       "area": "面积图",
       "asia": "亚洲",
       "candlestick": "K线图",
+      "comfortable": "舒适",
+      "compact": "紧凑",
       "europe": "欧洲",
       "global": "全球",
       "high": "高",
       "line": "折线图",
       "low": "低",
       "medium": "中",
-      "off": "关闭",
-      "comfortable": "舒适",
-      "compact": "紧凑"
+      "off": "关闭"
     },
     "security": {
-      "logout": "退出登录",
-      "confirmLogout": "确认？"
+      "confirmLogout": "确认？",
+      "logout": "退出登录"
     },
     "subtitles": {
       "About": "概述系统部署记录、编译规则和资产索引。",
+      "Accessibility": "调整动效和交互偏好设置。",
+      "Appearance": "选择 FlareGPT 的外观。",
       "Display": "个性化您的默认视图以及仪表盘数据的显示方式。",
+      "FlareGpt": "管理 FlareGPT 记住您对话的方式。",
       "Notifications": "管理系统优先级事件和分发路由跟踪端点。",
       "Preferences": "语言和货币偏好设置。",
       "Security": "维护活动的身份会话屏障和凭据验证访问规则。",
-      "Wallets": "在全局外部去中心化账户中连接并结构化签名。",
-      "Appearance": "选择 FlareGPT 的外观。",
-      "Accessibility": "调整动效和交互偏好设置。",
-      "FlareGpt": "管理 FlareGPT 记住您对话的方式。"
+      "Wallets": "在全局外部去中心化账户中连接并结构化签名。"
     },
     "tabs": {
       "About": "关于",
+      "Accessibility": "无障碍",
+      "Appearance": "外观",
+      "DataStorage": "数据与存储",
       "Display": "仪表盘",
+      "FlareGpt": "FlareGPT",
       "Notifications": "通知",
       "Preferences": "通用",
       "Security": "安全",
-      "Wallets": "钱包",
-      "Appearance": "外观",
-      "Accessibility": "无障碍",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "数据与存储"
+      "Wallets": "钱包"
     },
     "title": "设置",
     "wallets": {
       "active": "激活",
       "add": "添加钱包 ({{current}}/{{max}})",
+      "addFormTitle": "添加关注列表投资组合账户",
+      "adding": "添加中…",
+      "addressPlaceholder": "0x... Flare钱包地址",
       "available": "可用容量",
+      "cancelRename": "取消",
+      "confirmRemove": "确认移除？",
       "connectAction": "连接钱包 (已连接 {{current}}, 剩余 {{remaining}})",
+      "connectActionUnlimited": "添加钱包（已追踪 {{current}} 个）",
       "connected": "已连接",
+      "duplicateAddress": "该地址已在您的关注列表中。",
+      "duplicateNickname": "关注列表中已存在使用该昵称的钱包，请选择其他昵称。",
       "empty": "尚未连接钱包",
       "emptyTerminal": "未连接钱包。请连接您的终端资产以继续。",
-      "limit": "您最多可以连接 {{max}} 个钱包",
-      "limitReached": "达到钱包上限 ({{current}}/{{max}})",
-      "maximum": "最大容量",
-      "remainingSlots": "剩余槽位",
-      "addFormTitle": "添加关注列表投资组合账户",
-      "addressPlaceholder": "0x... Flare钱包地址",
+      "guestLimitBenefitBackup": "为您的关注列表保留备份",
+      "guestLimitBenefitMore": "保存 3 个以上的钱包",
+      "guestLimitBenefitSync": "跨设备同步您的关注列表",
+      "guestLimitTitle": "登录以追踪更多钱包",
       "invalidAddress": "请输入有效的Flare EVM网络地址（从0x开始）。",
       "labelPlaceholder": "账户名称标签（例如，冷藏）",
+      "limit": "您最多可以连接 {{max}} 个钱包",
+      "limitReached": "达到钱包上限 ({{current}}/{{max}})",
       "liveConnected": "实时连接",
       "manageSubtitle": "管理您的活动Web3连接和只读投资组合跟踪帐户。",
+      "maximum": "最大容量",
+      "noDefaultSelected": "未选择",
+      "noLimit": "可添加任意数量的钱包。",
+      "noSearchResults": "没有与您的搜索匹配的钱包。",
+      "notFoundError": "该钱包已不在您的关注列表中。",
       "readOnly": "只读",
       "registrationFailed": "地址注册失败。请检查地址是否重复或是否已填充空位。",
-      "tracked": "已追踪",
+      "remainingSlots": "剩余槽位",
       "remove": "移除",
-      "confirmRemove": "确认移除？",
-      "noDefaultSelected": "未选择",
       "rename": "重命名",
-      "cancelRename": "取消",
-      "connectActionUnlimited": "添加钱包（已追踪 {{current}} 个）",
-      "noLimit": "可添加任意数量的钱包。",
-      "duplicateAddress": "该地址已在您的关注列表中。",
-      "guestLimitTitle": "登录以追踪更多钱包",
-      "guestLimitBenefitSync": "跨设备同步您的关注列表",
-      "guestLimitBenefitMore": "保存 3 个以上的钱包",
-      "guestLimitBenefitBackup": "为您的关注列表保留备份",
-      "searchPlaceholder": "在 {{count}} 个钱包中搜索...",
-      "noSearchResults": "没有与您的搜索匹配的钱包。",
-      "duplicateNickname": "关注列表中已存在使用该昵称的钱包，请选择其他昵称。",
-      "notFoundError": "该钱包已不在您的关注列表中。",
       "saveEdit": "保存",
-      "adding": "添加中…"
-    },
-    "links": {
-      "docs": "文档批注",
-      "github": "GitHub 代码库",
-      "twitter": "推特"
-    },
-    "groups": {
-      "personalization": "个性化",
-      "walletsAndData": "钱包与数据",
-      "account": "账户"
-    },
-    "appearance": {
-      "light": "浅色",
-      "dark": "深色",
-      "system": "跟随系统"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "同步状态",
-      "syncStatusConnected": "已登录 — 您的对话会在所有设备和浏览器间同步。",
-      "syncStatusGuest": "对话仅临时保存在此浏览器中，不会被保存。登录以保留对话。"
-    },
-    "dataStorage": {
-      "localTitle": "本地数据",
-      "localSubtitle": "仅存储在此浏览器中 — 清除操作即时且安全。",
-      "walletCache": "钱包活动缓存",
-      "walletCacheDescription": "清除缓存的交易历史记录 — 下次访问时将重新获取。",
-      "conversations": "FlareGPT 对话",
-      "conversationsDescription": "从您的账户中清除 FlareGPT 聊天记录。此操作无法撤销。",
-      "clear": "清除",
-      "confirmClear": "确认？",
-      "accountTitle": "账户数据",
-      "accountSubtitle": "与服务器上的账户同步。",
-      "conversationsClearFailed": "无法清除聊天记录，请重试。"
+      "searchPlaceholder": "在 {{count}} 个钱包中搜索...",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "已追踪",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
     }
   },
   "sidebar": {
+    "activeWallet": "有效： {{address}}",
+    "addWatchlistWallet": "+添加关注列表钱包",
     "connectWallet": "连接钱包",
+    "defiProtocols": "Defi方案",
     "disconnect": "断开连接",
+    "donate": "捐献",
+    "feeds": "馈送",
     "FlareGPT": "耀斑GPT",
     "ftsoRewards": "FTSO 奖励",
-    "defiProtocols": "Defi方案",
     "governance": "治理",
     "helpCenter": "帮助中心",
+    "loops": "循环",
     "notConnected": "未连接",
     "overview": "概述",
     "rflrTracker": "rFLR tracker",
     "settings": "设置",
+    "signInRequired": "需要登录",
+    "signInRequiredHint": "使用顶部栏中的钱包菜单登录。",
     "walletActivity": "钱包活动",
     "walletConnected": "钱包已连接",
-    "yield": "收益率",
-    "loops": "循环",
-    "feeds": "馈送",
-    "donate": "捐献",
-    "addWatchlistWallet": "+添加关注列表钱包",
-    "activeWallet": "有效： {{address}}",
-    "signInRequired": "需要登录",
-    "signInRequiredHint": "使用顶部栏中的钱包菜单登录。"
+    "yield": "收益率"
   },
   "wallet": {
     "activity": {
-      "subtitle": "实时监控传入和传出的区块链交互。",
-      "title": "最近的终端活动",
-      "description": "您当前活跃钱包的所有已索引交易，按分组呈现且可搜索。",
-      "refresh": "刷新",
-      "connectToSee": "连接或选择一个钱包以查看其交易活动。",
-      "couldntLoad": "无法加载钱包活动。",
-      "notifier": {
-        "ready": "您的钱包活动已加载完成。"
-      },
-      "loading": {
-        "title": "正在为您的钱包活动建立索引",
-        "subtitle": "大型钱包首次加载可能需要几分钟。您可以先浏览仪表盘的其他部分——准备好后我们会通知您。",
-        "elapsed": "已用时 {{seconds}} 秒"
-      },
-      "empty": {
-        "title": "暂无活动",
-        "description": "该钱包没有已索引的交易。"
-      },
-      "noResults": {
-        "title": "没有匹配的交易",
-        "description": "请尝试调整搜索或筛选条件。"
-      },
-      "kpi": {
-        "totalTransactions": "交易总数",
-        "uniqueAssets": "独立资产数",
-        "walletAge": "钱包年龄",
-        "walletAgeYears": "{{count}} 年",
-        "walletAgeMonths": "{{count}} 个月",
-        "walletAgeDays": "{{count}} 天",
-        "lastActive": "最近活动",
-        "justNow": "刚刚",
-        "minutesAgo": "{{count}} 分钟前",
-        "hoursAgo": "{{count}} 小时前",
-        "daysAgo": "{{count}} 天前"
-      },
-      "insights": {
-        "title": "快速洞察",
-        "mostUsedAsset": "最常用资产",
-        "mostCommonAction": "最常见操作",
-        "mostActiveDay": "最活跃的一天",
-        "mostActiveMonth": "最活跃的月份",
-        "txCount": "{{count}} 笔交易"
-      },
       "charts": {
+        "actionBreakdown": "操作类型分布",
+        "actionBreakdownSubtitle": "按操作类型统计的交易数量",
         "activityByDay": "每日活动",
         "activityByDaySubtitle": "每日交易数量",
         "assetBreakdown": "资产分布",
         "assetBreakdownSubtitle": "按资产统计的交易数量",
-        "actionBreakdown": "操作类型分布",
-        "actionBreakdownSubtitle": "按操作类型统计的交易数量",
+        "tabActions": "操作",
         "tabActivity": "活动",
-        "tabAssets": "资产",
-        "tabActions": "操作"
+        "tabAssets": "资产"
       },
-      "toolbar": {
-        "searchPlaceholder": "按哈希或资产搜索...",
-        "sort": {
-          "newest": "最新",
-          "oldest": "最旧",
-          "amount": "金额"
-        },
-        "exportCsv": "导出 CSV",
-        "exportJson": "导出 JSON",
-        "export": "导出"
+      "connectToSee": "连接或选择一个钱包以查看其交易活动。",
+      "couldntLoad": "无法加载钱包活动。",
+      "description": "您当前活跃钱包的所有已索引交易，按分组呈现且可搜索。",
+      "drawer": {
+        "action": "操作",
+        "asset": "资产",
+        "blockNumber": "区块编号",
+        "close": "关闭",
+        "copyFailed": "无法复制哈希",
+        "hashCopied": "交易哈希已复制",
+        "next": "下一笔交易",
+        "previous": "上一笔交易",
+        "timestamp": "时间戳",
+        "title": "交易详情",
+        "transactionHash": "交易哈希",
+        "viewOnExplorer": "在 FlareScan 上查看"
+      },
+      "empty": {
+        "description": "该钱包没有已索引的交易。",
+        "title": "暂无活动"
       },
       "feed": {
         "ariaLabel": "显示 {{total}} 笔交易中的 {{shown}} 笔"
       },
-      "drawer": {
-        "title": "交易详情",
-        "previous": "上一笔交易",
-        "next": "下一笔交易",
-        "close": "关闭",
-        "action": "操作",
-        "asset": "资产",
-        "blockNumber": "区块编号",
-        "timestamp": "时间戳",
-        "transactionHash": "交易哈希",
-        "hashCopied": "交易哈希已复制",
-        "copyFailed": "无法复制哈希",
-        "viewOnExplorer": "在 FlareScan 上查看"
+      "insights": {
+        "mostActiveDay": "最活跃的一天",
+        "mostActiveMonth": "最活跃的月份",
+        "mostCommonAction": "最常见操作",
+        "mostUsedAsset": "最常用资产",
+        "title": "快速洞察",
+        "txCount": "{{count}} 笔交易",
+        "txCount_other": "wallet.activity.insights.txCount",
+        "txCount_one": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "{{count}} 天前",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "{{count}} 小时前",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "刚刚",
+        "lastActive": "最近活动",
+        "minutesAgo": "{{count}} 分钟前",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "交易总数",
+        "uniqueAssets": "独立资产数",
+        "walletAge": "钱包年龄",
+        "walletAgeDays": "{{count}} 天",
+        "walletAgeMonths": "{{count}} 个月",
+        "walletAgeYears": "{{count}} 年",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+      },
+      "loading": {
+        "elapsed": "已用时 {{seconds}} 秒",
+        "subtitle": "大型钱包首次加载可能需要几分钟。您可以随意浏览仪表板的其他部分，准备好后我们会通知您。",
+        "title": "正在为您的钱包活动建立索引"
+      },
+      "noResults": {
+        "description": "请尝试调整搜索或筛选条件。",
+        "title": "没有匹配的交易"
+      },
+      "notifier": {
+        "ready": "钱包活动已加载。"
+      },
+      "refresh": "刷新",
+      "subtitle": "实时监控传入和传出的区块链交互。",
+      "title": "最近的终端活动",
+      "toolbar": {
+        "export": "导出",
+        "exportCsv": "导出 CSV",
+        "exportJson": "导出 JSON",
+        "searchPlaceholder": "按哈希或资产搜索...",
+        "sort": {
+          "amount": "金额",
+          "newest": "最新",
+          "oldest": "最旧"
+        }
       }
     },
     "stats": {
@@ -396,285 +703,6 @@
       "contract": "合同执行",
       "received": "已发放",
       "sent": "发件箱"
-    }
-  },
-  "comingSoon": {
-    "badge": "敬请期待",
-    "description": "我们正在构建此功能。请稍后再回来查看。"
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "WalletConnect 似乎被 Brave Shields 屏蔽了。",
-        "tryTitle": "请尝试以下方法之一：",
-        "shieldsOff": "为此网站关闭 Brave Shields 后重试。",
-        "privateWindow": "在 Brave 隐私窗口中打开此网站。",
-        "useChrome": "如果问题仍然存在，请使用 Google Chrome 或其他受支持的浏览器。"
-      },
-      "generic": "发生意外的连接摩擦。请重试或使用其他钱包。",
-      "providerGone": "此钱包似乎不再响应——可能已更新或被移除。刷新页面应该可以解决此问题。",
-      "pending": "连接请求已打开。请打开您的钱包扩展面板。",
-      "rejected": "您的钱包中的连接请求已取消。",
-      "timeout": "无法连接到WalletConnect。请检查您的网络连接后重试。",
-      "wrongNetwork": "请将钱包的活动网络切换到Flare主网。"
-    },
-    "install": "安装",
-    "installHint": "仍然看不到您的钱包？刷新页面可能会有帮助。",
-    "refresh": "刷新",
-    "mobileHint": "在移动设备上，在钱包的内置浏览器中打开FlareGPT ，以获得最佳连接体验。扫描二维码时，请使用您钱包应用自带的扫描功能，而不是手机相机，以获得更可靠的连接。",
-    "connecting": "连接中…",
-    "recommended": "推荐AI",
-    "subtitle": "选择您的首选钱包以连接到Flare网络。",
-    "title": "连接钱包",
-    "viaWalletConnect": "通过WalletConnect"
-  },
-  "flareWidget": {
-    "close": "关闭",
-    "collapse": "折叠",
-    "expand": "展开",
-    "openFullPage": "打开完整页面"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "分析我的钱包",
-      "increaseRewards": "如何提高我的 FTSO 奖励?",
-      "explainDelegations": "解释我的委托",
-      "compareProtocols": "比较 Sceptre 和 Firelight",
-      "rewardsDecreased": "我的奖励为什么减少了?",
-      "stakingOpportunities": "显示我的质押机会"
-    },
-    "wallet": {
-      "analyzing": "正在分析:"
-    },
-    "empty": {
-      "title": "向 FlareGPT 提问任何问题",
-      "subtitle": "获取关于您的钱包、奖励、委托或 Flare 生态系统的解答。"
-    },
-    "composer": {
-      "placeholder": "向 FlareGPT 提问...",
-      "send": "发送",
-      "stop": "停止生成",
-      "disclaimer": "FlareGPT 可能会出错。在采取重要行动前请核实相关信息。"
-    },
-    "actions": {
-      "copy": "复制",
-      "regenerate": "重新生成回答",
-      "copied": "消息已复制",
-      "copyFailed": "复制失败"
-    },
-    "jumpToLatest": "跳转到最新",
-    "historyLoadFailed": "无法加载聊天记录。",
-    "sendError": "出现问题，请重试。",
-    "newChat": "新对话",
-    "deleteConversation": {
-      "button": "删除对话",
-      "confirm": "确认？"
-    },
-    "deleteConversationFailed": "无法删除此对话，请重试。",
-    "history": {
-      "title": "聊天记录",
-      "newChat": "新对话",
-      "searchPlaceholder": "搜索对话...",
-      "empty": "暂无对话",
-      "noResults": "没有与您的搜索匹配的对话",
-      "untitled": "无标题",
-      "moreActions": "更多操作",
-      "pin": "置顶",
-      "unpin": "取消置顶",
-      "rename": "重命名",
-      "delete": "删除",
-      "pinLimitReached": "最多可置顶 {{count}} 个对话",
-      "renameFailed": "无法重命名此对话。",
-      "openButton": "历史记录",
-      "saveRename": "保存",
-      "cancelRename": "取消"
-    }
-  },
-  "dashboard": {
-    "description": "实时Flare网络数据、价格图表和钱包活动一目了然。",
-    "common": {
-      "retry": "再次挑战",
-      "retrying": "重试中",
-      "networkHiccup": "这通常是一个临时的网络打嗝。",
-      "noWalletSelected": "未选择钱包",
-      "yes": "是",
-      "no": "否"
-    },
-    "stats": {
-      "flrPrice": "FLR价格",
-      "marketCap": "市场价值",
-      "volume24h": "24小时量",
-      "tvl": "TVL",
-      "couldntLoad": "无法加载市场概览"
-    },
-    "chart": {
-      "couldntLoad": "无法加载FLR价格历史记录"
-    },
-    "networkActivity": {
-      "title": "网络活动",
-      "live": "Live",
-      "gwei": "Gwei",
-      "gasPrice": "用气价格",
-      "tps": "第三人射击游戏",
-      "couldntLoad": "无法加载网络数据",
-      "collectingSamples": "收集实时样本—图表在新数据到达时填写。"
-    },
-    "walletBalances": {
-      "title": "钱包余额",
-      "connectToSeeBalances": "在“设置”中连接或添加钱包以查看余额。",
-      "couldntLoad": "无法加载钱包余额"
-    },
-    "ftso": {
-      "title": "FTSO委托",
-      "connected": "已連線",
-      "readOnly": "只读",
-      "connectToSeeRewards": "在“设置”中关联或添加钱包，即可查看奖励。",
-      "couldntLoad": "无法加载FTSO投资组合",
-      "delegatedWflr": "委派WFLR",
-      "unclaimedFlr": "无人认领的FLR",
-      "activeDelegations": "活动委派",
-      "estHourlyEarning": "预计每小时收入",
-      "claimRewards": "Claim Rewards",
-      "readOnlyCannotClaim": "只读—无法声明",
-      "switchToClaim": "切换到已连接的钱包以领取奖励",
-      "noUnclaimedYet": "尚无未领取的奖励",
-      "claimComingSoon": "领取功能尚不可用，即将推出。"
-    },
-    "claimsHistory": {
-      "title": "索赔历史记录",
-      "connectToSee": "在“设置”中连接或添加钱包以查看索赔历史记录。",
-      "couldntLoad": "无法加载索赔历史记录",
-      "emptyTitle": "没有无人认领的纪元",
-      "emptyDescription": "大功告成！没有待领取的奖励纪元。"
-    },
-    "delegationsBreakdown": {
-      "title": "委派分解",
-      "tabLabel": "委派",
-      "connectToSee": "在“设置”中连接或添加钱包以查看委派。",
-      "couldntLoad": "无法加载委派",
-      "emptyTitle": "没有活动的委派",
-      "emptyDescription": "将WFLR委托给FTSO提供商，开始赚取奖励。"
-    },
-    "apiStatus": {
-      "checking": "正在检查API状态...",
-      "operational": "所有系统运行正常",
-      "degraded": "API已降级"
-    }
-  },
-  "defiProtocols": {
-    "description": "比较收益策略,并跟踪您在 MXRPY、Sceptre 和 Firelight 金库中的持仓。",
-    "common": {
-      "addressCopied": "地址已复制到剪贴板",
-      "copyFailed": "无法复制地址",
-      "connectToSeePosition": "连接钱包以查看您的持仓",
-      "contract": "合约",
-      "proxyContract": "代理合约",
-      "poolOwnership": "资金池占比",
-      "protocolDetails": "协议详情",
-      "yourBalance": "您的余额",
-      "redeemableValue": "可赎回价值"
-    },
-    "explorer": {
-      "title": "协议浏览器",
-      "subtitle": "选择一个协议以查看您的持仓和详情"
-    },
-    "kpis": {
-      "protocolsTracked": "已追踪协议",
-      "bestApr": "最佳可用年化收益率",
-      "activePositions": "活跃持仓"
-    },
-    "mxrpy": {
-      "title": "MXRPY 金库",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "无法加载您的 MXRPY 持仓",
-      "circulatingCaption": "流通中 {{shares}} 份额 · {{decimals}} 位小数",
-      "yourShares": "您的凭证份额",
-      "category": "收益金库"
-    },
-    "sceptre": {
-      "title": "Sceptre 流动性质押",
-      "subtitle": "sFLR 流动性质押",
-      "couldntLoad": "无法加载您的 Sceptre 持仓",
-      "exchangeRateLabel": "sFLR / FLR 汇率",
-      "totalMinted": "已铸造份额总量",
-      "backedFlr": "底层担保 FLR",
-      "category": "流动性质押"
-    },
-    "firelight": {
-      "title": "Firelight 金库",
-      "subtitle": "资本保护金库",
-      "couldntLoad": "无法加载您的 Firelight 持仓",
-      "backingLabel": "资产支持倍数",
-      "circulatingSupply": "流通供应量",
-      "underlyingReserve": "底层储备",
-      "insuranceRobust": "保险: 稳健",
-      "category": "保险"
-    },
-    "strategies": {
-      "title": "策略对比",
-      "subtitle": "查看您的 FLR 在不同策略下的表现",
-      "amountLabel": "比较金额",
-      "apr": "年化收益率",
-      "colStrategy": "策略",
-      "colYield": "预估收益 (FLR)",
-      "colTerms": "条款",
-      "compoundingLabel": "复利方式",
-      "couldntLoad": "无法加载策略对比",
-      "highestApr": "最高年化收益率",
-      "lockupDays": "锁定 {{count}} 天",
-      "lockupHours": "锁定 {{count}} 小时",
-      "noLockup": "无锁定期",
-      "verdict": "FlareGPT 结论"
-    }
-  },
-  "donate": {
-    "title": "支持 FlareGPT",
-    "description": "您的支持有助于让 FlareGPT 保持免费、独立并不断改进。",
-    "hero": {
-      "addressLabel": "钱包地址",
-      "tapToCopy": "点击复制",
-      "copyAddress": "复制地址",
-      "copied": "已复制",
-      "addressCopied": "地址已复制到剪贴板",
-      "copyFailed": "无法复制地址",
-      "viewOnExplorer": "在 {{explorer}} 上查看",
-      "multisigNote": "由多重签名钱包保护",
-      "qrTitle": "{{symbol}} 捐赠钱包地址的二维码"
-    },
-    "warning": {
-      "title": "仅限 {{network}} 资产。",
-      "body": "请仅向此地址发送 {{symbol}} 或其他 {{network}} 代币。从其他网络发送的资产将无法找回。"
-    },
-    "amounts": {
-      "title": "建议金额",
-      "subtitle": "每一份贡献都很重要 — 这里有一些参考建议。",
-      "impactTier1": "一天的 API 费用",
-      "impactTier2": "一周的托管费用",
-      "impactTier3": "一个月的基础设施费用",
-      "impactTier4": "新协议集成",
-      "copiedToast": "地址已复制。感谢您考虑捐赠 {{amount}} {{symbol}}。"
-    },
-    "funding": {
-      "title": "资金透明度",
-      "subtitle": "公开展示维持 FlareGPT 运行的成本 — 不是筹款压力,只是透明信息。",
-      "monthlyInfrastructure": "每月基础设施",
-      "developmentFund": "开发基金",
-      "raisedOfGoal": "已筹集 {{raised}},目标 {{goal}}"
-    },
-    "received": {
-      "title": "已收到的捐赠",
-      "subtitle": "每个支持网络收到的总贡献。",
-      "demoData": "演示数据"
-    },
-    "support": {
-      "title": "您的支持将用于",
-      "infra": "API 与基础设施",
-      "integrations": "新协议集成",
-      "free": "保持 FlareGPT 免费",
-      "development": "持续开发"
-    },
-    "closing": {
-      "message": "感谢您帮助 FlareGPT 保持独立。无论贡献大小,都真正有帮助。"
     }
   }
 }

@@ -28,7 +28,7 @@ async function attemptSignIn(address, signMessageAsync) {
     useAuthStore.getState().setSession(token, address);
   } catch {
     useAuthStore.getState().stopAuthenticating();
-    toast.error("Sign-in failed — please try again.");
+    toast.error("Sign-in failed. Try again.");
   }
 }
 

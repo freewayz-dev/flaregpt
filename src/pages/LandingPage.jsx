@@ -202,7 +202,7 @@ export default function LandingPage() {
             <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/60 dark:bg-[#161619]/60 backdrop-blur-md px-4 py-1.5">
               <ShieldCheckIcon className="h-3.5 w-3.5 text-emerald-500" />
               <span className="text-[11px] font-medium text-ink-secondary">
-                Non-custodial — FlareGPT never holds or moves your funds
+                Non-custodial. FlareGPT never holds or moves your funds.
               </span>
             </div>
 
@@ -316,7 +316,7 @@ export default function LandingPage() {
                     </span>
                   </div>
 
-                  <LandingAIDemo />
+                  <LandingAIDemo onOpenWalletModal={openWalletModal} />
                 </div>
 
                 {/* Content — now the left column on desktop (`lg:order-1`),
@@ -477,7 +477,7 @@ export default function LandingPage() {
                 From zero to insights in minutes.
               </h2>
               <p className="mt-4 text-sm leading-6 text-ink-secondary">
-                No signup, no wallet required to start — connect one whenever
+                No signup, no wallet required to start. Connect one whenever
                 you're ready for personalized answers.
               </p>
             </div>
@@ -811,7 +811,7 @@ const howItWorks = [
   {
     icon: RocketLaunchIcon,
     title: "Launch the app",
-    desc: "No signup, no install — open the dashboard straight from your browser.",
+    desc: "No signup, no install. Open the dashboard straight from your browser.",
   },
   {
     icon: EyeIcon,
@@ -821,7 +821,7 @@ const howItWorks = [
   {
     icon: WalletIcon,
     title: "Connect a wallet",
-    desc: "Add one or several, anytime — nothing is required up front.",
+    desc: "Add one or several, anytime. Nothing is required up front.",
   },
   {
     icon: ChatBubbleLeftRightIcon,

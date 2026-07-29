@@ -1,11 +1,320 @@
 {
+  "comingSoon": {
+    "badge": "Em breve",
+    "description": "Estamos a construir esta funcionalidade. Verifique novamente em breve."
+  },
+  "connectModal": {
+    "connecting": "Conectando…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "Abra o site em uma Janela Privada do Brave.",
+        "shieldsOff": "Desative o Brave Shields para este site e tente novamente.",
+        "title": "Parece que o WalletConnect está sendo bloqueado pelo Brave Shields.",
+        "tryTitle": "Tente uma das seguintes opções:",
+        "useChrome": "Use o Google Chrome ou outro navegador compatível se o problema persistir."
+      },
+      "generic": "Ocorreu um atrito inesperado na ligação. Tente novamente ou use outra carteira.",
+      "pending": "Um pedido de ligação já está aberto. Abra o painel de extensão da sua carteira.",
+      "providerGone": "Esta carteira parece não estar mais respondendo. Pode ter sido atualizado ou removido. Atualizar a página deve corrigir isso.",
+      "rejected": "O pedido de ligação foi cancelado na sua carteira.",
+      "timeout": "Não foi possível alcançar o WalletConnect. Verifique sua conexão e tente novamente.",
+      "wrongNetwork": "Mude a rede ativa da sua carteira para a Flare Mainnet."
+    },
+    "install": "Instalar",
+    "installHint": "Ainda não vê a sua carteira? Atualizar a página pode ajudar.",
+    "mobileHint": "No celular, abra o FlareGPT no navegador integrado da sua carteira para ter a melhor experiência de conexão. Ao escanear um código QR, use o scanner próprio do seu aplicativo de carteira em vez da câmera do telefone para uma conexão mais confiável.",
+    "recommended": "Recomendado",
+    "refresh": "Atualizar",
+    "subtitle": "Selecione a sua carteira preferida para se ligar à Rede Flare.",
+    "title": "Conectar Carteira",
+    "viaWalletConnect": "Via WalletConnect"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "A verificar o estado da API...",
+      "degraded": "API degradado",
+      "operational": "Todos os Sistemas Operacionais "
+    },
+    "chart": {
+      "couldntLoad": "Não foi possível carregar o histórico de preços FLR"
+    },
+    "claimsHistory": {
+      "connectToSee": "Associe ou adicione uma carteira nas Definições para ver o histórico de reclamações.",
+      "couldntLoad": "Não foi possível carregar o histórico de reclamações",
+      "emptyDescription": "Vocês estão todos em dia. Não há épocas de recompensa pendentes para reivindicar.",
+      "emptyTitle": "Nenhuma época não reclamada",
+      "title": "Histórico de reclamações"
+    },
+    "common": {
+      "networkHiccup": "Isso geralmente é um soluço temporário da rede.",
+      "no": "Não",
+      "noWalletSelected": "Nenhuma carteira selecionada",
+      "retry": "Tentar novamente",
+      "retrying": "A tentar novamente...",
+      "yes": "Sim"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "Associe ou adicione uma carteira nas Definições para ver as delegações.",
+      "couldntLoad": "Não foi possível carregar as delegações",
+      "emptyDescription": "Delegue a WFLR a um provedor de FTSO para começar a ganhar recompensas.",
+      "emptyTitle": "Sem delegações ativas",
+      "tabLabel": "Delegações",
+      "title": "Discriminação das delegações"
+    },
+    "description": "Dados da rede do Live Flare, gráficos de preços e atividade da carteira em resumo.",
+    "ftso": {
+      "activeDelegations": "Delegações Ativas",
+      "claimComingSoon": "A reivindicação ainda não está disponível. Em breve.",
+      "claimRewards": "\"Reivindicar prémios\"",
+      "connected": "Conectado",
+      "connectToSeeRewards": "Associe ou adicione uma carteira nas Definições para ver as recompensas.",
+      "couldntLoad": "Não foi possível carregar o portfólio FTSO",
+      "delegatedWflr": "Delegado WFLR",
+      "estHourlyEarning": "Rendimento Horário Est.",
+      "noUnclaimedYet": "Ainda não há recompensas não reclamadas",
+      "readOnly": "Apenas visualização",
+      "readOnlyCannotClaim": "Somente leitura, não é possível reivindicar",
+      "switchToClaim": "Mude para a sua carteira conectada para resgatar recompensas",
+      "title": "Delegação FTSO",
+      "unclaimedFlr": "FLR não reivindicado"
+    },
+    "networkActivity": {
+      "collectingSamples": "Coleta de amostras ao vivo. O gráfico é preenchido à medida que novos dados chegam.",
+      "couldntLoad": "Não foi possível carregar os dados da rede",
+      "gasPrice": "Preço do gás",
+      "gwei": "Gwei",
+      "live": "Disponível",
+      "title": "Atividade de Disco / Rede",
+      "tps": "TPS"
+    },
+    "stats": {
+      "couldntLoad": "Não foi possível carregar a visão geral do mercado",
+      "flrPrice": "Preço FLR",
+      "marketCap": "Market Cap",
+      "tvl": "TVL",
+      "volume24h": "Volume 24h"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "Associe ou adicione uma carteira nas Definições para ver os saldos.",
+      "couldntLoad": "Não foi possível carregar os saldos da carteira",
+      "title": "Saldos da carteira"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "Endereço de ligação copiado",
+      "connectToSeePosition": "Conecte uma carteira para ver sua posição",
+      "contract": "Contrato",
+      "copyFailed": "Não foi possível copiar o endereço",
+      "poolOwnership": "Participação no Pool",
+      "protocolDetails": "Detalhes do protocolo",
+      "proxyContract": "Contrato Proxy",
+      "redeemableValue": "Valor Resgatável",
+      "yourBalance": "Seu Saldo"
+    },
+    "description": "Compare estratégias de rendimento e acompanhe suas posições nos vaults MXRPY, Sceptre e Firelight.",
+    "explorer": {
+      "subtitle": "Selecione um protocolo para ver sua posição e detalhes",
+      "title": "Explorador de Protocolos"
+    },
+    "firelight": {
+      "backingLabel": "Multiplicador de lastro de ativos",
+      "category": "Seguro",
+      "circulatingSupply": "Oferta em Circulação",
+      "couldntLoad": "Não foi possível carregar sua posição no Firelight",
+      "insuranceRobust": "Seguro: Robusto",
+      "subtitle": "Vault de proteção de capital",
+      "title": "Firelight Vault",
+      "underlyingReserve": "Reserva Subjacente"
+    },
+    "kpis": {
+      "activePositions": "Posições Ativas",
+      "bestApr": "Melhor APR Disponível",
+      "protocolsTracked": "Protocolos Rastreados"
+    },
+    "mxrpy": {
+      "category": "Vault de Rendimento",
+      "circulatingCaption": "{{shares}} cotas em circulação · {{decimals}} casas decimais",
+      "couldntLoad": "Não foi possível carregar sua posição no MXRPY",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "MXRPY Vault",
+      "yourShares": "Suas Cotas de Recibo"
+    },
+    "sceptre": {
+      "backedFlr": "FLR Subjacente Garantido",
+      "category": "Staking Líquido",
+      "couldntLoad": "Não foi possível carregar sua posição no Sceptre",
+      "exchangeRateLabel": "Taxa sFLR / FLR",
+      "subtitle": "Staking líquido de sFLR",
+      "title": "Sceptre Liquid Staking",
+      "totalMinted": "Total de Cotas Emitidas"
+    },
+    "strategies": {
+      "amountLabel": "Comparar para",
+      "apr": "APR",
+      "colStrategy": "Estratégia",
+      "colTerms": "Condições",
+      "colYield": "Rendimento Est. (FLR)",
+      "compoundingLabel": "Capitalização",
+      "couldntLoad": "Não foi possível carregar a comparação de estratégias",
+      "highestApr": "Maior APR",
+      "lockupDays": "{{count}} dias de bloqueio",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupDays_many": "",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
+      "lockupHours": "{{count}}h de bloqueio",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
+      "lockupHours_many": "",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "Sem bloqueio",
+      "subtitle": "Veja como seu FLR poderia render em diferentes estratégias",
+      "title": "Comparação de Estratégias",
+      "verdict": "Veredito do FlareGPT"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "Endereço copiado. Obrigado por considerar uma doação de {{amount}} {{symbol}}.",
+      "impactTier1": "Um dia de custos de API",
+      "impactTier2": "Uma semana de hospedagem",
+      "impactTier3": "Um mês de infraestrutura",
+      "impactTier4": "Novas integrações de protocolos",
+      "subtitle": "Cada contribuição ajuda. Aqui estão algumas ideias para começar.",
+      "title": "Valores Sugeridos"
+    },
+    "closing": {
+      "message": "Obrigado por ajudar a manter o FlareGPT independente. Cada contribuição, grande ou pequena, realmente ajuda."
+    },
+    "description": "Seu apoio ajuda a manter o FlareGPT gratuito, independente e em constante melhoria.",
+    "funding": {
+      "developmentFund": "Fundo de Desenvolvimento",
+      "monthlyInfrastructure": "Infraestrutura Mensal",
+      "raisedOfGoal": "{{raised}} arrecadados da meta de {{goal}}",
+      "subtitle": "Um olhar aberto sobre o que custa manter o FlareGPT em funcionamento. Sem pressão, apenas visibilidade.",
+      "title": "Transparência de Financiamento"
+    },
+    "hero": {
+      "addressCopied": "Endereço de ligação copiado",
+      "addressLabel": "Endereço da Carteira",
+      "copied": "Copiado",
+      "copyAddress": "Copiar Endereço",
+      "copyFailed": "Não foi possível copiar o endereço",
+      "multisigNote": "Protegido por uma carteira multisig",
+      "qrTitle": "Código QR do endereço da carteira de doações em {{symbol}}",
+      "tapToCopy": "Toque para copiar",
+      "viewOnExplorer": "Ver no {{explorer}}"
+    },
+    "received": {
+      "demoData": "Dados de demonstração",
+      "subtitle": "Total de contribuições recebidas em cada rede suportada.",
+      "title": "Doações Recebidas"
+    },
+    "support": {
+      "development": "Desenvolvimento Contínuo",
+      "free": "Manter o FlareGPT Gratuito",
+      "infra": "API e Infraestrutura",
+      "integrations": "Novas Integrações de Protocolos",
+      "title": "No Que Seu Apoio é Investido"
+    },
+    "title": "Apoie o FlareGPT",
+    "warning": {
+      "body": "Envie apenas {{symbol}} ou outros tokens da {{network}} para este endereço. Ativos enviados de outras redes não podem ser recuperados.",
+      "title": "Apenas ativos da {{network}}."
+    }
+  },
+  "flareWidget": {
+    "close": "Fechar",
+    "collapse": "Fechar",
+    "expand": "Expandir",
+    "openFullPage": "Abrir página completa"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "Mensagem copiada",
+      "copy": "Copiar",
+      "copyFailed": "Falha ao copiar",
+      "regenerate": "Regenerar resposta"
+    },
+    "composer": {
+      "disclaimer": "O FlareGPT pode cometer erros. Verifique informações importantes antes de agir com base nelas.",
+      "placeholder": "Pergunte ao FlareGPT...",
+      "send": "Enviar",
+      "stop": "Parar geração"
+    },
+    "deleteConversation": {
+      "button": "Excluir conversa",
+      "confirm": "Confirmar?"
+    },
+    "deleteConversationFailed": "Não foi possível excluir esta conversa. Tente novamente.",
+    "empty": {
+      "subtitle": "Obtenha respostas sobre sua carteira, recompensas, delegações ou o ecossistema Flare.",
+      "title": "Pergunte qualquer coisa ao FlareGPT"
+    },
+    "guestMode": {
+      "cta": "Inicie sessão para sincronizar o histórico e desbloquear a análise da carteira",
+      "notice": "Modo convidado · As conversas não são salvas."
+    },
+    "history": {
+      "cancelRename": "Cancelar",
+      "delete": "Excluir",
+      "empty": "Ainda não há conversas",
+      "moreActions": "Mais ações",
+      "newChat": "Nova conversa",
+      "noResults": "Nenhuma conversa corresponde à sua pesquisa",
+      "openButton": "Histórico",
+      "pin": "Fixar",
+      "pinLimitReached": "Você pode fixar até {{count}} conversas",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
+      "pinLimitReached_many": "",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "Renomear",
+      "renameFailed": "Não foi possível renomear esta conversa.",
+      "saveRename": "Salvar",
+      "searchPlaceholder": "Pesquisar conversas...",
+      "title": "Histórico de conversas",
+      "unpin": "Desafixar",
+      "untitled": "Sem título"
+    },
+    "historyLoadFailed": "Não foi possível carregar o histórico do chat.",
+    "jumpToLatest": "Ir para o mais recente",
+    "newChat": "Nova conversa",
+    "prompts": {
+      "analyzeWallet": "Analisar minha carteira",
+      "compareProtocols": "Comparar Sceptre e Firelight",
+      "explainDelegations": "Explicar minhas delegações",
+      "increaseRewards": "Como posso aumentar minhas recompensas de FTSO?",
+      "rewardsDecreased": "Por que minhas recompensas diminuíram?",
+      "stakingOpportunities": "Mostrar minhas oportunidades de staking"
+    },
+    "sendError": "Algo deu errado. Tente novamente.",
+    "wallet": {
+      "analyzing": "Analisando:",
+      "guestLabel": "Análise da carteira",
+      "locked": {
+        "body": "Faça login para permitir que o FlareGPT leia suas carteiras Primary e Watchlist automaticamente, em vez de digitar um endereço em cada pergunta.",
+        "connectCta": "Conectar Carteira",
+        "signInCta": "Iniciar sessão",
+        "signingIn": "Confirme na sua carteira...",
+        "title": "Desbloquear análise de carteira"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Desenvolvido na Flare Network.",
     "disclaimer": "Não é um conselho financeiro. Os dados são fornecidos apenas para fins informativos.",
-    "terms": "Termos e Isenção de Responsabilidade",
-    "donate": "Doar"
+    "donate": "Doar",
+    "terms": "Termos e Isenção de Responsabilidade"
   },
   "help": {
+    "askFlareGptCta": "Peça ajuda ao FlareGPT",
+    "askFlareGptLead": "Não encontrou o que procurava?",
+    "contact": {
+      "comingSoon": "Em breve",
+      "emailLabel": "E-mail",
+      "telegramLabel": "Telegram",
+      "twitterHint": "Siga-nos e envie uma mensagem",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "Sua carteira pode não estar conectada ou o painel ainda pode estar sincronizando os dados do blockchain. Verifique se a carteira e a rede corretas estão selecionadas.",
@@ -30,10 +339,12 @@
     ],
     "faqTitle": "Perguntas Frequentes",
     "featureGuides": "Guias de Recursos",
+    "flareGptGuideDescription": "Faça perguntas sobre sua carteira, recompensas e a rede Flare em linguagem natural.",
     "gettingStarted": "Primeiros Passos",
     "headerDesc": "Guias, respostas e suporte para aproveitar ao máximo o seu painel do FlareGPT.",
     "noFaqs": "Nenhuma pergunta frequente corresponde à sua pesquisa.",
     "noGuides": "Nenhum guia corresponde à sua pesquisa.",
+    "searchClear": "Limpar pesquisa",
     "searchPlaceholder": "Pesquisar guias ou perguntas frequentes...",
     "searchSub": "Pesquise guias de funcionalidades e perguntas frequentes, ou encontre outra forma de nos contatar.",
     "searchTitle": "Tudo o que você precisa para começar",
@@ -65,63 +376,70 @@
       }
     ],
     "stillNeedHelp": "Ainda precisa de ajuda?",
-    "supportDesc": "No momento, a forma mais rápida de falar conosco é pelo X. O suporte por e-mail e Telegram está a caminho.",
-    "searchClear": "Limpar pesquisa",
-    "flareGptGuideDescription": "Faça perguntas sobre sua carteira, recompensas e a rede Flare em linguagem natural.",
-    "askFlareGptLead": "Não encontrou o que procurava?",
-    "askFlareGptCta": "Peça ajuda ao FlareGPT",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "Siga-nos e envie uma mensagem",
-      "telegramLabel": "Telegram",
-      "emailLabel": "E-mail",
-      "comingSoon": "Em breve"
-    }
+    "supportDesc": "No momento, a forma mais rápida de falar conosco é pelo X. O suporte por e-mail e Telegram está a caminho."
   },
   "navbar": {
+    "addressCopied": "Endereço de ligação copiado",
     "askFlareGPT": "Perguntar ao FlareGPT",
-    "mainnetStatus": "Rede Principal Flare",
-    "connectWallet": "Conectar Carteira",
-    "primaryWalletSection": "Carteira Principal",
     "badgePrimary": "Principal",
+    "badgeSignIn": "Entrar",
     "badgeWatchlist": "Watchlist",
-    "disconnectWallet": "Desconectar Carteira",
+    "balancesHiddenLabel": "Saldos ocultos",
     "configureWatchlistWallets": "Configurar Carteiras da Watchlist",
-    "watchlistSection": "Watchlist ({{current}}/{{max}})",
-    "addressCopied": "Endereço copiado para a área de transferência",
+    "connectWallet": "Conectar Carteira",
     "copyFailed": "Não foi possível copiar o endereço",
+    "disconnectWallet": "Desconectar Carteira",
     "flareGptFabHint": "O FlareGPT agora abre por aqui",
     "hideBalances": "Ocultar saldos",
+    "mainnetStatus": "Rede Principal Flare",
+    "primaryWalletSection": "Carteira Principal",
     "showBalances": "Mostrar saldos",
-    "balancesHiddenLabel": "Saldos ocultos",
     "signIn": "Entrar",
+    "signInBackgroundHint": "Sua carteira conectada precisa entrar",
     "signingIn": "Entrando…",
     "signInPrompt": "Assine uma mensagem para verificar esta carteira e continuar.",
-    "badgeSignIn": "Entrar",
-    "signInBackgroundHint": "Sua carteira conectada precisa entrar"
+    "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "Escuro",
+      "light": "Claro",
+      "system": "Sistema"
+    },
     "cards": {
       "app": "Aplicativo",
       "blur": "Filtro de luz azul",
       "chartType": "Tipo de Gráfico",
       "connectedWallets": "Carteiras Conectadas",
       "currency": "Moeda de Exibição",
+      "defaultLandingPage": "Página Inicial Padrão",
+      "defaultWallet": "Wallet Padrão",
       "governanceAlerts": "Alertas de Governança",
+      "hideBalances": "Ocultar saldos da carteira",
       "language": "Idioma",
       "links": "Ligações",
       "logout": "Sair",
+      "reduceMotion": "Reduzir Movimento",
       "rewardsAlerts": "Alertas de Recompensas",
+      "tableDensity": "Densidade da Tabela",
       "theme": "Tema",
       "themeMode": "Modo Claro / Escuro",
       "timeframe": "Período de Tempo",
       "walletCapacity": "Capacidade da Carteira",
-      "walletPreferences": "Preferências de Wallet",
-      "defaultWallet": "Wallet Padrão",
-      "defaultLandingPage": "Página Inicial Padrão",
-      "tableDensity": "Densidade da Tabela",
-      "reduceMotion": "Reduzir Movimento",
-      "hideBalances": "Ocultar saldos da carteira"
+      "walletPreferences": "Preferências de Wallet"
+    },
+    "dataStorage": {
+      "accountSubtitle": "Sincronizado com sua conta no servidor.",
+      "accountTitle": "Dados da Conta",
+      "clear": "Limpar",
+      "confirmClear": "Confirmar?",
+      "conversations": "Conversas do FlareGPT",
+      "conversationsClearFailed": "Não foi possível limpar o histórico de conversas. Tente novamente.",
+      "conversationsDescription": "Limpa o histórico de chat do FlareGPT da sua conta. Esta ação não pode ser desfeita.",
+      "localSubtitle": "Armazenado apenas neste navegador. A limpeza é instantânea e segura.",
+      "localTitle": "Dados Locais",
+      "walletCache": "Cache de Atividade da Wallet",
+      "walletCacheDescription": "Limpa o histórico de transações em cache. A próxima visita irá buscá-lo novamente."
     },
     "description": "Gerencie carteiras, preferências, localização e opções de exibição.",
     "descriptions": {
@@ -129,18 +447,33 @@
       "blur": "Reduza a fadiga ocular com um tom de tela quente",
       "chartType": "Defina a geometria do estilo visual de renderização padrão para matrizes do sistema.",
       "currency": "Escolha a exibição da moeda base do ativo.",
+      "defaultLandingPage": "Escolha qual página abre primeiro ao iniciar o app.",
+      "defaultWallet": "Esta wallet se torna ativa sempre que uma sessão anterior não puder ser restaurada.",
+      "hideBalances": "Desfoca saldos e valores em todo o painel por privacidade.",
       "language": "Selecione o idioma de exibição padrão da interface.",
       "links": "Referências de documentação global e links de interação da equipe.",
       "logout": "Encerra sua sessão do FlareGPT neste dispositivo. Você precisará assinar uma nova mensagem para entrar novamente.",
+      "reduceMotion": "Minimiza animações mesmo se o seu sistema operacional não tiver uma preferência definida.",
+      "tableDensity": "Espaçamento confortável ou uma visualização mais compacta para tabelas densas.",
+      "theme": "Escolha Claro, Escuro, ou siga a configuração do seu sistema.",
       "timeframe": "Defina as escalas de período de janela padrão em gráficos visuais.",
       "walletCapacity": "Limites do sistema que monitoram os pools de capacidade de alocação.",
-      "theme": "Escolha Claro, Escuro, ou siga a configuração do seu sistema.",
-      "walletPreferences": "Escolha com qual wallet o painel abre.",
-      "defaultWallet": "Esta wallet se torna ativa sempre que uma sessão anterior não puder ser restaurada.",
-      "defaultLandingPage": "Escolha qual página abre primeiro ao iniciar o app.",
-      "tableDensity": "Espaçamento confortável ou uma visualização mais compacta para tabelas densas.",
-      "reduceMotion": "Minimiza animações mesmo se o seu sistema operacional não tiver uma preferência definida.",
-      "hideBalances": "Desfoca saldos e valores em todo o painel por privacidade."
+      "walletPreferences": "Escolha com qual wallet o painel abre."
+    },
+    "flareGpt": {
+      "syncStatusConnected": "Iniciou sessão. As suas conversas são sincronizadas em todos os dispositivos e navegadores.",
+      "syncStatusGuest": "As conversas são temporárias neste navegador e não serão salvas. Entre para mantê-las.",
+      "syncStatusTitle": "Status de Sincronização"
+    },
+    "groups": {
+      "account": "Conta",
+      "personalization": "Personalização",
+      "walletsAndData": "Wallets e Dados"
+    },
+    "links": {
+      "docs": "Docs",
+      "github": "GitHub",
+      "twitter": "Twitter"
     },
     "notifications": {
       "governance": "Atualizações de propostas",
@@ -152,224 +485,206 @@
       "area": "Área",
       "asia": "Ásia",
       "candlestick": "Vela",
+      "comfortable": "Confortável",
+      "compact": "Compacto",
       "europe": "Europa",
       "global": "Global",
       "high": "Alto",
       "line": "Linha",
       "low": "Baixo",
       "medium": "Médio",
-      "off": "Desativado",
-      "comfortable": "Confortável",
-      "compact": "Compacto"
+      "off": "Desativado"
     },
     "security": {
-      "logout": "Sair",
-      "confirmLogout": "Confirmar?"
+      "confirmLogout": "Confirmar?",
+      "logout": "Sair"
     },
     "subtitles": {
       "About": "Visão geral dos registros de implantação do sistema, regras de compilação e índices de ativos.",
+      "Accessibility": "Ajuste as preferências de movimento e interação.",
+      "Appearance": "Escolha a aparência do FlareGPT.",
       "Display": "Personalize sua visualização padrão e como os dados do painel são exibidos.",
+      "FlareGpt": "Gerencie como o FlareGPT lembra suas conversas.",
       "Notifications": "Gerencie eventos prioritários do sistema e pontos finais de rastreamento de rotas de entrega.",
       "Preferences": "Preferências de idioma e moeda.",
       "Security": "Mantenha barreiras de sessão de identidade ativas e regras de acesso de verificação de credenciais.",
-      "Wallets": "Conecte e estruture assinaturas em contas descentralizadas externas globais.",
-      "Appearance": "Escolha a aparência do FlareGPT.",
-      "Accessibility": "Ajuste as preferências de movimento e interação.",
-      "FlareGpt": "Gerencie como o FlareGPT lembra suas conversas."
+      "Wallets": "Conecte e estruture assinaturas em contas descentralizadas externas globais."
     },
     "tabs": {
       "About": "Sobre",
+      "Accessibility": "Acessibilidade",
+      "Appearance": "Aparência",
+      "DataStorage": "Dados e Armazenamento",
       "Display": "Painel",
+      "FlareGpt": "FlareGPT",
       "Notifications": "Notificações",
       "Preferences": "Geral",
       "Security": "Segurança",
-      "Wallets": "Carteiras",
-      "Appearance": "Aparência",
-      "Accessibility": "Acessibilidade",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "Dados e Armazenamento"
+      "Wallets": "Carteiras"
     },
     "title": "Configurações",
     "wallets": {
       "active": "Ativo",
       "add": "Adicionar Carteira ({{current}}/{{max}})",
+      "addFormTitle": "Adicionar conta de portfólio da lista de observação",
+      "adding": "Adicionando…",
+      "addressPlaceholder": "0x... Endereço da Carteira Flare",
       "available": "Disponível",
+      "cancelRename": "Cancelar",
+      "confirmRemove": "Confirmar remoção?",
       "connectAction": "Conectar carteira ({{current}} Conectadas, {{remaining}} Restantes)",
+      "connectActionUnlimited": "Adicionar carteira ({{current}} rastreadas)",
       "connected": "Conectado",
+      "duplicateAddress": "Este endereço já está na sua lista de observação.",
+      "duplicateNickname": "Já existe uma carteira na sua lista com esse apelido. Escolha um apelido diferente.",
       "empty": "Nenhuma carteira conectada ainda",
       "emptyTerminal": "Nenhuma carteira conectada. Conecte os ativos do seu terminal para continuar.",
-      "limit": "Você pode conectar até {{max}} carteiras",
-      "limitReached": "Limite de Carteiras Atingido ({{current}}/{{max}})",
-      "maximum": "Máximo",
-      "remainingSlots": "Slots restantes",
-      "addFormTitle": "Adicionar conta de portfólio da lista de observação",
-      "addressPlaceholder": "0x... Endereço da Carteira Flare",
+      "guestLimitBenefitBackup": "Mantenha sua lista com backup",
+      "guestLimitBenefitMore": "Guarde mais de 3 carteiras",
+      "guestLimitBenefitSync": "Sincronize sua lista entre dispositivos",
+      "guestLimitTitle": "Entre para rastrear mais carteiras",
       "invalidAddress": "Introduza um endereço de rede EVM do Flare válido (começando com 0x).",
       "labelPlaceholder": "Etiqueta do nome da conta (por exemplo, armazenamento a frio)",
+      "limit": "Você pode conectar até {{max}} carteiras",
+      "limitReached": "Limite de Carteiras Atingido ({{current}}/{{max}})",
       "liveConnected": "Live Connected",
       "manageSubtitle": "Faça a gestão das suas ligações Web3 ativas e das suas contas de acompanhamento de portefólio só de leitura.",
+      "maximum": "Máximo",
+      "noDefaultSelected": "Nenhuma selecionada",
+      "noLimit": "Adicione quantas carteiras quiser.",
+      "noSearchResults": "Nenhuma carteira corresponde à sua pesquisa.",
+      "notFoundError": "Esta carteira não está mais na sua lista de observação.",
       "readOnly": "Apenas para Leitura",
       "registrationFailed": "Falha no registo do endereço. Verifique se é uma duplicata ou se as vagas estão preenchidas.",
-      "tracked": "com rasto contínuo",
+      "remainingSlots": "Slots restantes",
       "remove": "Remover",
-      "confirmRemove": "Confirmar remoção?",
-      "noDefaultSelected": "Nenhuma selecionada",
       "rename": "Renomear",
-      "cancelRename": "Cancelar",
-      "connectActionUnlimited": "Adicionar carteira ({{current}} rastreadas)",
-      "noLimit": "Adicione quantas carteiras quiser.",
-      "duplicateAddress": "Este endereço já está na sua lista de observação.",
-      "guestLimitTitle": "Entre para rastrear mais carteiras",
-      "guestLimitBenefitSync": "Sincronize sua lista entre dispositivos",
-      "guestLimitBenefitMore": "Guarde mais de 3 carteiras",
-      "guestLimitBenefitBackup": "Mantenha sua lista com backup",
-      "searchPlaceholder": "Pesquisar em {{count}} carteiras...",
-      "noSearchResults": "Nenhuma carteira corresponde à sua pesquisa.",
-      "duplicateNickname": "Já existe uma carteira na sua lista com esse apelido. Escolha um apelido diferente.",
-      "notFoundError": "Esta carteira não está mais na sua lista de observação.",
       "saveEdit": "Salvar",
-      "adding": "Adicionando…"
-    },
-    "links": {
-      "docs": "Docs",
-      "github": "GitHub",
-      "twitter": "Twitter"
-    },
-    "groups": {
-      "personalization": "Personalização",
-      "walletsAndData": "Wallets e Dados",
-      "account": "Conta"
-    },
-    "appearance": {
-      "light": "Claro",
-      "dark": "Escuro",
-      "system": "Sistema"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "Status de Sincronização",
-      "syncStatusConnected": "Conectado — suas conversas são sincronizadas em todos os dispositivos e navegadores.",
-      "syncStatusGuest": "As conversas são temporárias neste navegador e não serão salvas. Entre para mantê-las."
-    },
-    "dataStorage": {
-      "localTitle": "Dados Locais",
-      "localSubtitle": "Armazenados apenas neste navegador — limpá-los é instantâneo e seguro.",
-      "walletCache": "Cache de Atividade da Wallet",
-      "walletCacheDescription": "Limpa o histórico de transações em cache — a próxima visita irá buscá-lo novamente.",
-      "conversations": "Conversas do FlareGPT",
-      "conversationsDescription": "Limpa o histórico de chat do FlareGPT da sua conta. Esta ação não pode ser desfeita.",
-      "clear": "Limpar",
-      "confirmClear": "Confirmar?",
-      "accountTitle": "Dados da Conta",
-      "accountSubtitle": "Sincronizado com sua conta no servidor.",
-      "conversationsClearFailed": "Não foi possível limpar o histórico de chat — tente novamente."
+      "searchPlaceholder": "Pesquisar em {{count}} carteiras...",
+      "searchPlaceholder_one": "configurações.wallets.searchPlaceholder",
+      "searchPlaceholder_many": "",
+      "searchPlaceholder_other": "configurações.wallets.searchPlaceholder",
+      "tracked": "com rasto contínuo"
     }
   },
   "sidebar": {
+    "activeWallet": "Ativo: {{address}}",
+    "addWatchlistWallet": "+ Adicionar Carteira da Lista de Observação",
     "connectWallet": "Conectar Carteira",
+    "defiProtocols": "Protocolos Defi",
     "disconnect": "Desconectar",
+    "donate": "Doar",
+    "feeds": "Rações",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Recompensas FTSO",
-    "defiProtocols": "Protocolos Defi",
     "governance": "Governança",
     "helpCenter": "Central de Ajuda",
+    "loops": "Loops/rotações",
     "notConnected": "Não conectado",
     "overview": "Visão Geral",
     "rflrTracker": "Rastreador rFLR",
     "settings": "Configurações",
+    "signInRequired": "Login necessário",
+    "signInRequiredHint": "Use o menu da carteira na barra superior para entrar.",
     "walletActivity": "Atividade da Carteira",
     "walletConnected": "Carteira Conectada",
-    "yield": "Rendimento",
-    "loops": "Loops/rotações",
-    "feeds": "Rações",
-    "donate": "Doar",
-    "addWatchlistWallet": "+ Adicionar Carteira da Lista de Observação",
-    "activeWallet": "Ativo: {{address}}",
-    "signInRequired": "Login necessário",
-    "signInRequiredHint": "Use o menu da carteira na barra superior para entrar."
+    "yield": "Rendimento"
   },
   "wallet": {
     "activity": {
-      "subtitle": "Monitoramento em tempo real de interações de entrada e saída de blockchain.",
-      "title": "Atividade recente do terminal",
-      "description": "Todas as transações indexadas da sua wallet ativa, agrupadas e pesquisáveis.",
-      "refresh": "Atualizar",
-      "connectToSee": "Conecte ou selecione uma wallet para ver sua atividade de transações.",
-      "couldntLoad": "Não foi possível carregar a atividade da wallet.",
-      "notifier": {
-        "ready": "A atividade da sua wallet terminou de carregar."
-      },
-      "loading": {
-        "title": "Indexando a atividade da sua wallet",
-        "subtitle": "Wallets grandes podem levar alguns minutos no primeiro carregamento. Sinta-se à vontade para explorar o resto do painel — avisaremos quando estiver pronto.",
-        "elapsed": "{{seconds}}s decorridos"
-      },
-      "empty": {
-        "title": "Ainda sem atividade",
-        "description": "Esta wallet não tem transações indexadas."
-      },
-      "noResults": {
-        "title": "Nenhuma transação correspondente",
-        "description": "Tente ajustar sua busca ou filtros."
-      },
-      "kpi": {
-        "totalTransactions": "Total de transações",
-        "uniqueAssets": "Ativos únicos",
-        "walletAge": "Idade da wallet",
-        "walletAgeYears": "{{count}} anos",
-        "walletAgeMonths": "{{count}} meses",
-        "walletAgeDays": "{{count}} dias",
-        "lastActive": "Última atividade",
-        "justNow": "Agora mesmo",
-        "minutesAgo": "há {{count}} min",
-        "hoursAgo": "há {{count}} h",
-        "daysAgo": "há {{count}} d"
-      },
-      "insights": {
-        "title": "Insights rápidos",
-        "mostUsedAsset": "Ativo mais usado",
-        "mostCommonAction": "Ação mais comum",
-        "mostActiveDay": "Dia mais ativo",
-        "mostActiveMonth": "Mês mais ativo",
-        "txCount": "{{count}} transações"
-      },
       "charts": {
+        "actionBreakdown": "Detalhamento por ação",
+        "actionBreakdownSubtitle": "Número de transações por tipo de ação",
         "activityByDay": "Atividade por dia",
         "activityByDaySubtitle": "Número de transações por dia",
         "assetBreakdown": "Detalhamento por ativo",
         "assetBreakdownSubtitle": "Número de transações por ativo",
-        "actionBreakdown": "Detalhamento por ação",
-        "actionBreakdownSubtitle": "Número de transações por tipo de ação",
+        "tabActions": "Ações",
         "tabActivity": "Atividade",
-        "tabAssets": "Ativos",
-        "tabActions": "Ações"
+        "tabAssets": "Ativos"
       },
-      "toolbar": {
-        "searchPlaceholder": "Buscar por hash ou ativo...",
-        "sort": {
-          "newest": "Mais recentes",
-          "oldest": "Mais antigas",
-          "amount": "Valor"
-        },
-        "exportCsv": "Exportar CSV",
-        "exportJson": "Exportar JSON",
-        "export": "Exportar"
+      "connectToSee": "Conecte ou selecione uma wallet para ver sua atividade de transações.",
+      "couldntLoad": "Não foi possível carregar a atividade da wallet.",
+      "description": "Todas as transações indexadas da sua wallet ativa, agrupadas e pesquisáveis.",
+      "drawer": {
+        "action": "Ação",
+        "asset": "Ativo",
+        "blockNumber": "Número do bloco",
+        "close": "Fechar",
+        "copyFailed": "Não foi possível copiar o hash",
+        "hashCopied": "Hash da transação copiado",
+        "next": "Próxima transação",
+        "previous": "Transação anterior",
+        "timestamp": "Data e hora",
+        "title": "Detalhes da transação",
+        "transactionHash": "Hash da transação",
+        "viewOnExplorer": "Ver no FlareScan"
+      },
+      "empty": {
+        "description": "Esta wallet não tem transações indexadas.",
+        "title": "Ainda sem atividade"
       },
       "feed": {
         "ariaLabel": "Mostrando {{shown}} de {{total}} transações"
       },
-      "drawer": {
-        "title": "Detalhes da transação",
-        "previous": "Transação anterior",
-        "next": "Próxima transação",
-        "close": "Fechar",
-        "action": "Ação",
-        "asset": "Ativo",
-        "blockNumber": "Número do bloco",
-        "timestamp": "Data e hora",
-        "transactionHash": "Hash da transação",
-        "hashCopied": "Hash da transação copiado",
-        "copyFailed": "Não foi possível copiar o hash",
-        "viewOnExplorer": "Ver no FlareScan"
+      "insights": {
+        "mostActiveDay": "Dia mais ativo",
+        "mostActiveMonth": "Mês mais ativo",
+        "mostCommonAction": "Ação mais comum",
+        "mostUsedAsset": "Ativo mais usado",
+        "title": "Insights rápidos",
+        "txCount": "{{count}} transações",
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_many": "",
+        "txCount_other": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "há {{count}} d",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "daysAgo_many": "",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "há {{count}} h",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "hoursAgo_many": "",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "Agora mesmo",
+        "lastActive": "Última atividade",
+        "minutesAgo": "há {{count}} min",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
+        "minutesAgo_many": "",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "Total de transações",
+        "uniqueAssets": "Ativos únicos",
+        "walletAge": "Idade da wallet",
+        "walletAgeDays": "{{count}} dias",
+        "walletAgeMonths": "{{count}} meses",
+        "walletAgeYears": "{{count}} anos"
+      },
+      "loading": {
+        "elapsed": "{{seconds}}s decorridos",
+        "subtitle": "Carteiras grandes podem levar alguns minutos na primeira carga. Sinta-se à vontade para explorar o resto do painel. Avisaremos quando estiver pronto.",
+        "title": "Indexando a atividade da sua wallet"
+      },
+      "noResults": {
+        "description": "Tente ajustar sua busca ou filtros.",
+        "title": "Nenhuma transação correspondente"
+      },
+      "notifier": {
+        "ready": "Atividade da carteira carregada."
+      },
+      "refresh": "Atualizar",
+      "subtitle": "Monitoramento em tempo real de interações de entrada e saída de blockchain.",
+      "title": "Atividade recente do terminal",
+      "toolbar": {
+        "export": "Exportar",
+        "exportCsv": "Exportar CSV",
+        "exportJson": "Exportar JSON",
+        "searchPlaceholder": "Buscar por hash ou ativo...",
+        "sort": {
+          "amount": "Valor",
+          "newest": "Mais recentes",
+          "oldest": "Mais antigas"
+        }
       }
     },
     "stats": {
@@ -396,285 +711,6 @@
       "contract": "Assinatura A) Contrato:",
       "received": "Recebido",
       "sent": "Enviado"
-    }
-  },
-  "comingSoon": {
-    "badge": "Em breve",
-    "description": "Estamos a construir esta funcionalidade. Verifique novamente em breve."
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "Parece que o WalletConnect está sendo bloqueado pelo Brave Shields.",
-        "tryTitle": "Tente uma das seguintes opções:",
-        "shieldsOff": "Desative o Brave Shields para este site e tente novamente.",
-        "privateWindow": "Abra o site em uma Janela Privada do Brave.",
-        "useChrome": "Use o Google Chrome ou outro navegador compatível se o problema persistir."
-      },
-      "generic": "Ocorreu um atrito inesperado na ligação. Tente novamente ou use outra carteira.",
-      "providerGone": "Esta carteira não parece mais responder — pode ter sido atualizada ou removida. Atualizar a página deve resolver isso.",
-      "pending": "Um pedido de ligação já está aberto. Abra o painel de extensão da sua carteira.",
-      "rejected": "O pedido de ligação foi cancelado na sua carteira.",
-      "timeout": "Não foi possível alcançar o WalletConnect. Verifique sua conexão e tente novamente.",
-      "wrongNetwork": "Mude a rede ativa da sua carteira para a Flare Mainnet."
-    },
-    "install": "Instalar",
-    "installHint": "Ainda não vê a sua carteira? Atualizar a página pode ajudar.",
-    "refresh": "Atualizar",
-    "mobileHint": "No celular, abra o FlareGPT no navegador integrado da sua carteira para ter a melhor experiência de conexão. Ao escanear um código QR, use o scanner próprio do seu aplicativo de carteira em vez da câmera do telefone para uma conexão mais confiável.",
-    "connecting": "Conectando…",
-    "recommended": "Recomendado",
-    "subtitle": "Selecione a sua carteira preferida para se ligar à Rede Flare.",
-    "title": "Conectar Carteira",
-    "viaWalletConnect": "Via WalletConnect"
-  },
-  "flareWidget": {
-    "close": "Fechar",
-    "collapse": "Fechar",
-    "expand": "Expandir",
-    "openFullPage": "Abrir página completa"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "Analisar minha carteira",
-      "increaseRewards": "Como posso aumentar minhas recompensas de FTSO?",
-      "explainDelegations": "Explicar minhas delegações",
-      "compareProtocols": "Comparar Sceptre e Firelight",
-      "rewardsDecreased": "Por que minhas recompensas diminuíram?",
-      "stakingOpportunities": "Mostrar minhas oportunidades de staking"
-    },
-    "wallet": {
-      "analyzing": "Analisando:"
-    },
-    "empty": {
-      "title": "Pergunte qualquer coisa ao FlareGPT",
-      "subtitle": "Obtenha respostas sobre sua carteira, recompensas, delegações ou o ecossistema Flare."
-    },
-    "composer": {
-      "placeholder": "Pergunte ao FlareGPT...",
-      "send": "Enviar",
-      "stop": "Parar geração",
-      "disclaimer": "O FlareGPT pode cometer erros. Verifique informações importantes antes de agir com base nelas."
-    },
-    "actions": {
-      "copy": "Copiar",
-      "regenerate": "Regenerar resposta",
-      "copied": "Mensagem copiada",
-      "copyFailed": "Falha ao copiar"
-    },
-    "jumpToLatest": "Ir para o mais recente",
-    "historyLoadFailed": "Não foi possível carregar seu histórico de chat.",
-    "sendError": "Algo deu errado — tente novamente.",
-    "newChat": "Nova conversa",
-    "deleteConversation": {
-      "button": "Excluir conversa",
-      "confirm": "Confirmar?"
-    },
-    "deleteConversationFailed": "Não foi possível excluir esta conversa. Tente novamente.",
-    "history": {
-      "title": "Histórico de conversas",
-      "newChat": "Nova conversa",
-      "searchPlaceholder": "Pesquisar conversas...",
-      "empty": "Ainda não há conversas",
-      "noResults": "Nenhuma conversa corresponde à sua pesquisa",
-      "untitled": "Sem título",
-      "moreActions": "Mais ações",
-      "pin": "Fixar",
-      "unpin": "Desafixar",
-      "rename": "Renomear",
-      "delete": "Excluir",
-      "pinLimitReached": "Você pode fixar até {{count}} conversas",
-      "renameFailed": "Não foi possível renomear esta conversa.",
-      "openButton": "Histórico",
-      "saveRename": "Salvar",
-      "cancelRename": "Cancelar"
-    }
-  },
-  "dashboard": {
-    "description": "Dados da rede do Live Flare, gráficos de preços e atividade da carteira em resumo.",
-    "common": {
-      "retry": "Tentar novamente",
-      "retrying": "A tentar novamente...",
-      "networkHiccup": "Isso geralmente é um soluço temporário da rede.",
-      "noWalletSelected": "Nenhuma carteira selecionada",
-      "yes": "Sim",
-      "no": "Não"
-    },
-    "stats": {
-      "flrPrice": "Preço FLR",
-      "marketCap": "Market Cap",
-      "volume24h": "Volume 24h",
-      "tvl": "TVL",
-      "couldntLoad": "Não foi possível carregar a visão geral do mercado"
-    },
-    "chart": {
-      "couldntLoad": "Não foi possível carregar o histórico de preços FLR"
-    },
-    "networkActivity": {
-      "title": "Atividade de Disco / Rede",
-      "live": "Disponível",
-      "gwei": "Gwei",
-      "gasPrice": "Preço do gás",
-      "tps": "TPS",
-      "couldntLoad": "Não foi possível carregar os dados da rede",
-      "collectingSamples": "Coleta de amostras ao vivo — o gráfico é preenchido à medida que novos dados chegam."
-    },
-    "walletBalances": {
-      "title": "Saldos da carteira",
-      "connectToSeeBalances": "Associe ou adicione uma carteira nas Definições para ver os saldos.",
-      "couldntLoad": "Não foi possível carregar os saldos da carteira"
-    },
-    "ftso": {
-      "title": "Delegação FTSO",
-      "connected": "Conectado",
-      "readOnly": "Apenas visualização",
-      "connectToSeeRewards": "Associe ou adicione uma carteira nas Definições para ver as recompensas.",
-      "couldntLoad": "Não foi possível carregar o portfólio FTSO",
-      "delegatedWflr": "Delegado WFLR",
-      "unclaimedFlr": "FLR não reivindicado",
-      "activeDelegations": "Delegações Ativas",
-      "estHourlyEarning": "Rendimento Horário Est.",
-      "claimRewards": "\"Reivindicar prémios\"",
-      "readOnlyCannotClaim": "Somente leitura — não é possível reivindicar",
-      "switchToClaim": "Mude para a sua carteira conectada para resgatar recompensas",
-      "noUnclaimedYet": "Ainda não há recompensas não reclamadas",
-      "claimComingSoon": "A reivindicação ainda não está disponível — em breve."
-    },
-    "claimsHistory": {
-      "title": "Histórico de reclamações",
-      "connectToSee": "Associe ou adicione uma carteira nas Definições para ver o histórico de reclamações.",
-      "couldntLoad": "Não foi possível carregar o histórico de reclamações",
-      "emptyTitle": "Nenhuma época não reclamada",
-      "emptyDescription": "Você está em dia — não há épocas de recompensas pendentes para reivindicar."
-    },
-    "delegationsBreakdown": {
-      "title": "Discriminação das delegações",
-      "tabLabel": "Delegações",
-      "connectToSee": "Associe ou adicione uma carteira nas Definições para ver as delegações.",
-      "couldntLoad": "Não foi possível carregar as delegações",
-      "emptyTitle": "Sem delegações ativas",
-      "emptyDescription": "Delegue a WFLR a um provedor de FTSO para começar a ganhar recompensas."
-    },
-    "apiStatus": {
-      "checking": "A verificar o estado da API...",
-      "operational": "Todos os Sistemas Operacionais ",
-      "degraded": "API degradado"
-    }
-  },
-  "defiProtocols": {
-    "description": "Compare estratégias de rendimento e acompanhe suas posições nos vaults MXRPY, Sceptre e Firelight.",
-    "common": {
-      "addressCopied": "Endereço copiado para a área de transferência",
-      "copyFailed": "Não foi possível copiar o endereço",
-      "connectToSeePosition": "Conecte uma carteira para ver sua posição",
-      "contract": "Contrato",
-      "proxyContract": "Contrato Proxy",
-      "poolOwnership": "Participação no Pool",
-      "protocolDetails": "Detalhes do protocolo",
-      "yourBalance": "Seu Saldo",
-      "redeemableValue": "Valor Resgatável"
-    },
-    "explorer": {
-      "title": "Explorador de Protocolos",
-      "subtitle": "Selecione um protocolo para ver sua posição e detalhes"
-    },
-    "kpis": {
-      "protocolsTracked": "Protocolos Rastreados",
-      "bestApr": "Melhor APR Disponível",
-      "activePositions": "Posições Ativas"
-    },
-    "mxrpy": {
-      "title": "MXRPY Vault",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "Não foi possível carregar sua posição no MXRPY",
-      "circulatingCaption": "{{shares}} cotas em circulação · {{decimals}} casas decimais",
-      "yourShares": "Suas Cotas de Recibo",
-      "category": "Vault de Rendimento"
-    },
-    "sceptre": {
-      "title": "Sceptre Liquid Staking",
-      "subtitle": "Staking líquido de sFLR",
-      "couldntLoad": "Não foi possível carregar sua posição no Sceptre",
-      "exchangeRateLabel": "Taxa sFLR / FLR",
-      "totalMinted": "Total de Cotas Emitidas",
-      "backedFlr": "FLR Subjacente Garantido",
-      "category": "Staking Líquido"
-    },
-    "firelight": {
-      "title": "Firelight Vault",
-      "subtitle": "Vault de proteção de capital",
-      "couldntLoad": "Não foi possível carregar sua posição no Firelight",
-      "backingLabel": "Multiplicador de lastro de ativos",
-      "circulatingSupply": "Oferta em Circulação",
-      "underlyingReserve": "Reserva Subjacente",
-      "insuranceRobust": "Seguro: Robusto",
-      "category": "Seguro"
-    },
-    "strategies": {
-      "title": "Comparação de Estratégias",
-      "subtitle": "Veja como seu FLR poderia render em diferentes estratégias",
-      "amountLabel": "Comparar para",
-      "apr": "APR",
-      "colStrategy": "Estratégia",
-      "colYield": "Rendimento Est. (FLR)",
-      "colTerms": "Condições",
-      "compoundingLabel": "Capitalização",
-      "couldntLoad": "Não foi possível carregar a comparação de estratégias",
-      "highestApr": "Maior APR",
-      "lockupDays": "{{count}} dias de bloqueio",
-      "lockupHours": "{{count}}h de bloqueio",
-      "noLockup": "Sem bloqueio",
-      "verdict": "Veredito do FlareGPT"
-    }
-  },
-  "donate": {
-    "title": "Apoie o FlareGPT",
-    "description": "Seu apoio ajuda a manter o FlareGPT gratuito, independente e em constante melhoria.",
-    "hero": {
-      "addressLabel": "Endereço da Carteira",
-      "tapToCopy": "Toque para copiar",
-      "copyAddress": "Copiar Endereço",
-      "copied": "Copiado",
-      "addressCopied": "Endereço copiado para a área de transferência",
-      "copyFailed": "Não foi possível copiar o endereço",
-      "viewOnExplorer": "Ver no {{explorer}}",
-      "multisigNote": "Protegido por uma carteira multisig",
-      "qrTitle": "Código QR do endereço da carteira de doações em {{symbol}}"
-    },
-    "warning": {
-      "title": "Apenas ativos da {{network}}.",
-      "body": "Envie apenas {{symbol}} ou outros tokens da {{network}} para este endereço. Ativos enviados de outras redes não podem ser recuperados."
-    },
-    "amounts": {
-      "title": "Valores Sugeridos",
-      "subtitle": "Toda contribuição ajuda — aqui estão algumas ideias para começar.",
-      "impactTier1": "Um dia de custos de API",
-      "impactTier2": "Uma semana de hospedagem",
-      "impactTier3": "Um mês de infraestrutura",
-      "impactTier4": "Novas integrações de protocolos",
-      "copiedToast": "Endereço copiado. Obrigado por considerar uma doação de {{amount}} {{symbol}}."
-    },
-    "funding": {
-      "title": "Transparência de Financiamento",
-      "subtitle": "Uma visão aberta do que custa manter o FlareGPT funcionando — sem pressão, apenas transparência.",
-      "monthlyInfrastructure": "Infraestrutura Mensal",
-      "developmentFund": "Fundo de Desenvolvimento",
-      "raisedOfGoal": "{{raised}} arrecadados da meta de {{goal}}"
-    },
-    "received": {
-      "title": "Doações Recebidas",
-      "subtitle": "Total de contribuições recebidas em cada rede suportada.",
-      "demoData": "Dados de demonstração"
-    },
-    "support": {
-      "title": "No Que Seu Apoio é Investido",
-      "infra": "API e Infraestrutura",
-      "integrations": "Novas Integrações de Protocolos",
-      "free": "Manter o FlareGPT Gratuito",
-      "development": "Desenvolvimento Contínuo"
-    },
-    "closing": {
-      "message": "Obrigado por ajudar a manter o FlareGPT independente. Cada contribuição, grande ou pequena, realmente ajuda."
     }
   }
 }

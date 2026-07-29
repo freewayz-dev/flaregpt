@@ -35,6 +35,12 @@ export default {
           secondary: withOpacity("--color-ink-secondary"),
           muted: withOpacity("--color-ink-muted"),
         },
+        // Scoped to the FlareGPT chat interface only (see index.css) — not
+        // a replacement for `ink-primary` app-wide, so other pages are
+        // untouched by this readability pass.
+        chat: {
+          text: withOpacity("--color-chat-text"),
+        },
         // Default border color.
         line: withOpacity("--color-line"),
         // Divider color for divide-x/divide-y separators between list rows —

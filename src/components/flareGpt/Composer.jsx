@@ -3,11 +3,19 @@ import { useTranslation } from "react-i18next";
 import { PaperAirplaneIcon, StopIcon } from "@heroicons/react/24/outline";
 
 import WalletContextPill from "@/components/flareGpt/WalletContextPill";
+import GuestModeCaption from "@/components/flareGpt/GuestModeCaption";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
 
 const MAX_TEXTAREA_HEIGHT = 160;
 
-export default function Composer({ onSend, isGenerating, onStop, onOpenWalletModal, focusRequestId, disabled = false }) {
+export default function Composer({
+  onSend,
+  isGenerating,
+  onStop,
+  onOpenWalletModal,
+  focusRequestId,
+  disabled = false,
+}) {
   const { t } = useTranslation();
   const { hasSession } = useAuthStatus();
   const [value, setValue] = useState("");
@@ -90,15 +98,20 @@ export default function Composer({ onSend, isGenerating, onStop, onOpenWalletMod
   return (
     <div className="border-t border-line px-3 pt-3 pb-[calc(0.625rem+env(safe-area-inset-bottom))] sm:p-4 shrink-0">
       <div className="mx-auto max-w-3xl">
-        {/* Wallet-aware context only makes sense for a signed-in user — a
-            guest has no account for the backend to scope answers to, and
-            their messages aren't persisted anyway (see useFlareGptStore.js),
-            so there's nothing here for the pill to represent. */}
-        {hasSession && (
-          <div className="mb-2">
-            <WalletContextPill onOpenWalletModal={onOpenWalletModal} />
-          </div>
-        )}
+        {/* Shown for every visitor, signed in or not — hiding it entirely
+            for a guest would hide the capability itself, not just the
+            wallet list. WalletContextPill renders its own locked/
+            explainer state until `hasSession` is actually true (see that
+            component for why connecting alone doesn't count). The guest
+            caption stacks below rather than sharing the pill's row — side
+            by side, the caption's text was the first thing to wrap
+            awkwardly on a narrow phone width. */}
+        <div className="mb-2 space-y-1.5">
+          <WalletContextPill onOpenWalletModal={onOpenWalletModal} />
+          {!hasSession && (
+            <GuestModeCaption onOpenWalletModal={onOpenWalletModal} />
+          )}
+        </div>
         <div className="flex items-end gap-2 rounded-2xl border border-[#E5E7EB] dark:border-none bg-surface-inset p-1.5 sm:p-2 focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2">
           <textarea
             ref={textareaRef}

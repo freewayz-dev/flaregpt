@@ -26,6 +26,12 @@
      within the same slate family to clear 4.5:1 against both. */
   --color-ink-muted: 84 99 122; /* #54637A */
 
+  /* Deliberately near-black rather than the app-wide --color-ink-primary
+     (#0F172A, a navy-tinted dark) — FlareGPT chat's own readability pass
+     asked for true #050505 on headings *and* body text specifically, kept
+     scoped to chat so it doesn't reflow every other page's text color. */
+  --color-chat-text: 5 5 5; /* #050505 */
+
   --color-line: 229 231 235; /* #E5E7EB */
   --color-divider: 229 231 235; /* #E5E7EB */
 
@@ -42,6 +48,9 @@ html.dark {
      backgrounds, failing WCAG AA at the small sizes it's actually used at.
      Lightened within the same zinc family to clear 4.5:1 against both. */
   --color-ink-muted: 146 149 160; /* #9295A0 */
+
+  /* See :root — same chat-only override, dark-mode value. */
+  --color-chat-text: 252 252 252; /* #FCFCFC */
 
   /* Lightened brand variant for small/bold text on dark surfaces — the raw
      brand value measures ~3.90:1 against our dark card, short of 4.5:1.

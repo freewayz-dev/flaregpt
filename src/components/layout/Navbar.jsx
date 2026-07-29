@@ -155,7 +155,7 @@ export default function Navbar({
     try {
       await navigator.clipboard.writeText(address);
       setCopiedAddress(address);
-      toast.success(t("navbar.addressCopied", "Address copied to clipboard"));
+      toast.success(t("navbar.addressCopied", "Address copied"));
       setTimeout(() => setCopiedAddress(null), 2000);
     } catch {
       toast.error(t("navbar.copyFailed", "Couldn't copy address"));

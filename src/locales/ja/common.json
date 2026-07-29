@@ -1,11 +1,317 @@
 {
+  "comingSoon": {
+    "badge": "近日公開",
+    "description": "この機能は現在開発中です。しばらくしてから再度ご確認ください。"
+  },
+  "connectModal": {
+    "connecting": "接続中…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "サイトをBraveのプライベートウィンドウで開いてください。",
+        "shieldsOff": "このサイトのBrave Shieldsをオフにして再試行してください。",
+        "title": "WalletConnectがBrave Shieldsによってブロックされているようです。",
+        "tryTitle": "以下のいずれかをお試しください:",
+        "useChrome": "問題が解決しない場合は、Google Chromeまたは他のサポートされているブラウザをご利用ください。"
+      },
+      "generic": "予期せぬ接続摩擦が発生しました。もう一度お試しいただくか、別のウォレットをご利用ください。",
+      "pending": "接続要求はすでに開いています。ウォレット拡張パネルを開いてください。",
+      "providerGone": "このウォレットは応答していないようです。更新または削除された可能性があります。ページを更新すると解決する場合があります。",
+      "rejected": "ウォレットで接続リクエストがキャンセルされました。",
+      "timeout": "WalletConnectに接続できませんでした。接続を確認して再試行してください。",
+      "wrongNetwork": "ウォレットのアクティブなネットワークをFlare Mainnetに切り替えてください。"
+    },
+    "install": "インストール",
+    "installHint": "まだウォレットが表示されませんか？ページを更新すると解決する場合があります。",
+    "mobileHint": "モバイルでは、ウォレットのビルトインブラウザでFlareGPTを開き、最高の接続エクスペリエンスを実現します。QRコードをスキャンする際は、スマートフォンのカメラではなく、ウォレットアプリ内蔵のスキャナーを使用すると、より確実に接続できます。",
+    "recommended": "オススメ",
+    "refresh": "更新",
+    "subtitle": "お好みのウォレットを選択して、Flareネットワークに接続します。",
+    "title": "ウォレットに接続する",
+    "viaWalletConnect": "WalletConnect経由"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "APIステータスを確認しています...",
+      "degraded": "APIが低下しました",
+      "operational": "システム正常動作"
+    },
+    "chart": {
+      "couldntLoad": "FLRの料金履歴を読み込めませんでした"
+    },
+    "claimsHistory": {
+      "connectToSee": "[設定]でウォレットを接続または追加して、請求履歴を表示します。",
+      "couldntLoad": "請求履歴を読み込めませんでした",
+      "emptyDescription": "すべて完了しています。未請求の報酬エポックはありません。",
+      "emptyTitle": "未取得のエポックはありません",
+      "title": "クレーム履歴"
+    },
+    "common": {
+      "networkHiccup": "これは通常、一時的なネットワーク障害です。",
+      "no": "なし",
+      "noWalletSelected": "ウォレットが選択されていません",
+      "retry": "再試行",
+      "retrying": "再試行",
+      "yes": "あり"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "委任を表示するには、[設定]でウォレットを接続または追加します。",
+      "couldntLoad": "委任を読み込めませんでした",
+      "emptyDescription": "FTSOプロバイダーにWFLRを委任して、報酬を獲得しましょう。",
+      "emptyTitle": "有効な委任はありません",
+      "tabLabel": "委任者",
+      "title": "委任の内訳"
+    },
+    "description": "ライブフレアネットワークデータ、価格チャート、ウォレットアクティビティを一目で確認できます。",
+    "ftso": {
+      "activeDelegations": "アクティブな委任",
+      "claimComingSoon": "請求はまだご利用いただけません。近日公開予定です。",
+      "claimRewards": "報酬受取：",
+      "connected": "接続済み",
+      "connectToSeeRewards": "[設定]でウォレットを接続または追加すると、特典が表示されます。",
+      "couldntLoad": "FTSOポートフォリオを読み込めませんでした",
+      "delegatedWflr": "委任されたWFLR",
+      "estHourlyEarning": "時間あたりの予想収入",
+      "noUnclaimedYet": "まだ受け取っていない報酬はありません",
+      "readOnly": "読み取り専用",
+      "readOnlyCannotClaim": "閲覧専用のため請求できません",
+      "switchToClaim": "接続されたウォレットに切り替えて特典を受け取りましょう",
+      "title": "FTSO委任",
+      "unclaimedFlr": "未請求のFLR"
+    },
+    "networkActivity": {
+      "collectingSamples": "リアルタイムサンプルを収集中です。新しいデータが届くとチャートに反映されます。",
+      "couldntLoad": "ネットワークデータを読み込めませんでした",
+      "gasPrice": "ガス価格",
+      "gwei": "Gwei",
+      "live": "ライブ",
+      "title": "ネットワークアクティビティ",
+      "tps": "TPS（トランザクション件数/秒）"
+    },
+    "stats": {
+      "couldntLoad": "市場概要を読み込めませんでした",
+      "flrPrice": "FLR価格",
+      "marketCap": "時価総額",
+      "tvl": "TVL",
+      "volume24h": "24時間ボリューム"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "[設定]でウォレットを接続または追加して、残高を確認します。",
+      "couldntLoad": "ウォレットの残高を読み込めませんでした",
+      "title": "ウォレット残高"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "アドレスをコピーしました",
+      "connectToSeePosition": "ポジションを表示するにはウォレットを接続してください",
+      "contract": "コントラクト",
+      "copyFailed": "アドレスをコピーできませんでした",
+      "poolOwnership": "プール保有比率",
+      "protocolDetails": "プロトコル詳細",
+      "proxyContract": "プロキシコントラクト",
+      "redeemableValue": "償還可能価値",
+      "yourBalance": "残高"
+    },
+    "description": "MXRPY、Sceptre、Firelightの各ボールトで利回り戦略を比較し、ポジションを追跡できます。",
+    "explorer": {
+      "subtitle": "プロトコルを選択してポジションと詳細を表示します",
+      "title": "プロトコルエクスプローラー"
+    },
+    "firelight": {
+      "backingLabel": "資産裏付け倍率",
+      "category": "保険",
+      "circulatingSupply": "流通供給量",
+      "couldntLoad": "Firelightポジションを読み込めませんでした",
+      "insuranceRobust": "保険: 健全",
+      "subtitle": "資本保護ボールト",
+      "title": "Firelight ボールト",
+      "underlyingReserve": "裏付け準備金"
+    },
+    "kpis": {
+      "activePositions": "アクティブなポジション",
+      "bestApr": "利用可能な最高APR",
+      "protocolsTracked": "追跡中のプロトコル"
+    },
+    "mxrpy": {
+      "category": "イールドボールト",
+      "circulatingCaption": "流通シェア{{shares}}件 · 小数点以下{{decimals}}桁",
+      "couldntLoad": "MXRPYポジションを読み込めませんでした",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "MXRPY ボールト",
+      "yourShares": "保有レシートシェア"
+    },
+    "sceptre": {
+      "backedFlr": "裏付けとなるFLR",
+      "category": "リキッドステーキング",
+      "couldntLoad": "Sceptreポジションを読み込めませんでした",
+      "exchangeRateLabel": "sFLR / FLR レート",
+      "subtitle": "sFLR リキッドステーキング",
+      "title": "Sceptre リキッドステーキング",
+      "totalMinted": "発行済みシェア総数"
+    },
+    "strategies": {
+      "amountLabel": "比較する金額",
+      "apr": "APR",
+      "colStrategy": "戦略",
+      "colTerms": "条件",
+      "colYield": "予想利回り (FLR)",
+      "compoundingLabel": "複利方式",
+      "couldntLoad": "戦略比較を読み込めませんでした",
+      "highestApr": "最高APR",
+      "lockupDays": "ロックアップ{{count}}日",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
+      "lockupHours": "ロックアップ{{count}}時間",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "ロックアップなし",
+      "subtitle": "各戦略でFLRがどのようなパフォーマンスを発揮するか確認できます",
+      "title": "戦略比較",
+      "verdict": "FlareGPTの見解",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "アドレスをコピーしました。{{amount}} {{symbol}}のご寄付をご検討いただきありがとうございます。",
+      "impactTier1": "1日分のAPIコスト",
+      "impactTier2": "1週間分のホスティング",
+      "impactTier3": "1か月分のインフラ",
+      "impactTier4": "新しいプロトコル統合",
+      "subtitle": "どんな貢献も助けになります。まずはこちらのアイデアからどうぞ。",
+      "title": "推奨金額"
+    },
+    "closing": {
+      "message": "FlareGPTの独立性を保つのにご協力いただきありがとうございます。大小を問わず、すべてのご支援が本当に助けになります。"
+    },
+    "description": "あなたのご支援がFlareGPTを無料かつ独立した形で維持し、継続的な改善を可能にします。",
+    "funding": {
+      "developmentFund": "開発資金",
+      "monthlyInfrastructure": "月次インフラ費用",
+      "raisedOfGoal": "目標{{goal}}のうち{{raised}}達成",
+      "subtitle": "FlareGPTの運営コストを公開しています。プレッシャーではなく、透明性のためです。",
+      "title": "資金の透明性"
+    },
+    "hero": {
+      "addressCopied": "アドレスをコピーしました",
+      "addressLabel": "ウォレットアドレス",
+      "copied": "コピーしました",
+      "copyAddress": "アドレスをコピー",
+      "copyFailed": "アドレスをコピーできませんでした",
+      "multisigNote": "マルチシグウォレットにより保護されています",
+      "qrTitle": "{{symbol}}寄付用ウォレットアドレスのQRコード",
+      "tapToCopy": "タップしてコピー",
+      "viewOnExplorer": "{{explorer}}で見る"
+    },
+    "received": {
+      "demoData": "デモデータ",
+      "subtitle": "サポートされているすべてのネットワークで受け取った合計貢献額。",
+      "title": "受け取った寄付"
+    },
+    "support": {
+      "development": "継続的な開発",
+      "free": "FlareGPTを無料に保つ",
+      "infra": "API・インフラ",
+      "integrations": "新しいプロトコル統合",
+      "title": "支援の使い道"
+    },
+    "title": "FlareGPTを支援する",
+    "warning": {
+      "body": "このアドレスには{{symbol}}または他の{{network}}トークンのみを送金してください。他のネットワークから送られた資産は復元できません。",
+      "title": "{{network}}の資産のみ。"
+    }
+  },
+  "flareWidget": {
+    "close": "閉じる",
+    "collapse": "折りたたむ",
+    "expand": "展開",
+    "openFullPage": "フルページを開く"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "メッセージをコピーしました",
+      "copy": "コピー",
+      "copyFailed": "コピーに失敗しました",
+      "regenerate": "回答を再生成"
+    },
+    "composer": {
+      "disclaimer": "FlareGPTは間違えることがあります。重要な情報は行動する前に確認してください。",
+      "placeholder": "FlareGPTに質問...",
+      "send": "送信",
+      "stop": "生成を停止"
+    },
+    "deleteConversation": {
+      "button": "会話を削除",
+      "confirm": "確認しますか？"
+    },
+    "deleteConversationFailed": "この会話を削除できませんでした。もう一度お試しください。",
+    "empty": {
+      "subtitle": "ウォレット、報酬、デリゲーション、Flareエコシステムについて回答を得られます。",
+      "title": "FlareGPTに何でも聞いてください"
+    },
+    "guestMode": {
+      "cta": "サインインして履歴を同期し、ウォレット分析のロックを解除する",
+      "notice": "ゲストモード・会話が保存されません。"
+    },
+    "history": {
+      "cancelRename": "キャンセル",
+      "delete": "削除",
+      "empty": "まだ会話がありません",
+      "moreActions": "その他の操作",
+      "newChat": "新しいチャット",
+      "noResults": "検索に一致する会話がありません",
+      "openButton": "履歴",
+      "pin": "ピン留め",
+      "pinLimitReached": "最大{{count}}件の会話をピン留めできます",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "名前を変更",
+      "renameFailed": "この会話の名前を変更できませんでした。",
+      "saveRename": "保存",
+      "searchPlaceholder": "会話を検索...",
+      "title": "チャット履歴",
+      "unpin": "ピン留め解除",
+      "untitled": "無題",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+    },
+    "historyLoadFailed": "チャット履歴を読み込めませんでした。",
+    "jumpToLatest": "最新へ移動",
+    "newChat": "新しいチャット",
+    "prompts": {
+      "analyzeWallet": "ウォレットを分析",
+      "compareProtocols": "SceptreとFirelightを比較",
+      "explainDelegations": "デリゲーションを説明して",
+      "increaseRewards": "FTSO報酬を増やすには?",
+      "rewardsDecreased": "報酬が減った理由は?",
+      "stakingOpportunities": "ステーキングの機会を見せて"
+    },
+    "sendError": "問題が発生しました。もう一度お試しください。",
+    "wallet": {
+      "analyzing": "分析対象:",
+      "guestLabel": "ウォレット分析",
+      "locked": {
+        "body": "サインインして、すべての質問に住所を入力する代わりに、FlareGPTがプライマリウォレットとウォッチリストウォレットを自動的に読み取れるようにします。",
+        "connectCta": "ウォレットに接続する",
+        "signInCta": "サインイン",
+        "signingIn": "ウォレットで確認してください…",
+        "title": "ウォレット分析のロックを解除"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Flare Network 上に構築。",
     "disclaimer": "財務アドバイスではありません。データは情報提供のみを目的として提供されています。",
-    "terms": "利用規約と免責事項",
-    "donate": "寄付"
+    "donate": "寄付",
+    "terms": "利用規約と免責事項"
   },
   "help": {
+    "askFlareGptCta": "FlareGPTに聞いてみる",
+    "askFlareGptLead": "お探しのものが見つかりませんでしたか？",
+    "contact": {
+      "comingSoon": "近日公開",
+      "emailLabel": "メール",
+      "telegramLabel": "Telegram",
+      "twitterHint": "フォローしてメッセージを送りましょう",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "ウォレットが接続されていないか、ダッシュボードがブロックチェーンデータを同期中である可能性があります。正しいウォレットとネットワークが選択されているか確認してください。",
@@ -30,10 +336,12 @@
     ],
     "faqTitle": "よくある質問",
     "featureGuides": "機能ガイド",
+    "flareGptGuideDescription": "ウォレットや報酬、Flareネットワークについて、自然な言葉で質問できます。",
     "gettingStarted": "初めに",
     "headerDesc": "FlareGPTダッシュボードを最大限に活用するためのガイド、回答、サポートです。",
     "noFaqs": "検索に一致するFAQが見つかりません。",
     "noGuides": "検索に一致するガイドが見つかりません。",
+    "searchClear": "検索をクリア",
     "searchPlaceholder": "ガイドやFAQを検索...",
     "searchSub": "機能ガイドやFAQを検索するか、他の方法でお問い合わせください。",
     "searchTitle": "始めるために必要なすべて",
@@ -65,63 +373,70 @@
       }
     ],
     "stillNeedHelp": "まだヘルプが必要ですか？",
-    "supportDesc": "現在、最も早く連絡が取れる方法はXです。メールとTelegramでのサポートは近日公開予定です。",
-    "searchClear": "検索をクリア",
-    "flareGptGuideDescription": "ウォレットや報酬、Flareネットワークについて、自然な言葉で質問できます。",
-    "askFlareGptLead": "お探しのものが見つかりませんでしたか？",
-    "askFlareGptCta": "FlareGPTに聞いてみる",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "フォローしてメッセージを送りましょう",
-      "telegramLabel": "Telegram",
-      "emailLabel": "メール",
-      "comingSoon": "近日公開"
-    }
+    "supportDesc": "現在、最も早く連絡が取れる方法はXです。メールとTelegramでのサポートは近日公開予定です。"
   },
   "navbar": {
+    "addressCopied": "アドレスをコピーしました",
     "askFlareGPT": "FlareGPTに質問",
-    "mainnetStatus": "Flareメインネット",
-    "connectWallet": "ウォレットを接続",
-    "primaryWalletSection": "プライマリウォレット",
     "badgePrimary": "プライマリ",
+    "badgeSignIn": "サインイン",
     "badgeWatchlist": "ウォッチリスト",
-    "disconnectWallet": "ウォレットを切断",
+    "balancesHiddenLabel": "残高は非表示です",
     "configureWatchlistWallets": "ウォッチリストウォレットを設定",
-    "watchlistSection": "ウォッチリスト ({{current}}/{{max}})",
-    "addressCopied": "アドレスをクリップボードにコピーしました",
+    "connectWallet": "ウォレットを接続",
     "copyFailed": "アドレスをコピーできませんでした",
+    "disconnectWallet": "ウォレットを切断",
     "flareGptFabHint": "FlareGPTはここから開くようになりました",
     "hideBalances": "残高を非表示",
+    "mainnetStatus": "Flareメインネット",
+    "primaryWalletSection": "プライマリウォレット",
     "showBalances": "残高を表示",
-    "balancesHiddenLabel": "残高は非表示です",
     "signIn": "サインイン",
+    "signInBackgroundHint": "接続中のウォレットはサインインが必要です",
     "signingIn": "サインイン中…",
     "signInPrompt": "このウォレットを確認して続行するには、メッセージに署名してください。",
-    "badgeSignIn": "サインイン",
-    "signInBackgroundHint": "接続中のウォレットはサインインが必要です"
+    "watchlistSection": "ウォッチリスト ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "ダーク",
+      "light": "ライト",
+      "system": "システム"
+    },
     "cards": {
       "app": "アプリ",
       "blur": "ブルーライトフィルター",
       "chartType": "チャートの種類",
       "connectedWallets": "接続済ウォレット",
       "currency": "通貨表示",
+      "defaultLandingPage": "デフォルトのランディングページ",
+      "defaultWallet": "デフォルトウォレット",
       "governanceAlerts": "ガバナンスアラート",
+      "hideBalances": "ウォレット残高を非表示",
       "language": "言語",
       "links": "リンク",
       "logout": "ログアウト",
+      "reduceMotion": "モーションを減らす",
       "rewardsAlerts": "報酬アラート",
+      "tableDensity": "テーブル密度",
       "theme": "テーマ",
       "themeMode": "ライト / ダークモード",
       "timeframe": "期間",
       "walletCapacity": "ウォレット容量",
-      "walletPreferences": "ウォレット設定",
-      "defaultWallet": "デフォルトウォレット",
-      "defaultLandingPage": "デフォルトのランディングページ",
-      "tableDensity": "テーブル密度",
-      "reduceMotion": "モーションを減らす",
-      "hideBalances": "ウォレット残高を非表示"
+      "walletPreferences": "ウォレット設定"
+    },
+    "dataStorage": {
+      "accountSubtitle": "サーバー上のアカウントと同期されています。",
+      "accountTitle": "アカウントデータ",
+      "clear": "削除",
+      "confirmClear": "確認しますか？",
+      "conversations": "FlareGPTの会話",
+      "conversationsClearFailed": "チャット履歴を削除できませんでした。もう一度お試しください。",
+      "conversationsDescription": "アカウントからFlareGPTのチャット履歴を削除します。この操作は元に戻せません。",
+      "localSubtitle": "このブラウザにのみ保存されています。削除はすぐに安全に行えます。",
+      "localTitle": "ローカルデータ",
+      "walletCache": "ウォレットアクティビティキャッシュ",
+      "walletCacheDescription": "キャッシュされた取引履歴を削除します。次回訪問時に再取得されます。"
     },
     "description": "ウォレット、環境設定、ローカライズ、表示オプションを管理します。",
     "descriptions": {
@@ -129,18 +444,33 @@
       "blur": "暖色系の画面で目の疲れを軽減します",
       "chartType": "システムマトリックスのデフォルトのレンダリング視覚スタイルジオメトリを設定します。",
       "currency": "資産の基準通貨表示を選択します。",
+      "defaultLandingPage": "アプリ起動時に最初に開くページを選択します。",
+      "defaultWallet": "以前のセッションを復元できない場合、このウォレットがアクティブになります。",
+      "hideBalances": "プライバシー保護のため、ダッシュボード全体の残高と金額をぼかします。",
       "language": "デフォルトのインターフェース表示言語を選択します。",
       "links": "グローバルなドキュメント参照とチームのインタラクションリンクです。",
       "logout": "この端末でFlareGPTからサインアウトします。再度サインインするには新しいメッセージへの署名が必要です。",
+      "reduceMotion": "OSに設定がない場合でも、アニメーションを最小限に抑えます。",
+      "tableDensity": "密なテーブル向けの快適な間隔、またはよりコンパクトな表示。",
+      "theme": "ライト、ダーク、またはシステム設定に従うかを選択します。",
       "timeframe": "視覚チャートのデフォルトのウィンドウ期間スケールを定義します。",
       "walletCapacity": "割り当て容量プールを追跡するシステム制限です。",
-      "theme": "ライト、ダーク、またはシステム設定に従うかを選択します。",
-      "walletPreferences": "ダッシュボードがどのウォレットで開くかを選択します。",
-      "defaultWallet": "以前のセッションを復元できない場合、このウォレットがアクティブになります。",
-      "defaultLandingPage": "アプリ起動時に最初に開くページを選択します。",
-      "tableDensity": "密なテーブル向けの快適な間隔、またはよりコンパクトな表示。",
-      "reduceMotion": "OSに設定がない場合でも、アニメーションを最小限に抑えます。",
-      "hideBalances": "プライバシー保護のため、ダッシュボード全体の残高と金額をぼかします。"
+      "walletPreferences": "ダッシュボードがどのウォレットで開くかを選択します。"
+    },
+    "flareGpt": {
+      "syncStatusConnected": "サインインしました。会話はすべてのデバイスとブラウザで同期されます。",
+      "syncStatusGuest": "会話はこのブラウザ内で一時的なものであり、保存されません。保存するにはサインインしてください。",
+      "syncStatusTitle": "同期ステータス"
+    },
+    "groups": {
+      "account": "アカウント",
+      "personalization": "パーソナライズ",
+      "walletsAndData": "ウォレットとデータ"
+    },
+    "links": {
+      "docs": "ドックス",
+      "github": "GitHub",
+      "twitter": "Ｔｗｉｔｔｅｒ"
     },
     "notifications": {
       "governance": "提案の更新",
@@ -152,224 +482,201 @@
       "area": "エリア",
       "asia": "アジア",
       "candlestick": "ローソク足",
+      "comfortable": "快適",
+      "compact": "コンパクト",
       "europe": "ヨーロッパ",
       "global": "グローバル",
       "high": "高",
       "line": "折れ線",
       "low": "低",
       "medium": "中",
-      "off": "オフ",
-      "comfortable": "快適",
-      "compact": "コンパクト"
+      "off": "オフ"
     },
     "security": {
-      "logout": "ログアウト",
-      "confirmLogout": "確認しますか？"
+      "confirmLogout": "確認しますか？",
+      "logout": "ログアウト"
     },
     "subtitles": {
       "About": "システム的な展開記録、コンパイルルール、および資産インデックスを概観します。",
+      "Accessibility": "モーションと操作の設定を調整します。",
+      "Appearance": "FlareGPTの見た目を選択します。",
       "Display": "デフォルトビューとダッシュボードデータの表示方法をカスタマイズします。",
+      "FlareGpt": "FlareGPTが会話をどのように記憶するかを管理します。",
       "Notifications": "システム的な優先イベントと配信ルート追跡エンドポイントを管理します。",
       "Preferences": "言語と通貨の設定。",
       "Security": "アクティブなアイデンティティセッションの障壁と資格情報検証アクセスルールを維持します。",
-      "Wallets": "グローバルな外部の分散型アカウント間で署名を接続し、構造化します。",
-      "Appearance": "FlareGPTの見た目を選択します。",
-      "Accessibility": "モーションと操作の設定を調整します。",
-      "FlareGpt": "FlareGPTが会話をどのように記憶するかを管理します。"
+      "Wallets": "グローバルな外部の分散型アカウント間で署名を接続し、構造化します。"
     },
     "tabs": {
       "About": "情報",
+      "Accessibility": "アクセシビリティ",
+      "Appearance": "外観",
+      "DataStorage": "データとストレージ",
       "Display": "ダッシュボード",
+      "FlareGpt": "FlareGPT",
       "Notifications": "通知",
       "Preferences": "一般",
       "Security": "セキュリティ",
-      "Wallets": "ウォレット",
-      "Appearance": "外観",
-      "Accessibility": "アクセシビリティ",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "データとストレージ"
+      "Wallets": "ウォレット"
     },
     "title": "設定",
     "wallets": {
       "active": "アクティブ",
       "add": "ウォレットを追加 ({{current}}/{{max}})",
+      "addFormTitle": "ウォッチリストポートフォリオアカウントを追加",
+      "adding": "追加中…",
+      "addressPlaceholder": "0 x...フレアウォレットアドレス",
       "available": "利用可能",
+      "cancelRename": "キャンセル",
+      "confirmRemove": "削除を確認しますか？",
       "connectAction": "ウォレットを接続 (接続済み: {{current}}、残り: {{remaining}})",
+      "connectActionUnlimited": "ウォレットを追加（{{current}}件を追跡中）",
       "connected": "接続済",
+      "duplicateAddress": "このアドレスはすでにウォッチリストに登録されています。",
+      "duplicateNickname": "このニックネームのウォッチリストウォレットは既に存在します。別のニックネームを選んでください。",
       "empty": "ウォレットはまだ接続されていません",
       "emptyTerminal": "ウォレットが接続されていません。続行するにはターミナルアセットを接続してください。",
-      "limit": "最大 {{max}} 個のウォレットを接続できます",
-      "limitReached": "ウォレットの制限に達しました ({{current}}/{{max}})",
-      "maximum": "最大",
-      "remainingSlots": "残りのスロット",
-      "addFormTitle": "ウォッチリストポートフォリオアカウントを追加",
-      "addressPlaceholder": "0 x...フレアウォレットアドレス",
+      "guestLimitBenefitBackup": "ウォッチリストをバックアップ",
+      "guestLimitBenefitMore": "3件を超えるウォレットを保存",
+      "guestLimitBenefitSync": "デバイス間でウォッチリストを同期",
+      "guestLimitTitle": "サインインしてさらにウォレットを追跡",
       "invalidAddress": "有効なFLARE EVMネットワークアドレス（ 0 xで始まる）を入力してください。",
       "labelPlaceholder": "口座名義ラベル（コールドストレージなど）",
+      "limit": "最大 {{max}} 個のウォレットを接続できます",
+      "limitReached": "ウォレットの制限に達しました ({{current}}/{{max}})",
       "liveConnected": "ライブ接続",
       "manageSubtitle": "アクティブなWeb 3接続と読み取り専用ポートフォリオトラッキングアカウントを管理します。",
+      "maximum": "最大",
+      "noDefaultSelected": "未選択",
+      "noLimit": "好きなだけウォレットを追加できます。",
+      "noSearchResults": "検索に一致するウォレットがありません。",
+      "notFoundError": "このウォレットはもうウォッチリストにありません。",
       "readOnly": "èª­ã¿åãå°ç¨",
       "registrationFailed": "住所登録に失敗しました。重複しているかどうか、またはスロットが埋まっているかどうかを確認してください。",
-      "tracked": "追跡済み",
+      "remainingSlots": "残りのスロット",
       "remove": "削除",
-      "confirmRemove": "削除を確認しますか？",
-      "noDefaultSelected": "未選択",
       "rename": "名前を変更",
-      "cancelRename": "キャンセル",
-      "connectActionUnlimited": "ウォレットを追加（{{current}}件を追跡中）",
-      "noLimit": "好きなだけウォレットを追加できます。",
-      "duplicateAddress": "このアドレスはすでにウォッチリストに登録されています。",
-      "guestLimitTitle": "サインインしてさらにウォレットを追跡",
-      "guestLimitBenefitSync": "デバイス間でウォッチリストを同期",
-      "guestLimitBenefitMore": "3件を超えるウォレットを保存",
-      "guestLimitBenefitBackup": "ウォッチリストをバックアップ",
-      "searchPlaceholder": "{{count}}件のウォレットを検索...",
-      "noSearchResults": "検索に一致するウォレットがありません。",
-      "duplicateNickname": "このニックネームのウォッチリストウォレットは既に存在します。別のニックネームを選んでください。",
-      "notFoundError": "このウォレットはもうウォッチリストにありません。",
       "saveEdit": "保存",
-      "adding": "追加中…"
-    },
-    "links": {
-      "docs": "ドックス",
-      "github": "GitHub",
-      "twitter": "Ｔｗｉｔｔｅｒ"
-    },
-    "groups": {
-      "personalization": "パーソナライズ",
-      "walletsAndData": "ウォレットとデータ",
-      "account": "アカウント"
-    },
-    "appearance": {
-      "light": "ライト",
-      "dark": "ダーク",
-      "system": "システム"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "同期ステータス",
-      "syncStatusConnected": "サインイン済み — 会話はすべてのデバイスとブラウザで同期されます。",
-      "syncStatusGuest": "会話はこのブラウザ内で一時的なものであり、保存されません。保存するにはサインインしてください。"
-    },
-    "dataStorage": {
-      "localTitle": "ローカルデータ",
-      "localSubtitle": "このブラウザのみに保存されます — 削除は即時かつ安全です。",
-      "walletCache": "ウォレットアクティビティキャッシュ",
-      "walletCacheDescription": "キャッシュされた取引履歴を削除します — 次回訪問時に再取得されます。",
-      "conversations": "FlareGPTの会話",
-      "conversationsDescription": "アカウントからFlareGPTのチャット履歴を削除します。この操作は元に戻せません。",
-      "clear": "削除",
-      "confirmClear": "確認しますか？",
-      "accountTitle": "アカウントデータ",
-      "accountSubtitle": "サーバー上のアカウントと同期されています。",
-      "conversationsClearFailed": "チャット履歴を削除できませんでした。もう一度お試しください。"
+      "searchPlaceholder": "{{count}}件のウォレットを検索...",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "追跡済み",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
     }
   },
   "sidebar": {
+    "activeWallet": "有効：{{address}}",
+    "addWatchlistWallet": "+ウォッチリストウォレットを追加",
     "connectWallet": "ウォレットを接続",
+    "defiProtocols": "Defiプロトコル",
     "disconnect": "接続解除",
+    "donate": "寄付",
+    "feeds": "RSSフィード",
     "FlareGPT": "フレアGPT",
     "ftsoRewards": "FTSO報酬",
-    "defiProtocols": "Defiプロトコル",
     "governance": "ガバナンス",
     "helpCenter": "ヘルプセンター",
+    "loops": "ループ",
     "notConnected": "未接続",
     "overview": "概要",
     "rflrTracker": "rFLRトラッカー",
     "settings": "設定",
+    "signInRequired": "サインインが必要です",
+    "signInRequiredHint": "サインインするには、上部バーのウォレットメニューを使用してください。",
     "walletActivity": "ウォレット活動",
     "walletConnected": "ウォレット接続済",
-    "yield": "利回り",
-    "loops": "ループ",
-    "feeds": "RSSフィード",
-    "donate": "寄付",
-    "addWatchlistWallet": "+ウォッチリストウォレットを追加",
-    "activeWallet": "有効：{{address}}",
-    "signInRequired": "サインインが必要です",
-    "signInRequiredHint": "サインインするには、上部バーのウォレットメニューを使用してください。"
+    "yield": "利回り"
   },
   "wallet": {
     "activity": {
-      "subtitle": "ブロックチェーンの送受信のリアルタイム監視。",
-      "title": "最近の端末アクティビティ",
-      "description": "アクティブなウォレットのインデックス済みトランザクションをすべて、グループ化して検索できます。",
-      "refresh": "更新",
-      "connectToSee": "取引アクティビティを表示するには、ウォレットを接続または選択してください。",
-      "couldntLoad": "ウォレットアクティビティを読み込めませんでした。",
-      "notifier": {
-        "ready": "ウォレットアクティビティの読み込みが完了しました。"
-      },
-      "loading": {
-        "title": "ウォレットアクティビティをインデックス中",
-        "subtitle": "大きなウォレットは初回読み込みに数分かかることがあります。ダッシュボードの他の部分を自由に見て回ってください — 準備ができたらお知らせします。",
-        "elapsed": "{{seconds}}秒経過"
-      },
-      "empty": {
-        "title": "まだアクティビティがありません",
-        "description": "このウォレットにはインデックス済みの取引がありません。"
-      },
-      "noResults": {
-        "title": "一致する取引がありません",
-        "description": "検索条件やフィルターを調整してみてください。"
-      },
-      "kpi": {
-        "totalTransactions": "総取引数",
-        "uniqueAssets": "ユニークな資産",
-        "walletAge": "ウォレットの経過期間",
-        "walletAgeYears": "{{count}}年",
-        "walletAgeMonths": "{{count}}か月",
-        "walletAgeDays": "{{count}}日",
-        "lastActive": "最終アクティビティ",
-        "justNow": "たった今",
-        "minutesAgo": "{{count}}分前",
-        "hoursAgo": "{{count}}時間前",
-        "daysAgo": "{{count}}日前"
-      },
-      "insights": {
-        "title": "クイックインサイト",
-        "mostUsedAsset": "最も使用された資産",
-        "mostCommonAction": "最も一般的なアクション",
-        "mostActiveDay": "最も活発な日",
-        "mostActiveMonth": "最も活発な月",
-        "txCount": "{{count}}件の取引"
-      },
       "charts": {
+        "actionBreakdown": "アクション別内訳",
+        "actionBreakdownSubtitle": "アクション種類別の取引数",
         "activityByDay": "日別アクティビティ",
         "activityByDaySubtitle": "1日あたりの取引数",
         "assetBreakdown": "資産別内訳",
         "assetBreakdownSubtitle": "資産別の取引数",
-        "actionBreakdown": "アクション別内訳",
-        "actionBreakdownSubtitle": "アクション種類別の取引数",
+        "tabActions": "操作",
         "tabActivity": "アクティビティ",
-        "tabAssets": "資産",
-        "tabActions": "操作"
+        "tabAssets": "資産"
       },
-      "toolbar": {
-        "searchPlaceholder": "ハッシュまたは資産で検索...",
-        "sort": {
-          "newest": "新しい順",
-          "oldest": "古い順",
-          "amount": "金額"
-        },
-        "exportCsv": "CSVをエクスポート",
-        "exportJson": "JSONをエクスポート",
-        "export": "エクスポート"
+      "connectToSee": "取引アクティビティを表示するには、ウォレットを接続または選択してください。",
+      "couldntLoad": "ウォレットアクティビティを読み込めませんでした。",
+      "description": "アクティブなウォレットのインデックス済みトランザクションをすべて、グループ化して検索できます。",
+      "drawer": {
+        "action": "アクション",
+        "asset": "資産",
+        "blockNumber": "ブロック番号",
+        "close": "閉じる",
+        "copyFailed": "ハッシュをコピーできませんでした",
+        "hashCopied": "取引ハッシュをコピーしました",
+        "next": "次の取引",
+        "previous": "前の取引",
+        "timestamp": "タイムスタンプ",
+        "title": "取引の詳細",
+        "transactionHash": "取引ハッシュ",
+        "viewOnExplorer": "FlareScanで表示"
+      },
+      "empty": {
+        "description": "このウォレットにはインデックス済みの取引がありません。",
+        "title": "まだアクティビティがありません"
       },
       "feed": {
         "ariaLabel": "{{total}}件中{{shown}}件の取引を表示中"
       },
-      "drawer": {
-        "title": "取引の詳細",
-        "previous": "前の取引",
-        "next": "次の取引",
-        "close": "閉じる",
-        "action": "アクション",
-        "asset": "資産",
-        "blockNumber": "ブロック番号",
-        "timestamp": "タイムスタンプ",
-        "transactionHash": "取引ハッシュ",
-        "hashCopied": "取引ハッシュをコピーしました",
-        "copyFailed": "ハッシュをコピーできませんでした",
-        "viewOnExplorer": "FlareScanで表示"
+      "insights": {
+        "mostActiveDay": "最も活発な日",
+        "mostActiveMonth": "最も活発な月",
+        "mostCommonAction": "最も一般的なアクション",
+        "mostUsedAsset": "最も使用された資産",
+        "title": "クイックインサイト",
+        "txCount": "{{count}}件の取引",
+        "txCount_other": "wallet.activity.insights.txCount",
+        "txCount_one": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "{{count}}日前",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "{{count}}時間前",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "たった今",
+        "lastActive": "最終アクティビティ",
+        "minutesAgo": "{{count}}分前",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "総取引数",
+        "uniqueAssets": "ユニークな資産",
+        "walletAge": "ウォレットの経過期間",
+        "walletAgeDays": "{{count}}日",
+        "walletAgeMonths": "{{count}}か月",
+        "walletAgeYears": "{{count}}年",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+      },
+      "loading": {
+        "elapsed": "{{seconds}}秒経過",
+        "subtitle": "大きなウォレットは初回読み込みに数分かかることがあります。その間はダッシュボードの他の部分をご自由にご覧ください。準備ができたらお知らせします。",
+        "title": "ウォレットアクティビティをインデックス中"
+      },
+      "noResults": {
+        "description": "検索条件やフィルターを調整してみてください。",
+        "title": "一致する取引がありません"
+      },
+      "notifier": {
+        "ready": "ウォレットアクティビティを読み込みました。"
+      },
+      "refresh": "更新",
+      "subtitle": "ブロックチェーンの送受信のリアルタイム監視。",
+      "title": "最近の端末アクティビティ",
+      "toolbar": {
+        "export": "エクスポート",
+        "exportCsv": "CSVをエクスポート",
+        "exportJson": "JSONをエクスポート",
+        "searchPlaceholder": "ハッシュまたは資産で検索...",
+        "sort": {
+          "amount": "金額",
+          "newest": "新しい順",
+          "oldest": "古い順"
+        }
       }
     },
     "stats": {
@@ -396,285 +703,6 @@
       "contract": "契約締結日",
       "received": "受け取り完了",
       "sent": "送信済み"
-    }
-  },
-  "comingSoon": {
-    "badge": "近日公開",
-    "description": "この機能は現在開発中です。しばらくしてから再度ご確認ください。"
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "WalletConnectがBrave Shieldsによってブロックされているようです。",
-        "tryTitle": "以下のいずれかをお試しください:",
-        "shieldsOff": "このサイトのBrave Shieldsをオフにして再試行してください。",
-        "privateWindow": "サイトをBraveのプライベートウィンドウで開いてください。",
-        "useChrome": "問題が解決しない場合は、Google Chromeまたは他のサポートされているブラウザをご利用ください。"
-      },
-      "generic": "予期せぬ接続摩擦が発生しました。もう一度お試しいただくか、別のウォレットをご利用ください。",
-      "providerGone": "このウォレットは応答しなくなったようです。更新または削除された可能性があります。ページを更新すると解決するはずです。",
-      "pending": "接続要求はすでに開いています。ウォレット拡張パネルを開いてください。",
-      "rejected": "ウォレットで接続リクエストがキャンセルされました。",
-      "timeout": "WalletConnectに接続できませんでした。接続を確認して再試行してください。",
-      "wrongNetwork": "ウォレットのアクティブなネットワークをFlare Mainnetに切り替えてください。"
-    },
-    "install": "インストール",
-    "installHint": "まだウォレットが表示されませんか？ページを更新すると解決する場合があります。",
-    "refresh": "更新",
-    "mobileHint": "モバイルでは、ウォレットのビルトインブラウザでFlareGPTを開き、最高の接続エクスペリエンスを実現します。QRコードをスキャンする際は、スマートフォンのカメラではなく、ウォレットアプリ内蔵のスキャナーを使用すると、より確実に接続できます。",
-    "connecting": "接続中…",
-    "recommended": "オススメ",
-    "subtitle": "お好みのウォレットを選択して、Flareネットワークに接続します。",
-    "title": "ウォレットに接続する",
-    "viaWalletConnect": "WalletConnect経由"
-  },
-  "flareWidget": {
-    "close": "閉じる",
-    "collapse": "折りたたむ",
-    "expand": "展開",
-    "openFullPage": "フルページを開く"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "ウォレットを分析",
-      "increaseRewards": "FTSO報酬を増やすには?",
-      "explainDelegations": "デリゲーションを説明して",
-      "compareProtocols": "SceptreとFirelightを比較",
-      "rewardsDecreased": "報酬が減った理由は?",
-      "stakingOpportunities": "ステーキングの機会を見せて"
-    },
-    "wallet": {
-      "analyzing": "分析対象:"
-    },
-    "empty": {
-      "title": "FlareGPTに何でも聞いてください",
-      "subtitle": "ウォレット、報酬、デリゲーション、Flareエコシステムについて回答を得られます。"
-    },
-    "composer": {
-      "placeholder": "FlareGPTに質問...",
-      "send": "送信",
-      "stop": "生成を停止",
-      "disclaimer": "FlareGPTは間違えることがあります。重要な情報は行動する前に確認してください。"
-    },
-    "actions": {
-      "copy": "コピー",
-      "regenerate": "回答を再生成",
-      "copied": "メッセージをコピーしました",
-      "copyFailed": "コピーに失敗しました"
-    },
-    "jumpToLatest": "最新へ移動",
-    "historyLoadFailed": "チャット履歴を読み込めませんでした。",
-    "sendError": "問題が発生しました。もう一度お試しください。",
-    "newChat": "新しいチャット",
-    "deleteConversation": {
-      "button": "会話を削除",
-      "confirm": "確認しますか？"
-    },
-    "deleteConversationFailed": "この会話を削除できませんでした。もう一度お試しください。",
-    "history": {
-      "title": "チャット履歴",
-      "newChat": "新しいチャット",
-      "searchPlaceholder": "会話を検索...",
-      "empty": "まだ会話がありません",
-      "noResults": "検索に一致する会話がありません",
-      "untitled": "無題",
-      "moreActions": "その他の操作",
-      "pin": "ピン留め",
-      "unpin": "ピン留め解除",
-      "rename": "名前を変更",
-      "delete": "削除",
-      "pinLimitReached": "最大{{count}}件の会話をピン留めできます",
-      "renameFailed": "この会話の名前を変更できませんでした。",
-      "openButton": "履歴",
-      "saveRename": "保存",
-      "cancelRename": "キャンセル"
-    }
-  },
-  "dashboard": {
-    "description": "ライブフレアネットワークデータ、価格チャート、ウォレットアクティビティを一目で確認できます。",
-    "common": {
-      "retry": "再試行",
-      "retrying": "再試行",
-      "networkHiccup": "これは通常、一時的なネットワーク障害です。",
-      "noWalletSelected": "ウォレットが選択されていません",
-      "yes": "あり",
-      "no": "なし"
-    },
-    "stats": {
-      "flrPrice": "FLR価格",
-      "marketCap": "時価総額",
-      "volume24h": "24時間ボリューム",
-      "tvl": "TVL",
-      "couldntLoad": "市場概要を読み込めませんでした"
-    },
-    "chart": {
-      "couldntLoad": "FLRの料金履歴を読み込めませんでした"
-    },
-    "networkActivity": {
-      "title": "ネットワークアクティビティ",
-      "live": "ライブ",
-      "gwei": "Gwei",
-      "gasPrice": "ガス価格",
-      "tps": "TPS（トランザクション件数/秒）",
-      "couldntLoad": "ネットワークデータを読み込めませんでした",
-      "collectingSamples": "ライブサンプルの収集—チャートは新しいデータが到着したら埋めます。"
-    },
-    "walletBalances": {
-      "title": "ウォレット残高",
-      "connectToSeeBalances": "[設定]でウォレットを接続または追加して、残高を確認します。",
-      "couldntLoad": "ウォレットの残高を読み込めませんでした"
-    },
-    "ftso": {
-      "title": "FTSO委任",
-      "connected": "接続済み",
-      "readOnly": "読み取り専用",
-      "connectToSeeRewards": "[設定]でウォレットを接続または追加すると、特典が表示されます。",
-      "couldntLoad": "FTSOポートフォリオを読み込めませんでした",
-      "delegatedWflr": "委任されたWFLR",
-      "unclaimedFlr": "未請求のFLR",
-      "activeDelegations": "アクティブな委任",
-      "estHourlyEarning": "時間あたりの予想収入",
-      "claimRewards": "報酬受取：",
-      "readOnlyCannotClaim": "読み取り専用—申し立てはできません",
-      "switchToClaim": "接続されたウォレットに切り替えて特典を受け取りましょう",
-      "noUnclaimedYet": "まだ受け取っていない報酬はありません",
-      "claimComingSoon": "申し立てはまだ利用できません。まもなく開始されます。"
-    },
-    "claimsHistory": {
-      "title": "クレーム履歴",
-      "connectToSee": "[設定]でウォレットを接続または追加して、請求履歴を表示します。",
-      "couldntLoad": "請求履歴を読み込めませんでした",
-      "emptyTitle": "未取得のエポックはありません",
-      "emptyDescription": "すべて追いつきました。取得できる保留中の報酬エポックはありません。"
-    },
-    "delegationsBreakdown": {
-      "title": "委任の内訳",
-      "tabLabel": "委任者",
-      "connectToSee": "委任を表示するには、[設定]でウォレットを接続または追加します。",
-      "couldntLoad": "委任を読み込めませんでした",
-      "emptyTitle": "有効な委任はありません",
-      "emptyDescription": "FTSOプロバイダーにWFLRを委任して、報酬を獲得しましょう。"
-    },
-    "apiStatus": {
-      "checking": "APIステータスを確認しています...",
-      "operational": "システム正常動作",
-      "degraded": "APIが低下しました"
-    }
-  },
-  "defiProtocols": {
-    "description": "MXRPY、Sceptre、Firelightの各ボールトで利回り戦略を比較し、ポジションを追跡できます。",
-    "common": {
-      "addressCopied": "アドレスをクリップボードにコピーしました",
-      "copyFailed": "アドレスをコピーできませんでした",
-      "connectToSeePosition": "ポジションを表示するにはウォレットを接続してください",
-      "contract": "コントラクト",
-      "proxyContract": "プロキシコントラクト",
-      "poolOwnership": "プール保有比率",
-      "protocolDetails": "プロトコル詳細",
-      "yourBalance": "残高",
-      "redeemableValue": "償還可能価値"
-    },
-    "explorer": {
-      "title": "プロトコルエクスプローラー",
-      "subtitle": "プロトコルを選択してポジションと詳細を表示します"
-    },
-    "kpis": {
-      "protocolsTracked": "追跡中のプロトコル",
-      "bestApr": "利用可能な最高APR",
-      "activePositions": "アクティブなポジション"
-    },
-    "mxrpy": {
-      "title": "MXRPY ボールト",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "MXRPYポジションを読み込めませんでした",
-      "circulatingCaption": "流通シェア{{shares}}件 · 小数点以下{{decimals}}桁",
-      "yourShares": "保有レシートシェア",
-      "category": "イールドボールト"
-    },
-    "sceptre": {
-      "title": "Sceptre リキッドステーキング",
-      "subtitle": "sFLR リキッドステーキング",
-      "couldntLoad": "Sceptreポジションを読み込めませんでした",
-      "exchangeRateLabel": "sFLR / FLR レート",
-      "totalMinted": "発行済みシェア総数",
-      "backedFlr": "裏付けとなるFLR",
-      "category": "リキッドステーキング"
-    },
-    "firelight": {
-      "title": "Firelight ボールト",
-      "subtitle": "資本保護ボールト",
-      "couldntLoad": "Firelightポジションを読み込めませんでした",
-      "backingLabel": "資産裏付け倍率",
-      "circulatingSupply": "流通供給量",
-      "underlyingReserve": "裏付け準備金",
-      "insuranceRobust": "保険: 健全",
-      "category": "保険"
-    },
-    "strategies": {
-      "title": "戦略比較",
-      "subtitle": "各戦略でFLRがどのようなパフォーマンスを発揮するか確認できます",
-      "amountLabel": "比較する金額",
-      "apr": "APR",
-      "colStrategy": "戦略",
-      "colYield": "予想利回り (FLR)",
-      "colTerms": "条件",
-      "compoundingLabel": "複利方式",
-      "couldntLoad": "戦略比較を読み込めませんでした",
-      "highestApr": "最高APR",
-      "lockupDays": "ロックアップ{{count}}日",
-      "lockupHours": "ロックアップ{{count}}時間",
-      "noLockup": "ロックアップなし",
-      "verdict": "FlareGPTの見解"
-    }
-  },
-  "donate": {
-    "title": "FlareGPTを支援する",
-    "description": "あなたのご支援がFlareGPTを無料かつ独立した形で維持し、継続的な改善を可能にします。",
-    "hero": {
-      "addressLabel": "ウォレットアドレス",
-      "tapToCopy": "タップしてコピー",
-      "copyAddress": "アドレスをコピー",
-      "copied": "コピーしました",
-      "addressCopied": "アドレスをクリップボードにコピーしました",
-      "copyFailed": "アドレスをコピーできませんでした",
-      "viewOnExplorer": "{{explorer}}で見る",
-      "multisigNote": "マルチシグウォレットにより保護されています",
-      "qrTitle": "{{symbol}}寄付用ウォレットアドレスのQRコード"
-    },
-    "warning": {
-      "title": "{{network}}の資産のみ。",
-      "body": "このアドレスには{{symbol}}または他の{{network}}トークンのみを送金してください。他のネットワークから送られた資産は復元できません。"
-    },
-    "amounts": {
-      "title": "推奨金額",
-      "subtitle": "どんな貢献も助けになります — 始めるためのいくつかのアイデアです。",
-      "impactTier1": "1日分のAPIコスト",
-      "impactTier2": "1週間分のホスティング",
-      "impactTier3": "1か月分のインフラ",
-      "impactTier4": "新しいプロトコル統合",
-      "copiedToast": "アドレスをコピーしました。{{amount}} {{symbol}}のご寄付をご検討いただきありがとうございます。"
-    },
-    "funding": {
-      "title": "資金の透明性",
-      "subtitle": "FlareGPTの運用にかかる費用を公開しています — 強制ではなく、透明性のためです。",
-      "monthlyInfrastructure": "月次インフラ費用",
-      "developmentFund": "開発資金",
-      "raisedOfGoal": "目標{{goal}}のうち{{raised}}達成"
-    },
-    "received": {
-      "title": "受け取った寄付",
-      "subtitle": "サポートされているすべてのネットワークで受け取った合計貢献額。",
-      "demoData": "デモデータ"
-    },
-    "support": {
-      "title": "支援の使い道",
-      "infra": "API・インフラ",
-      "integrations": "新しいプロトコル統合",
-      "free": "FlareGPTを無料に保つ",
-      "development": "継続的な開発"
-    },
-    "closing": {
-      "message": "FlareGPTの独立性を保つのにご協力いただきありがとうございます。大小を問わず、すべてのご支援が本当に助けになります。"
     }
   }
 }

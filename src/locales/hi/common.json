@@ -1,11 +1,317 @@
 {
+  "comingSoon": {
+    "badge": "जल्द ही आ रही हैं",
+    "description": "हम यह सुविधा बना रहे हैं। जल्द ही फिर से देखें।"
+  },
+  "connectModal": {
+    "connecting": "कनेक्ट हो रहा है…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "साइट को Brave प्राइवेट विंडो में खोलें।",
+        "shieldsOff": "इस साइट के लिए Brave Shields बंद करें और फिर से कोशिश करें।",
+        "title": "ऐसा लगता है कि WalletConnect को Brave Shields द्वारा ब्लॉक किया जा रहा है।",
+        "tryTitle": "निम्न में से कोई एक तरीका आज़माएं:",
+        "useChrome": "यदि समस्या बनी रहती है, तो Google Chrome या किसी अन्य समर्थित ब्राउज़र का उपयोग करें।"
+      },
+      "generic": "एक अप्रत्याशित कनेक्शन घर्षण हुआ। कृपया फिर से कोशिश करें या किसी दूसरे वॉलेट का इस्तेमाल करें।",
+      "pending": "कनेक्शन का अनुरोध पहले से ही खुला है। कृपया अपना वॉलेट एक्सटेंशन पैनल खोलें।",
+      "providerGone": "यह वॉलेट अब जवाब नहीं दे रहा है। हो सकता है इसे अपडेट या हटा दिया गया हो। पेज रीफ्रेश करने से यह समस्या ठीक हो सकती है।",
+      "rejected": "आपके वॉलेट में कनेक्शन का अनुरोध कैंसिल कर दिया गया था।",
+      "timeout": "WalletConnect तक नहीं पहुंच सका। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।",
+      "wrongNetwork": "कृपया अपने वॉलेट के सक्रिय नेटवर्क को फ्लेयर मेननेट पर स्विच करें।"
+    },
+    "install": "इंस्टॉल करें",
+    "installHint": "अभी भी अपना वॉलेट नहीं दिख रहा? पेज को रीफ्रेश करने से मदद मिल सकती है।",
+    "mobileHint": "मोबाइल पर, सबसे अच्छे कनेक्शन अनुभव के लिए अपने वॉलेट के बिल्ट - इन ब्राउज़र में FlareGPT खोलें। QR कोड स्कैन करते समय, सबसे भरोसेमंद कनेक्शन के लिए अपने फ़ोन के कैमरे के बजाय अपने वॉलेट ऐप के स्कैनर का उपयोग करें।",
+    "recommended": "अनुशंसित",
+    "refresh": "रीफ्रेश करें",
+    "subtitle": "फ़्लेयर नेटवर्क से कनेक्ट करने के लिए अपना पसंदीदा वॉलेट चुनें।",
+    "title": "Wallet कनेक्ट करें",
+    "viaWalletConnect": "WalletConnect के ज़रिए"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "एपीआई स्थिति की जांच की जा रही है...",
+      "degraded": "एपीआई (API) को खराब किया गया",
+      "operational": "सभी सिस्टम चालू हैं"
+    },
+    "chart": {
+      "couldntLoad": "FLR किराया इतिहास लोड नहीं किया जा सका"
+    },
+    "claimsHistory": {
+      "connectToSee": "दावा इतिहास देखने के लिए सेटिंग में एक वॉलेट कनेक्ट करें या जोड़ें।",
+      "couldntLoad": "दावा इतिहास लोड नहीं किया जा सका",
+      "emptyDescription": "आप पूरी तरह अपडेट हैं। दावा करने के लिए कोई लंबित रिवॉर्ड एपोक नहीं है।",
+      "emptyTitle": "कोई लावारिस युग नहीं",
+      "title": "दावा इतिहास"
+    },
+    "common": {
+      "networkHiccup": "यह आमतौर पर एक अस्थायी नेटवर्क हिचकी है।",
+      "no": "नहीं",
+      "noWalletSelected": "कोई वॉलेट नहीं चुना गया",
+      "retry": "वरी कोशिश कयो",
+      "retrying": "फिर से कोशिश कर रहा है",
+      "yes": "हाँ"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "प्रतिनिधिमंडल देखने के लिए सेटिंग में एक वॉलेट कनेक्ट करें या जोड़ें।",
+      "couldntLoad": "डेलिगेशन लोड नहीं किया जा सका",
+      "emptyDescription": "रिवॉर्ड कमाना शुरू करने के लिए WFLR को FTSO प्रोवाइडर के पास भेजें।",
+      "emptyTitle": "कोई सक्रिय प्रतिनिधिमंडल नहीं",
+      "tabLabel": "प्रतिनिधिमंडल",
+      "title": "प्रतिनिधिमंडल का ब्यौरा"
+    },
+    "description": "लाइव फ़्लेयर नेटवर्क डेटा, मूल्य चार्ट और वॉलेट गतिविधि एक नज़र में।",
+    "ftso": {
+      "activeDelegations": "सक्रिय प्रतिनिधिमंडल",
+      "claimComingSoon": "दावा करना अभी उपलब्ध नहीं है। जल्द आ रहा है।",
+      "claimRewards": "इनाम की मांग करें",
+      "connected": "कनेक्टेड",
+      "connectToSeeRewards": "रिवॉर्ड देखने के लिए सेटिंग में वॉलेट कनेक्ट करें या जोड़ें।",
+      "couldntLoad": "FTSO पोर्टफ़ोलियो लोड नहीं किया जा सका",
+      "delegatedWflr": "प्रत्यायोजित WFLR",
+      "estHourlyEarning": "अनुमानित प्रति घंटा कमाई",
+      "noUnclaimedYet": "अभी तक कोई क्लेम नहीं किया गया रिवॉर्ड नहीं मिला है",
+      "readOnly": "सिर्फ पढ़ने के लिए",
+      "readOnlyCannotClaim": "केवल देखने के लिए, दावा नहीं कर सकते",
+      "switchToClaim": "रिवॉर्ड क्लेम करने के लिए अपने कनेक्टेड वॉलेट पर स्विच करें",
+      "title": "एफटीएसओ प्रतिनिधिमंडल",
+      "unclaimedFlr": "लावारिस FLR"
+    },
+    "networkActivity": {
+      "collectingSamples": "लाइव सैंपल एकत्र किए जा रहे हैं। नया डेटा आने पर चार्ट भर जाएगा।",
+      "couldntLoad": "नेटवर्क डेटा लोड नहीं किया जा सका",
+      "gasPrice": "गैस की कीमत",
+      "gwei": "ग्वेई",
+      "live": "आंसुओं की हद तक अपना जीवन जिएं",
+      "title": "नेटवर्क गतिविधि",
+      "tps": "टोयोटा प्रोडक्टिव सिस्टम"
+    },
+    "stats": {
+      "couldntLoad": "बाज़ार की झलक लोड नहीं की जा सकी",
+      "flrPrice": "FLR मूल्य",
+      "marketCap": "मार्केट कैप",
+      "tvl": "TVL",
+      "volume24h": "24 घंटे वॉल्यूम"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "बैलेंस देखने के लिए सेटिंग में वॉलेट कनेक्ट करें या जोड़ें।",
+      "couldntLoad": "वॉलेट बैलेंस लोड नहीं किया जा सका",
+      "title": "वॉलेट बैलेंस"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "पता कॉपी किया गया",
+      "connectToSeePosition": "अपनी पोजीशन देखने के लिए वॉलेट कनेक्ट करें",
+      "contract": "कॉन्ट्रैक्ट",
+      "copyFailed": "पता कॉपी नहीं हो सका",
+      "poolOwnership": "पूल स्वामित्व",
+      "protocolDetails": "प्रोटोकॉल विवरण",
+      "proxyContract": "प्रॉक्सी कॉन्ट्रैक्ट",
+      "redeemableValue": "भुनाने योग्य मूल्य",
+      "yourBalance": "आपका बैलेंस"
+    },
+    "description": "MXRPY, Sceptre और Firelight वॉल्ट्स में यील्ड स्ट्रैटेजी की तुलना करें और अपनी पोजीशन ट्रैक करें।",
+    "explorer": {
+      "subtitle": "अपनी पोजीशन और विवरण देखने के लिए एक प्रोटोकॉल चुनें",
+      "title": "प्रोटोकॉल एक्सप्लोरर"
+    },
+    "firelight": {
+      "backingLabel": "एसेट बैकिंग मल्टीप्लायर",
+      "category": "बीमा",
+      "circulatingSupply": "प्रचलन आपूर्ति",
+      "couldntLoad": "आपकी Firelight पोजीशन लोड नहीं हो सकी",
+      "insuranceRobust": "बीमा: मजबूत",
+      "subtitle": "पूंजी सुरक्षा वॉल्ट",
+      "title": "Firelight वॉल्ट",
+      "underlyingReserve": "अंतर्निहित रिज़र्व"
+    },
+    "kpis": {
+      "activePositions": "सक्रिय पोजीशन",
+      "bestApr": "सर्वश्रेष्ठ उपलब्ध APR",
+      "protocolsTracked": "ट्रैक किए गए प्रोटोकॉल"
+    },
+    "mxrpy": {
+      "category": "यील्ड वॉल्ट",
+      "circulatingCaption": "प्रचलन में {{shares}} शेयर · {{decimals}} दशमलव",
+      "couldntLoad": "आपकी MXRPY पोजीशन लोड नहीं हो सकी",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "MXRPY वॉल्ट",
+      "yourShares": "आपके रसीद शेयर"
+    },
+    "sceptre": {
+      "backedFlr": "अंतर्निहित समर्थित FLR",
+      "category": "लिक्विड स्टेकिंग",
+      "couldntLoad": "आपकी Sceptre पोजीशन लोड नहीं हो सकी",
+      "exchangeRateLabel": "sFLR / FLR दर",
+      "subtitle": "sFLR लिक्विड स्टेकिंग",
+      "title": "Sceptre Liquid Staking",
+      "totalMinted": "कुल जारी शेयर"
+    },
+    "strategies": {
+      "amountLabel": "इसके लिए तुलना करें",
+      "apr": "APR",
+      "colStrategy": "स्ट्रैटेजी",
+      "colTerms": "शर्तें",
+      "colYield": "अनुमानित प्रतिफल (FLR)",
+      "compoundingLabel": "चक्रवृद्धि",
+      "couldntLoad": "स्ट्रैटेजी तुलना लोड नहीं हो सकी",
+      "highestApr": "सबसे अधिक APR",
+      "lockupDays": "{{count}} दिन लॉक-अप",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
+      "lockupHours": "{{count}} घंटे लॉक-अप",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "कोई लॉक-अप नहीं",
+      "subtitle": "देखें कि विभिन्न स्ट्रैटेजी में आपका FLR कैसा प्रदर्शन कर सकता है",
+      "title": "स्ट्रैटेजी तुलना",
+      "verdict": "FlareGPT निर्णय"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "पता कॉपी हो गया। {{amount}} {{symbol}} दान पर विचार करने के लिए धन्यवाद।",
+      "impactTier1": "एक दिन की API लागत",
+      "impactTier2": "एक सप्ताह की होस्टिंग",
+      "impactTier3": "एक महीने का इंफ्रास्ट्रक्चर",
+      "impactTier4": "नए प्रोटोकॉल इंटीग्रेशन",
+      "subtitle": "हर योगदान मायने रखता है। शुरुआत के लिए कुछ विचार यहां दिए गए हैं।",
+      "title": "सुझाई गई राशियाँ"
+    },
+    "closing": {
+      "message": "FlareGPT को स्वतंत्र बनाए रखने में मदद करने के लिए धन्यवाद। हर योगदान, छोटा हो या बड़ा, वाकई मददगार है।"
+    },
+    "description": "आपका समर्थन FlareGPT को मुफ़्त, स्वतंत्र और लगातार बेहतर बनाए रखने में मदद करता है।",
+    "funding": {
+      "developmentFund": "विकास कोष",
+      "monthlyInfrastructure": "मासिक इंफ्रास्ट्रक्चर",
+      "raisedOfGoal": "{{goal}} लक्ष्य में से {{raised}} जुटाए गए",
+      "subtitle": "FlareGPT को चलाने की लागत का खुला नज़रिया। कोई दबाव नहीं, बस पारदर्शिता।",
+      "title": "फंडिंग पारदर्शिता"
+    },
+    "hero": {
+      "addressCopied": "पता कॉपी किया गया",
+      "addressLabel": "वॉलेट पता",
+      "copied": "कॉपी हो गया",
+      "copyAddress": "पता कॉपी करें",
+      "copyFailed": "पता कॉपी नहीं हो सका",
+      "multisigNote": "मल्टी-सिग्नेचर वॉलेट द्वारा सुरक्षित",
+      "qrTitle": "{{symbol}} दान वॉलेट पते के लिए QR कोड",
+      "tapToCopy": "कॉपी करने के लिए टैप करें",
+      "viewOnExplorer": "{{explorer}} पर देखें"
+    },
+    "received": {
+      "demoData": "डेमो डेटा",
+      "subtitle": "हर समर्थित नेटवर्क पर प्राप्त कुल योगदान।",
+      "title": "प्राप्त दान"
+    },
+    "support": {
+      "development": "निरंतर विकास",
+      "free": "FlareGPT को मुफ़्त रखना",
+      "infra": "API और इंफ्रास्ट्रक्चर",
+      "integrations": "नए प्रोटोकॉल इंटीग्रेशन",
+      "title": "आपका समर्थन किसके लिए उपयोग होता है"
+    },
+    "title": "FlareGPT का समर्थन करें",
+    "warning": {
+      "body": "इस पते पर केवल {{symbol}} या अन्य {{network}} टोकन भेजें। अन्य नेटवर्क से भेजे गए एसेट्स की भरपाई नहीं हो सकती।",
+      "title": "केवल {{network}} एसेट्स।"
+    }
+  },
+  "flareWidget": {
+    "close": "बंद करें",
+    "collapse": "संक्षिप्त करें",
+    "expand": "विस्तार करना",
+    "openFullPage": "पूरा पेज खोलें"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "संदेश कॉपी किया गया",
+      "copy": "कॉपी करें",
+      "copyFailed": "कॉपी करने में विफल",
+      "regenerate": "उत्तर फिर से बनाएं"
+    },
+    "composer": {
+      "disclaimer": "FlareGPT गलतियाँ कर सकता है। कार्रवाई करने से पहले महत्वपूर्ण जानकारी सत्यापित करें।",
+      "placeholder": "FlareGPT से पूछें...",
+      "send": "भेजें",
+      "stop": "जनरेट करना रोकें"
+    },
+    "deleteConversation": {
+      "button": "बातचीत हटाएं",
+      "confirm": "पुष्टि करें?"
+    },
+    "deleteConversationFailed": "यह बातचीत हटाई नहीं जा सकी। फिर से प्रयास करें।",
+    "empty": {
+      "subtitle": "अपने वॉलेट, रिवॉर्ड्स, डेलिगेशन या Flare इकोसिस्टम के बारे में उत्तर पाएं।",
+      "title": "FlareGPT से कुछ भी पूछें"
+    },
+    "guestMode": {
+      "cta": "इतिहास सिंक करने और वॉलेट विश्लेषण अनलॉक करने के लिए साइन इन करें",
+      "notice": "मेहमान मोड · बातचीत सेव नहीं की जाती है।"
+    },
+    "history": {
+      "cancelRename": "रद्द करें",
+      "delete": "हटाएं",
+      "empty": "अभी तक कोई बातचीत नहीं",
+      "moreActions": "अधिक विकल्प",
+      "newChat": "नई चैट",
+      "noResults": "आपकी खोज से कोई बातचीत मेल नहीं खाती",
+      "openButton": "इतिहास",
+      "pin": "पिन करें",
+      "pinLimitReached": "आप {{count}} बातचीत तक पिन कर सकते हैं",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "नाम बदलें",
+      "renameFailed": "इस बातचीत का नाम नहीं बदला जा सका।",
+      "saveRename": "सहेजें",
+      "searchPlaceholder": "बातचीत खोजें...",
+      "title": "चैट इतिहास",
+      "unpin": "अनपिन करें",
+      "untitled": "शीर्षकहीन"
+    },
+    "historyLoadFailed": "चैट इतिहास लोड नहीं हो सका।",
+    "jumpToLatest": "नवीनतम पर जाएं",
+    "newChat": "नई चैट",
+    "prompts": {
+      "analyzeWallet": "मेरा वॉलेट विश्लेषण करें",
+      "compareProtocols": "Sceptre बनाम Firelight की तुलना करें",
+      "explainDelegations": "मेरी डेलिगेशन समझाएं",
+      "increaseRewards": "मैं अपने FTSO रिवॉर्ड्स कैसे बढ़ा सकता हूँ?",
+      "rewardsDecreased": "मेरे रिवॉर्ड्स क्यों घटे?",
+      "stakingOpportunities": "मेरे स्टेकिंग अवसर दिखाएं"
+    },
+    "sendError": "कुछ गलत हो गया। फिर से प्रयास करें।",
+    "wallet": {
+      "analyzing": "विश्लेषण कर रहे हैं:",
+      "guestLabel": "वॉलेट का विश्लेषण",
+      "locked": {
+        "body": "प्रत्येक प्रश्न में एक पता टाइप करने के बजाय, FlareGPT को अपने प्राथमिक और वॉचलिस्ट वॉलेट को स्वचालित रूप से पढ़ने देने के लिए साइन इन करें।",
+        "connectCta": "Wallet कनेक्ट करें",
+        "signInCta": "साइन इन करें",
+        "signingIn": "अपने वॉलेट में कन्फ़र्म करें...",
+        "title": "वॉलेट विश्लेषण अनलॉक करें"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. फ्लेयर नेटवर्क (Flare Network) पर निर्मित।",
     "disclaimer": "वित्तीय सलाह नहीं है। डेटा केवल सूचनात्मक उद्देश्यों के लिए प्रदान किया गया है।",
-    "terms": "नियम और अस्वीकरण",
-    "donate": "दान करें"
+    "donate": "दान करें",
+    "terms": "नियम और अस्वीकरण"
   },
   "help": {
+    "askFlareGptCta": "मदद के लिए FlareGPT से पूछें",
+    "askFlareGptLead": "जो आप ढूंढ रहे थे वह नहीं मिला?",
+    "contact": {
+      "comingSoon": "जल्द आ रहा है",
+      "emailLabel": "ईमेल",
+      "telegramLabel": "Telegram",
+      "twitterHint": "हमें फॉलो करें और हमें संदेश भेजें",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "हो सकता है कि आपका वॉलेट कनेक्ट न हो, या डैशबोर्ड अभी भी ब्लॉकचेन डेटा सिंक कर रहा हो। सत्यापित करें कि सही वॉलेट और नेटवर्क का चयन किया गया है।",
@@ -30,10 +336,12 @@
     ],
     "faqTitle": "अक्सर पूछे जाने वाले प्रश्न",
     "featureGuides": "फीचर गाइड",
+    "flareGptGuideDescription": "अपने वॉलेट, रिवॉर्ड और Flare नेटवर्क के बारे में सरल भाषा में सवाल पूछें।",
     "gettingStarted": "शुरुआत करना",
     "headerDesc": "अपने FlareGPT डैशबोर्ड का अधिकतम लाभ उठाने के लिए गाइड, उत्तर और सहायता।",
     "noFaqs": "आपकी खोज से कोई सामान्य प्रश्न मेल नहीं खाता।",
     "noGuides": "आपकी खोज से कोई गाइड मेल नहीं खाता।",
+    "searchClear": "खोज साफ़ करें",
     "searchPlaceholder": "गाइड या सामान्य प्रश्न खोजें...",
     "searchSub": "फ़ीचर गाइड और सामान्य प्रश्न खोजें, या हमसे संपर्क करने का कोई अन्य तरीका खोजें।",
     "searchTitle": "शुरू करने के लिए वह सब कुछ जो आपको चाहिए",
@@ -65,63 +373,70 @@
       }
     ],
     "stillNeedHelp": "अभी भी सहायता की आवश्यकता है?",
-    "supportDesc": "अभी हमसे संपर्क करने का सबसे तेज़ तरीका X है। ईमेल और Telegram सपोर्ट जल्द आ रहा है।",
-    "searchClear": "खोज साफ़ करें",
-    "flareGptGuideDescription": "अपने वॉलेट, रिवॉर्ड और Flare नेटवर्क के बारे में सरल भाषा में सवाल पूछें।",
-    "askFlareGptLead": "जो आप ढूंढ रहे थे वह नहीं मिला?",
-    "askFlareGptCta": "मदद के लिए FlareGPT से पूछें",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "हमें फॉलो करें और हमें संदेश भेजें",
-      "telegramLabel": "Telegram",
-      "emailLabel": "ईमेल",
-      "comingSoon": "जल्द आ रहा है"
-    }
+    "supportDesc": "अभी हमसे संपर्क करने का सबसे तेज़ तरीका X है। ईमेल और Telegram सपोर्ट जल्द आ रहा है।"
   },
   "navbar": {
+    "addressCopied": "पता कॉपी किया गया",
     "askFlareGPT": "FlareGPT से पूछें",
-    "mainnetStatus": "फ्लेयर मेननेट",
-    "connectWallet": "वॉलेट कनेक्ट करें",
-    "primaryWalletSection": "प्राइमरी वॉलेट",
     "badgePrimary": "प्राइमरी",
+    "badgeSignIn": "साइन इन करें",
     "badgeWatchlist": "वॉचलिस्ट",
-    "disconnectWallet": "वॉलेट डिस्कनेक्ट करें",
+    "balancesHiddenLabel": "बैलेंस छिपाए गए",
     "configureWatchlistWallets": "वॉचलिस्ट वॉलेट कॉन्फ़िगर करें",
-    "watchlistSection": "वॉचलिस्ट ({{current}}/{{max}})",
-    "addressCopied": "पता क्लिपबोर्ड पर कॉपी हो गया",
+    "connectWallet": "वॉलेट कनेक्ट करें",
     "copyFailed": "पता कॉपी नहीं हो सका",
+    "disconnectWallet": "वॉलेट डिस्कनेक्ट करें",
     "flareGptFabHint": "FlareGPT अब यहां से खुलता है",
     "hideBalances": "बैलेंस छिपाएं",
+    "mainnetStatus": "फ्लेयर मेननेट",
+    "primaryWalletSection": "प्राइमरी वॉलेट",
     "showBalances": "बैलेंस दिखाएं",
-    "balancesHiddenLabel": "बैलेंस छिपाए गए",
     "signIn": "साइन इन करें",
+    "signInBackgroundHint": "आपके कनेक्टेड वॉलेट को साइन इन करने की आवश्यकता है",
     "signingIn": "साइन इन हो रहा है…",
     "signInPrompt": "जारी रखने के लिए इस वॉलेट को सत्यापित करने हेतु एक संदेश पर हस्ताक्षर करें।",
-    "badgeSignIn": "साइन इन करें",
-    "signInBackgroundHint": "आपके कनेक्टेड वॉलेट को साइन इन करने की आवश्यकता है"
+    "watchlistSection": "वॉचलिस्ट ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "डार्क",
+      "light": "लाइट",
+      "system": "सिस्टम"
+    },
     "cards": {
       "app": "एप्लिकेशन",
       "blur": "ब्लू लाइट फ़िल्टर",
       "chartType": "चार्ट का प्रकार",
       "connectedWallets": "कनेक्टेड वॉलेट",
       "currency": "डिस्प्ले मुद्रा",
+      "defaultLandingPage": "डिफ़ॉल्ट लैंडिंग पेज",
+      "defaultWallet": "डिफ़ॉल्ट वॉलेट",
       "governanceAlerts": "गवर्नेंस अलर्ट",
+      "hideBalances": "वॉलेट बैलेंस छिपाएं",
       "language": "भाषा",
       "links": "लिंक",
       "logout": "लॉग आउट",
+      "reduceMotion": "गति कम करें",
       "rewardsAlerts": "पुरस्कार अलर्ट",
+      "tableDensity": "टेबल घनत्व",
       "theme": "थीम",
       "themeMode": "लाइट / डार्क मोड",
       "timeframe": "समय सीमा",
       "walletCapacity": "वॉलेट क्षमता",
-      "walletPreferences": "वॉलेट प्राथमिकताएं",
-      "defaultWallet": "डिफ़ॉल्ट वॉलेट",
-      "defaultLandingPage": "डिफ़ॉल्ट लैंडिंग पेज",
-      "tableDensity": "टेबल घनत्व",
-      "reduceMotion": "गति कम करें",
-      "hideBalances": "वॉलेट बैलेंस छिपाएं"
+      "walletPreferences": "वॉलेट प्राथमिकताएं"
+    },
+    "dataStorage": {
+      "accountSubtitle": "सर्वर पर आपके खाते के साथ सिंक किया गया।",
+      "accountTitle": "खाता डेटा",
+      "clear": "साफ़ करें",
+      "confirmClear": "पुष्टि करें?",
+      "conversations": "FlareGPT बातचीत",
+      "conversationsClearFailed": "चैट इतिहास साफ़ नहीं हो सका। फिर से प्रयास करें।",
+      "conversationsDescription": "आपके खाते से FlareGPT चैट इतिहास साफ़ करता है। इसे पूर्ववत नहीं किया जा सकता।",
+      "localSubtitle": "केवल इस ब्राउज़र में सहेजा गया है। इसे साफ़ करना तुरंत और सुरक्षित है।",
+      "localTitle": "स्थानीय डेटा",
+      "walletCache": "वॉलेट गतिविधि कैश",
+      "walletCacheDescription": "कैश्ड लेनदेन इतिहास साफ़ करता है। अगली बार आने पर इसे फिर से लाया जाएगा।"
     },
     "description": "वॉलेट, प्राथमिकताओं, स्थानीयकरण और डिस्प्ले विकल्पों को प्रबंधित करें।",
     "descriptions": {
@@ -129,18 +444,33 @@
       "blur": "वार्म स्क्रीन टिंट के साथ आंखों के तनाव को कम करें",
       "chartType": "सिस्टम मेट्रिक्स के लिए डिफ़ॉल्ट रेंडरिंग विज़ुअल स्टाइल ज्यामिति सेट करें।",
       "currency": "परिसंपत्ति आधार मुद्रा प्रदर्शन चुनें।",
+      "defaultLandingPage": "चुनें कि ऐप लॉन्च करने पर कौन सा पेज पहले खुले।",
+      "defaultWallet": "जब पिछला सत्र पुनर्स्थापित नहीं हो सकता, तो यह वॉलेट सक्रिय हो जाता है।",
+      "hideBalances": "गोपनीयता के लिए डैशबोर्ड पर बैलेंस और राशियां धुंधली करें।",
       "language": "अपनी डिफ़ॉल्ट इंटरफ़ेस देखने की भाषा चुनें।",
       "links": "वैश्विक दस्तावेज़ीकरण संदर्भ और टीम इंटरेक्शन लिंक।",
       "logout": "इस डिवाइस पर FlareGPT से साइन आउट करता है। फिर से साइन इन करने के लिए आपको एक नया संदेश साइन करना होगा।",
+      "reduceMotion": "भले ही आपके ऑपरेटिंग सिस्टम में कोई प्राथमिकता सेट न हो, एनिमेशन कम करें।",
+      "tableDensity": "घनी टेबल के लिए आरामदायक स्पेसिंग या अधिक कॉम्पैक्ट व्यू।",
+      "theme": "लाइट, डार्क चुनें, या अपनी सिस्टम सेटिंग का पालन करें।",
       "timeframe": "दृश्य चार्ट पर डिफ़ॉल्ट विंडो अवधि स्केल परिभाषित करें।",
       "walletCapacity": "आवंटन क्षमता पूल को ट्रैक करने वाली सिस्टम सीमाएं।",
-      "theme": "लाइट, डार्क चुनें, या अपनी सिस्टम सेटिंग का पालन करें।",
-      "walletPreferences": "चुनें कि डैशबोर्ड किस वॉलेट के साथ खुले।",
-      "defaultWallet": "जब पिछला सत्र पुनर्स्थापित नहीं हो सकता, तो यह वॉलेट सक्रिय हो जाता है।",
-      "defaultLandingPage": "चुनें कि ऐप लॉन्च करने पर कौन सा पेज पहले खुले।",
-      "tableDensity": "घनी टेबल के लिए आरामदायक स्पेसिंग या अधिक कॉम्पैक्ट व्यू।",
-      "reduceMotion": "भले ही आपके ऑपरेटिंग सिस्टम में कोई प्राथमिकता सेट न हो, एनिमेशन कम करें।",
-      "hideBalances": "गोपनीयता के लिए डैशबोर्ड पर बैलेंस और राशियां धुंधली करें।"
+      "walletPreferences": "चुनें कि डैशबोर्ड किस वॉलेट के साथ खुले।"
+    },
+    "flareGpt": {
+      "syncStatusConnected": "साइन इन हो गया। आपकी बातचीत हर डिवाइस और ब्राउज़र में सिंक होती है।",
+      "syncStatusGuest": "बातचीत इस ब्राउज़र में अस्थायी हैं और सहेजी नहीं जाएंगी। उन्हें रखने के लिए साइन इन करें।",
+      "syncStatusTitle": "सिंक स्थिति"
+    },
+    "groups": {
+      "account": "खाता",
+      "personalization": "वैयक्तिकरण",
+      "walletsAndData": "वॉलेट और डेटा"
+    },
+    "links": {
+      "docs": "डॉक्स",
+      "github": "GitHub",
+      "twitter": "Twitter"
     },
     "notifications": {
       "governance": "नए प्रस्ताव अपडेट",
@@ -152,224 +482,201 @@
       "area": "एरिया",
       "asia": "एशिया",
       "candlestick": "कैंडलस्टिक",
+      "comfortable": "आरामदायक",
+      "compact": "कॉम्पैक्ट",
       "europe": "यूरोप",
       "global": "वैश्विक",
       "high": "उच्च",
       "line": "लाइन",
       "low": "कम",
       "medium": "मध्यम",
-      "off": "बंद",
-      "comfortable": "आरामदायक",
-      "compact": "कॉम्पैक्ट"
+      "off": "बंद"
     },
     "security": {
-      "logout": "लॉग आउट करें",
-      "confirmLogout": "पुष्टि करें?"
+      "confirmLogout": "पुष्टि करें?",
+      "logout": "लॉग आउट करें"
     },
     "subtitles": {
       "About": "सिस्टम परिनियोजन रिकॉर्ड, संकलन नियमों और परिसंपत्ति सूचकांकों का अवलोकन।",
+      "Accessibility": "गति और इंटरैक्शन प्राथमिकताएं समायोजित करें।",
+      "Appearance": "चुनें कि FlareGPT कैसा दिखे।",
       "Display": "अपना डिफ़ॉल्ट व्यू और डैशबोर्ड डेटा प्रदर्शन को अनुकूलित करें।",
+      "FlareGpt": "प्रबंधित करें कि FlareGPT आपकी बातचीत कैसे याद रखता है।",
       "Notifications": "प्रणालीगत प्राथमिकता घटनाओं और वितरण ट्रैकिंग एंडपॉइंट्स को प्रबंधित करें।",
       "Preferences": "भाषा और मुद्रा प्राथमिकताएं।",
       "Security": "सक्रिय पहचान सत्र बाधाओं और क्रेडेंशियल सत्यापन एक्सेस नियमों को बनाए रखें।",
-      "Wallets": "वैश्विक बाहरी विकेंद्रीकृत खातों में हस्ताक्षर कनेक्ट और व्यवस्थित करें।",
-      "Appearance": "चुनें कि FlareGPT कैसा दिखे।",
-      "Accessibility": "गति और इंटरैक्शन प्राथमिकताएं समायोजित करें।",
-      "FlareGpt": "प्रबंधित करें कि FlareGPT आपकी बातचीत कैसे याद रखता है।"
+      "Wallets": "वैश्विक बाहरी विकेंद्रीकृत खातों में हस्ताक्षर कनेक्ट और व्यवस्थित करें।"
     },
     "tabs": {
       "About": "विवरण",
+      "Accessibility": "सुलभता",
+      "Appearance": "रूप-रंग",
+      "DataStorage": "डेटा और स्टोरेज",
       "Display": "डैशबोर्ड",
+      "FlareGpt": "FlareGPT",
       "Notifications": "नोटिफिकेशन",
       "Preferences": "सामान्य",
       "Security": "सुरक्षा",
-      "Wallets": "वॉलेट",
-      "Appearance": "रूप-रंग",
-      "Accessibility": "सुलभता",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "डेटा और स्टोरेज"
+      "Wallets": "वॉलेट"
     },
     "title": "सेटिंग्स",
     "wallets": {
       "active": "सक्रिय",
       "add": "वॉलेट जोड़ें ({{current}}/{{max}})",
+      "addFormTitle": "वॉचलिस्ट पोर्टफ़ोलियो अकाउंट जोड़ें",
+      "adding": "जोड़ा जा रहा है…",
+      "addressPlaceholder": "0x... फ्लेयर वॉलेट का पता",
       "available": "उपलब्ध",
+      "cancelRename": "रद्द करें",
+      "confirmRemove": "हटाने की पुष्टि करें?",
       "connectAction": "वॉलेट कनेक्ट करें ({{current}} कनेक्टेड, {{remaining}} शेष)",
+      "connectActionUnlimited": "वॉलेट जोड़ें ({{current}} ट्रैक किए गए)",
       "connected": "कनेक्टेड",
+      "duplicateAddress": "यह पता पहले से ही आपकी वॉचलिस्ट में है।",
+      "duplicateNickname": "इस उपनाम वाला एक वॉचलिस्ट वॉलेट पहले से मौजूद है। कृपया कोई दूसरा उपनाम चुनें।",
       "empty": "अभी तक कोई वॉलेट कनेक्टेड नहीं है",
       "emptyTerminal": "कोई वॉलेट कनेक्ट नहीं है। आगे बढ़ने के लिए अपने टर्मिनल एसेट्स को कनेक्ट करें।",
-      "limit": "आप अधिकतम {{max}} वॉलेट कनेक्ट कर सकते हैं",
-      "limitReached": "वॉलेट सीमा समाप्त ({{current}}/{{max}})",
-      "maximum": "अधिकतम",
-      "remainingSlots": "शेष स्लॉट",
-      "addFormTitle": "वॉचलिस्ट पोर्टफ़ोलियो अकाउंट जोड़ें",
-      "addressPlaceholder": "0x... फ्लेयर वॉलेट का पता",
+      "guestLimitBenefitBackup": "अपनी वॉचलिस्ट को बैकअप में रखें",
+      "guestLimitBenefitMore": "3 से अधिक वॉलेट स्टोर करें",
+      "guestLimitBenefitSync": "अपनी वॉचलिस्ट को सभी डिवाइस पर सिंक करें",
+      "guestLimitTitle": "अधिक वॉलेट ट्रैक करने के लिए साइन इन करें",
       "invalidAddress": "कृपया एक मान्य फ्लेयर ईवीएम नेटवर्क पता दर्ज करें (0x से शुरू)।",
       "labelPlaceholder": "अकाउंट का नाम लेबल (जैसे, कोल्ड स्टोरेज)",
+      "limit": "आप अधिकतम {{max}} वॉलेट कनेक्ट कर सकते हैं",
+      "limitReached": "वॉलेट सीमा समाप्त ({{current}}/{{max}})",
       "liveConnected": "लाइव कनेक्टेड",
       "manageSubtitle": "अपने सक्रिय Web3 कनेक्शन और केवल पढ़ने के लिए पोर्टफोलियो ट्रैकिंग खाते प्रबंधित करें।",
+      "maximum": "अधिकतम",
+      "noDefaultSelected": "कोई चयनित नहीं",
+      "noLimit": "जितने चाहें उतने वॉलेट जोड़ें।",
+      "noSearchResults": "आपकी खोज से कोई वॉलेट मेल नहीं खाता।",
+      "notFoundError": "यह वॉलेट अब आपकी वॉचलिस्ट में नहीं है।",
       "readOnly": "सिर्फ पढ़ने योग्य",
       "registrationFailed": "पते का रजिस्ट्रेशन नहीं हो सका। जाँच लें कि यह डुप्लीकेट है या स्लॉट भरे गए हैं।",
-      "tracked": "ट्रैक किया गया",
+      "remainingSlots": "शेष स्लॉट",
       "remove": "हटाएं",
-      "confirmRemove": "हटाने की पुष्टि करें?",
-      "noDefaultSelected": "कोई चयनित नहीं",
       "rename": "नाम बदलें",
-      "cancelRename": "रद्द करें",
-      "connectActionUnlimited": "वॉलेट जोड़ें ({{current}} ट्रैक किए गए)",
-      "noLimit": "जितने चाहें उतने वॉलेट जोड़ें।",
-      "duplicateAddress": "यह पता पहले से ही आपकी वॉचलिस्ट में है।",
-      "guestLimitTitle": "अधिक वॉलेट ट्रैक करने के लिए साइन इन करें",
-      "guestLimitBenefitSync": "अपनी वॉचलिस्ट को सभी डिवाइस पर सिंक करें",
-      "guestLimitBenefitMore": "3 से अधिक वॉलेट स्टोर करें",
-      "guestLimitBenefitBackup": "अपनी वॉचलिस्ट को बैकअप में रखें",
-      "searchPlaceholder": "{{count}} वॉलेट में खोजें...",
-      "noSearchResults": "आपकी खोज से कोई वॉलेट मेल नहीं खाता।",
-      "duplicateNickname": "इस उपनाम वाला एक वॉचलिस्ट वॉलेट पहले से मौजूद है। कृपया कोई दूसरा उपनाम चुनें।",
-      "notFoundError": "यह वॉलेट अब आपकी वॉचलिस्ट में नहीं है।",
       "saveEdit": "सहेजें",
-      "adding": "जोड़ा जा रहा है…"
-    },
-    "links": {
-      "docs": "डॉक्स",
-      "github": "GitHub",
-      "twitter": "Twitter"
-    },
-    "groups": {
-      "personalization": "वैयक्तिकरण",
-      "walletsAndData": "वॉलेट और डेटा",
-      "account": "खाता"
-    },
-    "appearance": {
-      "light": "लाइट",
-      "dark": "डार्क",
-      "system": "सिस्टम"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "सिंक स्थिति",
-      "syncStatusConnected": "साइन इन किया गया — आपकी बातचीत हर डिवाइस और ब्राउज़र में सिंक होती है।",
-      "syncStatusGuest": "बातचीत इस ब्राउज़र में अस्थायी हैं और सहेजी नहीं जाएंगी। उन्हें रखने के लिए साइन इन करें।"
-    },
-    "dataStorage": {
-      "localTitle": "स्थानीय डेटा",
-      "localSubtitle": "केवल इस ब्राउज़र में संग्रहीत — इसे साफ़ करना तुरंत और सुरक्षित है।",
-      "walletCache": "वॉलेट गतिविधि कैश",
-      "walletCacheDescription": "कैश किए गए लेनदेन इतिहास को साफ़ करता है — अगली बार यह फिर से प्राप्त होगा।",
-      "conversations": "FlareGPT बातचीत",
-      "conversationsDescription": "आपके खाते से FlareGPT चैट इतिहास साफ़ करता है। इसे पूर्ववत नहीं किया जा सकता।",
-      "clear": "साफ़ करें",
-      "confirmClear": "पुष्टि करें?",
-      "accountTitle": "खाता डेटा",
-      "accountSubtitle": "सर्वर पर आपके खाते के साथ सिंक किया गया।",
-      "conversationsClearFailed": "चैट इतिहास साफ़ नहीं हो सका — कृपया फिर से प्रयास करें।"
+      "searchPlaceholder": "{{count}} वॉलेट में खोजें...",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "ट्रैक किया गया"
     }
   },
   "sidebar": {
+    "activeWallet": "सक्रिय: {{address}}",
+    "addWatchlistWallet": "+ वॉचलिस्ट वॉलेट जोड़ें",
     "connectWallet": "वॉलेट कनेक्ट करें",
+    "defiProtocols": "डेफी प्रोटोकॉल",
     "disconnect": "डिस्कनेक्ट करें",
+    "donate": "दान करें",
+    "feeds": "फ़ीड्स",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO पुरस्कार",
-    "defiProtocols": "डेफी प्रोटोकॉल",
     "governance": "गवर्नेंस",
     "helpCenter": "सहायता केंद्र",
+    "loops": "लूप",
     "notConnected": "कनेक्टेड नहीं है",
     "overview": "अवलोकन",
     "rflrTracker": "rFLR ट्रैकर",
     "settings": "सेटिंग्स",
+    "signInRequired": "साइन-इन आवश्यक",
+    "signInRequiredHint": "साइन इन करने के लिए ऊपर की पट्टी में वॉलेट मेनू का उपयोग करें।",
     "walletActivity": "वॉलेट गतिविधि",
     "walletConnected": "वॉलेट कनेक्ट हो गया",
-    "yield": "यील्ड",
-    "loops": "लूप",
-    "feeds": "फ़ीड्स",
-    "donate": "दान करें",
-    "addWatchlistWallet": "+ वॉचलिस्ट वॉलेट जोड़ें",
-    "activeWallet": "सक्रिय: {{address}}",
-    "signInRequired": "साइन-इन आवश्यक",
-    "signInRequiredHint": "साइन इन करने के लिए ऊपर की पट्टी में वॉलेट मेनू का उपयोग करें।"
+    "yield": "यील्ड"
   },
   "wallet": {
     "activity": {
-      "subtitle": "इनकमिंग और आउटगोइंग ब्लॉकचेन इंटरैक्शन की रीयल - टाइम मॉनिटरिंग।",
-      "title": "हाल की टर्मिनल गतिविधि",
-      "description": "आपके सक्रिय वॉलेट का हर इंडेक्स किया गया लेनदेन, समूहीकृत और खोजने योग्य।",
-      "refresh": "रीफ़्रेश करें",
-      "connectToSee": "लेनदेन गतिविधि देखने के लिए वॉलेट कनेक्ट करें या चुनें।",
-      "couldntLoad": "वॉलेट गतिविधि लोड नहीं हो सकी।",
-      "notifier": {
-        "ready": "आपकी वॉलेट गतिविधि लोड हो चुकी है।"
-      },
-      "loading": {
-        "title": "आपकी वॉलेट गतिविधि इंडेक्स की जा रही है",
-        "subtitle": "बड़े वॉलेट में पहली बार लोड होने में कुछ मिनट लग सकते हैं। बेझिझक डैशबोर्ड के बाकी हिस्से देखें — तैयार होने पर हम आपको बताएंगे।",
-        "elapsed": "{{seconds}}s बीत गए"
-      },
-      "empty": {
-        "title": "अभी तक कोई गतिविधि नहीं",
-        "description": "इस वॉलेट में कोई इंडेक्स किया गया लेनदेन नहीं है।"
-      },
-      "noResults": {
-        "title": "कोई मिलान लेनदेन नहीं",
-        "description": "अपनी खोज या फ़िल्टर समायोजित करने का प्रयास करें।"
-      },
-      "kpi": {
-        "totalTransactions": "कुल लेनदेन",
-        "uniqueAssets": "अद्वितीय एसेट",
-        "walletAge": "वॉलेट आयु",
-        "walletAgeYears": "{{count}} वर्ष",
-        "walletAgeMonths": "{{count}} महीने",
-        "walletAgeDays": "{{count}} दिन",
-        "lastActive": "अंतिम सक्रियता",
-        "justNow": "अभी अभी",
-        "minutesAgo": "{{count}} मिनट पहले",
-        "hoursAgo": "{{count}} घंटे पहले",
-        "daysAgo": "{{count}} दिन पहले"
-      },
-      "insights": {
-        "title": "त्वरित जानकारी",
-        "mostUsedAsset": "सबसे अधिक उपयोग किया गया एसेट",
-        "mostCommonAction": "सबसे सामान्य कार्रवाई",
-        "mostActiveDay": "सबसे सक्रिय दिन",
-        "mostActiveMonth": "सबसे सक्रिय महीना",
-        "txCount": "{{count}} लेनदेन"
-      },
       "charts": {
+        "actionBreakdown": "कार्रवाई विभाजन",
+        "actionBreakdownSubtitle": "कार्रवाई प्रकार के अनुसार लेनदेन की संख्या",
         "activityByDay": "दिन के अनुसार गतिविधि",
         "activityByDaySubtitle": "प्रति दिन लेनदेन की संख्या",
         "assetBreakdown": "एसेट विभाजन",
         "assetBreakdownSubtitle": "एसेट के अनुसार लेनदेन की संख्या",
-        "actionBreakdown": "कार्रवाई विभाजन",
-        "actionBreakdownSubtitle": "कार्रवाई प्रकार के अनुसार लेनदेन की संख्या",
+        "tabActions": "कार्रवाइयां",
         "tabActivity": "गतिविधि",
-        "tabAssets": "एसेट",
-        "tabActions": "कार्रवाइयां"
+        "tabAssets": "एसेट"
       },
-      "toolbar": {
-        "searchPlaceholder": "हैश या एसेट से खोजें...",
-        "sort": {
-          "newest": "नवीनतम",
-          "oldest": "सबसे पुराना",
-          "amount": "राशि"
-        },
-        "exportCsv": "CSV निर्यात करें",
-        "exportJson": "JSON निर्यात करें",
-        "export": "निर्यात करें"
+      "connectToSee": "लेनदेन गतिविधि देखने के लिए वॉलेट कनेक्ट करें या चुनें।",
+      "couldntLoad": "वॉलेट गतिविधि लोड नहीं हो सकी।",
+      "description": "आपके सक्रिय वॉलेट का हर इंडेक्स किया गया लेनदेन, समूहीकृत और खोजने योग्य।",
+      "drawer": {
+        "action": "कार्रवाई",
+        "asset": "एसेट",
+        "blockNumber": "ब्लॉक नंबर",
+        "close": "बंद करें",
+        "copyFailed": "हैश कॉपी नहीं हो सका",
+        "hashCopied": "लेनदेन हैश कॉपी किया गया",
+        "next": "अगला लेनदेन",
+        "previous": "पिछला लेनदेन",
+        "timestamp": "टाइमस्टैम्प",
+        "title": "लेनदेन विवरण",
+        "transactionHash": "लेनदेन हैश",
+        "viewOnExplorer": "FlareScan पर देखें"
+      },
+      "empty": {
+        "description": "इस वॉलेट में कोई इंडेक्स किया गया लेनदेन नहीं है।",
+        "title": "अभी तक कोई गतिविधि नहीं"
       },
       "feed": {
         "ariaLabel": "{{total}} में से {{shown}} लेनदेन दिखाए जा रहे हैं"
       },
-      "drawer": {
-        "title": "लेनदेन विवरण",
-        "previous": "पिछला लेनदेन",
-        "next": "अगला लेनदेन",
-        "close": "बंद करें",
-        "action": "कार्रवाई",
-        "asset": "एसेट",
-        "blockNumber": "ब्लॉक नंबर",
-        "timestamp": "टाइमस्टैम्प",
-        "transactionHash": "लेनदेन हैश",
-        "hashCopied": "लेनदेन हैश कॉपी किया गया",
-        "copyFailed": "हैश कॉपी नहीं हो सका",
-        "viewOnExplorer": "FlareScan पर देखें"
+      "insights": {
+        "mostActiveDay": "सबसे सक्रिय दिन",
+        "mostActiveMonth": "सबसे सक्रिय महीना",
+        "mostCommonAction": "सबसे सामान्य कार्रवाई",
+        "mostUsedAsset": "सबसे अधिक उपयोग किया गया एसेट",
+        "title": "त्वरित जानकारी",
+        "txCount": "{{count}} लेनदेन",
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_other": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "{{count}} दिन पहले",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "{{count}} घंटे पहले",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "अभी अभी",
+        "lastActive": "अंतिम सक्रियता",
+        "minutesAgo": "{{count}} मिनट पहले",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "कुल लेनदेन",
+        "uniqueAssets": "अद्वितीय एसेट",
+        "walletAge": "वॉलेट आयु",
+        "walletAgeDays": "{{count}} दिन",
+        "walletAgeMonths": "{{count}} महीने",
+        "walletAgeYears": "{{count}} वर्ष"
+      },
+      "loading": {
+        "elapsed": "{{seconds}}s बीत गए",
+        "subtitle": "बड़े वॉलेट को पहली बार लोड होने में कुछ मिनट लग सकते हैं। बेझिझक डैशबोर्ड के बाकी हिस्से को देखें। तैयार होने पर हम आपको बता देंगे।",
+        "title": "आपकी वॉलेट गतिविधि इंडेक्स की जा रही है"
+      },
+      "noResults": {
+        "description": "अपनी खोज या फ़िल्टर समायोजित करने का प्रयास करें।",
+        "title": "कोई मिलान लेनदेन नहीं"
+      },
+      "notifier": {
+        "ready": "वॉलेट गतिविधि लोड हो गई।"
+      },
+      "refresh": "रीफ़्रेश करें",
+      "subtitle": "इनकमिंग और आउटगोइंग ब्लॉकचेन इंटरैक्शन की रीयल - टाइम मॉनिटरिंग।",
+      "title": "हाल की टर्मिनल गतिविधि",
+      "toolbar": {
+        "export": "निर्यात करें",
+        "exportCsv": "CSV निर्यात करें",
+        "exportJson": "JSON निर्यात करें",
+        "searchPlaceholder": "हैश या एसेट से खोजें...",
+        "sort": {
+          "amount": "राशि",
+          "newest": "नवीनतम",
+          "oldest": "सबसे पुराना"
+        }
       }
     },
     "stats": {
@@ -396,285 +703,6 @@
       "contract": "अनुबंध निष्पादन",
       "received": "प्राप्त किया गया",
       "sent": "भेजी- डाक"
-    }
-  },
-  "comingSoon": {
-    "badge": "जल्द ही आ रही हैं",
-    "description": "हम यह सुविधा बना रहे हैं। जल्द ही फिर से देखें।"
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "ऐसा लगता है कि WalletConnect को Brave Shields द्वारा ब्लॉक किया जा रहा है।",
-        "tryTitle": "निम्न में से कोई एक तरीका आज़माएं:",
-        "shieldsOff": "इस साइट के लिए Brave Shields बंद करें और फिर से कोशिश करें।",
-        "privateWindow": "साइट को Brave प्राइवेट विंडो में खोलें।",
-        "useChrome": "यदि समस्या बनी रहती है, तो Google Chrome या किसी अन्य समर्थित ब्राउज़र का उपयोग करें।"
-      },
-      "generic": "एक अप्रत्याशित कनेक्शन घर्षण हुआ। कृपया फिर से कोशिश करें या किसी दूसरे वॉलेट का इस्तेमाल करें।",
-      "providerGone": "यह वॉलेट अब जवाब नहीं दे रहा है — हो सकता है इसे अपडेट या हटा दिया गया हो। पेज को रीफ्रेश करने से यह ठीक हो जाना चाहिए।",
-      "pending": "कनेक्शन का अनुरोध पहले से ही खुला है। कृपया अपना वॉलेट एक्सटेंशन पैनल खोलें।",
-      "rejected": "आपके वॉलेट में कनेक्शन का अनुरोध कैंसिल कर दिया गया था।",
-      "timeout": "WalletConnect तक नहीं पहुंच सका। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।",
-      "wrongNetwork": "कृपया अपने वॉलेट के सक्रिय नेटवर्क को फ्लेयर मेननेट पर स्विच करें।"
-    },
-    "install": "इंस्टॉल करें",
-    "installHint": "अभी भी अपना वॉलेट नहीं दिख रहा? पेज को रीफ्रेश करने से मदद मिल सकती है।",
-    "refresh": "रीफ्रेश करें",
-    "mobileHint": "मोबाइल पर, सबसे अच्छे कनेक्शन अनुभव के लिए अपने वॉलेट के बिल्ट - इन ब्राउज़र में FlareGPT खोलें। QR कोड स्कैन करते समय, सबसे भरोसेमंद कनेक्शन के लिए अपने फ़ोन के कैमरे के बजाय अपने वॉलेट ऐप के स्कैनर का उपयोग करें।",
-    "connecting": "कनेक्ट हो रहा है…",
-    "recommended": "अनुशंसित",
-    "subtitle": "फ़्लेयर नेटवर्क से कनेक्ट करने के लिए अपना पसंदीदा वॉलेट चुनें।",
-    "title": "Wallet कनेक्ट करें",
-    "viaWalletConnect": "WalletConnect के ज़रिए"
-  },
-  "flareWidget": {
-    "close": "बंद करें",
-    "collapse": "संक्षिप्त करें",
-    "expand": "विस्तार करना",
-    "openFullPage": "पूरा पेज खोलें"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "मेरा वॉलेट विश्लेषण करें",
-      "increaseRewards": "मैं अपने FTSO रिवॉर्ड्स कैसे बढ़ा सकता हूँ?",
-      "explainDelegations": "मेरी डेलिगेशन समझाएं",
-      "compareProtocols": "Sceptre बनाम Firelight की तुलना करें",
-      "rewardsDecreased": "मेरे रिवॉर्ड्स क्यों घटे?",
-      "stakingOpportunities": "मेरे स्टेकिंग अवसर दिखाएं"
-    },
-    "wallet": {
-      "analyzing": "विश्लेषण कर रहे हैं:"
-    },
-    "empty": {
-      "title": "FlareGPT से कुछ भी पूछें",
-      "subtitle": "अपने वॉलेट, रिवॉर्ड्स, डेलिगेशन या Flare इकोसिस्टम के बारे में उत्तर पाएं।"
-    },
-    "composer": {
-      "placeholder": "FlareGPT से पूछें...",
-      "send": "भेजें",
-      "stop": "जनरेट करना रोकें",
-      "disclaimer": "FlareGPT गलतियाँ कर सकता है। कार्रवाई करने से पहले महत्वपूर्ण जानकारी सत्यापित करें।"
-    },
-    "actions": {
-      "copy": "कॉपी करें",
-      "regenerate": "उत्तर फिर से बनाएं",
-      "copied": "संदेश कॉपी किया गया",
-      "copyFailed": "कॉपी करने में विफल"
-    },
-    "jumpToLatest": "नवीनतम पर जाएं",
-    "historyLoadFailed": "आपका चैट इतिहास लोड नहीं हो सका।",
-    "sendError": "कुछ गड़बड़ हो गई — कृपया फिर से प्रयास करें।",
-    "newChat": "नई चैट",
-    "deleteConversation": {
-      "button": "बातचीत हटाएं",
-      "confirm": "पुष्टि करें?"
-    },
-    "deleteConversationFailed": "इस बातचीत को हटाया नहीं जा सका। कृपया पुनः प्रयास करें।",
-    "history": {
-      "title": "चैट इतिहास",
-      "newChat": "नई चैट",
-      "searchPlaceholder": "बातचीत खोजें...",
-      "empty": "अभी तक कोई बातचीत नहीं",
-      "noResults": "आपकी खोज से कोई बातचीत मेल नहीं खाती",
-      "untitled": "शीर्षकहीन",
-      "moreActions": "अधिक विकल्प",
-      "pin": "पिन करें",
-      "unpin": "अनपिन करें",
-      "rename": "नाम बदलें",
-      "delete": "हटाएं",
-      "pinLimitReached": "आप {{count}} बातचीत तक पिन कर सकते हैं",
-      "renameFailed": "इस बातचीत का नाम नहीं बदला जा सका।",
-      "openButton": "इतिहास",
-      "saveRename": "सहेजें",
-      "cancelRename": "रद्द करें"
-    }
-  },
-  "dashboard": {
-    "description": "लाइव फ़्लेयर नेटवर्क डेटा, मूल्य चार्ट और वॉलेट गतिविधि एक नज़र में।",
-    "common": {
-      "retry": "वरी कोशिश कयो",
-      "retrying": "फिर से कोशिश कर रहा है",
-      "networkHiccup": "यह आमतौर पर एक अस्थायी नेटवर्क हिचकी है।",
-      "noWalletSelected": "कोई वॉलेट नहीं चुना गया",
-      "yes": "हाँ",
-      "no": "नहीं"
-    },
-    "stats": {
-      "flrPrice": "FLR मूल्य",
-      "marketCap": "मार्केट कैप",
-      "volume24h": "24 घंटे वॉल्यूम",
-      "tvl": "TVL",
-      "couldntLoad": "बाज़ार की झलक लोड नहीं की जा सकी"
-    },
-    "chart": {
-      "couldntLoad": "FLR किराया इतिहास लोड नहीं किया जा सका"
-    },
-    "networkActivity": {
-      "title": "नेटवर्क गतिविधि",
-      "live": "आंसुओं की हद तक अपना जीवन जिएं",
-      "gwei": "ग्वेई",
-      "gasPrice": "गैस की कीमत",
-      "tps": "टोयोटा प्रोडक्टिव सिस्टम",
-      "couldntLoad": "नेटवर्क डेटा लोड नहीं किया जा सका",
-      "collectingSamples": "लाइव सैंपल इकट्ठा करना — नया डेटा आते ही चार्ट भर जाता है।"
-    },
-    "walletBalances": {
-      "title": "वॉलेट बैलेंस",
-      "connectToSeeBalances": "बैलेंस देखने के लिए सेटिंग में वॉलेट कनेक्ट करें या जोड़ें।",
-      "couldntLoad": "वॉलेट बैलेंस लोड नहीं किया जा सका"
-    },
-    "ftso": {
-      "title": "एफटीएसओ प्रतिनिधिमंडल",
-      "connected": "कनेक्टेड",
-      "readOnly": "सिर्फ पढ़ने के लिए",
-      "connectToSeeRewards": "रिवॉर्ड देखने के लिए सेटिंग में वॉलेट कनेक्ट करें या जोड़ें।",
-      "couldntLoad": "FTSO पोर्टफ़ोलियो लोड नहीं किया जा सका",
-      "delegatedWflr": "प्रत्यायोजित WFLR",
-      "unclaimedFlr": "लावारिस FLR",
-      "activeDelegations": "सक्रिय प्रतिनिधिमंडल",
-      "estHourlyEarning": "अनुमानित प्रति घंटा कमाई",
-      "claimRewards": "इनाम की मांग करें",
-      "readOnlyCannotClaim": "सिर्फ़ पढ़ने के लिए — क्लेम नहीं किया जा सकता",
-      "switchToClaim": "रिवॉर्ड क्लेम करने के लिए अपने कनेक्टेड वॉलेट पर स्विच करें",
-      "noUnclaimedYet": "अभी तक कोई क्लेम नहीं किया गया रिवॉर्ड नहीं मिला है",
-      "claimComingSoon": "दावा अभी तक उपलब्ध नहीं है — जल्द ही आ रहा है।"
-    },
-    "claimsHistory": {
-      "title": "दावा इतिहास",
-      "connectToSee": "दावा इतिहास देखने के लिए सेटिंग में एक वॉलेट कनेक्ट करें या जोड़ें।",
-      "couldntLoad": "दावा इतिहास लोड नहीं किया जा सका",
-      "emptyTitle": "कोई लावारिस युग नहीं",
-      "emptyDescription": "आप सब कुछ समझ गए हैं — क्लेम करने के लिए रिवॉर्ड का कोई पेंडिंग समय नहीं है।"
-    },
-    "delegationsBreakdown": {
-      "title": "प्रतिनिधिमंडल का ब्यौरा",
-      "tabLabel": "प्रतिनिधिमंडल",
-      "connectToSee": "प्रतिनिधिमंडल देखने के लिए सेटिंग में एक वॉलेट कनेक्ट करें या जोड़ें।",
-      "couldntLoad": "डेलिगेशन लोड नहीं किया जा सका",
-      "emptyTitle": "कोई सक्रिय प्रतिनिधिमंडल नहीं",
-      "emptyDescription": "रिवॉर्ड कमाना शुरू करने के लिए WFLR को FTSO प्रोवाइडर के पास भेजें।"
-    },
-    "apiStatus": {
-      "checking": "एपीआई स्थिति की जांच की जा रही है...",
-      "operational": "सभी सिस्टम चालू हैं",
-      "degraded": "एपीआई (API) को खराब किया गया"
-    }
-  },
-  "defiProtocols": {
-    "description": "MXRPY, Sceptre और Firelight वॉल्ट्स में यील्ड स्ट्रैटेजी की तुलना करें और अपनी पोजीशन ट्रैक करें।",
-    "common": {
-      "addressCopied": "पता क्लिपबोर्ड पर कॉपी हो गया",
-      "copyFailed": "पता कॉपी नहीं हो सका",
-      "connectToSeePosition": "अपनी पोजीशन देखने के लिए वॉलेट कनेक्ट करें",
-      "contract": "कॉन्ट्रैक्ट",
-      "proxyContract": "प्रॉक्सी कॉन्ट्रैक्ट",
-      "poolOwnership": "पूल स्वामित्व",
-      "protocolDetails": "प्रोटोकॉल विवरण",
-      "yourBalance": "आपका बैलेंस",
-      "redeemableValue": "भुनाने योग्य मूल्य"
-    },
-    "explorer": {
-      "title": "प्रोटोकॉल एक्सप्लोरर",
-      "subtitle": "अपनी पोजीशन और विवरण देखने के लिए एक प्रोटोकॉल चुनें"
-    },
-    "kpis": {
-      "protocolsTracked": "ट्रैक किए गए प्रोटोकॉल",
-      "bestApr": "सर्वश्रेष्ठ उपलब्ध APR",
-      "activePositions": "सक्रिय पोजीशन"
-    },
-    "mxrpy": {
-      "title": "MXRPY वॉल्ट",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "आपकी MXRPY पोजीशन लोड नहीं हो सकी",
-      "circulatingCaption": "प्रचलन में {{shares}} शेयर · {{decimals}} दशमलव",
-      "yourShares": "आपके रसीद शेयर",
-      "category": "यील्ड वॉल्ट"
-    },
-    "sceptre": {
-      "title": "Sceptre Liquid Staking",
-      "subtitle": "sFLR लिक्विड स्टेकिंग",
-      "couldntLoad": "आपकी Sceptre पोजीशन लोड नहीं हो सकी",
-      "exchangeRateLabel": "sFLR / FLR दर",
-      "totalMinted": "कुल जारी शेयर",
-      "backedFlr": "अंतर्निहित समर्थित FLR",
-      "category": "लिक्विड स्टेकिंग"
-    },
-    "firelight": {
-      "title": "Firelight वॉल्ट",
-      "subtitle": "पूंजी सुरक्षा वॉल्ट",
-      "couldntLoad": "आपकी Firelight पोजीशन लोड नहीं हो सकी",
-      "backingLabel": "एसेट बैकिंग मल्टीप्लायर",
-      "circulatingSupply": "प्रचलन आपूर्ति",
-      "underlyingReserve": "अंतर्निहित रिज़र्व",
-      "insuranceRobust": "बीमा: मजबूत",
-      "category": "बीमा"
-    },
-    "strategies": {
-      "title": "स्ट्रैटेजी तुलना",
-      "subtitle": "देखें कि विभिन्न स्ट्रैटेजी में आपका FLR कैसा प्रदर्शन कर सकता है",
-      "amountLabel": "इसके लिए तुलना करें",
-      "apr": "APR",
-      "colStrategy": "स्ट्रैटेजी",
-      "colYield": "अनुमानित प्रतिफल (FLR)",
-      "colTerms": "शर्तें",
-      "compoundingLabel": "चक्रवृद्धि",
-      "couldntLoad": "स्ट्रैटेजी तुलना लोड नहीं हो सकी",
-      "highestApr": "सबसे अधिक APR",
-      "lockupDays": "{{count}} दिन लॉक-अप",
-      "lockupHours": "{{count}} घंटे लॉक-अप",
-      "noLockup": "कोई लॉक-अप नहीं",
-      "verdict": "FlareGPT निर्णय"
-    }
-  },
-  "donate": {
-    "title": "FlareGPT का समर्थन करें",
-    "description": "आपका समर्थन FlareGPT को मुफ़्त, स्वतंत्र और लगातार बेहतर बनाए रखने में मदद करता है।",
-    "hero": {
-      "addressLabel": "वॉलेट पता",
-      "tapToCopy": "कॉपी करने के लिए टैप करें",
-      "copyAddress": "पता कॉपी करें",
-      "copied": "कॉपी हो गया",
-      "addressCopied": "पता क्लिपबोर्ड पर कॉपी हो गया",
-      "copyFailed": "पता कॉपी नहीं हो सका",
-      "viewOnExplorer": "{{explorer}} पर देखें",
-      "multisigNote": "मल्टी-सिग्नेचर वॉलेट द्वारा सुरक्षित",
-      "qrTitle": "{{symbol}} दान वॉलेट पते के लिए QR कोड"
-    },
-    "warning": {
-      "title": "केवल {{network}} एसेट्स।",
-      "body": "इस पते पर केवल {{symbol}} या अन्य {{network}} टोकन भेजें। अन्य नेटवर्क से भेजे गए एसेट्स की भरपाई नहीं हो सकती।"
-    },
-    "amounts": {
-      "title": "सुझाई गई राशियाँ",
-      "subtitle": "हर योगदान मायने रखता है — शुरुआत के लिए कुछ सुझाव।",
-      "impactTier1": "एक दिन की API लागत",
-      "impactTier2": "एक सप्ताह की होस्टिंग",
-      "impactTier3": "एक महीने का इंफ्रास्ट्रक्चर",
-      "impactTier4": "नए प्रोटोकॉल इंटीग्रेशन",
-      "copiedToast": "पता कॉपी हो गया। {{amount}} {{symbol}} दान पर विचार करने के लिए धन्यवाद।"
-    },
-    "funding": {
-      "title": "फंडिंग पारदर्शिता",
-      "subtitle": "FlareGPT को चलाने में लगने वाली लागत की एक खुली झलक — कोई दबाव नहीं, केवल पारदर्शिता।",
-      "monthlyInfrastructure": "मासिक इंफ्रास्ट्रक्चर",
-      "developmentFund": "विकास कोष",
-      "raisedOfGoal": "{{goal}} लक्ष्य में से {{raised}} जुटाए गए"
-    },
-    "received": {
-      "title": "प्राप्त दान",
-      "subtitle": "हर समर्थित नेटवर्क पर प्राप्त कुल योगदान।",
-      "demoData": "डेमो डेटा"
-    },
-    "support": {
-      "title": "आपका समर्थन किसके लिए उपयोग होता है",
-      "infra": "API और इंफ्रास्ट्रक्चर",
-      "integrations": "नए प्रोटोकॉल इंटीग्रेशन",
-      "free": "FlareGPT को मुफ़्त रखना",
-      "development": "निरंतर विकास"
-    },
-    "closing": {
-      "message": "FlareGPT को स्वतंत्र बनाए रखने में मदद करने के लिए धन्यवाद। हर योगदान, छोटा हो या बड़ा, वाकई मददगार है।"
     }
   }
 }

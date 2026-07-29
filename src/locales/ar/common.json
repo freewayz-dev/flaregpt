@@ -1,11 +1,329 @@
 {
+  "comingSoon": {
+    "badge": "قريباً",
+    "description": "نحن نبني هذه الميزة. تحقَّق مرة أخرى قريباً."
+  },
+  "connectModal": {
+    "connecting": "جارٍ الاتصال…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "افتح الموقع في نافذة Brave خاصة.",
+        "shieldsOff": "أوقف تشغيل Brave Shields لهذا الموقع وحاول مرة أخرى.",
+        "title": "يبدو أن WalletConnect محظور بواسطة Brave Shields.",
+        "tryTitle": "جرّب أحد الخيارات التالية:",
+        "useChrome": "استخدم Google Chrome أو متصفحًا آخر مدعومًا إذا استمرت المشكلة."
+      },
+      "generic": "حدث احتكاك غير متوقع في الاتصال. يرجى المحاولة مرة أخرى أو استخدام محفظة أخرى.",
+      "pending": "طلب الاتصال مفتوح بالفعل. يرجى فتح لوحة تمديد محفظتك.",
+      "providerGone": "يبدو أن هذه المحفظة لم تعد تستجيب. ربما تم تحديثها أو إزالتها. قد يؤدي تحديث الصفحة إلى حل هذه المشكلة.",
+      "rejected": "تم إلغاء طلب الاتصال في محفظتك.",
+      "timeout": "تعذّر الوصول إلى WalletConnect. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
+      "wrongNetwork": "يرجى تبديل شبكة محفظتك النشطة إلى Flare Mainnet."
+    },
+    "install": "تثبيت",
+    "installHint": "لا زلت لا ترى محفظتك؟ قد يساعد تحديث الصفحة.",
+    "mobileHint": "على الهاتف المحمول، افتح FlareGPT في متصفح محفظتك المدمج للحصول على أفضل تجربة اتصال. عند مسح رمز QR، استخدم ماسح تطبيق محفظتك بدلاً من كاميرا هاتفك للحصول على اتصال أكثر موثوقية.",
+    "recommended": "الخيار المقترح",
+    "refresh": "تحديث",
+    "subtitle": "اختر محفظتك المفضلة للاتصال بشبكة Flare.",
+    "title": "ربط المحفظة",
+    "viaWalletConnect": "عبر WalletConnect"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "جارٍ التحقق من حالة واجهة برمجة التطبيقات...",
+      "degraded": "API متدهور",
+      "operational": "\"جميع الأنظمة جاهزة للعمل.\""
+    },
+    "chart": {
+      "couldntLoad": "تعذر تحميل سجل أسعار الطابق الأرضي"
+    },
+    "claimsHistory": {
+      "connectToSee": "قم بتوصيل محفظة أو إضافتها في الإعدادات للاطلاع على سجل المطالبات.",
+      "couldntLoad": "تعذر تحميل سجل المطالبات",
+      "emptyDescription": "لقد أنجزت كل شيء. لا توجد حقب مكافآت معلقة للمطالبة بها.",
+      "emptyTitle": "لا توجد حقب لم يطالب بها أحد",
+      "title": "سجل المطالبات"
+    },
+    "common": {
+      "networkHiccup": "عادة ما يكون هذا زوبعة مؤقتة في الشبكة.",
+      "no": "لا",
+      "noWalletSelected": "لم يتم تحديد محفظة",
+      "retry": "أعد المحاولة",
+      "retrying": "جارٍ إعادة المحاولة ...",
+      "yes": "نعم"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "قم بتوصيل أو إضافة محفظة في الإعدادات لرؤية التفويضات.",
+      "couldntLoad": "تعذر تحميل التفويضات",
+      "emptyDescription": "قم بتفويض WFLR إلى مزود FTSO لبدء كسب المكافآت.",
+      "emptyTitle": "لا توجد وفود نشطة",
+      "tabLabel": "البعثات",
+      "title": "تفاصيل الوفود"
+    },
+    "description": "نظرة سريعة على بيانات شبكة Flare الحية ومخططات الأسعار ونشاط المحفظة.",
+    "ftso": {
+      "activeDelegations": "الوفود النشطة",
+      "claimComingSoon": "المطالبة غير متاحة بعد. قريبًا.",
+      "claimRewards": "المطالبة بالجوائز",
+      "connected": "[ترجمة المصطلح: Connected]",
+      "connectToSeeRewards": "قم بتوصيل محفظة أو إضافتها في الإعدادات لرؤية المكافآت.",
+      "couldntLoad": "تعذر تحميل محفظة FTSO",
+      "delegatedWflr": "تفويض WFLR",
+      "estHourlyEarning": "الدخل المقدر بالساعة",
+      "noUnclaimedYet": "لا توجد مكافآت لم تتم المطالبة بها بعد",
+      "readOnly": "للقراءة فقط",
+      "readOnlyCannotClaim": "للقراءة فقط، لا يمكن المطالبة",
+      "switchToClaim": "قم بالتبديل إلى محفظتك المتصلة للمطالبة بالمكافآت",
+      "title": "وفد FTSO",
+      "unclaimedFlr": "الطابق الأرضي غير المطالب به"
+    },
+    "networkActivity": {
+      "collectingSamples": "جارٍ جمع عينات مباشرة. سيتم ملء الرسم البياني مع وصول بيانات جديدة.",
+      "couldntLoad": "تعذر تحميل بيانات الشبكة",
+      "gasPrice": "سعر الغاز",
+      "gwei": "جوي",
+      "live": "[ترجمة المصطلح: Live]",
+      "title": "نشاط الشبكة.",
+      "tps": "مستشعر موضع الدواسة / مستشعر موضع البخاخ"
+    },
+    "stats": {
+      "couldntLoad": "تعذر تحميل نظرة عامة على السوق",
+      "flrPrice": "سعر FLR",
+      "marketCap": "رأس مال السوق",
+      "tvl": "TVL",
+      "volume24h": "حجم التداول على مدار 24 ساعة"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "قم بتوصيل أو إضافة محفظة في الإعدادات لرؤية الأرصدة.",
+      "couldntLoad": "تعذر تحميل أرصدة المحفظة",
+      "title": "أرصدة المحفظة"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "تم نسخ العنوان",
+      "connectToSeePosition": "قم بتوصيل محفظة لرؤية مركزك",
+      "contract": "العقد",
+      "copyFailed": "تعذر نسخ العنوان",
+      "poolOwnership": "حصة الملكية في المجمع",
+      "protocolDetails": "تفاصيل البروتوكول",
+      "proxyContract": "عقد الوكيل",
+      "redeemableValue": "القيمة القابلة للاسترداد",
+      "yourBalance": "رصيدك"
+    },
+    "description": "قارن استراتيجيات العائد وتتبع مراكزك عبر خزائن MXRPY وSceptre وFirelight.",
+    "explorer": {
+      "subtitle": "اختر بروتوكولاً لعرض مركزك والتفاصيل",
+      "title": "مستكشف البروتوكولات"
+    },
+    "firelight": {
+      "backingLabel": "مضاعف ضمان الأصول",
+      "category": "التأمين",
+      "circulatingSupply": "العرض المتداول",
+      "couldntLoad": "تعذر تحميل مركزك في Firelight",
+      "insuranceRobust": "التأمين: قوي",
+      "subtitle": "خزنة حماية رأس المال",
+      "title": "خزنة Firelight",
+      "underlyingReserve": "الاحتياطي الأساسي"
+    },
+    "kpis": {
+      "activePositions": "المراكز النشطة",
+      "bestApr": "أفضل معدل عائد سنوي متاح",
+      "protocolsTracked": "البروتوكولات المتابَعة"
+    },
+    "mxrpy": {
+      "category": "خزنة العائد",
+      "circulatingCaption": "{{shares}} حصة متداولة · {{decimals}} خانات عشرية",
+      "couldntLoad": "تعذر تحميل مركزك في MXRPY",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "خزنة MXRPY",
+      "yourShares": "حصص الإيصال الخاصة بك"
+    },
+    "sceptre": {
+      "backedFlr": "FLR الأساسي المضمون",
+      "category": "التكديس السائل",
+      "couldntLoad": "تعذر تحميل مركزك في Sceptre",
+      "exchangeRateLabel": "سعر صرف sFLR / FLR",
+      "subtitle": "تكديس سائل لـ sFLR",
+      "title": "Sceptre Liquid Staking",
+      "totalMinted": "إجمالي الحصص المصدرة"
+    },
+    "strategies": {
+      "amountLabel": "قارن مقابل",
+      "apr": "معدل العائد السنوي",
+      "colStrategy": "الاستراتيجية",
+      "colTerms": "الشروط",
+      "colYield": "العائد المقدر (FLR)",
+      "compoundingLabel": "التركيب",
+      "couldntLoad": "تعذر تحميل مقارنة الاستراتيجيات",
+      "highestApr": "أعلى معدل عائد سنوي",
+      "lockupDays": "قفل لمدة {{count}} يوم",
+      "lockupDays_zero": "",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupDays_two": "",
+      "lockupDays_few": "",
+      "lockupDays_many": "",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
+      "lockupHours": "قفل لمدة {{count}} ساعة",
+      "lockupHours_zero": "",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
+      "lockupHours_two": "",
+      "lockupHours_few": "",
+      "lockupHours_many": "",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "بدون قفل",
+      "subtitle": "اطّلع على أداء FLR المحتمل عبر الاستراتيجيات المختلفة",
+      "title": "مقارنة الاستراتيجيات",
+      "verdict": "تقييم FlareGPT"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "تم نسخ العنوان. شكرًا لتفكيرك في التبرع بمبلغ {{amount}} {{symbol}}.",
+      "impactTier1": "يوم واحد من تكاليف API",
+      "impactTier2": "أسبوع واحد من الاستضافة",
+      "impactTier3": "شهر واحد من البنية التحتية",
+      "impactTier4": "تكاملات بروتوكولات جديدة",
+      "subtitle": "كل مساهمة تُحدث فرقًا. إليك بعض الأفكار للبدء.",
+      "title": "المبالغ المقترحة"
+    },
+    "closing": {
+      "message": "شكرًا لمساعدتك في إبقاء FlareGPT مستقلاً. كل مساهمة، كبيرة كانت أم صغيرة، تُحدث فرقًا حقيقيًا."
+    },
+    "description": "دعمك يساعد في إبقاء FlareGPT مجانيًا ومستقلاً ومتطورًا باستمرار.",
+    "funding": {
+      "developmentFund": "صندوق التطوير",
+      "monthlyInfrastructure": "البنية التحتية الشهرية",
+      "raisedOfGoal": "تم جمع {{raised}} من هدف {{goal}}",
+      "subtitle": "نظرة شفافة على تكلفة تشغيل FlareGPT. لا ضغط، فقط شفافية.",
+      "title": "شفافية التمويل"
+    },
+    "hero": {
+      "addressCopied": "تم نسخ العنوان",
+      "addressLabel": "عنوان المحفظة",
+      "copied": "تم النسخ",
+      "copyAddress": "نسخ العنوان",
+      "copyFailed": "تعذر نسخ العنوان",
+      "multisigNote": "محمية بمحفظة متعددة التوقيع",
+      "qrTitle": "رمز QR لعنوان محفظة التبرعات بعملة {{symbol}}",
+      "tapToCopy": "اضغط للنسخ",
+      "viewOnExplorer": "عرض على {{explorer}}"
+    },
+    "received": {
+      "demoData": "بيانات تجريبية",
+      "subtitle": "إجمالي المساهمات المستلمة عبر كل شبكة مدعومة.",
+      "title": "التبرعات المستلمة"
+    },
+    "support": {
+      "development": "التطوير المستمر",
+      "free": "إبقاء FlareGPT مجانيًا",
+      "infra": "API والبنية التحتية",
+      "integrations": "تكاملات بروتوكولات جديدة",
+      "title": "فيما يُستخدم دعمك"
+    },
+    "title": "ادعم FlareGPT",
+    "warning": {
+      "body": "أرسل فقط {{symbol}} أو رموز {{network}} الأخرى إلى هذا العنوان. الأصول المُرسلة من شبكات أخرى لا يمكن استردادها.",
+      "title": "أصول {{network}} فقط."
+    }
+  },
+  "flareWidget": {
+    "close": "خاتمة",
+    "collapse": "هبوط",
+    "expand": "إظهار الرقم بالكامل",
+    "openFullPage": "فتح الصفحة الكاملة"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "تم نسخ الرسالة",
+      "copy": "نسخ",
+      "copyFailed": "فشل النسخ",
+      "regenerate": "إعادة إنشاء الرد"
+    },
+    "composer": {
+      "disclaimer": "قد يرتكب FlareGPT أخطاء. تحقق من المعلومات المهمة قبل التصرف بناءً عليها.",
+      "placeholder": "اسأل FlareGPT...",
+      "send": "إرسال",
+      "stop": "إيقاف التوليد"
+    },
+    "deleteConversation": {
+      "button": "حذف المحادثة",
+      "confirm": "تأكيد؟"
+    },
+    "deleteConversationFailed": "تعذّر حذف هذه المحادثة. حاول مرة أخرى.",
+    "empty": {
+      "subtitle": "احصل على إجابات حول محفظتك أو مكافآتك أو تفويضاتك أو نظام Flare البيئي.",
+      "title": "اسأل FlareGPT أي شيء"
+    },
+    "guestMode": {
+      "cta": "تسجيل الدخول لمزامنة السجل وفتح تحليل المحفظة",
+      "notice": "وضع الضيف · لا يتم حفظ المحادثات."
+    },
+    "history": {
+      "cancelRename": "إلغاء",
+      "delete": "حذف",
+      "empty": "لا توجد محادثات بعد",
+      "moreActions": "إجراءات إضافية",
+      "newChat": "محادثة جديدة",
+      "noResults": "لا توجد محادثات مطابقة لبحثك",
+      "openButton": "السجل",
+      "pin": "تثبيت",
+      "pinLimitReached": "يمكنك تثبيت حتى {{count}} محادثات",
+      "pinLimitReached_zero": "",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
+      "pinLimitReached_two": "",
+      "pinLimitReached_few": "",
+      "pinLimitReached_many": "",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "إعادة تسمية",
+      "renameFailed": "تعذّرت إعادة تسمية هذه المحادثة.",
+      "saveRename": "حفظ",
+      "searchPlaceholder": "البحث في المحادثات...",
+      "title": "سجل المحادثات",
+      "unpin": "إلغاء التثبيت",
+      "untitled": "بلا عنوان"
+    },
+    "historyLoadFailed": "تعذّر تحميل سجل الدردشة.",
+    "jumpToLatest": "الانتقال إلى الأحدث",
+    "newChat": "محادثة جديدة",
+    "prompts": {
+      "analyzeWallet": "تحليل محفظتي",
+      "compareProtocols": "قارن بين Sceptre وFirelight",
+      "explainDelegations": "اشرح تفويضاتي",
+      "increaseRewards": "كيف يمكنني زيادة مكافآت FTSO الخاصة بي؟",
+      "rewardsDecreased": "لماذا انخفضت مكافآتي؟",
+      "stakingOpportunities": "أظهر فرص التخزين الخاصة بي"
+    },
+    "sendError": "حدث خطأ ما. حاول مرة أخرى.",
+    "wallet": {
+      "analyzing": "جارٍ التحليل:",
+      "guestLabel": "تحليل المحفظة",
+      "locked": {
+        "body": "سجّل الدخول للسماح لـ FlareGPT بقراءة محافظك الأساسية وقائمة المراقبة تلقائيًا، بدلاً من كتابة عنوان في كل سؤال.",
+        "connectCta": "ربط المحفظة",
+        "signInCta": "سجل الدخول",
+        "signingIn": "تأكيد في محفظتك...",
+        "title": "فتح تحليل المحفظة"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. تم التطوير على شبكة Flare Network.",
     "disclaimer": "ليست استشارة مالية. البيانات المقدمة هي لأغراض معلوماتية فقط.",
-    "terms": "الشروط وإخلاء المسؤولية",
-    "donate": "تَبرَّع"
+    "donate": "تَبرَّع",
+    "terms": "الشروط وإخلاء المسؤولية"
   },
   "help": {
+    "askFlareGptCta": "اسأل FlareGPT للمساعدة",
+    "askFlareGptLead": "لم تجد ما تبحث عنه؟",
+    "contact": {
+      "comingSoon": "قريبًا",
+      "emailLabel": "البريد الإلكتروني",
+      "telegramLabel": "Telegram",
+      "twitterHint": "تابعنا وأرسل لنا رسالة",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "قد لا تكون محفظتك متصلة، أو قد لا تزال لوحة التحكم تقوم بمزامنة بيانات البلوكشين. تحقق من اختيار المحفظة والشبكة الصحيحتين.",
@@ -30,10 +348,12 @@
     ],
     "faqTitle": "الأسئلة الشائعة",
     "featureGuides": "أدلة الميزات",
+    "flareGptGuideDescription": "اطرح أسئلة حول محفظتك ومكافآتك وشبكة Flare بلغة بسيطة وطبيعية.",
     "gettingStarted": "ابدأ هنا",
     "headerDesc": "أدلة وإجابات ودعم لمساعدتك على الاستفادة القصوى من لوحة تحكم FlareGPT.",
     "noFaqs": "لا توجد أسئلة شائعة مطابقة لبحثك.",
     "noGuides": "لا توجد أدلة مطابقة لبحثك.",
+    "searchClear": "مسح البحث",
     "searchPlaceholder": "ابحث في الأدلة أو الأسئلة الشائعة...",
     "searchSub": "ابحث في أدلة الميزات والأسئلة الشائعة، أو اعثر على طريقة أخرى للتواصل معنا.",
     "searchTitle": "كل ما تحتاجه للبدء",
@@ -65,63 +385,70 @@
       }
     ],
     "stillNeedHelp": "هل ما زلت بحاجة إلى مساعدة؟",
-    "supportDesc": "أسرع طريقة للتواصل معنا حاليًا هي عبر X. دعم البريد الإلكتروني وتيليجرام قادم قريبًا.",
-    "searchClear": "مسح البحث",
-    "flareGptGuideDescription": "اطرح أسئلة حول محفظتك ومكافآتك وشبكة Flare بلغة بسيطة وطبيعية.",
-    "askFlareGptLead": "لم تجد ما تبحث عنه؟",
-    "askFlareGptCta": "اسأل FlareGPT للمساعدة",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "تابعنا وأرسل لنا رسالة",
-      "telegramLabel": "Telegram",
-      "emailLabel": "البريد الإلكتروني",
-      "comingSoon": "قريبًا"
-    }
+    "supportDesc": "أسرع طريقة للتواصل معنا حاليًا هي عبر X. دعم البريد الإلكتروني وتيليجرام قادم قريبًا."
   },
   "navbar": {
+    "addressCopied": "تم نسخ العنوان",
     "askFlareGPT": "اسأل FlareGPT",
-    "mainnetStatus": "شبكة Flare الرئيسية",
-    "connectWallet": "ربط المحفظة",
-    "primaryWalletSection": "المحفظة الأساسية",
     "badgePrimary": "أساسية",
+    "badgeSignIn": "تسجيل الدخول",
     "badgeWatchlist": "قائمة المراقبة",
-    "disconnectWallet": "قطع اتصال المحفظة",
+    "balancesHiddenLabel": "الأرصدة مخفية",
     "configureWatchlistWallets": "إعداد محافظ قائمة المراقبة",
-    "watchlistSection": "قائمة المراقبة ({{current}}/{{max}})",
-    "addressCopied": "تم نسخ العنوان إلى الحافظة",
+    "connectWallet": "ربط المحفظة",
     "copyFailed": "تعذر نسخ العنوان",
+    "disconnectWallet": "قطع اتصال المحفظة",
     "flareGptFabHint": "يفتح FlareGPT الآن من هنا",
     "hideBalances": "إخفاء الأرصدة",
+    "mainnetStatus": "شبكة Flare الرئيسية",
+    "primaryWalletSection": "المحفظة الأساسية",
     "showBalances": "إظهار الأرصدة",
-    "balancesHiddenLabel": "الأرصدة مخفية",
     "signIn": "تسجيل الدخول",
+    "signInBackgroundHint": "محفظتك المتصلة بحاجة إلى تسجيل الدخول",
     "signingIn": "جارٍ تسجيل الدخول…",
     "signInPrompt": "وقّع رسالة للتحقق من هذه المحفظة والمتابعة.",
-    "badgeSignIn": "تسجيل الدخول",
-    "signInBackgroundHint": "محفظتك المتصلة بحاجة إلى تسجيل الدخول"
+    "watchlistSection": "قائمة المراقبة ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "داكن",
+      "light": "فاتح",
+      "system": "النظام"
+    },
     "cards": {
       "app": "التطبيق",
       "blur": "فلتر الضوء الأزرق",
       "chartType": "نوع الرسم البياني",
       "connectedWallets": "المحافظ المتصلة",
       "currency": "عرض العملة",
+      "defaultLandingPage": "صفحة البداية الافتراضية",
+      "defaultWallet": "المحفظة الافتراضية",
       "governanceAlerts": "تنبيهات الحوكمة",
+      "hideBalances": "إخفاء أرصدة المحفظة",
       "language": "اللغة",
       "links": "الروابط",
       "logout": "تسجيل الخروج",
+      "reduceMotion": "تقليل الحركة",
       "rewardsAlerts": "تنبيهات المكافآت",
+      "tableDensity": "كثافة الجدول",
       "theme": "المظهر",
       "themeMode": "الوضع الفاتح / الداكن",
       "timeframe": "الإطار الزمني",
       "walletCapacity": "سعة المحفظة",
-      "walletPreferences": "تفضيلات المحفظة",
-      "defaultWallet": "المحفظة الافتراضية",
-      "defaultLandingPage": "صفحة البداية الافتراضية",
-      "tableDensity": "كثافة الجدول",
-      "reduceMotion": "تقليل الحركة",
-      "hideBalances": "إخفاء أرصدة المحفظة"
+      "walletPreferences": "تفضيلات المحفظة"
+    },
+    "dataStorage": {
+      "accountSubtitle": "مُتزامن مع حسابك على الخادم.",
+      "accountTitle": "بيانات الحساب",
+      "clear": "مسح",
+      "confirmClear": "تأكيد؟",
+      "conversations": "محادثات FlareGPT",
+      "conversationsClearFailed": "تعذّر مسح سجل الدردشة. حاول مرة أخرى.",
+      "conversationsDescription": "يمسح سجل محادثات FlareGPT من حسابك. لا يمكن التراجع عن هذا الإجراء.",
+      "localSubtitle": "يُخزَّن في هذا المتصفح فقط. مسحه فوري وآمن.",
+      "localTitle": "البيانات المحلية",
+      "walletCache": "ذاكرة التخزين المؤقت لنشاط المحفظة",
+      "walletCacheDescription": "يمسح سجل المعاملات المخزَّن مؤقتًا. سيتم إعادة جلبه عند الزيارة التالية."
     },
     "description": "إدارة المحافظ، التفضيلات، الموقع، وخيارات العرض.",
     "descriptions": {
@@ -129,18 +456,33 @@
       "blur": "تقليل إجهاد العين باستخدام درجة لون دافئة للشاشة",
       "chartType": "تعيين هندسة النمط المرئي الافتراضي للمصفوفات النظامية.",
       "currency": "اختر عرض العملة الأساسية للأصل.",
+      "defaultLandingPage": "اختر الصفحة التي تُفتح أولاً عند تشغيل التطبيق.",
+      "defaultWallet": "تصبح هذه المحفظة نشطة عندما لا يمكن استعادة جلسة سابقة.",
+      "hideBalances": "تمويه الأرصدة والمبالغ في جميع أنحاء لوحة التحكم للخصوصية.",
       "language": "اختر لغة عرض الواجهة الافتراضية الخاصة بك.",
       "links": "مراجع الوثائق العالمية وروابط تفاعل الفريق.",
       "logout": "تسجيل الخروج من FlareGPT على هذا الجهاز. ستحتاج إلى توقيع رسالة جديدة لتسجيل الدخول مرة أخرى.",
+      "reduceMotion": "تقليل الحركات إلى الحد الأدنى حتى إذا لم يكن نظام التشغيل لديك يحتوي على تفضيل محدد.",
+      "tableDensity": "تباعد مريح أو عرض أكثر إحكامًا للجداول الكثيفة.",
+      "theme": "اختر فاتحًا أو داكنًا، أو اتبع إعداد نظامك.",
       "timeframe": "تحديد مقاييس فترة النافذة الافتراضية على الرسوم البيانية المرئية.",
       "walletCapacity": "حدود النظام التي تتبع مجمعات سعة التخصيص.",
-      "theme": "اختر فاتحًا أو داكنًا، أو اتبع إعداد نظامك.",
-      "walletPreferences": "اختر المحفظة التي تُفتح بها لوحة التحكم.",
-      "defaultWallet": "تصبح هذه المحفظة نشطة عندما لا يمكن استعادة جلسة سابقة.",
-      "defaultLandingPage": "اختر الصفحة التي تُفتح أولاً عند تشغيل التطبيق.",
-      "tableDensity": "تباعد مريح أو عرض أكثر إحكامًا للجداول الكثيفة.",
-      "reduceMotion": "تقليل الحركات إلى الحد الأدنى حتى إذا لم يكن نظام التشغيل لديك يحتوي على تفضيل محدد.",
-      "hideBalances": "تمويه الأرصدة والمبالغ في جميع أنحاء لوحة التحكم للخصوصية."
+      "walletPreferences": "اختر المحفظة التي تُفتح بها لوحة التحكم."
+    },
+    "flareGpt": {
+      "syncStatusConnected": "تم تسجيل الدخول. تتزامن محادثاتك عبر كل جهاز ومتصفح.",
+      "syncStatusGuest": "المحادثات مؤقتة في هذا المتصفح ولن يتم حفظها. سجّل الدخول للاحتفاظ بها.",
+      "syncStatusTitle": "حالة المزامنة"
+    },
+    "groups": {
+      "account": "الحساب",
+      "personalization": "التخصيص",
+      "walletsAndData": "المحافظ والبيانات"
+    },
+    "links": {
+      "docs": "مستندات",
+      "github": "GitHub",
+      "twitter": "منصة التدوين المصغر: تويتر"
     },
     "notifications": {
       "governance": "تحديثات المقترحات",
@@ -152,223 +494,220 @@
       "area": "مساحي",
       "asia": "آسيا",
       "candlestick": "الشموع اليابانية",
+      "comfortable": "مريح",
+      "compact": "مضغوط",
       "europe": "أوروبا",
       "global": "عالمي",
       "high": "مرتفع",
       "line": "خطي",
       "low": "منخفض",
       "medium": "متوسط",
-      "off": "معطل",
-      "comfortable": "مريح",
-      "compact": "مضغوط"
+      "off": "معطل"
     },
     "security": {
-      "logout": "تسجيل الخروج",
-      "confirmLogout": "تأكيد؟"
+      "confirmLogout": "تأكيد؟",
+      "logout": "تسجيل الخروج"
     },
     "subtitles": {
       "About": "نظرة عامة على سجلات النشر النظامية، وقواعد الترجمة، وفهارس الأصول.",
+      "Accessibility": "اضبط تفضيلات الحركة والتفاعل.",
+      "Appearance": "اختر شكل FlareGPT.",
       "Display": "خصّص العرض الافتراضي وكيفية عرض بيانات لوحة التحكم.",
+      "FlareGpt": "أدر كيفية تذكر FlareGPT لمحادثاتك.",
       "Notifications": "إدارة الأحداث ذات الأولوية النظامية ونقاط نهاية تتبع مسار التسليم.",
       "Preferences": "تفضيلات اللغة والعملة.",
       "Security": "الحفاظ على حواجز جلسات الهوية النشطة وقواعد الوصول للتحقق من أوراق الاعتماد.",
-      "Wallets": "ربط وبناء التواقيع عبر الحسابات اللامركزية الخارجية العالمية.",
-      "Appearance": "اختر شكل FlareGPT.",
-      "Accessibility": "اضبط تفضيلات الحركة والتفاعل.",
-      "FlareGpt": "أدر كيفية تذكر FlareGPT لمحادثاتك."
+      "Wallets": "ربط وبناء التواقيع عبر الحسابات اللامركزية الخارجية العالمية."
     },
     "tabs": {
       "About": "حول",
+      "Accessibility": "إمكانية الوصول",
+      "Appearance": "المظهر",
+      "DataStorage": "البيانات والتخزين",
       "Display": "لوحة التحكم",
+      "FlareGpt": "FlareGPT",
       "Notifications": "الإشعارات",
       "Preferences": "عام",
       "Security": "الأمان",
-      "Wallets": "المحافظ",
-      "Appearance": "المظهر",
-      "Accessibility": "إمكانية الوصول",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "البيانات والتخزين"
+      "Wallets": "المحافظ"
     },
     "title": "الإعدادات",
     "wallets": {
       "active": "نشط",
       "add": "إضافة محفظة ({{current}}/{{max}})",
+      "addFormTitle": "إضافة حساب محفظة قائمة المتابعة",
+      "adding": "جارٍ الإضافة…",
+      "addressPlaceholder": "0x... عنوان محفظة مضيئة",
       "available": "المتاح",
+      "cancelRename": "إلغاء",
+      "confirmRemove": "تأكيد الإزالة؟",
       "connectAction": "ربط المحفظة (متصل {{current}}، متبقي {{remaining}})",
+      "connectActionUnlimited": "إضافة محفظة ({{current}} متتبَّعة)",
       "connected": "متصل",
+      "duplicateAddress": "هذا العنوان موجود بالفعل في قائمة المتابعة الخاصة بك.",
+      "duplicateNickname": "توجد بالفعل محفظة في قائمة المتابعة بهذا الاسم المستعار. يرجى اختيار اسم مستعار مختلف.",
       "empty": "لم يتم ربط أي محافظ بعد",
       "emptyTerminal": "لا توجد محفظة متصلة. يرجى ربط أصول الجهاز الطرفي للمتابعة.",
-      "limit": "يمكنك ربط ما يصل إلى {{max}} محافظ",
-      "limitReached": "تم الوصول إلى حد المحافظ ({{current}}/{{max}})",
-      "maximum": "الحد الأقصى",
-      "remainingSlots": "الفتحات المتبقية",
-      "addFormTitle": "إضافة حساب محفظة قائمة المتابعة",
-      "addressPlaceholder": "0x... عنوان محفظة مضيئة",
+      "guestLimitBenefitBackup": "الحفاظ على نسخة احتياطية من قائمة المتابعة",
+      "guestLimitBenefitMore": "تخزين أكثر من 3 محافظ",
+      "guestLimitBenefitSync": "مزامنة قائمة المتابعة عبر أجهزتك",
+      "guestLimitTitle": "سجّل الدخول لتتبع المزيد من المحافظ",
       "invalidAddress": "يرجى إدخال عنوان شبكة EVM مضيئة صالح (بدءًا من 0x).",
       "labelPlaceholder": "تسمية اسم الحساب (على سبيل المثال، التخزين البارد)",
+      "limit": "يمكنك ربط ما يصل إلى {{max}} محافظ",
+      "limitReached": "تم الوصول إلى حد المحافظ ({{current}}/{{max}})",
       "liveConnected": "اتصال مباشر",
       "manageSubtitle": "قم بإدارة اتصالات Web3 النشطة وحسابات تتبع المحفظة للقراءة فقط.",
+      "maximum": "الحد الأقصى",
+      "noDefaultSelected": "لم يتم التحديد",
+      "noLimit": "أضف أي عدد تريده من المحافظ.",
+      "noSearchResults": "لا توجد محافظ تطابق بحثك.",
+      "notFoundError": "لم تعد هذه المحفظة ضمن قائمة المتابعة الخاصة بك.",
       "readOnly": "للقراءة فقط",
       "registrationFailed": "فشل تسجيل العنوان. تحقق مما إذا كان مكررًا أو إذا تم ملء الخانات.",
-      "tracked": "متعقب",
+      "remainingSlots": "الفتحات المتبقية",
       "remove": "إزالة",
-      "confirmRemove": "تأكيد الإزالة؟",
-      "noDefaultSelected": "لم يتم التحديد",
       "rename": "إعادة تسمية",
-      "cancelRename": "إلغاء",
-      "connectActionUnlimited": "إضافة محفظة ({{current}} متتبَّعة)",
-      "noLimit": "أضف أي عدد تريده من المحافظ.",
-      "duplicateAddress": "هذا العنوان موجود بالفعل في قائمة المتابعة الخاصة بك.",
-      "guestLimitTitle": "سجّل الدخول لتتبع المزيد من المحافظ",
-      "guestLimitBenefitSync": "مزامنة قائمة المتابعة عبر أجهزتك",
-      "guestLimitBenefitMore": "تخزين أكثر من 3 محافظ",
-      "guestLimitBenefitBackup": "الحفاظ على نسخة احتياطية من قائمة المتابعة",
-      "searchPlaceholder": "بحث في {{count}} محفظة...",
-      "noSearchResults": "لا توجد محافظ تطابق بحثك.",
-      "duplicateNickname": "توجد بالفعل محفظة في قائمة المتابعة بهذا الاسم المستعار. يرجى اختيار اسم مستعار مختلف.",
-      "notFoundError": "لم تعد هذه المحفظة ضمن قائمة المتابعة الخاصة بك.",
       "saveEdit": "حفظ",
-      "adding": "جارٍ الإضافة…"
-    },
-    "links": {
-      "docs": "مستندات",
-      "github": "GitHub",
-      "twitter": "منصة التدوين المصغر: تويتر"
-    },
-    "groups": {
-      "personalization": "التخصيص",
-      "walletsAndData": "المحافظ والبيانات",
-      "account": "الحساب"
-    },
-    "appearance": {
-      "light": "فاتح",
-      "dark": "داكن",
-      "system": "النظام"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "حالة المزامنة",
-      "syncStatusConnected": "تم تسجيل الدخول — تتم مزامنة محادثاتك عبر كل أجهزتك ومتصفحاتك.",
-      "syncStatusGuest": "المحادثات مؤقتة في هذا المتصفح ولن يتم حفظها. سجّل الدخول للاحتفاظ بها."
-    },
-    "dataStorage": {
-      "localTitle": "البيانات المحلية",
-      "localSubtitle": "مخزّنة في هذا المتصفح فقط — مسحها فوري وآمن.",
-      "walletCache": "ذاكرة التخزين المؤقت لنشاط المحفظة",
-      "walletCacheDescription": "يمسح سجل المعاملات المخزن مؤقتًا — ستتم إعادة جلبه في الزيارة التالية.",
-      "conversations": "محادثات FlareGPT",
-      "conversationsDescription": "يمسح سجل محادثات FlareGPT من حسابك. لا يمكن التراجع عن هذا الإجراء.",
-      "clear": "مسح",
-      "confirmClear": "تأكيد؟",
-      "accountTitle": "بيانات الحساب",
-      "accountSubtitle": "مُتزامن مع حسابك على الخادم.",
-      "conversationsClearFailed": "تعذّر مسح سجل المحادثات — يرجى المحاولة مرة أخرى."
+      "searchPlaceholder": "بحث في {{count}} محفظة...",
+      "searchPlaceholder_zero": "",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
+      "searchPlaceholder_two": "",
+      "searchPlaceholder_few": "",
+      "searchPlaceholder_many": "",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "متعقب"
     }
   },
   "sidebar": {
+    "activeWallet": "نشط: {{address}}",
+    "addWatchlistWallet": "+ إضافة محفظة قائمة المتابعة",
     "connectWallet": "ربط المحفظة",
+    "defiProtocols": "بروتوكولات Defi",
     "disconnect": "قطع الاتصال",
+    "donate": "تَبرَّع",
+    "feeds": "خلاصات",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "مكافآت FTSO",
-    "defiProtocols": "بروتوكولات Defi",
     "governance": "الحوكمة",
     "helpCenter": "مركز المساعدة",
+    "loops": "العائد",
     "notConnected": "غير متصل",
     "overview": "نظرة عامة",
     "rflrTracker": "متتبع rFLR",
     "settings": "الإعدادات",
-    "walletActivity": "نشاط المحفظة",
-    "walletConnected": "المحفظة متصلة",
-    "loops": "العائد",
-    "feeds": "خلاصات",
-    "donate": "تَبرَّع",
-    "addWatchlistWallet": "+ إضافة محفظة قائمة المتابعة",
-    "activeWallet": "نشط: {{address}}",
     "signInRequired": "التسجيل مطلوب",
-    "signInRequiredHint": "استخدم قائمة المحفظة في الشريط العلوي لتسجيل الدخول."
+    "signInRequiredHint": "استخدم قائمة المحفظة في الشريط العلوي لتسجيل الدخول.",
+    "walletActivity": "نشاط المحفظة",
+    "walletConnected": "المحفظة متصلة"
   },
   "wallet": {
     "activity": {
-      "subtitle": "مراقبة تفاعلات البلوك تشين الواردة والصادرة في الوقت الفعلي.",
-      "title": "النشاط النهائي الأخير",
-      "description": "كل معاملة مفهرسة في محفظتك النشطة، مجمّعة وقابلة للبحث.",
-      "refresh": "تحديث",
-      "connectToSee": "اتصل بمحفظة أو اخترها لرؤية نشاط معاملاتها.",
-      "couldntLoad": "تعذّر تحميل نشاط المحفظة.",
-      "notifier": {
-        "ready": "انتهى تحميل نشاط محفظتك."
-      },
-      "loading": {
-        "title": "جارٍ فهرسة نشاط محفظتك",
-        "subtitle": "قد تستغرق المحافظ الكبيرة بضع دقائق عند التحميل الأول. لا تتردد في استكشاف باقي لوحة التحكم — سنُعلمك عند الانتهاء.",
-        "elapsed": "مرّت {{seconds}} ثانية"
-      },
-      "empty": {
-        "title": "لا يوجد نشاط بعد",
-        "description": "لا تحتوي هذه المحفظة على معاملات مفهرسة."
-      },
-      "noResults": {
-        "title": "لا توجد معاملات مطابقة",
-        "description": "حاول تعديل بحثك أو عوامل التصفية."
-      },
-      "kpi": {
-        "totalTransactions": "إجمالي المعاملات",
-        "uniqueAssets": "الأصول الفريدة",
-        "walletAge": "عمر المحفظة",
-        "walletAgeYears": "{{count}} سنة",
-        "walletAgeMonths": "{{count}} أشهر",
-        "walletAgeDays": "{{count}} أيام",
-        "lastActive": "آخر نشاط",
-        "justNow": "الآن",
-        "minutesAgo": "منذ {{count}} دقيقة",
-        "hoursAgo": "منذ {{count}} ساعة",
-        "daysAgo": "منذ {{count}} يوم"
-      },
-      "insights": {
-        "title": "رؤى سريعة",
-        "mostUsedAsset": "الأصل الأكثر استخدامًا",
-        "mostCommonAction": "الإجراء الأكثر شيوعًا",
-        "mostActiveDay": "أكثر الأيام نشاطًا",
-        "mostActiveMonth": "أكثر الأشهر نشاطًا",
-        "txCount": "{{count}} معاملة"
-      },
       "charts": {
+        "actionBreakdown": "توزيع الإجراءات",
+        "actionBreakdownSubtitle": "عدد المعاملات حسب نوع الإجراء",
         "activityByDay": "النشاط حسب اليوم",
         "activityByDaySubtitle": "عدد المعاملات لكل يوم",
         "assetBreakdown": "توزيع الأصول",
         "assetBreakdownSubtitle": "عدد المعاملات حسب الأصل",
-        "actionBreakdown": "توزيع الإجراءات",
-        "actionBreakdownSubtitle": "عدد المعاملات حسب نوع الإجراء",
+        "tabActions": "الإجراءات",
         "tabActivity": "النشاط",
-        "tabAssets": "الأصول",
-        "tabActions": "الإجراءات"
+        "tabAssets": "الأصول"
       },
-      "toolbar": {
-        "searchPlaceholder": "البحث حسب الهاش أو الأصل...",
-        "sort": {
-          "newest": "الأحدث",
-          "oldest": "الأقدم",
-          "amount": "المبلغ"
-        },
-        "exportCsv": "تصدير CSV",
-        "exportJson": "تصدير JSON",
-        "export": "تصدير"
+      "connectToSee": "اتصل بمحفظة أو اخترها لرؤية نشاط معاملاتها.",
+      "couldntLoad": "تعذّر تحميل نشاط المحفظة.",
+      "description": "كل معاملة مفهرسة في محفظتك النشطة، مجمّعة وقابلة للبحث.",
+      "drawer": {
+        "action": "الإجراء",
+        "asset": "الأصل",
+        "blockNumber": "رقم الكتلة",
+        "close": "إغلاق",
+        "copyFailed": "تعذّر نسخ الهاش",
+        "hashCopied": "تم نسخ هاش المعاملة",
+        "next": "المعاملة التالية",
+        "previous": "المعاملة السابقة",
+        "timestamp": "الطابع الزمني",
+        "title": "تفاصيل المعاملة",
+        "transactionHash": "هاش المعاملة",
+        "viewOnExplorer": "عرض على FlareScan"
+      },
+      "empty": {
+        "description": "لا تحتوي هذه المحفظة على معاملات مفهرسة.",
+        "title": "لا يوجد نشاط بعد"
       },
       "feed": {
         "ariaLabel": "عرض {{shown}} من {{total}} معاملة"
       },
-      "drawer": {
-        "title": "تفاصيل المعاملة",
-        "previous": "المعاملة السابقة",
-        "next": "المعاملة التالية",
-        "close": "إغلاق",
-        "action": "الإجراء",
-        "asset": "الأصل",
-        "blockNumber": "رقم الكتلة",
-        "timestamp": "الطابع الزمني",
-        "transactionHash": "هاش المعاملة",
-        "hashCopied": "تم نسخ هاش المعاملة",
-        "copyFailed": "تعذّر نسخ الهاش",
-        "viewOnExplorer": "عرض على FlareScan"
+      "insights": {
+        "mostActiveDay": "أكثر الأيام نشاطًا",
+        "mostActiveMonth": "أكثر الأشهر نشاطًا",
+        "mostCommonAction": "الإجراء الأكثر شيوعًا",
+        "mostUsedAsset": "الأصل الأكثر استخدامًا",
+        "title": "رؤى سريعة",
+        "txCount": "{{count}} معاملة",
+        "txCount_zero": "",
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_two": "",
+        "txCount_few": "",
+        "txCount_many": "",
+        "txCount_other": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "منذ {{count}} يوم",
+        "daysAgo_zero": "",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "daysAgo_two": "",
+        "daysAgo_few": "",
+        "daysAgo_many": "",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "منذ {{count}} ساعة",
+        "hoursAgo_zero": "",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "hoursAgo_two": "",
+        "hoursAgo_few": "",
+        "hoursAgo_many": "",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "الآن",
+        "lastActive": "آخر نشاط",
+        "minutesAgo": "منذ {{count}} دقيقة",
+        "minutesAgo_zero": "",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
+        "minutesAgo_two": "",
+        "minutesAgo_few": "",
+        "minutesAgo_many": "",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "إجمالي المعاملات",
+        "uniqueAssets": "الأصول الفريدة",
+        "walletAge": "عمر المحفظة",
+        "walletAgeDays": "{{count}} أيام",
+        "walletAgeMonths": "{{count}} أشهر",
+        "walletAgeYears": "{{count}} سنة"
+      },
+      "loading": {
+        "elapsed": "مرّت {{seconds}} ثانية",
+        "subtitle": "قد تستغرق المحافظ الكبيرة بضع دقائق عند التحميل الأول. لا تتردد في استكشاف بقية لوحة التحكم. سنُعلمك عندما تصبح جاهزة.",
+        "title": "جارٍ فهرسة نشاط محفظتك"
+      },
+      "noResults": {
+        "description": "حاول تعديل بحثك أو عوامل التصفية.",
+        "title": "لا توجد معاملات مطابقة"
+      },
+      "notifier": {
+        "ready": "تم تحميل نشاط المحفظة."
+      },
+      "refresh": "تحديث",
+      "subtitle": "مراقبة تفاعلات البلوك تشين الواردة والصادرة في الوقت الفعلي.",
+      "title": "النشاط النهائي الأخير",
+      "toolbar": {
+        "export": "تصدير",
+        "exportCsv": "تصدير CSV",
+        "exportJson": "تصدير JSON",
+        "searchPlaceholder": "البحث حسب الهاش أو الأصل...",
+        "sort": {
+          "amount": "المبلغ",
+          "newest": "الأحدث",
+          "oldest": "الأقدم"
+        }
       }
     },
     "stats": {
@@ -395,285 +734,6 @@
       "contract": "تنفيذ العقود",
       "received": "استلمه",
       "sent": "مُرسل"
-    }
-  },
-  "comingSoon": {
-    "badge": "قريباً",
-    "description": "نحن نبني هذه الميزة. تحقَّق مرة أخرى قريباً."
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "يبدو أن WalletConnect محظور بواسطة Brave Shields.",
-        "tryTitle": "جرّب أحد الخيارات التالية:",
-        "shieldsOff": "أوقف تشغيل Brave Shields لهذا الموقع وحاول مرة أخرى.",
-        "privateWindow": "افتح الموقع في نافذة Brave خاصة.",
-        "useChrome": "استخدم Google Chrome أو متصفحًا آخر مدعومًا إذا استمرت المشكلة."
-      },
-      "generic": "حدث احتكاك غير متوقع في الاتصال. يرجى المحاولة مرة أخرى أو استخدام محفظة أخرى.",
-      "providerGone": "يبدو أن هذه المحفظة لم تعد تستجيب — ربما تم تحديثها أو إزالتها. تحديث الصفحة يجب أن يحل هذه المشكلة.",
-      "pending": "طلب الاتصال مفتوح بالفعل. يرجى فتح لوحة تمديد محفظتك.",
-      "rejected": "تم إلغاء طلب الاتصال في محفظتك.",
-      "timeout": "تعذّر الوصول إلى WalletConnect. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
-      "wrongNetwork": "يرجى تبديل شبكة محفظتك النشطة إلى Flare Mainnet."
-    },
-    "install": "تثبيت",
-    "installHint": "لا زلت لا ترى محفظتك؟ قد يساعد تحديث الصفحة.",
-    "refresh": "تحديث",
-    "mobileHint": "على الهاتف المحمول، افتح FlareGPT في متصفح محفظتك المدمج للحصول على أفضل تجربة اتصال. عند مسح رمز QR، استخدم ماسح تطبيق محفظتك بدلاً من كاميرا هاتفك للحصول على اتصال أكثر موثوقية.",
-    "connecting": "جارٍ الاتصال…",
-    "recommended": "الخيار المقترح",
-    "subtitle": "اختر محفظتك المفضلة للاتصال بشبكة Flare.",
-    "title": "ربط المحفظة",
-    "viaWalletConnect": "عبر WalletConnect"
-  },
-  "flareWidget": {
-    "close": "خاتمة",
-    "collapse": "هبوط",
-    "expand": "إظهار الرقم بالكامل",
-    "openFullPage": "فتح الصفحة الكاملة"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "تحليل محفظتي",
-      "increaseRewards": "كيف يمكنني زيادة مكافآت FTSO الخاصة بي؟",
-      "explainDelegations": "اشرح تفويضاتي",
-      "compareProtocols": "قارن بين Sceptre وFirelight",
-      "rewardsDecreased": "لماذا انخفضت مكافآتي؟",
-      "stakingOpportunities": "أظهر فرص التخزين الخاصة بي"
-    },
-    "wallet": {
-      "analyzing": "جارٍ التحليل:"
-    },
-    "empty": {
-      "title": "اسأل FlareGPT أي شيء",
-      "subtitle": "احصل على إجابات حول محفظتك أو مكافآتك أو تفويضاتك أو نظام Flare البيئي."
-    },
-    "composer": {
-      "placeholder": "اسأل FlareGPT...",
-      "send": "إرسال",
-      "stop": "إيقاف التوليد",
-      "disclaimer": "قد يرتكب FlareGPT أخطاء. تحقق من المعلومات المهمة قبل التصرف بناءً عليها."
-    },
-    "actions": {
-      "copy": "نسخ",
-      "regenerate": "إعادة إنشاء الرد",
-      "copied": "تم نسخ الرسالة",
-      "copyFailed": "فشل النسخ"
-    },
-    "jumpToLatest": "الانتقال إلى الأحدث",
-    "historyLoadFailed": "تعذّر تحميل سجل محادثاتك.",
-    "sendError": "حدث خطأ ما — يرجى المحاولة مرة أخرى.",
-    "newChat": "محادثة جديدة",
-    "deleteConversation": {
-      "button": "حذف المحادثة",
-      "confirm": "تأكيد؟"
-    },
-    "deleteConversationFailed": "تعذّر حذف هذه المحادثة. يرجى المحاولة مرة أخرى.",
-    "history": {
-      "title": "سجل المحادثات",
-      "newChat": "محادثة جديدة",
-      "searchPlaceholder": "البحث في المحادثات...",
-      "empty": "لا توجد محادثات بعد",
-      "noResults": "لا توجد محادثات مطابقة لبحثك",
-      "untitled": "بلا عنوان",
-      "moreActions": "إجراءات إضافية",
-      "pin": "تثبيت",
-      "unpin": "إلغاء التثبيت",
-      "rename": "إعادة تسمية",
-      "delete": "حذف",
-      "pinLimitReached": "يمكنك تثبيت حتى {{count}} محادثات",
-      "renameFailed": "تعذّرت إعادة تسمية هذه المحادثة.",
-      "openButton": "السجل",
-      "saveRename": "حفظ",
-      "cancelRename": "إلغاء"
-    }
-  },
-  "dashboard": {
-    "description": "نظرة سريعة على بيانات شبكة Flare الحية ومخططات الأسعار ونشاط المحفظة.",
-    "common": {
-      "retry": "أعد المحاولة",
-      "retrying": "جارٍ إعادة المحاولة ...",
-      "networkHiccup": "عادة ما يكون هذا زوبعة مؤقتة في الشبكة.",
-      "noWalletSelected": "لم يتم تحديد محفظة",
-      "yes": "نعم",
-      "no": "لا"
-    },
-    "stats": {
-      "flrPrice": "سعر FLR",
-      "marketCap": "رأس مال السوق",
-      "volume24h": "حجم التداول على مدار 24 ساعة",
-      "tvl": "TVL",
-      "couldntLoad": "تعذر تحميل نظرة عامة على السوق"
-    },
-    "chart": {
-      "couldntLoad": "تعذر تحميل سجل أسعار الطابق الأرضي"
-    },
-    "networkActivity": {
-      "title": "نشاط الشبكة.",
-      "live": "[ترجمة المصطلح: Live]",
-      "gwei": "جوي",
-      "gasPrice": "سعر الغاز",
-      "tps": "مستشعر موضع الدواسة / مستشعر موضع البخاخ",
-      "couldntLoad": "تعذر تحميل بيانات الشبكة",
-      "collectingSamples": "جمع عينات حية — يملأ المخطط عند وصول بيانات جديدة."
-    },
-    "walletBalances": {
-      "title": "أرصدة المحفظة",
-      "connectToSeeBalances": "قم بتوصيل أو إضافة محفظة في الإعدادات لرؤية الأرصدة.",
-      "couldntLoad": "تعذر تحميل أرصدة المحفظة"
-    },
-    "ftso": {
-      "title": "وفد FTSO",
-      "connected": "[ترجمة المصطلح: Connected]",
-      "readOnly": "للقراءة فقط",
-      "connectToSeeRewards": "قم بتوصيل محفظة أو إضافتها في الإعدادات لرؤية المكافآت.",
-      "couldntLoad": "تعذر تحميل محفظة FTSO",
-      "delegatedWflr": "تفويض WFLR",
-      "unclaimedFlr": "الطابق الأرضي غير المطالب به",
-      "activeDelegations": "الوفود النشطة",
-      "estHourlyEarning": "الدخل المقدر بالساعة",
-      "claimRewards": "المطالبة بالجوائز",
-      "readOnlyCannotClaim": "للقراءة فقط — لا يمكن المطالبة",
-      "switchToClaim": "قم بالتبديل إلى محفظتك المتصلة للمطالبة بالمكافآت",
-      "noUnclaimedYet": "لا توجد مكافآت لم تتم المطالبة بها بعد",
-      "claimComingSoon": "المطالبة غير متاحة بعد — قريبًا."
-    },
-    "claimsHistory": {
-      "title": "سجل المطالبات",
-      "connectToSee": "قم بتوصيل محفظة أو إضافتها في الإعدادات للاطلاع على سجل المطالبات.",
-      "couldntLoad": "تعذر تحميل سجل المطالبات",
-      "emptyTitle": "لا توجد حقب لم يطالب بها أحد",
-      "emptyDescription": "لقد علقت جميعًا — لا توجد فترات مكافآت معلقة للمطالبة بها."
-    },
-    "delegationsBreakdown": {
-      "title": "تفاصيل الوفود",
-      "tabLabel": "البعثات",
-      "connectToSee": "قم بتوصيل أو إضافة محفظة في الإعدادات لرؤية التفويضات.",
-      "couldntLoad": "تعذر تحميل التفويضات",
-      "emptyTitle": "لا توجد وفود نشطة",
-      "emptyDescription": "قم بتفويض WFLR إلى مزود FTSO لبدء كسب المكافآت."
-    },
-    "apiStatus": {
-      "checking": "جارٍ التحقق من حالة واجهة برمجة التطبيقات...",
-      "operational": "\"جميع الأنظمة جاهزة للعمل.\"",
-      "degraded": "API متدهور"
-    }
-  },
-  "defiProtocols": {
-    "description": "قارن استراتيجيات العائد وتتبع مراكزك عبر خزائن MXRPY وSceptre وFirelight.",
-    "common": {
-      "addressCopied": "تم نسخ العنوان إلى الحافظة",
-      "copyFailed": "تعذر نسخ العنوان",
-      "connectToSeePosition": "قم بتوصيل محفظة لرؤية مركزك",
-      "contract": "العقد",
-      "proxyContract": "عقد الوكيل",
-      "poolOwnership": "حصة الملكية في المجمع",
-      "protocolDetails": "تفاصيل البروتوكول",
-      "yourBalance": "رصيدك",
-      "redeemableValue": "القيمة القابلة للاسترداد"
-    },
-    "explorer": {
-      "title": "مستكشف البروتوكولات",
-      "subtitle": "اختر بروتوكولاً لعرض مركزك والتفاصيل"
-    },
-    "kpis": {
-      "protocolsTracked": "البروتوكولات المتابَعة",
-      "bestApr": "أفضل معدل عائد سنوي متاح",
-      "activePositions": "المراكز النشطة"
-    },
-    "mxrpy": {
-      "title": "خزنة MXRPY",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "تعذر تحميل مركزك في MXRPY",
-      "circulatingCaption": "{{shares}} حصة متداولة · {{decimals}} خانات عشرية",
-      "yourShares": "حصص الإيصال الخاصة بك",
-      "category": "خزنة العائد"
-    },
-    "sceptre": {
-      "title": "Sceptre Liquid Staking",
-      "subtitle": "تكديس سائل لـ sFLR",
-      "couldntLoad": "تعذر تحميل مركزك في Sceptre",
-      "exchangeRateLabel": "سعر صرف sFLR / FLR",
-      "totalMinted": "إجمالي الحصص المصدرة",
-      "backedFlr": "FLR الأساسي المضمون",
-      "category": "التكديس السائل"
-    },
-    "firelight": {
-      "title": "خزنة Firelight",
-      "subtitle": "خزنة حماية رأس المال",
-      "couldntLoad": "تعذر تحميل مركزك في Firelight",
-      "backingLabel": "مضاعف ضمان الأصول",
-      "circulatingSupply": "العرض المتداول",
-      "underlyingReserve": "الاحتياطي الأساسي",
-      "insuranceRobust": "التأمين: قوي",
-      "category": "التأمين"
-    },
-    "strategies": {
-      "title": "مقارنة الاستراتيجيات",
-      "subtitle": "اطّلع على أداء FLR المحتمل عبر الاستراتيجيات المختلفة",
-      "amountLabel": "قارن مقابل",
-      "apr": "معدل العائد السنوي",
-      "colStrategy": "الاستراتيجية",
-      "colYield": "العائد المقدر (FLR)",
-      "colTerms": "الشروط",
-      "compoundingLabel": "التركيب",
-      "couldntLoad": "تعذر تحميل مقارنة الاستراتيجيات",
-      "highestApr": "أعلى معدل عائد سنوي",
-      "lockupDays": "قفل لمدة {{count}} يوم",
-      "lockupHours": "قفل لمدة {{count}} ساعة",
-      "noLockup": "بدون قفل",
-      "verdict": "تقييم FlareGPT"
-    }
-  },
-  "donate": {
-    "title": "ادعم FlareGPT",
-    "description": "دعمك يساعد في إبقاء FlareGPT مجانيًا ومستقلاً ومتطورًا باستمرار.",
-    "hero": {
-      "addressLabel": "عنوان المحفظة",
-      "tapToCopy": "اضغط للنسخ",
-      "copyAddress": "نسخ العنوان",
-      "copied": "تم النسخ",
-      "addressCopied": "تم نسخ العنوان إلى الحافظة",
-      "copyFailed": "تعذر نسخ العنوان",
-      "viewOnExplorer": "عرض على {{explorer}}",
-      "multisigNote": "محمية بمحفظة متعددة التوقيع",
-      "qrTitle": "رمز QR لعنوان محفظة التبرعات بعملة {{symbol}}"
-    },
-    "warning": {
-      "title": "أصول {{network}} فقط.",
-      "body": "أرسل فقط {{symbol}} أو رموز {{network}} الأخرى إلى هذا العنوان. الأصول المُرسلة من شبكات أخرى لا يمكن استردادها."
-    },
-    "amounts": {
-      "title": "المبالغ المقترحة",
-      "subtitle": "كل مساهمة تُحدث فرقًا — إليك بعض الأفكار للبدء.",
-      "impactTier1": "يوم واحد من تكاليف API",
-      "impactTier2": "أسبوع واحد من الاستضافة",
-      "impactTier3": "شهر واحد من البنية التحتية",
-      "impactTier4": "تكاملات بروتوكولات جديدة",
-      "copiedToast": "تم نسخ العنوان. شكرًا لتفكيرك في التبرع بمبلغ {{amount}} {{symbol}}."
-    },
-    "funding": {
-      "title": "شفافية التمويل",
-      "subtitle": "نظرة شفافة على تكلفة إبقاء FlareGPT يعمل — لا ضغط، فقط شفافية.",
-      "monthlyInfrastructure": "البنية التحتية الشهرية",
-      "developmentFund": "صندوق التطوير",
-      "raisedOfGoal": "تم جمع {{raised}} من هدف {{goal}}"
-    },
-    "received": {
-      "title": "التبرعات المستلمة",
-      "subtitle": "إجمالي المساهمات المستلمة عبر كل شبكة مدعومة.",
-      "demoData": "بيانات تجريبية"
-    },
-    "support": {
-      "title": "فيما يُستخدم دعمك",
-      "infra": "API والبنية التحتية",
-      "integrations": "تكاملات بروتوكولات جديدة",
-      "free": "إبقاء FlareGPT مجانيًا",
-      "development": "التطوير المستمر"
-    },
-    "closing": {
-      "message": "شكرًا لمساعدتك في إبقاء FlareGPT مستقلاً. كل مساهمة، كبيرة كانت أم صغيرة، تُحدث فرقًا حقيقيًا."
     }
   }
 }

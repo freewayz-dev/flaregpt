@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ChevronUpIcon, WalletIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
+import { ChevronUpIcon, WalletIcon, Cog6ToothIcon, LockClosedIcon } from "@heroicons/react/24/outline";
 
 import { useFlareGptWalletContext } from "@/hooks/useFlareGptWalletContext";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useUIStore } from "@/store/useUIStore";
 import { shortenAddress } from "@/utils/address";
 import { ROUTES } from "@/config/routes";
@@ -26,6 +27,7 @@ export default function WalletContextPill({ onOpenWalletModal }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const setSettingsActiveTab = useUIStore((s) => s.setSettingsActiveTab);
+  const { hasSession, isConnected, isAuthenticating, signIn } = useAuthStatus();
 
   const { allWallets, effectiveWallet, walletMode, walletAddress, setFlareGptWalletContext, maxSlots } =
     useFlareGptWalletContext();
@@ -90,6 +92,81 @@ export default function WalletContextPill({ onOpenWalletModal }) {
     setOpen(false);
     navigate(ROUTES.settings);
   };
+
+  // Connecting alone never gets here — useAuthSync auto-prompts a
+  // signature the moment a wallet connects, so "connected but not
+  // signed in" is real but normally brief (mid-signature-prompt, or a
+  // rejected signature the visitor hasn't retried yet). Either way the
+  // selector stays locked until `hasSession` is actually true: a
+  // connection proves nothing on its own, only a verified signature does.
+  const handleGuestCta = () => {
+    if (!isConnected) {
+      setOpen(false);
+      onOpenWalletModal();
+      return;
+    }
+    signIn();
+  };
+
+  // Kept visible rather than hidden entirely (see Composer.jsx) so the
+  // capability is discoverable — a guest sees exactly what signing in
+  // unlocks instead of it silently not existing. The wording here is
+  // deliberately softer than "requires" — asking about a wallet by pasting
+  // its address into the message still works without any of this (the
+  // backend just parses it out of free text either way), but that's not
+  // something to advertise as an alternative to signing in.
+  if (!hasSession) {
+    return (
+      <div className="relative inline-block" ref={ref}>
+        <button
+          type="button"
+          onClick={() => setOpen(!open)}
+          aria-haspopup="true"
+          aria-expanded={open}
+          className="flex items-center gap-1.5 rounded-full border border-dashed border-slate-200 bg-slate-50/60 px-2.5 py-1.5 text-[11px] dark:border-[#2A2B31] dark:bg-[#191A1F]/60 cursor-pointer hover:bg-slate-100 dark:hover:bg-[#1F2027] transition-colors"
+        >
+          <LockClosedIcon className="h-3 w-3 text-ink-muted shrink-0" />
+          <span className="text-ink-muted">{t("flrgpt.wallet.guestLabel")}</span>
+          <ChevronUpIcon
+            className={`h-3 w-3 text-ink-muted transition-transform duration-200 ${open ? "" : "rotate-180"}`}
+          />
+        </button>
+
+        <div
+          className={`absolute bottom-full left-0 mb-2 w-72 origin-bottom-left rounded-xl bg-[#FFFFFF] border border-[#E5E7EB] p-4 shadow-xl dark:bg-[#21242B] dark:border-none z-50 transition-all duration-200 ${
+            open
+              ? "opacity-100 scale-100 translate-y-0"
+              : "opacity-0 scale-95 translate-y-1 pointer-events-none"
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
+              <LockClosedIcon className="h-3.5 w-3.5" />
+            </div>
+            <p className="text-[12.5px] font-semibold text-ink-primary">
+              {t("flrgpt.wallet.locked.title")}
+            </p>
+          </div>
+          <p className="mt-2 text-[11.5px] leading-relaxed text-ink-secondary">
+            {t("flrgpt.wallet.locked.body")}
+          </p>
+          <button
+            type="button"
+            onClick={handleGuestCta}
+            disabled={isAuthenticating}
+            className="mt-3 w-full flex items-center justify-center gap-1.5 py-2 rounded-lg bg-brand hover:bg-brand-hover disabled:opacity-70 text-white text-[10.5px] font-semibold transition-colors cursor-pointer"
+          >
+            <WalletIcon className="h-3.5 w-3.5" />
+            {isAuthenticating
+              ? t("flrgpt.wallet.locked.signingIn")
+              : isConnected
+                ? t("flrgpt.wallet.locked.signInCta")
+                : t("flrgpt.wallet.locked.connectCta")}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative inline-block" ref={ref}>

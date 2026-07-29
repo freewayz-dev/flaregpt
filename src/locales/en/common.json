@@ -4,216 +4,220 @@
     "description": "We're building this feature. Check back soon."
   },
   "connectModal": {
+    "connecting": "Connecting…",
     "errors": {
       "braveBlocked": {
+        "privateWindow": "Open the site in a Brave Private Window.",
+        "shieldsOff": "Turn off Brave Shields for this site and try again.",
         "title": "WalletConnect appears to be blocked by Brave Shields.",
         "tryTitle": "Try one of the following:",
-        "shieldsOff": "Turn off Brave Shields for this site and try again.",
-        "privateWindow": "Open the site in a Brave Private Window.",
         "useChrome": "Use Google Chrome or another supported browser if the issue persists."
       },
       "generic": "An unexpected connection friction occurred. Please try again or use another wallet.",
       "pending": "A connection request is already open. Please open your wallet extension panel.",
-      "providerGone": "This wallet doesn't seem to be responding anymore — it may have been updated or removed. Refreshing the page should fix this.",
+      "providerGone": "This wallet doesn't seem to be responding anymore. It may have been updated or removed. Refreshing the page should fix this.",
       "rejected": "Connection request was cancelled in your wallet.",
       "timeout": "Couldn't reach WalletConnect. Please check your connection and try again.",
       "wrongNetwork": "Please switch your wallet's active network to Flare Mainnet."
     },
     "install": "Install",
     "installHint": "Still don't see your wallet? Refreshing the page may help.",
-    "refresh": "Refresh",
     "mobileHint": "On mobile, open FlareGPT in your wallet's built-in browser for the best connection experience. When scanning a QR code, use your wallet app's own scanner rather than your phone's camera for the most reliable connection.",
-    "connecting": "Connecting…",
     "recommended": "Recommended",
+    "refresh": "Refresh",
     "subtitle": "Select your preferred wallet to connect to the Flare Network.",
     "title": "Connect Wallet",
     "viaWalletConnect": "Via WalletConnect"
   },
   "dashboard": {
-    "description": "Live Flare network data, price charts, and wallet activity at a glance.",
-    "common": {
-      "retry": "Retry",
-      "retrying": "Retrying…",
-      "networkHiccup": "This is usually a temporary network hiccup.",
-      "noWalletSelected": "No wallet selected",
-      "yes": "Yes",
-      "no": "No"
-    },
-    "stats": {
-      "flrPrice": "FLR Price",
-      "marketCap": "Market Cap",
-      "volume24h": "24h Volume",
-      "tvl": "TVL",
-      "couldntLoad": "Couldn't load market overview"
+    "apiStatus": {
+      "checking": "Checking API status...",
+      "degraded": "API degraded",
+      "operational": "All systems operational"
     },
     "chart": {
       "couldntLoad": "Couldn't load FLR price history"
     },
-    "networkActivity": {
-      "title": "Network Activity",
-      "live": "Live",
-      "gwei": "Gwei",
-      "gasPrice": "Gas Price",
-      "tps": "TPS",
-      "couldntLoad": "Couldn't load network data",
-      "collectingSamples": "Collecting live samples — chart fills in as new data arrives."
+    "claimsHistory": {
+      "connectToSee": "Connect or add a wallet in Settings to see claim history.",
+      "couldntLoad": "Couldn't load claims history",
+      "emptyDescription": "You're all caught up. There are no pending reward epochs to claim.",
+      "emptyTitle": "No unclaimed epochs",
+      "title": "Claims History"
     },
-    "walletBalances": {
-      "title": "Wallet Balances",
-      "connectToSeeBalances": "Connect or add a wallet in Settings to see balances.",
-      "couldntLoad": "Couldn't load wallet balances"
+    "common": {
+      "networkHiccup": "This is usually a temporary network hiccup.",
+      "no": "No",
+      "noWalletSelected": "No wallet selected",
+      "retry": "Retry",
+      "retrying": "Retrying…",
+      "yes": "Yes"
     },
+    "delegationsBreakdown": {
+      "connectToSee": "Connect or add a wallet in Settings to see delegations.",
+      "couldntLoad": "Couldn't load delegations",
+      "emptyDescription": "Delegate WFLR to an FTSO provider to start earning rewards.",
+      "emptyTitle": "No active delegations",
+      "tabLabel": "Delegations",
+      "title": "Delegations Breakdown"
+    },
+    "description": "Live Flare network data, price charts, and wallet activity at a glance.",
     "ftso": {
-      "title": "FTSO Delegation",
+      "activeDelegations": "Active Delegations",
+      "claimComingSoon": "Claiming isn't available yet. Coming soon.",
+      "claimRewards": "Claim Rewards",
       "connected": "Connected",
-      "readOnly": "Read-only",
       "connectToSeeRewards": "Connect or add a wallet in Settings to see rewards.",
       "couldntLoad": "Couldn't load FTSO portfolio",
       "delegatedWflr": "Delegated WFLR",
-      "unclaimedFlr": "Unclaimed FLR",
-      "activeDelegations": "Active Delegations",
       "estHourlyEarning": "Est. Hourly Earning",
-      "claimRewards": "Claim Rewards",
-      "readOnlyCannotClaim": "Read-only — cannot claim",
-      "switchToClaim": "Switch to your connected wallet to claim rewards",
       "noUnclaimedYet": "No unclaimed rewards yet",
-      "claimComingSoon": "Claiming isn't available yet — coming soon."
+      "readOnly": "Read-only",
+      "readOnlyCannotClaim": "Read-only, can't claim",
+      "switchToClaim": "Switch to your connected wallet to claim rewards",
+      "title": "FTSO Delegation",
+      "unclaimedFlr": "Unclaimed FLR"
     },
-    "claimsHistory": {
-      "title": "Claims History",
-      "connectToSee": "Connect or add a wallet in Settings to see claim history.",
-      "couldntLoad": "Couldn't load claims history",
-      "emptyTitle": "No unclaimed epochs",
-      "emptyDescription": "You're all caught up — there are no pending reward epochs to claim."
+    "networkActivity": {
+      "collectingSamples": "Collecting live samples. The chart fills in as new data arrives.",
+      "couldntLoad": "Couldn't load network data",
+      "gasPrice": "Gas Price",
+      "gwei": "Gwei",
+      "live": "Live",
+      "title": "Network Activity",
+      "tps": "TPS"
     },
-    "delegationsBreakdown": {
-      "title": "Delegations Breakdown",
-      "tabLabel": "Delegations",
-      "connectToSee": "Connect or add a wallet in Settings to see delegations.",
-      "couldntLoad": "Couldn't load delegations",
-      "emptyTitle": "No active delegations",
-      "emptyDescription": "Delegate WFLR to an FTSO provider to start earning rewards."
+    "stats": {
+      "couldntLoad": "Couldn't load market overview",
+      "flrPrice": "FLR Price",
+      "marketCap": "Market Cap",
+      "tvl": "TVL",
+      "volume24h": "24h Volume"
     },
-    "apiStatus": {
-      "checking": "Checking API status...",
-      "operational": "All systems operational",
-      "degraded": "API degraded"
+    "walletBalances": {
+      "connectToSeeBalances": "Connect or add a wallet in Settings to see balances.",
+      "couldntLoad": "Couldn't load wallet balances",
+      "title": "Wallet Balances"
     }
   },
   "defiProtocols": {
-    "description": "Compare yield strategies and track your positions across MXRPY, Sceptre, and Firelight vaults.",
     "common": {
-      "addressCopied": "Address copied to clipboard",
-      "copyFailed": "Couldn't copy address",
+      "addressCopied": "Address copied",
       "connectToSeePosition": "Connect a wallet to see your position",
       "contract": "Contract",
-      "proxyContract": "Proxy Contract",
+      "copyFailed": "Couldn't copy address",
       "poolOwnership": "Pool Ownership",
       "protocolDetails": "Protocol details",
-      "yourBalance": "Your Balance",
-      "redeemableValue": "Redeemable Value"
+      "proxyContract": "Proxy Contract",
+      "redeemableValue": "Redeemable Value",
+      "yourBalance": "Your Balance"
     },
+    "description": "Compare yield strategies and track your positions across MXRPY, Sceptre, and Firelight vaults.",
     "explorer": {
-      "title": "Protocol Explorer",
-      "subtitle": "Select a protocol to view your position and details"
-    },
-    "kpis": {
-      "protocolsTracked": "Protocols Tracked",
-      "bestApr": "Best APR Available",
-      "activePositions": "Active Positions"
-    },
-    "mxrpy": {
-      "title": "MXRPY Vault",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "Couldn't load your MXRPY position",
-      "circulatingCaption": "{{shares}} shares in circulation · {{decimals}} decimals",
-      "yourShares": "Your Receipt Shares",
-      "category": "Yield Vault"
-    },
-    "sceptre": {
-      "title": "Sceptre Liquid Staking",
-      "subtitle": "sFLR liquid staking",
-      "couldntLoad": "Couldn't load your Sceptre position",
-      "exchangeRateLabel": "sFLR / FLR rate",
-      "totalMinted": "Total Minted Shares",
-      "backedFlr": "Underlying Backed FLR",
-      "category": "Liquid Staking"
+      "subtitle": "Select a protocol to view your position and details",
+      "title": "Protocol Explorer"
     },
     "firelight": {
-      "title": "Firelight Vault",
-      "subtitle": "Capital protection vault",
-      "couldntLoad": "Couldn't load your Firelight position",
       "backingLabel": "Asset backing multiplier",
+      "category": "Insurance",
       "circulatingSupply": "Circulating Supply",
-      "underlyingReserve": "Underlying Reserve",
+      "couldntLoad": "Couldn't load your Firelight position",
       "insuranceRobust": "Insurance: Robust",
-      "category": "Insurance"
+      "subtitle": "Capital protection vault",
+      "title": "Firelight Vault",
+      "underlyingReserve": "Underlying Reserve"
+    },
+    "kpis": {
+      "activePositions": "Active Positions",
+      "bestApr": "Best APR Available",
+      "protocolsTracked": "Protocols Tracked"
+    },
+    "mxrpy": {
+      "category": "Yield Vault",
+      "circulatingCaption": "{{shares}} shares in circulation · {{decimals}} decimals",
+      "couldntLoad": "Couldn't load your MXRPY position",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "MXRPY Vault",
+      "yourShares": "Your Receipt Shares"
+    },
+    "sceptre": {
+      "backedFlr": "Underlying Backed FLR",
+      "category": "Liquid Staking",
+      "couldntLoad": "Couldn't load your Sceptre position",
+      "exchangeRateLabel": "sFLR / FLR rate",
+      "subtitle": "sFLR liquid staking",
+      "title": "Sceptre Liquid Staking",
+      "totalMinted": "Total Minted Shares"
     },
     "strategies": {
-      "title": "Strategy Comparison",
-      "subtitle": "See how your FLR could perform across strategies",
       "amountLabel": "Compare for",
       "apr": "APR",
       "colStrategy": "Strategy",
-      "colYield": "Est. Yield (FLR)",
       "colTerms": "Terms",
+      "colYield": "Est. Yield (FLR)",
       "compoundingLabel": "Compounding",
       "couldntLoad": "Couldn't load strategy comparison",
       "highestApr": "Highest APR",
       "lockupDays": "{{count}} days lock-up",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
       "lockupHours": "{{count}}h lock-up",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
       "noLockup": "No lock-up",
+      "subtitle": "See how your FLR could perform across strategies",
+      "title": "Strategy Comparison",
       "verdict": "FlareGPT Verdict"
     }
   },
   "donate": {
-    "title": "Support FlareGPT",
-    "description": "Your support helps keep FlareGPT free, independent, and constantly improving.",
-    "hero": {
-      "addressLabel": "Wallet Address",
-      "tapToCopy": "Tap to copy",
-      "copyAddress": "Copy Address",
-      "copied": "Copied",
-      "addressCopied": "Address copied to clipboard",
-      "copyFailed": "Couldn't copy address",
-      "viewOnExplorer": "View on {{explorer}}",
-      "multisigNote": "Secured by a multi-signature wallet",
-      "qrTitle": "QR code for the {{symbol}} donation wallet address"
-    },
-    "warning": {
-      "title": "{{network}} assets only.",
-      "body": "Only send {{symbol}} or other {{network}} tokens to this address. Assets sent from other networks cannot be recovered."
-    },
     "amounts": {
-      "title": "Suggested Amounts",
-      "subtitle": "Every contribution helps — here are a few ideas to get started.",
+      "copiedToast": "Address copied. Thank you for considering a {{amount}} {{symbol}} donation.",
       "impactTier1": "A day of API costs",
       "impactTier2": "A week of hosting",
       "impactTier3": "A month of infrastructure",
       "impactTier4": "New protocol integrations",
-      "copiedToast": "Address copied. Thank you for considering a {{amount}} {{symbol}} donation."
-    },
-    "funding": {
-      "title": "Funding Transparency",
-      "subtitle": "An open look at what it costs to keep FlareGPT running — no pressure, just visibility.",
-      "monthlyInfrastructure": "Monthly Infrastructure",
-      "developmentFund": "Development Fund",
-      "raisedOfGoal": "{{raised}} raised of {{goal}} goal"
-    },
-    "received": {
-      "title": "Donations Received",
-      "subtitle": "Total contributions received across every supported network.",
-      "demoData": "Demo data"
-    },
-    "support": {
-      "title": "What Your Support Funds",
-      "infra": "API & Infrastructure",
-      "integrations": "New Protocol Integrations",
-      "free": "Keeping FlareGPT Free",
-      "development": "Continued Development"
+      "subtitle": "Every contribution helps. Here are a few ideas to get started.",
+      "title": "Suggested Amounts"
     },
     "closing": {
       "message": "Thank you for helping keep FlareGPT independent. Every contribution, big or small, genuinely helps."
+    },
+    "description": "Your support helps keep FlareGPT free, independent, and constantly improving.",
+    "funding": {
+      "developmentFund": "Development Fund",
+      "monthlyInfrastructure": "Monthly Infrastructure",
+      "raisedOfGoal": "{{raised}} raised of {{goal}} goal",
+      "subtitle": "An open look at what it costs to keep FlareGPT running. No pressure, just visibility.",
+      "title": "Funding Transparency"
+    },
+    "hero": {
+      "addressCopied": "Address copied",
+      "addressLabel": "Wallet Address",
+      "copied": "Copied",
+      "copyAddress": "Copy Address",
+      "copyFailed": "Couldn't copy address",
+      "multisigNote": "Secured by a multi-signature wallet",
+      "qrTitle": "QR code for the {{symbol}} donation wallet address",
+      "tapToCopy": "Tap to copy",
+      "viewOnExplorer": "View on {{explorer}}"
+    },
+    "received": {
+      "demoData": "Demo data",
+      "subtitle": "Total contributions received across every supported network.",
+      "title": "Donations Received"
+    },
+    "support": {
+      "development": "Continued Development",
+      "free": "Keeping FlareGPT Free",
+      "infra": "API & Infrastructure",
+      "integrations": "New Protocol Integrations",
+      "title": "What Your Support Funds"
+    },
+    "title": "Support FlareGPT",
+    "warning": {
+      "body": "Only send {{symbol}} or other {{network}} tokens to this address. Assets sent from other networks cannot be recovered.",
+      "title": "{{network}} assets only."
     }
   },
   "flareWidget": {
@@ -223,59 +227,73 @@
     "openFullPage": "Open full page"
   },
   "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "Analyze my wallet",
-      "increaseRewards": "How can I increase my FTSO rewards?",
-      "explainDelegations": "Explain my delegations",
-      "compareProtocols": "Compare Sceptre vs Firelight",
-      "rewardsDecreased": "Why did my rewards decrease?",
-      "stakingOpportunities": "Show my staking opportunities"
-    },
-    "wallet": {
-      "analyzing": "Analyzing:"
-    },
-    "empty": {
-      "title": "Ask FlareGPT anything",
-      "subtitle": "Get answers about your wallet, rewards, delegations, or the Flare ecosystem."
+    "actions": {
+      "copied": "Message copied",
+      "copy": "Copy",
+      "copyFailed": "Copy failed",
+      "regenerate": "Regenerate response"
     },
     "composer": {
+      "disclaimer": "FlareGPT can make mistakes. Verify important information before acting on it.",
       "placeholder": "Ask FlareGPT...",
       "send": "Send",
-      "stop": "Stop generating",
-      "disclaimer": "FlareGPT can make mistakes. Verify important information before acting on it."
+      "stop": "Stop generating"
     },
-    "actions": {
-      "copy": "Copy",
-      "regenerate": "Regenerate response",
-      "copied": "Message copied",
-      "copyFailed": "Copy failed"
-    },
-    "jumpToLatest": "Jump to latest",
-    "historyLoadFailed": "Couldn't load your chat history.",
-    "sendError": "Something went wrong — please try again.",
-    "newChat": "New Chat",
     "deleteConversation": {
       "button": "Delete Conversation",
       "confirm": "Confirm?"
     },
-    "deleteConversationFailed": "Couldn't delete this conversation. Please try again.",
+    "deleteConversationFailed": "Couldn't delete this conversation. Try again.",
+    "empty": {
+      "subtitle": "Get answers about your wallet, rewards, delegations, or the Flare ecosystem.",
+      "title": "Ask FlareGPT anything"
+    },
+    "guestMode": {
+      "cta": "Sign in to sync history & unlock wallet analysis",
+      "notice": "Guest mode · Conversations aren't saved."
+    },
     "history": {
-      "title": "Chat History",
-      "newChat": "New Chat",
-      "searchPlaceholder": "Search conversations...",
-      "empty": "No conversations yet",
-      "noResults": "No conversations match your search",
-      "untitled": "Untitled",
-      "moreActions": "More actions",
-      "pin": "Pin",
-      "unpin": "Unpin",
-      "rename": "Rename",
+      "cancelRename": "Cancel",
       "delete": "Delete",
-      "pinLimitReached": "You can pin up to {{count}} conversations",
-      "renameFailed": "Couldn't rename this conversation.",
+      "empty": "No conversations yet",
+      "moreActions": "More actions",
+      "newChat": "New Chat",
+      "noResults": "No conversations match your search",
       "openButton": "History",
+      "pin": "Pin",
+      "pinLimitReached": "You can pin up to {{count}} conversations",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "Rename",
+      "renameFailed": "Couldn't rename this conversation.",
       "saveRename": "Save",
-      "cancelRename": "Cancel"
+      "searchPlaceholder": "Search conversations...",
+      "title": "Chat History",
+      "unpin": "Unpin",
+      "untitled": "Untitled"
+    },
+    "historyLoadFailed": "Couldn't load chat history.",
+    "jumpToLatest": "Jump to latest",
+    "newChat": "New Chat",
+    "prompts": {
+      "analyzeWallet": "Analyze my wallet",
+      "compareProtocols": "Compare Sceptre vs Firelight",
+      "explainDelegations": "Explain my delegations",
+      "increaseRewards": "How can I increase my FTSO rewards?",
+      "rewardsDecreased": "Why did my rewards decrease?",
+      "stakingOpportunities": "Show my staking opportunities"
+    },
+    "sendError": "Something went wrong. Try again.",
+    "wallet": {
+      "analyzing": "Analyzing:",
+      "guestLabel": "Wallet analysis",
+      "locked": {
+        "body": "Sign in to let FlareGPT read your Primary and Watchlist wallets automatically, instead of typing an address into every question.",
+        "connectCta": "Connect Wallet",
+        "signInCta": "Sign in",
+        "signingIn": "Confirm in your wallet…",
+        "title": "Unlock wallet analysis"
+      }
     }
   },
   "footer": {
@@ -285,6 +303,15 @@
     "terms": "Terms & Disclaimer"
   },
   "help": {
+    "askFlareGptCta": "Ask FlareGPT for help",
+    "askFlareGptLead": "Didn't find what you're looking for?",
+    "contact": {
+      "comingSoon": "Coming soon",
+      "emailLabel": "Email",
+      "telegramLabel": "Telegram",
+      "twitterHint": "Follow along and send us a message",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "Your wallet may not be connected, or the dashboard may still be syncing blockchain data. Verify that the correct wallet and network are selected.",
@@ -309,10 +336,12 @@
     ],
     "faqTitle": "Frequently Asked Questions",
     "featureGuides": "Feature Guides",
+    "flareGptGuideDescription": "Ask questions about your wallet, rewards, and the Flare network in plain language.",
     "gettingStarted": "Getting Started",
     "headerDesc": "Guides, answers, and support for getting the most out of your FlareGPT dashboard.",
     "noFaqs": "No FAQs match your search.",
     "noGuides": "No guides match your search.",
+    "searchClear": "Clear search",
     "searchPlaceholder": "Search guides or FAQs...",
     "searchSub": "Search feature guides and FAQs, or find another way to reach us.",
     "searchTitle": "Everything you need to get started",
@@ -344,87 +373,104 @@
       }
     ],
     "stillNeedHelp": "Still need help?",
-    "supportDesc": "The fastest way to reach us right now is X. Email and Telegram support are on the way.",
-    "searchClear": "Clear search",
-    "flareGptGuideDescription": "Ask questions about your wallet, rewards, and the Flare network in plain language.",
-    "askFlareGptLead": "Didn't find what you're looking for?",
-    "askFlareGptCta": "Ask FlareGPT for help",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "Follow along and send us a message",
-      "telegramLabel": "Telegram",
-      "emailLabel": "Email",
-      "comingSoon": "Coming soon"
-    }
+    "supportDesc": "The fastest way to reach us right now is X. Email and Telegram support are on the way."
   },
   "navbar": {
+    "addressCopied": "Address copied",
     "askFlareGPT": "Ask FlareGPT",
-    "mainnetStatus": "Flare Mainnet",
-    "connectWallet": "Connect Wallet",
-    "primaryWalletSection": "Primary Wallet",
     "badgePrimary": "Primary",
+    "badgeSignIn": "Sign In",
     "badgeWatchlist": "Watchlist",
-    "disconnectWallet": "Disconnect Wallet",
+    "balancesHiddenLabel": "Balances hidden",
     "configureWatchlistWallets": "Configure Watchlist Wallets",
-    "watchlistSection": "Watchlist ({{current}}/{{max}})",
-    "addressCopied": "Address copied to clipboard",
+    "connectWallet": "Connect Wallet",
     "copyFailed": "Couldn't copy address",
+    "disconnectWallet": "Disconnect Wallet",
     "flareGptFabHint": "FlareGPT now opens from here",
     "hideBalances": "Hide balances",
+    "mainnetStatus": "Flare Mainnet",
+    "primaryWalletSection": "Primary Wallet",
     "showBalances": "Show balances",
-    "balancesHiddenLabel": "Balances hidden",
     "signIn": "Sign In",
+    "signInBackgroundHint": "Your connected wallet needs to sign in",
     "signingIn": "Signing in…",
     "signInPrompt": "Sign a message to verify this wallet and continue.",
-    "badgeSignIn": "Sign In",
-    "signInBackgroundHint": "Your connected wallet needs to sign in"
+    "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System"
+    },
     "cards": {
       "app": "App",
       "blur": "Blue Light Filter",
       "chartType": "Chart Type",
       "connectedWallets": "Connected Wallets",
       "currency": "Currency Display",
+      "defaultLandingPage": "Default Landing Page",
+      "defaultWallet": "Default Wallet",
       "governanceAlerts": "Governance Alerts",
+      "hideBalances": "Hide Wallet Balances",
       "language": "Language",
       "links": "Links",
       "logout": "Logout",
+      "reduceMotion": "Reduce Motion",
       "rewardsAlerts": "Rewards Alerts",
+      "tableDensity": "Table Density",
       "theme": "Theme",
       "themeMode": "Light / Dark mode",
       "timeframe": "Timeframe",
       "walletCapacity": "Wallet Capacity",
-      "walletPreferences": "Wallet Preferences",
-      "defaultWallet": "Default Wallet",
-      "defaultLandingPage": "Default Landing Page",
-      "tableDensity": "Table Density",
-      "reduceMotion": "Reduce Motion",
-      "hideBalances": "Hide Wallet Balances"
+      "walletPreferences": "Wallet Preferences"
+    },
+    "dataStorage": {
+      "accountSubtitle": "Synced to your account on the backend.",
+      "accountTitle": "Account Data",
+      "clear": "Clear",
+      "confirmClear": "Confirm?",
+      "conversations": "FlareGPT Conversations",
+      "conversationsClearFailed": "Couldn't clear chat history. Try again.",
+      "conversationsDescription": "Clears your FlareGPT chat history from your account. This can't be undone.",
+      "localSubtitle": "Stored in this browser only. Clearing it is instant and safe.",
+      "localTitle": "Local Data",
+      "walletCache": "Wallet Activity Cache",
+      "walletCacheDescription": "Clears the cached transaction history. The next visit will re-fetch it."
     },
     "description": "Manage wallets, preferences, localization, and display options.",
-    "links": {
-      "docs": "Docs",
-      "github": "GitHub",
-      "twitter": "Twitter"
-    },
     "descriptions": {
       "app": "Active package distribution build tag index.",
       "blur": "Reduce eye strain with a warm screen tint",
       "chartType": "Set default rendering visual style geometry for system matrices.",
       "currency": "Choose the asset base currency display.",
+      "defaultLandingPage": "Choose which page opens first when you launch the app.",
+      "defaultWallet": "This wallet becomes active whenever a previous session can't be restored.",
+      "hideBalances": "Blur balances and amounts across the dashboard for privacy.",
       "language": "Select your default interface viewing language.",
       "links": "Global documentation references and team interaction links.",
       "logout": "Sign out of FlareGPT on this device. You'll need to sign a new message to sign back in.",
+      "reduceMotion": "Minimize animations even if your operating system has no preference set.",
+      "tableDensity": "Comfortable spacing or a tighter, compact view for dense tables.",
+      "theme": "Choose Light, Dark, or follow your system setting.",
       "timeframe": "Define default window period scales on visual charts.",
       "walletCapacity": "System limits tracking allocation capacity pools.",
-      "theme": "Choose Light, Dark, or follow your system setting.",
-      "walletPreferences": "Choose which wallet the dashboard opens with.",
-      "defaultWallet": "This wallet becomes active whenever a previous session can't be restored.",
-      "defaultLandingPage": "Choose which page opens first when you launch the app.",
-      "tableDensity": "Comfortable spacing or a tighter, compact view for dense tables.",
-      "reduceMotion": "Minimize animations even if your operating system has no preference set.",
-      "hideBalances": "Blur balances and amounts across the dashboard for privacy."
+      "walletPreferences": "Choose which wallet the dashboard opens with."
+    },
+    "flareGpt": {
+      "syncStatusConnected": "Signed in. Your conversations sync across every device and browser.",
+      "syncStatusGuest": "Conversations are temporary in this browser and won't be saved. Sign in to keep them.",
+      "syncStatusTitle": "Sync Status"
+    },
+    "groups": {
+      "account": "Account",
+      "personalization": "Personalization",
+      "walletsAndData": "Wallets & Data"
+    },
+    "links": {
+      "docs": "Docs",
+      "github": "GitHub",
+      "twitter": "Twitter"
     },
     "notifications": {
       "governance": "Proposal updates",
@@ -436,54 +482,64 @@
       "area": "Area",
       "asia": "Asia",
       "candlestick": "Candlestick",
+      "comfortable": "Comfortable",
+      "compact": "Compact",
       "europe": "Europe",
       "global": "Global",
       "high": "High",
       "line": "Line",
       "low": "Low",
       "medium": "Medium",
-      "off": "Off",
-      "comfortable": "Comfortable",
-      "compact": "Compact"
+      "off": "Off"
     },
     "security": {
-      "logout": "Log Out",
-      "confirmLogout": "Confirm?"
+      "confirmLogout": "Confirm?",
+      "logout": "Log Out"
     },
     "subtitles": {
       "About": "Overview systematic deployment records, compilation rules, and asset indexes.",
+      "Accessibility": "Adjust motion and interaction preferences.",
+      "Appearance": "Choose how FlareGPT looks.",
       "Display": "Personalize your default view and how dashboard data is displayed.",
+      "FlareGpt": "Manage how FlareGPT remembers your conversations.",
       "Notifications": "Manage systemic priority events and delivery route tracking endpoints.",
       "Preferences": "Language and currency preferences.",
       "Security": "Maintain active identity session barriers and credentials verification access rules.",
-      "Wallets": "Connect and structure signatures across global external decentralized accounts.",
-      "Appearance": "Choose how FlareGPT looks.",
-      "Accessibility": "Adjust motion and interaction preferences.",
-      "FlareGpt": "Manage how FlareGPT remembers your conversations."
+      "Wallets": "Connect and structure signatures across global external decentralized accounts."
     },
     "tabs": {
       "About": "About",
+      "Accessibility": "Accessibility",
+      "Appearance": "Appearance",
+      "DataStorage": "Data & Storage",
       "Display": "Dashboard",
+      "FlareGpt": "FlareGPT",
       "Notifications": "Notifications",
       "Preferences": "General",
       "Security": "Security",
-      "Wallets": "Wallets",
-      "Appearance": "Appearance",
-      "Accessibility": "Accessibility",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "Data & Storage"
+      "Wallets": "Wallets"
     },
     "title": "Settings",
     "wallets": {
       "active": "Active",
       "add": "Add Wallet ({{current}}/{{max}})",
       "addFormTitle": "Add Watchlist Portfolio Account",
+      "adding": "Adding…",
       "addressPlaceholder": "0x... Flare Wallet Address",
       "available": "Available",
+      "cancelRename": "Cancel",
+      "confirmRemove": "Confirm remove?",
       "connectAction": "Connect Wallet ({{current}} Connected, {{remaining}} Remaining)",
+      "connectActionUnlimited": "Add Wallet ({{current}} Tracked)",
       "connected": "Connected",
+      "duplicateAddress": "This address is already on your watchlist.",
+      "duplicateNickname": "A watchlist wallet with this nickname already exists. Please choose a different nickname.",
       "empty": "No wallets connected yet",
       "emptyTerminal": "No wallet connected. Connect your terminal assets to continue.",
+      "guestLimitBenefitBackup": "Keep your watchlist backed up",
+      "guestLimitBenefitMore": "Store more than 3 wallets",
+      "guestLimitBenefitSync": "Sync your watchlist across devices",
+      "guestLimitTitle": "Sign in to track more wallets",
       "invalidAddress": "Please enter a valid Flare EVM network address (starting with 0x).",
       "labelPlaceholder": "Account Name Label (e.g., Cold Storage)",
       "limit": "You can connect up to {{max}} wallets",
@@ -491,163 +547,135 @@
       "liveConnected": "Live Connected",
       "manageSubtitle": "Manage your active Web3 connections and read-only portfolio tracking accounts.",
       "maximum": "Maximum",
+      "noDefaultSelected": "None selected",
+      "noLimit": "Add as many wallets as you like.",
+      "noSearchResults": "No wallets match your search.",
+      "notFoundError": "This wallet is no longer on your watchlist.",
       "readOnly": "Read-Only",
       "registrationFailed": "Address registration failed. Check if it is a duplicate or if slots are filled.",
       "remainingSlots": "Slots Remaining",
-      "tracked": "Tracked",
       "remove": "Remove",
-      "confirmRemove": "Confirm remove?",
-      "noDefaultSelected": "None selected",
       "rename": "Rename",
-      "cancelRename": "Cancel",
-      "connectActionUnlimited": "Add Wallet ({{current}} Tracked)",
-      "noLimit": "Add as many wallets as you like.",
-      "duplicateAddress": "This address is already on your watchlist.",
-      "guestLimitTitle": "Sign in to track more wallets",
-      "guestLimitBenefitSync": "Sync your watchlist across devices",
-      "guestLimitBenefitMore": "Store more than 3 wallets",
-      "guestLimitBenefitBackup": "Keep your watchlist backed up",
-      "searchPlaceholder": "Search {{count}} wallets...",
-      "noSearchResults": "No wallets match your search.",
-      "duplicateNickname": "A watchlist wallet with this nickname already exists. Please choose a different nickname.",
-      "notFoundError": "This wallet is no longer on your watchlist.",
       "saveEdit": "Save",
-      "adding": "Adding…"
-    },
-    "groups": {
-      "personalization": "Personalization",
-      "walletsAndData": "Wallets & Data",
-      "account": "Account"
-    },
-    "appearance": {
-      "light": "Light",
-      "dark": "Dark",
-      "system": "System"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "Sync Status",
-      "syncStatusConnected": "Signed in — your conversations sync across every device and browser.",
-      "syncStatusGuest": "Conversations are temporary in this browser and won't be saved. Sign in to keep them."
-    },
-    "dataStorage": {
-      "localTitle": "Local Data",
-      "localSubtitle": "Stored in this browser only — clearing it is instant and safe.",
-      "walletCache": "Wallet Activity Cache",
-      "walletCacheDescription": "Clears the cached transaction history — the next visit will re-fetch it.",
-      "conversations": "FlareGPT Conversations",
-      "conversationsDescription": "Clears your FlareGPT chat history from your account. This can't be undone.",
-      "clear": "Clear",
-      "confirmClear": "Confirm?",
-      "accountTitle": "Account Data",
-      "accountSubtitle": "Synced to your account on the backend.",
-      "conversationsClearFailed": "Couldn't clear chat history — please try again."
+      "searchPlaceholder": "Search {{count}} wallets...",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "Tracked"
     }
   },
   "sidebar": {
+    "activeWallet": "Active: {{address}}",
+    "addWatchlistWallet": "+ Add Watchlist Wallet",
     "connectWallet": "Connect Wallet",
+    "defiProtocols": "Defi Protocols",
     "disconnect": "Disconnect",
+    "donate": "Donate",
+    "feeds": "Feeds",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Rewards",
-    "defiProtocols": "Defi Protocols",
     "governance": "Governance",
     "helpCenter": "Help Center",
+    "loops": "Loops",
     "notConnected": "Not connected",
     "overview": "Overview",
     "rflrTracker": "rFLR Vesting",
     "settings": "Settings",
-    "walletActivity": "Wallet Activity",
-    "walletConnected": "Wallet Connected",
-    "loops": "Loops",
-    "feeds": "Feeds",
-    "donate": "Donate",
-    "addWatchlistWallet": "+ Add Watchlist Wallet",
-    "activeWallet": "Active: {{address}}",
     "signInRequired": "Sign-in required",
-    "signInRequiredHint": "Use the wallet menu in the top bar to sign in."
+    "signInRequiredHint": "Use the wallet menu in the top bar to sign in.",
+    "walletActivity": "Wallet Activity",
+    "walletConnected": "Wallet Connected"
   },
   "wallet": {
     "activity": {
-      "subtitle": "Real-time monitoring of incoming and outgoing blockchain interactions.",
-      "title": "Recent Terminal Activity",
-      "description": "Every indexed transaction for your active wallet, grouped and searchable.",
-      "refresh": "Refresh",
-      "connectToSee": "Connect or select a wallet to see its transaction activity.",
-      "couldntLoad": "Couldn't load wallet activity.",
-      "notifier": {
-        "ready": "Your wallet activity has finished loading."
-      },
-      "loading": {
-        "title": "Indexing your wallet activity",
-        "subtitle": "Large wallets can take a few minutes on first load. Feel free to explore the rest of the dashboard — we'll let you know when it's ready.",
-        "elapsed": "{{seconds}}s elapsed"
-      },
-      "empty": {
-        "title": "No activity yet",
-        "description": "This wallet has no indexed transactions."
-      },
-      "noResults": {
-        "title": "No matching transactions",
-        "description": "Try adjusting your search or filters."
-      },
-      "kpi": {
-        "totalTransactions": "Total Transactions",
-        "uniqueAssets": "Unique Assets",
-        "walletAge": "Wallet Age",
-        "walletAgeYears": "{{count}} years",
-        "walletAgeMonths": "{{count}} months",
-        "walletAgeDays": "{{count}} days",
-        "lastActive": "Last Active",
-        "justNow": "Just now",
-        "minutesAgo": "{{count}}m ago",
-        "hoursAgo": "{{count}}h ago",
-        "daysAgo": "{{count}}d ago"
-      },
-      "insights": {
-        "title": "Quick Insights",
-        "mostUsedAsset": "Most Used Asset",
-        "mostCommonAction": "Most Common Action",
-        "mostActiveDay": "Most Active Day",
-        "mostActiveMonth": "Most Active Month",
-        "txCount": "{{count}} transactions"
-      },
       "charts": {
+        "actionBreakdown": "Action Breakdown",
+        "actionBreakdownSubtitle": "Transaction count by action type",
         "activityByDay": "Activity by Day",
         "activityByDaySubtitle": "Transaction count per day",
         "assetBreakdown": "Asset Breakdown",
         "assetBreakdownSubtitle": "Transaction count by asset",
-        "actionBreakdown": "Action Breakdown",
-        "actionBreakdownSubtitle": "Transaction count by action type",
+        "tabActions": "Actions",
         "tabActivity": "Activity",
-        "tabAssets": "Assets",
-        "tabActions": "Actions"
+        "tabAssets": "Assets"
       },
-      "toolbar": {
-        "searchPlaceholder": "Search by hash or asset...",
-        "sort": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "amount": "Amount"
-        },
-        "exportCsv": "Export CSV",
-        "exportJson": "Export JSON",
-        "export": "Export"
+      "connectToSee": "Connect or select a wallet to see its transaction activity.",
+      "couldntLoad": "Couldn't load wallet activity.",
+      "description": "Every indexed transaction for your active wallet, grouped and searchable.",
+      "drawer": {
+        "action": "Action",
+        "asset": "Asset",
+        "blockNumber": "Block Number",
+        "close": "Close",
+        "copyFailed": "Couldn't copy hash",
+        "hashCopied": "Transaction hash copied",
+        "next": "Next transaction",
+        "previous": "Previous transaction",
+        "timestamp": "Timestamp",
+        "title": "Transaction Details",
+        "transactionHash": "Transaction Hash",
+        "viewOnExplorer": "View on FlareScan"
+      },
+      "empty": {
+        "description": "This wallet has no indexed transactions.",
+        "title": "No activity yet"
       },
       "feed": {
         "ariaLabel": "Showing {{shown}} of {{total}} transactions"
       },
-      "drawer": {
-        "title": "Transaction Details",
-        "previous": "Previous transaction",
-        "next": "Next transaction",
-        "close": "Close",
-        "action": "Action",
-        "asset": "Asset",
-        "blockNumber": "Block Number",
-        "timestamp": "Timestamp",
-        "transactionHash": "Transaction Hash",
-        "hashCopied": "Transaction hash copied",
-        "copyFailed": "Couldn't copy hash",
-        "viewOnExplorer": "View on FlareScan"
+      "insights": {
+        "mostActiveDay": "Most Active Day",
+        "mostActiveMonth": "Most Active Month",
+        "mostCommonAction": "Most Common Action",
+        "mostUsedAsset": "Most Used Asset",
+        "title": "Quick Insights",
+        "txCount": "{{count}} transactions",
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_other": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "{{count}}d ago",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "{{count}}h ago",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "Just now",
+        "lastActive": "Last Active",
+        "minutesAgo": "{{count}}m ago",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "Total Transactions",
+        "uniqueAssets": "Unique Assets",
+        "walletAge": "Wallet Age",
+        "walletAgeDays": "{{count}} days",
+        "walletAgeMonths": "{{count}} months",
+        "walletAgeYears": "{{count}} years"
+      },
+      "loading": {
+        "elapsed": "{{seconds}}s elapsed",
+        "subtitle": "Large wallets can take a few minutes on first load. Feel free to explore the rest of the dashboard. We'll let you know when it's ready.",
+        "title": "Indexing your wallet activity"
+      },
+      "noResults": {
+        "description": "Try adjusting your search or filters.",
+        "title": "No matching transactions"
+      },
+      "notifier": {
+        "ready": "Wallet activity loaded."
+      },
+      "refresh": "Refresh",
+      "subtitle": "Real-time monitoring of incoming and outgoing blockchain interactions.",
+      "title": "Recent Terminal Activity",
+      "toolbar": {
+        "export": "Export",
+        "exportCsv": "Export CSV",
+        "exportJson": "Export JSON",
+        "searchPlaceholder": "Search by hash or asset...",
+        "sort": {
+          "amount": "Amount",
+          "newest": "Newest",
+          "oldest": "Oldest"
+        }
       }
     },
     "stats": {

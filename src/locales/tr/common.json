@@ -1,11 +1,317 @@
 {
+  "comingSoon": {
+    "badge": "Çok Yakında",
+    "description": "Bu özelliği geliştiriyoruz. Kısa süre sonra tekrar kontrol edin."
+  },
+  "connectModal": {
+    "connecting": "Bağlanıyor…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "Siteyi bir Brave Gizli Penceresinde açın.",
+        "shieldsOff": "Bu site için Brave Shields'ı kapatıp tekrar deneyin.",
+        "title": "WalletConnect, Brave Shields tarafından engelleniyor gibi görünüyor.",
+        "tryTitle": "Aşağıdakilerden birini deneyin:",
+        "useChrome": "Sorun devam ederse Google Chrome veya desteklenen başka bir tarayıcı kullanın."
+      },
+      "generic": "Beklenmedik bir bağlantı sürtünmesi meydana geldi. Lütfen tekrar deneyin veya başka bir cüzdan kullanın.",
+      "pending": "Bir bağlantı isteği zaten açık. Lütfen cüzdan uzantı panelinizi açın.",
+      "providerGone": "Bu cüzdan artık yanıt vermiyor gibi görünüyor. Güncellenmiş veya kaldırılmış olabilir. Sayfayı yenilemek bunu düzeltecektir.",
+      "rejected": "Cüzdanınızdaki bağlantı isteği iptal edildi.",
+      "timeout": "WalletConnect'e ulaşılamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+      "wrongNetwork": "Lütfen cüzdanınızın aktif ağını Flare Mainnet olarak değiştirin."
+    },
+    "install": "Yükle",
+    "installHint": "Hâlâ cüzdanınızı görmüyor musunuz? Sayfayı yenilemek yardımcı olabilir.",
+    "mobileHint": "Mobil cihazlarda, en iyi bağlantı deneyimi için cüzdanınızın yerleşik tarayıcısında FlareGPT'yi açın. Bir QR kodunu tararken, daha güvenilir bir bağlantı için telefonunuzun kamerası yerine cüzdan uygulamanızın kendi tarayıcısını kullanın.",
+    "recommended": "Önerilen",
+    "refresh": "Yenile",
+    "subtitle": "Flare Ağına bağlanmak için tercih ettiğiniz cüzdanı seçin.",
+    "title": "Cüzdanınızı Bağlayın",
+    "viaWalletConnect": "WalletConnect üzerinden"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "API durumu kontrol ediliyor...",
+      "degraded": "API bozulmuş",
+      "operational": "Tüm sistemler çalışır durumda"
+    },
+    "chart": {
+      "couldntLoad": "FLR fiyat geçmişi yüklenemedi"
+    },
+    "claimsHistory": {
+      "connectToSee": "Talep geçmişini görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
+      "couldntLoad": "Talep geçmişi yüklenemedi",
+      "emptyDescription": "Hepiniz bitirdiniz. Talep edilecek bekleyen ödül dönemi yok.",
+      "emptyTitle": "Sahipsiz dönem yok",
+      "title": "Talep Geçmişi"
+    },
+    "common": {
+      "networkHiccup": "Bu genellikle geçici bir ağ hıçkırığıdır.",
+      "no": "Hayır",
+      "noWalletSelected": "Cüzdan seçilmedi",
+      "retry": "Tekrar dene",
+      "retrying": "Yeniden deneniyor...",
+      "yes": "Evet"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "Temsilcileri görmek için Ayarlar'dan bir cüzdan bağlayın veya ekleyin.",
+      "couldntLoad": "Yetkilendirmeler yüklenemedi",
+      "emptyDescription": "Ödül kazanmaya başlamak için WFLR'yi bir FTSO sağlayıcısına devredin.",
+      "emptyTitle": "Etkin temsilci yok",
+      "tabLabel": "Yetkilendirmeler",
+      "title": "Delegasyon Dökümü"
+    },
+    "description": "Bir bakışta Live Flare ağ verileri, fiyat grafikleri ve cüzdan etkinliği.",
+    "ftso": {
+      "activeDelegations": "Aktif Delegasyonlar",
+      "claimComingSoon": "Henüz talepte bulunulamıyor. Çok yakında.",
+      "claimRewards": "Ödülleri Al",
+      "connected": "Bağlandı",
+      "connectToSeeRewards": "Ödülleri görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
+      "couldntLoad": "FTSO portföyü yüklenemedi",
+      "delegatedWflr": "Yetkilendirilmiş WFLR",
+      "estHourlyEarning": "Tahmini Saatlik Kazanç",
+      "noUnclaimedYet": "Henüz talep edilmemiş ödül yok",
+      "readOnly": " (read only)",
+      "readOnlyCannotClaim": "Salt okunur, talep edilemiyor",
+      "switchToClaim": "Ödülleri almak için bağlı cüzdanınıza geçin",
+      "title": "FTSO Heyeti",
+      "unclaimedFlr": "Sahipsiz FLR"
+    },
+    "networkActivity": {
+      "collectingSamples": "Canlı örnekler toplanıyor. Yeni veriler geldikçe çizelge doldurulur.",
+      "couldntLoad": "Ağ verileri yüklenemedi",
+      "gasPrice": "Gaz ücreti",
+      "gwei": "Gwei",
+      "live": "Canlı",
+      "title": "Ağ Etkinliği",
+      "tps": "TPS"
+    },
+    "stats": {
+      "couldntLoad": "Pazara genel bakış yüklenemedi",
+      "flrPrice": "FLR Fiyatı",
+      "marketCap": "Dolaşımdaki Coin",
+      "tvl": "TVL",
+      "volume24h": "24 saatlik Hacim"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "Bakiyeleri görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
+      "couldntLoad": "Cüzdan bakiyeleri yüklenemedi",
+      "title": "Cüzdan Bakiyeleri"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "Adres kopyalandı",
+      "connectToSeePosition": "Pozisyonunuzu görmek için bir cüzdan bağlayın",
+      "contract": "Sözleşme",
+      "copyFailed": "Adres kopyalanamadı",
+      "poolOwnership": "Havuz Payı",
+      "protocolDetails": "Protokol detayları",
+      "proxyContract": "Proxy Sözleşme",
+      "redeemableValue": "İtfa Edilebilir Değer",
+      "yourBalance": "Bakiyeniz"
+    },
+    "description": "MXRPY, Sceptre ve Firelight kasalarında getiri stratejilerini karşılaştırın ve pozisyonlarınızı takip edin.",
+    "explorer": {
+      "subtitle": "Pozisyonunuzu ve detayları görmek için bir protokol seçin",
+      "title": "Protokol Gezgini"
+    },
+    "firelight": {
+      "backingLabel": "Varlık teminat çarpanı",
+      "category": "Sigorta",
+      "circulatingSupply": "Dolaşımdaki Arz",
+      "couldntLoad": "Firelight pozisyonunuz yüklenemedi",
+      "insuranceRobust": "Sigorta: Güçlü",
+      "subtitle": "Sermaye koruma kasası",
+      "title": "Firelight Kasası",
+      "underlyingReserve": "Dayanak Rezerv"
+    },
+    "kpis": {
+      "activePositions": "Aktif Pozisyonlar",
+      "bestApr": "Mevcut En İyi APR",
+      "protocolsTracked": "Takip Edilen Protokoller"
+    },
+    "mxrpy": {
+      "category": "Getiri Kasası",
+      "circulatingCaption": "Dolaşımda {{shares}} pay · {{decimals}} ondalık basamak",
+      "couldntLoad": "MXRPY pozisyonunuz yüklenemedi",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "MXRPY Kasası",
+      "yourShares": "Makbuz Paylarınız"
+    },
+    "sceptre": {
+      "backedFlr": "Dayanak Teminatlı FLR",
+      "category": "Likit Stake",
+      "couldntLoad": "Sceptre pozisyonunuz yüklenemedi",
+      "exchangeRateLabel": "sFLR / FLR kuru",
+      "subtitle": "sFLR likit stake",
+      "title": "Sceptre Liquid Staking",
+      "totalMinted": "Toplam Basılan Pay"
+    },
+    "strategies": {
+      "amountLabel": "Karşılaştırma tutarı",
+      "apr": "APR",
+      "colStrategy": "Strateji",
+      "colTerms": "Koşullar",
+      "colYield": "Tah. Getiri (FLR)",
+      "compoundingLabel": "Bileşik Faiz",
+      "couldntLoad": "Strateji karşılaştırması yüklenemedi",
+      "highestApr": "En Yüksek APR",
+      "lockupDays": "{{count}} gün kilit",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
+      "lockupHours": "{{count}} saat kilit",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "Kilit yok",
+      "subtitle": "FLR'nizin farklı stratejilerde nasıl performans gösterebileceğini görün",
+      "title": "Strateji Karşılaştırması",
+      "verdict": "FlareGPT Değerlendirmesi"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "Adres kopyalandı. {{amount}} {{symbol}} bağış düşündüğünüz için teşekkürler.",
+      "impactTier1": "Bir günlük API maliyeti",
+      "impactTier2": "Bir haftalık barındırma",
+      "impactTier3": "Bir aylık altyapı",
+      "impactTier4": "Yeni protokol entegrasyonları",
+      "subtitle": "Her katkı yardımcı olur. İşte başlamak için birkaç fikir.",
+      "title": "Önerilen Tutarlar"
+    },
+    "closing": {
+      "message": "FlareGPT'yi bağımsız tutmaya yardımcı olduğunuz için teşekkürler. Büyük ya da küçük, her katkı gerçekten yardımcı oluyor."
+    },
+    "description": "Desteğiniz FlareGPT'nin ücretsiz, bağımsız kalmasına ve sürekli gelişmesine yardımcı olur.",
+    "funding": {
+      "developmentFund": "Geliştirme Fonu",
+      "monthlyInfrastructure": "Aylık Altyapı",
+      "raisedOfGoal": "{{goal}} hedefinden {{raised}} toplandı",
+      "subtitle": "FlareGPT'yi çalışır durumda tutmanın maliyetine açık bir bakış. Baskı yok, sadece görünürlük.",
+      "title": "Finansman Şeffaflığı"
+    },
+    "hero": {
+      "addressCopied": "Adres kopyalandı",
+      "addressLabel": "Cüzdan Adresi",
+      "copied": "Kopyalandı",
+      "copyAddress": "Adresi Kopyala",
+      "copyFailed": "Adres kopyalanamadı",
+      "multisigNote": "Çoklu imza cüzdanla korunmaktadır",
+      "qrTitle": "{{symbol}} bağış cüzdan adresi için QR kodu",
+      "tapToCopy": "Kopyalamak için dokun",
+      "viewOnExplorer": "{{explorer}}'de Görüntüle"
+    },
+    "received": {
+      "demoData": "Demo veri",
+      "subtitle": "Desteklenen her ağda alınan toplam katkılar.",
+      "title": "Alınan Bağışlar"
+    },
+    "support": {
+      "development": "Sürekli Geliştirme",
+      "free": "FlareGPT'yi Ücretsiz Tutmak",
+      "infra": "API ve Altyapı",
+      "integrations": "Yeni Protokol Entegrasyonları",
+      "title": "Desteğiniz Neyi Finanse Ediyor"
+    },
+    "title": "FlareGPT'yi Destekle",
+    "warning": {
+      "body": "Bu adrese yalnızca {{symbol}} veya diğer {{network}} tokenlerini gönderin. Başka ağlardan gönderilen varlıklar kurtarılamaz.",
+      "title": "Yalnızca {{network}} varlıkları."
+    }
+  },
+  "flareWidget": {
+    "close": "Kapat",
+    "collapse": "Çökme",
+    "expand": "Genişlet",
+    "openFullPage": "Tam sayfayı aç"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "Mesaj kopyalandı",
+      "copy": "Kopyala",
+      "copyFailed": "Kopyalama başarısız",
+      "regenerate": "Yanıtı yeniden oluştur"
+    },
+    "composer": {
+      "disclaimer": "FlareGPT hata yapabilir. Harekete geçmeden önce önemli bilgileri doğrulayın.",
+      "placeholder": "FlareGPT'ye sor...",
+      "send": "Gönder",
+      "stop": "Üretimi durdur"
+    },
+    "deleteConversation": {
+      "button": "Konuşmayı Sil",
+      "confirm": "Onaylıyor musunuz?"
+    },
+    "deleteConversationFailed": "Bu konuşma silinemedi. Tekrar deneyin.",
+    "empty": {
+      "subtitle": "Cüzdanınız, ödülleriniz, delegasyonlarınız veya Flare ekosistemi hakkında yanıt alın.",
+      "title": "FlareGPT'ye istediğinizi sorun"
+    },
+    "guestMode": {
+      "cta": "Geçmişi senkronize etmek ve cüzdan analizinin kilidini açmak için oturum açın",
+      "notice": "Misafir modu · Konuşmalar kaydedilmez."
+    },
+    "history": {
+      "cancelRename": "İptal",
+      "delete": "Sil",
+      "empty": "Henüz konuşma yok",
+      "moreActions": "Diğer işlemler",
+      "newChat": "Yeni Sohbet",
+      "noResults": "Aramanızla eşleşen konuşma yok",
+      "openButton": "Geçmiş",
+      "pin": "Sabitle",
+      "pinLimitReached": "En fazla {{count}} konuşma sabitleyebilirsiniz",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "Yeniden adlandır",
+      "renameFailed": "Bu konuşma yeniden adlandırılamadı.",
+      "saveRename": "Kaydet",
+      "searchPlaceholder": "Konuşmalarda ara...",
+      "title": "Sohbet Geçmişi",
+      "unpin": "Sabitlemeyi kaldır",
+      "untitled": "Başlıksız"
+    },
+    "historyLoadFailed": "Sohbet geçmişi yüklenemedi.",
+    "jumpToLatest": "En yeniye git",
+    "newChat": "Yeni Sohbet",
+    "prompts": {
+      "analyzeWallet": "Cüzdanımı analiz et",
+      "compareProtocols": "Sceptre ile Firelight'ı karşılaştır",
+      "explainDelegations": "Delegasyonlarımı açıkla",
+      "increaseRewards": "FTSO ödüllerimi nasıl artırabilirim?",
+      "rewardsDecreased": "Ödüllerim neden azaldı?",
+      "stakingOpportunities": "Staking fırsatlarımı göster"
+    },
+    "sendError": "Bir şeyler yanlış gitti. Tekrar deneyin!",
+    "wallet": {
+      "analyzing": "Analiz ediliyor:",
+      "guestLabel": "Cüzdan analizi",
+      "locked": {
+        "body": "FlareGPT'nin her soruya bir adres yazmak yerine Birincil ve İzleme Listesi cüzdanlarınızı otomatik olarak okumasına izin vermek için oturum açın.",
+        "connectCta": "Cüzdanınızı Bağlayın",
+        "signInCta": "Oturum aç",
+        "signingIn": "Cüzdanınızda onaylayın…",
+        "title": "Cüzdan analizinin kilidini açın"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Flare Network üzerinde inşa edilmiştir.",
     "disclaimer": "Yatırım tavsiyesi değildir. Veriler yalnızca bilgilendirme amaçlı sağlanmıştır.",
-    "terms": "Şartlar ve Sorumluluk Reddi",
-    "donate": "Bağış yap"
+    "donate": "Bağış yap",
+    "terms": "Şartlar ve Sorumluluk Reddi"
   },
   "help": {
+    "askFlareGptCta": "FlareGPT'ye sorun",
+    "askFlareGptLead": "Aradığınızı bulamadınız mı?",
+    "contact": {
+      "comingSoon": "Yakında",
+      "emailLabel": "E-posta",
+      "telegramLabel": "Telegram",
+      "twitterHint": "Bizi takip edin ve mesaj gönderin",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "Cüzdanınız bağlı olmayabilir veya panel henüz blokzincir verilerini senkronize ediyor olabilir. Doğru cüzdan ve ağın seçildiğinden emin olun.",
@@ -30,10 +336,12 @@
     ],
     "faqTitle": "Sıkça Sorulan Sorular",
     "featureGuides": "Özellik Kılavuzları",
+    "flareGptGuideDescription": "Cüzdanınız, ödülleriniz ve Flare ağı hakkında sade bir dille soru sorun.",
     "gettingStarted": "Başlarken",
     "headerDesc": "FlareGPT panonuzdan en iyi şekilde yararlanmanız için rehberler, yanıtlar ve destek.",
     "noFaqs": "Aramanızla eşleşen SSS bulunamadı.",
     "noGuides": "Aramanızla eşleşen rehber bulunamadı.",
+    "searchClear": "Aramayı temizle",
     "searchPlaceholder": "Rehberlerde veya SSS'de ara...",
     "searchSub": "Özellik rehberlerinde ve SSS'de arama yapın veya bize ulaşmanın başka bir yolunu bulun.",
     "searchTitle": "Başlamak için ihtiyacınız olan her şey",
@@ -65,63 +373,70 @@
       }
     ],
     "stillNeedHelp": "Hâlâ yardıma mı ihtiyacınız var?",
-    "supportDesc": "Şu anda bize ulaşmanın en hızlı yolu X. E-posta ve Telegram desteği yakında geliyor.",
-    "searchClear": "Aramayı temizle",
-    "flareGptGuideDescription": "Cüzdanınız, ödülleriniz ve Flare ağı hakkında sade bir dille soru sorun.",
-    "askFlareGptLead": "Aradığınızı bulamadınız mı?",
-    "askFlareGptCta": "FlareGPT'ye sorun",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "Bizi takip edin ve mesaj gönderin",
-      "telegramLabel": "Telegram",
-      "emailLabel": "E-posta",
-      "comingSoon": "Yakında"
-    }
+    "supportDesc": "Şu anda bize ulaşmanın en hızlı yolu X. E-posta ve Telegram desteği yakında geliyor."
   },
   "navbar": {
+    "addressCopied": "Adres kopyalandı",
     "askFlareGPT": "FlareGPT'ye Sor",
-    "mainnetStatus": "Flare Ana Ağı",
-    "connectWallet": "Cüzdan Bağla",
-    "primaryWalletSection": "Birincil Cüzdan",
     "badgePrimary": "Birincil",
+    "badgeSignIn": "Giriş Yap",
     "badgeWatchlist": "İzleme Listesi",
-    "disconnectWallet": "Cüzdan Bağlantısını Kes",
+    "balancesHiddenLabel": "Bakiyeler gizlendi",
     "configureWatchlistWallets": "İzleme Listesi Cüzdanlarını Yapılandır",
-    "watchlistSection": "İzleme Listesi ({{current}}/{{max}})",
-    "addressCopied": "Adres panoya kopyalandı",
+    "connectWallet": "Cüzdan Bağla",
     "copyFailed": "Adres kopyalanamadı",
+    "disconnectWallet": "Cüzdan Bağlantısını Kes",
     "flareGptFabHint": "FlareGPT artık buradan açılıyor",
     "hideBalances": "Bakiyeleri gizle",
+    "mainnetStatus": "Flare Ana Ağı",
+    "primaryWalletSection": "Birincil Cüzdan",
     "showBalances": "Bakiyeleri göster",
-    "balancesHiddenLabel": "Bakiyeler gizlendi",
     "signIn": "Giriş Yap",
+    "signInBackgroundHint": "Bağlı cüzdanınızın giriş yapması gerekiyor",
     "signingIn": "Giriş yapılıyor…",
     "signInPrompt": "Devam etmek için bu cüzdanı doğrulayan bir mesajı imzalayın.",
-    "badgeSignIn": "Giriş Yap",
-    "signInBackgroundHint": "Bağlı cüzdanınızın giriş yapması gerekiyor"
+    "watchlistSection": "İzleme Listesi ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "Koyu",
+      "light": "Açık",
+      "system": "Sistem"
+    },
     "cards": {
       "app": "Uygulama",
       "blur": "Mavi Işık Filtresi",
       "chartType": "Grafik Türü",
       "connectedWallets": "Bağlı Cüzdanlar",
       "currency": "Para Birimi Görünümü",
+      "defaultLandingPage": "Varsayılan Açılış Sayfası",
+      "defaultWallet": "Varsayılan Cüzdan",
       "governanceAlerts": "Yönetişim Uyarıları",
+      "hideBalances": "Cüzdan Bakiyelerini Gizle",
       "language": "Dil",
       "links": "Bağlantılar",
       "logout": "Çıkış Yap",
+      "reduceMotion": "Hareketi Azalt",
       "rewardsAlerts": "Ödül Uyarıları",
+      "tableDensity": "Tablo Yoğunluğu",
       "theme": "Tema",
       "themeMode": "Açık / Koyu mod",
       "timeframe": "Zaman Dilimi",
       "walletCapacity": "Cüzdan Kapasitesi",
-      "walletPreferences": "Cüzdan Tercihleri",
-      "defaultWallet": "Varsayılan Cüzdan",
-      "defaultLandingPage": "Varsayılan Açılış Sayfası",
-      "tableDensity": "Tablo Yoğunluğu",
-      "reduceMotion": "Hareketi Azalt",
-      "hideBalances": "Cüzdan Bakiyelerini Gizle"
+      "walletPreferences": "Cüzdan Tercihleri"
+    },
+    "dataStorage": {
+      "accountSubtitle": "Sunucudaki hesabınızla senkronize edilir.",
+      "accountTitle": "Hesap Verisi",
+      "clear": "Temizle",
+      "confirmClear": "Onaylansın mı?",
+      "conversations": "FlareGPT Konuşmaları",
+      "conversationsClearFailed": "Sohbet geçmişi temizlenemedi. Tekrar deneyin.",
+      "conversationsDescription": "Hesabınızdaki FlareGPT sohbet geçmişini temizler. Bu işlem geri alınamaz.",
+      "localSubtitle": "Yalnızca bu tarayıcıda depolanır. Temizlenmesi anında ve güvenlidir.",
+      "localTitle": "Yerel Veri",
+      "walletCache": "Cüzdan Etkinliği Önbelleği",
+      "walletCacheDescription": "Önbelleğe alınmış işlem geçmişini temizler. Bir sonraki ziyaret bunu yeniden getirecektir."
     },
     "description": "Cüzdanları, tercihleri, yerelleştirmeyi ve görünüm seçeneklerini yönetin.",
     "descriptions": {
@@ -129,18 +444,33 @@
       "blur": "Sıcak bir ekran tonuyla göz yorgunluğunu azaltın",
       "chartType": "Sistem matrisleri için varsayılan görsel stil geometrisini ayarlayın.",
       "currency": "Varlık tabanlı para birimi görünümünü seçin.",
+      "defaultLandingPage": "Uygulamayı başlattığınızda hangi sayfanın önce açılacağını seçin.",
+      "defaultWallet": "Önceki bir oturum geri yüklenemediğinde bu cüzdan etkin hale gelir.",
+      "hideBalances": "Gizlilik için gösterge panosundaki bakiyeleri ve tutarları bulanıklaştırır.",
       "language": "Varsayılan arayüz görüntüleme dilinizi seçin.",
       "links": "Global dokümantasyon referansları ve ekip etkileşim bağlantıları.",
       "logout": "Bu cihazda FlareGPT oturumunu kapatır. Tekrar giriş yapmak için yeni bir mesajı imzalamanız gerekir.",
+      "reduceMotion": "İşletim sisteminizde bir tercih ayarlanmamış olsa bile animasyonları en aza indirin.",
+      "tableDensity": "Yoğun tablolar için rahat boşluk veya daha kompakt bir görünüm.",
+      "theme": "Açık, Koyu seçin veya sistem ayarınızı takip edin.",
       "timeframe": "Görsel grafiklerde varsayılan pencere dönemi ölçeklerini tanımlayın.",
       "walletCapacity": "Tahsis kapasite havuzlarını izleyen sistem sınırları.",
-      "theme": "Açık, Koyu seçin veya sistem ayarınızı takip edin.",
-      "walletPreferences": "Panonun hangi cüzdanla açılacağını seçin.",
-      "defaultWallet": "Önceki bir oturum geri yüklenemediğinde bu cüzdan etkin hale gelir.",
-      "defaultLandingPage": "Uygulamayı başlattığınızda hangi sayfanın önce açılacağını seçin.",
-      "tableDensity": "Yoğun tablolar için rahat boşluk veya daha kompakt bir görünüm.",
-      "reduceMotion": "İşletim sisteminizde bir tercih ayarlanmamış olsa bile animasyonları en aza indirin.",
-      "hideBalances": "Gizlilik için gösterge panosundaki bakiyeleri ve tutarları bulanıklaştırır."
+      "walletPreferences": "Panonun hangi cüzdanla açılacağını seçin."
+    },
+    "flareGpt": {
+      "syncStatusConnected": "Oturum açıldı. Konuşmalarınız her cihazda ve tarayıcıda senkronize edilir.",
+      "syncStatusGuest": "Konuşmalar bu tarayıcıda geçicidir ve kaydedilmez. Saklamak için giriş yapın.",
+      "syncStatusTitle": "Senkronizasyon Durumu"
+    },
+    "groups": {
+      "account": "Hesap",
+      "personalization": "Kişiselleştirme",
+      "walletsAndData": "Cüzdanlar ve Veri"
+    },
+    "links": {
+      "docs": "Dokümanlar",
+      "github": "GitHub",
+      "twitter": "Twitter"
     },
     "notifications": {
       "governance": "Teklif güncellemeleri",
@@ -152,224 +482,201 @@
       "area": "Alan",
       "asia": "Asya",
       "candlestick": "Mum",
+      "comfortable": "Rahat",
+      "compact": "Kompakt",
       "europe": "Avrupa",
       "global": "Küresel",
       "high": "Yüksek",
       "line": "Çizgi",
       "low": "Düşük",
       "medium": "Orta",
-      "off": "Kapalı",
-      "comfortable": "Rahat",
-      "compact": "Kompakt"
+      "off": "Kapalı"
     },
     "security": {
-      "logout": "Çıkış Yap",
-      "confirmLogout": "Onayla?"
+      "confirmLogout": "Onayla?",
+      "logout": "Çıkış Yap"
     },
     "subtitles": {
       "About": "Sistemik dağıtım kayıtlarına, derleme kurallarına ve varlık dizinlerine genel bakış.",
+      "Accessibility": "Hareket ve etkileşim tercihlerini ayarlayın.",
+      "Appearance": "FlareGPT'nin nasıl görüneceğini seçin.",
       "Display": "Varsayılan görünümünüzü ve pano verilerinin nasıl gösterildiğini kişiselleştirin.",
+      "FlareGpt": "FlareGPT'nin konuşmalarınızı nasıl hatırladığını yönetin.",
       "Notifications": "Sistemik öncelikli olayları ve teslimat rotası izleme uç noktalarını yönetin.",
       "Preferences": "Dil ve para birimi tercihleri.",
       "Security": "Etkin kimlik oturumu engellerini ve kimlik bilgileri doğrulama erişim kurallarını koruyun.",
-      "Wallets": "Küresel harici merkeziyetsiz hesaplar genelinde imzaları bağlayın ve yapılandırın.",
-      "Appearance": "FlareGPT'nin nasıl görüneceğini seçin.",
-      "Accessibility": "Hareket ve etkileşim tercihlerini ayarlayın.",
-      "FlareGpt": "FlareGPT'nin konuşmalarınızı nasıl hatırladığını yönetin."
+      "Wallets": "Küresel harici merkeziyetsiz hesaplar genelinde imzaları bağlayın ve yapılandırın."
     },
     "tabs": {
       "About": "Hakkında",
+      "Accessibility": "Erişilebilirlik",
+      "Appearance": "Görünüm",
+      "DataStorage": "Veri ve Depolama",
       "Display": "Pano",
+      "FlareGpt": "FlareGPT",
       "Notifications": "Bildirimler",
       "Preferences": "Genel",
       "Security": "Güvenlik",
-      "Wallets": "Cüzdanlar",
-      "Appearance": "Görünüm",
-      "Accessibility": "Erişilebilirlik",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "Veri ve Depolama"
+      "Wallets": "Cüzdanlar"
     },
     "title": "Ayarlar",
     "wallets": {
       "active": "Aktif",
       "add": "Cüzdan Ekle ({{current}}/{{max}})",
+      "addFormTitle": "İzleme Listesi Portföy Hesabı Ekle",
+      "adding": "Ekleniyor…",
+      "addressPlaceholder": "0x... Flare Cüzdan Adresi",
       "available": "Kullanılabilir",
+      "cancelRename": "İptal",
+      "confirmRemove": "Kaldırma onaylansın mı?",
       "connectAction": "Cüzdan Bağla ({{current}} Bağlı, {{remaining}} Kalan)",
+      "connectActionUnlimited": "Cüzdan Ekle ({{current}} izleniyor)",
       "connected": "Bağlı",
+      "duplicateAddress": "Bu adres zaten izleme listenizde.",
+      "duplicateNickname": "İzleme listenizde bu takma ada sahip bir cüzdan zaten var. Lütfen farklı bir takma ad seçin.",
       "empty": "Henüz cüzdan bağlanmadı",
       "emptyTerminal": "Bağlı cüzdan yok. Devam etmek için terminal varlıklarınızı bağlayın.",
-      "limit": "En fazla {{max}} cüzdan bağlayabilirsiniz",
-      "limitReached": "Cüzdan Sınırına Ulaşıldı ({{current}}/{{max}})",
-      "maximum": "Maksimum",
-      "remainingSlots": "Kalan Yuvalar",
-      "addFormTitle": "İzleme Listesi Portföy Hesabı Ekle",
-      "addressPlaceholder": "0x... Flare Cüzdan Adresi",
+      "guestLimitBenefitBackup": "İzleme listenizi yedekli tutun",
+      "guestLimitBenefitMore": "3'ten fazla cüzdan saklayın",
+      "guestLimitBenefitSync": "İzleme listenizi cihazlar arasında senkronize edin",
+      "guestLimitTitle": "Daha fazla cüzdan izlemek için giriş yapın",
       "invalidAddress": "Lütfen geçerli bir Flare EVM ağ adresi girin (0x ile başlayarak).",
       "labelPlaceholder": "Hesap Adı Etiketi (ör. Soğuk Hava Deposu)",
+      "limit": "En fazla {{max}} cüzdan bağlayabilirsiniz",
+      "limitReached": "Cüzdan Sınırına Ulaşıldı ({{current}}/{{max}})",
       "liveConnected": "Canlı Bağlantılı",
       "manageSubtitle": "Aktif Web3 bağlantılarınızı ve salt okunur portföy takip hesaplarınızı yönetin.",
+      "maximum": "Maksimum",
+      "noDefaultSelected": "Seçilmedi",
+      "noLimit": "İstediğiniz kadar cüzdan ekleyin.",
+      "noSearchResults": "Aramanızla eşleşen cüzdan yok.",
+      "notFoundError": "Bu cüzdan artık izleme listenizde değil.",
       "readOnly": "Salt Okunur",
       "registrationFailed": "Adres kaydı başarısız oldu. Yinelenen olup olmadığını veya yuvaların dolu olup olmadığını kontrol edin.",
-      "tracked": "İzlenen",
+      "remainingSlots": "Kalan Yuvalar",
       "remove": "Kaldır",
-      "confirmRemove": "Kaldırma onaylansın mı?",
-      "noDefaultSelected": "Seçilmedi",
       "rename": "Yeniden adlandır",
-      "cancelRename": "İptal",
-      "connectActionUnlimited": "Cüzdan Ekle ({{current}} izleniyor)",
-      "noLimit": "İstediğiniz kadar cüzdan ekleyin.",
-      "duplicateAddress": "Bu adres zaten izleme listenizde.",
-      "guestLimitTitle": "Daha fazla cüzdan izlemek için giriş yapın",
-      "guestLimitBenefitSync": "İzleme listenizi cihazlar arasında senkronize edin",
-      "guestLimitBenefitMore": "3'ten fazla cüzdan saklayın",
-      "guestLimitBenefitBackup": "İzleme listenizi yedekli tutun",
-      "searchPlaceholder": "{{count}} cüzdanda ara...",
-      "noSearchResults": "Aramanızla eşleşen cüzdan yok.",
-      "duplicateNickname": "İzleme listenizde bu takma ada sahip bir cüzdan zaten var. Lütfen farklı bir takma ad seçin.",
-      "notFoundError": "Bu cüzdan artık izleme listenizde değil.",
       "saveEdit": "Kaydet",
-      "adding": "Ekleniyor…"
-    },
-    "links": {
-      "docs": "Dokümanlar",
-      "github": "GitHub",
-      "twitter": "Twitter"
-    },
-    "groups": {
-      "personalization": "Kişiselleştirme",
-      "walletsAndData": "Cüzdanlar ve Veri",
-      "account": "Hesap"
-    },
-    "appearance": {
-      "light": "Açık",
-      "dark": "Koyu",
-      "system": "Sistem"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "Senkronizasyon Durumu",
-      "syncStatusConnected": "Giriş yapıldı — konuşmalarınız tüm cihaz ve tarayıcılarda senkronize edilir.",
-      "syncStatusGuest": "Konuşmalar bu tarayıcıda geçicidir ve kaydedilmez. Saklamak için giriş yapın."
-    },
-    "dataStorage": {
-      "localTitle": "Yerel Veri",
-      "localSubtitle": "Yalnızca bu tarayıcıda saklanır — temizlemek anında ve güvenlidir.",
-      "walletCache": "Cüzdan Etkinliği Önbelleği",
-      "walletCacheDescription": "Önbelleğe alınmış işlem geçmişini temizler — bir sonraki ziyarette yeniden alınacaktır.",
-      "conversations": "FlareGPT Konuşmaları",
-      "conversationsDescription": "Hesabınızdaki FlareGPT sohbet geçmişini temizler. Bu işlem geri alınamaz.",
-      "clear": "Temizle",
-      "confirmClear": "Onaylansın mı?",
-      "accountTitle": "Hesap Verisi",
-      "accountSubtitle": "Sunucudaki hesabınızla senkronize edilir.",
-      "conversationsClearFailed": "Sohbet geçmişi temizlenemedi — lütfen tekrar deneyin."
+      "searchPlaceholder": "{{count}} cüzdanda ara...",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "İzlenen"
     }
   },
   "sidebar": {
+    "activeWallet": "Aktif: {{address}}",
+    "addWatchlistWallet": "+ İzleme Listesi Cüzdanı Ekle",
     "connectWallet": "Cüzdan Bağla",
+    "defiProtocols": "Defi Protokolleri",
     "disconnect": "Bağlantıyı Kes",
+    "donate": "Bağış yap",
+    "feeds": "Bildirimler",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Ödülleri",
-    "defiProtocols": "Defi Protokolleri",
     "governance": "Yönetişim",
     "helpCenter": "Yardım Merkezi",
+    "loops": "Döngüler",
     "notConnected": "Bağlı değil",
     "overview": "Genel Bakış",
     "rflrTracker": "rFLR Takibi",
     "settings": "Ayarlar",
+    "signInRequired": "Giriş gerekli",
+    "signInRequiredHint": "Giriş yapmak için üst çubuktaki cüzdan menüsünü kullanın.",
     "walletActivity": "Cüzdan Aktivitesi",
     "walletConnected": "Cüzdan Bağlandı",
-    "yield": "Getiri",
-    "loops": "Döngüler",
-    "feeds": "Bildirimler",
-    "donate": "Bağış yap",
-    "addWatchlistWallet": "+ İzleme Listesi Cüzdanı Ekle",
-    "activeWallet": "Aktif: {{address}}",
-    "signInRequired": "Giriş gerekli",
-    "signInRequiredHint": "Giriş yapmak için üst çubuktaki cüzdan menüsünü kullanın."
+    "yield": "Getiri"
   },
   "wallet": {
     "activity": {
-      "subtitle": "Gelen ve giden blockchain etkileşimlerinin gerçek zamanlı izlenmesi.",
-      "title": "Son Terminal Etkinliği",
-      "description": "Aktif cüzdanınızdaki her dizine eklenmiş işlem, gruplandırılmış ve aranabilir şekilde.",
-      "refresh": "Yenile",
-      "connectToSee": "İşlem etkinliğini görmek için bir cüzdan bağlayın veya seçin.",
-      "couldntLoad": "Cüzdan etkinliği yüklenemedi.",
-      "notifier": {
-        "ready": "Cüzdan etkinliğinizin yüklenmesi tamamlandı."
-      },
-      "loading": {
-        "title": "Cüzdan etkinliğiniz dizine ekleniyor",
-        "subtitle": "Büyük cüzdanlar ilk yüklemede birkaç dakika sürebilir. Bu sırada panonun geri kalanını rahatça inceleyebilirsiniz — hazır olduğunda size haber vereceğiz.",
-        "elapsed": "{{seconds}}sn geçti"
-      },
-      "empty": {
-        "title": "Henüz etkinlik yok",
-        "description": "Bu cüzdanda dizine eklenmiş işlem yok."
-      },
-      "noResults": {
-        "title": "Eşleşen işlem yok",
-        "description": "Arama veya filtrelerinizi ayarlamayı deneyin."
-      },
-      "kpi": {
-        "totalTransactions": "Toplam İşlem",
-        "uniqueAssets": "Benzersiz Varlıklar",
-        "walletAge": "Cüzdan Yaşı",
-        "walletAgeYears": "{{count}} yıl",
-        "walletAgeMonths": "{{count}} ay",
-        "walletAgeDays": "{{count}} gün",
-        "lastActive": "Son Aktif",
-        "justNow": "Az önce",
-        "minutesAgo": "{{count}} dk önce",
-        "hoursAgo": "{{count}} sa önce",
-        "daysAgo": "{{count}} gün önce"
-      },
-      "insights": {
-        "title": "Hızlı İçgörüler",
-        "mostUsedAsset": "En Çok Kullanılan Varlık",
-        "mostCommonAction": "En Yaygın İşlem",
-        "mostActiveDay": "En Aktif Gün",
-        "mostActiveMonth": "En Aktif Ay",
-        "txCount": "{{count}} işlem"
-      },
       "charts": {
+        "actionBreakdown": "İşlem Türü Dağılımı",
+        "actionBreakdownSubtitle": "İşlem türüne göre işlem sayısı",
         "activityByDay": "Güne Göre Etkinlik",
         "activityByDaySubtitle": "Gün başına işlem sayısı",
         "assetBreakdown": "Varlık Dağılımı",
         "assetBreakdownSubtitle": "Varlığa göre işlem sayısı",
-        "actionBreakdown": "İşlem Türü Dağılımı",
-        "actionBreakdownSubtitle": "İşlem türüne göre işlem sayısı",
+        "tabActions": "İşlemler",
         "tabActivity": "Etkinlik",
-        "tabAssets": "Varlıklar",
-        "tabActions": "İşlemler"
+        "tabAssets": "Varlıklar"
       },
-      "toolbar": {
-        "searchPlaceholder": "Hash veya varlığa göre ara...",
-        "sort": {
-          "newest": "En Yeni",
-          "oldest": "En Eski",
-          "amount": "Tutar"
-        },
-        "exportCsv": "CSV Dışa Aktar",
-        "exportJson": "JSON Dışa Aktar",
-        "export": "Dışa Aktar"
+      "connectToSee": "İşlem etkinliğini görmek için bir cüzdan bağlayın veya seçin.",
+      "couldntLoad": "Cüzdan etkinliği yüklenemedi.",
+      "description": "Aktif cüzdanınızdaki her dizine eklenmiş işlem, gruplandırılmış ve aranabilir şekilde.",
+      "drawer": {
+        "action": "İşlem",
+        "asset": "Varlık",
+        "blockNumber": "Blok Numarası",
+        "close": "Kapat",
+        "copyFailed": "Hash kopyalanamadı",
+        "hashCopied": "İşlem hash'i kopyalandı",
+        "next": "Sonraki işlem",
+        "previous": "Önceki işlem",
+        "timestamp": "Zaman Damgası",
+        "title": "İşlem Ayrıntıları",
+        "transactionHash": "İşlem Hash'i",
+        "viewOnExplorer": "FlareScan'de Görüntüle"
+      },
+      "empty": {
+        "description": "Bu cüzdanda dizine eklenmiş işlem yok.",
+        "title": "Henüz etkinlik yok"
       },
       "feed": {
         "ariaLabel": "{{total}} işlemden {{shown}} tanesi gösteriliyor"
       },
-      "drawer": {
-        "title": "İşlem Ayrıntıları",
-        "previous": "Önceki işlem",
-        "next": "Sonraki işlem",
-        "close": "Kapat",
-        "action": "İşlem",
-        "asset": "Varlık",
-        "blockNumber": "Blok Numarası",
-        "timestamp": "Zaman Damgası",
-        "transactionHash": "İşlem Hash'i",
-        "hashCopied": "İşlem hash'i kopyalandı",
-        "copyFailed": "Hash kopyalanamadı",
-        "viewOnExplorer": "FlareScan'de Görüntüle"
+      "insights": {
+        "mostActiveDay": "En Aktif Gün",
+        "mostActiveMonth": "En Aktif Ay",
+        "mostCommonAction": "En Yaygın İşlem",
+        "mostUsedAsset": "En Çok Kullanılan Varlık",
+        "title": "Hızlı İçgörüler",
+        "txCount": "{{count}} işlem",
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_other": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "{{count}} gün önce",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "{{count}} sa önce",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "Az önce",
+        "lastActive": "Son Aktif",
+        "minutesAgo": "{{count}} dk önce",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "Toplam İşlem",
+        "uniqueAssets": "Benzersiz Varlıklar",
+        "walletAge": "Cüzdan Yaşı",
+        "walletAgeDays": "{{count}} gün",
+        "walletAgeMonths": "{{count}} ay",
+        "walletAgeYears": "{{count}} yıl"
+      },
+      "loading": {
+        "elapsed": "{{seconds}}sn geçti",
+        "subtitle": "Büyük cüzdanlar ilk yüklemede birkaç dakika sürebilir. Gösterge panosunun geri kalanını keşfetmekten çekinmeyin. Hazır olduğunda size haber vereceğiz.",
+        "title": "Cüzdan etkinliğiniz dizine ekleniyor"
+      },
+      "noResults": {
+        "description": "Arama veya filtrelerinizi ayarlamayı deneyin.",
+        "title": "Eşleşen işlem yok"
+      },
+      "notifier": {
+        "ready": "Cüzdan etkinliği yüklendi."
+      },
+      "refresh": "Yenile",
+      "subtitle": "Gelen ve giden blockchain etkileşimlerinin gerçek zamanlı izlenmesi.",
+      "title": "Son Terminal Etkinliği",
+      "toolbar": {
+        "export": "Dışa Aktar",
+        "exportCsv": "CSV Dışa Aktar",
+        "exportJson": "JSON Dışa Aktar",
+        "searchPlaceholder": "Hash veya varlığa göre ara...",
+        "sort": {
+          "amount": "Tutar",
+          "newest": "En Yeni",
+          "oldest": "En Eski"
+        }
       }
     },
     "stats": {
@@ -396,285 +703,6 @@
       "contract": "SÖZLEŞMENİN YERİNE GETİRİLMESİ (",
       "received": "Gelen",
       "sent": "Gönderildi"
-    }
-  },
-  "comingSoon": {
-    "badge": "Çok Yakında",
-    "description": "Bu özelliği geliştiriyoruz. Kısa süre sonra tekrar kontrol edin."
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "WalletConnect, Brave Shields tarafından engelleniyor gibi görünüyor.",
-        "tryTitle": "Aşağıdakilerden birini deneyin:",
-        "shieldsOff": "Bu site için Brave Shields'ı kapatıp tekrar deneyin.",
-        "privateWindow": "Siteyi bir Brave Gizli Penceresinde açın.",
-        "useChrome": "Sorun devam ederse Google Chrome veya desteklenen başka bir tarayıcı kullanın."
-      },
-      "generic": "Beklenmedik bir bağlantı sürtünmesi meydana geldi. Lütfen tekrar deneyin veya başka bir cüzdan kullanın.",
-      "providerGone": "Bu cüzdan artık yanıt vermiyor gibi görünüyor — güncellenmiş veya kaldırılmış olabilir. Sayfayı yenilemek bunu düzeltmelidir.",
-      "pending": "Bir bağlantı isteği zaten açık. Lütfen cüzdan uzantı panelinizi açın.",
-      "rejected": "Cüzdanınızdaki bağlantı isteği iptal edildi.",
-      "timeout": "WalletConnect'e ulaşılamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
-      "wrongNetwork": "Lütfen cüzdanınızın aktif ağını Flare Mainnet olarak değiştirin."
-    },
-    "install": "Yükle",
-    "installHint": "Hâlâ cüzdanınızı görmüyor musunuz? Sayfayı yenilemek yardımcı olabilir.",
-    "refresh": "Yenile",
-    "mobileHint": "Mobil cihazlarda, en iyi bağlantı deneyimi için cüzdanınızın yerleşik tarayıcısında FlareGPT'yi açın. Bir QR kodunu tararken, daha güvenilir bir bağlantı için telefonunuzun kamerası yerine cüzdan uygulamanızın kendi tarayıcısını kullanın.",
-    "connecting": "Bağlanıyor…",
-    "recommended": "Önerilen",
-    "subtitle": "Flare Ağına bağlanmak için tercih ettiğiniz cüzdanı seçin.",
-    "title": "Cüzdanınızı Bağlayın",
-    "viaWalletConnect": "WalletConnect üzerinden"
-  },
-  "flareWidget": {
-    "close": "Kapat",
-    "collapse": "Çökme",
-    "expand": "Genişlet",
-    "openFullPage": "Tam sayfayı aç"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "Cüzdanımı analiz et",
-      "increaseRewards": "FTSO ödüllerimi nasıl artırabilirim?",
-      "explainDelegations": "Delegasyonlarımı açıkla",
-      "compareProtocols": "Sceptre ile Firelight'ı karşılaştır",
-      "rewardsDecreased": "Ödüllerim neden azaldı?",
-      "stakingOpportunities": "Staking fırsatlarımı göster"
-    },
-    "wallet": {
-      "analyzing": "Analiz ediliyor:"
-    },
-    "empty": {
-      "title": "FlareGPT'ye istediğinizi sorun",
-      "subtitle": "Cüzdanınız, ödülleriniz, delegasyonlarınız veya Flare ekosistemi hakkında yanıt alın."
-    },
-    "composer": {
-      "placeholder": "FlareGPT'ye sor...",
-      "send": "Gönder",
-      "stop": "Üretimi durdur",
-      "disclaimer": "FlareGPT hata yapabilir. Harekete geçmeden önce önemli bilgileri doğrulayın."
-    },
-    "actions": {
-      "copy": "Kopyala",
-      "regenerate": "Yanıtı yeniden oluştur",
-      "copied": "Mesaj kopyalandı",
-      "copyFailed": "Kopyalama başarısız"
-    },
-    "jumpToLatest": "En yeniye git",
-    "historyLoadFailed": "Sohbet geçmişiniz yüklenemedi.",
-    "sendError": "Bir şeyler ters gitti — lütfen tekrar deneyin.",
-    "newChat": "Yeni Sohbet",
-    "deleteConversation": {
-      "button": "Konuşmayı Sil",
-      "confirm": "Onaylıyor musunuz?"
-    },
-    "deleteConversationFailed": "Bu konuşma silinemedi. Lütfen tekrar deneyin.",
-    "history": {
-      "title": "Sohbet Geçmişi",
-      "newChat": "Yeni Sohbet",
-      "searchPlaceholder": "Konuşmalarda ara...",
-      "empty": "Henüz konuşma yok",
-      "noResults": "Aramanızla eşleşen konuşma yok",
-      "untitled": "Başlıksız",
-      "moreActions": "Diğer işlemler",
-      "pin": "Sabitle",
-      "unpin": "Sabitlemeyi kaldır",
-      "rename": "Yeniden adlandır",
-      "delete": "Sil",
-      "pinLimitReached": "En fazla {{count}} konuşma sabitleyebilirsiniz",
-      "renameFailed": "Bu konuşma yeniden adlandırılamadı.",
-      "openButton": "Geçmiş",
-      "saveRename": "Kaydet",
-      "cancelRename": "İptal"
-    }
-  },
-  "dashboard": {
-    "description": "Bir bakışta Live Flare ağ verileri, fiyat grafikleri ve cüzdan etkinliği.",
-    "common": {
-      "retry": "Tekrar dene",
-      "retrying": "Yeniden deneniyor...",
-      "networkHiccup": "Bu genellikle geçici bir ağ hıçkırığıdır.",
-      "noWalletSelected": "Cüzdan seçilmedi",
-      "yes": "Evet",
-      "no": "Hayır"
-    },
-    "stats": {
-      "flrPrice": "FLR Fiyatı",
-      "marketCap": "Dolaşımdaki Coin",
-      "volume24h": "24 saatlik Hacim",
-      "tvl": "TVL",
-      "couldntLoad": "Pazara genel bakış yüklenemedi"
-    },
-    "chart": {
-      "couldntLoad": "FLR fiyat geçmişi yüklenemedi"
-    },
-    "networkActivity": {
-      "title": "Ağ Etkinliği",
-      "live": "Canlı",
-      "gwei": "Gwei",
-      "gasPrice": "Gaz ücreti",
-      "tps": "TPS",
-      "couldntLoad": "Ağ verileri yüklenemedi",
-      "collectingSamples": "Canlı örneklerin toplanması — yeni veriler geldikçe çizelge doldurulur."
-    },
-    "walletBalances": {
-      "title": "Cüzdan Bakiyeleri",
-      "connectToSeeBalances": "Bakiyeleri görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
-      "couldntLoad": "Cüzdan bakiyeleri yüklenemedi"
-    },
-    "ftso": {
-      "title": "FTSO Heyeti",
-      "connected": "Bağlandı",
-      "readOnly": " (read only)",
-      "connectToSeeRewards": "Ödülleri görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
-      "couldntLoad": "FTSO portföyü yüklenemedi",
-      "delegatedWflr": "Yetkilendirilmiş WFLR",
-      "unclaimedFlr": "Sahipsiz FLR",
-      "activeDelegations": "Aktif Delegasyonlar",
-      "estHourlyEarning": "Tahmini Saatlik Kazanç",
-      "claimRewards": "Ödülleri Al",
-      "readOnlyCannotClaim": "Salt okunur — talep edilemez",
-      "switchToClaim": "Ödülleri almak için bağlı cüzdanınıza geçin",
-      "noUnclaimedYet": "Henüz talep edilmemiş ödül yok",
-      "claimComingSoon": "Henüz talepte bulunulamıyor. Çok yakında."
-    },
-    "claimsHistory": {
-      "title": "Talep Geçmişi",
-      "connectToSee": "Talep geçmişini görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
-      "couldntLoad": "Talep geçmişi yüklenemedi",
-      "emptyTitle": "Sahipsiz dönem yok",
-      "emptyDescription": "Hepiniz bitirdiniz — talep edilecek bekleyen bir ödül dönemi yok."
-    },
-    "delegationsBreakdown": {
-      "title": "Delegasyon Dökümü",
-      "tabLabel": "Yetkilendirmeler",
-      "connectToSee": "Temsilcileri görmek için Ayarlar'dan bir cüzdan bağlayın veya ekleyin.",
-      "couldntLoad": "Yetkilendirmeler yüklenemedi",
-      "emptyTitle": "Etkin temsilci yok",
-      "emptyDescription": "Ödül kazanmaya başlamak için WFLR'yi bir FTSO sağlayıcısına devredin."
-    },
-    "apiStatus": {
-      "checking": "API durumu kontrol ediliyor...",
-      "operational": "Tüm sistemler çalışır durumda",
-      "degraded": "API bozulmuş"
-    }
-  },
-  "defiProtocols": {
-    "description": "MXRPY, Sceptre ve Firelight kasalarında getiri stratejilerini karşılaştırın ve pozisyonlarınızı takip edin.",
-    "common": {
-      "addressCopied": "Adres panoya kopyalandı",
-      "copyFailed": "Adres kopyalanamadı",
-      "connectToSeePosition": "Pozisyonunuzu görmek için bir cüzdan bağlayın",
-      "contract": "Sözleşme",
-      "proxyContract": "Proxy Sözleşme",
-      "poolOwnership": "Havuz Payı",
-      "protocolDetails": "Protokol detayları",
-      "yourBalance": "Bakiyeniz",
-      "redeemableValue": "İtfa Edilebilir Değer"
-    },
-    "explorer": {
-      "title": "Protokol Gezgini",
-      "subtitle": "Pozisyonunuzu ve detayları görmek için bir protokol seçin"
-    },
-    "kpis": {
-      "protocolsTracked": "Takip Edilen Protokoller",
-      "bestApr": "Mevcut En İyi APR",
-      "activePositions": "Aktif Pozisyonlar"
-    },
-    "mxrpy": {
-      "title": "MXRPY Kasası",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "MXRPY pozisyonunuz yüklenemedi",
-      "circulatingCaption": "Dolaşımda {{shares}} pay · {{decimals}} ondalık basamak",
-      "yourShares": "Makbuz Paylarınız",
-      "category": "Getiri Kasası"
-    },
-    "sceptre": {
-      "title": "Sceptre Liquid Staking",
-      "subtitle": "sFLR likit stake",
-      "couldntLoad": "Sceptre pozisyonunuz yüklenemedi",
-      "exchangeRateLabel": "sFLR / FLR kuru",
-      "totalMinted": "Toplam Basılan Pay",
-      "backedFlr": "Dayanak Teminatlı FLR",
-      "category": "Likit Stake"
-    },
-    "firelight": {
-      "title": "Firelight Kasası",
-      "subtitle": "Sermaye koruma kasası",
-      "couldntLoad": "Firelight pozisyonunuz yüklenemedi",
-      "backingLabel": "Varlık teminat çarpanı",
-      "circulatingSupply": "Dolaşımdaki Arz",
-      "underlyingReserve": "Dayanak Rezerv",
-      "insuranceRobust": "Sigorta: Güçlü",
-      "category": "Sigorta"
-    },
-    "strategies": {
-      "title": "Strateji Karşılaştırması",
-      "subtitle": "FLR'nizin farklı stratejilerde nasıl performans gösterebileceğini görün",
-      "amountLabel": "Karşılaştırma tutarı",
-      "apr": "APR",
-      "colStrategy": "Strateji",
-      "colYield": "Tah. Getiri (FLR)",
-      "colTerms": "Koşullar",
-      "compoundingLabel": "Bileşik Faiz",
-      "couldntLoad": "Strateji karşılaştırması yüklenemedi",
-      "highestApr": "En Yüksek APR",
-      "lockupDays": "{{count}} gün kilit",
-      "lockupHours": "{{count}} saat kilit",
-      "noLockup": "Kilit yok",
-      "verdict": "FlareGPT Değerlendirmesi"
-    }
-  },
-  "donate": {
-    "title": "FlareGPT'yi Destekle",
-    "description": "Desteğiniz FlareGPT'nin ücretsiz, bağımsız kalmasına ve sürekli gelişmesine yardımcı olur.",
-    "hero": {
-      "addressLabel": "Cüzdan Adresi",
-      "tapToCopy": "Kopyalamak için dokun",
-      "copyAddress": "Adresi Kopyala",
-      "copied": "Kopyalandı",
-      "addressCopied": "Adres panoya kopyalandı",
-      "copyFailed": "Adres kopyalanamadı",
-      "viewOnExplorer": "{{explorer}}'de Görüntüle",
-      "multisigNote": "Çoklu imza cüzdanla korunmaktadır",
-      "qrTitle": "{{symbol}} bağış cüzdan adresi için QR kodu"
-    },
-    "warning": {
-      "title": "Yalnızca {{network}} varlıkları.",
-      "body": "Bu adrese yalnızca {{symbol}} veya diğer {{network}} tokenlerini gönderin. Başka ağlardan gönderilen varlıklar kurtarılamaz."
-    },
-    "amounts": {
-      "title": "Önerilen Tutarlar",
-      "subtitle": "Her katkı önemlidir — başlamak için birkaç fikir.",
-      "impactTier1": "Bir günlük API maliyeti",
-      "impactTier2": "Bir haftalık barındırma",
-      "impactTier3": "Bir aylık altyapı",
-      "impactTier4": "Yeni protokol entegrasyonları",
-      "copiedToast": "Adres kopyalandı. {{amount}} {{symbol}} bağış düşündüğünüz için teşekkürler."
-    },
-    "funding": {
-      "title": "Finansman Şeffaflığı",
-      "subtitle": "FlareGPT'yi çalışır tutmanın maliyetine dair açık bir bakış — baskı değil, sadece şeffaflık.",
-      "monthlyInfrastructure": "Aylık Altyapı",
-      "developmentFund": "Geliştirme Fonu",
-      "raisedOfGoal": "{{goal}} hedefinden {{raised}} toplandı"
-    },
-    "received": {
-      "title": "Alınan Bağışlar",
-      "subtitle": "Desteklenen her ağda alınan toplam katkılar.",
-      "demoData": "Demo veri"
-    },
-    "support": {
-      "title": "Desteğiniz Neyi Finanse Ediyor",
-      "infra": "API ve Altyapı",
-      "integrations": "Yeni Protokol Entegrasyonları",
-      "free": "FlareGPT'yi Ücretsiz Tutmak",
-      "development": "Sürekli Geliştirme"
-    },
-    "closing": {
-      "message": "FlareGPT'yi bağımsız tutmaya yardımcı olduğunuz için teşekkürler. Büyük ya da küçük, her katkı gerçekten yardımcı oluyor."
     }
   }
 }

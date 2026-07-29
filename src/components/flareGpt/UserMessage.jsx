@@ -30,7 +30,7 @@ function UserMessage({ message }) {
   return (
     <div className="group flex justify-end">
       <div className="max-w-[85%] sm:max-w-[75%] min-w-0">
-        <div className="rounded-2xl rounded-tr-md bg-brand px-4 py-2.5 text-sm text-white whitespace-pre-wrap break-words">
+        <div className="rounded-2xl rounded-tr-md bg-brand px-4 py-2.5 text-base leading-7 text-white whitespace-pre-wrap break-words">
           {message.content}
         </div>
         <div className="mt-1 flex justify-end opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">

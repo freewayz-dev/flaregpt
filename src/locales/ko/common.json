@@ -1,11 +1,317 @@
 {
+  "comingSoon": {
+    "badge": "개봉 예정작",
+    "description": "이 기능을 구축하고 있습니다. 잠시 후 다시 확인하세요."
+  },
+  "connectModal": {
+    "connecting": "연결 중…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "사이트를 Brave 비공개 창에서 열어보세요.",
+        "shieldsOff": "이 사이트에 대해 Brave Shields를 끄고 다시 시도하세요.",
+        "title": "WalletConnect가 Brave Shields에 의해 차단된 것 같습니다.",
+        "tryTitle": "다음 중 하나를 시도해 보세요:",
+        "useChrome": "문제가 계속되면 Google Chrome이나 다른 지원되는 브라우저를 사용하세요."
+      },
+      "generic": "예기치 않은 연결 마찰이 발생했습니다. 다시 시도하거나 다른 지갑을 사용하세요.",
+      "pending": "연결 요청이 이미 열려 있습니다. 지갑 확장 패널을 여십시오.",
+      "providerGone": "이 지갑이 더 이상 응답하지 않는 것 같습니다. 업데이트되었거나 제거되었을 수 있습니다. 페이지를 새로고침하면 해결될 수 있습니다.",
+      "rejected": "지갑에서 연결 요청이 취소되었습니다.",
+      "timeout": "WalletConnect에 연결할 수 없습니다. 연결 상태를 확인하고 다시 시도하세요.",
+      "wrongNetwork": "지갑의 활성 네트워크를 Flare Mainnet으로 전환하십시오."
+    },
+    "install": "설치",
+    "installHint": "아직도 지갑이 보이지 않나요? 페이지를 새로고침하면 도움이 될 수 있습니다.",
+    "mobileHint": "모바일에서 지갑의 내장 브라우저에서 FlareGPT를 열어 최상의 연결 경험을 누리세요. QR 코드를 스캔할 때는 휴대폰 카메라 대신 지갑 앱 자체 스캐너를 사용하면 더 안정적으로 연결할 수 있습니다.",
+    "recommended": "추천",
+    "refresh": "새로고침",
+    "subtitle": "선호하는 지갑을 선택하여 Flare 네트워크에 연결합니다.",
+    "title": "지갑 연결",
+    "viaWalletConnect": "WalletConnect 경유"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "API 상태 확인 중...",
+      "degraded": "API 성능 저하",
+      "operational": "모든 시스템이 작동합니다."
+    },
+    "chart": {
+      "couldntLoad": "FLR 가격 기록을 로드할 수 없습니다"
+    },
+    "claimsHistory": {
+      "connectToSee": "청구 내역을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
+      "couldntLoad": "청구 내역을 불러올 수 없습니다",
+      "emptyDescription": "모두 확인했습니다. 대기 중인 보상 에포크가 없습니다.",
+      "emptyTitle": "청구되지 않은 에포크 없음",
+      "title": "\"보너스 포인트\" 이용 내역"
+    },
+    "common": {
+      "networkHiccup": "이것은 일반적으로 일시적인 네트워크 문제입니다.",
+      "no": "아니오",
+      "noWalletSelected": "지갑이 선택되지 않았습니다",
+      "retry": "다시 시도",
+      "retrying": "\"재시도\"",
+      "yes": "예"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "위임을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
+      "couldntLoad": "위임을 로드할 수 없습니다",
+      "emptyDescription": "보상을 받기 시작하려면 WFLR을 FTSO 제공자에게 위임하십시오.",
+      "emptyTitle": "활성 위임 없음",
+      "tabLabel": "위임",
+      "title": "위임 내역"
+    },
+    "description": "실시간 Flare 네트워크 데이터, 가격 차트 및 지갑 활동을 한눈에 볼 수 있습니다.",
+    "ftso": {
+      "activeDelegations": "활성 위임",
+      "claimComingSoon": "청구 기능은 아직 이용할 수 없습니다. 곧 제공될 예정입니다.",
+      "claimRewards": "보상 받기",
+      "connected": "연결됨",
+      "connectToSeeRewards": "리워드를 확인하려면 설정에서 지갑을 연결하거나 추가하세요.",
+      "couldntLoad": "FTSO 포트폴리오를 로드할 수 없습니다",
+      "delegatedWflr": "위임된 WFLR",
+      "estHourlyEarning": "예상 시간당 수입",
+      "noUnclaimedYet": "아직 수령하지 않은 리워드가 없습니다",
+      "readOnly": "읽기 전용",
+      "readOnlyCannotClaim": "읽기 전용, 청구 불가",
+      "switchToClaim": "보상을 받으려면 연결된 지갑으로 전환하세요",
+      "title": "FTSO 위임",
+      "unclaimedFlr": "미청구 FLR"
+    },
+    "networkActivity": {
+      "collectingSamples": "실시간 샘플을 수집하는 중입니다. 새 데이터가 도착하면 차트가 채워집니다.",
+      "couldntLoad": "네트워크 데이터를 로드할 수 없습니다",
+      "gasPrice": "가스 가격",
+      "gwei": "Gwei",
+      "live": "라이브",
+      "title": "네트워크 활동 정지",
+      "tps": "TPS"
+    },
+    "stats": {
+      "couldntLoad": "시장 개요를 로드할 수 없습니다",
+      "flrPrice": "FLR 가격",
+      "marketCap": "시가총액",
+      "tvl": "보유하고 있습니다.",
+      "volume24h": "24H 거래량"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "잔액을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
+      "couldntLoad": "지갑 잔액을 로드할 수 없습니다",
+      "title": "지갑 잔액"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "주소가 복사되었습니다",
+      "connectToSeePosition": "포지션을 보려면 지갑을 연결하세요",
+      "contract": "컨트랙트",
+      "copyFailed": "주소를 복사하지 못했습니다",
+      "poolOwnership": "풀 지분율",
+      "protocolDetails": "프로토콜 세부정보",
+      "proxyContract": "프록시 컨트랙트",
+      "redeemableValue": "상환 가능 가치",
+      "yourBalance": "내 잔액"
+    },
+    "description": "MXRPY, Sceptre, Firelight 볼트에서 수익 전략을 비교하고 포지션을 추적하세요.",
+    "explorer": {
+      "subtitle": "프로토콜을 선택하여 포지션과 세부정보를 확인하세요",
+      "title": "프로토콜 탐색기"
+    },
+    "firelight": {
+      "backingLabel": "자산 담보 배수",
+      "category": "보험",
+      "circulatingSupply": "유통 공급량",
+      "couldntLoad": "Firelight 포지션을 불러오지 못했습니다",
+      "insuranceRobust": "보험: 견고함",
+      "subtitle": "자본 보호 볼트",
+      "title": "Firelight 볼트",
+      "underlyingReserve": "기초 준비금"
+    },
+    "kpis": {
+      "activePositions": "활성 포지션",
+      "bestApr": "이용 가능한 최고 APR",
+      "protocolsTracked": "추적 중인 프로토콜"
+    },
+    "mxrpy": {
+      "category": "수익 볼트",
+      "circulatingCaption": "유통 중인 지분 {{shares}}개 · 소수점 {{decimals}}자리",
+      "couldntLoad": "MXRPY 포지션을 불러오지 못했습니다",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "MXRPY 볼트",
+      "yourShares": "보유 리시트 지분"
+    },
+    "sceptre": {
+      "backedFlr": "기초 담보 FLR",
+      "category": "리퀴드 스테이킹",
+      "couldntLoad": "Sceptre 포지션을 불러오지 못했습니다",
+      "exchangeRateLabel": "sFLR / FLR 환율",
+      "subtitle": "sFLR 리퀴드 스테이킹",
+      "title": "Sceptre 리퀴드 스테이킹",
+      "totalMinted": "총 발행 지분"
+    },
+    "strategies": {
+      "amountLabel": "비교 금액",
+      "apr": "APR",
+      "colStrategy": "전략",
+      "colTerms": "조건",
+      "colYield": "예상 수익 (FLR)",
+      "compoundingLabel": "복리 방식",
+      "couldntLoad": "전략 비교를 불러오지 못했습니다",
+      "highestApr": "최고 APR",
+      "lockupDays": "{{count}}일 락업",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
+      "lockupHours": "{{count}}시간 락업",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "락업 없음",
+      "subtitle": "전략별로 FLR이 어떻게 수익을 낼 수 있는지 확인하세요",
+      "title": "전략 비교",
+      "verdict": "FlareGPT 평가",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "주소가 복사되었습니다. {{amount}} {{symbol}} 후원을 고려해 주셔서 감사합니다.",
+      "impactTier1": "하루 치 API 비용",
+      "impactTier2": "일주일 치 호스팅",
+      "impactTier3": "한 달 치 인프라",
+      "impactTier4": "새로운 프로토콜 통합",
+      "subtitle": "모든 기여가 도움이 됩니다. 시작하는 데 도움이 될 몇 가지 아이디어입니다.",
+      "title": "추천 금액"
+    },
+    "closing": {
+      "message": "FlareGPT의 독립성을 지켜주셔서 감사합니다. 크든 작든 모든 후원이 진심으로 큰 도움이 됩니다."
+    },
+    "description": "여러분의 후원은 FlareGPT를 무료로, 독립적으로, 그리고 계속해서 발전하도록 돕습니다.",
+    "funding": {
+      "developmentFund": "개발 기금",
+      "monthlyInfrastructure": "월간 인프라",
+      "raisedOfGoal": "목표 {{goal}} 중 {{raised}} 모금",
+      "subtitle": "FlareGPT 운영 비용을 투명하게 공개합니다. 부담 없이, 그저 투명성을 위한 것입니다.",
+      "title": "자금 투명성"
+    },
+    "hero": {
+      "addressCopied": "주소가 복사되었습니다",
+      "addressLabel": "지갑 주소",
+      "copied": "복사됨",
+      "copyAddress": "주소 복사",
+      "copyFailed": "주소를 복사하지 못했습니다",
+      "multisigNote": "다중 서명 지갑으로 보호됨",
+      "qrTitle": "{{symbol}} 후원 지갑 주소 QR 코드",
+      "tapToCopy": "탭하여 복사",
+      "viewOnExplorer": "{{explorer}}에서 보기"
+    },
+    "received": {
+      "demoData": "데모 데이터",
+      "subtitle": "지원되는 모든 네트워크에서 받은 총 후원금입니다.",
+      "title": "받은 후원금"
+    },
+    "support": {
+      "development": "지속적인 개발",
+      "free": "FlareGPT 무료 유지",
+      "infra": "API 및 인프라",
+      "integrations": "새로운 프로토콜 통합",
+      "title": "후원금이 사용되는 곳"
+    },
+    "title": "FlareGPT 후원하기",
+    "warning": {
+      "body": "이 주소로는 {{symbol}} 또는 다른 {{network}} 토큰만 보내주세요. 다른 네트워크에서 보낸 자산은 복구할 수 없습니다.",
+      "title": "{{network}} 자산만 가능합니다."
+    }
+  },
+  "flareWidget": {
+    "close": "닫기",
+    "collapse": "접기",
+    "expand": "확장",
+    "openFullPage": "전체 페이지 열기"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "메시지가 복사되었습니다",
+      "copy": "복사",
+      "copyFailed": "복사에 실패했습니다",
+      "regenerate": "응답 재생성"
+    },
+    "composer": {
+      "disclaimer": "FlareGPT는 실수를 할 수 있습니다. 중요한 정보는 행동하기 전에 확인하세요.",
+      "placeholder": "FlareGPT에게 물어보기...",
+      "send": "보내기",
+      "stop": "생성 중지"
+    },
+    "deleteConversation": {
+      "button": "대화 삭제",
+      "confirm": "확인하시겠습니까?"
+    },
+    "deleteConversationFailed": "이 대화를 삭제하지 못했습니다. 다시 시도해 주세요.",
+    "empty": {
+      "subtitle": "지갑, 보상, 위임 또는 Flare 생태계에 대한 답변을 받아보세요.",
+      "title": "FlareGPT에게 무엇이든 물어보세요"
+    },
+    "guestMode": {
+      "cta": "로그인하여 내역 동기화 및 지갑 분석 잠금 해제",
+      "notice": "게스트 모드 · 대화는 저장되지 않습니다."
+    },
+    "history": {
+      "cancelRename": "취소",
+      "delete": "삭제",
+      "empty": "아직 대화가 없습니다",
+      "moreActions": "추가 작업",
+      "newChat": "새 채팅",
+      "noResults": "검색과 일치하는 대화가 없습니다",
+      "openButton": "기록",
+      "pin": "고정",
+      "pinLimitReached": "최대 {{count}}개의 대화를 고정할 수 있습니다",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "이름 변경",
+      "renameFailed": "이 대화의 이름을 변경하지 못했습니다.",
+      "saveRename": "저장",
+      "searchPlaceholder": "대화 검색...",
+      "title": "채팅 기록",
+      "unpin": "고정 해제",
+      "untitled": "제목 없음",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+    },
+    "historyLoadFailed": "채팅 기록을 불러오지 못했습니다.",
+    "jumpToLatest": "최신으로 이동",
+    "newChat": "새 채팅",
+    "prompts": {
+      "analyzeWallet": "내 지갑 분석하기",
+      "compareProtocols": "Sceptre와 Firelight 비교",
+      "explainDelegations": "내 위임 설명하기",
+      "increaseRewards": "FTSO 보상을 늘리려면 어떻게 해야 하나요?",
+      "rewardsDecreased": "보상이 왜 감소했나요?",
+      "stakingOpportunities": "내 스테이킹 기회 보기"
+    },
+    "sendError": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "wallet": {
+      "analyzing": "분석 대상:",
+      "guestLabel": "지갑 분석",
+      "locked": {
+        "body": "로그인하면 FlareGPT가 모든 질문에 주소를 입력하는 대신 기본 및 관심 목록 지갑을 자동으로 읽을 수 있습니다.",
+        "connectCta": "지갑 연결",
+        "signInCta": "로그인",
+        "signingIn": "지갑에서 확인...",
+        "title": "지갑 분석 잠금 해제"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Flare Network 기반으로 구축됨.",
     "disclaimer": "재정적 조언이 아닙니다. 제공된 데이터는 정보 제공 목적으로만 사용됩니다.",
-    "terms": "이용약관 및 면책조항",
-    "donate": "기부"
+    "donate": "기부",
+    "terms": "이용약관 및 면책조항"
   },
   "help": {
+    "askFlareGptCta": "FlareGPT에게 물어보기",
+    "askFlareGptLead": "찾으시는 답을 찾지 못하셨나요?",
+    "contact": {
+      "comingSoon": "출시 예정",
+      "emailLabel": "이메일",
+      "telegramLabel": "Telegram",
+      "twitterHint": "팔로우하고 메시지를 보내보세요",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "지갑이 연결되지 않았거나 대시보드가 아직 블록체인 데이터를 동기화 중일 수 있습니다. 올바른 지갑과 네트워크가 선택되었는지 확인하세요.",
@@ -30,10 +336,12 @@
     ],
     "faqTitle": "자주 묻는 질문",
     "featureGuides": "기능 가이드",
+    "flareGptGuideDescription": "지갑, 보상, Flare 네트워크에 대해 자연스러운 언어로 질문하세요.",
     "gettingStarted": "시작하기",
     "headerDesc": "FlareGPT 대시보드를 최대한 활용할 수 있도록 안내와 답변, 지원을 제공합니다.",
     "noFaqs": "검색과 일치하는 FAQ가 없습니다.",
     "noGuides": "검색과 일치하는 가이드가 없습니다.",
+    "searchClear": "검색 지우기",
     "searchPlaceholder": "가이드 또는 FAQ 검색...",
     "searchSub": "기능 가이드와 FAQ를 검색하거나 다른 방법으로 문의해 보세요.",
     "searchTitle": "시작하는 데 필요한 모든 것",
@@ -65,63 +373,70 @@
       }
     ],
     "stillNeedHelp": "여전히 도움이 필요하신가요?",
-    "supportDesc": "현재 가장 빠르게 연락할 수 있는 방법은 X입니다. 이메일과 텔레그램 지원은 곧 제공될 예정입니다.",
-    "searchClear": "검색 지우기",
-    "flareGptGuideDescription": "지갑, 보상, Flare 네트워크에 대해 자연스러운 언어로 질문하세요.",
-    "askFlareGptLead": "찾으시는 답을 찾지 못하셨나요?",
-    "askFlareGptCta": "FlareGPT에게 물어보기",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "팔로우하고 메시지를 보내보세요",
-      "telegramLabel": "Telegram",
-      "emailLabel": "이메일",
-      "comingSoon": "출시 예정"
-    }
+    "supportDesc": "현재 가장 빠르게 연락할 수 있는 방법은 X입니다. 이메일과 텔레그램 지원은 곧 제공될 예정입니다."
   },
   "navbar": {
+    "addressCopied": "주소가 복사되었습니다",
     "askFlareGPT": "FlareGPT에 질문하기",
-    "mainnetStatus": "Flare 메인넷",
-    "connectWallet": "지갑 연결",
-    "primaryWalletSection": "기본 지갑",
     "badgePrimary": "기본",
+    "badgeSignIn": "로그인",
     "badgeWatchlist": "워치리스트",
-    "disconnectWallet": "지갑 연결 해제",
+    "balancesHiddenLabel": "잔액이 숨겨짐",
     "configureWatchlistWallets": "워치리스트 지갑 설정",
-    "watchlistSection": "워치리스트 ({{current}}/{{max}})",
-    "addressCopied": "주소가 클립보드에 복사되었습니다",
+    "connectWallet": "지갑 연결",
     "copyFailed": "주소를 복사하지 못했습니다",
+    "disconnectWallet": "지갑 연결 해제",
     "flareGptFabHint": "이제 여기서 FlareGPT를 열 수 있어요",
     "hideBalances": "잔액 숨기기",
+    "mainnetStatus": "Flare 메인넷",
+    "primaryWalletSection": "기본 지갑",
     "showBalances": "잔액 표시",
-    "balancesHiddenLabel": "잔액이 숨겨짐",
     "signIn": "로그인",
+    "signInBackgroundHint": "연결된 지갑이 로그인해야 합니다",
     "signingIn": "로그인 중…",
     "signInPrompt": "이 지갑을 확인하고 계속하려면 메시지에 서명하세요.",
-    "badgeSignIn": "로그인",
-    "signInBackgroundHint": "연결된 지갑이 로그인해야 합니다"
+    "watchlistSection": "워치리스트 ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "다크",
+      "light": "라이트",
+      "system": "시스템"
+    },
     "cards": {
       "app": "앱",
       "blur": "블루라이트 필터",
       "chartType": "차트 유형",
       "connectedWallets": "연결된 지갑",
       "currency": "통화 표시",
+      "defaultLandingPage": "기본 시작 페이지",
+      "defaultWallet": "기본 지갑",
       "governanceAlerts": "거버넌스 알림",
+      "hideBalances": "지갑 잔액 숨기기",
       "language": "언어",
       "links": "링크",
       "logout": "로그아웃",
+      "reduceMotion": "모션 줄이기",
       "rewardsAlerts": "보상 알림",
+      "tableDensity": "테이블 밀도",
       "theme": "테마",
       "themeMode": "라이트 / 다크 모드",
       "timeframe": "기간",
       "walletCapacity": "지갑 용량",
-      "walletPreferences": "지갑 환경설정",
-      "defaultWallet": "기본 지갑",
-      "defaultLandingPage": "기본 시작 페이지",
-      "tableDensity": "테이블 밀도",
-      "reduceMotion": "모션 줄이기",
-      "hideBalances": "지갑 잔액 숨기기"
+      "walletPreferences": "지갑 환경설정"
+    },
+    "dataStorage": {
+      "accountSubtitle": "서버의 계정과 동기화됩니다.",
+      "accountTitle": "계정 데이터",
+      "clear": "지우기",
+      "confirmClear": "확인할까요?",
+      "conversations": "FlareGPT 대화",
+      "conversationsClearFailed": "채팅 기록을 삭제하지 못했습니다. 다시 시도해 주세요.",
+      "conversationsDescription": "계정에서 FlareGPT 채팅 기록을 삭제합니다. 이 작업은 되돌릴 수 없습니다.",
+      "localSubtitle": "이 브라우저에만 저장됩니다. 삭제는 즉시 안전하게 이루어집니다.",
+      "localTitle": "로컬 데이터",
+      "walletCache": "지갑 활동 캐시",
+      "walletCacheDescription": "캐시된 거래 내역을 삭제합니다. 다음 방문 시 다시 가져옵니다."
     },
     "description": "지갑, 기본 설정, 지역화 및 디스플레이 옵션을 관리합니다.",
     "descriptions": {
@@ -129,18 +444,33 @@
       "blur": "따뜻한 화면 색조로 눈의 피로를 줄여보세요",
       "chartType": "시스템 매트릭스의 기본 렌더링 시각적 스타일 기하학을 설정합니다.",
       "currency": "자산 기준 통화 표시를 선택합니다.",
+      "defaultLandingPage": "앱을 실행할 때 먼저 열릴 페이지를 선택하세요.",
+      "defaultWallet": "이전 세션을 복원할 수 없을 때 이 지갑이 활성화됩니다.",
+      "hideBalances": "개인정보 보호를 위해 대시보드 전체의 잔액과 금액을 흐리게 표시합니다.",
       "language": "기본 인터페이스 보기 언어를 선택합니다.",
       "links": "글로벌 문서 참조 및 팀 상호 작용 링크입니다.",
       "logout": "이 기기에서 FlareGPT 로그아웃합니다. 다시 로그인하려면 새 메시지에 서명해야 합니다.",
+      "reduceMotion": "운영체제에 설정이 없더라도 애니메이션을 최소화합니다.",
+      "tableDensity": "편안한 간격 또는 밀집된 테이블을 위한 더 조밀한 보기.",
+      "theme": "라이트, 다크 중에서 선택하거나 시스템 설정을 따르세요.",
       "timeframe": "시각적 차트의 기본 창 기간 배율을 정의합니다.",
       "walletCapacity": "할당 용량 풀을 추적하는 시스템 제한입니다.",
-      "theme": "라이트, 다크 중에서 선택하거나 시스템 설정을 따르세요.",
-      "walletPreferences": "대시보드가 열릴 때 사용할 지갑을 선택하세요.",
-      "defaultWallet": "이전 세션을 복원할 수 없을 때 이 지갑이 활성화됩니다.",
-      "defaultLandingPage": "앱을 실행할 때 먼저 열릴 페이지를 선택하세요.",
-      "tableDensity": "편안한 간격 또는 밀집된 테이블을 위한 더 조밀한 보기.",
-      "reduceMotion": "운영체제에 설정이 없더라도 애니메이션을 최소화합니다.",
-      "hideBalances": "개인정보 보호를 위해 대시보드 전체의 잔액과 금액을 흐리게 표시합니다."
+      "walletPreferences": "대시보드가 열릴 때 사용할 지갑을 선택하세요."
+    },
+    "flareGpt": {
+      "syncStatusConnected": "로그인되었습니다. 대화 내용이 모든 기기와 브라우저에서 동기화됩니다.",
+      "syncStatusGuest": "대화는 이 브라우저에서 임시로 저장되며 저장되지 않습니다. 유지하려면 로그인하세요.",
+      "syncStatusTitle": "동기화 상태"
+    },
+    "groups": {
+      "account": "계정",
+      "personalization": "개인화",
+      "walletsAndData": "지갑 및 데이터"
+    },
+    "links": {
+      "docs": "프리미엄 지원",
+      "github": "GitHub",
+      "twitter": "Twitter"
     },
     "notifications": {
       "governance": "제안 업데이트",
@@ -152,224 +482,201 @@
       "area": "영역형",
       "asia": "아시아",
       "candlestick": "캔들스틱",
+      "comfortable": "편안하게",
+      "compact": "조밀하게",
       "europe": "유럽",
       "global": "글로벌",
       "high": "높음",
       "line": "선형",
       "low": "낮음",
       "medium": "중간",
-      "off": "꺼짐",
-      "comfortable": "편안하게",
-      "compact": "조밀하게"
+      "off": "꺼짐"
     },
     "security": {
-      "logout": "로그아웃",
-      "confirmLogout": "확인할까요?"
+      "confirmLogout": "확인할까요?",
+      "logout": "로그아웃"
     },
     "subtitles": {
       "About": "시스템 배포 기록, 컴파일 규칙 및 자산 인덱스를 개요합니다.",
+      "Accessibility": "모션 및 상호작용 환경설정을 조정하세요.",
+      "Appearance": "FlareGPT의 모양을 선택하세요.",
       "Display": "기본 보기와 대시보드 데이터 표시 방식을 개인화하세요.",
+      "FlareGpt": "FlareGPT가 대화를 기억하는 방식을 관리하세요.",
       "Notifications": "시스템 우선순위 이벤트 및 전달 경로 추적 엔드포인트를 관리합니다.",
       "Preferences": "언어 및 통화 환경설정.",
       "Security": "활성 ID 세션 장벽 및 자격 증명 확인 액세스 규칙을 유지합니다.",
-      "Wallets": "글로벌 외부 탈중앙화 계정에서 서명을 연결하고 구조화합니다.",
-      "Appearance": "FlareGPT의 모양을 선택하세요.",
-      "Accessibility": "모션 및 상호작용 환경설정을 조정하세요.",
-      "FlareGpt": "FlareGPT가 대화를 기억하는 방식을 관리하세요."
+      "Wallets": "글로벌 외부 탈중앙화 계정에서 서명을 연결하고 구조화합니다."
     },
     "tabs": {
       "About": "정보",
+      "Accessibility": "접근성",
+      "Appearance": "화면",
+      "DataStorage": "데이터 및 저장공간",
       "Display": "대시보드",
+      "FlareGpt": "FlareGPT",
       "Notifications": "알림",
       "Preferences": "일반",
       "Security": "보안",
-      "Wallets": "지갑",
-      "Appearance": "화면",
-      "Accessibility": "접근성",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "데이터 및 저장공간"
+      "Wallets": "지갑"
     },
     "title": "설정",
     "wallets": {
       "active": "활성",
       "add": "지갑 추가 ({{current}}/{{max}})",
+      "addFormTitle": "관심 목록 포트폴리오 계정 추가",
+      "adding": "추가 중…",
+      "addressPlaceholder": "0x... 플레어 지갑 주소",
       "available": "사용 가능",
+      "cancelRename": "취소",
+      "confirmRemove": "삭제를 확인할까요?",
       "connectAction": "지갑 연결 ({{current}}개 연결됨, {{remaining}}개 남음)",
+      "connectActionUnlimited": "지갑 추가 ({{current}}개 추적 중)",
       "connected": "연결됨",
+      "duplicateAddress": "이 주소는 이미 관심 목록에 있습니다.",
+      "duplicateNickname": "이 닉네임을 사용하는 관심 목록 지갑이 이미 있습니다. 다른 닉네임을 선택하세요.",
       "empty": "아직 연결된 지갑이 없습니다",
       "emptyTerminal": "연결된 지갑이 없습니다. 계속하려면 터미널 자산을 연결하세요.",
-      "limit": "최대 {{max}}개의 지갑을 연결할 수 있습니다",
-      "limitReached": "지갑 한도 도달 ({{current}}/{{max}})",
-      "maximum": "최대",
-      "remainingSlots": "남은 슬롯",
-      "addFormTitle": "관심 목록 포트폴리오 계정 추가",
-      "addressPlaceholder": "0x... 플레어 지갑 주소",
+      "guestLimitBenefitBackup": "관심 목록 백업 유지",
+      "guestLimitBenefitMore": "3개 이상의 지갑 저장",
+      "guestLimitBenefitSync": "기기 간 관심 목록 동기화",
+      "guestLimitTitle": "더 많은 지갑을 추적하려면 로그인하세요",
       "invalidAddress": "유효한 FLARE EVM 네트워크 주소를 입력하십시오 (0x로 시작).",
       "labelPlaceholder": "계정 이름 레이블 (예: 콜드 스토리지)",
+      "limit": "최대 {{max}}개의 지갑을 연결할 수 있습니다",
+      "limitReached": "지갑 한도 도달 ({{current}}/{{max}})",
       "liveConnected": "실시간 연결됨",
       "manageSubtitle": "활성 Web3 연결 및 읽기 전용 포트폴리오 추적 계정을 관리합니다.",
+      "maximum": "최대",
+      "noDefaultSelected": "선택 안 됨",
+      "noLimit": "원하는 만큼 지갑을 추가하세요.",
+      "noSearchResults": "검색과 일치하는 지갑이 없습니다.",
+      "notFoundError": "이 지갑은 더 이상 관심 목록에 없습니다.",
       "readOnly": "ì½ê¸° ì ì©",
       "registrationFailed": "주소 등록에 실패했습니다. 중복인지 또는 슬롯이 채워졌는지 확인하십시오.",
-      "tracked": "추적됨",
+      "remainingSlots": "남은 슬롯",
       "remove": "삭제",
-      "confirmRemove": "삭제를 확인할까요?",
-      "noDefaultSelected": "선택 안 됨",
       "rename": "이름 바꾸기",
-      "cancelRename": "취소",
-      "connectActionUnlimited": "지갑 추가 ({{current}}개 추적 중)",
-      "noLimit": "원하는 만큼 지갑을 추가하세요.",
-      "duplicateAddress": "이 주소는 이미 관심 목록에 있습니다.",
-      "guestLimitTitle": "더 많은 지갑을 추적하려면 로그인하세요",
-      "guestLimitBenefitSync": "기기 간 관심 목록 동기화",
-      "guestLimitBenefitMore": "3개 이상의 지갑 저장",
-      "guestLimitBenefitBackup": "관심 목록 백업 유지",
-      "searchPlaceholder": "{{count}}개 지갑 검색...",
-      "noSearchResults": "검색과 일치하는 지갑이 없습니다.",
-      "duplicateNickname": "이 닉네임을 사용하는 관심 목록 지갑이 이미 있습니다. 다른 닉네임을 선택하세요.",
-      "notFoundError": "이 지갑은 더 이상 관심 목록에 없습니다.",
       "saveEdit": "저장",
-      "adding": "추가 중…"
-    },
-    "links": {
-      "docs": "프리미엄 지원",
-      "github": "GitHub",
-      "twitter": "Twitter"
-    },
-    "groups": {
-      "personalization": "개인화",
-      "walletsAndData": "지갑 및 데이터",
-      "account": "계정"
-    },
-    "appearance": {
-      "light": "라이트",
-      "dark": "다크",
-      "system": "시스템"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "동기화 상태",
-      "syncStatusConnected": "로그인됨 — 모든 기기와 브라우저에서 대화가 동기화됩니다.",
-      "syncStatusGuest": "대화는 이 브라우저에서 임시로 저장되며 저장되지 않습니다. 유지하려면 로그인하세요."
-    },
-    "dataStorage": {
-      "localTitle": "로컬 데이터",
-      "localSubtitle": "이 브라우저에만 저장됩니다 — 지우는 것은 즉각적이고 안전합니다.",
-      "walletCache": "지갑 활동 캐시",
-      "walletCacheDescription": "캐시된 거래 기록을 지웁니다 — 다음 방문 시 다시 가져옵니다.",
-      "conversations": "FlareGPT 대화",
-      "conversationsDescription": "계정에서 FlareGPT 채팅 기록을 삭제합니다. 이 작업은 되돌릴 수 없습니다.",
-      "clear": "지우기",
-      "confirmClear": "확인할까요?",
-      "accountTitle": "계정 데이터",
-      "accountSubtitle": "서버의 계정과 동기화됩니다.",
-      "conversationsClearFailed": "채팅 기록을 지우지 못했습니다. 다시 시도해 주세요."
+      "searchPlaceholder": "{{count}}개 지갑 검색...",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "추적됨",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
     }
   },
   "sidebar": {
+    "activeWallet": "활성: {{address}}",
+    "addWatchlistWallet": "+ 관심 목록 지갑 추가",
     "connectWallet": "지갑 연결",
+    "defiProtocols": "Defi 프로토콜",
     "disconnect": "연결 해제",
+    "donate": "기부",
+    "feeds": "피드",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO 보상",
-    "defiProtocols": "Defi 프로토콜",
     "governance": "거버넌스",
     "helpCenter": "고객센터",
+    "loops": "루프 번호",
     "notConnected": "연결 안 됨",
     "overview": "개요",
     "rflrTracker": "rFLR 추적기",
     "settings": "설정",
+    "signInRequired": "로그인 필요",
+    "signInRequiredHint": "로그인하려면 상단 표시줄의 지갑 메뉴를 사용하세요.",
     "walletActivity": "지갑 활동",
     "walletConnected": "지갑 연결됨",
-    "yield": "수익률",
-    "loops": "루프 번호",
-    "feeds": "피드",
-    "donate": "기부",
-    "addWatchlistWallet": "+ 관심 목록 지갑 추가",
-    "activeWallet": "활성: {{address}}",
-    "signInRequired": "로그인 필요",
-    "signInRequiredHint": "로그인하려면 상단 표시줄의 지갑 메뉴를 사용하세요."
+    "yield": "수익률"
   },
   "wallet": {
     "activity": {
-      "subtitle": "들어오고 나가는 블록 체인 상호 작용에 대한 실시간 모니터링.",
-      "title": "최근 터미널 활동",
-      "description": "활성 지갑의 모든 색인된 거래를 그룹화하여 검색할 수 있습니다.",
-      "refresh": "새로고침",
-      "connectToSee": "거래 활동을 보려면 지갑을 연결하거나 선택하세요.",
-      "couldntLoad": "지갑 활동을 불러올 수 없습니다.",
-      "notifier": {
-        "ready": "지갑 활동 불러오기가 완료되었습니다."
-      },
-      "loading": {
-        "title": "지갑 활동 색인 중",
-        "subtitle": "큰 지갑은 처음 불러올 때 몇 분 정도 걸릴 수 있습니다. 대시보드의 다른 부분을 자유롭게 둘러보세요 — 준비되면 알려드리겠습니다.",
-        "elapsed": "{{seconds}}초 경과"
-      },
-      "empty": {
-        "title": "아직 활동이 없습니다",
-        "description": "이 지갑에는 색인된 거래가 없습니다."
-      },
-      "noResults": {
-        "title": "일치하는 거래가 없습니다",
-        "description": "검색어나 필터를 조정해 보세요."
-      },
-      "kpi": {
-        "totalTransactions": "총 거래 수",
-        "uniqueAssets": "고유 자산",
-        "walletAge": "지갑 사용 기간",
-        "walletAgeYears": "{{count}}년",
-        "walletAgeMonths": "{{count}}개월",
-        "walletAgeDays": "{{count}}일",
-        "lastActive": "마지막 활동",
-        "justNow": "방금 전",
-        "minutesAgo": "{{count}}분 전",
-        "hoursAgo": "{{count}}시간 전",
-        "daysAgo": "{{count}}일 전"
-      },
-      "insights": {
-        "title": "빠른 인사이트",
-        "mostUsedAsset": "가장 많이 사용된 자산",
-        "mostCommonAction": "가장 흔한 작업",
-        "mostActiveDay": "가장 활발한 날",
-        "mostActiveMonth": "가장 활발한 달",
-        "txCount": "거래 {{count}}건"
-      },
       "charts": {
+        "actionBreakdown": "작업별 분석",
+        "actionBreakdownSubtitle": "작업 유형별 거래 수",
         "activityByDay": "일별 활동",
         "activityByDaySubtitle": "일별 거래 수",
         "assetBreakdown": "자산별 분석",
         "assetBreakdownSubtitle": "자산별 거래 수",
-        "actionBreakdown": "작업별 분석",
-        "actionBreakdownSubtitle": "작업 유형별 거래 수",
+        "tabActions": "작업",
         "tabActivity": "활동",
-        "tabAssets": "자산",
-        "tabActions": "작업"
+        "tabAssets": "자산"
       },
-      "toolbar": {
-        "searchPlaceholder": "해시 또는 자산으로 검색...",
-        "sort": {
-          "newest": "최신순",
-          "oldest": "오래된순",
-          "amount": "금액"
-        },
-        "exportCsv": "CSV 내보내기",
-        "exportJson": "JSON 내보내기",
-        "export": "내보내기"
+      "connectToSee": "거래 활동을 보려면 지갑을 연결하거나 선택하세요.",
+      "couldntLoad": "지갑 활동을 불러올 수 없습니다.",
+      "description": "활성 지갑의 모든 색인된 거래를 그룹화하여 검색할 수 있습니다.",
+      "drawer": {
+        "action": "작업",
+        "asset": "자산",
+        "blockNumber": "블록 번호",
+        "close": "닫기",
+        "copyFailed": "해시를 복사할 수 없습니다",
+        "hashCopied": "거래 해시가 복사되었습니다",
+        "next": "다음 거래",
+        "previous": "이전 거래",
+        "timestamp": "타임스탬프",
+        "title": "거래 세부정보",
+        "transactionHash": "거래 해시",
+        "viewOnExplorer": "FlareScan에서 보기"
+      },
+      "empty": {
+        "description": "이 지갑에는 색인된 거래가 없습니다.",
+        "title": "아직 활동이 없습니다"
       },
       "feed": {
         "ariaLabel": "전체 {{total}}건 중 {{shown}}건 표시 중"
       },
-      "drawer": {
-        "title": "거래 세부정보",
-        "previous": "이전 거래",
-        "next": "다음 거래",
-        "close": "닫기",
-        "action": "작업",
-        "asset": "자산",
-        "blockNumber": "블록 번호",
-        "timestamp": "타임스탬프",
-        "transactionHash": "거래 해시",
-        "hashCopied": "거래 해시가 복사되었습니다",
-        "copyFailed": "해시를 복사할 수 없습니다",
-        "viewOnExplorer": "FlareScan에서 보기"
+      "insights": {
+        "mostActiveDay": "가장 활발한 날",
+        "mostActiveMonth": "가장 활발한 달",
+        "mostCommonAction": "가장 흔한 작업",
+        "mostUsedAsset": "가장 많이 사용된 자산",
+        "title": "빠른 인사이트",
+        "txCount": "거래 {{count}}건",
+        "txCount_other": "wallet.activity.insights.tx수",
+        "txCount_one": "wallet.activity.insights.tx수"
+      },
+      "kpi": {
+        "daysAgo": "{{count}}일 전",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "{{count}}시간 전",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "방금 전",
+        "lastActive": "마지막 활동",
+        "minutesAgo": "{{count}}분 전",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "총 거래 수",
+        "uniqueAssets": "고유 자산",
+        "walletAge": "지갑 사용 기간",
+        "walletAgeDays": "{{count}}일",
+        "walletAgeMonths": "{{count}}개월",
+        "walletAgeYears": "{{count}}년",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+      },
+      "loading": {
+        "elapsed": "{{seconds}}초 경과",
+        "subtitle": "대형 지갑은 처음 로드할 때 몇 분 정도 걸릴 수 있습니다. 그동안 대시보드의 다른 부분을 자유롭게 둘러보세요. 준비되면 알려드리겠습니다.",
+        "title": "지갑 활동 색인 중"
+      },
+      "noResults": {
+        "description": "검색어나 필터를 조정해 보세요.",
+        "title": "일치하는 거래가 없습니다"
+      },
+      "notifier": {
+        "ready": "지갑 활동을 불러왔습니다."
+      },
+      "refresh": "새로고침",
+      "subtitle": "들어오고 나가는 블록 체인 상호 작용에 대한 실시간 모니터링.",
+      "title": "최근 터미널 활동",
+      "toolbar": {
+        "export": "내보내기",
+        "exportCsv": "CSV 내보내기",
+        "exportJson": "JSON 내보내기",
+        "searchPlaceholder": "해시 또는 자산으로 검색...",
+        "sort": {
+          "amount": "금액",
+          "newest": "최신순",
+          "oldest": "오래된순"
+        }
       }
     },
     "stats": {
@@ -396,285 +703,6 @@
       "contract": "계약수행계획서",
       "received": "받음",
       "sent": "보냄"
-    }
-  },
-  "comingSoon": {
-    "badge": "개봉 예정작",
-    "description": "이 기능을 구축하고 있습니다. 잠시 후 다시 확인하세요."
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "WalletConnect가 Brave Shields에 의해 차단된 것 같습니다.",
-        "tryTitle": "다음 중 하나를 시도해 보세요:",
-        "shieldsOff": "이 사이트에 대해 Brave Shields를 끄고 다시 시도하세요.",
-        "privateWindow": "사이트를 Brave 비공개 창에서 열어보세요.",
-        "useChrome": "문제가 계속되면 Google Chrome이나 다른 지원되는 브라우저를 사용하세요."
-      },
-      "generic": "예기치 않은 연결 마찰이 발생했습니다. 다시 시도하거나 다른 지갑을 사용하세요.",
-      "providerGone": "이 지갑이 더 이상 응답하지 않는 것 같습니다 — 업데이트되었거나 제거되었을 수 있습니다. 페이지를 새로고침하면 해결될 것입니다.",
-      "pending": "연결 요청이 이미 열려 있습니다. 지갑 확장 패널을 여십시오.",
-      "rejected": "지갑에서 연결 요청이 취소되었습니다.",
-      "timeout": "WalletConnect에 연결할 수 없습니다. 연결 상태를 확인하고 다시 시도하세요.",
-      "wrongNetwork": "지갑의 활성 네트워크를 Flare Mainnet으로 전환하십시오."
-    },
-    "install": "설치",
-    "installHint": "아직도 지갑이 보이지 않나요? 페이지를 새로고침하면 도움이 될 수 있습니다.",
-    "refresh": "새로고침",
-    "mobileHint": "모바일에서 지갑의 내장 브라우저에서 FlareGPT를 열어 최상의 연결 경험을 누리세요. QR 코드를 스캔할 때는 휴대폰 카메라 대신 지갑 앱 자체 스캐너를 사용하면 더 안정적으로 연결할 수 있습니다.",
-    "connecting": "연결 중…",
-    "recommended": "추천",
-    "subtitle": "선호하는 지갑을 선택하여 Flare 네트워크에 연결합니다.",
-    "title": "지갑 연결",
-    "viaWalletConnect": "WalletConnect 경유"
-  },
-  "flareWidget": {
-    "close": "닫기",
-    "collapse": "접기",
-    "expand": "확장",
-    "openFullPage": "전체 페이지 열기"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "내 지갑 분석하기",
-      "increaseRewards": "FTSO 보상을 늘리려면 어떻게 해야 하나요?",
-      "explainDelegations": "내 위임 설명하기",
-      "compareProtocols": "Sceptre와 Firelight 비교",
-      "rewardsDecreased": "보상이 왜 감소했나요?",
-      "stakingOpportunities": "내 스테이킹 기회 보기"
-    },
-    "wallet": {
-      "analyzing": "분석 대상:"
-    },
-    "empty": {
-      "title": "FlareGPT에게 무엇이든 물어보세요",
-      "subtitle": "지갑, 보상, 위임 또는 Flare 생태계에 대한 답변을 받아보세요."
-    },
-    "composer": {
-      "placeholder": "FlareGPT에게 물어보기...",
-      "send": "보내기",
-      "stop": "생성 중지",
-      "disclaimer": "FlareGPT는 실수를 할 수 있습니다. 중요한 정보는 행동하기 전에 확인하세요."
-    },
-    "actions": {
-      "copy": "복사",
-      "regenerate": "응답 재생성",
-      "copied": "메시지가 복사되었습니다",
-      "copyFailed": "복사에 실패했습니다"
-    },
-    "jumpToLatest": "최신으로 이동",
-    "historyLoadFailed": "채팅 기록을 불러오지 못했습니다.",
-    "sendError": "문제가 발생했습니다. 다시 시도해 주세요.",
-    "newChat": "새 채팅",
-    "deleteConversation": {
-      "button": "대화 삭제",
-      "confirm": "확인하시겠습니까?"
-    },
-    "deleteConversationFailed": "이 대화를 삭제하지 못했습니다. 다시 시도해 주세요.",
-    "history": {
-      "title": "채팅 기록",
-      "newChat": "새 채팅",
-      "searchPlaceholder": "대화 검색...",
-      "empty": "아직 대화가 없습니다",
-      "noResults": "검색과 일치하는 대화가 없습니다",
-      "untitled": "제목 없음",
-      "moreActions": "추가 작업",
-      "pin": "고정",
-      "unpin": "고정 해제",
-      "rename": "이름 변경",
-      "delete": "삭제",
-      "pinLimitReached": "최대 {{count}}개의 대화를 고정할 수 있습니다",
-      "renameFailed": "이 대화의 이름을 변경하지 못했습니다.",
-      "openButton": "기록",
-      "saveRename": "저장",
-      "cancelRename": "취소"
-    }
-  },
-  "dashboard": {
-    "description": "실시간 Flare 네트워크 데이터, 가격 차트 및 지갑 활동을 한눈에 볼 수 있습니다.",
-    "common": {
-      "retry": "다시 시도",
-      "retrying": "\"재시도\"",
-      "networkHiccup": "이것은 일반적으로 일시적인 네트워크 문제입니다.",
-      "noWalletSelected": "지갑이 선택되지 않았습니다",
-      "yes": "예",
-      "no": "아니오"
-    },
-    "stats": {
-      "flrPrice": "FLR 가격",
-      "marketCap": "시가총액",
-      "volume24h": "24H 거래량",
-      "tvl": "보유하고 있습니다.",
-      "couldntLoad": "시장 개요를 로드할 수 없습니다"
-    },
-    "chart": {
-      "couldntLoad": "FLR 가격 기록을 로드할 수 없습니다"
-    },
-    "networkActivity": {
-      "title": "네트워크 활동 정지",
-      "live": "라이브",
-      "gwei": "Gwei",
-      "gasPrice": "가스 가격",
-      "tps": "TPS",
-      "couldntLoad": "네트워크 데이터를 로드할 수 없습니다",
-      "collectingSamples": "실시간 샘플 수집 — 새로운 데이터가 도착하면 차트가 채워집니다."
-    },
-    "walletBalances": {
-      "title": "지갑 잔액",
-      "connectToSeeBalances": "잔액을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
-      "couldntLoad": "지갑 잔액을 로드할 수 없습니다"
-    },
-    "ftso": {
-      "title": "FTSO 위임",
-      "connected": "연결됨",
-      "readOnly": "읽기 전용",
-      "connectToSeeRewards": "리워드를 확인하려면 설정에서 지갑을 연결하거나 추가하세요.",
-      "couldntLoad": "FTSO 포트폴리오를 로드할 수 없습니다",
-      "delegatedWflr": "위임된 WFLR",
-      "unclaimedFlr": "미청구 FLR",
-      "activeDelegations": "활성 위임",
-      "estHourlyEarning": "예상 시간당 수입",
-      "claimRewards": "보상 받기",
-      "readOnlyCannotClaim": "읽기 전용 — 소유권 주장 불가",
-      "switchToClaim": "보상을 받으려면 연결된 지갑으로 전환하세요",
-      "noUnclaimedYet": "아직 수령하지 않은 리워드가 없습니다",
-      "claimComingSoon": "신청은 아직 불가능합니다. 곧 시작됩니다."
-    },
-    "claimsHistory": {
-      "title": "\"보너스 포인트\" 이용 내역",
-      "connectToSee": "청구 내역을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
-      "couldntLoad": "청구 내역을 불러올 수 없습니다",
-      "emptyTitle": "청구되지 않은 에포크 없음",
-      "emptyDescription": "모두 확인되었습니다. 보류 중인 보상 시대는 없습니다."
-    },
-    "delegationsBreakdown": {
-      "title": "위임 내역",
-      "tabLabel": "위임",
-      "connectToSee": "위임을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
-      "couldntLoad": "위임을 로드할 수 없습니다",
-      "emptyTitle": "활성 위임 없음",
-      "emptyDescription": "보상을 받기 시작하려면 WFLR을 FTSO 제공자에게 위임하십시오."
-    },
-    "apiStatus": {
-      "checking": "API 상태 확인 중...",
-      "operational": "모든 시스템이 작동합니다.",
-      "degraded": "API 성능 저하"
-    }
-  },
-  "defiProtocols": {
-    "description": "MXRPY, Sceptre, Firelight 볼트에서 수익 전략을 비교하고 포지션을 추적하세요.",
-    "common": {
-      "addressCopied": "주소가 클립보드에 복사되었습니다",
-      "copyFailed": "주소를 복사하지 못했습니다",
-      "connectToSeePosition": "포지션을 보려면 지갑을 연결하세요",
-      "contract": "컨트랙트",
-      "proxyContract": "프록시 컨트랙트",
-      "poolOwnership": "풀 지분율",
-      "protocolDetails": "프로토콜 세부정보",
-      "yourBalance": "내 잔액",
-      "redeemableValue": "상환 가능 가치"
-    },
-    "explorer": {
-      "title": "프로토콜 탐색기",
-      "subtitle": "프로토콜을 선택하여 포지션과 세부정보를 확인하세요"
-    },
-    "kpis": {
-      "protocolsTracked": "추적 중인 프로토콜",
-      "bestApr": "이용 가능한 최고 APR",
-      "activePositions": "활성 포지션"
-    },
-    "mxrpy": {
-      "title": "MXRPY 볼트",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "MXRPY 포지션을 불러오지 못했습니다",
-      "circulatingCaption": "유통 중인 지분 {{shares}}개 · 소수점 {{decimals}}자리",
-      "yourShares": "보유 리시트 지분",
-      "category": "수익 볼트"
-    },
-    "sceptre": {
-      "title": "Sceptre 리퀴드 스테이킹",
-      "subtitle": "sFLR 리퀴드 스테이킹",
-      "couldntLoad": "Sceptre 포지션을 불러오지 못했습니다",
-      "exchangeRateLabel": "sFLR / FLR 환율",
-      "totalMinted": "총 발행 지분",
-      "backedFlr": "기초 담보 FLR",
-      "category": "리퀴드 스테이킹"
-    },
-    "firelight": {
-      "title": "Firelight 볼트",
-      "subtitle": "자본 보호 볼트",
-      "couldntLoad": "Firelight 포지션을 불러오지 못했습니다",
-      "backingLabel": "자산 담보 배수",
-      "circulatingSupply": "유통 공급량",
-      "underlyingReserve": "기초 준비금",
-      "insuranceRobust": "보험: 견고함",
-      "category": "보험"
-    },
-    "strategies": {
-      "title": "전략 비교",
-      "subtitle": "전략별로 FLR이 어떻게 수익을 낼 수 있는지 확인하세요",
-      "amountLabel": "비교 금액",
-      "apr": "APR",
-      "colStrategy": "전략",
-      "colYield": "예상 수익 (FLR)",
-      "colTerms": "조건",
-      "compoundingLabel": "복리 방식",
-      "couldntLoad": "전략 비교를 불러오지 못했습니다",
-      "highestApr": "최고 APR",
-      "lockupDays": "{{count}}일 락업",
-      "lockupHours": "{{count}}시간 락업",
-      "noLockup": "락업 없음",
-      "verdict": "FlareGPT 평가"
-    }
-  },
-  "donate": {
-    "title": "FlareGPT 후원하기",
-    "description": "여러분의 후원은 FlareGPT를 무료로, 독립적으로, 그리고 계속해서 발전하도록 돕습니다.",
-    "hero": {
-      "addressLabel": "지갑 주소",
-      "tapToCopy": "탭하여 복사",
-      "copyAddress": "주소 복사",
-      "copied": "복사됨",
-      "addressCopied": "주소가 클립보드에 복사되었습니다",
-      "copyFailed": "주소를 복사하지 못했습니다",
-      "viewOnExplorer": "{{explorer}}에서 보기",
-      "multisigNote": "다중 서명 지갑으로 보호됨",
-      "qrTitle": "{{symbol}} 후원 지갑 주소 QR 코드"
-    },
-    "warning": {
-      "title": "{{network}} 자산만 가능합니다.",
-      "body": "이 주소로는 {{symbol}} 또는 다른 {{network}} 토큰만 보내주세요. 다른 네트워크에서 보낸 자산은 복구할 수 없습니다."
-    },
-    "amounts": {
-      "title": "추천 금액",
-      "subtitle": "모든 후원이 도움이 됩니다 — 시작하기 좋은 몇 가지 아이디어입니다.",
-      "impactTier1": "하루 치 API 비용",
-      "impactTier2": "일주일 치 호스팅",
-      "impactTier3": "한 달 치 인프라",
-      "impactTier4": "새로운 프로토콜 통합",
-      "copiedToast": "주소가 복사되었습니다. {{amount}} {{symbol}} 후원을 고려해 주셔서 감사합니다."
-    },
-    "funding": {
-      "title": "자금 투명성",
-      "subtitle": "FlareGPT 운영 비용에 대한 투명한 안내입니다 — 압박이 아닌 투명성을 위한 것입니다.",
-      "monthlyInfrastructure": "월간 인프라",
-      "developmentFund": "개발 기금",
-      "raisedOfGoal": "목표 {{goal}} 중 {{raised}} 모금"
-    },
-    "received": {
-      "title": "받은 후원금",
-      "subtitle": "지원되는 모든 네트워크에서 받은 총 후원금입니다.",
-      "demoData": "데모 데이터"
-    },
-    "support": {
-      "title": "후원금이 사용되는 곳",
-      "infra": "API 및 인프라",
-      "integrations": "새로운 프로토콜 통합",
-      "free": "FlareGPT 무료 유지",
-      "development": "지속적인 개발"
-    },
-    "closing": {
-      "message": "FlareGPT의 독립성을 지켜주셔서 감사합니다. 크든 작든 모든 후원이 진심으로 큰 도움이 됩니다."
     }
   }
 }

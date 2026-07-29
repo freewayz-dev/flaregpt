@@ -1,11 +1,323 @@
 {
+  "comingSoon": {
+    "badge": "Скоро!",
+    "description": "Мы создаем эту функцию. Зайдите попозже."
+  },
+  "connectModal": {
+    "connecting": "Подключение…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "Откройте сайт в приватном окне Brave.",
+        "shieldsOff": "Отключите Brave Shields для этого сайта и повторите попытку.",
+        "title": "Похоже, WalletConnect заблокирован Brave Shields.",
+        "tryTitle": "Попробуйте один из следующих вариантов:",
+        "useChrome": "Используйте Google Chrome или другой поддерживаемый браузер, если проблема сохраняется."
+      },
+      "generic": "Произошло неожиданное трение соединения. Повторите попытку или воспользуйтесь другим кошельком.",
+      "pending": "Запрос на подключение уже открыт. Откройте панель расширения кошелька.",
+      "providerGone": "Похоже, этот кошелёк больше не отвечает. Возможно, он был обновлён или удалён. Обновление страницы должно решить проблему.",
+      "rejected": "Запрос на подключение отменен в вашем кошельке.",
+      "timeout": "Не удалось подключиться к WalletConnect. Проверьте соединение и повторите попытку.",
+      "wrongNetwork": "Переключите активную сеть вашего кошелька на Flare Mainnet."
+    },
+    "install": "Установить",
+    "installHint": "Всё ещё не видите свой кошелек? Обновление страницы может помочь.",
+    "mobileHint": "На мобильном устройстве откройте FlareGPT во встроенном браузере вашего кошелька для лучшего взаимодействия. При сканировании QR-кода используйте встроенный сканер приложения кошелька, а не камеру телефона, для более надежного подключения.",
+    "recommended": "Рекомендуемое",
+    "refresh": "Обновить",
+    "subtitle": "Выберите предпочитаемый кошелек для подключения к сети Flare.",
+    "title": "Подключить кошелек",
+    "viaWalletConnect": "Через WalletConnect"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "Проверка статуса API...",
+      "degraded": "АФИ деградировал",
+      "operational": "Функционирование всех систем"
+    },
+    "chart": {
+      "couldntLoad": "Не удалось загрузить историю цен FLR"
+    },
+    "claimsHistory": {
+      "connectToSee": "Подключите или добавьте кошелек в настройках, чтобы просмотреть историю заявок.",
+      "couldntLoad": "Не удалось загрузить историю заявок",
+      "emptyDescription": "Вы всё проверили. Нет ожидающих эпох вознаграждения для получения.",
+      "emptyTitle": "Нет невостребованных эпох",
+      "title": "История претензий"
+    },
+    "common": {
+      "networkHiccup": "Обычно это временный сетевой сбой.",
+      "no": "Нет",
+      "noWalletSelected": "Кошелек не выбран",
+      "retry": "Повторить попытку",
+      "retrying": "Повторная попытка",
+      "yes": "Да"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "Подключите или добавьте кошелек в настройках, чтобы увидеть делегирование.",
+      "couldntLoad": "Не удалось загрузить делегирование",
+      "emptyDescription": "Делегируйте WFLR поставщику FTSO, чтобы начать получать вознаграждения.",
+      "emptyTitle": "Нет активных делегирований",
+      "tabLabel": "Делегирование",
+      "title": "Структура делегирования"
+    },
+    "description": "Краткий обзор данных сети Live Flare, ценовых графиков и активности кошелька.",
+    "ftso": {
+      "activeDelegations": "Активные делегирования",
+      "claimComingSoon": "Получение пока недоступно. Скоро появится.",
+      "claimRewards": "Получить награды",
+      "connected": "Подключено",
+      "connectToSeeRewards": "Подключите или добавьте кошелек в настройках, чтобы увидеть награды.",
+      "couldntLoad": "Не удалось загрузить портфолио FTSO",
+      "delegatedWflr": "Делегированный WFLR",
+      "estHourlyEarning": "Примерный почасовой заработок",
+      "noUnclaimedYet": "Еще нет невостребованных наград",
+      "readOnly": "Только чтение",
+      "readOnlyCannotClaim": "Только просмотр, получение невозможно",
+      "switchToClaim": "Переключитесь на подключенный кошелек, чтобы получить награды",
+      "title": "Делегация FTSO",
+      "unclaimedFlr": "Невостребованные FLR"
+    },
+    "networkActivity": {
+      "collectingSamples": "Сбор данных в реальном времени. График заполняется по мере поступления новых данных.",
+      "couldntLoad": "Не удалось загрузить сетевые данные",
+      "gasPrice": "Цена на Газ",
+      "gwei": "Gwei",
+      "live": "Действующая",
+      "title": "Сетевая активность",
+      "tps": "ТСЗ"
+    },
+    "stats": {
+      "couldntLoad": "Не удалось загрузить обзор рынка",
+      "flrPrice": "Цена FLR",
+      "marketCap": "Рыночная капитализация",
+      "tvl": "TVL",
+      "volume24h": "Объем за 24 часа"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "Подключите или добавьте кошелек в Настройках, чтобы увидеть баланс.",
+      "couldntLoad": "Не удалось загрузить остатки на кошельке",
+      "title": "Баланс кошелька"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "Адрес скопирован",
+      "connectToSeePosition": "Подключите кошелёк, чтобы увидеть свою позицию",
+      "contract": "Контракт",
+      "copyFailed": "Не удалось скопировать адрес",
+      "poolOwnership": "Доля в пуле",
+      "protocolDetails": "Детали протокола",
+      "proxyContract": "Прокси-контракт",
+      "redeemableValue": "Стоимость к погашению",
+      "yourBalance": "Ваш баланс"
+    },
+    "description": "Сравнивайте доходные стратегии и отслеживайте свои позиции в хранилищах MXRPY, Sceptre и Firelight.",
+    "explorer": {
+      "subtitle": "Выберите протокол, чтобы увидеть позицию и детали",
+      "title": "Обозреватель протоколов"
+    },
+    "firelight": {
+      "backingLabel": "Мультипликатор обеспечения активами",
+      "category": "Страхование",
+      "circulatingSupply": "Объём в обращении",
+      "couldntLoad": "Не удалось загрузить вашу позицию Firelight",
+      "insuranceRobust": "Страхование: устойчиво",
+      "subtitle": "Хранилище защиты капитала",
+      "title": "Хранилище Firelight",
+      "underlyingReserve": "Базовый резерв"
+    },
+    "kpis": {
+      "activePositions": "Активные позиции",
+      "bestApr": "Лучший доступный APR",
+      "protocolsTracked": "Отслеживаемые протоколы"
+    },
+    "mxrpy": {
+      "category": "Доходный Vault",
+      "circulatingCaption": "{{shares}} долей в обращении · {{decimals}} десятичных знаков",
+      "couldntLoad": "Не удалось загрузить вашу позицию MXRPY",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "Хранилище MXRPY",
+      "yourShares": "Ваши доли-расписки"
+    },
+    "sceptre": {
+      "backedFlr": "Обеспечивающий FLR",
+      "category": "Ликвидный стейкинг",
+      "couldntLoad": "Не удалось загрузить вашу позицию Sceptre",
+      "exchangeRateLabel": "Курс sFLR / FLR",
+      "subtitle": "Ликвидный стейкинг sFLR",
+      "title": "Sceptre Liquid Staking",
+      "totalMinted": "Всего выпущено долей"
+    },
+    "strategies": {
+      "amountLabel": "Сравнить для",
+      "apr": "APR",
+      "colStrategy": "Стратегия",
+      "colTerms": "Условия",
+      "colYield": "Оценка дохода (FLR)",
+      "compoundingLabel": "Капитализация",
+      "couldntLoad": "Не удалось загрузить сравнение стратегий",
+      "highestApr": "Наивысший APR",
+      "lockupDays": "Блокировка на {{count}} дн.",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays;",
+      "lockupDays_few": "",
+      "lockupDays_many": "",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays;",
+      "lockupHours": "Блокировка на {{count}} ч.",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
+      "lockupHours_few": "",
+      "lockupHours_many": "",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "Без блокировки",
+      "subtitle": "Узнайте, как ваш FLR может работать в разных стратегиях",
+      "title": "Сравнение стратегий",
+      "verdict": "Заключение FlareGPT"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "Адрес скопирован. Спасибо, что рассматриваете пожертвование в размере {{amount}} {{symbol}}.",
+      "impactTier1": "День затрат на API",
+      "impactTier2": "Неделя хостинга",
+      "impactTier3": "Месяц инфраструктуры",
+      "impactTier4": "Новые интеграции протоколов",
+      "subtitle": "Любой вклад важен. Вот несколько идей для начала.",
+      "title": "Предлагаемые суммы"
+    },
+    "closing": {
+      "message": "Спасибо за помощь в сохранении независимости FlareGPT. Любой вклад, большой или маленький, действительно помогает."
+    },
+    "description": "Ваша поддержка помогает сделать FlareGPT бесплатным, независимым и постоянно улучшающимся.",
+    "funding": {
+      "developmentFund": "Фонд разработки",
+      "monthlyInfrastructure": "Ежемесячная инфраструктура",
+      "raisedOfGoal": "Собрано {{raised}} из {{goal}}",
+      "subtitle": "Открытый взгляд на то, сколько стоит поддержка работы FlareGPT. Без давления, только прозрачность.",
+      "title": "Прозрачность финансирования"
+    },
+    "hero": {
+      "addressCopied": "Адрес скопирован",
+      "addressLabel": "Адрес кошелька",
+      "copied": "Скопировано",
+      "copyAddress": "Скопировать адрес",
+      "copyFailed": "Не удалось скопировать адрес",
+      "multisigNote": "Защищено мультиподписным кошельком",
+      "qrTitle": "QR-код адреса кошелька для пожертвований в {{symbol}}",
+      "tapToCopy": "Нажмите, чтобы скопировать",
+      "viewOnExplorer": "Посмотреть на {{explorer}}"
+    },
+    "received": {
+      "demoData": "Демоданные",
+      "subtitle": "Общая сумма взносов, полученных по каждой поддерживаемой сети.",
+      "title": "Полученные пожертвования"
+    },
+    "support": {
+      "development": "Постоянная разработка",
+      "free": "Бесплатный доступ к FlareGPT",
+      "infra": "API и инфраструктура",
+      "integrations": "Новые интеграции протоколов",
+      "title": "На что идёт ваша поддержка"
+    },
+    "title": "Поддержать FlareGPT",
+    "warning": {
+      "body": "Отправляйте на этот адрес только {{symbol}} или другие токены {{network}}. Активы, отправленные из других сетей, невозможно восстановить.",
+      "title": "Только активы {{network}}."
+    }
+  },
+  "flareWidget": {
+    "close": "Закрыть",
+    "collapse": "Свернуть",
+    "expand": "Развернуть",
+    "openFullPage": "Открыть полную страницу"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "Сообщение скопировано",
+      "copy": "Копировать",
+      "copyFailed": "Не удалось скопировать",
+      "regenerate": "Перегенерировать ответ"
+    },
+    "composer": {
+      "disclaimer": "FlareGPT может допускать ошибки. Проверяйте важную информацию, прежде чем действовать на её основе.",
+      "placeholder": "Спросить FlareGPT...",
+      "send": "Отправить",
+      "stop": "Остановить генерацию"
+    },
+    "deleteConversation": {
+      "button": "Удалить разговор",
+      "confirm": "Подтвердить?"
+    },
+    "deleteConversationFailed": "Не удалось удалить этот разговор. Попробуйте снова.",
+    "empty": {
+      "subtitle": "Получайте ответы о вашем кошельке, наградах, делегированиях или экосистеме Flare.",
+      "title": "Спросите FlareGPT о чём угодно"
+    },
+    "guestMode": {
+      "cta": "Войдите, чтобы синхронизировать историю и разблокировать анализ кошелька",
+      "notice": "Гостевой режим · Беседы не сохраняются."
+    },
+    "history": {
+      "cancelRename": "Отмена",
+      "delete": "Удалить",
+      "empty": "Пока нет разговоров",
+      "moreActions": "Другие действия",
+      "newChat": "Новый чат",
+      "noResults": "Нет разговоров, соответствующих запросу",
+      "openButton": "История",
+      "pin": "Закрепить",
+      "pinLimitReached": "Можно закрепить до {{count}} разговоров",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
+      "pinLimitReached_few": "",
+      "pinLimitReached_many": "",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "Переименовать",
+      "renameFailed": "Не удалось переименовать этот разговор.",
+      "saveRename": "Сохранить",
+      "searchPlaceholder": "Поиск разговоров...",
+      "title": "История чата",
+      "unpin": "Открепить",
+      "untitled": "Без названия"
+    },
+    "historyLoadFailed": "Не удалось загрузить историю чата.",
+    "jumpToLatest": "Перейти к последнему",
+    "newChat": "Новый чат",
+    "prompts": {
+      "analyzeWallet": "Проанализировать мой кошелёк",
+      "compareProtocols": "Сравнить Sceptre и Firelight",
+      "explainDelegations": "Объяснить мои делегирования",
+      "increaseRewards": "Как увеличить мои награды FTSO?",
+      "rewardsDecreased": "Почему мои награды уменьшились?",
+      "stakingOpportunities": "Показать мои возможности стейкинга"
+    },
+    "sendError": "Что-то пошло не так. Попробуйте снова.",
+    "wallet": {
+      "analyzing": "Анализируется:",
+      "guestLabel": "Анализ кошелька",
+      "locked": {
+        "body": "Войдите в систему, чтобы FlareGPT автоматически читал ваши кошельки Primary и Watchlist, а не вводил адрес в каждый вопрос.",
+        "connectCta": "Подключить кошелек",
+        "signInCta": "Зарегистрироваться",
+        "signingIn": "Подтвердите в кошельке...",
+        "title": "Разблокировать анализ кошелька"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Создано на базе Flare Network.",
     "disclaimer": "Не является финансовой рекомендацией. Данные предоставляются исключительно в информационных целях.",
-    "terms": "Условия и Отказ от ответственности",
-    "donate": "Пожертвовать"
+    "donate": "Пожертвовать",
+    "terms": "Условия и Отказ от ответственности"
   },
   "help": {
+    "askFlareGptCta": "Спросите у FlareGPT",
+    "askFlareGptLead": "Не нашли то, что искали?",
+    "contact": {
+      "comingSoon": "Скоро",
+      "emailLabel": "Эл. почта",
+      "telegramLabel": "Telegram",
+      "twitterHint": "Подпишитесь и напишите нам",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "Возможно, ваш кошелек не подключен или панель управления все еще синхронизирует данные блокчейна. Убедитесь, что выбраны правильный кошелек и сеть.",
@@ -30,10 +342,12 @@
     ],
     "faqTitle": "Часто задаваемые вопросы",
     "featureGuides": "Руководства по функциям",
+    "flareGptGuideDescription": "Задавайте вопросы о своем кошельке, наградах и сети Flare простым языком.",
     "gettingStarted": "С чего начать",
     "headerDesc": "Руководства, ответы и поддержка, чтобы вы могли максимально эффективно использовать панель FlareGPT.",
     "noFaqs": "По вашему запросу вопросов не найдено.",
     "noGuides": "По вашему запросу руководств не найдено.",
+    "searchClear": "Очистить поиск",
     "searchPlaceholder": "Поиск по руководствам или вопросам...",
     "searchSub": "Найдите руководства по функциям и ответы на частые вопросы или свяжитесь с нами другим способом.",
     "searchTitle": "Все, что нужно для начала работы",
@@ -65,63 +379,70 @@
       }
     ],
     "stillNeedHelp": "Все еще нужна помощь?",
-    "supportDesc": "Сейчас быстрее всего связаться с нами через X. Поддержка по электронной почте и в Telegram появится позже.",
-    "searchClear": "Очистить поиск",
-    "flareGptGuideDescription": "Задавайте вопросы о своем кошельке, наградах и сети Flare простым языком.",
-    "askFlareGptLead": "Не нашли то, что искали?",
-    "askFlareGptCta": "Спросите у FlareGPT",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "Подпишитесь и напишите нам",
-      "telegramLabel": "Telegram",
-      "emailLabel": "Эл. почта",
-      "comingSoon": "Скоро"
-    }
+    "supportDesc": "Сейчас быстрее всего связаться с нами через X. Поддержка по электронной почте и в Telegram появится позже."
   },
   "navbar": {
+    "addressCopied": "Адрес скопирован",
     "askFlareGPT": "Спросить FlareGPT",
-    "mainnetStatus": "Основная сеть Flare",
-    "connectWallet": "Подключить кошелек",
-    "primaryWalletSection": "Основной кошелёк",
     "badgePrimary": "Основной",
+    "badgeSignIn": "Войти",
     "badgeWatchlist": "Список отслеживания",
-    "disconnectWallet": "Отключить кошелёк",
+    "balancesHiddenLabel": "Балансы скрыты",
     "configureWatchlistWallets": "Настроить кошельки списка отслеживания",
-    "watchlistSection": "Список отслеживания ({{current}}/{{max}})",
-    "addressCopied": "Адрес скопирован в буфер обмена",
+    "connectWallet": "Подключить кошелек",
     "copyFailed": "Не удалось скопировать адрес",
+    "disconnectWallet": "Отключить кошелёк",
     "flareGptFabHint": "FlareGPT теперь открывается отсюда",
     "hideBalances": "Скрыть балансы",
+    "mainnetStatus": "Основная сеть Flare",
+    "primaryWalletSection": "Основной кошелёк",
     "showBalances": "Показать балансы",
-    "balancesHiddenLabel": "Балансы скрыты",
     "signIn": "Войти",
+    "signInBackgroundHint": "Вашему подключённому кошельку требуется вход",
     "signingIn": "Выполняется вход…",
     "signInPrompt": "Подпишите сообщение, чтобы подтвердить этот кошелёк и продолжить.",
-    "badgeSignIn": "Войти",
-    "signInBackgroundHint": "Вашему подключённому кошельку требуется вход"
+    "watchlistSection": "Список отслеживания ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "Тёмная",
+      "light": "Светлая",
+      "system": "Системная"
+    },
     "cards": {
       "app": "Приложение",
       "blur": "Фильтр синего света",
       "chartType": "Тип графика",
       "connectedWallets": "Подключенные кошельки",
       "currency": "Отображение валюты",
+      "defaultLandingPage": "Стартовая страница по умолчанию",
+      "defaultWallet": "Кошелёк по умолчанию",
       "governanceAlerts": "Оповещения об управлении",
+      "hideBalances": "Скрыть балансы кошелька",
       "language": "Язык",
       "links": "Ссылки",
       "logout": "Выйти",
+      "reduceMotion": "Уменьшить анимацию",
       "rewardsAlerts": "Оповещения о наградах",
+      "tableDensity": "Плотность таблицы",
       "theme": "Тема",
       "themeMode": "Светлый / Темный режим",
       "timeframe": "Временной период",
       "walletCapacity": "Емкость кошелька",
-      "walletPreferences": "Настройки кошелька",
-      "defaultWallet": "Кошелёк по умолчанию",
-      "defaultLandingPage": "Стартовая страница по умолчанию",
-      "tableDensity": "Плотность таблицы",
-      "reduceMotion": "Уменьшить анимацию",
-      "hideBalances": "Скрыть балансы кошелька"
+      "walletPreferences": "Настройки кошелька"
+    },
+    "dataStorage": {
+      "accountSubtitle": "Синхронизировано с вашей учётной записью на сервере.",
+      "accountTitle": "Данные аккаунта",
+      "clear": "Очистить",
+      "confirmClear": "Подтвердить?",
+      "conversations": "Разговоры FlareGPT",
+      "conversationsClearFailed": "Не удалось очистить историю чата. Попробуйте снова.",
+      "conversationsDescription": "Удаляет историю чата FlareGPT из вашей учётной записи. Это действие необратимо.",
+      "localSubtitle": "Хранится только в этом браузере. Удаление происходит мгновенно и безопасно.",
+      "localTitle": "Локальные данные",
+      "walletCache": "Кэш активности кошелька",
+      "walletCacheDescription": "Удаляет кэшированную историю транзакций. При следующем посещении она будет загружена заново."
     },
     "description": "Управление кошельками, предпочтениями, локализацией и параметрами отображения.",
     "descriptions": {
@@ -129,18 +450,33 @@
       "blur": "Снизьте нагрузку на глаза с помощью теплого оттенка экрана",
       "chartType": "Установите геометрию визуального стиля рендеринга по умолчанию для системных матриц.",
       "currency": "Выберите отображение базовой валюты актива.",
+      "defaultLandingPage": "Выберите, какая страница открывается первой при запуске приложения.",
+      "defaultWallet": "Этот кошелёк становится активным, когда предыдущую сессию не удаётся восстановить.",
+      "hideBalances": "Скрывает балансы и суммы на всей панели управления в целях конфиденциальности.",
       "language": "Выберите язык интерфейса по умолчанию.",
       "links": "Глобальные ссылки на документацию и ссылки для взаимодействия с командой.",
       "logout": "Выход из FlareGPT на этом устройстве. Для повторного входа потребуется подписать новое сообщение.",
+      "reduceMotion": "Минимизировать анимацию, даже если в операционной системе не задана настройка.",
+      "tableDensity": "Комфортные отступы или более компактный вид для плотных таблиц.",
+      "theme": "Выберите Светлую, Тёмную тему или следуйте настройке системы.",
       "timeframe": "Определите масштабы периодов окон по умолчанию на визуальных графиках.",
       "walletCapacity": "Системные ограничения, отслеживающие пулы выделенной емкости.",
-      "theme": "Выберите Светлую, Тёмную тему или следуйте настройке системы.",
-      "walletPreferences": "Выберите, с каким кошельком открывается панель.",
-      "defaultWallet": "Этот кошелёк становится активным, когда предыдущую сессию не удаётся восстановить.",
-      "defaultLandingPage": "Выберите, какая страница открывается первой при запуске приложения.",
-      "tableDensity": "Комфортные отступы или более компактный вид для плотных таблиц.",
-      "reduceMotion": "Минимизировать анимацию, даже если в операционной системе не задана настройка.",
-      "hideBalances": "Скрывает балансы и суммы на всей панели управления в целях конфиденциальности."
+      "walletPreferences": "Выберите, с каким кошельком открывается панель."
+    },
+    "flareGpt": {
+      "syncStatusConnected": "Вы вошли в систему. Ваши беседы синхронизируются на всех устройствах и браузерах.",
+      "syncStatusGuest": "Разговоры временные в этом браузере и не будут сохранены. Войдите, чтобы сохранить их.",
+      "syncStatusTitle": "Статус синхронизации"
+    },
+    "groups": {
+      "account": "Аккаунт",
+      "personalization": "Персонализация",
+      "walletsAndData": "Кошельки и данные"
+    },
+    "links": {
+      "docs": "Документы",
+      "github": "GitHub",
+      "twitter": "Twitter"
     },
     "notifications": {
       "governance": "Обновления предложений",
@@ -152,224 +488,211 @@
       "area": "Область",
       "asia": "Азия",
       "candlestick": "Свечной",
+      "comfortable": "Комфортно",
+      "compact": "Компактно",
       "europe": "Европа",
       "global": "Глобальный",
       "high": "Высокое",
       "line": "Линейный",
       "low": "Низкое",
       "medium": "Среднее",
-      "off": "Выкл",
-      "comfortable": "Комфортно",
-      "compact": "Компактно"
+      "off": "Выкл"
     },
     "security": {
-      "logout": "Выйти",
-      "confirmLogout": "Подтвердить?"
+      "confirmLogout": "Подтвердить?",
+      "logout": "Выйти"
     },
     "subtitles": {
       "About": "Обзор системных записей развертывания, правил компиляции и индексов активов.",
+      "Accessibility": "Настройте параметры движения и взаимодействия.",
+      "Appearance": "Выберите внешний вид FlareGPT.",
       "Display": "Настройте вид по умолчанию и отображение данных панели.",
+      "FlareGpt": "Управляйте тем, как FlareGPT запоминает ваши разговоры.",
       "Notifications": "Управление системными приоритетными событиями и конечными точками отслеживания маршрутов доставки.",
       "Preferences": "Настройки языка и валюты.",
       "Security": "Поддержание активных барьеров сессий идентификации и правил доступа для проверки учетных данных.",
-      "Wallets": "Подключение и структурирование подписей в глобальных внешних децентрализованных учетных записях.",
-      "Appearance": "Выберите внешний вид FlareGPT.",
-      "Accessibility": "Настройте параметры движения и взаимодействия.",
-      "FlareGpt": "Управляйте тем, как FlareGPT запоминает ваши разговоры."
+      "Wallets": "Подключение и структурирование подписей в глобальных внешних децентрализованных учетных записях."
     },
     "tabs": {
       "About": "О программе",
+      "Accessibility": "Доступность",
+      "Appearance": "Оформление",
+      "DataStorage": "Данные и хранилище",
       "Display": "Панель",
+      "FlareGpt": "FlareGPT",
       "Notifications": "Уведомления",
       "Preferences": "Общие",
       "Security": "Безопасность",
-      "Wallets": "Кошельки",
-      "Appearance": "Оформление",
-      "Accessibility": "Доступность",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "Данные и хранилище"
+      "Wallets": "Кошельки"
     },
     "title": "Настройки",
     "wallets": {
       "active": "Активно",
       "add": "Добавить кошелек ({{current}}/{{max}})",
+      "addFormTitle": "Добавить учетную запись портфеля списка наблюдения",
+      "adding": "Добавление…",
+      "addressPlaceholder": "0x... Адрес кошелька Flare",
       "available": "Доступно",
+      "cancelRename": "Отмена",
+      "confirmRemove": "Подтвердить удаление?",
       "connectAction": "Подключить кошелек (Подключено: {{current}}, Осталось: {{remaining}})",
+      "connectActionUnlimited": "Добавить кошелёк (отслеживается: {{current}})",
       "connected": "Подключено",
+      "duplicateAddress": "Этот адрес уже в вашем списке отслеживания.",
+      "duplicateNickname": "Кошелёк с таким именем уже есть в вашем списке отслеживания. Выберите другое имя.",
       "empty": "Кошельки еще не подключены",
       "emptyTerminal": "Кошелек не подключен. Подключите ваши терминальные активы для продолжения.",
-      "limit": "Вы можете подключить до {{max}} кошельков",
-      "limitReached": "Лимит кошельков достигнут ({{current}}/{{max}})",
-      "maximum": "Максимум",
-      "remainingSlots": "Оставшиеся слоты",
-      "addFormTitle": "Добавить учетную запись портфеля списка наблюдения",
-      "addressPlaceholder": "0x... Адрес кошелька Flare",
+      "guestLimitBenefitBackup": "Сохраняйте резервную копию списка",
+      "guestLimitBenefitMore": "Храните более 3 кошельков",
+      "guestLimitBenefitSync": "Синхронизируйте список отслеживания между устройствами",
+      "guestLimitTitle": "Войдите, чтобы отслеживать больше кошельков",
       "invalidAddress": "Введите действительный сетевой адрес Flare EVM (начиная с 0x).",
       "labelPlaceholder": "Ярлык имени учетной записи (например, холодное хранение)",
+      "limit": "Вы можете подключить до {{max}} кошельков",
+      "limitReached": "Лимит кошельков достигнут ({{current}}/{{max}})",
       "liveConnected": "Live Connected",
       "manageSubtitle": "Управляйте активными подключениями Web3 и учетными записями отслеживания портфеля, доступными только для чтения.",
+      "maximum": "Максимум",
+      "noDefaultSelected": "Не выбрано",
+      "noLimit": "Добавляйте сколько угодно кошельков.",
+      "noSearchResults": "Нет кошельков, соответствующих запросу.",
+      "notFoundError": "Этого кошелька больше нет в вашем списке отслеживания.",
       "readOnly": "Только для чтения",
       "registrationFailed": "Регистрация адреса не удалась. Проверьте, является ли он дубликатом или слоты заполнены.",
-      "tracked": "Отслеживается",
+      "remainingSlots": "Оставшиеся слоты",
       "remove": "Удалить",
-      "confirmRemove": "Подтвердить удаление?",
-      "noDefaultSelected": "Не выбрано",
       "rename": "Переименовать",
-      "cancelRename": "Отмена",
-      "connectActionUnlimited": "Добавить кошелёк (отслеживается: {{current}})",
-      "noLimit": "Добавляйте сколько угодно кошельков.",
-      "duplicateAddress": "Этот адрес уже в вашем списке отслеживания.",
-      "guestLimitTitle": "Войдите, чтобы отслеживать больше кошельков",
-      "guestLimitBenefitSync": "Синхронизируйте список отслеживания между устройствами",
-      "guestLimitBenefitMore": "Храните более 3 кошельков",
-      "guestLimitBenefitBackup": "Сохраняйте резервную копию списка",
-      "searchPlaceholder": "Поиск среди {{count}} кошельков...",
-      "noSearchResults": "Нет кошельков, соответствующих запросу.",
-      "duplicateNickname": "Кошелёк с таким именем уже есть в вашем списке отслеживания. Выберите другое имя.",
-      "notFoundError": "Этого кошелька больше нет в вашем списке отслеживания.",
       "saveEdit": "Сохранить",
-      "adding": "Добавление…"
-    },
-    "links": {
-      "docs": "Документы",
-      "github": "GitHub",
-      "twitter": "Twitter"
-    },
-    "groups": {
-      "personalization": "Персонализация",
-      "walletsAndData": "Кошельки и данные",
-      "account": "Аккаунт"
-    },
-    "appearance": {
-      "light": "Светлая",
-      "dark": "Тёмная",
-      "system": "Системная"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "Статус синхронизации",
-      "syncStatusConnected": "Вход выполнен — ваши разговоры синхронизируются на всех устройствах и в браузерах.",
-      "syncStatusGuest": "Разговоры временные в этом браузере и не будут сохранены. Войдите, чтобы сохранить их."
-    },
-    "dataStorage": {
-      "localTitle": "Локальные данные",
-      "localSubtitle": "Хранятся только в этом браузере — их удаление происходит мгновенно и безопасно.",
-      "walletCache": "Кэш активности кошелька",
-      "walletCacheDescription": "Очищает кэшированную историю транзакций — при следующем посещении она будет загружена заново.",
-      "conversations": "Разговоры FlareGPT",
-      "conversationsDescription": "Удаляет историю чата FlareGPT из вашей учётной записи. Это действие необратимо.",
-      "clear": "Очистить",
-      "confirmClear": "Подтвердить?",
-      "accountTitle": "Данные аккаунта",
-      "accountSubtitle": "Синхронизировано с вашей учётной записью на сервере.",
-      "conversationsClearFailed": "Не удалось очистить историю чата — попробуйте снова."
+      "searchPlaceholder": "Поиск среди {{count}} кошельков...",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
+      "searchPlaceholder_few": "",
+      "searchPlaceholder_many": "",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "Отслеживается"
     }
   },
   "sidebar": {
+    "activeWallet": "Активно: {{address}}",
+    "addWatchlistWallet": "+ Добавить кошелек для списка наблюдения",
     "connectWallet": "Подключить кошелек",
+    "defiProtocols": "Протоколы Defi",
     "disconnect": "Отключить",
+    "donate": "Пожертвовать",
+    "feeds": "Новости",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Вознаграждения FTSO",
-    "defiProtocols": "Протоколы Defi",
     "governance": "Управление",
     "helpCenter": "Справочный центр",
+    "loops": "Циклы",
     "notConnected": "Не подключено",
     "overview": "Обзор",
     "rflrTracker": "Трекер rFLR",
     "settings": "Настройки",
+    "signInRequired": "Требуется вход",
+    "signInRequiredHint": "Используйте меню кошелька в верхней панели, чтобы войти.",
     "walletActivity": "Активность кошелька",
     "walletConnected": "Кошелек подключен",
-    "yield": "Доходность",
-    "loops": "Циклы",
-    "feeds": "Новости",
-    "donate": "Пожертвовать",
-    "addWatchlistWallet": "+ Добавить кошелек для списка наблюдения",
-    "activeWallet": "Активно: {{address}}",
-    "signInRequired": "Требуется вход",
-    "signInRequiredHint": "Используйте меню кошелька в верхней панели, чтобы войти."
+    "yield": "Доходность"
   },
   "wallet": {
     "activity": {
-      "subtitle": "Мониторинг в реальном времени входящих и исходящих блокчейн-взаимодействий.",
-      "title": "Недавние действия на терминале",
-      "description": "Каждая проиндексированная транзакция вашего активного кошелька, сгруппированная и доступная для поиска.",
-      "refresh": "Обновить",
-      "connectToSee": "Подключите или выберите кошелёк, чтобы увидеть его историю транзакций.",
-      "couldntLoad": "Не удалось загрузить активность кошелька.",
-      "notifier": {
-        "ready": "Загрузка активности вашего кошелька завершена."
-      },
-      "loading": {
-        "title": "Индексация активности кошелька",
-        "subtitle": "Большие кошельки могут загружаться несколько минут при первом запуске. Можете пока изучить остальную часть дашборда — мы сообщим, когда всё будет готово.",
-        "elapsed": "прошло {{seconds}} с"
-      },
-      "empty": {
-        "title": "Пока нет активности",
-        "description": "У этого кошелька нет проиндексированных транзакций."
-      },
-      "noResults": {
-        "title": "Совпадающих транзакций не найдено",
-        "description": "Попробуйте изменить поиск или фильтры."
-      },
-      "kpi": {
-        "totalTransactions": "Всего транзакций",
-        "uniqueAssets": "Уникальные активы",
-        "walletAge": "Возраст кошелька",
-        "walletAgeYears": "{{count}} лет",
-        "walletAgeMonths": "{{count}} мес.",
-        "walletAgeDays": "{{count}} дн.",
-        "lastActive": "Последняя активность",
-        "justNow": "Только что",
-        "minutesAgo": "{{count}} мин назад",
-        "hoursAgo": "{{count}} ч назад",
-        "daysAgo": "{{count}} дн назад"
-      },
-      "insights": {
-        "title": "Краткая аналитика",
-        "mostUsedAsset": "Самый используемый актив",
-        "mostCommonAction": "Самое частое действие",
-        "mostActiveDay": "Самый активный день",
-        "mostActiveMonth": "Самый активный месяц",
-        "txCount": "{{count}} транзакций"
-      },
       "charts": {
+        "actionBreakdown": "Разбивка по действиям",
+        "actionBreakdownSubtitle": "Количество транзакций по типу действия",
         "activityByDay": "Активность по дням",
         "activityByDaySubtitle": "Количество транзакций в день",
         "assetBreakdown": "Разбивка по активам",
         "assetBreakdownSubtitle": "Количество транзакций по активу",
-        "actionBreakdown": "Разбивка по действиям",
-        "actionBreakdownSubtitle": "Количество транзакций по типу действия",
+        "tabActions": "Действия",
         "tabActivity": "Активность",
-        "tabAssets": "Активы",
-        "tabActions": "Действия"
+        "tabAssets": "Активы"
       },
-      "toolbar": {
-        "searchPlaceholder": "Поиск по хешу или активу...",
-        "sort": {
-          "newest": "Сначала новые",
-          "oldest": "Сначала старые",
-          "amount": "Сумма"
-        },
-        "exportCsv": "Экспорт в CSV",
-        "exportJson": "Экспорт в JSON",
-        "export": "Экспорт"
+      "connectToSee": "Подключите или выберите кошелёк, чтобы увидеть его историю транзакций.",
+      "couldntLoad": "Не удалось загрузить активность кошелька.",
+      "description": "Каждая проиндексированная транзакция вашего активного кошелька, сгруппированная и доступная для поиска.",
+      "drawer": {
+        "action": "Действие",
+        "asset": "Актив",
+        "blockNumber": "Номер блока",
+        "close": "Закрыть",
+        "copyFailed": "Не удалось скопировать хеш",
+        "hashCopied": "Хеш транзакции скопирован",
+        "next": "Следующая транзакция",
+        "previous": "Предыдущая транзакция",
+        "timestamp": "Метка времени",
+        "title": "Детали транзакции",
+        "transactionHash": "Хеш транзакции",
+        "viewOnExplorer": "Посмотреть на FlareScan"
+      },
+      "empty": {
+        "description": "У этого кошелька нет проиндексированных транзакций.",
+        "title": "Пока нет активности"
       },
       "feed": {
         "ariaLabel": "Показано {{shown}} из {{total}} транзакций"
       },
-      "drawer": {
-        "title": "Детали транзакции",
-        "previous": "Предыдущая транзакция",
-        "next": "Следующая транзакция",
-        "close": "Закрыть",
-        "action": "Действие",
-        "asset": "Актив",
-        "blockNumber": "Номер блока",
-        "timestamp": "Метка времени",
-        "transactionHash": "Хеш транзакции",
-        "hashCopied": "Хеш транзакции скопирован",
-        "copyFailed": "Не удалось скопировать хеш",
-        "viewOnExplorer": "Посмотреть на FlareScan"
+      "insights": {
+        "mostActiveDay": "Самый активный день",
+        "mostActiveMonth": "Самый активный месяц",
+        "mostCommonAction": "Самое частое действие",
+        "mostUsedAsset": "Самый используемый актив",
+        "title": "Краткая аналитика",
+        "txCount": "{{count}} транзакций",
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_few": "",
+        "txCount_many": "",
+        "txCount_other": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "{{count}} дн назад",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "daysAgo_few": "",
+        "daysAgo_many": "",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "{{count}} ч назад",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "hoursAgo_few": "",
+        "hoursAgo_many": "",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "Только что",
+        "lastActive": "Последняя активность",
+        "minutesAgo": "{{count}} мин назад",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
+        "minutesAgo_few": "",
+        "minutesAgo_many": "",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "Всего транзакций",
+        "uniqueAssets": "Уникальные активы",
+        "walletAge": "Возраст кошелька",
+        "walletAgeDays": "{{count}} дн.",
+        "walletAgeMonths": "{{count}} мес.",
+        "walletAgeYears": "{{count}} лет"
+      },
+      "loading": {
+        "elapsed": "прошло {{seconds}} с",
+        "subtitle": "Загрузка крупных кошельков может занять несколько минут. Пока можно свободно изучать остальную часть панели управления. Мы сообщим, когда всё будет готово.",
+        "title": "Индексация активности кошелька"
+      },
+      "noResults": {
+        "description": "Попробуйте изменить поиск или фильтры.",
+        "title": "Совпадающих транзакций не найдено"
+      },
+      "notifier": {
+        "ready": "Активность кошелька загружена."
+      },
+      "refresh": "Обновить",
+      "subtitle": "Мониторинг в реальном времени входящих и исходящих блокчейн-взаимодействий.",
+      "title": "Недавние действия на терминале",
+      "toolbar": {
+        "export": "Экспорт",
+        "exportCsv": "Экспорт в CSV",
+        "exportJson": "Экспорт в JSON",
+        "searchPlaceholder": "Поиск по хешу или активу...",
+        "sort": {
+          "amount": "Сумма",
+          "newest": "Сначала новые",
+          "oldest": "Сначала старые"
+        }
       }
     },
     "stats": {
@@ -396,285 +719,6 @@
       "contract": "Сопровождение договора",
       "received": "Принято",
       "sent": "Отправлено"
-    }
-  },
-  "comingSoon": {
-    "badge": "Скоро!",
-    "description": "Мы создаем эту функцию. Зайдите попозже."
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "Похоже, WalletConnect заблокирован Brave Shields.",
-        "tryTitle": "Попробуйте один из следующих вариантов:",
-        "shieldsOff": "Отключите Brave Shields для этого сайта и повторите попытку.",
-        "privateWindow": "Откройте сайт в приватном окне Brave.",
-        "useChrome": "Используйте Google Chrome или другой поддерживаемый браузер, если проблема сохраняется."
-      },
-      "generic": "Произошло неожиданное трение соединения. Повторите попытку или воспользуйтесь другим кошельком.",
-      "providerGone": "Похоже, этот кошелек больше не отвечает — возможно, он был обновлен или удален. Обновление страницы должно решить проблему.",
-      "pending": "Запрос на подключение уже открыт. Откройте панель расширения кошелька.",
-      "rejected": "Запрос на подключение отменен в вашем кошельке.",
-      "timeout": "Не удалось подключиться к WalletConnect. Проверьте соединение и повторите попытку.",
-      "wrongNetwork": "Переключите активную сеть вашего кошелька на Flare Mainnet."
-    },
-    "install": "Установить",
-    "installHint": "Всё ещё не видите свой кошелек? Обновление страницы может помочь.",
-    "refresh": "Обновить",
-    "mobileHint": "На мобильном устройстве откройте FlareGPT во встроенном браузере вашего кошелька для лучшего взаимодействия. При сканировании QR-кода используйте встроенный сканер приложения кошелька, а не камеру телефона, для более надежного подключения.",
-    "connecting": "Подключение…",
-    "recommended": "Рекомендуемое",
-    "subtitle": "Выберите предпочитаемый кошелек для подключения к сети Flare.",
-    "title": "Подключить кошелек",
-    "viaWalletConnect": "Через WalletConnect"
-  },
-  "flareWidget": {
-    "close": "Закрыть",
-    "collapse": "Свернуть",
-    "expand": "Развернуть",
-    "openFullPage": "Открыть полную страницу"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "Проанализировать мой кошелёк",
-      "increaseRewards": "Как увеличить мои награды FTSO?",
-      "explainDelegations": "Объяснить мои делегирования",
-      "compareProtocols": "Сравнить Sceptre и Firelight",
-      "rewardsDecreased": "Почему мои награды уменьшились?",
-      "stakingOpportunities": "Показать мои возможности стейкинга"
-    },
-    "wallet": {
-      "analyzing": "Анализируется:"
-    },
-    "empty": {
-      "title": "Спросите FlareGPT о чём угодно",
-      "subtitle": "Получайте ответы о вашем кошельке, наградах, делегированиях или экосистеме Flare."
-    },
-    "composer": {
-      "placeholder": "Спросить FlareGPT...",
-      "send": "Отправить",
-      "stop": "Остановить генерацию",
-      "disclaimer": "FlareGPT может допускать ошибки. Проверяйте важную информацию, прежде чем действовать на её основе."
-    },
-    "actions": {
-      "copy": "Копировать",
-      "regenerate": "Перегенерировать ответ",
-      "copied": "Сообщение скопировано",
-      "copyFailed": "Не удалось скопировать"
-    },
-    "jumpToLatest": "Перейти к последнему",
-    "historyLoadFailed": "Не удалось загрузить историю чата.",
-    "sendError": "Что-то пошло не так — попробуйте снова.",
-    "newChat": "Новый чат",
-    "deleteConversation": {
-      "button": "Удалить разговор",
-      "confirm": "Подтвердить?"
-    },
-    "deleteConversationFailed": "Не удалось удалить этот разговор. Попробуйте снова.",
-    "history": {
-      "title": "История чата",
-      "newChat": "Новый чат",
-      "searchPlaceholder": "Поиск разговоров...",
-      "empty": "Пока нет разговоров",
-      "noResults": "Нет разговоров, соответствующих запросу",
-      "untitled": "Без названия",
-      "moreActions": "Другие действия",
-      "pin": "Закрепить",
-      "unpin": "Открепить",
-      "rename": "Переименовать",
-      "delete": "Удалить",
-      "pinLimitReached": "Можно закрепить до {{count}} разговоров",
-      "renameFailed": "Не удалось переименовать этот разговор.",
-      "openButton": "История",
-      "saveRename": "Сохранить",
-      "cancelRename": "Отмена"
-    }
-  },
-  "dashboard": {
-    "description": "Краткий обзор данных сети Live Flare, ценовых графиков и активности кошелька.",
-    "common": {
-      "retry": "Повторить попытку",
-      "retrying": "Повторная попытка",
-      "networkHiccup": "Обычно это временный сетевой сбой.",
-      "noWalletSelected": "Кошелек не выбран",
-      "yes": "Да",
-      "no": "Нет"
-    },
-    "stats": {
-      "flrPrice": "Цена FLR",
-      "marketCap": "Рыночная капитализация",
-      "volume24h": "Объем за 24 часа",
-      "tvl": "TVL",
-      "couldntLoad": "Не удалось загрузить обзор рынка"
-    },
-    "chart": {
-      "couldntLoad": "Не удалось загрузить историю цен FLR"
-    },
-    "networkActivity": {
-      "title": "Сетевая активность",
-      "live": "Действующая",
-      "gwei": "Gwei",
-      "gasPrice": "Цена на Газ",
-      "tps": "ТСЗ",
-      "couldntLoad": "Не удалось загрузить сетевые данные",
-      "collectingSamples": "Сбор живых образцов — диаграмма заполняется по мере поступления новых данных."
-    },
-    "walletBalances": {
-      "title": "Баланс кошелька",
-      "connectToSeeBalances": "Подключите или добавьте кошелек в Настройках, чтобы увидеть баланс.",
-      "couldntLoad": "Не удалось загрузить остатки на кошельке"
-    },
-    "ftso": {
-      "title": "Делегация FTSO",
-      "connected": "Подключено",
-      "readOnly": "Только чтение",
-      "connectToSeeRewards": "Подключите или добавьте кошелек в настройках, чтобы увидеть награды.",
-      "couldntLoad": "Не удалось загрузить портфолио FTSO",
-      "delegatedWflr": "Делегированный WFLR",
-      "unclaimedFlr": "Невостребованные FLR",
-      "activeDelegations": "Активные делегирования",
-      "estHourlyEarning": "Примерный почасовой заработок",
-      "claimRewards": "Получить награды",
-      "readOnlyCannotClaim": "Только для чтения — не может претендовать",
-      "switchToClaim": "Переключитесь на подключенный кошелек, чтобы получить награды",
-      "noUnclaimedYet": "Еще нет невостребованных наград",
-      "claimComingSoon": "Заявка пока недоступна, скоро появится."
-    },
-    "claimsHistory": {
-      "title": "История претензий",
-      "connectToSee": "Подключите или добавьте кошелек в настройках, чтобы просмотреть историю заявок.",
-      "couldntLoad": "Не удалось загрузить историю заявок",
-      "emptyTitle": "Нет невостребованных эпох",
-      "emptyDescription": "Вы все догнали — нет ожидающих эпох наград, чтобы претендовать."
-    },
-    "delegationsBreakdown": {
-      "title": "Структура делегирования",
-      "tabLabel": "Делегирование",
-      "connectToSee": "Подключите или добавьте кошелек в настройках, чтобы увидеть делегирование.",
-      "couldntLoad": "Не удалось загрузить делегирование",
-      "emptyTitle": "Нет активных делегирований",
-      "emptyDescription": "Делегируйте WFLR поставщику FTSO, чтобы начать получать вознаграждения."
-    },
-    "apiStatus": {
-      "checking": "Проверка статуса API...",
-      "operational": "Функционирование всех систем",
-      "degraded": "АФИ деградировал"
-    }
-  },
-  "defiProtocols": {
-    "description": "Сравнивайте доходные стратегии и отслеживайте свои позиции в хранилищах MXRPY, Sceptre и Firelight.",
-    "common": {
-      "addressCopied": "Адрес скопирован в буфер обмена",
-      "copyFailed": "Не удалось скопировать адрес",
-      "connectToSeePosition": "Подключите кошелёк, чтобы увидеть свою позицию",
-      "contract": "Контракт",
-      "proxyContract": "Прокси-контракт",
-      "poolOwnership": "Доля в пуле",
-      "protocolDetails": "Детали протокола",
-      "yourBalance": "Ваш баланс",
-      "redeemableValue": "Стоимость к погашению"
-    },
-    "explorer": {
-      "title": "Обозреватель протоколов",
-      "subtitle": "Выберите протокол, чтобы увидеть позицию и детали"
-    },
-    "kpis": {
-      "protocolsTracked": "Отслеживаемые протоколы",
-      "bestApr": "Лучший доступный APR",
-      "activePositions": "Активные позиции"
-    },
-    "mxrpy": {
-      "title": "Хранилище MXRPY",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "Не удалось загрузить вашу позицию MXRPY",
-      "circulatingCaption": "{{shares}} долей в обращении · {{decimals}} десятичных знаков",
-      "yourShares": "Ваши доли-расписки",
-      "category": "Доходный Vault"
-    },
-    "sceptre": {
-      "title": "Sceptre Liquid Staking",
-      "subtitle": "Ликвидный стейкинг sFLR",
-      "couldntLoad": "Не удалось загрузить вашу позицию Sceptre",
-      "exchangeRateLabel": "Курс sFLR / FLR",
-      "totalMinted": "Всего выпущено долей",
-      "backedFlr": "Обеспечивающий FLR",
-      "category": "Ликвидный стейкинг"
-    },
-    "firelight": {
-      "title": "Хранилище Firelight",
-      "subtitle": "Хранилище защиты капитала",
-      "couldntLoad": "Не удалось загрузить вашу позицию Firelight",
-      "backingLabel": "Мультипликатор обеспечения активами",
-      "circulatingSupply": "Объём в обращении",
-      "underlyingReserve": "Базовый резерв",
-      "insuranceRobust": "Страхование: устойчиво",
-      "category": "Страхование"
-    },
-    "strategies": {
-      "title": "Сравнение стратегий",
-      "subtitle": "Узнайте, как ваш FLR может работать в разных стратегиях",
-      "amountLabel": "Сравнить для",
-      "apr": "APR",
-      "colStrategy": "Стратегия",
-      "colYield": "Оценка дохода (FLR)",
-      "colTerms": "Условия",
-      "compoundingLabel": "Капитализация",
-      "couldntLoad": "Не удалось загрузить сравнение стратегий",
-      "highestApr": "Наивысший APR",
-      "lockupDays": "Блокировка на {{count}} дн.",
-      "lockupHours": "Блокировка на {{count}} ч.",
-      "noLockup": "Без блокировки",
-      "verdict": "Заключение FlareGPT"
-    }
-  },
-  "donate": {
-    "title": "Поддержать FlareGPT",
-    "description": "Ваша поддержка помогает сделать FlareGPT бесплатным, независимым и постоянно улучшающимся.",
-    "hero": {
-      "addressLabel": "Адрес кошелька",
-      "tapToCopy": "Нажмите, чтобы скопировать",
-      "copyAddress": "Скопировать адрес",
-      "copied": "Скопировано",
-      "addressCopied": "Адрес скопирован в буфер обмена",
-      "copyFailed": "Не удалось скопировать адрес",
-      "viewOnExplorer": "Посмотреть на {{explorer}}",
-      "multisigNote": "Защищено мультиподписным кошельком",
-      "qrTitle": "QR-код адреса кошелька для пожертвований в {{symbol}}"
-    },
-    "warning": {
-      "title": "Только активы {{network}}.",
-      "body": "Отправляйте на этот адрес только {{symbol}} или другие токены {{network}}. Активы, отправленные из других сетей, невозможно восстановить."
-    },
-    "amounts": {
-      "title": "Предлагаемые суммы",
-      "subtitle": "Любой вклад важен — вот несколько идей для начала.",
-      "impactTier1": "День затрат на API",
-      "impactTier2": "Неделя хостинга",
-      "impactTier3": "Месяц инфраструктуры",
-      "impactTier4": "Новые интеграции протоколов",
-      "copiedToast": "Адрес скопирован. Спасибо, что рассматриваете пожертвование в размере {{amount}} {{symbol}}."
-    },
-    "funding": {
-      "title": "Прозрачность финансирования",
-      "subtitle": "Открытый взгляд на то, сколько стоит поддержка работы FlareGPT — без давления, только прозрачность.",
-      "monthlyInfrastructure": "Ежемесячная инфраструктура",
-      "developmentFund": "Фонд разработки",
-      "raisedOfGoal": "Собрано {{raised}} из {{goal}}"
-    },
-    "received": {
-      "title": "Полученные пожертвования",
-      "subtitle": "Общая сумма взносов, полученных по каждой поддерживаемой сети.",
-      "demoData": "Демоданные"
-    },
-    "support": {
-      "title": "На что идёт ваша поддержка",
-      "infra": "API и инфраструктура",
-      "integrations": "Новые интеграции протоколов",
-      "free": "Бесплатный доступ к FlareGPT",
-      "development": "Постоянная разработка"
-    },
-    "closing": {
-      "message": "Спасибо за помощь в сохранении независимости FlareGPT. Любой вклад, большой или маленький, действительно помогает."
     }
   }
 }

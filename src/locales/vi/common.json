@@ -1,11 +1,317 @@
 {
+  "comingSoon": {
+    "badge": "Sắp chiếu",
+    "description": "Chúng tôi đang xây dựng tính năng này. Hãy kiểm tra lại sau ít phút."
+  },
+  "connectModal": {
+    "connecting": "Đang kết nối…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "Mở trang này trong Cửa sổ riêng tư của Brave.",
+        "shieldsOff": "Tắt Brave Shields cho trang này và thử lại.",
+        "title": "WalletConnect có vẻ đang bị Brave Shields chặn.",
+        "tryTitle": "Hãy thử một trong những cách sau:",
+        "useChrome": "Sử dụng Google Chrome hoặc trình duyệt được hỗ trợ khác nếu sự cố vẫn tiếp diễn."
+      },
+      "generic": "Đã xảy ra ma sát kết nối không mong muốn. Vui lòng thử lại hoặc sử dụng ví khác.",
+      "pending": "Yêu cầu kết nối đã được mở. Vui lòng mở bảng điều khiển tiện ích mở rộng ví của bạn.",
+      "providerGone": "Ví này có vẻ không còn phản hồi. Ví có thể đã được cập nhật hoặc gỡ bỏ. Tải lại trang có thể khắc phục sự cố này.",
+      "rejected": "Yêu cầu kết nối đã bị hủy trong ví của bạn.",
+      "timeout": "Không thể kết nối với WalletConnect. Vui lòng kiểm tra kết nối của bạn và thử lại.",
+      "wrongNetwork": "Vui lòng chuyển mạng đang hoạt động của ví của bạn sang Flare Mainnet."
+    },
+    "install": "Cài đặt",
+    "installHint": "Vẫn không thấy ví của bạn? Làm mới trang có thể hữu ích.",
+    "mobileHint": "Trên thiết bị di động, hãy mở FlareGPT trong trình duyệt tích hợp sẵn trong ví của bạn để có trải nghiệm kết nối tốt nhất. Khi quét mã QR, hãy dùng máy quét riêng của ứng dụng ví thay vì camera điện thoại để có kết nối đáng tin cậy hơn.",
+    "recommended": "Được đề xuất",
+    "refresh": "Làm mới",
+    "subtitle": "Chọn ví ưa thích của bạn để kết nối với Flare Network.",
+    "title": "Liên kết ví",
+    "viaWalletConnect": "Qua WalletConnect"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "Đang kiểm tra trạng thái API...",
+      "degraded": "API bị suy giảm",
+      "operational": "Toàn bộ hệ thống đều hoạt động."
+    },
+    "chart": {
+      "couldntLoad": "Không thể tải lịch sử giá FLR"
+    },
+    "claimsHistory": {
+      "connectToSee": "Kết nối hoặc thêm ví trong Cài đặt để xem lịch sử xác nhận quyền sở hữu.",
+      "couldntLoad": "Không thể tải lịch sử xác nhận quyền sở hữu",
+      "emptyDescription": "Bạn đã hoàn tất mọi thứ. Không có kỳ thưởng nào đang chờ nhận.",
+      "emptyTitle": "Không có kỷ nguyên chưa được xác nhận quyền sở hữu",
+      "title": "Lịch sử Xác nhận quyền sở hữu"
+    },
+    "common": {
+      "networkHiccup": "Đây thường là trục trặc mạng tạm thời.",
+      "no": "Không",
+      "noWalletSelected": "Không có ví nào được chọn",
+      "retry": "Thử lại",
+      "retrying": "Đang thử lại…",
+      "yes": "Có"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "Kết nối hoặc thêm ví trong Cài đặt để xem các ủy quyền.",
+      "couldntLoad": "Không thể tải nhiệm vụ",
+      "emptyDescription": "Ủy quyền WFLR cho nhà cung cấp FTSO để bắt đầu kiếm phần thưởng.",
+      "emptyTitle": "Không có ủy quyền đang hoạt động",
+      "tabLabel": "Ủy quyền",
+      "title": "Phân tích Ủy quyền"
+    },
+    "description": "Dữ liệu mạng Live Flare, biểu đồ giá và hoạt động của ví trong nháy mắt.",
+    "ftso": {
+      "activeDelegations": "Ủy quyền đang hoạt động",
+      "claimComingSoon": "Chức năng nhận thưởng chưa khả dụng. Sắp ra mắt.",
+      "claimRewards": "Nhận phần thưởng",
+      "connected": "Đã kết nối",
+      "connectToSeeRewards": "Kết nối hoặc thêm ví trong Cài đặt để xem phần thưởng.",
+      "couldntLoad": "Không thể tải danh mục đầu tư FTSO",
+      "delegatedWflr": "WFLR được ủy quyền",
+      "estHourlyEarning": "Thu nhập hàng giờ ước tính",
+      "noUnclaimedYet": "Chưa có phần thưởng nào chưa được nhận",
+      "readOnly": "Chỉ đọc",
+      "readOnlyCannotClaim": "Chỉ xem, không thể nhận thưởng",
+      "switchToClaim": "Chuyển sang ví đã kết nối của bạn để nhận phần thưởng",
+      "title": "Phái đoàn FTSO",
+      "unclaimedFlr": "FLR chưa được xác nhận quyền sở hữu"
+    },
+    "networkActivity": {
+      "collectingSamples": "Đang thu thập dữ liệu trực tiếp. Biểu đồ sẽ được lấp đầy khi có dữ liệu mới.",
+      "couldntLoad": "Không thể tải dữ liệu mạng",
+      "gasPrice": "giá gas",
+      "gwei": "Gwei",
+      "live": "Trực tiếp",
+      "title": "Hoạt động thông tin mạng",
+      "tps": "TPS"
+    },
+    "stats": {
+      "couldntLoad": "Không thể tải tổng quan thị trường",
+      "flrPrice": "Giá FLR",
+      "marketCap": "Vốn hóa thị trường",
+      "tvl": "TVL",
+      "volume24h": "Khối lượng 24h"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "Kết nối hoặc thêm ví trong Cài đặt để xem số dư.",
+      "couldntLoad": "Không thể tải số dư ví",
+      "title": "Số dư Ví"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "Đã sao chép địa chỉ",
+      "connectToSeePosition": "Kết nối ví để xem vị thế của bạn",
+      "contract": "Hợp đồng",
+      "copyFailed": "Không thể sao chép địa chỉ",
+      "poolOwnership": "Tỷ lệ sở hữu Pool",
+      "protocolDetails": "Chi tiết giao thức",
+      "proxyContract": "Hợp đồng Proxy",
+      "redeemableValue": "Giá trị Có thể Quy đổi",
+      "yourBalance": "Số dư của bạn"
+    },
+    "description": "So sánh các chiến lược sinh lời và theo dõi vị thế của bạn trên các vault MXRPY, Sceptre và Firelight.",
+    "explorer": {
+      "subtitle": "Chọn một giao thức để xem vị thế và chi tiết của bạn",
+      "title": "Trình khám phá Giao thức"
+    },
+    "firelight": {
+      "backingLabel": "Hệ số bảo chứng tài sản",
+      "category": "Bảo hiểm",
+      "circulatingSupply": "Nguồn cung Lưu hành",
+      "couldntLoad": "Không thể tải vị thế Firelight của bạn",
+      "insuranceRobust": "Bảo hiểm: Vững chắc",
+      "subtitle": "Vault bảo vệ vốn",
+      "title": "Firelight Vault",
+      "underlyingReserve": "Dự trữ Cơ sở"
+    },
+    "kpis": {
+      "activePositions": "Vị thế Đang hoạt động",
+      "bestApr": "APR Tốt nhất Hiện có",
+      "protocolsTracked": "Giao thức Đang theo dõi"
+    },
+    "mxrpy": {
+      "category": "Vault Sinh lời",
+      "circulatingCaption": "{{shares}} cổ phần đang lưu hành · {{decimals}} chữ số thập phân",
+      "couldntLoad": "Không thể tải vị thế MXRPY của bạn",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "MXRPY Vault",
+      "yourShares": "Cổ phần Biên nhận của bạn"
+    },
+    "sceptre": {
+      "backedFlr": "FLR Bảo chứng Cơ sở",
+      "category": "Staking Thanh khoản",
+      "couldntLoad": "Không thể tải vị thế Sceptre của bạn",
+      "exchangeRateLabel": "Tỷ giá sFLR / FLR",
+      "subtitle": "Staking thanh khoản sFLR",
+      "title": "Sceptre Liquid Staking",
+      "totalMinted": "Tổng Cổ phần Đã phát hành"
+    },
+    "strategies": {
+      "amountLabel": "So sánh cho",
+      "apr": "APR",
+      "colStrategy": "Chiến lược",
+      "colTerms": "Điều khoản",
+      "colYield": "Lợi nhuận Ư.tính (FLR)",
+      "compoundingLabel": "Lãi kép",
+      "couldntLoad": "Không thể tải so sánh chiến lược",
+      "highestApr": "APR Cao nhất",
+      "lockupDays": "Khóa {{count}} ngày",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
+      "lockupHours": "Khóa {{count}} giờ",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "Không khóa",
+      "subtitle": "Xem FLR của bạn có thể sinh lời như thế nào ở từng chiến lược",
+      "title": "So sánh Chiến lược",
+      "verdict": "Nhận định của FlareGPT",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "Đã sao chép địa chỉ. Cảm ơn bạn đã cân nhắc quyên góp {{amount}} {{symbol}}.",
+      "impactTier1": "Một ngày chi phí API",
+      "impactTier2": "Một tuần lưu trữ",
+      "impactTier3": "Một tháng hạ tầng",
+      "impactTier4": "Tích hợp giao thức mới",
+      "subtitle": "Mọi đóng góp đều hữu ích. Dưới đây là một vài gợi ý để bắt đầu.",
+      "title": "Số Tiền Đề Xuất"
+    },
+    "closing": {
+      "message": "Cảm ơn bạn đã giúp FlareGPT giữ được sự độc lập. Mọi đóng góp, dù lớn hay nhỏ, đều thực sự hữu ích."
+    },
+    "description": "Sự ủng hộ của bạn giúp FlareGPT luôn miễn phí, độc lập và không ngừng cải tiến.",
+    "funding": {
+      "developmentFund": "Quỹ Phát Triển",
+      "monthlyInfrastructure": "Hạ Tầng Hàng Tháng",
+      "raisedOfGoal": "Đã quyên góp {{raised}} trên mục tiêu {{goal}}",
+      "subtitle": "Cái nhìn minh bạch về chi phí vận hành FlareGPT. Không áp lực, chỉ là sự minh bạch.",
+      "title": "Minh Bạch Quỹ"
+    },
+    "hero": {
+      "addressCopied": "Đã sao chép địa chỉ",
+      "addressLabel": "Địa chỉ Ví",
+      "copied": "Đã sao chép",
+      "copyAddress": "Sao chép Địa chỉ",
+      "copyFailed": "Không thể sao chép địa chỉ",
+      "multisigNote": "Được bảo vệ bởi ví đa chữ ký",
+      "qrTitle": "Mã QR cho địa chỉ ví quyên góp {{symbol}}",
+      "tapToCopy": "Chạm để sao chép",
+      "viewOnExplorer": "Xem trên {{explorer}}"
+    },
+    "received": {
+      "demoData": "Dữ liệu demo",
+      "subtitle": "Tổng đóng góp đã nhận trên mỗi mạng được hỗ trợ.",
+      "title": "Quyên Góp Đã Nhận"
+    },
+    "support": {
+      "development": "Phát triển Liên tục",
+      "free": "Giữ FlareGPT Miễn phí",
+      "infra": "API & Hạ tầng",
+      "integrations": "Tích hợp Giao thức Mới",
+      "title": "Khoản Ủng Hộ Của Bạn Được Dùng Để"
+    },
+    "title": "Ủng hộ FlareGPT",
+    "warning": {
+      "body": "Chỉ gửi {{symbol}} hoặc các token {{network}} khác đến địa chỉ này. Tài sản gửi từ các mạng khác không thể khôi phục.",
+      "title": "Chỉ tài sản {{network}}."
+    }
+  },
+  "flareWidget": {
+    "close": "Đóng",
+    "collapse": "Thu gọn",
+    "expand": "Mở rộng",
+    "openFullPage": "Mở trang đầy đủ"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "Đã sao chép tin nhắn",
+      "copy": "Sao chép",
+      "copyFailed": "Sao chép không thành công",
+      "regenerate": "Tạo lại phản hồi"
+    },
+    "composer": {
+      "disclaimer": "FlareGPT có thể mắc lỗi. Hãy xác minh thông tin quan trọng trước khi hành động theo đó.",
+      "placeholder": "Hỏi FlareGPT...",
+      "send": "Gửi",
+      "stop": "Dừng tạo phản hồi"
+    },
+    "deleteConversation": {
+      "button": "Xóa cuộc trò chuyện",
+      "confirm": "Xác nhận?"
+    },
+    "deleteConversationFailed": "Không thể xóa cuộc trò chuyện này. Vui lòng thử lại.",
+    "empty": {
+      "subtitle": "Nhận câu trả lời về ví, phần thưởng, ủy quyền hoặc hệ sinh thái Flare của bạn.",
+      "title": "Hỏi FlareGPT bất cứ điều gì"
+    },
+    "guestMode": {
+      "cta": "Đăng nhập để đồng bộ hóa lịch sử & mở khóa phân tích ví",
+      "notice": "Chế độ khách · Cuộc trò chuyện chưa được lưu."
+    },
+    "history": {
+      "cancelRename": "Hủy",
+      "delete": "Xóa",
+      "empty": "Chưa có cuộc trò chuyện nào",
+      "moreActions": "Thao tác khác",
+      "newChat": "Cuộc trò chuyện mới",
+      "noResults": "Không có cuộc trò chuyện nào khớp với tìm kiếm của bạn",
+      "openButton": "Lịch sử",
+      "pin": "Ghim",
+      "pinLimitReached": "Bạn có thể ghim tối đa {{count}} cuộc trò chuyện",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "Đổi tên",
+      "renameFailed": "Không thể đổi tên cuộc trò chuyện này.",
+      "saveRename": "Lưu",
+      "searchPlaceholder": "Tìm kiếm cuộc trò chuyện...",
+      "title": "Lịch sử trò chuyện",
+      "unpin": "Bỏ ghim",
+      "untitled": "Chưa đặt tên",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+    },
+    "historyLoadFailed": "Không thể tải lịch sử trò chuyện.",
+    "jumpToLatest": "Đến tin mới nhất",
+    "newChat": "Cuộc trò chuyện mới",
+    "prompts": {
+      "analyzeWallet": "Phân tích ví của tôi",
+      "compareProtocols": "So sánh Sceptre và Firelight",
+      "explainDelegations": "Giải thích các ủy quyền của tôi",
+      "increaseRewards": "Làm sao để tăng phần thưởng FTSO của tôi?",
+      "rewardsDecreased": "Tại sao phần thưởng của tôi giảm?",
+      "stakingOpportunities": "Hiển thị cơ hội staking của tôi"
+    },
+    "sendError": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "wallet": {
+      "analyzing": "Đang phân tích:",
+      "guestLabel": "Phân tích ví",
+      "locked": {
+        "body": "Đăng nhập để FlareGPT tự động đọc ví Chính và Danh sách theo dõi của bạn, thay vì nhập địa chỉ vào mọi câu hỏi.",
+        "connectCta": "Liên kết ví",
+        "signInCta": "Đăng nhập",
+        "signingIn": "Xác nhận trong ví",
+        "title": "Mở khóa phân tích ví"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Được xây dựng trên mạng lưới Flare Network.",
     "disclaimer": "Không phải lời khuyên tài chính. Dữ liệu được cung cấp chỉ nhằm mục đích thông tin.",
-    "terms": "Điều khoản & Tuyên bố miễn trừ trách nhiệm",
-    "donate": "Ủng hộ"
+    "donate": "Ủng hộ",
+    "terms": "Điều khoản & Tuyên bố miễn trừ trách nhiệm"
   },
   "help": {
+    "askFlareGptCta": "Hỏi FlareGPT để được trợ giúp",
+    "askFlareGptLead": "Không tìm thấy điều bạn cần?",
+    "contact": {
+      "comingSoon": "Sắp ra mắt",
+      "emailLabel": "Email",
+      "telegramLabel": "Telegram",
+      "twitterHint": "Theo dõi và gửi tin nhắn cho chúng tôi",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "Ví của bạn có thể chưa được kết nối hoặc bảng điều khiển vẫn đang đồng bộ hóa dữ liệu blockchain. Xác minh rằng bạn đã chọn đúng ví và mạng.",
@@ -30,10 +336,12 @@
     ],
     "faqTitle": "Câu hỏi Thường gặp",
     "featureGuides": "Hướng dẫn Tính năng",
+    "flareGptGuideDescription": "Đặt câu hỏi về ví, phần thưởng và mạng Flare bằng ngôn ngữ tự nhiên.",
     "gettingStarted": "Bắt đầu",
     "headerDesc": "Hướng dẫn, câu trả lời và hỗ trợ để bạn tận dụng tối đa bảng điều khiển FlareGPT.",
     "noFaqs": "Không có câu hỏi thường gặp nào khớp với tìm kiếm của bạn.",
     "noGuides": "Không có hướng dẫn nào khớp với tìm kiếm của bạn.",
+    "searchClear": "Xóa tìm kiếm",
     "searchPlaceholder": "Tìm kiếm hướng dẫn hoặc câu hỏi thường gặp...",
     "searchSub": "Tìm kiếm hướng dẫn tính năng và câu hỏi thường gặp, hoặc tìm cách khác để liên hệ với chúng tôi.",
     "searchTitle": "Mọi thứ bạn cần để bắt đầu",
@@ -65,63 +373,70 @@
       }
     ],
     "stillNeedHelp": "Bạn vẫn cần trợ giúp?",
-    "supportDesc": "Cách nhanh nhất để liên hệ với chúng tôi hiện tại là qua X. Hỗ trợ qua Email và Telegram sẽ sớm ra mắt.",
-    "searchClear": "Xóa tìm kiếm",
-    "flareGptGuideDescription": "Đặt câu hỏi về ví, phần thưởng và mạng Flare bằng ngôn ngữ tự nhiên.",
-    "askFlareGptLead": "Không tìm thấy điều bạn cần?",
-    "askFlareGptCta": "Hỏi FlareGPT để được trợ giúp",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "Theo dõi và gửi tin nhắn cho chúng tôi",
-      "telegramLabel": "Telegram",
-      "emailLabel": "Email",
-      "comingSoon": "Sắp ra mắt"
-    }
+    "supportDesc": "Cách nhanh nhất để liên hệ với chúng tôi hiện tại là qua X. Hỗ trợ qua Email và Telegram sẽ sớm ra mắt."
   },
   "navbar": {
+    "addressCopied": "Đã sao chép địa chỉ",
     "askFlareGPT": "Hỏi FlareGPT",
-    "mainnetStatus": "Mạng chính Flare",
-    "connectWallet": "Kết nối Ví",
-    "primaryWalletSection": "Ví Chính",
     "badgePrimary": "Chính",
+    "badgeSignIn": "Đăng nhập",
     "badgeWatchlist": "Danh sách theo dõi",
-    "disconnectWallet": "Ngắt kết nối Ví",
+    "balancesHiddenLabel": "Số dư đã ẩn",
     "configureWatchlistWallets": "Cấu hình Ví trong Danh sách theo dõi",
-    "watchlistSection": "Danh sách theo dõi ({{current}}/{{max}})",
-    "addressCopied": "Đã sao chép địa chỉ vào clipboard",
+    "connectWallet": "Kết nối Ví",
     "copyFailed": "Không thể sao chép địa chỉ",
+    "disconnectWallet": "Ngắt kết nối Ví",
     "flareGptFabHint": "FlareGPT giờ đây mở từ đây",
     "hideBalances": "Ẩn số dư",
+    "mainnetStatus": "Mạng chính Flare",
+    "primaryWalletSection": "Ví Chính",
     "showBalances": "Hiện số dư",
-    "balancesHiddenLabel": "Số dư đã ẩn",
     "signIn": "Đăng nhập",
+    "signInBackgroundHint": "Ví đã kết nối của bạn cần đăng nhập",
     "signingIn": "Đang đăng nhập…",
     "signInPrompt": "Ký một tin nhắn để xác minh ví này và tiếp tục.",
-    "badgeSignIn": "Đăng nhập",
-    "signInBackgroundHint": "Ví đã kết nối của bạn cần đăng nhập"
+    "watchlistSection": "Danh sách theo dõi ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "Tối",
+      "light": "Sáng",
+      "system": "Hệ thống"
+    },
     "cards": {
       "app": "Ứng dụng",
       "blur": "Bộ lọc ánh sáng xanh",
       "chartType": "Loại Biểu đồ",
       "connectedWallets": "Ví đã kết nối",
       "currency": "Hiển thị Tiền tệ",
+      "defaultLandingPage": "Trang bắt đầu mặc định",
+      "defaultWallet": "Ví mặc định",
       "governanceAlerts": "Cảnh báo Quản trị",
+      "hideBalances": "Ẩn số dư ví",
       "language": "Ngôn ngữ",
       "links": "Liên kết",
       "logout": "Đăng xuất",
+      "reduceMotion": "Giảm chuyển động",
       "rewardsAlerts": "Cảnh báo Phần thưởng",
+      "tableDensity": "Mật độ bảng",
       "theme": "Giao diện",
       "themeMode": "Chế độ Sáng / Tối",
       "timeframe": "Khung Thời gian",
       "walletCapacity": "Sức chứa của Ví",
-      "walletPreferences": "Tùy chọn ví",
-      "defaultWallet": "Ví mặc định",
-      "defaultLandingPage": "Trang bắt đầu mặc định",
-      "tableDensity": "Mật độ bảng",
-      "reduceMotion": "Giảm chuyển động",
-      "hideBalances": "Ẩn số dư ví"
+      "walletPreferences": "Tùy chọn ví"
+    },
+    "dataStorage": {
+      "accountSubtitle": "Được đồng bộ với tài khoản của bạn trên máy chủ.",
+      "accountTitle": "Dữ liệu tài khoản",
+      "clear": "Xóa",
+      "confirmClear": "Xác nhận?",
+      "conversations": "Cuộc trò chuyện FlareGPT",
+      "conversationsClearFailed": "Không thể xóa lịch sử trò chuyện. Vui lòng thử lại.",
+      "conversationsDescription": "Xóa lịch sử trò chuyện FlareGPT khỏi tài khoản của bạn. Không thể hoàn tác.",
+      "localSubtitle": "Chỉ được lưu trên trình duyệt này. Việc xóa diễn ra ngay lập tức và an toàn.",
+      "localTitle": "Dữ liệu cục bộ",
+      "walletCache": "Bộ nhớ đệm hoạt động ví",
+      "walletCacheDescription": "Xóa lịch sử giao dịch đã lưu trong bộ nhớ đệm. Lần truy cập tiếp theo sẽ tải lại dữ liệu này."
     },
     "description": "Quản lý ví, tùy chọn, bản địa hóa và thiết lập hiển thị.",
     "descriptions": {
@@ -129,18 +444,33 @@
       "blur": "Giảm mỏi mắt với tông màu màn hình ấm áp",
       "chartType": "Đặt kiểu hình học trực quan mặc định cho các ma trận hệ thống.",
       "currency": "Chọn hiển thị loại tiền tệ cơ sở cho tài sản.",
+      "defaultLandingPage": "Chọn trang nào sẽ mở đầu tiên khi bạn khởi chạy ứng dụng.",
+      "defaultWallet": "Ví này sẽ hoạt động bất cứ khi nào không thể khôi phục phiên trước đó.",
+      "hideBalances": "Làm mờ số dư và số tiền trên toàn bộ trang tổng quan để bảo mật.",
       "language": "Chọn ngôn ngữ xem mặc định cho giao diện của bạn.",
       "links": "Tài liệu tham khảo toàn cầu và các liên kết tương tác với đội ngũ.",
       "logout": "Đăng xuất khỏi FlareGPT trên thiết bị này. Bạn sẽ cần ký một tin nhắn mới để đăng nhập lại.",
+      "reduceMotion": "Giảm thiểu hoạt ảnh ngay cả khi hệ điều hành của bạn không có tùy chọn nào được đặt.",
+      "tableDensity": "Khoảng cách thoải mái hoặc chế độ xem gọn hơn cho các bảng dày đặc.",
+      "theme": "Chọn Sáng, Tối, hoặc theo cài đặt hệ thống của bạn.",
       "timeframe": "Xác định quy mô khoảng thời gian cửa sổ mặc định trên các biểu đồ trực quan.",
       "walletCapacity": "Các giới hạn của hệ thống để theo dõi hạn mức phân bổ tài sản.",
-      "theme": "Chọn Sáng, Tối, hoặc theo cài đặt hệ thống của bạn.",
-      "walletPreferences": "Chọn ví nào bảng điều khiển sẽ mở cùng.",
-      "defaultWallet": "Ví này sẽ hoạt động bất cứ khi nào không thể khôi phục phiên trước đó.",
-      "defaultLandingPage": "Chọn trang nào sẽ mở đầu tiên khi bạn khởi chạy ứng dụng.",
-      "tableDensity": "Khoảng cách thoải mái hoặc chế độ xem gọn hơn cho các bảng dày đặc.",
-      "reduceMotion": "Giảm thiểu hoạt ảnh ngay cả khi hệ điều hành của bạn không có tùy chọn nào được đặt.",
-      "hideBalances": "Làm mờ số dư và số tiền trên toàn bộ trang tổng quan để bảo mật."
+      "walletPreferences": "Chọn ví nào bảng điều khiển sẽ mở cùng."
+    },
+    "flareGpt": {
+      "syncStatusConnected": "Đã đăng nhập. Các cuộc trò chuyện của bạn được đồng bộ trên mọi thiết bị và trình duyệt.",
+      "syncStatusGuest": "Cuộc trò chuyện chỉ là tạm thời trên trình duyệt này và sẽ không được lưu. Đăng nhập để lưu giữ chúng.",
+      "syncStatusTitle": "Trạng thái đồng bộ"
+    },
+    "groups": {
+      "account": "Tài khoản",
+      "personalization": "Cá nhân hóa",
+      "walletsAndData": "Ví & Dữ liệu"
+    },
+    "links": {
+      "docs": "Tài liệu",
+      "github": "Github",
+      "twitter": "Twitter"
     },
     "notifications": {
       "governance": "Cập nhật các đề xuất mới",
@@ -152,224 +482,201 @@
       "area": "Vùng",
       "asia": "Châu Á",
       "candlestick": "Nến",
+      "comfortable": "Thoải mái",
+      "compact": "Gọn",
       "europe": "Châu Âu",
       "global": "Toàn cầu",
       "high": "Cao",
       "line": "Đường",
       "low": "Thấp",
       "medium": "Trung bình",
-      "off": "Tắt",
-      "comfortable": "Thoải mái",
-      "compact": "Gọn"
+      "off": "Tắt"
     },
     "security": {
-      "logout": "Đăng xuất",
-      "confirmLogout": "Xác nhận?"
+      "confirmLogout": "Xác nhận?",
+      "logout": "Đăng xuất"
     },
     "subtitles": {
       "About": "Tổng quan về hồ sơ triển khai hệ thống, quy tắc biên dịch và chỉ mục tài sản.",
+      "Accessibility": "Điều chỉnh tùy chọn chuyển động và tương tác.",
+      "Appearance": "Chọn giao diện của FlareGPT.",
       "Display": "Cá nhân hóa chế độ xem mặc định và cách hiển thị dữ liệu bảng điều khiển.",
+      "FlareGpt": "Quản lý cách FlareGPT ghi nhớ các cuộc trò chuyện của bạn.",
       "Notifications": "Quản lý các sự kiện ưu tiên của hệ thống và các điểm cuối theo dõi tuyến phân phối.",
       "Preferences": "Tùy chọn ngôn ngữ và tiền tệ.",
       "Security": "Duy trì các rào cản phiên danh tính đang hoạt động và các quy tắc truy cập xác minh thông tin xác thực.",
-      "Wallets": "Kết nối và cấu trúc chữ ký trên các tài khoản phi tập trung bên ngoài toàn cầu.",
-      "Appearance": "Chọn giao diện của FlareGPT.",
-      "Accessibility": "Điều chỉnh tùy chọn chuyển động và tương tác.",
-      "FlareGpt": "Quản lý cách FlareGPT ghi nhớ các cuộc trò chuyện của bạn."
+      "Wallets": "Kết nối và cấu trúc chữ ký trên các tài khoản phi tập trung bên ngoài toàn cầu."
     },
     "tabs": {
       "About": "Giới thiệu",
+      "Accessibility": "Trợ năng",
+      "Appearance": "Giao diện",
+      "DataStorage": "Dữ liệu & Lưu trữ",
       "Display": "Bảng điều khiển",
+      "FlareGpt": "FlareGPT",
       "Notifications": "Thông báo",
       "Preferences": "Chung",
       "Security": "Bảo mật",
-      "Wallets": "Ví",
-      "Appearance": "Giao diện",
-      "Accessibility": "Trợ năng",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "Dữ liệu & Lưu trữ"
+      "Wallets": "Ví"
     },
     "title": "Cài đặt",
     "wallets": {
       "active": "Hoạt động",
       "add": "Thêm Ví ({{current}}/{{max}})",
+      "addFormTitle": "Thêm tài khoản danh mục đầu tư danh sách theo dõi",
+      "adding": "Đang thêm…",
+      "addressPlaceholder": "0x... Địa chỉ ví Flare",
       "available": "Còn trống",
+      "cancelRename": "Hủy",
+      "confirmRemove": "Xác nhận xóa?",
       "connectAction": "Kết nối ví (Đã kết nối {{current}}, Còn lại {{remaining}})",
+      "connectActionUnlimited": "Thêm ví ({{current}} đang theo dõi)",
       "connected": "Đã kết nối",
+      "duplicateAddress": "Địa chỉ này đã có trong danh sách theo dõi của bạn.",
+      "duplicateNickname": "Đã có một ví trong danh sách theo dõi với biệt danh này. Vui lòng chọn biệt danh khác.",
       "empty": "Chưa có ví nào được kết nối",
       "emptyTerminal": "Chưa có ví nào được kết nối. Kết nối các tài sản terminal của bạn để tiếp tục.",
-      "limit": "Bạn có thể kết nối tối đa {{max}} ví",
-      "limitReached": "Đã đạt giới hạn ví ({{current}}/{{max}})",
-      "maximum": "Tối đa",
-      "remainingSlots": "Số lượt còn lại",
-      "addFormTitle": "Thêm tài khoản danh mục đầu tư danh sách theo dõi",
-      "addressPlaceholder": "0x... Địa chỉ ví Flare",
+      "guestLimitBenefitBackup": "Sao lưu danh sách theo dõi của bạn",
+      "guestLimitBenefitMore": "Lưu trữ hơn 3 ví",
+      "guestLimitBenefitSync": "Đồng bộ danh sách theo dõi trên nhiều thiết bị",
+      "guestLimitTitle": "Đăng nhập để theo dõi thêm ví",
       "invalidAddress": "Vui lòng nhập địa chỉ mạng Flare EVM hợp lệ (bắt đầu bằng 0x).",
       "labelPlaceholder": "Nhãn tên tài khoản (ví dụ: Kho lạnh)",
+      "limit": "Bạn có thể kết nối tối đa {{max}} ví",
+      "limitReached": "Đã đạt giới hạn ví ({{current}}/{{max}})",
       "liveConnected": "Đã kết nối trực tiếp",
       "manageSubtitle": "Quản lý các kết nối Web3 đang hoạt động và tài khoản theo dõi danh mục đầu tư chỉ đọc của bạn.",
+      "maximum": "Tối đa",
+      "noDefaultSelected": "Chưa chọn",
+      "noLimit": "Thêm bao nhiêu ví tùy thích.",
+      "noSearchResults": "Không có ví nào khớp với tìm kiếm của bạn.",
+      "notFoundError": "Ví này không còn trong danh sách theo dõi của bạn nữa.",
       "readOnly": "Chỉ đọc",
       "registrationFailed": "Đăng ký địa chỉ không thành công. Kiểm tra xem nó có phải là một bản sao hoặc nếu các vị trí được lấp đầy.",
-      "tracked": "Đã theo",
+      "remainingSlots": "Số lượt còn lại",
       "remove": "Xóa",
-      "confirmRemove": "Xác nhận xóa?",
-      "noDefaultSelected": "Chưa chọn",
       "rename": "Đổi tên",
-      "cancelRename": "Hủy",
-      "connectActionUnlimited": "Thêm ví ({{current}} đang theo dõi)",
-      "noLimit": "Thêm bao nhiêu ví tùy thích.",
-      "duplicateAddress": "Địa chỉ này đã có trong danh sách theo dõi của bạn.",
-      "guestLimitTitle": "Đăng nhập để theo dõi thêm ví",
-      "guestLimitBenefitSync": "Đồng bộ danh sách theo dõi trên nhiều thiết bị",
-      "guestLimitBenefitMore": "Lưu trữ hơn 3 ví",
-      "guestLimitBenefitBackup": "Sao lưu danh sách theo dõi của bạn",
-      "searchPlaceholder": "Tìm kiếm trong {{count}} ví...",
-      "noSearchResults": "Không có ví nào khớp với tìm kiếm của bạn.",
-      "duplicateNickname": "Đã có một ví trong danh sách theo dõi với biệt danh này. Vui lòng chọn biệt danh khác.",
-      "notFoundError": "Ví này không còn trong danh sách theo dõi của bạn nữa.",
       "saveEdit": "Lưu",
-      "adding": "Đang thêm…"
-    },
-    "links": {
-      "docs": "Tài liệu",
-      "github": "Github",
-      "twitter": "Twitter"
-    },
-    "groups": {
-      "personalization": "Cá nhân hóa",
-      "walletsAndData": "Ví & Dữ liệu",
-      "account": "Tài khoản"
-    },
-    "appearance": {
-      "light": "Sáng",
-      "dark": "Tối",
-      "system": "Hệ thống"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "Trạng thái đồng bộ",
-      "syncStatusConnected": "Đã đăng nhập — các cuộc trò chuyện của bạn được đồng bộ trên mọi thiết bị và trình duyệt.",
-      "syncStatusGuest": "Cuộc trò chuyện chỉ là tạm thời trên trình duyệt này và sẽ không được lưu. Đăng nhập để lưu giữ chúng."
-    },
-    "dataStorage": {
-      "localTitle": "Dữ liệu cục bộ",
-      "localSubtitle": "Chỉ được lưu trong trình duyệt này — xóa ngay lập tức và an toàn.",
-      "walletCache": "Bộ nhớ đệm hoạt động ví",
-      "walletCacheDescription": "Xóa lịch sử giao dịch đã lưu trong bộ nhớ đệm — lần truy cập tiếp theo sẽ tải lại.",
-      "conversations": "Cuộc trò chuyện FlareGPT",
-      "conversationsDescription": "Xóa lịch sử trò chuyện FlareGPT khỏi tài khoản của bạn. Không thể hoàn tác.",
-      "clear": "Xóa",
-      "confirmClear": "Xác nhận?",
-      "accountTitle": "Dữ liệu tài khoản",
-      "accountSubtitle": "Được đồng bộ với tài khoản của bạn trên máy chủ.",
-      "conversationsClearFailed": "Không thể xóa lịch sử trò chuyện — vui lòng thử lại."
+      "searchPlaceholder": "Tìm kiếm trong {{count}} ví...",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "Đã theo",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
     }
   },
   "sidebar": {
+    "activeWallet": "Hoạt động: {{address}}",
+    "addWatchlistWallet": "+ Thêm Ví Danh sách theo dõi",
     "connectWallet": "Kết nối Ví",
+    "defiProtocols": "Giao thức DEFI",
     "disconnect": "Ngắt kết nối",
+    "donate": "Ủng hộ",
+    "feeds": "Các nguồn dữ liệu",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Phần thưởng FTSO",
-    "defiProtocols": "Giao thức DEFI",
     "governance": "Quản trị",
     "helpCenter": "Trung tâm Trợ giúp",
+    "loops": "Vòng lặp",
     "notConnected": "Chưa kết nối",
     "overview": "Tổng quan",
     "rflrTracker": "Theo dõi rFLR",
     "settings": "Cài đặt",
+    "signInRequired": "Cần đăng nhập",
+    "signInRequiredHint": "Sử dụng menu ví ở thanh trên cùng để đăng nhập.",
     "walletActivity": "Hoạt động Ví",
     "walletConnected": "Ví đã kết nối",
-    "yield": "Lợi nhuận",
-    "loops": "Vòng lặp",
-    "feeds": "Các nguồn dữ liệu",
-    "donate": "Ủng hộ",
-    "addWatchlistWallet": "+ Thêm Ví Danh sách theo dõi",
-    "activeWallet": "Hoạt động: {{address}}",
-    "signInRequired": "Cần đăng nhập",
-    "signInRequiredHint": "Sử dụng menu ví ở thanh trên cùng để đăng nhập."
+    "yield": "Lợi nhuận"
   },
   "wallet": {
     "activity": {
-      "subtitle": "Giám sát thời gian thực các tương tác blockchain đến và đi.",
-      "title": "Hoạt động thiết bị cuối gần đây",
-      "description": "Mọi giao dịch đã lập chỉ mục của ví đang hoạt động, được nhóm và có thể tìm kiếm.",
-      "refresh": "Làm mới",
-      "connectToSee": "Kết nối hoặc chọn một ví để xem hoạt động giao dịch của ví đó.",
-      "couldntLoad": "Không thể tải hoạt động của ví.",
-      "notifier": {
-        "ready": "Hoạt động ví của bạn đã tải xong."
-      },
-      "loading": {
-        "title": "Đang lập chỉ mục hoạt động ví của bạn",
-        "subtitle": "Các ví lớn có thể mất vài phút khi tải lần đầu. Hãy thoải mái khám phá phần còn lại của bảng điều khiển — chúng tôi sẽ báo khi đã sẵn sàng.",
-        "elapsed": "đã trôi qua {{seconds}}s"
-      },
-      "empty": {
-        "title": "Chưa có hoạt động nào",
-        "description": "Ví này không có giao dịch nào được lập chỉ mục."
-      },
-      "noResults": {
-        "title": "Không có giao dịch phù hợp",
-        "description": "Hãy thử điều chỉnh tìm kiếm hoặc bộ lọc của bạn."
-      },
-      "kpi": {
-        "totalTransactions": "Tổng số giao dịch",
-        "uniqueAssets": "Tài sản riêng biệt",
-        "walletAge": "Tuổi ví",
-        "walletAgeYears": "{{count}} năm",
-        "walletAgeMonths": "{{count}} tháng",
-        "walletAgeDays": "{{count}} ngày",
-        "lastActive": "Hoạt động gần nhất",
-        "justNow": "Vừa xong",
-        "minutesAgo": "{{count}} phút trước",
-        "hoursAgo": "{{count}} giờ trước",
-        "daysAgo": "{{count}} ngày trước"
-      },
-      "insights": {
-        "title": "Thông tin nhanh",
-        "mostUsedAsset": "Tài sản dùng nhiều nhất",
-        "mostCommonAction": "Hành động phổ biến nhất",
-        "mostActiveDay": "Ngày hoạt động nhiều nhất",
-        "mostActiveMonth": "Tháng hoạt động nhiều nhất",
-        "txCount": "{{count}} giao dịch"
-      },
       "charts": {
+        "actionBreakdown": "Phân tích theo hành động",
+        "actionBreakdownSubtitle": "Số lượng giao dịch theo loại hành động",
         "activityByDay": "Hoạt động theo ngày",
         "activityByDaySubtitle": "Số lượng giao dịch mỗi ngày",
         "assetBreakdown": "Phân tích theo tài sản",
         "assetBreakdownSubtitle": "Số lượng giao dịch theo tài sản",
-        "actionBreakdown": "Phân tích theo hành động",
-        "actionBreakdownSubtitle": "Số lượng giao dịch theo loại hành động",
+        "tabActions": "Hành động",
         "tabActivity": "Hoạt động",
-        "tabAssets": "Tài sản",
-        "tabActions": "Hành động"
+        "tabAssets": "Tài sản"
       },
-      "toolbar": {
-        "searchPlaceholder": "Tìm theo hash hoặc tài sản...",
-        "sort": {
-          "newest": "Mới nhất",
-          "oldest": "Cũ nhất",
-          "amount": "Số lượng"
-        },
-        "exportCsv": "Xuất CSV",
-        "exportJson": "Xuất JSON",
-        "export": "Xuất"
+      "connectToSee": "Kết nối hoặc chọn một ví để xem hoạt động giao dịch của ví đó.",
+      "couldntLoad": "Không thể tải hoạt động của ví.",
+      "description": "Mọi giao dịch đã lập chỉ mục của ví đang hoạt động, được nhóm và có thể tìm kiếm.",
+      "drawer": {
+        "action": "Hành động",
+        "asset": "Tài sản",
+        "blockNumber": "Số khối",
+        "close": "Đóng",
+        "copyFailed": "Không thể sao chép hash",
+        "hashCopied": "Đã sao chép hash giao dịch",
+        "next": "Giao dịch tiếp theo",
+        "previous": "Giao dịch trước",
+        "timestamp": "Dấu thời gian",
+        "title": "Chi tiết giao dịch",
+        "transactionHash": "Hash giao dịch",
+        "viewOnExplorer": "Xem trên FlareScan"
+      },
+      "empty": {
+        "description": "Ví này không có giao dịch nào được lập chỉ mục.",
+        "title": "Chưa có hoạt động nào"
       },
       "feed": {
         "ariaLabel": "Đang hiển thị {{shown}} trong tổng số {{total}} giao dịch"
       },
-      "drawer": {
-        "title": "Chi tiết giao dịch",
-        "previous": "Giao dịch trước",
-        "next": "Giao dịch tiếp theo",
-        "close": "Đóng",
-        "action": "Hành động",
-        "asset": "Tài sản",
-        "blockNumber": "Số khối",
-        "timestamp": "Dấu thời gian",
-        "transactionHash": "Hash giao dịch",
-        "hashCopied": "Đã sao chép hash giao dịch",
-        "copyFailed": "Không thể sao chép hash",
-        "viewOnExplorer": "Xem trên FlareScan"
+      "insights": {
+        "mostActiveDay": "Ngày hoạt động nhiều nhất",
+        "mostActiveMonth": "Tháng hoạt động nhiều nhất",
+        "mostCommonAction": "Hành động phổ biến nhất",
+        "mostUsedAsset": "Tài sản dùng nhiều nhất",
+        "title": "Thông tin nhanh",
+        "txCount": "{{count}} giao dịch",
+        "txCount_other": "wallet.activity.insights.txCount",
+        "txCount_one": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "{{count}} ngày trước",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "{{count}} giờ trước",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "Vừa xong",
+        "lastActive": "Hoạt động gần nhất",
+        "minutesAgo": "{{count}} phút trước",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "Tổng số giao dịch",
+        "uniqueAssets": "Tài sản riêng biệt",
+        "walletAge": "Tuổi ví",
+        "walletAgeDays": "{{count}} ngày",
+        "walletAgeMonths": "{{count}} tháng",
+        "walletAgeYears": "{{count}} năm",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+      },
+      "loading": {
+        "elapsed": "đã trôi qua {{seconds}}s",
+        "subtitle": "Ví lớn có thể mất vài phút để tải lần đầu. Hãy thoải mái khám phá phần còn lại của bảng điều khiển. Chúng tôi sẽ thông báo khi mọi thứ đã sẵn sàng.",
+        "title": "Đang lập chỉ mục hoạt động ví của bạn"
+      },
+      "noResults": {
+        "description": "Hãy thử điều chỉnh tìm kiếm hoặc bộ lọc của bạn.",
+        "title": "Không có giao dịch phù hợp"
+      },
+      "notifier": {
+        "ready": "Đã tải hoạt động của ví."
+      },
+      "refresh": "Làm mới",
+      "subtitle": "Giám sát thời gian thực các tương tác blockchain đến và đi.",
+      "title": "Hoạt động thiết bị cuối gần đây",
+      "toolbar": {
+        "export": "Xuất",
+        "exportCsv": "Xuất CSV",
+        "exportJson": "Xuất JSON",
+        "searchPlaceholder": "Tìm theo hash hoặc tài sản...",
+        "sort": {
+          "amount": "Số lượng",
+          "newest": "Mới nhất",
+          "oldest": "Cũ nhất"
+        }
       }
     },
     "stats": {
@@ -396,285 +703,6 @@
       "contract": "Thực hiện quy định",
       "received": "Đã nhận",
       "sent": "Đã gửi"
-    }
-  },
-  "comingSoon": {
-    "badge": "Sắp chiếu",
-    "description": "Chúng tôi đang xây dựng tính năng này. Hãy kiểm tra lại sau ít phút."
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "WalletConnect có vẻ đang bị Brave Shields chặn.",
-        "tryTitle": "Hãy thử một trong những cách sau:",
-        "shieldsOff": "Tắt Brave Shields cho trang này và thử lại.",
-        "privateWindow": "Mở trang này trong Cửa sổ riêng tư của Brave.",
-        "useChrome": "Sử dụng Google Chrome hoặc trình duyệt được hỗ trợ khác nếu sự cố vẫn tiếp diễn."
-      },
-      "generic": "Đã xảy ra ma sát kết nối không mong muốn. Vui lòng thử lại hoặc sử dụng ví khác.",
-      "providerGone": "Ví này có vẻ không còn phản hồi nữa — có thể đã được cập nhật hoặc gỡ bỏ. Làm mới trang sẽ khắc phục điều này.",
-      "pending": "Yêu cầu kết nối đã được mở. Vui lòng mở bảng điều khiển tiện ích mở rộng ví của bạn.",
-      "rejected": "Yêu cầu kết nối đã bị hủy trong ví của bạn.",
-      "timeout": "Không thể kết nối với WalletConnect. Vui lòng kiểm tra kết nối của bạn và thử lại.",
-      "wrongNetwork": "Vui lòng chuyển mạng đang hoạt động của ví của bạn sang Flare Mainnet."
-    },
-    "install": "Cài đặt",
-    "installHint": "Vẫn không thấy ví của bạn? Làm mới trang có thể hữu ích.",
-    "refresh": "Làm mới",
-    "mobileHint": "Trên thiết bị di động, hãy mở FlareGPT trong trình duyệt tích hợp sẵn trong ví của bạn để có trải nghiệm kết nối tốt nhất. Khi quét mã QR, hãy dùng máy quét riêng của ứng dụng ví thay vì camera điện thoại để có kết nối đáng tin cậy hơn.",
-    "connecting": "Đang kết nối…",
-    "recommended": "Được đề xuất",
-    "subtitle": "Chọn ví ưa thích của bạn để kết nối với Flare Network.",
-    "title": "Liên kết ví",
-    "viaWalletConnect": "Qua WalletConnect"
-  },
-  "flareWidget": {
-    "close": "Đóng",
-    "collapse": "Thu gọn",
-    "expand": "Mở rộng",
-    "openFullPage": "Mở trang đầy đủ"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "Phân tích ví của tôi",
-      "increaseRewards": "Làm sao để tăng phần thưởng FTSO của tôi?",
-      "explainDelegations": "Giải thích các ủy quyền của tôi",
-      "compareProtocols": "So sánh Sceptre và Firelight",
-      "rewardsDecreased": "Tại sao phần thưởng của tôi giảm?",
-      "stakingOpportunities": "Hiển thị cơ hội staking của tôi"
-    },
-    "wallet": {
-      "analyzing": "Đang phân tích:"
-    },
-    "empty": {
-      "title": "Hỏi FlareGPT bất cứ điều gì",
-      "subtitle": "Nhận câu trả lời về ví, phần thưởng, ủy quyền hoặc hệ sinh thái Flare của bạn."
-    },
-    "composer": {
-      "placeholder": "Hỏi FlareGPT...",
-      "send": "Gửi",
-      "stop": "Dừng tạo phản hồi",
-      "disclaimer": "FlareGPT có thể mắc lỗi. Hãy xác minh thông tin quan trọng trước khi hành động theo đó."
-    },
-    "actions": {
-      "copy": "Sao chép",
-      "regenerate": "Tạo lại phản hồi",
-      "copied": "Đã sao chép tin nhắn",
-      "copyFailed": "Sao chép không thành công"
-    },
-    "jumpToLatest": "Đến tin mới nhất",
-    "historyLoadFailed": "Không thể tải lịch sử trò chuyện của bạn.",
-    "sendError": "Đã xảy ra sự cố — vui lòng thử lại.",
-    "newChat": "Cuộc trò chuyện mới",
-    "deleteConversation": {
-      "button": "Xóa cuộc trò chuyện",
-      "confirm": "Xác nhận?"
-    },
-    "deleteConversationFailed": "Không thể xóa cuộc trò chuyện này. Vui lòng thử lại.",
-    "history": {
-      "title": "Lịch sử trò chuyện",
-      "newChat": "Cuộc trò chuyện mới",
-      "searchPlaceholder": "Tìm kiếm cuộc trò chuyện...",
-      "empty": "Chưa có cuộc trò chuyện nào",
-      "noResults": "Không có cuộc trò chuyện nào khớp với tìm kiếm của bạn",
-      "untitled": "Chưa đặt tên",
-      "moreActions": "Thao tác khác",
-      "pin": "Ghim",
-      "unpin": "Bỏ ghim",
-      "rename": "Đổi tên",
-      "delete": "Xóa",
-      "pinLimitReached": "Bạn có thể ghim tối đa {{count}} cuộc trò chuyện",
-      "renameFailed": "Không thể đổi tên cuộc trò chuyện này.",
-      "openButton": "Lịch sử",
-      "saveRename": "Lưu",
-      "cancelRename": "Hủy"
-    }
-  },
-  "dashboard": {
-    "description": "Dữ liệu mạng Live Flare, biểu đồ giá và hoạt động của ví trong nháy mắt.",
-    "common": {
-      "retry": "Thử lại",
-      "retrying": "Đang thử lại…",
-      "networkHiccup": "Đây thường là trục trặc mạng tạm thời.",
-      "noWalletSelected": "Không có ví nào được chọn",
-      "yes": "Có",
-      "no": "Không"
-    },
-    "stats": {
-      "flrPrice": "Giá FLR",
-      "marketCap": "Vốn hóa thị trường",
-      "volume24h": "Khối lượng 24h",
-      "tvl": "TVL",
-      "couldntLoad": "Không thể tải tổng quan thị trường"
-    },
-    "chart": {
-      "couldntLoad": "Không thể tải lịch sử giá FLR"
-    },
-    "networkActivity": {
-      "title": "Hoạt động thông tin mạng",
-      "live": "Trực tiếp",
-      "gwei": "Gwei",
-      "gasPrice": "giá gas",
-      "tps": "TPS",
-      "couldntLoad": "Không thể tải dữ liệu mạng",
-      "collectingSamples": "Thu thập mẫu trực tiếp — điền vào biểu đồ khi dữ liệu mới đến."
-    },
-    "walletBalances": {
-      "title": "Số dư Ví",
-      "connectToSeeBalances": "Kết nối hoặc thêm ví trong Cài đặt để xem số dư.",
-      "couldntLoad": "Không thể tải số dư ví"
-    },
-    "ftso": {
-      "title": "Phái đoàn FTSO",
-      "connected": "Đã kết nối",
-      "readOnly": "Chỉ đọc",
-      "connectToSeeRewards": "Kết nối hoặc thêm ví trong Cài đặt để xem phần thưởng.",
-      "couldntLoad": "Không thể tải danh mục đầu tư FTSO",
-      "delegatedWflr": "WFLR được ủy quyền",
-      "unclaimedFlr": "FLR chưa được xác nhận quyền sở hữu",
-      "activeDelegations": "Ủy quyền đang hoạt động",
-      "estHourlyEarning": "Thu nhập hàng giờ ước tính",
-      "claimRewards": "Nhận phần thưởng",
-      "readOnlyCannotClaim": "Chỉ đọc — không thể xác nhận quyền sở hữu",
-      "switchToClaim": "Chuyển sang ví đã kết nối của bạn để nhận phần thưởng",
-      "noUnclaimedYet": "Chưa có phần thưởng nào chưa được nhận",
-      "claimComingSoon": "Yêu cầu chưa khả dụng — sắp ra mắt."
-    },
-    "claimsHistory": {
-      "title": "Lịch sử Xác nhận quyền sở hữu",
-      "connectToSee": "Kết nối hoặc thêm ví trong Cài đặt để xem lịch sử xác nhận quyền sở hữu.",
-      "couldntLoad": "Không thể tải lịch sử xác nhận quyền sở hữu",
-      "emptyTitle": "Không có kỷ nguyên chưa được xác nhận quyền sở hữu",
-      "emptyDescription": "Tất cả các bạn đã bắt kịp — không có giai đoạn phần thưởng đang chờ xử lý nào để nhận."
-    },
-    "delegationsBreakdown": {
-      "title": "Phân tích Ủy quyền",
-      "tabLabel": "Ủy quyền",
-      "connectToSee": "Kết nối hoặc thêm ví trong Cài đặt để xem các ủy quyền.",
-      "couldntLoad": "Không thể tải nhiệm vụ",
-      "emptyTitle": "Không có ủy quyền đang hoạt động",
-      "emptyDescription": "Ủy quyền WFLR cho nhà cung cấp FTSO để bắt đầu kiếm phần thưởng."
-    },
-    "apiStatus": {
-      "checking": "Đang kiểm tra trạng thái API...",
-      "operational": "Toàn bộ hệ thống đều hoạt động.",
-      "degraded": "API bị suy giảm"
-    }
-  },
-  "defiProtocols": {
-    "description": "So sánh các chiến lược sinh lời và theo dõi vị thế của bạn trên các vault MXRPY, Sceptre và Firelight.",
-    "common": {
-      "addressCopied": "Đã sao chép địa chỉ vào clipboard",
-      "copyFailed": "Không thể sao chép địa chỉ",
-      "connectToSeePosition": "Kết nối ví để xem vị thế của bạn",
-      "contract": "Hợp đồng",
-      "proxyContract": "Hợp đồng Proxy",
-      "poolOwnership": "Tỷ lệ sở hữu Pool",
-      "protocolDetails": "Chi tiết giao thức",
-      "yourBalance": "Số dư của bạn",
-      "redeemableValue": "Giá trị Có thể Quy đổi"
-    },
-    "explorer": {
-      "title": "Trình khám phá Giao thức",
-      "subtitle": "Chọn một giao thức để xem vị thế và chi tiết của bạn"
-    },
-    "kpis": {
-      "protocolsTracked": "Giao thức Đang theo dõi",
-      "bestApr": "APR Tốt nhất Hiện có",
-      "activePositions": "Vị thế Đang hoạt động"
-    },
-    "mxrpy": {
-      "title": "MXRPY Vault",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "Không thể tải vị thế MXRPY của bạn",
-      "circulatingCaption": "{{shares}} cổ phần đang lưu hành · {{decimals}} chữ số thập phân",
-      "yourShares": "Cổ phần Biên nhận của bạn",
-      "category": "Vault Sinh lời"
-    },
-    "sceptre": {
-      "title": "Sceptre Liquid Staking",
-      "subtitle": "Staking thanh khoản sFLR",
-      "couldntLoad": "Không thể tải vị thế Sceptre của bạn",
-      "exchangeRateLabel": "Tỷ giá sFLR / FLR",
-      "totalMinted": "Tổng Cổ phần Đã phát hành",
-      "backedFlr": "FLR Bảo chứng Cơ sở",
-      "category": "Staking Thanh khoản"
-    },
-    "firelight": {
-      "title": "Firelight Vault",
-      "subtitle": "Vault bảo vệ vốn",
-      "couldntLoad": "Không thể tải vị thế Firelight của bạn",
-      "backingLabel": "Hệ số bảo chứng tài sản",
-      "circulatingSupply": "Nguồn cung Lưu hành",
-      "underlyingReserve": "Dự trữ Cơ sở",
-      "insuranceRobust": "Bảo hiểm: Vững chắc",
-      "category": "Bảo hiểm"
-    },
-    "strategies": {
-      "title": "So sánh Chiến lược",
-      "subtitle": "Xem FLR của bạn có thể sinh lời như thế nào ở từng chiến lược",
-      "amountLabel": "So sánh cho",
-      "apr": "APR",
-      "colStrategy": "Chiến lược",
-      "colYield": "Lợi nhuận Ư.tính (FLR)",
-      "colTerms": "Điều khoản",
-      "compoundingLabel": "Lãi kép",
-      "couldntLoad": "Không thể tải so sánh chiến lược",
-      "highestApr": "APR Cao nhất",
-      "lockupDays": "Khóa {{count}} ngày",
-      "lockupHours": "Khóa {{count}} giờ",
-      "noLockup": "Không khóa",
-      "verdict": "Nhận định của FlareGPT"
-    }
-  },
-  "donate": {
-    "title": "Ủng hộ FlareGPT",
-    "description": "Sự ủng hộ của bạn giúp FlareGPT luôn miễn phí, độc lập và không ngừng cải tiến.",
-    "hero": {
-      "addressLabel": "Địa chỉ Ví",
-      "tapToCopy": "Chạm để sao chép",
-      "copyAddress": "Sao chép Địa chỉ",
-      "copied": "Đã sao chép",
-      "addressCopied": "Đã sao chép địa chỉ vào clipboard",
-      "copyFailed": "Không thể sao chép địa chỉ",
-      "viewOnExplorer": "Xem trên {{explorer}}",
-      "multisigNote": "Được bảo vệ bởi ví đa chữ ký",
-      "qrTitle": "Mã QR cho địa chỉ ví quyên góp {{symbol}}"
-    },
-    "warning": {
-      "title": "Chỉ tài sản {{network}}.",
-      "body": "Chỉ gửi {{symbol}} hoặc các token {{network}} khác đến địa chỉ này. Tài sản gửi từ các mạng khác không thể khôi phục."
-    },
-    "amounts": {
-      "title": "Số Tiền Đề Xuất",
-      "subtitle": "Mọi đóng góp đều có ý nghĩa — đây là một vài gợi ý để bắt đầu.",
-      "impactTier1": "Một ngày chi phí API",
-      "impactTier2": "Một tuần lưu trữ",
-      "impactTier3": "Một tháng hạ tầng",
-      "impactTier4": "Tích hợp giao thức mới",
-      "copiedToast": "Đã sao chép địa chỉ. Cảm ơn bạn đã cân nhắc quyên góp {{amount}} {{symbol}}."
-    },
-    "funding": {
-      "title": "Minh Bạch Quỹ",
-      "subtitle": "Một cái nhìn minh bạch về chi phí vận hành FlareGPT — không áp lực, chỉ là sự minh bạch.",
-      "monthlyInfrastructure": "Hạ Tầng Hàng Tháng",
-      "developmentFund": "Quỹ Phát Triển",
-      "raisedOfGoal": "Đã quyên góp {{raised}} trên mục tiêu {{goal}}"
-    },
-    "received": {
-      "title": "Quyên Góp Đã Nhận",
-      "subtitle": "Tổng đóng góp đã nhận trên mỗi mạng được hỗ trợ.",
-      "demoData": "Dữ liệu demo"
-    },
-    "support": {
-      "title": "Khoản Ủng Hộ Của Bạn Được Dùng Để",
-      "infra": "API & Hạ tầng",
-      "integrations": "Tích hợp Giao thức Mới",
-      "free": "Giữ FlareGPT Miễn phí",
-      "development": "Phát triển Liên tục"
-    },
-    "closing": {
-      "message": "Cảm ơn bạn đã giúp FlareGPT giữ được sự độc lập. Mọi đóng góp, dù lớn hay nhỏ, đều thực sự hữu ích."
     }
   }
 }

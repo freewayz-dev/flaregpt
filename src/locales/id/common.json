@@ -1,11 +1,317 @@
 {
+  "comingSoon": {
+    "badge": "Segera",
+    "description": "Kami sedang membangun fitur ini. Segera periksa kembali."
+  },
+  "connectModal": {
+    "connecting": "Menghubungkan…",
+    "errors": {
+      "braveBlocked": {
+        "privateWindow": "Buka situs ini di Jendela Privat Brave.",
+        "shieldsOff": "Matikan Brave Shields untuk situs ini dan coba lagi.",
+        "title": "WalletConnect tampaknya diblokir oleh Brave Shields.",
+        "tryTitle": "Coba salah satu langkah berikut:",
+        "useChrome": "Gunakan Google Chrome atau browser lain yang didukung jika masalah berlanjut."
+      },
+      "generic": "Terjadi gesekan koneksi yang tidak terduga. Silakan coba lagi atau gunakan dompet lain.",
+      "pending": "Permintaan koneksi sudah terbuka. Silakan buka panel ekstensi dompet Anda.",
+      "providerGone": "Dompet ini sepertinya tidak lagi merespons. Mungkin telah diperbarui atau dihapus. Menyegarkan halaman seharusnya dapat memperbaikinya.",
+      "rejected": "Permintaan koneksi dibatalkan di dompet Anda.",
+      "timeout": "Tidak dapat menjangkau WalletConnect. Periksa koneksi Anda dan coba lagi.",
+      "wrongNetwork": "Harap alihkan jaringan aktif dompet Anda ke Flare Mainnet."
+    },
+    "install": "Instal",
+    "installHint": "Masih belum melihat dompet Anda? Menyegarkan halaman mungkin membantu.",
+    "mobileHint": "Di ponsel, buka FlareGPT di browser bawaan dompet Anda untuk pengalaman koneksi terbaik. Saat memindai kode QR, gunakan pemindai bawaan aplikasi dompet Anda, bukan kamera ponsel, untuk koneksi yang lebih andal.",
+    "recommended": "Direkomendasikan",
+    "refresh": "Segarkan",
+    "subtitle": "Pilih dompet pilihan Anda untuk terhubung ke Jaringan Flare.",
+    "title": "Hubungkan Dompet",
+    "viaWalletConnect": "Melalui WalletConnect"
+  },
+  "dashboard": {
+    "apiStatus": {
+      "checking": "Memeriksa status api...",
+      "degraded": "Api terdegradasi",
+      "operational": "Semua sistem beroperasi"
+    },
+    "chart": {
+      "couldntLoad": "Tidak dapat memuat riwayat harga FLR"
+    },
+    "claimsHistory": {
+      "connectToSee": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat riwayat klaim.",
+      "couldntLoad": "Tidak dapat memuat riwayat klaim",
+      "emptyDescription": "Semua sudah beres. Tidak ada epoch reward yang menunggu untuk diklaim.",
+      "emptyTitle": "Tidak ada zaman yang tidak diklaim",
+      "title": "Riwayat Klaim"
+    },
+    "common": {
+      "networkHiccup": "Ini biasanya cegukan jaringan sementara.",
+      "no": "No",
+      "noWalletSelected": "Tidak ada dompet dipilih",
+      "retry": "Coba lagi",
+      "retrying": "Mencoba lagi.\n\n",
+      "yes": "Ya"
+    },
+    "delegationsBreakdown": {
+      "connectToSee": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat delegasi.",
+      "couldntLoad": "Tidak dapat memuat delegasi",
+      "emptyDescription": "Delegasikan WFLR ke penyedia FTSO untuk mulai mendapatkan hadiah.",
+      "emptyTitle": "Tidak ada delegasi aktif",
+      "tabLabel": "Delegasi",
+      "title": "Perincian Delegasi"
+    },
+    "description": "Sekilas data jaringan Flare Langsung, grafik harga, dan aktivitas dompet.",
+    "ftso": {
+      "activeDelegations": "Delegasi Aktif",
+      "claimComingSoon": "Klaim belum tersedia. Segera hadir.",
+      "claimRewards": "Klaim Hadiah",
+      "connected": "Tersambung",
+      "connectToSeeRewards": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat hadiah.",
+      "couldntLoad": "Tidak dapat memuat portofolio FTSO",
+      "delegatedWflr": "WFLR yang Didelegasikan",
+      "estHourlyEarning": "Penghasilan Per Jam Est.",
+      "noUnclaimedYet": "Belum ada hadiah yang belum diklaim",
+      "readOnly": "Hanya-baca",
+      "readOnlyCannotClaim": "Hanya baca, tidak dapat mengklaim",
+      "switchToClaim": "Beralih ke dompet Anda yang terhubung untuk mengklaim hadiah",
+      "title": "Delegasi FTSO",
+      "unclaimedFlr": "FLR yang tidak diklaim"
+    },
+    "networkActivity": {
+      "collectingSamples": "Mengumpulkan sampel langsung. Grafik akan terisi seiring data baru masuk.",
+      "couldntLoad": "Tidak dapat memuat data jaringan",
+      "gasPrice": "harga gas",
+      "gwei": "Gwei",
+      "live": "Langsung",
+      "title": "Aktivitas Jaringan",
+      "tps": "TPS"
+    },
+    "stats": {
+      "couldntLoad": "Tidak dapat memuat ikhtisar pasar",
+      "flrPrice": "Harga FLR",
+      "marketCap": "Kap Pasar",
+      "tvl": "TVL",
+      "volume24h": "Volume 24 jam"
+    },
+    "walletBalances": {
+      "connectToSeeBalances": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat saldo.",
+      "couldntLoad": "Tidak dapat memuat saldo dompet",
+      "title": "Saldo Dompet"
+    }
+  },
+  "defiProtocols": {
+    "common": {
+      "addressCopied": "Alamat disalin",
+      "connectToSeePosition": "Hubungkan wallet untuk melihat posisi Anda",
+      "contract": "Kontrak",
+      "copyFailed": "Gagal menyalin alamat",
+      "poolOwnership": "Kepemilikan Pool",
+      "protocolDetails": "Detail protokol",
+      "proxyContract": "Kontrak Proxy",
+      "redeemableValue": "Nilai yang Dapat Ditukarkan",
+      "yourBalance": "Saldo Anda"
+    },
+    "description": "Bandingkan strategi imbal hasil dan pantau posisi Anda di vault MXRPY, Sceptre, dan Firelight.",
+    "explorer": {
+      "subtitle": "Pilih protokol untuk melihat posisi dan detail Anda",
+      "title": "Penjelajah Protokol"
+    },
+    "firelight": {
+      "backingLabel": "Pengganda jaminan aset",
+      "category": "Asuransi",
+      "circulatingSupply": "Pasokan Beredar",
+      "couldntLoad": "Posisi Firelight Anda gagal dimuat",
+      "insuranceRobust": "Asuransi: Kuat",
+      "subtitle": "Vault perlindungan modal",
+      "title": "Firelight Vault",
+      "underlyingReserve": "Cadangan Dasar"
+    },
+    "kpis": {
+      "activePositions": "Posisi Aktif",
+      "bestApr": "APR Terbaik Tersedia",
+      "protocolsTracked": "Protokol Terlacak"
+    },
+    "mxrpy": {
+      "category": "Yield Vault",
+      "circulatingCaption": "{{shares}} saham beredar · {{decimals}} desimal",
+      "couldntLoad": "Posisi MXRPY Anda gagal dimuat",
+      "subtitle": "Monarq XRP Yield Vault",
+      "title": "MXRPY Vault",
+      "yourShares": "Saham Tanda Terima Anda"
+    },
+    "sceptre": {
+      "backedFlr": "FLR Pendukung Dasar",
+      "category": "Liquid Staking",
+      "couldntLoad": "Posisi Sceptre Anda gagal dimuat",
+      "exchangeRateLabel": "Kurs sFLR / FLR",
+      "subtitle": "Liquid staking sFLR",
+      "title": "Sceptre Liquid Staking",
+      "totalMinted": "Total Saham Diterbitkan"
+    },
+    "strategies": {
+      "amountLabel": "Bandingkan untuk",
+      "apr": "APR",
+      "colStrategy": "Strategi",
+      "colTerms": "Ketentuan",
+      "colYield": "Est. Imbal Hasil (FLR)",
+      "compoundingLabel": "Bunga Majemuk",
+      "couldntLoad": "Perbandingan strategi gagal dimuat",
+      "highestApr": "APR Tertinggi",
+      "lockupDays": "Lock-up {{count}} hari",
+      "lockupDays_other": "defiProtocols.strategies.lockupDays",
+      "lockupHours": "Lock-up {{count}} jam",
+      "lockupHours_other": "defiProtocols.strategies.lockupHours",
+      "noLockup": "Tanpa lock-up",
+      "subtitle": "Lihat bagaimana FLR Anda dapat berkinerja di berbagai strategi",
+      "title": "Perbandingan Strategi",
+      "verdict": "Penilaian FlareGPT",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+    }
+  },
+  "donate": {
+    "amounts": {
+      "copiedToast": "Alamat disalin. Terima kasih telah mempertimbangkan donasi {{amount}} {{symbol}}.",
+      "impactTier1": "Biaya API satu hari",
+      "impactTier2": "Hosting satu minggu",
+      "impactTier3": "Infrastruktur satu bulan",
+      "impactTier4": "Integrasi protokol baru",
+      "subtitle": "Setiap kontribusi membantu. Berikut beberapa ide untuk memulai.",
+      "title": "Jumlah yang Disarankan"
+    },
+    "closing": {
+      "message": "Terima kasih telah membantu menjaga FlareGPT tetap independen. Setiap kontribusi, besar atau kecil, sungguh membantu."
+    },
+    "description": "Dukungan Anda membantu menjaga FlareGPT tetap gratis, independen, dan terus berkembang.",
+    "funding": {
+      "developmentFund": "Dana Pengembangan",
+      "monthlyInfrastructure": "Infrastruktur Bulanan",
+      "raisedOfGoal": "{{raised}} terkumpul dari target {{goal}}",
+      "subtitle": "Gambaran terbuka tentang biaya menjalankan FlareGPT. Tanpa tekanan, hanya transparansi.",
+      "title": "Transparansi Pendanaan"
+    },
+    "hero": {
+      "addressCopied": "Alamat disalin",
+      "addressLabel": "Alamat Wallet",
+      "copied": "Tersalin",
+      "copyAddress": "Salin Alamat",
+      "copyFailed": "Gagal menyalin alamat",
+      "multisigNote": "Diamankan oleh wallet multi-tanda tangan",
+      "qrTitle": "Kode QR untuk alamat wallet donasi {{symbol}}",
+      "tapToCopy": "Ketuk untuk menyalin",
+      "viewOnExplorer": "Lihat di {{explorer}}"
+    },
+    "received": {
+      "demoData": "Data demo",
+      "subtitle": "Total kontribusi yang diterima di setiap jaringan yang didukung.",
+      "title": "Donasi Diterima"
+    },
+    "support": {
+      "development": "Pengembangan Berkelanjutan",
+      "free": "Menjaga FlareGPT Tetap Gratis",
+      "infra": "API & Infrastruktur",
+      "integrations": "Integrasi Protokol Baru",
+      "title": "Yang Didanai oleh Dukungan Anda"
+    },
+    "title": "Dukung FlareGPT",
+    "warning": {
+      "body": "Hanya kirim {{symbol}} atau token {{network}} lainnya ke alamat ini. Aset yang dikirim dari jaringan lain tidak dapat dipulihkan.",
+      "title": "Hanya aset {{network}}."
+    }
+  },
+  "flareWidget": {
+    "close": "Tutup",
+    "collapse": "Ciutkan",
+    "expand": "Bentangkan",
+    "openFullPage": "Buka halaman penuh"
+  },
+  "flrgpt": {
+    "actions": {
+      "copied": "Pesan disalin",
+      "copy": "Salin",
+      "copyFailed": "Gagal menyalin",
+      "regenerate": "Buat ulang respons"
+    },
+    "composer": {
+      "disclaimer": "FlareGPT dapat membuat kesalahan. Verifikasi informasi penting sebelum menindaklanjutinya.",
+      "placeholder": "Tanya FlareGPT...",
+      "send": "Kirim",
+      "stop": "Hentikan pembuatan"
+    },
+    "deleteConversation": {
+      "button": "Hapus Percakapan",
+      "confirm": "Konfirmasi?"
+    },
+    "deleteConversationFailed": "Tidak dapat menghapus percakapan ini. Coba lagi.",
+    "empty": {
+      "subtitle": "Dapatkan jawaban tentang dompet, reward, delegasi, atau ekosistem Flare Anda.",
+      "title": "Tanyakan apa saja ke FlareGPT"
+    },
+    "guestMode": {
+      "cta": "Masuk untuk menyinkronkan riwayat & membuka analisis dompet",
+      "notice": "Mode tamu · Percakapan tidak disimpan."
+    },
+    "history": {
+      "cancelRename": "Batal",
+      "delete": "Hapus",
+      "empty": "Belum ada percakapan",
+      "moreActions": "Tindakan lainnya",
+      "newChat": "Obrolan Baru",
+      "noResults": "Tidak ada percakapan yang cocok dengan pencarian Anda",
+      "openButton": "Riwayat",
+      "pin": "Sematkan",
+      "pinLimitReached": "Anda dapat menyematkan hingga {{count}} percakapan",
+      "pinLimitReached_other": "flrgpt.history.pinLimitReached",
+      "rename": "Ganti nama",
+      "renameFailed": "Gagal mengganti nama percakapan ini.",
+      "saveRename": "Simpan",
+      "searchPlaceholder": "Cari percakapan...",
+      "title": "Riwayat Obrolan",
+      "unpin": "Lepas sematan",
+      "untitled": "Tanpa judul",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+    },
+    "historyLoadFailed": "Tidak dapat memuat riwayat obrolan.",
+    "jumpToLatest": "Lompat ke terbaru",
+    "newChat": "Obrolan Baru",
+    "prompts": {
+      "analyzeWallet": "Analisis dompet saya",
+      "compareProtocols": "Bandingkan Sceptre vs Firelight",
+      "explainDelegations": "Jelaskan delegasi saya",
+      "increaseRewards": "Bagaimana cara meningkatkan reward FTSO saya?",
+      "rewardsDecreased": "Mengapa reward saya menurun?",
+      "stakingOpportunities": "Tampilkan peluang staking saya"
+    },
+    "sendError": "Terjadi kesalahan. Coba lagi.",
+    "wallet": {
+      "analyzing": "Menganalisis:",
+      "guestLabel": "Analisis dompet",
+      "locked": {
+        "body": "Masuk untuk membiarkan FlareGPT membaca dompet Utama dan Daftar Pantau Anda secara otomatis, alih - alih mengetik alamat ke setiap pertanyaan.",
+        "connectCta": "Hubungkan Dompet",
+        "signInCta": "Sign in",
+        "signingIn": "Konfirmasi di dompet Anda…",
+        "title": "Buka kunci analisis dompet"
+      }
+    }
+  },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Dibangun di atas Flare Network.",
     "disclaimer": "Bukan saran finansial. Data disediakan hanya untuk tujuan informasi.",
-    "terms": "Ketentuan & Penafian",
-    "donate": "Beri donasi"
+    "donate": "Beri donasi",
+    "terms": "Ketentuan & Penafian"
   },
   "help": {
+    "askFlareGptCta": "Tanyakan pada FlareGPT",
+    "askFlareGptLead": "Tidak menemukan yang Anda cari?",
+    "contact": {
+      "comingSoon": "Segera hadir",
+      "emailLabel": "Email",
+      "telegramLabel": "Telegram",
+      "twitterHint": "Ikuti kami dan kirim pesan",
+      "twitterLabel": "X (Twitter)"
+    },
     "faqs": [
       {
         "answer": "Dompet Anda mungkin belum terhubung, atau dasbor mungkin masih menyinkronkan data blockchain. Verifikasi bahwa dompet dan jaringan yang benar telah dipilih.",
@@ -30,10 +336,12 @@
     ],
     "faqTitle": "Pertanyaan yang Sering Diajukan",
     "featureGuides": "Panduan Fitur",
+    "flareGptGuideDescription": "Ajukan pertanyaan tentang dompet, reward, dan jaringan Flare Anda dengan bahasa sehari-hari.",
     "gettingStarted": "Memulai",
     "headerDesc": "Panduan, jawaban, dan dukungan untuk memaksimalkan dasbor FlareGPT Anda.",
     "noFaqs": "Tidak ada FAQ yang cocok dengan pencarian Anda.",
     "noGuides": "Tidak ada panduan yang cocok dengan pencarian Anda.",
+    "searchClear": "Hapus pencarian",
     "searchPlaceholder": "Cari panduan atau FAQ...",
     "searchSub": "Cari panduan fitur dan FAQ, atau temukan cara lain untuk menghubungi kami.",
     "searchTitle": "Semua yang Anda butuhkan untuk memulai",
@@ -65,63 +373,70 @@
       }
     ],
     "stillNeedHelp": "Masih butuh bantuan?",
-    "supportDesc": "Cara tercepat menghubungi kami saat ini adalah melalui X. Dukungan email dan Telegram akan segera hadir.",
-    "searchClear": "Hapus pencarian",
-    "flareGptGuideDescription": "Ajukan pertanyaan tentang dompet, reward, dan jaringan Flare Anda dengan bahasa sehari-hari.",
-    "askFlareGptLead": "Tidak menemukan yang Anda cari?",
-    "askFlareGptCta": "Tanyakan pada FlareGPT",
-    "contact": {
-      "twitterLabel": "X (Twitter)",
-      "twitterHint": "Ikuti kami dan kirim pesan",
-      "telegramLabel": "Telegram",
-      "emailLabel": "Email",
-      "comingSoon": "Segera hadir"
-    }
+    "supportDesc": "Cara tercepat menghubungi kami saat ini adalah melalui X. Dukungan email dan Telegram akan segera hadir."
   },
   "navbar": {
+    "addressCopied": "Alamat disalin",
     "askFlareGPT": "Tanya FlareGPT",
-    "mainnetStatus": "Mainnet Flare",
-    "connectWallet": "Hubungkan Dompet",
-    "primaryWalletSection": "Dompet Utama",
     "badgePrimary": "Utama",
+    "badgeSignIn": "Masuk",
     "badgeWatchlist": "Watchlist",
-    "disconnectWallet": "Putuskan Dompet",
+    "balancesHiddenLabel": "Saldo disembunyikan",
     "configureWatchlistWallets": "Atur Dompet Watchlist",
-    "watchlistSection": "Watchlist ({{current}}/{{max}})",
-    "addressCopied": "Alamat disalin ke clipboard",
+    "connectWallet": "Hubungkan Dompet",
     "copyFailed": "Gagal menyalin alamat",
+    "disconnectWallet": "Putuskan Dompet",
     "flareGptFabHint": "FlareGPT sekarang dibuka dari sini",
     "hideBalances": "Sembunyikan saldo",
+    "mainnetStatus": "Mainnet Flare",
+    "primaryWalletSection": "Dompet Utama",
     "showBalances": "Tampilkan saldo",
-    "balancesHiddenLabel": "Saldo disembunyikan",
     "signIn": "Masuk",
+    "signInBackgroundHint": "Dompet Anda yang terhubung perlu masuk",
     "signingIn": "Sedang masuk…",
     "signInPrompt": "Tanda tangani pesan untuk memverifikasi dompet ini dan lanjutkan.",
-    "badgeSignIn": "Masuk",
-    "signInBackgroundHint": "Dompet Anda yang terhubung perlu masuk"
+    "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
   "settings": {
+    "appearance": {
+      "dark": "Gelap",
+      "light": "Terang",
+      "system": "Sistem"
+    },
     "cards": {
       "app": "Aplikasi",
       "blur": "Filter Cahaya Biru",
       "chartType": "Jenis Grafik",
       "connectedWallets": "Dompet Terhubung",
       "currency": "Mata Uang Tampilan",
+      "defaultLandingPage": "Halaman Awal Default",
+      "defaultWallet": "Wallet Default",
       "governanceAlerts": "Pemberitahuan Tata Kelola",
+      "hideBalances": "Sembunyikan Saldo Dompet",
       "language": "Bahasa",
       "links": "Tautan",
       "logout": "Keluar",
+      "reduceMotion": "Kurangi Gerakan",
       "rewardsAlerts": "Pemberitahuan Hadiah",
+      "tableDensity": "Kepadatan Tabel",
       "theme": "Tema",
       "themeMode": "Mode Terang / Gelap",
       "timeframe": "Rentang Waktu",
       "walletCapacity": "Kapasitas Dompet",
-      "walletPreferences": "Preferensi Wallet",
-      "defaultWallet": "Wallet Default",
-      "defaultLandingPage": "Halaman Awal Default",
-      "tableDensity": "Kepadatan Tabel",
-      "reduceMotion": "Kurangi Gerakan",
-      "hideBalances": "Sembunyikan Saldo Dompet"
+      "walletPreferences": "Preferensi Wallet"
+    },
+    "dataStorage": {
+      "accountSubtitle": "Disinkronkan dengan akun Anda di server.",
+      "accountTitle": "Data Akun",
+      "clear": "Hapus",
+      "confirmClear": "Konfirmasi?",
+      "conversations": "Percakapan FlareGPT",
+      "conversationsClearFailed": "Tidak dapat menghapus riwayat obrolan. Coba lagi.",
+      "conversationsDescription": "Menghapus riwayat obrolan FlareGPT dari akun Anda. Tindakan ini tidak dapat dibatalkan.",
+      "localSubtitle": "Hanya disimpan di browser ini. Menghapusnya instan dan aman.",
+      "localTitle": "Data Lokal",
+      "walletCache": "Cache Aktivitas Wallet",
+      "walletCacheDescription": "Menghapus riwayat transaksi yang tersimpan dalam cache. Kunjungan berikutnya akan mengambilnya lagi."
     },
     "description": "Kelola dompet, preferensi, lokalisasi, dan opsi tampilan.",
     "descriptions": {
@@ -129,18 +444,33 @@
       "blur": "Kurangi ketegangan mata dengan warna layar yang hangat",
       "chartType": "Atur geometri gaya visual rendering default untuk matriks sistem.",
       "currency": "Pilih tampilan mata uang dasar aset.",
+      "defaultLandingPage": "Pilih halaman mana yang terbuka pertama saat Anda meluncurkan aplikasi.",
+      "defaultWallet": "Wallet ini menjadi aktif setiap kali sesi sebelumnya tidak dapat dipulihkan.",
+      "hideBalances": "Buramkan saldo dan jumlah di seluruh dasbor demi privasi.",
       "language": "Pilih bahasa tampilan antarmuka default Anda.",
       "links": "Referensi dokumentasi global dan tautan interaksi tim.",
       "logout": "Keluar dari FlareGPT di perangkat ini. Anda perlu menandatangani pesan baru untuk masuk kembali.",
+      "reduceMotion": "Minimalkan animasi meskipun sistem operasi Anda tidak memiliki preferensi yang diatur.",
+      "tableDensity": "Jarak nyaman atau tampilan lebih ringkas untuk tabel padat.",
+      "theme": "Pilih Terang, Gelap, atau ikuti pengaturan sistem Anda.",
       "timeframe": "Tentukan skala periode jendela default pada grafik visual.",
       "walletCapacity": "Batas sistem yang melacak alokasi kapasitas pool.",
-      "theme": "Pilih Terang, Gelap, atau ikuti pengaturan sistem Anda.",
-      "walletPreferences": "Pilih wallet mana yang digunakan dasbor saat dibuka.",
-      "defaultWallet": "Wallet ini menjadi aktif setiap kali sesi sebelumnya tidak dapat dipulihkan.",
-      "defaultLandingPage": "Pilih halaman mana yang terbuka pertama saat Anda meluncurkan aplikasi.",
-      "tableDensity": "Jarak nyaman atau tampilan lebih ringkas untuk tabel padat.",
-      "reduceMotion": "Minimalkan animasi meskipun sistem operasi Anda tidak memiliki preferensi yang diatur.",
-      "hideBalances": "Buramkan saldo dan jumlah di seluruh dasbor demi privasi."
+      "walletPreferences": "Pilih wallet mana yang digunakan dasbor saat dibuka."
+    },
+    "flareGpt": {
+      "syncStatusConnected": "Sudah masuk. Percakapan Anda disinkronkan di semua perangkat dan browser.",
+      "syncStatusGuest": "Percakapan bersifat sementara di browser ini dan tidak akan disimpan. Masuk untuk menyimpannya.",
+      "syncStatusTitle": "Status Sinkronisasi"
+    },
+    "groups": {
+      "account": "Akun",
+      "personalization": "Personalisasi",
+      "walletsAndData": "Wallet & Data"
+    },
+    "links": {
+      "docs": "Dokumentasi",
+      "github": "Github",
+      "twitter": "Twitter"
     },
     "notifications": {
       "governance": "Pembaruan proposal baru",
@@ -152,224 +482,201 @@
       "area": "Kecamatan",
       "asia": "Asia",
       "candlestick": "Lilin",
+      "comfortable": "Nyaman",
+      "compact": "Ringkas",
       "europe": "Eropa",
       "global": "Global",
       "high": "Tinggi",
       "line": "Garis",
       "low": "Rendah",
       "medium": "Sedang",
-      "off": "Mati",
-      "comfortable": "Nyaman",
-      "compact": "Ringkas"
+      "off": "Mati"
     },
     "security": {
-      "logout": "Keluar",
-      "confirmLogout": "Konfirmasi?"
+      "confirmLogout": "Konfirmasi?",
+      "logout": "Keluar"
     },
     "subtitles": {
       "About": "Ikhtisar catatan penerapan sistem, aturan kompilasi, dan indeks aset.",
+      "Accessibility": "Sesuaikan preferensi gerakan dan interaksi.",
+      "Appearance": "Pilih tampilan FlareGPT.",
       "Display": "Personalisasikan tampilan default Anda dan cara data dasbor ditampilkan.",
+      "FlareGpt": "Kelola bagaimana FlareGPT mengingat percakapan Anda.",
       "Notifications": "Kelola peristiwa prioritas sistem dan titik akhir pelacakan rute pengiriman.",
       "Preferences": "Preferensi bahasa dan mata uang.",
       "Security": "Pertahankan hambatan sesi identitas aktif dan aturan akses verifikasi kredensial.",
-      "Wallets": "Hubungkan dan strukturkan tanda tangan di berbagai akun terdesentralisasi eksternal global.",
-      "Appearance": "Pilih tampilan FlareGPT.",
-      "Accessibility": "Sesuaikan preferensi gerakan dan interaksi.",
-      "FlareGpt": "Kelola bagaimana FlareGPT mengingat percakapan Anda."
+      "Wallets": "Hubungkan dan strukturkan tanda tangan di berbagai akun terdesentralisasi eksternal global."
     },
     "tabs": {
       "About": "Tentang",
+      "Accessibility": "Aksesibilitas",
+      "Appearance": "Tampilan",
+      "DataStorage": "Data & Penyimpanan",
       "Display": "Dasbor",
+      "FlareGpt": "FlareGPT",
       "Notifications": "Notifikasi",
       "Preferences": "Umum",
       "Security": "Keamanan",
-      "Wallets": "Dompet",
-      "Appearance": "Tampilan",
-      "Accessibility": "Aksesibilitas",
-      "FlareGpt": "FlareGPT",
-      "DataStorage": "Data & Penyimpanan"
+      "Wallets": "Dompet"
     },
     "title": "Pengaturan",
     "wallets": {
       "active": "Aktif",
       "add": "Tambah Dompet ({{current}}/{{max}})",
+      "addFormTitle": "Tambahkan Akun Portofolio Daftar Pantau",
+      "adding": "Menambahkan…",
+      "addressPlaceholder": "0x... Alamat Flare Wallet",
       "available": "Tersedia",
+      "cancelRename": "Batal",
+      "confirmRemove": "Konfirmasi hapus?",
       "connectAction": "Hubungkan Dompet ({{current}} Terhubung, {{remaining}} Tersisa)",
+      "connectActionUnlimited": "Tambah Dompet ({{current}} Dilacak)",
       "connected": "Terhubung",
+      "duplicateAddress": "Alamat ini sudah ada di watchlist Anda.",
+      "duplicateNickname": "Sudah ada dompet watchlist dengan nama panggilan ini. Silakan pilih nama panggilan lain.",
       "empty": "Belum ada dompet yang terhubung",
       "emptyTerminal": "Tidak ada dompet yang terhubung. Hubungkan aset terminal Anda để melanjutkan.",
-      "limit": "Anda dapat menghubungkan hingga {{max}} dompet",
-      "limitReached": "Batas Dompet Tercapai ({{current}}/{{max}})",
-      "maximum": "Maksimum",
-      "remainingSlots": "Slot Tersisa",
-      "addFormTitle": "Tambahkan Akun Portofolio Daftar Pantau",
-      "addressPlaceholder": "0x... Alamat Flare Wallet",
+      "guestLimitBenefitBackup": "Jaga watchlist Anda tetap tercadangkan",
+      "guestLimitBenefitMore": "Simpan lebih dari 3 dompet",
+      "guestLimitBenefitSync": "Sinkronkan watchlist Anda di semua perangkat",
+      "guestLimitTitle": "Masuk untuk melacak lebih banyak dompet",
       "invalidAddress": "Masukkan alamat jaringan EVM Flare yang valid (dimulai dengan 0x).",
       "labelPlaceholder": "Label Nama Akun (misalnya, Cold Storage)",
+      "limit": "Anda dapat menghubungkan hingga {{max}} dompet",
+      "limitReached": "Batas Dompet Tercapai ({{current}}/{{max}})",
       "liveConnected": "Terhubung Langsung",
       "manageSubtitle": "Kelola koneksi Web3 aktif Anda dan akun pelacakan portofolio hanya baca.",
+      "maximum": "Maksimum",
+      "noDefaultSelected": "Belum dipilih",
+      "noLimit": "Tambahkan dompet sebanyak yang Anda inginkan.",
+      "noSearchResults": "Tidak ada dompet yang cocok dengan pencarian Anda.",
+      "notFoundError": "Dompet ini sudah tidak ada lagi di watchlist Anda.",
       "readOnly": "Hanya-Baca",
       "registrationFailed": "Pendaftaran alamat gagal. Periksa apakah itu duplikat atau apakah slot diisi.",
-      "tracked": "Dilacak",
+      "remainingSlots": "Slot Tersisa",
       "remove": "Hapus",
-      "confirmRemove": "Konfirmasi hapus?",
-      "noDefaultSelected": "Belum dipilih",
       "rename": "Ganti nama",
-      "cancelRename": "Batal",
-      "connectActionUnlimited": "Tambah Dompet ({{current}} Dilacak)",
-      "noLimit": "Tambahkan dompet sebanyak yang Anda inginkan.",
-      "duplicateAddress": "Alamat ini sudah ada di watchlist Anda.",
-      "guestLimitTitle": "Masuk untuk melacak lebih banyak dompet",
-      "guestLimitBenefitSync": "Sinkronkan watchlist Anda di semua perangkat",
-      "guestLimitBenefitMore": "Simpan lebih dari 3 dompet",
-      "guestLimitBenefitBackup": "Jaga watchlist Anda tetap tercadangkan",
-      "searchPlaceholder": "Cari di {{count}} dompet...",
-      "noSearchResults": "Tidak ada dompet yang cocok dengan pencarian Anda.",
-      "duplicateNickname": "Sudah ada dompet watchlist dengan nama panggilan ini. Silakan pilih nama panggilan lain.",
-      "notFoundError": "Dompet ini sudah tidak ada lagi di watchlist Anda.",
       "saveEdit": "Simpan",
-      "adding": "Menambahkan…"
-    },
-    "links": {
-      "docs": "Dokumentasi",
-      "github": "Github",
-      "twitter": "Twitter"
-    },
-    "groups": {
-      "personalization": "Personalisasi",
-      "walletsAndData": "Wallet & Data",
-      "account": "Akun"
-    },
-    "appearance": {
-      "light": "Terang",
-      "dark": "Gelap",
-      "system": "Sistem"
-    },
-    "flareGpt": {
-      "syncStatusTitle": "Status Sinkronisasi",
-      "syncStatusConnected": "Masuk — percakapan Anda disinkronkan di semua perangkat dan browser.",
-      "syncStatusGuest": "Percakapan bersifat sementara di browser ini dan tidak akan disimpan. Masuk untuk menyimpannya."
-    },
-    "dataStorage": {
-      "localTitle": "Data Lokal",
-      "localSubtitle": "Hanya disimpan di browser ini — menghapusnya instan dan aman.",
-      "walletCache": "Cache Aktivitas Wallet",
-      "walletCacheDescription": "Menghapus riwayat transaksi yang di-cache — kunjungan berikutnya akan mengambilnya lagi.",
-      "conversations": "Percakapan FlareGPT",
-      "conversationsDescription": "Menghapus riwayat obrolan FlareGPT dari akun Anda. Tindakan ini tidak dapat dibatalkan.",
-      "clear": "Hapus",
-      "confirmClear": "Konfirmasi?",
-      "accountTitle": "Data Akun",
-      "accountSubtitle": "Disinkronkan dengan akun Anda di server.",
-      "conversationsClearFailed": "Gagal menghapus riwayat obrolan — silakan coba lagi."
+      "searchPlaceholder": "Cari di {{count}} dompet...",
+      "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
+      "tracked": "Dilacak",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
     }
   },
   "sidebar": {
+    "activeWallet": "Aktif: {{address}}",
+    "addWatchlistWallet": "+ Tambahkan Dompet Daftar Pantau",
     "connectWallet": "Hubungkan Dompet",
+    "defiProtocols": "Protokol Defi",
     "disconnect": "Putuskan Koneksi",
+    "donate": "Beri donasi",
+    "feeds": "Umpan",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Hadiah FTSO",
-    "defiProtocols": "Protokol Defi",
     "governance": "Tata Kelola",
     "helpCenter": "Pusat Bantuan",
+    "loops": "Loop",
     "notConnected": "Belum Terhubung",
     "overview": "Ikhtisar",
     "rflrTracker": "Pelacak rFLR",
     "settings": "Pengaturan",
+    "signInRequired": "Perlu masuk",
+    "signInRequiredHint": "Gunakan menu dompet di bilah atas untuk masuk.",
     "walletActivity": "Aktivitas Dompet",
     "walletConnected": "Dompet Terhubung",
-    "yield": "Imbal Hasil",
-    "loops": "Loop",
-    "feeds": "Umpan",
-    "donate": "Beri donasi",
-    "addWatchlistWallet": "+ Tambahkan Dompet Daftar Pantau",
-    "activeWallet": "Aktif: {{address}}",
-    "signInRequired": "Perlu masuk",
-    "signInRequiredHint": "Gunakan menu dompet di bilah atas untuk masuk."
+    "yield": "Imbal Hasil"
   },
   "wallet": {
     "activity": {
-      "subtitle": "Pemantauan real - time interaksi blockchain yang masuk dan keluar.",
-      "title": "Aktivitas Terminal Terbaru",
-      "description": "Setiap transaksi yang terindeks untuk wallet aktif Anda, dikelompokkan dan dapat dicari.",
-      "refresh": "Segarkan",
-      "connectToSee": "Hubungkan atau pilih wallet untuk melihat aktivitas transaksinya.",
-      "couldntLoad": "Aktivitas wallet tidak dapat dimuat.",
-      "notifier": {
-        "ready": "Aktivitas wallet Anda selesai dimuat."
-      },
-      "loading": {
-        "title": "Mengindeks aktivitas wallet Anda",
-        "subtitle": "Wallet besar bisa memakan waktu beberapa menit saat pertama kali dimuat. Silakan jelajahi bagian dasbor lainnya — kami akan memberi tahu Anda saat sudah siap.",
-        "elapsed": "{{seconds}}d berlalu"
-      },
-      "empty": {
-        "title": "Belum ada aktivitas",
-        "description": "Wallet ini tidak memiliki transaksi terindeks."
-      },
-      "noResults": {
-        "title": "Tidak ada transaksi yang cocok",
-        "description": "Coba sesuaikan pencarian atau filter Anda."
-      },
-      "kpi": {
-        "totalTransactions": "Total Transaksi",
-        "uniqueAssets": "Aset Unik",
-        "walletAge": "Usia Wallet",
-        "walletAgeYears": "{{count}} tahun",
-        "walletAgeMonths": "{{count}} bulan",
-        "walletAgeDays": "{{count}} hari",
-        "lastActive": "Terakhir Aktif",
-        "justNow": "Baru saja",
-        "minutesAgo": "{{count}} menit lalu",
-        "hoursAgo": "{{count}} jam lalu",
-        "daysAgo": "{{count}} hari lalu"
-      },
-      "insights": {
-        "title": "Wawasan Cepat",
-        "mostUsedAsset": "Aset Paling Sering Digunakan",
-        "mostCommonAction": "Aksi Paling Umum",
-        "mostActiveDay": "Hari Paling Aktif",
-        "mostActiveMonth": "Bulan Paling Aktif",
-        "txCount": "{{count}} transaksi"
-      },
       "charts": {
+        "actionBreakdown": "Rincian Aksi",
+        "actionBreakdownSubtitle": "Jumlah transaksi berdasarkan jenis aksi",
         "activityByDay": "Aktivitas per Hari",
         "activityByDaySubtitle": "Jumlah transaksi per hari",
         "assetBreakdown": "Rincian Aset",
         "assetBreakdownSubtitle": "Jumlah transaksi per aset",
-        "actionBreakdown": "Rincian Aksi",
-        "actionBreakdownSubtitle": "Jumlah transaksi berdasarkan jenis aksi",
+        "tabActions": "Tindakan",
         "tabActivity": "Aktivitas",
-        "tabAssets": "Aset",
-        "tabActions": "Tindakan"
+        "tabAssets": "Aset"
       },
-      "toolbar": {
-        "searchPlaceholder": "Cari berdasarkan hash atau aset...",
-        "sort": {
-          "newest": "Terbaru",
-          "oldest": "Terlama",
-          "amount": "Jumlah"
-        },
-        "exportCsv": "Ekspor CSV",
-        "exportJson": "Ekspor JSON",
-        "export": "Ekspor"
+      "connectToSee": "Hubungkan atau pilih wallet untuk melihat aktivitas transaksinya.",
+      "couldntLoad": "Aktivitas wallet tidak dapat dimuat.",
+      "description": "Setiap transaksi yang terindeks untuk wallet aktif Anda, dikelompokkan dan dapat dicari.",
+      "drawer": {
+        "action": "Aksi",
+        "asset": "Aset",
+        "blockNumber": "Nomor Blok",
+        "close": "Tutup",
+        "copyFailed": "Tidak dapat menyalin hash",
+        "hashCopied": "Hash transaksi disalin",
+        "next": "Transaksi berikutnya",
+        "previous": "Transaksi sebelumnya",
+        "timestamp": "Stempel Waktu",
+        "title": "Detail Transaksi",
+        "transactionHash": "Hash Transaksi",
+        "viewOnExplorer": "Lihat di FlareScan"
+      },
+      "empty": {
+        "description": "Wallet ini tidak memiliki transaksi terindeks.",
+        "title": "Belum ada aktivitas"
       },
       "feed": {
         "ariaLabel": "Menampilkan {{shown}} dari {{total}} transaksi"
       },
-      "drawer": {
-        "title": "Detail Transaksi",
-        "previous": "Transaksi sebelumnya",
-        "next": "Transaksi berikutnya",
-        "close": "Tutup",
-        "action": "Aksi",
-        "asset": "Aset",
-        "blockNumber": "Nomor Blok",
-        "timestamp": "Stempel Waktu",
-        "transactionHash": "Hash Transaksi",
-        "hashCopied": "Hash transaksi disalin",
-        "copyFailed": "Tidak dapat menyalin hash",
-        "viewOnExplorer": "Lihat di FlareScan"
+      "insights": {
+        "mostActiveDay": "Hari Paling Aktif",
+        "mostActiveMonth": "Bulan Paling Aktif",
+        "mostCommonAction": "Aksi Paling Umum",
+        "mostUsedAsset": "Aset Paling Sering Digunakan",
+        "title": "Wawasan Cepat",
+        "txCount": "{{count}} transaksi",
+        "txCount_other": "wallet.activity.insights.txCount",
+        "txCount_one": "wallet.activity.insights.txCount"
+      },
+      "kpi": {
+        "daysAgo": "{{count}} hari lalu",
+        "daysAgo_other": "wallet.activity.kpi.daysAgo",
+        "hoursAgo": "{{count}} jam lalu",
+        "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
+        "justNow": "Baru saja",
+        "lastActive": "Terakhir Aktif",
+        "minutesAgo": "{{count}} menit lalu",
+        "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
+        "totalTransactions": "Total Transaksi",
+        "uniqueAssets": "Aset Unik",
+        "walletAge": "Usia Wallet",
+        "walletAgeDays": "{{count}} hari",
+        "walletAgeMonths": "{{count}} bulan",
+        "walletAgeYears": "{{count}} tahun",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+      },
+      "loading": {
+        "elapsed": "{{seconds}}d berlalu",
+        "subtitle": "Dompet besar bisa memakan waktu beberapa menit saat pertama kali dimuat. Jangan ragu untuk menjelajahi bagian lain dashboard. Kami akan memberi tahu Anda saat sudah siap.",
+        "title": "Mengindeks aktivitas wallet Anda"
+      },
+      "noResults": {
+        "description": "Coba sesuaikan pencarian atau filter Anda.",
+        "title": "Tidak ada transaksi yang cocok"
+      },
+      "notifier": {
+        "ready": "Aktivitas dompet dimuat."
+      },
+      "refresh": "Segarkan",
+      "subtitle": "Pemantauan real - time interaksi blockchain yang masuk dan keluar.",
+      "title": "Aktivitas Terminal Terbaru",
+      "toolbar": {
+        "export": "Ekspor",
+        "exportCsv": "Ekspor CSV",
+        "exportJson": "Ekspor JSON",
+        "searchPlaceholder": "Cari berdasarkan hash atau aset...",
+        "sort": {
+          "amount": "Jumlah",
+          "newest": "Terbaru",
+          "oldest": "Terlama"
+        }
       }
     },
     "stats": {
@@ -396,285 +703,6 @@
       "contract": "Pelaksanaan Kontrak",
       "received": "Diterima",
       "sent": "Terkirim"
-    }
-  },
-  "comingSoon": {
-    "badge": "Segera",
-    "description": "Kami sedang membangun fitur ini. Segera periksa kembali."
-  },
-  "connectModal": {
-    "errors": {
-      "braveBlocked": {
-        "title": "WalletConnect tampaknya diblokir oleh Brave Shields.",
-        "tryTitle": "Coba salah satu langkah berikut:",
-        "shieldsOff": "Matikan Brave Shields untuk situs ini dan coba lagi.",
-        "privateWindow": "Buka situs ini di Jendela Privat Brave.",
-        "useChrome": "Gunakan Google Chrome atau browser lain yang didukung jika masalah berlanjut."
-      },
-      "generic": "Terjadi gesekan koneksi yang tidak terduga. Silakan coba lagi atau gunakan dompet lain.",
-      "providerGone": "Dompet ini sepertinya tidak lagi merespons — mungkin telah diperbarui atau dihapus. Menyegarkan halaman seharusnya memperbaikinya.",
-      "pending": "Permintaan koneksi sudah terbuka. Silakan buka panel ekstensi dompet Anda.",
-      "rejected": "Permintaan koneksi dibatalkan di dompet Anda.",
-      "timeout": "Tidak dapat menjangkau WalletConnect. Periksa koneksi Anda dan coba lagi.",
-      "wrongNetwork": "Harap alihkan jaringan aktif dompet Anda ke Flare Mainnet."
-    },
-    "install": "Instal",
-    "installHint": "Masih belum melihat dompet Anda? Menyegarkan halaman mungkin membantu.",
-    "refresh": "Segarkan",
-    "mobileHint": "Di ponsel, buka FlareGPT di browser bawaan dompet Anda untuk pengalaman koneksi terbaik. Saat memindai kode QR, gunakan pemindai bawaan aplikasi dompet Anda, bukan kamera ponsel, untuk koneksi yang lebih andal.",
-    "connecting": "Menghubungkan…",
-    "recommended": "Direkomendasikan",
-    "subtitle": "Pilih dompet pilihan Anda untuk terhubung ke Jaringan Flare.",
-    "title": "Hubungkan Dompet",
-    "viaWalletConnect": "Melalui WalletConnect"
-  },
-  "flareWidget": {
-    "close": "Tutup",
-    "collapse": "Ciutkan",
-    "expand": "Bentangkan",
-    "openFullPage": "Buka halaman penuh"
-  },
-  "flrgpt": {
-    "prompts": {
-      "analyzeWallet": "Analisis dompet saya",
-      "increaseRewards": "Bagaimana cara meningkatkan reward FTSO saya?",
-      "explainDelegations": "Jelaskan delegasi saya",
-      "compareProtocols": "Bandingkan Sceptre vs Firelight",
-      "rewardsDecreased": "Mengapa reward saya menurun?",
-      "stakingOpportunities": "Tampilkan peluang staking saya"
-    },
-    "wallet": {
-      "analyzing": "Menganalisis:"
-    },
-    "empty": {
-      "title": "Tanyakan apa saja ke FlareGPT",
-      "subtitle": "Dapatkan jawaban tentang dompet, reward, delegasi, atau ekosistem Flare Anda."
-    },
-    "composer": {
-      "placeholder": "Tanya FlareGPT...",
-      "send": "Kirim",
-      "stop": "Hentikan pembuatan",
-      "disclaimer": "FlareGPT dapat membuat kesalahan. Verifikasi informasi penting sebelum menindaklanjutinya."
-    },
-    "actions": {
-      "copy": "Salin",
-      "regenerate": "Buat ulang respons",
-      "copied": "Pesan disalin",
-      "copyFailed": "Gagal menyalin"
-    },
-    "jumpToLatest": "Lompat ke terbaru",
-    "historyLoadFailed": "Riwayat obrolan Anda gagal dimuat.",
-    "sendError": "Terjadi kesalahan — silakan coba lagi.",
-    "newChat": "Obrolan Baru",
-    "deleteConversation": {
-      "button": "Hapus Percakapan",
-      "confirm": "Konfirmasi?"
-    },
-    "deleteConversationFailed": "Gagal menghapus percakapan ini. Silakan coba lagi.",
-    "history": {
-      "title": "Riwayat Obrolan",
-      "newChat": "Obrolan Baru",
-      "searchPlaceholder": "Cari percakapan...",
-      "empty": "Belum ada percakapan",
-      "noResults": "Tidak ada percakapan yang cocok dengan pencarian Anda",
-      "untitled": "Tanpa judul",
-      "moreActions": "Tindakan lainnya",
-      "pin": "Sematkan",
-      "unpin": "Lepas sematan",
-      "rename": "Ganti nama",
-      "delete": "Hapus",
-      "pinLimitReached": "Anda dapat menyematkan hingga {{count}} percakapan",
-      "renameFailed": "Gagal mengganti nama percakapan ini.",
-      "openButton": "Riwayat",
-      "saveRename": "Simpan",
-      "cancelRename": "Batal"
-    }
-  },
-  "dashboard": {
-    "description": "Sekilas data jaringan Flare Langsung, grafik harga, dan aktivitas dompet.",
-    "common": {
-      "retry": "Coba lagi",
-      "retrying": "Mencoba lagi.\n\n",
-      "networkHiccup": "Ini biasanya cegukan jaringan sementara.",
-      "noWalletSelected": "Tidak ada dompet dipilih",
-      "yes": "Ya",
-      "no": "No"
-    },
-    "stats": {
-      "flrPrice": "Harga FLR",
-      "marketCap": "Kap Pasar",
-      "volume24h": "Volume 24 jam",
-      "tvl": "TVL",
-      "couldntLoad": "Tidak dapat memuat ikhtisar pasar"
-    },
-    "chart": {
-      "couldntLoad": "Tidak dapat memuat riwayat harga FLR"
-    },
-    "networkActivity": {
-      "title": "Aktivitas Jaringan",
-      "live": "Langsung",
-      "gwei": "Gwei",
-      "gasPrice": "harga gas",
-      "tps": "TPS",
-      "couldntLoad": "Tidak dapat memuat data jaringan",
-      "collectingSamples": "Mengumpulkan sampel langsung — grafik terisi saat data baru tiba."
-    },
-    "walletBalances": {
-      "title": "Saldo Dompet",
-      "connectToSeeBalances": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat saldo.",
-      "couldntLoad": "Tidak dapat memuat saldo dompet"
-    },
-    "ftso": {
-      "title": "Delegasi FTSO",
-      "connected": "Tersambung",
-      "readOnly": "Hanya-baca",
-      "connectToSeeRewards": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat hadiah.",
-      "couldntLoad": "Tidak dapat memuat portofolio FTSO",
-      "delegatedWflr": "WFLR yang Didelegasikan",
-      "unclaimedFlr": "FLR yang tidak diklaim",
-      "activeDelegations": "Delegasi Aktif",
-      "estHourlyEarning": "Penghasilan Per Jam Est.",
-      "claimRewards": "Klaim Hadiah",
-      "readOnlyCannotClaim": "Hanya baca — tidak dapat mengklaim",
-      "switchToClaim": "Beralih ke dompet Anda yang terhubung untuk mengklaim hadiah",
-      "noUnclaimedYet": "Belum ada hadiah yang belum diklaim",
-      "claimComingSoon": "Klaim belum tersedia — segera hadir."
-    },
-    "claimsHistory": {
-      "title": "Riwayat Klaim",
-      "connectToSee": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat riwayat klaim.",
-      "couldntLoad": "Tidak dapat memuat riwayat klaim",
-      "emptyTitle": "Tidak ada zaman yang tidak diklaim",
-      "emptyDescription": "Anda semua terjebak — tidak ada periode hadiah yang tertunda untuk diklaim."
-    },
-    "delegationsBreakdown": {
-      "title": "Perincian Delegasi",
-      "tabLabel": "Delegasi",
-      "connectToSee": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat delegasi.",
-      "couldntLoad": "Tidak dapat memuat delegasi",
-      "emptyTitle": "Tidak ada delegasi aktif",
-      "emptyDescription": "Delegasikan WFLR ke penyedia FTSO untuk mulai mendapatkan hadiah."
-    },
-    "apiStatus": {
-      "checking": "Memeriksa status api...",
-      "operational": "Semua sistem beroperasi",
-      "degraded": "Api terdegradasi"
-    }
-  },
-  "defiProtocols": {
-    "description": "Bandingkan strategi imbal hasil dan pantau posisi Anda di vault MXRPY, Sceptre, dan Firelight.",
-    "common": {
-      "addressCopied": "Alamat disalin ke clipboard",
-      "copyFailed": "Gagal menyalin alamat",
-      "connectToSeePosition": "Hubungkan wallet untuk melihat posisi Anda",
-      "contract": "Kontrak",
-      "proxyContract": "Kontrak Proxy",
-      "poolOwnership": "Kepemilikan Pool",
-      "protocolDetails": "Detail protokol",
-      "yourBalance": "Saldo Anda",
-      "redeemableValue": "Nilai yang Dapat Ditukarkan"
-    },
-    "explorer": {
-      "title": "Penjelajah Protokol",
-      "subtitle": "Pilih protokol untuk melihat posisi dan detail Anda"
-    },
-    "kpis": {
-      "protocolsTracked": "Protokol Terlacak",
-      "bestApr": "APR Terbaik Tersedia",
-      "activePositions": "Posisi Aktif"
-    },
-    "mxrpy": {
-      "title": "MXRPY Vault",
-      "subtitle": "Monarq XRP Yield Vault",
-      "couldntLoad": "Posisi MXRPY Anda gagal dimuat",
-      "circulatingCaption": "{{shares}} saham beredar · {{decimals}} desimal",
-      "yourShares": "Saham Tanda Terima Anda",
-      "category": "Yield Vault"
-    },
-    "sceptre": {
-      "title": "Sceptre Liquid Staking",
-      "subtitle": "Liquid staking sFLR",
-      "couldntLoad": "Posisi Sceptre Anda gagal dimuat",
-      "exchangeRateLabel": "Kurs sFLR / FLR",
-      "totalMinted": "Total Saham Diterbitkan",
-      "backedFlr": "FLR Pendukung Dasar",
-      "category": "Liquid Staking"
-    },
-    "firelight": {
-      "title": "Firelight Vault",
-      "subtitle": "Vault perlindungan modal",
-      "couldntLoad": "Posisi Firelight Anda gagal dimuat",
-      "backingLabel": "Pengganda jaminan aset",
-      "circulatingSupply": "Pasokan Beredar",
-      "underlyingReserve": "Cadangan Dasar",
-      "insuranceRobust": "Asuransi: Kuat",
-      "category": "Asuransi"
-    },
-    "strategies": {
-      "title": "Perbandingan Strategi",
-      "subtitle": "Lihat bagaimana FLR Anda dapat berkinerja di berbagai strategi",
-      "amountLabel": "Bandingkan untuk",
-      "apr": "APR",
-      "colStrategy": "Strategi",
-      "colYield": "Est. Imbal Hasil (FLR)",
-      "colTerms": "Ketentuan",
-      "compoundingLabel": "Bunga Majemuk",
-      "couldntLoad": "Perbandingan strategi gagal dimuat",
-      "highestApr": "APR Tertinggi",
-      "lockupDays": "Lock-up {{count}} hari",
-      "lockupHours": "Lock-up {{count}} jam",
-      "noLockup": "Tanpa lock-up",
-      "verdict": "Penilaian FlareGPT"
-    }
-  },
-  "donate": {
-    "title": "Dukung FlareGPT",
-    "description": "Dukungan Anda membantu menjaga FlareGPT tetap gratis, independen, dan terus berkembang.",
-    "hero": {
-      "addressLabel": "Alamat Wallet",
-      "tapToCopy": "Ketuk untuk menyalin",
-      "copyAddress": "Salin Alamat",
-      "copied": "Tersalin",
-      "addressCopied": "Alamat disalin ke clipboard",
-      "copyFailed": "Gagal menyalin alamat",
-      "viewOnExplorer": "Lihat di {{explorer}}",
-      "multisigNote": "Diamankan oleh wallet multi-tanda tangan",
-      "qrTitle": "Kode QR untuk alamat wallet donasi {{symbol}}"
-    },
-    "warning": {
-      "title": "Hanya aset {{network}}.",
-      "body": "Hanya kirim {{symbol}} atau token {{network}} lainnya ke alamat ini. Aset yang dikirim dari jaringan lain tidak dapat dipulihkan."
-    },
-    "amounts": {
-      "title": "Jumlah yang Disarankan",
-      "subtitle": "Setiap kontribusi membantu — berikut beberapa ide untuk memulai.",
-      "impactTier1": "Biaya API satu hari",
-      "impactTier2": "Hosting satu minggu",
-      "impactTier3": "Infrastruktur satu bulan",
-      "impactTier4": "Integrasi protokol baru",
-      "copiedToast": "Alamat disalin. Terima kasih telah mempertimbangkan donasi {{amount}} {{symbol}}."
-    },
-    "funding": {
-      "title": "Transparansi Pendanaan",
-      "subtitle": "Gambaran terbuka tentang biaya menjalankan FlareGPT — tanpa tekanan, hanya transparansi.",
-      "monthlyInfrastructure": "Infrastruktur Bulanan",
-      "developmentFund": "Dana Pengembangan",
-      "raisedOfGoal": "{{raised}} terkumpul dari target {{goal}}"
-    },
-    "received": {
-      "title": "Donasi Diterima",
-      "subtitle": "Total kontribusi yang diterima di setiap jaringan yang didukung.",
-      "demoData": "Data demo"
-    },
-    "support": {
-      "title": "Yang Didanai oleh Dukungan Anda",
-      "infra": "API & Infrastruktur",
-      "integrations": "Integrasi Protokol Baru",
-      "free": "Menjaga FlareGPT Tetap Gratis",
-      "development": "Pengembangan Berkelanjutan"
-    },
-    "closing": {
-      "message": "Terima kasih telah membantu menjaga FlareGPT tetap independen. Setiap kontribusi, besar atau kecil, sungguh membantu."
     }
   }
 }
