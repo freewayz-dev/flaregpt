@@ -159,15 +159,15 @@
       "couldntLoad": "无法加载策略对比",
       "highestApr": "最高年化收益率",
       "lockupDays": "锁定 {{count}} 天",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
       "lockupDays_other": "defiProtocols.strategies.lockupDays",
       "lockupHours": "锁定 {{count}} 小时",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
       "lockupHours_other": "defiProtocols.strategies.lockupHours",
       "noLockup": "无锁定期",
       "subtitle": "查看您的 FLR 在不同策略下的表现",
       "title": "策略对比",
-      "verdict": "FlareGPT 结论",
-      "lockupDays_one": "defiProtocols.strategies.lockupDays",
-      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+      "verdict": "FlareGPT 结论"
     }
   },
   "donate": {
@@ -262,6 +262,7 @@
       "openButton": "历史记录",
       "pin": "置顶",
       "pinLimitReached": "最多可置顶 {{count}} 个对话",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
       "pinLimitReached_other": "flrgpt.history.pinLimitReached",
       "rename": "重命名",
       "renameFailed": "无法重命名此对话。",
@@ -269,8 +270,7 @@
       "searchPlaceholder": "搜索对话...",
       "title": "聊天记录",
       "unpin": "取消置顶",
-      "untitled": "无标题",
-      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+      "untitled": "无标题"
     },
     "historyLoadFailed": "无法加载聊天记录。",
     "jumpToLatest": "跳转到最新",
@@ -431,11 +431,13 @@
       "clear": "清除",
       "confirmClear": "确认？",
       "conversations": "FlareGPT 对话",
+      "conversationsCleared": "对话已清除",
       "conversationsClearFailed": "无法清除聊天记录。请重试。",
       "conversationsDescription": "从您的账户中清除 FlareGPT 聊天记录。此操作无法撤销。",
       "localSubtitle": "仅存储在此浏览器中。清除它是即时和安全的。",
       "localTitle": "本地数据",
       "walletCache": "钱包活动缓存",
+      "walletCacheCleared": "缓存已清除",
       "walletCacheDescription": "清除缓存的交易记录。下次访问时将重新获取。"
     },
     "description": "管理钱包、偏好设置、本地化和显示选项。",
@@ -558,9 +560,9 @@
       "rename": "重命名",
       "saveEdit": "保存",
       "searchPlaceholder": "在 {{count}} 个钱包中搜索...",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
       "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
-      "tracked": "已追踪",
-      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
+      "tracked": "已追踪"
     }
   },
   "sidebar": {
@@ -630,27 +632,27 @@
         "mostUsedAsset": "最常用资产",
         "title": "快速洞察",
         "txCount": "{{count}} 笔交易",
-        "txCount_other": "wallet.activity.insights.txCount",
-        "txCount_one": "wallet.activity.insights.txCount"
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_other": "wallet.activity.insights.txCount"
       },
       "kpi": {
         "daysAgo": "{{count}} 天前",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
         "daysAgo_other": "wallet.activity.kpi.daysAgo",
         "hoursAgo": "{{count}} 小时前",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
         "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
         "justNow": "刚刚",
         "lastActive": "最近活动",
         "minutesAgo": "{{count}} 分钟前",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
         "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
         "totalTransactions": "交易总数",
         "uniqueAssets": "独立资产数",
         "walletAge": "钱包年龄",
         "walletAgeDays": "{{count}} 天",
         "walletAgeMonths": "{{count}} 个月",
-        "walletAgeYears": "{{count}} 年",
-        "daysAgo_one": "wallet.activity.kpi.daysAgo",
-        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
-        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+        "walletAgeYears": "{{count}} 年"
       },
       "loading": {
         "elapsed": "已用时 {{seconds}} 秒",

@@ -431,11 +431,13 @@
       "clear": "साफ़ करें",
       "confirmClear": "पुष्टि करें?",
       "conversations": "FlareGPT बातचीत",
+      "conversationsCleared": "बातचीत साफ़ हो गई",
       "conversationsClearFailed": "चैट इतिहास साफ़ नहीं हो सका। फिर से प्रयास करें।",
       "conversationsDescription": "आपके खाते से FlareGPT चैट इतिहास साफ़ करता है। इसे पूर्ववत नहीं किया जा सकता।",
       "localSubtitle": "केवल इस ब्राउज़र में सहेजा गया है। इसे साफ़ करना तुरंत और सुरक्षित है।",
       "localTitle": "स्थानीय डेटा",
       "walletCache": "वॉलेट गतिविधि कैश",
+      "walletCacheCleared": "कैश साफ़ हो गया",
       "walletCacheDescription": "कैश्ड लेनदेन इतिहास साफ़ करता है। अगली बार आने पर इसे फिर से लाया जाएगा।"
     },
     "description": "वॉलेट, प्राथमिकताओं, स्थानीयकरण और डिस्प्ले विकल्पों को प्रबंधित करें।",

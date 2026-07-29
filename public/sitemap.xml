@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hand-written and static, not generated — there are exactly two public,
+  indexable URLs today (everything under /app is disallowed in robots.txt,
+  see that file for why). A generator/build step would be solving a problem
+  that doesn't exist yet; add one if/when a blog or other content section
+  gives this a URL count worth automating.
+
+  TODO: update every <loc> below once a production domain is assigned.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://flaregpt.io/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://flaregpt.io/terms</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

@@ -2,9 +2,12 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+
 export default function Terms() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  useDocumentTitle(t("footer.terms"));
 
   return (
     <div className="min-h-dvh bg-[#F0F4F9] dark:bg-[#101115] px-4 py-16">

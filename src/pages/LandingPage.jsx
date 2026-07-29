@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useConnection } from "wagmi";
 import { CheckIcon } from "lucide-react";
 import {
@@ -30,7 +30,7 @@ import { ROUTES } from "@/config/routes";
 import flareLogo from "@/assets/icons/fl.png";
 import openLogo from "@/assets/icons/image.png";
 import walletConnectLogo from "@/assets/wallets/icon.png";
-import bifrostLogo from "@/assets/wallets/bifrost.jpeg";
+import claudeLogo from "@/assets/icons/claude-logo.png";
 import overviewLight from "@/assets/showcase/overview-light.png";
 import overviewDark from "@/assets/showcase/overview-dark.png";
 import defiLight from "@/assets/showcase/defi-light.png";
@@ -61,6 +61,30 @@ export default function LandingPage() {
   // gets to read it, silently killing the redirect. Only a genuine
   // cancel (closing while still disconnected) resets it.
   const awaitingConnectRef = useRef(false);
+
+  // Built from the same `faqs` array the accordion below actually renders,
+  // not a separately-maintained copy — editing a question/answer only
+  // needs to happen in one place and this stays truthful to what's really
+  // on the page. Google explicitly supports structured data injected by JS
+  // after render (unlike the static OG/Twitter tags in index.html, which
+  // exist because *other* crawlers don't run JS at all), so there's no
+  // real cost to keeping this here instead of duplicating the content
+  // statically.
+  const faqJsonLd = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
+    }),
+    [],
+  );
 
   const openWalletModal = () => {
     awaitingConnectRef.current = true;
@@ -169,13 +193,12 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-5">
-              <button
-                type="button"
-                onClick={() => navigate(ROUTES.app)}
+              <Link
+                to={ROUTES.app}
                 className="rounded-full bg-brand px-7 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 Launch App
-              </button>
+              </Link>
 
               <button
                 type="button"
@@ -554,6 +577,10 @@ export default function LandingPage() {
 
         <FadeIn delay={0.2}>
           <section id="faq" className="pt-28 md:pt-32 px-4 xl:px-0">
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+            />
             <div className="max-w-3xl mx-auto">
               {/* Header */}
 
@@ -662,13 +689,12 @@ export default function LandingPage() {
 
 
               <div className="relative z-10 mt-10 flex flex-col items-center gap-5">
-                <button
-                  type="button"
-                  onClick={() => navigate(ROUTES.app)}
+                <Link
+                  to={ROUTES.app}
                   className="rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-brand-hover shadow-lg shadow-brand/20 hover:shadow-brand/30 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                 >
                   Launch App
-                </button>
+                </Link>
 
 
                 <p className="mt-2 text-[11px] text-ink-muted">
@@ -688,7 +714,7 @@ export default function LandingPage() {
             {/* Ecosystem */}
             <div className="flex flex-col items-center gap-8 pb-12">
               <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#64748B] dark:text-[#71717A]">
-                Powered by trusted technologies
+                Built with industry-leading technologies
               </p>
 
               {/* Mobile */}
@@ -762,27 +788,27 @@ export default function LandingPage() {
 
                 {/* Navigation */}
                 <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 font-mono text-[11px] font-bold text-[#64748B] dark:text-[#A1A1AA] sm:justify-end">
-                  <button
-                    onClick={() => navigate(ROUTES.app)}
+                  <Link
+                    to={ROUTES.app}
                     className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     Launch App
-                  </button>
+                  </Link>
 
-                  <button
-                    onClick={() => navigate(ROUTES.terms)}
+                  <Link
+                    to={ROUTES.terms}
                     className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     Terms
-                  </button>
+                  </Link>
 
-                  <button
-                    onClick={() => navigate(ROUTES.donate)}
+                  <Link
+                    to={ROUTES.donate}
                     className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-brand transition-all hover:bg-brand hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     Donate
                     <HeartIcon className="h-3 w-3" />
-                  </button>
+                  </Link>
 
                   <a
                     href="https://x.com"
@@ -927,7 +953,7 @@ const EcosystemPartners = [
   },
 
   {
-    name: "Bifrost Wallet",
-    logo: bifrostLogo,
+    name: "Claude",
+    logo: claudeLogo,
   },
 ];

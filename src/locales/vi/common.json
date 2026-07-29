@@ -159,15 +159,15 @@
       "couldntLoad": "Không thể tải so sánh chiến lược",
       "highestApr": "APR Cao nhất",
       "lockupDays": "Khóa {{count}} ngày",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
       "lockupDays_other": "defiProtocols.strategies.lockupDays",
       "lockupHours": "Khóa {{count}} giờ",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
       "lockupHours_other": "defiProtocols.strategies.lockupHours",
       "noLockup": "Không khóa",
       "subtitle": "Xem FLR của bạn có thể sinh lời như thế nào ở từng chiến lược",
       "title": "So sánh Chiến lược",
-      "verdict": "Nhận định của FlareGPT",
-      "lockupDays_one": "defiProtocols.strategies.lockupDays",
-      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+      "verdict": "Nhận định của FlareGPT"
     }
   },
   "donate": {
@@ -262,6 +262,7 @@
       "openButton": "Lịch sử",
       "pin": "Ghim",
       "pinLimitReached": "Bạn có thể ghim tối đa {{count}} cuộc trò chuyện",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
       "pinLimitReached_other": "flrgpt.history.pinLimitReached",
       "rename": "Đổi tên",
       "renameFailed": "Không thể đổi tên cuộc trò chuyện này.",
@@ -269,8 +270,7 @@
       "searchPlaceholder": "Tìm kiếm cuộc trò chuyện...",
       "title": "Lịch sử trò chuyện",
       "unpin": "Bỏ ghim",
-      "untitled": "Chưa đặt tên",
-      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+      "untitled": "Chưa đặt tên"
     },
     "historyLoadFailed": "Không thể tải lịch sử trò chuyện.",
     "jumpToLatest": "Đến tin mới nhất",
@@ -431,11 +431,13 @@
       "clear": "Xóa",
       "confirmClear": "Xác nhận?",
       "conversations": "Cuộc trò chuyện FlareGPT",
+      "conversationsCleared": "Đã xóa cuộc trò chuyện",
       "conversationsClearFailed": "Không thể xóa lịch sử trò chuyện. Vui lòng thử lại.",
       "conversationsDescription": "Xóa lịch sử trò chuyện FlareGPT khỏi tài khoản của bạn. Không thể hoàn tác.",
       "localSubtitle": "Chỉ được lưu trên trình duyệt này. Việc xóa diễn ra ngay lập tức và an toàn.",
       "localTitle": "Dữ liệu cục bộ",
       "walletCache": "Bộ nhớ đệm hoạt động ví",
+      "walletCacheCleared": "Đã xóa bộ nhớ đệm",
       "walletCacheDescription": "Xóa lịch sử giao dịch đã lưu trong bộ nhớ đệm. Lần truy cập tiếp theo sẽ tải lại dữ liệu này."
     },
     "description": "Quản lý ví, tùy chọn, bản địa hóa và thiết lập hiển thị.",
@@ -558,9 +560,9 @@
       "rename": "Đổi tên",
       "saveEdit": "Lưu",
       "searchPlaceholder": "Tìm kiếm trong {{count}} ví...",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
       "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
-      "tracked": "Đã theo",
-      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
+      "tracked": "Đã theo"
     }
   },
   "sidebar": {
@@ -630,27 +632,27 @@
         "mostUsedAsset": "Tài sản dùng nhiều nhất",
         "title": "Thông tin nhanh",
         "txCount": "{{count}} giao dịch",
-        "txCount_other": "wallet.activity.insights.txCount",
-        "txCount_one": "wallet.activity.insights.txCount"
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_other": "wallet.activity.insights.txCount"
       },
       "kpi": {
         "daysAgo": "{{count}} ngày trước",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
         "daysAgo_other": "wallet.activity.kpi.daysAgo",
         "hoursAgo": "{{count}} giờ trước",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
         "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
         "justNow": "Vừa xong",
         "lastActive": "Hoạt động gần nhất",
         "minutesAgo": "{{count}} phút trước",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
         "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
         "totalTransactions": "Tổng số giao dịch",
         "uniqueAssets": "Tài sản riêng biệt",
         "walletAge": "Tuổi ví",
         "walletAgeDays": "{{count}} ngày",
         "walletAgeMonths": "{{count}} tháng",
-        "walletAgeYears": "{{count}} năm",
-        "daysAgo_one": "wallet.activity.kpi.daysAgo",
-        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
-        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+        "walletAgeYears": "{{count}} năm"
       },
       "loading": {
         "elapsed": "đã trôi qua {{seconds}}s",

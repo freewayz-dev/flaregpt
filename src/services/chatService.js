@@ -44,11 +44,30 @@ export async function deleteConversation(conversationId) {
   return data; // { status: "deleted", id }
 }
 
-// Confirmed live: still works post-migration, and clears every
-// conversation at once (not just a legacy flat view) — this is what
-// Settings > Data & Storage's "delete all chat data" uses instead of
-// looping a DELETE per conversation.
+// NOT `DELETE /api/v1/chat/history`, despite that endpoint existing and
+// claiming success — confirmed live it only ever actually deletes the
+// single most-recently-updated conversation no matter how many exist,
+// while still responding `{"status": "cleared"}` regardless. That's worse
+// than the endpoint just not existing: a caller (and the user, via the
+// success toast Settings > Data & Storage shows) has no way to tell a
+// real full clear apart from that silent partial one. Looping the
+// single-conversation delete instead — already proven reliable, it's what
+// the history panel's own row-delete uses — actually delivers "every
+// conversation is gone" rather than trusting a response that doesn't
+// reflect what happened server-side.
 export async function clearAllConversations() {
-  const { data } = await flareApi.delete("/api/v1/chat/history");
-  return data; // { status: "cleared" }
+  const conversations = await fetchConversations();
+  await Promise.all(
+    conversations.map((c) =>
+      deleteConversation(c.id).catch((error) => {
+        // Already gone (a race with another tab/device) is the outcome we
+        // wanted anyway — only a genuine failure should fail the whole
+        // clear, matching the same 404-is-fine convention used elsewhere
+        // for this same per-conversation delete.
+        if (error?.response?.status === 404) return;
+        throw error;
+      }),
+    ),
+  );
+  return { status: "cleared" };
 }

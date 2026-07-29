@@ -1,0 +1,19 @@
+# TEMPORARY — this deployment is a team-testing build on Vercel's free
+# tier, not the real launch (see the noindex meta tag in index.html, which
+# does the same job at the page level as a second layer of protection).
+# Blocking everything here too means a crawler that ignores meta robots
+# still never even fetches a page to find that tag.
+#
+# Restore the real rules below (delete the "Disallow: /" line above them)
+# the day a production domain is attached and this actually goes live:
+#
+#   User-agent: *
+#   Allow: /
+#   Allow: /terms
+#   Disallow: /app/
+#
+#   Sitemap: https://flaregpt.io/sitemap.xml
+#   (update that domain to the real one too — see index.html's own TODO)
+
+User-agent: *
+Disallow: /

@@ -159,15 +159,15 @@
       "couldntLoad": "전략 비교를 불러오지 못했습니다",
       "highestApr": "최고 APR",
       "lockupDays": "{{count}}일 락업",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
       "lockupDays_other": "defiProtocols.strategies.lockupDays",
       "lockupHours": "{{count}}시간 락업",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
       "lockupHours_other": "defiProtocols.strategies.lockupHours",
       "noLockup": "락업 없음",
       "subtitle": "전략별로 FLR이 어떻게 수익을 낼 수 있는지 확인하세요",
       "title": "전략 비교",
-      "verdict": "FlareGPT 평가",
-      "lockupDays_one": "defiProtocols.strategies.lockupDays",
-      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+      "verdict": "FlareGPT 평가"
     }
   },
   "donate": {
@@ -262,6 +262,7 @@
       "openButton": "기록",
       "pin": "고정",
       "pinLimitReached": "최대 {{count}}개의 대화를 고정할 수 있습니다",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
       "pinLimitReached_other": "flrgpt.history.pinLimitReached",
       "rename": "이름 변경",
       "renameFailed": "이 대화의 이름을 변경하지 못했습니다.",
@@ -269,8 +270,7 @@
       "searchPlaceholder": "대화 검색...",
       "title": "채팅 기록",
       "unpin": "고정 해제",
-      "untitled": "제목 없음",
-      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+      "untitled": "제목 없음"
     },
     "historyLoadFailed": "채팅 기록을 불러오지 못했습니다.",
     "jumpToLatest": "최신으로 이동",
@@ -431,11 +431,13 @@
       "clear": "지우기",
       "confirmClear": "확인할까요?",
       "conversations": "FlareGPT 대화",
+      "conversationsCleared": "대화가 삭제되었습니다",
       "conversationsClearFailed": "채팅 기록을 삭제하지 못했습니다. 다시 시도해 주세요.",
       "conversationsDescription": "계정에서 FlareGPT 채팅 기록을 삭제합니다. 이 작업은 되돌릴 수 없습니다.",
       "localSubtitle": "이 브라우저에만 저장됩니다. 삭제는 즉시 안전하게 이루어집니다.",
       "localTitle": "로컬 데이터",
       "walletCache": "지갑 활동 캐시",
+      "walletCacheCleared": "캐시가 삭제되었습니다",
       "walletCacheDescription": "캐시된 거래 내역을 삭제합니다. 다음 방문 시 다시 가져옵니다."
     },
     "description": "지갑, 기본 설정, 지역화 및 디스플레이 옵션을 관리합니다.",
@@ -558,9 +560,9 @@
       "rename": "이름 바꾸기",
       "saveEdit": "저장",
       "searchPlaceholder": "{{count}}개 지갑 검색...",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
       "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
-      "tracked": "추적됨",
-      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
+      "tracked": "추적됨"
     }
   },
   "sidebar": {
@@ -630,27 +632,27 @@
         "mostUsedAsset": "가장 많이 사용된 자산",
         "title": "빠른 인사이트",
         "txCount": "거래 {{count}}건",
-        "txCount_other": "wallet.activity.insights.tx수",
-        "txCount_one": "wallet.activity.insights.tx수"
+        "txCount_one": "wallet.activity.insights.tx수",
+        "txCount_other": "wallet.activity.insights.tx수"
       },
       "kpi": {
         "daysAgo": "{{count}}일 전",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
         "daysAgo_other": "wallet.activity.kpi.daysAgo",
         "hoursAgo": "{{count}}시간 전",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
         "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
         "justNow": "방금 전",
         "lastActive": "마지막 활동",
         "minutesAgo": "{{count}}분 전",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
         "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
         "totalTransactions": "총 거래 수",
         "uniqueAssets": "고유 자산",
         "walletAge": "지갑 사용 기간",
         "walletAgeDays": "{{count}}일",
         "walletAgeMonths": "{{count}}개월",
-        "walletAgeYears": "{{count}}년",
-        "daysAgo_one": "wallet.activity.kpi.daysAgo",
-        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
-        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+        "walletAgeYears": "{{count}}년"
       },
       "loading": {
         "elapsed": "{{seconds}}초 경과",

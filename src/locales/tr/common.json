@@ -431,11 +431,13 @@
       "clear": "Temizle",
       "confirmClear": "Onaylansın mı?",
       "conversations": "FlareGPT Konuşmaları",
+      "conversationsCleared": "Görüşmeler temizlendi",
       "conversationsClearFailed": "Sohbet geçmişi temizlenemedi. Tekrar deneyin.",
       "conversationsDescription": "Hesabınızdaki FlareGPT sohbet geçmişini temizler. Bu işlem geri alınamaz.",
       "localSubtitle": "Yalnızca bu tarayıcıda depolanır. Temizlenmesi anında ve güvenlidir.",
       "localTitle": "Yerel Veri",
       "walletCache": "Cüzdan Etkinliği Önbelleği",
+      "walletCacheCleared": "Önbellek temizlendi",
       "walletCacheDescription": "Önbelleğe alınmış işlem geçmişini temizler. Bir sonraki ziyaret bunu yeniden getirecektir."
     },
     "description": "Cüzdanları, tercihleri, yerelleştirmeyi ve görünüm seçeneklerini yönetin.",

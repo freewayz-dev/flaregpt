@@ -159,15 +159,15 @@
       "couldntLoad": "Perbandingan strategi gagal dimuat",
       "highestApr": "APR Tertinggi",
       "lockupDays": "Lock-up {{count}} hari",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
       "lockupDays_other": "defiProtocols.strategies.lockupDays",
       "lockupHours": "Lock-up {{count}} jam",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
       "lockupHours_other": "defiProtocols.strategies.lockupHours",
       "noLockup": "Tanpa lock-up",
       "subtitle": "Lihat bagaimana FLR Anda dapat berkinerja di berbagai strategi",
       "title": "Perbandingan Strategi",
-      "verdict": "Penilaian FlareGPT",
-      "lockupDays_one": "defiProtocols.strategies.lockupDays",
-      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+      "verdict": "Penilaian FlareGPT"
     }
   },
   "donate": {
@@ -262,6 +262,7 @@
       "openButton": "Riwayat",
       "pin": "Sematkan",
       "pinLimitReached": "Anda dapat menyematkan hingga {{count}} percakapan",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
       "pinLimitReached_other": "flrgpt.history.pinLimitReached",
       "rename": "Ganti nama",
       "renameFailed": "Gagal mengganti nama percakapan ini.",
@@ -269,8 +270,7 @@
       "searchPlaceholder": "Cari percakapan...",
       "title": "Riwayat Obrolan",
       "unpin": "Lepas sematan",
-      "untitled": "Tanpa judul",
-      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+      "untitled": "Tanpa judul"
     },
     "historyLoadFailed": "Tidak dapat memuat riwayat obrolan.",
     "jumpToLatest": "Lompat ke terbaru",
@@ -431,11 +431,13 @@
       "clear": "Hapus",
       "confirmClear": "Konfirmasi?",
       "conversations": "Percakapan FlareGPT",
+      "conversationsCleared": "Percakapan dihapus",
       "conversationsClearFailed": "Tidak dapat menghapus riwayat obrolan. Coba lagi.",
       "conversationsDescription": "Menghapus riwayat obrolan FlareGPT dari akun Anda. Tindakan ini tidak dapat dibatalkan.",
       "localSubtitle": "Hanya disimpan di browser ini. Menghapusnya instan dan aman.",
       "localTitle": "Data Lokal",
       "walletCache": "Cache Aktivitas Wallet",
+      "walletCacheCleared": "Cache dihapus",
       "walletCacheDescription": "Menghapus riwayat transaksi yang tersimpan dalam cache. Kunjungan berikutnya akan mengambilnya lagi."
     },
     "description": "Kelola dompet, preferensi, lokalisasi, dan opsi tampilan.",
@@ -558,9 +560,9 @@
       "rename": "Ganti nama",
       "saveEdit": "Simpan",
       "searchPlaceholder": "Cari di {{count}} dompet...",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
       "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
-      "tracked": "Dilacak",
-      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
+      "tracked": "Dilacak"
     }
   },
   "sidebar": {
@@ -630,27 +632,27 @@
         "mostUsedAsset": "Aset Paling Sering Digunakan",
         "title": "Wawasan Cepat",
         "txCount": "{{count}} transaksi",
-        "txCount_other": "wallet.activity.insights.txCount",
-        "txCount_one": "wallet.activity.insights.txCount"
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_other": "wallet.activity.insights.txCount"
       },
       "kpi": {
         "daysAgo": "{{count}} hari lalu",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
         "daysAgo_other": "wallet.activity.kpi.daysAgo",
         "hoursAgo": "{{count}} jam lalu",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
         "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
         "justNow": "Baru saja",
         "lastActive": "Terakhir Aktif",
         "minutesAgo": "{{count}} menit lalu",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
         "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
         "totalTransactions": "Total Transaksi",
         "uniqueAssets": "Aset Unik",
         "walletAge": "Usia Wallet",
         "walletAgeDays": "{{count}} hari",
         "walletAgeMonths": "{{count}} bulan",
-        "walletAgeYears": "{{count}} tahun",
-        "daysAgo_one": "wallet.activity.kpi.daysAgo",
-        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
-        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+        "walletAgeYears": "{{count}} tahun"
       },
       "loading": {
         "elapsed": "{{seconds}}d berlalu",

@@ -431,11 +431,13 @@
       "clear": "Löschen",
       "confirmClear": "Bestätigen?",
       "conversations": "FlareGPT-Unterhaltungen",
+      "conversationsCleared": "Unterhaltungen gelöscht",
       "conversationsClearFailed": "Chatverlauf konnte nicht gelöscht werden. Versuch es erneut.",
       "conversationsDescription": "Löscht deinen FlareGPT-Chatverlauf aus deinem Konto. Dies kann nicht rückgängig gemacht werden.",
       "localSubtitle": "Nur in diesem Browser gespeichert. Das Löschen ist sofort und sicher.",
       "localTitle": "Lokale Daten",
       "walletCache": "Wallet-Aktivitäts-Cache",
+      "walletCacheCleared": "Cache geleert",
       "walletCacheDescription": "Löscht den zwischengespeicherten Transaktionsverlauf. Beim nächsten Besuch wird er neu geladen."
     },
     "description": "Verwalten Sie Wallets, Präferenzen, Lokalisierung und Anzeigeoptionen.",

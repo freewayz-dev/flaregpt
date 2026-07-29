@@ -431,11 +431,13 @@
       "clear": "Clear",
       "confirmClear": "Confirm?",
       "conversations": "FlareGPT Conversations",
+      "conversationsCleared": "Conversations cleared",
       "conversationsClearFailed": "Couldn't clear chat history. Try again.",
       "conversationsDescription": "Clears your FlareGPT chat history from your account. This can't be undone.",
       "localSubtitle": "Stored in this browser only. Clearing it is instant and safe.",
       "localTitle": "Local Data",
       "walletCache": "Wallet Activity Cache",
+      "walletCacheCleared": "Cache cleared",
       "walletCacheDescription": "Clears the cached transaction history. The next visit will re-fetch it."
     },
     "description": "Manage wallets, preferences, localization, and display options.",

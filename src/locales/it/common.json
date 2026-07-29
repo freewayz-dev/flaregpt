@@ -434,11 +434,13 @@
       "clear": "Cancella",
       "confirmClear": "Confermare?",
       "conversations": "Conversazioni FlareGPT",
+      "conversationsCleared": "Conversazioni eliminate",
       "conversationsClearFailed": "Impossibile cancellare la cronologia chat. Riprova.",
       "conversationsDescription": "Cancella la cronologia chat di FlareGPT dal tuo account. Questa azione non può essere annullata.",
       "localSubtitle": "Memorizzato solo in questo browser. Cancellarlo è immediato e sicuro.",
       "localTitle": "Dati Locali",
       "walletCache": "Cache Attività Wallet",
+      "walletCacheCleared": "Cache cancellata",
       "walletCacheDescription": "Cancella la cronologia delle transazioni memorizzata nella cache. Verrà recuperata di nuovo alla prossima visita."
     },
     "description": "Gestisci wallet, preferenze, localizzazione e opzioni di visualizzazione.",

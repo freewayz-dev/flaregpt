@@ -4,7 +4,92 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>flare-gpt</title>
+
+    <!-- TEMPORARY — this deployment is currently a team-testing build on a
+         Vercel free-tier project, not the real launch. Unlike Vercel's
+         *preview* deployments (which get an automatic noindex header),
+         the Production deployment's own vercel.app URL gets no such
+         protection — if this got indexed under that throwaway URL now, it
+         would linger as duplicate content once the real domain launches,
+         potentially outranking it early on since it aged in the index
+         longer. DELETE this one meta tag (and only this one — nothing
+         else below needs to change) the day a real production domain is
+         attached and this is meant to actually go live. -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- SEO — TODO: this domain is a placeholder (no production domain was
+         assigned yet at the time this was written). Every absolute URL
+         below (canonical, og:url, og:image, twitter:image) needs updating
+         to the real one before launch — grep for "flaregpt.io" across this
+         file, robots.txt, and sitemap.xml to find every occurrence.
+
+         This is a client-rendered SPA (see main.jsx — one bundle, one
+         index.html served for every route via vercel.json's rewrite), so
+         these static tags are what non-JS crawlers (social unfurl bots:
+         X, LinkedIn, Slack, Discord) and link-preview tools see — they
+         don't execute JS the way Google's crawler does, so they only ever
+         get whatever's written here, for every route, not just "/". That's
+         fine today: the landing page is the one real public marketing
+         surface (the /app dashboard is gated, personalized, and excluded
+         from indexing — see robots.txt), so its title/description/OG data
+         doubling as the site-wide default costs nothing. -->
+    <title>FlareGPT: AI-Powered Dashboard for the Flare Network</title>
+    <meta
+      name="description"
+      content="Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio. No wallet required to start."
+    />
+    <link rel="canonical" href="https://flaregpt.io/" />
+
+    <!-- Open Graph (Facebook, LinkedIn, Slack, Discord, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://flaregpt.io/" />
+    <meta property="og:site_name" content="FlareGPT" />
+    <meta property="og:title" content="FlareGPT: AI-Powered Dashboard for the Flare Network" />
+    <meta
+      property="og:description"
+      content="Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio. No wallet required to start."
+    />
+    <meta property="og:image" content="https://flaregpt.io/og-image.png" />
+    <meta property="og:image:width" content="2384" />
+    <meta property="og:image:height" content="1355" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FlareGPT: AI-Powered Dashboard for the Flare Network" />
+    <meta
+      name="twitter:description"
+      content="Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio. No wallet required to start."
+    />
+    <meta name="twitter:image" content="https://flaregpt.io/og-image.png" />
+
+    <meta name="theme-color" content="#E62058" />
+
+    <!-- Organization + WebSite structured data — static and site-wide, so
+         it lives here rather than in a component; FAQPage structured data
+         (which needs to stay in sync with the actual FAQ content) is
+         instead rendered from LandingPage.jsx itself, right next to the
+         `faqs` array it mirrors. Google reads JSON-LD injected by JS after
+         render just as reliably as static markup, so splitting it this way
+         costs nothing for the crawler that actually consumes it. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "FlareGPT",
+        "url": "https://flaregpt.io/",
+        "logo": "https://flaregpt.io/og-image.png",
+        "description": "AI-powered dashboard for the Flare Network: wallet tracking, FTSO rewards, governance, and an AI assistant that understands your portfolio."
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "FlareGPT",
+        "url": "https://flaregpt.io/"
+      }
+    </script>
 
     <!-- Google Font Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

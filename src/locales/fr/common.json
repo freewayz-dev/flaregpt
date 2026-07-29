@@ -434,11 +434,13 @@
       "clear": "Effacer",
       "confirmClear": "Confirmer ?",
       "conversations": "Conversations FlareGPT",
+      "conversationsCleared": "Conversations effacées",
       "conversationsClearFailed": "Impossible d'effacer l'historique des discussions. Réessayez.",
       "conversationsDescription": "Efface l'historique de discussion FlareGPT de votre compte. Cette action est irréversible.",
       "localSubtitle": "Stocké uniquement dans ce navigateur. La suppression est instantanée et sûre.",
       "localTitle": "Données locales",
       "walletCache": "Cache d'activité du wallet",
+      "walletCacheCleared": "Cache effacé",
       "walletCacheDescription": "Efface l'historique des transactions mis en cache. Il sera actualisé lors de la prochaine visite."
     },
     "description": "Gérez les portefeuilles, les préférences, la localisation et les options d'affichage.",

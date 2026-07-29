@@ -443,11 +443,13 @@
       "clear": "مسح",
       "confirmClear": "تأكيد؟",
       "conversations": "محادثات FlareGPT",
+      "conversationsCleared": "تم مسح المحادثات",
       "conversationsClearFailed": "تعذّر مسح سجل الدردشة. حاول مرة أخرى.",
       "conversationsDescription": "يمسح سجل محادثات FlareGPT من حسابك. لا يمكن التراجع عن هذا الإجراء.",
       "localSubtitle": "يُخزَّن في هذا المتصفح فقط. مسحه فوري وآمن.",
       "localTitle": "البيانات المحلية",
       "walletCache": "ذاكرة التخزين المؤقت لنشاط المحفظة",
+      "walletCacheCleared": "تم مسح ذاكرة التخزين المؤقت",
       "walletCacheDescription": "يمسح سجل المعاملات المخزَّن مؤقتًا. سيتم إعادة جلبه عند الزيارة التالية."
     },
     "description": "إدارة المحافظ، التفضيلات، الموقع، وخيارات العرض.",

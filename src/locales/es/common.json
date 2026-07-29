@@ -434,11 +434,13 @@
       "clear": "Borrar",
       "confirmClear": "¿Confirmar?",
       "conversations": "Conversaciones de FlareGPT",
+      "conversationsCleared": "Conversaciones eliminadas",
       "conversationsClearFailed": "No se ha podido borrar el historial del chat. Inténtalo de nuevo.",
       "conversationsDescription": "Borra tu historial de chat de FlareGPT de tu cuenta. Esta acción no se puede deshacer.",
       "localSubtitle": "Almacenado solo en este navegador. Limpiarlo es instantáneo y seguro.",
       "localTitle": "Datos locales",
       "walletCache": "Caché de actividad de wallet",
+      "walletCacheCleared": "Caché borrada",
       "walletCacheDescription": "Borra el historial de transacciones en caché. La próxima visita lo recuperará."
     },
     "description": "Administre billeteras, preferencias, localización y opciones de pantalla.",

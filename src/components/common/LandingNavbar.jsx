@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import { ROUTES } from "@/config/routes";
@@ -19,7 +19,6 @@ const NAV_ITEMS = [
 // keeps this to a single compositor-thread update per frame, independent of
 // React's render cycle.
 export default function LandingNavbar() {
-  const navigate = useNavigate();
   const navRef = useRef(null);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
@@ -102,13 +101,13 @@ export default function LandingNavbar() {
 
         {/* CTA */}
         <div className="justify-self-end">
-          <button
-            onClick={() => navigate(ROUTES.app)}
+          <Link
+            to={ROUTES.app}
             className="group flex items-center gap-1.5 md:gap-2 rounded-full bg-brand px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-[13px] font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
           >
             Launch App
             <ArrowRightIcon className="h-3.5 w-3.5 md:h-4 md:w-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

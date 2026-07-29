@@ -434,11 +434,13 @@
       "clear": "Limpar",
       "confirmClear": "Confirmar?",
       "conversations": "Conversas do FlareGPT",
+      "conversationsCleared": "Conversas apagadas",
       "conversationsClearFailed": "Não foi possível limpar o histórico de conversas. Tente novamente.",
       "conversationsDescription": "Limpa o histórico de chat do FlareGPT da sua conta. Esta ação não pode ser desfeita.",
       "localSubtitle": "Armazenado apenas neste navegador. A limpeza é instantânea e segura.",
       "localTitle": "Dados Locais",
       "walletCache": "Cache de Atividade da Wallet",
+      "walletCacheCleared": "Cache limpo",
       "walletCacheDescription": "Limpa o histórico de transações em cache. A próxima visita irá buscá-lo novamente."
     },
     "description": "Gerencie carteiras, preferências, localização e opções de exibição.",

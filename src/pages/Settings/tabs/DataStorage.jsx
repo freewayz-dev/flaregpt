@@ -76,6 +76,7 @@ export default function DataStorage() {
       clearMessages();
       useFlareGptStore.getState().setActiveConversationId(null);
       queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
+      toast.success(t("settings.dataStorage.conversationsCleared"));
     } catch {
       toast.error(t("settings.dataStorage.conversationsClearFailed"));
     }
@@ -93,9 +94,10 @@ export default function DataStorage() {
             <ClearButton
               armed={armed === "wallet"}
               onClick={() =>
-                handleClick("wallet", () =>
-                  queryClient.removeQueries({ queryKey: queryKeys.walletActivity.all }),
-                )
+                handleClick("wallet", () => {
+                  queryClient.removeQueries({ queryKey: queryKeys.walletActivity.all });
+                  toast.success(t("settings.dataStorage.walletCacheCleared"));
+                })
               }
               label={t("settings.dataStorage.clear")}
               confirmLabel={t("settings.dataStorage.confirmClear")}

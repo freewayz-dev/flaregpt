@@ -159,15 +159,15 @@
       "couldntLoad": "戦略比較を読み込めませんでした",
       "highestApr": "最高APR",
       "lockupDays": "ロックアップ{{count}}日",
+      "lockupDays_one": "defiProtocols.strategies.lockupDays",
       "lockupDays_other": "defiProtocols.strategies.lockupDays",
       "lockupHours": "ロックアップ{{count}}時間",
+      "lockupHours_one": "defiProtocols.strategies.lockupHours",
       "lockupHours_other": "defiProtocols.strategies.lockupHours",
       "noLockup": "ロックアップなし",
       "subtitle": "各戦略でFLRがどのようなパフォーマンスを発揮するか確認できます",
       "title": "戦略比較",
-      "verdict": "FlareGPTの見解",
-      "lockupDays_one": "defiProtocols.strategies.lockupDays",
-      "lockupHours_one": "defiProtocols.strategies.lockupHours"
+      "verdict": "FlareGPTの見解"
     }
   },
   "donate": {
@@ -262,6 +262,7 @@
       "openButton": "履歴",
       "pin": "ピン留め",
       "pinLimitReached": "最大{{count}}件の会話をピン留めできます",
+      "pinLimitReached_one": "flrgpt.history.pinLimitReached",
       "pinLimitReached_other": "flrgpt.history.pinLimitReached",
       "rename": "名前を変更",
       "renameFailed": "この会話の名前を変更できませんでした。",
@@ -269,8 +270,7 @@
       "searchPlaceholder": "会話を検索...",
       "title": "チャット履歴",
       "unpin": "ピン留め解除",
-      "untitled": "無題",
-      "pinLimitReached_one": "flrgpt.history.pinLimitReached"
+      "untitled": "無題"
     },
     "historyLoadFailed": "チャット履歴を読み込めませんでした。",
     "jumpToLatest": "最新へ移動",
@@ -431,11 +431,13 @@
       "clear": "削除",
       "confirmClear": "確認しますか？",
       "conversations": "FlareGPTの会話",
+      "conversationsCleared": "会話を削除しました",
       "conversationsClearFailed": "チャット履歴を削除できませんでした。もう一度お試しください。",
       "conversationsDescription": "アカウントからFlareGPTのチャット履歴を削除します。この操作は元に戻せません。",
       "localSubtitle": "このブラウザにのみ保存されています。削除はすぐに安全に行えます。",
       "localTitle": "ローカルデータ",
       "walletCache": "ウォレットアクティビティキャッシュ",
+      "walletCacheCleared": "キャッシュを削除しました",
       "walletCacheDescription": "キャッシュされた取引履歴を削除します。次回訪問時に再取得されます。"
     },
     "description": "ウォレット、環境設定、ローカライズ、表示オプションを管理します。",
@@ -558,9 +560,9 @@
       "rename": "名前を変更",
       "saveEdit": "保存",
       "searchPlaceholder": "{{count}}件のウォレットを検索...",
+      "searchPlaceholder_one": "settings.wallets.searchPlaceholder",
       "searchPlaceholder_other": "settings.wallets.searchPlaceholder",
-      "tracked": "追跡済み",
-      "searchPlaceholder_one": "settings.wallets.searchPlaceholder"
+      "tracked": "追跡済み"
     }
   },
   "sidebar": {
@@ -630,27 +632,27 @@
         "mostUsedAsset": "最も使用された資産",
         "title": "クイックインサイト",
         "txCount": "{{count}}件の取引",
-        "txCount_other": "wallet.activity.insights.txCount",
-        "txCount_one": "wallet.activity.insights.txCount"
+        "txCount_one": "wallet.activity.insights.txCount",
+        "txCount_other": "wallet.activity.insights.txCount"
       },
       "kpi": {
         "daysAgo": "{{count}}日前",
+        "daysAgo_one": "wallet.activity.kpi.daysAgo",
         "daysAgo_other": "wallet.activity.kpi.daysAgo",
         "hoursAgo": "{{count}}時間前",
+        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
         "hoursAgo_other": "wallet.activity.kpi.hoursAgo",
         "justNow": "たった今",
         "lastActive": "最終アクティビティ",
         "minutesAgo": "{{count}}分前",
+        "minutesAgo_one": "wallet.activity.kpi.minutesAgo",
         "minutesAgo_other": "wallet.activity.kpi.minutesAgo",
         "totalTransactions": "総取引数",
         "uniqueAssets": "ユニークな資産",
         "walletAge": "ウォレットの経過期間",
         "walletAgeDays": "{{count}}日",
         "walletAgeMonths": "{{count}}か月",
-        "walletAgeYears": "{{count}}年",
-        "daysAgo_one": "wallet.activity.kpi.daysAgo",
-        "hoursAgo_one": "wallet.activity.kpi.hoursAgo",
-        "minutesAgo_one": "wallet.activity.kpi.minutesAgo"
+        "walletAgeYears": "{{count}}年"
       },
       "loading": {
         "elapsed": "{{seconds}}秒経過",
