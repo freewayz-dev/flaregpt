@@ -17,6 +17,7 @@ const FLRGPT = lazy(() => import("@/pages/Flrgpt"));
 const Settings = lazy(() => import("@/pages/Settings"));
 const Help = lazy(() => import("@/pages/Help"));
 const DefiProtocols = lazy(() => import("@/pages/DefiProtocols"));
+const Loops = lazy(() => import("@/pages/Loops"));
 const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Donate = lazy(() => import("@/pages/Donate"));
 const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
@@ -114,10 +115,7 @@ export default function AppRoutes() {
             path={APP_SEGMENTS.ftsoRewards}
             element={<ComingSoon title={t("sidebar.ftsoRewards")} />}
           />
-          <Route
-            path={APP_SEGMENTS.loops}
-            element={<ComingSoon title={t("sidebar.loops")} />}
-          />
+          <Route path={APP_SEGMENTS.loops} element={<Loops />} />
           <Route
             path={APP_SEGMENTS.rflrTracker}
             element={<ComingSoon title={t("sidebar.rflrTracker")} />}

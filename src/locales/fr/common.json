@@ -150,6 +150,7 @@
       "totalMinted": "Total des Parts Émises"
     },
     "spectra": {
+      "category": "Tokenisation de Rendement",
       "claimableYield": "Rendement Réclamable",
       "couldntLoad": "Impossible de charger les données du marché Spectra",
       "daysToMaturity": "jours avant échéance",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "PT en Circulation",
       "ptContract": "Contrat PT",
       "redeemableAtMaturity": "Rachetable à l'Échéance",
-      "ytBalance": "Solde YT",
-      "ytContract": "Contrat YT",
-      "category": "Tokenisation de Rendement",
       "subtitle": "Tokenisation de rendement stXRP",
-      "title": "Marchés Spectra"
+      "title": "Marchés Spectra",
+      "ytBalance": "Solde YT",
+      "ytContract": "Contrat YT"
     },
     "strategies": {
       "amountLabel": "Comparer pour",
@@ -399,6 +399,31 @@
     ],
     "stillNeedHelp": "Besoin d'aide supplémentaire ?",
     "supportDesc": "Pour l'instant, le moyen le plus rapide de nous joindre est X. L'assistance par e-mail et Telegram arrive bientôt."
+  },
+  "loops": {
+    "description": "Services automatisés en arrière-plan qui surveillent le réseau et agissent en votre nom.",
+    "gasSniper": {
+      "active": "Actif",
+      "approveCta": "Approuver sur Coston2",
+      "approveDescription": "Ce portefeuille doit d'abord approuver le keeper Gas Sniper de Flare en tant qu'exécuteur de réclamations sur Coston2. C'est une approbation unique on-chain. Votre portefeuille peut vous demander de basculer vers le réseau Coston2 ou de l'ajouter.",
+      "approveFailed": "Impossible de finaliser l'approbation. Réessayez.",
+      "approveTitle": "Approbation unique requise",
+      "approved": "Approuvé. Vous pouvez maintenant activer Gas Sniper.",
+      "approving": "Confirmez dans votre portefeuille…",
+      "confirmingApproval": "Confirmation…",
+      "description": "Réclame automatiquement vos récompenses FTSO dès que les frais de gaz baissent suffisamment, en tournant discrètement en arrière-plan comme une extension de navigateur jusqu'à ce que vous le désactiviez.",
+      "disabled": "Gas Sniper désactivé",
+      "enabled": "Gas Sniper activé",
+      "executorNotSet": "Ce portefeuille n'a pas encore approuvé l'automatisation Gas Sniper on-chain, il ne peut donc pas être activé tant que cette approbation unique n'est pas faite.",
+      "inactive": "Inactif",
+      "needsApproval": "Approbation requise",
+      "needsReconnect": "Portefeuille déconnecté",
+      "reconnectDescription": "Reconnectez ce portefeuille pour terminer l'approbation unique on-chain.",
+      "reconnectTitle": "Reconnectez-vous pour continuer",
+      "signInHint": "Connectez-vous avec votre portefeuille pour activer Gas Sniper.",
+      "title": "Gas Sniper",
+      "toggleFailed": "Impossible de mettre à jour Gas Sniper. Réessayez."
+    }
   },
   "navbar": {
     "addressCopied": "Adresse copiée",

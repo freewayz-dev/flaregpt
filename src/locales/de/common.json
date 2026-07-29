@@ -150,6 +150,7 @@
       "totalMinted": "Insgesamt geprägte Anteile"
     },
     "spectra": {
+      "category": "Ertrags-Tokenisierung",
       "claimableYield": "Einforderbarer Ertrag",
       "couldntLoad": "Spectra-Marktdaten konnten nicht geladen werden",
       "daysToMaturity": "Tage bis zur Fälligkeit",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "PT im Umlauf",
       "ptContract": "PT-Vertrag",
       "redeemableAtMaturity": "Bei Fälligkeit Einlösbar",
-      "ytBalance": "YT-Guthaben",
-      "ytContract": "YT-Vertrag",
-      "category": "Ertrags-Tokenisierung",
       "subtitle": "stXRP-Ertrags-Tokenisierung",
-      "title": "Spectra-Märkte"
+      "title": "Spectra-Märkte",
+      "ytBalance": "YT-Guthaben",
+      "ytContract": "YT-Vertrag"
     },
     "strategies": {
       "amountLabel": "Vergleichen für",
@@ -396,6 +396,31 @@
     ],
     "stillNeedHelp": "Brauchen Sie immer noch Hilfe?",
     "supportDesc": "Der schnellste Weg, uns aktuell zu erreichen, ist X. E-Mail- und Telegram-Support folgen in Kürze."
+  },
+  "loops": {
+    "description": "Automatisierte Hintergrunddienste, die das Netzwerk beobachten und in deinem Namen handeln.",
+    "gasSniper": {
+      "active": "Aktiv",
+      "approveCta": "Auf Coston2 genehmigen",
+      "approveDescription": "Dieses Wallet muss zunächst Flares Gas-Sniper-Keeper als Claim-Executor auf Coston2 genehmigen. Das ist eine einmalige On-Chain-Genehmigung. Dein Wallet fordert dich möglicherweise auf, zum Coston2-Netzwerk zu wechseln oder es hinzuzufügen.",
+      "approveFailed": "Genehmigung konnte nicht abgeschlossen werden. Versuch es erneut.",
+      "approveTitle": "Einmalige Genehmigung erforderlich",
+      "approved": "Genehmigt. Du kannst Gas Sniper jetzt aktivieren.",
+      "approving": "Bestätige in deinem Wallet…",
+      "confirmingApproval": "Wird bestätigt…",
+      "description": "Fordert deine FTSO-Belohnungen automatisch ein, sobald die Gasgebühren niedrig genug sind, und läuft dabei leise im Hintergrund wie eine Browser-Erweiterung, bis du es deaktivierst.",
+      "disabled": "Gas Sniper deaktiviert",
+      "enabled": "Gas Sniper aktiviert",
+      "executorNotSet": "Dieses Wallet hat die Gas-Sniper-Automatisierung noch nicht on-chain genehmigt, daher kann sie erst nach dieser einmaligen Genehmigung aktiviert werden.",
+      "inactive": "Inaktiv",
+      "needsApproval": "Genehmigung erforderlich",
+      "needsReconnect": "Wallet getrennt",
+      "reconnectDescription": "Verbinde dieses Wallet erneut, um die einmalige On-Chain-Genehmigung abzuschließen.",
+      "reconnectTitle": "Erneut verbinden, um fortzufahren",
+      "signInHint": "Melde dich mit deinem Wallet an, um Gas Sniper dafür zu aktivieren.",
+      "title": "Gas Sniper",
+      "toggleFailed": "Gas Sniper konnte nicht aktualisiert werden. Versuch es erneut."
+    }
   },
   "navbar": {
     "addressCopied": "Adresse kopiert",

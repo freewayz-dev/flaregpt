@@ -150,6 +150,7 @@
       "totalMinted": "कुल जारी शेयर"
     },
     "spectra": {
+      "category": "यील्ड टोकनाइज़ेशन",
       "claimableYield": "दावा योग्य यील्ड",
       "couldntLoad": "Spectra बाज़ार डेटा लोड नहीं हो सका",
       "daysToMaturity": "परिपक्वता तक शेष दिन",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "प्रचलन में PT",
       "ptContract": "PT अनुबंध",
       "redeemableAtMaturity": "परिपक्वता पर भुनाने योग्य",
-      "ytBalance": "YT शेष",
-      "ytContract": "YT अनुबंध",
-      "category": "यील्ड टोकनाइज़ेशन",
       "subtitle": "stXRP यील्ड टोकनाइज़ेशन",
-      "title": "Spectra बाज़ार"
+      "title": "Spectra बाज़ार",
+      "ytBalance": "YT शेष",
+      "ytContract": "YT अनुबंध"
     },
     "strategies": {
       "amountLabel": "इसके लिए तुलना करें",
@@ -396,6 +396,31 @@
     ],
     "stillNeedHelp": "अभी भी सहायता की आवश्यकता है?",
     "supportDesc": "अभी हमसे संपर्क करने का सबसे तेज़ तरीका X है। ईमेल और Telegram सपोर्ट जल्द आ रहा है।"
+  },
+  "loops": {
+    "description": "स्वचालित बैकग्राउंड सेवाएं जो नेटवर्क पर नज़र रखती हैं और आपकी ओर से कार्य करती हैं।",
+    "gasSniper": {
+      "active": "सक्रिय",
+      "approveCta": "Coston2 पर मंज़ूर करें",
+      "approveDescription": "इस वॉलेट को पहले Coston2 पर Flare के Gas Sniper कीपर को क्लेम एक्ज़ीक्यूटर के रूप में मंज़ूर करना होगा। यह एक बार की, ऑन-चेन मंज़ूरी है। आपका वॉलेट आपसे Coston2 नेटवर्क पर स्विच करने या उसे जोड़ने के लिए कह सकता है।",
+      "approveFailed": "मंज़ूरी पूरी नहीं हो सकी। फिर से प्रयास करें।",
+      "approveTitle": "एक बार की मंज़ूरी आवश्यक है",
+      "approved": "मंज़ूर हो गया। अब आप Gas Sniper चालू कर सकते हैं।",
+      "approving": "अपने वॉलेट में पुष्टि करें…",
+      "confirmingApproval": "पुष्टि हो रही है…",
+      "description": "जैसे ही गैस शुल्क पर्याप्त रूप से कम हो जाए, यह आपके FTSO रिवॉर्ड्स को अपने आप क्लेम कर लेता है, और ब्राउज़र एक्सटेंशन की तरह चुपचाप बैकग्राउंड में तब तक चलता रहता है जब तक आप इसे बंद न करें।",
+      "disabled": "Gas Sniper अक्षम किया गया",
+      "enabled": "Gas Sniper सक्षम किया गया",
+      "executorNotSet": "इस वॉलेट ने अभी तक Gas Sniper ऑटोमेशन को ऑन-चेन मंज़ूर नहीं किया है, इसलिए वह एक बार की मंज़ूरी पूरी होने तक इसे सक्षम नहीं किया जा सकता।",
+      "inactive": "निष्क्रिय",
+      "needsApproval": "मंज़ूरी आवश्यक",
+      "needsReconnect": "वॉलेट डिस्कनेक्ट है",
+      "reconnectDescription": "एक बार की ऑन-चेन मंज़ूरी पूरी करने के लिए इस वॉलेट को फिर से कनेक्ट करें।",
+      "reconnectTitle": "जारी रखने के लिए फिर से कनेक्ट करें",
+      "signInHint": "Gas Sniper चालू करने के लिए अपने वॉलेट से साइन इन करें।",
+      "title": "Gas Sniper",
+      "toggleFailed": "Gas Sniper अपडेट नहीं हो सका। फिर से प्रयास करें।"
+    }
   },
   "navbar": {
     "addressCopied": "पता कॉपी किया गया",

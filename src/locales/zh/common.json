@@ -150,6 +150,7 @@
       "totalMinted": "已铸造份额总量"
     },
     "spectra": {
+      "category": "收益代币化",
       "claimableYield": "可领取收益",
       "couldntLoad": "无法加载 Spectra 市场数据",
       "daysToMaturity": "距到期天数",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "PT 流通量",
       "ptContract": "PT 合约",
       "redeemableAtMaturity": "到期可赎回",
-      "ytBalance": "YT 余额",
-      "ytContract": "YT 合约",
-      "category": "收益代币化",
       "subtitle": "stXRP 收益代币化",
-      "title": "Spectra 市场"
+      "title": "Spectra 市场",
+      "ytBalance": "YT 余额",
+      "ytContract": "YT 合约"
     },
     "strategies": {
       "amountLabel": "比较金额",
@@ -396,6 +396,31 @@
     ],
     "stillNeedHelp": "仍然需要帮助？",
     "supportDesc": "目前联系我们最快的方式是通过 X。邮箱与 Telegram 支持即将上线。"
+  },
+  "loops": {
+    "description": "自动后台服务，监控网络并代表您采取行动。",
+    "gasSniper": {
+      "active": "已启用",
+      "approveCta": "在 Coston2 上批准",
+      "approveDescription": "此钱包需要先在 Coston2 上批准 Flare 的 Gas Sniper 执行者作为领取执行者。这是一次性的链上批准。您的钱包可能会要求您切换到或添加 Coston2 网络。",
+      "approveFailed": "无法完成批准，请重试。",
+      "approveTitle": "需要一次性批准",
+      "approved": "已批准。您现在可以开启 Gas Sniper。",
+      "approving": "请在钱包中确认…",
+      "confirmingApproval": "确认中…",
+      "description": "在燃料费降到足够低时自动领取您的 FTSO 奖励，像浏览器扩展一样在后台静默运行，直到您将其关闭。",
+      "disabled": "Gas Sniper 已停用",
+      "enabled": "Gas Sniper 已启用",
+      "executorNotSet": "此钱包尚未在链上批准 Gas Sniper 自动化，因此在完成该一次性批准之前无法启用。",
+      "inactive": "未启用",
+      "needsApproval": "需要批准",
+      "needsReconnect": "钱包已断开连接",
+      "reconnectDescription": "请重新连接此钱包以完成一次性链上批准。",
+      "reconnectTitle": "重新连接以继续",
+      "signInHint": "使用您的钱包登录以为其开启 Gas Sniper。",
+      "title": "Gas Sniper",
+      "toggleFailed": "无法更新 Gas Sniper，请重试。"
+    }
   },
   "navbar": {
     "addressCopied": "地址已复制",

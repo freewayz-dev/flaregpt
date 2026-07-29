@@ -150,6 +150,7 @@
       "totalMinted": "Tổng Cổ phần Đã phát hành"
     },
     "spectra": {
+      "category": "Token Hóa Lợi Suất",
       "claimableYield": "Lợi Suất Có Thể Nhận",
       "couldntLoad": "Không thể tải dữ liệu thị trường Spectra",
       "daysToMaturity": "ngày đến đáo hạn",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "PT Đang Lưu Hành",
       "ptContract": "Hợp Đồng PT",
       "redeemableAtMaturity": "Có Thể Đổi Khi Đáo Hạn",
-      "ytBalance": "Số Dư YT",
-      "ytContract": "Hợp Đồng YT",
-      "category": "Token Hóa Lợi Suất",
       "subtitle": "Token hóa lợi suất stXRP",
-      "title": "Thị Trường Spectra"
+      "title": "Thị Trường Spectra",
+      "ytBalance": "Số Dư YT",
+      "ytContract": "Hợp Đồng YT"
     },
     "strategies": {
       "amountLabel": "So sánh cho",
@@ -396,6 +396,31 @@
     ],
     "stillNeedHelp": "Bạn vẫn cần trợ giúp?",
     "supportDesc": "Cách nhanh nhất để liên hệ với chúng tôi hiện tại là qua X. Hỗ trợ qua Email và Telegram sẽ sớm ra mắt."
+  },
+  "loops": {
+    "description": "Các dịch vụ nền tự động theo dõi mạng lưới và hành động thay cho bạn.",
+    "gasSniper": {
+      "active": "Đang hoạt động",
+      "approveCta": "Phê duyệt trên Coston2",
+      "approveDescription": "Ví này cần phê duyệt bên vận hành Gas Sniper của Flare làm bên thực thi yêu cầu trên Coston2 trước. Đây là phê duyệt một lần trên chuỗi. Ví của bạn có thể yêu cầu bạn chuyển sang hoặc thêm mạng Coston2.",
+      "approveFailed": "Không thể hoàn tất phê duyệt. Vui lòng thử lại.",
+      "approveTitle": "Cần phê duyệt một lần",
+      "approved": "Đã phê duyệt. Giờ bạn có thể bật Gas Sniper.",
+      "approving": "Xác nhận trong ví của bạn…",
+      "confirmingApproval": "Đang xác nhận…",
+      "description": "Tự động nhận phần thưởng FTSO của bạn ngay khi phí gas giảm đủ thấp, âm thầm chạy nền như một tiện ích mở rộng trình duyệt cho đến khi bạn tắt.",
+      "disabled": "Đã tắt Gas Sniper",
+      "enabled": "Đã bật Gas Sniper",
+      "executorNotSet": "Ví này chưa phê duyệt tự động hóa Gas Sniper trên chuỗi, vì vậy không thể bật cho đến khi hoàn tất phê duyệt một lần đó.",
+      "inactive": "Không hoạt động",
+      "needsApproval": "Cần phê duyệt",
+      "needsReconnect": "Ví đã ngắt kết nối",
+      "reconnectDescription": "Kết nối lại ví này để hoàn tất phê duyệt một lần trên chuỗi.",
+      "reconnectTitle": "Kết nối lại để tiếp tục",
+      "signInHint": "Đăng nhập bằng ví của bạn để bật Gas Sniper.",
+      "title": "Gas Sniper",
+      "toggleFailed": "Không thể cập nhật Gas Sniper. Vui lòng thử lại."
+    }
   },
   "navbar": {
     "addressCopied": "Đã sao chép địa chỉ",

@@ -150,6 +150,7 @@
       "totalMinted": "إجمالي الحصص المصدرة"
     },
     "spectra": {
+      "category": "ترميز العائد",
       "claimableYield": "العائد القابل للمطالبة",
       "couldntLoad": "تعذّر تحميل بيانات سوق Spectra",
       "daysToMaturity": "أيام حتى الاستحقاق",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "PT المتداول",
       "ptContract": "عقد PT",
       "redeemableAtMaturity": "قابل للاسترداد عند الاستحقاق",
-      "ytBalance": "رصيد YT",
-      "ytContract": "عقد YT",
-      "category": "ترميز العائد",
       "subtitle": "ترميز عائد stXRP",
-      "title": "أسواق Spectra"
+      "title": "أسواق Spectra",
+      "ytBalance": "رصيد YT",
+      "ytContract": "عقد YT"
     },
     "strategies": {
       "amountLabel": "قارن مقابل",
@@ -408,6 +408,31 @@
     ],
     "stillNeedHelp": "هل ما زلت بحاجة إلى مساعدة؟",
     "supportDesc": "أسرع طريقة للتواصل معنا حاليًا هي عبر X. دعم البريد الإلكتروني وتيليجرام قادم قريبًا."
+  },
+  "loops": {
+    "description": "خدمات خلفية آلية تراقب الشبكة وتتصرف نيابة عنك.",
+    "gasSniper": {
+      "active": "نشط",
+      "approveCta": "الموافقة على Coston2",
+      "approveDescription": "يجب على هذه المحفظة أولاً الموافقة على منفذ Gas Sniper الخاص بـ Flare كمنفذ مطالبات على Coston2. هذه موافقة لمرة واحدة على السلسلة. قد تطلب منك محفظتك التبديل إلى شبكة Coston2 أو إضافتها.",
+      "approveFailed": "تعذّر إتمام الموافقة. حاول مرة أخرى.",
+      "approveTitle": "مطلوب موافقة لمرة واحدة",
+      "approved": "تمت الموافقة. يمكنك الآن تفعيل Gas Sniper.",
+      "approving": "أكّد في محفظتك…",
+      "confirmingApproval": "جارٍ التأكيد…",
+      "description": "يطالب تلقائيًا بمكافآت FTSO الخاصة بك بمجرد انخفاض رسوم الغاز بما يكفي، ويعمل بهدوء في الخلفية مثل إضافة المتصفح حتى تُعطّله.",
+      "disabled": "تم تعطيل Gas Sniper",
+      "enabled": "تم تفعيل Gas Sniper",
+      "executorNotSet": "لم توافق هذه المحفظة بعد على أتمتة Gas Sniper على السلسلة، لذا لا يمكن تفعيلها حتى تتم تلك الموافقة لمرة واحدة.",
+      "inactive": "غير نشط",
+      "needsApproval": "تتطلب موافقة",
+      "needsReconnect": "المحفظة غير متصلة",
+      "reconnectDescription": "أعد توصيل هذه المحفظة لإكمال الموافقة لمرة واحدة على السلسلة.",
+      "reconnectTitle": "أعد الاتصال للمتابعة",
+      "signInHint": "سجّل الدخول بمحفظتك لتفعيل Gas Sniper.",
+      "title": "Gas Sniper",
+      "toggleFailed": "تعذّر تحديث Gas Sniper. حاول مرة أخرى."
+    }
   },
   "navbar": {
     "addressCopied": "تم نسخ العنوان",

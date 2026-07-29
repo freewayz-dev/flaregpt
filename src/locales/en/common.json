@@ -397,6 +397,31 @@
     "stillNeedHelp": "Still need help?",
     "supportDesc": "The fastest way to reach us right now is X. Email and Telegram support are on the way."
   },
+  "loops": {
+    "description": "Automated background services that watch the network and act on your behalf.",
+    "gasSniper": {
+      "active": "Active",
+      "approveCta": "Approve on Coston2",
+      "approveDescription": "This wallet needs to approve Flare's Gas Sniper keeper as a claim executor on Coston2 first. It's a one-time, on-chain approval. Your wallet may ask you to switch to or add the Coston2 network.",
+      "approveFailed": "Couldn't complete the approval. Try again.",
+      "approveTitle": "One-time approval required",
+      "approved": "Approved. You can now turn Gas Sniper on.",
+      "approving": "Confirm in your wallet…",
+      "confirmingApproval": "Confirming…",
+      "description": "Automatically claims your FTSO rewards once gas fees drop low enough, running quietly in the background like a browser extension until you turn it off.",
+      "disabled": "Gas Sniper disabled",
+      "enabled": "Gas Sniper enabled",
+      "executorNotSet": "This wallet hasn't approved the Gas Sniper automation on-chain yet, so it can't be enabled until that one-time approval is done.",
+      "inactive": "Inactive",
+      "needsApproval": "Needs approval",
+      "needsReconnect": "Wallet disconnected",
+      "reconnectDescription": "Reconnect this wallet to finish the one-time on-chain approval.",
+      "reconnectTitle": "Reconnect to continue",
+      "signInHint": "Sign in with your wallet to turn Gas Sniper on for it.",
+      "title": "Gas Sniper",
+      "toggleFailed": "Couldn't update Gas Sniper. Try again."
+    }
+  },
   "navbar": {
     "addressCopied": "Address copied",
     "askFlareGPT": "Ask FlareGPT",

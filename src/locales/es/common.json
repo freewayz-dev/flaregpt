@@ -150,6 +150,7 @@
       "totalMinted": "Total de Participaciones Emitidas"
     },
     "spectra": {
+      "category": "Tokenización de Rendimiento",
       "claimableYield": "Rendimiento Reclamable",
       "couldntLoad": "No se pudieron cargar los datos del mercado de Spectra",
       "daysToMaturity": "días para el vencimiento",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "PT en Circulación",
       "ptContract": "Contrato PT",
       "redeemableAtMaturity": "Redimible al Vencimiento",
-      "ytBalance": "Saldo YT",
-      "ytContract": "Contrato YT",
-      "category": "Tokenización de Rendimiento",
       "subtitle": "Tokenización de rendimiento de stXRP",
-      "title": "Mercados Spectra"
+      "title": "Mercados Spectra",
+      "ytBalance": "Saldo YT",
+      "ytContract": "Contrato YT"
     },
     "strategies": {
       "amountLabel": "Comparar para",
@@ -399,6 +399,31 @@
     ],
     "stillNeedHelp": "¿Aún necesitas ayuda?",
     "supportDesc": "Ahora mismo, la forma más rápida de contactarnos es en X. El soporte por correo electrónico y Telegram llegará pronto."
+  },
+  "loops": {
+    "description": "Servicios automáticos en segundo plano que vigilan la red y actúan en tu nombre.",
+    "gasSniper": {
+      "active": "Activo",
+      "approveCta": "Aprobar en Coston2",
+      "approveDescription": "Este monedero primero debe aprobar el ejecutor de Gas Sniper de Flare como ejecutor de reclamos en Coston2. Es una aprobación única en la cadena. Tu monedero puede pedirte cambiar a la red Coston2 o añadirla.",
+      "approveFailed": "No se pudo completar la aprobación. Inténtalo de nuevo.",
+      "approveTitle": "Se requiere una aprobación única",
+      "approved": "Aprobado. Ya puedes activar Gas Sniper.",
+      "approving": "Confirma en tu monedero…",
+      "confirmingApproval": "Confirmando…",
+      "description": "Reclama automáticamente tus recompensas FTSO en cuanto las comisiones de gas bajan lo suficiente, funcionando en segundo plano como una extensión de navegador hasta que lo desactives.",
+      "disabled": "Gas Sniper desactivado",
+      "enabled": "Gas Sniper activado",
+      "executorNotSet": "Este monedero aún no ha aprobado la automatización de Gas Sniper en la cadena, así que no se puede activar hasta completar esa aprobación única.",
+      "inactive": "Inactivo",
+      "needsApproval": "Requiere aprobación",
+      "needsReconnect": "Monedero desconectado",
+      "reconnectDescription": "Vuelve a conectar este monedero para completar la aprobación única en la cadena.",
+      "reconnectTitle": "Vuelve a conectar para continuar",
+      "signInHint": "Inicia sesión con tu monedero para activar Gas Sniper.",
+      "title": "Gas Sniper",
+      "toggleFailed": "No se pudo actualizar Gas Sniper. Inténtalo de nuevo."
+    }
   },
   "navbar": {
     "addressCopied": "Copiada la dirección del enlace",

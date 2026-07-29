@@ -150,6 +150,7 @@
       "totalMinted": "Total Saham Diterbitkan"
     },
     "spectra": {
+      "category": "Tokenisasi Yield",
       "claimableYield": "Yield yang Dapat Diklaim",
       "couldntLoad": "Tidak dapat memuat data pasar Spectra",
       "daysToMaturity": "hari menuju jatuh tempo",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "PT yang Beredar",
       "ptContract": "Kontrak PT",
       "redeemableAtMaturity": "Dapat Ditebus saat Jatuh Tempo",
-      "ytBalance": "Saldo YT",
-      "ytContract": "Kontrak YT",
-      "category": "Tokenisasi Yield",
       "subtitle": "Tokenisasi yield stXRP",
-      "title": "Pasar Spectra"
+      "title": "Pasar Spectra",
+      "ytBalance": "Saldo YT",
+      "ytContract": "Kontrak YT"
     },
     "strategies": {
       "amountLabel": "Bandingkan untuk",
@@ -396,6 +396,31 @@
     ],
     "stillNeedHelp": "Masih butuh bantuan?",
     "supportDesc": "Cara tercepat menghubungi kami saat ini adalah melalui X. Dukungan email dan Telegram akan segera hadir."
+  },
+  "loops": {
+    "description": "Layanan latar belakang otomatis yang memantau jaringan dan bertindak atas nama Anda.",
+    "gasSniper": {
+      "active": "Aktif",
+      "approveCta": "Setujui di Coston2",
+      "approveDescription": "Dompet ini perlu menyetujui keeper Gas Sniper milik Flare sebagai pelaksana klaim di Coston2 terlebih dahulu. Ini adalah persetujuan satu kali secara on-chain. Dompet Anda mungkin meminta Anda beralih ke atau menambahkan jaringan Coston2.",
+      "approveFailed": "Tidak dapat menyelesaikan persetujuan. Coba lagi.",
+      "approveTitle": "Persetujuan satu kali diperlukan",
+      "approved": "Disetujui. Sekarang Anda dapat mengaktifkan Gas Sniper.",
+      "approving": "Konfirmasi di dompet Anda…",
+      "confirmingApproval": "Mengonfirmasi…",
+      "description": "Secara otomatis mengklaim reward FTSO Anda begitu biaya gas turun cukup rendah, berjalan diam-diam di latar belakang seperti ekstensi browser hingga Anda menonaktifkannya.",
+      "disabled": "Gas Sniper dinonaktifkan",
+      "enabled": "Gas Sniper diaktifkan",
+      "executorNotSet": "Dompet ini belum menyetujui otomatisasi Gas Sniper on-chain, jadi tidak dapat diaktifkan sampai persetujuan satu kali itu selesai.",
+      "inactive": "Tidak Aktif",
+      "needsApproval": "Perlu persetujuan",
+      "needsReconnect": "Dompet terputus",
+      "reconnectDescription": "Sambungkan kembali dompet ini untuk menyelesaikan persetujuan satu kali secara on-chain.",
+      "reconnectTitle": "Sambungkan kembali untuk melanjutkan",
+      "signInHint": "Masuk dengan dompet Anda untuk mengaktifkan Gas Sniper.",
+      "title": "Gas Sniper",
+      "toggleFailed": "Tidak dapat memperbarui Gas Sniper. Coba lagi."
+    }
   },
   "navbar": {
     "addressCopied": "Alamat disalin",

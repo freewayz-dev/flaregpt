@@ -150,6 +150,7 @@
       "totalMinted": "Total de Cotas Emitidas"
     },
     "spectra": {
+      "category": "Tokenização de Rendimento",
       "claimableYield": "Rendimento Resgatável",
       "couldntLoad": "Não foi possível carregar os dados do mercado Spectra",
       "daysToMaturity": "dias para o vencimento",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "PT em Circulação",
       "ptContract": "Contrato PT",
       "redeemableAtMaturity": "Resgatável no Vencimento",
-      "ytBalance": "Saldo YT",
-      "ytContract": "Contrato YT",
-      "category": "Tokenização de Rendimento",
       "subtitle": "Tokenização de rendimento stXRP",
-      "title": "Mercados Spectra"
+      "title": "Mercados Spectra",
+      "ytBalance": "Saldo YT",
+      "ytContract": "Contrato YT"
     },
     "strategies": {
       "amountLabel": "Comparar para",
@@ -399,6 +399,31 @@
     ],
     "stillNeedHelp": "Ainda precisa de ajuda?",
     "supportDesc": "No momento, a forma mais rápida de falar conosco é pelo X. O suporte por e-mail e Telegram está a caminho."
+  },
+  "loops": {
+    "description": "Serviços automáticos em segundo plano que monitoram a rede e agem em seu nome.",
+    "gasSniper": {
+      "active": "Ativo",
+      "approveCta": "Aprovar na Coston2",
+      "approveDescription": "Esta carteira precisa aprovar o keeper do Gas Sniper da Flare como executor de resgates na Coston2 primeiro. É uma aprovação única on-chain. Sua carteira pode pedir para você mudar ou adicionar a rede Coston2.",
+      "approveFailed": "Não foi possível concluir a aprovação. Tente novamente.",
+      "approveTitle": "Aprovação única necessária",
+      "approved": "Aprovado. Agora você pode ativar o Gas Sniper.",
+      "approving": "Confirme na sua carteira…",
+      "confirmingApproval": "Confirmando…",
+      "description": "Resgata automaticamente suas recompensas FTSO assim que as taxas de gás caem o suficiente, rodando discretamente em segundo plano como uma extensão de navegador até você desativar.",
+      "disabled": "Gas Sniper desativado",
+      "enabled": "Gas Sniper ativado",
+      "executorNotSet": "Esta carteira ainda não aprovou a automação do Gas Sniper on-chain, então não é possível ativá-la até que essa aprovação única seja feita.",
+      "inactive": "Inativo",
+      "needsApproval": "Requer aprovação",
+      "needsReconnect": "Carteira desconectada",
+      "reconnectDescription": "Reconecte esta carteira para concluir a aprovação única on-chain.",
+      "reconnectTitle": "Reconecte para continuar",
+      "signInHint": "Faça login com sua carteira para ativar o Gas Sniper.",
+      "title": "Gas Sniper",
+      "toggleFailed": "Não foi possível atualizar o Gas Sniper. Tente novamente."
+    }
   },
   "navbar": {
     "addressCopied": "Endereço de ligação copiado",

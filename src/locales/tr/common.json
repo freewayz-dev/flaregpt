@@ -150,6 +150,7 @@
       "totalMinted": "Toplam Basılan Pay"
     },
     "spectra": {
+      "category": "Getiri Tokenizasyonu",
       "claimableYield": "Talep Edilebilir Getiri",
       "couldntLoad": "Spectra piyasa verileri yüklenemedi",
       "daysToMaturity": "vadeye kalan gün",
@@ -165,11 +166,10 @@
       "ptCirculatingSupply": "Dolaşımdaki PT",
       "ptContract": "PT Kontratı",
       "redeemableAtMaturity": "Vadede Kullanılabilir",
-      "ytBalance": "YT Bakiyesi",
-      "ytContract": "YT Kontratı",
-      "category": "Getiri Tokenizasyonu",
       "subtitle": "stXRP getiri tokenizasyonu",
-      "title": "Spectra Piyasaları"
+      "title": "Spectra Piyasaları",
+      "ytBalance": "YT Bakiyesi",
+      "ytContract": "YT Kontratı"
     },
     "strategies": {
       "amountLabel": "Karşılaştırma tutarı",
@@ -396,6 +396,31 @@
     ],
     "stillNeedHelp": "Hâlâ yardıma mı ihtiyacınız var?",
     "supportDesc": "Şu anda bize ulaşmanın en hızlı yolu X. E-posta ve Telegram desteği yakında geliyor."
+  },
+  "loops": {
+    "description": "Ağı izleyen ve sizin adınıza işlem yapan otomatik arka plan hizmetleri.",
+    "gasSniper": {
+      "active": "Aktif",
+      "approveCta": "Coston2'de Onayla",
+      "approveDescription": "Bu cüzdanın önce Coston2 üzerinde Flare'in Gas Sniper anahtarını talep yürütücüsü olarak onaylaması gerekir. Bu tek seferlik, zincir üzerinde bir onaydır. Cüzdanınız Coston2 ağına geçmenizi veya eklemenizi isteyebilir.",
+      "approveFailed": "Onay tamamlanamadı. Tekrar deneyin.",
+      "approveTitle": "Tek seferlik onay gerekli",
+      "approved": "Onaylandı. Artık Gas Sniper'ı açabilirsiniz.",
+      "approving": "Cüzdanınızda onaylayın…",
+      "confirmingApproval": "Onaylanıyor…",
+      "description": "Gaz ücretleri yeterince düştüğü anda FTSO ödüllerinizi otomatik olarak talep eder ve siz kapatana kadar bir tarayıcı eklentisi gibi arka planda sessizce çalışmaya devam eder.",
+      "disabled": "Gas Sniper devre dışı bırakıldı",
+      "enabled": "Gas Sniper etkinleştirildi",
+      "executorNotSet": "Bu cüzdan Gas Sniper otomasyonunu zincir üzerinde henüz onaylamadı, bu yüzden bu tek seferlik onay yapılmadan etkinleştirilemez.",
+      "inactive": "Pasif",
+      "needsApproval": "Onay gerekiyor",
+      "needsReconnect": "Cüzdan bağlantısı kesildi",
+      "reconnectDescription": "Tek seferlik zincir üzerinde onayı tamamlamak için bu cüzdanı yeniden bağlayın.",
+      "reconnectTitle": "Devam etmek için yeniden bağlanın",
+      "signInHint": "Gas Sniper'ı açmak için cüzdanınızla oturum açın.",
+      "title": "Gas Sniper",
+      "toggleFailed": "Gas Sniper güncellenemedi. Tekrar deneyin."
+    }
   },
   "navbar": {
     "addressCopied": "Adres kopyalandı",

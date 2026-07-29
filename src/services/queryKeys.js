@@ -60,6 +60,13 @@ export const queryKeys = {
     all: ["walletActivity"],
     activity: (address) => [...queryKeys.walletActivity.all, "activity", address],
   },
+  // Gas Sniper's status endpoint is a single global view (who's opted in
+  // across every wallet), not scoped per-address — one shared query key
+  // covers every caller.
+  loops: {
+    all: ["loops"],
+    gasSniperStatus: () => [...queryKeys.loops.all, "gasSniperStatus"],
+  },
   // Authenticated users only (see useWalletHubStore.js) — a guest's
   // watchlist lives entirely in localStorage and never goes through
   // react-query at all.

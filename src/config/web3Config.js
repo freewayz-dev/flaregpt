@@ -15,6 +15,25 @@ export const flare = {
   },
 };
 
+// Coston2 — Flare's testnet, confirmed live (eth_chainId against its
+// public RPC returns 0x72 = 114). Registered here specifically for Gas
+// Sniper's on-chain approval step (see claimSetupManager.js):
+// `ClaimSetupManager` only exists on Coston2 today, not mainnet, so a
+// wallet has to switch here for that one transaction even though every
+// other read/write in this app targets Flare mainnet.
+export const coston2 = {
+  id: 114,
+  name: "Coston2",
+  nativeCurrency: { name: "Coston2 Flare", symbol: "C2FLR", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://coston2-api.flare.network/ext/C/rpc"] },
+  },
+  blockExplorers: {
+    default: { name: "Coston2 Explorer", url: "https://coston2-explorer.flare.network" },
+  },
+  testnet: true,
+};
+
 // Reads the same `blockExplorers.default.url` wagmi already uses for chain
 // metadata, rather than a second hardcoded "https://flarescan.com" string
 // living alongside it — one source of truth for the explorer's base URL.
@@ -84,7 +103,7 @@ function isRealMetaMask(provider) {
 }
 
 export const web3Config = createConfig({
-  chains: [flare, mainnet],
+  chains: [flare, mainnet, coston2],
   connectors: [
     // Each wallet gets its OWN connector, targeted at its actual injected
     // flag. Previously all three buttons shared a single untargeted
@@ -155,5 +174,6 @@ export const web3Config = createConfig({
   transports: {
     [flare.id]: http(),
     [mainnet.id]: http(),
+    [coston2.id]: http(),
   },
 });

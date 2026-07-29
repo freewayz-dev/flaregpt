@@ -4,12 +4,17 @@ import { useState } from "react";
 // (e.g. Accessibility's Reduced Motion); omit both and it falls back to
 // purely local, uncontrolled state exactly as before — which is what the
 // Notifications toggles still intentionally are, pending that backend.
-export default function Toggle({ checked, defaultChecked = false, onChange }) {
+// `disabled` is opt-in (every existing caller omits it and is unaffected)
+// — added for switches backed by a real in-flight request (Gas Sniper),
+// where a second click before the first resolves would fire a duplicate
+// mutation rather than just flip a local flag.
+export default function Toggle({ checked, defaultChecked = false, onChange, disabled = false }) {
   const isControlled = checked !== undefined;
   const [internalChecked, setInternalChecked] = useState(defaultChecked);
   const value = isControlled ? checked : internalChecked;
 
   const handleClick = () => {
+    if (disabled) return;
     const next = !value;
     if (!isControlled) setInternalChecked(next);
     onChange?.(next);
@@ -20,10 +25,11 @@ export default function Toggle({ checked, defaultChecked = false, onChange }) {
       type="button"
       role="switch"
       aria-checked={value}
+      aria-disabled={disabled}
       onClick={handleClick}
-      className={`w-8 h-4 rounded-full relative cursor-pointer transition-colors duration-200 ${
-        value ? "bg-brand" : "bg-slate-200 dark:bg-zinc-800"
-      }`}
+      className={`w-8 h-4 rounded-full relative transition-colors duration-200 ${
+        disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+      } ${value ? "bg-brand" : "bg-slate-200 dark:bg-zinc-800"}`}
     >
       <span
         className={`absolute top-0.5 left-0.5 h-3 w-3 rounded-full bg-white shadow-sm transition-transform duration-200 ${
