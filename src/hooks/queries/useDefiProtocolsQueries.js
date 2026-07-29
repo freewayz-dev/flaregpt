@@ -4,6 +4,7 @@ import {
   fetchMxrpyVault,
   fetchSceptreVault,
   fetchFirelightVault,
+  fetchSpectraVault,
   fetchCompareStrategies,
 } from "@/services/defiProtocolsService";
 import { queryKeys } from "@/services/queryKeys";
@@ -46,6 +47,21 @@ export function useFirelightVault(walletAddress, { enabled = true } = {}) {
     queryKey: queryKeys.defiProtocols.vaults("firelight", walletAddress),
     queryFn: () => fetchFirelightVault(walletAddress),
     enabled: Boolean(walletAddress) && enabled,
+    ...WALLET_QUERY_RESILIENCE,
+  });
+}
+
+// Not wallet-gated like the other three vaults above — `user_wallet` is
+// genuinely optional server-side (confirmed live: omitting it still
+// returns full global market data, just with `user_position: null`), so
+// there's real value in showing a market's maturity/supply info before
+// anyone's connected anything. Gated on `market` instead, since that's the
+// one param this endpoint actually needs to return something scoped.
+export function useSpectraVault(walletAddress, market, { enabled = true } = {}) {
+  return useQuery({
+    queryKey: queryKeys.defiProtocols.spectraVault(market, walletAddress),
+    queryFn: () => fetchSpectraVault(walletAddress, market),
+    enabled: Boolean(market) && enabled,
     ...WALLET_QUERY_RESILIENCE,
   });
 }

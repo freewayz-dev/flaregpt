@@ -41,6 +41,15 @@ export const queryKeys = {
       "compareStrategies",
       amountFlr,
     ],
+    // Spectra is the one vault with more than one market to pick from, so
+    // its key needs that extra dimension alongside the address every other
+    // vault key already has.
+    spectraVault: (market, address) => [
+      ...queryKeys.defiProtocols.all,
+      "spectraVault",
+      market,
+      address,
+    ],
   },
   // `all` alone (no address) lets a future paginated version invalidate
   // every page for a wallet at once. `activity(address)` is the key for

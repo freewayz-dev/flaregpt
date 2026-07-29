@@ -21,6 +21,12 @@ export const useUIStore = create()(
       currency: "USD",
       chartType: "Area",
       timeframe: "7D",
+      // Which Spectra market the DeFi Explorer card shows — defaults to
+      // the nearer-maturity market (also the first the API itself lists),
+      // the more immediately actionable of the two. Persisted the same
+      // way `chartType`/`timeframe` are, so returning to the page keeps
+      // whichever market was last selected instead of resetting.
+      spectraMarket: "stxrp-2026-08-27",
 
       // Personalization additions: which route the index route lands on
       // ("overview" = today's default, unchanged behavior), and a global
@@ -79,6 +85,7 @@ export const useUIStore = create()(
       setCurrency: (currency) => set({ currency }),
       setChartType: (chartType) => set({ chartType }),
       setTimeframe: (timeframe) => set({ timeframe }),
+      setSpectraMarket: (spectraMarket) => set({ spectraMarket }),
       setDefaultLandingPage: (page) => set({ defaultLandingPage: page }),
       setTableDensity: (density) => set({ tableDensity: density }),
       setReduceMotionOverride: (value) => set({ reduceMotionOverride: value }),
