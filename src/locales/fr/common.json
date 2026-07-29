@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "Stockez plus de 3 portefeuilles",
       "guestLimitBenefitBackup": "Gardez votre liste de suivi sauvegardée",
       "searchPlaceholder": "Rechercher parmi {{count}} portefeuilles...",
-      "noSearchResults": "Aucun portefeuille ne correspond à votre recherche."
+      "noSearchResults": "Aucun portefeuille ne correspond à votre recherche.",
+      "duplicateNickname": "Un portefeuille de votre liste de suivi porte déjà ce nom. Veuillez choisir un autre nom.",
+      "notFoundError": "Ce portefeuille n'est plus dans votre liste de suivi.",
+      "saveEdit": "Enregistrer",
+      "adding": "Ajout en cours…"
     },
     "links": {
       "docs": "Doc",
@@ -242,11 +246,9 @@
       "system": "Système"
     },
     "flareGpt": {
-      "followDashboard": "Suivre le wallet du tableau de bord",
-      "general": "Général (aucun wallet)",
       "syncStatusTitle": "État de synchronisation",
-      "syncStatusConnected": "Connecté — l'historique se synchronisera entre appareils une fois la synchronisation de compte disponible.",
-      "syncStatusGuest": "Les conversations sont temporaires et ne survivront pas à une actualisation ou un changement d'appareil."
+      "syncStatusConnected": "Connecté — vos conversations se synchronisent sur tous vos appareils et navigateurs.",
+      "syncStatusGuest": "Les conversations sont temporaires dans ce navigateur et ne seront pas enregistrées. Connectez-vous pour les conserver."
     },
     "dataStorage": {
       "localTitle": "Données locales",
@@ -460,13 +462,32 @@
       "copyFailed": "Échec de la copie"
     },
     "jumpToLatest": "Aller au dernier message",
-    "clearChat": {
-      "button": "Effacer la discussion",
-      "confirm": "Confirmer ?",
-      "failed": "Impossible d'effacer la discussion — veuillez réessayer."
-    },
     "historyLoadFailed": "Impossible de charger votre historique de discussion.",
-    "sendError": "Une erreur est survenue — veuillez réessayer."
+    "sendError": "Une erreur est survenue — veuillez réessayer.",
+    "newChat": "Nouvelle discussion",
+    "deleteConversation": {
+      "button": "Supprimer la conversation",
+      "confirm": "Confirmer ?"
+    },
+    "deleteConversationFailed": "Impossible de supprimer cette conversation. Veuillez réessayer.",
+    "history": {
+      "title": "Historique des discussions",
+      "newChat": "Nouvelle discussion",
+      "searchPlaceholder": "Rechercher des conversations...",
+      "empty": "Aucune conversation pour le moment",
+      "noResults": "Aucune conversation ne correspond à votre recherche",
+      "untitled": "Sans titre",
+      "moreActions": "Plus d'actions",
+      "pin": "Épingler",
+      "unpin": "Désépingler",
+      "rename": "Renommer",
+      "delete": "Supprimer",
+      "pinLimitReached": "Vous pouvez épingler jusqu'à {{count}} conversations",
+      "renameFailed": "Impossible de renommer cette conversation.",
+      "openButton": "Historique",
+      "saveRename": "Enregistrer",
+      "cancelRename": "Annuler"
+    }
   },
   "dashboard": {
     "description": "Les données du réseau Live Flare, les graphiques de prix et l'activité du portefeuille en un coup d'œil.",

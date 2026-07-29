@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "保存 3 个以上的钱包",
       "guestLimitBenefitBackup": "为您的关注列表保留备份",
       "searchPlaceholder": "在 {{count}} 个钱包中搜索...",
-      "noSearchResults": "没有与您的搜索匹配的钱包。"
+      "noSearchResults": "没有与您的搜索匹配的钱包。",
+      "duplicateNickname": "关注列表中已存在使用该昵称的钱包，请选择其他昵称。",
+      "notFoundError": "该钱包已不在您的关注列表中。",
+      "saveEdit": "保存",
+      "adding": "添加中…"
     },
     "links": {
       "docs": "文档批注",
@@ -242,11 +246,9 @@
       "system": "跟随系统"
     },
     "flareGpt": {
-      "followDashboard": "跟随仪表盘钱包",
-      "general": "通用（无钱包）",
       "syncStatusTitle": "同步状态",
-      "syncStatusConnected": "已连接 — 账户同步功能上线后，历史记录将在设备间同步。",
-      "syncStatusGuest": "对话是临时的，刷新或更换设备后将不会保留。"
+      "syncStatusConnected": "已登录 — 您的对话会在所有设备和浏览器间同步。",
+      "syncStatusGuest": "对话仅临时保存在此浏览器中，不会被保存。登录以保留对话。"
     },
     "dataStorage": {
       "localTitle": "本地数据",
@@ -461,13 +463,32 @@
       "copyFailed": "复制失败"
     },
     "jumpToLatest": "跳转到最新",
-    "clearChat": {
-      "button": "清除聊天",
-      "confirm": "确认？",
-      "failed": "无法清除聊天，请重试。"
-    },
     "historyLoadFailed": "无法加载聊天记录。",
-    "sendError": "出现问题，请重试。"
+    "sendError": "出现问题，请重试。",
+    "newChat": "新对话",
+    "deleteConversation": {
+      "button": "删除对话",
+      "confirm": "确认？"
+    },
+    "deleteConversationFailed": "无法删除此对话，请重试。",
+    "history": {
+      "title": "聊天记录",
+      "newChat": "新对话",
+      "searchPlaceholder": "搜索对话...",
+      "empty": "暂无对话",
+      "noResults": "没有与您的搜索匹配的对话",
+      "untitled": "无标题",
+      "moreActions": "更多操作",
+      "pin": "置顶",
+      "unpin": "取消置顶",
+      "rename": "重命名",
+      "delete": "删除",
+      "pinLimitReached": "最多可置顶 {{count}} 个对话",
+      "renameFailed": "无法重命名此对话。",
+      "openButton": "历史记录",
+      "saveRename": "保存",
+      "cancelRename": "取消"
+    }
   },
   "dashboard": {
     "description": "实时Flare网络数据、价格图表和钱包活动一目了然。",

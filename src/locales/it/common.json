@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "Salva più di 3 wallet",
       "guestLimitBenefitBackup": "Mantieni la tua watchlist al sicuro",
       "searchPlaceholder": "Cerca tra {{count}} wallet...",
-      "noSearchResults": "Nessun wallet corrisponde alla tua ricerca."
+      "noSearchResults": "Nessun wallet corrisponde alla tua ricerca.",
+      "duplicateNickname": "Esiste già un wallet nella watchlist con questo nomignolo. Scegline uno diverso.",
+      "notFoundError": "Questo wallet non è più nella tua watchlist.",
+      "saveEdit": "Salva",
+      "adding": "Aggiunta in corso…"
     },
     "links": {
       "docs": "Documenti",
@@ -242,11 +246,9 @@
       "system": "Sistema"
     },
     "flareGpt": {
-      "followDashboard": "Segui il wallet della dashboard",
-      "general": "Generale (nessun wallet)",
       "syncStatusTitle": "Stato Sincronizzazione",
-      "syncStatusConnected": "Connesso — la cronologia si sincronizzerà tra i dispositivi una volta disponibile la sincronizzazione dell'account.",
-      "syncStatusGuest": "Le conversazioni sono temporanee e non sopravvivranno a un aggiornamento o cambio dispositivo."
+      "syncStatusConnected": "Accesso effettuato — le tue conversazioni si sincronizzano su ogni dispositivo e browser.",
+      "syncStatusGuest": "Le conversazioni sono temporanee in questo browser e non verranno salvate. Accedi per conservarle."
     },
     "dataStorage": {
       "localTitle": "Dati Locali",
@@ -461,13 +463,32 @@
       "copyFailed": "Copia non riuscita"
     },
     "jumpToLatest": "Vai all'ultimo messaggio",
-    "clearChat": {
-      "button": "Cancella chat",
-      "confirm": "Confermare?",
-      "failed": "Impossibile cancellare la chat: riprova."
-    },
     "historyLoadFailed": "Impossibile caricare la cronologia chat.",
-    "sendError": "Qualcosa è andato storto: riprova."
+    "sendError": "Qualcosa è andato storto: riprova.",
+    "newChat": "Nuova chat",
+    "deleteConversation": {
+      "button": "Elimina conversazione",
+      "confirm": "Confermi?"
+    },
+    "deleteConversationFailed": "Impossibile eliminare questa conversazione. Riprova.",
+    "history": {
+      "title": "Cronologia chat",
+      "newChat": "Nuova chat",
+      "searchPlaceholder": "Cerca conversazioni...",
+      "empty": "Nessuna conversazione ancora",
+      "noResults": "Nessuna conversazione corrisponde alla tua ricerca",
+      "untitled": "Senza titolo",
+      "moreActions": "Altre azioni",
+      "pin": "Fissa",
+      "unpin": "Rimuovi fissaggio",
+      "rename": "Rinomina",
+      "delete": "Elimina",
+      "pinLimitReached": "Puoi fissare fino a {{count}} conversazioni",
+      "renameFailed": "Impossibile rinominare questa conversazione.",
+      "openButton": "Cronologia",
+      "saveRename": "Salva",
+      "cancelRename": "Annulla"
+    }
   },
   "dashboard": {
     "description": "Dati della rete Live Flare, grafici dei prezzi e attività del portafoglio a colpo d'occhio.",

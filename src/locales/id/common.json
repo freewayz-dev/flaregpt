@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "Simpan lebih dari 3 dompet",
       "guestLimitBenefitBackup": "Jaga watchlist Anda tetap tercadangkan",
       "searchPlaceholder": "Cari di {{count}} dompet...",
-      "noSearchResults": "Tidak ada dompet yang cocok dengan pencarian Anda."
+      "noSearchResults": "Tidak ada dompet yang cocok dengan pencarian Anda.",
+      "duplicateNickname": "Sudah ada dompet watchlist dengan nama panggilan ini. Silakan pilih nama panggilan lain.",
+      "notFoundError": "Dompet ini sudah tidak ada lagi di watchlist Anda.",
+      "saveEdit": "Simpan",
+      "adding": "Menambahkan…"
     },
     "links": {
       "docs": "Dokumentasi",
@@ -242,11 +246,9 @@
       "system": "Sistem"
     },
     "flareGpt": {
-      "followDashboard": "Ikuti wallet dasbor",
-      "general": "Umum (tanpa wallet)",
       "syncStatusTitle": "Status Sinkronisasi",
-      "syncStatusConnected": "Terhubung — riwayat akan disinkronkan di semua perangkat setelah sinkronisasi akun tersedia.",
-      "syncStatusGuest": "Percakapan bersifat sementara dan tidak akan bertahan setelah refresh atau ganti perangkat."
+      "syncStatusConnected": "Masuk — percakapan Anda disinkronkan di semua perangkat dan browser.",
+      "syncStatusGuest": "Percakapan bersifat sementara di browser ini dan tidak akan disimpan. Masuk untuk menyimpannya."
     },
     "dataStorage": {
       "localTitle": "Data Lokal",
@@ -461,13 +463,32 @@
       "copyFailed": "Gagal menyalin"
     },
     "jumpToLatest": "Lompat ke terbaru",
-    "clearChat": {
-      "button": "Hapus Obrolan",
-      "confirm": "Konfirmasi?",
-      "failed": "Gagal menghapus obrolan — silakan coba lagi."
-    },
     "historyLoadFailed": "Riwayat obrolan Anda gagal dimuat.",
-    "sendError": "Terjadi kesalahan — silakan coba lagi."
+    "sendError": "Terjadi kesalahan — silakan coba lagi.",
+    "newChat": "Obrolan Baru",
+    "deleteConversation": {
+      "button": "Hapus Percakapan",
+      "confirm": "Konfirmasi?"
+    },
+    "deleteConversationFailed": "Gagal menghapus percakapan ini. Silakan coba lagi.",
+    "history": {
+      "title": "Riwayat Obrolan",
+      "newChat": "Obrolan Baru",
+      "searchPlaceholder": "Cari percakapan...",
+      "empty": "Belum ada percakapan",
+      "noResults": "Tidak ada percakapan yang cocok dengan pencarian Anda",
+      "untitled": "Tanpa judul",
+      "moreActions": "Tindakan lainnya",
+      "pin": "Sematkan",
+      "unpin": "Lepas sematan",
+      "rename": "Ganti nama",
+      "delete": "Hapus",
+      "pinLimitReached": "Anda dapat menyematkan hingga {{count}} percakapan",
+      "renameFailed": "Gagal mengganti nama percakapan ini.",
+      "openButton": "Riwayat",
+      "saveRename": "Simpan",
+      "cancelRename": "Batal"
+    }
   },
   "dashboard": {
     "description": "Sekilas data jaringan Flare Langsung, grafik harga, dan aktivitas dompet.",

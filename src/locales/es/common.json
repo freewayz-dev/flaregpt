@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "Guarda más de 3 billeteras",
       "guestLimitBenefitBackup": "Mantén tu lista de seguimiento respaldada",
       "searchPlaceholder": "Buscar entre {{count}} billeteras...",
-      "noSearchResults": "Ninguna billetera coincide con tu búsqueda."
+      "noSearchResults": "Ninguna billetera coincide con tu búsqueda.",
+      "duplicateNickname": "Ya existe una billetera en tu lista con este apodo. Elige un apodo diferente.",
+      "notFoundError": "Esta billetera ya no está en tu lista de seguimiento.",
+      "saveEdit": "Guardar",
+      "adding": "Añadiendo…"
     },
     "links": {
       "docs": "Docs",
@@ -242,11 +246,9 @@
       "system": "Sistema"
     },
     "flareGpt": {
-      "followDashboard": "Seguir wallet del panel",
-      "general": "General (sin wallet)",
       "syncStatusTitle": "Estado de sincronización",
-      "syncStatusConnected": "Conectado — el historial se sincronizará entre dispositivos cuando esté disponible la sincronización de cuenta.",
-      "syncStatusGuest": "Las conversaciones son temporales y no sobrevivirán a una actualización o cambio de dispositivo."
+      "syncStatusConnected": "Sesión iniciada — tus conversaciones se sincronizan en todos tus dispositivos y navegadores.",
+      "syncStatusGuest": "Las conversaciones son temporales en este navegador y no se guardarán. Inicia sesión para conservarlas."
     },
     "dataStorage": {
       "localTitle": "Datos locales",
@@ -460,13 +462,32 @@
       "copyFailed": "Error al copiar"
     },
     "jumpToLatest": "Ir a lo último",
-    "clearChat": {
-      "button": "Borrar chat",
-      "confirm": "¿Confirmar?",
-      "failed": "No se pudo borrar el chat; inténtalo de nuevo."
-    },
     "historyLoadFailed": "No se pudo cargar tu historial de chat.",
-    "sendError": "Algo salió mal; inténtalo de nuevo."
+    "sendError": "Algo salió mal; inténtalo de nuevo.",
+    "newChat": "Nuevo chat",
+    "deleteConversation": {
+      "button": "Eliminar conversación",
+      "confirm": "¿Confirmar?"
+    },
+    "deleteConversationFailed": "No se pudo eliminar esta conversación. Inténtalo de nuevo.",
+    "history": {
+      "title": "Historial de chat",
+      "newChat": "Nuevo chat",
+      "searchPlaceholder": "Buscar conversaciones...",
+      "empty": "Aún no hay conversaciones",
+      "noResults": "Ninguna conversación coincide con tu búsqueda",
+      "untitled": "Sin título",
+      "moreActions": "Más acciones",
+      "pin": "Fijar",
+      "unpin": "Desfijar",
+      "rename": "Cambiar nombre",
+      "delete": "Eliminar",
+      "pinLimitReached": "Puedes fijar hasta {{count}} conversaciones",
+      "renameFailed": "No se pudo cambiar el nombre de esta conversación.",
+      "openButton": "Historial",
+      "saveRename": "Guardar",
+      "cancelRename": "Cancelar"
+    }
   },
   "dashboard": {
     "description": "Datos de red, gráficos de precios y actividad de billetera de Live Flare de un vistazo.",

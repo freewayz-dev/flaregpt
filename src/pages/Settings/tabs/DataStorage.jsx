@@ -62,15 +62,20 @@ export default function DataStorage() {
     arm(key);
   };
 
-  // The backend holds one continuous chat history per account (no local-
-  // only guest state left to fall back on), so this now has to succeed
-  // against the real endpoint before the local store is cleared — clearing
-  // local state on a failed request would just have it reappear on the
-  // next history fetch.
+  // The backend holds every conversation per account (no local-only guest
+  // state left to fall back on), so this now has to succeed against the
+  // real endpoint before local state is cleared — clearing local state on
+  // a failed request would just have the old conversations reappear the
+  // next time the switcher (or the active thread) is fetched. Deletes
+  // *every* conversation at once (confirmed live: the same endpoint that
+  // used to clear the old flat history still wipes the new per-conversation
+  // model too) rather than looping a DELETE per conversation.
   const clearConversations = async () => {
     try {
-      await chatService.clearChatHistory();
+      await chatService.clearAllConversations();
       clearMessages();
+      useFlareGptStore.getState().setActiveConversationId(null);
+      queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
     } catch {
       toast.error(t("settings.dataStorage.conversationsClearFailed"));
     }

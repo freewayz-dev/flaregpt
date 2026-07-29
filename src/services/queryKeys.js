@@ -58,4 +58,11 @@ export const queryKeys = {
     all: ["watchlist"],
     list: () => [...queryKeys.watchlist.all, "list"],
   },
+  // Authenticated users only — a guest's chat has no conversation concept
+  // at all (see useFlareGptStore.js), just an ephemeral local transcript.
+  chat: {
+    all: ["chat"],
+    conversations: () => [...queryKeys.chat.all, "conversations"],
+    conversation: (conversationId) => [...queryKeys.chat.all, "conversation", conversationId],
+  },
 };

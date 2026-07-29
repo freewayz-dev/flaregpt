@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "تخزين أكثر من 3 محافظ",
       "guestLimitBenefitBackup": "الحفاظ على نسخة احتياطية من قائمة المتابعة",
       "searchPlaceholder": "بحث في {{count}} محفظة...",
-      "noSearchResults": "لا توجد محافظ تطابق بحثك."
+      "noSearchResults": "لا توجد محافظ تطابق بحثك.",
+      "duplicateNickname": "توجد بالفعل محفظة في قائمة المتابعة بهذا الاسم المستعار. يرجى اختيار اسم مستعار مختلف.",
+      "notFoundError": "لم تعد هذه المحفظة ضمن قائمة المتابعة الخاصة بك.",
+      "saveEdit": "حفظ",
+      "adding": "جارٍ الإضافة…"
     },
     "links": {
       "docs": "مستندات",
@@ -242,11 +246,9 @@
       "system": "النظام"
     },
     "flareGpt": {
-      "followDashboard": "اتباع محفظة لوحة التحكم",
-      "general": "عام (بدون محفظة)",
       "syncStatusTitle": "حالة المزامنة",
-      "syncStatusConnected": "متصل — ستتم مزامنة السجل عبر الأجهزة بمجرد توفر مزامنة الحساب.",
-      "syncStatusGuest": "المحادثات مؤقتة ولن تبقى بعد التحديث أو تغيير الجهاز."
+      "syncStatusConnected": "تم تسجيل الدخول — تتم مزامنة محادثاتك عبر كل أجهزتك ومتصفحاتك.",
+      "syncStatusGuest": "المحادثات مؤقتة في هذا المتصفح ولن يتم حفظها. سجّل الدخول للاحتفاظ بها."
     },
     "dataStorage": {
       "localTitle": "البيانات المحلية",
@@ -460,13 +462,32 @@
       "copyFailed": "فشل النسخ"
     },
     "jumpToLatest": "الانتقال إلى الأحدث",
-    "clearChat": {
-      "button": "مسح المحادثة",
-      "confirm": "تأكيد؟",
-      "failed": "تعذّر مسح المحادثة — يرجى المحاولة مرة أخرى."
-    },
     "historyLoadFailed": "تعذّر تحميل سجل محادثاتك.",
-    "sendError": "حدث خطأ ما — يرجى المحاولة مرة أخرى."
+    "sendError": "حدث خطأ ما — يرجى المحاولة مرة أخرى.",
+    "newChat": "محادثة جديدة",
+    "deleteConversation": {
+      "button": "حذف المحادثة",
+      "confirm": "تأكيد؟"
+    },
+    "deleteConversationFailed": "تعذّر حذف هذه المحادثة. يرجى المحاولة مرة أخرى.",
+    "history": {
+      "title": "سجل المحادثات",
+      "newChat": "محادثة جديدة",
+      "searchPlaceholder": "البحث في المحادثات...",
+      "empty": "لا توجد محادثات بعد",
+      "noResults": "لا توجد محادثات مطابقة لبحثك",
+      "untitled": "بلا عنوان",
+      "moreActions": "إجراءات إضافية",
+      "pin": "تثبيت",
+      "unpin": "إلغاء التثبيت",
+      "rename": "إعادة تسمية",
+      "delete": "حذف",
+      "pinLimitReached": "يمكنك تثبيت حتى {{count}} محادثات",
+      "renameFailed": "تعذّرت إعادة تسمية هذه المحادثة.",
+      "openButton": "السجل",
+      "saveRename": "حفظ",
+      "cancelRename": "إلغاء"
+    }
   },
   "dashboard": {
     "description": "نظرة سريعة على بيانات شبكة Flare الحية ومخططات الأسعار ونشاط المحفظة.",

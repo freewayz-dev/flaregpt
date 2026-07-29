@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "3件を超えるウォレットを保存",
       "guestLimitBenefitBackup": "ウォッチリストをバックアップ",
       "searchPlaceholder": "{{count}}件のウォレットを検索...",
-      "noSearchResults": "検索に一致するウォレットがありません。"
+      "noSearchResults": "検索に一致するウォレットがありません。",
+      "duplicateNickname": "このニックネームのウォッチリストウォレットは既に存在します。別のニックネームを選んでください。",
+      "notFoundError": "このウォレットはもうウォッチリストにありません。",
+      "saveEdit": "保存",
+      "adding": "追加中…"
     },
     "links": {
       "docs": "ドックス",
@@ -242,11 +246,9 @@
       "system": "システム"
     },
     "flareGpt": {
-      "followDashboard": "ダッシュボードのウォレットに従う",
-      "general": "一般（ウォレットなし）",
       "syncStatusTitle": "同期ステータス",
-      "syncStatusConnected": "接続済み — アカウント同期が利用可能になると、履歴はデバイス間で同期されます。",
-      "syncStatusGuest": "会話は一時的なもので、更新やデバイス変更後は保持されません。"
+      "syncStatusConnected": "サインイン済み — 会話はすべてのデバイスとブラウザで同期されます。",
+      "syncStatusGuest": "会話はこのブラウザ内で一時的なものであり、保存されません。保存するにはサインインしてください。"
     },
     "dataStorage": {
       "localTitle": "ローカルデータ",
@@ -461,13 +463,32 @@
       "copyFailed": "コピーに失敗しました"
     },
     "jumpToLatest": "最新へ移動",
-    "clearChat": {
-      "button": "チャットを削除",
-      "confirm": "確認しますか?",
-      "failed": "チャットを削除できませんでした。もう一度お試しください。"
-    },
     "historyLoadFailed": "チャット履歴を読み込めませんでした。",
-    "sendError": "問題が発生しました。もう一度お試しください。"
+    "sendError": "問題が発生しました。もう一度お試しください。",
+    "newChat": "新しいチャット",
+    "deleteConversation": {
+      "button": "会話を削除",
+      "confirm": "確認しますか？"
+    },
+    "deleteConversationFailed": "この会話を削除できませんでした。もう一度お試しください。",
+    "history": {
+      "title": "チャット履歴",
+      "newChat": "新しいチャット",
+      "searchPlaceholder": "会話を検索...",
+      "empty": "まだ会話がありません",
+      "noResults": "検索に一致する会話がありません",
+      "untitled": "無題",
+      "moreActions": "その他の操作",
+      "pin": "ピン留め",
+      "unpin": "ピン留め解除",
+      "rename": "名前を変更",
+      "delete": "削除",
+      "pinLimitReached": "最大{{count}}件の会話をピン留めできます",
+      "renameFailed": "この会話の名前を変更できませんでした。",
+      "openButton": "履歴",
+      "saveRename": "保存",
+      "cancelRename": "キャンセル"
+    }
   },
   "dashboard": {
     "description": "ライブフレアネットワークデータ、価格チャート、ウォレットアクティビティを一目で確認できます。",

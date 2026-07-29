@@ -26,3 +26,23 @@ export async function removeWatchlistWallet(address) {
   const { data } = await flareApi.delete(`/api/v1/watchlist/${address}`);
   return data;
 }
+
+// Both fields are optional (confirmed live: nickname-only, address-only,
+// and both-at-once all succeed) — only send what the caller actually
+// changed, so a same-address "just renaming the nickname" edit never risks
+// tripping the backend's own duplicate-address check against itself.
+// Response: { address, nickname, added_at } — `address` reflects
+// `new_address` if one was given. A conflicting `new_address` and a
+// conflicting `nickname` both respond 409, but with distinguishable
+// `detail` text (confirmed live: "This address is already on your
+// watchlist." vs "Nickname '<name>' is already used for another watched
+// wallet.") — see interpretWatchlistError in Wallets.jsx, which is what
+// actually tells the two apart for the UI. Editing an address that's no
+// longer on the list responds 404.
+export async function updateWatchlistWallet(address, { nickname, newAddress } = {}) {
+  const payload = {};
+  if (nickname !== undefined) payload.nickname = nickname;
+  if (newAddress !== undefined) payload.new_address = newAddress;
+  const { data } = await flareApi.patch(`/api/v1/watchlist/${address}`, payload);
+  return data;
+}

@@ -251,13 +251,32 @@
       "copyFailed": "Copy failed"
     },
     "jumpToLatest": "Jump to latest",
-    "clearChat": {
-      "button": "Clear Chat",
-      "confirm": "Confirm?",
-      "failed": "Couldn't clear chat — please try again."
-    },
     "historyLoadFailed": "Couldn't load your chat history.",
-    "sendError": "Something went wrong — please try again."
+    "sendError": "Something went wrong — please try again.",
+    "newChat": "New Chat",
+    "deleteConversation": {
+      "button": "Delete Conversation",
+      "confirm": "Confirm?"
+    },
+    "deleteConversationFailed": "Couldn't delete this conversation. Please try again.",
+    "history": {
+      "title": "Chat History",
+      "newChat": "New Chat",
+      "searchPlaceholder": "Search conversations...",
+      "empty": "No conversations yet",
+      "noResults": "No conversations match your search",
+      "untitled": "Untitled",
+      "moreActions": "More actions",
+      "pin": "Pin",
+      "unpin": "Unpin",
+      "rename": "Rename",
+      "delete": "Delete",
+      "pinLimitReached": "You can pin up to {{count}} conversations",
+      "renameFailed": "Couldn't rename this conversation.",
+      "openButton": "History",
+      "saveRename": "Save",
+      "cancelRename": "Cancel"
+    }
   },
   "footer": {
     "copyright": "© {{year}} FlareGPT. Built on Flare Network.",
@@ -489,7 +508,11 @@
       "guestLimitBenefitMore": "Store more than 3 wallets",
       "guestLimitBenefitBackup": "Keep your watchlist backed up",
       "searchPlaceholder": "Search {{count}} wallets...",
-      "noSearchResults": "No wallets match your search."
+      "noSearchResults": "No wallets match your search.",
+      "duplicateNickname": "A watchlist wallet with this nickname already exists. Please choose a different nickname.",
+      "notFoundError": "This wallet is no longer on your watchlist.",
+      "saveEdit": "Save",
+      "adding": "Adding…"
     },
     "groups": {
       "personalization": "Personalization",
@@ -502,11 +525,9 @@
       "system": "System"
     },
     "flareGpt": {
-      "followDashboard": "Follow dashboard wallet",
-      "general": "General (no wallet)",
       "syncStatusTitle": "Sync Status",
-      "syncStatusConnected": "Connected — history will sync across devices once account sync is available.",
-      "syncStatusGuest": "Conversations are temporary and won't survive a refresh or device change."
+      "syncStatusConnected": "Signed in — your conversations sync across every device and browser.",
+      "syncStatusGuest": "Conversations are temporary in this browser and won't be saved. Sign in to keep them."
     },
     "dataStorage": {
       "localTitle": "Local Data",

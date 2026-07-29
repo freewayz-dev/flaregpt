@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "3'ten fazla cüzdan saklayın",
       "guestLimitBenefitBackup": "İzleme listenizi yedekli tutun",
       "searchPlaceholder": "{{count}} cüzdanda ara...",
-      "noSearchResults": "Aramanızla eşleşen cüzdan yok."
+      "noSearchResults": "Aramanızla eşleşen cüzdan yok.",
+      "duplicateNickname": "İzleme listenizde bu takma ada sahip bir cüzdan zaten var. Lütfen farklı bir takma ad seçin.",
+      "notFoundError": "Bu cüzdan artık izleme listenizde değil.",
+      "saveEdit": "Kaydet",
+      "adding": "Ekleniyor…"
     },
     "links": {
       "docs": "Dokümanlar",
@@ -242,11 +246,9 @@
       "system": "Sistem"
     },
     "flareGpt": {
-      "followDashboard": "Pano cüzdanını takip et",
-      "general": "Genel (cüzdan yok)",
       "syncStatusTitle": "Senkronizasyon Durumu",
-      "syncStatusConnected": "Bağlandı — hesap senkronizasyonu kullanılabilir olduğunda geçmiş cihazlar arasında senkronize edilecek.",
-      "syncStatusGuest": "Konuşmalar geçicidir ve yenileme veya cihaz değişikliğinde kalıcı olmaz."
+      "syncStatusConnected": "Giriş yapıldı — konuşmalarınız tüm cihaz ve tarayıcılarda senkronize edilir.",
+      "syncStatusGuest": "Konuşmalar bu tarayıcıda geçicidir ve kaydedilmez. Saklamak için giriş yapın."
     },
     "dataStorage": {
       "localTitle": "Yerel Veri",
@@ -461,13 +463,32 @@
       "copyFailed": "Kopyalama başarısız"
     },
     "jumpToLatest": "En yeniye git",
-    "clearChat": {
-      "button": "Sohbeti Temizle",
-      "confirm": "Onaylıyor musunuz?",
-      "failed": "Sohbet temizlenemedi — lütfen tekrar deneyin."
-    },
     "historyLoadFailed": "Sohbet geçmişiniz yüklenemedi.",
-    "sendError": "Bir şeyler ters gitti — lütfen tekrar deneyin."
+    "sendError": "Bir şeyler ters gitti — lütfen tekrar deneyin.",
+    "newChat": "Yeni Sohbet",
+    "deleteConversation": {
+      "button": "Konuşmayı Sil",
+      "confirm": "Onaylıyor musunuz?"
+    },
+    "deleteConversationFailed": "Bu konuşma silinemedi. Lütfen tekrar deneyin.",
+    "history": {
+      "title": "Sohbet Geçmişi",
+      "newChat": "Yeni Sohbet",
+      "searchPlaceholder": "Konuşmalarda ara...",
+      "empty": "Henüz konuşma yok",
+      "noResults": "Aramanızla eşleşen konuşma yok",
+      "untitled": "Başlıksız",
+      "moreActions": "Diğer işlemler",
+      "pin": "Sabitle",
+      "unpin": "Sabitlemeyi kaldır",
+      "rename": "Yeniden adlandır",
+      "delete": "Sil",
+      "pinLimitReached": "En fazla {{count}} konuşma sabitleyebilirsiniz",
+      "renameFailed": "Bu konuşma yeniden adlandırılamadı.",
+      "openButton": "Geçmiş",
+      "saveRename": "Kaydet",
+      "cancelRename": "İptal"
+    }
   },
   "dashboard": {
     "description": "Bir bakışta Live Flare ağ verileri, fiyat grafikleri ve cüzdan etkinliği.",

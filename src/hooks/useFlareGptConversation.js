@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 import { useFlareGptStore, makeId } from "@/store/useFlareGptStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import * as chatService from "@/services/chatService";
+import { queryKeys } from "@/services/queryKeys";
+import { useDeleteConversation } from "@/hooks/queries/useChatQueries";
 import { useFlareGptWalletContext } from "@/hooks/useFlareGptWalletContext";
 
 // Real assistant replies are one flat string (see chatService.js), but
@@ -23,9 +26,9 @@ function blocksToText(blocks) {
     .join("\n\n");
 }
 
-// The backend has no per-message id, so hydrated history entries get a
-// fresh local one — nothing here ever needs to reference them by their
-// (nonexistent) server id, only the whole-history clear endpoint exists.
+// The backend has no per-message id, so every hydrated entry gets a fresh
+// local one — nothing here ever needs to reference them by their
+// (nonexistent) server id.
 function fromHistoryEntry(entry) {
   const base = {
     id: makeId(),
@@ -38,6 +41,30 @@ function fromHistoryEntry(entry) {
     : { ...base, blocks: toTextBlocks(entry.content) };
 }
 
+// A brand-new conversation is titled from the user's own first message
+// rather than left as the backend's generic "New Chat" default — with
+// potentially dozens of threads in the switcher, a wall of identical
+// "New Chat" entries would defeat the point of having titles at all.
+// Kept safely under the backend's 80-char cap.
+function deriveTitleFromMessage(text) {
+  const collapsed = text.trim().replace(/\s+/g, " ");
+  return collapsed.length > 60 ? `${collapsed.slice(0, 57)}...` : collapsed;
+}
+
+// The backend has no structured wallet-address field on the chat endpoint
+// at all (confirmed live) — the only way it ever reasons about a specific
+// wallet is by parsing one out of the message text itself, and it already
+// defaults to the authenticated wallet with zero hint needed. So this only
+// ever needs to fire for the "Specific" case (a watchlist wallet, not the
+// connected one) — injecting a reference for Primary would just be a
+// redundant hint the backend doesn't need. Applied only to the outgoing
+// network payload, never to what's actually displayed in the transcript,
+// so the user's own bubble always shows exactly what they typed.
+function withWalletContext(text, effectiveWallet) {
+  if (!effectiveWallet || effectiveWallet.type !== "tracked") return text;
+  return `Regarding wallet ${effectiveWallet.address}: ${text}`;
+}
+
 // Orchestrates the real send/receive flow on top of the shared
 // useFlareGptStore. Both the full page and the drawer call this hook
 // independently, but since they read/write the same store, starting a
@@ -45,20 +72,24 @@ function fromHistoryEntry(entry) {
 // state.
 export function useFlareGptConversation() {
   const { t } = useTranslation();
+  const queryClient = useQueryClient();
   const messages = useFlareGptStore((s) => s.messages);
-  const isLoadingHistory = useFlareGptStore((s) => s.isLoadingHistory);
-  const isHistoryLoaded = useFlareGptStore((s) => s.isHistoryLoaded);
+  const isLoadingMessages = useFlareGptStore((s) => s.isLoadingMessages);
+  const isMessagesLoaded = useFlareGptStore((s) => s.isMessagesLoaded);
+  const activeConversationId = useFlareGptStore((s) => s.activeConversationId);
   const appendMessage = useFlareGptStore((s) => s.appendMessage);
   const updateMessage = useFlareGptStore((s) => s.updateMessage);
   const removeLastAssistantMessage = useFlareGptStore((s) => s.removeLastAssistantMessage);
-  const clearMessages = useFlareGptStore((s) => s.clearMessages);
-
-  const { effectiveAddress } = useFlareGptWalletContext();
+  const unpinConversation = useFlareGptStore((s) => s.unpinConversation);
+  const deleteConversationMutation = useDeleteConversation();
+  const { effectiveWallet } = useFlareGptWalletContext();
 
   // A guest (no auth session) gets the chat interface but nothing is ever
-  // fetched or persisted for them — GET/DELETE /chat/history both require
-  // a session (confirmed against the live backend: 401 without one), and
-  // there's no server-side place to save their messages either way.
+  // fetched, created, or persisted for them — every /chat/conversations*
+  // endpoint requires a session (confirmed against the live backend: 401
+  // without one), so a guest's chat stays exactly what it always was: one
+  // ephemeral, client-context-only thread that never touches the network
+  // beyond the single POST /api/v1/chat per message.
   const hasSession = useAuthStore((s) => Boolean(s.token));
 
   const lastMessage = messages[messages.length - 1];
@@ -66,10 +97,10 @@ export function useFlareGptConversation() {
 
   // Signing in mid-session (started as a guest, then connected + signed)
   // must discard whatever ephemeral, never-persisted transcript was on
-  // screen in favor of the real, backend-held one — otherwise the effect
-  // below would see isHistoryLoaded already true (set by the guest branch)
-  // and never fetch the account's actual history at all. Signing out does
-  // the same in reverse: the messages on screen belonged to that account,
+  // screen in favor of a real conversation — otherwise the effect below
+  // would see isMessagesLoaded already true (set by the guest branch) and
+  // never load anything real. Signing out does the same in reverse: the
+  // messages and active conversation on screen belonged to that account,
   // and leaving them visible under what's now a guest session is stale at
   // best and a privacy leak on a shared device at worst.
   const prevHasSessionRef = useRef(hasSession);
@@ -77,19 +108,23 @@ export function useFlareGptConversation() {
     const prevHasSession = prevHasSessionRef.current;
     prevHasSessionRef.current = hasSession;
     if (hasSession && !prevHasSession) {
-      useFlareGptStore.getState().resetHistoryLoadState();
+      useFlareGptStore.getState().resetMessagesLoadState();
     } else if (!hasSession && prevHasSession) {
       useFlareGptStore.getState().clearMessages();
-      useFlareGptStore.getState().resetHistoryLoadState();
+      useFlareGptStore.getState().setActiveConversationId(null);
+      useFlareGptStore.getState().resetMessagesLoadState();
     }
   }, [hasSession]);
 
-  // See useFlareGptStore.js — guarded via getState() (not a dependency) so
-  // the page and the drawer, both mounted at once, only ever fetch this
-  // once between them, the same pattern useAuthSync.js uses for its
-  // once-per-load session check.
+  // Loads whichever conversation is active. Guarded via getState() (not a
+  // dependency) so the page and the drawer, both mounted at once, only
+  // ever fetch this once between them — the same pattern useAuthSync.js
+  // uses for its once-per-load session check. Depends on
+  // `activeConversationId` so switching conversations (which resets the
+  // loaded/loading flags via switchConversation below) re-triggers this
+  // for the newly-selected thread.
   useEffect(() => {
-    if (useFlareGptStore.getState().isHistoryLoaded || useFlareGptStore.getState().isLoadingHistory) {
+    if (useFlareGptStore.getState().isMessagesLoaded || useFlareGptStore.getState().isLoadingMessages) {
       return;
     }
     if (!hasSession) {
@@ -100,21 +135,36 @@ export function useFlareGptConversation() {
       useFlareGptStore.getState().setMessages(useFlareGptStore.getState().messages);
       return;
     }
-    useFlareGptStore.getState().beginLoadingHistory();
+    if (!activeConversationId) {
+      // A fresh "New Chat" with nothing sent yet — there's genuinely
+      // nothing to fetch (see requestReply, which is what actually
+      // creates a conversation, on the first real send).
+      useFlareGptStore.getState().setMessages([]);
+      return;
+    }
+    useFlareGptStore.getState().beginLoadingMessages();
     chatService
-      .fetchChatHistory()
-      .then(({ history }) => {
-        useFlareGptStore.getState().setMessages((history ?? []).map(fromHistoryEntry));
+      .fetchConversation(activeConversationId)
+      .then((conversation) => {
+        useFlareGptStore.getState().setMessages((conversation.messages ?? []).map(fromHistoryEntry));
       })
-      .catch(() => {
+      .catch((error) => {
+        if (error?.response?.status === 404) {
+          // Deleted elsewhere (another tab, another device) — fall back to
+          // a blank "new chat" state rather than showing a dead reference
+          // forever.
+          useFlareGptStore.getState().setActiveConversationId(null);
+          useFlareGptStore.getState().setMessages([]);
+          return;
+        }
         // Falls back to whatever this browser had cached locally (from the
         // persist middleware) rather than blanking the screen — but still
-        // marks history "loaded" so a transient failure doesn't retry in a
-        // loop on every render.
+        // marks messages "loaded" so a transient failure doesn't retry in
+        // a loop on every render.
         useFlareGptStore.getState().setMessages(useFlareGptStore.getState().messages);
         toast.error(t("flrgpt.historyLoadFailed"));
       });
-  }, [hasSession, t]);
+  }, [hasSession, activeConversationId, t]);
 
   // Bumped only when *this* view's user explicitly sends or regenerates —
   // MessageList uses it to force a jump to the bottom that overrides
@@ -124,21 +174,27 @@ export function useFlareGptConversation() {
   const [scrollRequestId, setScrollRequestId] = useState(0);
   const requestScrollToBottom = () => setScrollRequestId((n) => n + 1);
 
-  // Bumped whenever chat is cleared — Composer watches this to return
-  // keyboard focus to itself, so "Clear Chat" feels like one continuous
-  // action rather than requiring a manual re-click into the input after.
+  // Bumped whenever chat is cleared, switched, or a new one is started —
+  // Composer watches this to return keyboard focus to itself, so these
+  // feel like one continuous action rather than requiring a manual
+  // re-click into the input after.
   const [focusRequestId, setFocusRequestId] = useState(0);
+  const requestFocus = () => setFocusRequestId((n) => n + 1);
 
   // Tracks the in-flight request so Stop can actually cancel it (there's no
   // streaming to fast-forward — the real endpoint returns one full reply —
-  // so "stop" just means "cancel and remove the pending bubble").
+  // so "stop" just means "cancel and remove the pending bubble"). The same
+  // controller also guards the lazy conversation-creation step below it,
+  // so hitting Stop the instant a brand-new thread's first message is sent
+  // cancels both rather than leaving an orphaned empty conversation behind
+  // from a create call that already landed.
   const abortControllerRef = useRef(null);
 
   useEffect(() => {
     return () => abortControllerRef.current?.abort();
   }, []);
 
-  const requestReply = async (userText, historyMessages) => {
+  const requestReply = async (userText, guestHistory) => {
     const assistantMessage = {
       id: makeId(),
       role: "assistant",
@@ -151,24 +207,64 @@ export function useFlareGptConversation() {
     const controller = new AbortController();
     abortControllerRef.current = controller;
 
-    const historyPayload = historyMessages.map((m) => ({
-      role: m.role,
-      content: m.role === "user" ? m.content : blocksToText(m.blocks),
-    }));
+    // Tracks whether *this* call is the one that created the conversation
+    // (as opposed to sending into one that already existed) — needed so a
+    // failed send can be rolled back below without also rolling back a
+    // conversation that had real prior messages.
+    let justCreatedConversationId = null;
 
     try {
-      const { response } = await chatService.sendChatMessage(
-        userText,
-        historyPayload,
-        controller.signal,
-      );
+      let conversationId = useFlareGptStore.getState().activeConversationId;
+
+      if (hasSession && !conversationId) {
+        // Lazy creation: nothing is created server-side just for clicking
+        // "New Chat" (see startNewChat) — only a genuine first message in
+        // a fresh thread ever calls this, so a curious click that goes
+        // nowhere never leaves an empty conversation behind.
+        const created = await chatService.createConversation(deriveTitleFromMessage(userText));
+        if (controller.signal.aborted) return;
+        conversationId = created.id;
+        justCreatedConversationId = conversationId;
+        useFlareGptStore.getState().setActiveConversationId(conversationId);
+        queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
+      }
+
+      const { response } = await chatService.sendChatMessage(withWalletContext(userText, effectiveWallet), {
+        conversationId: hasSession ? conversationId : null,
+        history: hasSession ? undefined : guestHistory,
+        signal: controller.signal,
+      });
+
       updateMessage(assistantMessage.id, {
         status: "complete",
         blocks: toTextBlocks(response),
       });
+
+      // Keeps the switcher's message_count/updated_at (and therefore
+      // recency ordering) current without a manual refresh.
+      if (hasSession) {
+        queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
+      }
     } catch (error) {
       if (error.code === "ERR_CANCELED") return; // stop() already handled the message
+
       removeLastAssistantMessage();
+
+      if (justCreatedConversationId) {
+        // The conversation only exists because *this* call just created it
+        // — if the actual message never landed, leaving that empty, titled
+        // conversation behind would be indistinguishable from a real thread
+        // the next time it's opened (it would fetch back `messages: []`
+        // and silently show the "new chat" greeting again, exactly as if
+        // nothing was ever wrong). Rolling it back — best-effort, and
+        // resetting the active id back to null — is what keeps a failed
+        // first send from leaving any trace at all, matching "nothing is
+        // created until a message actually succeeds."
+        useFlareGptStore.getState().setActiveConversationId(null);
+        chatService.deleteConversation(justCreatedConversationId).catch(() => {});
+        queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
+      }
+
       toast.error(t("flrgpt.sendError"));
     } finally {
       abortControllerRef.current = null;
@@ -178,16 +274,23 @@ export function useFlareGptConversation() {
   const send = (text) => {
     const trimmed = text.trim();
     if (!trimmed || isGenerating) return;
-    // Belt-and-suspenders: Composer already disables itself while history
-    // is loading, but a send here would race the hydration's setMessages
+    // Belt-and-suspenders: Composer already disables itself while messages
+    // are loading, but a send here would race the hydration's setMessages
     // (which replaces the array wholesale) and could vanish the moment it
     // resolves.
-    if (useFlareGptStore.getState().isLoadingHistory && !useFlareGptStore.getState().isHistoryLoaded) {
+    if (useFlareGptStore.getState().isLoadingMessages && !useFlareGptStore.getState().isMessagesLoaded) {
       return;
     }
     requestScrollToBottom();
 
-    const historyForRequest = messages;
+    // Only ever actually used for a guest send — an authenticated one
+    // relies on the backend's own conversation memory instead (see
+    // chatService.sendChatMessage).
+    const historyForRequest = messages.map((m) => ({
+      role: m.role,
+      content: m.role === "user" ? m.content : blocksToText(m.blocks),
+    }));
+
     const userMessage = {
       id: makeId(),
       role: "user",
@@ -205,44 +308,98 @@ export function useFlareGptConversation() {
     removeLastAssistantMessage();
   };
 
+  // Re-asks the same question in place of the last reply. For an
+  // authenticated conversation this still lands as a genuinely new turn
+  // server-side (there's no "replace the last answer" endpoint) — the
+  // original question and answer stay in the conversation's real history
+  // even though this view only ever shows the latest reply locally. That's
+  // an accepted tradeoff of there being no purpose-built regenerate
+  // endpoint, not a bug: reopening this conversation later would show
+  // both attempts, which is honest about what actually happened rather
+  // than silently rewriting history.
   const regenerate = () => {
     if (isGenerating) return;
     const lastUserIndex = [...messages].reverse().findIndex((m) => m.role === "user");
     if (lastUserIndex === -1) return;
     const lastUser = messages[messages.length - 1 - lastUserIndex];
-    const historyBeforeLastUser = messages.slice(0, messages.length - 1 - lastUserIndex);
+    const historyBeforeLastUser = messages
+      .slice(0, messages.length - 1 - lastUserIndex)
+      .map((m) => ({
+        role: m.role,
+        content: m.role === "user" ? m.content : blocksToText(m.blocks),
+      }));
 
     requestScrollToBottom();
     removeLastAssistantMessage();
     requestReply(lastUser.content, historyBeforeLastUser);
   };
 
-  const clearChat = async () => {
-    // A guest has nothing on the backend to clear (DELETE /chat/history
-    // requires a session too) — this is purely a local reset for them.
-    if (!hasSession) {
-      clearMessages();
-      setFocusRequestId((n) => n + 1);
+  // Starts a blank thread without touching the backend at all — the
+  // conversation this leaves behind (if any) simply stays in history,
+  // untouched; nothing is created until an actual message is sent in the
+  // new one (see requestReply).
+  const startNewChat = () => {
+    if (isGenerating) return;
+    useFlareGptStore.getState().setActiveConversationId(null);
+    useFlareGptStore.getState().setMessages([]);
+    requestFocus();
+  };
+
+  // Switching conversations always re-fetches that thread's messages
+  // fresh (no second client-side cache to go stale) — the same network
+  // cost as opening a different email in an inbox, not "unnecessary."
+  const switchConversation = (conversationId) => {
+    if (conversationId === activeConversationId || isGenerating) return;
+    useFlareGptStore.getState().setActiveConversationId(conversationId);
+    useFlareGptStore.getState().resetMessagesLoadState();
+  };
+
+  // Deletes a specific conversation — used both by the header's per-thread
+  // trash action (no id given: targets whatever's currently open) and by
+  // the history panel's per-row delete (an explicit id, which may not be
+  // the one currently open). Distinct from "New Chat" (leaves the current
+  // thread untouched in history) and from Settings > Data & Storage's
+  // "delete everything." Only resets the active view if the conversation
+  // being deleted is actually the one open right now — removing some other
+  // thread from the panel shouldn't disturb what you're currently reading.
+  // A guest, or a fresh thread with nothing sent yet, has nothing
+  // server-side to delete either way.
+  const deleteConversation = async (id = activeConversationId) => {
+    const isActive = id === activeConversationId;
+    if (isActive) stop();
+    if (!hasSession || !id) {
+      if (isActive) startNewChat();
       return;
     }
     try {
-      await chatService.clearChatHistory();
-      clearMessages();
-      setFocusRequestId((n) => n + 1);
-    } catch {
-      toast.error(t("flrgpt.clearChat.failed"));
+      await deleteConversationMutation.mutateAsync(id);
+      unpinConversation(id);
+      if (isActive) startNewChat();
+    } catch (error) {
+      if (error?.response?.status === 404) {
+        // Already gone — the end state we wanted is already true.
+        unpinConversation(id);
+        if (isActive) startNewChat();
+        return;
+      }
+      toast.error(t("flrgpt.deleteConversationFailed"));
     }
   };
 
   return {
     messages,
     isGenerating,
-    isLoadingHistory: isLoadingHistory && !isHistoryLoaded,
+    isLoadingMessages: isLoadingMessages && !isMessagesLoaded,
+    activeConversationId,
+    hasSession,
     send,
     stop,
     regenerate,
-    clearChat,
+    startNewChat,
+    switchConversation,
+    deleteConversation,
     scrollRequestId,
     focusRequestId,
+    requestFocus,
   };
 }

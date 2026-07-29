@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "Lưu trữ hơn 3 ví",
       "guestLimitBenefitBackup": "Sao lưu danh sách theo dõi của bạn",
       "searchPlaceholder": "Tìm kiếm trong {{count}} ví...",
-      "noSearchResults": "Không có ví nào khớp với tìm kiếm của bạn."
+      "noSearchResults": "Không có ví nào khớp với tìm kiếm của bạn.",
+      "duplicateNickname": "Đã có một ví trong danh sách theo dõi với biệt danh này. Vui lòng chọn biệt danh khác.",
+      "notFoundError": "Ví này không còn trong danh sách theo dõi của bạn nữa.",
+      "saveEdit": "Lưu",
+      "adding": "Đang thêm…"
     },
     "links": {
       "docs": "Tài liệu",
@@ -242,11 +246,9 @@
       "system": "Hệ thống"
     },
     "flareGpt": {
-      "followDashboard": "Theo ví bảng điều khiển",
-      "general": "Chung (không có ví)",
       "syncStatusTitle": "Trạng thái đồng bộ",
-      "syncStatusConnected": "Đã kết nối — lịch sử sẽ đồng bộ trên các thiết bị khi tính năng đồng bộ tài khoản khả dụng.",
-      "syncStatusGuest": "Cuộc trò chuyện là tạm thời và sẽ không tồn tại sau khi làm mới hoặc đổi thiết bị."
+      "syncStatusConnected": "Đã đăng nhập — các cuộc trò chuyện của bạn được đồng bộ trên mọi thiết bị và trình duyệt.",
+      "syncStatusGuest": "Cuộc trò chuyện chỉ là tạm thời trên trình duyệt này và sẽ không được lưu. Đăng nhập để lưu giữ chúng."
     },
     "dataStorage": {
       "localTitle": "Dữ liệu cục bộ",
@@ -461,13 +463,32 @@
       "copyFailed": "Sao chép không thành công"
     },
     "jumpToLatest": "Đến tin mới nhất",
-    "clearChat": {
-      "button": "Xóa cuộc trò chuyện",
-      "confirm": "Xác nhận?",
-      "failed": "Không thể xóa cuộc trò chuyện — vui lòng thử lại."
-    },
     "historyLoadFailed": "Không thể tải lịch sử trò chuyện của bạn.",
-    "sendError": "Đã xảy ra sự cố — vui lòng thử lại."
+    "sendError": "Đã xảy ra sự cố — vui lòng thử lại.",
+    "newChat": "Cuộc trò chuyện mới",
+    "deleteConversation": {
+      "button": "Xóa cuộc trò chuyện",
+      "confirm": "Xác nhận?"
+    },
+    "deleteConversationFailed": "Không thể xóa cuộc trò chuyện này. Vui lòng thử lại.",
+    "history": {
+      "title": "Lịch sử trò chuyện",
+      "newChat": "Cuộc trò chuyện mới",
+      "searchPlaceholder": "Tìm kiếm cuộc trò chuyện...",
+      "empty": "Chưa có cuộc trò chuyện nào",
+      "noResults": "Không có cuộc trò chuyện nào khớp với tìm kiếm của bạn",
+      "untitled": "Chưa đặt tên",
+      "moreActions": "Thao tác khác",
+      "pin": "Ghim",
+      "unpin": "Bỏ ghim",
+      "rename": "Đổi tên",
+      "delete": "Xóa",
+      "pinLimitReached": "Bạn có thể ghim tối đa {{count}} cuộc trò chuyện",
+      "renameFailed": "Không thể đổi tên cuộc trò chuyện này.",
+      "openButton": "Lịch sử",
+      "saveRename": "Lưu",
+      "cancelRename": "Hủy"
+    }
   },
   "dashboard": {
     "description": "Dữ liệu mạng Live Flare, biểu đồ giá và hoạt động của ví trong nháy mắt.",

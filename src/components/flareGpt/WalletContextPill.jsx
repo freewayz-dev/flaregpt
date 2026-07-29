@@ -27,7 +27,7 @@ export default function WalletContextPill({ onOpenWalletModal }) {
   const navigate = useNavigate();
   const setSettingsActiveTab = useUIStore((s) => s.setSettingsActiveTab);
 
-  const { allWallets, effectiveAddress, effectiveWallet, setAiWalletAddress, maxSlots } =
+  const { allWallets, effectiveWallet, walletMode, walletAddress, setFlareGptWalletContext, maxSlots } =
     useFlareGptWalletContext();
 
   const [open, setOpen] = useState(false);
@@ -63,8 +63,13 @@ export default function WalletContextPill({ onOpenWalletModal }) {
       : { text: t("navbar.badgeWatchlist"), tone: "watchlist" }
     : null;
 
-  const handleSelect = (address) => {
-    setAiWalletAddress(address);
+  const handleSelectPrimary = () => {
+    setFlareGptWalletContext("primary");
+    setOpen(false);
+  };
+
+  const handleSelectSpecific = (address) => {
+    setFlareGptWalletContext("specific", address);
     setOpen(false);
   };
 
@@ -125,9 +130,9 @@ export default function WalletContextPill({ onOpenWalletModal }) {
         {primaryWallet ? (
           <WalletRow
             wallet={primaryWallet}
-            isActive={effectiveAddress === primaryWallet.address}
+            isActive={walletMode === "primary"}
             copiedAddress={copiedAddress}
-            onSelect={() => handleSelect(primaryWallet.address)}
+            onSelect={handleSelectPrimary}
             onCopy={handleCopy}
           />
         ) : (
@@ -157,9 +162,9 @@ export default function WalletContextPill({ onOpenWalletModal }) {
                 <WalletRow
                   key={wallet.address}
                   wallet={wallet}
-                  isActive={effectiveAddress === wallet.address}
+                  isActive={walletMode === "specific" && walletAddress === wallet.address}
                   copiedAddress={copiedAddress}
-                  onSelect={() => handleSelect(wallet.address)}
+                  onSelect={() => handleSelectSpecific(wallet.address)}
                   onCopy={handleCopy}
                 />
               ))}

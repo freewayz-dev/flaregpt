@@ -1,25 +1,28 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
   XMarkIcon,
-  TrashIcon,
-  CheckIcon,
+  ClockIcon,
+  PencilSquareIcon,
   ArrowsPointingOutIcon,
   ArrowsPointingInIcon,
 } from "@heroicons/react/24/outline";
 
 import ChatPane from "@/components/flareGpt/ChatPane";
+import ConversationHistoryPanel from "@/components/flareGpt/ConversationHistoryPanel";
 import { useFlareGptConversation } from "@/hooks/useFlareGptConversation";
+import { useFlareGptStore } from "@/store/useFlareGptStore";
+import { useConversations, useRenameConversation } from "@/hooks/queries/useChatQueries";
 import { ROUTES } from "@/config/routes";
-
-const CONFIRM_WINDOW_MS = 3000;
 
 // An extension of the full FlareGPT page, not a separate product: this
 // renders the exact same ChatPane (message list, composer, wallet pill)
 // reading the exact same useFlareGptStore, so a conversation started here
 // is the same conversation you'd see by navigating to /app/flare-gpt — not
-// a lookalike, the same thread (and the same single backend-held history).
+// a lookalike, the same thread. Deleting a conversation lives exclusively
+// in the history panel's row menu (see Flrgpt/index.jsx for why a second,
+// standalone trash icon here would be redundant).
 //
 // Mobile is true full-screen (zero insets) rather than a floating card
 // with dashboard edges peeking around it — a widget that still shows the
@@ -33,29 +36,36 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
   const {
     messages,
     isGenerating,
-    isLoadingHistory,
+    isLoadingMessages,
+    activeConversationId,
+    hasSession,
     send,
     stop,
     regenerate,
-    clearChat,
+    startNewChat,
+    switchConversation,
+    deleteConversation,
     scrollRequestId,
     focusRequestId,
   } = useFlareGptConversation();
 
-  const [confirmingClear, setConfirmingClear] = useState(false);
-  const confirmTimerRef = useRef(null);
-  useEffect(() => () => clearTimeout(confirmTimerRef.current), []);
+  const pinnedConversationIds = useFlareGptStore((s) => s.pinnedConversationIds);
+  const togglePinnedConversation = useFlareGptStore((s) => s.togglePinnedConversation);
 
-  const handleClearClick = () => {
-    if (confirmingClear) {
-      clearTimeout(confirmTimerRef.current);
-      setConfirmingClear(false);
-      clearChat();
-      return;
-    }
-    setConfirmingClear(true);
-    clearTimeout(confirmTimerRef.current);
-    confirmTimerRef.current = setTimeout(() => setConfirmingClear(false), CONFIRM_WINDOW_MS);
+  const { data: conversations = [], isLoading: isLoadingConversations } = useConversations(hasSession);
+  const renameMutation = useRenameConversation();
+
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const toggleHistory = () => setHistoryOpen((o) => !o);
+
+  const handleSelectFromHistory = (id) => {
+    switchConversation(id);
+    setHistoryOpen(false);
+  };
+
+  const handleNewChatFromHistory = () => {
+    startNewChat();
+    setHistoryOpen(false);
   };
 
   const widthClasses = expanded
@@ -94,22 +104,34 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
         </button>
 
         <div className="flex items-center gap-1.5 sm:gap-2">
-          {messages.length > 0 && (
+          {/* New Chat and History grouped on one shared surface with a
+              tight internal gap — they're the same kind of thread-
+              management control, distinct from the window-chrome actions
+              (expand/collapse, close) that follow. */}
+          <div className="flex items-center gap-0.5 rounded-lg bg-surface-subtle p-0.5">
             <button
               type="button"
-              onClick={handleClearClick}
-              className={`rounded-lg p-1 transition-colors cursor-pointer ${
-                confirmingClear ? "bg-red-500/10" : "hover:bg-surface-subtle"
-              }`}
-              title={confirmingClear ? t("flrgpt.clearChat.confirm") : t("flrgpt.clearChat.button")}
+              onClick={startNewChat}
+              className="rounded-md p-1 transition-colors hover:bg-surface-card-hover cursor-pointer"
+              title={t("flrgpt.newChat")}
             >
-              {confirmingClear ? (
-                <CheckIcon className="h-5 w-5 text-red-500" />
-              ) : (
-                <TrashIcon className="h-5 w-5 text-ink-secondary" />
-              )}
+              <PencilSquareIcon className="h-5 w-5 text-ink-secondary" />
             </button>
-          )}
+
+            {hasSession && (
+              <button
+                type="button"
+                onClick={toggleHistory}
+                aria-pressed={historyOpen}
+                className={`rounded-md p-1 transition-colors cursor-pointer ${
+                  historyOpen ? "bg-brand/10" : "hover:bg-surface-card-hover"
+                }`}
+                title={t("flrgpt.history.openButton")}
+              >
+                <ClockIcon className={`h-5 w-5 ${historyOpen ? "text-brand" : "text-ink-secondary"}`} />
+              </button>
+            )}
+          </div>
 
           <button
             type="button"
@@ -135,18 +157,36 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
         </div>
       </div>
 
-      <ChatPane
-        messages={messages}
-        isGenerating={isGenerating}
-        isLoadingHistory={isLoadingHistory}
-        onSend={send}
-        onStop={stop}
-        onRegenerate={regenerate}
-        onOpenWalletModal={onOpenWalletModal}
-        scrollRequestId={scrollRequestId}
-        focusRequestId={focusRequestId}
-        compactEmptyState
-      />
+      <div className="relative flex-1 min-h-0 flex flex-col">
+        <ChatPane
+          messages={messages}
+          isGenerating={isGenerating}
+          isLoadingHistory={isLoadingMessages}
+          onSend={send}
+          onStop={stop}
+          onRegenerate={regenerate}
+          onOpenWalletModal={onOpenWalletModal}
+          scrollRequestId={scrollRequestId}
+          focusRequestId={focusRequestId}
+          compactEmptyState
+        />
+
+        {hasSession && (
+          <ConversationHistoryPanel
+            open={historyOpen}
+            onClose={() => setHistoryOpen(false)}
+            conversations={conversations}
+            isLoading={isLoadingConversations}
+            activeConversationId={activeConversationId}
+            pinnedIds={pinnedConversationIds}
+            onSelect={handleSelectFromHistory}
+            onNewChat={handleNewChatFromHistory}
+            onTogglePin={togglePinnedConversation}
+            onRename={(id, title) => renameMutation.mutateAsync({ conversationId: id, title })}
+            onDelete={deleteConversation}
+          />
+        )}
+      </div>
     </aside>
   );
 }

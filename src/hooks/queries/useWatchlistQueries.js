@@ -35,3 +35,14 @@ export function useRemoveWatchlistWallet() {
     },
   });
 }
+
+export function useUpdateWatchlistWallet() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ address, nickname, newAddress }) =>
+      watchlistService.updateWatchlistWallet(address, { nickname, newAddress }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.watchlist.all });
+    },
+  });
+}

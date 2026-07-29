@@ -3,31 +3,50 @@ import { useConnection } from "wagmi";
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useFlareGptStore } from "@/store/useFlareGptStore";
 
-// Resolves which wallet FlareGPT should treat as its subject: the user's
-// own explicit choice if they've made one this session, otherwise whatever
-// the dashboard's own active wallet is — so opening chat for the first
-// time defaults to something sensible without forcing a choice, while a
-// later explicit pick (e.g. "analyze my Trading Account instead") sticks
-// even if the dashboard's own active wallet changes elsewhere. Every
-// question is answered in the context of some wallet (there's no
-// "General/no wallet" mode) — `||` deliberately treats a falsy
-// `aiWalletAddress` (undefined, or a stale `null` from before that mode
-// was removed) the same as "not explicitly chosen", falling through to
-// the dashboard's active wallet either way.
+// Resolves which wallet FlareGPT should treat as its subject, mirroring
+// the shape of the upcoming Profile endpoint's `settings.flareGpt`
+// (`{walletMode: "primary" | "specific", walletAddress: string | null}`)
+// — see useFlareGptStore.js for why. "primary" always resolves to
+// whichever wallet is actually connected *right now* (matching that
+// endpoint's own definition: "use the authenticated user's primary
+// wallet"), not the dashboard's own active-viewing wallet — the rest of
+// the dashboard can be showing a watchlist wallet's data while FlareGPT's
+// own context stays independently pinned to Primary or a Specific
+// watchlist pick. "specific" resolves to `walletAddress` for as long as
+// that address still exists in `allWallets`; if it's ever removed from
+// the watchlist, this quietly falls back to Primary rather than pointing
+// at nothing; the stored preference itself is left untouched; the user
+// would need to explicitly pick a mode to change it.
 export function useFlareGptWalletContext() {
   const { address: connectedAddress, isConnected } = useConnection();
-  const { allWallets, activeAddress: dashboardActiveAddress, maxSlots } = useDerivedWalletHub(
-    connectedAddress,
-    isConnected,
-  );
+  const { allWallets, maxSlots } = useDerivedWalletHub(connectedAddress, isConnected);
 
-  const aiWalletAddress = useFlareGptStore((s) => s.aiWalletAddress);
-  const setAiWalletAddress = useFlareGptStore((s) => s.setAiWalletAddress);
+  const walletMode = useFlareGptStore((s) => s.flareGptWalletMode);
+  const walletAddress = useFlareGptStore((s) => s.flareGptWalletAddress);
+  const setFlareGptWalletContext = useFlareGptStore((s) => s.setFlareGptWalletContext);
 
-  const effectiveAddress = aiWalletAddress || dashboardActiveAddress || null;
+  const specificWalletStillExists =
+    walletMode === "specific" && walletAddress
+      ? allWallets.some((w) => w.address === walletAddress)
+      : false;
+
+  const effectiveAddress = specificWalletStillExists
+    ? walletAddress
+    : isConnected
+      ? connectedAddress
+      : null;
+
   const effectiveWallet = effectiveAddress
     ? (allWallets.find((w) => w.address === effectiveAddress) ?? null)
     : null;
 
-  return { allWallets, effectiveAddress, effectiveWallet, setAiWalletAddress, maxSlots };
+  return {
+    allWallets,
+    effectiveAddress,
+    effectiveWallet,
+    walletMode,
+    walletAddress,
+    setFlareGptWalletContext,
+    maxSlots,
+  };
 }

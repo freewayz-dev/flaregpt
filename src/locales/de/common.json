@@ -224,7 +224,11 @@
       "guestLimitBenefitMore": "Speichere mehr als 3 Wallets",
       "guestLimitBenefitBackup": "Halte deine Watchlist gesichert",
       "searchPlaceholder": "{{count}} Wallets durchsuchen...",
-      "noSearchResults": "Keine Wallets entsprechen deiner Suche."
+      "noSearchResults": "Keine Wallets entsprechen deiner Suche.",
+      "duplicateNickname": "Eine Watchlist-Wallet mit diesem Spitznamen existiert bereits. Bitte wähle einen anderen Spitznamen.",
+      "notFoundError": "Diese Wallet ist nicht mehr auf deiner Watchlist.",
+      "saveEdit": "Speichern",
+      "adding": "Wird hinzugefügt…"
     },
     "links": {
       "docs": "Docs",
@@ -242,11 +246,9 @@
       "system": "System"
     },
     "flareGpt": {
-      "followDashboard": "Dashboard-Wallet folgen",
-      "general": "Allgemein (keine Wallet)",
       "syncStatusTitle": "Synchronisierungsstatus",
-      "syncStatusConnected": "Verbunden — der Verlauf wird geräteübergreifend synchronisiert, sobald die Kontosynchronisierung verfügbar ist.",
-      "syncStatusGuest": "Unterhaltungen sind temporär und überstehen kein Neuladen oder Gerätewechsel."
+      "syncStatusConnected": "Angemeldet — deine Unterhaltungen werden geräteübergreifend synchronisiert.",
+      "syncStatusGuest": "Unterhaltungen sind nur vorübergehend in diesem Browser und werden nicht gespeichert. Melde dich an, um sie zu behalten."
     },
     "dataStorage": {
       "localTitle": "Lokale Daten",
@@ -460,13 +462,32 @@
       "copyFailed": "Kopieren fehlgeschlagen"
     },
     "jumpToLatest": "Zum Neuesten springen",
-    "clearChat": {
-      "button": "Chat löschen",
-      "confirm": "Bestätigen?",
-      "failed": "Chat konnte nicht gelöscht werden – bitte versuche es erneut."
-    },
     "historyLoadFailed": "Dein Chatverlauf konnte nicht geladen werden.",
-    "sendError": "Etwas ist schiefgelaufen – bitte versuche es erneut."
+    "sendError": "Etwas ist schiefgelaufen – bitte versuche es erneut.",
+    "newChat": "Neuer Chat",
+    "deleteConversation": {
+      "button": "Unterhaltung löschen",
+      "confirm": "Bestätigen?"
+    },
+    "deleteConversationFailed": "Diese Unterhaltung konnte nicht gelöscht werden. Bitte versuche es erneut.",
+    "history": {
+      "title": "Chatverlauf",
+      "newChat": "Neuer Chat",
+      "searchPlaceholder": "Unterhaltungen durchsuchen...",
+      "empty": "Noch keine Unterhaltungen",
+      "noResults": "Keine Unterhaltungen entsprechen deiner Suche",
+      "untitled": "Unbenannt",
+      "moreActions": "Weitere Aktionen",
+      "pin": "Anheften",
+      "unpin": "Lösen",
+      "rename": "Umbenennen",
+      "delete": "Löschen",
+      "pinLimitReached": "Du kannst bis zu {{count}} Unterhaltungen anheften",
+      "renameFailed": "Diese Unterhaltung konnte nicht umbenannt werden.",
+      "openButton": "Verlauf",
+      "saveRename": "Speichern",
+      "cancelRename": "Abbrechen"
+    }
   },
   "dashboard": {
     "description": "Live Flare-Netzwerkdaten, Preisdiagramme und Wallet-Aktivitäten auf einen Blick.",

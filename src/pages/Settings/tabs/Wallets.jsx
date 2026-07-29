@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
 import { useOutletContext } from "react-router-dom";
 import { useVirtualizer } from "@tanstack/react-virtual";
+import { toast } from "react-toastify";
 import {
   WalletIcon,
   TrashIcon,
@@ -10,10 +11,15 @@ import {
   PencilIcon,
   XMarkIcon,
   MagnifyingGlassIcon,
+  ArrowPathIcon,
 } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
-import { useAddWatchlistWallet, useRemoveWatchlistWallet } from "@/hooks/queries/useWatchlistQueries";
+import {
+  useAddWatchlistWallet,
+  useRemoveWatchlistWallet,
+  useUpdateWatchlistWallet,
+} from "@/hooks/queries/useWatchlistQueries";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { shortenAddress } from "@/utils/address";
 import CustomSelect from "@/components/common/CustomSelect";
@@ -31,12 +37,15 @@ const CONFIRM_WINDOW_MS = 3000;
 // control competing for attention on an already-short list.
 const SEARCH_THRESHOLD = 6;
 
-// Matches this row's actual rendered height (content + the 12px gap that
-// used to come from `space-y-3`, now applied per-row instead since
-// absolutely-positioned virtual items can't rely on a parent's gap
-// utility). Every row uses `truncate` specifically so long labels/addresses
-// can never grow a row taller than this and desync it from the estimate
-// (see ActivityFeed.jsx for the same constraint on transaction rows).
+// Only an *initial* guess for react-virtual's layout math before it's
+// measured a real row (roughly a display-mode row's height). Unlike
+// ActivityFeed.jsx — whose transaction rows are genuinely fixed-height and
+// rely on the estimate alone — a wallet row's actual height varies (editing
+// adds a second input plus an optional error line), so every row here is
+// wired to `virtualizer.measureElement` instead, which corrects the real
+// height via ResizeObserver. Skipping that and trusting this estimate for
+// a *taller* editing row is exactly what silently clipped the error
+// message behind the next row's opaque background during testing.
 const ROW_HEIGHT = 76;
 
 // Caps how tall the tracked-wallet list can grow before it scrolls
@@ -49,112 +58,190 @@ const LIST_MAX_HEIGHT_CLASS = "max-h-[45vh] sm:max-h-[420px]";
 // short list that fits within the cap shouldn't fade its own last row.
 const APPROX_VISIBLE_ROWS = 5;
 
+// The backend distinguishes a duplicate address from a duplicate nickname
+// only through this endpoint's own free-text `detail` — both cases share
+// the same 409 status, and the wording is the only thing that tells them
+// apart (confirmed live against both add and edit): "This address is
+// already on your watchlist." vs "Nickname '<name>' is already used for
+// another watched wallet." Showing the address-duplicate message for an
+// actual nickname collision (what a flat "409 -> duplicateAddress" mapping
+// used to do) is exactly the bug this exists to fix. If the backend ever
+// adds a distinct error code, that becomes the primary check and this
+// text sniff becomes the fallback.
+function interpretWatchlistError(error, t) {
+  const status = error?.response?.status;
+  const detail = error?.response?.data?.detail || "";
+
+  if (status === 409) {
+    return /nickname/i.test(detail)
+      ? t("settings.wallets.duplicateNickname")
+      : t("settings.wallets.duplicateAddress");
+  }
+  if (status === 404) {
+    return t("settings.wallets.notFoundError");
+  }
+  if (status === 422) {
+    return t("settings.wallets.invalidAddress");
+  }
+  return t("settings.wallets.registrationFailed");
+}
+
 function WalletListRow({
   wallet,
   hasSession,
-  editingAddress,
-  editValue,
-  setEditValue,
-  editInputRef,
-  startRename,
-  commitRename,
-  setEditingAddress,
+  isEditing,
+  editNickname,
+  setEditNickname,
+  editAddress,
+  setEditAddress,
+  nicknameInputRef,
+  editError,
+  isSaving,
+  onStartEdit,
+  onCommitEdit,
+  onCancelEdit,
   confirmingAddress,
   onRemoveClick,
   removePending,
   t,
 }) {
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onCommitEdit();
+    } else if (e.key === "Escape") {
+      onCancelEdit();
+    }
+  };
+
   return (
-    <div className="flex items-center justify-between gap-4 rounded-xl bg-[#F3F4F6] dark:bg-[#21242B] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.01)]">
-      <div className="min-w-0 flex items-center gap-3">
-        <div className="p-2 rounded-lg bg-white dark:bg-[#121214] text-[#475569] dark:text-[#6D7A86]">
-          <WalletIcon className="h-4 w-4" />
+    <div className="rounded-xl bg-[#F3F4F6] dark:bg-[#21242B] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.01)]">
+      <div className="flex items-center justify-between gap-4">
+        <div className="min-w-0 flex items-center gap-3 flex-1">
+          <div className="p-2 rounded-lg bg-white dark:bg-[#121214] text-[#475569] dark:text-[#6D7A86] shrink-0">
+            <WalletIcon className="h-4 w-4" />
+          </div>
+          <div className="min-w-0 flex-1">
+            {isEditing ? (
+              <div className="space-y-1.5 max-w-[280px]">
+                <input
+                  ref={nicknameInputRef}
+                  type="text"
+                  value={editNickname}
+                  onChange={(e) => setEditNickname(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  disabled={isSaving}
+                  maxLength={32}
+                  placeholder={t("settings.wallets.labelPlaceholder")}
+                  className="block w-full bg-white dark:bg-[#121214] rounded-lg px-2 py-1.5 text-sm font-medium text-ink-primary outline-none border border-transparent focus:border-brand/40 disabled:opacity-60"
+                />
+                {hasSession && (
+                  <input
+                    type="text"
+                    value={editAddress}
+                    onChange={(e) => setEditAddress(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    disabled={isSaving}
+                    placeholder={t("settings.wallets.addressPlaceholder")}
+                    className="block w-full bg-white dark:bg-[#121214] rounded-lg px-2 py-1.5 text-xs font-mono text-ink-secondary outline-none border border-transparent focus:border-brand/40 disabled:opacity-60"
+                  />
+                )}
+              </div>
+            ) : (
+              <>
+                <p className="text-sm font-medium text-ink-primary truncate">{wallet.label}</p>
+                <p className="text-xs font-mono text-[#94A3B8] dark:text-[#6D7A86] mt-0.5 truncate">
+                  {wallet.address}
+                </p>
+              </>
+            )}
+          </div>
         </div>
-        <div className="min-w-0 flex-1">
-          {!hasSession && editingAddress === wallet.address ? (
-            <input
-              ref={editInputRef}
-              type="text"
-              value={editValue}
-              onChange={(e) => setEditValue(e.target.value)}
-              onBlur={commitRename}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  commitRename();
-                } else if (e.key === "Escape") {
-                  setEditingAddress(null);
-                }
-              }}
-              className="block w-full max-w-[220px] bg-transparent px-0 py-0 text-base sm:text-sm leading-5 font-medium text-ink-primary border-b border-brand/40 outline-none"
-            />
-          ) : (
-            <p className="text-sm font-medium text-ink-primary truncate">{wallet.label}</p>
+
+        <div className="flex items-center gap-2 shrink-0">
+          {!isEditing && (
+            <span
+              className={`inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium ${
+                wallet.type === "connected"
+                  ? "bg-emerald-500/10 text-emerald-500"
+                  : "bg-amber-500/10 text-amber-500"
+              }`}
+            >
+              {wallet.type === "connected" ? t("settings.wallets.liveConnected") : t("settings.wallets.readOnly")}
+            </span>
           )}
-          <p className="text-xs font-mono text-[#94A3B8] dark:text-[#6D7A86] mt-0.5 truncate">
-            {wallet.address}
-          </p>
-        </div>
-      </div>
 
-      <div className="flex items-center gap-2 shrink-0">
-        <span
-          className={`inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium ${
-            wallet.type === "connected"
-              ? "bg-emerald-500/10 text-emerald-500"
-              : "bg-amber-500/10 text-amber-500"
-          }`}
-        >
-          {wallet.type === "connected" ? t("settings.wallets.liveConnected") : t("settings.wallets.readOnly")}
-        </span>
-
-        {wallet.type === "tracked" && (
-          <>
-            {!hasSession &&
-              (editingAddress === wallet.address ? (
-                <button
-                  type="button"
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => setEditingAddress(null)}
-                  title={t("settings.wallets.cancelRename")}
-                  className="flex items-center rounded-lg p-1.5 text-[#94A3B8] hover:text-ink-primary hover:bg-surface-inset dark:text-[#6D7A86] transition-colors duration-150 cursor-pointer"
-                >
-                  <XMarkIcon className="h-4 w-4" />
-                </button>
+          {wallet.type === "tracked" && (
+            <>
+              {isEditing ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={onCommitEdit}
+                    disabled={isSaving}
+                    title={t("settings.wallets.saveEdit")}
+                    className="flex items-center rounded-lg p-1.5 text-emerald-600 hover:bg-emerald-500/10 dark:text-emerald-400 transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSaving ? (
+                      <ArrowPathIcon className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <CheckIcon className="h-4 w-4" />
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={onCancelEdit}
+                    disabled={isSaving}
+                    title={t("settings.wallets.cancelRename")}
+                    className="flex items-center rounded-lg p-1.5 text-[#94A3B8] hover:text-ink-primary hover:bg-surface-inset dark:text-[#6D7A86] transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <XMarkIcon className="h-4 w-4" />
+                  </button>
+                </>
               ) : (
                 <button
                   type="button"
-                  onClick={() => startRename(wallet)}
+                  onClick={() => onStartEdit(wallet)}
                   title={t("settings.wallets.rename")}
                   className="flex items-center rounded-lg p-1.5 text-[#94A3B8] hover:text-brand hover:bg-brand/10 dark:text-[#6D7A86] dark:hover:text-brand dark:hover:bg-brand/10 transition-colors duration-150 cursor-pointer"
                 >
                   <PencilIcon className="h-4 w-4" />
                 </button>
-              ))}
-
-            <button
-              type="button"
-              onClick={() => onRemoveClick(wallet.address)}
-              disabled={removePending}
-              title={confirmingAddress === wallet.address ? t("settings.wallets.confirmRemove") : t("settings.wallets.remove")}
-              className={`flex items-center gap-1 rounded-lg px-1.5 py-1.5 text-[11px] font-semibold transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
-                confirmingAddress === wallet.address
-                  ? "bg-red-500/10 text-red-500"
-                  : "text-[#94A3B8] hover:text-brand hover:bg-brand/10 dark:text-[#6D7A86] dark:hover:text-brand dark:hover:bg-brand/10"
-              }`}
-            >
-              {confirmingAddress === wallet.address ? (
-                <>
-                  <CheckIcon className="h-4 w-4" />
-                  <span className="hidden sm:inline">{t("settings.wallets.confirmRemove")}</span>
-                </>
-              ) : (
-                <TrashIcon className="h-4 w-4" />
               )}
-            </button>
-          </>
-        )}
+
+              {!isEditing && (
+                <button
+                  type="button"
+                  onClick={() => onRemoveClick(wallet.address)}
+                  disabled={removePending}
+                  title={confirmingAddress === wallet.address ? t("settings.wallets.confirmRemove") : t("settings.wallets.remove")}
+                  className={`flex items-center gap-1 rounded-lg px-1.5 py-1.5 text-[11px] font-semibold transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
+                    confirmingAddress === wallet.address
+                      ? "bg-red-500/10 text-red-500"
+                      : "text-[#94A3B8] hover:text-brand hover:bg-brand/10 dark:text-[#6D7A86] dark:hover:text-brand dark:hover:bg-brand/10"
+                  }`}
+                >
+                  {removePending ? (
+                    <ArrowPathIcon className="h-4 w-4 animate-spin" />
+                  ) : confirmingAddress === wallet.address ? (
+                    <>
+                      <CheckIcon className="h-4 w-4" />
+                      <span className="hidden sm:inline">{t("settings.wallets.confirmRemove")}</span>
+                    </>
+                  ) : (
+                    <TrashIcon className="h-4 w-4" />
+                  )}
+                </button>
+              )}
+            </>
+          )}
+        </div>
       </div>
+
+      {isEditing && editError && (
+        <p className="mt-2 text-[10px] text-brand tracking-wide font-medium">{editError}</p>
+      )}
     </div>
   );
 }
@@ -177,9 +264,10 @@ export default function Wallets() {
     remainingSlots,
   } = useDerivedWalletHub(connectedAddress, isConnected);
 
-  // Only ever actually called when hasSession — see handleSave/handleRemoveClick.
+  // Only ever actually called when hasSession — see handleSave/handleRemoveClick/commitEdit.
   const addMutation = useAddWatchlistWallet();
   const removeMutation = useRemoveWatchlistWallet();
+  const updateMutation = useUpdateWatchlistWallet();
 
   const [inputAddress, setInputAddress] = useState("");
   const [inputLabel, setInputLabel] = useState("");
@@ -187,33 +275,83 @@ export default function Wallets() {
   const [confirmingAddress, setConfirmingAddress] = useState(null);
   const confirmTimerRef = useRef(null);
 
-  // Inline rename — guest-only. There's no backend endpoint yet to persist
-  // a rename for an authenticated account (the add endpoint takes a
-  // nickname *at creation*, but nothing updates one afterward), so this
-  // entire flow simply never renders once signed in (see the JSX below) —
-  // hidden rather than shown-disabled, since there's nothing a disabled
-  // pencil icon would explain that hiding it doesn't already make obvious.
-  const [editingAddress, setEditingAddress] = useState(null);
-  const [editValue, setEditValue] = useState("");
-  const editInputRef = useRef(null);
+  // The wallet currently in edit mode, snapshotted at the moment editing
+  // started — comparing against this (rather than re-deriving from
+  // `allWallets`) is what lets commitEdit send only the fields that
+  // actually changed. Address editing is authenticated-only (the guest
+  // list has no server identity to repoint — see useWalletHubStore.js —
+  // so "changing" a local entry's address is just remove-and-re-add);
+  // nickname editing works for both.
+  const [editingWallet, setEditingWallet] = useState(null);
+  const [editNickname, setEditNickname] = useState("");
+  const [editAddress, setEditAddress] = useState("");
+  const [editError, setEditError] = useState("");
+  const nicknameInputRef = useRef(null);
 
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => () => clearTimeout(confirmTimerRef.current), []);
 
   useEffect(() => {
-    if (editingAddress) editInputRef.current?.focus();
-  }, [editingAddress]);
+    if (editingWallet) nicknameInputRef.current?.focus();
+  }, [editingWallet]);
 
-  const startRename = (wallet) => {
-    setEditingAddress(wallet.address);
-    setEditValue(wallet.label);
+  const startEdit = (wallet) => {
+    setEditingWallet(wallet);
+    setEditNickname(wallet.label);
+    setEditAddress(wallet.address);
+    setEditError("");
   };
 
-  const commitRename = () => {
-    const trimmed = editValue.trim();
-    if (trimmed) renameTrackedWallet(editingAddress, trimmed);
-    setEditingAddress(null);
+  const cancelEdit = () => {
+    setEditingWallet(null);
+    setEditError("");
+  };
+
+  const commitEdit = async () => {
+    if (updateMutation.isPending) return;
+    setEditError("");
+
+    const trimmedNickname = editNickname.trim();
+
+    if (!hasSession) {
+      if (trimmedNickname) renameTrackedWallet(editingWallet.address, trimmedNickname);
+      setEditingWallet(null);
+      return;
+    }
+
+    const trimmedAddress = editAddress.trim();
+    if (!trimmedAddress.startsWith("0x") || trimmedAddress.length !== 42) {
+      setEditError(t("settings.wallets.invalidAddress"));
+      return;
+    }
+
+    const payload = {};
+    if (trimmedNickname !== editingWallet.label) payload.nickname = trimmedNickname || null;
+    if (trimmedAddress.toLowerCase() !== editingWallet.address.toLowerCase()) {
+      payload.newAddress = trimmedAddress;
+    }
+
+    if (Object.keys(payload).length === 0) {
+      setEditingWallet(null);
+      return;
+    }
+
+    try {
+      await updateMutation.mutateAsync({ address: editingWallet.address, ...payload });
+      setEditingWallet(null);
+    } catch (error) {
+      if (error?.response?.status === 404) {
+        // The row this edit targeted is already gone (removed elsewhere,
+        // another tab, another device) — nothing to save over. Refreshing
+        // the list is more useful here than an inline error next to a row
+        // that's about to disappear anyway.
+        toast.error(t("settings.wallets.notFoundError"));
+        setEditingWallet(null);
+        return;
+      }
+      setEditError(interpretWatchlistError(error, t));
+    }
   };
 
   const handleRemoveClick = async (address) => {
@@ -293,11 +431,7 @@ export default function Wallets() {
           nickname: inputLabel.trim() || null,
         });
       } catch (error) {
-        setErrorText(
-          error?.response?.status === 409
-            ? t("settings.wallets.duplicateAddress")
-            : t("settings.wallets.registrationFailed"),
-        );
+        setErrorText(interpretWatchlistError(error, t));
         return;
       }
     } else {
@@ -328,9 +462,11 @@ export default function Wallets() {
 
   const submitLabel = remainingSlots === 0
     ? t("settings.wallets.limitReached", { current: totalCount, max: maxSlots })
-    : isUnlimited
-      ? t("settings.wallets.connectActionUnlimited", { current: totalCount })
-      : t("settings.wallets.connectAction", { current: totalCount, remaining: remainingSlots });
+    : hasSession && addMutation.isPending
+      ? t("settings.wallets.adding")
+      : isUnlimited
+        ? t("settings.wallets.connectActionUnlimited", { current: totalCount })
+        : t("settings.wallets.connectAction", { current: totalCount, remaining: remainingSlots });
 
   const isSubmitDisabled = remainingSlots === 0 || (hasSession && addMutation.isPending);
 
@@ -358,13 +494,17 @@ export default function Wallets() {
               <WalletListRow
                 wallet={primaryWallet}
                 hasSession={hasSession}
-                editingAddress={editingAddress}
-                editValue={editValue}
-                setEditValue={setEditValue}
-                editInputRef={editInputRef}
-                startRename={startRename}
-                commitRename={commitRename}
-                setEditingAddress={setEditingAddress}
+                isEditing={false}
+                editNickname={editNickname}
+                setEditNickname={setEditNickname}
+                editAddress={editAddress}
+                setEditAddress={setEditAddress}
+                nicknameInputRef={nicknameInputRef}
+                editError=""
+                isSaving={false}
+                onStartEdit={startEdit}
+                onCommitEdit={commitEdit}
+                onCancelEdit={cancelEdit}
                 confirmingAddress={confirmingAddress}
                 onRemoveClick={handleRemoveClick}
                 removePending={false}
@@ -410,29 +550,35 @@ export default function Wallets() {
                     <div style={{ height: virtualizer.getTotalSize(), position: "relative", width: "100%" }}>
                       {virtualizer.getVirtualItems().map((virtualRow) => {
                         const wallet = filteredTracked[virtualRow.index];
+                        const isEditing = editingWallet?.address === wallet.address;
                         return (
                           <div
                             key={wallet.address}
+                            ref={virtualizer.measureElement}
+                            data-index={virtualRow.index}
                             className="pb-3"
                             style={{
                               position: "absolute",
                               top: 0,
                               left: 0,
                               width: "100%",
-                              height: virtualRow.size,
                               transform: `translateY(${virtualRow.start}px)`,
                             }}
                           >
                             <WalletListRow
                               wallet={wallet}
                               hasSession={hasSession}
-                              editingAddress={editingAddress}
-                              editValue={editValue}
-                              setEditValue={setEditValue}
-                              editInputRef={editInputRef}
-                              startRename={startRename}
-                              commitRename={commitRename}
-                              setEditingAddress={setEditingAddress}
+                              isEditing={isEditing}
+                              editNickname={editNickname}
+                              setEditNickname={setEditNickname}
+                              editAddress={editAddress}
+                              setEditAddress={setEditAddress}
+                              nicknameInputRef={nicknameInputRef}
+                              editError={isEditing ? editError : ""}
+                              isSaving={isEditing && updateMutation.isPending}
+                              onStartEdit={startEdit}
+                              onCommitEdit={commitEdit}
+                              onCancelEdit={cancelEdit}
                               confirmingAddress={confirmingAddress}
                               onRemoveClick={handleRemoveClick}
                               removePending={removeMutation.isPending && removeMutation.variables === wallet.address}
@@ -463,14 +609,17 @@ export default function Wallets() {
               placeholder={t("settings.wallets.labelPlaceholder")}
               value={inputLabel}
               onChange={(e) => setInputLabel(e.target.value)}
-              className="w-full bg-[#F3F4F6] dark:bg-[#21242B] px-3 py-2 text-base rounded-xl border border-transparent focus:border-brand/30 outline-none text-ink-primary"
+              maxLength={32}
+              disabled={hasSession && addMutation.isPending}
+              className="w-full bg-[#F3F4F6] dark:bg-[#21242B] px-3 py-2 text-base rounded-xl border border-transparent focus:border-brand/30 outline-none text-ink-primary disabled:opacity-60"
             />
             <input
               type="text"
               placeholder={t("settings.wallets.addressPlaceholder")}
               value={inputAddress}
               onChange={(e) => setInputAddress(e.target.value)}
-              className="w-full bg-[#F3F4F6] dark:bg-[#21242B] px-3 py-2 text-base font-mono rounded-xl border border-transparent focus:border-brand/30 outline-none text-ink-primary"
+              disabled={hasSession && addMutation.isPending}
+              className="w-full bg-[#F3F4F6] dark:bg-[#21242B] px-3 py-2 text-base font-mono rounded-xl border border-transparent focus:border-brand/30 outline-none text-ink-primary disabled:opacity-60"
             />
           </div>
 
@@ -484,7 +633,7 @@ export default function Wallets() {
             type="submit"
             disabled={isSubmitDisabled}
             className={`
-              mt-2 w-full rounded-xl py-2.5 text-sm font-medium transition duration-200 cursor-pointer shadow-sm text-center
+              mt-2 w-full rounded-xl py-2.5 text-sm font-medium transition duration-200 cursor-pointer shadow-sm text-center flex items-center justify-center gap-2
               ${
                 isSubmitDisabled
                   ? "bg-surface-subtle text-ink-muted cursor-not-allowed"
@@ -492,6 +641,7 @@ export default function Wallets() {
               }
             `}
           >
+            {hasSession && addMutation.isPending && <ArrowPathIcon className="h-4 w-4 animate-spin" />}
             {submitLabel}
           </button>
 

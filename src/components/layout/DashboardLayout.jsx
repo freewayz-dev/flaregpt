@@ -181,8 +181,13 @@ export default function DashboardLayout() {
                   already supplies its own bottom padding (including a
                   safe-area inset on mobile), so a full, symmetric `p-6`/
                   `p-4` here would double up and read as an oversized gap
-                  beneath the input. */}
-              <div className="h-full flex flex-col px-4 pt-4 pb-2 md:px-6 md:pt-6 md:pb-3">
+                  beneath the input. Top/bottom trimmed further again at
+                  `lg:` specifically — a laptop/desktop viewport has room
+                  to spare, and every pixel of padding here is a pixel the
+                  message list (the thing actually worth maximizing) isn't
+                  getting; mobile and tablet keep the original, more
+                  generous values since they're already tighter on space. */}
+              <div className="h-full flex flex-col px-4 pt-4 pb-2 md:px-6 md:pt-6 md:pb-3 lg:pt-3 lg:pb-1">
                 <Suspense fallback={<RouteLoadingFallback />}>
                   <Outlet context={{ openWalletModal }} />
                 </Suspense>

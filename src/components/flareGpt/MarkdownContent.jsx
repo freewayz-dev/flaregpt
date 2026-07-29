@@ -10,17 +10,24 @@ import CodeBlock from "@/components/flareGpt/CodeBlock";
 // the same product, not a generic markdown dump. Code blocks are
 // future-proofed (copy button + language label) even though none of
 // today's placeholder responses happen to use one.
+// `break-words` on every element that can hold arbitrary-length text is
+// deliberate, not decorative — a 42-char wallet address or a long URL
+// typed inline (rather than passed through the dedicated WalletAddressBadge
+// block, which truncates instead) has nothing else forcing it to wrap, and
+// the default `overflow-wrap: normal` lets it push the message bubble
+// wider than the viewport on mobile instead. UserMessage.jsx already has
+// this on the user's own bubble; these are the assistant-side equivalents.
 const COMPONENTS = {
-  p: ({ children }) => <p className="text-sm leading-relaxed text-ink-secondary">{children}</p>,
+  p: ({ children }) => <p className="text-sm leading-relaxed text-ink-secondary break-words">{children}</p>,
   strong: ({ children }) => <strong className="font-semibold text-ink-primary">{children}</strong>,
-  ul: ({ children }) => <ul className="list-disc pl-5 space-y-1 text-sm text-ink-secondary">{children}</ul>,
-  ol: ({ children }) => <ol className="list-decimal pl-5 space-y-1 text-sm text-ink-secondary">{children}</ol>,
+  ul: ({ children }) => <ul className="list-disc pl-5 space-y-1 text-sm text-ink-secondary break-words">{children}</ul>,
+  ol: ({ children }) => <ol className="list-decimal pl-5 space-y-1 text-sm text-ink-secondary break-words">{children}</ol>,
   li: ({ children }) => <li className="leading-relaxed">{children}</li>,
-  h1: ({ children }) => <h3 className="text-base font-semibold text-ink-primary mt-1">{children}</h3>,
-  h2: ({ children }) => <h4 className="text-sm font-semibold text-ink-primary mt-1">{children}</h4>,
-  h3: ({ children }) => <h5 className="text-sm font-semibold text-ink-primary mt-1">{children}</h5>,
+  h1: ({ children }) => <h3 className="text-base font-semibold text-ink-primary mt-1 break-words">{children}</h3>,
+  h2: ({ children }) => <h4 className="text-sm font-semibold text-ink-primary mt-1 break-words">{children}</h4>,
+  h3: ({ children }) => <h5 className="text-sm font-semibold text-ink-primary mt-1 break-words">{children}</h5>,
   blockquote: ({ children }) => (
-    <blockquote className="border-l-2 border-brand/30 pl-3 text-sm text-ink-muted italic">
+    <blockquote className="border-l-2 border-brand/30 pl-3 text-sm text-ink-muted italic break-words">
       {children}
     </blockquote>
   ),
@@ -38,7 +45,7 @@ const COMPONENTS = {
     const isBlock = /language-/.test(className || "");
     if (!isBlock) {
       return (
-        <code className="rounded bg-surface-inset px-1.5 py-0.5 font-mono text-[13px] text-ink-primary">
+        <code className="rounded bg-surface-inset px-1.5 py-0.5 font-mono text-[13px] text-ink-primary break-words">
           {children}
         </code>
       );
