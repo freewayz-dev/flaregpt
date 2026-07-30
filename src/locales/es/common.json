@@ -64,17 +64,12 @@
     "description": "Datos de red, gráficos de precios y actividad de billetera de Live Flare de un vistazo.",
     "ftso": {
       "activeDelegations": "Delegaciones activas",
-      "claimComingSoon": "La reclamación aún no está disponible. Próximamente.",
-      "claimRewards": "Reclamar recompensa",
       "connected": "Conectado",
       "connectToSeeRewards": "Conecta o añade un monedero en Configuración para ver las recompensas.",
       "couldntLoad": "No se ha podido cargar la cartera de FTSO",
       "delegatedWflr": "WFLR delegado",
       "estHourlyEarning": "Ganancias por hora estimadas",
-      "noUnclaimedYet": "Aún no hay recompensas no reclamadas",
       "readOnly": "Solo lectura",
-      "readOnlyCannotClaim": "Solo lectura, no se puede reclamar",
-      "switchToClaim": "Cambia a tu monedero conectado para reclamar recompensas",
       "title": "Delegación FTSO",
       "unclaimedFlr": "FLR no reclamada"
     },
@@ -326,6 +321,58 @@
     "disclaimer": "No es un consejo financiero. Los datos se proporcionan solo con fines informativos.",
     "donate": "Donar",
     "terms": "Términos y Descargo de Responsabilidad"
+  },
+  "ftsoRewards": {
+    "description": "Sigue las recompensas de delegación FTSO, la velocidad de recompensas y las asignaciones de proveedores en un solo lugar.",
+    "connectToSee": "Conecta o selecciona un monedero para ver sus recompensas FTSO.",
+    "couldntLoad": "No se pudieron cargar tus recompensas FTSO.",
+    "stats": {
+      "wflrBalance": "Saldo de WFLR",
+      "unclaimed": "Recompensas sin reclamar",
+      "hourlyEarning": "Ganancia estimada por hora",
+      "targetEpochYield": "Rendimiento objetivo de esta época"
+    },
+    "velocity": {
+      "title": "Velocidad de Recompensas",
+      "methodLive": "Estimación en vivo",
+      "methodHistorical": "Estimación histórica",
+      "inactiveTitle": "Sin ganancias actualmente",
+      "inactiveDescription": "Este monedero aún no delega WFLR, así que no hay velocidad de recompensas que estimar.",
+      "perHour": "Por hora",
+      "perDay": "Por día",
+      "thisEpoch": "Esta época",
+      "sourceEpoch": "Estimado a partir de los datos de red de la época {{epoch}}"
+    },
+    "delegations": {
+      "title": "Delegaciones Activas",
+      "count_one": "{{count}} proveedor",
+      "count_other": "{{count}} proveedores",
+      "emptyTitle": "Sin Delegaciones Activas",
+      "emptyDescription": "Delega tu WFLR a un proveedor de datos FTSO para empezar a ganar recompensas."
+    },
+    "epochs": {
+      "title": "Épocas Sin Reclamar",
+      "subtitle": "Recompensas pendientes de reclamar, por época",
+      "emptyTitle": "Nada Pendiente",
+      "emptyDescription": "Todo al día — no hay recompensas de época pendientes ahora.",
+      "epochLabel": "Época {{id}}",
+      "viewFullLedger_one": "Ver registro completo ({{count}} entrada)",
+      "viewFullLedger_other": "Ver registro completo ({{count}} entradas)"
+    },
+    "providers": {
+      "title": "Proveedores FTSO",
+      "description": "Compara proveedores de datos por rendimiento y comisiones una vez conectadas las clasificaciones de proveedores."
+    },
+    "validators": {
+      "title": "Ranking de Validadores de Staking",
+      "description": "Consulta los validadores con mejor rendimiento una vez conectados los rankings de staking."
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "Comprobando el estado de Gas Sniper…",
+    "enabled": "Reclamado automáticamente por Gas Sniper",
+    "nudge": "Activa Gas Sniper para reclamar automáticamente",
+    "notEnabled": "Gas Sniper no está activado para este monedero"
   },
   "help": {
     "askFlareGptCta": "Pídele ayuda a FlareGPT",

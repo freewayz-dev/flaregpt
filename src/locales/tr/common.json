@@ -64,17 +64,12 @@
     "description": "Bir bakışta Live Flare ağ verileri, fiyat grafikleri ve cüzdan etkinliği.",
     "ftso": {
       "activeDelegations": "Aktif Delegasyonlar",
-      "claimComingSoon": "Henüz talepte bulunulamıyor. Çok yakında.",
-      "claimRewards": "Ödülleri Al",
       "connected": "Bağlandı",
       "connectToSeeRewards": "Ödülleri görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
       "couldntLoad": "FTSO portföyü yüklenemedi",
       "delegatedWflr": "Yetkilendirilmiş WFLR",
       "estHourlyEarning": "Tahmini Saatlik Kazanç",
-      "noUnclaimedYet": "Henüz talep edilmemiş ödül yok",
       "readOnly": " (read only)",
-      "readOnlyCannotClaim": "Salt okunur, talep edilemiyor",
-      "switchToClaim": "Ödülleri almak için bağlı cüzdanınıza geçin",
       "title": "FTSO Heyeti",
       "unclaimedFlr": "Sahipsiz FLR"
     },
@@ -323,6 +318,58 @@
     "disclaimer": "Yatırım tavsiyesi değildir. Veriler yalnızca bilgilendirme amaçlı sağlanmıştır.",
     "donate": "Bağış yap",
     "terms": "Şartlar ve Sorumluluk Reddi"
+  },
+  "ftsoRewards": {
+    "description": "FTSO delegasyon ödüllerinizi, ödül hızını ve sağlayıcı tahsislerini tek bir yerde takip edin.",
+    "connectToSee": "FTSO ödüllerini görmek için bir cüzdan bağlayın veya seçin.",
+    "couldntLoad": "FTSO ödülleriniz yüklenemedi.",
+    "stats": {
+      "wflrBalance": "WFLR Bakiyesi",
+      "unclaimed": "Talep Edilmemiş Ödüller",
+      "hourlyEarning": "Tahmini Saatlik Kazanç",
+      "targetEpochYield": "Bu Epoch'un Hedef Getirisi"
+    },
+    "velocity": {
+      "title": "Ödül Hızı",
+      "methodLive": "Canlı Tahmin",
+      "methodHistorical": "Geçmişe Dayalı Tahmin",
+      "inactiveTitle": "Şu Anda Kazanç Yok",
+      "inactiveDescription": "Bu cüzdan henüz WFLR delege etmiyor, bu yüzden tahmin edilecek bir ödül hızı yok.",
+      "perHour": "Saatte",
+      "perDay": "Günde",
+      "thisEpoch": "Bu Epoch",
+      "sourceEpoch": "Epoch {{epoch}} ağ verilerinden tahmin edildi"
+    },
+    "delegations": {
+      "title": "Aktif Delegasyonlar",
+      "count_one": "{{count}} Sağlayıcı",
+      "count_other": "{{count}} Sağlayıcı",
+      "emptyTitle": "Aktif Delegasyon Yok",
+      "emptyDescription": "Ödül kazanmaya başlamak için WFLR'nizi bir FTSO veri sağlayıcısına delege edin."
+    },
+    "epochs": {
+      "title": "Talep Edilmemiş Epoch'lar",
+      "subtitle": "Epoch'a göre talep edilmeyi bekleyen ödüller",
+      "emptyTitle": "Talep Edilecek Bir Şey Yok",
+      "emptyDescription": "Her şey güncel — şu anda bekleyen epoch ödülü yok.",
+      "epochLabel": "Epoch {{id}}",
+      "viewFullLedger_one": "Tam kaydı görüntüle ({{count}} girdi)",
+      "viewFullLedger_other": "Tam kaydı görüntüle ({{count}} girdi)"
+    },
+    "providers": {
+      "title": "FTSO Sağlayıcıları",
+      "description": "Sağlayıcı sıralamaları bağlandığında veri sağlayıcılarını performans ve ücretlere göre karşılaştırın."
+    },
+    "validators": {
+      "title": "Staking Validator Sıralaması",
+      "description": "Staking sıralamaları bağlandığında en iyi performans gösteren validatörleri görün."
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "Gas Sniper durumu kontrol ediliyor…",
+    "enabled": "Gas Sniper tarafından otomatik talep edildi",
+    "nudge": "Otomatik talep için Gas Sniper'ı açın",
+    "notEnabled": "Bu cüzdan için Gas Sniper etkin değil"
   },
   "help": {
     "askFlareGptCta": "FlareGPT'ye sorun",

@@ -64,17 +64,12 @@
     "description": "Sekilas data jaringan Flare Langsung, grafik harga, dan aktivitas dompet.",
     "ftso": {
       "activeDelegations": "Delegasi Aktif",
-      "claimComingSoon": "Klaim belum tersedia. Segera hadir.",
-      "claimRewards": "Klaim Hadiah",
       "connected": "Tersambung",
       "connectToSeeRewards": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat hadiah.",
       "couldntLoad": "Tidak dapat memuat portofolio FTSO",
       "delegatedWflr": "WFLR yang Didelegasikan",
       "estHourlyEarning": "Penghasilan Per Jam Est.",
-      "noUnclaimedYet": "Belum ada hadiah yang belum diklaim",
       "readOnly": "Hanya-baca",
-      "readOnlyCannotClaim": "Hanya baca, tidak dapat mengklaim",
-      "switchToClaim": "Beralih ke dompet Anda yang terhubung untuk mengklaim hadiah",
       "title": "Delegasi FTSO",
       "unclaimedFlr": "FLR yang tidak diklaim"
     },
@@ -323,6 +318,58 @@
     "disclaimer": "Bukan saran finansial. Data disediakan hanya untuk tujuan informasi.",
     "donate": "Beri donasi",
     "terms": "Ketentuan & Penafian"
+  },
+  "ftsoRewards": {
+    "description": "Lacak reward delegasi FTSO, kecepatan reward, dan alokasi penyedia Anda di satu tempat.",
+    "connectToSee": "Sambungkan atau pilih dompet untuk melihat reward FTSO-nya.",
+    "couldntLoad": "Reward FTSO Anda tidak dapat dimuat.",
+    "stats": {
+      "wflrBalance": "Saldo WFLR",
+      "unclaimed": "Reward Belum Diklaim",
+      "hourlyEarning": "Perkiraan Penghasilan per Jam",
+      "targetEpochYield": "Target Yield Epoch Ini"
+    },
+    "velocity": {
+      "title": "Kecepatan Reward",
+      "methodLive": "Estimasi Langsung",
+      "methodHistorical": "Estimasi Historis",
+      "inactiveTitle": "Belum Menghasilkan",
+      "inactiveDescription": "Dompet ini belum mendelegasikan WFLR, jadi tidak ada kecepatan reward untuk diperkirakan.",
+      "perHour": "Per Jam",
+      "perDay": "Per Hari",
+      "thisEpoch": "Epoch Ini",
+      "sourceEpoch": "Diperkirakan dari data jaringan epoch {{epoch}}"
+    },
+    "delegations": {
+      "title": "Delegasi Aktif",
+      "count_one": "{{count}} Penyedia",
+      "count_other": "{{count}} Penyedia",
+      "emptyTitle": "Tidak Ada Delegasi Aktif",
+      "emptyDescription": "Delegasikan WFLR Anda ke penyedia data FTSO untuk mulai mendapatkan reward."
+    },
+    "epochs": {
+      "title": "Epoch Belum Diklaim",
+      "subtitle": "Reward yang menunggu diklaim, per epoch",
+      "emptyTitle": "Tidak Ada yang Belum Diklaim",
+      "emptyDescription": "Semua sudah beres — tidak ada reward epoch yang tertunda saat ini.",
+      "epochLabel": "Epoch {{id}}",
+      "viewFullLedger_one": "Lihat buku besar lengkap ({{count}} entri)",
+      "viewFullLedger_other": "Lihat buku besar lengkap ({{count}} entri)"
+    },
+    "providers": {
+      "title": "Penyedia FTSO",
+      "description": "Bandingkan penyedia data berdasarkan performa dan biaya setelah peringkat penyedia terhubung."
+    },
+    "validators": {
+      "title": "Peringkat Validator Staking",
+      "description": "Lihat validator berperforma terbaik setelah peringkat staking terhubung."
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "Memeriksa status Gas Sniper…",
+    "enabled": "Diklaim otomatis oleh Gas Sniper",
+    "nudge": "Aktifkan Gas Sniper untuk klaim otomatis",
+    "notEnabled": "Gas Sniper tidak diaktifkan untuk dompet ini"
   },
   "help": {
     "askFlareGptCta": "Tanyakan pada FlareGPT",

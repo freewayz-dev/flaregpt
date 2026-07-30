@@ -64,17 +64,12 @@
     "description": "실시간 Flare 네트워크 데이터, 가격 차트 및 지갑 활동을 한눈에 볼 수 있습니다.",
     "ftso": {
       "activeDelegations": "활성 위임",
-      "claimComingSoon": "청구 기능은 아직 이용할 수 없습니다. 곧 제공될 예정입니다.",
-      "claimRewards": "보상 받기",
       "connected": "연결됨",
       "connectToSeeRewards": "리워드를 확인하려면 설정에서 지갑을 연결하거나 추가하세요.",
       "couldntLoad": "FTSO 포트폴리오를 로드할 수 없습니다",
       "delegatedWflr": "위임된 WFLR",
       "estHourlyEarning": "예상 시간당 수입",
-      "noUnclaimedYet": "아직 수령하지 않은 리워드가 없습니다",
       "readOnly": "읽기 전용",
-      "readOnlyCannotClaim": "읽기 전용, 청구 불가",
-      "switchToClaim": "보상을 받으려면 연결된 지갑으로 전환하세요",
       "title": "FTSO 위임",
       "unclaimedFlr": "미청구 FLR"
     },
@@ -323,6 +318,58 @@
     "disclaimer": "재정적 조언이 아닙니다. 제공된 데이터는 정보 제공 목적으로만 사용됩니다.",
     "donate": "기부",
     "terms": "이용약관 및 면책조항"
+  },
+  "ftsoRewards": {
+    "description": "FTSO 위임 보상, 보상 속도, 제공자 배분을 한곳에서 확인하세요.",
+    "connectToSee": "FTSO 보상을 보려면 지갑을 연결하거나 선택하세요.",
+    "couldntLoad": "FTSO 보상을 불러올 수 없습니다.",
+    "stats": {
+      "wflrBalance": "WFLR 잔액",
+      "unclaimed": "미청구 보상",
+      "hourlyEarning": "예상 시간당 수익",
+      "targetEpochYield": "이번 에포크 목표 수익률"
+    },
+    "velocity": {
+      "title": "보상 속도",
+      "methodLive": "실시간 추정",
+      "methodHistorical": "과거 데이터 기반 추정",
+      "inactiveTitle": "현재 수익 없음",
+      "inactiveDescription": "이 지갑은 아직 WFLR을 위임하지 않아 추정할 보상 속도가 없습니다.",
+      "perHour": "시간당",
+      "perDay": "일당",
+      "thisEpoch": "이번 에포크",
+      "sourceEpoch": "에포크 {{epoch}}의 네트워크 데이터로 추정"
+    },
+    "delegations": {
+      "title": "활성 위임",
+      "count_one": "{{count}}개 제공자",
+      "count_other": "{{count}}개 제공자",
+      "emptyTitle": "활성 위임 없음",
+      "emptyDescription": "보상을 받으려면 WFLR을 FTSO 데이터 제공자에게 위임하세요."
+    },
+    "epochs": {
+      "title": "미청구 에포크",
+      "subtitle": "에포크별 청구 대기 중인 보상",
+      "emptyTitle": "미청구 항목 없음",
+      "emptyDescription": "모두 완료되었습니다 — 현재 대기 중인 에포크 보상이 없습니다.",
+      "epochLabel": "에포크 {{id}}",
+      "viewFullLedger_one": "전체 원장 보기 ({{count}}건)",
+      "viewFullLedger_other": "전체 원장 보기 ({{count}}건)"
+    },
+    "providers": {
+      "title": "FTSO 제공자",
+      "description": "제공자 순위가 연결되면 성과와 수수료로 데이터 제공자를 비교하세요."
+    },
+    "validators": {
+      "title": "스테이킹 검증인 순위",
+      "description": "스테이킹 순위가 연결되면 최고 성과를 내는 검증인을 확인하세요."
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "Gas Sniper 상태 확인 중…",
+    "enabled": "Gas Sniper가 자동 청구함",
+    "nudge": "자동 청구하려면 Gas Sniper를 켜세요",
+    "notEnabled": "이 지갑에는 Gas Sniper가 활성화되어 있지 않습니다"
   },
   "help": {
     "askFlareGptCta": "FlareGPT에게 물어보기",

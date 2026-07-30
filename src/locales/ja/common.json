@@ -64,17 +64,12 @@
     "description": "ライブフレアネットワークデータ、価格チャート、ウォレットアクティビティを一目で確認できます。",
     "ftso": {
       "activeDelegations": "アクティブな委任",
-      "claimComingSoon": "請求はまだご利用いただけません。近日公開予定です。",
-      "claimRewards": "報酬受取：",
       "connected": "接続済み",
       "connectToSeeRewards": "[設定]でウォレットを接続または追加すると、特典が表示されます。",
       "couldntLoad": "FTSOポートフォリオを読み込めませんでした",
       "delegatedWflr": "委任されたWFLR",
       "estHourlyEarning": "時間あたりの予想収入",
-      "noUnclaimedYet": "まだ受け取っていない報酬はありません",
       "readOnly": "読み取り専用",
-      "readOnlyCannotClaim": "閲覧専用のため請求できません",
-      "switchToClaim": "接続されたウォレットに切り替えて特典を受け取りましょう",
       "title": "FTSO委任",
       "unclaimedFlr": "未請求のFLR"
     },
@@ -323,6 +318,58 @@
     "disclaimer": "財務アドバイスではありません。データは情報提供のみを目的として提供されています。",
     "donate": "寄付",
     "terms": "利用規約と免責事項"
+  },
+  "ftsoRewards": {
+    "description": "FTSOデリゲーション報酬、報酬速度、プロバイダーへの配分を一か所で確認できます。",
+    "connectToSee": "FTSO報酬を表示するには、ウォレットを接続または選択してください。",
+    "couldntLoad": "FTSO報酬を読み込めませんでした。",
+    "stats": {
+      "wflrBalance": "WFLR残高",
+      "unclaimed": "未請求の報酬",
+      "hourlyEarning": "推定時間あたり収益",
+      "targetEpochYield": "今エポックの目標利回り"
+    },
+    "velocity": {
+      "title": "報酬速度",
+      "methodLive": "ライブ推定",
+      "methodHistorical": "履歴ベースの推定",
+      "inactiveTitle": "現在収益なし",
+      "inactiveDescription": "このウォレットはまだWFLRを委任していないため、推定できる報酬速度がありません。",
+      "perHour": "1時間あたり",
+      "perDay": "1日あたり",
+      "thisEpoch": "今エポック",
+      "sourceEpoch": "エポック{{epoch}}のネットワークデータから推定"
+    },
+    "delegations": {
+      "title": "アクティブな委任",
+      "count_one": "{{count}}プロバイダー",
+      "count_other": "{{count}}プロバイダー",
+      "emptyTitle": "アクティブな委任なし",
+      "emptyDescription": "報酬を得るには、WFLRをFTSOデータプロバイダーに委任してください。"
+    },
+    "epochs": {
+      "title": "未請求のエポック",
+      "subtitle": "エポックごとの請求待ち報酬",
+      "emptyTitle": "未請求はありません",
+      "emptyDescription": "すべて完了しています — 現在保留中のエポック報酬はありません。",
+      "epochLabel": "エポック{{id}}",
+      "viewFullLedger_one": "完全な台帳を表示（{{count}}件）",
+      "viewFullLedger_other": "完全な台帳を表示（{{count}}件）"
+    },
+    "providers": {
+      "title": "FTSOプロバイダー",
+      "description": "プロバイダーランキングが接続されたら、パフォーマンスと手数料でデータプロバイダーを比較できます。"
+    },
+    "validators": {
+      "title": "ステーキングバリデーターランキング",
+      "description": "ステーキングランキングが接続されたら、最もパフォーマンスの高いバリデーターを確認できます。"
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "Gas Sniperのステータスを確認中…",
+    "enabled": "Gas Sniperにより自動請求済み",
+    "nudge": "自動請求するにはGas Sniperをオンにしてください",
+    "notEnabled": "このウォレットではGas Sniperが有効になっていません"
   },
   "help": {
     "askFlareGptCta": "FlareGPTに聞いてみる",

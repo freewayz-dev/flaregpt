@@ -64,17 +64,12 @@
     "description": "Dati della rete Live Flare, grafici dei prezzi e attività del portafoglio a colpo d'occhio.",
     "ftso": {
       "activeDelegations": "Deleghe attive",
-      "claimComingSoon": "Il riscatto non è ancora disponibile. Prossimamente.",
-      "claimRewards": "Riscuoti Ricompense",
       "connected": "Connesso",
       "connectToSeeRewards": "Collega o aggiungi un portafoglio nelle Impostazioni per visualizzare le ricompense.",
       "couldntLoad": "Impossibile caricare il portafoglio FTSO",
       "delegatedWflr": "WFLR delegato",
       "estHourlyEarning": "Guadagno orario stimato",
-      "noUnclaimedYet": "Ancora nessuna ricompensa non riscossa",
       "readOnly": "Sola lettura",
-      "readOnlyCannotClaim": "Sola lettura, impossibile riscattare",
-      "switchToClaim": "Passa al tuo portafoglio connesso per richiedere i premi",
       "title": "Delega FTSO",
       "unclaimedFlr": "FLR non riscosso"
     },
@@ -326,6 +321,58 @@
     "disclaimer": "Non è un consiglio finanziario. I dati sono forniti solo a scopo informativo.",
     "donate": "Dona",
     "terms": "Termini e Dichiarazione de Responsabilità"
+  },
+  "ftsoRewards": {
+    "description": "Tieni traccia delle tue ricompense di delegazione FTSO, della velocità delle ricompense e delle allocazioni dei provider in un unico posto.",
+    "connectToSee": "Collega o seleziona un wallet per vedere le sue ricompense FTSO.",
+    "couldntLoad": "Impossibile caricare le tue ricompense FTSO.",
+    "stats": {
+      "wflrBalance": "Saldo WFLR",
+      "unclaimed": "Ricompense Non Riscattate",
+      "hourlyEarning": "Guadagno Orario Stimato",
+      "targetEpochYield": "Rendimento Target di Questa Epoca"
+    },
+    "velocity": {
+      "title": "Velocità delle Ricompense",
+      "methodLive": "Stima in Tempo Reale",
+      "methodHistorical": "Stima Storica",
+      "inactiveTitle": "Nessun Guadagno Attuale",
+      "inactiveDescription": "Questo wallet non sta ancora delegando WFLR, quindi non c'è alcuna velocità di ricompensa da stimare.",
+      "perHour": "All'ora",
+      "perDay": "Al giorno",
+      "thisEpoch": "Questa Epoca",
+      "sourceEpoch": "Stimato dai dati di rete dell'epoca {{epoch}}"
+    },
+    "delegations": {
+      "title": "Deleghe Attive",
+      "count_one": "{{count}} provider",
+      "count_other": "{{count}} provider",
+      "emptyTitle": "Nessuna Delega Attiva",
+      "emptyDescription": "Delega il tuo WFLR a un provider di dati FTSO per iniziare a guadagnare ricompense."
+    },
+    "epochs": {
+      "title": "Epoche Non Riscattate",
+      "subtitle": "Ricompense in attesa di essere riscattate, per epoca",
+      "emptyTitle": "Niente da Riscattare",
+      "emptyDescription": "Tutto aggiornato — nessuna ricompensa di epoca in sospeso al momento.",
+      "epochLabel": "Epoca {{id}}",
+      "viewFullLedger_one": "Vedi registro completo ({{count}} voce)",
+      "viewFullLedger_other": "Vedi registro completo ({{count}} voci)"
+    },
+    "providers": {
+      "title": "Provider FTSO",
+      "description": "Confronta i provider di dati per performance e commissioni una volta collegate le classifiche dei provider."
+    },
+    "validators": {
+      "title": "Classifica dei Validatori di Staking",
+      "description": "Consulta i validatori con le migliori performance una volta collegate le classifiche di staking."
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "Verifica dello stato di Gas Sniper…",
+    "enabled": "Riscattato automaticamente da Gas Sniper",
+    "nudge": "Attiva Gas Sniper per il riscatto automatico",
+    "notEnabled": "Gas Sniper non è attivo per questo wallet"
   },
   "help": {
     "askFlareGptCta": "Chiedi aiuto a FlareGPT",

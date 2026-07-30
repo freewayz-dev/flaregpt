@@ -64,17 +64,12 @@
     "description": "Live Flare network data, price charts, and wallet activity at a glance.",
     "ftso": {
       "activeDelegations": "Active Delegations",
-      "claimComingSoon": "Claiming isn't available yet. Coming soon.",
-      "claimRewards": "Claim Rewards",
       "connected": "Connected",
       "connectToSeeRewards": "Connect or add a wallet in Settings to see rewards.",
       "couldntLoad": "Couldn't load FTSO portfolio",
       "delegatedWflr": "Delegated WFLR",
       "estHourlyEarning": "Est. Hourly Earning",
-      "noUnclaimedYet": "No unclaimed rewards yet",
       "readOnly": "Read-only",
-      "readOnlyCannotClaim": "Read-only, can't claim",
-      "switchToClaim": "Switch to your connected wallet to claim rewards",
       "title": "FTSO Delegation",
       "unclaimedFlr": "Unclaimed FLR"
     },
@@ -323,6 +318,58 @@
     "disclaimer": "Not financial advice. Data is provided for informational purposes only.",
     "donate": "Donate",
     "terms": "Terms & Disclaimer"
+  },
+  "ftsoRewards": {
+    "description": "Track your FTSO delegation rewards, reward velocity, and provider allocations in one place.",
+    "connectToSee": "Connect or select a wallet to see its FTSO rewards.",
+    "couldntLoad": "Couldn't load your FTSO rewards.",
+    "stats": {
+      "wflrBalance": "WFLR Balance",
+      "unclaimed": "Unclaimed Rewards",
+      "hourlyEarning": "Est. Hourly Earning",
+      "targetEpochYield": "This Epoch's Target Yield"
+    },
+    "velocity": {
+      "title": "Reward Velocity",
+      "methodLive": "Live Estimate",
+      "methodHistorical": "Historical Estimate",
+      "inactiveTitle": "Not Currently Earning",
+      "inactiveDescription": "This wallet isn't delegating WFLR yet, so there's no reward velocity to estimate.",
+      "perHour": "Per Hour",
+      "perDay": "Per Day",
+      "thisEpoch": "This Epoch",
+      "sourceEpoch": "Estimated from epoch {{epoch}}'s network data"
+    },
+    "delegations": {
+      "title": "Active Delegations",
+      "count_one": "{{count}} Provider",
+      "count_other": "{{count}} Providers",
+      "emptyTitle": "No Active Delegations",
+      "emptyDescription": "Delegate your WFLR to an FTSO data provider to start earning rewards."
+    },
+    "epochs": {
+      "title": "Unclaimed Epochs",
+      "subtitle": "Rewards waiting to be claimed, by epoch",
+      "emptyTitle": "Nothing Unclaimed",
+      "emptyDescription": "All caught up — no pending epoch rewards right now.",
+      "epochLabel": "Epoch {{id}}",
+      "viewFullLedger_one": "View full ledger ({{count}} entry)",
+      "viewFullLedger_other": "View full ledger ({{count}} entries)"
+    },
+    "providers": {
+      "title": "FTSO Providers",
+      "description": "Compare data providers by performance and fees once provider rankings are connected."
+    },
+    "validators": {
+      "title": "Staking Validators Ranking",
+      "description": "See top-performing validators once staking rankings are connected."
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "Checking Gas Sniper status…",
+    "enabled": "Auto-claimed by Gas Sniper",
+    "nudge": "Turn on Gas Sniper to auto-claim",
+    "notEnabled": "Gas Sniper isn't enabled for this wallet"
   },
   "help": {
     "askFlareGptCta": "Ask FlareGPT for help",

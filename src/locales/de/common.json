@@ -64,17 +64,12 @@
     "description": "Live Flare-Netzwerkdaten, Preisdiagramme und Wallet-Aktivitäten auf einen Blick.",
     "ftso": {
       "activeDelegations": "Aktive Delegationen",
-      "claimComingSoon": "Einfordern ist noch nicht verfügbar. Demnächst verfügbar.",
-      "claimRewards": "Belohnungen abholen",
       "connected": "Verbunden",
       "connectToSeeRewards": "Verbinden oder fügen Sie ein Wallet in den Einstellungen hinzu, um Prämien zu sehen.",
       "couldntLoad": "FTSO-Portfolio konnte nicht geladen werden",
       "delegatedWflr": "Delegierte WFLR",
       "estHourlyEarning": "Stundenlohn",
-      "noUnclaimedYet": "Noch keine nicht beanspruchten Belohnungen",
       "readOnly": "Nur lesen",
-      "readOnlyCannotClaim": "Nur Lesezugriff, kein Einfordern möglich",
-      "switchToClaim": "Wechseln Sie zu Ihrem verbundenen Wallet, um Prämien einzufordern",
       "title": "FTSO-Delegation",
       "unclaimedFlr": "Nicht beanspruchte FLR"
     },
@@ -323,6 +318,58 @@
     "disclaimer": "Keine Finanzberatung. Die Daten dienen ausschließlich zu Informationszwecken.",
     "donate": "Spenden",
     "terms": "Nutzungsbedingungen & Haftungsausschluss"
+  },
+  "ftsoRewards": {
+    "description": "Verfolge deine FTSO-Delegationsbelohnungen, die Belohnungsgeschwindigkeit und Anbieterzuteilungen an einem Ort.",
+    "connectToSee": "Verbinde oder wähle ein Wallet, um dessen FTSO-Belohnungen zu sehen.",
+    "couldntLoad": "Deine FTSO-Belohnungen konnten nicht geladen werden.",
+    "stats": {
+      "wflrBalance": "WFLR-Guthaben",
+      "unclaimed": "Nicht beanspruchte Belohnungen",
+      "hourlyEarning": "Geschätzter Stundenertrag",
+      "targetEpochYield": "Ziel-Ertrag dieser Epoche"
+    },
+    "velocity": {
+      "title": "Belohnungsgeschwindigkeit",
+      "methodLive": "Live-Schätzung",
+      "methodHistorical": "Historische Schätzung",
+      "inactiveTitle": "Derzeit keine Erträge",
+      "inactiveDescription": "Dieses Wallet delegiert noch kein WFLR, daher gibt es keine Belohnungsgeschwindigkeit zu schätzen.",
+      "perHour": "Pro Stunde",
+      "perDay": "Pro Tag",
+      "thisEpoch": "Diese Epoche",
+      "sourceEpoch": "Geschätzt anhand der Netzwerkdaten von Epoche {{epoch}}"
+    },
+    "delegations": {
+      "title": "Aktive Delegationen",
+      "count_one": "{{count}} Anbieter",
+      "count_other": "{{count}} Anbieter",
+      "emptyTitle": "Keine aktiven Delegationen",
+      "emptyDescription": "Delegiere dein WFLR an einen FTSO-Datenanbieter, um Belohnungen zu verdienen."
+    },
+    "epochs": {
+      "title": "Nicht beanspruchte Epochen",
+      "subtitle": "Belohnungen, die auf Beanspruchung warten, nach Epoche",
+      "emptyTitle": "Nichts offen",
+      "emptyDescription": "Alles erledigt — derzeit keine ausstehenden Epochenbelohnungen.",
+      "epochLabel": "Epoche {{id}}",
+      "viewFullLedger_one": "Vollständiges Ledger ansehen ({{count}} Eintrag)",
+      "viewFullLedger_other": "Vollständiges Ledger ansehen ({{count}} Einträge)"
+    },
+    "providers": {
+      "title": "FTSO-Anbieter",
+      "description": "Vergleiche Datenanbieter nach Leistung und Gebühren, sobald die Anbieter-Ranglisten verbunden sind."
+    },
+    "validators": {
+      "title": "Staking-Validator-Rangliste",
+      "description": "Sieh die leistungsstärksten Validatoren, sobald die Staking-Ranglisten verbunden sind."
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "Gas-Sniper-Status wird geprüft…",
+    "enabled": "Automatisch von Gas Sniper beansprucht",
+    "nudge": "Gas Sniper für automatische Beanspruchung aktivieren",
+    "notEnabled": "Gas Sniper ist für dieses Wallet nicht aktiviert"
   },
   "help": {
     "askFlareGptCta": "FlareGPT um Hilfe bitten",

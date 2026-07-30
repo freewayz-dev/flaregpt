@@ -64,17 +64,12 @@
     "description": "实时Flare网络数据、价格图表和钱包活动一目了然。",
     "ftso": {
       "activeDelegations": "活动委派",
-      "claimComingSoon": "领取功能尚不可用。即将推出。",
-      "claimRewards": "Claim Rewards",
       "connected": "已連線",
       "connectToSeeRewards": "在“设置”中关联或添加钱包，即可查看奖励。",
       "couldntLoad": "无法加载FTSO投资组合",
       "delegatedWflr": "委派WFLR",
       "estHourlyEarning": "预计每小时收入",
-      "noUnclaimedYet": "尚无未领取的奖励",
       "readOnly": "只读",
-      "readOnlyCannotClaim": "只读，无法领取",
-      "switchToClaim": "切换到已连接的钱包以领取奖励",
       "title": "FTSO委托",
       "unclaimedFlr": "无人认领的FLR"
     },
@@ -323,6 +318,58 @@
     "disclaimer": "非财务建议。所提供数据仅供参考之用。",
     "donate": "捐献",
     "terms": "条款与免责声明"
+  },
+  "ftsoRewards": {
+    "description": "在一个地方跟踪您的 FTSO 委托奖励、奖励增速和提供商分配情况。",
+    "connectToSee": "连接或选择一个钱包以查看其 FTSO 奖励。",
+    "couldntLoad": "无法加载您的 FTSO 奖励。",
+    "stats": {
+      "wflrBalance": "WFLR 余额",
+      "unclaimed": "未领取奖励",
+      "hourlyEarning": "预计每小时收益",
+      "targetEpochYield": "本纪元目标收益率"
+    },
+    "velocity": {
+      "title": "奖励增速",
+      "methodLive": "实时估算",
+      "methodHistorical": "历史估算",
+      "inactiveTitle": "当前无收益",
+      "inactiveDescription": "此钱包尚未委托 WFLR，因此没有可估算的奖励增速。",
+      "perHour": "每小时",
+      "perDay": "每天",
+      "thisEpoch": "本纪元",
+      "sourceEpoch": "根据第 {{epoch}} 纪元的网络数据估算"
+    },
+    "delegations": {
+      "title": "当前委托",
+      "count_one": "{{count}} 个提供商",
+      "count_other": "{{count}} 个提供商",
+      "emptyTitle": "暂无委托",
+      "emptyDescription": "将您的 WFLR 委托给 FTSO 数据提供商以开始赚取奖励。"
+    },
+    "epochs": {
+      "title": "未领取的纪元",
+      "subtitle": "按纪元列出的待领取奖励",
+      "emptyTitle": "没有待领取项目",
+      "emptyDescription": "一切都已更新——目前没有待处理的纪元奖励。",
+      "epochLabel": "第 {{id}} 纪元",
+      "viewFullLedger_one": "查看完整台账（{{count}} 条）",
+      "viewFullLedger_other": "查看完整台账（{{count}} 条）"
+    },
+    "providers": {
+      "title": "FTSO 提供商",
+      "description": "提供商排名连接后，可按表现和费用比较数据提供商。"
+    },
+    "validators": {
+      "title": "质押验证者排名",
+      "description": "质押排名连接后，可查看表现最佳的验证者。"
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "正在检查 Gas Sniper 状态…",
+    "enabled": "已由 Gas Sniper 自动领取",
+    "nudge": "开启 Gas Sniper 以自动领取",
+    "notEnabled": "此钱包尚未启用 Gas Sniper"
   },
   "help": {
     "askFlareGptCta": "向 FlareGPT 提问",

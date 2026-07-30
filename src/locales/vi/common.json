@@ -64,17 +64,12 @@
     "description": "Dữ liệu mạng Live Flare, biểu đồ giá và hoạt động của ví trong nháy mắt.",
     "ftso": {
       "activeDelegations": "Ủy quyền đang hoạt động",
-      "claimComingSoon": "Chức năng nhận thưởng chưa khả dụng. Sắp ra mắt.",
-      "claimRewards": "Nhận phần thưởng",
       "connected": "Đã kết nối",
       "connectToSeeRewards": "Kết nối hoặc thêm ví trong Cài đặt để xem phần thưởng.",
       "couldntLoad": "Không thể tải danh mục đầu tư FTSO",
       "delegatedWflr": "WFLR được ủy quyền",
       "estHourlyEarning": "Thu nhập hàng giờ ước tính",
-      "noUnclaimedYet": "Chưa có phần thưởng nào chưa được nhận",
       "readOnly": "Chỉ đọc",
-      "readOnlyCannotClaim": "Chỉ xem, không thể nhận thưởng",
-      "switchToClaim": "Chuyển sang ví đã kết nối của bạn để nhận phần thưởng",
       "title": "Phái đoàn FTSO",
       "unclaimedFlr": "FLR chưa được xác nhận quyền sở hữu"
     },
@@ -323,6 +318,58 @@
     "disclaimer": "Không phải lời khuyên tài chính. Dữ liệu được cung cấp chỉ nhằm mục đích thông tin.",
     "donate": "Ủng hộ",
     "terms": "Điều khoản & Tuyên bố miễn trừ trách nhiệm"
+  },
+  "ftsoRewards": {
+    "description": "Theo dõi phần thưởng ủy quyền FTSO, tốc độ tích lũy phần thưởng và phân bổ nhà cung cấp tại một nơi.",
+    "connectToSee": "Kết nối hoặc chọn một ví để xem phần thưởng FTSO của ví đó.",
+    "couldntLoad": "Không thể tải phần thưởng FTSO của bạn.",
+    "stats": {
+      "wflrBalance": "Số Dư WFLR",
+      "unclaimed": "Phần Thưởng Chưa Nhận",
+      "hourlyEarning": "Thu Nhập Ước Tính Mỗi Giờ",
+      "targetEpochYield": "Lợi Suất Mục Tiêu Của Epoch Này"
+    },
+    "velocity": {
+      "title": "Tốc Độ Phần Thưởng",
+      "methodLive": "Ước Tính Trực Tiếp",
+      "methodHistorical": "Ước Tính Theo Lịch Sử",
+      "inactiveTitle": "Hiện Không Có Thu Nhập",
+      "inactiveDescription": "Ví này chưa ủy quyền WFLR, vì vậy không có tốc độ phần thưởng nào để ước tính.",
+      "perHour": "Mỗi Giờ",
+      "perDay": "Mỗi Ngày",
+      "thisEpoch": "Epoch Này",
+      "sourceEpoch": "Ước tính từ dữ liệu mạng của epoch {{epoch}}"
+    },
+    "delegations": {
+      "title": "Ủy Quyền Đang Hoạt Động",
+      "count_one": "{{count}} nhà cung cấp",
+      "count_other": "{{count}} nhà cung cấp",
+      "emptyTitle": "Không Có Ủy Quyền Đang Hoạt Động",
+      "emptyDescription": "Ủy quyền WFLR của bạn cho một nhà cung cấp dữ liệu FTSO để bắt đầu kiếm phần thưởng."
+    },
+    "epochs": {
+      "title": "Epoch Chưa Nhận",
+      "subtitle": "Phần thưởng đang chờ được nhận, theo epoch",
+      "emptyTitle": "Không Có Gì Chưa Nhận",
+      "emptyDescription": "Mọi thứ đã được cập nhật — hiện không có phần thưởng epoch nào đang chờ.",
+      "epochLabel": "Epoch {{id}}",
+      "viewFullLedger_one": "Xem sổ cái đầy đủ ({{count}} mục)",
+      "viewFullLedger_other": "Xem sổ cái đầy đủ ({{count}} mục)"
+    },
+    "providers": {
+      "title": "Nhà Cung Cấp FTSO",
+      "description": "So sánh các nhà cung cấp dữ liệu theo hiệu suất và phí sau khi bảng xếp hạng nhà cung cấp được kết nối."
+    },
+    "validators": {
+      "title": "Bảng Xếp Hạng Validator Staking",
+      "description": "Xem các validator có hiệu suất tốt nhất sau khi bảng xếp hạng staking được kết nối."
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "Đang kiểm tra trạng thái Gas Sniper…",
+    "enabled": "Được Gas Sniper tự động nhận",
+    "nudge": "Bật Gas Sniper để tự động nhận",
+    "notEnabled": "Gas Sniper chưa được bật cho ví này"
   },
   "help": {
     "askFlareGptCta": "Hỏi FlareGPT để được trợ giúp",

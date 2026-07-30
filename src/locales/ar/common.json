@@ -64,17 +64,12 @@
     "description": "نظرة سريعة على بيانات شبكة Flare الحية ومخططات الأسعار ونشاط المحفظة.",
     "ftso": {
       "activeDelegations": "الوفود النشطة",
-      "claimComingSoon": "المطالبة غير متاحة بعد. قريبًا.",
-      "claimRewards": "المطالبة بالجوائز",
       "connected": "[ترجمة المصطلح: Connected]",
       "connectToSeeRewards": "قم بتوصيل محفظة أو إضافتها في الإعدادات لرؤية المكافآت.",
       "couldntLoad": "تعذر تحميل محفظة FTSO",
       "delegatedWflr": "تفويض WFLR",
       "estHourlyEarning": "الدخل المقدر بالساعة",
-      "noUnclaimedYet": "لا توجد مكافآت لم تتم المطالبة بها بعد",
       "readOnly": "للقراءة فقط",
-      "readOnlyCannotClaim": "للقراءة فقط، لا يمكن المطالبة",
-      "switchToClaim": "قم بالتبديل إلى محفظتك المتصلة للمطالبة بالمكافآت",
       "title": "وفد FTSO",
       "unclaimedFlr": "الطابق الأرضي غير المطالب به"
     },
@@ -335,6 +330,58 @@
     "disclaimer": "ليست استشارة مالية. البيانات المقدمة هي لأغراض معلوماتية فقط.",
     "donate": "تَبرَّع",
     "terms": "الشروط وإخلاء المسؤولية"
+  },
+  "ftsoRewards": {
+    "description": "تتبّع مكافآت تفويض FTSO الخاصة بك، وسرعة تراكم المكافآت، وتخصيصات مزودي الخدمة في مكان واحد.",
+    "connectToSee": "قم بتوصيل أو اختيار محفظة لعرض مكافآت FTSO الخاصة بها.",
+    "couldntLoad": "تعذّر تحميل مكافآت FTSO الخاصة بك.",
+    "stats": {
+      "wflrBalance": "رصيد WFLR",
+      "unclaimed": "المكافآت غير المُطالَب بها",
+      "hourlyEarning": "الأرباح المقدّرة بالساعة",
+      "targetEpochYield": "العائد المستهدف لهذه الحقبة"
+    },
+    "velocity": {
+      "title": "سرعة المكافآت",
+      "methodLive": "تقدير مباشر",
+      "methodHistorical": "تقدير تاريخي",
+      "inactiveTitle": "غير مكتسبة حاليًا",
+      "inactiveDescription": "هذه المحفظة لا تفوّض WFLR بعد، لذا لا توجد سرعة مكافآت لتقديرها.",
+      "perHour": "في الساعة",
+      "perDay": "في اليوم",
+      "thisEpoch": "هذه الحقبة",
+      "sourceEpoch": "مُقدَّر من بيانات شبكة الحقبة {{epoch}}"
+    },
+    "delegations": {
+      "title": "التفويضات النشطة",
+      "count_one": "{{count}} مزوّد",
+      "count_other": "{{count}} مزوّدين",
+      "emptyTitle": "لا توجد تفويضات نشطة",
+      "emptyDescription": "فوّض WFLR الخاص بك إلى أحد مزوّدي بيانات FTSO لبدء كسب المكافآت."
+    },
+    "epochs": {
+      "title": "الحقب غير المُطالَب بها",
+      "subtitle": "مكافآت في انتظار المطالبة، حسب الحقبة",
+      "emptyTitle": "لا يوجد شيء غير مُطالَب به",
+      "emptyDescription": "كل شيء محدّث — لا توجد مكافآت حقبة معلّقة الآن.",
+      "epochLabel": "الحقبة {{id}}",
+      "viewFullLedger_one": "عرض السجل الكامل ({{count}} إدخال)",
+      "viewFullLedger_other": "عرض السجل الكامل ({{count}} إدخالات)"
+    },
+    "providers": {
+      "title": "مزودو FTSO",
+      "description": "قارن بين مزودي البيانات من حيث الأداء والرسوم بمجرد ربط تصنيفات المزودين."
+    },
+    "validators": {
+      "title": "تصنيف مدققي المصادقة",
+      "description": "اطّلع على أفضل المدققين أداءً بمجرد ربط تصنيفات المصادقة."
+    }
+  },
+  "gasSniperStatus": {
+    "checking": "جارٍ التحقق من حالة Gas Sniper…",
+    "enabled": "تتم المطالبة تلقائيًا بواسطة Gas Sniper",
+    "nudge": "فعّل Gas Sniper للمطالبة التلقائية",
+    "notEnabled": "Gas Sniper غير مُفعّل لهذه المحفظة"
   },
   "help": {
     "askFlareGptCta": "اسأل FlareGPT للمساعدة",

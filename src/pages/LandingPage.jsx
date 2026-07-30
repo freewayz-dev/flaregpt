@@ -16,6 +16,9 @@ import {
   ChatBubbleLeftRightIcon,
   GiftIcon,
   HeartIcon,
+  BoltIcon,
+  BanknotesIcon,
+  ClockIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
@@ -187,9 +190,9 @@ export default function LandingPage() {
             </h1>
 
             <p className="mt-7 max-w-xl text-sm sm:text-sm md:leading-8 leading-6 text-ink-secondary">
-              Track wallets, claim rewards at the right time, receive gas fee
-              alerts, monitor governance, and chat with an AI that understands
-              your Flare portfolio, all from one intelligent platform.
+              Track wallets, automate reward claiming, receive gas fee alerts,
+              monitor governance, and chat with an AI that understands your
+              Flare portfolio, all from one intelligent platform.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-5">
@@ -412,8 +415,8 @@ export default function LandingPage() {
                 </h2>
 
                 <p className="mt-4 max-w-xl mx-auto text-sm leading-6 text-ink-secondary">
-                  Manage wallets, claim rewards, participate in governance, and
-                  get AI-powered insights, all from one place.
+                  Manage wallets, automate reward claiming, participate in
+                  governance, and get AI-powered insights, all from one place.
                 </p>
               </div>
             </FadeIn>
@@ -458,6 +461,61 @@ export default function LandingPage() {
                   </p>
                 </div>
               ))}
+            </FadeIn>
+
+            {/* Gas Sniper gets its own featured treatment rather than
+                sitting as one more equal-weight card in the grid below —
+                it's the other genuine differentiator alongside FlareGPT
+                (which already gets a full dedicated section above), and a
+                plain icon+paragraph card undersold that. Larger padding,
+                a two-column internal layout, and a tinted/bordered
+                surface distinguish it from the regular grid without
+                introducing a visual language foreign to the rest of the
+                page — same rounded-2xl/border/brand-accent vocabulary,
+                same checklist-bullet pattern the AI section above uses. */}
+            <FadeIn className="mb-5">
+              <div className="relative overflow-hidden rounded-2xl border-2 border-brand/25 bg-gradient-to-br from-brand/[0.07] via-surface-card to-surface-card p-6 sm:p-8">
+                <div className="grid gap-8 sm:grid-cols-2 sm:items-center">
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-brand">
+                      <BoltIcon className="h-3 w-3" />
+                      Flagship automation
+                    </div>
+
+                    <h3 className="mt-4 font-display text-xl sm:text-2xl font-semibold tracking-tight text-ink-primary">
+                      Gas Sniper
+                    </h3>
+
+                    <p className="mt-1 text-sm font-medium text-ink-secondary">
+                      Your FTSO rewards, claimed for you
+                    </p>
+
+                    <p className="mt-4 max-w-md text-sm leading-7 text-ink-secondary">
+                      Turn it on once and forget about it. Gas Sniper watches
+                      network conditions around the clock and claims your
+                      FTSO rewards the moment it's actually worth doing, so
+                      you never have to time it yourself.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    {[
+                      "Automatically claims your FTSO rewards — no manual action needed",
+                      "Runs continuously in the background, 24/7",
+                      "Claims only when gas fees make it worth it",
+                      "Gives you back the time you'd spend watching the network",
+                      "Built natively into the Flare ecosystem, no third-party tools",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10">
+                          <CheckIcon className="h-3.5 w-3.5 text-brand" />
+                        </div>
+                        <p className="text-left text-sm text-ink-secondary">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </FadeIn>
 
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -856,8 +914,8 @@ const howItWorks = [
   },
   {
     icon: GiftIcon,
-    title: "Manage rewards",
-    desc: "Know exactly when to claim, delegate, or adjust your position.",
+    title: "Automate your rewards",
+    desc: "Turn on Gas Sniper to claim FTSO rewards automatically, or manage delegations yourself.",
   },
 ];
 
@@ -880,29 +938,29 @@ const features = [
     id: "03",
     icon: ArrowTrendingUpIcon,
     title: "Rewards & Delegations",
-    subtitle: "Never miss rewards again",
-    desc: "Track accruing rewards, view unclaimed rewards, monitor delegations, and know the best time to claim while minimizing gas fees.",
+    subtitle: "See exactly where you stand",
+    desc: "Track accruing FTSO rewards, delegation weight across providers, and unclaimed balances — while Gas Sniper handles the claiming automatically.",
   },
   {
     id: "04",
-    icon: ShieldCheckIcon,
-    title: "Governance",
-    subtitle: "Stay informed",
-    desc: "Follow active proposals, browse governance history, and understand what's happening across the Flare network without leaving the dashboard.",
-  },
-  {
-    id: "05",
-    icon: SparklesIcon,
-    title: "Live Network Insights",
-    subtitle: "Powered by real-time data",
-    desc: "Monitor FLR price, ecosystem activity, protocols, network statistics, wallet activity, and other live data from across the Flare ecosystem.",
-  },
-  {
-    id: "06",
     icon: Square3Stack3DIcon,
     title: "Smart Alerts",
     subtitle: "Be notified at the right time",
     desc: "Receive alerts for low gas fees, reward opportunities, wallet activity, and important ecosystem events so you never miss what matters.",
+  },
+  {
+    id: "05",
+    icon: BanknotesIcon,
+    title: "DeFi Yield Strategies",
+    subtitle: "Compare protocols side by side",
+    desc: "Compare deposit strategies across Sceptre, Firelight, MXRPY, and Spectra — APRs, terms, and payouts side by side, so you can choose with confidence.",
+  },
+  {
+    id: "06",
+    icon: ClockIcon,
+    title: "rFLR Vesting Tracker",
+    subtitle: "Know exactly when it unlocks",
+    desc: "Follow your rFLR vesting schedule, upcoming unlocks, and early-exit terms alongside live network-wide emission data.",
   },
 ];
 

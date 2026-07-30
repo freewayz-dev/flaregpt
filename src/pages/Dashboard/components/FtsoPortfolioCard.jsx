@@ -1,18 +1,26 @@
 import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
-import { toast } from "react-toastify";
 import { GiftIcon, LockClosedIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useFtsoPortfolio } from "@/hooks/queries/useDashboardQueries";
 import TokenRow from "@/components/common/TokenRow";
 import SensitiveValue from "@/components/common/SensitiveValue";
+import GasSniperClaimStatus from "@/components/common/GasSniperClaimStatus";
 import FtsoPortfolioCardSkeleton from "@/pages/Dashboard/components/skeletons/FtsoPortfolioCardSkeleton";
 
 function formatAmount(value) {
   return Number(value).toLocaleString(undefined, { maximumFractionDigits: 4 });
 }
 
+// Used to expose a manual "Claim Rewards" button here — removed now that
+// Gas Sniper claims automatically once enabled (see GasSniperCard.jsx), so
+// a manual claim action would just be redundant with, or worse, race
+// against, the automation. Rather than leave the card's footer empty once
+// the button's gone, it now reflects whichever of the two real states
+// actually applies: already automated (Gas Sniper is on for this wallet),
+// or not yet (a nudge toward turning it on) — never a static "automatically
+// managed" claim that would be wrong for a wallet that hasn't opted in.
 export default function FtsoPortfolioCard() {
   const { t } = useTranslation();
   const { address: connectedAddress, isConnected } = useConnection();
@@ -24,16 +32,8 @@ export default function FtsoPortfolioCard() {
     useFtsoPortfolio(activeAddress);
 
   const unclaimed = data?.ftso_infrastructure?.cumulative_unclaimed_flr ?? 0;
-  const canClaim = isActivePrimary && unclaimed > 0;
   const hasData =
     data?.ftso_infrastructure && data?.realtime_estimation && data?.active_delegations;
-
-  const handleClaim = () => {
-    // No claim contract/API exists yet — this demonstrates the permission
-    // boundary (only the connected wallet can act) without pretending a
-    // real transaction happens.
-    toast.info(t("dashboard.ftso.claimComingSoon"));
-  };
 
   if (activeAddress && !isError && (isLoading || !hasData)) {
     return <FtsoPortfolioCardSkeleton />;
@@ -114,25 +114,11 @@ export default function FtsoPortfolioCard() {
             />
           </div>
 
-          <button
-            type="button"
-            disabled={!canClaim}
-            onClick={handleClaim}
-            title={
-              !isActivePrimary
-                ? t("dashboard.ftso.switchToClaim")
-                : unclaimed <= 0
-                  ? t("dashboard.ftso.noUnclaimedYet")
-                  : undefined
-            }
-            className={`mt-4 w-full rounded-xl py-2.5 text-sm font-medium transition-colors duration-150 ${
-              canClaim
-                ? "bg-brand text-white hover:bg-brand-hover cursor-pointer"
-                : "bg-surface-inset text-ink-muted cursor-not-allowed"
-            }`}
-          >
-            {isActivePrimary ? t("dashboard.ftso.claimRewards") : t("dashboard.ftso.readOnlyCannotClaim")}
-          </button>
+          <GasSniperClaimStatus
+            activeAddress={activeAddress}
+            isActivePrimary={isActivePrimary}
+            className="mt-4"
+          />
         </>
       )}
     </div>

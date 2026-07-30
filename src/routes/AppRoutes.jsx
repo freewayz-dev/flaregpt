@@ -8,6 +8,7 @@ import DashboardSkeleton from "@/pages/Dashboard/DashboardSkeleton";
 import DefiProtocolsSkeleton from "@/pages/DefiProtocols/DefiProtocolsSkeleton";
 import WalletActivitySkeleton from "@/pages/WalletActivity/WalletActivitySkeleton";
 import RflrVestingPageSkeleton from "@/pages/RflrVesting/RflrVestingPageSkeleton";
+import FtsoRewardsPageSkeleton from "@/pages/FtsoRewards/FtsoRewardsPageSkeleton";
 import { ROUTES, APP_SEGMENTS } from "@/config/routes";
 
 const LandingPage = lazy(() => import("@/pages/LandingPage"));
@@ -20,6 +21,7 @@ const Help = lazy(() => import("@/pages/Help"));
 const DefiProtocols = lazy(() => import("@/pages/DefiProtocols"));
 const Loops = lazy(() => import("@/pages/Loops"));
 const RflrVesting = lazy(() => import("@/pages/RflrVesting"));
+const FtsoRewards = lazy(() => import("@/pages/FtsoRewards"));
 const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Donate = lazy(() => import("@/pages/Donate"));
 const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
@@ -115,7 +117,11 @@ export default function AppRoutes() {
           <Route path={APP_SEGMENTS.help} element={<Help />} />
           <Route
             path={APP_SEGMENTS.ftsoRewards}
-            element={<ComingSoon title={t("sidebar.ftsoRewards")} />}
+            element={
+              <Suspense fallback={<FtsoRewardsPageSkeleton />}>
+                <FtsoRewards />
+              </Suspense>
+            }
           />
           <Route path={APP_SEGMENTS.loops} element={<Loops />} />
           <Route
