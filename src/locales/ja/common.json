@@ -444,6 +444,60 @@
     "signInPrompt": "このウォレットを確認して続行するには、メッセージに署名してください。",
     "watchlistSection": "ウォッチリスト ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "rFLRのベスティング進捗、今後のアンロック、ネットワーク全体の発行状況を一か所で確認できます。",
+    "connectToSee": "ベスティング状況を表示するには、ウォレットを接続または選択してください。",
+    "couldntLoad": "ベスティングデータを読み込めませんでした。",
+    "noRflr": {
+      "title": "まだrFLR報酬がありません",
+      "description": "このウォレットはまだrFLR報酬を獲得していないため、ベスティングするものがありません。"
+    },
+    "stats": {
+      "totalBalance": "rFLR合計残高",
+      "liquidNow": "現在の流動分",
+      "lockedInVesting": "ベスティング中のロック分",
+      "vestedProgress": "ベスト済み"
+    },
+    "progress": {
+      "title": "ベスティング進捗",
+      "vestedLabel": "ベスト済み",
+      "nextUnlock": "次回のアンロック: {{date}}",
+      "nextUnlockCaption": "が流動化します",
+      "fullyVested": "完全にベスト済み — アンロック待ちはありません",
+      "earlyExitTitle": "早期エグジット",
+      "earlyExitNoneNeeded": "ロックされているものがないため、早期エグジットのペナルティはありません。",
+      "efficiency": "効率 {{pct}}%",
+      "netPayout": "現在の正味支払額",
+      "penaltyCost": "エグジットペナルティ"
+    },
+    "timeline": {
+      "title": "アンロックタイムライン",
+      "subtitle": "時間経過による累積アンロック済みrFLR",
+      "historicalNote": "完全なアンロック履歴を表示します。他ですでに請求済みの金額が含まれる場合があるため、合計が上記の現在の残高を超えることがあります。",
+      "emptyTitle": "アンロック履歴はまだありません",
+      "loadingTitle": "アンロック履歴を読み込み中…",
+      "loadingHint": "ウォレットを初めて確認する際は、最大30秒かかることがあります。",
+      "couldntLoad": "アンロック履歴を読み込めませんでした。",
+      "statusLiquid": "流動",
+      "statusLocked": "ロック中",
+      "viewFullSchedule": "全スケジュールを表示（{{count}}件）"
+    },
+    "network": {
+      "title": "ネットワークパルス",
+      "subtitle": "ネットワーク全体の発行状況とエポックのステータス",
+      "couldntLoad": "ネットワークステータスを読み込めませんでした。",
+      "nextDistribution": "次回の分配",
+      "countdownDays": "あと{{days}}日{{hours}}時間",
+      "countdownHours": "あと{{hours}}時間",
+      "epochCaption": "エポック{{epoch}}は{{date}}に開始",
+      "poolUtilization": "インセンティブプール利用率",
+      "allocated": "割り当て済み",
+      "remaining": "残り{{amount}}が未割り当て",
+      "claimedToVesting": "ベスティングへの請求済み分",
+      "withdrawnLiquid": "流動として引き出し済み",
+      "currentlyLocked": "現在ロック中"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "ダーク",

@@ -444,6 +444,60 @@
     "signInPrompt": "जारी रखने के लिए इस वॉलेट को सत्यापित करने हेतु एक संदेश पर हस्ताक्षर करें।",
     "watchlistSection": "वॉचलिस्ट ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "एक ही जगह पर अपनी rFLR वेस्टिंग प्रगति, आगामी अनलॉक्स और नेटवर्क-व्यापी उत्सर्जन को ट्रैक करें।",
+    "connectToSee": "इसकी वेस्टिंग स्थिति देखने के लिए वॉलेट कनेक्ट करें या चुनें।",
+    "couldntLoad": "आपका वेस्टिंग डेटा लोड नहीं हो सका।",
+    "noRflr": {
+      "title": "अभी तक कोई rFLR रिवॉर्ड नहीं",
+      "description": "इस वॉलेट ने अभी तक कोई rFLR रिवॉर्ड अर्जित नहीं किया है, इसलिए अभी वेस्ट करने के लिए कुछ भी नहीं है।"
+    },
+    "stats": {
+      "totalBalance": "कुल rFLR बैलेंस",
+      "liquidNow": "अभी लिक्विड",
+      "lockedInVesting": "वेस्टिंग में लॉक्ड",
+      "vestedProgress": "वेस्टेड"
+    },
+    "progress": {
+      "title": "वेस्टिंग प्रगति",
+      "vestedLabel": "वेस्टेड",
+      "nextUnlock": "अगला अनलॉक {{date}} को",
+      "nextUnlockCaption": "लिक्विड बन जाएगा",
+      "fullyVested": "पूरी तरह वेस्टेड — अनलॉक करने के लिए कुछ नहीं बचा",
+      "earlyExitTitle": "जल्दी एग्ज़िट",
+      "earlyExitNoneNeeded": "कुछ भी लॉक नहीं है, इसलिए जल्दी एग्ज़िट पर कोई पेनल्टी नहीं है।",
+      "efficiency": "{{pct}}% कुशल",
+      "netPayout": "अभी नेट भुगतान",
+      "penaltyCost": "एग्ज़िट पेनल्टी"
+    },
+    "timeline": {
+      "title": "अनलॉक टाइमलाइन",
+      "subtitle": "समय के साथ संचयी रूप से अनलॉक हुआ rFLR",
+      "historicalNote": "यह पूरा अनलॉक इतिहास दिखाता है — इसमें कहीं और पहले से क्लेम की गई राशियाँ शामिल हो सकती हैं, इसलिए कुल राशि ऊपर दिखाए गए आपके मौजूदा बैलेंस से अधिक हो सकती है।",
+      "emptyTitle": "अभी तक कोई अनलॉक इतिहास नहीं",
+      "loadingTitle": "अनलॉक इतिहास लोड हो रहा है…",
+      "loadingHint": "जब हम किसी वॉलेट की पहली बार जांच करते हैं, तो इसमें 30 सेकंड तक लग सकते हैं।",
+      "couldntLoad": "अनलॉक इतिहास लोड नहीं हो सका।",
+      "statusLiquid": "लिक्विड",
+      "statusLocked": "लॉक्ड",
+      "viewFullSchedule": "पूरा शेड्यूल देखें ({{count}} एंट्रीज़)"
+    },
+    "network": {
+      "title": "नेटवर्क पल्स",
+      "subtitle": "नेटवर्क-व्यापी उत्सर्जन और एपॉक स्थिति",
+      "couldntLoad": "नेटवर्क स्थिति लोड नहीं हो सकी।",
+      "nextDistribution": "अगला वितरण",
+      "countdownDays": "{{days}} दिन {{hours}} घंटे में",
+      "countdownHours": "{{hours}} घंटे में",
+      "epochCaption": "एपॉक {{epoch}} {{date}} को शुरू हुआ",
+      "poolUtilization": "इंसेंटिव पूल उपयोग",
+      "allocated": "आवंटित",
+      "remaining": "{{amount}} आवंटित होना बाकी",
+      "claimedToVesting": "वेस्टिंग के लिए क्लेम किया गया",
+      "withdrawnLiquid": "लिक्विड निकाला गया",
+      "currentlyLocked": "वर्तमान में लॉक्ड"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "डार्क",

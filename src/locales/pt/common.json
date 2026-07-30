@@ -447,6 +447,60 @@
     "signInPrompt": "Assine uma mensagem para verificar esta carteira e continuar.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "Acompanhe o progresso do seu vesting de rFLR, os próximos desbloqueios e as emissões de toda a rede em um só lugar.",
+    "connectToSee": "Conecte ou selecione uma carteira para ver seu status de vesting.",
+    "couldntLoad": "Não foi possível carregar seus dados de vesting.",
+    "noRflr": {
+      "title": "Ainda Sem Recompensas de rFLR",
+      "description": "Esta carteira ainda não ganhou nenhuma recompensa de rFLR, então ainda não há nada para vesting."
+    },
+    "stats": {
+      "totalBalance": "Saldo Total de rFLR",
+      "liquidNow": "Líquido Agora",
+      "lockedInVesting": "Bloqueado em Vesting",
+      "vestedProgress": "Vested"
+    },
+    "progress": {
+      "title": "Progresso do Vesting",
+      "vestedLabel": "Vested",
+      "nextUnlock": "Próximo desbloqueio em {{date}}",
+      "nextUnlockCaption": "se torna líquido",
+      "fullyVested": "Totalmente vested — nada mais para desbloquear",
+      "earlyExitTitle": "Saída Antecipada",
+      "earlyExitNoneNeeded": "Nada está bloqueado, então não há penalidade para sair antecipadamente.",
+      "efficiency": "{{pct}}% de eficiência",
+      "netPayout": "Pagamento Líquido Agora",
+      "penaltyCost": "Penalidade de Saída"
+    },
+    "timeline": {
+      "title": "Linha do Tempo de Desbloqueios",
+      "subtitle": "rFLR desbloqueado acumulado ao longo do tempo",
+      "historicalNote": "Mostra o histórico completo de desbloqueios — pode incluir valores já resgatados em outro lugar, então o total pode superar seu saldo atual acima.",
+      "emptyTitle": "Ainda não há histórico de desbloqueios",
+      "loadingTitle": "Carregando histórico de desbloqueios…",
+      "loadingHint": "Isso pode levar até 30 segundos na primeira vez que verificamos uma carteira.",
+      "couldntLoad": "Não foi possível carregar o histórico de desbloqueios.",
+      "statusLiquid": "Líquido",
+      "statusLocked": "Bloqueado",
+      "viewFullSchedule": "Ver cronograma completo ({{count}} itens)"
+    },
+    "network": {
+      "title": "Pulso da Rede",
+      "subtitle": "Emissões de toda a rede e status da época",
+      "couldntLoad": "Não foi possível carregar o status da rede.",
+      "nextDistribution": "Próxima Distribuição",
+      "countdownDays": "em {{days}}d {{hours}}h",
+      "countdownHours": "em {{hours}}h",
+      "epochCaption": "A época {{epoch}} começou em {{date}}",
+      "poolUtilization": "Utilização do Fundo de Incentivo",
+      "allocated": "Alocado",
+      "remaining": "{{amount}} restante para alocar",
+      "claimedToVesting": "Reivindicado para Vesting",
+      "withdrawnLiquid": "Retirado em Líquido",
+      "currentlyLocked": "Atualmente Bloqueado"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "Escuro",

@@ -456,6 +456,60 @@
     "signInPrompt": "وقّع رسالة للتحقق من هذه المحفظة والمتابعة.",
     "watchlistSection": "قائمة المراقبة ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "تتبّع تقدّم استحقاق rFLR الخاص بك، وحالات الإفراج القادمة، وانبعاثات الشبكة بالكامل في مكان واحد.",
+    "connectToSee": "قم بتوصيل أو اختيار محفظة لعرض حالة الاستحقاق الخاصة بها.",
+    "couldntLoad": "تعذّر تحميل بيانات الاستحقاق الخاصة بك.",
+    "noRflr": {
+      "title": "لا توجد مكافآت rFLR بعد",
+      "description": "لم تكسب هذه المحفظة أي مكافآت rFLR بعد، لذا لا يوجد شيء لاستحقاقه حتى الآن."
+    },
+    "stats": {
+      "totalBalance": "إجمالي رصيد rFLR",
+      "liquidNow": "سائل الآن",
+      "lockedInVesting": "مقفل في الاستحقاق",
+      "vestedProgress": "المستحق"
+    },
+    "progress": {
+      "title": "تقدّم الاستحقاق",
+      "vestedLabel": "مستحق",
+      "nextUnlock": "الإفراج التالي في {{date}}",
+      "nextUnlockCaption": "يصبح سائلاً",
+      "fullyVested": "مستحق بالكامل — لا يوجد شيء آخر للإفراج عنه",
+      "earlyExitTitle": "الخروج المبكر",
+      "earlyExitNoneNeeded": "لا يوجد شيء مقفل، لذا لا توجد غرامة للخروج المبكر.",
+      "efficiency": "كفاءة {{pct}}%",
+      "netPayout": "صافي الدفع الآن",
+      "penaltyCost": "غرامة الخروج"
+    },
+    "timeline": {
+      "title": "الجدول الزمني للإفراج",
+      "subtitle": "إجمالي rFLR المُفرج عنه تراكميًا عبر الزمن",
+      "historicalNote": "يعكس السجل الكامل لجدول الإفراج، والذي قد يتضمن مبالغ تمت المطالبة بها بالفعل في مكان آخر — لذا قد يتجاوز الإجمالي رصيدك الحالي أعلاه.",
+      "emptyTitle": "لا يوجد سجل إفراج بعد",
+      "loadingTitle": "جارٍ تحميل سجل الإفراج…",
+      "loadingHint": "قد يستغرق هذا حتى 30 ثانية في أول مرة نتحقق فيها من محفظة.",
+      "couldntLoad": "تعذّر تحميل سجل الإفراج.",
+      "statusLiquid": "سائل",
+      "statusLocked": "مقفل",
+      "viewFullSchedule": "عرض الجدول الكامل ({{count}} إدخالات)"
+    },
+    "network": {
+      "title": "نبض الشبكة",
+      "subtitle": "انبعاثات الشبكة وحالة الحقبة على مستوى الشبكة",
+      "couldntLoad": "تعذّر تحميل حالة الشبكة.",
+      "nextDistribution": "التوزيع التالي",
+      "countdownDays": "خلال {{days}} يوم {{hours}} ساعة",
+      "countdownHours": "خلال {{hours}} ساعة",
+      "epochCaption": "بدأت الحقبة {{epoch}} في {{date}}",
+      "poolUtilization": "استخدام مجمّع الحوافز",
+      "allocated": "مخصَّص",
+      "remaining": "{{amount}} متبقٍ لم يُخصَّص بعد",
+      "claimedToVesting": "المُطالَب به للاستحقاق",
+      "withdrawnLiquid": "السائل المسحوب",
+      "currentlyLocked": "المقفل حاليًا"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "داكن",

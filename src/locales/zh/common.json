@@ -444,6 +444,60 @@
     "signInPrompt": "签署一条消息以验证此钱包并继续。",
     "watchlistSection": "关注列表 ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "在一个地方跟踪您的 rFLR 归属进度、即将到来的解锁以及全网排放情况。",
+    "connectToSee": "连接或选择一个钱包以查看其归属状态。",
+    "couldntLoad": "无法加载您的归属数据。",
+    "noRflr": {
+      "title": "暂无 rFLR 奖励",
+      "description": "此钱包尚未获得任何 rFLR 奖励，因此目前没有可归属的内容。"
+    },
+    "stats": {
+      "totalBalance": "rFLR 总余额",
+      "liquidNow": "当前可流通",
+      "lockedInVesting": "归属中锁定",
+      "vestedProgress": "已归属"
+    },
+    "progress": {
+      "title": "归属进度",
+      "vestedLabel": "已归属",
+      "nextUnlock": "下次解锁：{{date}}",
+      "nextUnlockCaption": "将变为可流通",
+      "fullyVested": "已完全归属 — 没有剩余待解锁部分",
+      "earlyExitTitle": "提前退出",
+      "earlyExitNoneNeeded": "没有任何锁定部分，因此提前退出没有罚金。",
+      "efficiency": "效率 {{pct}}%",
+      "netPayout": "当前净支付额",
+      "penaltyCost": "退出罚金"
+    },
+    "timeline": {
+      "title": "解锁时间线",
+      "subtitle": "随时间累计解锁的 rFLR",
+      "historicalNote": "显示完整的解锁历史记录——可能包含已在别处领取的金额，因此总计可能超过上方显示的当前余额。",
+      "emptyTitle": "暂无解锁记录",
+      "loadingTitle": "正在加载解锁记录…",
+      "loadingHint": "首次检查某个钱包时，这可能需要长达 30 秒。",
+      "couldntLoad": "无法加载解锁记录。",
+      "statusLiquid": "可流通",
+      "statusLocked": "已锁定",
+      "viewFullSchedule": "查看完整日程（{{count}} 条）"
+    },
+    "network": {
+      "title": "网络脉动",
+      "subtitle": "全网排放量与纪元状态",
+      "couldntLoad": "无法加载网络状态。",
+      "nextDistribution": "下次分发",
+      "countdownDays": "{{days}} 天 {{hours}} 小时后",
+      "countdownHours": "{{hours}} 小时后",
+      "epochCaption": "第 {{epoch}} 纪元开始于 {{date}}",
+      "poolUtilization": "激励池使用率",
+      "allocated": "已分配",
+      "remaining": "还剩 {{amount}} 待分配",
+      "claimedToVesting": "已认领至归属",
+      "withdrawnLiquid": "已提现为可流通资产",
+      "currentlyLocked": "当前锁定"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "深色",

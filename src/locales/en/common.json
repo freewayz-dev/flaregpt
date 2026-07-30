@@ -444,6 +444,60 @@
     "signInPrompt": "Sign a message to verify this wallet and continue.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "Track your rFLR vesting progress, upcoming unlocks, and network-wide emissions in one place.",
+    "connectToSee": "Connect or select a wallet to see its vesting status.",
+    "couldntLoad": "Couldn't load your vesting data.",
+    "noRflr": {
+      "title": "No rFLR Rewards Yet",
+      "description": "This wallet hasn't earned any rFLR rewards, so there's nothing to vest yet."
+    },
+    "stats": {
+      "totalBalance": "Total rFLR Balance",
+      "liquidNow": "Liquid Now",
+      "lockedInVesting": "Locked in Vesting",
+      "vestedProgress": "Vested"
+    },
+    "progress": {
+      "title": "Vesting Progress",
+      "vestedLabel": "Vested",
+      "nextUnlock": "Next unlock on {{date}}",
+      "nextUnlockCaption": "becomes liquid",
+      "fullyVested": "Fully vested — nothing left to unlock",
+      "earlyExitTitle": "Early Exit",
+      "earlyExitNoneNeeded": "Nothing locked, so there's no penalty for exiting early.",
+      "efficiency": "{{pct}}% efficient",
+      "netPayout": "Net Payout Now",
+      "penaltyCost": "Exit Penalty"
+    },
+    "timeline": {
+      "title": "Unlock Timeline",
+      "subtitle": "Cumulative rFLR unlocked over time",
+      "historicalNote": "Full unlock history — may include amounts already claimed elsewhere, so totals can exceed your current balance above.",
+      "emptyTitle": "No unlock history yet",
+      "loadingTitle": "Loading unlock history…",
+      "loadingHint": "This can take up to 30 seconds the first time we check a wallet.",
+      "couldntLoad": "Couldn't load the unlock history.",
+      "statusLiquid": "Liquid",
+      "statusLocked": "Locked",
+      "viewFullSchedule": "View full schedule ({{count}} entries)"
+    },
+    "network": {
+      "title": "Network Pulse",
+      "subtitle": "Network-wide emissions and epoch status",
+      "couldntLoad": "Couldn't load network status.",
+      "nextDistribution": "Next Distribution",
+      "countdownDays": "in {{days}}d {{hours}}h",
+      "countdownHours": "in {{hours}}h",
+      "epochCaption": "Epoch {{epoch}} started {{date}}",
+      "poolUtilization": "Incentive Pool Utilization",
+      "allocated": "Allocated",
+      "remaining": "{{amount}} left to be assigned",
+      "claimedToVesting": "Claimed to Vesting",
+      "withdrawnLiquid": "Withdrawn Liquid",
+      "currentlyLocked": "Currently Locked"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "Dark",

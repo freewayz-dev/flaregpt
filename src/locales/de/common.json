@@ -444,6 +444,60 @@
     "signInPrompt": "Signiere eine Nachricht, um diese Wallet zu verifizieren und fortzufahren.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "Verfolge deinen rFLR-Vesting-Fortschritt, anstehende Freischaltungen und die netzwerkweiten Emissionen an einem Ort.",
+    "connectToSee": "Verbinde oder wähle ein Wallet, um dessen Vesting-Status zu sehen.",
+    "couldntLoad": "Deine Vesting-Daten konnten nicht geladen werden.",
+    "noRflr": {
+      "title": "Noch keine rFLR-Belohnungen",
+      "description": "Dieses Wallet hat noch keine rFLR-Belohnungen verdient, daher gibt es noch nichts zu vesten."
+    },
+    "stats": {
+      "totalBalance": "Gesamter rFLR-Bestand",
+      "liquidNow": "Jetzt liquide",
+      "lockedInVesting": "Im Vesting gesperrt",
+      "vestedProgress": "Vested"
+    },
+    "progress": {
+      "title": "Vesting-Fortschritt",
+      "vestedLabel": "Vested",
+      "nextUnlock": "Nächste Freischaltung am {{date}}",
+      "nextUnlockCaption": "wird liquide",
+      "fullyVested": "Vollständig vested — nichts mehr freizuschalten",
+      "earlyExitTitle": "Vorzeitiger Ausstieg",
+      "earlyExitNoneNeeded": "Nichts gesperrt, daher keine Strafe für einen vorzeitigen Ausstieg.",
+      "efficiency": "{{pct}}% effizient",
+      "netPayout": "Netto-Auszahlung jetzt",
+      "penaltyCost": "Ausstiegsstrafe"
+    },
+    "timeline": {
+      "title": "Freischaltungs-Zeitplan",
+      "subtitle": "Kumulativ freigeschaltetes rFLR über die Zeit",
+      "historicalNote": "Zeigt den vollständigen Freischaltungsverlauf — kann bereits anderweitig beanspruchte Beträge enthalten, daher kann die Summe deinen aktuellen Saldo oben übersteigen.",
+      "emptyTitle": "Noch keine Freischaltungshistorie",
+      "loadingTitle": "Freischaltungsverlauf wird geladen…",
+      "loadingHint": "Dies kann beim ersten Prüfen eines Wallets bis zu 30 Sekunden dauern.",
+      "couldntLoad": "Freischaltungsverlauf konnte nicht geladen werden.",
+      "statusLiquid": "Liquide",
+      "statusLocked": "Gesperrt",
+      "viewFullSchedule": "Vollständigen Zeitplan ansehen ({{count}} Einträge)"
+    },
+    "network": {
+      "title": "Netzwerkpuls",
+      "subtitle": "Netzwerkweite Emissionen und Epochenstatus",
+      "couldntLoad": "Netzwerkstatus konnte nicht geladen werden.",
+      "nextDistribution": "Nächste Ausschüttung",
+      "countdownDays": "in {{days}}T {{hours}}Std",
+      "countdownHours": "in {{hours}}Std",
+      "epochCaption": "Epoche {{epoch}} begann am {{date}}",
+      "poolUtilization": "Auslastung des Anreizpools",
+      "allocated": "Zugewiesen",
+      "remaining": "{{amount}} noch nicht zugewiesen",
+      "claimedToVesting": "Ins Vesting beansprucht",
+      "withdrawnLiquid": "Liquide ausgezahlt",
+      "currentlyLocked": "Aktuell gesperrt"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "Dunkel",

@@ -447,6 +447,60 @@
     "signInPrompt": "Firma un messaggio per verificare questo wallet e continuare.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "Segui l'andamento del tuo vesting rFLR, i prossimi sblocchi e le emissioni dell'intera rete in un unico posto.",
+    "connectToSee": "Collega o seleziona un wallet per vedere il suo stato di vesting.",
+    "couldntLoad": "Impossibile caricare i tuoi dati di vesting.",
+    "noRflr": {
+      "title": "Ancora nessuna ricompensa rFLR",
+      "description": "Questo wallet non ha ancora guadagnato alcuna ricompensa rFLR, quindi non c'è ancora nulla da maturare."
+    },
+    "stats": {
+      "totalBalance": "Saldo Totale rFLR",
+      "liquidNow": "Liquido Ora",
+      "lockedInVesting": "Bloccato in Vesting",
+      "vestedProgress": "Maturato"
+    },
+    "progress": {
+      "title": "Andamento del Vesting",
+      "vestedLabel": "Maturato",
+      "nextUnlock": "Prossimo sblocco il {{date}}",
+      "nextUnlockCaption": "diventa liquido",
+      "fullyVested": "Completamente maturato — nulla ancora da sbloccare",
+      "earlyExitTitle": "Uscita Anticipata",
+      "earlyExitNoneNeeded": "Nulla è bloccato, quindi nessuna penale per un'uscita anticipata.",
+      "efficiency": "{{pct}}% di efficienza",
+      "netPayout": "Pagamento Netto Ora",
+      "penaltyCost": "Penale di Uscita"
+    },
+    "timeline": {
+      "title": "Cronologia degli Sblocchi",
+      "subtitle": "rFLR sbloccato cumulativo nel tempo",
+      "historicalNote": "Mostra la cronologia completa degli sblocchi — può includere importi già riscattati altrove, quindi il totale può superare il tuo saldo attuale sopra.",
+      "emptyTitle": "Ancora nessuno storico di sblocchi",
+      "loadingTitle": "Caricamento della cronologia degli sblocchi…",
+      "loadingHint": "Questo può richiedere fino a 30 secondi la prima volta che controlliamo un wallet.",
+      "couldntLoad": "Impossibile caricare la cronologia degli sblocchi.",
+      "statusLiquid": "Liquido",
+      "statusLocked": "Bloccato",
+      "viewFullSchedule": "Vedi il calendario completo ({{count}} voci)"
+    },
+    "network": {
+      "title": "Polso della Rete",
+      "subtitle": "Emissioni dell'intera rete e stato dell'epoca",
+      "couldntLoad": "Impossibile caricare lo stato della rete.",
+      "nextDistribution": "Prossima Distribuzione",
+      "countdownDays": "tra {{days}}g {{hours}}h",
+      "countdownHours": "tra {{hours}}h",
+      "epochCaption": "L'epoca {{epoch}} è iniziata il {{date}}",
+      "poolUtilization": "Utilizzo del Fondo Incentivi",
+      "allocated": "Assegnato",
+      "remaining": "{{amount}} ancora da assegnare",
+      "claimedToVesting": "Rivendicato per il Vesting",
+      "withdrawnLiquid": "Ritirato in Liquido",
+      "currentlyLocked": "Attualmente Bloccato"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "Scuro",

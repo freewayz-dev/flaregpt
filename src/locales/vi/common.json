@@ -444,6 +444,60 @@
     "signInPrompt": "Ký một tin nhắn để xác minh ví này và tiếp tục.",
     "watchlistSection": "Danh sách theo dõi ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "Theo dõi tiến độ vesting rFLR, các đợt mở khóa sắp tới và lượng phát hành trên toàn mạng lưới tại một nơi.",
+    "connectToSee": "Kết nối hoặc chọn một ví để xem trạng thái vesting của ví đó.",
+    "couldntLoad": "Không thể tải dữ liệu vesting của bạn.",
+    "noRflr": {
+      "title": "Chưa Có Phần Thưởng rFLR",
+      "description": "Ví này chưa kiếm được bất kỳ phần thưởng rFLR nào, vì vậy chưa có gì để vesting."
+    },
+    "stats": {
+      "totalBalance": "Tổng Số Dư rFLR",
+      "liquidNow": "Thanh Khoản Hiện Tại",
+      "lockedInVesting": "Đang Khóa Trong Vesting",
+      "vestedProgress": "Đã Vest"
+    },
+    "progress": {
+      "title": "Tiến Độ Vesting",
+      "vestedLabel": "Đã Vest",
+      "nextUnlock": "Lần mở khóa tiếp theo vào {{date}}",
+      "nextUnlockCaption": "sẽ trở thành thanh khoản",
+      "fullyVested": "Đã vest hoàn toàn — không còn gì để mở khóa",
+      "earlyExitTitle": "Rút Sớm",
+      "earlyExitNoneNeeded": "Không có gì bị khóa, vì vậy không có hình phạt khi rút sớm.",
+      "efficiency": "hiệu suất {{pct}}%",
+      "netPayout": "Số Tiền Nhận Ròng Hiện Tại",
+      "penaltyCost": "Phí Phạt Rút Sớm"
+    },
+    "timeline": {
+      "title": "Dòng Thời Gian Mở Khóa",
+      "subtitle": "Lượng rFLR được mở khóa cộng dồn theo thời gian",
+      "historicalNote": "Hiển thị toàn bộ lịch sử mở khóa — có thể bao gồm các khoản đã được yêu cầu ở nơi khác, vì vậy tổng số có thể vượt quá số dư hiện tại của bạn ở trên.",
+      "emptyTitle": "Chưa có lịch sử mở khóa",
+      "loadingTitle": "Đang tải lịch sử mở khóa…",
+      "loadingHint": "Việc này có thể mất đến 30 giây trong lần đầu tiên chúng tôi kiểm tra một ví.",
+      "couldntLoad": "Không thể tải lịch sử mở khóa.",
+      "statusLiquid": "Thanh Khoản",
+      "statusLocked": "Đã Khóa",
+      "viewFullSchedule": "Xem toàn bộ lịch trình ({{count}} mục)"
+    },
+    "network": {
+      "title": "Nhịp Đập Mạng Lưới",
+      "subtitle": "Lượng phát hành toàn mạng và trạng thái epoch",
+      "couldntLoad": "Không thể tải trạng thái mạng lưới.",
+      "nextDistribution": "Đợt Phân Phối Tiếp Theo",
+      "countdownDays": "còn {{days}} ngày {{hours}} giờ",
+      "countdownHours": "còn {{hours}} giờ",
+      "epochCaption": "Epoch {{epoch}} bắt đầu vào {{date}}",
+      "poolUtilization": "Mức Sử Dụng Quỹ Khuyến Khích",
+      "allocated": "Đã Phân Bổ",
+      "remaining": "còn {{amount}} chưa được phân bổ",
+      "claimedToVesting": "Đã Yêu Cầu Vào Vesting",
+      "withdrawnLiquid": "Đã Rút Dưới Dạng Thanh Khoản",
+      "currentlyLocked": "Hiện Đang Bị Khóa"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "Tối",

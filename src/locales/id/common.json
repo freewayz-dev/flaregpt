@@ -444,6 +444,60 @@
     "signInPrompt": "Tanda tangani pesan untuk memverifikasi dompet ini dan lanjutkan.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "Lacak progres vesting rFLR Anda, pembukaan kunci mendatang, dan emisi seluruh jaringan di satu tempat.",
+    "connectToSee": "Sambungkan atau pilih dompet untuk melihat status vesting-nya.",
+    "couldntLoad": "Data vesting Anda tidak dapat dimuat.",
+    "noRflr": {
+      "title": "Belum Ada Reward rFLR",
+      "description": "Dompet ini belum memperoleh reward rFLR apa pun, jadi belum ada yang perlu di-vest."
+    },
+    "stats": {
+      "totalBalance": "Total Saldo rFLR",
+      "liquidNow": "Likuid Sekarang",
+      "lockedInVesting": "Terkunci dalam Vesting",
+      "vestedProgress": "Vested"
+    },
+    "progress": {
+      "title": "Progres Vesting",
+      "vestedLabel": "Vested",
+      "nextUnlock": "Pembukaan kunci berikutnya pada {{date}}",
+      "nextUnlockCaption": "menjadi likuid",
+      "fullyVested": "Vested sepenuhnya — tidak ada lagi yang perlu dibuka",
+      "earlyExitTitle": "Keluar Lebih Awal",
+      "earlyExitNoneNeeded": "Tidak ada yang terkunci, jadi tidak ada penalti untuk keluar lebih awal.",
+      "efficiency": "{{pct}}% efisien",
+      "netPayout": "Pembayaran Bersih Sekarang",
+      "penaltyCost": "Penalti Keluar"
+    },
+    "timeline": {
+      "title": "Linimasa Pembukaan Kunci",
+      "subtitle": "rFLR yang dibuka kuncinya secara kumulatif dari waktu ke waktu",
+      "historicalNote": "Menampilkan riwayat pembukaan kunci lengkap — dapat mencakup jumlah yang sudah diklaim di tempat lain, sehingga totalnya bisa melebihi saldo Anda saat ini di atas.",
+      "emptyTitle": "Belum ada riwayat pembukaan kunci",
+      "loadingTitle": "Memuat riwayat pembukaan kunci…",
+      "loadingHint": "Ini bisa memakan waktu hingga 30 detik saat pertama kali kami memeriksa dompet.",
+      "couldntLoad": "Riwayat pembukaan kunci tidak dapat dimuat.",
+      "statusLiquid": "Likuid",
+      "statusLocked": "Terkunci",
+      "viewFullSchedule": "Lihat jadwal lengkap ({{count}} entri)"
+    },
+    "network": {
+      "title": "Denyut Jaringan",
+      "subtitle": "Emisi seluruh jaringan dan status epoch",
+      "couldntLoad": "Status jaringan tidak dapat dimuat.",
+      "nextDistribution": "Distribusi Berikutnya",
+      "countdownDays": "dalam {{days}}h {{hours}}j",
+      "countdownHours": "dalam {{hours}}j",
+      "epochCaption": "Epoch {{epoch}} dimulai {{date}}",
+      "poolUtilization": "Utilisasi Kumpulan Insentif",
+      "allocated": "Dialokasikan",
+      "remaining": "{{amount}} tersisa untuk dialokasikan",
+      "claimedToVesting": "Diklaim ke Vesting",
+      "withdrawnLiquid": "Ditarik Likuid",
+      "currentlyLocked": "Saat Ini Terkunci"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "Gelap",

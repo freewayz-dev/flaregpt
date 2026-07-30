@@ -444,6 +444,60 @@
     "signInPrompt": "이 지갑을 확인하고 계속하려면 메시지에 서명하세요.",
     "watchlistSection": "워치리스트 ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "rFLR 베스팅 진행 상황, 예정된 언락, 네트워크 전체 발행량을 한곳에서 확인하세요.",
+    "connectToSee": "베스팅 상태를 보려면 지갑을 연결하거나 선택하세요.",
+    "couldntLoad": "베스팅 데이터를 불러올 수 없습니다.",
+    "noRflr": {
+      "title": "아직 rFLR 보상이 없습니다",
+      "description": "이 지갑은 아직 rFLR 보상을 받은 적이 없어 베스팅할 항목이 없습니다."
+    },
+    "stats": {
+      "totalBalance": "총 rFLR 잔액",
+      "liquidNow": "현재 유동 자산",
+      "lockedInVesting": "베스팅 중 잠김",
+      "vestedProgress": "베스팅 완료"
+    },
+    "progress": {
+      "title": "베스팅 진행 상황",
+      "vestedLabel": "베스팅 완료",
+      "nextUnlock": "다음 언락: {{date}}",
+      "nextUnlockCaption": "이(가) 유동화됩니다",
+      "fullyVested": "완전히 베스팅됨 — 더 이상 언락할 것이 없습니다",
+      "earlyExitTitle": "조기 종료",
+      "earlyExitNoneNeeded": "잠긴 자산이 없으므로 조기 종료에 대한 페널티가 없습니다.",
+      "efficiency": "효율 {{pct}}%",
+      "netPayout": "현재 순 지급액",
+      "penaltyCost": "종료 페널티"
+    },
+    "timeline": {
+      "title": "언락 타임라인",
+      "subtitle": "시간에 따른 누적 언락된 rFLR",
+      "historicalNote": "전체 언락 이력을 표시합니다. 다른 곳에서 이미 청구된 금액이 포함될 수 있어 합계가 위의 현재 잔액을 초과할 수 있습니다.",
+      "emptyTitle": "아직 언락 기록이 없습니다",
+      "loadingTitle": "언락 기록 불러오는 중…",
+      "loadingHint": "지갑을 처음 확인할 때는 최대 30초가 걸릴 수 있습니다.",
+      "couldntLoad": "언락 기록을 불러올 수 없습니다.",
+      "statusLiquid": "유동",
+      "statusLocked": "잠김",
+      "viewFullSchedule": "전체 일정 보기 ({{count}}건)"
+    },
+    "network": {
+      "title": "네트워크 펄스",
+      "subtitle": "네트워크 전체 발행량 및 에포크 상태",
+      "couldntLoad": "네트워크 상태를 불러올 수 없습니다.",
+      "nextDistribution": "다음 분배",
+      "countdownDays": "{{days}}일 {{hours}}시간 후",
+      "countdownHours": "{{hours}}시간 후",
+      "epochCaption": "에포크 {{epoch}}은(는) {{date}}에 시작됨",
+      "poolUtilization": "인센티브 풀 활용률",
+      "allocated": "할당됨",
+      "remaining": "{{amount}} 할당 대기 중",
+      "claimedToVesting": "베스팅으로 청구됨",
+      "withdrawnLiquid": "유동 자산으로 출금됨",
+      "currentlyLocked": "현재 잠김"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "다크",

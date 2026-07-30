@@ -444,6 +444,60 @@
     "signInPrompt": "Devam etmek için bu cüzdanı doğrulayan bir mesajı imzalayın.",
     "watchlistSection": "İzleme Listesi ({{current}}/{{max}})"
   },
+  "rflrVesting": {
+    "description": "rFLR vesting ilerlemenizi, yaklaşan kilit açmaları ve ağ genelindeki emisyonları tek bir yerde takip edin.",
+    "connectToSee": "Vesting durumunu görmek için bir cüzdan bağlayın veya seçin.",
+    "couldntLoad": "Vesting verileriniz yüklenemedi.",
+    "noRflr": {
+      "title": "Henüz rFLR Ödülü Yok",
+      "description": "Bu cüzdan henüz herhangi bir rFLR ödülü kazanmadı, bu yüzden şu anda vesting yapılacak bir şey yok."
+    },
+    "stats": {
+      "totalBalance": "Toplam rFLR Bakiyesi",
+      "liquidNow": "Şu Anda Likit",
+      "lockedInVesting": "Vesting'de Kilitli",
+      "vestedProgress": "Vested"
+    },
+    "progress": {
+      "title": "Vesting İlerlemesi",
+      "vestedLabel": "Vested",
+      "nextUnlock": "Sonraki kilit açma: {{date}}",
+      "nextUnlockCaption": "likit hale gelecek",
+      "fullyVested": "Tamamen vested — açılacak başka bir şey kalmadı",
+      "earlyExitTitle": "Erken Çıkış",
+      "earlyExitNoneNeeded": "Hiçbir şey kilitli değil, bu yüzden erken çıkış için ceza yok.",
+      "efficiency": "%{{pct}} verimli",
+      "netPayout": "Şu Anki Net Ödeme",
+      "penaltyCost": "Çıkış Cezası"
+    },
+    "timeline": {
+      "title": "Kilit Açma Zaman Çizelgesi",
+      "subtitle": "Zaman içinde kümülatif olarak kilidi açılan rFLR",
+      "historicalNote": "Tam kilit açma geçmişini gösterir — başka bir yerde zaten talep edilmiş tutarları içerebilir, bu nedenle toplam yukarıdaki mevcut bakiyenizi aşabilir.",
+      "emptyTitle": "Henüz kilit açma geçmişi yok",
+      "loadingTitle": "Kilit açma geçmişi yükleniyor…",
+      "loadingHint": "Bir cüzdanı ilk kez kontrol ederken bu işlem 30 saniyeye kadar sürebilir.",
+      "couldntLoad": "Kilit açma geçmişi yüklenemedi.",
+      "statusLiquid": "Likit",
+      "statusLocked": "Kilitli",
+      "viewFullSchedule": "Tam programı görüntüle ({{count}} kayıt)"
+    },
+    "network": {
+      "title": "Ağ Nabzı",
+      "subtitle": "Ağ genelindeki emisyonlar ve epoch durumu",
+      "couldntLoad": "Ağ durumu yüklenemedi.",
+      "nextDistribution": "Sonraki Dağıtım",
+      "countdownDays": "{{days}}g {{hours}}s sonra",
+      "countdownHours": "{{hours}}s sonra",
+      "epochCaption": "{{epoch}} epoch'u {{date}} tarihinde başladı",
+      "poolUtilization": "Teşvik Havuzu Kullanımı",
+      "allocated": "Tahsis Edildi",
+      "remaining": "{{amount}} tahsis edilmeyi bekliyor",
+      "claimedToVesting": "Vesting'e Talep Edildi",
+      "withdrawnLiquid": "Likit Olarak Çekildi",
+      "currentlyLocked": "Şu Anda Kilitli"
+    }
+  },
   "settings": {
     "appearance": {
       "dark": "Koyu",

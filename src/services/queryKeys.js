@@ -67,6 +67,16 @@ export const queryKeys = {
     all: ["loops"],
     gasSniperStatus: () => [...queryKeys.loops.all, "gasSniperStatus"],
   },
+  // meltSchedule/exitQuote are per-wallet; networkEmissions/networkStatus
+  // are global (no address dimension) — same "all" root either way so a
+  // wallet switch could invalidate everything under it at once if needed.
+  rflr: {
+    all: ["rflr"],
+    meltSchedule: (address) => [...queryKeys.rflr.all, "meltSchedule", address],
+    exitQuote: (address) => [...queryKeys.rflr.all, "exitQuote", address],
+    networkEmissions: () => [...queryKeys.rflr.all, "networkEmissions"],
+    networkStatus: () => [...queryKeys.rflr.all, "networkStatus"],
+  },
   // Authenticated users only (see useWalletHubStore.js) — a guest's
   // watchlist lives entirely in localStorage and never goes through
   // react-query at all.

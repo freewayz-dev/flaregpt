@@ -7,6 +7,7 @@ import GlobalSpinner from "@/components/common/GlobalSpinner";
 import DashboardSkeleton from "@/pages/Dashboard/DashboardSkeleton";
 import DefiProtocolsSkeleton from "@/pages/DefiProtocols/DefiProtocolsSkeleton";
 import WalletActivitySkeleton from "@/pages/WalletActivity/WalletActivitySkeleton";
+import RflrVestingPageSkeleton from "@/pages/RflrVesting/RflrVestingPageSkeleton";
 import { ROUTES, APP_SEGMENTS } from "@/config/routes";
 
 const LandingPage = lazy(() => import("@/pages/LandingPage"));
@@ -18,6 +19,7 @@ const Settings = lazy(() => import("@/pages/Settings"));
 const Help = lazy(() => import("@/pages/Help"));
 const DefiProtocols = lazy(() => import("@/pages/DefiProtocols"));
 const Loops = lazy(() => import("@/pages/Loops"));
+const RflrVesting = lazy(() => import("@/pages/RflrVesting"));
 const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Donate = lazy(() => import("@/pages/Donate"));
 const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
@@ -118,7 +120,11 @@ export default function AppRoutes() {
           <Route path={APP_SEGMENTS.loops} element={<Loops />} />
           <Route
             path={APP_SEGMENTS.rflrTracker}
-            element={<ComingSoon title={t("sidebar.rflrTracker")} />}
+            element={
+              <Suspense fallback={<RflrVestingPageSkeleton />}>
+                <RflrVesting />
+              </Suspense>
+            }
           />
           <Route
             path={APP_SEGMENTS.defiProtocols}
