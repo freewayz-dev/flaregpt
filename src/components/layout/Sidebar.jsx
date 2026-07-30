@@ -1,4 +1,5 @@
 // src/components/layout/Sidebar.jsx
+import { useEffect } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
@@ -11,6 +12,7 @@ import {
 
 import FlareGptSimpleLogo from "@/components/common/Logo";
 import Logo from "@/assets/icons/fl.png";
+import { shortenAddress } from "@/utils/address";
 import { useUIStore } from "@/store/useUIStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
@@ -41,13 +43,17 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
   // there's never more than one Sign In control on screen at once.
   const needsSignIn = isConnected && !isCurrentWalletSignedIn;
 
-  // Format long wallet addresses for your minimalist UI (e.g. 0x71C...3A90)
-  const formatAddress = (addr) => {
-    if (!addr) return "";
-    return `${addr.slice(0, 5)}...${addr.slice(-4)}`;
-  };
-
   const isActive = (path) => location.pathname === path;
+
+  // Matches every other dismissible overlay in the app — a keyboard user
+  // shouldn't need to tab to the explicit close button to get out of the
+  // mobile drawer.
+  useEffect(() => {
+    if (!open) return;
+    const handleEscape = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [open, setOpen]);
 
   const handleDeepLinkToWallets = () => {
     setSettingsActiveTab("Wallets");
@@ -100,7 +106,9 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
               <button
                 type="button"
                 onClick={toggleSidebarCollapsed}
-                className="hidden lg:flex h-8 w-8 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer"
+                aria-label={t("sidebar.collapseSidebar")}
+                title={t("sidebar.collapseSidebar")}
+                className="hidden lg:flex h-8 w-8 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 <ChevronDoubleLeftIcon className="h-4 w-4" />
               </button>
@@ -108,7 +116,9 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="lg:hidden p-1 rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer"
+                aria-label={t("sidebar.closeMenu")}
+                title={t("sidebar.closeMenu")}
+                className="lg:hidden p-1 rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 <XMarkIcon className="h-5 w-5" />
               </button>
@@ -124,7 +134,9 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
               <button
                 type="button"
                 onClick={toggleSidebarCollapsed}
-                className="h-8 w-8 pl-2 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary transition-colors cursor-pointer"
+                aria-label={t("sidebar.expandSidebar")}
+                title={t("sidebar.expandSidebar")}
+                className="h-8 w-8 pl-2 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 <ChevronDoubleRightIcon className="h-4 w-4" />
               </button>
@@ -185,7 +197,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
                 <>
                   <div className="flex flex-col gap-0.5">
                     <p className="text-xs text-brand font-medium">
-                      {t("sidebar.signInRequired", "Sign-in required")}
+                      {t("sidebar.signInRequired", "Sign in required")}
                     </p>
                     <p className="text-[10px] text-slate-400 dark:text-zinc-500 leading-snug">
                       {t(
@@ -206,7 +218,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
                 <>
                   <div className="flex flex-col gap-0.5">
                     <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
-                      {t("sidebar.activeWallet", { address: formatAddress(address) })}
+                      {t("sidebar.activeWallet", { address: shortenAddress(address) })}
                     </p>
                     <button
                       type="button"
@@ -232,8 +244,21 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
               <button
                 type="button"
                 onClick={() => (isConnected ? disconnectAll() : onOpenWalletModal())}
-                title={needsSignIn ? t("sidebar.signInRequired", "Sign-in required") : undefined}
-                className={`hidden lg:flex w-full justify-center rounded-xl p-3 cursor-pointer ${
+                title={
+                  needsSignIn
+                    ? t("sidebar.signInRequired", "Sign in required")
+                    : isConnected
+                      ? t("sidebar.disconnect")
+                      : t("sidebar.connectWallet")
+                }
+                aria-label={
+                  needsSignIn
+                    ? t("sidebar.signInRequired", "Sign in required")
+                    : isConnected
+                      ? t("sidebar.disconnect")
+                      : t("sidebar.connectWallet")
+                }
+                className={`hidden lg:flex w-full justify-center rounded-xl p-3 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 ${
                   needsSignIn ? "bg-brand text-white" : "bg-brand/10 text-brand"
                 }`}
               >

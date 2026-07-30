@@ -4,6 +4,7 @@
     "description": "Bu özelliği geliştiriyoruz. Kısa süre sonra tekrar kontrol edin."
   },
   "connectModal": {
+    "close": "Kapat",
     "connecting": "Bağlanıyor…",
     "errors": {
       "braveBlocked": {
@@ -271,8 +272,10 @@
     },
     "history": {
       "cancelRename": "İptal",
+      "close": "Kapat",
       "delete": "Sil",
       "empty": "Henüz konuşma yok",
+      "loadFailed": "Sohbetleriniz yüklenemedi.",
       "moreActions": "Diğer işlemler",
       "newChat": "Yeni Sohbet",
       "noResults": "Aramanızla eşleşen konuşma yok",
@@ -366,6 +369,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "Gas Sniper durumu kontrol edilemedi",
     "checking": "Gas Sniper durumu kontrol ediliyor…",
     "enabled": "Gas Sniper tarafından otomatik talep edildi",
     "nudge": "Otomatik talep için Gas Sniper'ı açın",
@@ -465,6 +469,8 @@
       "reconnectDescription": "Tek seferlik zincir üzerinde onayı tamamlamak için bu cüzdanı yeniden bağlayın.",
       "reconnectTitle": "Devam etmek için yeniden bağlanın",
       "signInHint": "Gas Sniper'ı açmak için cüzdanınızla oturum açın.",
+      "statusCheckFailed": "Gas Sniper durumu kontrol edilemedi.",
+      "statusUnknown": "Durum bilinmiyor",
       "title": "Gas Sniper",
       "toggleFailed": "Gas Sniper güncellenemedi. Tekrar deneyin."
     }
@@ -478,11 +484,14 @@
     "balancesHiddenLabel": "Bakiyeler gizlendi",
     "configureWatchlistWallets": "İzleme Listesi Cüzdanlarını Yapılandır",
     "connectWallet": "Cüzdan Bağla",
+    "copyAddress": "Adresi kopyala",
     "copyFailed": "Adres kopyalanamadı",
     "disconnectWallet": "Cüzdan Bağlantısını Kes",
     "flareGptFabHint": "FlareGPT artık buradan açılıyor",
     "hideBalances": "Bakiyeleri gizle",
     "mainnetStatus": "Flare Ana Ağı",
+    "moreOptions": "Diğer seçenekler",
+    "openMenu": "Menüyü aç",
     "primaryWalletSection": "Birincil Cüzdan",
     "showBalances": "Bakiyeleri göster",
     "signIn": "Giriş Yap",
@@ -490,6 +499,10 @@
     "signingIn": "Giriş yapılıyor…",
     "signInPrompt": "Devam etmek için bu cüzdanı doğrulayan bir mesajı imzalayın.",
     "watchlistSection": "İzleme Listesi ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "Çevrimdışısınız. Otomatik olarak yeniden bağlanacağız.",
+    "backOnline": "Tekrar çevrimiçi"
   },
   "rflrVesting": {
     "description": "rFLR vesting ilerlemenizi, yaklaşan kilit açmaları ve ağ genelindeki emisyonları tek bir yerde takip edin.",
@@ -577,6 +590,7 @@
       "accountSubtitle": "Sunucudaki hesabınızla senkronize edilir.",
       "accountTitle": "Hesap Verisi",
       "clear": "Temizle",
+      "clearing": "Temizleniyor…",
       "confirmClear": "Onaylansın mı?",
       "conversations": "FlareGPT Konuşmaları",
       "conversationsCleared": "Görüşmeler temizlendi",
@@ -695,6 +709,7 @@
       "limit": "En fazla {{max}} cüzdan bağlayabilirsiniz",
       "limitReached": "Cüzdan Sınırına Ulaşıldı ({{current}}/{{max}})",
       "liveConnected": "Canlı Bağlantılı",
+      "loadFailed": "Takip edilen cüzdanlarınız yüklenemedi.",
       "manageSubtitle": "Aktif Web3 bağlantılarınızı ve salt okunur portföy takip hesaplarınızı yönetin.",
       "maximum": "Maksimum",
       "noDefaultSelected": "Seçilmedi",
@@ -716,10 +731,13 @@
   "sidebar": {
     "activeWallet": "Aktif: {{address}}",
     "addWatchlistWallet": "+ İzleme Listesi Cüzdanı Ekle",
+    "closeMenu": "Menüyü kapat",
+    "collapseSidebar": "Kenar çubuğunu daralt",
     "connectWallet": "Cüzdan Bağla",
     "defiProtocols": "Defi Protokolleri",
     "disconnect": "Bağlantıyı Kes",
     "donate": "Bağış yap",
+    "expandSidebar": "Kenar çubuğunu genişlet",
     "feeds": "Bildirimler",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Ödülleri",

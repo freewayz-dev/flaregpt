@@ -1,11 +1,15 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Suspense, useEffect, useRef, useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { useQueryClient } from "@tanstack/react-query";
 
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import FlareWidget from "@/components/common/FlareWidget";
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
+import ErrorFallback from "@/components/common/ErrorFallback";
+import OfflineBanner from "@/components/common/OfflineBanner";
 import { useWalletActivityNotifier } from "@/hooks/useWalletActivityNotifier";
 import { ROUTES } from "@/config/routes";
 
@@ -22,6 +26,35 @@ function RouteLoadingFallback() {
   );
 }
 
+// Scoped to the routed page content specifically (not the whole app, see
+// App.jsx for that last-resort boundary) — a crash in one page's data or
+// rendering shouldn't take the sidebar/navbar/footer down with it; those
+// stay mounted and interactive so navigating elsewhere is still possible
+// even while this page is broken.
+//
+// `resetKeys={[pathname]}` means navigating to a *different* route auto-
+// resets a tripped boundary — so leaving a broken page and coming back
+// later (or just going somewhere else entirely) gets a fresh mount without
+// needing the retry button at all. `onReset` additionally clears the
+// query cache before the in-place "Try again" button remounts this page,
+// for the same reason App.jsx's root boundary does: a stale/corrupt cached
+// query result would otherwise survive the remount and crash it again
+// immediately.
+function PageErrorBoundary({ pathname, queryClient, children }) {
+  return (
+    <ErrorBoundary
+      resetKeys={[pathname]}
+      FallbackComponent={ErrorFallback}
+      onReset={() => queryClient.clear()}
+      onError={(error, info) => {
+        console.error("[ErrorBoundary:page]", pathname, error, info?.componentStack);
+      }}
+    >
+      {children}
+    </ErrorBoundary>
+  );
+}
+
 export default function DashboardLayout() {
   // Auth sync itself is mounted at the App root now (see App.jsx) — wagmi's
   // connection state isn't scoped to this layout, so the hook that reacts
@@ -32,6 +65,7 @@ export default function DashboardLayout() {
 
   const location = useLocation();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   // The floating "Ask FlareGPT" entry points exist so the assistant is
   // reachable from any *other* page — tapping "Ask FlareGPT" while
   // already on the dedicated FlareGPT page would be a redundant, slightly
@@ -116,7 +150,8 @@ export default function DashboardLayout() {
   const openWalletModal = () => setWalletModalOpen(true);
 
   return (
-    <div className="h-dvh overflow-hidden bg-[#F0F4F9] dark:bg-[#101115]">
+    <div className="h-dvh overflow-hidden bg-[#F0F4F9] dark:bg-[#101115] flex flex-col">
+      <OfflineBanner />
       {/* `transform-gpu` (a pre-existing, GPU-compositing hint that isn't
           animating anything on this specific box) used to sit here. A CSS
           `transform` on any value other than `none` makes its element the
@@ -139,7 +174,7 @@ export default function DashboardLayout() {
           compositing independently; removing it here doesn't cost
           anything, and it's what let FlareWidget escape to the true
           viewport again. */}
-      <div className="relative flex h-full mx-auto max-w-[1440px]">
+      <div className="relative flex flex-1 min-h-0 w-full mx-auto max-w-[1440px]">
         <Sidebar
           open={sidebarOpen}
           setOpen={setSidebarOpen}
@@ -188,18 +223,22 @@ export default function DashboardLayout() {
                   getting; mobile and tablet keep the original, more
                   generous values since they're already tighter on space. */}
               <div className="h-full flex flex-col px-4 pt-4 pb-2 md:px-6 md:pt-6 md:pb-3 lg:pt-3 lg:pb-1">
-                <Suspense fallback={<RouteLoadingFallback />}>
-                  <Outlet context={{ openWalletModal }} />
-                </Suspense>
+                <PageErrorBoundary pathname={location.pathname} queryClient={queryClient}>
+                  <Suspense fallback={<RouteLoadingFallback />}>
+                    <Outlet context={{ openWalletModal }} />
+                  </Suspense>
+                </PageErrorBoundary>
               </div>
             </main>
           ) : (
             <main className="flex-1 overflow-y-auto overscroll-contain">
               <div className="flex min-h-full flex-col md:p-6 p-4">
                 <div className="flex-1">
-                  <Suspense fallback={<RouteLoadingFallback />}>
-                    <Outlet context={{ openWalletModal }} />
-                  </Suspense>
+                  <PageErrorBoundary pathname={location.pathname} queryClient={queryClient}>
+                    <Suspense fallback={<RouteLoadingFallback />}>
+                      <Outlet context={{ openWalletModal }} />
+                    </Suspense>
+                  </PageErrorBoundary>
                 </div>
 
                 <Footer />

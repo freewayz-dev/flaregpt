@@ -21,7 +21,7 @@ export default function StatRow() {
   const { formatCurrency } = useCurrency();
   const {
     data: marketOverview,
-    isLoading,
+    isSuccess,
     isError,
     isFetching,
     refetch,
@@ -31,16 +31,6 @@ export default function StatRow() {
   const marketCap = marketOverview?.market_metrics?.market_cap_usd;
   const volume = marketOverview?.market_metrics?.volume_24h_usd;
   const tvl = marketOverview?.chain_infrastructure?.aggregate_tvl_usd;
-
-  if (isLoading) {
-    return (
-      <div className="flex gap-3 overflow-x-hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 xl:grid-cols-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <StatCardSkeleton key={i} />
-        ))}
-      </div>
-    );
-  }
 
   if (isError) {
     return (
@@ -62,6 +52,23 @@ export default function StatRow() {
           />
           {isFetching ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
         </button>
+      </div>
+    );
+  }
+
+  // Deliberately `!isSuccess`, not `isLoading` — a query paused offline (or
+  // one whose data just hasn't landed yet, disabled query, etc.) has both
+  // `isLoading` and `isError` false with `data` still undefined. Falling
+  // through to the cards below in that state would render every metric as
+  // "undefined" with no error shown at all. Gating on `isSuccess` treats
+  // every not-yet-resolved state as "still loading" and self-heals the
+  // instant the query actually resolves, instead of needing a manual retry.
+  if (!isSuccess) {
+    return (
+      <div className="flex gap-3 overflow-x-hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 xl:grid-cols-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <StatCardSkeleton key={i} />
+        ))}
       </div>
     );
   }

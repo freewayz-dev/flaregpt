@@ -11,6 +11,7 @@ import TokenIcon from "@/components/common/TokenIcon";
 import TokenRow from "@/components/common/TokenRow";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import DetailSkeleton from "@/pages/DefiProtocols/components/skeletons/DetailSkeleton";
+import { formatAmount } from "@/utils/format";
 
 // Human-readable labels for the two markets the API supports — the slugs
 // themselves (`stxrp-2026-08-27`) are what's actually sent, this is display
@@ -21,12 +22,6 @@ const MARKETS = [
   { slug: "stxrp-2026-08-27", label: "Aug 2026" },
   { slug: "stxrp-2027-03-31", label: "Mar 2027" },
 ];
-
-function formatAmount(value, maxFractionDigits = 4) {
-  return Number(value).toLocaleString(undefined, {
-    maximumFractionDigits: maxFractionDigits,
-  });
-}
 
 function formatMaturityDate(dateStr) {
   return new Date(`${dateStr}T00:00:00Z`).toLocaleDateString(undefined, {

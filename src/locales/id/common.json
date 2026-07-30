@@ -4,6 +4,7 @@
     "description": "Kami sedang membangun fitur ini. Segera periksa kembali."
   },
   "connectModal": {
+    "close": "Tutup",
     "connecting": "Menghubungkan…",
     "errors": {
       "braveBlocked": {
@@ -271,8 +272,10 @@
     },
     "history": {
       "cancelRename": "Batal",
+      "close": "Tutup",
       "delete": "Hapus",
       "empty": "Belum ada percakapan",
+      "loadFailed": "Percakapan Anda tidak dapat dimuat.",
       "moreActions": "Tindakan lainnya",
       "newChat": "Obrolan Baru",
       "noResults": "Tidak ada percakapan yang cocok dengan pencarian Anda",
@@ -366,6 +369,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "Tidak dapat memeriksa status Gas Sniper",
     "checking": "Memeriksa status Gas Sniper…",
     "enabled": "Diklaim otomatis oleh Gas Sniper",
     "nudge": "Aktifkan Gas Sniper untuk klaim otomatis",
@@ -465,6 +469,8 @@
       "reconnectDescription": "Sambungkan kembali dompet ini untuk menyelesaikan persetujuan satu kali secara on-chain.",
       "reconnectTitle": "Sambungkan kembali untuk melanjutkan",
       "signInHint": "Masuk dengan dompet Anda untuk mengaktifkan Gas Sniper.",
+      "statusCheckFailed": "Tidak dapat memeriksa status Gas Sniper.",
+      "statusUnknown": "Status tidak diketahui",
       "title": "Gas Sniper",
       "toggleFailed": "Tidak dapat memperbarui Gas Sniper. Coba lagi."
     }
@@ -478,11 +484,14 @@
     "balancesHiddenLabel": "Saldo disembunyikan",
     "configureWatchlistWallets": "Atur Dompet Watchlist",
     "connectWallet": "Hubungkan Dompet",
+    "copyAddress": "Salin alamat",
     "copyFailed": "Gagal menyalin alamat",
     "disconnectWallet": "Putuskan Dompet",
     "flareGptFabHint": "FlareGPT sekarang dibuka dari sini",
     "hideBalances": "Sembunyikan saldo",
     "mainnetStatus": "Mainnet Flare",
+    "moreOptions": "Opsi lainnya",
+    "openMenu": "Buka menu",
     "primaryWalletSection": "Dompet Utama",
     "showBalances": "Tampilkan saldo",
     "signIn": "Masuk",
@@ -490,6 +499,10 @@
     "signingIn": "Sedang masuk…",
     "signInPrompt": "Tanda tangani pesan untuk memverifikasi dompet ini dan lanjutkan.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "Anda sedang offline. Kami akan tersambung kembali secara otomatis.",
+    "backOnline": "Kembali online"
   },
   "rflrVesting": {
     "description": "Lacak progres vesting rFLR Anda, pembukaan kunci mendatang, dan emisi seluruh jaringan di satu tempat.",
@@ -577,6 +590,7 @@
       "accountSubtitle": "Disinkronkan dengan akun Anda di server.",
       "accountTitle": "Data Akun",
       "clear": "Hapus",
+      "clearing": "Menghapus…",
       "confirmClear": "Konfirmasi?",
       "conversations": "Percakapan FlareGPT",
       "conversationsCleared": "Percakapan dihapus",
@@ -695,6 +709,7 @@
       "limit": "Anda dapat menghubungkan hingga {{max}} dompet",
       "limitReached": "Batas Dompet Tercapai ({{current}}/{{max}})",
       "liveConnected": "Terhubung Langsung",
+      "loadFailed": "Dompet yang dilacak tidak dapat dimuat.",
       "manageSubtitle": "Kelola koneksi Web3 aktif Anda dan akun pelacakan portofolio hanya baca.",
       "maximum": "Maksimum",
       "noDefaultSelected": "Belum dipilih",
@@ -716,10 +731,13 @@
   "sidebar": {
     "activeWallet": "Aktif: {{address}}",
     "addWatchlistWallet": "+ Tambahkan Dompet Daftar Pantau",
+    "closeMenu": "Tutup menu",
+    "collapseSidebar": "Ciutkan sidebar",
     "connectWallet": "Hubungkan Dompet",
     "defiProtocols": "Protokol Defi",
     "disconnect": "Putuskan Koneksi",
     "donate": "Beri donasi",
+    "expandSidebar": "Perluas sidebar",
     "feeds": "Umpan",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Hadiah FTSO",

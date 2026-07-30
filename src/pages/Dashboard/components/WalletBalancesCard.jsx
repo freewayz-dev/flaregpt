@@ -7,10 +7,7 @@ import { useWalletBalances } from "@/hooks/queries/useDashboardQueries";
 import TokenIcon from "@/components/common/TokenIcon";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import WalletBalancesCardSkeleton from "@/pages/Dashboard/components/skeletons/WalletBalancesCardSkeleton";
-
-function formatAmount(value) {
-  return Number(value).toLocaleString(undefined, { maximumFractionDigits: 4 });
-}
+import { formatAmount } from "@/utils/format";
 
 export default function WalletBalancesCard() {
   const { t } = useTranslation();

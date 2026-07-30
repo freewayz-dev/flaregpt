@@ -4,6 +4,7 @@
     "description": "Мы создаем эту функцию. Зайдите попозже."
   },
   "connectModal": {
+    "close": "Закрыть",
     "connecting": "Подключение…",
     "errors": {
       "braveBlocked": {
@@ -275,8 +276,10 @@
     },
     "history": {
       "cancelRename": "Отмена",
+      "close": "Закрыть",
       "delete": "Удалить",
       "empty": "Пока нет разговоров",
+      "loadFailed": "Не удалось загрузить ваши беседы.",
       "moreActions": "Другие действия",
       "newChat": "Новый чат",
       "noResults": "Нет разговоров, соответствующих запросу",
@@ -372,6 +375,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "Не удалось проверить статус Gas Sniper",
     "checking": "Проверка статуса Gas Sniper…",
     "enabled": "Автоматически получено через Gas Sniper",
     "nudge": "Включите Gas Sniper для автоматического получения",
@@ -471,6 +475,8 @@
       "reconnectDescription": "Переподключите этот кошелёк, чтобы завершить разовое одобрение on-chain.",
       "reconnectTitle": "Переподключитесь, чтобы продолжить",
       "signInHint": "Войдите с помощью своего кошелька, чтобы включить для него Gas Sniper.",
+      "statusCheckFailed": "Не удалось проверить статус Gas Sniper.",
+      "statusUnknown": "Статус неизвестен",
       "title": "Gas Sniper",
       "toggleFailed": "Не удалось обновить Gas Sniper. Попробуйте снова."
     }
@@ -484,11 +490,14 @@
     "balancesHiddenLabel": "Балансы скрыты",
     "configureWatchlistWallets": "Настроить кошельки списка отслеживания",
     "connectWallet": "Подключить кошелек",
+    "copyAddress": "Копировать адрес",
     "copyFailed": "Не удалось скопировать адрес",
     "disconnectWallet": "Отключить кошелёк",
     "flareGptFabHint": "FlareGPT теперь открывается отсюда",
     "hideBalances": "Скрыть балансы",
     "mainnetStatus": "Основная сеть Flare",
+    "moreOptions": "Дополнительно",
+    "openMenu": "Открыть меню",
     "primaryWalletSection": "Основной кошелёк",
     "showBalances": "Показать балансы",
     "signIn": "Войти",
@@ -496,6 +505,10 @@
     "signingIn": "Выполняется вход…",
     "signInPrompt": "Подпишите сообщение, чтобы подтвердить этот кошелёк и продолжить.",
     "watchlistSection": "Список отслеживания ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "Вы не в сети. Мы переподключимся автоматически.",
+    "backOnline": "Снова в сети"
   },
   "rflrVesting": {
     "description": "Отслеживайте прогресс вестинга rFLR, предстоящие разблокировки и общесетевые эмиссии в одном месте.",
@@ -583,6 +596,7 @@
       "accountSubtitle": "Синхронизировано с вашей учётной записью на сервере.",
       "accountTitle": "Данные аккаунта",
       "clear": "Очистить",
+      "clearing": "Очистка…",
       "confirmClear": "Подтвердить?",
       "conversations": "Разговоры FlareGPT",
       "conversationsCleared": "Беседы очищены",
@@ -701,6 +715,7 @@
       "limit": "Вы можете подключить до {{max}} кошельков",
       "limitReached": "Лимит кошельков достигнут ({{current}}/{{max}})",
       "liveConnected": "Live Connected",
+      "loadFailed": "Не удалось загрузить отслеживаемые кошельки.",
       "manageSubtitle": "Управляйте активными подключениями Web3 и учетными записями отслеживания портфеля, доступными только для чтения.",
       "maximum": "Максимум",
       "noDefaultSelected": "Не выбрано",
@@ -724,10 +739,13 @@
   "sidebar": {
     "activeWallet": "Активно: {{address}}",
     "addWatchlistWallet": "+ Добавить кошелек для списка наблюдения",
+    "closeMenu": "Закрыть меню",
+    "collapseSidebar": "Свернуть боковую панель",
     "connectWallet": "Подключить кошелек",
     "defiProtocols": "Протоколы Defi",
     "disconnect": "Отключить",
     "donate": "Пожертвовать",
+    "expandSidebar": "Развернуть боковую панель",
     "feeds": "Новости",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Вознаграждения FTSO",

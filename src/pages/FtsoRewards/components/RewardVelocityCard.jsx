@@ -4,7 +4,7 @@ import { BoltIcon } from "@heroicons/react/24/outline";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
 import MetricTile from "@/pages/DefiProtocols/components/shared/MetricTile";
 import SensitiveValue from "@/components/common/SensitiveValue";
-import { formatFlr } from "@/pages/FtsoRewards/components/RewardsOverviewStats";
+import { formatFlr } from "@/utils/format";
 
 function humanize(value) {
   return value

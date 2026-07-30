@@ -83,7 +83,12 @@ export default function FLRGPT() {
   const pinnedConversationIds = useFlareGptStore((s) => s.pinnedConversationIds);
   const togglePinnedConversation = useFlareGptStore((s) => s.togglePinnedConversation);
 
-  const { data: conversations = [], isLoading: isLoadingConversations } = useConversations(hasSession);
+  const {
+    data: conversations = [],
+    isLoading: isLoadingConversations,
+    isError: isConversationsError,
+    refetch: refetchConversations,
+  } = useConversations(hasSession);
   const renameMutation = useRenameConversation();
 
   const [historyOpen, setHistoryOpen] = useState(false);
@@ -165,6 +170,8 @@ export default function FLRGPT() {
             onClose={() => setHistoryOpen(false)}
             conversations={conversations}
             isLoading={isLoadingConversations}
+            isError={isConversationsError}
+            onRetry={refetchConversations}
             activeConversationId={activeConversationId}
             pinnedIds={pinnedConversationIds}
             onSelect={handleSelectFromHistory}

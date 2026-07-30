@@ -9,7 +9,7 @@ import { queryKeys } from "@/services/queryKeys";
 export function useWatchlist(enabled) {
   return useQuery({
     queryKey: queryKeys.watchlist.list(),
-    queryFn: watchlistService.fetchWatchlist,
+    queryFn: ({ signal }) => watchlistService.fetchWatchlist(signal),
     enabled,
     staleTime: 30_000,
   });

@@ -12,18 +12,19 @@ import RowItem from "@/pages/Settings/components/RowItem";
 
 const CONFIRM_WINDOW_MS = 3000;
 
-function ClearButton({ armed, onClick, label, confirmLabel }) {
+function ClearButton({ armed, onClick, label, confirmLabel, busy, busyLabel }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-xl px-4 py-2 text-xs font-semibold transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
+      disabled={busy}
+      className={`rounded-xl px-4 py-2 text-xs font-semibold transition-colors cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
         armed
           ? "bg-red-500 text-white hover:bg-red-600"
           : "bg-surface-inset text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary"
       }`}
     >
-      {armed ? confirmLabel : label}
+      {busy ? busyLabel : armed ? confirmLabel : label}
     </button>
   );
 }
@@ -42,6 +43,7 @@ export default function DataStorage() {
   const clearMessages = useFlareGptStore((s) => s.clearMessages);
 
   const [armed, setArmed] = useState(null);
+  const [clearingKey, setClearingKey] = useState(null);
   const timerRef = useRef(null);
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
@@ -52,11 +54,21 @@ export default function DataStorage() {
     timerRef.current = setTimeout(() => setArmed(null), CONFIRM_WINDOW_MS);
   };
 
+  // `clearingKey` guards re-entry for the async (backend-hitting) actions —
+  // without it, tapping "Confirm?" disarmed the button immediately even
+  // though `clearConversations` below is still an in-flight multi-request
+  // operation, so a second tap during that window could kick off a second
+  // concurrent clear rather than being a no-op.
   const handleClick = (key, action) => {
+    if (clearingKey) return;
     if (armed === key) {
       clearTimeout(timerRef.current);
       setArmed(null);
-      action();
+      const result = action();
+      if (result?.then) {
+        setClearingKey(key);
+        result.finally(() => setClearingKey(null));
+      }
       return;
     }
     arm(key);
@@ -115,6 +127,8 @@ export default function DataStorage() {
           >
             <ClearButton
               armed={armed === "conversations"}
+              busy={clearingKey === "conversations"}
+              busyLabel={t("settings.dataStorage.clearing")}
               onClick={() => handleClick("conversations", clearConversations)}
               label={t("settings.dataStorage.clear")}
               confirmLabel={t("settings.dataStorage.confirmClear")}

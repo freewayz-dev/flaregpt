@@ -4,6 +4,7 @@
     "description": "Nous développons cette fonctionnalité. Revenez bientôt."
   },
   "connectModal": {
+    "close": "Fermer",
     "connecting": "Connexion…",
     "errors": {
       "braveBlocked": {
@@ -273,8 +274,10 @@
     },
     "history": {
       "cancelRename": "Annuler",
+      "close": "Fermer",
       "delete": "Supprimer",
       "empty": "Aucune conversation pour le moment",
+      "loadFailed": "Impossible de charger vos conversations.",
       "moreActions": "Plus d'actions",
       "newChat": "Nouvelle discussion",
       "noResults": "Aucune conversation ne correspond à votre recherche",
@@ -369,6 +372,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "Impossible de vérifier le statut de Gas Sniper",
     "checking": "Vérification du statut de Gas Sniper…",
     "enabled": "Réclamé automatiquement par Gas Sniper",
     "nudge": "Activez Gas Sniper pour réclamer automatiquement",
@@ -468,6 +472,8 @@
       "reconnectDescription": "Reconnectez ce portefeuille pour terminer l'approbation unique on-chain.",
       "reconnectTitle": "Reconnectez-vous pour continuer",
       "signInHint": "Connectez-vous avec votre portefeuille pour activer Gas Sniper.",
+      "statusCheckFailed": "Impossible de vérifier le statut de Gas Sniper.",
+      "statusUnknown": "Statut inconnu",
       "title": "Gas Sniper",
       "toggleFailed": "Impossible de mettre à jour Gas Sniper. Réessayez."
     }
@@ -481,11 +487,14 @@
     "balancesHiddenLabel": "Soldes masqués",
     "configureWatchlistWallets": "Configurer les Portefeuilles de Watchlist",
     "connectWallet": "Connecter le Portefeuille",
+    "copyAddress": "Copier l'adresse",
     "copyFailed": "Impossible de copier l'adresse",
     "disconnectWallet": "Déconnecter le Portefeuille",
     "flareGptFabHint": "FlareGPT s'ouvre maintenant ici",
     "hideBalances": "Masquer les soldes",
     "mainnetStatus": "Réseau Principal Flare",
+    "moreOptions": "Plus d'options",
+    "openMenu": "Ouvrir le menu",
     "primaryWalletSection": "Portefeuille Principal",
     "showBalances": "Afficher les soldes",
     "signIn": "Se connecter",
@@ -493,6 +502,10 @@
     "signingIn": "Connexion en cours…",
     "signInPrompt": "Signez un message pour vérifier ce portefeuille et continuer.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "Vous êtes hors ligne. Nous nous reconnecterons automatiquement.",
+    "backOnline": "De nouveau en ligne"
   },
   "rflrVesting": {
     "description": "Suivez la progression de votre vesting rFLR, les prochains déblocages et les émissions à l'échelle du réseau, le tout au même endroit.",
@@ -580,6 +593,7 @@
       "accountSubtitle": "Synchronisé avec votre compte sur le serveur.",
       "accountTitle": "Données du compte",
       "clear": "Effacer",
+      "clearing": "Suppression en cours…",
       "confirmClear": "Confirmer ?",
       "conversations": "Conversations FlareGPT",
       "conversationsCleared": "Conversations effacées",
@@ -698,6 +712,7 @@
       "limit": "Vous pouvez connecter jusqu'à {{max}} portefeuilles",
       "limitReached": "Limite de Portefeuilles Atteinte ({{current}}/{{max}})",
       "liveConnected": "Connecté en direct",
+      "loadFailed": "Impossible de charger vos portefeuilles suivis.",
       "manageSubtitle": "Gérez vos connexions Web3 actives et vos comptes de suivi de portefeuille en lecture seule.",
       "maximum": "Maximum",
       "noDefaultSelected": "Aucun sélectionné",
@@ -720,10 +735,13 @@
   "sidebar": {
     "activeWallet": "Actif : {{address}}",
     "addWatchlistWallet": "+ Ajouter un portefeuille de liste de surveillance",
+    "closeMenu": "Fermer le menu",
+    "collapseSidebar": "Réduire la barre latérale",
     "connectWallet": "Connecter le Portefeuille",
     "defiProtocols": "Protocoles Defi",
     "disconnect": "Déconnecter",
     "donate": "Faire un don",
+    "expandSidebar": "Développer la barre latérale",
     "feeds": "Flux",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Récompenses FTSO",

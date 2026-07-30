@@ -3,11 +3,7 @@ import { UserGroupIcon } from "@heroicons/react/24/outline";
 
 import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwnershipBar";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
-
-function truncateAddress(address) {
-  if (!address) return "";
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
-}
+import { shortenAddress } from "@/utils/address";
 
 // Sorted by weight already (see computeDelegationRows) so the largest
 // allocation always reads first, regardless of what order the API itself
@@ -41,7 +37,7 @@ export default function DelegationsCard({ delegations }) {
           {delegations.map((d) => (
             <div key={d.address}>
               <PoolOwnershipBar
-                label={d.name ?? truncateAddress(d.address)}
+                label={d.name ?? shortenAddress(d.address)}
                 percentage={d.weightPercent}
                 valueLabel={d.weightLabel}
               />
@@ -51,7 +47,7 @@ export default function DelegationsCard({ delegations }) {
                   be the same text twice. */}
               {d.name && (
                 <p className="mt-1 text-[10px] text-ink-muted font-mono">
-                  {truncateAddress(d.address)}
+                  {shortenAddress(d.address)}
                 </p>
               )}
             </div>

@@ -2,13 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 
 import * as rflrService from "@/services/rflrService";
 import { queryKeys } from "@/services/queryKeys";
+import { QUICK_RESILIENCE, retryUpTo } from "@/hooks/queries/resilience";
 
 // exit-quote is confirmed live to be fast and reliable regardless of wallet
 // (well under a second, even for a wallet with no rFLR at all) — a normal
 // wallet-scoped resilience profile rides out a genuine transient blip
 // without dragging out a real failure.
 const EXIT_QUOTE_RESILIENCE = {
-  retry: 2,
+  retry: retryUpTo(2),
   retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 8_000),
 };
 
@@ -23,13 +24,8 @@ const EXIT_QUOTE_RESILIENCE = {
 // second attempt) with a longer gap — giving the upstream rate limit a
 // real chance to clear — rather than three quick ones.
 const MELT_SCHEDULE_RESILIENCE = {
-  retry: 1,
+  retry: retryUpTo(1),
   retryDelay: 3_000,
-};
-
-const QUICK_RESILIENCE = {
-  retry: 1,
-  retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 5_000),
 };
 
 export function useMeltSchedule(walletAddress) {

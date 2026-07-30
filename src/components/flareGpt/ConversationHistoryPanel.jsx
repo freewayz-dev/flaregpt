@@ -10,6 +10,7 @@ import {
   MagnifyingGlassIcon,
   EllipsisVerticalIcon,
   MapPinIcon as MapPinIconOutline,
+  ArrowPathIcon,
 } from "@heroicons/react/24/outline";
 import { MapPinIcon as MapPinIconSolid } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
@@ -65,7 +66,7 @@ function RowMenu({ isPinned, onTogglePin, onRename, onDelete, t }) {
       </button>
 
       <div
-        className={`absolute right-0 top-full mt-1 w-36 rounded-xl border border-line bg-surface-card p-1 shadow-lg z-30 transition-all duration-150 ${
+        className={`absolute right-0 top-full mt-1 w-36 rounded-xl border border-line bg-surface-card p-1 shadow-lg z-30 transition-all duration-200 ${
           open ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-95"
         }`}
       >
@@ -125,6 +126,8 @@ export default function ConversationHistoryPanel({
   onClose,
   conversations,
   isLoading,
+  isError,
+  onRetry,
   activeConversationId,
   pinnedIds,
   onSelect,
@@ -143,6 +146,16 @@ export default function ConversationHistoryPanel({
   useEffect(() => {
     if (renamingId) renameInputRef.current?.focus();
   }, [renamingId]);
+
+  // Matches every other dismissible overlay in the app (ConnectWalletModal,
+  // TransactionDrawer, RowMenu above) — a keyboard user shouldn't need to
+  // Tab to the close button specifically to get out of this panel.
+  useEffect(() => {
+    if (!open) return;
+    const handleEscape = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [open, onClose]);
 
   useEffect(() => {
     if (!open) {
@@ -224,7 +237,9 @@ export default function ConversationHistoryPanel({
             <button
               type="button"
               onClick={onClose}
-              className="p-1 rounded-lg hover:bg-surface-subtle text-ink-secondary transition-colors cursor-pointer"
+              aria-label={t("flrgpt.history.close")}
+              title={t("flrgpt.history.close")}
+              className="p-1 rounded-lg hover:bg-surface-subtle text-ink-secondary transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
             >
               <XMarkIcon className="h-4 w-4" />
             </button>
@@ -255,7 +270,25 @@ export default function ConversationHistoryPanel({
           </div>
 
           <div className="flex-1 overflow-y-auto p-3 space-y-1 scrollbar-none">
-            {isLoading ? (
+            {isError ? (
+              // Checked before `sorted.length === 0` below — without this,
+              // a failed (or offline-paused) fetch rendered the exact same
+              // "No conversations yet" copy as a genuinely empty account,
+              // with no way to tell "you have none" apart from "we couldn't
+              // check" and no way to retry.
+              <div className="py-10 text-center">
+                <p className="text-xs font-medium text-ink-primary">{t("flrgpt.history.loadFailed")}</p>
+                <p className="mt-0.5 text-xs text-ink-muted">{t("dashboard.common.networkHiccup")}</p>
+                <button
+                  type="button"
+                  onClick={onRetry}
+                  className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand hover:bg-brand/20 transition-colors cursor-pointer"
+                >
+                  <ArrowPathIcon className="h-3.5 w-3.5" />
+                  {t("dashboard.common.retry")}
+                </button>
+              </div>
+            ) : isLoading ? (
               <div className="py-10 flex justify-center">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-brand" />
               </div>

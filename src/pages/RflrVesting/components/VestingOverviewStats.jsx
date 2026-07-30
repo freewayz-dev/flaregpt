@@ -8,10 +8,7 @@ import {
 
 import StatCard from "@/components/cards/StatCard";
 import SensitiveValue from "@/components/common/SensitiveValue";
-
-export function formatFlr(value) {
-  return `${Number(value).toLocaleString(undefined, { maximumFractionDigits: 4 })} FLR`;
-}
+import { formatFlr } from "@/utils/format";
 
 // Presentational only — receives the already-derived summary (see
 // utils/deriveVesting.js) rather than fetching or computing anything

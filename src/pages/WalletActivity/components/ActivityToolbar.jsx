@@ -77,7 +77,7 @@ function ExportMenu({ onExportCsv, onExportJson }) {
       </button>
 
       <div
-        className={`absolute right-0 top-full mt-1.5 w-40 origin-top-right rounded-xl border border-line bg-surface-card p-1 shadow-lg z-10 transition-all duration-150 ${
+        className={`absolute right-0 top-full mt-1.5 w-40 origin-top-right rounded-xl border border-line bg-surface-card p-1 shadow-lg z-10 transition-all duration-200 ${
           open ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-95"
         }`}
       >

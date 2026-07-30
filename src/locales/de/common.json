@@ -4,6 +4,7 @@
     "description": "Wir entwickeln diese Funktion. Schau bald wieder vorbei."
   },
   "connectModal": {
+    "close": "Schließen",
     "connecting": "Verbinde…",
     "errors": {
       "braveBlocked": {
@@ -271,8 +272,10 @@
     },
     "history": {
       "cancelRename": "Abbrechen",
+      "close": "Schließen",
       "delete": "Löschen",
       "empty": "Noch keine Unterhaltungen",
+      "loadFailed": "Deine Unterhaltungen konnten nicht geladen werden.",
       "moreActions": "Weitere Aktionen",
       "newChat": "Neuer Chat",
       "noResults": "Keine Unterhaltungen entsprechen deiner Suche",
@@ -366,6 +369,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "Gas-Sniper-Status konnte nicht geprüft werden",
     "checking": "Gas-Sniper-Status wird geprüft…",
     "enabled": "Automatisch von Gas Sniper beansprucht",
     "nudge": "Gas Sniper für automatische Beanspruchung aktivieren",
@@ -465,6 +469,8 @@
       "reconnectDescription": "Verbinde dieses Wallet erneut, um die einmalige On-Chain-Genehmigung abzuschließen.",
       "reconnectTitle": "Erneut verbinden, um fortzufahren",
       "signInHint": "Melde dich mit deinem Wallet an, um Gas Sniper dafür zu aktivieren.",
+      "statusCheckFailed": "Der Gas-Sniper-Status konnte nicht geprüft werden.",
+      "statusUnknown": "Status unbekannt",
       "title": "Gas Sniper",
       "toggleFailed": "Gas Sniper konnte nicht aktualisiert werden. Versuch es erneut."
     }
@@ -478,11 +484,14 @@
     "balancesHiddenLabel": "Guthaben ausgeblendet",
     "configureWatchlistWallets": "Watchlist-Wallets verwalten",
     "connectWallet": "Wallet verbinden",
+    "copyAddress": "Adresse kopieren",
     "copyFailed": "Adresse konnte nicht kopiert werden",
     "disconnectWallet": "Wallet trennen",
     "flareGptFabHint": "FlareGPT wird jetzt von hier geöffnet",
     "hideBalances": "Guthaben ausblenden",
     "mainnetStatus": "Flare-Mainnet",
+    "moreOptions": "Weitere Optionen",
+    "openMenu": "Menü öffnen",
     "primaryWalletSection": "Primäre Wallet",
     "showBalances": "Guthaben anzeigen",
     "signIn": "Anmelden",
@@ -490,6 +499,10 @@
     "signingIn": "Anmeldung läuft…",
     "signInPrompt": "Signiere eine Nachricht, um diese Wallet zu verifizieren und fortzufahren.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "Du bist offline. Wir verbinden automatisch neu.",
+    "backOnline": "Wieder online"
   },
   "rflrVesting": {
     "description": "Verfolge deinen rFLR-Vesting-Fortschritt, anstehende Freischaltungen und die netzwerkweiten Emissionen an einem Ort.",
@@ -577,6 +590,7 @@
       "accountSubtitle": "Mit deinem Konto auf dem Server synchronisiert.",
       "accountTitle": "Kontodaten",
       "clear": "Löschen",
+      "clearing": "Wird gelöscht…",
       "confirmClear": "Bestätigen?",
       "conversations": "FlareGPT-Unterhaltungen",
       "conversationsCleared": "Unterhaltungen gelöscht",
@@ -695,6 +709,7 @@
       "limit": "Sie können bis zu {{max}} Wallets verbinden",
       "limitReached": "Wallet-Limit erreicht ({{current}}/{{max}})",
       "liveConnected": "Live Connected",
+      "loadFailed": "Deine verfolgten Wallets konnten nicht geladen werden.",
       "manageSubtitle": "Verwalten Sie Ihre aktiven Web3-Verbindungen und schreibgeschützten Portfolio-Tracking-Konten.",
       "maximum": "Maximal",
       "noDefaultSelected": "Keine Auswahl",
@@ -716,10 +731,13 @@
   "sidebar": {
     "activeWallet": "Aktiv: {{address}}",
     "addWatchlistWallet": "+ Watchlist-Wallet hinzufügen",
+    "closeMenu": "Menü schließen",
+    "collapseSidebar": "Seitenleiste einklappen",
     "connectWallet": "Wallet verbinden",
     "defiProtocols": "Defi-Protokolle",
     "disconnect": "Trennen",
     "donate": "Spenden",
+    "expandSidebar": "Seitenleiste ausklappen",
     "feeds": "Feeds",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO-Belohnungen",

@@ -8,15 +8,7 @@ import {
   fetchCompareStrategies,
 } from "@/services/defiProtocolsService";
 import { queryKeys } from "@/services/queryKeys";
-
-// Matches the resilience profile useDashboardQueries.js uses for
-// wallet-specific endpoints: these are per-request (not upstream-cached), so
-// a few retries with backoff rides out a brief blip automatically, while
-// each card still offers a manual retry button for a longer outage.
-const WALLET_QUERY_RESILIENCE = {
-  retry: 3,
-  retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 10_000),
-};
+import { QUICK_RESILIENCE, WALLET_QUERY_RESILIENCE } from "@/hooks/queries/resilience";
 
 // `enabled` defaults to true (any existing caller keeps fetching as soon as
 // a wallet is known) but callers that only need this protocol's data under
@@ -27,7 +19,7 @@ const WALLET_QUERY_RESILIENCE = {
 export function useMxrpyVault(walletAddress, { enabled = true } = {}) {
   return useQuery({
     queryKey: queryKeys.defiProtocols.vaults("mxrpy", walletAddress),
-    queryFn: () => fetchMxrpyVault(walletAddress),
+    queryFn: ({ signal }) => fetchMxrpyVault(walletAddress, signal),
     enabled: Boolean(walletAddress) && enabled,
     ...WALLET_QUERY_RESILIENCE,
   });
@@ -36,7 +28,7 @@ export function useMxrpyVault(walletAddress, { enabled = true } = {}) {
 export function useSceptreVault(walletAddress, { enabled = true } = {}) {
   return useQuery({
     queryKey: queryKeys.defiProtocols.vaults("sceptre", walletAddress),
-    queryFn: () => fetchSceptreVault(walletAddress),
+    queryFn: ({ signal }) => fetchSceptreVault(walletAddress, signal),
     enabled: Boolean(walletAddress) && enabled,
     ...WALLET_QUERY_RESILIENCE,
   });
@@ -45,7 +37,7 @@ export function useSceptreVault(walletAddress, { enabled = true } = {}) {
 export function useFirelightVault(walletAddress, { enabled = true } = {}) {
   return useQuery({
     queryKey: queryKeys.defiProtocols.vaults("firelight", walletAddress),
-    queryFn: () => fetchFirelightVault(walletAddress),
+    queryFn: ({ signal }) => fetchFirelightVault(walletAddress, signal),
     enabled: Boolean(walletAddress) && enabled,
     ...WALLET_QUERY_RESILIENCE,
   });
@@ -60,7 +52,7 @@ export function useFirelightVault(walletAddress, { enabled = true } = {}) {
 export function useSpectraVault(walletAddress, market, { enabled = true } = {}) {
   return useQuery({
     queryKey: queryKeys.defiProtocols.spectraVault(market, walletAddress),
-    queryFn: () => fetchSpectraVault(walletAddress, market),
+    queryFn: ({ signal }) => fetchSpectraVault(walletAddress, market, signal),
     enabled: Boolean(market) && enabled,
     ...WALLET_QUERY_RESILIENCE,
   });
@@ -69,15 +61,10 @@ export function useSpectraVault(walletAddress, market, { enabled = true } = {}) 
 // Not wallet-gated — this endpoint compares strategies for a hypothetical
 // principal, not a connected wallet's actual holdings, and works the same
 // whether or not anyone is connected.
-const QUICK_RESILIENCE = {
-  retry: 1,
-  retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 5_000),
-};
-
 export function useCompareStrategies(amountFlr) {
   return useQuery({
     queryKey: queryKeys.defiProtocols.compareStrategies(amountFlr),
-    queryFn: () => fetchCompareStrategies(amountFlr),
+    queryFn: ({ signal }) => fetchCompareStrategies(amountFlr, signal),
     enabled: Boolean(amountFlr) && amountFlr > 0,
     staleTime: 60_000,
     // Each amount produces a distinct query key, so without this, every

@@ -10,6 +10,7 @@ import { streamChatMessage } from "@/services/chatSocket";
 import { queryKeys } from "@/services/queryKeys";
 import { useDeleteConversation } from "@/hooks/queries/useChatQueries";
 import { useFlareGptWalletContext } from "@/hooks/useFlareGptWalletContext";
+import { WALLET_QUERY_RESILIENCE } from "@/hooks/queries/resilience";
 
 // Real assistant replies are one flat string (see chatService.js), but
 // AssistantMessage.jsx renders a `blocks` array (it also knows how to
@@ -149,13 +150,62 @@ export function useFlareGptConversation() {
       useFlareGptStore.getState().setMessages([]);
       return;
     }
+
+    // Switching conversations quickly (clicking down the history panel
+    // before the previous fetch has resolved) must not let an older,
+    // slower fetch land *after* a newer one and overwrite it — showing the
+    // wrong thread's messages under the now-active conversation. That's
+    // guarded below by comparing the *live* active conversation id against
+    // the one this specific effect run started for, at the moment the
+    // fetch actually settles — not by aborting the request. An
+    // AbortController used to do that job here, but it actively fought
+    // `fetchQuery`'s own deduping: two calls for the same query key share
+    // one underlying request, and aborting a controller *we* owned (from
+    // an unrelated instance's cleanup — React 18 StrictMode's dev-only
+    // mount→cleanup→mount is the common case, but the page and widget both
+    // mounting at once could hit the same thing) killed the one shared
+    // request every other caller was also depending on, without
+    // react-query's own bookkeeping ever finding out — surfacing as a
+    // spurious "couldn't load" error even though nothing had actually
+    // failed. Letting react-query own the request's `signal` (passed into
+    // the queryFn below) instead of a manually-created one sidesteps that
+    // entirely: a same-key duplicate call just awaits the one real fetch,
+    // and only a genuine conversation switch (a different query key) is
+    // ever treated as "this result is stale, discard it."
+    //
+    // Routed through `queryClient.fetchQuery` (react-query's imperative,
+    // cache-aware fetch) rather than calling `chatService.fetchConversation`
+    // directly — this is deliberately NOT a `useQuery()` hook: the fetched
+    // history only ever *seeds* local state that a live stream then mutates
+    // turn by turn (see requestReply's `updateMessage`/`appendMessage`
+    // calls), so a reactive hook that could silently refetch and overwrite
+    // that in-progress local state (on window refocus, reconnect, remount)
+    // would risk clobbering an active reply mid-stream — exactly the
+    // failure mode `refetchOnWindowFocus: true` (see main.jsx) was turned
+    // on globally to *fix* everywhere else. `fetchQuery` gives this the
+    // same shared retry/backoff every other query in the app gets (this
+    // had none before) and makes deleting a conversation's cache entry
+    // (see useDeleteConversation's `removeQueries` call, which referenced
+    // this exact key even before this) actually evict something, without
+    // taking on any of the automatic-refetch risk. No explicit `staleTime`
+    // — deliberately always a real fetch on every switch, matching the
+    // original "no second client-side cache to go stale, same cost as
+    // opening a different email" reasoning, since another device/tab could
+    // have added messages to this conversation since it was last opened.
+    const conversationIdAtStart = activeConversationId;
     useFlareGptStore.getState().beginLoadingMessages();
-    chatService
-      .fetchConversation(activeConversationId)
+    queryClient
+      .fetchQuery({
+        queryKey: queryKeys.chat.conversation(activeConversationId),
+        queryFn: ({ signal }) => chatService.fetchConversation(activeConversationId, signal),
+        ...WALLET_QUERY_RESILIENCE,
+      })
       .then((conversation) => {
+        if (useFlareGptStore.getState().activeConversationId !== conversationIdAtStart) return;
         useFlareGptStore.getState().setMessages((conversation.messages ?? []).map(fromHistoryEntry));
       })
       .catch((error) => {
+        if (useFlareGptStore.getState().activeConversationId !== conversationIdAtStart) return;
         if (error?.response?.status === 404) {
           // Deleted elsewhere (another tab, another device) — fall back to
           // a blank "new chat" state rather than showing a dead reference
@@ -171,6 +221,23 @@ export function useFlareGptConversation() {
         useFlareGptStore.getState().setMessages(useFlareGptStore.getState().messages);
         toast.error(t("flrgpt.historyLoadFailed"));
       });
+
+    return () => {
+      // Only reset the loading flags here if this cleanup is running
+      // because the active conversation genuinely changed out from under
+      // this effect (switchConversation already does this too — it's
+      // harmless to repeat) — NOT for a same-conversation StrictMode
+      // remount, where the fetch this instance kicked off is still
+      // legitimately in flight and the next mount should just fall through
+      // the top guard and wait on that same shared promise rather than
+      // starting a redundant duplicate.
+      if (
+        useFlareGptStore.getState().activeConversationId !== conversationIdAtStart &&
+        !useFlareGptStore.getState().isMessagesLoaded
+      ) {
+        useFlareGptStore.getState().resetMessagesLoadState();
+      }
+    };
   }, [hasSession, activeConversationId, t]);
 
   // Bumped only when *this* view's user explicitly sends or regenerates —

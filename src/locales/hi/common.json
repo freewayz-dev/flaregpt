@@ -4,6 +4,7 @@
     "description": "हम यह सुविधा बना रहे हैं। जल्द ही फिर से देखें।"
   },
   "connectModal": {
+    "close": "बंद करें",
     "connecting": "कनेक्ट हो रहा है…",
     "errors": {
       "braveBlocked": {
@@ -271,8 +272,10 @@
     },
     "history": {
       "cancelRename": "रद्द करें",
+      "close": "बंद करें",
       "delete": "हटाएं",
       "empty": "अभी तक कोई बातचीत नहीं",
+      "loadFailed": "आपकी बातचीत लोड नहीं हो सकी।",
       "moreActions": "अधिक विकल्प",
       "newChat": "नई चैट",
       "noResults": "आपकी खोज से कोई बातचीत मेल नहीं खाती",
@@ -366,6 +369,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "Gas Sniper स्थिति जांची नहीं जा सकी",
     "checking": "Gas Sniper स्थिति की जांच हो रही है…",
     "enabled": "Gas Sniper द्वारा ऑटो-क्लेम किया गया",
     "nudge": "ऑटो-क्लेम के लिए Gas Sniper चालू करें",
@@ -465,6 +469,8 @@
       "reconnectDescription": "एक बार की ऑन-चेन मंज़ूरी पूरी करने के लिए इस वॉलेट को फिर से कनेक्ट करें।",
       "reconnectTitle": "जारी रखने के लिए फिर से कनेक्ट करें",
       "signInHint": "Gas Sniper चालू करने के लिए अपने वॉलेट से साइन इन करें।",
+      "statusCheckFailed": "Gas Sniper की स्थिति जांची नहीं जा सकी।",
+      "statusUnknown": "स्थिति अज्ञात",
       "title": "Gas Sniper",
       "toggleFailed": "Gas Sniper अपडेट नहीं हो सका। फिर से प्रयास करें।"
     }
@@ -478,11 +484,14 @@
     "balancesHiddenLabel": "बैलेंस छिपाए गए",
     "configureWatchlistWallets": "वॉचलिस्ट वॉलेट कॉन्फ़िगर करें",
     "connectWallet": "वॉलेट कनेक्ट करें",
+    "copyAddress": "पता कॉपी करें",
     "copyFailed": "पता कॉपी नहीं हो सका",
     "disconnectWallet": "वॉलेट डिस्कनेक्ट करें",
     "flareGptFabHint": "FlareGPT अब यहां से खुलता है",
     "hideBalances": "बैलेंस छिपाएं",
     "mainnetStatus": "फ्लेयर मेननेट",
+    "moreOptions": "और विकल्प",
+    "openMenu": "मेनू खोलें",
     "primaryWalletSection": "प्राइमरी वॉलेट",
     "showBalances": "बैलेंस दिखाएं",
     "signIn": "साइन इन करें",
@@ -490,6 +499,10 @@
     "signingIn": "साइन इन हो रहा है…",
     "signInPrompt": "जारी रखने के लिए इस वॉलेट को सत्यापित करने हेतु एक संदेश पर हस्ताक्षर करें।",
     "watchlistSection": "वॉचलिस्ट ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "आप ऑफ़लाइन हैं। हम स्वतः पुनः जुड़ जाएंगे।",
+    "backOnline": "फिर से ऑनलाइन"
   },
   "rflrVesting": {
     "description": "एक ही जगह पर अपनी rFLR वेस्टिंग प्रगति, आगामी अनलॉक्स और नेटवर्क-व्यापी उत्सर्जन को ट्रैक करें।",
@@ -577,6 +590,7 @@
       "accountSubtitle": "सर्वर पर आपके खाते के साथ सिंक किया गया।",
       "accountTitle": "खाता डेटा",
       "clear": "साफ़ करें",
+      "clearing": "साफ़ किया जा रहा है…",
       "confirmClear": "पुष्टि करें?",
       "conversations": "FlareGPT बातचीत",
       "conversationsCleared": "बातचीत साफ़ हो गई",
@@ -695,6 +709,7 @@
       "limit": "आप अधिकतम {{max}} वॉलेट कनेक्ट कर सकते हैं",
       "limitReached": "वॉलेट सीमा समाप्त ({{current}}/{{max}})",
       "liveConnected": "लाइव कनेक्टेड",
+      "loadFailed": "आपके ट्रैक किए गए वॉलेट लोड नहीं हो सके।",
       "manageSubtitle": "अपने सक्रिय Web3 कनेक्शन और केवल पढ़ने के लिए पोर्टफोलियो ट्रैकिंग खाते प्रबंधित करें।",
       "maximum": "अधिकतम",
       "noDefaultSelected": "कोई चयनित नहीं",
@@ -716,10 +731,13 @@
   "sidebar": {
     "activeWallet": "सक्रिय: {{address}}",
     "addWatchlistWallet": "+ वॉचलिस्ट वॉलेट जोड़ें",
+    "closeMenu": "मेनू बंद करें",
+    "collapseSidebar": "साइडबार सिकोड़ें",
     "connectWallet": "वॉलेट कनेक्ट करें",
     "defiProtocols": "डेफी प्रोटोकॉल",
     "disconnect": "डिस्कनेक्ट करें",
     "donate": "दान करें",
+    "expandSidebar": "साइडबार फैलाएं",
     "feeds": "फ़ीड्स",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO पुरस्कार",
@@ -730,7 +748,7 @@
     "overview": "अवलोकन",
     "rflrTracker": "rFLR ट्रैकर",
     "settings": "सेटिंग्स",
-    "signInRequired": "साइन-इन आवश्यक",
+    "signInRequired": "साइन इन आवश्यक",
     "signInRequiredHint": "साइन इन करने के लिए ऊपर की पट्टी में वॉलेट मेनू का उपयोग करें।",
     "walletActivity": "वॉलेट गतिविधि",
     "walletConnected": "वॉलेट कनेक्ट हो गया",

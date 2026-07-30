@@ -205,7 +205,9 @@ export default function LandingAIDemo({ onOpenWalletModal }) {
             type="button"
             disabled={!value.trim() || isGenerating}
             onClick={() => handleSend(value)}
-            className={`shrink-0 flex h-9 w-9 items-center justify-center rounded-xl transition-colors ${
+            aria-label="Send"
+            title="Send"
+            className={`shrink-0 flex h-9 w-9 items-center justify-center rounded-xl transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
               value.trim() && !isGenerating
                 ? "bg-brand text-white hover:bg-brand-hover cursor-pointer"
                 : "bg-surface-card-hover text-ink-muted cursor-not-allowed"

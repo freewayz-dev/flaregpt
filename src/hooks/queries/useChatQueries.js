@@ -9,7 +9,7 @@ import { queryKeys } from "@/services/queryKeys";
 export function useConversations(enabled) {
   return useQuery({
     queryKey: queryKeys.chat.conversations(),
-    queryFn: chatService.fetchConversations,
+    queryFn: ({ signal }) => chatService.fetchConversations(signal),
     enabled,
     staleTime: 15_000,
   });

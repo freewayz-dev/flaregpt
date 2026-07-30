@@ -10,12 +10,7 @@ import TokenIcon from "@/components/common/TokenIcon";
 import TokenRow from "@/components/common/TokenRow";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import DetailSkeleton from "@/pages/DefiProtocols/components/skeletons/DetailSkeleton";
-
-function formatAmount(value, maxFractionDigits = 4) {
-  return Number(value).toLocaleString(undefined, {
-    maximumFractionDigits: maxFractionDigits,
-  });
-}
+import { formatAmount } from "@/utils/format";
 
 function parsePercent(value) {
   const n = Number.parseFloat(value);

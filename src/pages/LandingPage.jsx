@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useConnection } from "wagmi";
-import { CheckIcon } from "lucide-react";
 import {
   ArrowRightIcon,
   CpuChipIcon,
   CircleStackIcon,
   ArrowTrendingUpIcon,
   ShieldCheckIcon,
+  CheckIcon,
   SparklesIcon,
   Square3Stack3DIcon,
   RocketLaunchIcon,

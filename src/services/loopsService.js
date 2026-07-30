@@ -5,8 +5,8 @@ import { flareApi } from "@/services/apiClient";
 // so this is what tells the UI whether the *current* wallet is already
 // enabled: check `opted_in_wallets` for it, rather than tracking enabled/
 // disabled as purely local state that would forget itself on refresh.
-export async function fetchGasSniperStatus() {
-  const { data } = await flareApi.get("/api/v1/loops/gas-sniper/status");
+export async function fetchGasSniperStatus(signal) {
+  const { data } = await flareApi.get("/api/v1/loops/gas-sniper/status", { signal });
   return data; // { opted_in_count, opted_in_wallets, recent_dry_run_events }
 }
 

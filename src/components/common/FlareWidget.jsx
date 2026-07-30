@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
@@ -52,11 +52,31 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
   const pinnedConversationIds = useFlareGptStore((s) => s.pinnedConversationIds);
   const togglePinnedConversation = useFlareGptStore((s) => s.togglePinnedConversation);
 
-  const { data: conversations = [], isLoading: isLoadingConversations } = useConversations(hasSession);
+  const {
+    data: conversations = [],
+    isLoading: isLoadingConversations,
+    isError: isConversationsError,
+    refetch: refetchConversations,
+  } = useConversations(hasSession);
   const renameMutation = useRenameConversation();
 
   const [historyOpen, setHistoryOpen] = useState(false);
   const toggleHistory = () => setHistoryOpen((o) => !o);
+
+  // Deferring to the history panel's own Escape handler while it's open
+  // (rather than both firing on the same keypress) so Escape closes
+  // whichever overlay is actually on top first — the panel, then the
+  // widget itself on a second press — matching every other stacked
+  // overlay's behavior in the app.
+  useEffect(() => {
+    if (!open) return;
+    const handleEscape = (e) => {
+      if (e.key !== "Escape" || historyOpen) return;
+      onClose();
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [open, historyOpen, onClose]);
 
   const handleSelectFromHistory = (id) => {
     switchConversation(id);
@@ -112,8 +132,9 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
             <button
               type="button"
               onClick={startNewChat}
-              className="rounded-md p-1 transition-colors hover:bg-surface-card-hover cursor-pointer"
+              className="rounded-md p-1 transition-colors hover:bg-surface-card-hover cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               title={t("flrgpt.newChat")}
+              aria-label={t("flrgpt.newChat")}
             >
               <PencilSquareIcon className="h-5 w-5 text-ink-secondary" />
             </button>
@@ -123,10 +144,11 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
                 type="button"
                 onClick={toggleHistory}
                 aria-pressed={historyOpen}
-                className={`rounded-md p-1 transition-colors cursor-pointer ${
+                className={`rounded-md p-1 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
                   historyOpen ? "bg-brand/10" : "hover:bg-surface-card-hover"
                 }`}
                 title={t("flrgpt.history.openButton")}
+                aria-label={t("flrgpt.history.openButton")}
               >
                 <ClockIcon className={`h-5 w-5 ${historyOpen ? "text-brand" : "text-ink-secondary"}`} />
               </button>
@@ -136,8 +158,9 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
           <button
             type="button"
             onClick={() => setExpanded(!expanded)}
-            className="hidden sm:flex rounded-lg p-1 transition-colors hover:bg-surface-subtle cursor-pointer"
+            className="hidden sm:flex rounded-lg p-1 transition-colors hover:bg-surface-subtle cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
             title={expanded ? t("flareWidget.collapse") : t("flareWidget.expand")}
+            aria-label={expanded ? t("flareWidget.collapse") : t("flareWidget.expand")}
           >
             {expanded ? (
               <ArrowsPointingInIcon className="h-5 w-5 text-ink-secondary" />
@@ -149,8 +172,9 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
           <button
             type="button"
             onClick={() => onClose()}
-            className="rounded-lg p-1 transition-colors hover:bg-surface-subtle cursor-pointer"
+            className="rounded-lg p-1 transition-colors hover:bg-surface-subtle cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
             title={t("flareWidget.close")}
+            aria-label={t("flareWidget.close")}
           >
             <XMarkIcon className="h-5 w-5 text-ink-secondary" />
           </button>
@@ -177,6 +201,8 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
             onClose={() => setHistoryOpen(false)}
             conversations={conversations}
             isLoading={isLoadingConversations}
+            isError={isConversationsError}
+            onRetry={refetchConversations}
             activeConversationId={activeConversationId}
             pinnedIds={pinnedConversationIds}
             onSelect={handleSelectFromHistory}

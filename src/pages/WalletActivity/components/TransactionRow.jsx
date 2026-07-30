@@ -9,14 +9,11 @@ import {
 import TokenIcon from "@/components/common/TokenIcon";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import { getActionDirection, formatActionLabel } from "@/pages/WalletActivity/utils/deriveActivity";
+import { formatAmount } from "@/utils/format";
 
 const DIRECTION_ICON = { out: ArrowUpRightIcon, in: ArrowDownLeftIcon, neutral: ArrowsRightLeftIcon };
 const DIRECTION_COLOR = { out: "text-red-500", in: "text-emerald-500", neutral: "text-ink-secondary" };
 const DIRECTION_BG = { out: "bg-red-500/10", in: "bg-emerald-500/10", neutral: "bg-surface-inset" };
-
-function formatAmount(amount) {
-  return Number(amount).toLocaleString(undefined, { maximumFractionDigits: 2 });
-}
 
 function formatTime(timestampSeconds) {
   return new Date(timestampSeconds * 1000).toLocaleTimeString(undefined, {
@@ -73,7 +70,7 @@ function TransactionRow({ item, isSelected, onSelect, compact = false }) {
       <p className={`shrink-0 text-sm font-semibold tabular-nums ${DIRECTION_COLOR[direction]}`}>
         <SensitiveValue>
           {direction === "out" ? "-" : direction === "in" ? "+" : ""}
-          {formatAmount(item.amount)}
+          {formatAmount(item.amount, 2)}
         </SensitiveValue>
       </p>
 

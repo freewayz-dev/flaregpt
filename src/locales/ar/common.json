@@ -4,6 +4,7 @@
     "description": "نحن نبني هذه الميزة. تحقَّق مرة أخرى قريباً."
   },
   "connectModal": {
+    "close": "إغلاق",
     "connecting": "جارٍ الاتصال…",
     "errors": {
       "braveBlocked": {
@@ -279,8 +280,10 @@
     },
     "history": {
       "cancelRename": "إلغاء",
+      "close": "إغلاق",
       "delete": "حذف",
       "empty": "لا توجد محادثات بعد",
+      "loadFailed": "تعذّر تحميل محادثاتك.",
       "moreActions": "إجراءات إضافية",
       "newChat": "محادثة جديدة",
       "noResults": "لا توجد محادثات مطابقة لبحثك",
@@ -378,6 +381,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "تعذّر التحقق من حالة Gas Sniper",
     "checking": "جارٍ التحقق من حالة Gas Sniper…",
     "enabled": "تتم المطالبة تلقائيًا بواسطة Gas Sniper",
     "nudge": "فعّل Gas Sniper للمطالبة التلقائية",
@@ -477,6 +481,8 @@
       "reconnectDescription": "أعد توصيل هذه المحفظة لإكمال الموافقة لمرة واحدة على السلسلة.",
       "reconnectTitle": "أعد الاتصال للمتابعة",
       "signInHint": "سجّل الدخول بمحفظتك لتفعيل Gas Sniper.",
+      "statusCheckFailed": "تعذّر التحقق من حالة Gas Sniper.",
+      "statusUnknown": "الحالة غير معروفة",
       "title": "Gas Sniper",
       "toggleFailed": "تعذّر تحديث Gas Sniper. حاول مرة أخرى."
     }
@@ -490,11 +496,14 @@
     "balancesHiddenLabel": "الأرصدة مخفية",
     "configureWatchlistWallets": "إعداد محافظ قائمة المراقبة",
     "connectWallet": "ربط المحفظة",
+    "copyAddress": "نسخ العنوان",
     "copyFailed": "تعذر نسخ العنوان",
     "disconnectWallet": "قطع اتصال المحفظة",
     "flareGptFabHint": "يفتح FlareGPT الآن من هنا",
     "hideBalances": "إخفاء الأرصدة",
     "mainnetStatus": "شبكة Flare الرئيسية",
+    "moreOptions": "خيارات إضافية",
+    "openMenu": "فتح القائمة",
     "primaryWalletSection": "المحفظة الأساسية",
     "showBalances": "إظهار الأرصدة",
     "signIn": "تسجيل الدخول",
@@ -502,6 +511,10 @@
     "signingIn": "جارٍ تسجيل الدخول…",
     "signInPrompt": "وقّع رسالة للتحقق من هذه المحفظة والمتابعة.",
     "watchlistSection": "قائمة المراقبة ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "أنت غير متصل. سنعيد الاتصال تلقائيًا.",
+    "backOnline": "تم استعادة الاتصال"
   },
   "rflrVesting": {
     "description": "تتبّع تقدّم استحقاق rFLR الخاص بك، وحالات الإفراج القادمة، وانبعاثات الشبكة بالكامل في مكان واحد.",
@@ -589,6 +602,7 @@
       "accountSubtitle": "مُتزامن مع حسابك على الخادم.",
       "accountTitle": "بيانات الحساب",
       "clear": "مسح",
+      "clearing": "جارٍ المسح…",
       "confirmClear": "تأكيد؟",
       "conversations": "محادثات FlareGPT",
       "conversationsCleared": "تم مسح المحادثات",
@@ -707,6 +721,7 @@
       "limit": "يمكنك ربط ما يصل إلى {{max}} محافظ",
       "limitReached": "تم الوصول إلى حد المحافظ ({{current}}/{{max}})",
       "liveConnected": "اتصال مباشر",
+      "loadFailed": "تعذّر تحميل المحافظ المتتبعة.",
       "manageSubtitle": "قم بإدارة اتصالات Web3 النشطة وحسابات تتبع المحفظة للقراءة فقط.",
       "maximum": "الحد الأقصى",
       "noDefaultSelected": "لم يتم التحديد",
@@ -732,10 +747,13 @@
   "sidebar": {
     "activeWallet": "نشط: {{address}}",
     "addWatchlistWallet": "+ إضافة محفظة قائمة المتابعة",
+    "closeMenu": "إغلاق القائمة",
+    "collapseSidebar": "طي الشريط الجانبي",
     "connectWallet": "ربط المحفظة",
     "defiProtocols": "بروتوكولات Defi",
     "disconnect": "قطع الاتصال",
     "donate": "تَبرَّع",
+    "expandSidebar": "توسيع الشريط الجانبي",
     "feeds": "خلاصات",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "مكافآت FTSO",

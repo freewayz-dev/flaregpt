@@ -3,8 +3,8 @@ import { flareApi } from "@/services/apiClient";
 // Response: { conversations: [{ id, title, created_at, updated_at,
 // message_count }, ...] } — metadata only, no messages (see
 // fetchConversation for the full thread).
-export async function fetchConversations() {
-  const { data } = await flareApi.get("/api/v1/chat/conversations");
+export async function fetchConversations(signal) {
+  const { data } = await flareApi.get("/api/v1/chat/conversations", { signal });
   return data.conversations ?? [];
 }
 
@@ -24,8 +24,8 @@ export async function createConversation(title) {
 // content, timestamp}, ...] } — the one call that returns the actual
 // transcript. A conversation_id that no longer exists (deleted elsewhere,
 // another device/tab) responds 404.
-export async function fetchConversation(conversationId) {
-  const { data } = await flareApi.get(`/api/v1/chat/conversations/${conversationId}`);
+export async function fetchConversation(conversationId, signal) {
+  const { data } = await flareApi.get(`/api/v1/chat/conversations/${conversationId}`, { signal });
   return data;
 }
 

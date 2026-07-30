@@ -5,17 +5,10 @@ import { useNetworkStatus, useNetworkEmissions } from "@/hooks/queries/useRflrQu
 import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwnershipBar";
 import MetricTile from "@/pages/DefiProtocols/components/shared/MetricTile";
 import NetworkPulseSkeleton from "@/pages/RflrVesting/components/skeletons/NetworkPulseSkeleton";
+import { formatDate } from "@/utils/format";
 
 function formatFlrCompact(value) {
   return `${Number(value).toLocaleString(undefined, { notation: "compact", maximumFractionDigits: 2 })} FLR`;
-}
-
-function formatDate(dateStr) {
-  return new Date(dateStr).toLocaleDateString(undefined, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
 }
 
 function formatCountdown(seconds, t) {
@@ -35,16 +28,24 @@ export default function NetworkPulseSection() {
   const statusQuery = useNetworkStatus();
   const emissionsQuery = useNetworkEmissions();
 
-  const isLoading = statusQuery.isLoading || emissionsQuery.isLoading;
   const isError = statusQuery.isError || emissionsQuery.isError;
   const isFetching = statusQuery.isFetching || emissionsQuery.isFetching;
+  // Deliberately `isSuccess`, not `isLoading` — `isLoading` is only true
+  // while a first-ever fetch is actively in flight, so a query that's
+  // paused (e.g. offline, with the default `networkMode: 'online'`) has
+  // `isLoading === false` with no data and no error either. That combo
+  // used to fall through the skeleton guard below straight into JSX
+  // reading `statusQuery.data.next_distribution_date` etc. with no `?.`,
+  // crashing on `Cannot read properties of undefined` — the same shape
+  // bug the RflrVesting page itself shipped with (see its own fix).
+  const isReady = statusQuery.isSuccess && emissionsQuery.isSuccess;
 
   const refetchAll = () => {
     statusQuery.refetch();
     emissionsQuery.refetch();
   };
 
-  if (isLoading) return <NetworkPulseSkeleton />;
+  if (!isError && !isReady) return <NetworkPulseSkeleton />;
 
   return (
     <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">

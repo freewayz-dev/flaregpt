@@ -4,6 +4,7 @@
     "description": "この機能は現在開発中です。しばらくしてから再度ご確認ください。"
   },
   "connectModal": {
+    "close": "閉じる",
     "connecting": "接続中…",
     "errors": {
       "braveBlocked": {
@@ -271,8 +272,10 @@
     },
     "history": {
       "cancelRename": "キャンセル",
+      "close": "閉じる",
       "delete": "削除",
       "empty": "まだ会話がありません",
+      "loadFailed": "会話を読み込めませんでした。",
       "moreActions": "その他の操作",
       "newChat": "新しいチャット",
       "noResults": "検索に一致する会話がありません",
@@ -366,6 +369,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "Gas Sniperのステータスを確認できませんでした",
     "checking": "Gas Sniperのステータスを確認中…",
     "enabled": "Gas Sniperにより自動請求済み",
     "nudge": "自動請求するにはGas Sniperをオンにしてください",
@@ -465,6 +469,8 @@
       "reconnectDescription": "一度限りのオンチェーン承認を完了するには、このウォレットを再接続してください。",
       "reconnectTitle": "続行するには再接続してください",
       "signInHint": "Gas Sniperを有効にするには、ウォレットでサインインしてください。",
+      "statusCheckFailed": "Gas Sniperのステータスを確認できませんでした。",
+      "statusUnknown": "ステータス不明",
       "title": "Gas Sniper",
       "toggleFailed": "Gas Sniperを更新できませんでした。もう一度お試しください。"
     }
@@ -478,11 +484,14 @@
     "balancesHiddenLabel": "残高は非表示です",
     "configureWatchlistWallets": "ウォッチリストウォレットを設定",
     "connectWallet": "ウォレットを接続",
+    "copyAddress": "アドレスをコピー",
     "copyFailed": "アドレスをコピーできませんでした",
     "disconnectWallet": "ウォレットを切断",
     "flareGptFabHint": "FlareGPTはここから開くようになりました",
     "hideBalances": "残高を非表示",
     "mainnetStatus": "Flareメインネット",
+    "moreOptions": "その他のオプション",
+    "openMenu": "メニューを開く",
     "primaryWalletSection": "プライマリウォレット",
     "showBalances": "残高を表示",
     "signIn": "サインイン",
@@ -490,6 +499,10 @@
     "signingIn": "サインイン中…",
     "signInPrompt": "このウォレットを確認して続行するには、メッセージに署名してください。",
     "watchlistSection": "ウォッチリスト ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "オフラインです。自動的に再接続します。",
+    "backOnline": "オンラインに復帰しました"
   },
   "rflrVesting": {
     "description": "rFLRのベスティング進捗、今後のアンロック、ネットワーク全体の発行状況を一か所で確認できます。",
@@ -577,6 +590,7 @@
       "accountSubtitle": "サーバー上のアカウントと同期されています。",
       "accountTitle": "アカウントデータ",
       "clear": "削除",
+      "clearing": "削除中…",
       "confirmClear": "確認しますか？",
       "conversations": "FlareGPTの会話",
       "conversationsCleared": "会話を削除しました",
@@ -695,6 +709,7 @@
       "limit": "最大 {{max}} 個のウォレットを接続できます",
       "limitReached": "ウォレットの制限に達しました ({{current}}/{{max}})",
       "liveConnected": "ライブ接続",
+      "loadFailed": "追跡中のウォレットを読み込めませんでした。",
       "manageSubtitle": "アクティブなWeb 3接続と読み取り専用ポートフォリオトラッキングアカウントを管理します。",
       "maximum": "最大",
       "noDefaultSelected": "未選択",
@@ -716,10 +731,13 @@
   "sidebar": {
     "activeWallet": "有効：{{address}}",
     "addWatchlistWallet": "+ウォッチリストウォレットを追加",
+    "closeMenu": "メニューを閉じる",
+    "collapseSidebar": "サイドバーを折りたたむ",
     "connectWallet": "ウォレットを接続",
     "defiProtocols": "Defiプロトコル",
     "disconnect": "接続解除",
     "donate": "寄付",
+    "expandSidebar": "サイドバーを展開する",
     "feeds": "RSSフィード",
     "FlareGPT": "フレアGPT",
     "ftsoRewards": "FTSO報酬",

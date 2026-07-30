@@ -106,6 +106,19 @@ export default function Navbar({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Matches ExportMenu/RowMenu elsewhere in the app, which both already
+  // close on Escape — these two dropdowns were the odd ones out, only ever
+  // closing on click-outside.
+  useEffect(() => {
+    function handleEscape(e) {
+      if (e.key !== "Escape") return;
+      setWalletMenuOpen(false);
+      setMobileMenuOpen(false);
+    }
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
+
   const getNavbarTitle = () => {
     const path = location.pathname.toLowerCase().replace(/\/$/, "");
 
@@ -249,7 +262,9 @@ export default function Navbar({
           <button
             type="button"
             onClick={() => setSidebarOpen(true)}
-            className="p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] lg:hidden cursor-pointer shrink-0"
+            aria-label={t("navbar.openMenu")}
+            title={t("navbar.openMenu")}
+            className="p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] lg:hidden cursor-pointer shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
           >
             <svg
               width="25"
@@ -482,7 +497,11 @@ export default function Navbar({
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="mobile-trigger-btn lg:hidden rounded-lg p-1 text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-[#1B1B1F] transition-colors cursor-pointer z-50 relative"
+            aria-label={t("navbar.moreOptions")}
+            title={t("navbar.moreOptions")}
+            aria-haspopup="true"
+            aria-expanded={mobileMenuOpen}
+            className="mobile-trigger-btn lg:hidden rounded-lg p-1 text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-[#1B1B1F] transition-colors cursor-pointer z-50 relative focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
           >
             {mobileMenuOpen ? (
               <XMarkIcon className="h-6 w-6 text-brand" />

@@ -4,6 +4,7 @@
     "description": "我们正在构建此功能。请稍后再回来查看。"
   },
   "connectModal": {
+    "close": "关闭",
     "connecting": "连接中…",
     "errors": {
       "braveBlocked": {
@@ -271,8 +272,10 @@
     },
     "history": {
       "cancelRename": "取消",
+      "close": "关闭",
       "delete": "删除",
       "empty": "暂无对话",
+      "loadFailed": "无法加载您的对话。",
       "moreActions": "更多操作",
       "newChat": "新对话",
       "noResults": "没有与您的搜索匹配的对话",
@@ -366,6 +369,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "无法检查 Gas Sniper 状态",
     "checking": "正在检查 Gas Sniper 状态…",
     "enabled": "已由 Gas Sniper 自动领取",
     "nudge": "开启 Gas Sniper 以自动领取",
@@ -465,6 +469,8 @@
       "reconnectDescription": "请重新连接此钱包以完成一次性链上批准。",
       "reconnectTitle": "重新连接以继续",
       "signInHint": "使用您的钱包登录以为其开启 Gas Sniper。",
+      "statusCheckFailed": "无法检查 Gas Sniper 状态。",
+      "statusUnknown": "状态未知",
       "title": "Gas Sniper",
       "toggleFailed": "无法更新 Gas Sniper，请重试。"
     }
@@ -478,11 +484,14 @@
     "balancesHiddenLabel": "余额已隐藏",
     "configureWatchlistWallets": "管理关注列表钱包",
     "connectWallet": "连接钱包",
+    "copyAddress": "复制地址",
     "copyFailed": "无法复制地址",
     "disconnectWallet": "断开钱包连接",
     "flareGptFabHint": "FlareGPT 现在从这里打开",
     "hideBalances": "隐藏余额",
     "mainnetStatus": "Flare 主网",
+    "moreOptions": "更多选项",
+    "openMenu": "打开菜单",
     "primaryWalletSection": "主钱包",
     "showBalances": "显示余额",
     "signIn": "登录",
@@ -490,6 +499,10 @@
     "signingIn": "正在登录…",
     "signInPrompt": "签署一条消息以验证此钱包并继续。",
     "watchlistSection": "关注列表 ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "您已离线，我们将自动重新连接。",
+    "backOnline": "已恢复连接"
   },
   "rflrVesting": {
     "description": "在一个地方跟踪您的 rFLR 归属进度、即将到来的解锁以及全网排放情况。",
@@ -577,6 +590,7 @@
       "accountSubtitle": "与服务器上的账户同步。",
       "accountTitle": "账户数据",
       "clear": "清除",
+      "clearing": "正在清除…",
       "confirmClear": "确认？",
       "conversations": "FlareGPT 对话",
       "conversationsCleared": "对话已清除",
@@ -695,6 +709,7 @@
       "limit": "您最多可以连接 {{max}} 个钱包",
       "limitReached": "达到钱包上限 ({{current}}/{{max}})",
       "liveConnected": "实时连接",
+      "loadFailed": "无法加载您跟踪的钱包。",
       "manageSubtitle": "管理您的活动Web3连接和只读投资组合跟踪帐户。",
       "maximum": "最大容量",
       "noDefaultSelected": "未选择",
@@ -716,10 +731,13 @@
   "sidebar": {
     "activeWallet": "有效： {{address}}",
     "addWatchlistWallet": "+添加关注列表钱包",
+    "closeMenu": "关闭菜单",
+    "collapseSidebar": "收起侧边栏",
     "connectWallet": "连接钱包",
     "defiProtocols": "Defi方案",
     "disconnect": "断开连接",
     "donate": "捐献",
+    "expandSidebar": "展开侧边栏",
     "feeds": "馈送",
     "FlareGPT": "耀斑GPT",
     "ftsoRewards": "FTSO 奖励",

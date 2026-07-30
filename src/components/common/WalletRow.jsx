@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { WalletIcon, ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 import { shortenAddress } from "@/utils/address";
@@ -15,6 +16,7 @@ import { shortenAddress } from "@/utils/address";
 // since there's no nickname system for the connected wallet). Watchlist
 // rows keep their nickname.
 export default function WalletRow({ wallet, isActive, copiedAddress, onSelect, onCopy, variant = "desktop" }) {
+  const { t } = useTranslation();
   const justCopied = copiedAddress === wallet.address;
   const isMobile = variant === "mobile";
   const displayName =
@@ -62,7 +64,9 @@ export default function WalletRow({ wallet, isActive, copiedAddress, onSelect, o
       <button
         type="button"
         onClick={(e) => onCopy(e, wallet.address)}
-        className="shrink-0 p-1 rounded-md text-current opacity-60 hover:opacity-100 hover:bg-black/5 dark:hover:bg-white/10 transition-all cursor-pointer"
+        aria-label={t("navbar.copyAddress")}
+        title={t("navbar.copyAddress")}
+        className="shrink-0 p-2 -m-1 rounded-md text-current opacity-60 hover:opacity-100 hover:bg-black/5 dark:hover:bg-white/10 transition-all cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
       >
         {justCopied ? (
           <CheckIcon className="h-3 w-3 text-emerald-500" />

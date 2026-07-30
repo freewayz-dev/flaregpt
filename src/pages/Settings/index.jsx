@@ -127,7 +127,7 @@ export default function Settings() {
         onClick={() => setActiveTab(tab.id)}
         data-text={tabLabel}
         className={`
-          relative flex items-center gap-2.5 px-3.5 py-2.5 md:py-3 text-xs rounded-xl cursor-pointer group shrink-0 snap-center transition-colors duration-150 ease-out outline-none
+          relative flex items-center gap-2.5 px-3.5 py-2.5 md:py-3 text-xs rounded-xl cursor-pointer group shrink-0 snap-center transition-colors duration-150 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2
           ${
             isActive
               ? "bg-surface-card text-brand font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.01)]"

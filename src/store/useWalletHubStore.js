@@ -92,6 +92,26 @@ export const useWalletHubStore = create()(
         const isStillAvailable = allWallets.some(w => w.address === activeAddress);
         if (isStillAvailable && activeAddress) return;
 
+        // `allWallets` is empty on every fresh page load for a beat before
+        // it means anything: zustand-persist's own hydration is deferred
+        // to a microtask (so the very first render always sees this
+        // store's in-code defaults, not localStorage), and wagmi's
+        // reconnect is async on top of that — so there's a real window
+        // where `allWallets` is `[]` purely because neither has resolved
+        // yet, not because a previously-active wallet was actually
+        // removed. Falling through to the "" fallback below during that
+        // window used to wipe a perfectly valid persisted activeAddress
+        // for however long reconnection took, and since dashboard queries
+        // are gated on `Boolean(activeAddress)`, every card on the page
+        // would sit disabled until *something else* (a manual wallet
+        // switch, a full reload landing in a luckier timing window)
+        // re-triggered this reconcile — exactly the "cards silently never
+        // load, have to refresh" report this fixes. An explicit removal
+        // (see removeTrackedWallet above) already clears activeAddress
+        // itself when appropriate; this fallback only needs to run once
+        // allWallets has *something* to actually check against.
+        if (allWallets.length === 0 && activeAddress) return;
+
         const preferredIsAvailable = allWallets.some(w => w.address === preferredDefaultAddress);
         const fallback =
           (preferredIsAvailable && preferredDefaultAddress) || allWallets[0]?.address || "";
@@ -123,7 +143,11 @@ export function useDerivedWalletHub(connectedAddress, isConnected) {
 
   // Only ever fetched once signed in (`enabled: hasSession`) — a guest's
   // watchlist never goes near react-query or the network at all.
-  const { data: serverWallets } = useWatchlist(hasSession);
+  const {
+    data: serverWallets,
+    isError: watchlistIsError,
+    refetch: refetchWatchlist,
+  } = useWatchlist(hasSession);
 
   const trackedWallets = useMemo(() => {
     if (!hasSession) return localTrackedWallets;
@@ -182,6 +206,12 @@ export function useDerivedWalletHub(connectedAddress, isConnected) {
     remainingSlots: maxSlots - trackedWallets.length,
     isActivePrimary,
     hasSession,
+    // Surfaced so a signed-in user whose watchlist fetch genuinely failed
+    // (or is still paused/offline) sees that distinctly from "you have no
+    // tracked wallets yet" — see Wallets.jsx, which was previously unable
+    // to tell those two states apart at all.
+    watchlistIsError,
+    refetchWatchlist,
   };
 }
 

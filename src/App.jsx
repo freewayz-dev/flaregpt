@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { useQueryClient } from "@tanstack/react-query";
 import { MotionConfig } from "framer-motion";
 
 import BlueLightOverlay from "./components/common/BlueLightOverlay";
+import ErrorFallback from "./components/common/ErrorFallback";
 import AppRoutes from "./routes/AppRoutes";
 import { useUIStore } from "./store/useUIStore";
 import { useAuthSync } from "./hooks/useAuthSync";
@@ -10,6 +12,7 @@ import { useWatchlistSync } from "./hooks/useWatchlistSync";
 
 function App() {
   const reduceMotionOverride = useUIStore((state) => state.reduceMotionOverride);
+  const queryClient = useQueryClient();
 
   // Mounted at the app root, not inside DashboardLayout: wagmi's connection
   // state is global, and a wallet can be connected from the landing page
@@ -48,7 +51,26 @@ function App() {
   }, []);
 
   return (
-    <ErrorBoundary FallbackComponent={GlobalErrorFallback}>
+    // This is the last-resort boundary — anything that crashes above
+    // DashboardLayout's own page-level boundary (see there for the more
+    // common case) lands here, so recovery has to assume the *entire*
+    // React tree's state is suspect, not just one page's data.
+    //
+    // `resetErrorBoundary` by itself only clears this boundary's own
+    // caught-error flag and remounts the same children — it does nothing
+    // about whatever state actually caused the crash. If a stale/corrupt
+    // react-query cache entry was the culprit, the remounted tree reads
+    // the exact same bad entry and crashes again immediately, which reads
+    // as "the recovery button doesn't do anything" (the reported bug this
+    // is fixing). `onReset` clears the query cache first, so "Try again"
+    // gets a genuinely fresh start instead of re-triggering the same crash.
+    <ErrorBoundary
+      FallbackComponent={(props) => <ErrorFallback {...props} variant="root" />}
+      onReset={() => queryClient.clear()}
+      onError={(error, info) => {
+        console.error("[ErrorBoundary:root]", error, info?.componentStack);
+      }}
+    >
       {/* "user" (the default) makes every Framer Motion animation app-wide
           respect the OS's prefers-reduced-motion automatically, rather
           than each accordion/transition needing its own opt-in.
@@ -65,24 +87,3 @@ function App() {
 }
 
 export default App;
-
-function GlobalErrorFallback({ error, resetErrorBoundary }) {
-  return (
-    <div className="p-6 text-center max-w-md mx-auto my-20 border border-red-500/20 bg-red-500/5 rounded-2xl">
-      <h2 className="text-sm font-bold text-red-500">
-        Something went wrong
-      </h2>
-
-      <p className="text-xs text-slate-400 dark:text-zinc-500 font-mono mt-1">
-        {error.message}
-      </p>
-
-      <button
-        onClick={resetErrorBoundary}
-        className="mt-4 px-3 py-1.5 bg-red-500 text-white rounded-lg text-xs font-semibold"
-      >
-        Reload Application Component Context
-      </button>
-    </div>
-  );
-}

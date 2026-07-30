@@ -76,13 +76,16 @@ export default function KpiSummaryRow() {
     );
   }
 
-  const bestApr = strategies.isError
-    ? null
-    : Math.max(
-        ...Object.values(strategies.data?.strategies ?? {}).map((s) =>
-          parseAprPercent(s.apr),
-        ),
-      );
+  // `Math.max()` called with zero arguments returns `-Infinity`, not a
+  // sensible default — so this needs its own explicit "nothing to compare
+  // yet" guard rather than relying on `strategies.isError` alone. Without
+  // it, any state where `strategies.data` is empty/undefined but the query
+  // hasn't technically errored (still loading, paused while offline, or a
+  // genuinely empty `strategies` object) rendered the KPI as "-Infinity%".
+  const aprValues = Object.values(strategies.data?.strategies ?? {}).map((s) =>
+    parseAprPercent(s.apr),
+  );
+  const bestApr = strategies.isError || !aprValues.length ? null : Math.max(...aprValues);
 
   // A protocol that simply hasn't been opened yet (query idle, no error)
   // contributes 0 the same way a confirmed zero balance would — that's not

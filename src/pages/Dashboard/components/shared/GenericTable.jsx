@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useUIStore } from "@/store/useUIStore";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
 import SensitiveValue from "@/components/common/SensitiveValue";
+import { shortenAddress } from "@/utils/address";
 
 // Renders a table whose columns are derived from whatever keys are actually
 // present on the first item, rather than hardcoded field names. The FlareGPT
@@ -22,7 +23,7 @@ function formatCell(value, yesLabel, noLabel) {
   if (typeof value === "boolean") return value ? yesLabel : noLabel;
   if (typeof value === "string") {
     if (/^0x[a-fA-F0-9]{40}$/.test(value)) {
-      return `${value.slice(0, 6)}...${value.slice(-4)}`;
+      return shortenAddress(value);
     }
     return value;
   }

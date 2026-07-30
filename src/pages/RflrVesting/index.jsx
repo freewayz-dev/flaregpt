@@ -64,8 +64,6 @@ export default function RflrVesting() {
           title={t("dashboard.common.noWalletSelected")}
           description={t("rflrVesting.connectToSee")}
         />
-      ) : exitQuoteQuery.isLoading ? (
-        <RflrVestingSkeleton />
       ) : exitQuoteQuery.isError ? (
         <div className="rounded-2xl bg-surface-inset px-4 py-8 text-center">
           <p className="text-sm font-medium text-ink-primary">{t("rflrVesting.couldntLoad")}</p>
@@ -80,6 +78,18 @@ export default function RflrVesting() {
             {exitQuoteQuery.isFetching ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
           </button>
         </div>
+      ) : !exitQuoteQuery.isSuccess ? (
+        // Deliberately `!isSuccess`, not `isLoading` — `isLoading` is only
+        // true while a first-ever fetch is *actively in flight*. A query
+        // that has no data yet but also isn't loading or errored (most
+        // commonly: the browser is offline and `networkMode: 'online'`
+        // is holding the request paused rather than failing it) used to
+        // fall through this chain straight into the branch below, which
+        // reads `summary.hasNoRflr` on a `summary` that's still `null` —
+        // the exact crash ("Cannot read properties of null") this page
+        // shipped with. `!isSuccess` is the only condition that actually
+        // guarantees `summary` is populated on the other side of it.
+        <RflrVestingSkeleton />
       ) : summary.hasNoRflr ? (
         <WalletEmptyState
           icon={InboxIcon}

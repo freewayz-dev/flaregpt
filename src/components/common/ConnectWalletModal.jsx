@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useConnect, useConnectors, useConnection } from "wagmi";
 import { useTranslation } from "react-i18next";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -191,8 +191,20 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
   // a full guarantee, which no page-level code can provide.
   const [, setRefreshTick] = useState(0);
 
+  // Focus management: a keyboard user who opened this from the Sidebar or
+  // Navbar's wallet button previously stayed focused on that button the
+  // whole time the modal was open (no focus trap either — Tab walked
+  // straight through into the dashboard behind it), then never got focus
+  // back at all on close. Captured on open, restored on close; the actual
+  // "move focus in" happens once `shouldRender` flips (see below), not here
+  // — the close button this focuses doesn't exist in the DOM until after
+  // that state update commits.
+  const previouslyFocusedRef = useRef(null);
+  const closeButtonRef = useRef(null);
+
   useEffect(() => {
     if (isOpen) {
+      previouslyFocusedRef.current = document.activeElement;
       setShouldRender(true);
       const timer = setTimeout(() => setAnimate(true), 20);
       return () => clearTimeout(timer);
@@ -202,6 +214,15 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (shouldRender) {
+      closeButtonRef.current?.focus();
+    } else if (previouslyFocusedRef.current) {
+      previouslyFocusedRef.current.focus?.();
+      previouslyFocusedRef.current = null;
+    }
+  }, [shouldRender]);
 
   useEffect(() => {
     if (isConnected && isOpen) onClose();
@@ -341,13 +362,16 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
       />
 
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="connect-wallet-modal-title"
         className={`relative w-full bg-surface-card border border-[#E5E7EB] dark:border-none p-5 shadow-xl transition-all duration-200 ease-out rounded-t-2xl max-w-none transform-gpu sm:relative sm:rounded-2xl sm:max-w-lg ${transitionStyles}`}
       >
         <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-gray-300 dark:bg-zinc-800 sm:hidden" />
 
         <div className="flex items-center justify-between pb-4 border-b border-line">
           <div>
-            <h3 className="text-sm font-bold text-ink-primary">
+            <h3 id="connect-wallet-modal-title" className="text-sm font-bold text-ink-primary">
               {t("connectModal.title")}
             </h3>
             <p className="text-[11px] text-ink-secondary mt-0.5">
@@ -355,9 +379,12 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
             </p>
           </div>
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            className="rounded-lg p-1 text-ink-secondary hover:bg-surface-subtle transition-colors cursor-pointer"
+            aria-label={t("connectModal.close")}
+            title={t("connectModal.close")}
+            className="rounded-lg p-1 text-ink-secondary hover:bg-surface-subtle transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
           >
             <XMarkIcon className="h-4 w-4" />
           </button>

@@ -10,23 +10,12 @@ import {
   fetchFlrOhlc,
 } from "@/services/dashboardService";
 import { queryKeys } from "@/services/queryKeys";
-
-// A capped retry/backoff for the global (non-wallet-specific) endpoints.
-// Without this, the app-wide default (retry: 1 with React Query's default
-// up-to-30s backoff) combined with a 15s axios timeout meant a single flaky
-// request could sit "loading" for close to a minute before finally
-// surfacing an error — which reads as an infinite hang to a user, even
-// though it does eventually resolve. Bounding both the retry count and the
-// backoff delay makes every card's error+retry UI show up promptly instead.
-const QUICK_RESILIENCE = {
-  retry: 1,
-  retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 5_000),
-};
+import { QUICK_RESILIENCE, WALLET_QUERY_RESILIENCE, retryUpTo } from "@/hooks/queries/resilience";
 
 export function useHealth() {
   return useQuery({
     queryKey: queryKeys.dashboard.health(),
-    queryFn: fetchHealth,
+    queryFn: ({ signal }) => fetchHealth(signal),
     staleTime: 60_000,
     ...QUICK_RESILIENCE,
   });
@@ -38,7 +27,7 @@ export function useHealth() {
 export function useGasPrice() {
   return useQuery({
     queryKey: queryKeys.dashboard.gasPrice(),
-    queryFn: fetchGasPrice,
+    queryFn: ({ signal }) => fetchGasPrice(signal),
     refetchInterval: 20_000,
     ...QUICK_RESILIENCE,
   });
@@ -47,26 +36,16 @@ export function useGasPrice() {
 export function useMarketOverview() {
   return useQuery({
     queryKey: queryKeys.dashboard.marketOverview(),
-    queryFn: fetchMarketOverview,
+    queryFn: ({ signal }) => fetchMarketOverview(signal),
     refetchInterval: 60_000,
     ...QUICK_RESILIENCE,
   });
 }
 
-// These two hit a wallet-specific endpoint that's more exposed to transient
-// network blips than the global stats endpoints (per-request work, not
-// cached upstream). 3 retries with exponential backoff rides out a brief
-// blip automatically; the card itself still offers a manual retry button
-// for when the network is genuinely down for longer than that.
-const WALLET_QUERY_RESILIENCE = {
-  retry: 3,
-  retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 10_000),
-};
-
 export function useWalletBalances(walletAddress) {
   return useQuery({
     queryKey: queryKeys.dashboard.walletBalances(walletAddress),
-    queryFn: () => fetchWalletBalances(walletAddress),
+    queryFn: ({ signal }) => fetchWalletBalances(walletAddress, signal),
     enabled: Boolean(walletAddress),
     ...WALLET_QUERY_RESILIENCE,
   });
@@ -75,7 +54,7 @@ export function useWalletBalances(walletAddress) {
 export function useFtsoPortfolio(walletAddress) {
   return useQuery({
     queryKey: queryKeys.dashboard.ftsoPortfolio(walletAddress),
-    queryFn: () => fetchFtsoPortfolio(walletAddress),
+    queryFn: ({ signal }) => fetchFtsoPortfolio(walletAddress, signal),
     enabled: Boolean(walletAddress),
     ...WALLET_QUERY_RESILIENCE,
   });
@@ -83,23 +62,19 @@ export function useFtsoPortfolio(walletAddress) {
 
 // CoinGecko's public API (no key, shared rate-limit pool across everyone
 // using it anonymously) returns 429 when that limit is hit — common enough
-// in practice to design for explicitly rather than treat as exceptional. A
-// 429 is worth waiting out with backoff since it self-resolves; a definitive
-// 4xx like 404 never will, so retrying it is just wasted time in front of
-// the user before the error+retry UI shows up.
+// in practice to design for explicitly rather than treat as exceptional.
+// `retryUpTo` already treats 429 as retryable and a definitive 4xx like 404
+// as not, which is exactly this endpoint's shape; only the backoff timing
+// differs from the shared profiles (CoinGecko's rate limit window is wider).
 const COINGECKO_RESILIENCE = {
-  retry: (failureCount, error) => {
-    const status = error?.response?.status;
-    if (status && status !== 429 && status >= 400 && status < 500) return false;
-    return failureCount < 2;
-  },
+  retry: retryUpTo(2),
   retryDelay: (attempt) => Math.min(2000 * 2 ** attempt, 15_000),
 };
 
 export function useFlrPriceHistory(days) {
   return useQuery({
     queryKey: queryKeys.dashboard.flrPriceHistory(days),
-    queryFn: () => fetchFlrPriceHistory(days),
+    queryFn: ({ signal }) => fetchFlrPriceHistory(days, signal),
     staleTime: 5 * 60_000,
     ...COINGECKO_RESILIENCE,
   });
@@ -108,7 +83,7 @@ export function useFlrPriceHistory(days) {
 export function useFlrOhlc(days) {
   return useQuery({
     queryKey: queryKeys.dashboard.flrOhlc(days),
-    queryFn: () => fetchFlrOhlc(days),
+    queryFn: ({ signal }) => fetchFlrOhlc(days, signal),
     staleTime: 5 * 60_000,
     ...COINGECKO_RESILIENCE,
   });

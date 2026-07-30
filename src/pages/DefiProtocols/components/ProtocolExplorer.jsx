@@ -8,12 +8,7 @@ import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import { PROTOCOLS } from "@/pages/DefiProtocols/protocols";
-
-function formatAmount(value, maxFractionDigits = 4) {
-  return Number(value).toLocaleString(undefined, {
-    maximumFractionDigits: maxFractionDigits,
-  });
-}
+import { formatAmount } from "@/utils/format";
 
 function ProtocolListRow({ protocol, isActive, onClick, balance, t }) {
   const Icon = protocol.icon;

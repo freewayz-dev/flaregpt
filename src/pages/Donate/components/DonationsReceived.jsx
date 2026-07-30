@@ -3,10 +3,7 @@ import { useTranslation } from "react-i18next";
 import { DONATION_COINS } from "@/config/donation";
 import TokenIcon from "@/components/common/TokenIcon";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
-
-function formatAmount(value) {
-  return Number(value).toLocaleString(undefined, { maximumFractionDigits: 4 });
-}
+import { formatAmount } from "@/utils/format";
 
 // Same inset-tile language as WalletBalancesCard's balance grid (icon +
 // symbol label, bold amount below) — a "modern dashboard component"

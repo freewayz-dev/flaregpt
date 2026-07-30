@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { web3Config } from "./config/web3Config.js";
 import App from "./App.jsx";
 import { initI18n } from "./i18n";
+import { retryUpTo } from "./hooks/queries/resilience.js";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
@@ -16,8 +17,20 @@ import "./index.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false,
-      retry: 1,
+      // On by default: a card whose fetch silently failed (or is stuck
+      // paused from being offline) while a tab was backgrounded should
+      // self-heal the moment the user comes back, rather than sitting
+      // stale/broken until they manually refresh. Queries that fetch a
+      // large/expensive payload (e.g. useWalletActivityQueries) opt back
+      // out individually where a refetch on every tab-refocus isn't worth
+      // the backend cost.
+      refetchOnWindowFocus: true,
+      // Status-aware even as the fallback for queries with no explicit
+      // resilience profile of their own (e.g. useConversations,
+      // useWatchlist) — a definitive 4xx (most commonly an expired/invalid
+      // auth token 401ing) fails the same way every time, so retrying it
+      // only delays the error UI a user can actually act on.
+      retry: retryUpTo(1),
     },
   },
 });

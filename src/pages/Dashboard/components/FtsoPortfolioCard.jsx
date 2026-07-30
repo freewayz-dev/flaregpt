@@ -8,10 +8,7 @@ import TokenRow from "@/components/common/TokenRow";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import GasSniperClaimStatus from "@/components/common/GasSniperClaimStatus";
 import FtsoPortfolioCardSkeleton from "@/pages/Dashboard/components/skeletons/FtsoPortfolioCardSkeleton";
-
-function formatAmount(value) {
-  return Number(value).toLocaleString(undefined, { maximumFractionDigits: 4 });
-}
+import { formatAmount } from "@/utils/format";
 
 // Used to expose a manual "Claim Rewards" button here — removed now that
 // Gas Sniper claims automatically once enabled (see GasSniperCard.jsx), so

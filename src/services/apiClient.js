@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 import { useAuthStore } from "@/store/useAuthStore";
 
@@ -43,6 +44,37 @@ flareApi.interceptors.request.use((config) => {
   }
   return config;
 });
+
+// The backend's own `/auth/verify` response confirms tokens expire after
+// 30 days (`expires_in: 2592000`), not never — but until now nothing in the
+// app noticed that happening mid-session. useAuthSync.js's mount-time check
+// only ever catches an already-invalid token on a fresh page load; a token
+// that expires (or gets revoked) while the app is already open would just
+// make every request that carried it fail with a generic "couldn't load" +
+// retry, and retrying can never succeed since the same expired token 401s
+// every time — indistinguishable from a real network problem to the user.
+//
+// Scoped to requests that actually carried a token (`hadToken`, captured
+// from the same store snapshot the request interceptor above used) —
+// a 401 from an endpoint that's *expected* to 401 for a guest (watchlist,
+// conversations, etc.) is normal and must never clear a session that was
+// never there to begin with. `toastId` dedupes the message when several
+// wallet-scoped queries all 401 around the same moment.
+flareApi.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error?.response?.status === 401) {
+      const { token, clearAuth } = useAuthStore.getState();
+      if (token) {
+        clearAuth();
+        toast.error("Your session expired. Please sign in again.", {
+          toastId: "session-expired",
+        });
+      }
+    }
+    return Promise.reject(error);
+  },
+);
 
 // CoinGecko's public API is used for FLR/USD historical price data — the
 // FlareGPT API only exposes current spot price, not a time series.

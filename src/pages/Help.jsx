@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   MagnifyingGlassIcon,
   XMarkIcon,
@@ -62,6 +63,7 @@ export default function Help() {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState("");
   const [openFaq, setOpenFaq] = useState(null);
+  const faqPanelIdPrefix = useId();
 
   const faqsList = useMemo(
     () => t("help.faqs", { returnObjects: true }) || [],
@@ -233,6 +235,7 @@ export default function Help() {
             <div className="space-y-2.5">
               {filteredFaqs.map((faq, index) => {
                 const isOpen = openFaq === index;
+                const panelId = `${faqPanelIdPrefix}-faq-${index}`;
                 return (
                   <div
                     key={index}
@@ -242,6 +245,7 @@ export default function Help() {
                       type="button"
                       onClick={() => setOpenFaq(isOpen ? null : index)}
                       aria-expanded={isOpen}
+                      aria-controls={panelId}
                       className={`flex w-full items-center justify-between gap-4 px-4 py-3.5 text-left cursor-pointer group rounded-xl ${FOCUS_RING}`}
                     >
                       <span className="text-xs font-medium text-[#475569] group-hover:text-ink-primary dark:group-hover:text-[#FAFAFA] transition-colors">
@@ -260,17 +264,32 @@ export default function Help() {
                       </div>
                     </button>
 
-                    <div
-                      className={`grid transition-[grid-template-rows] duration-200 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="px-4 pb-4 pt-1 border-t border-line/60">
-                          <p className="text-xs leading-relaxed text-[#475569] dark:text-[#6D7A86]">
-                            {faq.answer}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Same height/opacity + AnimatePresence pattern (250ms
+                        easeInOut) as every other accordion in the app
+                        (Disclosure.jsx, StrategyComparisonTable.jsx,
+                        ProtocolExplorer.jsx) — this previously used a raw
+                        CSS grid-template-rows transition at a different
+                        duration, the one accordion in the app that felt
+                        different from the rest for the same interaction. */}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          id={panelId}
+                          role="region"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-4 pb-4 pt-1 border-t border-line/60">
+                            <p className="text-xs leading-relaxed text-[#475569] dark:text-[#6D7A86]">
+                              {faq.answer}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}

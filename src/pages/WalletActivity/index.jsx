@@ -43,7 +43,7 @@ export default function WalletActivity() {
   const { t, i18n } = useTranslation();
   const { address: connectedAddress, isConnected } = useConnection();
   const { activeAddress } = useDerivedWalletHub(connectedAddress, isConnected);
-  const { data, isLoading, isError, isFetching, refetch } = useWalletActivity(activeAddress);
+  const { data, isSuccess, isError, isFetching, refetch } = useWalletActivity(activeAddress);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [search, setSearch] = useState("");
@@ -141,8 +141,6 @@ export default function WalletActivity() {
           title={t("dashboard.common.noWalletSelected")}
           description={t("wallet.activity.connectToSee")}
         />
-      ) : isLoading ? (
-        <WalletActivitySkeleton />
       ) : isError ? (
         <div className="rounded-2xl bg-surface-inset px-4 py-8 text-center">
           <p className="text-sm font-medium text-ink-primary">{t("wallet.activity.couldntLoad")}</p>
@@ -157,6 +155,15 @@ export default function WalletActivity() {
             {isFetching ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
           </button>
         </div>
+      ) : !isSuccess ? (
+        // Deliberately `!isSuccess`, not `isLoading` — a paused (offline)
+        // query has `isLoading: false` and `data: undefined`, which used to
+        // fall through to `!history.length` below and claim the wallet has
+        // zero activity. That's a materially different, misleading claim
+        // from "we don't know yet" — this keeps showing the skeleton (which
+        // self-clears once the query resolves) until we've actually heard
+        // back one way or the other.
+        <WalletActivitySkeleton />
       ) : !history.length ? (
         <WalletEmptyState
           icon={InboxIcon}

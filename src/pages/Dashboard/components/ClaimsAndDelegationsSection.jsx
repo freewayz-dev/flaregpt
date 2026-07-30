@@ -7,7 +7,6 @@ import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useFtsoPortfolio } from "@/hooks/queries/useDashboardQueries";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
 import GenericTable from "@/pages/Dashboard/components/shared/GenericTable";
-import TableCardSkeleton from "@/pages/Dashboard/components/skeletons/TableCardSkeleton";
 import ClaimsHistoryCard from "@/pages/Dashboard/components/ClaimsHistoryCard";
 import DelegationsBreakdownCard from "@/pages/Dashboard/components/DelegationsBreakdownCard";
 

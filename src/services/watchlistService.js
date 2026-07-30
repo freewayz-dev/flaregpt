@@ -3,8 +3,8 @@ import { flareApi } from "@/services/apiClient";
 // Requires auth (confirmed live: 401 without a session) — this is only
 // ever called for a signed-in user; guests use their own local-only list
 // (see useWalletHubStore.js).
-export async function fetchWatchlist() {
-  const { data } = await flareApi.get("/api/v1/watchlist");
+export async function fetchWatchlist(signal) {
+  const { data } = await flareApi.get("/api/v1/watchlist", { signal });
   return data.wallets ?? [];
 }
 

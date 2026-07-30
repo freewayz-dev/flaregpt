@@ -4,6 +4,7 @@
     "description": "Chúng tôi đang xây dựng tính năng này. Hãy kiểm tra lại sau ít phút."
   },
   "connectModal": {
+    "close": "Đóng",
     "connecting": "Đang kết nối…",
     "errors": {
       "braveBlocked": {
@@ -271,8 +272,10 @@
     },
     "history": {
       "cancelRename": "Hủy",
+      "close": "Đóng",
       "delete": "Xóa",
       "empty": "Chưa có cuộc trò chuyện nào",
+      "loadFailed": "Không thể tải các cuộc trò chuyện của bạn.",
       "moreActions": "Thao tác khác",
       "newChat": "Cuộc trò chuyện mới",
       "noResults": "Không có cuộc trò chuyện nào khớp với tìm kiếm của bạn",
@@ -366,6 +369,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "Không thể kiểm tra trạng thái Gas Sniper",
     "checking": "Đang kiểm tra trạng thái Gas Sniper…",
     "enabled": "Được Gas Sniper tự động nhận",
     "nudge": "Bật Gas Sniper để tự động nhận",
@@ -465,6 +469,8 @@
       "reconnectDescription": "Kết nối lại ví này để hoàn tất phê duyệt một lần trên chuỗi.",
       "reconnectTitle": "Kết nối lại để tiếp tục",
       "signInHint": "Đăng nhập bằng ví của bạn để bật Gas Sniper.",
+      "statusCheckFailed": "Không thể kiểm tra trạng thái Gas Sniper.",
+      "statusUnknown": "Không rõ trạng thái",
       "title": "Gas Sniper",
       "toggleFailed": "Không thể cập nhật Gas Sniper. Vui lòng thử lại."
     }
@@ -478,11 +484,14 @@
     "balancesHiddenLabel": "Số dư đã ẩn",
     "configureWatchlistWallets": "Cấu hình Ví trong Danh sách theo dõi",
     "connectWallet": "Kết nối Ví",
+    "copyAddress": "Sao chép địa chỉ",
     "copyFailed": "Không thể sao chép địa chỉ",
     "disconnectWallet": "Ngắt kết nối Ví",
     "flareGptFabHint": "FlareGPT giờ đây mở từ đây",
     "hideBalances": "Ẩn số dư",
     "mainnetStatus": "Mạng chính Flare",
+    "moreOptions": "Tùy chọn khác",
+    "openMenu": "Mở menu",
     "primaryWalletSection": "Ví Chính",
     "showBalances": "Hiện số dư",
     "signIn": "Đăng nhập",
@@ -490,6 +499,10 @@
     "signingIn": "Đang đăng nhập…",
     "signInPrompt": "Ký một tin nhắn để xác minh ví này và tiếp tục.",
     "watchlistSection": "Danh sách theo dõi ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "Bạn đang ngoại tuyến. Chúng tôi sẽ tự động kết nối lại.",
+    "backOnline": "Đã kết nối lại"
   },
   "rflrVesting": {
     "description": "Theo dõi tiến độ vesting rFLR, các đợt mở khóa sắp tới và lượng phát hành trên toàn mạng lưới tại một nơi.",
@@ -577,6 +590,7 @@
       "accountSubtitle": "Được đồng bộ với tài khoản của bạn trên máy chủ.",
       "accountTitle": "Dữ liệu tài khoản",
       "clear": "Xóa",
+      "clearing": "Đang xóa…",
       "confirmClear": "Xác nhận?",
       "conversations": "Cuộc trò chuyện FlareGPT",
       "conversationsCleared": "Đã xóa cuộc trò chuyện",
@@ -695,6 +709,7 @@
       "limit": "Bạn có thể kết nối tối đa {{max}} ví",
       "limitReached": "Đã đạt giới hạn ví ({{current}}/{{max}})",
       "liveConnected": "Đã kết nối trực tiếp",
+      "loadFailed": "Không thể tải các ví đang theo dõi của bạn.",
       "manageSubtitle": "Quản lý các kết nối Web3 đang hoạt động và tài khoản theo dõi danh mục đầu tư chỉ đọc của bạn.",
       "maximum": "Tối đa",
       "noDefaultSelected": "Chưa chọn",
@@ -716,10 +731,13 @@
   "sidebar": {
     "activeWallet": "Hoạt động: {{address}}",
     "addWatchlistWallet": "+ Thêm Ví Danh sách theo dõi",
+    "closeMenu": "Đóng menu",
+    "collapseSidebar": "Thu gọn thanh bên",
     "connectWallet": "Kết nối Ví",
     "defiProtocols": "Giao thức DEFI",
     "disconnect": "Ngắt kết nối",
     "donate": "Ủng hộ",
+    "expandSidebar": "Mở rộng thanh bên",
     "feeds": "Các nguồn dữ liệu",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Phần thưởng FTSO",

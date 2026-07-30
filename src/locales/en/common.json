@@ -4,6 +4,7 @@
     "description": "We're building this feature. Check back soon."
   },
   "connectModal": {
+    "close": "Close",
     "connecting": "Connecting…",
     "errors": {
       "braveBlocked": {
@@ -271,8 +272,10 @@
     },
     "history": {
       "cancelRename": "Cancel",
+      "close": "Close",
       "delete": "Delete",
       "empty": "No conversations yet",
+      "loadFailed": "Couldn't load your conversations.",
       "moreActions": "More actions",
       "newChat": "New Chat",
       "noResults": "No conversations match your search",
@@ -366,6 +369,7 @@
     }
   },
   "gasSniperStatus": {
+    "checkFailed": "Couldn't check Gas Sniper status",
     "checking": "Checking Gas Sniper status…",
     "enabled": "Auto-claimed by Gas Sniper",
     "nudge": "Turn on Gas Sniper to auto-claim",
@@ -465,6 +469,8 @@
       "reconnectDescription": "Reconnect this wallet to finish the one-time on-chain approval.",
       "reconnectTitle": "Reconnect to continue",
       "signInHint": "Sign in with your wallet to turn Gas Sniper on for it.",
+      "statusCheckFailed": "Couldn't check Gas Sniper's status.",
+      "statusUnknown": "Status unknown",
       "title": "Gas Sniper",
       "toggleFailed": "Couldn't update Gas Sniper. Try again."
     }
@@ -478,11 +484,14 @@
     "balancesHiddenLabel": "Balances hidden",
     "configureWatchlistWallets": "Configure Watchlist Wallets",
     "connectWallet": "Connect Wallet",
+    "copyAddress": "Copy address",
     "copyFailed": "Couldn't copy address",
     "disconnectWallet": "Disconnect Wallet",
     "flareGptFabHint": "FlareGPT now opens from here",
     "hideBalances": "Hide balances",
     "mainnetStatus": "Flare Mainnet",
+    "moreOptions": "More options",
+    "openMenu": "Open menu",
     "primaryWalletSection": "Primary Wallet",
     "showBalances": "Show balances",
     "signIn": "Sign In",
@@ -490,6 +499,10 @@
     "signingIn": "Signing in…",
     "signInPrompt": "Sign a message to verify this wallet and continue.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
+  },
+  "offline": {
+    "message": "You're offline. We'll reconnect automatically.",
+    "backOnline": "Back online"
   },
   "rflrVesting": {
     "description": "Track your rFLR vesting progress, upcoming unlocks, and network-wide emissions in one place.",
@@ -577,6 +590,7 @@
       "accountSubtitle": "Synced to your account on the backend.",
       "accountTitle": "Account Data",
       "clear": "Clear",
+      "clearing": "Clearing…",
       "confirmClear": "Confirm?",
       "conversations": "FlareGPT Conversations",
       "conversationsCleared": "Conversations cleared",
@@ -586,7 +600,7 @@
       "localTitle": "Local Data",
       "walletCache": "Wallet Activity Cache",
       "walletCacheCleared": "Cache cleared",
-      "walletCacheDescription": "Clears the cached transaction history. The next visit will re-fetch it."
+      "walletCacheDescription": "Clears the cached transaction history. The next visit will fetch it again."
     },
     "description": "Manage wallets, preferences, localization, and display options.",
     "descriptions": {
@@ -695,6 +709,7 @@
       "limit": "You can connect up to {{max}} wallets",
       "limitReached": "Wallet Limit Reached ({{current}}/{{max}})",
       "liveConnected": "Live Connected",
+      "loadFailed": "Couldn't load your tracked wallets.",
       "manageSubtitle": "Manage your active Web3 connections and read-only portfolio tracking accounts.",
       "maximum": "Maximum",
       "noDefaultSelected": "None selected",
@@ -716,10 +731,13 @@
   "sidebar": {
     "activeWallet": "Active: {{address}}",
     "addWatchlistWallet": "+ Add Watchlist Wallet",
+    "closeMenu": "Close menu",
+    "collapseSidebar": "Collapse sidebar",
     "connectWallet": "Connect Wallet",
     "defiProtocols": "Defi Protocols",
     "disconnect": "Disconnect",
     "donate": "Donate",
+    "expandSidebar": "Expand sidebar",
     "feeds": "Feeds",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Rewards",
@@ -730,7 +748,7 @@
     "overview": "Overview",
     "rflrTracker": "rFLR Vesting",
     "settings": "Settings",
-    "signInRequired": "Sign-in required",
+    "signInRequired": "Sign in required",
     "signInRequiredHint": "Use the wallet menu in the top bar to sign in.",
     "walletActivity": "Wallet Activity",
     "walletConnected": "Wallet Connected"

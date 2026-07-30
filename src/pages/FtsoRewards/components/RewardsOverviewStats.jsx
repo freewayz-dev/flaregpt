@@ -8,10 +8,7 @@ import {
 
 import StatCard from "@/components/cards/StatCard";
 import SensitiveValue from "@/components/common/SensitiveValue";
-
-export function formatFlr(value, options) {
-  return `${Number(value).toLocaleString(undefined, { maximumFractionDigits: 4, ...options })} FLR`;
-}
+import { formatFlr } from "@/utils/format";
 
 // Presentational only — receives the already-derived summary (see
 // utils/deriveFtsoRewards.js), same split as rFLR's VestingOverviewStats.

@@ -13,6 +13,7 @@ import {
   BoltIcon,
   ShieldExclamationIcon,
   LinkSlashIcon,
+  ArrowPathIcon,
 } from "@heroicons/react/24/outline";
 
 import { useAuthStatus } from "@/hooks/useAuthStatus";
@@ -54,7 +55,13 @@ export default function GasSniperCard() {
   const authenticatedAddress = useAuthStore((s) => s.authenticatedAddress);
   const { chainId: connectedChainId } = useConnection();
 
-  const { data: status, isLoading: isLoadingStatus } = useGasSniperStatus();
+  const {
+    data: status,
+    isLoading: isLoadingStatus,
+    isError: isStatusError,
+    isFetching: isFetchingStatus,
+    refetch: refetchStatus,
+  } = useGasSniperStatus();
   const enableMutation = useEnableGasSniper();
   const disableMutation = useDisableGasSniper();
 
@@ -192,15 +199,22 @@ export default function GasSniperCard() {
   // in" (isCurrentWalletSignedIn is false in either case).
   const needsReconnect = needsApproval && !isCurrentWalletSignedIn;
 
+  // A failed status check used to fall straight through to "Inactive" —
+  // `status` stays `undefined`, so `isEnabled` (and therefore every branch
+  // below it) silently computed to `false` with no indication the check
+  // itself never actually succeeded. That's a real wallet potentially
+  // *already* enabled being told it isn't, with no retry offered.
   const statusInfo = !hasSession || isLoadingState
     ? null
-    : needsReconnect
-      ? { label: t("loops.gasSniper.needsReconnect"), tone: "warning" }
-      : needsApproval
-        ? { label: t("loops.gasSniper.needsApproval"), tone: "warning" }
-        : isEnabled
-          ? { label: t("loops.gasSniper.active"), tone: "success" }
-          : { label: t("loops.gasSniper.inactive"), tone: "neutral" };
+    : isStatusError
+      ? { label: t("loops.gasSniper.statusUnknown"), tone: "neutral" }
+      : needsReconnect
+        ? { label: t("loops.gasSniper.needsReconnect"), tone: "warning" }
+        : needsApproval
+          ? { label: t("loops.gasSniper.needsApproval"), tone: "warning" }
+          : isEnabled
+            ? { label: t("loops.gasSniper.active"), tone: "success" }
+            : { label: t("loops.gasSniper.inactive"), tone: "neutral" };
 
   return (
     <div className="rounded-2xl bg-surface-card shadow-sm border border-[#E5E7EB] dark:border-none p-5 sm:p-6">
@@ -232,7 +246,7 @@ export default function GasSniperCard() {
                 ? t("navbar.signingIn")
                 : t("navbar.signIn")}
           </button>
-        ) : !needsApproval && !isLoadingState ? (
+        ) : !needsApproval && !isLoadingState && !isStatusError ? (
           <Toggle checked={isEnabled} onChange={handleToggle} disabled={isMutating} />
         ) : null}
       </div>
@@ -240,6 +254,24 @@ export default function GasSniperCard() {
       <p className="mt-3 text-xs leading-relaxed text-ink-secondary max-w-lg">
         {t("loops.gasSniper.description")}
       </p>
+
+      {hasSession && !isLoadingState && isStatusError && (
+        <div className="mt-4 rounded-xl bg-surface-inset px-4 py-3 text-center">
+          <p className="text-xs font-medium text-ink-primary">
+            {t("loops.gasSniper.statusCheckFailed")}
+          </p>
+          <p className="mt-0.5 text-[11px] text-ink-muted">{t("dashboard.common.networkHiccup")}</p>
+          <button
+            type="button"
+            onClick={() => refetchStatus()}
+            disabled={isFetchingStatus}
+            className="mt-2.5 inline-flex items-center gap-1.5 rounded-lg bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand hover:bg-brand/20 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ArrowPathIcon className={`h-3.5 w-3.5 ${isFetchingStatus ? "animate-spin" : ""}`} />
+            {isFetchingStatus ? t("dashboard.common.retrying") : t("dashboard.common.retry")}
+          </button>
+        </div>
+      )}
 
       {needsReconnect && (
         <div className="mt-4 rounded-xl bg-amber-500/10 px-4 py-3">

@@ -262,6 +262,8 @@ export default function Wallets() {
     setPreferredDefaultAddress,
     maxSlots,
     remainingSlots,
+    watchlistIsError,
+    refetchWatchlist,
   } = useDerivedWalletHub(connectedAddress, isConnected);
 
   // Only ever actually called when hasSession — see handleSave/handleRemoveClick/commitEdit.
@@ -476,7 +478,29 @@ export default function Wallets() {
         title={t("settings.cards.connectedWallets")}
         subtitle={t("settings.wallets.manageSubtitle")}
       >
-        {allWallets.length === 0 ? (
+        {watchlistIsError && allWallets.length === 0 ? (
+          // Checked before the genuine-empty branch below — a signed-in
+          // user whose watchlist fetch failed (or is offline-paused) was
+          // previously shown the exact same "no wallets tracked yet" copy
+          // as someone who truly has none, with no way to tell the two
+          // apart or retry.
+          <div className="py-8 text-center rounded-2xl bg-surface-subtle px-4">
+            <p className="text-sm font-medium text-ink-primary">
+              {t("settings.wallets.loadFailed")}
+            </p>
+            <p className="mt-0.5 text-xs text-[#475569] dark:text-[#6D7A86]">
+              {t("dashboard.common.networkHiccup")}
+            </p>
+            <button
+              type="button"
+              onClick={() => refetchWatchlist()}
+              className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-brand/10 px-3 py-1.5 text-xs font-semibold text-brand hover:bg-brand/20 transition-colors cursor-pointer"
+            >
+              <ArrowPathIcon className="h-3.5 w-3.5" />
+              {t("dashboard.common.retry")}
+            </button>
+          </div>
+        ) : allWallets.length === 0 ? (
           <div className="py-8 text-center rounded-2xl bg-surface-subtle px-4">
             <WalletIcon className="h-8 w-8 mx-auto text-ink-muted mb-2" />
             <p className="text-sm font-medium text-ink-primary">

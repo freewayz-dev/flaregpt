@@ -5,6 +5,7 @@ import {
   BoltIcon,
   ArrowRightIcon,
   ArrowPathIcon,
+  ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
 
 import { useGasSniperStatus } from "@/hooks/queries/useLoopsQueries";
@@ -21,7 +22,11 @@ import { ROUTES } from "@/config/routes";
 //     it" nudge — defaulting either the query's undefined data (loading)
 //     or a failed fetch (error) to "not enabled" would assert a negative
 //     we haven't actually confirmed, which is exactly the kind of
-//     misleading state this was built to avoid.
+//     misleading state this was built to avoid. Error used to render
+//     nothing at all, which is *itself* a silent failure indistinguishable
+//     from "there's nothing to say here" — now it renders a small, clearly
+//     retry-able note instead, consistent with every other query on this
+//     page having its own visible error+retry affordance.
 //   - "enabled" and "not enabled" are shown regardless of the wallet's
 //     current unclaimed balance — whether Gas Sniper is on is a standing
 //     fact about the wallet's configuration, not something tied to
@@ -36,13 +41,19 @@ import { ROUTES } from "@/config/routes";
 //     silence, since silence would look identical to "we didn't check".
 export default function GasSniperClaimStatus({ activeAddress, isActivePrimary, className = "" }) {
   const { t } = useTranslation();
-  const { data, isLoading, isError } = useGasSniperStatus();
+  const { data, isSuccess, isError, isFetching, refetch } = useGasSniperStatus();
 
   // Applied to whichever element below actually renders, rather than a
   // wrapping div around everything — an error returns null with no
   // spacing applied at all, instead of leaving a stray empty `mt-4` gap
   // where the status used to be.
-  if (isLoading) {
+  //
+  // Deliberately `!isSuccess`, not `isLoading` — a query paused offline has
+  // `isLoading: false` and `data: undefined`, which used to fall through
+  // both this check and the error check below straight into `isEnabled`
+  // being computed as `false`, rendering a confident (and wrong) "not
+  // enabled" nudge instead of "we don't know yet".
+  if (!isSuccess && !isError) {
     return (
       <div className={`flex w-fit items-center gap-1.5 rounded-lg bg-surface-inset px-2.5 py-1.5 text-xs text-ink-muted ${className}`}>
         <ArrowPathIcon className="h-3.5 w-3.5 shrink-0 animate-spin" />
@@ -51,7 +62,20 @@ export default function GasSniperClaimStatus({ activeAddress, isActivePrimary, c
     );
   }
 
-  if (isError) return null;
+  if (isError) {
+    return (
+      <button
+        type="button"
+        onClick={() => refetch()}
+        disabled={isFetching}
+        className={`flex w-fit items-center gap-1.5 rounded-lg bg-surface-inset px-2.5 py-1.5 text-xs text-ink-muted hover:text-ink-secondary transition-colors cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed ${className}`}
+      >
+        <ExclamationTriangleIcon className="h-3.5 w-3.5 shrink-0" />
+        {t("gasSniperStatus.checkFailed")}
+        <ArrowPathIcon className={`h-3 w-3 shrink-0 ${isFetching ? "animate-spin" : ""}`} />
+      </button>
+    );
+  }
 
   const isEnabled = Boolean(
     activeAddress &&

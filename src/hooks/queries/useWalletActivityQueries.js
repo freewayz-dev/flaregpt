@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { fetchWalletActivity } from "@/services/walletActivityService";
 import { queryKeys } from "@/services/queryKeys";
+import { retryUpTo } from "@/hooks/queries/resilience";
 
 // Deliberately not the shared WALLET_QUERY_RESILIENCE (3 retries, backoff
 // capped at 10s) every other wallet-scoped hook uses — that's tuned for
@@ -11,7 +12,7 @@ import { queryKeys } from "@/services/queryKeys";
 // covers a genuine transient drop; anything past that surfaces the error +
 // manual retry button rather than silently compounding the wait.
 const LARGE_HISTORY_RESILIENCE = {
-  retry: 1,
+  retry: retryUpTo(1),
   retryDelay: 3_000,
 };
 

@@ -4,15 +4,7 @@ import { CalendarDaysIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwnershipBar";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
 import SensitiveValue from "@/components/common/SensitiveValue";
-import { formatFlr } from "@/pages/RflrVesting/components/VestingOverviewStats";
-
-function formatDate(dateStr) {
-  return new Date(dateStr).toLocaleDateString(undefined, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
+import { formatFlr, formatDate } from "@/utils/format";
 
 // Combines the two wallet-specific endpoints (melt schedule + exit quote)
 // into one card rather than two — "when is my next unlock" and "what would

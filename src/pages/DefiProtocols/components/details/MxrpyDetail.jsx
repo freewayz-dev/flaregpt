@@ -7,12 +7,7 @@ import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
 import TokenIcon from "@/components/common/TokenIcon";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import DetailSkeleton from "@/pages/DefiProtocols/components/skeletons/DetailSkeleton";
-
-function formatAmount(value, maxFractionDigits = 4) {
-  return Number(value).toLocaleString(undefined, {
-    maximumFractionDigits: maxFractionDigits,
-  });
-}
+import { formatAmount } from "@/utils/format";
 
 // Only ever renders the user's own position + one combined caption line up
 // front — circulating shares/decimals/contract address are all real fields

@@ -9,7 +9,7 @@ import { queryKeys } from "@/services/queryKeys";
 export function useGasSniperStatus() {
   return useQuery({
     queryKey: queryKeys.loops.gasSniperStatus(),
-    queryFn: loopsService.fetchGasSniperStatus,
+    queryFn: ({ signal }) => loopsService.fetchGasSniperStatus(signal),
     staleTime: 15_000,
   });
 }

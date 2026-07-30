@@ -110,7 +110,7 @@ export default function FlrPriceChart() {
 
   const priceHistoryQuery = useFlrPriceHistory(days);
   const ohlcQuery = useFlrOhlc(days);
-  const { data, isLoading, isError, isFetching, refetch } = isCandlestick
+  const { data, isSuccess, isError, isFetching, refetch } = isCandlestick
     ? ohlcQuery
     : priceHistoryQuery;
 
@@ -123,7 +123,13 @@ export default function FlrPriceChart() {
   const first = isCandlestick ? data?.[0]?.open : data?.[0]?.price;
   const changePct = latest != null && first ? ((latest - first) / first) * 100 : null;
 
-  if (isLoading) return <FlrPriceChartSkeleton />;
+  // Deliberately `!isSuccess`, not `isLoading` — a paused (offline) query
+  // reports `isLoading: false` with `data` still undefined, which used to
+  // fall through to the "couldn't load" error UI below even though nothing
+  // had actually failed yet. Treating "not yet successful" as still-loading
+  // means the skeleton clears on its own once the query resolves, instead of
+  // showing a misleading error that requires a manual retry to dismiss.
+  if (!isSuccess && !isError) return <FlrPriceChartSkeleton />;
 
   return (
     <div className="h-full min-w-0 rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
