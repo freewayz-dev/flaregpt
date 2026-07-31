@@ -62,7 +62,7 @@ function MobileTabs() {
             }
           />
         ) : isError ? (
-          <div className="py-6 text-center rounded-2xl bg-surface-inset px-4">
+          <div role="alert" className="py-6 text-center rounded-2xl bg-surface-inset px-4">
             <p className="text-sm font-medium text-ink-primary">
               {isClaimsTab
                 ? t("dashboard.claimsHistory.couldntLoad")

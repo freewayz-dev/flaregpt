@@ -214,7 +214,7 @@ export default function StrategyComparisonTable() {
       </div>
 
       {isError ? (
-        <div className="mt-6 rounded-2xl bg-surface-inset px-4 py-6 text-center">
+        <div role="alert" className="mt-6 rounded-2xl bg-surface-inset px-4 py-6 text-center">
           <p className="text-sm font-medium text-ink-primary">
             {t("defiProtocols.strategies.couldntLoad")}
           </p>
@@ -302,19 +302,18 @@ export default function StrategyComparisonTable() {
 
                   return (
                     <Fragment key={key}>
+                      {/* Deliberately a plain `<tr>` — not `role="button"` —
+                          so a screen reader's table navigation (next
+                          row/cell, read column headers for this cell) still
+                          works for this row, which overriding its implicit
+                          `row` role would break. `onClick` still toggles for
+                          mouse users clicking anywhere in the row; the real
+                          keyboard/AT-accessible control is the button in the
+                          last cell below, matching how the mobile card
+                          version of this same disclosure already does it. */}
                       <tr
                         onClick={toggle}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            toggle();
-                          }
-                        }}
-                        role="button"
-                        tabIndex={0}
-                        aria-expanded={isOpen}
-                        aria-controls={panelId}
-                        className="cursor-pointer transition-colors hover:bg-surface-inset focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:-outline-offset-2"
+                        className="cursor-pointer transition-colors hover:bg-surface-inset"
                       >
                         <td className="py-3.5 pl-5 sm:pl-8">
                           <div className="flex items-center gap-2">
@@ -355,11 +354,25 @@ export default function StrategyComparisonTable() {
                           </p>
                         </td>
                         <td className="py-3.5 pr-5 text-right sm:pr-8">
-                          <ChevronDownIcon
-                            className={`inline-block h-4 w-4 text-ink-muted transition-transform duration-300 ${
-                              isOpen ? "rotate-180" : ""
-                            }`}
-                          />
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggle();
+                            }}
+                            aria-expanded={isOpen}
+                            aria-controls={panelId}
+                            aria-label={t("defiProtocols.strategies.toggleDetails", {
+                              strategy: strategy.display_name,
+                            })}
+                            className="rounded-md p-1 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+                          >
+                            <ChevronDownIcon
+                              className={`inline-block h-4 w-4 text-ink-muted transition-transform duration-300 ${
+                                isOpen ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
                         </td>
                       </tr>
                       <tr>

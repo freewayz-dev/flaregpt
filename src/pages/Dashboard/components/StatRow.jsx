@@ -34,7 +34,7 @@ export default function StatRow() {
 
   if (isError) {
     return (
-      <div className="rounded-2xl bg-surface-card p-6 text-center shadow-sm border border-[#E5E7EB] dark:border-none">
+      <div role="alert" className="rounded-2xl bg-surface-card p-6 text-center shadow-sm border border-[#E5E7EB] dark:border-none">
         <p className="text-sm font-medium text-ink-primary">
           {t("dashboard.stats.couldntLoad")}
         </p>

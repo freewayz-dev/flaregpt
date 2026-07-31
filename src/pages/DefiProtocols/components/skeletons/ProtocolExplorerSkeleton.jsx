@@ -12,7 +12,7 @@ function RowSkeleton() {
 
 export default function ProtocolExplorerSkeleton() {
   return (
-    <div className="rounded-2xl bg-surface-card shadow-sm border border-[#E5E7EB] dark:border-none overflow-hidden">
+    <div role="status" className="rounded-2xl bg-surface-card shadow-sm border border-[#E5E7EB] dark:border-none overflow-hidden">
       <div className="p-5 sm:p-6 sm:pb-0">
         <div className="skeleton h-4 w-40 rounded" />
         <div className="skeleton h-3 w-56 rounded mt-2" />

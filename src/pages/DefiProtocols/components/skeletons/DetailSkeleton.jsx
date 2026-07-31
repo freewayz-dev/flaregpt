@@ -8,7 +8,7 @@
 // nothing pops in below where the skeleton left room for it.
 export default function DetailSkeleton({ withBar = false }) {
   return (
-    <div>
+    <div role="status">
       <div className="flex items-baseline gap-2">
         <div className="skeleton h-[18px] w-[18px] rounded-full shrink-0" />
         <div className="skeleton h-8 w-32 rounded" />

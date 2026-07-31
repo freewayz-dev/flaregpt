@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import flrUrl from "@/assets/tokens/flr.svg?url";
 import xrpUrl from "@/assets/tokens/xrp.svg?url";
 import sgbUrl from "@/assets/tokens/sgb.svg?url";
@@ -25,17 +27,45 @@ const TOKEN_ICONS = {
   MXRPY: mxrpyUrl,
 };
 
+// This is the single most-repeated image in the app — the same handful of
+// token/protocol icons rendered over and over across transaction feeds,
+// asset breakdowns, and DeFi cards, some of which show dozens of rows at
+// once. A plain `<img>` used to just sit invisible-then-pop-in with no
+// transition the first time each symbol loaded; this adds the same pulse-
+// then-fade-in treatment already proven in ConnectWalletModal's
+// WalletImage, so the layout (already stable — width/height were always
+// reserved) also *looks* stable instead of icons popping in raggedly.
 export default function TokenIcon({ symbol, size = 16, className = "" }) {
+  const [isLoaded, setIsLoaded] = useState(false);
   const src = TOKEN_ICONS[symbol?.toUpperCase()];
   if (!src) return null;
 
   return (
-    <img
-      src={src}
-      alt=""
-      width={size}
-      height={size}
-      className={`inline-block shrink-0 rounded-full ${className}`}
-    />
+    <span
+      className={`relative inline-flex shrink-0 overflow-hidden rounded-full ${className}`}
+      style={{ width: size, height: size }}
+    >
+      {!isLoaded && (
+        <span className="absolute inset-0 animate-pulse rounded-full bg-surface-inset" />
+      )}
+      <img
+        ref={(node) => {
+          // A cached icon (the same ~10 symbols repeat dozens of times per
+          // page) can already be `.complete` the instant this ref attaches,
+          // in which case `onLoad` below never fires again — checked here
+          // so a repeated icon doesn't get stuck invisible after the very
+          // first time it's ever loaded on this page.
+          if (node?.complete) setIsLoaded(true);
+        }}
+        src={src}
+        alt=""
+        width={size}
+        height={size}
+        onLoad={() => setIsLoaded(true)}
+        className={`h-full w-full rounded-full object-contain transition-opacity duration-300 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    </span>
   );
 }

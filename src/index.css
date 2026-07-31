@@ -200,3 +200,35 @@ html {
     animation-iteration-count: 1;
   }
 }
+
+/* App-wide reduced motion — covers every plain CSS transition/animation
+   utility (the sidebar's width transition, drawer/dropdown/modal slide and
+   fade transitions, `animate-pulse` skeletons, `animate-spin` spinners,
+   `animate-bounce` thinking dots, and so on), not just framer-motion
+   (already handled separately via MotionConfig in App.jsx). Applied two
+   ways: the OS-level media query for anyone with system-level reduced
+   motion on, and `.reduce-motion` on <html> for the in-app Settings >
+   Accessibility > Reduce Motion override (see useUIStore.js) — someone
+   whose OS default is full motion but who wants it off just for this app.
+   `!important` is deliberate here: every one of these utilities sets its
+   own specific duration inline via Tailwind classes, so a lower-specificity
+   override would lose to nearly all of them. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}

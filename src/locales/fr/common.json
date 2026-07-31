@@ -37,7 +37,9 @@
       "operational": "Tous les systèmes sont opérationnels"
     },
     "chart": {
-      "couldntLoad": "Impossible de charger l'historique des prix FLR"
+      "couldntLoad": "Impossible de charger l'historique des prix FLR",
+      "viewData_one": "Voir l'historique des prix ({{count}} point)",
+      "viewData_other": "Voir l'historique des prix ({{count}} points)"
     },
     "claimsHistory": {
       "connectToSee": "Connectez-vous ou ajoutez un portefeuille dans les paramètres pour voir l'historique des réclamations.",
@@ -81,7 +83,9 @@
       "gwei": "Gwei",
       "live": "Direct",
       "title": "Activité réseau",
-      "tps": "TPS"
+      "tps": "TPS",
+      "viewData_one": "Voir les échantillons de prix du gaz ({{count}} échantillon)",
+      "viewData_other": "Voir les échantillons de prix du gaz ({{count}} échantillons)"
     },
     "stats": {
       "couldntLoad": "Impossible de charger la vue d'ensemble du marché",
@@ -187,6 +191,7 @@
       "noLockup": "Aucun blocage",
       "subtitle": "Découvre comment ton FLR pourrait performer selon les stratégies",
       "title": "Comparaison des Stratégies",
+      "toggleDetails": "Afficher les détails de {{strategy}}",
       "verdict": "Verdict de FlareGPT"
     }
   },
@@ -259,6 +264,7 @@
       "send": "Envoyer",
       "stop": "Arrêter la génération"
     },
+    "conversationLabel": "Conversation avec FlareGPT",
     "deleteConversation": {
       "button": "Supprimer la conversation",
       "confirm": "Confirmer ?"
@@ -277,6 +283,7 @@
       "close": "Fermer",
       "delete": "Supprimer",
       "empty": "Aucune conversation pour le moment",
+      "loading": "Chargement de la conversation…",
       "loadFailed": "Impossible de charger vos conversations.",
       "moreActions": "Plus d'actions",
       "newChat": "Nouvelle discussion",
@@ -289,6 +296,7 @@
       "pinLimitReached_other": "Vous pouvez épingler jusqu'à {{count}} conversations",
       "rename": "Renommer",
       "renameFailed": "Impossible de renommer cette conversation.",
+      "renameLabel": "Nom de la conversation",
       "saveRename": "Enregistrer",
       "searchPlaceholder": "Rechercher des conversations...",
       "title": "Historique des discussions",
@@ -306,12 +314,14 @@
       "rewardsDecreased": "Pourquoi mes récompenses ont-elles diminué ?",
       "stakingOpportunities": "Afficher mes opportunités de staking"
     },
+    "responseReady": "FlareGPT a terminé de répondre.",
     "sendError": "Une erreur s'est produite. Réessayez.",
+    "thinking": "Réflexion en cours…",
     "wallet": {
       "analyzing": "Analyse :",
       "guestLabel": "Analyse du portefeuille",
       "locked": {
-        "body": "Connectez-vous pour permettre à FlareGPT de lire automatiquement vos portefeuilles Primary et Watchlist, au lieu de taper une adresse dans chaque question.",
+        "body": "Connectez-vous pour permettre à FlareGPT d'accéder automatiquement à vos portefeuilles Primary et Watchlist.",
         "connectCta": "Connecter le portefeuille",
         "signInCta": "Se connecter",
         "signingIn": "Confirmez dans votre portefeuille…",
@@ -375,8 +385,7 @@
     "checkFailed": "Impossible de vérifier le statut de Gas Sniper",
     "checking": "Vérification du statut de Gas Sniper…",
     "enabled": "Réclamé automatiquement par Gas Sniper",
-    "nudge": "Activez Gas Sniper pour réclamer automatiquement",
-    "notEnabled": "Gas Sniper n'est pas activé pour ce portefeuille"
+    "nudge": "Activez Gas Sniper pour réclamer automatiquement"
   },
   "help": {
     "askFlareGptCta": "Demandez de l'aide à FlareGPT",
@@ -574,7 +583,6 @@
       "connectedWallets": "Portefeuilles Connectés",
       "currency": "Devise d'Affichage",
       "defaultLandingPage": "Page d'accueil par défaut",
-      "defaultWallet": "Wallet par défaut",
       "governanceAlerts": "Alertes de Gouvernance",
       "hideBalances": "Masquer les soldes du portefeuille",
       "language": "Langue",
@@ -586,13 +594,13 @@
       "theme": "Thème",
       "themeMode": "Mode Clair / Sombre",
       "timeframe": "Période",
-      "walletCapacity": "Capacité du Portefeuille",
-      "walletPreferences": "Préférences de wallet"
+      "walletCapacity": "Capacité du Portefeuille"
     },
     "dataStorage": {
       "accountSubtitle": "Synchronisé avec votre compte sur le serveur.",
       "accountTitle": "Données du compte",
       "clear": "Effacer",
+      "clearArmed": "Appuyez de nouveau sur Effacer pour confirmer l'effacement de {{item}}.",
       "clearing": "Suppression en cours…",
       "confirmClear": "Confirmer ?",
       "conversations": "Conversations FlareGPT",
@@ -612,7 +620,6 @@
       "chartType": "Définissez la géométrie par défaut du style visuel de rendu pour les matrices système.",
       "currency": "Choisissez l'affichage de la devise de base de l'actif.",
       "defaultLandingPage": "Choisissez quelle page s'ouvre en premier au lancement de l'application.",
-      "defaultWallet": "Ce wallet devient actif lorsqu'une session précédente ne peut pas être restaurée.",
       "hideBalances": "Floute les soldes et montants dans tout le tableau de bord pour préserver votre confidentialité.",
       "language": "Sélectionnez votre langue d'affichage de l'interface par défaut.",
       "links": "Références de documentation globale et liens d'interaction de l'équipe.",
@@ -621,8 +628,7 @@
       "tableDensity": "Espacement confortable ou vue compacte pour les tableaux denses.",
       "theme": "Choisissez Clair, Sombre, ou suivez le réglage de votre système.",
       "timeframe": "Définissez les échelles de période de fenêtre par défaut sur les graphiques visuels.",
-      "walletCapacity": "Limites systémiques suivant les pools de capacité d'allocation.",
-      "walletPreferences": "Choisissez avec quel wallet le tableau de bord s'ouvre."
+      "walletCapacity": "Limites systémiques suivant les pools de capacité d'allocation."
     },
     "flareGpt": {
       "syncStatusConnected": "Connecté. Vos conversations se synchronisent sur tous vos appareils et navigateurs.",
@@ -659,9 +665,11 @@
       "medium": "Moyen",
       "off": "Désactivé"
     },
+    "sectionsNav": "Sections des paramètres",
     "security": {
       "confirmLogout": "Confirmer ?",
-      "logout": "Se déconnecter"
+      "logout": "Se déconnecter",
+      "logoutArmed": "Appuyez de nouveau sur Déconnexion pour confirmer la déconnexion."
     },
     "subtitles": {
       "About": "Aperçu des enregistrements de déploiement systémique, des règles de compilation et des index d'actifs.",
@@ -692,6 +700,7 @@
       "add": "Ajouter un Portefeuille ({{current}}/{{max}})",
       "addFormTitle": "Ajouter un compte de portefeuille de liste de surveillance",
       "adding": "Ajout en cours…",
+      "addressLabel": "Adresse du portefeuille",
       "addressPlaceholder": "0x... Adresse du portefeuille Flare",
       "available": "Disponible",
       "cancelRename": "Annuler",
@@ -715,7 +724,7 @@
       "loadFailed": "Impossible de charger vos portefeuilles suivis.",
       "manageSubtitle": "Gérez vos connexions Web3 actives et vos comptes de suivi de portefeuille en lecture seule.",
       "maximum": "Maximum",
-      "noDefaultSelected": "Aucun sélectionné",
+      "nicknameLabel": "Surnom du portefeuille",
       "noLimit": "Ajoutez autant de portefeuilles que vous le souhaitez.",
       "noSearchResults": "Aucun portefeuille ne correspond à votre recherche.",
       "notFoundError": "Ce portefeuille n'est plus dans votre liste de suivi.",
@@ -723,6 +732,7 @@
       "registrationFailed": "Échec de l'enregistrement de l'adresse. Vérifiez s'il s'agit d'un doublon ou si des créneaux sont remplis.",
       "remainingSlots": "Emplacements restants",
       "remove": "Supprimer",
+      "removeArmed": "Appuyez de nouveau sur Supprimer pour confirmer la suppression de {{name}}.",
       "rename": "Renommer",
       "saveEdit": "Enregistrer",
       "searchPlaceholder": "Rechercher parmi {{count}} portefeuilles...",
@@ -748,6 +758,7 @@
     "governance": "Gouvernance",
     "helpCenter": "Centre d'Aide",
     "loops": "Rendement",
+    "mainNavigation": "Navigation principale",
     "notConnected": "Non connecté",
     "overview": "Aperçu",
     "rflrTracker": "Suivi rFLR",
@@ -768,7 +779,9 @@
         "assetBreakdownSubtitle": "Nombre de transactions par actif",
         "tabActions": "Actions",
         "tabActivity": "Activité",
-        "tabAssets": "Actifs"
+        "tabAssets": "Actifs",
+        "viewData_one": "Voir les données ({{count}} ligne)",
+        "viewData_other": "Voir les données ({{count}} lignes)"
       },
       "connectToSee": "Connectez ou sélectionnez un wallet pour voir son activité de transactions.",
       "couldntLoad": "Impossible de charger l'activité du wallet.",

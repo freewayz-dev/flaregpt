@@ -115,6 +115,9 @@ export default function Composer({
         <div className="flex items-end gap-2 rounded-2xl border border-[#E5E7EB] dark:border-none bg-surface-inset p-1.5 sm:p-2 focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2">
           <textarea
             ref={textareaRef}
+            id="flrgpt-composer-input"
+            name="message"
+            aria-label={t("flrgpt.composer.placeholder")}
             rows={1}
             value={value}
             onChange={handleChange}
@@ -129,6 +132,7 @@ export default function Composer({
               type="button"
               onClick={onStop}
               title={t("flrgpt.composer.stop")}
+              aria-label={t("flrgpt.composer.stop")}
               className="shrink-0 p-2.5 rounded-xl bg-ink-primary text-surface-card hover:opacity-90 transition-opacity cursor-pointer"
             >
               <StopIcon className="h-4 w-4" />
@@ -139,6 +143,7 @@ export default function Composer({
               disabled={!canSend}
               onClick={handleSend}
               title={t("flrgpt.composer.send")}
+              aria-label={t("flrgpt.composer.send")}
               className={`shrink-0 p-2.5 rounded-xl transition-colors ${
                 canSend
                   ? "bg-brand text-white hover:bg-brand-hover cursor-pointer"

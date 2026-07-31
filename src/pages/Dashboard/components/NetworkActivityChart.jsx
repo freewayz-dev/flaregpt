@@ -5,6 +5,8 @@ import { LineChart, Line, ResponsiveContainer, YAxis, Tooltip } from "recharts";
 import { useGasPrice } from "@/hooks/queries/useDashboardQueries";
 import { useLiveSeries } from "@/hooks/useLiveSeries";
 import NetworkActivityChartSkeleton from "@/pages/Dashboard/components/skeletons/NetworkActivityChartSkeleton";
+import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
+import GenericTable from "@/pages/Dashboard/components/shared/GenericTable";
 
 export default function NetworkActivityChart() {
   const { t } = useTranslation();
@@ -15,6 +17,17 @@ export default function NetworkActivityChart() {
   const series = useLiveSeries(data?.gas_gwei, dataUpdatedAt, 30);
   const hasData = data?.gas_gwei != null && data?.network_tps != null;
 
+  // The gas price/TPS stat above only ever shows the current snapshot — a
+  // screen reader user has no way to reach the rolling trend a sighted user
+  // reads directly off the line chart below. Same Disclosure + GenericTable
+  // pattern already used for UnlockTimelineCard/UnclaimedEpochsCard. `series`
+  // itself is chronological (oldest first, same order the chart plots
+  // left-to-right), reversed here to newest-first for the list.
+  const tableRows = [...series].reverse().map((point) => ({
+    Time: new Date(point.time).toLocaleTimeString(),
+    Gwei: point.value == null ? "—" : point.value.toFixed(0),
+  }));
+
   // isError must be checked before the "still loading" gate below — an
   // errored request also has no data (hasData is false), so checking
   // `isLoading || !hasData` alone would keep this stuck on the skeleton
@@ -24,7 +37,7 @@ export default function NetworkActivityChart() {
     return (
       <div className="h-full flex flex-col rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
         <h3 className="text-sm font-semibold text-ink-primary">{t("dashboard.networkActivity.title")}</h3>
-        <div className="flex-1 flex flex-col items-center justify-center text-center px-4 py-6">
+        <div role="alert" className="flex-1 flex flex-col items-center justify-center text-center px-4 py-6">
           <p className="text-sm font-medium text-ink-primary">
             {t("dashboard.networkActivity.couldntLoad")}
           </p>
@@ -103,6 +116,12 @@ export default function NetworkActivityChart() {
           </div>
         )}
       </div>
+
+      {tableRows.length > 0 && (
+        <Disclosure label={t("dashboard.networkActivity.viewData", { count: tableRows.length })}>
+          <GenericTable items={tableRows} height="240px" />
+        </Disclosure>
+      )}
     </div>
   );
 }

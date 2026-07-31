@@ -175,6 +175,7 @@ export default function Settings() {
                 which is exactly why the scrollability wasn't obvious. */}
             <nav
               ref={mobileNavRef}
+              aria-label={t("settings.sectionsNav")}
               className="flex md:hidden flex-row gap-1 overflow-x-auto pb-2 scrollbar-none select-none snap-x"
               style={{
                 WebkitMaskImage: buildEdgeFadeMask(mobileScrollEdges),
@@ -185,7 +186,7 @@ export default function Settings() {
             </nav>
 
             {/* Desktop: grouped vertical list with section labels. */}
-            <nav className="hidden md:flex md:flex-col md:gap-4">
+            <nav aria-label={t("settings.sectionsNav")} className="hidden md:flex md:flex-col md:gap-4">
               {groups.map((group) => (
                 <div key={group.labelKey} className="space-y-1">
                   <p className="px-3.5 text-[10px] font-bold uppercase tracking-wider text-ink-muted">

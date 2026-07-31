@@ -37,7 +37,9 @@
       "operational": "Tüm sistemler çalışır durumda"
     },
     "chart": {
-      "couldntLoad": "FLR fiyat geçmişi yüklenemedi"
+      "couldntLoad": "FLR fiyat geçmişi yüklenemedi",
+      "viewData_one": "Fiyat geçmişini görüntüle ({{count}} nokta)",
+      "viewData_other": "Fiyat geçmişini görüntüle ({{count}} nokta)"
     },
     "claimsHistory": {
       "connectToSee": "Talep geçmişini görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
@@ -81,7 +83,9 @@
       "gwei": "Gwei",
       "live": "Canlı",
       "title": "Ağ Etkinliği",
-      "tps": "TPS"
+      "tps": "TPS",
+      "viewData_one": "Gaz fiyatı örneklerini görüntüle ({{count}} örnek)",
+      "viewData_other": "Gaz fiyatı örneklerini görüntüle ({{count}} örnek)"
     },
     "stats": {
       "couldntLoad": "Pazara genel bakış yüklenemedi",
@@ -185,6 +189,7 @@
       "noLockup": "Kilit yok",
       "subtitle": "FLR'nizin farklı stratejilerde nasıl performans gösterebileceğini görün",
       "title": "Strateji Karşılaştırması",
+      "toggleDetails": "{{strategy}} için ayrıntıları göster",
       "verdict": "FlareGPT Değerlendirmesi"
     }
   },
@@ -257,6 +262,7 @@
       "send": "Gönder",
       "stop": "Üretimi durdur"
     },
+    "conversationLabel": "FlareGPT ile konuşma",
     "deleteConversation": {
       "button": "Konuşmayı Sil",
       "confirm": "Onaylıyor musunuz?"
@@ -275,6 +281,7 @@
       "close": "Kapat",
       "delete": "Sil",
       "empty": "Henüz konuşma yok",
+      "loading": "Konuşma yükleniyor…",
       "loadFailed": "Sohbetleriniz yüklenemedi.",
       "moreActions": "Diğer işlemler",
       "newChat": "Yeni Sohbet",
@@ -286,6 +293,7 @@
       "pinLimitReached_other": "En fazla {{count}} konuşma sabitleyebilirsiniz",
       "rename": "Yeniden adlandır",
       "renameFailed": "Bu konuşma yeniden adlandırılamadı.",
+      "renameLabel": "Konuşma adı",
       "saveRename": "Kaydet",
       "searchPlaceholder": "Konuşmalarda ara...",
       "title": "Sohbet Geçmişi",
@@ -303,12 +311,14 @@
       "rewardsDecreased": "Ödüllerim neden azaldı?",
       "stakingOpportunities": "Staking fırsatlarımı göster"
     },
+    "responseReady": "FlareGPT yanıtlamayı tamamladı.",
     "sendError": "Bir şeyler yanlış gitti. Tekrar deneyin!",
+    "thinking": "Düşünüyor…",
     "wallet": {
       "analyzing": "Analiz ediliyor:",
       "guestLabel": "Cüzdan analizi",
       "locked": {
-        "body": "FlareGPT'nin her soruya bir adres yazmak yerine Birincil ve İzleme Listesi cüzdanlarınızı otomatik olarak okumasına izin vermek için oturum açın.",
+        "body": "FlareGPT'nin Birincil ve İzleme Listesi cüzdanlarınıza otomatik olarak erişmesine izin vermek için oturum açın.",
         "connectCta": "Cüzdanınızı Bağlayın",
         "signInCta": "Oturum aç",
         "signingIn": "Cüzdanınızda onaylayın…",
@@ -372,8 +382,7 @@
     "checkFailed": "Gas Sniper durumu kontrol edilemedi",
     "checking": "Gas Sniper durumu kontrol ediliyor…",
     "enabled": "Gas Sniper tarafından otomatik talep edildi",
-    "nudge": "Otomatik talep için Gas Sniper'ı açın",
-    "notEnabled": "Bu cüzdan için Gas Sniper etkin değil"
+    "nudge": "Otomatik talep için Gas Sniper'ı açın"
   },
   "help": {
     "askFlareGptCta": "FlareGPT'ye sorun",
@@ -571,7 +580,6 @@
       "connectedWallets": "Bağlı Cüzdanlar",
       "currency": "Para Birimi Görünümü",
       "defaultLandingPage": "Varsayılan Açılış Sayfası",
-      "defaultWallet": "Varsayılan Cüzdan",
       "governanceAlerts": "Yönetişim Uyarıları",
       "hideBalances": "Cüzdan Bakiyelerini Gizle",
       "language": "Dil",
@@ -583,13 +591,13 @@
       "theme": "Tema",
       "themeMode": "Açık / Koyu mod",
       "timeframe": "Zaman Dilimi",
-      "walletCapacity": "Cüzdan Kapasitesi",
-      "walletPreferences": "Cüzdan Tercihleri"
+      "walletCapacity": "Cüzdan Kapasitesi"
     },
     "dataStorage": {
       "accountSubtitle": "Sunucudaki hesabınızla senkronize edilir.",
       "accountTitle": "Hesap Verisi",
       "clear": "Temizle",
+      "clearArmed": "{{item}} öğesini temizlemeyi onaylamak için tekrar Temizle'ye basın.",
       "clearing": "Temizleniyor…",
       "confirmClear": "Onaylansın mı?",
       "conversations": "FlareGPT Konuşmaları",
@@ -609,7 +617,6 @@
       "chartType": "Sistem matrisleri için varsayılan görsel stil geometrisini ayarlayın.",
       "currency": "Varlık tabanlı para birimi görünümünü seçin.",
       "defaultLandingPage": "Uygulamayı başlattığınızda hangi sayfanın önce açılacağını seçin.",
-      "defaultWallet": "Önceki bir oturum geri yüklenemediğinde bu cüzdan etkin hale gelir.",
       "hideBalances": "Gizlilik için gösterge panosundaki bakiyeleri ve tutarları bulanıklaştırır.",
       "language": "Varsayılan arayüz görüntüleme dilinizi seçin.",
       "links": "Global dokümantasyon referansları ve ekip etkileşim bağlantıları.",
@@ -618,8 +625,7 @@
       "tableDensity": "Yoğun tablolar için rahat boşluk veya daha kompakt bir görünüm.",
       "theme": "Açık, Koyu seçin veya sistem ayarınızı takip edin.",
       "timeframe": "Görsel grafiklerde varsayılan pencere dönemi ölçeklerini tanımlayın.",
-      "walletCapacity": "Tahsis kapasite havuzlarını izleyen sistem sınırları.",
-      "walletPreferences": "Panonun hangi cüzdanla açılacağını seçin."
+      "walletCapacity": "Tahsis kapasite havuzlarını izleyen sistem sınırları."
     },
     "flareGpt": {
       "syncStatusConnected": "Oturum açıldı. Konuşmalarınız her cihazda ve tarayıcıda senkronize edilir.",
@@ -656,9 +662,11 @@
       "medium": "Orta",
       "off": "Kapalı"
     },
+    "sectionsNav": "Ayarlar bölümleri",
     "security": {
       "confirmLogout": "Onayla?",
-      "logout": "Çıkış Yap"
+      "logout": "Çıkış Yap",
+      "logoutArmed": "Çıkışı onaylamak için tekrar Çıkış Yap'a basın."
     },
     "subtitles": {
       "About": "Sistemik dağıtım kayıtlarına, derleme kurallarına ve varlık dizinlerine genel bakış.",
@@ -689,6 +697,7 @@
       "add": "Cüzdan Ekle ({{current}}/{{max}})",
       "addFormTitle": "İzleme Listesi Portföy Hesabı Ekle",
       "adding": "Ekleniyor…",
+      "addressLabel": "Cüzdan adresi",
       "addressPlaceholder": "0x... Flare Cüzdan Adresi",
       "available": "Kullanılabilir",
       "cancelRename": "İptal",
@@ -712,7 +721,7 @@
       "loadFailed": "Takip edilen cüzdanlarınız yüklenemedi.",
       "manageSubtitle": "Aktif Web3 bağlantılarınızı ve salt okunur portföy takip hesaplarınızı yönetin.",
       "maximum": "Maksimum",
-      "noDefaultSelected": "Seçilmedi",
+      "nicknameLabel": "Cüzdan takma adı",
       "noLimit": "İstediğiniz kadar cüzdan ekleyin.",
       "noSearchResults": "Aramanızla eşleşen cüzdan yok.",
       "notFoundError": "Bu cüzdan artık izleme listenizde değil.",
@@ -720,6 +729,7 @@
       "registrationFailed": "Adres kaydı başarısız oldu. Yinelenen olup olmadığını veya yuvaların dolu olup olmadığını kontrol edin.",
       "remainingSlots": "Kalan Yuvalar",
       "remove": "Kaldır",
+      "removeArmed": "{{name}} öğesini kaldırmayı onaylamak için tekrar Kaldır'a basın.",
       "rename": "Yeniden adlandır",
       "saveEdit": "Kaydet",
       "searchPlaceholder": "{{count}} cüzdanda ara...",
@@ -744,6 +754,7 @@
     "governance": "Yönetişim",
     "helpCenter": "Yardım Merkezi",
     "loops": "Döngüler",
+    "mainNavigation": "Ana gezinme",
     "notConnected": "Bağlı değil",
     "overview": "Genel Bakış",
     "rflrTracker": "rFLR Takibi",
@@ -765,7 +776,9 @@
         "assetBreakdownSubtitle": "Varlığa göre işlem sayısı",
         "tabActions": "İşlemler",
         "tabActivity": "Etkinlik",
-        "tabAssets": "Varlıklar"
+        "tabAssets": "Varlıklar",
+        "viewData_one": "Verileri görüntüle ({{count}} satır)",
+        "viewData_other": "Verileri görüntüle ({{count}} satır)"
       },
       "connectToSee": "İşlem etkinliğini görmek için bir cüzdan bağlayın veya seçin.",
       "couldntLoad": "Cüzdan etkinliği yüklenemedi.",

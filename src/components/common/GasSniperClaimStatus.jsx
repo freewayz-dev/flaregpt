@@ -35,10 +35,17 @@ import { ROUTES } from "@/config/routes";
 //     same wallet's status would silently disappear the instant its
 //     balance hit zero, even though nothing about the automation itself
 //     had changed).
-//   - the "enable it" nudge only appears for the active/connected wallet
-//     (the only one this app could ever act for) — a watchlist wallet
-//     that isn't enabled gets an explicit, non-actionable note instead of
-//     silence, since silence would look identical to "we didn't check".
+//   - the "not enabled, turn it on" CTA only ever appears for the active/
+//     connected wallet — Gas Sniper can only ever be enabled for whichever
+//     wallet is actually signed in, never a watchlist address, so the same
+//     CTA on a watchlist wallet used to link to Loops while showing that
+//     *other*, already-enabled wallet's status there — confusing enough
+//     (confirmed via user report) that showing nothing is more honest than
+//     showing a CTA that can't do what it claims for this wallet. A
+//     watchlist wallet that genuinely *is* enabled still shows the plain
+//     "enabled" badge below regardless — that's accurate, non-actionable
+//     information about the wallet you're looking at, not a CTA that leads
+//     somewhere else, so the same confusion doesn't apply to it.
 export default function GasSniperClaimStatus({ activeAddress, isActivePrimary, className = "" }) {
   const { t } = useTranslation();
   const { data, isSuccess, isError, isFetching, refetch } = useGasSniperStatus();
@@ -104,19 +111,11 @@ export default function GasSniperClaimStatus({ activeAddress, isActivePrimary, c
     );
   }
 
-  // Still links to Loops, but deliberately doesn't say "enable it" the way
-  // the primary-wallet nudge above does — Loops reflects whichever wallet
-  // you're actually signed in as, not whichever one is selected here, so
-  // for someone else's watchlist address this can only ever take you to
-  // manage your *own* automation, never enable it for this one. The
-  // factual note stays true regardless of where the link leads.
-  return (
-    <Link
-      to={ROUTES.loops}
-      className={`flex w-fit items-center gap-1.5 rounded-lg bg-surface-inset px-2.5 py-1.5 text-xs text-ink-muted hover:text-ink-secondary transition-colors ${className}`}
-    >
-      {t("gasSniperStatus.notEnabled")}
-      <ArrowRightIcon className="h-3 w-3 shrink-0" />
-    </Link>
-  );
+  // A watchlist wallet that isn't enabled shows nothing here — Loops can
+  // only ever act on whichever wallet is actually signed in, so a "not
+  // enabled, turn it on" CTA here would link to Loops and show *that*
+  // wallet's (already-enabled) status instead, with no way to actually
+  // act on the one this card is about. Silence is more honest than a CTA
+  // that can't do what it says for this wallet.
+  return null;
 }

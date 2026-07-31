@@ -3,7 +3,7 @@
 // isLoading branch so the two never visually disagree.
 export default function FlrPriceChartSkeleton() {
   return (
-    <div className="h-full min-w-0 rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
+    <div role="status" className="h-full min-w-0 rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="skeleton h-3.5 w-16 rounded" />

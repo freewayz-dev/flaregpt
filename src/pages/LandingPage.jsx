@@ -298,7 +298,7 @@ export default function LandingPage() {
                         )}
                       </div>
 
-                      <div className="mt-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#64748B] dark:text-[#71717A]">
+                      <div className="mt-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#64748B] dark:text-[#A1A1AA]">
                         {item.title}
                       </div>
                     </div>
@@ -450,10 +450,11 @@ export default function LandingPage() {
                     <img
                       src={shot.src}
                       alt={shot.alt}
-                      width={2384}
-                      height={1355}
-                      className="w-full aspect-[2384/1355] object-cover object-top"
+                      width={1200}
+                      height={682}
+                      className="w-full aspect-[1200/682] object-cover object-top"
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <p className="px-5 py-3.5 text-[13px] font-medium text-ink-secondary">
@@ -664,7 +665,7 @@ export default function LandingPage() {
                   return (
                     <div
                       key={item.q}
-                      className="rounded-2xl border border-line bg-white/70 dark:bg-[#191A1F] backdrop-blur-xl overflow-hidden"
+                      className="rounded-2xl border border-line bg-white/90 dark:bg-[#191A1F] overflow-hidden"
                     >
                       {/* Question */}
 
@@ -706,7 +707,7 @@ export default function LandingPage() {
                           measurement step at all. */}
                       <div
                         id={panelId}
-                        role="region"
+                        aria-hidden={!isOpen}
                         className="grid transition-[grid-template-rows] duration-[180ms] ease-in-out"
                         style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
                       >
@@ -771,7 +772,7 @@ export default function LandingPage() {
           <div className="mx-auto max-w-5xl py-12 px-4 xl:px-0">
             {/* Ecosystem */}
             <div className="flex flex-col items-center gap-8 pb-12">
-              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#64748B] dark:text-[#71717A]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#64748B] dark:text-[#A1A1AA]">
                 Built with industry-leading technologies
               </p>
 
@@ -838,7 +839,7 @@ export default function LandingPage() {
                       FlareGPT
                     </p>
 
-                    <p className="font-mono text-[10px] font-medium text-[#64748B] dark:text-[#71717A]">
+                    <p className="font-mono text-[10px] font-medium text-[#64748B] dark:text-[#A1A1AA]">
                       © 2026 All Rights Reserved
                     </p>
                   </div>

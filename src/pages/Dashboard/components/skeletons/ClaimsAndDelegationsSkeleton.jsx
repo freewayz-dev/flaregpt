@@ -4,7 +4,7 @@ import TableCardSkeleton from "@/pages/Dashboard/components/skeletons/TableCardS
 // card below `lg`, two side-by-side cards at `lg` and up.
 export default function ClaimsAndDelegationsSkeleton() {
   return (
-    <>
+    <div role="status">
       <div className="lg:hidden">
         <div className="flex items-center gap-2">
           {[0, 1].map((i) => (
@@ -24,6 +24,6 @@ export default function ClaimsAndDelegationsSkeleton() {
         <TableCardSkeleton />
         <TableCardSkeleton />
       </div>
-    </>
+    </div>
   );
 }

@@ -17,7 +17,7 @@ export default function FtsoRewardsPageSkeleton() {
   const { t } = useTranslation();
 
   return (
-    <div className="space-y-5 sm:space-y-6 pb-14">
+    <div role="status" className="space-y-5 sm:space-y-6 pb-14">
       <div className="pt-3 lg:pt-0">
         <PageHeader title={t("sidebar.ftsoRewards")} description={t("ftsoRewards.description")} />
       </div>

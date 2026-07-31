@@ -44,6 +44,15 @@ export default function WalletContextPill({ onOpenWalletModal }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Matches every other dismissible overlay in this app — a keyboard user
+  // shouldn't need to Tab all the way through the panel to get out of it.
+  useEffect(() => {
+    if (!open) return;
+    const handleEscape = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [open]);
+
   const primaryWallet = allWallets.find((w) => w.type === "connected");
   const watchlistWallets = allWallets.filter((w) => w.type === "tracked");
 
@@ -136,7 +145,7 @@ export default function WalletContextPill({ onOpenWalletModal }) {
           className={`absolute bottom-full left-0 mb-2 w-72 origin-bottom-left rounded-xl bg-[#FFFFFF] border border-[#E5E7EB] p-4 shadow-xl dark:bg-[#21242B] dark:border-none z-50 transition-all duration-200 ${
             open
               ? "opacity-100 scale-100 translate-y-0"
-              : "opacity-0 scale-95 translate-y-1 pointer-events-none"
+              : "invisible opacity-0 scale-95 translate-y-1 pointer-events-none"
           }`}
         >
           <div className="flex items-center gap-2">
@@ -198,7 +207,7 @@ export default function WalletContextPill({ onOpenWalletModal }) {
         className={`absolute bottom-full left-0 mb-2 w-72 origin-bottom-left rounded-xl bg-[#FFFFFF] border border-[#E5E7EB] p-2 shadow-xl dark:bg-[#21242B] dark:border-none z-50 space-y-1 transition-all duration-200 ${
           open
             ? "opacity-100 scale-100 translate-y-0"
-            : "opacity-0 scale-95 translate-y-1 pointer-events-none"
+            : "invisible opacity-0 scale-95 translate-y-1 pointer-events-none"
         }`}
       >
         <p className="px-1.5 pb-0.5 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">

@@ -5,6 +5,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { CircleStackIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 
 import { useFlareGptStore } from "@/store/useFlareGptStore";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
 import * as chatService from "@/services/chatService";
 import { queryKeys } from "@/services/queryKeys";
 import Card from "@/pages/Settings/components/Card";
@@ -41,16 +42,23 @@ export default function DataStorage() {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
   const clearMessages = useFlareGptStore((s) => s.clearMessages);
+  const { hasSession } = useAuthStatus();
 
   const [armed, setArmed] = useState(null);
   const [clearingKey, setClearingKey] = useState(null);
+  const [armAnnouncement, setArmAnnouncement] = useState("");
   const timerRef = useRef(null);
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
-  const arm = (key) => {
+  // Same reasoning as Wallets.jsx's remove-confirm announcer: only the arm
+  // transition gets announced. The disarm transition is ambiguous between
+  // "timed out / cancelled" and "confirmed and now clearing" from this
+  // state alone, and guessing wrong is worse than staying silent there.
+  const arm = (key, itemLabel) => {
     clearTimeout(timerRef.current);
     setArmed(key);
+    setArmAnnouncement(t("settings.dataStorage.clearArmed", { item: itemLabel }));
     timerRef.current = setTimeout(() => setArmed(null), CONFIRM_WINDOW_MS);
   };
 
@@ -59,7 +67,7 @@ export default function DataStorage() {
   // though `clearConversations` below is still an in-flight multi-request
   // operation, so a second tap during that window could kick off a second
   // concurrent clear rather than being a no-op.
-  const handleClick = (key, action) => {
+  const handleClick = (key, itemLabel, action) => {
     if (clearingKey) return;
     if (armed === key) {
       clearTimeout(timerRef.current);
@@ -71,7 +79,7 @@ export default function DataStorage() {
       }
       return;
     }
-    arm(key);
+    arm(key, itemLabel);
   };
 
   // The backend holds every conversation per account (no local-only guest
@@ -96,6 +104,9 @@ export default function DataStorage() {
 
   return (
     <div className="space-y-6">
+      <div role="status" aria-live="polite" className="sr-only">
+        {armAnnouncement}
+      </div>
       <Card title={t("settings.dataStorage.localTitle")} subtitle={t("settings.dataStorage.localSubtitle")}>
         <div className="divide-y divide-divider">
           <RowItem
@@ -106,7 +117,7 @@ export default function DataStorage() {
             <ClearButton
               armed={armed === "wallet"}
               onClick={() =>
-                handleClick("wallet", () => {
+                handleClick("wallet", t("settings.dataStorage.walletCache"), () => {
                   queryClient.removeQueries({ queryKey: queryKeys.walletActivity.all });
                   toast.success(t("settings.dataStorage.walletCacheCleared"));
                 })
@@ -118,24 +129,36 @@ export default function DataStorage() {
         </div>
       </Card>
 
-      <Card title={t("settings.dataStorage.accountTitle")} subtitle={t("settings.dataStorage.accountSubtitle")}>
-        <div className="divide-y divide-divider">
-          <RowItem
-            icon={ChatBubbleLeftRightIcon}
-            title={t("settings.dataStorage.conversations")}
-            description={t("settings.dataStorage.conversationsDescription")}
-          >
-            <ClearButton
-              armed={armed === "conversations"}
-              busy={clearingKey === "conversations"}
-              busyLabel={t("settings.dataStorage.clearing")}
-              onClick={() => handleClick("conversations", clearConversations)}
-              label={t("settings.dataStorage.clear")}
-              confirmLabel={t("settings.dataStorage.confirmClear")}
-            />
-          </RowItem>
-        </div>
-      </Card>
+      {/* Nothing here applies to a guest — a guest's chat is one ephemeral,
+          never-persisted, client-only thread (see useFlareGptConversation.js),
+          not an account-backed conversation list this endpoint could ever
+          act on. Clicking Clear used to reach `clearAllConversations`
+          anyway, which calls `fetchConversations` — a session-only endpoint
+          that 401s for a guest, so this always failed rather than clearing
+          anything. Hiding the whole card (not just disabling the button)
+          since its subtitle and description only make sense once signed in. */}
+      {hasSession && (
+        <Card title={t("settings.dataStorage.accountTitle")} subtitle={t("settings.dataStorage.accountSubtitle")}>
+          <div className="divide-y divide-divider">
+            <RowItem
+              icon={ChatBubbleLeftRightIcon}
+              title={t("settings.dataStorage.conversations")}
+              description={t("settings.dataStorage.conversationsDescription")}
+            >
+              <ClearButton
+                armed={armed === "conversations"}
+                busy={clearingKey === "conversations"}
+                busyLabel={t("settings.dataStorage.clearing")}
+                onClick={() =>
+                  handleClick("conversations", t("settings.dataStorage.conversations"), clearConversations)
+                }
+                label={t("settings.dataStorage.clear")}
+                confirmLabel={t("settings.dataStorage.confirmClear")}
+              />
+            </RowItem>
+          </div>
+        </Card>
+      )}
     </div>
   );
 }

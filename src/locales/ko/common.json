@@ -37,7 +37,9 @@
       "operational": "모든 시스템이 작동합니다."
     },
     "chart": {
-      "couldntLoad": "FLR 가격 기록을 로드할 수 없습니다"
+      "couldntLoad": "FLR 가격 기록을 로드할 수 없습니다",
+      "viewData_one": "가격 기록 보기 ({{count}}개)",
+      "viewData_other": "가격 기록 보기 ({{count}}개)"
     },
     "claimsHistory": {
       "connectToSee": "청구 내역을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
@@ -81,7 +83,9 @@
       "gwei": "Gwei",
       "live": "라이브",
       "title": "네트워크 활동 정지",
-      "tps": "TPS"
+      "tps": "TPS",
+      "viewData_one": "가스 가격 샘플 보기 ({{count}}개)",
+      "viewData_other": "가스 가격 샘플 보기 ({{count}}개)"
     },
     "stats": {
       "couldntLoad": "시장 개요를 로드할 수 없습니다",
@@ -185,6 +189,7 @@
       "noLockup": "락업 없음",
       "subtitle": "전략별로 FLR이 어떻게 수익을 낼 수 있는지 확인하세요",
       "title": "전략 비교",
+      "toggleDetails": "{{strategy}} 세부정보 표시",
       "verdict": "FlareGPT 평가"
     }
   },
@@ -257,6 +262,7 @@
       "send": "보내기",
       "stop": "생성 중지"
     },
+    "conversationLabel": "FlareGPT와의 대화",
     "deleteConversation": {
       "button": "대화 삭제",
       "confirm": "확인하시겠습니까?"
@@ -275,6 +281,7 @@
       "close": "닫기",
       "delete": "삭제",
       "empty": "아직 대화가 없습니다",
+      "loading": "대화를 불러오는 중…",
       "loadFailed": "대화 내역을 불러오지 못했습니다.",
       "moreActions": "추가 작업",
       "newChat": "새 채팅",
@@ -286,6 +293,7 @@
       "pinLimitReached_other": "최대 {{count}}개의 대화를 고정할 수 있습니다",
       "rename": "이름 변경",
       "renameFailed": "이 대화의 이름을 변경하지 못했습니다.",
+      "renameLabel": "대화 이름",
       "saveRename": "저장",
       "searchPlaceholder": "대화 검색...",
       "title": "채팅 기록",
@@ -303,12 +311,14 @@
       "rewardsDecreased": "보상이 왜 감소했나요?",
       "stakingOpportunities": "내 스테이킹 기회 보기"
     },
+    "responseReady": "FlareGPT의 응답이 완료되었습니다.",
     "sendError": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "thinking": "생각 중…",
     "wallet": {
       "analyzing": "분석 대상:",
       "guestLabel": "지갑 분석",
       "locked": {
-        "body": "로그인하면 FlareGPT가 모든 질문에 주소를 입력하는 대신 기본 및 관심 목록 지갑을 자동으로 읽을 수 있습니다.",
+        "body": "로그인하면 FlareGPT가 기본 및 관심 목록 지갑에 자동으로 액세스할 수 있습니다.",
         "connectCta": "지갑 연결",
         "signInCta": "로그인",
         "signingIn": "지갑에서 확인...",
@@ -372,8 +382,7 @@
     "checkFailed": "Gas Sniper 상태를 확인할 수 없습니다",
     "checking": "Gas Sniper 상태 확인 중…",
     "enabled": "Gas Sniper가 자동 청구함",
-    "nudge": "자동 청구하려면 Gas Sniper를 켜세요",
-    "notEnabled": "이 지갑에는 Gas Sniper가 활성화되어 있지 않습니다"
+    "nudge": "자동 청구하려면 Gas Sniper를 켜세요"
   },
   "help": {
     "askFlareGptCta": "FlareGPT에게 물어보기",
@@ -571,7 +580,6 @@
       "connectedWallets": "연결된 지갑",
       "currency": "통화 표시",
       "defaultLandingPage": "기본 시작 페이지",
-      "defaultWallet": "기본 지갑",
       "governanceAlerts": "거버넌스 알림",
       "hideBalances": "지갑 잔액 숨기기",
       "language": "언어",
@@ -583,13 +591,13 @@
       "theme": "테마",
       "themeMode": "라이트 / 다크 모드",
       "timeframe": "기간",
-      "walletCapacity": "지갑 용량",
-      "walletPreferences": "지갑 환경설정"
+      "walletCapacity": "지갑 용량"
     },
     "dataStorage": {
       "accountSubtitle": "서버의 계정과 동기화됩니다.",
       "accountTitle": "계정 데이터",
       "clear": "지우기",
+      "clearArmed": "{{item}} 지우기를 확인하려면 지우기를 다시 누르세요.",
       "clearing": "삭제 중…",
       "confirmClear": "확인할까요?",
       "conversations": "FlareGPT 대화",
@@ -609,7 +617,6 @@
       "chartType": "시스템 매트릭스의 기본 렌더링 시각적 스타일 기하학을 설정합니다.",
       "currency": "자산 기준 통화 표시를 선택합니다.",
       "defaultLandingPage": "앱을 실행할 때 먼저 열릴 페이지를 선택하세요.",
-      "defaultWallet": "이전 세션을 복원할 수 없을 때 이 지갑이 활성화됩니다.",
       "hideBalances": "개인정보 보호를 위해 대시보드 전체의 잔액과 금액을 흐리게 표시합니다.",
       "language": "기본 인터페이스 보기 언어를 선택합니다.",
       "links": "글로벌 문서 참조 및 팀 상호 작용 링크입니다.",
@@ -618,8 +625,7 @@
       "tableDensity": "편안한 간격 또는 밀집된 테이블을 위한 더 조밀한 보기.",
       "theme": "라이트, 다크 중에서 선택하거나 시스템 설정을 따르세요.",
       "timeframe": "시각적 차트의 기본 창 기간 배율을 정의합니다.",
-      "walletCapacity": "할당 용량 풀을 추적하는 시스템 제한입니다.",
-      "walletPreferences": "대시보드가 열릴 때 사용할 지갑을 선택하세요."
+      "walletCapacity": "할당 용량 풀을 추적하는 시스템 제한입니다."
     },
     "flareGpt": {
       "syncStatusConnected": "로그인되었습니다. 대화 내용이 모든 기기와 브라우저에서 동기화됩니다.",
@@ -656,9 +662,11 @@
       "medium": "중간",
       "off": "꺼짐"
     },
+    "sectionsNav": "설정 섹션",
     "security": {
       "confirmLogout": "확인할까요?",
-      "logout": "로그아웃"
+      "logout": "로그아웃",
+      "logoutArmed": "로그아웃을 확인하려면 로그아웃을 다시 누르세요."
     },
     "subtitles": {
       "About": "시스템 배포 기록, 컴파일 규칙 및 자산 인덱스를 개요합니다.",
@@ -689,6 +697,7 @@
       "add": "지갑 추가 ({{current}}/{{max}})",
       "addFormTitle": "관심 목록 포트폴리오 계정 추가",
       "adding": "추가 중…",
+      "addressLabel": "지갑 주소",
       "addressPlaceholder": "0x... 플레어 지갑 주소",
       "available": "사용 가능",
       "cancelRename": "취소",
@@ -712,7 +721,7 @@
       "loadFailed": "추적 중인 지갑을 불러오지 못했습니다.",
       "manageSubtitle": "활성 Web3 연결 및 읽기 전용 포트폴리오 추적 계정을 관리합니다.",
       "maximum": "최대",
-      "noDefaultSelected": "선택 안 됨",
+      "nicknameLabel": "지갑 별명",
       "noLimit": "원하는 만큼 지갑을 추가하세요.",
       "noSearchResults": "검색과 일치하는 지갑이 없습니다.",
       "notFoundError": "이 지갑은 더 이상 관심 목록에 없습니다.",
@@ -720,6 +729,7 @@
       "registrationFailed": "주소 등록에 실패했습니다. 중복인지 또는 슬롯이 채워졌는지 확인하십시오.",
       "remainingSlots": "남은 슬롯",
       "remove": "삭제",
+      "removeArmed": "{{name}} 삭제를 확인하려면 삭제를 다시 누르세요.",
       "rename": "이름 바꾸기",
       "saveEdit": "저장",
       "searchPlaceholder": "{{count}}개 지갑 검색...",
@@ -744,6 +754,7 @@
     "governance": "거버넌스",
     "helpCenter": "고객센터",
     "loops": "루프 번호",
+    "mainNavigation": "주 탐색",
     "notConnected": "연결 안 됨",
     "overview": "개요",
     "rflrTracker": "rFLR 추적기",
@@ -765,7 +776,9 @@
         "assetBreakdownSubtitle": "자산별 거래 수",
         "tabActions": "작업",
         "tabActivity": "활동",
-        "tabAssets": "자산"
+        "tabAssets": "자산",
+        "viewData_one": "데이터 보기 ({{count}}행)",
+        "viewData_other": "데이터 보기 ({{count}}행)"
       },
       "connectToSee": "거래 활동을 보려면 지갑을 연결하거나 선택하세요.",
       "couldntLoad": "지갑 활동을 불러올 수 없습니다.",

@@ -37,7 +37,9 @@
       "operational": "Semua sistem beroperasi"
     },
     "chart": {
-      "couldntLoad": "Tidak dapat memuat riwayat harga FLR"
+      "couldntLoad": "Tidak dapat memuat riwayat harga FLR",
+      "viewData_one": "Lihat riwayat harga ({{count}} titik)",
+      "viewData_other": "Lihat riwayat harga ({{count}} titik)"
     },
     "claimsHistory": {
       "connectToSee": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat riwayat klaim.",
@@ -81,7 +83,9 @@
       "gwei": "Gwei",
       "live": "Langsung",
       "title": "Aktivitas Jaringan",
-      "tps": "TPS"
+      "tps": "TPS",
+      "viewData_one": "Lihat sampel harga gas ({{count}} sampel)",
+      "viewData_other": "Lihat sampel harga gas ({{count}} sampel)"
     },
     "stats": {
       "couldntLoad": "Tidak dapat memuat ikhtisar pasar",
@@ -185,6 +189,7 @@
       "noLockup": "Tanpa lock-up",
       "subtitle": "Lihat bagaimana FLR Anda dapat berkinerja di berbagai strategi",
       "title": "Perbandingan Strategi",
+      "toggleDetails": "Tampilkan detail untuk {{strategy}}",
       "verdict": "Penilaian FlareGPT"
     }
   },
@@ -257,6 +262,7 @@
       "send": "Kirim",
       "stop": "Hentikan pembuatan"
     },
+    "conversationLabel": "Percakapan dengan FlareGPT",
     "deleteConversation": {
       "button": "Hapus Percakapan",
       "confirm": "Konfirmasi?"
@@ -275,6 +281,7 @@
       "close": "Tutup",
       "delete": "Hapus",
       "empty": "Belum ada percakapan",
+      "loading": "Memuat percakapan…",
       "loadFailed": "Percakapan Anda tidak dapat dimuat.",
       "moreActions": "Tindakan lainnya",
       "newChat": "Obrolan Baru",
@@ -286,6 +293,7 @@
       "pinLimitReached_other": "Anda dapat menyematkan hingga {{count}} percakapan",
       "rename": "Ganti nama",
       "renameFailed": "Gagal mengganti nama percakapan ini.",
+      "renameLabel": "Nama percakapan",
       "saveRename": "Simpan",
       "searchPlaceholder": "Cari percakapan...",
       "title": "Riwayat Obrolan",
@@ -303,12 +311,14 @@
       "rewardsDecreased": "Mengapa reward saya menurun?",
       "stakingOpportunities": "Tampilkan peluang staking saya"
     },
+    "responseReady": "FlareGPT selesai merespons.",
     "sendError": "Terjadi kesalahan. Coba lagi.",
+    "thinking": "Berpikir…",
     "wallet": {
       "analyzing": "Menganalisis:",
       "guestLabel": "Analisis dompet",
       "locked": {
-        "body": "Masuk untuk membiarkan FlareGPT membaca dompet Utama dan Daftar Pantau Anda secara otomatis, alih - alih mengetik alamat ke setiap pertanyaan.",
+        "body": "Masuk untuk membiarkan FlareGPT mengakses dompet Utama dan Daftar Pantau Anda secara otomatis.",
         "connectCta": "Hubungkan Dompet",
         "signInCta": "Sign in",
         "signingIn": "Konfirmasi di dompet Anda…",
@@ -372,8 +382,7 @@
     "checkFailed": "Tidak dapat memeriksa status Gas Sniper",
     "checking": "Memeriksa status Gas Sniper…",
     "enabled": "Diklaim otomatis oleh Gas Sniper",
-    "nudge": "Aktifkan Gas Sniper untuk klaim otomatis",
-    "notEnabled": "Gas Sniper tidak diaktifkan untuk dompet ini"
+    "nudge": "Aktifkan Gas Sniper untuk klaim otomatis"
   },
   "help": {
     "askFlareGptCta": "Tanyakan pada FlareGPT",
@@ -571,7 +580,6 @@
       "connectedWallets": "Dompet Terhubung",
       "currency": "Mata Uang Tampilan",
       "defaultLandingPage": "Halaman Awal Default",
-      "defaultWallet": "Wallet Default",
       "governanceAlerts": "Pemberitahuan Tata Kelola",
       "hideBalances": "Sembunyikan Saldo Dompet",
       "language": "Bahasa",
@@ -583,13 +591,13 @@
       "theme": "Tema",
       "themeMode": "Mode Terang / Gelap",
       "timeframe": "Rentang Waktu",
-      "walletCapacity": "Kapasitas Dompet",
-      "walletPreferences": "Preferensi Wallet"
+      "walletCapacity": "Kapasitas Dompet"
     },
     "dataStorage": {
       "accountSubtitle": "Disinkronkan dengan akun Anda di server.",
       "accountTitle": "Data Akun",
       "clear": "Hapus",
+      "clearArmed": "Tekan Bersihkan lagi untuk mengonfirmasi pembersihan {{item}}.",
       "clearing": "Menghapus…",
       "confirmClear": "Konfirmasi?",
       "conversations": "Percakapan FlareGPT",
@@ -609,7 +617,6 @@
       "chartType": "Atur geometri gaya visual rendering default untuk matriks sistem.",
       "currency": "Pilih tampilan mata uang dasar aset.",
       "defaultLandingPage": "Pilih halaman mana yang terbuka pertama saat Anda meluncurkan aplikasi.",
-      "defaultWallet": "Wallet ini menjadi aktif setiap kali sesi sebelumnya tidak dapat dipulihkan.",
       "hideBalances": "Buramkan saldo dan jumlah di seluruh dasbor demi privasi.",
       "language": "Pilih bahasa tampilan antarmuka default Anda.",
       "links": "Referensi dokumentasi global dan tautan interaksi tim.",
@@ -618,8 +625,7 @@
       "tableDensity": "Jarak nyaman atau tampilan lebih ringkas untuk tabel padat.",
       "theme": "Pilih Terang, Gelap, atau ikuti pengaturan sistem Anda.",
       "timeframe": "Tentukan skala periode jendela default pada grafik visual.",
-      "walletCapacity": "Batas sistem yang melacak alokasi kapasitas pool.",
-      "walletPreferences": "Pilih wallet mana yang digunakan dasbor saat dibuka."
+      "walletCapacity": "Batas sistem yang melacak alokasi kapasitas pool."
     },
     "flareGpt": {
       "syncStatusConnected": "Sudah masuk. Percakapan Anda disinkronkan di semua perangkat dan browser.",
@@ -656,9 +662,11 @@
       "medium": "Sedang",
       "off": "Mati"
     },
+    "sectionsNav": "Bagian pengaturan",
     "security": {
       "confirmLogout": "Konfirmasi?",
-      "logout": "Keluar"
+      "logout": "Keluar",
+      "logoutArmed": "Tekan Keluar lagi untuk mengonfirmasi keluar."
     },
     "subtitles": {
       "About": "Ikhtisar catatan penerapan sistem, aturan kompilasi, dan indeks aset.",
@@ -689,6 +697,7 @@
       "add": "Tambah Dompet ({{current}}/{{max}})",
       "addFormTitle": "Tambahkan Akun Portofolio Daftar Pantau",
       "adding": "Menambahkan…",
+      "addressLabel": "Alamat dompet",
       "addressPlaceholder": "0x... Alamat Flare Wallet",
       "available": "Tersedia",
       "cancelRename": "Batal",
@@ -712,7 +721,7 @@
       "loadFailed": "Dompet yang dilacak tidak dapat dimuat.",
       "manageSubtitle": "Kelola koneksi Web3 aktif Anda dan akun pelacakan portofolio hanya baca.",
       "maximum": "Maksimum",
-      "noDefaultSelected": "Belum dipilih",
+      "nicknameLabel": "Nama panggilan dompet",
       "noLimit": "Tambahkan dompet sebanyak yang Anda inginkan.",
       "noSearchResults": "Tidak ada dompet yang cocok dengan pencarian Anda.",
       "notFoundError": "Dompet ini sudah tidak ada lagi di watchlist Anda.",
@@ -720,6 +729,7 @@
       "registrationFailed": "Pendaftaran alamat gagal. Periksa apakah itu duplikat atau apakah slot diisi.",
       "remainingSlots": "Slot Tersisa",
       "remove": "Hapus",
+      "removeArmed": "Tekan Hapus lagi untuk mengonfirmasi penghapusan {{name}}.",
       "rename": "Ganti nama",
       "saveEdit": "Simpan",
       "searchPlaceholder": "Cari di {{count}} dompet...",
@@ -744,6 +754,7 @@
     "governance": "Tata Kelola",
     "helpCenter": "Pusat Bantuan",
     "loops": "Loop",
+    "mainNavigation": "Navigasi utama",
     "notConnected": "Belum Terhubung",
     "overview": "Ikhtisar",
     "rflrTracker": "Pelacak rFLR",
@@ -765,7 +776,9 @@
         "assetBreakdownSubtitle": "Jumlah transaksi per aset",
         "tabActions": "Tindakan",
         "tabActivity": "Aktivitas",
-        "tabAssets": "Aset"
+        "tabAssets": "Aset",
+        "viewData_one": "Lihat data ({{count}} baris)",
+        "viewData_other": "Lihat data ({{count}} baris)"
       },
       "connectToSee": "Hubungkan atau pilih wallet untuk melihat aktivitas transaksinya.",
       "couldntLoad": "Aktivitas wallet tidak dapat dimuat.",

@@ -78,7 +78,7 @@ function ExportMenu({ onExportCsv, onExportJson }) {
 
       <div
         className={`absolute right-0 top-full mt-1.5 w-40 origin-top-right rounded-xl border border-line bg-surface-card p-1 shadow-lg z-10 transition-all duration-200 ${
-          open ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-95"
+          open ? "opacity-100 scale-100" : "invisible pointer-events-none opacity-0 scale-95"
         }`}
       >
         <button
@@ -160,6 +160,9 @@ export default function ActivityToolbar({
           <MagnifyingGlassIcon className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-ink-muted" />
           <input
             type="text"
+            id="wallet-activity-search"
+            name="search"
+            aria-label={t("wallet.activity.toolbar.searchPlaceholder")}
             value={rawSearch}
             onChange={(e) => setRawSearch(e.target.value)}
             placeholder={t("wallet.activity.toolbar.searchPlaceholder")}

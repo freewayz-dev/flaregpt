@@ -12,16 +12,36 @@ import {
 } from "recharts";
 
 import TokenIcon from "@/components/common/TokenIcon";
+import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
+import GenericTable from "@/pages/Dashboard/components/shared/GenericTable";
 
 const GRID_PROPS = { stroke: "#94A3B8", strokeOpacity: 0.15, strokeDasharray: "3 3" };
 const TICK_STYLE = { fontSize: 10, fill: "#94A3B8" };
 
-function ChartCard({ title, subtitle, children }) {
+// `` on every ResponsiveContainer below (not a Recharts
+// default — it's 0, meaning "redraw on every single resize event") is what
+// keeps the sidebar's collapse/expand animation smooth on this page
+// specifically. The sidebar's own width transition (see Sidebar.jsx)
+// continuously resizes this page's main content area for ~300ms, and
+// these three charts are the only ones in the app whose data volume scales
+// directly with how much history a wallet actually has — a heavy wallet's
+// daily histogram can be a few hundred bars. Redrawing that on every one of
+// the dozens of resize events a single 300ms transition fires was the
+// actual jank; other pages' charts (fixed-size price history, a handful of
+// DeFi strategies) never had enough data for the same non-debounced
+// behavior to be visible at all.
+
+function ChartCard({ title, subtitle, children, tableRows, tableLabel }) {
   return (
     <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <h3 className="text-sm font-semibold text-ink-primary">{title}</h3>
       {subtitle && <p className="mt-0.5 text-xs text-ink-muted">{subtitle}</p>}
       <div className="mt-4 h-52">{children}</div>
+      {tableRows?.length > 0 && (
+        <Disclosure label={tableLabel}>
+          <GenericTable items={tableRows} height="200px" />
+        </Disclosure>
+      )}
     </div>
   );
 }
@@ -53,7 +73,7 @@ function AssetTick({ x, y, payload }) {
 // rather than maintaining two copies of the same recharts markup.
 function ActivityByDayChart({ data }) {
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="100%" debounce={200}>
       <BarChart data={data} margin={{ left: -20, right: 8, top: 4, bottom: 0 }}>
         <CartesianGrid {...GRID_PROPS} vertical={false} />
         <XAxis
@@ -75,7 +95,7 @@ function ActivityByDayChart({ data }) {
 function AssetBreakdownChart({ data }) {
   const rows = data.slice(0, 6);
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="100%" debounce={200}>
       <BarChart layout="vertical" data={rows} margin={{ left: 8, right: 16, top: 4, bottom: 0 }}>
         <CartesianGrid {...GRID_PROPS} horizontal={false} />
         <XAxis type="number" tick={TICK_STYLE} axisLine={false} tickLine={false} allowDecimals={false} />
@@ -93,7 +113,7 @@ function AssetBreakdownChart({ data }) {
 
 function ActionBreakdownChart({ data }) {
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="100%" debounce={200}>
       <BarChart layout="vertical" data={data.slice(0, 6)} margin={{ left: 8, right: 16, top: 4, bottom: 0 }}>
         <CartesianGrid {...GRID_PROPS} horizontal={false} />
         <XAxis type="number" tick={TICK_STYLE} axisLine={false} tickLine={false} allowDecimals={false} />
@@ -169,6 +189,8 @@ export default function ActivityCharts({ dailyHistogram, assetBreakdown, actionB
         <ChartCard
           title={t("wallet.activity.charts.activityByDay")}
           subtitle={t("wallet.activity.charts.activityByDaySubtitle")}
+          tableRows={dailyHistogram}
+          tableLabel={t("wallet.activity.charts.viewData", { count: dailyHistogram.length })}
         >
           <ActivityByDayChart data={dailyHistogram} />
         </ChartCard>
@@ -176,6 +198,8 @@ export default function ActivityCharts({ dailyHistogram, assetBreakdown, actionB
         <ChartCard
           title={t("wallet.activity.charts.assetBreakdown")}
           subtitle={t("wallet.activity.charts.assetBreakdownSubtitle")}
+          tableRows={assetBreakdown.slice(0, 6)}
+          tableLabel={t("wallet.activity.charts.viewData", { count: Math.min(assetBreakdown.length, 6) })}
         >
           <AssetBreakdownChart data={assetBreakdown} />
         </ChartCard>
@@ -184,6 +208,8 @@ export default function ActivityCharts({ dailyHistogram, assetBreakdown, actionB
           <ChartCard
             title={t("wallet.activity.charts.actionBreakdown")}
             subtitle={t("wallet.activity.charts.actionBreakdownSubtitle")}
+            tableRows={actionBreakdown.slice(0, 6)}
+            tableLabel={t("wallet.activity.charts.viewData", { count: Math.min(actionBreakdown.length, 6) })}
           >
             <ActionBreakdownChart data={actionBreakdown} />
           </ChartCard>
@@ -200,6 +226,8 @@ export default function ActivityCharts({ dailyHistogram, assetBreakdown, actionB
           <ChartCard
             title={t("wallet.activity.charts.activityByDay")}
             subtitle={t("wallet.activity.charts.activityByDaySubtitle")}
+            tableRows={dailyHistogram}
+            tableLabel={t("wallet.activity.charts.viewData", { count: dailyHistogram.length })}
           >
             <ActivityByDayChart data={dailyHistogram} />
           </ChartCard>
@@ -208,6 +236,8 @@ export default function ActivityCharts({ dailyHistogram, assetBreakdown, actionB
           <ChartCard
             title={t("wallet.activity.charts.assetBreakdown")}
             subtitle={t("wallet.activity.charts.assetBreakdownSubtitle")}
+            tableRows={assetBreakdown.slice(0, 6)}
+            tableLabel={t("wallet.activity.charts.viewData", { count: Math.min(assetBreakdown.length, 6) })}
           >
             <AssetBreakdownChart data={assetBreakdown} />
           </ChartCard>
@@ -216,6 +246,8 @@ export default function ActivityCharts({ dailyHistogram, assetBreakdown, actionB
           <ChartCard
             title={t("wallet.activity.charts.actionBreakdown")}
             subtitle={t("wallet.activity.charts.actionBreakdownSubtitle")}
+            tableRows={actionBreakdown.slice(0, 6)}
+            tableLabel={t("wallet.activity.charts.viewData", { count: Math.min(actionBreakdown.length, 6) })}
           >
             <ActionBreakdownChart data={actionBreakdown} />
           </ChartCard>

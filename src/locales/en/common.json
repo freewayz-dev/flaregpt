@@ -37,7 +37,9 @@
       "operational": "All systems operational"
     },
     "chart": {
-      "couldntLoad": "Couldn't load FLR price history"
+      "couldntLoad": "Couldn't load FLR price history",
+      "viewData_one": "View price history ({{count}} point)",
+      "viewData_other": "View price history ({{count}} points)"
     },
     "claimsHistory": {
       "connectToSee": "Connect or add a wallet in Settings to see claim history.",
@@ -81,7 +83,9 @@
       "gwei": "Gwei",
       "live": "Live",
       "title": "Network Activity",
-      "tps": "TPS"
+      "tps": "TPS",
+      "viewData_one": "View gas price samples ({{count}} sample)",
+      "viewData_other": "View gas price samples ({{count}} samples)"
     },
     "stats": {
       "couldntLoad": "Couldn't load market overview",
@@ -185,6 +189,7 @@
       "noLockup": "No lock-up",
       "subtitle": "See how your FLR could perform across strategies",
       "title": "Strategy Comparison",
+      "toggleDetails": "Show details for {{strategy}}",
       "verdict": "FlareGPT Verdict"
     }
   },
@@ -257,6 +262,7 @@
       "send": "Send",
       "stop": "Stop generating"
     },
+    "conversationLabel": "Conversation with FlareGPT",
     "deleteConversation": {
       "button": "Delete Conversation",
       "confirm": "Confirm?"
@@ -275,6 +281,7 @@
       "close": "Close",
       "delete": "Delete",
       "empty": "No conversations yet",
+      "loading": "Loading conversation…",
       "loadFailed": "Couldn't load your conversations.",
       "moreActions": "More actions",
       "newChat": "New Chat",
@@ -286,6 +293,7 @@
       "pinLimitReached_other": "You can pin up to {{count}} conversations",
       "rename": "Rename",
       "renameFailed": "Couldn't rename this conversation.",
+      "renameLabel": "Conversation name",
       "saveRename": "Save",
       "searchPlaceholder": "Search conversations...",
       "title": "Chat History",
@@ -303,12 +311,14 @@
       "rewardsDecreased": "Why did my rewards decrease?",
       "stakingOpportunities": "Show my staking opportunities"
     },
+    "responseReady": "FlareGPT has finished responding.",
     "sendError": "Something went wrong. Try again.",
+    "thinking": "Thinking…",
     "wallet": {
       "analyzing": "Analyzing:",
       "guestLabel": "Wallet analysis",
       "locked": {
-        "body": "Sign in to let FlareGPT read your Primary and Watchlist wallets automatically, instead of typing an address into every question.",
+        "body": "Sign in to let FlareGPT automatically access your Primary and Watchlist wallets.",
         "connectCta": "Connect Wallet",
         "signInCta": "Sign in",
         "signingIn": "Confirm in your wallet…",
@@ -372,8 +382,7 @@
     "checkFailed": "Couldn't check Gas Sniper status",
     "checking": "Checking Gas Sniper status…",
     "enabled": "Auto-claimed by Gas Sniper",
-    "nudge": "Turn on Gas Sniper to auto-claim",
-    "notEnabled": "Gas Sniper isn't enabled for this wallet"
+    "nudge": "Turn on Gas Sniper to auto-claim"
   },
   "help": {
     "askFlareGptCta": "Ask FlareGPT for help",
@@ -571,7 +580,6 @@
       "connectedWallets": "Connected Wallets",
       "currency": "Currency Display",
       "defaultLandingPage": "Default Landing Page",
-      "defaultWallet": "Default Wallet",
       "governanceAlerts": "Governance Alerts",
       "hideBalances": "Hide Wallet Balances",
       "language": "Language",
@@ -583,13 +591,13 @@
       "theme": "Theme",
       "themeMode": "Light / Dark mode",
       "timeframe": "Timeframe",
-      "walletCapacity": "Wallet Capacity",
-      "walletPreferences": "Wallet Preferences"
+      "walletCapacity": "Wallet Capacity"
     },
     "dataStorage": {
       "accountSubtitle": "Synced to your account on the backend.",
       "accountTitle": "Account Data",
       "clear": "Clear",
+      "clearArmed": "Press Clear again to confirm clearing {{item}}.",
       "clearing": "Clearing…",
       "confirmClear": "Confirm?",
       "conversations": "FlareGPT Conversations",
@@ -609,7 +617,6 @@
       "chartType": "Set default rendering visual style geometry for system matrices.",
       "currency": "Choose the asset base currency display.",
       "defaultLandingPage": "Choose which page opens first when you launch the app.",
-      "defaultWallet": "This wallet becomes active whenever a previous session can't be restored.",
       "hideBalances": "Blur balances and amounts across the dashboard for privacy.",
       "language": "Select your default interface viewing language.",
       "links": "Global documentation references and team interaction links.",
@@ -618,8 +625,7 @@
       "tableDensity": "Comfortable spacing or a tighter, compact view for dense tables.",
       "theme": "Choose Light, Dark, or follow your system setting.",
       "timeframe": "Define default window period scales on visual charts.",
-      "walletCapacity": "System limits tracking allocation capacity pools.",
-      "walletPreferences": "Choose which wallet the dashboard opens with."
+      "walletCapacity": "System limits tracking allocation capacity pools."
     },
     "flareGpt": {
       "syncStatusConnected": "Signed in. Your conversations sync across every device and browser.",
@@ -656,9 +662,11 @@
       "medium": "Medium",
       "off": "Off"
     },
+    "sectionsNav": "Settings sections",
     "security": {
       "confirmLogout": "Confirm?",
-      "logout": "Log Out"
+      "logout": "Log Out",
+      "logoutArmed": "Press Log Out again to confirm signing out."
     },
     "subtitles": {
       "About": "Overview systematic deployment records, compilation rules, and asset indexes.",
@@ -689,6 +697,7 @@
       "add": "Add Wallet ({{current}}/{{max}})",
       "addFormTitle": "Add Watchlist Portfolio Account",
       "adding": "Adding…",
+      "addressLabel": "Wallet address",
       "addressPlaceholder": "0x... Flare Wallet Address",
       "available": "Available",
       "cancelRename": "Cancel",
@@ -712,7 +721,7 @@
       "loadFailed": "Couldn't load your tracked wallets.",
       "manageSubtitle": "Manage your active Web3 connections and read-only portfolio tracking accounts.",
       "maximum": "Maximum",
-      "noDefaultSelected": "None selected",
+      "nicknameLabel": "Wallet nickname",
       "noLimit": "Add as many wallets as you like.",
       "noSearchResults": "No wallets match your search.",
       "notFoundError": "This wallet is no longer on your watchlist.",
@@ -720,6 +729,7 @@
       "registrationFailed": "Address registration failed. Check if it is a duplicate or if slots are filled.",
       "remainingSlots": "Slots Remaining",
       "remove": "Remove",
+      "removeArmed": "Press remove again to confirm removing {{name}}.",
       "rename": "Rename",
       "saveEdit": "Save",
       "searchPlaceholder": "Search {{count}} wallets...",
@@ -744,6 +754,7 @@
     "governance": "Governance",
     "helpCenter": "Help Center",
     "loops": "Loops",
+    "mainNavigation": "Main navigation",
     "notConnected": "Not connected",
     "overview": "Overview",
     "rflrTracker": "rFLR Vesting",
@@ -764,7 +775,9 @@
         "assetBreakdownSubtitle": "Transaction count by asset",
         "tabActions": "Actions",
         "tabActivity": "Activity",
-        "tabAssets": "Assets"
+        "tabAssets": "Assets",
+        "viewData_one": "View data ({{count}} row)",
+        "viewData_other": "View data ({{count}} rows)"
       },
       "connectToSee": "Connect or select a wallet to see its transaction activity.",
       "couldntLoad": "Couldn't load wallet activity.",

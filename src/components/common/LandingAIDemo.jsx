@@ -190,6 +190,9 @@ export default function LandingAIDemo({ onOpenWalletModal }) {
         <div className="flex items-center gap-2 rounded-2xl bg-surface-inset p-1.5 focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2">
           <input
             type="text"
+            id="landing-ai-demo-input"
+            name="message"
+            aria-label="Ask FlareGPT"
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={(e) => {

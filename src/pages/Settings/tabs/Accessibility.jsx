@@ -17,7 +17,11 @@ export default function Accessibility() {
           title={t("settings.cards.reduceMotion")}
           description={t("settings.descriptions.reduceMotion")}
         >
-          <Toggle checked={reduceMotionOverride} onChange={setReduceMotionOverride} />
+          <Toggle
+            checked={reduceMotionOverride}
+            onChange={setReduceMotionOverride}
+            label={t("settings.cards.reduceMotion")}
+          />
         </RowItem>
       </div>
     </Card>

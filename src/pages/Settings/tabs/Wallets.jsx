@@ -21,8 +21,6 @@ import {
   useUpdateWatchlistWallet,
 } from "@/hooks/queries/useWatchlistQueries";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
-import { shortenAddress } from "@/utils/address";
-import CustomSelect from "@/components/common/CustomSelect";
 import Card from "@/pages/Settings/components/Card";
 import RowItem from "@/pages/Settings/components/RowItem";
 
@@ -127,6 +125,7 @@ function WalletListRow({
                 <input
                   ref={nicknameInputRef}
                   type="text"
+                  aria-label={t("settings.wallets.nicknameLabel")}
                   value={editNickname}
                   onChange={(e) => setEditNickname(e.target.value)}
                   onKeyDown={handleKeyDown}
@@ -138,6 +137,7 @@ function WalletListRow({
                 {hasSession && (
                   <input
                     type="text"
+                    aria-label={t("settings.wallets.addressLabel")}
                     value={editAddress}
                     onChange={(e) => setEditAddress(e.target.value)}
                     onKeyDown={handleKeyDown}
@@ -258,8 +258,6 @@ export default function Wallets() {
     addTrackedWallet,
     removeTrackedWallet,
     renameTrackedWallet,
-    preferredDefaultAddress,
-    setPreferredDefaultAddress,
     maxSlots,
     remainingSlots,
     watchlistIsError,
@@ -276,6 +274,8 @@ export default function Wallets() {
   const [errorText, setErrorText] = useState("");
   const [confirmingAddress, setConfirmingAddress] = useState(null);
   const confirmTimerRef = useRef(null);
+  const [removeAnnouncement, setRemoveAnnouncement] = useState("");
+  const previousConfirmingAddressRef = useRef(null);
 
   // The wallet currently in edit mode, snapshotted at the moment editing
   // started — comparing against this (rather than re-deriving from
@@ -293,6 +293,28 @@ export default function Wallets() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => () => clearTimeout(confirmTimerRef.current), []);
+
+  // The "click again to confirm" arm/disarm cycle changes what the Remove
+  // button *means* without changing anything a screen reader user would
+  // otherwise notice — the button's accessible name doesn't update (see
+  // WalletListRow) and nothing else on the page moves. This announces the
+  // arm transition explicitly, same pattern as the FlareGPT response-ready
+  // announcer: only on a genuine state change, not on every render. The
+  // disarm transition is deliberately NOT announced here — it fires both on
+  // a real cancel (timeout/click-away) and on the second confirming click
+  // that actually performs the removal, and those two cases need different
+  // wording; without a way to tell them apart from this state alone, saying
+  // nothing is less misleading than guessing wrong.
+  useEffect(() => {
+    if (previousConfirmingAddressRef.current === confirmingAddress) return;
+    previousConfirmingAddressRef.current = confirmingAddress;
+
+    if (confirmingAddress) {
+      const wallet = allWallets.find((w) => w.address === confirmingAddress);
+      const name = wallet?.label || confirmingAddress;
+      setRemoveAnnouncement(t("settings.wallets.removeArmed", { name }));
+    }
+  }, [confirmingAddress, allWallets, t]);
 
   useEffect(() => {
     if (editingWallet) nicknameInputRef.current?.focus();
@@ -409,14 +431,6 @@ export default function Wallets() {
   const isScrollable = trackedList.length > APPROX_VISIBLE_ROWS;
   const showSearch = trackedList.length > SEARCH_THRESHOLD;
 
-  const walletSelectOptions = allWallets.map((w) => ({
-    value: w.address,
-    name: `${w.label} · ${shortenAddress(w.address)}`,
-  }));
-  const selectedDefaultWallet = preferredDefaultAddress
-    ? (walletSelectOptions.find((o) => o.value === preferredDefaultAddress) ?? null)
-    : { value: "", name: t("settings.wallets.noDefaultSelected") };
-
   const handleSave = async (e) => {
     e.preventDefault();
     setErrorText("");
@@ -474,6 +488,9 @@ export default function Wallets() {
 
   return (
     <div className="space-y-6">
+      <div role="status" aria-live="polite" className="sr-only">
+        {removeAnnouncement}
+      </div>
       <Card
         title={t("settings.cards.connectedWallets")}
         subtitle={t("settings.wallets.manageSubtitle")}
@@ -543,6 +560,9 @@ export default function Wallets() {
                     <MagnifyingGlassIcon className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-ink-muted" />
                     <input
                       type="text"
+                      id="settings-wallets-search"
+                      name="search"
+                      aria-label={t("settings.wallets.searchPlaceholder", { count: trackedList.length })}
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder={t("settings.wallets.searchPlaceholder", { count: trackedList.length })}
@@ -630,6 +650,9 @@ export default function Wallets() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <input
               type="text"
+              id="settings-wallets-add-label"
+              name="nickname"
+              aria-label={t("settings.wallets.nicknameLabel")}
               placeholder={t("settings.wallets.labelPlaceholder")}
               value={inputLabel}
               onChange={(e) => setInputLabel(e.target.value)}
@@ -639,6 +662,9 @@ export default function Wallets() {
             />
             <input
               type="text"
+              id="settings-wallets-add-address"
+              name="address"
+              aria-label={t("settings.wallets.addressLabel")}
               placeholder={t("settings.wallets.addressPlaceholder")}
               value={inputAddress}
               onChange={(e) => setInputAddress(e.target.value)}
@@ -700,29 +726,6 @@ export default function Wallets() {
         </form>
       </Card>
 
-      {allWallets.length > 0 && (
-        <Card
-          title={t("settings.cards.walletPreferences")}
-          subtitle={t("settings.descriptions.walletPreferences")}
-        >
-          <div className="divide-y divide-divider">
-            <RowItem
-              icon={WalletIcon}
-              title={t("settings.cards.defaultWallet")}
-              description={t("settings.descriptions.defaultWallet")}
-            >
-              <div className="w-full sm:w-64">
-                <CustomSelect
-                  options={walletSelectOptions}
-                  selectedValue={selectedDefaultWallet}
-                  onChange={(option) => setPreferredDefaultAddress(option.value)}
-                />
-              </div>
-            </RowItem>
-          </div>
-        </Card>
-      )}
-
       <Card
         title={t("settings.cards.walletCapacity")}
         subtitle={t("settings.descriptions.walletCapacity")}
@@ -756,7 +759,14 @@ export default function Wallets() {
           </div>
 
           {!isUnlimited && (
-            <div className="h-2 w-full rounded-full bg-surface-subtle overflow-hidden">
+            <div
+              role="progressbar"
+              aria-valuenow={totalCount}
+              aria-valuemin={0}
+              aria-valuemax={maxSlots}
+              aria-label={t("settings.cards.walletCapacity")}
+              className="h-2 w-full rounded-full bg-surface-subtle overflow-hidden"
+            >
               <div
                 className="h-2 rounded-full bg-brand transition-all duration-500 ease-out"
                 style={{ width: `${(totalCount / maxSlots) * 100}%` }}

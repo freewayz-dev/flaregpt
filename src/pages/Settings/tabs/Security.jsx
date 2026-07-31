@@ -18,6 +18,7 @@ export default function Security() {
   const { hasSession } = useAuthStatus();
 
   const [confirmingLogout, setConfirmingLogout] = useState(false);
+  const [logoutAnnouncement, setLogoutAnnouncement] = useState("");
   const confirmTimerRef = useRef(null);
   useEffect(() => () => clearTimeout(confirmTimerRef.current), []);
 
@@ -40,6 +41,7 @@ export default function Security() {
       return;
     }
     setConfirmingLogout(true);
+    setLogoutAnnouncement(t("settings.security.logoutArmed"));
     clearTimeout(confirmTimerRef.current);
     confirmTimerRef.current = setTimeout(() => setConfirmingLogout(false), CONFIRM_WINDOW_MS);
   };
@@ -49,6 +51,9 @@ export default function Security() {
       title={t("settings.tabs.Security")}
       subtitle={t("settings.subtitles.Security")}
     >
+      <div role="status" aria-live="polite" className="sr-only">
+        {logoutAnnouncement}
+      </div>
       <div className="divide-y divide-divider">
         <RowItem
           title={t("settings.cards.logout")}

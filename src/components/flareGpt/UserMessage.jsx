@@ -37,6 +37,8 @@ function UserMessage({ message }) {
           <button
             type="button"
             onClick={handleCopy}
+            title={t("flrgpt.actions.copy")}
+            aria-label={t("flrgpt.actions.copy")}
             className="p-1 rounded-md text-ink-muted hover:text-ink-primary hover:bg-surface-card-hover transition-colors cursor-pointer"
           >
             {copied ? (

@@ -8,6 +8,7 @@ import rabbyImg from "@/assets/wallets/rabby.png";
 import walletConnectImg from "@/assets/wallets/icon.png";
 import metamask from "@/assets/wallets/MetaMask_Fox.svg.png";
 import { findInjectedProvider } from "@/config/web3Config";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 // A stuck relay/network on WalletConnect's side leaves its connect() promise
 // hanging forever with no error — this bounds how long any single attempt
@@ -201,6 +202,9 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
   // that state update commits.
   const previouslyFocusedRef = useRef(null);
   const closeButtonRef = useRef(null);
+  const dialogRef = useRef(null);
+
+  useFocusTrap(dialogRef, shouldRender);
 
   useEffect(() => {
     if (isOpen) {
@@ -362,6 +366,7 @@ export default function ConnectWalletModal({ isOpen, onClose }) {
       />
 
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="connect-wallet-modal-title"

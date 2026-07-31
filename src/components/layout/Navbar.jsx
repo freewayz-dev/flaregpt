@@ -17,6 +17,8 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
+import { useMarketOverview } from "@/hooks/queries/useDashboardQueries";
+import { useCurrency } from "@/hooks/useCurrency";
 import { useUIStore } from "@/store/useUIStore";
 import { useFlareGptStore } from "@/store/useFlareGptStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
@@ -81,12 +83,30 @@ export default function Navbar({
   const dropdownRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
-  const { address: connectedAddress, isConnected } = useConnection();
+  const { address: connectedAddress, isConnected, isReconnecting } = useConnection();
   const disconnectAll = useDisconnectAllWallets();
   const { isCurrentWalletSignedIn, isAuthenticating, signIn } = useAuthStatus();
 
-  const { activeAddress, allWallets, switchActiveAddress, maxSlots } =
+  const { activeAddress, allWallets, switchActiveAddress, maxSlots, hasHydrated } =
     useDerivedWalletHub(connectedAddress, isConnected);
+
+  // Two independent things need to settle before "no active wallet found"
+  // can be trusted as a real, final answer rather than just "haven't heard
+  // back yet": this store's own zustand-persist hydration (`hasHydrated`),
+  // and wagmi's async reconnect-on-load (`isReconnecting`, briefly true
+  // exactly once per page load while it silently restores a previously-
+  // connected wallet). Rendering the real selector before both resolve is
+  // what caused an already-connected, already-configured wallet to flash
+  // "Connect Wallet" on every refresh — the label is computed from
+  // `activeAddress`/`allWallets`, which briefly look identical to a
+  // genuinely disconnected guest during that window.
+  const walletStateIsSettling = !hasHydrated || isReconnecting;
+
+  // Same data source as the Overview page's FLR Price stat card — this
+  // used to be a hardcoded "$0.0182" with no live value behind it at all.
+  const { data: marketOverview, isSuccess: isMarketOverviewSuccess } = useMarketOverview();
+  const { formatCurrency } = useCurrency();
+  const flrPrice = marketOverview?.market_metrics?.flr_spot_price_usd;
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -311,6 +331,7 @@ export default function Navbar({
             type="button"
             onClick={toggleHideBalances}
             title={hideBalances ? t("navbar.showBalances") : t("navbar.hideBalances")}
+            aria-label={hideBalances ? t("navbar.showBalances") : t("navbar.hideBalances")}
             aria-pressed={hideBalances}
             className="p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] cursor-pointer shrink-0"
           >
@@ -346,6 +367,17 @@ export default function Navbar({
                 to its left decreases in either frequency of use (the privacy
                 eye toggle) or interactivity (the network badge has no menu at
                 all) as it moves away from that anchor. */}
+            {walletStateIsSettling ? (
+              // Same footprint as the real trigger button below (height,
+              // rounded shape) so nothing shifts once the real one takes
+              // its place a moment later — a neutral "still figuring this
+              // out" placeholder instead of asserting a wallet state that
+              // isn't confirmed yet either way.
+              <div
+                className="h-[27px] w-24 shrink-0 animate-pulse rounded-lg bg-slate-100 dark:bg-[#1B1B1F]"
+                aria-hidden="true"
+              />
+            ) : (
             <div className="relative" ref={dropdownRef}>
               <button
                 type="button"
@@ -394,7 +426,7 @@ export default function Navbar({
                 className={`absolute right-0 mt-2 w-64 origin-top-right rounded-xl bg-[#FFFFFF] border border-[#E5E7EB] p-2 shadow-xl dark:bg-[#21242B] dark:border-none z-50 space-y-1 transition-all duration-200 ${
                   walletMenuOpen
                     ? "opacity-100 scale-100 translate-y-0"
-                    : "opacity-0 scale-95 -translate-y-1 pointer-events-none"
+                    : "invisible opacity-0 scale-95 -translate-y-1 pointer-events-none"
                 }`}
               >
                 <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
@@ -491,6 +523,7 @@ export default function Navbar({
                 )}
               </div>
             </div>
+            )}
           </div>
 
           {/* MOBILE/TABLET 3-DOT HUD TRIGGER */}
@@ -506,13 +539,20 @@ export default function Navbar({
             {mobileMenuOpen ? (
               <XMarkIcon className="h-6 w-6 text-brand" />
             ) : (
+              // Sized via the same `h-6 w-6` scale as XMarkIcon above
+              // (rather than this SVG's own previous `width="25"
+              // height="25"` attributes) — a 25px icon swapping for a 24px
+              // one shrank this button's own rendered width by 1px right
+              // as the menu opened, and since this sits in a `justify-end`
+              // flex row, that 1px change pushed every sibling to its left
+              // (including the eye/balance-visibility toggle) over by the
+              // same 1px — read as a visible shake, confirmed live via
+              // getBoundingClientRect before/after toggling.
               <svg
-                width="25"
-                height="25"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="cursor-pointer text-slate-500 dark:text-zinc-400"
+                className="h-6 w-6 cursor-pointer text-slate-500 dark:text-zinc-400"
               >
                 <path
                   d="M5 12H5.01M12 12H12.01M19 12H19.01M6 12C6 12.2652 5.89464 12.5196 5.70711 12.7071C5.51957 12.8946 5.26522 13 5 13C4.73478 13 4.48043 12.8946 4.29289 12.7071C4.10536 12.5196 4 12.2652 4 12C4 11.7348 4.10536 11.4804 4.29289 11.2929C4.48043 11.1054 4.73478 11 5 11C5.26522 11 5.51957 11.1054 5.70711 11.2929C5.89464 11.4804 6 11.7348 6 12V12ZM13 12C13 12.2652 12.8946 12.5196 12.7071 12.7071C12.5196 12.8946 12.2652 13 12 13C11.7348 13 11.4804 12.8946 11.2929 12.7071C11.1054 12.5196 11 12.2652 11 12C11 11.7348 11.1054 11.4804 11.2929 11.2929C11.4804 11.1054 11.7348 11 12 11C12.2652 11 12.5196 11.1054 12.7071 11.2929C12.8946 11.4804 13 11.7348 13 12V12ZM20 12C20 12.2652 19.8946 12.5196 19.7071 12.7071C19.5196 12.8946 19.2652 13 19 13C18.7348 13 18.4804 12.8946 18.2929 12.7071C18.1054 12.5196 18 12.2652 18 12C18 11.7348 18.1054 11.4804 18.2929 11.2929C18.4804 11.1054 18.7348 11 19 11C19.2652 11 19.5196 11.1054 19.7071 11.2929C19.8946 11.4804 20 11.7348 20 12V12Z"
@@ -532,7 +572,7 @@ export default function Navbar({
         className={`lg:hidden fixed left-4 right-4 top-16 z-50 rounded-2xl border border-slate-100 dark:border-none bg-surface-card p-4 shadow-2xl transition-all duration-300 transform-gpu ${
           mobileMenuOpen
             ? "opacity-100 scale-100 translate-y-0"
-            : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+            : "invisible opacity-0 scale-95 -translate-y-2 pointer-events-none"
         }`}
         ref={mobileMenuRef}
       >
@@ -546,7 +586,12 @@ export default function Navbar({
             </div>
             <div className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-600 dark:text-zinc-300 bg-slate-50 dark:bg-[#21242B] px-2 py-0.5 rounded-md">
               <CurrencyDollarIcon className="h-3 w-3 text-emerald-500" />
-              <span>FLR: $0.0182</span>
+              <span>
+                FLR:{" "}
+                {isMarketOverviewSuccess && flrPrice != null
+                  ? formatCurrency(flrPrice, { minimumFractionDigits: 4, maximumFractionDigits: 4 })
+                  : "—"}
+              </span>
             </div>
           </div>
 
@@ -556,7 +601,12 @@ export default function Navbar({
                 {t("navbar.primaryWalletSection")}
               </label>
 
-              {primaryWallet ? (
+              {walletStateIsSettling ? (
+                <div
+                  className="h-[42px] w-full animate-pulse rounded-xl bg-slate-100 dark:bg-[#1B1B1F]"
+                  aria-hidden="true"
+                />
+              ) : primaryWallet ? (
                 <WalletRow
                   wallet={primaryWallet}
                   isActive={activeAddress === primaryWallet.address}

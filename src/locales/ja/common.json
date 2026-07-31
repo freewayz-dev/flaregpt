@@ -37,7 +37,9 @@
       "operational": "システム正常動作"
     },
     "chart": {
-      "couldntLoad": "FLRの料金履歴を読み込めませんでした"
+      "couldntLoad": "FLRの料金履歴を読み込めませんでした",
+      "viewData_one": "価格履歴を表示（{{count}}件）",
+      "viewData_other": "価格履歴を表示（{{count}}件）"
     },
     "claimsHistory": {
       "connectToSee": "[設定]でウォレットを接続または追加して、請求履歴を表示します。",
@@ -81,7 +83,9 @@
       "gwei": "Gwei",
       "live": "ライブ",
       "title": "ネットワークアクティビティ",
-      "tps": "TPS（トランザクション件数/秒）"
+      "tps": "TPS（トランザクション件数/秒）",
+      "viewData_one": "ガス価格のサンプルを表示（{{count}}件）",
+      "viewData_other": "ガス価格のサンプルを表示（{{count}}件）"
     },
     "stats": {
       "couldntLoad": "市場概要を読み込めませんでした",
@@ -185,6 +189,7 @@
       "noLockup": "ロックアップなし",
       "subtitle": "各戦略でFLRがどのようなパフォーマンスを発揮するか確認できます",
       "title": "戦略比較",
+      "toggleDetails": "{{strategy}}の詳細を表示",
       "verdict": "FlareGPTの見解"
     }
   },
@@ -257,6 +262,7 @@
       "send": "送信",
       "stop": "生成を停止"
     },
+    "conversationLabel": "FlareGPTとの会話",
     "deleteConversation": {
       "button": "会話を削除",
       "confirm": "確認しますか？"
@@ -275,6 +281,7 @@
       "close": "閉じる",
       "delete": "削除",
       "empty": "まだ会話がありません",
+      "loading": "会話を読み込み中…",
       "loadFailed": "会話を読み込めませんでした。",
       "moreActions": "その他の操作",
       "newChat": "新しいチャット",
@@ -286,6 +293,7 @@
       "pinLimitReached_other": "最大{{count}}件の会話をピン留めできます",
       "rename": "名前を変更",
       "renameFailed": "この会話の名前を変更できませんでした。",
+      "renameLabel": "会話の名前",
       "saveRename": "保存",
       "searchPlaceholder": "会話を検索...",
       "title": "チャット履歴",
@@ -303,12 +311,14 @@
       "rewardsDecreased": "報酬が減った理由は?",
       "stakingOpportunities": "ステーキングの機会を見せて"
     },
+    "responseReady": "FlareGPTの応答が完了しました。",
     "sendError": "問題が発生しました。もう一度お試しください。",
+    "thinking": "考え中…",
     "wallet": {
       "analyzing": "分析対象:",
       "guestLabel": "ウォレット分析",
       "locked": {
-        "body": "サインインして、すべての質問に住所を入力する代わりに、FlareGPTがプライマリウォレットとウォッチリストウォレットを自動的に読み取れるようにします。",
+        "body": "サインインすると、FlareGPTがプライマリウォレットとウォッチリストウォレットに自動的にアクセスできるようになります。",
         "connectCta": "ウォレットに接続する",
         "signInCta": "サインイン",
         "signingIn": "ウォレットで確認してください…",
@@ -372,8 +382,7 @@
     "checkFailed": "Gas Sniperのステータスを確認できませんでした",
     "checking": "Gas Sniperのステータスを確認中…",
     "enabled": "Gas Sniperにより自動請求済み",
-    "nudge": "自動請求するにはGas Sniperをオンにしてください",
-    "notEnabled": "このウォレットではGas Sniperが有効になっていません"
+    "nudge": "自動請求するにはGas Sniperをオンにしてください"
   },
   "help": {
     "askFlareGptCta": "FlareGPTに聞いてみる",
@@ -571,7 +580,6 @@
       "connectedWallets": "接続済ウォレット",
       "currency": "通貨表示",
       "defaultLandingPage": "デフォルトのランディングページ",
-      "defaultWallet": "デフォルトウォレット",
       "governanceAlerts": "ガバナンスアラート",
       "hideBalances": "ウォレット残高を非表示",
       "language": "言語",
@@ -583,13 +591,13 @@
       "theme": "テーマ",
       "themeMode": "ライト / ダークモード",
       "timeframe": "期間",
-      "walletCapacity": "ウォレット容量",
-      "walletPreferences": "ウォレット設定"
+      "walletCapacity": "ウォレット容量"
     },
     "dataStorage": {
       "accountSubtitle": "サーバー上のアカウントと同期されています。",
       "accountTitle": "アカウントデータ",
       "clear": "削除",
+      "clearArmed": "{{item}} の消去を確定するには、もう一度「消去」を押してください。",
       "clearing": "削除中…",
       "confirmClear": "確認しますか？",
       "conversations": "FlareGPTの会話",
@@ -609,7 +617,6 @@
       "chartType": "システムマトリックスのデフォルトのレンダリング視覚スタイルジオメトリを設定します。",
       "currency": "資産の基準通貨表示を選択します。",
       "defaultLandingPage": "アプリ起動時に最初に開くページを選択します。",
-      "defaultWallet": "以前のセッションを復元できない場合、このウォレットがアクティブになります。",
       "hideBalances": "プライバシー保護のため、ダッシュボード全体の残高と金額をぼかします。",
       "language": "デフォルトのインターフェース表示言語を選択します。",
       "links": "グローバルなドキュメント参照とチームのインタラクションリンクです。",
@@ -618,8 +625,7 @@
       "tableDensity": "密なテーブル向けの快適な間隔、またはよりコンパクトな表示。",
       "theme": "ライト、ダーク、またはシステム設定に従うかを選択します。",
       "timeframe": "視覚チャートのデフォルトのウィンドウ期間スケールを定義します。",
-      "walletCapacity": "割り当て容量プールを追跡するシステム制限です。",
-      "walletPreferences": "ダッシュボードがどのウォレットで開くかを選択します。"
+      "walletCapacity": "割り当て容量プールを追跡するシステム制限です。"
     },
     "flareGpt": {
       "syncStatusConnected": "サインインしました。会話はすべてのデバイスとブラウザで同期されます。",
@@ -656,9 +662,11 @@
       "medium": "中",
       "off": "オフ"
     },
+    "sectionsNav": "設定セクション",
     "security": {
       "confirmLogout": "確認しますか？",
-      "logout": "ログアウト"
+      "logout": "ログアウト",
+      "logoutArmed": "ログアウトを確定するには、もう一度「ログアウト」を押してください。"
     },
     "subtitles": {
       "About": "システム的な展開記録、コンパイルルール、および資産インデックスを概観します。",
@@ -689,6 +697,7 @@
       "add": "ウォレットを追加 ({{current}}/{{max}})",
       "addFormTitle": "ウォッチリストポートフォリオアカウントを追加",
       "adding": "追加中…",
+      "addressLabel": "ウォレットアドレス",
       "addressPlaceholder": "0 x...フレアウォレットアドレス",
       "available": "利用可能",
       "cancelRename": "キャンセル",
@@ -712,7 +721,7 @@
       "loadFailed": "追跡中のウォレットを読み込めませんでした。",
       "manageSubtitle": "アクティブなWeb 3接続と読み取り専用ポートフォリオトラッキングアカウントを管理します。",
       "maximum": "最大",
-      "noDefaultSelected": "未選択",
+      "nicknameLabel": "ウォレットのニックネーム",
       "noLimit": "好きなだけウォレットを追加できます。",
       "noSearchResults": "検索に一致するウォレットがありません。",
       "notFoundError": "このウォレットはもうウォッチリストにありません。",
@@ -720,6 +729,7 @@
       "registrationFailed": "住所登録に失敗しました。重複しているかどうか、またはスロットが埋まっているかどうかを確認してください。",
       "remainingSlots": "残りのスロット",
       "remove": "削除",
+      "removeArmed": "{{name}} の削除を確定するには、もう一度「削除」を押してください。",
       "rename": "名前を変更",
       "saveEdit": "保存",
       "searchPlaceholder": "{{count}}件のウォレットを検索...",
@@ -744,6 +754,7 @@
     "governance": "ガバナンス",
     "helpCenter": "ヘルプセンター",
     "loops": "ループ",
+    "mainNavigation": "メインナビゲーション",
     "notConnected": "未接続",
     "overview": "概要",
     "rflrTracker": "rFLRトラッカー",
@@ -765,7 +776,9 @@
         "assetBreakdownSubtitle": "資産別の取引数",
         "tabActions": "操作",
         "tabActivity": "アクティビティ",
-        "tabAssets": "資産"
+        "tabAssets": "資産",
+        "viewData_one": "データを表示（{{count}}行）",
+        "viewData_other": "データを表示（{{count}}行）"
       },
       "connectToSee": "取引アクティビティを表示するには、ウォレットを接続または選択してください。",
       "couldntLoad": "ウォレットアクティビティを読み込めませんでした。",

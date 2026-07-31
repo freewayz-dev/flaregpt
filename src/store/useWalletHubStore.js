@@ -2,6 +2,7 @@
 import { useEffect, useMemo } from "react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { useConnection } from "wagmi";
 
 import { useAuthStore } from "@/store/useAuthStore";
 import { useWatchlist } from "@/hooks/queries/useWatchlistQueries";
@@ -24,16 +25,19 @@ export const useWalletHubStore = create()(
       // wallets already tracked here signs in for the first time.
       trackedWallets: [],
       activeAddress: "",
-      // Distinct from `activeAddress` (whatever's active *right now*,
-      // which sticks to however a session left off): this is an explicit,
-      // user-pinned choice that only ever matters as the fallback below,
-      // when there's no valid prior session to restore — first-ever
-      // visit, or the previously-active wallet was removed. Switching
-      // wallets mid-session never touches this value.
-      preferredDefaultAddress: "",
+      // zustand-persist's own hydration is deferred to a microtask — this
+      // store's very first render always sees these in-code defaults
+      // (`activeAddress: ""`, `trackedWallets: []`), never the persisted
+      // values, until hydration actually completes a moment later (see
+      // `onRehydrateStorage` below, which flips this once it does).
+      // Consumers that render something definitive from "nothing here yet"
+      // (e.g. the navbar's wallet-selector button asserting "Connect
+      // Wallet") need this to tell "genuinely disconnected" apart from
+      // "haven't heard from storage yet" — without it, a real, already-
+      // configured wallet flashes as disconnected on every fresh page load.
+      hasHydrated: false,
 
       switchActiveAddress: (addr) => set({ activeAddress: addr }),
-      setPreferredDefaultAddress: (addr) => set({ preferredDefaultAddress: addr }),
 
       // Guest-only action — see useDerivedWalletHub for the authenticated
       // equivalent (a mutation against the real API, not this store).
@@ -85,10 +89,14 @@ export const useWalletHubStore = create()(
         }
       },
 
-      // Keeps activeAddress pointed at a wallet that's still in the combined list.
-      // Called from an effect (see useDerivedWalletHub), never during render.
-      reconcileActiveAddress: (allWallets) => {
-        const { activeAddress, preferredDefaultAddress } = get();
+      // Keeps activeAddress pointed at a wallet that's still in the combined
+      // list. Called from an effect (see useDerivedWalletHub), never during
+      // render. `isResolving` (true while this store's own hydration,
+      // wagmi's reconnect, or a signed-in user's watchlist fetch hasn't
+      // settled yet — see useDerivedWalletHub) means "we don't have the
+      // full picture yet," not "the previously-active wallet is gone."
+      reconcileActiveAddress: (allWallets, isResolving = false) => {
+        const { activeAddress } = get();
         const isStillAvailable = allWallets.some(w => w.address === activeAddress);
         if (isStillAvailable && activeAddress) return;
 
@@ -99,27 +107,47 @@ export const useWalletHubStore = create()(
         // reconnect is async on top of that — so there's a real window
         // where `allWallets` is `[]` purely because neither has resolved
         // yet, not because a previously-active wallet was actually
-        // removed. Falling through to the "" fallback below during that
-        // window used to wipe a perfectly valid persisted activeAddress
-        // for however long reconnection took, and since dashboard queries
-        // are gated on `Boolean(activeAddress)`, every card on the page
-        // would sit disabled until *something else* (a manual wallet
-        // switch, a full reload landing in a luckier timing window)
-        // re-triggered this reconcile — exactly the "cards silently never
-        // load, have to refresh" report this fixes. An explicit removal
-        // (see removeTrackedWallet above) already clears activeAddress
-        // itself when appropriate; this fallback only needs to run once
-        // allWallets has *something* to actually check against.
-        if (allWallets.length === 0 && activeAddress) return;
+        // removed. `isResolving` is what tells the two apart: while it's
+        // true, wait rather than wipe a perfectly valid persisted
+        // activeAddress out from under a reconnect that just hasn't
+        // finished yet (dashboard queries gated on `Boolean(activeAddress)`
+        // would otherwise sit disabled until some unrelated event
+        // re-triggered this reconcile). But once every async source this
+        // depends on — this store's own hydration, wagmi's reconnect, and
+        // (if signed in) the watchlist fetch — has actually settled and
+        // `allWallets` is *still* empty, that's a real, resolved "nothing
+        // connected" state (disconnected wallet, logged out, no watchlist),
+        // and holding onto a stale address from a previous session forever
+        // is exactly what left every wallet-scoped page rendering another
+        // account's data with nothing connected at all.
+        if (allWallets.length === 0) {
+          if (isResolving) return;
+          if (activeAddress) set({ activeAddress: "" });
+          return;
+        }
 
-        const preferredIsAvailable = allWallets.some(w => w.address === preferredDefaultAddress);
-        const fallback =
-          (preferredIsAvailable && preferredDefaultAddress) || allWallets[0]?.address || "";
+        // The connected/primary wallet routinely resolves (via wagmi's
+        // reconnect) *before* a signed-in user's watchlist finishes
+        // fetching from the backend — so `allWallets` can already be
+        // non-empty (it has the primary wallet) while the actual
+        // previously-active *watchlist* wallet genuinely just hasn't
+        // arrived yet. Without this check, that transient, partial list
+        // looked identical to "the watchlist wallet was removed," and this
+        // fell through to the primary-wallet fallback below — which is
+        // exactly why refreshing while viewing a watchlist wallet used to
+        // snap back to the primary wallet every time, well before the
+        // watchlist even had a chance to load.
+        if (isResolving && activeAddress) return;
+
+        const fallback = allWallets[0]?.address || "";
         if (fallback !== activeAddress) set({ activeAddress: fallback });
       },
     }),
     {
       name: "flaregpt_wallet_hub",
+      onRehydrateStorage: () => (state) => {
+        if (state) state.hasHydrated = true;
+      },
     }
   )
 );
@@ -130,12 +158,16 @@ export const useWalletHubStore = create()(
 // or care which source `trackedWallets` actually came from.
 export function useDerivedWalletHub(connectedAddress, isConnected) {
   const hasSession = useAuthStore((state) => Boolean(state.token));
+  // Not derived from the `isConnected` param above — that one's already
+  // past the "haven't heard back yet" window by the time it's `false`,
+  // which is exactly the case this needs to detect. `isReconnecting` is
+  // the one signal that's still `true` during that window specifically.
+  const { isReconnecting } = useConnection();
 
   const localTrackedWallets = useWalletHubStore((state) => state.trackedWallets);
   const activeAddress = useWalletHubStore((state) => state.activeAddress);
-  const preferredDefaultAddress = useWalletHubStore((state) => state.preferredDefaultAddress);
+  const hasHydrated = useWalletHubStore((state) => state.hasHydrated);
   const switchActiveAddress = useWalletHubStore((state) => state.switchActiveAddress);
-  const setPreferredDefaultAddress = useWalletHubStore((state) => state.setPreferredDefaultAddress);
   const addTrackedWallet = useWalletHubStore((state) => state.addTrackedWallet);
   const removeTrackedWallet = useWalletHubStore((state) => state.removeTrackedWallet);
   const renameTrackedWallet = useWalletHubStore((state) => state.renameTrackedWallet);
@@ -145,6 +177,7 @@ export function useDerivedWalletHub(connectedAddress, isConnected) {
   // watchlist never goes near react-query or the network at all.
   const {
     data: serverWallets,
+    isLoading: isWatchlistLoading,
     isError: watchlistIsError,
     refetch: refetchWatchlist,
   } = useWatchlist(hasSession);
@@ -181,10 +214,18 @@ export function useDerivedWalletHub(connectedAddress, isConnected) {
     return list;
   }, [connectedAddress, isConnected, trackedWallets]);
 
-  // Safe fallback auto-resolver: runs post-commit, not as a render side effect.
+  // Safe fallback auto-resolver: runs post-commit, not as a render side
+  // effect. `isResolving` combines every async source that can make
+  // `allWallets` look emptier than it really is for a beat: this store's
+  // own persisted-hydration delay, wagmi's silent reconnect-on-load, and
+  // (once signed in) the watchlist fetch not having come back yet. See the
+  // matching comment in reconcileActiveAddress for why an empty
+  // `allWallets` has to gate on this rather than being treated as
+  // "genuinely disconnected" on sight.
+  const isResolving = !hasHydrated || isReconnecting || (hasSession && isWatchlistLoading);
   useEffect(() => {
-    reconcileActiveAddress(allWallets);
-  }, [allWallets, activeAddress, reconcileActiveAddress]);
+    reconcileActiveAddress(allWallets, isResolving);
+  }, [allWallets, activeAddress, isResolving, reconcileActiveAddress]);
 
   const activeWallet = allWallets.find((w) => w.address === activeAddress);
   // The connected wallet can perform authenticated actions (claim rewards,
@@ -195,10 +236,14 @@ export function useDerivedWalletHub(connectedAddress, isConnected) {
   return {
     trackedWallets,
     activeAddress,
+    // `isConnected`/`connectedAddress` come from wagmi, whose own async
+    // reconnect-on-load has the identical "haven't heard back yet" window
+    // as this store's own hydration — a consumer that wants to avoid
+    // asserting "disconnected" prematurely (see Navbar.jsx) needs both
+    // combined into one signal, not just this store's own piece of it.
+    hasHydrated,
     maxSlots,
-    preferredDefaultAddress,
     switchActiveAddress,
-    setPreferredDefaultAddress,
     addTrackedWallet,
     removeTrackedWallet,
     renameTrackedWallet,

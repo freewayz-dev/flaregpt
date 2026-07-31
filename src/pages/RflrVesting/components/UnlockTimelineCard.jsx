@@ -101,7 +101,7 @@ export default function UnlockTimelineCard({
             </p>
           </div>
         ) : isError ? (
-          <div className="h-full flex flex-col items-center justify-center text-center px-4">
+          <div role="alert" className="h-full flex flex-col items-center justify-center text-center px-4">
             <p className="text-sm font-medium text-ink-primary">
               {t("rflrVesting.timeline.couldntLoad")}
             </p>

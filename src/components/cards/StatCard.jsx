@@ -27,8 +27,17 @@ export default function StatCard({
       {/* Emphasis is color-only, not a larger size — a bigger font here
           would make this card's intrinsic height differ from its siblings
           in the same row, which is exactly the "cards aren't equal height"
-          bug a size-based emphasis caused before. */}
+          bug a size-based emphasis caused before.
+          `aria-label` here (not just relying on the visible text) is what
+          keeps this heading meaningful non-visually — a screen reader user
+          navigating by heading, which lands on exactly this element, used
+          to hear a bare number like "$0.02451" with no idea what it was
+          the value *of*; the title above it is a separate, unassociated
+          `<p>`. Overriding the announced name to "title: value" fixes that
+          without changing anything on screen (the visible text is still
+          just the value). */}
       <h3
+        aria-label={`${title}: ${value}`}
         className={`mt-1.5 text-xl font-bold truncate ${
           emphasis ? "text-brand" : "text-ink-primary"
         }`}

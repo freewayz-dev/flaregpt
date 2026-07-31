@@ -86,6 +86,7 @@ function AssistantMessage({ message, isLast, onRegenerate }) {
               type="button"
               onClick={handleCopy}
               title={t("flrgpt.actions.copy")}
+              aria-label={t("flrgpt.actions.copy")}
               className="p-1 rounded-md text-ink-muted hover:text-ink-primary hover:bg-surface-card-hover transition-colors cursor-pointer"
             >
               {copied ? (
@@ -99,6 +100,7 @@ function AssistantMessage({ message, isLast, onRegenerate }) {
                 type="button"
                 onClick={onRegenerate}
                 title={t("flrgpt.actions.regenerate")}
+                aria-label={t("flrgpt.actions.regenerate")}
                 className="p-1 rounded-md text-ink-muted hover:text-ink-primary hover:bg-surface-card-hover transition-colors cursor-pointer"
               >
                 <ArrowPathIcon className="h-3.5 w-3.5" />

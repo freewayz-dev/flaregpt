@@ -37,7 +37,9 @@
       "operational": "Toàn bộ hệ thống đều hoạt động."
     },
     "chart": {
-      "couldntLoad": "Không thể tải lịch sử giá FLR"
+      "couldntLoad": "Không thể tải lịch sử giá FLR",
+      "viewData_one": "Xem lịch sử giá ({{count}} điểm)",
+      "viewData_other": "Xem lịch sử giá ({{count}} điểm)"
     },
     "claimsHistory": {
       "connectToSee": "Kết nối hoặc thêm ví trong Cài đặt để xem lịch sử xác nhận quyền sở hữu.",
@@ -81,7 +83,9 @@
       "gwei": "Gwei",
       "live": "Trực tiếp",
       "title": "Hoạt động thông tin mạng",
-      "tps": "TPS"
+      "tps": "TPS",
+      "viewData_one": "Xem mẫu giá gas ({{count}} mẫu)",
+      "viewData_other": "Xem mẫu giá gas ({{count}} mẫu)"
     },
     "stats": {
       "couldntLoad": "Không thể tải tổng quan thị trường",
@@ -185,6 +189,7 @@
       "noLockup": "Không khóa",
       "subtitle": "Xem FLR của bạn có thể sinh lời như thế nào ở từng chiến lược",
       "title": "So sánh Chiến lược",
+      "toggleDetails": "Hiển thị chi tiết cho {{strategy}}",
       "verdict": "Nhận định của FlareGPT"
     }
   },
@@ -257,6 +262,7 @@
       "send": "Gửi",
       "stop": "Dừng tạo phản hồi"
     },
+    "conversationLabel": "Cuộc trò chuyện với FlareGPT",
     "deleteConversation": {
       "button": "Xóa cuộc trò chuyện",
       "confirm": "Xác nhận?"
@@ -275,6 +281,7 @@
       "close": "Đóng",
       "delete": "Xóa",
       "empty": "Chưa có cuộc trò chuyện nào",
+      "loading": "Đang tải cuộc trò chuyện…",
       "loadFailed": "Không thể tải các cuộc trò chuyện của bạn.",
       "moreActions": "Thao tác khác",
       "newChat": "Cuộc trò chuyện mới",
@@ -286,6 +293,7 @@
       "pinLimitReached_other": "Bạn có thể ghim tối đa {{count}} cuộc trò chuyện",
       "rename": "Đổi tên",
       "renameFailed": "Không thể đổi tên cuộc trò chuyện này.",
+      "renameLabel": "Tên cuộc trò chuyện",
       "saveRename": "Lưu",
       "searchPlaceholder": "Tìm kiếm cuộc trò chuyện...",
       "title": "Lịch sử trò chuyện",
@@ -303,12 +311,14 @@
       "rewardsDecreased": "Tại sao phần thưởng của tôi giảm?",
       "stakingOpportunities": "Hiển thị cơ hội staking của tôi"
     },
+    "responseReady": "FlareGPT đã trả lời xong.",
     "sendError": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "thinking": "Đang suy nghĩ…",
     "wallet": {
       "analyzing": "Đang phân tích:",
       "guestLabel": "Phân tích ví",
       "locked": {
-        "body": "Đăng nhập để FlareGPT tự động đọc ví Chính và Danh sách theo dõi của bạn, thay vì nhập địa chỉ vào mọi câu hỏi.",
+        "body": "Đăng nhập để FlareGPT tự động truy cập ví Chính và Danh sách theo dõi của bạn.",
         "connectCta": "Liên kết ví",
         "signInCta": "Đăng nhập",
         "signingIn": "Xác nhận trong ví",
@@ -372,8 +382,7 @@
     "checkFailed": "Không thể kiểm tra trạng thái Gas Sniper",
     "checking": "Đang kiểm tra trạng thái Gas Sniper…",
     "enabled": "Được Gas Sniper tự động nhận",
-    "nudge": "Bật Gas Sniper để tự động nhận",
-    "notEnabled": "Gas Sniper chưa được bật cho ví này"
+    "nudge": "Bật Gas Sniper để tự động nhận"
   },
   "help": {
     "askFlareGptCta": "Hỏi FlareGPT để được trợ giúp",
@@ -571,7 +580,6 @@
       "connectedWallets": "Ví đã kết nối",
       "currency": "Hiển thị Tiền tệ",
       "defaultLandingPage": "Trang bắt đầu mặc định",
-      "defaultWallet": "Ví mặc định",
       "governanceAlerts": "Cảnh báo Quản trị",
       "hideBalances": "Ẩn số dư ví",
       "language": "Ngôn ngữ",
@@ -583,13 +591,13 @@
       "theme": "Giao diện",
       "themeMode": "Chế độ Sáng / Tối",
       "timeframe": "Khung Thời gian",
-      "walletCapacity": "Sức chứa của Ví",
-      "walletPreferences": "Tùy chọn ví"
+      "walletCapacity": "Sức chứa của Ví"
     },
     "dataStorage": {
       "accountSubtitle": "Được đồng bộ với tài khoản của bạn trên máy chủ.",
       "accountTitle": "Dữ liệu tài khoản",
       "clear": "Xóa",
+      "clearArmed": "Nhấn Xóa một lần nữa để xác nhận xóa {{item}}.",
       "clearing": "Đang xóa…",
       "confirmClear": "Xác nhận?",
       "conversations": "Cuộc trò chuyện FlareGPT",
@@ -609,7 +617,6 @@
       "chartType": "Đặt kiểu hình học trực quan mặc định cho các ma trận hệ thống.",
       "currency": "Chọn hiển thị loại tiền tệ cơ sở cho tài sản.",
       "defaultLandingPage": "Chọn trang nào sẽ mở đầu tiên khi bạn khởi chạy ứng dụng.",
-      "defaultWallet": "Ví này sẽ hoạt động bất cứ khi nào không thể khôi phục phiên trước đó.",
       "hideBalances": "Làm mờ số dư và số tiền trên toàn bộ trang tổng quan để bảo mật.",
       "language": "Chọn ngôn ngữ xem mặc định cho giao diện của bạn.",
       "links": "Tài liệu tham khảo toàn cầu và các liên kết tương tác với đội ngũ.",
@@ -618,8 +625,7 @@
       "tableDensity": "Khoảng cách thoải mái hoặc chế độ xem gọn hơn cho các bảng dày đặc.",
       "theme": "Chọn Sáng, Tối, hoặc theo cài đặt hệ thống của bạn.",
       "timeframe": "Xác định quy mô khoảng thời gian cửa sổ mặc định trên các biểu đồ trực quan.",
-      "walletCapacity": "Các giới hạn của hệ thống để theo dõi hạn mức phân bổ tài sản.",
-      "walletPreferences": "Chọn ví nào bảng điều khiển sẽ mở cùng."
+      "walletCapacity": "Các giới hạn của hệ thống để theo dõi hạn mức phân bổ tài sản."
     },
     "flareGpt": {
       "syncStatusConnected": "Đã đăng nhập. Các cuộc trò chuyện của bạn được đồng bộ trên mọi thiết bị và trình duyệt.",
@@ -656,9 +662,11 @@
       "medium": "Trung bình",
       "off": "Tắt"
     },
+    "sectionsNav": "Các phần cài đặt",
     "security": {
       "confirmLogout": "Xác nhận?",
-      "logout": "Đăng xuất"
+      "logout": "Đăng xuất",
+      "logoutArmed": "Nhấn Đăng xuất một lần nữa để xác nhận đăng xuất."
     },
     "subtitles": {
       "About": "Tổng quan về hồ sơ triển khai hệ thống, quy tắc biên dịch và chỉ mục tài sản.",
@@ -689,6 +697,7 @@
       "add": "Thêm Ví ({{current}}/{{max}})",
       "addFormTitle": "Thêm tài khoản danh mục đầu tư danh sách theo dõi",
       "adding": "Đang thêm…",
+      "addressLabel": "Địa chỉ ví",
       "addressPlaceholder": "0x... Địa chỉ ví Flare",
       "available": "Còn trống",
       "cancelRename": "Hủy",
@@ -712,7 +721,7 @@
       "loadFailed": "Không thể tải các ví đang theo dõi của bạn.",
       "manageSubtitle": "Quản lý các kết nối Web3 đang hoạt động và tài khoản theo dõi danh mục đầu tư chỉ đọc của bạn.",
       "maximum": "Tối đa",
-      "noDefaultSelected": "Chưa chọn",
+      "nicknameLabel": "Biệt danh ví",
       "noLimit": "Thêm bao nhiêu ví tùy thích.",
       "noSearchResults": "Không có ví nào khớp với tìm kiếm của bạn.",
       "notFoundError": "Ví này không còn trong danh sách theo dõi của bạn nữa.",
@@ -720,6 +729,7 @@
       "registrationFailed": "Đăng ký địa chỉ không thành công. Kiểm tra xem nó có phải là một bản sao hoặc nếu các vị trí được lấp đầy.",
       "remainingSlots": "Số lượt còn lại",
       "remove": "Xóa",
+      "removeArmed": "Nhấn Xóa một lần nữa để xác nhận xóa {{name}}.",
       "rename": "Đổi tên",
       "saveEdit": "Lưu",
       "searchPlaceholder": "Tìm kiếm trong {{count}} ví...",
@@ -744,6 +754,7 @@
     "governance": "Quản trị",
     "helpCenter": "Trung tâm Trợ giúp",
     "loops": "Vòng lặp",
+    "mainNavigation": "Điều hướng chính",
     "notConnected": "Chưa kết nối",
     "overview": "Tổng quan",
     "rflrTracker": "Theo dõi rFLR",
@@ -765,7 +776,9 @@
         "assetBreakdownSubtitle": "Số lượng giao dịch theo tài sản",
         "tabActions": "Hành động",
         "tabActivity": "Hoạt động",
-        "tabAssets": "Tài sản"
+        "tabAssets": "Tài sản",
+        "viewData_one": "Xem dữ liệu ({{count}} hàng)",
+        "viewData_other": "Xem dữ liệu ({{count}} hàng)"
       },
       "connectToSee": "Kết nối hoặc chọn một ví để xem hoạt động giao dịch của ví đó.",
       "couldntLoad": "Không thể tải hoạt động của ví.",

@@ -86,6 +86,7 @@ export default function GenericTable({
             {columns.map((col) => (
               <th
                 key={col}
+                scope="col"
                 className="py-2 pr-4 font-semibold text-ink-muted uppercase tracking-wide text-[10px] whitespace-nowrap"
               >
                 {humanizeKey(col)}

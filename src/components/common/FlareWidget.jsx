@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
@@ -15,6 +15,7 @@ import { useFlareGptConversation } from "@/hooks/useFlareGptConversation";
 import { useFlareGptStore } from "@/store/useFlareGptStore";
 import { useConversations, useRenameConversation } from "@/hooks/queries/useChatQueries";
 import { ROUTES } from "@/config/routes";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 // An extension of the full FlareGPT page, not a separate product: this
 // renders the exact same ChatPane (message list, composer, wallet pill)
@@ -32,6 +33,9 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
+  const widgetRef = useRef(null);
+
+  useFocusTrap(widgetRef, open);
 
   const {
     messages,
@@ -104,6 +108,10 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
 
   return (
     <aside
+      ref={widgetRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="FlareGPT"
       className={`fixed z-50 flex flex-col bg-[#FFFFFF] border border-[#E5E7EB] shadow-xl
         dark:bg-[#161619] dark:border-none
         inset-0 rounded-none

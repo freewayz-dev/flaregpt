@@ -99,6 +99,7 @@ export default function Preferences() {
                 label: `${currentLanguage.flag} ${currentLanguage.labelKey}`,
               }}
               onChange={handleLanguageChange}
+              aria-label={t("settings.cards.language")}
             />
           </div>
         </RowItem>
@@ -116,6 +117,7 @@ export default function Preferences() {
                 label: currentCurrency.labelKey,
               }}
               onChange={(option) => setCurrencyCode(option.value)}
+              aria-label={t("settings.cards.currency")}
             />
           </div>
         </RowItem>
@@ -133,6 +135,7 @@ export default function Preferences() {
                 label: t(currentBlueLight.labelKey),
               }}
               onChange={handleBlueLightChange}
+              aria-label={t("settings.cards.blur")}
             />
           </div>
         </RowItem>

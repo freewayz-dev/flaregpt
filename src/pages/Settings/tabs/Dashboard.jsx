@@ -76,6 +76,7 @@ export default function Dashboard() {
               options={formatOptions(landingPageOptions)}
               selectedValue={{ ...currentLandingPage, label: t(currentLandingPage.labelKey) }}
               onChange={(option) => setDefaultLandingPage(option.value)}
+              aria-label={t("settings.cards.defaultLandingPage")}
             />
           </div>
         </RowItem>
@@ -89,6 +90,7 @@ export default function Dashboard() {
               options={formatOptions(densityOptions)}
               selectedValue={{ ...currentDensity, label: t(currentDensity.labelKey) }}
               onChange={(option) => setTableDensity(option.value)}
+              aria-label={t("settings.cards.tableDensity")}
             />
           </div>
         </RowItem>
@@ -97,7 +99,11 @@ export default function Dashboard() {
           title={t("settings.cards.hideBalances")}
           description={t("settings.descriptions.hideBalances")}
         >
-          <Toggle checked={hideBalances} onChange={toggleHideBalances} />
+          <Toggle
+            checked={hideBalances}
+            onChange={toggleHideBalances}
+            label={t("settings.cards.hideBalances")}
+          />
         </RowItem>
 
         <RowItem
@@ -109,6 +115,7 @@ export default function Dashboard() {
               options={formatOptions(chartOptions)}
               selectedValue={{ ...currentChart, label: t(currentChart.labelKey) }}
               onChange={(option) => setChartType(option.value)}
+              aria-label={t("settings.cards.chartType")}
             />
           </div>
         </RowItem>
@@ -123,6 +130,7 @@ export default function Dashboard() {
                 ...currentTimeframe,
                 label: currentTimeframe.labelKey,
               }}
+              aria-label={t("settings.cards.timeframe")}
               onChange={(option) => setTimeframe(option.value)}
             />
           </div>

@@ -15,6 +15,7 @@ import TokenIcon from "@/components/common/TokenIcon";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import { getFlarescanTxUrl } from "@/config/web3Config";
 import { getActionDirection, formatActionLabel } from "@/pages/WalletActivity/utils/deriveActivity";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 function CopyableHash({ hash }) {
   const { t } = useTranslation();
@@ -68,6 +69,9 @@ export default function TransactionDrawer({ item, hasPrev, hasNext, onPrev, onNe
   const open = Boolean(item);
   const returnFocusRef = useRef(null);
   const closeButtonRef = useRef(null);
+  const drawerRef = useRef(null);
+
+  useFocusTrap(drawerRef, open);
 
   useEffect(() => {
     if (open) {
@@ -113,6 +117,7 @@ export default function TransactionDrawer({ item, hasPrev, hasNext, onPrev, onNe
         }`}
       />
       <aside
+        ref={drawerRef}
         role="dialog"
         aria-modal="true"
         aria-label={t("wallet.activity.drawer.title")}

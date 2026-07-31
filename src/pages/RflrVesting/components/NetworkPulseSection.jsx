@@ -56,7 +56,7 @@ export default function NetworkPulseSection() {
       <p className="mt-0.5 text-xs text-ink-muted">{t("rflrVesting.network.subtitle")}</p>
 
       {isError ? (
-        <div className="mt-4 rounded-2xl bg-surface-inset px-4 py-6 text-center">
+        <div role="alert" className="mt-4 rounded-2xl bg-surface-inset px-4 py-6 text-center">
           <p className="text-sm font-medium text-ink-primary">
             {t("rflrVesting.network.couldntLoad")}
           </p>

@@ -4,7 +4,7 @@
 // without pretending to know the exact columns.
 export default function TableCardSkeleton({ rows = 3, cols = 3 }) {
   return (
-    <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
+    <div role="status" className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <div className="skeleton h-4 w-32 rounded mb-4" />
 
       <div className="flex gap-4 pb-2 border-b border-divider">

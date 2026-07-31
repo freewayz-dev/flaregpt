@@ -72,7 +72,7 @@ export default function FtsoRewards() {
       ) : portfolioQuery.isLoading || (!hasData && !portfolioQuery.isError) ? (
         <FtsoRewardsSkeleton />
       ) : portfolioQuery.isError ? (
-        <div className="rounded-2xl bg-surface-inset px-4 py-8 text-center">
+        <div role="alert" className="rounded-2xl bg-surface-inset px-4 py-8 text-center">
           <p className="text-sm font-medium text-ink-primary">{t("ftsoRewards.couldntLoad")}</p>
           <p className="mt-0.5 text-xs text-ink-muted">{t("dashboard.common.networkHiccup")}</p>
           <button

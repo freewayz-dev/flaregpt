@@ -145,7 +145,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
         </div>
 
         {/* Dynamic Navigation Interface Menu list */}
-        <nav className="mt-4 flex-1 space-y-1 px-2 overflow-y-auto scrollbar-none">
+        <nav aria-label={t("sidebar.mainNavigation")} className="mt-4 flex-1 space-y-1 px-2 overflow-y-auto scrollbar-none">
           {links.map((link) => {
             const Icon = link.icon;
             const active = isActive(link.path);
@@ -154,6 +154,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
               <Link
                 key={link.translationKey}
                 to={link.path}
+                aria-current={active ? "page" : undefined}
                 onMouseEnter={link.prefetch}
                 onFocus={link.prefetch}
                 onClick={() => setOpen(false)}

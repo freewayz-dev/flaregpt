@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import EmptyState from "@/components/flareGpt/EmptyState";
 import MessageList from "@/components/flareGpt/MessageList";
 import Composer from "@/components/flareGpt/Composer";
@@ -20,6 +22,7 @@ export default function ChatPane({
   focusRequestId,
   compactEmptyState = false,
 }) {
+  const { t } = useTranslation();
   const hasMessages = messages.length > 0;
 
   const handleSelectPrompt = (_id, text) => onSend(text);
@@ -33,8 +36,9 @@ export default function ChatPane({
         // would misrepresent an account that actually has history as a
         // blank slate, and a message sent in that gap would land ahead of
         // history that hasn't arrived yet.
-        <div className="flex-1 flex items-center justify-center">
-          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-brand" />
+        <div className="flex-1 flex items-center justify-center" role="status">
+          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-brand" aria-hidden="true" />
+          <span className="sr-only">{t("flrgpt.history.loading")}</span>
         </div>
       ) : hasMessages ? (
         <MessageList

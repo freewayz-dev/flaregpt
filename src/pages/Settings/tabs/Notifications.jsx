@@ -16,13 +16,13 @@ export default function Notifications() {
           title={t("settings.cards.rewardsAlerts")}
           description={t("settings.notifications.rewards")}
         >
-          <Toggle />
+          <Toggle label={t("settings.cards.rewardsAlerts")} />
         </RowItem>
         <RowItem
           title={t("settings.cards.governanceAlerts")}
           description={t("settings.notifications.governance")}
         >
-          <Toggle />
+          <Toggle label={t("settings.cards.governanceAlerts")} />
         </RowItem>
       </div>
     </Card>

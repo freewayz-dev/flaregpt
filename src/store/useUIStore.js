@@ -88,7 +88,19 @@ export const useUIStore = create()(
       setSpectraMarket: (spectraMarket) => set({ spectraMarket }),
       setDefaultLandingPage: (page) => set({ defaultLandingPage: page }),
       setTableDensity: (density) => set({ tableDensity: density }),
-      setReduceMotionOverride: (value) => set({ reduceMotionOverride: value }),
+      // `MotionConfig` in App.jsx only ever governs framer-motion-driven
+      // animation — every plain CSS `transition-*`/`animate-*` utility
+      // elsewhere (the sidebar's width transition, drawer/dropdown/modal
+      // slide-and-fade transitions, `animate-pulse` skeletons,
+      // `animate-spin` spinners) is untouched by that and previously kept
+      // animating at full speed regardless of this setting. Toggling a
+      // class here — covered by the blanket rule in index.css — is what
+      // actually makes this setting apply everywhere it claims to, not
+      // just to the one library's own animations.
+      setReduceMotionOverride: (value) => {
+        document.documentElement.classList.toggle("reduce-motion", value);
+        set({ reduceMotionOverride: value });
+      },
       toggleHideBalances: () => set((state) => ({ hideBalances: !state.hideBalances })),
     }),
     {
@@ -100,6 +112,7 @@ export const useUIStore = create()(
           : getSystemPreference();
 
         document.documentElement.classList.toggle("dark", isDark);
+        document.documentElement.classList.toggle("reduce-motion", Boolean(state.reduceMotionOverride));
 
         // Keep Zustand in sync
         state.darkMode = isDark;

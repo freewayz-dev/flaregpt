@@ -204,17 +204,24 @@ export default function GasSniperCard() {
   // below it) silently computed to `false` with no indication the check
   // itself never actually succeeded. That's a real wallet potentially
   // *already* enabled being told it isn't, with no retry offered.
-  const statusInfo = !hasSession || isLoadingState
+  //
+  // `null` only for the genuinely-nothing-to-show case (signed out) —
+  // while actually loading, the header below renders a skeleton in this
+  // spot instead of leaving it blank until the status/approval checks
+  // resolve (both the badge and the toggle used to just disappear here).
+  const statusInfo = !hasSession
     ? null
-    : isStatusError
-      ? { label: t("loops.gasSniper.statusUnknown"), tone: "neutral" }
-      : needsReconnect
-        ? { label: t("loops.gasSniper.needsReconnect"), tone: "warning" }
-        : needsApproval
-          ? { label: t("loops.gasSniper.needsApproval"), tone: "warning" }
-          : isEnabled
-            ? { label: t("loops.gasSniper.active"), tone: "success" }
-            : { label: t("loops.gasSniper.inactive"), tone: "neutral" };
+    : isLoadingState
+      ? undefined
+      : isStatusError
+        ? { label: t("loops.gasSniper.statusUnknown"), tone: "neutral" }
+        : needsReconnect
+          ? { label: t("loops.gasSniper.needsReconnect"), tone: "warning" }
+          : needsApproval
+            ? { label: t("loops.gasSniper.needsApproval"), tone: "warning" }
+            : isEnabled
+              ? { label: t("loops.gasSniper.active"), tone: "success" }
+              : { label: t("loops.gasSniper.inactive"), tone: "neutral" };
 
   return (
     <div className="rounded-2xl bg-surface-card shadow-sm border border-[#E5E7EB] dark:border-none p-5 sm:p-6">
@@ -227,8 +234,10 @@ export default function GasSniperCard() {
             <h3 className="text-sm font-semibold text-ink-primary">
               {t("loops.gasSniper.title")}
             </h3>
-            {statusInfo && (
-              <StatusBadge label={statusInfo.label} tone={statusInfo.tone} dot />
+            {statusInfo === undefined ? (
+              <span role="status" className="mt-1 inline-block h-2.5 w-16 rounded-full bg-surface-inset animate-pulse" />
+            ) : (
+              statusInfo && <StatusBadge label={statusInfo.label} tone={statusInfo.tone} dot />
             )}
           </div>
         </div>
@@ -246,8 +255,15 @@ export default function GasSniperCard() {
                 ? t("navbar.signingIn")
                 : t("navbar.signIn")}
           </button>
-        ) : !needsApproval && !isLoadingState && !isStatusError ? (
-          <Toggle checked={isEnabled} onChange={handleToggle} disabled={isMutating} />
+        ) : isLoadingState ? (
+          <span role="status" className="shrink-0 inline-block w-8 h-4 rounded-full bg-surface-inset animate-pulse" />
+        ) : !needsApproval && !isStatusError ? (
+          <Toggle
+            checked={isEnabled}
+            onChange={handleToggle}
+            disabled={isMutating}
+            label={t("loops.gasSniper.title")}
+          />
         ) : null}
       </div>
 
@@ -256,7 +272,7 @@ export default function GasSniperCard() {
       </p>
 
       {hasSession && !isLoadingState && isStatusError && (
-        <div className="mt-4 rounded-xl bg-surface-inset px-4 py-3 text-center">
+        <div role="alert" className="mt-4 rounded-xl bg-surface-inset px-4 py-3 text-center">
           <p className="text-xs font-medium text-ink-primary">
             {t("loops.gasSniper.statusCheckFailed")}
           </p>

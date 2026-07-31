@@ -5,7 +5,7 @@
 // the real card would visibly shrink the moment data arrives.
 export default function StatCardSkeleton({ compact = false }) {
   return (
-    <div className="h-full rounded-2xl bg-surface-card p-4 shadow-sm border border-[#E5E7EB] dark:border-none shrink-0">
+    <div role="status" className="h-full rounded-2xl bg-surface-card p-4 shadow-sm border border-[#E5E7EB] dark:border-none shrink-0">
       <div className="flex items-center justify-between gap-2">
         <div className="skeleton h-3 w-16 rounded" />
         <div className="skeleton h-3.5 w-3.5 rounded-full" />

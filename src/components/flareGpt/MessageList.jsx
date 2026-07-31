@@ -15,6 +15,8 @@ export default function MessageList({ messages, onRegenerate, scrollRequestId })
   const containerRef = useRef(null);
   const bottomRef = useRef(null);
   const [autoScroll, setAutoScroll] = useState(true);
+  const [announcement, setAnnouncement] = useState("");
+  const announcedIdRef = useRef(null);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -30,6 +32,24 @@ export default function MessageList({ messages, onRegenerate, scrollRequestId })
   const lastMessage = messages[messages.length - 1];
   const isActivelyStreaming =
     lastMessage?.role === "assistant" && lastMessage.status !== "complete";
+
+  // Announces once a reply has actually finished, not on every ~45ms
+  // streaming chunk — mirroring the raw streaming text into a live region
+  // would have a screen reader user's speech interrupted and restarted
+  // dozens of times per response, which is worse than saying nothing at
+  // all. `announcedIdRef` guards against re-firing for the same message if
+  // some unrelated state change causes a re-render after it's already
+  // complete.
+  useEffect(() => {
+    if (
+      lastMessage?.role === "assistant" &&
+      lastMessage.status === "complete" &&
+      announcedIdRef.current !== lastMessage.id
+    ) {
+      announcedIdRef.current = lastMessage.id;
+      setAnnouncement(t("flrgpt.responseReady"));
+    }
+  }, [lastMessage?.id, lastMessage?.status, lastMessage?.role, t]);
 
   useEffect(() => {
     // `smooth` re-triggers a fresh scroll animation on every call — fine
@@ -75,6 +95,9 @@ export default function MessageList({ messages, onRegenerate, scrollRequestId })
     <div className="relative flex-1 min-h-0">
       <div
         ref={containerRef}
+        role="log"
+        aria-label={t("flrgpt.conversationLabel")}
+        aria-relevant="additions"
         className="h-full overflow-y-auto overscroll-contain px-4 sm:px-6 py-6 scrollbar-none"
         style={{
           WebkitMaskImage: "linear-gradient(to bottom, transparent, black 28px)",
@@ -105,6 +128,14 @@ export default function MessageList({ messages, onRegenerate, scrollRequestId })
           </AnimatePresence>
           <div ref={bottomRef} />
         </div>
+      </div>
+
+      {/* Visually hidden — decoupled from the visible streaming text on
+          purpose (see the effect above) so a screen reader only hears
+          "FlareGPT has finished responding" once, instead of every token
+          as the reply streams in. */}
+      <div role="status" aria-live="polite" className="sr-only">
+        {announcement}
       </div>
 
       {!autoScroll && (

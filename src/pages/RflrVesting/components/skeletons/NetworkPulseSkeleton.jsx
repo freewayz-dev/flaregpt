@@ -1,6 +1,6 @@
 export default function NetworkPulseSkeleton() {
   return (
-    <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
+    <div role="status" className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <div className="skeleton h-4 w-32 rounded" />
       <div className="skeleton h-3 w-48 rounded mt-2" />
 

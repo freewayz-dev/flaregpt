@@ -23,7 +23,7 @@ function MobileCardSkeleton() {
 // stacked mobile cards and the sm+ table rows.
 export default function StrategyComparisonTableSkeleton() {
   return (
-    <div className="rounded-2xl bg-surface-card shadow-sm border border-[#E5E7EB] dark:border-none p-5 sm:p-8">
+    <div role="status" className="rounded-2xl bg-surface-card shadow-sm border border-[#E5E7EB] dark:border-none p-5 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="skeleton h-4 w-40 rounded" />

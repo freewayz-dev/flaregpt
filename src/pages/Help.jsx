@@ -123,6 +123,9 @@ export default function Help() {
               </div>
               <input
                 type="text"
+                id="help-search"
+                name="search"
+                aria-label={t("help.searchPlaceholder")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t("help.searchPlaceholder")}
@@ -320,7 +323,7 @@ export default function Help() {
               rel="noopener noreferrer"
               className={`group flex items-center gap-3 rounded-xl bg-[#F3F4F6] p-3.5 transition-colors hover:bg-brand/5 dark:bg-[#21242B] dark:hover:bg-brand/10 ${FOCUS_RING}`}
             >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#FFFFFF] text-[#475569] transition-colors group-hover:text-brand dark:bg-[#121214] dark:text-[#71717A]">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#FFFFFF] text-[#475569] transition-colors group-hover:text-brand dark:bg-[#121214] dark:text-[#A1A1AA]">
                 <XLogo className="h-4 w-4" />
               </div>
               <div className="min-w-0">
@@ -334,7 +337,7 @@ export default function Help() {
             </a>
 
             <div className="flex items-center gap-3 rounded-xl bg-[#F3F4F6] p-3.5 opacity-60 dark:bg-[#21242B]">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#FFFFFF] text-[#94A3B8] dark:bg-[#121214] dark:text-[#71717A]">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#FFFFFF] text-[#94A3B8] dark:bg-[#121214] dark:text-[#A1A1AA]">
                 <PaperAirplaneIcon className="h-4 w-4" />
               </div>
               <div className="min-w-0">
@@ -348,7 +351,7 @@ export default function Help() {
             </div>
 
             <div className="flex items-center gap-3 rounded-xl bg-[#F3F4F6] p-3.5 opacity-60 dark:bg-[#21242B]">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#FFFFFF] text-[#94A3B8] dark:bg-[#121214] dark:text-[#71717A]">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#FFFFFF] text-[#94A3B8] dark:bg-[#121214] dark:text-[#A1A1AA]">
                 <EnvelopeIcon className="h-4 w-4" />
               </div>
               <div className="min-w-0">

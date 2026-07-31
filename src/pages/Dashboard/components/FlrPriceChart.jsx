@@ -21,6 +21,8 @@ import {
 import { useUIStore } from "@/store/useUIStore";
 import { useCurrency } from "@/hooks/useCurrency";
 import FlrPriceChartSkeleton from "@/pages/Dashboard/components/skeletons/FlrPriceChartSkeleton";
+import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
+import GenericTable from "@/pages/Dashboard/components/shared/GenericTable";
 
 const RANGES = [
   { label: "1D", days: 1 },
@@ -123,6 +125,30 @@ export default function FlrPriceChart() {
   const first = isCandlestick ? data?.[0]?.open : data?.[0]?.price;
   const changePct = latest != null && first ? ((latest - first) / first) * 100 : null;
 
+  // The adjacent current-price stat above only ever surfaces the latest
+  // point — a screen reader user has no way to reach the rest of the
+  // series a sighted user reads directly off the plotted line/candles.
+  // Same Disclosure + GenericTable pattern already used for
+  // UnlockTimelineCard/UnclaimedEpochsCard's own chart data. `data` itself
+  // is chronological (oldest first — that's what the chart plots
+  // left-to-right), but a list is read top-down, so it's reversed here to
+  // newest-first — the order every other reverse-chronological list in
+  // this app (activity feed, conversation history) already uses.
+  const tableRows = !data?.length
+    ? []
+    : isCandlestick
+      ? [...data].reverse().map((d) => ({
+          Date: new Date(d.timestamp).toLocaleString(),
+          Open: formatPrice(d.open),
+          High: formatPrice(d.high),
+          Low: formatPrice(d.low),
+          Close: formatPrice(d.close),
+        }))
+      : [...data].reverse().map((d) => ({
+          Date: new Date(d.timestamp).toLocaleString(),
+          Price: formatPrice(d.price),
+        }));
+
   // Deliberately `!isSuccess`, not `isLoading` — a paused (offline) query
   // reports `isLoading: false` with `data` still undefined, which used to
   // fall through to the "couldn't load" error UI below even though nothing
@@ -176,7 +202,7 @@ export default function FlrPriceChart() {
 
       <div className="h-56 sm:h-64 mt-4 min-w-0">
         {isError || !data?.length ? (
-          <div className="h-full flex flex-col items-center justify-center text-center px-4">
+          <div role="alert" className="h-full flex flex-col items-center justify-center text-center px-4">
             <p className="text-sm font-medium text-ink-primary">
               {t("dashboard.chart.couldntLoad")}
             </p>
@@ -301,6 +327,12 @@ export default function FlrPriceChart() {
           </ResponsiveContainer>
         )}
       </div>
+
+      {tableRows.length > 0 && (
+        <Disclosure label={t("dashboard.chart.viewData", { count: tableRows.length })}>
+          <GenericTable items={tableRows} height="240px" />
+        </Disclosure>
+      )}
     </div>
   );
 }

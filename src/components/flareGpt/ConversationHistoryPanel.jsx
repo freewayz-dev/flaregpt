@@ -16,6 +16,7 @@ import { MapPinIcon as MapPinIconSolid } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { PIN_LIMIT } from "@/store/useFlareGptStore";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 function formatRelativeTime(unixSeconds, locale) {
   const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
@@ -59,6 +60,7 @@ function RowMenu({ isPinned, onTogglePin, onRename, onDelete, t }) {
         }}
         aria-haspopup="true"
         aria-expanded={open}
+        aria-label={t("flrgpt.history.moreActions")}
         title={t("flrgpt.history.moreActions")}
         className="p-1 rounded-md text-ink-muted hover:text-ink-primary hover:bg-surface-card-hover transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
       >
@@ -67,7 +69,7 @@ function RowMenu({ isPinned, onTogglePin, onRename, onDelete, t }) {
 
       <div
         className={`absolute right-0 top-full mt-1 w-36 rounded-xl border border-line bg-surface-card p-1 shadow-lg z-30 transition-all duration-200 ${
-          open ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-95"
+          open ? "opacity-100 scale-100" : "invisible pointer-events-none opacity-0 scale-95"
         }`}
       >
         <button
@@ -142,10 +144,34 @@ export default function ConversationHistoryPanel({
   const [renameValue, setRenameValue] = useState("");
   const [isSavingRename, setIsSavingRename] = useState(false);
   const renameInputRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const previouslyFocusedRef = useRef(null);
+  const panelRef = useRef(null);
+
+  useFocusTrap(panelRef, open);
 
   useEffect(() => {
     if (renamingId) renameInputRef.current?.focus();
   }, [renamingId]);
+
+  // This panel is an absolute overlay that fully replaces the chat pane
+  // while open, functioning exactly like a modal even though it's scoped
+  // to this one surface — so it gets the same focus handling as every
+  // other overlay in this app (ConnectWalletModal, TransactionDrawer):
+  // move focus in on open (the close button, always present regardless of
+  // whether there's any history yet) so a keyboard/screen-reader user
+  // isn't left focused on the now-hidden "History" toggle button while the
+  // actually-visible content lives elsewhere; restore it to whatever
+  // triggered the open on close, rather than leaving focus wherever it
+  // happened to land inside the panel.
+  useEffect(() => {
+    if (open) {
+      previouslyFocusedRef.current = document.activeElement;
+      closeButtonRef.current?.focus();
+    } else {
+      previouslyFocusedRef.current?.focus?.();
+    }
+  }, [open]);
 
   // Matches every other dismissible overlay in the app (ConnectWalletModal,
   // TransactionDrawer, RowMenu above) — a keyboard user shouldn't need to
@@ -230,11 +256,18 @@ export default function ConversationHistoryPanel({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -16 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
+          ref={panelRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="flrgpt-history-title"
           className="absolute inset-0 z-20 flex flex-col bg-surface-card"
         >
           <div className="flex items-center justify-between border-b border-line px-4 py-3 shrink-0">
-            <p className="text-sm font-semibold text-ink-primary">{t("flrgpt.history.title")}</p>
+            <h2 id="flrgpt-history-title" className="text-sm font-semibold text-ink-primary">
+              {t("flrgpt.history.title")}
+            </h2>
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={onClose}
               aria-label={t("flrgpt.history.close")}
@@ -260,6 +293,9 @@ export default function ConversationHistoryPanel({
                 <MagnifyingGlassIcon className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-ink-muted" />
                 <input
                   type="text"
+                  id="flrgpt-history-search"
+                  name="search"
+                  aria-label={t("flrgpt.history.searchPlaceholder")}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={t("flrgpt.history.searchPlaceholder")}
@@ -330,6 +366,7 @@ export default function ConversationHistoryPanel({
                           <input
                             ref={renameInputRef}
                             type="text"
+                            aria-label={t("flrgpt.history.renameLabel")}
                             value={renameValue}
                             onChange={(e) => setRenameValue(e.target.value)}
                             onClick={(e) => e.stopPropagation()}

@@ -37,7 +37,9 @@
       "operational": "所有系统运行正常"
     },
     "chart": {
-      "couldntLoad": "无法加载FLR价格历史记录"
+      "couldntLoad": "无法加载FLR价格历史记录",
+      "viewData_one": "查看价格历史（{{count}} 个数据点）",
+      "viewData_other": "查看价格历史（{{count}} 个数据点）"
     },
     "claimsHistory": {
       "connectToSee": "在“设置”中连接或添加钱包以查看索赔历史记录。",
@@ -81,7 +83,9 @@
       "gwei": "Gwei",
       "live": "Live",
       "title": "网络活动",
-      "tps": "第三人射击游戏"
+      "tps": "第三人射击游戏",
+      "viewData_one": "查看燃气价格样本（{{count}} 个样本）",
+      "viewData_other": "查看燃气价格样本（{{count}} 个样本）"
     },
     "stats": {
       "couldntLoad": "无法加载市场概览",
@@ -185,6 +189,7 @@
       "noLockup": "无锁定期",
       "subtitle": "查看您的 FLR 在不同策略下的表现",
       "title": "策略对比",
+      "toggleDetails": "显示 {{strategy}} 的详情",
       "verdict": "FlareGPT 结论"
     }
   },
@@ -257,6 +262,7 @@
       "send": "发送",
       "stop": "停止生成"
     },
+    "conversationLabel": "与 FlareGPT 的对话",
     "deleteConversation": {
       "button": "删除对话",
       "confirm": "确认？"
@@ -275,6 +281,7 @@
       "close": "关闭",
       "delete": "删除",
       "empty": "暂无对话",
+      "loading": "正在加载对话…",
       "loadFailed": "无法加载您的对话。",
       "moreActions": "更多操作",
       "newChat": "新对话",
@@ -286,6 +293,7 @@
       "pinLimitReached_other": "最多可置顶 {{count}} 个对话",
       "rename": "重命名",
       "renameFailed": "无法重命名此对话。",
+      "renameLabel": "对话名称",
       "saveRename": "保存",
       "searchPlaceholder": "搜索对话...",
       "title": "聊天记录",
@@ -303,12 +311,14 @@
       "rewardsDecreased": "我的奖励为什么减少了?",
       "stakingOpportunities": "显示我的质押机会"
     },
+    "responseReady": "FlareGPT 已回复完成。",
     "sendError": "已出错，再试一次。",
+    "thinking": "思考中…",
     "wallet": {
       "analyzing": "正在分析:",
       "guestLabel": "钱包分析",
       "locked": {
-        "body": "登录以让FlareGPT自动读取您的主要和关注列表钱包，而不是在每个问题中输入地址。",
+        "body": "登录以让 FlareGPT 自动访问您的主要钱包和关注列表钱包。",
         "connectCta": "连接钱包",
         "signInCta": "登陆",
         "signingIn": "在您的钱包中确认…",
@@ -372,8 +382,7 @@
     "checkFailed": "无法检查 Gas Sniper 状态",
     "checking": "正在检查 Gas Sniper 状态…",
     "enabled": "已由 Gas Sniper 自动领取",
-    "nudge": "开启 Gas Sniper 以自动领取",
-    "notEnabled": "此钱包尚未启用 Gas Sniper"
+    "nudge": "开启 Gas Sniper 以自动领取"
   },
   "help": {
     "askFlareGptCta": "向 FlareGPT 提问",
@@ -571,7 +580,6 @@
       "connectedWallets": "已连接钱包",
       "currency": "货币显示",
       "defaultLandingPage": "默认起始页面",
-      "defaultWallet": "默认钱包",
       "governanceAlerts": "治理通知",
       "hideBalances": "隐藏钱包余额",
       "language": "语言",
@@ -583,13 +591,13 @@
       "theme": "主题",
       "themeMode": "浅色 / 深色模式",
       "timeframe": "时间范围",
-      "walletCapacity": "钱包容量",
-      "walletPreferences": "钱包偏好设置"
+      "walletCapacity": "钱包容量"
     },
     "dataStorage": {
       "accountSubtitle": "与服务器上的账户同步。",
       "accountTitle": "账户数据",
       "clear": "清除",
+      "clearArmed": "再次点击“清除”以确认清除 {{item}}。",
       "clearing": "正在清除…",
       "confirmClear": "确认？",
       "conversations": "FlareGPT 对话",
@@ -609,7 +617,6 @@
       "chartType": "为系统矩阵设置默认的渲染视觉样式几何。",
       "currency": "选择资产基础货币显示。",
       "defaultLandingPage": "选择启动应用时首先打开的页面。",
-      "defaultWallet": "当无法恢复先前会话时，此钱包将成为活动钱包。",
       "hideBalances": "为保护隐私，模糊显示仪表盘中的余额和金额。",
       "language": "选择您的默认界面显示语言。",
       "links": "全局文档参考和团队互动链接。",
@@ -618,8 +625,7 @@
       "tableDensity": "舒适间距，或用于密集表格的更紧凑视图。",
       "theme": "选择浅色、深色，或跟随系统设置。",
       "timeframe": "在视觉图表上定义默认的窗口周期比例。",
-      "walletCapacity": "追踪分配容量池的系统限制。",
-      "walletPreferences": "选择仪表盘打开时使用的钱包。"
+      "walletCapacity": "追踪分配容量池的系统限制。"
     },
     "flareGpt": {
       "syncStatusConnected": "已登录。您的对话会在每个设备和浏览器之间同步。",
@@ -656,9 +662,11 @@
       "medium": "中",
       "off": "关闭"
     },
+    "sectionsNav": "设置分区",
     "security": {
       "confirmLogout": "确认？",
-      "logout": "退出登录"
+      "logout": "退出登录",
+      "logoutArmed": "再次点击“登出”以确认登出。"
     },
     "subtitles": {
       "About": "概述系统部署记录、编译规则和资产索引。",
@@ -689,6 +697,7 @@
       "add": "添加钱包 ({{current}}/{{max}})",
       "addFormTitle": "添加关注列表投资组合账户",
       "adding": "添加中…",
+      "addressLabel": "钱包地址",
       "addressPlaceholder": "0x... Flare钱包地址",
       "available": "可用容量",
       "cancelRename": "取消",
@@ -712,7 +721,7 @@
       "loadFailed": "无法加载您跟踪的钱包。",
       "manageSubtitle": "管理您的活动Web3连接和只读投资组合跟踪帐户。",
       "maximum": "最大容量",
-      "noDefaultSelected": "未选择",
+      "nicknameLabel": "钱包昵称",
       "noLimit": "可添加任意数量的钱包。",
       "noSearchResults": "没有与您的搜索匹配的钱包。",
       "notFoundError": "该钱包已不在您的关注列表中。",
@@ -720,6 +729,7 @@
       "registrationFailed": "地址注册失败。请检查地址是否重复或是否已填充空位。",
       "remainingSlots": "剩余槽位",
       "remove": "移除",
+      "removeArmed": "再次点击“移除”以确认移除 {{name}}。",
       "rename": "重命名",
       "saveEdit": "保存",
       "searchPlaceholder": "在 {{count}} 个钱包中搜索...",
@@ -744,6 +754,7 @@
     "governance": "治理",
     "helpCenter": "帮助中心",
     "loops": "循环",
+    "mainNavigation": "主导航",
     "notConnected": "未连接",
     "overview": "概述",
     "rflrTracker": "rFLR tracker",
@@ -765,7 +776,9 @@
         "assetBreakdownSubtitle": "按资产统计的交易数量",
         "tabActions": "操作",
         "tabActivity": "活动",
-        "tabAssets": "资产"
+        "tabAssets": "资产",
+        "viewData_one": "查看数据（{{count}} 行）",
+        "viewData_other": "查看数据（{{count}} 行）"
       },
       "connectToSee": "连接或选择一个钱包以查看其交易活动。",
       "couldntLoad": "无法加载钱包活动。",

@@ -14,7 +14,15 @@ export default function PoolOwnershipBar({ label, percentage, valueLabel }) {
           {valueLabel}
         </span>
       </div>
-      <div className="h-1.5 w-full rounded-full bg-surface-inset overflow-hidden">
+      <div
+        role="progressbar"
+        aria-valuenow={clamped}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={label}
+        aria-valuetext={valueLabel}
+        className="h-1.5 w-full rounded-full bg-surface-inset overflow-hidden"
+      >
         <div
           className="h-full rounded-full bg-brand transition-all duration-500 ease-out"
           style={{ width: `${clamped}%` }}

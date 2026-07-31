@@ -42,7 +42,9 @@ initI18n().then(() => {
     <StrictMode>
       <WagmiProvider config={web3Config}>
         <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
+          <BrowserRouter
+            future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+          >
             <ToastContainer
               position="top-center"
               autoClose={3000}

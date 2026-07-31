@@ -183,18 +183,28 @@ export function computeQuickInsights(history, { locale } = {}) {
   };
 }
 
-// Daily transaction counts for the activity histogram — the one chart the
-// design review confirmed is honest with today's data (a count over time,
-// never an amount). Filled forward so days with zero activity still show
-// as a gap rather than being silently absent from the x-axis.
+// A wallet whose history spans hundreds of days used to get one bar per
+// calendar day no matter what — for a genuinely active wallet that's
+// hundreds of sub-pixel-wide bars packed into a ~300px-wide card, which
+// communicates nothing (confirmed live: a ~300-day wallet rendered 291
+// individual bars) while still costing Recharts a full re-layout of every
+// one of them. That redraw cost is what actually surfaced as sidebar-
+// toggle jank on this page specifically: the sidebar's width transition
+// (see Sidebar.jsx) continuously resizes this chart's container for
+// ~300ms, and ResponsiveContainer redraws on every resize event. Capping
+// the bucket count keeps both the chart readable and its redraw cost
+// bounded regardless of how long a wallet's history actually is, instead
+// of only patching the symptom (see ActivityCharts.jsx's `debounce` prop,
+// which helps but doesn't fully absorb an unbounded bar count on its own).
+const MAX_HISTOGRAM_BUCKETS = 60;
+
+// Daily (or, for a long enough history, multi-day) transaction counts for
+// the activity histogram — the one chart the design review confirmed is
+// honest with today's data (a count over time, never an amount). Filled
+// forward so quiet buckets still show as a gap rather than being silently
+// absent from the x-axis.
 export function computeDailyHistogram(history) {
   if (!history.length) return [];
-  const counts = new Map();
-  for (const item of history) {
-    const date = toDate(item.timestamp);
-    const key = dayKey(date);
-    counts.set(key, (counts.get(key) ?? 0) + 1);
-  }
 
   const timestamps = history.map((h) => h.timestamp);
   const start = new Date(Math.min(...timestamps) * 1000);
@@ -202,15 +212,33 @@ export function computeDailyHistogram(history) {
   start.setHours(0, 0, 0, 0);
   end.setHours(0, 0, 0, 0);
 
-  const days = [];
-  for (let d = new Date(start); d <= end; d = new Date(d.getTime() + DAY_MS)) {
-    days.push({
-      date: d.getTime(),
-      label: new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" }).format(d),
-      count: counts.get(dayKey(d)) ?? 0,
+  const totalDays = Math.round((end - start) / DAY_MS) + 1;
+  const bucketDays = Math.max(1, Math.ceil(totalDays / MAX_HISTOGRAM_BUCKETS));
+
+  const counts = new Map();
+  for (const item of history) {
+    const date = toDate(item.timestamp);
+    date.setHours(0, 0, 0, 0);
+    const bucketIndex = Math.floor((date.getTime() - start.getTime()) / (DAY_MS * bucketDays));
+    counts.set(bucketIndex, (counts.get(bucketIndex) ?? 0) + 1);
+  }
+
+  const formatDay = (d) => new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" }).format(d);
+  const bucketCount = Math.ceil(totalDays / bucketDays);
+  const buckets = [];
+  for (let i = 0; i < bucketCount; i++) {
+    const bucketStart = new Date(start.getTime() + i * bucketDays * DAY_MS);
+    const label =
+      bucketDays === 1
+        ? formatDay(bucketStart)
+        : `${formatDay(bucketStart)}–${formatDay(new Date(bucketStart.getTime() + (bucketDays - 1) * DAY_MS))}`;
+    buckets.push({
+      date: bucketStart.getTime(),
+      label,
+      count: counts.get(i) ?? 0,
     });
   }
-  return days;
+  return buckets;
 }
 
 export function computeAssetBreakdown(history) {

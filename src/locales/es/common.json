@@ -37,7 +37,9 @@
       "operational": "Todos los sistemas operativos"
     },
     "chart": {
-      "couldntLoad": "No se ha podido cargar el historial de precios de FLR"
+      "couldntLoad": "No se ha podido cargar el historial de precios de FLR",
+      "viewData_one": "Ver historial de precios ({{count}} punto)",
+      "viewData_other": "Ver historial de precios ({{count}} puntos)"
     },
     "claimsHistory": {
       "connectToSee": "Conecta o añade un monedero en Configuración para ver el historial de reclamaciones.",
@@ -81,7 +83,9 @@
       "gwei": "Gwei",
       "live": "En directo",
       "title": "Actividad de la red",
-      "tps": "TPS"
+      "tps": "TPS",
+      "viewData_one": "Ver muestras de precio del gas ({{count}} muestra)",
+      "viewData_other": "Ver muestras de precio del gas ({{count}} muestras)"
     },
     "stats": {
       "couldntLoad": "No se ha podido cargar la descripción general del mercado",
@@ -187,6 +191,7 @@
       "noLockup": "Sin bloqueo",
       "subtitle": "Descubre cómo podría rendir tu FLR en distintas estrategias",
       "title": "Comparación de Estrategias",
+      "toggleDetails": "Mostrar detalles de {{strategy}}",
       "verdict": "Veredicto de FlareGPT"
     }
   },
@@ -259,6 +264,7 @@
       "send": "Enviar",
       "stop": "Detener generación"
     },
+    "conversationLabel": "Conversación con FlareGPT",
     "deleteConversation": {
       "button": "Eliminar conversación",
       "confirm": "¿Confirmar?"
@@ -277,6 +283,7 @@
       "close": "Cerrar",
       "delete": "Eliminar",
       "empty": "Aún no hay conversaciones",
+      "loading": "Cargando conversación…",
       "loadFailed": "No se pudieron cargar tus conversaciones.",
       "moreActions": "Más acciones",
       "newChat": "Nuevo chat",
@@ -289,6 +296,7 @@
       "pinLimitReached_other": "Puedes fijar hasta {{count}} conversaciones",
       "rename": "Cambiar nombre",
       "renameFailed": "No se pudo cambiar el nombre de esta conversación.",
+      "renameLabel": "Nombre de la conversación",
       "saveRename": "Guardar",
       "searchPlaceholder": "Buscar conversaciones...",
       "title": "Historial de chat",
@@ -306,12 +314,14 @@
       "rewardsDecreased": "¿Por qué disminuyeron mis recompensas?",
       "stakingOpportunities": "Mostrar mis oportunidades de staking"
     },
+    "responseReady": "FlareGPT ha terminado de responder.",
     "sendError": "Algo salió mal. ¡Vuelve a intentarlo!",
+    "thinking": "Pensando…",
     "wallet": {
       "analyzing": "Analizando:",
       "guestLabel": "Análisis del monedero",
       "locked": {
-        "body": "Inicia sesión para que FlareGPT lea automáticamente tus monederos Primary y Watchlist, en lugar de escribir una dirección en cada pregunta.",
+        "body": "Inicia sesión para que FlareGPT acceda automáticamente a tus monederos Primary y Watchlist.",
         "connectCta": "Conectar la billetera",
         "signInCta": "Iniciar sesión",
         "signingIn": "Confirma en tu monedero...",
@@ -375,8 +385,7 @@
     "checkFailed": "No se pudo comprobar el estado de Gas Sniper",
     "checking": "Comprobando el estado de Gas Sniper…",
     "enabled": "Reclamado automáticamente por Gas Sniper",
-    "nudge": "Activa Gas Sniper para reclamar automáticamente",
-    "notEnabled": "Gas Sniper no está activado para este monedero"
+    "nudge": "Activa Gas Sniper para reclamar automáticamente"
   },
   "help": {
     "askFlareGptCta": "Pídele ayuda a FlareGPT",
@@ -574,7 +583,6 @@
       "connectedWallets": "Billeteras Conectadas",
       "currency": "Moneda de Visualización",
       "defaultLandingPage": "Página de inicio predeterminada",
-      "defaultWallet": "Wallet predeterminada",
       "governanceAlerts": "Alertas de Gobernanza",
       "hideBalances": "Ocultar saldos de la billetera",
       "language": "Idioma",
@@ -586,13 +594,13 @@
       "theme": "Tema",
       "themeMode": "Modo Claro / Oscuro",
       "timeframe": "Período de Tiempo",
-      "walletCapacity": "Capacidad de Billetera",
-      "walletPreferences": "Preferencias de wallet"
+      "walletCapacity": "Capacidad de Billetera"
     },
     "dataStorage": {
       "accountSubtitle": "Sincronizado con tu cuenta en el servidor.",
       "accountTitle": "Datos de la cuenta",
       "clear": "Borrar",
+      "clearArmed": "Pulsa Borrar de nuevo para confirmar el borrado de {{item}}.",
       "clearing": "Borrando…",
       "confirmClear": "¿Confirmar?",
       "conversations": "Conversaciones de FlareGPT",
@@ -612,7 +620,6 @@
       "chartType": "Establezca la geometría del estilo visual de renderizado predeterminado para las matrices del sistema.",
       "currency": "Elija la visualización de la moneda base del activo.",
       "defaultLandingPage": "Elige qué página se abre primero al iniciar la app.",
-      "defaultWallet": "Esta wallet se activa cuando no se puede restaurar una sesión anterior.",
       "hideBalances": "Difumina los saldos e importes en todo el panel por privacidad.",
       "language": "Seleccione el idioma de visualización predeterminado de la interfaz.",
       "links": "Referencias de documentación global y enlaces de interacción del equipo.",
@@ -621,8 +628,7 @@
       "tableDensity": "Espaciado cómodo o una vista más compacta para tablas densas.",
       "theme": "Elige Claro, Oscuro o sigue la configuración de tu sistema.",
       "timeframe": "Defina las escalas de período de ventana predeterminadas en los gráficos visuales.",
-      "walletCapacity": "Límites del sistema que controlan los grupos de capacidad de asignación.",
-      "walletPreferences": "Elige con qué wallet se abre el panel."
+      "walletCapacity": "Límites del sistema que controlan los grupos de capacidad de asignación."
     },
     "flareGpt": {
       "syncStatusConnected": "Inicia sesión. Tus conversaciones se sincronizan en todos los dispositivos y navegadores.",
@@ -659,9 +665,11 @@
       "medium": "Medio",
       "off": "Desactivado"
     },
+    "sectionsNav": "Secciones de configuración",
     "security": {
       "confirmLogout": "¿Confirmar?",
-      "logout": "Cerrar sesión"
+      "logout": "Cerrar sesión",
+      "logoutArmed": "Pulsa Cerrar sesión de nuevo para confirmar el cierre de sesión."
     },
     "subtitles": {
       "About": "Descripción general de los registros de implementación del sistema, reglas de compilación e índices de activos.",
@@ -692,6 +700,7 @@
       "add": "Añadir Billetera ({{current}}/{{max}})",
       "addFormTitle": "Añadir cuenta de cartera de lista de seguimiento",
       "adding": "Añadiendo…",
+      "addressLabel": "Dirección de la wallet",
       "addressPlaceholder": "0x... Dirección de la cartera Flare",
       "available": "Disponible",
       "cancelRename": "Cancelar",
@@ -715,7 +724,7 @@
       "loadFailed": "No se pudieron cargar tus monederos seguidos.",
       "manageSubtitle": "Gestione sus conexiones Web3 activas y las cuentas de seguimiento de cartera de solo lectura.",
       "maximum": "Máximo",
-      "noDefaultSelected": "Ninguna seleccionada",
+      "nicknameLabel": "Apodo de la wallet",
       "noLimit": "Añade tantas billeteras como quieras.",
       "noSearchResults": "Ninguna billetera coincide con tu búsqueda.",
       "notFoundError": "Esta billetera ya no está en tu lista de seguimiento.",
@@ -723,6 +732,7 @@
       "registrationFailed": "Error en el registro de la dirección. Compruebe si es un duplicado o si se llenan los espacios.",
       "remainingSlots": "Ranuras restantes",
       "remove": "Eliminar",
+      "removeArmed": "Pulsa Eliminar de nuevo para confirmar la eliminación de {{name}}.",
       "rename": "Renombrar",
       "saveEdit": "Guardar",
       "searchPlaceholder": "Buscar entre {{count}} billeteras...",
@@ -748,6 +758,7 @@
     "governance": "Gobernanza",
     "helpCenter": "Centro de Ayuda",
     "loops": "Rendimiento",
+    "mainNavigation": "Navegación principal",
     "notConnected": "No conectado",
     "overview": "Resumen",
     "rflrTracker": "Rastreador rFLR",
@@ -768,7 +779,9 @@
         "assetBreakdownSubtitle": "Número de transacciones por activo",
         "tabActions": "Acciones",
         "tabActivity": "Actividad",
-        "tabAssets": "Activos"
+        "tabAssets": "Activos",
+        "viewData_one": "Ver datos ({{count}} fila)",
+        "viewData_other": "Ver datos ({{count}} filas)"
       },
       "connectToSee": "Conecta o selecciona una wallet para ver su actividad de transacciones.",
       "couldntLoad": "No se pudo cargar la actividad de la wallet.",

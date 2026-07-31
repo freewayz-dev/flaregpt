@@ -18,7 +18,7 @@ function CardSkeleton() {
 // once the query resolves — same convention as RflrVestingSkeleton.
 export default function FtsoRewardsSkeleton() {
   return (
-    <div className="space-y-5 sm:space-y-6">
+    <div role="status" className="space-y-5 sm:space-y-6">
       <div className="flex gap-3 overflow-x-hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 xl:grid-cols-4">
         {Array.from({ length: 4 }).map((_, i) => (
           <StatCardSkeleton key={i} />

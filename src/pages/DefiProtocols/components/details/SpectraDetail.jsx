@@ -84,7 +84,7 @@ export default function SpectraDetail({ activeAddress, icon: Icon }) {
       {!isError && (isLoading || !hasData) ? (
         <DetailSkeleton />
       ) : isError ? (
-        <div className="rounded-2xl bg-surface-inset px-4 py-6 text-center">
+        <div role="alert" className="rounded-2xl bg-surface-inset px-4 py-6 text-center">
           <p className="text-sm font-medium text-ink-primary">
             {t("defiProtocols.spectra.couldntLoad")}
           </p>
