@@ -2,56 +2,65 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- SVG favicon is what every current browser actually renders in the
+         tab; the PNG sizes and apple-touch-icon below are fallbacks for
+         the tools that don't render SVG icons at all — notably Google's
+         own search-result favicon (documented to want a static raster,
+         not SVG) and iOS's home-screen/pinned-tab icon. All four
+         (favicon.svg + these three) are generated from the same source —
+         see src/assets/icons/flaregpt-mark.svg, the app's real logo mark
+         (rendered throughout the app via Logo.tsx and friends) — so the
+         favicon, the home-screen icon, and the in-app logo can never drift
+         out of sync with each other again. -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- TEMPORARY — this deployment is currently a team-testing build on a
-         Vercel free-tier project, not the real launch. Unlike Vercel's
-         *preview* deployments (which get an automatic noindex header),
-         the Production deployment's own vercel.app URL gets no such
-         protection — if this got indexed under that throwaway URL now, it
-         would linger as duplicate content once the real domain launches,
-         potentially outranking it early on since it aged in the index
-         longer. DELETE this one meta tag (and only this one — nothing
-         else below needs to change) the day a real production domain is
-         attached and this is meant to actually go live. -->
-    <meta name="robots" content="noindex, nofollow" />
-
-    <!-- SEO — TODO: this domain is a placeholder (no production domain was
-         assigned yet at the time this was written). Every absolute URL
-         below (canonical, og:url, og:image, twitter:image) needs updating
-         to the real one before launch — grep for "flaregpt.io" across this
-         file, robots.txt, and sitemap.xml to find every occurrence.
-
-         This is a client-rendered SPA (see main.jsx — one bundle, one
-         index.html served for every route via vercel.json's rewrite), so
-         these static tags are what non-JS crawlers (social unfurl bots:
-         X, LinkedIn, Slack, Discord) and link-preview tools see — they
-         don't execute JS the way Google's crawler does, so they only ever
-         get whatever's written here, for every route, not just "/". That's
-         fine today: the landing page is the one real public marketing
-         surface (the /app dashboard is gated, personalized, and excluded
-         from indexing — see robots.txt), so its title/description/OG data
-         doubling as the site-wide default costs nothing. -->
+    <!-- SEO — production domain is https://www.flaregpt.io (canonical,
+         og:url, og:image, twitter:image, and both JSON-LD blocks below all
+         point here). This is a client-rendered SPA (see main.tsx — one
+         bundle, one index.html served for every route via vercel.json's
+         rewrite), so these static tags are what non-JS crawlers (social
+         unfurl bots: X, LinkedIn, Slack, Discord) and link-preview tools
+         see — they don't execute JS the way Google's crawler does, so they
+         only ever get whatever's written here, for every route, not just
+         "/". That's fine today: the landing page is the one real public
+         marketing surface (the /app dashboard is gated, personalized, and
+         excluded from indexing — see robots.txt), so its
+         title/description/OG data doubling as the site-wide default costs
+         nothing. -->
     <title>FlareGPT: AI-Powered Dashboard for the Flare Network</title>
     <meta
       name="description"
       content="Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio. No wallet required to start."
     />
-    <link rel="canonical" href="https://flaregpt.io/" />
+    <link rel="canonical" href="https://www.flaregpt.io/" />
 
-    <!-- Open Graph (Facebook, LinkedIn, Slack, Discord, etc.) -->
+    <!-- Open Graph (Facebook, LinkedIn, Slack, Discord, etc.)
+         og:image is a TEMPORARY placeholder — the logo mark centered on the
+         app's own dark surface color (#101115, same as GlobalSpinner and
+         the web manifest's background_color), generated from
+         src/assets/icons/flaregpt-mark.svg with no new artwork, replacing a
+         prior AI-generated dashboard-mockup image. Swap this out for a real
+         designed social card later; nothing else here needs to change when
+         that happens as long as the replacement keeps the same 1200x630
+         dimensions. -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://flaregpt.io/" />
+    <meta property="og:url" content="https://www.flaregpt.io/" />
     <meta property="og:site_name" content="FlareGPT" />
     <meta property="og:title" content="FlareGPT: AI-Powered Dashboard for the Flare Network" />
     <meta
       property="og:description"
       content="Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio. No wallet required to start."
     />
-    <meta property="og:image" content="https://flaregpt.io/og-image.png" />
-    <meta property="og:image:width" content="2384" />
-    <meta property="og:image:height" content="1355" />
+    <meta property="og:image" content="https://www.flaregpt.io/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="FlareGPT logo" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
@@ -61,14 +70,15 @@
       name="twitter:description"
       content="Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio. No wallet required to start."
     />
-    <meta name="twitter:image" content="https://flaregpt.io/og-image.png" />
+    <meta name="twitter:image" content="https://www.flaregpt.io/og-image.png" />
+    <meta name="twitter:image:alt" content="FlareGPT logo" />
 
     <meta name="theme-color" content="#E62058" />
 
     <!-- Organization + WebSite structured data — static and site-wide, so
          it lives here rather than in a component; FAQPage structured data
          (which needs to stay in sync with the actual FAQ content) is
-         instead rendered from LandingPage.jsx itself, right next to the
+         instead rendered from LandingPage.tsx itself, right next to the
          `faqs` array it mirrors. Google reads JSON-LD injected by JS after
          render just as reliably as static markup, so splitting it this way
          costs nothing for the crawler that actually consumes it. -->
@@ -77,8 +87,8 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "FlareGPT",
-        "url": "https://flaregpt.io/",
-        "logo": "https://flaregpt.io/og-image.png",
+        "url": "https://www.flaregpt.io/",
+        "logo": "https://www.flaregpt.io/apple-touch-icon.png",
         "description": "AI-powered dashboard for the Flare Network: wallet tracking, FTSO rewards, governance, and an AI assistant that understands your portfolio."
       }
     </script>
@@ -87,7 +97,32 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "FlareGPT",
-        "url": "https://flaregpt.io/"
+        "url": "https://www.flaregpt.io/"
+      }
+    </script>
+    <!-- SoftwareApplication — separate from Organization/WebSite above:
+         this is what tells Google (and AI answer engines pulling from the
+         same structured data) that FlareGPT is a specific piece of
+         software with a category and a real price, not just "a website."
+         `offers.price: 0` matters here — the whole product is free to use
+         without a wallet (see the landing page's own copy), and an
+         explicit free-price offer is what qualifies this for Google's
+         price/availability rich-result treatment instead of leaving that
+         ambiguous. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "FlareGPT",
+        "url": "https://www.flaregpt.io/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "description": "AI-powered dashboard for the Flare Network: wallet tracking, FTSO rewards, governance, and an AI assistant that understands your portfolio.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
       }
     </script>
 
@@ -110,7 +145,42 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- This is a client-rendered SPA (see the comment on the SEO block
+         in <head>) — #root above is empty until React mounts, which means
+         any crawler that fetches this HTML without executing JavaScript
+         sees no actual page content at all, just the <head> tags. Google
+         and Bing's crawlers do execute JS reliably today, but most of the
+         crawlers behind AI answer engines and LLM training corpora
+         (GPTBot, ClaudeBot/anthropic-ai, PerplexityBot, CCBot) are
+         confirmed NOT to — see robots.txt, which explicitly welcomes all
+         of them. A <noscript> block is the one place static, real prose
+         can reach those crawlers without a full prerendering/SSR pipeline
+         (tracked separately — see Phase 2 notes); this is a stopgap, not
+         a replacement for that, but it costs nothing and closes most of
+         the gap for exactly the audience Google's own crawler doesn't
+         need this for. -->
+    <noscript>
+      <main style="max-width: 640px; margin: 0 auto; padding: 48px 24px; font-family: -apple-system, sans-serif; color: #0f172a; line-height: 1.6;">
+        <h1>FlareGPT: AI-Powered Dashboard for the Flare Network</h1>
+        <p>
+          FlareGPT is an AI-powered dashboard for the Flare Network. Track
+          wallets, claim FTSO rewards, monitor governance, and chat with an
+          AI assistant that understands your Flare portfolio — no wallet
+          required to start.
+        </p>
+        <ul>
+          <li>Track wallet balances and activity across the Flare Network.</li>
+          <li>Claim and monitor FTSO delegation rewards.</li>
+          <li>Follow Flare Network governance proposals.</li>
+          <li>Explore DeFi protocols and yield strategies built on Flare.</li>
+          <li>Ask FlareGPT, an AI assistant with direct knowledge of your connected wallet.</li>
+        </ul>
+        <p>Enable JavaScript to use the full interactive dashboard at www.flaregpt.io.</p>
+      </main>
+    </noscript>
+
+    <script type="module" src="/src/main.tsx"></script>
 
     <script>
       (function () {

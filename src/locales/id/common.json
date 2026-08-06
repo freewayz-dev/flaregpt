@@ -885,5 +885,8 @@
       "received": "Diterima",
       "sent": "Terkirim"
     }
+  },
+  "a11y": {
+    "skipToContent": "Langsung ke konten utama"
   }
 }

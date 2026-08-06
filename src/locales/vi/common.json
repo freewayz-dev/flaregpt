@@ -885,5 +885,8 @@
       "received": "Đã nhận",
       "sent": "Đã gửi"
     }
+  },
+  "a11y": {
+    "skipToContent": "Đến nội dung chính"
   }
 }

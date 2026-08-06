@@ -1,5 +1,14 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "flaregpt.io" }],
+      "destination": "https://www.flaregpt.io/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/app", "destination": "/app-shell.html" },
+    { "source": "/app/(.*)", "destination": "/app-shell.html" }
   ]
 }

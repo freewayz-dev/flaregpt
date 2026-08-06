@@ -885,5 +885,8 @@
       "received": "已发放",
       "sent": "发件箱"
     }
+  },
+  "a11y": {
+    "skipToContent": "跳到主内容"
   }
 }

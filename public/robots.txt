@@ -1,19 +1,38 @@
-# TEMPORARY — this deployment is a team-testing build on Vercel's free
-# tier, not the real launch (see the noindex meta tag in index.html, which
-# does the same job at the page level as a second layer of protection).
-# Blocking everything here too means a crawler that ignores meta robots
-# still never even fetches a page to find that tag.
-#
-# Restore the real rules below (delete the "Disallow: /" line above them)
-# the day a production domain is attached and this actually goes live:
-#
-#   User-agent: *
-#   Allow: /
-#   Allow: /terms
-#   Disallow: /app/
-#
-#   Sitemap: https://flaregpt.io/sitemap.xml
-#   (update that domain to the real one too — see index.html's own TODO)
+# FlareGPT — production
+# The only two public, indexable URLs are / and /terms; everything under
+# /app is a gated, personalized dashboard (wallet-specific data, settings,
+# chat history) that has nothing to offer a search index and would just
+# read as thin/duplicate content per-wallet. See sitemap.xml for the
+# canonical list of what should actually be crawled.
 
 User-agent: *
-Disallow: /
+Allow: /
+Allow: /terms
+Disallow: /app/
+
+# Explicitly allowed (not just left to the default `Allow: /` above) so
+# there's no ambiguity that AI crawlers and answer engines are welcome
+# here too — the goal is showing up in ChatGPT/Claude/Perplexity/Gemini
+# answers, not just classic web search.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.flaregpt.io/sitemap.xml

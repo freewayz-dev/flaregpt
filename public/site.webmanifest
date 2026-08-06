@@ -1,0 +1,21 @@
+{
+  "name": "FlareGPT",
+  "short_name": "FlareGPT",
+  "description": "AI-powered dashboard for the Flare Network: wallet tracking, FTSO rewards, governance, and an AI assistant that understands your portfolio.",
+  "start_url": "/app",
+  "display": "standalone",
+  "background_color": "#101115",
+  "theme_color": "#E62058",
+  "icons": [
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

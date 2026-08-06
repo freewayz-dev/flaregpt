@@ -892,5 +892,8 @@
       "received": "Recibido",
       "sent": "Enviado"
     }
+  },
+  "a11y": {
+    "skipToContent": "Saltar al menú principal"
   }
 }

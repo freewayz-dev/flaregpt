@@ -885,5 +885,8 @@
       "received": "받음",
       "sent": "보냄"
     }
+  },
+  "a11y": {
+    "skipToContent": "주 내용으로 건너뛰기"
   }
 }

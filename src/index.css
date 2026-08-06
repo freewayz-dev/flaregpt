@@ -153,11 +153,8 @@ html {
   border-radius: 0.75rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   font-family: Inter, sans-serif;
-  padding: 0.5rem;
-}
-.Toastify__toast-body {
-  color: rgb(var(--color-ink-primary));
   font-size: 0.8125rem;
+  padding: 0.5rem;
 }
 .Toastify__close-button {
   color: rgb(var(--color-ink-muted));

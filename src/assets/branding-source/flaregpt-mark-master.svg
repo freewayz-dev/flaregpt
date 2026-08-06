@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2298 2849.89">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #e62058;
+        stroke-miterlimit: 10;
+        stroke-width: 8px;
+      }
+
+      .cls-2 {
+        fill: #e62058;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1314.79" y1="165.48" x2="1313.26" y2="721.57" gradientUnits="userSpaceOnUse">
+      <stop offset=".01" stop-color="#e62058"/>
+      <stop offset=".05" stop-color="#bc1d4a"/>
+      <stop offset=".1" stop-color="#8e1a3d"/>
+      <stop offset=".14" stop-color="#681731"/>
+      <stop offset=".19" stop-color="#481527"/>
+      <stop offset=".24" stop-color="#30141f"/>
+      <stop offset=".29" stop-color="#1e121a"/>
+      <stop offset=".35" stop-color="#141217"/>
+      <stop offset=".42" stop-color="#111216"/>
+      <stop offset=".53" stop-color="#131216"/>
+      <stop offset=".62" stop-color="#1d1219"/>
+      <stop offset=".69" stop-color="#2d131e"/>
+      <stop offset=".76" stop-color="#431525"/>
+      <stop offset=".82" stop-color="#60172e"/>
+      <stop offset=".88" stop-color="#831939"/>
+      <stop offset=".94" stop-color="#ad1c46"/>
+      <stop offset=".99" stop-color="#dd1f55"/>
+      <stop offset="1" stop-color="#e62058"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <rect class="cls-1" x="1107" y="246" width="414" height="414" rx="51.96" ry="51.96"/>
+  </g>
+  <g id="Layer_5_copy" data-name="Layer 5 copy">
+    <line class="cls-3" x1="1332.5" y1="424" x2="1332.5" y2="445.72"/>
+    <line class="cls-3" x1="1332.5" y1="465.28" x2="1332.5" y2="487"/>
+    <line class="cls-3" x1="1364" y1="455.5" x2="1342.28" y2="455.5"/>
+    <line class="cls-3" x1="1322.72" y1="455.5" x2="1301" y2="455.5"/>
+  </g>
+  <g id="Layer_9" data-name="Layer 9">
+    <path class="cls-2" d="M1229,404.74s48,10,48,41-1,149-1,149c0,0-47-9-47-42v-148Z"/>
+    <path class="cls-2" d="M1228.89,389.74s10-48,41-48,149,1,149,1c0,0-9,47-42,47h-148Z"/>
+  </g>
+</svg>

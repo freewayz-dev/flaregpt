@@ -885,5 +885,8 @@
       "received": "Gelen",
       "sent": "Gönderildi"
     }
+  },
+  "a11y": {
+    "skipToContent": "Ana içeriğe geç"
   }
 }

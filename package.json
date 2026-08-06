@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "i18n:extract": "npx i18next-parser -c i18next-parser.config.cjs && node translate-locales.js",
+    "build": "vite build && node prerender.ts",
+    "i18n:extract": "npx i18next-parser -c i18next-parser.config.ts && node translate-locales.ts",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
@@ -19,13 +23,13 @@
     "framer-motion": "^11.18.2",
     "i18next": "^26.3.1",
     "qrcode.react": "^4.2.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "react-error-boundary": "^6.1.2",
     "react-i18next": "^17.0.8",
     "react-markdown": "^10.1.0",
-    "react-router-dom": "^6.26.2",
-    "react-toastify": "^9.1.1",
+    "react-router": "^8.3.0",
+    "react-toastify": "^11.1.0",
     "recharts": "^3.10.0",
     "remark-gfm": "^4.0.1",
     "viem": "^2.53.1",
@@ -35,6 +39,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@playwright/test": "^1.62.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^26.1.2",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitalets/google-translate-api": "^9.2.1",
@@ -46,9 +55,18 @@
     "globals": "^15.15.0",
     "google-translate-open-api": "^1.3.7",
     "i18next-parser": "^9.0.2",
+    "jsdom": "^30.0.1",
+    "msw": "^2.15.0",
     "postcss": "^8.4.47",
+    "puppeteer": "^25.4.0",
     "tailwindcss": "^3.4.12",
     "translate": "^3.0.1",
-    "vite": "^6.2.0"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.65.0",
+    "vite": "^6.2.0",
+    "vitest": "^4.1.10"
+  },
+  "engines": {
+    "node": ">=24"
   }
 }

@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Skip to main content"
+  },
   "comingSoon": {
     "badge": "Coming Soon",
     "description": "We're building this feature. Check back soon."
