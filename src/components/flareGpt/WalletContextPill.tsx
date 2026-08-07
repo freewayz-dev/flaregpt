@@ -9,6 +9,7 @@ import { useFlareGptWalletContext } from "@/hooks/useFlareGptWalletContext";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useUIStore } from "@/store/useUIStore";
 import { shortenAddress } from "@/utils/address";
+import { shareOrCopy } from "@/utils/share";
 import { ROUTES } from "@/config/routes";
 import WalletBadge, { type WalletBadgeTone } from "@/components/common/WalletBadge";
 import WalletRow from "@/components/common/WalletRow";
@@ -97,14 +98,14 @@ export default function WalletContextPill({ onOpenWalletModal }: WalletContextPi
     setOpen(false);
   };
 
-  const handleCopy = async (e: MouseEvent<HTMLButtonElement>, address: string) => {
+  const handleShare = async (e: MouseEvent<HTMLButtonElement>, address: string) => {
     e.stopPropagation();
-    try {
-      await navigator.clipboard.writeText(address);
+    const result = await shareOrCopy({ title: t("navbar.shareAddressTitle"), text: address });
+    if (result === "copied") {
       setCopiedAddress(address);
       toast.success(t("navbar.addressCopied"));
       setTimeout(() => setCopiedAddress(null), 2000);
-    } catch {
+    } else if (result === "failed") {
       toast.error(t("navbar.copyFailed"));
     }
   };
@@ -232,7 +233,7 @@ export default function WalletContextPill({ onOpenWalletModal }: WalletContextPi
             isActive={walletMode === "primary"}
             copiedAddress={copiedAddress}
             onSelect={handleSelectPrimary}
-            onCopy={handleCopy}
+            onShare={handleShare}
           />
         ) : (
           <button
@@ -264,7 +265,7 @@ export default function WalletContextPill({ onOpenWalletModal }: WalletContextPi
                   isActive={walletMode === "specific" && walletAddress === wallet.address}
                   copiedAddress={copiedAddress}
                   onSelect={() => handleSelectSpecific(wallet.address)}
-                  onCopy={handleCopy}
+                  onShare={handleShare}
                 />
               ))}
             </div>

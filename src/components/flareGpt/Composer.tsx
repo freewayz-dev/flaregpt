@@ -5,6 +5,7 @@ import { PaperAirplaneIcon, StopIcon } from "@heroicons/react/24/outline";
 import WalletContextPill from "@/components/flareGpt/WalletContextPill";
 import GuestModeCaption from "@/components/flareGpt/GuestModeCaption";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
+import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 
 const MAX_TEXTAREA_HEIGHT = 160;
 
@@ -27,6 +28,13 @@ export default function Composer({
 }: ComposerProps) {
   const { t } = useTranslation();
   const { hasSession } = useAuthStatus();
+  // The chat stream is a live WebSocket (see useFlareGptConversation.ts) —
+  // there's no service-worker cache tier for it the way there is for
+  // financial reads, so offline always means "can't send," not "send a
+  // stale copy." Left free to keep typing (the draft isn't lost, and
+  // it's still there to send the moment `isOnline` flips back), just
+  // blocked from actually submitting.
+  const isOnline = useOnlineStatus();
   const [value, setValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -60,7 +68,7 @@ export default function Composer({
     }
   }, [focusRequestId]);
 
-  const canSend = value.trim().length > 0 && !isGenerating && !disabled;
+  const canSend = value.trim().length > 0 && !isGenerating && !disabled && isOnline;
 
   const autoGrow = (el: HTMLTextAreaElement) => {
     el.style.height = "auto";
@@ -132,7 +140,7 @@ export default function Composer({
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             disabled={disabled}
-            placeholder={t("flrgpt.composer.placeholder")}
+            placeholder={isOnline ? t("flrgpt.composer.placeholder") : t("flrgpt.composer.offlinePlaceholder")}
             className="flex-1 resize-none bg-transparent px-2 py-1.5 sm:py-2 text-base sm:text-sm text-ink-primary placeholder-ink-muted outline-none disabled:opacity-60"
             style={{ maxHeight: MAX_TEXTAREA_HEIGHT }}
           />
@@ -151,8 +159,8 @@ export default function Composer({
               type="button"
               disabled={!canSend}
               onClick={handleSend}
-              title={t("flrgpt.composer.send")}
-              aria-label={t("flrgpt.composer.send")}
+              title={isOnline ? t("flrgpt.composer.send") : t("flrgpt.composer.offlinePlaceholder")}
+              aria-label={isOnline ? t("flrgpt.composer.send") : t("flrgpt.composer.offlinePlaceholder")}
               className={`shrink-0 p-2.5 rounded-xl transition-colors ${
                 canSend
                   ? "bg-brand text-white hover:bg-brand-hover cursor-pointer"

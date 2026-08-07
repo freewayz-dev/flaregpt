@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "주 내용으로 건너뛰기"
+  },
   "comingSoon": {
     "badge": "개봉 예정작",
     "description": "이 기능을 구축하고 있습니다. 잠시 후 다시 확인하세요."
@@ -24,6 +27,7 @@
     "install": "설치",
     "installHint": "아직도 지갑이 보이지 않나요? 페이지를 새로고침하면 도움이 될 수 있습니다.",
     "mobileHint": "모바일에서 지갑의 내장 브라우저에서 FlareGPT를 열어 최상의 연결 경험을 누리세요. QR 코드를 스캔할 때는 휴대폰 카메라 대신 지갑 앱 자체 스캐너를 사용하면 더 안정적으로 연결할 수 있습니다.",
+    "offline": "오프라인 상태입니다. 지갑을 연결하려면 인터넷 연결이 필요합니다.",
     "recommended": "추천",
     "refresh": "새로고침",
     "subtitle": "선호하는 지갑을 선택하여 Flare 네트워크에 연결합니다.",
@@ -114,6 +118,9 @@
     },
     "description": "MXRPY, Sceptre, Firelight, Spectra 볼트에서 수익률 전략을 비교하고 포지션을 추적하세요.",
     "explorer": {
+      "linkCopied": "Link copied",
+      "shareFailed": "Couldn't share this protocol",
+      "shareProtocol": "Share this protocol",
       "subtitle": "프로토콜을 선택하여 포지션과 세부정보를 확인하세요",
       "title": "프로토콜 탐색기"
     },
@@ -222,7 +229,10 @@
       "copyFailed": "주소를 복사하지 못했습니다",
       "multisigNote": "다중 서명 지갑으로 보호됨",
       "qrTitle": "{{symbol}} 후원 지갑 주소 QR 코드",
+      "shareAddress": "Share Address",
+      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "탭하여 복사",
+      "tapToShare": "Tap to share",
       "viewOnExplorer": "{{explorer}}에서 보기"
     },
     "received": {
@@ -258,6 +268,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT는 실수를 할 수 있습니다. 중요한 정보는 행동하기 전에 확인하세요.",
+      "offlinePlaceholder": "오프라인 상태입니다. 지금은 메시지를 보낼 수 없습니다.",
       "placeholder": "FlareGPT에게 물어보기...",
       "send": "보내기",
       "stop": "생성 중지"
@@ -281,11 +292,12 @@
       "close": "닫기",
       "delete": "삭제",
       "empty": "아직 대화가 없습니다",
-      "loading": "대화를 불러오는 중…",
       "loadFailed": "대화 내역을 불러오지 못했습니다.",
+      "loading": "대화를 불러오는 중…",
       "moreActions": "추가 작업",
       "newChat": "새 채팅",
       "noResults": "검색과 일치하는 대화가 없습니다",
+      "offline": "오프라인 상태입니다. 인터넷 연결이 필요합니다.",
       "openButton": "기록",
       "pin": "고정",
       "pinLimitReached": "최대 {{count}}개의 대화를 고정할 수 있습니다",
@@ -333,49 +345,49 @@
     "terms": "이용약관 및 면책조항"
   },
   "ftsoRewards": {
-    "description": "FTSO 위임 보상, 보상 속도, 제공자 배분을 한곳에서 확인하세요.",
     "connectToSee": "FTSO 보상을 보려면 지갑을 연결하거나 선택하세요.",
     "couldntLoad": "FTSO 보상을 불러올 수 없습니다.",
-    "stats": {
-      "wflrBalance": "WFLR 잔액",
-      "unclaimed": "미청구 보상",
-      "hourlyEarning": "예상 시간당 수익",
-      "targetEpochYield": "이번 에포크 목표 수익률"
-    },
-    "velocity": {
-      "title": "보상 속도",
-      "methodLive": "실시간 추정",
-      "methodHistorical": "과거 데이터 기반 추정",
-      "inactiveTitle": "현재 수익 없음",
-      "inactiveDescription": "이 지갑은 아직 WFLR을 위임하지 않아 추정할 보상 속도가 없습니다.",
-      "perHour": "시간당",
-      "perDay": "일당",
-      "thisEpoch": "이번 에포크",
-      "sourceEpoch": "에포크 {{epoch}}의 네트워크 데이터로 추정"
-    },
     "delegations": {
-      "title": "활성 위임",
       "count_one": "{{count}}개 제공자",
       "count_other": "{{count}}개 제공자",
+      "emptyDescription": "보상을 받으려면 WFLR을 FTSO 데이터 제공자에게 위임하세요.",
       "emptyTitle": "활성 위임 없음",
-      "emptyDescription": "보상을 받으려면 WFLR을 FTSO 데이터 제공자에게 위임하세요."
+      "title": "활성 위임"
     },
+    "description": "FTSO 위임 보상, 보상 속도, 제공자 배분을 한곳에서 확인하세요.",
     "epochs": {
-      "title": "미청구 에포크",
-      "subtitle": "에포크별 청구 대기 중인 보상",
-      "emptyTitle": "미청구 항목 없음",
       "emptyDescription": "모두 완료되었습니다 — 현재 대기 중인 에포크 보상이 없습니다.",
+      "emptyTitle": "미청구 항목 없음",
       "epochLabel": "에포크 {{id}}",
+      "subtitle": "에포크별 청구 대기 중인 보상",
+      "title": "미청구 에포크",
       "viewFullLedger_one": "전체 원장 보기 ({{count}}건)",
       "viewFullLedger_other": "전체 원장 보기 ({{count}}건)"
     },
     "providers": {
-      "title": "FTSO 제공자",
-      "description": "제공자 순위가 연결되면 성과와 수수료로 데이터 제공자를 비교하세요."
+      "description": "제공자 순위가 연결되면 성과와 수수료로 데이터 제공자를 비교하세요.",
+      "title": "FTSO 제공자"
+    },
+    "stats": {
+      "hourlyEarning": "예상 시간당 수익",
+      "targetEpochYield": "이번 에포크 목표 수익률",
+      "unclaimed": "미청구 보상",
+      "wflrBalance": "WFLR 잔액"
     },
     "validators": {
-      "title": "스테이킹 검증인 순위",
-      "description": "스테이킹 순위가 연결되면 최고 성과를 내는 검증인을 확인하세요."
+      "description": "스테이킹 순위가 연결되면 최고 성과를 내는 검증인을 확인하세요.",
+      "title": "스테이킹 검증인 순위"
+    },
+    "velocity": {
+      "inactiveDescription": "이 지갑은 아직 WFLR을 위임하지 않아 추정할 보상 속도가 없습니다.",
+      "inactiveTitle": "현재 수익 없음",
+      "methodHistorical": "과거 데이터 기반 추정",
+      "methodLive": "실시간 추정",
+      "perDay": "일당",
+      "perHour": "시간당",
+      "sourceEpoch": "에포크 {{epoch}}의 네트워크 데이터로 추정",
+      "thisEpoch": "이번 에포크",
+      "title": "보상 속도"
     }
   },
   "gasSniperStatus": {
@@ -457,15 +469,22 @@
     "stillNeedHelp": "여전히 도움이 필요하신가요?",
     "supportDesc": "현재 가장 빠르게 연락할 수 있는 방법은 X입니다. 이메일과 텔레그램 지원은 곧 제공될 예정입니다."
   },
+  "install": {
+    "bannerDescriptionAndroid": "FlareGPT를 홈 화면에 추가하여 더 빠르게 액세스하고 전체 화면을 경험할 수 있습니다.",
+    "bannerDescriptionIOS": "'공유' 를 누른 다음 '홈 화면에 추가' 를 눌러 빠르게 액세스할 수 있습니다.",
+    "dismiss": "무시하기",
+    "installButton": "할",
+    "installing": "설치"
+  },
   "loops": {
     "description": "네트워크를 감시하고 사용자를 대신해 작동하는 자동화된 백그라운드 서비스입니다.",
     "gasSniper": {
       "active": "활성",
       "approveCta": "Coston2에서 승인",
+      "approved": "승인되었습니다. 이제 Gas Sniper를 켤 수 있습니다.",
       "approveDescription": "이 지갑은 먼저 Coston2에서 Flare의 Gas Sniper 키퍼를 청구 실행자로 승인해야 합니다. 이는 일회성 온체인 승인입니다. 지갑이 Coston2 네트워크로 전환하거나 추가하라는 메시지를 표시할 수 있습니다.",
       "approveFailed": "승인을 완료할 수 없습니다. 다시 시도해 주세요.",
       "approveTitle": "일회성 승인 필요",
-      "approved": "승인되었습니다. 이제 Gas Sniper를 켤 수 있습니다.",
       "approving": "지갑에서 확인하세요…",
       "confirmingApproval": "확인 중…",
       "description": "가스비가 충분히 낮아지면 FTSO 보상을 자동으로 청구하며, 끌 때까지 브라우저 확장 프로그램처럼 조용히 백그라운드에서 계속 실행됩니다.",
@@ -475,6 +494,7 @@
       "inactive": "비활성",
       "needsApproval": "승인 필요",
       "needsReconnect": "지갑 연결 끊김",
+      "offline": "인터넷 연결이 필요합니다.",
       "reconnectDescription": "일회성 온체인 승인을 완료하려면 이 지갑을 다시 연결하세요.",
       "reconnectTitle": "계속하려면 다시 연결하세요",
       "signInHint": "Gas Sniper를 켜려면 지갑으로 로그인하세요.",
@@ -500,71 +520,80 @@
     "hideBalances": "잔액 숨기기",
     "mainnetStatus": "Flare 메인넷",
     "moreOptions": "더보기",
+    "offline": "오프라인",
     "openMenu": "메뉴 열기",
     "primaryWalletSection": "기본 지갑",
+    "shareAddress": "Share address",
+    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "잔액 표시",
     "signIn": "로그인",
     "signInBackgroundHint": "연결된 지갑이 로그인해야 합니다",
     "signingIn": "로그인 중…",
+    "signInOffline": "로그인하려면 인터넷 연결이 필요합니다.",
     "signInPrompt": "이 지갑을 확인하고 계속하려면 메시지에 서명하세요.",
     "watchlistSection": "워치리스트 ({{current}}/{{max}})"
   },
   "offline": {
-    "message": "오프라인 상태입니다. 자동으로 다시 연결됩니다.",
-    "backOnline": "다시 온라인 상태입니다"
+    "backOnline": "다시 온라인 상태입니다",
+    "message": "오프라인 상태입니다. 자동으로 다시 연결됩니다."
+  },
+  "onboarding": {
+    "welcomeMessage": "FlareGPT에 오신 것을 환영합니다. 지갑을 연결하여 포트폴리오를 보거나 AI 어시스턴트에게 무엇이든 물어보세요."
   },
   "rflrVesting": {
-    "description": "rFLR 베스팅 진행 상황, 예정된 언락, 네트워크 전체 발행량을 한곳에서 확인하세요.",
     "connectToSee": "베스팅 상태를 보려면 지갑을 연결하거나 선택하세요.",
     "couldntLoad": "베스팅 데이터를 불러올 수 없습니다.",
-    "noRflr": {
-      "title": "아직 rFLR 보상이 없습니다",
-      "description": "이 지갑은 아직 rFLR 보상을 받은 적이 없어 베스팅할 항목이 없습니다."
-    },
-    "stats": {
-      "totalBalance": "총 rFLR 잔액",
-      "liquidNow": "현재 유동 자산",
-      "lockedInVesting": "베스팅 중 잠김",
-      "vestedProgress": "베스팅 완료"
-    },
-    "progress": {
-      "title": "베스팅 진행 상황",
-      "vestedLabel": "베스팅 완료",
-      "nextUnlock": "다음 언락: {{date}}",
-      "nextUnlockCaption": "이(가) 유동화됩니다",
-      "fullyVested": "완전히 베스팅됨 — 더 이상 언락할 것이 없습니다",
-      "earlyExitTitle": "조기 종료",
-      "earlyExitNoneNeeded": "잠긴 자산이 없으므로 조기 종료에 대한 페널티가 없습니다.",
-      "efficiency": "효율 {{pct}}%",
-      "netPayout": "현재 순 지급액",
-      "penaltyCost": "종료 페널티"
-    },
-    "timeline": {
-      "title": "언락 타임라인",
-      "subtitle": "시간에 따른 누적 언락된 rFLR",
-      "historicalNote": "전체 언락 이력을 표시합니다. 다른 곳에서 이미 청구된 금액이 포함될 수 있어 합계가 위의 현재 잔액을 초과할 수 있습니다.",
-      "emptyTitle": "아직 언락 기록이 없습니다",
-      "loadingTitle": "언락 기록 불러오는 중…",
-      "loadingHint": "지갑을 처음 확인할 때는 최대 30초가 걸릴 수 있습니다.",
-      "couldntLoad": "언락 기록을 불러올 수 없습니다.",
-      "statusLiquid": "유동",
-      "statusLocked": "잠김",
-      "viewFullSchedule": "전체 일정 보기 ({{count}}건)"
-    },
+    "description": "rFLR 베스팅 진행 상황, 예정된 언락, 네트워크 전체 발행량을 한곳에서 확인하세요.",
     "network": {
-      "title": "네트워크 펄스",
-      "subtitle": "네트워크 전체 발행량 및 에포크 상태",
+      "allocated": "할당됨",
+      "claimedToVesting": "베스팅으로 청구됨",
       "couldntLoad": "네트워크 상태를 불러올 수 없습니다.",
-      "nextDistribution": "다음 분배",
       "countdownDays": "{{days}}일 {{hours}}시간 후",
       "countdownHours": "{{hours}}시간 후",
+      "currentlyLocked": "현재 잠김",
       "epochCaption": "에포크 {{epoch}}은(는) {{date}}에 시작됨",
+      "nextDistribution": "다음 분배",
       "poolUtilization": "인센티브 풀 활용률",
-      "allocated": "할당됨",
       "remaining": "{{amount}} 할당 대기 중",
-      "claimedToVesting": "베스팅으로 청구됨",
-      "withdrawnLiquid": "유동 자산으로 출금됨",
-      "currentlyLocked": "현재 잠김"
+      "subtitle": "네트워크 전체 발행량 및 에포크 상태",
+      "title": "네트워크 펄스",
+      "withdrawnLiquid": "유동 자산으로 출금됨"
+    },
+    "noRflr": {
+      "description": "이 지갑은 아직 rFLR 보상을 받은 적이 없어 베스팅할 항목이 없습니다.",
+      "title": "아직 rFLR 보상이 없습니다"
+    },
+    "progress": {
+      "earlyExitNoneNeeded": "잠긴 자산이 없으므로 조기 종료에 대한 페널티가 없습니다.",
+      "earlyExitTitle": "조기 종료",
+      "efficiency": "효율 {{pct}}%",
+      "fullyVested": "완전히 베스팅됨 — 더 이상 언락할 것이 없습니다",
+      "netPayout": "현재 순 지급액",
+      "nextUnlock": "다음 언락: {{date}}",
+      "nextUnlockCaption": "이(가) 유동화됩니다",
+      "penaltyCost": "종료 페널티",
+      "title": "베스팅 진행 상황",
+      "vestedLabel": "베스팅 완료"
+    },
+    "stats": {
+      "liquidNow": "현재 유동 자산",
+      "lockedInVesting": "베스팅 중 잠김",
+      "totalBalance": "총 rFLR 잔액",
+      "vestedProgress": "베스팅 완료"
+    },
+    "timeline": {
+      "couldntLoad": "언락 기록을 불러올 수 없습니다.",
+      "emptyTitle": "아직 언락 기록이 없습니다",
+      "historicalNote": "전체 언락 이력을 표시합니다. 다른 곳에서 이미 청구된 금액이 포함될 수 있어 합계가 위의 현재 잔액을 초과할 수 있습니다.",
+      "loadingHint": "지갑을 처음 확인할 때는 최대 30초가 걸릴 수 있습니다.",
+      "loadingTitle": "언락 기록 불러오는 중…",
+      "statusLiquid": "유동",
+      "statusLocked": "잠김",
+      "subtitle": "시간에 따른 누적 언락된 rFLR",
+      "title": "언락 타임라인",
+      "viewFullSchedule": "전체 일정 보기 ({{count}}건)",
+      "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -606,6 +635,7 @@
       "conversationsDescription": "계정에서 FlareGPT 채팅 기록을 삭제합니다. 이 작업은 되돌릴 수 없습니다.",
       "localSubtitle": "이 브라우저에만 저장됩니다. 삭제는 즉시 안전하게 이루어집니다.",
       "localTitle": "로컬 데이터",
+      "offline": "오프라인 상태입니다. 인터넷 연결이 필요합니다.",
       "walletCache": "지갑 활동 캐시",
       "walletCacheCleared": "캐시가 삭제되었습니다",
       "walletCacheDescription": "캐시된 거래 내역을 삭제합니다. 다음 방문 시 다시 가져옵니다."
@@ -636,6 +666,14 @@
       "account": "계정",
       "personalization": "개인화",
       "walletsAndData": "지갑 및 데이터"
+    },
+    "install": {
+      "button": "할",
+      "descriptionAvailable": "FlareGPT를 설치하여 더 빠르게 액세스하고 네이티브 전체 화면 환경을 경험하세요.",
+      "descriptionInstalled": "FlareGPT가 이 장치에 설치되어 있습니다.",
+      "descriptionIOS": "Safari에서 공유 아이콘을 누른 다음 '홈 화면에 추가' 를 누릅니다.",
+      "installedBadge": "설치했습니다",
+      "title": "앱 설치"
     },
     "links": {
       "docs": "프리미엄 지원",
@@ -725,6 +763,7 @@
       "noLimit": "원하는 만큼 지갑을 추가하세요.",
       "noSearchResults": "검색과 일치하는 지갑이 없습니다.",
       "notFoundError": "이 지갑은 더 이상 관심 목록에 없습니다.",
+      "offline": "오프라인 상태입니다. 인터넷 연결이 필요합니다.",
       "readOnly": "ì½ê¸° ì ì©",
       "registrationFailed": "주소 등록에 실패했습니다. 중복인지 또는 슬롯이 채워졌는지 확인하십시오.",
       "remainingSlots": "남은 슬롯",
@@ -765,6 +804,15 @@
     "walletConnected": "지갑 연결됨",
     "yield": "수익률"
   },
+  "staleData": {
+    "justNow": "잠시 전의 캐시된 데이터 표시",
+    "minutesAgo": "{{minutes}} 분 전의 캐시된 데이터 표시"
+  },
+  "update": {
+    "available": "FlareGPT의 새 버전을 사용할 수 있습니다.",
+    "reload": "재장전",
+    "waitingForReply": "현재 응답이 완료되는 즉시 업데이트가 적용됩니다."
+  },
   "wallet": {
     "activity": {
       "charts": {
@@ -790,8 +838,11 @@
         "close": "닫기",
         "copyFailed": "해시를 복사할 수 없습니다",
         "hashCopied": "거래 해시가 복사되었습니다",
+        "linkCopied": "Explorer link copied",
         "next": "다음 거래",
         "previous": "이전 거래",
+        "shareTitle": "FlareGPT transaction",
+        "shareTransaction": "Share transaction",
         "timestamp": "타임스탬프",
         "title": "거래 세부정보",
         "transactionHash": "거래 해시",
@@ -885,8 +936,5 @@
       "received": "받음",
       "sent": "보냄"
     }
-  },
-  "a11y": {
-    "skipToContent": "주 내용으로 건너뛰기"
   }
 }

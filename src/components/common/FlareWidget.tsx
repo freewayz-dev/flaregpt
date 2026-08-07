@@ -121,7 +121,8 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }: FlareW
       className={`fixed z-50 flex flex-col bg-[#FFFFFF] border border-[#E5E7EB] shadow-xl
         dark:bg-[#161619] dark:border-none
         inset-0 rounded-none
-        sm:inset-auto sm:right-4 sm:left-auto sm:top-14 sm:bottom-4 sm:rounded-2xl
+        pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]
+        sm:inset-auto sm:right-4 sm:left-auto sm:top-14 sm:bottom-4 sm:rounded-2xl sm:pt-0 sm:pl-0 sm:pr-0
         w-full ${widthClasses}
         transform-gpu transition-all duration-300 ease-in-out
         ${open ? "translate-x-0 opacity-100 scale-100" : "translate-x-full sm:translate-x-[120%] opacity-0 scale-95 pointer-events-none"}`}

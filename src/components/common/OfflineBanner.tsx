@@ -4,12 +4,22 @@ import { WifiIcon } from "@heroicons/react/24/outline";
 
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 
-// TanStack Query's default onlineManager already listens for these same
-// `online`/`offline` window events and auto-resumes every paused query the
+// TanStack Query's own onlineManager already listens for these same
+// `online`/`offline` window events and auto-resumes any paused retry the
 // instant connectivity returns — this banner isn't what makes recovery
 // happen, it's the visible signal that was missing. Without it, "you're
 // offline" looked identical to "every card on the page silently failed",
 // which is exactly the ambiguity this review was raised to fix.
+//
+// Phase 5 extended this component's own message (not its structure) once
+// two things became true elsewhere: `networkMode: "offlineFirst"`
+// (main.tsx) means queries now actually reach src/sw.ts's cache while
+// offline instead of sitting paused, and every connectivity-requiring
+// action (wallet connect, chat send, Gas Sniper's toggle, watchlist
+// edits, clearing synced conversations) now disables itself with its own
+// inline reason — see useOnlineStatus's other call sites. The banner is
+// the one global place that ties both of those together for the user
+// instead of leaving them to notice it card by card.
 export default function OfflineBanner() {
   const { t } = useTranslation();
   const isOnline = useOnlineStatus();

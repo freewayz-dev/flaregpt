@@ -217,6 +217,18 @@ export const useWalletHubStore = create<WalletHubState>()(
 // or care which source `trackedWallets` actually came from.
 export function useDerivedWalletHub(connectedAddress: string | undefined, isConnected: boolean) {
   const hasSession = useAuthStore((state) => Boolean(state.token));
+  // useAuthStore hydrates via its own, independent `persist` instance —
+  // there's no ordering guarantee between it and this store's own
+  // `hasHydrated` below, so `hasSession` above can read its default
+  // `false` for a beat even for an already-signed-in user (see
+  // useAuthStore.ts's own comment on its `hasHydrated` field). Folded into
+  // `isResolving` for the exact same reason this store's own hydration
+  // already is: without it, `reconcileActiveAddress` could see a
+  // momentarily-wrong `hasSession=false` and `isResolving=false` at the
+  // same time, treat a signed-in user's not-yet-visible server watchlist
+  // as "genuinely nothing there," and reset `activeAddress` away from a
+  // valid watchlist wallet before auth had even finished rehydrating.
+  const authHasHydrated = useAuthStore((state) => state.hasHydrated);
   // Not derived from the `isConnected` param above — that one's already
   // past the "haven't heard back yet" window by the time it's `false`,
   // which is exactly the case this needs to detect. `isReconnecting` is
@@ -275,13 +287,14 @@ export function useDerivedWalletHub(connectedAddress: string | undefined, isConn
 
   // Safe fallback auto-resolver: runs post-commit, not as a render side
   // effect. `isResolving` combines every async source that can make
-  // `allWallets` look emptier than it really is for a beat: this store's
-  // own persisted-hydration delay, wagmi's silent reconnect-on-load, and
-  // (once signed in) the watchlist fetch not having come back yet. See the
-  // matching comment in reconcileActiveAddress for why an empty
+  // `allWallets` (or `hasSession`) look emptier/wrong than it really is for
+  // a beat: this store's own persisted-hydration delay, useAuthStore's own
+  // independent persisted-hydration delay, wagmi's silent reconnect-on-load,
+  // and (once signed in) the watchlist fetch not having come back yet. See
+  // the matching comment in reconcileActiveAddress for why an empty
   // `allWallets` has to gate on this rather than being treated as
   // "genuinely disconnected" on sight.
-  const isResolving = !hasHydrated || isReconnecting || (hasSession && isWatchlistLoading);
+  const isResolving = !hasHydrated || !authHasHydrated || isReconnecting || (hasSession && isWatchlistLoading);
   useEffect(() => {
     reconcileActiveAddress(allWallets, isResolving);
   }, [allWallets, activeAddress, isResolving, reconcileActiveAddress]);

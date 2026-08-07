@@ -141,6 +141,53 @@ describe("useDerivedWalletHub", () => {
     });
   });
 
+  it("waits for useAuthStore's own hydration too, rather than reconciling against a momentarily-wrong hasSession=false", async () => {
+    // Simulates the real race: useAuthStore hasn't finished rehydrating
+    // its persisted token yet (hasHydrated stays at its true default,
+    // `false`, and `token` at its default `null`) even though
+    // useWalletHubStore's own hydration and wagmi's reconnect have
+    // already settled, with a previously-selected watchlist wallet
+    // already in memory (as if restored from this store's own persisted
+    // state). Without folding useAuthStore's hydration into `isResolving`,
+    // `hasSession` reads `false` here, the (empty, guest-fallback)
+    // `allWallets` doesn't contain WATCHLIST, and reconciliation used to
+    // treat that as fully resolved and reset activeAddress to the primary
+    // wallet before auth had even had a chance to rehydrate.
+    // Real `persist` hydration only ever runs once per store, at module
+    // load — by the time this test runs, useAuthStore's own one-time
+    // hydration has long since completed, so its "hasn't hydrated yet"
+    // state has to be forced explicitly here to simulate the race at all.
+    useAuthStore.setState({ token: null, authenticatedAddress: null, hasHydrated: false });
+    useWalletHubStore.setState({ activeAddress: WATCHLIST, hasHydrated: true });
+    server.use(
+      http.get(`${API}/api/v1/watchlist`, () =>
+        HttpResponse.json({ wallets: [{ address: WATCHLIST, nickname: "Cold Storage" }] }),
+      ),
+    );
+
+    renderWithProviders(<WalletHubProbe />, { wagmi: { connected: true, address: PRIMARY } });
+
+    // Wait for wagmi's own connection to actually settle (allWallets
+    // reflecting the primary wallet) — the reconcile effect depends on
+    // `allWallets`, so this is the point it's guaranteed to have run at
+    // least once with useAuthStore still deliberately held at "not
+    // hydrated." The regression this guards against is a *premature*
+    // reconcile landing in exactly this window.
+    await waitFor(() => {
+      const allWalletsText = screen.getByText(/^allWallets:/).textContent ?? "";
+      expect(allWalletsText.toLowerCase()).toContain(PRIMARY.toLowerCase());
+    });
+    expect(screen.getByText(`activeAddress: ${WATCHLIST.toLowerCase()}`, { exact: false })).toBeInTheDocument();
+
+    // Now let auth catch up, atomically, the way onRehydrateStorage
+    // actually flips it — the watchlist wallet should still end up active
+    // once everything has genuinely settled.
+    useAuthStore.setState({ token: "test-token", authenticatedAddress: PRIMARY, hasHydrated: true });
+    await waitFor(() => {
+      expect(screen.getByText(`activeAddress: ${WATCHLIST.toLowerCase()}`, { exact: false })).toBeInTheDocument();
+    });
+  });
+
   it("stays signed in with no active wallet when disconnected but not logged out", async () => {
     // Auth and wallet connection are deliberately decoupled in this app
     // (see useAuthStore.js) — being signed in with the wallet disconnected

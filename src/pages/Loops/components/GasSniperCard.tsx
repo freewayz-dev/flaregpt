@@ -18,6 +18,7 @@ import {
 
 import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useAuthStore } from "@/store/useAuthStore";
+import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { coston2 } from "@/config/web3Config";
 import {
   CLAIM_SETUP_MANAGER_ADDRESS,
@@ -60,6 +61,11 @@ export default function GasSniperCard() {
     useAuthStatus();
   const authenticatedAddress = useAuthStore((s) => s.authenticatedAddress);
   const { chainId: connectedChainId } = useConnection();
+  // Enabling/disabling hits the backend (useLoopsQueries.ts) and approving
+  // is an on-chain write — both genuinely need connectivity, unlike the
+  // status *read* above (StaleWhileRevalidate, so it's fine showing a
+  // cached "who's opted in" view offline, see sw.ts).
+  const isOnline = useOnlineStatus();
 
   const {
     data: status,
@@ -324,12 +330,14 @@ export default function GasSniperCard() {
         ) : isLoadingState ? (
           <span role="status" className="shrink-0 inline-block w-8 h-4 rounded-full bg-surface-inset animate-pulse" />
         ) : !approvalFlowActive && !isStatusError ? (
-          <Toggle
-            checked={isEnabled}
-            onChange={handleToggle}
-            disabled={isMutating}
-            label={t("loops.gasSniper.title")}
-          />
+          <span title={!isOnline ? t("loops.gasSniper.offline") : undefined}>
+            <Toggle
+              checked={isEnabled}
+              onChange={handleToggle}
+              disabled={isMutating || !isOnline}
+              label={t("loops.gasSniper.title")}
+            />
+          </span>
         ) : null}
       </div>
 
@@ -392,7 +400,8 @@ export default function GasSniperCard() {
               <button
                 type="button"
                 onClick={handleApprove}
-                disabled={isApproving}
+                disabled={isApproving || !isOnline}
+                title={!isOnline ? t("loops.gasSniper.offline") : undefined}
                 className="mt-3 rounded-xl bg-brand px-4 py-2 text-xs font-semibold text-white hover:bg-brand-hover transition-colors cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 {isApproving

@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Đến nội dung chính"
+  },
   "comingSoon": {
     "badge": "Sắp chiếu",
     "description": "Chúng tôi đang xây dựng tính năng này. Hãy kiểm tra lại sau ít phút."
@@ -24,6 +27,7 @@
     "install": "Cài đặt",
     "installHint": "Vẫn không thấy ví của bạn? Làm mới trang có thể hữu ích.",
     "mobileHint": "Trên thiết bị di động, hãy mở FlareGPT trong trình duyệt tích hợp sẵn trong ví của bạn để có trải nghiệm kết nối tốt nhất. Khi quét mã QR, hãy dùng máy quét riêng của ứng dụng ví thay vì camera điện thoại để có kết nối đáng tin cậy hơn.",
+    "offline": "Bạn đang ngoại tuyến. Kết nối ví cần có kết nối internet.",
     "recommended": "Được đề xuất",
     "refresh": "Làm mới",
     "subtitle": "Chọn ví ưa thích của bạn để kết nối với Flare Network.",
@@ -114,6 +118,9 @@
     },
     "description": "So sánh các chiến lược lợi suất và theo dõi vị thế của bạn trong các kho MXRPY, Sceptre, Firelight và Spectra.",
     "explorer": {
+      "linkCopied": "Link copied",
+      "shareFailed": "Couldn't share this protocol",
+      "shareProtocol": "Share this protocol",
       "subtitle": "Chọn một giao thức để xem vị thế và chi tiết của bạn",
       "title": "Trình khám phá Giao thức"
     },
@@ -222,7 +229,10 @@
       "copyFailed": "Không thể sao chép địa chỉ",
       "multisigNote": "Được bảo vệ bởi ví đa chữ ký",
       "qrTitle": "Mã QR cho địa chỉ ví quyên góp {{symbol}}",
+      "shareAddress": "Share Address",
+      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Chạm để sao chép",
+      "tapToShare": "Tap to share",
       "viewOnExplorer": "Xem trên {{explorer}}"
     },
     "received": {
@@ -258,6 +268,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT có thể mắc lỗi. Hãy xác minh thông tin quan trọng trước khi hành động theo đó.",
+      "offlinePlaceholder": "Bạn đang ngoại tuyến — không thể gửi tin nhắn ngay bây giờ",
       "placeholder": "Hỏi FlareGPT...",
       "send": "Gửi",
       "stop": "Dừng tạo phản hồi"
@@ -281,11 +292,12 @@
       "close": "Đóng",
       "delete": "Xóa",
       "empty": "Chưa có cuộc trò chuyện nào",
-      "loading": "Đang tải cuộc trò chuyện…",
       "loadFailed": "Không thể tải các cuộc trò chuyện của bạn.",
+      "loading": "Đang tải cuộc trò chuyện…",
       "moreActions": "Thao tác khác",
       "newChat": "Cuộc trò chuyện mới",
       "noResults": "Không có cuộc trò chuyện nào khớp với tìm kiếm của bạn",
+      "offline": "Bạn đang ngoại tuyến. Việc này cần có kết nối internet.",
       "openButton": "Lịch sử",
       "pin": "Ghim",
       "pinLimitReached": "Bạn có thể ghim tối đa {{count}} cuộc trò chuyện",
@@ -333,49 +345,49 @@
     "terms": "Điều khoản & Tuyên bố miễn trừ trách nhiệm"
   },
   "ftsoRewards": {
-    "description": "Theo dõi phần thưởng ủy quyền FTSO, tốc độ tích lũy phần thưởng và phân bổ nhà cung cấp tại một nơi.",
     "connectToSee": "Kết nối hoặc chọn một ví để xem phần thưởng FTSO của ví đó.",
     "couldntLoad": "Không thể tải phần thưởng FTSO của bạn.",
-    "stats": {
-      "wflrBalance": "Số Dư WFLR",
-      "unclaimed": "Phần Thưởng Chưa Nhận",
-      "hourlyEarning": "Thu Nhập Ước Tính Mỗi Giờ",
-      "targetEpochYield": "Lợi Suất Mục Tiêu Của Epoch Này"
-    },
-    "velocity": {
-      "title": "Tốc Độ Phần Thưởng",
-      "methodLive": "Ước Tính Trực Tiếp",
-      "methodHistorical": "Ước Tính Theo Lịch Sử",
-      "inactiveTitle": "Hiện Không Có Thu Nhập",
-      "inactiveDescription": "Ví này chưa ủy quyền WFLR, vì vậy không có tốc độ phần thưởng nào để ước tính.",
-      "perHour": "Mỗi Giờ",
-      "perDay": "Mỗi Ngày",
-      "thisEpoch": "Epoch Này",
-      "sourceEpoch": "Ước tính từ dữ liệu mạng của epoch {{epoch}}"
-    },
     "delegations": {
-      "title": "Ủy Quyền Đang Hoạt Động",
       "count_one": "{{count}} nhà cung cấp",
       "count_other": "{{count}} nhà cung cấp",
+      "emptyDescription": "Ủy quyền WFLR của bạn cho một nhà cung cấp dữ liệu FTSO để bắt đầu kiếm phần thưởng.",
       "emptyTitle": "Không Có Ủy Quyền Đang Hoạt Động",
-      "emptyDescription": "Ủy quyền WFLR của bạn cho một nhà cung cấp dữ liệu FTSO để bắt đầu kiếm phần thưởng."
+      "title": "Ủy Quyền Đang Hoạt Động"
     },
+    "description": "Theo dõi phần thưởng ủy quyền FTSO, tốc độ tích lũy phần thưởng và phân bổ nhà cung cấp tại một nơi.",
     "epochs": {
-      "title": "Epoch Chưa Nhận",
-      "subtitle": "Phần thưởng đang chờ được nhận, theo epoch",
-      "emptyTitle": "Không Có Gì Chưa Nhận",
       "emptyDescription": "Mọi thứ đã được cập nhật — hiện không có phần thưởng epoch nào đang chờ.",
+      "emptyTitle": "Không Có Gì Chưa Nhận",
       "epochLabel": "Epoch {{id}}",
+      "subtitle": "Phần thưởng đang chờ được nhận, theo epoch",
+      "title": "Epoch Chưa Nhận",
       "viewFullLedger_one": "Xem sổ cái đầy đủ ({{count}} mục)",
       "viewFullLedger_other": "Xem sổ cái đầy đủ ({{count}} mục)"
     },
     "providers": {
-      "title": "Nhà Cung Cấp FTSO",
-      "description": "So sánh các nhà cung cấp dữ liệu theo hiệu suất và phí sau khi bảng xếp hạng nhà cung cấp được kết nối."
+      "description": "So sánh các nhà cung cấp dữ liệu theo hiệu suất và phí sau khi bảng xếp hạng nhà cung cấp được kết nối.",
+      "title": "Nhà Cung Cấp FTSO"
+    },
+    "stats": {
+      "hourlyEarning": "Thu Nhập Ước Tính Mỗi Giờ",
+      "targetEpochYield": "Lợi Suất Mục Tiêu Của Epoch Này",
+      "unclaimed": "Phần Thưởng Chưa Nhận",
+      "wflrBalance": "Số Dư WFLR"
     },
     "validators": {
-      "title": "Bảng Xếp Hạng Validator Staking",
-      "description": "Xem các validator có hiệu suất tốt nhất sau khi bảng xếp hạng staking được kết nối."
+      "description": "Xem các validator có hiệu suất tốt nhất sau khi bảng xếp hạng staking được kết nối.",
+      "title": "Bảng Xếp Hạng Validator Staking"
+    },
+    "velocity": {
+      "inactiveDescription": "Ví này chưa ủy quyền WFLR, vì vậy không có tốc độ phần thưởng nào để ước tính.",
+      "inactiveTitle": "Hiện Không Có Thu Nhập",
+      "methodHistorical": "Ước Tính Theo Lịch Sử",
+      "methodLive": "Ước Tính Trực Tiếp",
+      "perDay": "Mỗi Ngày",
+      "perHour": "Mỗi Giờ",
+      "sourceEpoch": "Ước tính từ dữ liệu mạng của epoch {{epoch}}",
+      "thisEpoch": "Epoch Này",
+      "title": "Tốc Độ Phần Thưởng"
     }
   },
   "gasSniperStatus": {
@@ -457,15 +469,22 @@
     "stillNeedHelp": "Bạn vẫn cần trợ giúp?",
     "supportDesc": "Cách nhanh nhất để liên hệ với chúng tôi hiện tại là qua X. Hỗ trợ qua Email và Telegram sẽ sớm ra mắt."
   },
+  "install": {
+    "bannerDescriptionAndroid": "Thêm FlareGPT vào màn hình chính để truy cập nhanh hơn và trải nghiệm toàn màn hình.",
+    "bannerDescriptionIOS": "Chạm vào Chia sẻ, sau đó \"Thêm vào màn hình chính\" để truy cập nhanh.",
+    "dismiss": "Bỏ qua",
+    "installButton": "Cài đặt",
+    "installing": "Đang cài đặt..."
+  },
   "loops": {
     "description": "Các dịch vụ nền tự động theo dõi mạng lưới và hành động thay cho bạn.",
     "gasSniper": {
       "active": "Đang hoạt động",
       "approveCta": "Phê duyệt trên Coston2",
+      "approved": "Đã phê duyệt. Giờ bạn có thể bật Gas Sniper.",
       "approveDescription": "Ví này cần phê duyệt bên vận hành Gas Sniper của Flare làm bên thực thi yêu cầu trên Coston2 trước. Đây là phê duyệt một lần trên chuỗi. Ví của bạn có thể yêu cầu bạn chuyển sang hoặc thêm mạng Coston2.",
       "approveFailed": "Không thể hoàn tất phê duyệt. Vui lòng thử lại.",
       "approveTitle": "Cần phê duyệt một lần",
-      "approved": "Đã phê duyệt. Giờ bạn có thể bật Gas Sniper.",
       "approving": "Xác nhận trong ví của bạn…",
       "confirmingApproval": "Đang xác nhận…",
       "description": "Tự động nhận phần thưởng FTSO của bạn ngay khi phí gas giảm đủ thấp, âm thầm chạy nền như một tiện ích mở rộng trình duyệt cho đến khi bạn tắt.",
@@ -475,6 +494,7 @@
       "inactive": "Không hoạt động",
       "needsApproval": "Cần phê duyệt",
       "needsReconnect": "Ví đã ngắt kết nối",
+      "offline": "Việc này cần có kết nối internet.",
       "reconnectDescription": "Kết nối lại ví này để hoàn tất phê duyệt một lần trên chuỗi.",
       "reconnectTitle": "Kết nối lại để tiếp tục",
       "signInHint": "Đăng nhập bằng ví của bạn để bật Gas Sniper.",
@@ -500,71 +520,80 @@
     "hideBalances": "Ẩn số dư",
     "mainnetStatus": "Mạng chính Flare",
     "moreOptions": "Tùy chọn khác",
+    "offline": "Ngoại tuyến",
     "openMenu": "Mở menu",
     "primaryWalletSection": "Ví Chính",
+    "shareAddress": "Share address",
+    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Hiện số dư",
     "signIn": "Đăng nhập",
     "signInBackgroundHint": "Ví đã kết nối của bạn cần đăng nhập",
     "signingIn": "Đang đăng nhập…",
+    "signInOffline": "Đăng nhập cần có kết nối internet.",
     "signInPrompt": "Ký một tin nhắn để xác minh ví này và tiếp tục.",
     "watchlistSection": "Danh sách theo dõi ({{current}}/{{max}})"
   },
   "offline": {
-    "message": "Bạn đang ngoại tuyến. Chúng tôi sẽ tự động kết nối lại.",
-    "backOnline": "Đã kết nối lại"
+    "backOnline": "Đã kết nối lại",
+    "message": "Bạn đang ngoại tuyến. Chúng tôi sẽ tự động kết nối lại."
+  },
+  "onboarding": {
+    "welcomeMessage": "Chào mừng bạn đến với FlareGPT. Kết nối ví để xem danh mục đầu tư của bạn hoặc hỏi trợ lý AI bất cứ điều gì."
   },
   "rflrVesting": {
-    "description": "Theo dõi tiến độ vesting rFLR, các đợt mở khóa sắp tới và lượng phát hành trên toàn mạng lưới tại một nơi.",
     "connectToSee": "Kết nối hoặc chọn một ví để xem trạng thái vesting của ví đó.",
     "couldntLoad": "Không thể tải dữ liệu vesting của bạn.",
-    "noRflr": {
-      "title": "Chưa Có Phần Thưởng rFLR",
-      "description": "Ví này chưa kiếm được bất kỳ phần thưởng rFLR nào, vì vậy chưa có gì để vesting."
-    },
-    "stats": {
-      "totalBalance": "Tổng Số Dư rFLR",
-      "liquidNow": "Thanh Khoản Hiện Tại",
-      "lockedInVesting": "Đang Khóa Trong Vesting",
-      "vestedProgress": "Đã Vest"
-    },
-    "progress": {
-      "title": "Tiến Độ Vesting",
-      "vestedLabel": "Đã Vest",
-      "nextUnlock": "Lần mở khóa tiếp theo vào {{date}}",
-      "nextUnlockCaption": "sẽ trở thành thanh khoản",
-      "fullyVested": "Đã vest hoàn toàn — không còn gì để mở khóa",
-      "earlyExitTitle": "Rút Sớm",
-      "earlyExitNoneNeeded": "Không có gì bị khóa, vì vậy không có hình phạt khi rút sớm.",
-      "efficiency": "hiệu suất {{pct}}%",
-      "netPayout": "Số Tiền Nhận Ròng Hiện Tại",
-      "penaltyCost": "Phí Phạt Rút Sớm"
-    },
-    "timeline": {
-      "title": "Dòng Thời Gian Mở Khóa",
-      "subtitle": "Lượng rFLR được mở khóa cộng dồn theo thời gian",
-      "historicalNote": "Hiển thị toàn bộ lịch sử mở khóa — có thể bao gồm các khoản đã được yêu cầu ở nơi khác, vì vậy tổng số có thể vượt quá số dư hiện tại của bạn ở trên.",
-      "emptyTitle": "Chưa có lịch sử mở khóa",
-      "loadingTitle": "Đang tải lịch sử mở khóa…",
-      "loadingHint": "Việc này có thể mất đến 30 giây trong lần đầu tiên chúng tôi kiểm tra một ví.",
-      "couldntLoad": "Không thể tải lịch sử mở khóa.",
-      "statusLiquid": "Thanh Khoản",
-      "statusLocked": "Đã Khóa",
-      "viewFullSchedule": "Xem toàn bộ lịch trình ({{count}} mục)"
-    },
+    "description": "Theo dõi tiến độ vesting rFLR, các đợt mở khóa sắp tới và lượng phát hành trên toàn mạng lưới tại một nơi.",
     "network": {
-      "title": "Nhịp Đập Mạng Lưới",
-      "subtitle": "Lượng phát hành toàn mạng và trạng thái epoch",
+      "allocated": "Đã Phân Bổ",
+      "claimedToVesting": "Đã Yêu Cầu Vào Vesting",
       "couldntLoad": "Không thể tải trạng thái mạng lưới.",
-      "nextDistribution": "Đợt Phân Phối Tiếp Theo",
       "countdownDays": "còn {{days}} ngày {{hours}} giờ",
       "countdownHours": "còn {{hours}} giờ",
+      "currentlyLocked": "Hiện Đang Bị Khóa",
       "epochCaption": "Epoch {{epoch}} bắt đầu vào {{date}}",
+      "nextDistribution": "Đợt Phân Phối Tiếp Theo",
       "poolUtilization": "Mức Sử Dụng Quỹ Khuyến Khích",
-      "allocated": "Đã Phân Bổ",
       "remaining": "còn {{amount}} chưa được phân bổ",
-      "claimedToVesting": "Đã Yêu Cầu Vào Vesting",
-      "withdrawnLiquid": "Đã Rút Dưới Dạng Thanh Khoản",
-      "currentlyLocked": "Hiện Đang Bị Khóa"
+      "subtitle": "Lượng phát hành toàn mạng và trạng thái epoch",
+      "title": "Nhịp Đập Mạng Lưới",
+      "withdrawnLiquid": "Đã Rút Dưới Dạng Thanh Khoản"
+    },
+    "noRflr": {
+      "description": "Ví này chưa kiếm được bất kỳ phần thưởng rFLR nào, vì vậy chưa có gì để vesting.",
+      "title": "Chưa Có Phần Thưởng rFLR"
+    },
+    "progress": {
+      "earlyExitNoneNeeded": "Không có gì bị khóa, vì vậy không có hình phạt khi rút sớm.",
+      "earlyExitTitle": "Rút Sớm",
+      "efficiency": "hiệu suất {{pct}}%",
+      "fullyVested": "Đã vest hoàn toàn — không còn gì để mở khóa",
+      "netPayout": "Số Tiền Nhận Ròng Hiện Tại",
+      "nextUnlock": "Lần mở khóa tiếp theo vào {{date}}",
+      "nextUnlockCaption": "sẽ trở thành thanh khoản",
+      "penaltyCost": "Phí Phạt Rút Sớm",
+      "title": "Tiến Độ Vesting",
+      "vestedLabel": "Đã Vest"
+    },
+    "stats": {
+      "liquidNow": "Thanh Khoản Hiện Tại",
+      "lockedInVesting": "Đang Khóa Trong Vesting",
+      "totalBalance": "Tổng Số Dư rFLR",
+      "vestedProgress": "Đã Vest"
+    },
+    "timeline": {
+      "couldntLoad": "Không thể tải lịch sử mở khóa.",
+      "emptyTitle": "Chưa có lịch sử mở khóa",
+      "historicalNote": "Hiển thị toàn bộ lịch sử mở khóa — có thể bao gồm các khoản đã được yêu cầu ở nơi khác, vì vậy tổng số có thể vượt quá số dư hiện tại của bạn ở trên.",
+      "loadingHint": "Việc này có thể mất đến 30 giây trong lần đầu tiên chúng tôi kiểm tra một ví.",
+      "loadingTitle": "Đang tải lịch sử mở khóa…",
+      "statusLiquid": "Thanh Khoản",
+      "statusLocked": "Đã Khóa",
+      "subtitle": "Lượng rFLR được mở khóa cộng dồn theo thời gian",
+      "title": "Dòng Thời Gian Mở Khóa",
+      "viewFullSchedule": "Xem toàn bộ lịch trình ({{count}} mục)",
+      "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -606,6 +635,7 @@
       "conversationsDescription": "Xóa lịch sử trò chuyện FlareGPT khỏi tài khoản của bạn. Không thể hoàn tác.",
       "localSubtitle": "Chỉ được lưu trên trình duyệt này. Việc xóa diễn ra ngay lập tức và an toàn.",
       "localTitle": "Dữ liệu cục bộ",
+      "offline": "Bạn đang ngoại tuyến. Việc này cần có kết nối internet.",
       "walletCache": "Bộ nhớ đệm hoạt động ví",
       "walletCacheCleared": "Đã xóa bộ nhớ đệm",
       "walletCacheDescription": "Xóa lịch sử giao dịch đã lưu trong bộ nhớ đệm. Lần truy cập tiếp theo sẽ tải lại dữ liệu này."
@@ -636,6 +666,14 @@
       "account": "Tài khoản",
       "personalization": "Cá nhân hóa",
       "walletsAndData": "Ví & Dữ liệu"
+    },
+    "install": {
+      "button": "Cài đặt",
+      "descriptionAvailable": "Cài đặt FlareGPT để truy cập nhanh hơn và trải nghiệm toàn màn hình.",
+      "descriptionInstalled": "FlareGPT được cài đặt trên thiết bị này.",
+      "descriptionIOS": "Nhấn vào biểu tượng Chia sẻ trong Safari, sau đó \"Thêm vào màn hình chính\".",
+      "installedBadge": "Đã cài đặt",
+      "title": "Cài đặt ứng dụng"
     },
     "links": {
       "docs": "Tài liệu",
@@ -725,6 +763,7 @@
       "noLimit": "Thêm bao nhiêu ví tùy thích.",
       "noSearchResults": "Không có ví nào khớp với tìm kiếm của bạn.",
       "notFoundError": "Ví này không còn trong danh sách theo dõi của bạn nữa.",
+      "offline": "Bạn đang ngoại tuyến. Việc này cần có kết nối internet.",
       "readOnly": "Chỉ đọc",
       "registrationFailed": "Đăng ký địa chỉ không thành công. Kiểm tra xem nó có phải là một bản sao hoặc nếu các vị trí được lấp đầy.",
       "remainingSlots": "Số lượt còn lại",
@@ -765,6 +804,15 @@
     "walletConnected": "Ví đã kết nối",
     "yield": "Lợi nhuận"
   },
+  "staleData": {
+    "justNow": "Hiển thị dữ liệu được lưu trong bộ nhớ cache từ khoảnh khắc trước",
+    "minutesAgo": "Hiển thị dữ liệu được lưu trong bộ nhớ cache từ {{minutes}} phút trước"
+  },
+  "update": {
+    "available": "Đã có phiên bản FlareGPT mới.",
+    "reload": "Tải lại",
+    "waitingForReply": "Cập nhật sẽ được áp dụng ngay khi phản hồi hiện tại của bạn kết thúc."
+  },
   "wallet": {
     "activity": {
       "charts": {
@@ -790,8 +838,11 @@
         "close": "Đóng",
         "copyFailed": "Không thể sao chép hash",
         "hashCopied": "Đã sao chép hash giao dịch",
+        "linkCopied": "Explorer link copied",
         "next": "Giao dịch tiếp theo",
         "previous": "Giao dịch trước",
+        "shareTitle": "FlareGPT transaction",
+        "shareTransaction": "Share transaction",
         "timestamp": "Dấu thời gian",
         "title": "Chi tiết giao dịch",
         "transactionHash": "Hash giao dịch",
@@ -885,8 +936,5 @@
       "received": "Đã nhận",
       "sent": "Đã gửi"
     }
-  },
-  "a11y": {
-    "skipToContent": "Đến nội dung chính"
   }
 }

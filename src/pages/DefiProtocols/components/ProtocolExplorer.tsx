@@ -1,15 +1,18 @@
 import type { TFunction } from "i18next";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
+import { useSearchParams } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import { toast } from "react-toastify";
+import { ChevronRightIcon, ShareIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import StatusBadge, { type StatusTone } from "@/pages/DefiProtocols/components/shared/StatusBadge";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import { PROTOCOLS, type ProtocolRegistryEntry } from "@/pages/DefiProtocols/protocols";
 import { formatAmount } from "@/utils/format";
+import { shareOrCopy } from "@/utils/share";
+import { ROUTES } from "@/config/routes";
 
 // `unknown` here is a deliberate, minimal type-erasure boundary, not a
 // guess — `PROTOCOLS` is a tuple of 4 differently-typed entries
@@ -90,6 +93,18 @@ function ProtocolListRow({ protocol, isActive, onClick, balance, t }: ProtocolLi
   );
 }
 
+// Shared by both the desktop DetailHeader and the mobile accordion below
+// — `protocol.id` ("mxrpy"/"sceptre"/...) is a fixed, stable string (see
+// this file's own top-of-file comment on `PROTOCOL_PARAM`), so unlike
+// WalletActivity's `?tx=` id it's genuinely safe to build a real,
+// reusable link from.
+async function shareProtocol(protocol: AnyProtocol, t: TFunction) {
+  const url = `${window.location.origin}${ROUTES.defiProtocols}?${PROTOCOL_PARAM}=${protocol.id}`;
+  const result = await shareOrCopy({ title: t(protocol.titleKey), url });
+  if (result === "copied") toast.success(t("defiProtocols.explorer.linkCopied"));
+  else if (result === "failed") toast.error(t("defiProtocols.explorer.shareFailed"));
+}
+
 interface DetailHeaderProps {
   protocol: AnyProtocol;
   badge: { label: string; tone: StatusTone } | null;
@@ -111,11 +126,22 @@ function DetailHeader({ protocol, badge, t }: DetailHeaderProps) {
           {t(protocol.subtitleKey)}
         </p>
       </div>
-      <div className="flex shrink-0 flex-col items-end gap-1">
-        {protocol.categoryKey && (
-          <StatusBadge label={t(protocol.categoryKey)} tone="neutral" />
-        )}
-        {badge && <StatusBadge label={badge.label} tone={badge.tone} dot />}
+      <div className="flex shrink-0 items-center gap-2">
+        <div className="flex flex-col items-end gap-1">
+          {protocol.categoryKey && (
+            <StatusBadge label={t(protocol.categoryKey)} tone="neutral" />
+          )}
+          {badge && <StatusBadge label={badge.label} tone={badge.tone} dot />}
+        </div>
+        <button
+          type="button"
+          onClick={() => shareProtocol(protocol, t)}
+          aria-label={t("defiProtocols.explorer.shareProtocol")}
+          title={t("defiProtocols.explorer.shareProtocol")}
+          className="shrink-0 rounded-lg p-1.5 text-ink-muted transition-colors hover:bg-surface-inset hover:text-ink-primary cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+        >
+          <ShareIcon className="h-3.5 w-3.5" />
+        </button>
       </div>
     </div>
   );
@@ -129,11 +155,37 @@ function DetailHeader({ protocol, badge, t }: DetailHeaderProps) {
 // time. Desktop shows the list and detail side by side; on narrow screens
 // the same list becomes a single-open accordion so nothing requires a
 // separate navigation step.
+//
+// `?protocol=` mirrors WalletActivity/index.tsx's own `?tx=` param exactly
+// (same `useSearchParams` + `replace: true` pattern) — added specifically
+// so a Share button has a real, meaningful link to hand out: before this,
+// every `/app/defi` link landed on `PROTOCOLS[0]` (MXRPY) regardless of
+// which protocol the sender actually had open, making "share this
+// protocol" impossible to build honestly. Unlike WalletActivity's
+// `actionId` (session-derived, not portable — see ShareButton usage in
+// TransactionDrawer.tsx for why that one shares an explorer link
+// instead), each protocol's `id` is a fixed, stable string
+// ("mxrpy"/"sceptre"/"firelight"/"spectra") — genuinely the same value
+// for every user, every session, forever, so it's safe to treat as a
+// real shareable identifier.
+const PROTOCOL_PARAM = "protocol";
+
 export default function ProtocolExplorer() {
   const { t } = useTranslation();
   const { address: connectedAddress, isConnected } = useConnection();
   const { activeAddress } = useDerivedWalletHub(connectedAddress, isConnected);
-  const [activeId, setActiveId] = useState(PROTOCOLS[0].id);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requestedId = searchParams.get(PROTOCOL_PARAM);
+  // Falls back to the default rather than trusting the URL blindly — an
+  // old bookmark/link for a protocol that's since been removed from the
+  // registry (or a hand-edited/garbage query string) should land
+  // somewhere real, not silently break `activeIndex`'s `findIndex` below.
+  const activeId = PROTOCOLS.some((p) => p.id === requestedId) ? requestedId! : PROTOCOLS[0].id;
+  const setActiveId = (id: string) => {
+    const next = new URLSearchParams(searchParams);
+    next.set(PROTOCOL_PARAM, id);
+    setSearchParams(next, { replace: true });
+  };
 
   // Every protocol's hook is called here (fixed order, fixed length array —
   // safe under the rules of hooks), but only the currently selected
@@ -225,11 +277,22 @@ export default function ProtocolExplorer() {
                     className="overflow-hidden"
                   >
                     <div className="px-1 pb-2 pt-3">
-                      {badge && (
-                        <div className="mb-4">
+                      <div className="mb-4 flex items-center justify-between gap-2">
+                        {badge ? (
                           <StatusBadge label={badge.label} tone={badge.tone} dot />
-                        </div>
-                      )}
+                        ) : (
+                          <span />
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => shareProtocol(protocol, t)}
+                          aria-label={t("defiProtocols.explorer.shareProtocol")}
+                          title={t("defiProtocols.explorer.shareProtocol")}
+                          className="shrink-0 rounded-lg p-1.5 text-ink-muted transition-colors hover:bg-surface-inset hover:text-ink-primary cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+                        >
+                          <ShareIcon className="h-3.5 w-3.5" />
+                        </button>
+                      </div>
                       <protocol.DetailComponent
                         data={result.data}
                         isLoading={result.isLoading}

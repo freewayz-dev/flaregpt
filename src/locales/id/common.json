@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Langsung ke konten utama"
+  },
   "comingSoon": {
     "badge": "Segera",
     "description": "Kami sedang membangun fitur ini. Segera periksa kembali."
@@ -24,6 +27,7 @@
     "install": "Instal",
     "installHint": "Masih belum melihat dompet Anda? Menyegarkan halaman mungkin membantu.",
     "mobileHint": "Di ponsel, buka FlareGPT di browser bawaan dompet Anda untuk pengalaman koneksi terbaik. Saat memindai kode QR, gunakan pemindai bawaan aplikasi dompet Anda, bukan kamera ponsel, untuk koneksi yang lebih andal.",
+    "offline": "Anda offline. Menghubungkan dompet membutuhkan koneksi internet.",
     "recommended": "Direkomendasikan",
     "refresh": "Segarkan",
     "subtitle": "Pilih dompet pilihan Anda untuk terhubung ke Jaringan Flare.",
@@ -114,6 +118,9 @@
     },
     "description": "Bandingkan strategi yield dan pantau posisi Anda di vault MXRPY, Sceptre, Firelight, dan Spectra.",
     "explorer": {
+      "linkCopied": "Link copied",
+      "shareFailed": "Couldn't share this protocol",
+      "shareProtocol": "Share this protocol",
       "subtitle": "Pilih protokol untuk melihat posisi dan detail Anda",
       "title": "Penjelajah Protokol"
     },
@@ -222,7 +229,10 @@
       "copyFailed": "Gagal menyalin alamat",
       "multisigNote": "Diamankan oleh wallet multi-tanda tangan",
       "qrTitle": "Kode QR untuk alamat wallet donasi {{symbol}}",
+      "shareAddress": "Share Address",
+      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Ketuk untuk menyalin",
+      "tapToShare": "Tap to share",
       "viewOnExplorer": "Lihat di {{explorer}}"
     },
     "received": {
@@ -258,6 +268,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT dapat membuat kesalahan. Verifikasi informasi penting sebelum menindaklanjutinya.",
+      "offlinePlaceholder": "Anda offline — pesan tidak dapat dikirim saat ini",
       "placeholder": "Tanya FlareGPT...",
       "send": "Kirim",
       "stop": "Hentikan pembuatan"
@@ -281,11 +292,12 @@
       "close": "Tutup",
       "delete": "Hapus",
       "empty": "Belum ada percakapan",
-      "loading": "Memuat percakapan…",
       "loadFailed": "Percakapan Anda tidak dapat dimuat.",
+      "loading": "Memuat percakapan…",
       "moreActions": "Tindakan lainnya",
       "newChat": "Obrolan Baru",
       "noResults": "Tidak ada percakapan yang cocok dengan pencarian Anda",
+      "offline": "You're offline. This needs an internet connection.",
       "openButton": "Riwayat",
       "pin": "Sematkan",
       "pinLimitReached": "Anda dapat menyematkan hingga {{count}} percakapan",
@@ -333,49 +345,49 @@
     "terms": "Ketentuan & Penafian"
   },
   "ftsoRewards": {
-    "description": "Lacak reward delegasi FTSO, kecepatan reward, dan alokasi penyedia Anda di satu tempat.",
     "connectToSee": "Sambungkan atau pilih dompet untuk melihat reward FTSO-nya.",
     "couldntLoad": "Reward FTSO Anda tidak dapat dimuat.",
-    "stats": {
-      "wflrBalance": "Saldo WFLR",
-      "unclaimed": "Reward Belum Diklaim",
-      "hourlyEarning": "Perkiraan Penghasilan per Jam",
-      "targetEpochYield": "Target Yield Epoch Ini"
-    },
-    "velocity": {
-      "title": "Kecepatan Reward",
-      "methodLive": "Estimasi Langsung",
-      "methodHistorical": "Estimasi Historis",
-      "inactiveTitle": "Belum Menghasilkan",
-      "inactiveDescription": "Dompet ini belum mendelegasikan WFLR, jadi tidak ada kecepatan reward untuk diperkirakan.",
-      "perHour": "Per Jam",
-      "perDay": "Per Hari",
-      "thisEpoch": "Epoch Ini",
-      "sourceEpoch": "Diperkirakan dari data jaringan epoch {{epoch}}"
-    },
     "delegations": {
-      "title": "Delegasi Aktif",
       "count_one": "{{count}} Penyedia",
       "count_other": "{{count}} Penyedia",
+      "emptyDescription": "Delegasikan WFLR Anda ke penyedia data FTSO untuk mulai mendapatkan reward.",
       "emptyTitle": "Tidak Ada Delegasi Aktif",
-      "emptyDescription": "Delegasikan WFLR Anda ke penyedia data FTSO untuk mulai mendapatkan reward."
+      "title": "Delegasi Aktif"
     },
+    "description": "Lacak reward delegasi FTSO, kecepatan reward, dan alokasi penyedia Anda di satu tempat.",
     "epochs": {
-      "title": "Epoch Belum Diklaim",
-      "subtitle": "Reward yang menunggu diklaim, per epoch",
-      "emptyTitle": "Tidak Ada yang Belum Diklaim",
       "emptyDescription": "Semua sudah beres — tidak ada reward epoch yang tertunda saat ini.",
+      "emptyTitle": "Tidak Ada yang Belum Diklaim",
       "epochLabel": "Epoch {{id}}",
+      "subtitle": "Reward yang menunggu diklaim, per epoch",
+      "title": "Epoch Belum Diklaim",
       "viewFullLedger_one": "Lihat buku besar lengkap ({{count}} entri)",
       "viewFullLedger_other": "Lihat buku besar lengkap ({{count}} entri)"
     },
     "providers": {
-      "title": "Penyedia FTSO",
-      "description": "Bandingkan penyedia data berdasarkan performa dan biaya setelah peringkat penyedia terhubung."
+      "description": "Bandingkan penyedia data berdasarkan performa dan biaya setelah peringkat penyedia terhubung.",
+      "title": "Penyedia FTSO"
+    },
+    "stats": {
+      "hourlyEarning": "Perkiraan Penghasilan per Jam",
+      "targetEpochYield": "Target Yield Epoch Ini",
+      "unclaimed": "Reward Belum Diklaim",
+      "wflrBalance": "Saldo WFLR"
     },
     "validators": {
-      "title": "Peringkat Validator Staking",
-      "description": "Lihat validator berperforma terbaik setelah peringkat staking terhubung."
+      "description": "Lihat validator berperforma terbaik setelah peringkat staking terhubung.",
+      "title": "Peringkat Validator Staking"
+    },
+    "velocity": {
+      "inactiveDescription": "Dompet ini belum mendelegasikan WFLR, jadi tidak ada kecepatan reward untuk diperkirakan.",
+      "inactiveTitle": "Belum Menghasilkan",
+      "methodHistorical": "Estimasi Historis",
+      "methodLive": "Estimasi Langsung",
+      "perDay": "Per Hari",
+      "perHour": "Per Jam",
+      "sourceEpoch": "Diperkirakan dari data jaringan epoch {{epoch}}",
+      "thisEpoch": "Epoch Ini",
+      "title": "Kecepatan Reward"
     }
   },
   "gasSniperStatus": {
@@ -457,15 +469,22 @@
     "stillNeedHelp": "Masih butuh bantuan?",
     "supportDesc": "Cara tercepat menghubungi kami saat ini adalah melalui X. Dukungan email dan Telegram akan segera hadir."
   },
+  "install": {
+    "bannerDescriptionAndroid": "Tambahkan FlareGPT ke layar beranda Anda untuk akses lebih cepat dan pengalaman layar penuh.",
+    "bannerDescriptionIOS": "Ketuk Bagikan, lalu \"Tambahkan ke Layar Beranda\" untuk akses cepat.",
+    "dismiss": "Tutup",
+    "installButton": "Instal",
+    "installing": "Pasangkan"
+  },
   "loops": {
     "description": "Layanan latar belakang otomatis yang memantau jaringan dan bertindak atas nama Anda.",
     "gasSniper": {
       "active": "Aktif",
       "approveCta": "Setujui di Coston2",
+      "approved": "Disetujui. Sekarang Anda dapat mengaktifkan Gas Sniper.",
       "approveDescription": "Dompet ini perlu menyetujui keeper Gas Sniper milik Flare sebagai pelaksana klaim di Coston2 terlebih dahulu. Ini adalah persetujuan satu kali secara on-chain. Dompet Anda mungkin meminta Anda beralih ke atau menambahkan jaringan Coston2.",
       "approveFailed": "Tidak dapat menyelesaikan persetujuan. Coba lagi.",
       "approveTitle": "Persetujuan satu kali diperlukan",
-      "approved": "Disetujui. Sekarang Anda dapat mengaktifkan Gas Sniper.",
       "approving": "Konfirmasi di dompet Anda…",
       "confirmingApproval": "Mengonfirmasi…",
       "description": "Secara otomatis mengklaim reward FTSO Anda begitu biaya gas turun cukup rendah, berjalan diam-diam di latar belakang seperti ekstensi browser hingga Anda menonaktifkannya.",
@@ -475,6 +494,7 @@
       "inactive": "Tidak Aktif",
       "needsApproval": "Perlu persetujuan",
       "needsReconnect": "Dompet terputus",
+      "offline": "This needs an internet connection.",
       "reconnectDescription": "Sambungkan kembali dompet ini untuk menyelesaikan persetujuan satu kali secara on-chain.",
       "reconnectTitle": "Sambungkan kembali untuk melanjutkan",
       "signInHint": "Masuk dengan dompet Anda untuk mengaktifkan Gas Sniper.",
@@ -500,71 +520,80 @@
     "hideBalances": "Sembunyikan saldo",
     "mainnetStatus": "Mainnet Flare",
     "moreOptions": "Opsi lainnya",
+    "offline": "Offline",
     "openMenu": "Buka menu",
     "primaryWalletSection": "Dompet Utama",
+    "shareAddress": "Share address",
+    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Tampilkan saldo",
     "signIn": "Masuk",
     "signInBackgroundHint": "Dompet Anda yang terhubung perlu masuk",
     "signingIn": "Sedang masuk…",
+    "signInOffline": "Signing in needs an internet connection.",
     "signInPrompt": "Tanda tangani pesan untuk memverifikasi dompet ini dan lanjutkan.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
   "offline": {
-    "message": "Anda sedang offline. Kami akan tersambung kembali secara otomatis.",
-    "backOnline": "Kembali online"
+    "backOnline": "Kembali online",
+    "message": "Anda sedang offline. Kami akan tersambung kembali secara otomatis."
+  },
+  "onboarding": {
+    "welcomeMessage": "Selamat datang di FlareGPT. Hubungkan dompet untuk melihat portofolio Anda, atau tanyakan apa pun kepada asisten AI."
   },
   "rflrVesting": {
-    "description": "Lacak progres vesting rFLR Anda, pembukaan kunci mendatang, dan emisi seluruh jaringan di satu tempat.",
     "connectToSee": "Sambungkan atau pilih dompet untuk melihat status vesting-nya.",
     "couldntLoad": "Data vesting Anda tidak dapat dimuat.",
-    "noRflr": {
-      "title": "Belum Ada Reward rFLR",
-      "description": "Dompet ini belum memperoleh reward rFLR apa pun, jadi belum ada yang perlu di-vest."
-    },
-    "stats": {
-      "totalBalance": "Total Saldo rFLR",
-      "liquidNow": "Likuid Sekarang",
-      "lockedInVesting": "Terkunci dalam Vesting",
-      "vestedProgress": "Vested"
-    },
-    "progress": {
-      "title": "Progres Vesting",
-      "vestedLabel": "Vested",
-      "nextUnlock": "Pembukaan kunci berikutnya pada {{date}}",
-      "nextUnlockCaption": "menjadi likuid",
-      "fullyVested": "Vested sepenuhnya — tidak ada lagi yang perlu dibuka",
-      "earlyExitTitle": "Keluar Lebih Awal",
-      "earlyExitNoneNeeded": "Tidak ada yang terkunci, jadi tidak ada penalti untuk keluar lebih awal.",
-      "efficiency": "{{pct}}% efisien",
-      "netPayout": "Pembayaran Bersih Sekarang",
-      "penaltyCost": "Penalti Keluar"
-    },
-    "timeline": {
-      "title": "Linimasa Pembukaan Kunci",
-      "subtitle": "rFLR yang dibuka kuncinya secara kumulatif dari waktu ke waktu",
-      "historicalNote": "Menampilkan riwayat pembukaan kunci lengkap — dapat mencakup jumlah yang sudah diklaim di tempat lain, sehingga totalnya bisa melebihi saldo Anda saat ini di atas.",
-      "emptyTitle": "Belum ada riwayat pembukaan kunci",
-      "loadingTitle": "Memuat riwayat pembukaan kunci…",
-      "loadingHint": "Ini bisa memakan waktu hingga 30 detik saat pertama kali kami memeriksa dompet.",
-      "couldntLoad": "Riwayat pembukaan kunci tidak dapat dimuat.",
-      "statusLiquid": "Likuid",
-      "statusLocked": "Terkunci",
-      "viewFullSchedule": "Lihat jadwal lengkap ({{count}} entri)"
-    },
+    "description": "Lacak progres vesting rFLR Anda, pembukaan kunci mendatang, dan emisi seluruh jaringan di satu tempat.",
     "network": {
-      "title": "Denyut Jaringan",
-      "subtitle": "Emisi seluruh jaringan dan status epoch",
+      "allocated": "Dialokasikan",
+      "claimedToVesting": "Diklaim ke Vesting",
       "couldntLoad": "Status jaringan tidak dapat dimuat.",
-      "nextDistribution": "Distribusi Berikutnya",
       "countdownDays": "dalam {{days}}h {{hours}}j",
       "countdownHours": "dalam {{hours}}j",
+      "currentlyLocked": "Saat Ini Terkunci",
       "epochCaption": "Epoch {{epoch}} dimulai {{date}}",
+      "nextDistribution": "Distribusi Berikutnya",
       "poolUtilization": "Utilisasi Kumpulan Insentif",
-      "allocated": "Dialokasikan",
       "remaining": "{{amount}} tersisa untuk dialokasikan",
-      "claimedToVesting": "Diklaim ke Vesting",
-      "withdrawnLiquid": "Ditarik Likuid",
-      "currentlyLocked": "Saat Ini Terkunci"
+      "subtitle": "Emisi seluruh jaringan dan status epoch",
+      "title": "Denyut Jaringan",
+      "withdrawnLiquid": "Ditarik Likuid"
+    },
+    "noRflr": {
+      "description": "Dompet ini belum memperoleh reward rFLR apa pun, jadi belum ada yang perlu di-vest.",
+      "title": "Belum Ada Reward rFLR"
+    },
+    "progress": {
+      "earlyExitNoneNeeded": "Tidak ada yang terkunci, jadi tidak ada penalti untuk keluar lebih awal.",
+      "earlyExitTitle": "Keluar Lebih Awal",
+      "efficiency": "{{pct}}% efisien",
+      "fullyVested": "Vested sepenuhnya — tidak ada lagi yang perlu dibuka",
+      "netPayout": "Pembayaran Bersih Sekarang",
+      "nextUnlock": "Pembukaan kunci berikutnya pada {{date}}",
+      "nextUnlockCaption": "menjadi likuid",
+      "penaltyCost": "Penalti Keluar",
+      "title": "Progres Vesting",
+      "vestedLabel": "Vested"
+    },
+    "stats": {
+      "liquidNow": "Likuid Sekarang",
+      "lockedInVesting": "Terkunci dalam Vesting",
+      "totalBalance": "Total Saldo rFLR",
+      "vestedProgress": "Vested"
+    },
+    "timeline": {
+      "couldntLoad": "Riwayat pembukaan kunci tidak dapat dimuat.",
+      "emptyTitle": "Belum ada riwayat pembukaan kunci",
+      "historicalNote": "Menampilkan riwayat pembukaan kunci lengkap — dapat mencakup jumlah yang sudah diklaim di tempat lain, sehingga totalnya bisa melebihi saldo Anda saat ini di atas.",
+      "loadingHint": "Ini bisa memakan waktu hingga 30 detik saat pertama kali kami memeriksa dompet.",
+      "loadingTitle": "Memuat riwayat pembukaan kunci…",
+      "statusLiquid": "Likuid",
+      "statusLocked": "Terkunci",
+      "subtitle": "rFLR yang dibuka kuncinya secara kumulatif dari waktu ke waktu",
+      "title": "Linimasa Pembukaan Kunci",
+      "viewFullSchedule": "Lihat jadwal lengkap ({{count}} entri)",
+      "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -606,6 +635,7 @@
       "conversationsDescription": "Menghapus riwayat obrolan FlareGPT dari akun Anda. Tindakan ini tidak dapat dibatalkan.",
       "localSubtitle": "Hanya disimpan di browser ini. Menghapusnya instan dan aman.",
       "localTitle": "Data Lokal",
+      "offline": "You're offline. This needs an internet connection.",
       "walletCache": "Cache Aktivitas Wallet",
       "walletCacheCleared": "Cache dihapus",
       "walletCacheDescription": "Menghapus riwayat transaksi yang tersimpan dalam cache. Kunjungan berikutnya akan mengambilnya lagi."
@@ -636,6 +666,14 @@
       "account": "Akun",
       "personalization": "Personalisasi",
       "walletsAndData": "Wallet & Data"
+    },
+    "install": {
+      "button": "Instal",
+      "descriptionAvailable": "Instal FlareGPT untuk akses yang lebih cepat dan pengalaman layar penuh asli.",
+      "descriptionInstalled": "FlareGPT diinstal pada perangkat ini.",
+      "descriptionIOS": "Ketuk ikon Bagikan di Safari, lalu \"Tambahkan ke Layar Beranda \".",
+      "installedBadge": "Installed",
+      "title": "Instal Aplikasi"
     },
     "links": {
       "docs": "Dokumentasi",
@@ -725,6 +763,7 @@
       "noLimit": "Tambahkan dompet sebanyak yang Anda inginkan.",
       "noSearchResults": "Tidak ada dompet yang cocok dengan pencarian Anda.",
       "notFoundError": "Dompet ini sudah tidak ada lagi di watchlist Anda.",
+      "offline": "You're offline. This needs an internet connection.",
       "readOnly": "Hanya-Baca",
       "registrationFailed": "Pendaftaran alamat gagal. Periksa apakah itu duplikat atau apakah slot diisi.",
       "remainingSlots": "Slot Tersisa",
@@ -765,6 +804,15 @@
     "walletConnected": "Dompet Terhubung",
     "yield": "Imbal Hasil"
   },
+  "staleData": {
+    "justNow": "Menampilkan data yang di - cache dari beberapa saat yang lalu",
+    "minutesAgo": "Menampilkan data cache dari {{minutes}} menit yang lalu"
+  },
+  "update": {
+    "available": "Versi baru FlareGPT tersedia.",
+    "reload": "Isi Ulang",
+    "waitingForReply": "Pembaruan akan berlaku segera setelah respons Anda saat ini selesai."
+  },
   "wallet": {
     "activity": {
       "charts": {
@@ -790,8 +838,11 @@
         "close": "Tutup",
         "copyFailed": "Tidak dapat menyalin hash",
         "hashCopied": "Hash transaksi disalin",
+        "linkCopied": "Explorer link copied",
         "next": "Transaksi berikutnya",
         "previous": "Transaksi sebelumnya",
+        "shareTitle": "FlareGPT transaction",
+        "shareTransaction": "Share transaction",
         "timestamp": "Stempel Waktu",
         "title": "Detail Transaksi",
         "transactionHash": "Hash Transaksi",
@@ -885,8 +936,5 @@
       "received": "Diterima",
       "sent": "Terkirim"
     }
-  },
-  "a11y": {
-    "skipToContent": "Langsung ke konten utama"
   }
 }

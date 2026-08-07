@@ -6,6 +6,7 @@ import { CircleStackIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/ou
 
 import { useFlareGptStore } from "@/store/useFlareGptStore";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
+import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import * as chatService from "@/services/chatService";
 import { queryKeys } from "@/services/queryKeys";
 import Card from "@/pages/Settings/components/Card";
@@ -22,14 +23,26 @@ interface ClearButtonProps {
   confirmLabel: string;
   busy?: boolean;
   busyLabel?: string;
+  disabled?: boolean;
+  disabledTitle?: string;
 }
 
-function ClearButton({ armed, onClick, label, confirmLabel, busy, busyLabel }: ClearButtonProps) {
+function ClearButton({
+  armed,
+  onClick,
+  label,
+  confirmLabel,
+  busy,
+  busyLabel,
+  disabled,
+  disabledTitle,
+}: ClearButtonProps) {
   return (
     <button
       type="button"
       onClick={onClick}
-      disabled={busy}
+      disabled={busy || disabled}
+      title={disabled ? disabledTitle : undefined}
       className={`rounded-xl px-4 py-2 text-xs font-semibold transition-colors cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
         armed
           ? "bg-red-500 text-white hover:bg-red-600"
@@ -54,6 +67,11 @@ export default function DataStorage() {
   const queryClient = useQueryClient();
   const clearMessages = useFlareGptStore((s) => s.clearMessages);
   const { hasSession } = useAuthStatus();
+  // Clearing the wallet-activity query cache is purely local (no network
+  // at all) and stays available offline; clearing synced conversations
+  // calls chatService.clearAllConversations — one of sw.ts's explicit
+  // NetworkOnly routes — so only that one button needs gating.
+  const isOnline = useOnlineStatus();
 
   const [armed, setArmed] = useState<ClearKey | null>(null);
   const [clearingKey, setClearingKey] = useState<ClearKey | null>(null);
@@ -165,6 +183,8 @@ export default function DataStorage() {
                 }
                 label={t("settings.dataStorage.clear")}
                 confirmLabel={t("settings.dataStorage.confirmClear")}
+                disabled={!isOnline}
+                disabledTitle={t("settings.dataStorage.offline")}
               />
             </RowItem>
           </div>

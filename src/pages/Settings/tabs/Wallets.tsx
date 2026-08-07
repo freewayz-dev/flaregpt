@@ -23,6 +23,7 @@ import {
   useUpdateWatchlistWallet,
 } from "@/hooks/queries/useWatchlistQueries";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
+import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import Card from "@/pages/Settings/components/Card";
 import type { DashboardOutletContext } from "@/components/layout/DashboardLayout";
 
@@ -89,6 +90,12 @@ function interpretWatchlistError(error: unknown, t: TFunction) {
 interface WalletListRowProps {
   wallet: WalletHubEntry;
   hasSession: boolean;
+  // A signed-in wallet's add/rename/remove all hit the real backend
+  // (useWatchlistQueries.ts) — true only when signed in AND offline, so a
+  // guest's purely-local watchlist (see addTrackedWallet/renameTrackedWallet/
+  // removeTrackedWallet in Wallets.tsx's own handlers) is never touched by
+  // this at all.
+  offlineBlocked: boolean;
   isEditing: boolean;
   editNickname: string;
   setEditNickname: (value: string) => void;
@@ -109,6 +116,7 @@ interface WalletListRowProps {
 function WalletListRow({
   wallet,
   hasSession,
+  offlineBlocked,
   isEditing,
   editNickname,
   setEditNickname,
@@ -204,8 +212,8 @@ function WalletListRow({
                   <button
                     type="button"
                     onClick={onCommitEdit}
-                    disabled={isSaving}
-                    title={t("settings.wallets.saveEdit")}
+                    disabled={isSaving || offlineBlocked}
+                    title={offlineBlocked ? t("settings.wallets.offline") : t("settings.wallets.saveEdit")}
                     className="flex items-center rounded-lg p-1.5 text-emerald-600 hover:bg-emerald-500/10 dark:text-emerald-400 transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSaving ? (
@@ -240,8 +248,14 @@ function WalletListRow({
                 <button
                   type="button"
                   onClick={() => onRemoveClick(wallet.address)}
-                  disabled={removePending}
-                  title={confirmingAddress === wallet.address ? t("settings.wallets.confirmRemove") : t("settings.wallets.remove")}
+                  disabled={removePending || offlineBlocked}
+                  title={
+                    offlineBlocked
+                      ? t("settings.wallets.offline")
+                      : confirmingAddress === wallet.address
+                        ? t("settings.wallets.confirmRemove")
+                        : t("settings.wallets.remove")
+                  }
                   className={`flex items-center gap-1 rounded-lg px-1.5 py-1.5 text-[11px] font-semibold transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
                     confirmingAddress === wallet.address
                       ? "bg-red-500/10 text-red-500"
@@ -282,6 +296,12 @@ export default function Wallets() {
   const { address: connectedAddress, isConnected } = useConnection();
   const { openWalletModal } = useOutletContext<DashboardOutletContext>();
   const { hasSession, isCurrentWalletSignedIn, isAuthenticating, signIn } = useAuthStatus();
+  const isOnline = useOnlineStatus();
+  // Add/rename/remove all fall through to a purely local path for a guest
+  // (addTrackedWallet/renameTrackedWallet/removeTrackedWallet below) — only
+  // the signed-in path calls the real watchlist API, so only that path
+  // needs blocking while offline.
+  const offlineBlocked = hasSession && !isOnline;
 
   const {
     allWallets,
@@ -370,6 +390,14 @@ export default function Wallets() {
     // to that row's wallet (see WalletListRow/startEdit).
     if (!editingWallet) return;
     setEditError("");
+
+    // The Save button is already disabled via `offlineBlocked` — this
+    // guards the same Enter-key path (see WalletListRow's onKeyDown),
+    // which calls this directly and doesn't go through that button at all.
+    if (offlineBlocked) {
+      setEditError(t("settings.wallets.offline"));
+      return;
+    }
 
     const trimmedNickname = editNickname.trim();
 
@@ -475,6 +503,15 @@ export default function Wallets() {
       return;
     }
 
+    // Same "the button is already disabled, this guards the Enter-to-
+    // submit path" reasoning as commitEdit above — a <form>'s onSubmit
+    // still fires from the keyboard even while its submit button is
+    // disabled.
+    if (offlineBlocked) {
+      setErrorText(t("settings.wallets.offline"));
+      return;
+    }
+
     if (hasSession) {
       try {
         await addMutation.mutateAsync({
@@ -515,11 +552,13 @@ export default function Wallets() {
     ? t("settings.wallets.limitReached", { current: totalCount, max: maxSlots })
     : hasSession && addMutation.isPending
       ? t("settings.wallets.adding")
-      : isUnlimited
-        ? t("settings.wallets.connectActionUnlimited", { current: totalCount })
-        : t("settings.wallets.connectAction", { current: totalCount, remaining: remainingSlots });
+      : offlineBlocked
+        ? t("settings.wallets.offline")
+        : isUnlimited
+          ? t("settings.wallets.connectActionUnlimited", { current: totalCount })
+          : t("settings.wallets.connectAction", { current: totalCount, remaining: remainingSlots });
 
-  const isSubmitDisabled = remainingSlots === 0 || (hasSession && addMutation.isPending);
+  const isSubmitDisabled = remainingSlots === 0 || (hasSession && addMutation.isPending) || offlineBlocked;
 
   return (
     <div className="space-y-6">
@@ -570,6 +609,7 @@ export default function Wallets() {
               <WalletListRow
                 wallet={primaryWallet}
                 hasSession={hasSession}
+                offlineBlocked={offlineBlocked}
                 isEditing={false}
                 editNickname={editNickname}
                 setEditNickname={setEditNickname}
@@ -647,6 +687,7 @@ export default function Wallets() {
                             <WalletListRow
                               wallet={wallet}
                               hasSession={hasSession}
+                              offlineBlocked={offlineBlocked}
                               isEditing={isEditing}
                               editNickname={editNickname}
                               setEditNickname={setEditNickname}

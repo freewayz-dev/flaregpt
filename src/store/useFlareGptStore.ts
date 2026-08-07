@@ -256,4 +256,17 @@ export const useFlareGptStore = create<FlareGptState>()(
   ),
 );
 
+// Shared with useFlareGptConversation.ts's own `isGenerating` (same exact
+// derivation, single-sourced) and with the PWA update-prompt's safe-reload
+// check (src/components/common/UpdateAvailableToast.tsx) — an update must
+// never trigger `skipWaiting` while this is true, since that would tear
+// down the live chat WebSocket mid-answer. The update prompt lives outside
+// any component's render (it's driven by `registerSW`'s own callback), so
+// it needs a plain function it can call against `useFlareGptStore.
+// getState()` directly, not a hook.
+export function isChatGenerating(messages: ChatMessage[]): boolean {
+  const lastMessage = messages[messages.length - 1];
+  return lastMessage?.role === "assistant" && lastMessage.status !== "complete";
+}
+
 export { makeId, PIN_LIMIT };

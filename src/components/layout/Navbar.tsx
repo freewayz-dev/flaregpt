@@ -22,7 +22,9 @@ import { useUIStore } from "@/store/useUIStore";
 import { useFlareGptStore } from "@/store/useFlareGptStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
+import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { shortenAddress } from "@/utils/address";
+import { shareOrCopy } from "@/utils/share";
 import { ROUTES } from "@/config/routes";
 import WalletBadge, { type WalletBadgeTone } from "@/components/common/WalletBadge";
 import WalletRow from "@/components/common/WalletRow";
@@ -91,6 +93,14 @@ export default function Navbar({
   const { address: connectedAddress, isConnected, isReconnecting } = useConnection();
   const disconnectAll = useDisconnectAllWallets();
   const { isCurrentWalletSignedIn, isAuthenticating, signIn } = useAuthStatus();
+  // Sign-in is a real network call (see useAuthStatus.ts) — /api/v1/auth/*
+  // is one of sw.ts's explicit NetworkOnly routes (never cached, for good
+  // reason: it's session-scoped, not wallet-scoped like the rest of the
+  // financial-reads tier), so it always fails outright while offline
+  // rather than falling back to anything. Disconnecting a wallet, by
+  // contrast, is purely local to wagmi's own connector state and stays
+  // enabled regardless of connectivity.
+  const isOnline = useOnlineStatus();
 
   const { activeAddress, allWallets, switchActiveAddress, maxSlots, hasHydrated } =
     useDerivedWalletHub(connectedAddress, isConnected);
@@ -183,19 +193,21 @@ export default function Navbar({
     setMobileMenuOpen(false);
   };
 
-  const handleCopyAddress = async (event: MouseEvent<HTMLButtonElement>, address: string) => {
-    // Rows are clickable (switches the active wallet), so the copy icon
-    // inside a row must stop that click from also firing — copying an
-    // address shouldn't as a side effect also switch what's active.
+  const handleShareAddress = async (event: MouseEvent<HTMLButtonElement>, address: string) => {
+    // Rows are clickable (switches the active wallet), so the share/copy
+    // icon inside a row must stop that click from also firing — sharing
+    // an address shouldn't as a side effect also switch what's active.
     event.stopPropagation();
-    try {
-      await navigator.clipboard.writeText(address);
+    const result = await shareOrCopy({ title: t("navbar.shareAddressTitle"), text: address });
+    if (result === "copied") {
       setCopiedAddress(address);
       toast.success(t("navbar.addressCopied", "Address copied"));
       setTimeout(() => setCopiedAddress(null), 2000);
-    } catch {
+    } else if (result === "failed") {
       toast.error(t("navbar.copyFailed", "Couldn't copy address"));
     }
+    // "shared": the native share sheet is its own confirmation, no toast
+    // needed. "cancelled": the user backed out on purpose, same.
   };
 
   // Primary (the connected wallet, if any) and watchlist wallets are
@@ -274,7 +286,7 @@ export default function Navbar({
       {mobileMenuOpen && (
         <div
           onClick={() => setMobileMenuOpen(false)}
-          className="fixed left-0 right-0 top-12 bottom-0 z-40 bg-black/10 backdrop-blur-[3px] lg:hidden transition-all duration-300 ease-in-out"
+          className="fixed left-0 right-0 top-[calc(3rem+env(safe-area-inset-top))] bottom-0 z-40 bg-black/10 backdrop-blur-[3px] lg:hidden transition-all duration-300 ease-in-out"
         />
       )}
 
@@ -287,7 +299,7 @@ export default function Navbar({
             onClick={() => setSidebarOpen(true)}
             aria-label={t("navbar.openMenu")}
             title={t("navbar.openMenu")}
-            className="p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] lg:hidden cursor-pointer shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+            className="relative p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] lg:hidden cursor-pointer shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 before:content-[''] before:absolute before:-inset-1.5"
           >
             <svg
               width="25"
@@ -336,7 +348,7 @@ export default function Navbar({
             title={hideBalances ? t("navbar.showBalances") : t("navbar.hideBalances")}
             aria-label={hideBalances ? t("navbar.showBalances") : t("navbar.hideBalances")}
             aria-pressed={hideBalances}
-            className="p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] cursor-pointer shrink-0"
+            className="relative p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] cursor-pointer shrink-0 before:content-[''] before:absolute before:-inset-1.5"
           >
             {hideBalances ? (
               <EyeSlashIcon className="h-[18px] w-[18px]" />
@@ -442,7 +454,7 @@ export default function Navbar({
                     isActive={activeAddress === primaryWallet.address}
                     copiedAddress={copiedAddress}
                     onSelect={() => handleSwitchActive(primaryWallet.address)}
-                    onCopy={handleCopyAddress}
+                    onShare={handleShareAddress}
                   />
                 ) : (
                   <button
@@ -472,12 +484,15 @@ export default function Navbar({
                     <button
                       type="button"
                       onClick={signIn}
-                      disabled={isAuthenticating}
+                      disabled={isAuthenticating || !isOnline}
+                      title={!isOnline ? t("navbar.signInOffline") : undefined}
                       className="w-full flex items-center justify-center gap-1.5 py-1.5 rounded-lg bg-brand hover:bg-brand-hover disabled:opacity-60 disabled:cursor-not-allowed text-white text-[10.5px] font-semibold transition-colors cursor-pointer"
                     >
                       {isAuthenticating
                         ? t("navbar.signingIn", "Signing in…")
-                        : t("navbar.signIn", "Sign In")}
+                        : !isOnline
+                          ? t("navbar.offline")
+                          : t("navbar.signIn", "Sign In")}
                     </button>
                   </div>
                 )}
@@ -518,7 +533,7 @@ export default function Navbar({
                           isActive={activeAddress === wallet.address}
                           copiedAddress={copiedAddress}
                           onSelect={() => handleSwitchActive(wallet.address)}
-                          onCopy={handleCopyAddress}
+                          onShare={handleShareAddress}
                         />
                       ))}
                     </div>
@@ -537,7 +552,15 @@ export default function Navbar({
             title={t("navbar.moreOptions")}
             aria-haspopup="true"
             aria-expanded={mobileMenuOpen}
-            className="mobile-trigger-btn lg:hidden rounded-lg p-1 text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-[#1B1B1F] transition-colors cursor-pointer z-50 relative focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+            // `ml-2` (only ever applied where this button itself renders,
+            // i.e. never on desktop) — this button's own invisible hit-area
+            // (`-inset-2`, 8px) plus the hide-balances button's (`-inset-1.5`,
+            // 6px) add up to more than the row's `gap-2` (8px) between them,
+            // so their invisible zones used to overlap by ~6px; this button's
+            // `z-50` won that overlap, meaning a tap aimed at hide-balances
+            // near the gap could open this menu instead. The extra margin
+            // restores real separation without shrinking either hit-area.
+            className="mobile-trigger-btn lg:hidden ml-2 rounded-lg p-1 text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-[#1B1B1F] transition-colors cursor-pointer z-50 relative focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 before:content-[''] before:absolute before:-inset-2"
           >
             {mobileMenuOpen ? (
               <XMarkIcon className="h-6 w-6 text-brand" />
@@ -572,7 +595,7 @@ export default function Navbar({
 
       {/* ================= MOBILE/TABLET SYSTEM OVERLAY MENU PANEL ================= */}
       <div
-        className={`lg:hidden fixed left-4 right-4 top-16 z-50 rounded-2xl border border-slate-100 dark:border-none bg-surface-card p-4 shadow-2xl transition-all duration-300 transform-gpu ${
+        className={`lg:hidden fixed left-[calc(1rem+env(safe-area-inset-left))] right-[calc(1rem+env(safe-area-inset-right))] top-[calc(4rem+env(safe-area-inset-top))] z-50 rounded-2xl border border-slate-100 dark:border-none bg-surface-card p-4 shadow-2xl transition-all duration-300 transform-gpu ${
           mobileMenuOpen
             ? "opacity-100 scale-100 translate-y-0"
             : "invisible opacity-0 scale-95 -translate-y-2 pointer-events-none"
@@ -615,7 +638,7 @@ export default function Navbar({
                   isActive={activeAddress === primaryWallet.address}
                   copiedAddress={copiedAddress}
                   onSelect={() => handleSwitchActive(primaryWallet.address)}
-                  onCopy={handleCopyAddress}
+                  onShare={handleShareAddress}
                   variant="mobile"
                 />
               ) : (
@@ -640,12 +663,15 @@ export default function Navbar({
                   <button
                     type="button"
                     onClick={signIn}
-                    disabled={isAuthenticating}
+                    disabled={isAuthenticating || !isOnline}
+                    title={!isOnline ? t("navbar.signInOffline") : undefined}
                     className="w-full py-2 rounded-lg bg-brand hover:bg-brand-hover disabled:opacity-60 disabled:cursor-not-allowed text-white text-[11px] font-semibold transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     {isAuthenticating
                       ? t("navbar.signingIn", "Signing in…")
-                      : t("navbar.signIn", "Sign In")}
+                      : !isOnline
+                        ? t("navbar.offline")
+                        : t("navbar.signIn", "Sign In")}
                   </button>
                 </div>
               )}
@@ -687,7 +713,7 @@ export default function Navbar({
                       isActive={activeAddress === wallet.address}
                       copiedAddress={copiedAddress}
                       onSelect={() => handleSwitchActive(wallet.address)}
-                      onCopy={handleCopyAddress}
+                      onShare={handleShareAddress}
                       variant="mobile"
                     />
                   ))}
@@ -705,7 +731,7 @@ export default function Navbar({
             <div
               role="status"
               onClick={dismissFabHint}
-              className="lg:hidden fixed bottom-[104px] right-5 z-30 max-w-[190px] rounded-xl bg-ink-primary px-3 py-2 text-[11px] font-medium leading-snug text-white shadow-xl cursor-pointer"
+              className="lg:hidden fixed bottom-[calc(104px+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-30 max-w-[190px] rounded-xl bg-ink-primary px-3 py-2 text-[11px] font-medium leading-snug text-white shadow-xl cursor-pointer"
             >
               {t("navbar.flareGptFabHint")}
               <span className="absolute -bottom-1 right-6 h-2.5 w-2.5 rotate-45 bg-ink-primary" />
@@ -717,7 +743,7 @@ export default function Navbar({
               dismissFabHint();
               onToggleFlareWidget();
             }}
-            className="lg:hidden fixed bottom-10 right-5 z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-brand to-brand-hover text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
+            className="lg:hidden fixed bottom-[calc(2.5rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-brand to-brand-hover text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
             aria-label={t("navbar.askFlareGPT")}
           >
             <SparklesIcon className="h-5 w-5" />

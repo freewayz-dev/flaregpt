@@ -5,11 +5,20 @@ import { useTranslation } from "react-i18next";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 import bifrostImg from "@/assets/wallets/bifrost.jpeg";
-import rabbyImg from "@/assets/wallets/rabby.png";
-import walletConnectImg from "@/assets/wallets/icon.png";
-import metamask from "@/assets/wallets/MetaMask_Fox.svg.png";
+// WebP, not the original PNGs — rabby.png was 136KB for a 20-24px icon
+// (uncompressed/oversized source art, not a resolution this app ever
+// actually renders it at); sharp-cli conversion (quality 85) brought it
+// to 6.7KB, MetaMask's to 28KB from 72KB. Same "already targets es2020,
+// no legacy fallback needed" reasoning as LandingPage.tsx's showcase
+// images.
+import rabbyImg from "@/assets/wallets/rabby.webp";
+// Resized from 768x768 (11KB) to 96x96 (2.6KB) via sharp-cli — rendered
+// at 24px CSS size here.
+import walletConnectImg from "@/assets/wallets/icon.webp";
+import metamask from "@/assets/wallets/MetaMask_Fox.svg.webp";
 import { findInjectedProvider } from "@/config/web3Config";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 
 // Tied directly to wagmi's own hook return types (same pattern as
 // useAuthSync.ts's `SignMessageAsync`) rather than hand-typed — wagmi's
@@ -194,6 +203,12 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
   const { mutateAsync: connectAsync, error, isPending, reset } = useConnect();
   const connectors = useConnectors();
   const { isConnected } = useConnection();
+  // A real wallet handshake (the injected `eth_requestAccounts` call, or
+  // WalletConnect's relay) needs a live connection regardless of which
+  // connector it goes through — every button below disables together
+  // rather than trying to guess which specific step might still work
+  // offline.
+  const isOnline = useOnlineStatus();
 
   const [shouldRender, setShouldRender] = useState(isOpen);
   const [animate, setAnimate] = useState(false);
@@ -402,7 +417,7 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
         role="dialog"
         aria-modal="true"
         aria-labelledby="connect-wallet-modal-title"
-        className={`relative w-full bg-surface-card border border-[#E5E7EB] dark:border-none p-5 shadow-xl transition-all duration-200 ease-out rounded-t-2xl max-w-none transform-gpu sm:relative sm:rounded-2xl sm:max-w-lg ${transitionStyles}`}
+        className={`relative w-full bg-surface-card border border-[#E5E7EB] dark:border-none p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] shadow-xl transition-all duration-200 ease-out rounded-t-2xl max-w-none transform-gpu sm:relative sm:rounded-2xl sm:max-w-lg sm:pb-5 ${transitionStyles}`}
       >
         <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-gray-300 dark:bg-zinc-800 sm:hidden" />
 
@@ -421,11 +436,17 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
             onClick={onClose}
             aria-label={t("connectModal.close")}
             title={t("connectModal.close")}
-            className="rounded-lg p-1 text-ink-secondary hover:bg-surface-subtle transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+            className="relative rounded-lg p-1 text-ink-secondary hover:bg-surface-subtle transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 before:content-[''] before:absolute before:-inset-2"
           >
             <XMarkIcon className="h-4 w-4" />
           </button>
         </div>
+
+        {!isOnline && (
+          <div className="mt-4 text-center text-[10px] text-amber-700 dark:text-amber-400 bg-amber-500/10 p-2 rounded-lg font-medium tracking-wide">
+            {t("connectModal.offline")}
+          </div>
+        )}
 
         <div className="mt-4 space-y-2 pb-4 sm:pb-0">
           {VISUAL_WALLETS.map((wallet) => {
@@ -452,7 +473,7 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
               <button
                 key={wallet.id}
                 type="button"
-                disabled={isConnectingThis}
+                disabled={isConnectingThis || !isOnline}
                 onClick={() => handleConnect(wallet)}
                 className="w-full flex items-center justify-between rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] px-4 py-3 text-xs font-medium text-[#4F5B66] hover:bg-surface-subtle hover:text-ink-primary transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#FFFFFF] dark:border-none dark:bg-surface-inset dark:text-[#A1A1AA] dark:hover:bg-surface-card-hover dark:disabled:hover:bg-surface-inset"
               >
@@ -553,6 +574,9 @@ function WalletImage({ src, alt }: { src: string; alt: string }) {
       <img
         src={src}
         alt={alt}
+        width={20}
+        height={20}
+        decoding="async"
         onLoad={() => setIsLoaded(true)}
         className={`h-5 w-5 object-contain transition-opacity rounded-md duration-500 ${
           isLoaded ? "opacity-100" : "opacity-0"

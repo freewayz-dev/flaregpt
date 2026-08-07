@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 /// <reference types="vite-plugin-svgr/client" />
+/// <reference types="vite-plugin-pwa/client" />
 
 // vite.config.js configures vite-plugin-svgr with `exportType: "default"`
 // and `include: "**/*.svg"`, so at RUNTIME every bare `*.svg` import in
@@ -53,5 +54,28 @@ declare global {
     brave?: {
       isBrave: () => Promise<boolean>;
     };
+    // iOS Safari's own (long-standing, still non-standard) way of exposing
+    // "launched from a home-screen icon, not a browser tab" — the one
+    // signal `display-mode: standalone` can't provide there, since iOS
+    // Safari doesn't support that media feature the way Chromium does.
+    // See src/utils/platform.ts's isStandaloneDisplayMode.
+    standalone?: boolean;
+  }
+
+  // Chromium-only (Chrome, Edge, Samsung Internet, ...), not yet part of
+  // any DOM lib — narrowed to just the members this app actually reads
+  // (see usePwaInstallListeners.ts) rather than guessing the full spec.
+  // Firefox and Safari never fire this event at all, which is the whole
+  // reason src/utils/platform.ts's iOS detection exists as a separate
+  // path — there's no event-based signal to listen for there.
+  interface BeforeInstallPromptEvent extends Event {
+    readonly platforms: string[];
+    readonly userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
+    prompt(): Promise<void>;
+  }
+
+  interface WindowEventMap {
+    beforeinstallprompt: BeforeInstallPromptEvent;
+    appinstalled: Event;
   }
 }

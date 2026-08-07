@@ -94,6 +94,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }: SidebarPro
           TransactionDrawer, rather than nesting it here. */}
       <aside
         className={`fixed inset-y-0 left-0 z-50 h-full flex flex-col bg-surface-card shadow-[0_1px_3px_rgba(0,0,0,0.01)] border-r border-line lg:static
+          pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)]
           transition-[width,transform] duration-300 ease-in-out
           w-[240px] ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
           ${open ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0
@@ -124,7 +125,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }: SidebarPro
                 onClick={() => setOpen(false)}
                 aria-label={t("sidebar.closeMenu")}
                 title={t("sidebar.closeMenu")}
-                className="lg:hidden p-1 rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+                className="relative lg:hidden p-1 rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 before:content-[''] before:absolute before:-inset-2"
               >
                 <XMarkIcon className="h-5 w-5" />
               </button>

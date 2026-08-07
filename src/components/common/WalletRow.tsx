@@ -1,8 +1,9 @@
 import type { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
-import { WalletIcon, ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline";
+import { WalletIcon, ClipboardIcon, CheckIcon, ShareIcon } from "@heroicons/react/24/outline";
 
 import { shortenAddress } from "@/utils/address";
+import { isWebShareSupported } from "@/utils/share";
 import type { WalletHubEntry } from "@/store/useWalletHubStore";
 
 interface WalletRowProps {
@@ -10,7 +11,12 @@ interface WalletRowProps {
   isActive: boolean;
   copiedAddress: string | null;
   onSelect: () => void;
-  onCopy: (e: MouseEvent<HTMLButtonElement>, address: string) => void;
+  // Named for what it does on a share-capable device (the common case on
+  // mobile, where this matters most) — the handler itself falls back to a
+  // plain clipboard copy on every browser that doesn't support
+  // `navigator.share` (see shareOrCopy in utils/share.ts), so nothing
+  // about the *behavior* actually regresses on desktop, only the label.
+  onShare: (e: MouseEvent<HTMLButtonElement>, address: string) => void;
   variant?: "desktop" | "mobile";
 }
 
@@ -31,12 +37,13 @@ export default function WalletRow({
   isActive,
   copiedAddress,
   onSelect,
-  onCopy,
+  onShare,
   variant = "desktop",
 }: WalletRowProps) {
   const { t } = useTranslation();
   const justCopied = copiedAddress === wallet.address;
   const isMobile = variant === "mobile";
+  const canShare = isWebShareSupported();
   const displayName =
     wallet.type === "connected" ? shortenAddress(wallet.address) : wallet.label;
 
@@ -81,13 +88,15 @@ export default function WalletRow({
       </div>
       <button
         type="button"
-        onClick={(e) => onCopy(e, wallet.address)}
-        aria-label={t("navbar.copyAddress")}
-        title={t("navbar.copyAddress")}
+        onClick={(e) => onShare(e, wallet.address)}
+        aria-label={canShare ? t("navbar.shareAddress") : t("navbar.copyAddress")}
+        title={canShare ? t("navbar.shareAddress") : t("navbar.copyAddress")}
         className="shrink-0 p-2 -m-1 rounded-md text-current opacity-60 hover:opacity-100 hover:bg-black/5 dark:hover:bg-white/10 transition-all cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
       >
         {justCopied ? (
           <CheckIcon className="h-3 w-3 text-emerald-500" />
+        ) : canShare ? (
+          <ShareIcon className="h-3 w-3" />
         ) : (
           <ClipboardIcon className="h-3 w-3" />
         )}

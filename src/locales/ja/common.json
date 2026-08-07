@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "メインコンテンツへスキップ"
+  },
   "comingSoon": {
     "badge": "近日公開",
     "description": "この機能は現在開発中です。しばらくしてから再度ご確認ください。"
@@ -24,6 +27,7 @@
     "install": "インストール",
     "installHint": "まだウォレットが表示されませんか？ページを更新すると解決する場合があります。",
     "mobileHint": "モバイルでは、ウォレットのビルトインブラウザでFlareGPTを開き、最高の接続エクスペリエンスを実現します。QRコードをスキャンする際は、スマートフォンのカメラではなく、ウォレットアプリ内蔵のスキャナーを使用すると、より確実に接続できます。",
+    "offline": "オフラインです。ウォレットを接続するにはインターネット接続が必要です。",
     "recommended": "オススメ",
     "refresh": "更新",
     "subtitle": "お好みのウォレットを選択して、Flareネットワークに接続します。",
@@ -114,6 +118,9 @@
     },
     "description": "MXRPY、Sceptre、Firelight、Spectraの各ボールトでイールド戦略を比較し、ポジションを追跡できます。",
     "explorer": {
+      "linkCopied": "Link copied",
+      "shareFailed": "Couldn't share this protocol",
+      "shareProtocol": "Share this protocol",
       "subtitle": "プロトコルを選択してポジションと詳細を表示します",
       "title": "プロトコルエクスプローラー"
     },
@@ -222,7 +229,10 @@
       "copyFailed": "アドレスをコピーできませんでした",
       "multisigNote": "マルチシグウォレットにより保護されています",
       "qrTitle": "{{symbol}}寄付用ウォレットアドレスのQRコード",
+      "shareAddress": "Share Address",
+      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "タップしてコピー",
+      "tapToShare": "Tap to share",
       "viewOnExplorer": "{{explorer}}で見る"
     },
     "received": {
@@ -258,6 +268,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPTは間違えることがあります。重要な情報は行動する前に確認してください。",
+      "offlinePlaceholder": "オフラインです。現在メッセージを送信できません",
       "placeholder": "FlareGPTに質問...",
       "send": "送信",
       "stop": "生成を停止"
@@ -281,11 +292,12 @@
       "close": "閉じる",
       "delete": "削除",
       "empty": "まだ会話がありません",
-      "loading": "会話を読み込み中…",
       "loadFailed": "会話を読み込めませんでした。",
+      "loading": "会話を読み込み中…",
       "moreActions": "その他の操作",
       "newChat": "新しいチャット",
       "noResults": "検索に一致する会話がありません",
+      "offline": "オフラインです。インターネットに接続する必要があります。",
       "openButton": "履歴",
       "pin": "ピン留め",
       "pinLimitReached": "最大{{count}}件の会話をピン留めできます",
@@ -333,49 +345,49 @@
     "terms": "利用規約と免責事項"
   },
   "ftsoRewards": {
-    "description": "FTSOデリゲーション報酬、報酬速度、プロバイダーへの配分を一か所で確認できます。",
     "connectToSee": "FTSO報酬を表示するには、ウォレットを接続または選択してください。",
     "couldntLoad": "FTSO報酬を読み込めませんでした。",
-    "stats": {
-      "wflrBalance": "WFLR残高",
-      "unclaimed": "未請求の報酬",
-      "hourlyEarning": "推定時間あたり収益",
-      "targetEpochYield": "今エポックの目標利回り"
-    },
-    "velocity": {
-      "title": "報酬速度",
-      "methodLive": "ライブ推定",
-      "methodHistorical": "履歴ベースの推定",
-      "inactiveTitle": "現在収益なし",
-      "inactiveDescription": "このウォレットはまだWFLRを委任していないため、推定できる報酬速度がありません。",
-      "perHour": "1時間あたり",
-      "perDay": "1日あたり",
-      "thisEpoch": "今エポック",
-      "sourceEpoch": "エポック{{epoch}}のネットワークデータから推定"
-    },
     "delegations": {
-      "title": "アクティブな委任",
       "count_one": "{{count}}プロバイダー",
       "count_other": "{{count}}プロバイダー",
+      "emptyDescription": "報酬を得るには、WFLRをFTSOデータプロバイダーに委任してください。",
       "emptyTitle": "アクティブな委任なし",
-      "emptyDescription": "報酬を得るには、WFLRをFTSOデータプロバイダーに委任してください。"
+      "title": "アクティブな委任"
     },
+    "description": "FTSOデリゲーション報酬、報酬速度、プロバイダーへの配分を一か所で確認できます。",
     "epochs": {
-      "title": "未請求のエポック",
-      "subtitle": "エポックごとの請求待ち報酬",
-      "emptyTitle": "未請求はありません",
       "emptyDescription": "すべて完了しています — 現在保留中のエポック報酬はありません。",
+      "emptyTitle": "未請求はありません",
       "epochLabel": "エポック{{id}}",
+      "subtitle": "エポックごとの請求待ち報酬",
+      "title": "未請求のエポック",
       "viewFullLedger_one": "完全な台帳を表示（{{count}}件）",
       "viewFullLedger_other": "完全な台帳を表示（{{count}}件）"
     },
     "providers": {
-      "title": "FTSOプロバイダー",
-      "description": "プロバイダーランキングが接続されたら、パフォーマンスと手数料でデータプロバイダーを比較できます。"
+      "description": "プロバイダーランキングが接続されたら、パフォーマンスと手数料でデータプロバイダーを比較できます。",
+      "title": "FTSOプロバイダー"
+    },
+    "stats": {
+      "hourlyEarning": "推定時間あたり収益",
+      "targetEpochYield": "今エポックの目標利回り",
+      "unclaimed": "未請求の報酬",
+      "wflrBalance": "WFLR残高"
     },
     "validators": {
-      "title": "ステーキングバリデーターランキング",
-      "description": "ステーキングランキングが接続されたら、最もパフォーマンスの高いバリデーターを確認できます。"
+      "description": "ステーキングランキングが接続されたら、最もパフォーマンスの高いバリデーターを確認できます。",
+      "title": "ステーキングバリデーターランキング"
+    },
+    "velocity": {
+      "inactiveDescription": "このウォレットはまだWFLRを委任していないため、推定できる報酬速度がありません。",
+      "inactiveTitle": "現在収益なし",
+      "methodHistorical": "履歴ベースの推定",
+      "methodLive": "ライブ推定",
+      "perDay": "1日あたり",
+      "perHour": "1時間あたり",
+      "sourceEpoch": "エポック{{epoch}}のネットワークデータから推定",
+      "thisEpoch": "今エポック",
+      "title": "報酬速度"
     }
   },
   "gasSniperStatus": {
@@ -457,15 +469,22 @@
     "stillNeedHelp": "まだヘルプが必要ですか？",
     "supportDesc": "現在、最も早く連絡が取れる方法はXです。メールとTelegramでのサポートは近日公開予定です。"
   },
+  "install": {
+    "bannerDescriptionAndroid": "FlareGPTをホーム画面に追加して、より迅速なアクセスとフルスクリーンエクスペリエンスを実現しましょう。",
+    "bannerDescriptionIOS": "すばやくアクセスするには、[共有]、[ホーム画面に追加]の順にタップします。",
+    "dismiss": "却下",
+    "installButton": "インストール",
+    "installing": "インストール中…"
+  },
   "loops": {
     "description": "ネットワークを監視し、あなたに代わって行動する自動バックグラウンドサービスです。",
     "gasSniper": {
       "active": "有効",
       "approveCta": "Coston2で承認",
+      "approved": "承認されました。これでGas Sniperを有効にできます。",
       "approveDescription": "このウォレットは、まずCoston2上でFlareのGas Sniperキーパーをクレーム実行者として承認する必要があります。これは一度限りのオンチェーン承認です。ウォレットがCoston2ネットワークへの切り替えまたは追加を求める場合があります。",
       "approveFailed": "承認を完了できませんでした。もう一度お試しください。",
       "approveTitle": "一度限りの承認が必要です",
-      "approved": "承認されました。これでGas Sniperを有効にできます。",
       "approving": "ウォレットで確認してください…",
       "confirmingApproval": "確認中…",
       "description": "ガス代が十分に下がるとFTSO報酬を自動的に請求し、オフにするまでブラウザ拡張機能のように静かにバックグラウンドで動作し続けます。",
@@ -475,6 +494,7 @@
       "inactive": "無効",
       "needsApproval": "承認が必要です",
       "needsReconnect": "ウォレット未接続",
+      "offline": "これにはインターネット接続が必要です。",
       "reconnectDescription": "一度限りのオンチェーン承認を完了するには、このウォレットを再接続してください。",
       "reconnectTitle": "続行するには再接続してください",
       "signInHint": "Gas Sniperを有効にするには、ウォレットでサインインしてください。",
@@ -500,71 +520,80 @@
     "hideBalances": "残高を非表示",
     "mainnetStatus": "Flareメインネット",
     "moreOptions": "その他のオプション",
+    "offline": "オフライン",
     "openMenu": "メニューを開く",
     "primaryWalletSection": "プライマリウォレット",
+    "shareAddress": "Share address",
+    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "残高を表示",
     "signIn": "サインイン",
     "signInBackgroundHint": "接続中のウォレットはサインインが必要です",
     "signingIn": "サインイン中…",
+    "signInOffline": "サインインにはインターネット接続が必要です。",
     "signInPrompt": "このウォレットを確認して続行するには、メッセージに署名してください。",
     "watchlistSection": "ウォッチリスト ({{current}}/{{max}})"
   },
   "offline": {
-    "message": "オフラインです。自動的に再接続します。",
-    "backOnline": "オンラインに復帰しました"
+    "backOnline": "オンラインに復帰しました",
+    "message": "オフラインです。自動的に再接続します。"
+  },
+  "onboarding": {
+    "welcomeMessage": "FlareGPTへようこそ。ウォレットを接続してポートフォリオを確認するか、AIアシスタントに何でもお尋ねください。"
   },
   "rflrVesting": {
-    "description": "rFLRのベスティング進捗、今後のアンロック、ネットワーク全体の発行状況を一か所で確認できます。",
     "connectToSee": "ベスティング状況を表示するには、ウォレットを接続または選択してください。",
     "couldntLoad": "ベスティングデータを読み込めませんでした。",
-    "noRflr": {
-      "title": "まだrFLR報酬がありません",
-      "description": "このウォレットはまだrFLR報酬を獲得していないため、ベスティングするものがありません。"
-    },
-    "stats": {
-      "totalBalance": "rFLR合計残高",
-      "liquidNow": "現在の流動分",
-      "lockedInVesting": "ベスティング中のロック分",
-      "vestedProgress": "ベスト済み"
-    },
-    "progress": {
-      "title": "ベスティング進捗",
-      "vestedLabel": "ベスト済み",
-      "nextUnlock": "次回のアンロック: {{date}}",
-      "nextUnlockCaption": "が流動化します",
-      "fullyVested": "完全にベスト済み — アンロック待ちはありません",
-      "earlyExitTitle": "早期エグジット",
-      "earlyExitNoneNeeded": "ロックされているものがないため、早期エグジットのペナルティはありません。",
-      "efficiency": "効率 {{pct}}%",
-      "netPayout": "現在の正味支払額",
-      "penaltyCost": "エグジットペナルティ"
-    },
-    "timeline": {
-      "title": "アンロックタイムライン",
-      "subtitle": "時間経過による累積アンロック済みrFLR",
-      "historicalNote": "完全なアンロック履歴を表示します。他ですでに請求済みの金額が含まれる場合があるため、合計が上記の現在の残高を超えることがあります。",
-      "emptyTitle": "アンロック履歴はまだありません",
-      "loadingTitle": "アンロック履歴を読み込み中…",
-      "loadingHint": "ウォレットを初めて確認する際は、最大30秒かかることがあります。",
-      "couldntLoad": "アンロック履歴を読み込めませんでした。",
-      "statusLiquid": "流動",
-      "statusLocked": "ロック中",
-      "viewFullSchedule": "全スケジュールを表示（{{count}}件）"
-    },
+    "description": "rFLRのベスティング進捗、今後のアンロック、ネットワーク全体の発行状況を一か所で確認できます。",
     "network": {
-      "title": "ネットワークパルス",
-      "subtitle": "ネットワーク全体の発行状況とエポックのステータス",
+      "allocated": "割り当て済み",
+      "claimedToVesting": "ベスティングへの請求済み分",
       "couldntLoad": "ネットワークステータスを読み込めませんでした。",
-      "nextDistribution": "次回の分配",
       "countdownDays": "あと{{days}}日{{hours}}時間",
       "countdownHours": "あと{{hours}}時間",
+      "currentlyLocked": "現在ロック中",
       "epochCaption": "エポック{{epoch}}は{{date}}に開始",
+      "nextDistribution": "次回の分配",
       "poolUtilization": "インセンティブプール利用率",
-      "allocated": "割り当て済み",
       "remaining": "残り{{amount}}が未割り当て",
-      "claimedToVesting": "ベスティングへの請求済み分",
-      "withdrawnLiquid": "流動として引き出し済み",
-      "currentlyLocked": "現在ロック中"
+      "subtitle": "ネットワーク全体の発行状況とエポックのステータス",
+      "title": "ネットワークパルス",
+      "withdrawnLiquid": "流動として引き出し済み"
+    },
+    "noRflr": {
+      "description": "このウォレットはまだrFLR報酬を獲得していないため、ベスティングするものがありません。",
+      "title": "まだrFLR報酬がありません"
+    },
+    "progress": {
+      "earlyExitNoneNeeded": "ロックされているものがないため、早期エグジットのペナルティはありません。",
+      "earlyExitTitle": "早期エグジット",
+      "efficiency": "効率 {{pct}}%",
+      "fullyVested": "完全にベスト済み — アンロック待ちはありません",
+      "netPayout": "現在の正味支払額",
+      "nextUnlock": "次回のアンロック: {{date}}",
+      "nextUnlockCaption": "が流動化します",
+      "penaltyCost": "エグジットペナルティ",
+      "title": "ベスティング進捗",
+      "vestedLabel": "ベスト済み"
+    },
+    "stats": {
+      "liquidNow": "現在の流動分",
+      "lockedInVesting": "ベスティング中のロック分",
+      "totalBalance": "rFLR合計残高",
+      "vestedProgress": "ベスト済み"
+    },
+    "timeline": {
+      "couldntLoad": "アンロック履歴を読み込めませんでした。",
+      "emptyTitle": "アンロック履歴はまだありません",
+      "historicalNote": "完全なアンロック履歴を表示します。他ですでに請求済みの金額が含まれる場合があるため、合計が上記の現在の残高を超えることがあります。",
+      "loadingHint": "ウォレットを初めて確認する際は、最大30秒かかることがあります。",
+      "loadingTitle": "アンロック履歴を読み込み中…",
+      "statusLiquid": "流動",
+      "statusLocked": "ロック中",
+      "subtitle": "時間経過による累積アンロック済みrFLR",
+      "title": "アンロックタイムライン",
+      "viewFullSchedule": "全スケジュールを表示（{{count}}件）",
+      "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -606,6 +635,7 @@
       "conversationsDescription": "アカウントからFlareGPTのチャット履歴を削除します。この操作は元に戻せません。",
       "localSubtitle": "このブラウザにのみ保存されています。削除はすぐに安全に行えます。",
       "localTitle": "ローカルデータ",
+      "offline": "オフラインです。インターネットに接続する必要があります。",
       "walletCache": "ウォレットアクティビティキャッシュ",
       "walletCacheCleared": "キャッシュを削除しました",
       "walletCacheDescription": "キャッシュされた取引履歴を削除します。次回訪問時に再取得されます。"
@@ -636,6 +666,14 @@
       "account": "アカウント",
       "personalization": "パーソナライズ",
       "walletsAndData": "ウォレットとデータ"
+    },
+    "install": {
+      "button": "インストール",
+      "descriptionAvailable": "FlareGPTをインストールして、より高速なアクセスとネイティブのフルスクリーンエクスペリエンスを実現します。",
+      "descriptionInstalled": "このデバイスにはFlareGPTがインストールされています。",
+      "descriptionIOS": "Safariで[共有]アイコンをタップし、[ホーム画面に追加]をタップします。",
+      "installedBadge": "インストール済み",
+      "title": "アプリのインストール"
     },
     "links": {
       "docs": "ドックス",
@@ -725,6 +763,7 @@
       "noLimit": "好きなだけウォレットを追加できます。",
       "noSearchResults": "検索に一致するウォレットがありません。",
       "notFoundError": "このウォレットはもうウォッチリストにありません。",
+      "offline": "オフラインです。インターネットに接続する必要があります。",
       "readOnly": "èª­ã¿åãå°ç¨",
       "registrationFailed": "住所登録に失敗しました。重複しているかどうか、またはスロットが埋まっているかどうかを確認してください。",
       "remainingSlots": "残りのスロット",
@@ -765,6 +804,15 @@
     "walletConnected": "ウォレット接続済",
     "yield": "利回り"
   },
+  "staleData": {
+    "justNow": "数分前からキャッシュされたデータを表示しています",
+    "minutesAgo": "{{minutes}}分前のキャッシュデータを表示しています"
+  },
+  "update": {
+    "available": "FlareGPTの新しいバージョンが利用可能です。",
+    "reload": "再読み込み",
+    "waitingForReply": "現在の回答が完了次第、更新が適用されます。"
+  },
   "wallet": {
     "activity": {
       "charts": {
@@ -790,8 +838,11 @@
         "close": "閉じる",
         "copyFailed": "ハッシュをコピーできませんでした",
         "hashCopied": "取引ハッシュをコピーしました",
+        "linkCopied": "Explorer link copied",
         "next": "次の取引",
         "previous": "前の取引",
+        "shareTitle": "FlareGPT transaction",
+        "shareTransaction": "Share transaction",
         "timestamp": "タイムスタンプ",
         "title": "取引の詳細",
         "transactionHash": "取引ハッシュ",
@@ -885,8 +936,5 @@
       "received": "受け取り完了",
       "sent": "送信済み"
     }
-  },
-  "a11y": {
-    "skipToContent": "メインコンテンツへスキップ"
   }
 }

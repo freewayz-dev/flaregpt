@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { http, HttpResponse, type PathParams } from "msw";
 import { Routes, Route, Outlet } from "react-router";
 
@@ -122,5 +122,74 @@ describe("Wallets — signed-in duplicate error disambiguation", () => {
     expect(
       screen.queryByText("This address is already on your watchlist."),
     ).not.toBeInTheDocument();
+  });
+});
+
+// A signed-in wallet's add/remove hit the real watchlist API
+// (useWatchlistQueries.ts); a guest's are purely local (addTrackedWallet/
+// removeTrackedWallet) — offline must only block the former. This is the
+// exact distinction `offlineBlocked = hasSession && !isOnline` in
+// Wallets.tsx exists to encode; these tests pin both halves of it, not
+// just "offline disables things."
+describe("Wallets — offline", () => {
+  const originalOnLine = window.navigator.onLine;
+
+  afterEach(() => {
+    Object.defineProperty(window.navigator, "onLine", { value: originalOnLine, configurable: true });
+  });
+
+  it("a guest can still remove a tracked wallet while offline — it's a local-only action", async () => {
+    useWalletHubStore.setState({
+      trackedWallets: [{ address: TEST_ADDRESSES.watchlist, label: "My Watchlist Wallet" }],
+    });
+    Object.defineProperty(window.navigator, "onLine", { value: false, configurable: true });
+
+    renderWallets();
+    expect(await screen.findByText("My Watchlist Wallet")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Remove" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Confirm remove?" }));
+
+    await waitFor(() =>
+      expect(screen.queryByText("My Watchlist Wallet")).not.toBeInTheDocument(),
+    );
+  });
+
+  it("a signed-in user's Add Wallet submit is disabled while offline, with no network call attempted", async () => {
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+    let addWasCalled = false;
+    server.use(
+      http.post<PathParams>(`${API}/api/v1/watchlist`, () => {
+        addWasCalled = true;
+        return HttpResponse.json({}, { status: 201 });
+      }),
+    );
+    Object.defineProperty(window.navigator, "onLine", { value: false, configurable: true });
+
+    renderWallets();
+    await screen.findByText("Add Watchlist Portfolio Account");
+
+    expect(screen.getByRole("button", { name: /Add Wallet|Offline/i })).toBeDisabled();
+    expect(screen.getByText("You're offline. This needs an internet connection.")).toBeInTheDocument();
+    expect(addWasCalled).toBe(false);
+  });
+
+  it("a signed-in user's remove button is disabled while offline", async () => {
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+    server.use(
+      http.get(`${API}/api/v1/watchlist`, () =>
+        HttpResponse.json({
+          wallets: [{ address: TEST_ADDRESSES.watchlist, nickname: "Signed-in Watchlist Wallet" }],
+        }),
+      ),
+    );
+
+    renderWallets();
+    expect(await screen.findByText("Signed-in Watchlist Wallet")).toBeInTheDocument();
+
+    Object.defineProperty(window.navigator, "onLine", { value: false, configurable: true });
+    fireEvent(window, new Event("offline"));
+
+    expect(await screen.findByTitle("You're offline. This needs an internet connection.")).toBeDisabled();
   });
 });

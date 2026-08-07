@@ -1,0 +1,52 @@
+import { describe, it, expect, beforeEach } from "vitest";
+
+import { useUIStore, applyThemeColorMeta } from "@/store/useUIStore";
+
+function themeColorContent() {
+  return document.querySelector('meta[name="theme-color"]')?.getAttribute("content");
+}
+
+describe("applyThemeColorMeta", () => {
+  beforeEach(() => {
+    document.head.querySelectorAll('meta[name="theme-color"]').forEach((el) => el.remove());
+    const meta = document.createElement("meta");
+    meta.setAttribute("name", "theme-color");
+    meta.setAttribute("content", "#E62058");
+    document.head.appendChild(meta);
+  });
+
+  it("matches DashboardLayout's own dark surface color", () => {
+    applyThemeColorMeta(true);
+    expect(themeColorContent()).toBe("#101115");
+  });
+
+  it("matches DashboardLayout's own light surface color", () => {
+    applyThemeColorMeta(false);
+    expect(themeColorContent()).toBe("#F0F4F9");
+  });
+
+  it("does nothing (doesn't throw) if the meta tag isn't present", () => {
+    document.head.querySelectorAll('meta[name="theme-color"]').forEach((el) => el.remove());
+    expect(() => applyThemeColorMeta(true)).not.toThrow();
+  });
+});
+
+describe("useUIStore.setAppearance — theme-color side effect", () => {
+  beforeEach(() => {
+    document.head.querySelectorAll('meta[name="theme-color"]').forEach((el) => el.remove());
+    const meta = document.createElement("meta");
+    meta.setAttribute("name", "theme-color");
+    meta.setAttribute("content", "#E62058");
+    document.head.appendChild(meta);
+  });
+
+  it("updates theme-color to the dark surface when switching to dark mode", () => {
+    useUIStore.getState().setAppearance("dark");
+    expect(themeColorContent()).toBe("#101115");
+  });
+
+  it("updates theme-color to the light surface when switching to light mode", () => {
+    useUIStore.getState().setAppearance("light");
+    expect(themeColorContent()).toBe("#F0F4F9");
+  });
+});

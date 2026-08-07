@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "跳到主内容"
+  },
   "comingSoon": {
     "badge": "敬请期待",
     "description": "我们正在构建此功能。请稍后再回来查看。"
@@ -24,6 +27,7 @@
     "install": "安装",
     "installHint": "仍然看不到您的钱包？刷新页面可能会有帮助。",
     "mobileHint": "在移动设备上，在钱包的内置浏览器中打开FlareGPT ，以获得最佳连接体验。扫描二维码时，请使用您钱包应用自带的扫描功能，而不是手机相机，以获得更可靠的连接。",
+    "offline": "您处于离线状态。连接钱包需要连接互联网。",
     "recommended": "推荐AI",
     "refresh": "刷新",
     "subtitle": "选择您的首选钱包以连接到Flare网络。",
@@ -114,6 +118,9 @@
     },
     "description": "比较收益策略，跟踪您在 MXRPY、Sceptre、Firelight 和 Spectra 金库中的持仓。",
     "explorer": {
+      "linkCopied": "Link copied",
+      "shareFailed": "Couldn't share this protocol",
+      "shareProtocol": "Share this protocol",
       "subtitle": "选择一个协议以查看您的持仓和详情",
       "title": "协议浏览器"
     },
@@ -222,7 +229,10 @@
       "copyFailed": "无法复制地址",
       "multisigNote": "由多重签名钱包保护",
       "qrTitle": "{{symbol}} 捐赠钱包地址的二维码",
+      "shareAddress": "Share Address",
+      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "点击复制",
+      "tapToShare": "Tap to share",
       "viewOnExplorer": "在 {{explorer}} 上查看"
     },
     "received": {
@@ -258,6 +268,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT 可能会出错。在采取重要行动前请核实相关信息。",
+      "offlinePlaceholder": "您已离线—当前无法发送消息",
       "placeholder": "向 FlareGPT 提问...",
       "send": "发送",
       "stop": "停止生成"
@@ -281,11 +292,12 @@
       "close": "关闭",
       "delete": "删除",
       "empty": "暂无对话",
-      "loading": "正在加载对话…",
       "loadFailed": "无法加载您的对话。",
+      "loading": "正在加载对话…",
       "moreActions": "更多操作",
       "newChat": "新对话",
       "noResults": "没有与您的搜索匹配的对话",
+      "offline": "您处于离线状态。这需要互联网连接。",
       "openButton": "历史记录",
       "pin": "置顶",
       "pinLimitReached": "最多可置顶 {{count}} 个对话",
@@ -333,49 +345,49 @@
     "terms": "条款与免责声明"
   },
   "ftsoRewards": {
-    "description": "在一个地方跟踪您的 FTSO 委托奖励、奖励增速和提供商分配情况。",
     "connectToSee": "连接或选择一个钱包以查看其 FTSO 奖励。",
     "couldntLoad": "无法加载您的 FTSO 奖励。",
-    "stats": {
-      "wflrBalance": "WFLR 余额",
-      "unclaimed": "未领取奖励",
-      "hourlyEarning": "预计每小时收益",
-      "targetEpochYield": "本纪元目标收益率"
-    },
-    "velocity": {
-      "title": "奖励增速",
-      "methodLive": "实时估算",
-      "methodHistorical": "历史估算",
-      "inactiveTitle": "当前无收益",
-      "inactiveDescription": "此钱包尚未委托 WFLR，因此没有可估算的奖励增速。",
-      "perHour": "每小时",
-      "perDay": "每天",
-      "thisEpoch": "本纪元",
-      "sourceEpoch": "根据第 {{epoch}} 纪元的网络数据估算"
-    },
     "delegations": {
-      "title": "当前委托",
       "count_one": "{{count}} 个提供商",
       "count_other": "{{count}} 个提供商",
+      "emptyDescription": "将您的 WFLR 委托给 FTSO 数据提供商以开始赚取奖励。",
       "emptyTitle": "暂无委托",
-      "emptyDescription": "将您的 WFLR 委托给 FTSO 数据提供商以开始赚取奖励。"
+      "title": "当前委托"
     },
+    "description": "在一个地方跟踪您的 FTSO 委托奖励、奖励增速和提供商分配情况。",
     "epochs": {
-      "title": "未领取的纪元",
-      "subtitle": "按纪元列出的待领取奖励",
-      "emptyTitle": "没有待领取项目",
       "emptyDescription": "一切都已更新——目前没有待处理的纪元奖励。",
+      "emptyTitle": "没有待领取项目",
       "epochLabel": "第 {{id}} 纪元",
+      "subtitle": "按纪元列出的待领取奖励",
+      "title": "未领取的纪元",
       "viewFullLedger_one": "查看完整台账（{{count}} 条）",
       "viewFullLedger_other": "查看完整台账（{{count}} 条）"
     },
     "providers": {
-      "title": "FTSO 提供商",
-      "description": "提供商排名连接后，可按表现和费用比较数据提供商。"
+      "description": "提供商排名连接后，可按表现和费用比较数据提供商。",
+      "title": "FTSO 提供商"
+    },
+    "stats": {
+      "hourlyEarning": "预计每小时收益",
+      "targetEpochYield": "本纪元目标收益率",
+      "unclaimed": "未领取奖励",
+      "wflrBalance": "WFLR 余额"
     },
     "validators": {
-      "title": "质押验证者排名",
-      "description": "质押排名连接后，可查看表现最佳的验证者。"
+      "description": "质押排名连接后，可查看表现最佳的验证者。",
+      "title": "质押验证者排名"
+    },
+    "velocity": {
+      "inactiveDescription": "此钱包尚未委托 WFLR，因此没有可估算的奖励增速。",
+      "inactiveTitle": "当前无收益",
+      "methodHistorical": "历史估算",
+      "methodLive": "实时估算",
+      "perDay": "每天",
+      "perHour": "每小时",
+      "sourceEpoch": "根据第 {{epoch}} 纪元的网络数据估算",
+      "thisEpoch": "本纪元",
+      "title": "奖励增速"
     }
   },
   "gasSniperStatus": {
@@ -457,15 +469,22 @@
     "stillNeedHelp": "仍然需要帮助？",
     "supportDesc": "目前联系我们最快的方式是通过 X。邮箱与 Telegram 支持即将上线。"
   },
+  "install": {
+    "bannerDescriptionAndroid": "将FlareGPT添加到主屏幕，以获得更快的访问和全屏体验。",
+    "bannerDescriptionIOS": "轻触“共享” ，然后轻触“添加到主屏幕” ，即可快速访问。",
+    "dismiss": "解散",
+    "installButton": "安装",
+    "installing": "安装…"
+  },
   "loops": {
     "description": "自动后台服务，监控网络并代表您采取行动。",
     "gasSniper": {
       "active": "已启用",
       "approveCta": "在 Coston2 上批准",
+      "approved": "已批准。您现在可以开启 Gas Sniper。",
       "approveDescription": "此钱包需要先在 Coston2 上批准 Flare 的 Gas Sniper 执行者作为领取执行者。这是一次性的链上批准。您的钱包可能会要求您切换到或添加 Coston2 网络。",
       "approveFailed": "无法完成批准，请重试。",
       "approveTitle": "需要一次性批准",
-      "approved": "已批准。您现在可以开启 Gas Sniper。",
       "approving": "请在钱包中确认…",
       "confirmingApproval": "确认中…",
       "description": "在燃料费降到足够低时自动领取您的 FTSO 奖励，像浏览器扩展一样在后台静默运行，直到您将其关闭。",
@@ -475,6 +494,7 @@
       "inactive": "未启用",
       "needsApproval": "需要批准",
       "needsReconnect": "钱包已断开连接",
+      "offline": "这需要互联网连接。",
       "reconnectDescription": "请重新连接此钱包以完成一次性链上批准。",
       "reconnectTitle": "重新连接以继续",
       "signInHint": "使用您的钱包登录以为其开启 Gas Sniper。",
@@ -500,71 +520,80 @@
     "hideBalances": "隐藏余额",
     "mainnetStatus": "Flare 主网",
     "moreOptions": "更多选项",
+    "offline": "线下",
     "openMenu": "打开菜单",
     "primaryWalletSection": "主钱包",
+    "shareAddress": "Share address",
+    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "显示余额",
     "signIn": "登录",
     "signInBackgroundHint": "您连接的钱包需要登录",
     "signingIn": "正在登录…",
+    "signInOffline": "登录需要互联网连接。",
     "signInPrompt": "签署一条消息以验证此钱包并继续。",
     "watchlistSection": "关注列表 ({{current}}/{{max}})"
   },
   "offline": {
-    "message": "您已离线，我们将自动重新连接。",
-    "backOnline": "已恢复连接"
+    "backOnline": "已恢复连接",
+    "message": "您已离线，我们将自动重新连接。"
+  },
+  "onboarding": {
+    "welcomeMessage": "欢迎使用FlareGPT。连接钱包以查看您的投资组合，或向AI助手询问任何事情。"
   },
   "rflrVesting": {
-    "description": "在一个地方跟踪您的 rFLR 归属进度、即将到来的解锁以及全网排放情况。",
     "connectToSee": "连接或选择一个钱包以查看其归属状态。",
     "couldntLoad": "无法加载您的归属数据。",
-    "noRflr": {
-      "title": "暂无 rFLR 奖励",
-      "description": "此钱包尚未获得任何 rFLR 奖励，因此目前没有可归属的内容。"
-    },
-    "stats": {
-      "totalBalance": "rFLR 总余额",
-      "liquidNow": "当前可流通",
-      "lockedInVesting": "归属中锁定",
-      "vestedProgress": "已归属"
-    },
-    "progress": {
-      "title": "归属进度",
-      "vestedLabel": "已归属",
-      "nextUnlock": "下次解锁：{{date}}",
-      "nextUnlockCaption": "将变为可流通",
-      "fullyVested": "已完全归属 — 没有剩余待解锁部分",
-      "earlyExitTitle": "提前退出",
-      "earlyExitNoneNeeded": "没有任何锁定部分，因此提前退出没有罚金。",
-      "efficiency": "效率 {{pct}}%",
-      "netPayout": "当前净支付额",
-      "penaltyCost": "退出罚金"
-    },
-    "timeline": {
-      "title": "解锁时间线",
-      "subtitle": "随时间累计解锁的 rFLR",
-      "historicalNote": "显示完整的解锁历史记录——可能包含已在别处领取的金额，因此总计可能超过上方显示的当前余额。",
-      "emptyTitle": "暂无解锁记录",
-      "loadingTitle": "正在加载解锁记录…",
-      "loadingHint": "首次检查某个钱包时，这可能需要长达 30 秒。",
-      "couldntLoad": "无法加载解锁记录。",
-      "statusLiquid": "可流通",
-      "statusLocked": "已锁定",
-      "viewFullSchedule": "查看完整日程（{{count}} 条）"
-    },
+    "description": "在一个地方跟踪您的 rFLR 归属进度、即将到来的解锁以及全网排放情况。",
     "network": {
-      "title": "网络脉动",
-      "subtitle": "全网排放量与纪元状态",
+      "allocated": "已分配",
+      "claimedToVesting": "已认领至归属",
       "couldntLoad": "无法加载网络状态。",
-      "nextDistribution": "下次分发",
       "countdownDays": "{{days}} 天 {{hours}} 小时后",
       "countdownHours": "{{hours}} 小时后",
+      "currentlyLocked": "当前锁定",
       "epochCaption": "第 {{epoch}} 纪元开始于 {{date}}",
+      "nextDistribution": "下次分发",
       "poolUtilization": "激励池使用率",
-      "allocated": "已分配",
       "remaining": "还剩 {{amount}} 待分配",
-      "claimedToVesting": "已认领至归属",
-      "withdrawnLiquid": "已提现为可流通资产",
-      "currentlyLocked": "当前锁定"
+      "subtitle": "全网排放量与纪元状态",
+      "title": "网络脉动",
+      "withdrawnLiquid": "已提现为可流通资产"
+    },
+    "noRflr": {
+      "description": "此钱包尚未获得任何 rFLR 奖励，因此目前没有可归属的内容。",
+      "title": "暂无 rFLR 奖励"
+    },
+    "progress": {
+      "earlyExitNoneNeeded": "没有任何锁定部分，因此提前退出没有罚金。",
+      "earlyExitTitle": "提前退出",
+      "efficiency": "效率 {{pct}}%",
+      "fullyVested": "已完全归属 — 没有剩余待解锁部分",
+      "netPayout": "当前净支付额",
+      "nextUnlock": "下次解锁：{{date}}",
+      "nextUnlockCaption": "将变为可流通",
+      "penaltyCost": "退出罚金",
+      "title": "归属进度",
+      "vestedLabel": "已归属"
+    },
+    "stats": {
+      "liquidNow": "当前可流通",
+      "lockedInVesting": "归属中锁定",
+      "totalBalance": "rFLR 总余额",
+      "vestedProgress": "已归属"
+    },
+    "timeline": {
+      "couldntLoad": "无法加载解锁记录。",
+      "emptyTitle": "暂无解锁记录",
+      "historicalNote": "显示完整的解锁历史记录——可能包含已在别处领取的金额，因此总计可能超过上方显示的当前余额。",
+      "loadingHint": "首次检查某个钱包时，这可能需要长达 30 秒。",
+      "loadingTitle": "正在加载解锁记录…",
+      "statusLiquid": "可流通",
+      "statusLocked": "已锁定",
+      "subtitle": "随时间累计解锁的 rFLR",
+      "title": "解锁时间线",
+      "viewFullSchedule": "查看完整日程（{{count}} 条）",
+      "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -606,6 +635,7 @@
       "conversationsDescription": "从您的账户中清除 FlareGPT 聊天记录。此操作无法撤销。",
       "localSubtitle": "仅存储在此浏览器中。清除它是即时和安全的。",
       "localTitle": "本地数据",
+      "offline": "您处于离线状态。这需要互联网连接。",
       "walletCache": "钱包活动缓存",
       "walletCacheCleared": "缓存已清除",
       "walletCacheDescription": "清除缓存的交易记录。下次访问时将重新获取。"
@@ -636,6 +666,14 @@
       "account": "账户",
       "personalization": "个性化",
       "walletsAndData": "钱包与数据"
+    },
+    "install": {
+      "button": "安装",
+      "descriptionAvailable": "安装FlareGPT以获得更快的访问速度和本机全屏体验。",
+      "descriptionInstalled": "此设备上安装了FlareGPT。",
+      "descriptionIOS": "轻触Safari中的共享图标，然后轻触“添加到主屏幕”。",
+      "installedBadge": "已安装",
+      "title": "安装模块"
     },
     "links": {
       "docs": "文档批注",
@@ -725,6 +763,7 @@
       "noLimit": "可添加任意数量的钱包。",
       "noSearchResults": "没有与您的搜索匹配的钱包。",
       "notFoundError": "该钱包已不在您的关注列表中。",
+      "offline": "您处于离线状态。这需要互联网连接。",
       "readOnly": "只读",
       "registrationFailed": "地址注册失败。请检查地址是否重复或是否已填充空位。",
       "remainingSlots": "剩余槽位",
@@ -765,6 +804,15 @@
     "walletConnected": "钱包已连接",
     "yield": "收益率"
   },
+  "staleData": {
+    "justNow": "显示刚才的缓存数据",
+    "minutesAgo": "显示{{minutes}}分钟前的缓存数据"
+  },
+  "update": {
+    "available": "FlareGPT有新版本可用。",
+    "reload": "重新加载",
+    "waitingForReply": "您当前的回复完成后，系统将立即更新。"
+  },
   "wallet": {
     "activity": {
       "charts": {
@@ -790,8 +838,11 @@
         "close": "关闭",
         "copyFailed": "无法复制哈希",
         "hashCopied": "交易哈希已复制",
+        "linkCopied": "Explorer link copied",
         "next": "下一笔交易",
         "previous": "上一笔交易",
+        "shareTitle": "FlareGPT transaction",
+        "shareTransaction": "Share transaction",
         "timestamp": "时间戳",
         "title": "交易详情",
         "transactionHash": "交易哈希",
@@ -885,8 +936,5 @@
       "received": "已发放",
       "sent": "发件箱"
     }
-  },
-  "a11y": {
-    "skipToContent": "跳到主内容"
   }
 }

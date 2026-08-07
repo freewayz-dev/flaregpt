@@ -38,6 +38,8 @@ export default function CodeBlock({ language, children }: CodeBlockProps) {
         <button
           type="button"
           onClick={handleCopy}
+          aria-label={t("flrgpt.actions.copy")}
+          title={t("flrgpt.actions.copy")}
           className="flex items-center gap-1 text-ink-muted hover:text-ink-primary transition-colors cursor-pointer"
         >
           {copied ? (

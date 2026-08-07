@@ -4,6 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ErrorBoundary } from "react-error-boundary";
 import { useQueryClient, type QueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
@@ -12,7 +13,10 @@ import FlareWidget from "@/components/common/FlareWidget";
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import ErrorFallback from "@/components/common/ErrorFallback";
 import OfflineBanner from "@/components/common/OfflineBanner";
+import StaleDataBanner from "@/components/common/StaleDataBanner";
+import InstallAppBanner from "@/components/common/InstallAppBanner";
 import { useWalletActivityNotifier } from "@/hooks/useWalletActivityNotifier";
+import { useUIStore } from "@/store/useUIStore";
 import { ROUTES } from "@/config/routes";
 
 // The shape passed to every routed page via <Outlet context={...}> below —
@@ -88,6 +92,42 @@ export default function DashboardLayout() {
   // already on the dedicated FlareGPT page would be a redundant, slightly
   // confusing affordance pointing at the thing you're already looking at.
   const isFlareGptPage = location.pathname.startsWith(ROUTES.flareGpt);
+
+  // Lightweight first-launch onboarding: one dismissible toast, shown once
+  // ever per browser, not a multi-step tour — the roadmap explicitly calls
+  // for "avoid... unnecessary onboarding," and this app's own dashboard is
+  // already self-explanatory enough (cards, a sidebar, an obvious "Connect
+  // Wallet" control) that anything heavier would be explaining UI that
+  // doesn't need explaining. `hasSeenWelcome` persists in useUIStore, so a
+  // page refresh or a later session never re-shows it.
+  const hasSeenWelcome = useUIStore((state) => state.hasSeenWelcome);
+  useEffect(() => {
+    if (hasSeenWelcome) return;
+    toast(t("onboarding.welcomeMessage"), { autoClose: 8000 });
+    useUIStore.getState().markWelcomeSeen();
+    // Deliberately fires once on mount only, regardless of hasSeenWelcome
+    // changing identity afterward — re-running this on every state change
+    // would defeat the entire "once ever" point.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // React Router's own <ScrollRestoration> needs a data router
+  // (createBrowserRouter) — this app deliberately stays on plain
+  // <BrowserRouter>/<Routes> (see the React Router v8 migration plan; not
+  // revisiting that architecture choice for this), so there's no built-in
+  // equivalent. It also wouldn't apply here even with one: that component
+  // restores `window`'s own scroll position, but this app's actual scroll
+  // container is `main` itself (`overflow-y-auto` — the root shell is a
+  // fixed `h-dvh`, `window` never scrolls at all here). Every other page
+  // (not FlareGPT's own `main`, which is `overflow-hidden` — MessageList
+  // scrolls internally instead, unrelated to route changes) previously
+  // stayed wherever it was scrolled to when you navigated to a genuinely
+  // different page, which is a real, jarring "not a native app" bug this
+  // fixes directly: landing on a new page already scrolled halfway down.
+  const mainScrollRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    mainScrollRef.current?.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const [flareWidgetOpen, setFlareWidgetOpen] = useState(false);
   // Now that mobile relies on the widget as its *only* entry point (the
@@ -167,8 +207,23 @@ export default function DashboardLayout() {
   const openWalletModal = () => setWalletModalOpen(true);
 
   return (
-    <div className="h-dvh overflow-hidden bg-[#F0F4F9] dark:bg-[#101115] flex flex-col">
+    <div className="h-dvh overflow-hidden bg-[#F0F4F9] dark:bg-[#101115] flex flex-col pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
+      {/* Padding, not applied per-element — whichever row ends up first
+          (a banner above, or Navbar's own header if none are showing)
+          shifts down together below a device's notch/status-bar cutout.
+          The background here already fills the whole viewport (`h-dvh`)
+          regardless, so this is purely about not letting *content* sit
+          under the cutout, not a color/gap fix. Every `fixed`-positioned
+          element elsewhere (the mobile menu, its backdrop, the FlareGPT
+          FAB, Sidebar's mobile drawer) is anchored to the real viewport,
+          not this padded box, so each carries its own matching
+          `env(safe-area-inset-*)` rather than inheriting this. Bottom
+          isn't included here on purpose: Composer.tsx and the FAB already
+          each apply their own `safe-area-inset-bottom`, and adding a
+          third here would stack a redundant gap on top of theirs. */}
       <OfflineBanner />
+      <StaleDataBanner />
+      <InstallAppBanner />
       {/* `transform-gpu` (a pre-existing, GPU-compositing hint that isn't
           animating anything on this specific box) used to sit here. A CSS
           `transform` on any value other than `none` makes its element the
@@ -198,7 +253,7 @@ export default function DashboardLayout() {
           skip-link pattern), so sighted mouse users never see it. */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-[calc(0.5rem+env(safe-area-inset-top))] focus:left-[calc(0.5rem+env(safe-area-inset-left))] focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-white"
       >
         {t("a11y.skipToContent")}
       </a>
@@ -259,7 +314,7 @@ export default function DashboardLayout() {
               </div>
             </main>
           ) : (
-            <main id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto overscroll-contain focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:-outline-offset-2">
+            <main ref={mainScrollRef} id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto overscroll-contain focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:-outline-offset-2">
               <div className="flex min-h-full flex-col md:p-6 p-4">
                 <div className="flex-1">
                   <PageErrorBoundary pathname={location.pathname} queryClient={queryClient}>

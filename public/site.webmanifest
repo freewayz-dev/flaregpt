@@ -1,21 +1,55 @@
 {
+  "id": "/",
   "name": "FlareGPT",
   "short_name": "FlareGPT",
   "description": "AI-powered dashboard for the Flare Network: wallet tracking, FTSO rewards, governance, and an AI assistant that understands your portfolio.",
-  "start_url": "/app",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#101115",
   "theme_color": "#E62058",
   "icons": [
     {
-      "src": "/favicon-32.png",
-      "sizes": "32x32",
-      "type": "image/png"
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ask FlareGPT",
+      "short_name": "FlareGPT",
+      "description": "Chat with the AI assistant about your portfolio",
+      "url": "/app/flare-gpt",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Wallet Activity",
+      "short_name": "Wallet",
+      "description": "View wallet balances and transaction history",
+      "url": "/app/wallet",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "FTSO Rewards",
+      "short_name": "Rewards",
+      "description": "Track and claim FTSO delegation rewards",
+      "url": "/app/rewards",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
 }

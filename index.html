@@ -19,6 +19,18 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- iOS Safari never reads display/theme_color/name from the web
+         manifest for its own "Add to Home Screen" behavior — these
+         Apple-specific tags are the only way to get a real standalone
+         launch (no Safari chrome), a themed status bar, and a clean home-
+         screen title there. `black-translucent` lets FlareGPT's own dark
+         background_color/theme_color show through the status bar area
+         instead of Safari drawing a default opaque one over it. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="FlareGPT" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
     <!-- SEO — production domain is https://www.flaregpt.io (canonical,
          og:url, og:image, twitter:image, and both JSON-LD blocks below all
          point here). This is a client-rendered SPA (see main.tsx — one
@@ -73,7 +85,15 @@
     <meta name="twitter:image" content="https://www.flaregpt.io/og-image.png" />
     <meta name="twitter:image:alt" content="FlareGPT logo" />
 
-    <meta name="theme-color" content="#E62058" />
+    <!-- Kept in sync with the app's own resolved light/dark surface color
+         at runtime (see public/theme-init.js and useUIStore.ts's
+         setAppearance) rather than left as a fixed brand color — a native
+         app's status bar/task-switcher chrome blends into its current
+         background, it doesn't stay tinted brand-pink regardless of
+         theme. This static value (matching the manifest's own
+         background_color) is only what a crawler or the very first
+         instant before theme-init.js runs ever sees. -->
+    <meta name="theme-color" content="#101115" />
 
     <!-- Organization + WebSite structured data — static and site-wide, so
          it lives here rather than in a component; FAQPage structured data
@@ -126,20 +146,31 @@
       }
     </script>
 
-    <!-- Google Font Inter -->
+    <!-- Google Font Inter — weight list trimmed to what's actually used
+         (confirmed via `grep` across every `font-*` Tailwind utility in
+         src/, not guessed): 400 is the implicit default for any text with
+         no explicit weight class, plus 500/600/700/900 are the only
+         `font-medium`/`font-semibold`/`font-bold`/`font-black` weights
+         this app ever applies. The previous request pulled all 9 weights
+         100-900 — every one of 100/200/300/800 was dead weight on every
+         page load. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
 
     <!-- Plus Jakarta Sans — display face for large headings only; Inter
          above remains the body/UI face everywhere. Served from Google
          Fonts (same host as Inter above) rather than a boutique foundry's
-         own CDN, so it isn't a second, less-proven point of failure. -->
+         own CDN, so it isn't a second, less-proven point of failure.
+         Weights trimmed the same way as Inter above: every `font-display`
+         heading in the app pairs with either `font-semibold` or
+         `font-bold` (grep-confirmed), never `font-medium` — 500 was
+         requested but never actually rendered. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -182,74 +213,14 @@
 
     <script type="module" src="/src/main.tsx"></script>
 
-    <script>
-      (function () {
-        const root = document.documentElement;
-        // Mirrors useUIStore's own onRehydrateStorage decision exactly
-        // (same storage key, same hasThemeOverride/system-preference
-        // fallback) — this used to read a separate, dead "theme" key that
-        // nothing in the app actually wrote to anymore, so this script's
-        // one job (apply the right theme before first paint) was being
-        // done from stale data: on a dark-system visitor with no saved
-        // override, it decided "light" here, then zustand's rehydration
-        // moments later decided "dark" from the real data and flipped it —
-        // a visible flash on every such load. Reading the real key here
-        // means both decisions agree from the start.
-        var isDark = false;
-        try {
-          var raw = localStorage.getItem("flaregpt_ui_preferences");
-          var state = raw && JSON.parse(raw).state;
-          isDark = state && state.hasThemeOverride
-            ? !!state.darkMode
-            : window.matchMedia("(prefers-color-scheme: dark)").matches;
-        } catch (e) {
-          isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        }
-
-        if (isDark) root.classList.add("dark");
-        else root.classList.remove("dark");
-
-        root.classList.add("no-transition");
-
-        // Removing this only needs the initial paint to have settled, not a
-        // full `load` (which waits on every sub-resource — fonts included —
-        // finishing). `load` can legitimately never fire: a slow/stalled
-        // font request, or the tab being backgrounded/frozen mid-fetch
-        // (exactly what happens if a phone gets locked or the browser is
-        // switched away from right after opening this page), pauses or
-        // cancels that fetch indefinitely. Since `.no-transition *` applies
-        // `transition: none !important` to *every element in the document*
-        // and `<html>` is never recreated by client-side navigation, a
-        // `load` that never fires means every CSS transition in the app —
-        // every drawer, modal, and hover state — silently stops animating
-        // for the rest of that tab's life, on every page, until a hard
-        // reload. `DOMContentLoaded` (or a flat timeout if that's already
-        // passed) removes the dependency on external resources entirely,
-        // and the outer timeout is an unconditional last-resort fallback so
-        // this can never get stuck no matter what does or doesn't fire.
-        function clearNoTransition() {
-          root.classList.remove("no-transition");
-        }
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", () => setTimeout(clearNoTransition, 50));
-        } else {
-          setTimeout(clearNoTransition, 50);
-        }
-        setTimeout(clearNoTransition, 2000);
-
-        // A backgrounded/frozen tab can also come back via the
-        // back-forward cache instead of a real reload — the browser
-        // restores the exact JS/DOM state it froze, including whatever
-        // this class was at the moment it froze, and fires none of the
-        // events above again (no DOMContentLoaded, no load). `pageshow`
-        // is what *does* fire on a bfcache restore (`event.persisted`
-        // is true for it specifically), so this is the one path capable
-        // of reviving a stuck class that every other listener here
-        // can't reach.
-        window.addEventListener("pageshow", (event) => {
-          if (event.persisted) clearNoTransition();
-        });
-      })();
-    </script>
+    <!-- Same-origin external file, not inline — moved out specifically so
+         the Content-Security-Policy's `script-src` can be `'self'` alone,
+         with no `'unsafe-inline'` and no hash pinned against this script's
+         exact formatting (see vercel.json's `headers` config, and
+         public/theme-init.js's own comment for why). Loaded without
+         async/defer, so it still runs synchronously at this exact point in
+         the document — identical timing to the inline version it
+         replaces. -->
+    <script src="/theme-init.js"></script>
   </body>
 </html>

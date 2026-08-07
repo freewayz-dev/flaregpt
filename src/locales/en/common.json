@@ -27,6 +27,7 @@
     "install": "Install",
     "installHint": "Still don't see your wallet? Refreshing the page may help.",
     "mobileHint": "On mobile, open FlareGPT in your wallet's built-in browser for the best connection experience. When scanning a QR code, use your wallet app's own scanner rather than your phone's camera for the most reliable connection.",
+    "offline": "You're offline. Connecting a wallet needs an internet connection.",
     "recommended": "Recommended",
     "refresh": "Refresh",
     "subtitle": "Select your preferred wallet to connect to the Flare Network.",
@@ -117,6 +118,9 @@
     },
     "description": "Compare yield strategies and track your positions across MXRPY, Sceptre, Firelight, and Spectra vaults.",
     "explorer": {
+      "linkCopied": "Link copied",
+      "shareFailed": "Couldn't share this protocol",
+      "shareProtocol": "Share this protocol",
       "subtitle": "Select a protocol to view your position and details",
       "title": "Protocol Explorer"
     },
@@ -225,7 +229,10 @@
       "copyFailed": "Couldn't copy address",
       "multisigNote": "Secured by a multi-signature wallet",
       "qrTitle": "QR code for the {{symbol}} donation wallet address",
+      "shareAddress": "Share Address",
+      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Tap to copy",
+      "tapToShare": "Tap to share",
       "viewOnExplorer": "View on {{explorer}}"
     },
     "received": {
@@ -261,6 +268,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT can make mistakes. Verify important information before acting on it.",
+      "offlinePlaceholder": "You're offline — messages can't be sent right now",
       "placeholder": "Ask FlareGPT...",
       "send": "Send",
       "stop": "Stop generating"
@@ -284,11 +292,12 @@
       "close": "Close",
       "delete": "Delete",
       "empty": "No conversations yet",
-      "loading": "Loading conversation…",
       "loadFailed": "Couldn't load your conversations.",
+      "loading": "Loading conversation…",
       "moreActions": "More actions",
       "newChat": "New Chat",
       "noResults": "No conversations match your search",
+      "offline": "You're offline. This needs an internet connection.",
       "openButton": "History",
       "pin": "Pin",
       "pinLimitReached": "You can pin up to {{count}} conversations",
@@ -336,49 +345,49 @@
     "terms": "Terms & Disclaimer"
   },
   "ftsoRewards": {
-    "description": "Track your FTSO delegation rewards, reward velocity, and provider allocations in one place.",
     "connectToSee": "Connect or select a wallet to see its FTSO rewards.",
     "couldntLoad": "Couldn't load your FTSO rewards.",
-    "stats": {
-      "wflrBalance": "WFLR Balance",
-      "unclaimed": "Unclaimed Rewards",
-      "hourlyEarning": "Est. Hourly Earning",
-      "targetEpochYield": "This Epoch's Target Yield"
-    },
-    "velocity": {
-      "title": "Reward Velocity",
-      "methodLive": "Live Estimate",
-      "methodHistorical": "Historical Estimate",
-      "inactiveTitle": "Not Currently Earning",
-      "inactiveDescription": "This wallet isn't delegating WFLR yet, so there's no reward velocity to estimate.",
-      "perHour": "Per Hour",
-      "perDay": "Per Day",
-      "thisEpoch": "This Epoch",
-      "sourceEpoch": "Estimated from epoch {{epoch}}'s network data"
-    },
     "delegations": {
-      "title": "Active Delegations",
       "count_one": "{{count}} Provider",
       "count_other": "{{count}} Providers",
+      "emptyDescription": "Delegate your WFLR to an FTSO data provider to start earning rewards.",
       "emptyTitle": "No Active Delegations",
-      "emptyDescription": "Delegate your WFLR to an FTSO data provider to start earning rewards."
+      "title": "Active Delegations"
     },
+    "description": "Track your FTSO delegation rewards, reward velocity, and provider allocations in one place.",
     "epochs": {
-      "title": "Unclaimed Epochs",
-      "subtitle": "Rewards waiting to be claimed, by epoch",
-      "emptyTitle": "Nothing Unclaimed",
       "emptyDescription": "All caught up — no pending epoch rewards right now.",
+      "emptyTitle": "Nothing Unclaimed",
       "epochLabel": "Epoch {{id}}",
+      "subtitle": "Rewards waiting to be claimed, by epoch",
+      "title": "Unclaimed Epochs",
       "viewFullLedger_one": "View full ledger ({{count}} entry)",
       "viewFullLedger_other": "View full ledger ({{count}} entries)"
     },
     "providers": {
-      "title": "FTSO Providers",
-      "description": "Compare data providers by performance and fees once provider rankings are connected."
+      "description": "Compare data providers by performance and fees once provider rankings are connected.",
+      "title": "FTSO Providers"
+    },
+    "stats": {
+      "hourlyEarning": "Est. Hourly Earning",
+      "targetEpochYield": "This Epoch's Target Yield",
+      "unclaimed": "Unclaimed Rewards",
+      "wflrBalance": "WFLR Balance"
     },
     "validators": {
-      "title": "Staking Validators Ranking",
-      "description": "See top-performing validators once staking rankings are connected."
+      "description": "See top-performing validators once staking rankings are connected.",
+      "title": "Staking Validators Ranking"
+    },
+    "velocity": {
+      "inactiveDescription": "This wallet isn't delegating WFLR yet, so there's no reward velocity to estimate.",
+      "inactiveTitle": "Not Currently Earning",
+      "methodHistorical": "Historical Estimate",
+      "methodLive": "Live Estimate",
+      "perDay": "Per Day",
+      "perHour": "Per Hour",
+      "sourceEpoch": "Estimated from epoch {{epoch}}'s network data",
+      "thisEpoch": "This Epoch",
+      "title": "Reward Velocity"
     }
   },
   "gasSniperStatus": {
@@ -460,15 +469,22 @@
     "stillNeedHelp": "Still need help?",
     "supportDesc": "The fastest way to reach us right now is X. Email and Telegram support are on the way."
   },
+  "install": {
+    "bannerDescriptionAndroid": "Add FlareGPT to your home screen for faster access and a full-screen experience.",
+    "bannerDescriptionIOS": "Tap Share, then \"Add to Home Screen\" for quick access.",
+    "dismiss": "Dismiss",
+    "installButton": "Install",
+    "installing": "Installing…"
+  },
   "loops": {
     "description": "Automated background services that watch the network and act on your behalf.",
     "gasSniper": {
       "active": "Active",
       "approveCta": "Approve on Coston2",
+      "approved": "Approved. You can now turn Gas Sniper on.",
       "approveDescription": "This wallet needs to approve Flare's Gas Sniper keeper as a claim executor on Coston2 first. It's a one-time, on-chain approval. Your wallet may ask you to switch to or add the Coston2 network.",
       "approveFailed": "Couldn't complete the approval. Try again.",
       "approveTitle": "One-time approval required",
-      "approved": "Approved. You can now turn Gas Sniper on.",
       "approving": "Confirm in your wallet…",
       "confirmingApproval": "Confirming…",
       "description": "Automatically claims your FTSO rewards once gas fees drop low enough, running quietly in the background like a browser extension until you turn it off.",
@@ -478,6 +494,7 @@
       "inactive": "Inactive",
       "needsApproval": "Needs approval",
       "needsReconnect": "Wallet disconnected",
+      "offline": "This needs an internet connection.",
       "reconnectDescription": "Reconnect this wallet to finish the one-time on-chain approval.",
       "reconnectTitle": "Reconnect to continue",
       "signInHint": "Sign in with your wallet to turn Gas Sniper on for it.",
@@ -503,71 +520,80 @@
     "hideBalances": "Hide balances",
     "mainnetStatus": "Flare Mainnet",
     "moreOptions": "More options",
+    "offline": "Offline",
     "openMenu": "Open menu",
     "primaryWalletSection": "Primary Wallet",
+    "shareAddress": "Share address",
+    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Show balances",
     "signIn": "Sign In",
     "signInBackgroundHint": "Your connected wallet needs to sign in",
     "signingIn": "Signing in…",
+    "signInOffline": "Signing in needs an internet connection.",
     "signInPrompt": "Sign a message to verify this wallet and continue.",
     "watchlistSection": "Watchlist ({{current}}/{{max}})"
   },
   "offline": {
-    "message": "You're offline. We'll reconnect automatically.",
-    "backOnline": "Back online"
+    "backOnline": "Back online",
+    "message": "You're offline. Cached data is still shown, but actions that need a connection are paused."
+  },
+  "onboarding": {
+    "welcomeMessage": "Welcome to FlareGPT. Connect a wallet to see your portfolio, or ask the AI assistant anything."
   },
   "rflrVesting": {
-    "description": "Track your rFLR vesting progress, upcoming unlocks, and network-wide emissions in one place.",
     "connectToSee": "Connect or select a wallet to see its vesting status.",
     "couldntLoad": "Couldn't load your vesting data.",
-    "noRflr": {
-      "title": "No rFLR Rewards Yet",
-      "description": "This wallet hasn't earned any rFLR rewards, so there's nothing to vest yet."
-    },
-    "stats": {
-      "totalBalance": "Total rFLR Balance",
-      "liquidNow": "Liquid Now",
-      "lockedInVesting": "Locked in Vesting",
-      "vestedProgress": "Vested"
-    },
-    "progress": {
-      "title": "Vesting Progress",
-      "vestedLabel": "Vested",
-      "nextUnlock": "Next unlock on {{date}}",
-      "nextUnlockCaption": "becomes liquid",
-      "fullyVested": "Fully vested — nothing left to unlock",
-      "earlyExitTitle": "Early Exit",
-      "earlyExitNoneNeeded": "Nothing locked, so there's no penalty for exiting early.",
-      "efficiency": "{{pct}}% efficient",
-      "netPayout": "Net Payout Now",
-      "penaltyCost": "Exit Penalty"
-    },
-    "timeline": {
-      "title": "Unlock Timeline",
-      "subtitle": "Cumulative rFLR unlocked over time",
-      "historicalNote": "Full unlock history — may include amounts already claimed elsewhere, so totals can exceed your current balance above.",
-      "emptyTitle": "No unlock history yet",
-      "loadingTitle": "Loading unlock history…",
-      "loadingHint": "This can take up to 30 seconds the first time we check a wallet.",
-      "couldntLoad": "Couldn't load the unlock history.",
-      "statusLiquid": "Liquid",
-      "statusLocked": "Locked",
-      "viewFullSchedule": "View full schedule ({{count}} entries)"
-    },
+    "description": "Track your rFLR vesting progress, upcoming unlocks, and network-wide emissions in one place.",
     "network": {
-      "title": "Network Pulse",
-      "subtitle": "Network-wide emissions and epoch status",
+      "allocated": "Allocated",
+      "claimedToVesting": "Claimed to Vesting",
       "couldntLoad": "Couldn't load network status.",
-      "nextDistribution": "Next Distribution",
       "countdownDays": "in {{days}}d {{hours}}h",
       "countdownHours": "in {{hours}}h",
+      "currentlyLocked": "Currently Locked",
       "epochCaption": "Epoch {{epoch}} started {{date}}",
+      "nextDistribution": "Next Distribution",
       "poolUtilization": "Incentive Pool Utilization",
-      "allocated": "Allocated",
       "remaining": "{{amount}} left to be assigned",
-      "claimedToVesting": "Claimed to Vesting",
-      "withdrawnLiquid": "Withdrawn Liquid",
-      "currentlyLocked": "Currently Locked"
+      "subtitle": "Network-wide emissions and epoch status",
+      "title": "Network Pulse",
+      "withdrawnLiquid": "Withdrawn Liquid"
+    },
+    "noRflr": {
+      "description": "This wallet hasn't earned any rFLR rewards, so there's nothing to vest yet.",
+      "title": "No rFLR Rewards Yet"
+    },
+    "progress": {
+      "earlyExitNoneNeeded": "Nothing locked, so there's no penalty for exiting early.",
+      "earlyExitTitle": "Early Exit",
+      "efficiency": "{{pct}}% efficient",
+      "fullyVested": "Fully vested — nothing left to unlock",
+      "netPayout": "Net Payout Now",
+      "nextUnlock": "Next unlock on {{date}}",
+      "nextUnlockCaption": "becomes liquid",
+      "penaltyCost": "Exit Penalty",
+      "title": "Vesting Progress",
+      "vestedLabel": "Vested"
+    },
+    "stats": {
+      "liquidNow": "Liquid Now",
+      "lockedInVesting": "Locked in Vesting",
+      "totalBalance": "Total rFLR Balance",
+      "vestedProgress": "Vested"
+    },
+    "timeline": {
+      "couldntLoad": "Couldn't load the unlock history.",
+      "emptyTitle": "No unlock history yet",
+      "historicalNote": "Full unlock history — may include amounts already claimed elsewhere, so totals can exceed your current balance above.",
+      "loadingHint": "This can take up to 30 seconds the first time we check a wallet.",
+      "loadingTitle": "Loading unlock history…",
+      "statusLiquid": "Liquid",
+      "statusLocked": "Locked",
+      "subtitle": "Cumulative rFLR unlocked over time",
+      "title": "Unlock Timeline",
+      "viewFullSchedule": "View full schedule ({{count}} entries)",
+      "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -609,6 +635,7 @@
       "conversationsDescription": "Clears your FlareGPT chat history from your account. This can't be undone.",
       "localSubtitle": "Stored in this browser only. Clearing it is instant and safe.",
       "localTitle": "Local Data",
+      "offline": "You're offline. This needs an internet connection.",
       "walletCache": "Wallet Activity Cache",
       "walletCacheCleared": "Cache cleared",
       "walletCacheDescription": "Clears the cached transaction history. The next visit will fetch it again."
@@ -639,6 +666,14 @@
       "account": "Account",
       "personalization": "Personalization",
       "walletsAndData": "Wallets & Data"
+    },
+    "install": {
+      "button": "Install",
+      "descriptionAvailable": "Install FlareGPT for faster access and a native, full-screen experience.",
+      "descriptionInstalled": "FlareGPT is installed on this device.",
+      "descriptionIOS": "Tap the Share icon in Safari, then \"Add to Home Screen\".",
+      "installedBadge": "Installed",
+      "title": "Install App"
     },
     "links": {
       "docs": "Docs",
@@ -728,6 +763,7 @@
       "noLimit": "Add as many wallets as you like.",
       "noSearchResults": "No wallets match your search.",
       "notFoundError": "This wallet is no longer on your watchlist.",
+      "offline": "You're offline. This needs an internet connection.",
       "readOnly": "Read-Only",
       "registrationFailed": "Address registration failed. Check if it is a duplicate or if slots are filled.",
       "remainingSlots": "Slots Remaining",
@@ -767,6 +803,15 @@
     "walletActivity": "Wallet Activity",
     "walletConnected": "Wallet Connected"
   },
+  "staleData": {
+    "justNow": "Showing cached data from moments ago",
+    "minutesAgo": "Showing cached data from {{minutes}} minutes ago"
+  },
+  "update": {
+    "available": "A new version of FlareGPT is available.",
+    "reload": "Reload",
+    "waitingForReply": "Update will apply as soon as your current response finishes."
+  },
   "wallet": {
     "activity": {
       "charts": {
@@ -792,8 +837,11 @@
         "close": "Close",
         "copyFailed": "Couldn't copy hash",
         "hashCopied": "Transaction hash copied",
+        "linkCopied": "Explorer link copied",
         "next": "Next transaction",
         "previous": "Previous transaction",
+        "shareTitle": "FlareGPT transaction",
+        "shareTransaction": "Share transaction",
         "timestamp": "Timestamp",
         "title": "Transaction Details",
         "transactionHash": "Transaction Hash",

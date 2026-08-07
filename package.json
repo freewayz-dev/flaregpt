@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node prerender.ts",
+    "build:analyze": "VITE_ANALYZE=1 vite build && node prerender.ts",
     "i18n:extract": "npx i18next-parser -c i18next-parser.config.ts && node translate-locales.ts",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.sw.json",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -58,12 +59,21 @@
     "jsdom": "^30.0.1",
     "msw": "^2.15.0",
     "postcss": "^8.4.47",
+    "rollup-plugin-visualizer": "^7.0.1",
     "tailwindcss": "^3.4.12",
     "translate": "^3.0.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.65.0",
     "vite": "^6.2.0",
-    "vitest": "^4.1.10"
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^4.1.10",
+    "web-vitals": "^6.1.0",
+    "workbox-cacheable-response": "^7.4.1",
+    "workbox-core": "^7.4.1",
+    "workbox-expiration": "^7.4.1",
+    "workbox-precaching": "^7.4.1",
+    "workbox-routing": "^7.4.1",
+    "workbox-strategies": "^7.4.1"
   },
   "engines": {
     "node": ">=24"

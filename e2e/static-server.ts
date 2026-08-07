@@ -29,8 +29,14 @@ interface VercelRewrite {
   destination: string;
 }
 
+interface VercelHeaderRule {
+  source: string;
+  headers: { key: string; value: string }[];
+}
+
 interface VercelConfig {
   rewrites?: VercelRewrite[];
+  headers?: VercelHeaderRule[];
 }
 
 const vercelConfig = JSON.parse(fs.readFileSync(path.join(ROOT, "vercel.json"), "utf8")) as VercelConfig;
@@ -48,6 +54,23 @@ const rewrites = (vercelConfig.rewrites ?? []).map((r) => ({
   destination: r.destination,
 }));
 
+// Same "read vercel.json at runtime, don't hand-maintain a second copy"
+// reasoning as `rewrites` above — this is what actually lets e2e tests
+// (and local manual verification) catch a real CSP/header regression
+// before it reaches production, rather than only ever being checked by
+// eye against the config file.
+const headerRules = (vercelConfig.headers ?? []).map((h) => ({
+  matches: toMatcher(h.source),
+  headers: h.headers,
+}));
+
+function applyHeaders(res: http.ServerResponse, pathname: string): void {
+  for (const rule of headerRules) {
+    if (!rule.matches(pathname)) continue;
+    for (const { key, value } of rule.headers) res.setHeader(key, value);
+  }
+}
+
 const MIME: Record<string, string> = {
   ".html": "text/html",
   ".js": "application/javascript",
@@ -61,9 +84,11 @@ const MIME: Record<string, string> = {
   ".txt": "text/plain",
 };
 
-function send(res: http.ServerResponse, filePath: string): void {
+function send(res: http.ServerResponse, filePath: string, pathname: string): void {
   const ext = path.extname(filePath);
-  res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
+  res.setHeader("Content-Type", MIME[ext] || "application/octet-stream");
+  applyHeaders(res, pathname);
+  res.writeHead(200);
   fs.createReadStream(filePath).pipe(res);
 }
 
@@ -81,12 +106,12 @@ const server = http.createServer((req, res) => {
   const { pathname } = new URL(req.url ?? "/", `http://localhost:${PORT}`);
 
   const staticFile = resolveStaticFile(pathname === "/" ? "/index.html" : pathname);
-  if (staticFile) return send(res, staticFile);
+  if (staticFile) return send(res, staticFile, pathname);
 
   const rewrite = rewrites.find((r) => r.matches(pathname));
   if (rewrite) {
     const destFile = resolveStaticFile(rewrite.destination);
-    if (destFile) return send(res, destFile);
+    if (destFile) return send(res, destFile, pathname);
   }
 
   res.writeHead(404, { "Content-Type": "text/plain" });

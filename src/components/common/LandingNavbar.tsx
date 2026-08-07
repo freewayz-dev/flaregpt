@@ -58,7 +58,7 @@ export default function LandingNavbar() {
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 inset-x-0 z-50 mt-4 px-4 xl:px-0 transition-transform duration-300 ease-out will-change-transform"
+      className="fixed top-0 inset-x-0 z-50 mt-[calc(1rem+env(safe-area-inset-top))] pl-[calc(1rem+env(safe-area-inset-left))] pr-[calc(1rem+env(safe-area-inset-right))] xl:pl-0 xl:pr-0 transition-transform duration-300 ease-out will-change-transform"
     >
       <div className="mx-auto grid h-[64px] md:h-[72px] w-full max-w-5xl grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center rounded-2xl border border-line/70 bg-white/5 dark:bg-white/[0.03] backdrop-blur-md px-3 md:px-4 shadow-lg shadow-black/5 dark:shadow-black/20">
         {/* Logo */}

@@ -5,12 +5,21 @@
 import { defineConfig, configDefaults } from "vitest/config";
 import react from "@vitejs/plugin-react-swc";
 import svgr from "vite-plugin-svgr";
+import { VitePWA } from "vite-plugin-pwa";
+import { visualizer } from "rollup-plugin-visualizer";
 import path from "node:path";
 
 // `import.meta.dirname` (Node 20.11+/21.2+, stable) replaces the old
 // `fileURLToPath(import.meta.url)` + `path.dirname()` boilerplate — this
 // project's `engines.node` (">=24") already guarantees it's available.
 const __dirname = import.meta.dirname;
+
+// Emergency kill-switch deploy toggle — see docs/pwa/emergency-kill-switch.md.
+// Flipping this to "1" for a build (`VITE_PWA_EMERGENCY_SW=1 npm run build`)
+// swaps in src/sw.emergency.ts in place of the normal src/sw.ts, with no
+// code edits under incident pressure. Off (the default) for every normal
+// build and deploy.
+const EMERGENCY_SW = process.env.VITE_PWA_EMERGENCY_SW === "1";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -35,6 +44,70 @@ export default defineConfig({
       // fixes both environments identically.
       include: ["**/*.svg", "**/*.svg?react"],
     }),
+    // `injectManifest`, not the default `generateSW` — this project needs
+    // real control inside the service worker (the navigation-route/
+    // offline-fallback logic in src/sw.ts now, careful update-timing
+    // coordination with the chat WebSocket in a later phase) that
+    // `generateSW`'s declarative-config-only approach can't express.
+    VitePWA({
+      strategies: "injectManifest",
+      // Explicit, not left to the plugin's default: a waiting service
+      // worker must NOT activate itself automatically ("autoUpdate" would
+      // do exactly that). Deciding when it's safe to activate — after
+      // confirming the chat WebSocket has no active stream — is Update
+      // Management's job, not this phase's; "prompt" is what leaves that
+      // decision available to make later instead of foreclosing it now.
+      registerType: "prompt",
+      srcDir: "src",
+      filename: EMERGENCY_SW ? "sw.emergency.ts" : "sw.ts",
+      injectManifest: {
+        // Deliberately narrow — see src/sw.ts's own top-of-file comment
+        // for why JS chunks and the prerendered HTML shells aren't
+        // precached here (a real build-ordering conflict with this
+        // project's separate post-build prerender step, not an oversight).
+        globPatterns: ["**/*.{css,webmanifest}"],
+        // sw.emergency.ts deliberately contains no `self.__WB_MANIFEST`
+        // placeholder — it deletes every cache, it doesn't populate one —
+        // so workbox-build's own injectManifest step has nothing to inject
+        // into and hard-fails with "injection point not found" if left to
+        // its default. Explicitly unsetting injectionPoint here (not just
+        // omitting it — Object.assign against the plugin's own default
+        // still needs the key present to win) makes the plugin skip that
+        // step entirely for this build, matching what sw.emergency.ts
+        // actually needs.
+        ...(EMERGENCY_SW ? { injectionPoint: undefined } : {}),
+      },
+      // This project already hand-maintains public/site.webmanifest
+      // (linked from index.html) rather than having the plugin generate
+      // one from config — avoids the same manifest existing in two places
+      // that could drift out of sync.
+      manifest: false,
+      // Registered explicitly from main.tsx via the `virtual:pwa-register`
+      // module instead — the plugin's own auto-injected registration
+      // snippet is an inline <script>, which the app's CSP (`script-src
+      // 'self'`, no `'unsafe-inline'` — see vercel.json) would block
+      // outright. Registering from real bundled app code sidesteps that
+      // entirely rather than needing an exception carved into the policy.
+      injectRegister: false,
+      // No service worker at all under `npm run dev` — standard practice,
+      // and specifically avoids a stale dev-mode SW serving cached
+      // responses over actual dev-server output while iterating.
+      devOptions: { enabled: false },
+    }),
+    // Opt-in only (`npm run build:analyze`) — writes a real, inspectable
+    // treemap of what's actually in each chunk after minification/
+    // gzip/brotli, rather than guessing chunk composition from import
+    // lists. Skipped on every normal build (adds real analysis time for
+    // zero benefit on a deploy nobody's about to look at) via the same
+    // env-var-gated pattern this file already uses for the emergency
+    // kill-switch above.
+    process.env.VITE_ANALYZE === "1" &&
+      visualizer({
+        filename: "dist/bundle-stats.html",
+        gzipSize: true,
+        brotliSize: true,
+        template: "treemap",
+      }),
   ],
   resolve: {
     alias: {
@@ -65,6 +138,32 @@ export default defineConfig({
     exclude: [...configDefaults.exclude, "e2e/**"],
   },
   build: {
+    // Confirmed empirically via a real Lighthouse run against the built
+    // landing page (not assumed): Vite's default modulepreload generation
+    // adds a `<link rel="modulepreload">` for `vendor-charts` (recharts +
+    // d3, ~400KB) to the one shared HTML entry — even though nothing the
+    // landing page (or App.tsx, or main.tsx) ever statically imports
+    // reaches recharts; only the lazy-loaded dashboard pages that actually
+    // render a chart do. Vite's manual-chunk preload logic doesn't do
+    // per-route reachability analysis for a single-entry SPA — it treats
+    // every manualChunks vendor bucket as "probably needed soon" and
+    // preloads all of them unconditionally. That's the right call for
+    // `vendor-react` (every route needs React) and `vendor-motion`
+    // (App.tsx's own `<MotionConfig>` wraps every route, landing
+    // included), but genuinely wrong for `vendor-charts`: prerender.ts's
+    // `app-shell.html` is a raw copy of this same head, shared by every
+    // `/app/*` route including the many that never render a chart
+    // (Settings, Wallets, Loops, FlareGPT, Donate) — so excluding it here
+    // affects both HTML entries the same way. Chart-heavy pages
+    // (Dashboard, DefiProtocols, ...) don't actually lose anything: their
+    // own `lazy()` chunk statically imports the chart components that
+    // import recharts, so Rollup's own dynamic-import machinery still
+    // fetches `vendor-charts` alongside that page's chunk the moment it's
+    // navigated to — this only removes the *unconditional, upfront* fetch
+    // for every other page that never needed it at all.
+    modulePreload: {
+      resolveDependencies: (_filename, deps) => deps.filter((dep) => !dep.includes("vendor-charts")),
+    },
      rollupOptions: {
       input: 'index.html',
       output: {

@@ -1,12 +1,57 @@
-import axios from "axios";
+import axios, { type AxiosInstance } from "axios";
 import { toast } from "react-toastify";
 
 import { useAuthStore } from "@/store/useAuthStore";
+import { useCacheStatusStore } from "@/store/useCacheStatusStore";
 
 export const flareApi = axios.create({
   baseURL: "https://api.flaregpt.io",
   timeout: 15000,
 });
+
+// The service worker's `NetworkFirst` financial-reads routes (src/sw.ts)
+// tag a cache-served response with this header via `cacheHitMarkerPlugin`
+// — never present on a live network response, and deliberately not applied
+// to the stale-while-revalidate routes (those serve cache-then-refresh as
+// their normal, non-degraded behavior; this header means the live fetch
+// specifically failed or timed out). GET-only: a mutation response never
+// carries it anyway, but scoping avoids reasoning about it for those.
+//
+// `flareApi` also carries never-cached auth/watchlist/chat traffic and the
+// separate stale-while-revalidate tier (network/gas-sniper-status/compare-
+// strategies) through this exact same instance — neither of those routes
+// ever carries the marker header, so without the path check below, any
+// live response on *either* of them would call `markFresh()` and silently
+// clear `cachedAt` while a financial-reads card elsewhere is still showing
+// genuinely stale data from an earlier NetworkFirst timeout. This list is
+// kept in sync with sw.ts's own financial-reads route matcher by
+// convention — the same cross-file contract the `X-FlareGPT-Cache` header
+// name itself already relies on, since a service worker and the main app
+// bundle can't literally share one runtime module.
+const FINANCIAL_READS_PATH_PREFIXES = ["/api/v1/portfolio/", "/api/v1/rflr/", "/api/v1/defi/vaults/"];
+const FINANCIAL_READS_EXACT_PATHS = ["/api/v1/overview/market", "/gas-price"];
+
+function isFinancialReadsPath(pathname: string) {
+  return (
+    FINANCIAL_READS_PATH_PREFIXES.some((prefix) => pathname.startsWith(prefix)) ||
+    FINANCIAL_READS_EXACT_PATHS.includes(pathname)
+  );
+}
+
+// `isRelevant` lets `coingeckoApi` (entirely financial-reads-external, per
+// sw.ts's origin-only route match — no path filtering needed there) share
+// this same tracker without pulling in FlareGPT-API-specific path rules.
+function trackCacheFreshness(instance: AxiosInstance, isRelevant: (pathname: string) => boolean = () => true) {
+  instance.interceptors.response.use((response) => {
+    if (response.config.method?.toLowerCase() !== "get") return response;
+    const pathname = (response.config.url ?? "").split("?")[0];
+    if (!isRelevant(pathname)) return response;
+    const servedFromCache = response.headers["x-flaregpt-cache"] === "hit";
+    if (servedFromCache) useCacheStatusStore.getState().markCacheHit();
+    else useCacheStatusStore.getState().markFresh();
+    return response;
+  });
+}
 
 // Reads auth state straight from the store at the moment each request is
 // actually sent, rather than every call site threading it through
@@ -81,6 +126,7 @@ flareApi.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+trackCacheFreshness(flareApi, isFinancialReadsPath);
 
 // CoinGecko's public API is used for FLR/USD historical price data — the
 // FlareGPT API only exposes current spot price, not a time series.
@@ -88,6 +134,7 @@ export const coingeckoApi = axios.create({
   baseURL: "https://api.coingecko.com/api/v3",
   timeout: 15000,
 });
+trackCacheFreshness(coingeckoApi);
 
 // FlareGPT's API only returns USD-denominated values, so the Currency
 // Display setting (AUD/EUR/GBP/RUB/USD) needs a USD-based FX rate table to

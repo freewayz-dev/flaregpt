@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "मुख्य कंटेंट छोड़ें"
+  },
   "comingSoon": {
     "badge": "जल्द ही आ रही हैं",
     "description": "हम यह सुविधा बना रहे हैं। जल्द ही फिर से देखें।"
@@ -24,6 +27,7 @@
     "install": "इंस्टॉल करें",
     "installHint": "अभी भी अपना वॉलेट नहीं दिख रहा? पेज को रीफ्रेश करने से मदद मिल सकती है।",
     "mobileHint": "मोबाइल पर, सबसे अच्छे कनेक्शन अनुभव के लिए अपने वॉलेट के बिल्ट - इन ब्राउज़र में FlareGPT खोलें। QR कोड स्कैन करते समय, सबसे भरोसेमंद कनेक्शन के लिए अपने फ़ोन के कैमरे के बजाय अपने वॉलेट ऐप के स्कैनर का उपयोग करें।",
+    "offline": "You're offline. Connecting a wallet needs an internet connection.",
     "recommended": "अनुशंसित",
     "refresh": "रीफ्रेश करें",
     "subtitle": "फ़्लेयर नेटवर्क से कनेक्ट करने के लिए अपना पसंदीदा वॉलेट चुनें।",
@@ -114,6 +118,9 @@
     },
     "description": "MXRPY, Sceptre, Firelight, और Spectra वॉल्ट में यील्ड रणनीतियों की तुलना करें और अपनी पोज़िशन ट्रैक करें।",
     "explorer": {
+      "linkCopied": "Link copied",
+      "shareFailed": "Couldn't share this protocol",
+      "shareProtocol": "Share this protocol",
       "subtitle": "अपनी पोजीशन और विवरण देखने के लिए एक प्रोटोकॉल चुनें",
       "title": "प्रोटोकॉल एक्सप्लोरर"
     },
@@ -222,7 +229,10 @@
       "copyFailed": "पता कॉपी नहीं हो सका",
       "multisigNote": "मल्टी-सिग्नेचर वॉलेट द्वारा सुरक्षित",
       "qrTitle": "{{symbol}} दान वॉलेट पते के लिए QR कोड",
+      "shareAddress": "Share Address",
+      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "कॉपी करने के लिए टैप करें",
+      "tapToShare": "Tap to share",
       "viewOnExplorer": "{{explorer}} पर देखें"
     },
     "received": {
@@ -258,6 +268,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT गलतियाँ कर सकता है। कार्रवाई करने से पहले महत्वपूर्ण जानकारी सत्यापित करें।",
+      "offlinePlaceholder": "You're offline — messages can't be sent right now",
       "placeholder": "FlareGPT से पूछें...",
       "send": "भेजें",
       "stop": "जनरेट करना रोकें"
@@ -281,11 +292,12 @@
       "close": "बंद करें",
       "delete": "हटाएं",
       "empty": "अभी तक कोई बातचीत नहीं",
-      "loading": "बातचीत लोड हो रही है…",
       "loadFailed": "आपकी बातचीत लोड नहीं हो सकी।",
+      "loading": "बातचीत लोड हो रही है…",
       "moreActions": "अधिक विकल्प",
       "newChat": "नई चैट",
       "noResults": "आपकी खोज से कोई बातचीत मेल नहीं खाती",
+      "offline": "You're offline. This needs an internet connection.",
       "openButton": "इतिहास",
       "pin": "पिन करें",
       "pinLimitReached": "आप {{count}} बातचीत तक पिन कर सकते हैं",
@@ -333,49 +345,49 @@
     "terms": "नियम और अस्वीकरण"
   },
   "ftsoRewards": {
-    "description": "एक ही जगह पर अपने FTSO डेलिगेशन रिवॉर्ड्स, रिवॉर्ड वेलोसिटी और प्रोवाइडर आवंटन को ट्रैक करें।",
     "connectToSee": "इसके FTSO रिवॉर्ड्स देखने के लिए वॉलेट कनेक्ट करें या चुनें।",
     "couldntLoad": "आपके FTSO रिवॉर्ड्स लोड नहीं हो सके।",
-    "stats": {
-      "wflrBalance": "WFLR बैलेंस",
-      "unclaimed": "अनक्लेम्ड रिवॉर्ड्स",
-      "hourlyEarning": "अनुमानित प्रति घंटा कमाई",
-      "targetEpochYield": "इस एपॉक का लक्ष्य यील्ड"
-    },
-    "velocity": {
-      "title": "रिवॉर्ड वेलोसिटी",
-      "methodLive": "लाइव अनुमान",
-      "methodHistorical": "ऐतिहासिक अनुमान",
-      "inactiveTitle": "फ़िलहाल कोई कमाई नहीं",
-      "inactiveDescription": "यह वॉलेट अभी तक WFLR डेलिगेट नहीं कर रहा है, इसलिए अनुमान लगाने के लिए कोई रिवॉर्ड वेलोसिटी नहीं है।",
-      "perHour": "प्रति घंटा",
-      "perDay": "प्रति दिन",
-      "thisEpoch": "यह एपॉक",
-      "sourceEpoch": "एपॉक {{epoch}} के नेटवर्क डेटा से अनुमानित"
-    },
     "delegations": {
-      "title": "सक्रिय डेलिगेशन",
       "count_one": "{{count}} प्रोवाइडर",
       "count_other": "{{count}} प्रोवाइडर्स",
+      "emptyDescription": "रिवॉर्ड्स कमाना शुरू करने के लिए अपने WFLR को किसी FTSO डेटा प्रोवाइडर को डेलिगेट करें।",
       "emptyTitle": "कोई सक्रिय डेलिगेशन नहीं",
-      "emptyDescription": "रिवॉर्ड्स कमाना शुरू करने के लिए अपने WFLR को किसी FTSO डेटा प्रोवाइडर को डेलिगेट करें।"
+      "title": "सक्रिय डेलिगेशन"
     },
+    "description": "एक ही जगह पर अपने FTSO डेलिगेशन रिवॉर्ड्स, रिवॉर्ड वेलोसिटी और प्रोवाइडर आवंटन को ट्रैक करें।",
     "epochs": {
-      "title": "अनक्लेम्ड एपॉक्स",
-      "subtitle": "क्लेम होने की प्रतीक्षा में रिवॉर्ड्स, एपॉक के अनुसार",
-      "emptyTitle": "कुछ भी अनक्लेम्ड नहीं",
       "emptyDescription": "सब कुछ अपडेट है — अभी कोई लंबित एपॉक रिवॉर्ड नहीं है।",
+      "emptyTitle": "कुछ भी अनक्लेम्ड नहीं",
       "epochLabel": "एपॉक {{id}}",
+      "subtitle": "क्लेम होने की प्रतीक्षा में रिवॉर्ड्स, एपॉक के अनुसार",
+      "title": "अनक्लेम्ड एपॉक्स",
       "viewFullLedger_one": "पूरा लेजर देखें ({{count}} एंट्री)",
       "viewFullLedger_other": "पूरा लेजर देखें ({{count}} एंट्रीज़)"
     },
     "providers": {
-      "title": "FTSO प्रोवाइडर्स",
-      "description": "प्रोवाइडर रैंकिंग कनेक्ट होने के बाद प्रदर्शन और शुल्क के आधार पर डेटा प्रोवाइडर्स की तुलना करें।"
+      "description": "प्रोवाइडर रैंकिंग कनेक्ट होने के बाद प्रदर्शन और शुल्क के आधार पर डेटा प्रोवाइडर्स की तुलना करें।",
+      "title": "FTSO प्रोवाइडर्स"
+    },
+    "stats": {
+      "hourlyEarning": "अनुमानित प्रति घंटा कमाई",
+      "targetEpochYield": "इस एपॉक का लक्ष्य यील्ड",
+      "unclaimed": "अनक्लेम्ड रिवॉर्ड्स",
+      "wflrBalance": "WFLR बैलेंस"
     },
     "validators": {
-      "title": "स्टेकिंग वैलिडेटर रैंकिंग",
-      "description": "स्टेकिंग रैंकिंग कनेक्ट होने के बाद शीर्ष-प्रदर्शन करने वाले वैलिडेटर्स देखें।"
+      "description": "स्टेकिंग रैंकिंग कनेक्ट होने के बाद शीर्ष-प्रदर्शन करने वाले वैलिडेटर्स देखें।",
+      "title": "स्टेकिंग वैलिडेटर रैंकिंग"
+    },
+    "velocity": {
+      "inactiveDescription": "यह वॉलेट अभी तक WFLR डेलिगेट नहीं कर रहा है, इसलिए अनुमान लगाने के लिए कोई रिवॉर्ड वेलोसिटी नहीं है।",
+      "inactiveTitle": "फ़िलहाल कोई कमाई नहीं",
+      "methodHistorical": "ऐतिहासिक अनुमान",
+      "methodLive": "लाइव अनुमान",
+      "perDay": "प्रति दिन",
+      "perHour": "प्रति घंटा",
+      "sourceEpoch": "एपॉक {{epoch}} के नेटवर्क डेटा से अनुमानित",
+      "thisEpoch": "यह एपॉक",
+      "title": "रिवॉर्ड वेलोसिटी"
     }
   },
   "gasSniperStatus": {
@@ -457,15 +469,22 @@
     "stillNeedHelp": "अभी भी सहायता की आवश्यकता है?",
     "supportDesc": "अभी हमसे संपर्क करने का सबसे तेज़ तरीका X है। ईमेल और Telegram सपोर्ट जल्द आ रहा है।"
   },
+  "install": {
+    "bannerDescriptionAndroid": "तेज़ ऐक्सेस और फ़ुल - स्क्रीन अनुभव के लिए अपनी होम स्क्रीन पर FlareGPT जोड़ें।",
+    "bannerDescriptionIOS": "तुरंत ऐक्सेस के लिए शेयर करें, फिर \"होम स्क्रीन पर जोड़ें\" पर टैप करें।",
+    "dismiss": "खारिज करना",
+    "installButton": "इन्स्टाल करें",
+    "installing": "संस्थापित किया जा रहा है"
+  },
   "loops": {
     "description": "स्वचालित बैकग्राउंड सेवाएं जो नेटवर्क पर नज़र रखती हैं और आपकी ओर से कार्य करती हैं।",
     "gasSniper": {
       "active": "सक्रिय",
       "approveCta": "Coston2 पर मंज़ूर करें",
+      "approved": "मंज़ूर हो गया। अब आप Gas Sniper चालू कर सकते हैं।",
       "approveDescription": "इस वॉलेट को पहले Coston2 पर Flare के Gas Sniper कीपर को क्लेम एक्ज़ीक्यूटर के रूप में मंज़ूर करना होगा। यह एक बार की, ऑन-चेन मंज़ूरी है। आपका वॉलेट आपसे Coston2 नेटवर्क पर स्विच करने या उसे जोड़ने के लिए कह सकता है।",
       "approveFailed": "मंज़ूरी पूरी नहीं हो सकी। फिर से प्रयास करें।",
       "approveTitle": "एक बार की मंज़ूरी आवश्यक है",
-      "approved": "मंज़ूर हो गया। अब आप Gas Sniper चालू कर सकते हैं।",
       "approving": "अपने वॉलेट में पुष्टि करें…",
       "confirmingApproval": "पुष्टि हो रही है…",
       "description": "जैसे ही गैस शुल्क पर्याप्त रूप से कम हो जाए, यह आपके FTSO रिवॉर्ड्स को अपने आप क्लेम कर लेता है, और ब्राउज़र एक्सटेंशन की तरह चुपचाप बैकग्राउंड में तब तक चलता रहता है जब तक आप इसे बंद न करें।",
@@ -475,6 +494,7 @@
       "inactive": "निष्क्रिय",
       "needsApproval": "मंज़ूरी आवश्यक",
       "needsReconnect": "वॉलेट डिस्कनेक्ट है",
+      "offline": "This needs an internet connection.",
       "reconnectDescription": "एक बार की ऑन-चेन मंज़ूरी पूरी करने के लिए इस वॉलेट को फिर से कनेक्ट करें।",
       "reconnectTitle": "जारी रखने के लिए फिर से कनेक्ट करें",
       "signInHint": "Gas Sniper चालू करने के लिए अपने वॉलेट से साइन इन करें।",
@@ -500,71 +520,80 @@
     "hideBalances": "बैलेंस छिपाएं",
     "mainnetStatus": "फ्लेयर मेननेट",
     "moreOptions": "और विकल्प",
+    "offline": "Offline",
     "openMenu": "मेनू खोलें",
     "primaryWalletSection": "प्राइमरी वॉलेट",
+    "shareAddress": "Share address",
+    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "बैलेंस दिखाएं",
     "signIn": "साइन इन करें",
     "signInBackgroundHint": "आपके कनेक्टेड वॉलेट को साइन इन करने की आवश्यकता है",
     "signingIn": "साइन इन हो रहा है…",
+    "signInOffline": "Signing in needs an internet connection.",
     "signInPrompt": "जारी रखने के लिए इस वॉलेट को सत्यापित करने हेतु एक संदेश पर हस्ताक्षर करें।",
     "watchlistSection": "वॉचलिस्ट ({{current}}/{{max}})"
   },
   "offline": {
-    "message": "आप ऑफ़लाइन हैं। हम स्वतः पुनः जुड़ जाएंगे।",
-    "backOnline": "फिर से ऑनलाइन"
+    "backOnline": "फिर से ऑनलाइन",
+    "message": "आप ऑफ़लाइन हैं। हम स्वतः पुनः जुड़ जाएंगे।"
+  },
+  "onboarding": {
+    "welcomeMessage": "FlareGPT में आपका स्वागत है। अपना पोर्टफ़ोलियो देखने के लिए एक वॉलेट कनेक्ट करें, या AI सहायक से कुछ भी पूछें।"
   },
   "rflrVesting": {
-    "description": "एक ही जगह पर अपनी rFLR वेस्टिंग प्रगति, आगामी अनलॉक्स और नेटवर्क-व्यापी उत्सर्जन को ट्रैक करें।",
     "connectToSee": "इसकी वेस्टिंग स्थिति देखने के लिए वॉलेट कनेक्ट करें या चुनें।",
     "couldntLoad": "आपका वेस्टिंग डेटा लोड नहीं हो सका।",
-    "noRflr": {
-      "title": "अभी तक कोई rFLR रिवॉर्ड नहीं",
-      "description": "इस वॉलेट ने अभी तक कोई rFLR रिवॉर्ड अर्जित नहीं किया है, इसलिए अभी वेस्ट करने के लिए कुछ भी नहीं है।"
-    },
-    "stats": {
-      "totalBalance": "कुल rFLR बैलेंस",
-      "liquidNow": "अभी लिक्विड",
-      "lockedInVesting": "वेस्टिंग में लॉक्ड",
-      "vestedProgress": "वेस्टेड"
-    },
-    "progress": {
-      "title": "वेस्टिंग प्रगति",
-      "vestedLabel": "वेस्टेड",
-      "nextUnlock": "अगला अनलॉक {{date}} को",
-      "nextUnlockCaption": "लिक्विड बन जाएगा",
-      "fullyVested": "पूरी तरह वेस्टेड — अनलॉक करने के लिए कुछ नहीं बचा",
-      "earlyExitTitle": "जल्दी एग्ज़िट",
-      "earlyExitNoneNeeded": "कुछ भी लॉक नहीं है, इसलिए जल्दी एग्ज़िट पर कोई पेनल्टी नहीं है।",
-      "efficiency": "{{pct}}% कुशल",
-      "netPayout": "अभी नेट भुगतान",
-      "penaltyCost": "एग्ज़िट पेनल्टी"
-    },
-    "timeline": {
-      "title": "अनलॉक टाइमलाइन",
-      "subtitle": "समय के साथ संचयी रूप से अनलॉक हुआ rFLR",
-      "historicalNote": "यह पूरा अनलॉक इतिहास दिखाता है — इसमें कहीं और पहले से क्लेम की गई राशियाँ शामिल हो सकती हैं, इसलिए कुल राशि ऊपर दिखाए गए आपके मौजूदा बैलेंस से अधिक हो सकती है।",
-      "emptyTitle": "अभी तक कोई अनलॉक इतिहास नहीं",
-      "loadingTitle": "अनलॉक इतिहास लोड हो रहा है…",
-      "loadingHint": "जब हम किसी वॉलेट की पहली बार जांच करते हैं, तो इसमें 30 सेकंड तक लग सकते हैं।",
-      "couldntLoad": "अनलॉक इतिहास लोड नहीं हो सका।",
-      "statusLiquid": "लिक्विड",
-      "statusLocked": "लॉक्ड",
-      "viewFullSchedule": "पूरा शेड्यूल देखें ({{count}} एंट्रीज़)"
-    },
+    "description": "एक ही जगह पर अपनी rFLR वेस्टिंग प्रगति, आगामी अनलॉक्स और नेटवर्क-व्यापी उत्सर्जन को ट्रैक करें।",
     "network": {
-      "title": "नेटवर्क पल्स",
-      "subtitle": "नेटवर्क-व्यापी उत्सर्जन और एपॉक स्थिति",
+      "allocated": "आवंटित",
+      "claimedToVesting": "वेस्टिंग के लिए क्लेम किया गया",
       "couldntLoad": "नेटवर्क स्थिति लोड नहीं हो सकी।",
-      "nextDistribution": "अगला वितरण",
       "countdownDays": "{{days}} दिन {{hours}} घंटे में",
       "countdownHours": "{{hours}} घंटे में",
+      "currentlyLocked": "वर्तमान में लॉक्ड",
       "epochCaption": "एपॉक {{epoch}} {{date}} को शुरू हुआ",
+      "nextDistribution": "अगला वितरण",
       "poolUtilization": "इंसेंटिव पूल उपयोग",
-      "allocated": "आवंटित",
       "remaining": "{{amount}} आवंटित होना बाकी",
-      "claimedToVesting": "वेस्टिंग के लिए क्लेम किया गया",
-      "withdrawnLiquid": "लिक्विड निकाला गया",
-      "currentlyLocked": "वर्तमान में लॉक्ड"
+      "subtitle": "नेटवर्क-व्यापी उत्सर्जन और एपॉक स्थिति",
+      "title": "नेटवर्क पल्स",
+      "withdrawnLiquid": "लिक्विड निकाला गया"
+    },
+    "noRflr": {
+      "description": "इस वॉलेट ने अभी तक कोई rFLR रिवॉर्ड अर्जित नहीं किया है, इसलिए अभी वेस्ट करने के लिए कुछ भी नहीं है।",
+      "title": "अभी तक कोई rFLR रिवॉर्ड नहीं"
+    },
+    "progress": {
+      "earlyExitNoneNeeded": "कुछ भी लॉक नहीं है, इसलिए जल्दी एग्ज़िट पर कोई पेनल्टी नहीं है।",
+      "earlyExitTitle": "जल्दी एग्ज़िट",
+      "efficiency": "{{pct}}% कुशल",
+      "fullyVested": "पूरी तरह वेस्टेड — अनलॉक करने के लिए कुछ नहीं बचा",
+      "netPayout": "अभी नेट भुगतान",
+      "nextUnlock": "अगला अनलॉक {{date}} को",
+      "nextUnlockCaption": "लिक्विड बन जाएगा",
+      "penaltyCost": "एग्ज़िट पेनल्टी",
+      "title": "वेस्टिंग प्रगति",
+      "vestedLabel": "वेस्टेड"
+    },
+    "stats": {
+      "liquidNow": "अभी लिक्विड",
+      "lockedInVesting": "वेस्टिंग में लॉक्ड",
+      "totalBalance": "कुल rFLR बैलेंस",
+      "vestedProgress": "वेस्टेड"
+    },
+    "timeline": {
+      "couldntLoad": "अनलॉक इतिहास लोड नहीं हो सका।",
+      "emptyTitle": "अभी तक कोई अनलॉक इतिहास नहीं",
+      "historicalNote": "यह पूरा अनलॉक इतिहास दिखाता है — इसमें कहीं और पहले से क्लेम की गई राशियाँ शामिल हो सकती हैं, इसलिए कुल राशि ऊपर दिखाए गए आपके मौजूदा बैलेंस से अधिक हो सकती है।",
+      "loadingHint": "जब हम किसी वॉलेट की पहली बार जांच करते हैं, तो इसमें 30 सेकंड तक लग सकते हैं।",
+      "loadingTitle": "अनलॉक इतिहास लोड हो रहा है…",
+      "statusLiquid": "लिक्विड",
+      "statusLocked": "लॉक्ड",
+      "subtitle": "समय के साथ संचयी रूप से अनलॉक हुआ rFLR",
+      "title": "अनलॉक टाइमलाइन",
+      "viewFullSchedule": "पूरा शेड्यूल देखें ({{count}} एंट्रीज़)",
+      "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -606,6 +635,7 @@
       "conversationsDescription": "आपके खाते से FlareGPT चैट इतिहास साफ़ करता है। इसे पूर्ववत नहीं किया जा सकता।",
       "localSubtitle": "केवल इस ब्राउज़र में सहेजा गया है। इसे साफ़ करना तुरंत और सुरक्षित है।",
       "localTitle": "स्थानीय डेटा",
+      "offline": "You're offline. This needs an internet connection.",
       "walletCache": "वॉलेट गतिविधि कैश",
       "walletCacheCleared": "कैश साफ़ हो गया",
       "walletCacheDescription": "कैश्ड लेनदेन इतिहास साफ़ करता है। अगली बार आने पर इसे फिर से लाया जाएगा।"
@@ -636,6 +666,14 @@
       "account": "खाता",
       "personalization": "वैयक्तिकरण",
       "walletsAndData": "वॉलेट और डेटा"
+    },
+    "install": {
+      "button": "इन्स्टाल करें",
+      "descriptionAvailable": "तेज़ ऐक्सेस और देशी, फुल - स्क्रीन अनुभव के लिए FlareGPT इंस्टॉल करें।",
+      "descriptionInstalled": "इस डिवाइस पर FlareGPT इंस्टॉल किया गया है।",
+      "descriptionIOS": "पहले Safari में 'शेयर करें' आइकन पर टैप करें, फिर \"होम स्क्रीन पर जोड़ें\" पर टैप करें।",
+      "installedBadge": "स्थापित",
+      "title": "ऐप इंस्टॉल करें"
     },
     "links": {
       "docs": "डॉक्स",
@@ -725,6 +763,7 @@
       "noLimit": "जितने चाहें उतने वॉलेट जोड़ें।",
       "noSearchResults": "आपकी खोज से कोई वॉलेट मेल नहीं खाता।",
       "notFoundError": "यह वॉलेट अब आपकी वॉचलिस्ट में नहीं है।",
+      "offline": "You're offline. This needs an internet connection.",
       "readOnly": "सिर्फ पढ़ने योग्य",
       "registrationFailed": "पते का रजिस्ट्रेशन नहीं हो सका। जाँच लें कि यह डुप्लीकेट है या स्लॉट भरे गए हैं।",
       "remainingSlots": "शेष स्लॉट",
@@ -765,6 +804,15 @@
     "walletConnected": "वॉलेट कनेक्ट हो गया",
     "yield": "यील्ड"
   },
+  "staleData": {
+    "justNow": "कुछ समय पहले का कैश किया गया डेटा दिखाया जा रहा है",
+    "minutesAgo": "{{minutes}} मिनट पहले से कैश किया गया डेटा दिखाया जा रहा है"
+  },
+  "update": {
+    "available": "FlareGPT का एक नया संस्करण उपलब्ध है।",
+    "reload": "फिर से लोड करें",
+    "waitingForReply": "जैसे ही आपका मौजूदा जवाब पूरा होगा, अपडेट लागू हो जाएगा।"
+  },
   "wallet": {
     "activity": {
       "charts": {
@@ -790,8 +838,11 @@
         "close": "बंद करें",
         "copyFailed": "हैश कॉपी नहीं हो सका",
         "hashCopied": "लेनदेन हैश कॉपी किया गया",
+        "linkCopied": "Explorer link copied",
         "next": "अगला लेनदेन",
         "previous": "पिछला लेनदेन",
+        "shareTitle": "FlareGPT transaction",
+        "shareTransaction": "Share transaction",
         "timestamp": "टाइमस्टैम्प",
         "title": "लेनदेन विवरण",
         "transactionHash": "लेनदेन हैश",
@@ -885,8 +936,5 @@
       "received": "प्राप्त किया गया",
       "sent": "भेजी- डाक"
     }
-  },
-  "a11y": {
-    "skipToContent": "मुख्य कंटेंट छोड़ें"
   }
 }

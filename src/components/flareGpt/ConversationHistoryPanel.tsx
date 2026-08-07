@@ -18,6 +18,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { PIN_LIMIT } from "@/store/useFlareGptStore";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import type { ConversationSummary } from "@/services/chatService";
 
 function formatRelativeTime(unixSeconds: number, locale: string) {
@@ -39,10 +40,15 @@ interface RowMenuProps {
   onTogglePin: () => void;
   onRename: () => void;
   onDelete: () => void;
+  // Pin is purely client-side (see the component-level comment below), so
+  // it stays fully usable offline — only rename/delete hit the real
+  // endpoint and need gating, the same way Wallets.tsx's watchlist rows
+  // gate their own rename/remove buttons.
+  offlineBlocked: boolean;
   t: TFunction;
 }
 
-function RowMenu({ isPinned, onTogglePin, onRename, onDelete, t }: RowMenuProps) {
+function RowMenu({ isPinned, onTogglePin, onRename, onDelete, offlineBlocked, t }: RowMenuProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -105,7 +111,9 @@ function RowMenu({ isPinned, onTogglePin, onRename, onDelete, t }: RowMenuProps)
             onRename();
             setOpen(false);
           }}
-          className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs font-medium text-ink-secondary hover:bg-surface-inset hover:text-ink-primary transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+          disabled={offlineBlocked}
+          title={offlineBlocked ? t("flrgpt.history.offline") : undefined}
+          className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs font-medium text-ink-secondary hover:bg-surface-inset hover:text-ink-primary transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
         >
           <PencilIcon className="h-3.5 w-3.5 shrink-0" />
           {t("flrgpt.history.rename")}
@@ -117,7 +125,9 @@ function RowMenu({ isPinned, onTogglePin, onRename, onDelete, t }: RowMenuProps)
             onDelete();
             setOpen(false);
           }}
-          className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs font-medium text-ink-secondary hover:bg-red-500/10 hover:text-red-500 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+          disabled={offlineBlocked}
+          title={offlineBlocked ? t("flrgpt.history.offline") : undefined}
+          className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs font-medium text-ink-secondary hover:bg-red-500/10 hover:text-red-500 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
         >
           <TrashIcon className="h-3.5 w-3.5 shrink-0" />
           {t("flrgpt.history.delete")}
@@ -165,6 +175,12 @@ export default function ConversationHistoryPanel({
   onDelete,
 }: ConversationHistoryPanelProps) {
   const { t, i18n } = useTranslation();
+  // Rename/delete both call the real backend (see Flrgpt/index.tsx and
+  // FlareWidget.tsx — this panel only ever renders once `hasSession` is
+  // true, so there's no local/guest fallback path to fall back to the way
+  // Wallets.tsx has). Pin stays unblocked below since it's purely local.
+  const isOnline = useOnlineStatus();
+  const offlineBlocked = !isOnline;
   const [query, setQuery] = useState("");
   const [renamingId, setRenamingId] = useState<string | null>(null);
   const [renameValue, setRenameValue] = useState("");
@@ -262,6 +278,14 @@ export default function ConversationHistoryPanel({
     const id = renamingId;
     if (!trimmed || !id) {
       setRenamingId(null);
+      return;
+    }
+    // The Save button below is already disabled via `offlineBlocked` —
+    // this guards the same Enter-key path (see the rename input's
+    // onKeyDown), which calls this directly and doesn't go through that
+    // button at all.
+    if (offlineBlocked) {
+      toast.error(t("flrgpt.history.offline"));
       return;
     }
     setIsSavingRename(true);
@@ -433,8 +457,8 @@ export default function ConversationHistoryPanel({
                             e.stopPropagation();
                             commitRename();
                           }}
-                          disabled={isSavingRename}
-                          title={t("flrgpt.history.saveRename")}
+                          disabled={isSavingRename || offlineBlocked}
+                          title={offlineBlocked ? t("flrgpt.history.offline") : t("flrgpt.history.saveRename")}
                           className="p-1.5 rounded-md text-emerald-600 hover:bg-emerald-500/10 dark:text-emerald-400 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                         >
                           <CheckIcon className="h-4 w-4" />
@@ -459,6 +483,7 @@ export default function ConversationHistoryPanel({
                         onTogglePin={() => handleTogglePin(conv)}
                         onRename={() => startRename(conv)}
                         onDelete={() => onDelete(conv.id)}
+                        offlineBlocked={offlineBlocked}
                         t={t}
                       />
                     )}

@@ -106,5 +106,12 @@
     "tailwind.config.ts",
     "postcss.config.ts"
   ],
-  "exclude": ["node_modules", "dist"]
+  /* src/sw.ts (and src/sw.emergency.ts — see docs/pwa/emergency-kill-
+     switch.md) run in the ServiceWorkerGlobalScope, not a browser window —
+     they need the `webworker` lib, which declares several of the same
+     globals (`self` included) incompatibly with this config's own `dom`
+     lib. Excluded from this program and checked separately, against their
+     own `lib`, by tsconfig.sw.json — see package.json's `typecheck`
+     script, which runs both, so this isn't a silent type-checking gap. */
+  "exclude": ["node_modules", "dist", "src/sw.ts", "src/sw.emergency.ts"]
 }

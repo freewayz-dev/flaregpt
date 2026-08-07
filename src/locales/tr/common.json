@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Ana içeriğe geç"
+  },
   "comingSoon": {
     "badge": "Çok Yakında",
     "description": "Bu özelliği geliştiriyoruz. Kısa süre sonra tekrar kontrol edin."
@@ -24,6 +27,7 @@
     "install": "Yükle",
     "installHint": "Hâlâ cüzdanınızı görmüyor musunuz? Sayfayı yenilemek yardımcı olabilir.",
     "mobileHint": "Mobil cihazlarda, en iyi bağlantı deneyimi için cüzdanınızın yerleşik tarayıcısında FlareGPT'yi açın. Bir QR kodunu tararken, daha güvenilir bir bağlantı için telefonunuzun kamerası yerine cüzdan uygulamanızın kendi tarayıcısını kullanın.",
+    "offline": "",
     "recommended": "Önerilen",
     "refresh": "Yenile",
     "subtitle": "Flare Ağına bağlanmak için tercih ettiğiniz cüzdanı seçin.",
@@ -114,6 +118,9 @@
     },
     "description": "MXRPY, Sceptre, Firelight ve Spectra kasalarında getiri stratejilerini karşılaştırın ve pozisyonlarınızı takip edin.",
     "explorer": {
+      "linkCopied": "Link copied",
+      "shareFailed": "Couldn't share this protocol",
+      "shareProtocol": "Share this protocol",
       "subtitle": "Pozisyonunuzu ve detayları görmek için bir protokol seçin",
       "title": "Protokol Gezgini"
     },
@@ -222,7 +229,10 @@
       "copyFailed": "Adres kopyalanamadı",
       "multisigNote": "Çoklu imza cüzdanla korunmaktadır",
       "qrTitle": "{{symbol}} bağış cüzdan adresi için QR kodu",
+      "shareAddress": "Share Address",
+      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Kopyalamak için dokun",
+      "tapToShare": "Tap to share",
       "viewOnExplorer": "{{explorer}}'de Görüntüle"
     },
     "received": {
@@ -258,6 +268,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT hata yapabilir. Harekete geçmeden önce önemli bilgileri doğrulayın.",
+      "offlinePlaceholder": "Çevrimdışısınız, şu anda mesaj gönderilemiyor",
       "placeholder": "FlareGPT'ye sor...",
       "send": "Gönder",
       "stop": "Üretimi durdur"
@@ -281,11 +292,12 @@
       "close": "Kapat",
       "delete": "Sil",
       "empty": "Henüz konuşma yok",
-      "loading": "Konuşma yükleniyor…",
       "loadFailed": "Sohbetleriniz yüklenemedi.",
+      "loading": "Konuşma yükleniyor…",
       "moreActions": "Diğer işlemler",
       "newChat": "Yeni Sohbet",
       "noResults": "Aramanızla eşleşen konuşma yok",
+      "offline": "Çevrimdışısınız. Bunun için internet bağlantısı gerekiyor.",
       "openButton": "Geçmiş",
       "pin": "Sabitle",
       "pinLimitReached": "En fazla {{count}} konuşma sabitleyebilirsiniz",
@@ -333,49 +345,49 @@
     "terms": "Şartlar ve Sorumluluk Reddi"
   },
   "ftsoRewards": {
-    "description": "FTSO delegasyon ödüllerinizi, ödül hızını ve sağlayıcı tahsislerini tek bir yerde takip edin.",
     "connectToSee": "FTSO ödüllerini görmek için bir cüzdan bağlayın veya seçin.",
     "couldntLoad": "FTSO ödülleriniz yüklenemedi.",
-    "stats": {
-      "wflrBalance": "WFLR Bakiyesi",
-      "unclaimed": "Talep Edilmemiş Ödüller",
-      "hourlyEarning": "Tahmini Saatlik Kazanç",
-      "targetEpochYield": "Bu Epoch'un Hedef Getirisi"
-    },
-    "velocity": {
-      "title": "Ödül Hızı",
-      "methodLive": "Canlı Tahmin",
-      "methodHistorical": "Geçmişe Dayalı Tahmin",
-      "inactiveTitle": "Şu Anda Kazanç Yok",
-      "inactiveDescription": "Bu cüzdan henüz WFLR delege etmiyor, bu yüzden tahmin edilecek bir ödül hızı yok.",
-      "perHour": "Saatte",
-      "perDay": "Günde",
-      "thisEpoch": "Bu Epoch",
-      "sourceEpoch": "Epoch {{epoch}} ağ verilerinden tahmin edildi"
-    },
     "delegations": {
-      "title": "Aktif Delegasyonlar",
       "count_one": "{{count}} Sağlayıcı",
       "count_other": "{{count}} Sağlayıcı",
+      "emptyDescription": "Ödül kazanmaya başlamak için WFLR'nizi bir FTSO veri sağlayıcısına delege edin.",
       "emptyTitle": "Aktif Delegasyon Yok",
-      "emptyDescription": "Ödül kazanmaya başlamak için WFLR'nizi bir FTSO veri sağlayıcısına delege edin."
+      "title": "Aktif Delegasyonlar"
     },
+    "description": "FTSO delegasyon ödüllerinizi, ödül hızını ve sağlayıcı tahsislerini tek bir yerde takip edin.",
     "epochs": {
-      "title": "Talep Edilmemiş Epoch'lar",
-      "subtitle": "Epoch'a göre talep edilmeyi bekleyen ödüller",
-      "emptyTitle": "Talep Edilecek Bir Şey Yok",
       "emptyDescription": "Her şey güncel — şu anda bekleyen epoch ödülü yok.",
+      "emptyTitle": "Talep Edilecek Bir Şey Yok",
       "epochLabel": "Epoch {{id}}",
+      "subtitle": "Epoch'a göre talep edilmeyi bekleyen ödüller",
+      "title": "Talep Edilmemiş Epoch'lar",
       "viewFullLedger_one": "Tam kaydı görüntüle ({{count}} girdi)",
       "viewFullLedger_other": "Tam kaydı görüntüle ({{count}} girdi)"
     },
     "providers": {
-      "title": "FTSO Sağlayıcıları",
-      "description": "Sağlayıcı sıralamaları bağlandığında veri sağlayıcılarını performans ve ücretlere göre karşılaştırın."
+      "description": "Sağlayıcı sıralamaları bağlandığında veri sağlayıcılarını performans ve ücretlere göre karşılaştırın.",
+      "title": "FTSO Sağlayıcıları"
+    },
+    "stats": {
+      "hourlyEarning": "Tahmini Saatlik Kazanç",
+      "targetEpochYield": "Bu Epoch'un Hedef Getirisi",
+      "unclaimed": "Talep Edilmemiş Ödüller",
+      "wflrBalance": "WFLR Bakiyesi"
     },
     "validators": {
-      "title": "Staking Validator Sıralaması",
-      "description": "Staking sıralamaları bağlandığında en iyi performans gösteren validatörleri görün."
+      "description": "Staking sıralamaları bağlandığında en iyi performans gösteren validatörleri görün.",
+      "title": "Staking Validator Sıralaması"
+    },
+    "velocity": {
+      "inactiveDescription": "Bu cüzdan henüz WFLR delege etmiyor, bu yüzden tahmin edilecek bir ödül hızı yok.",
+      "inactiveTitle": "Şu Anda Kazanç Yok",
+      "methodHistorical": "Geçmişe Dayalı Tahmin",
+      "methodLive": "Canlı Tahmin",
+      "perDay": "Günde",
+      "perHour": "Saatte",
+      "sourceEpoch": "Epoch {{epoch}} ağ verilerinden tahmin edildi",
+      "thisEpoch": "Bu Epoch",
+      "title": "Ödül Hızı"
     }
   },
   "gasSniperStatus": {
@@ -457,15 +469,22 @@
     "stillNeedHelp": "Hâlâ yardıma mı ihtiyacınız var?",
     "supportDesc": "Şu anda bize ulaşmanın en hızlı yolu X. E-posta ve Telegram desteği yakında geliyor."
   },
+  "install": {
+    "bannerDescriptionAndroid": "Daha hızlı erişim ve tam ekran deneyimi için FlareGPT'yi ana ekranınıza ekleyin.",
+    "bannerDescriptionIOS": "Hızlı erişim için Paylaş'a, ardından “Ana Ekrana Ekle” ye dokunun.",
+    "dismiss": "Yok say",
+    "installButton": "Kur",
+    "installing": "Kuruluyor…"
+  },
   "loops": {
     "description": "Ağı izleyen ve sizin adınıza işlem yapan otomatik arka plan hizmetleri.",
     "gasSniper": {
       "active": "Aktif",
       "approveCta": "Coston2'de Onayla",
+      "approved": "Onaylandı. Artık Gas Sniper'ı açabilirsiniz.",
       "approveDescription": "Bu cüzdanın önce Coston2 üzerinde Flare'in Gas Sniper anahtarını talep yürütücüsü olarak onaylaması gerekir. Bu tek seferlik, zincir üzerinde bir onaydır. Cüzdanınız Coston2 ağına geçmenizi veya eklemenizi isteyebilir.",
       "approveFailed": "Onay tamamlanamadı. Tekrar deneyin.",
       "approveTitle": "Tek seferlik onay gerekli",
-      "approved": "Onaylandı. Artık Gas Sniper'ı açabilirsiniz.",
       "approving": "Cüzdanınızda onaylayın…",
       "confirmingApproval": "Onaylanıyor…",
       "description": "Gaz ücretleri yeterince düştüğü anda FTSO ödüllerinizi otomatik olarak talep eder ve siz kapatana kadar bir tarayıcı eklentisi gibi arka planda sessizce çalışmaya devam eder.",
@@ -475,6 +494,7 @@
       "inactive": "Pasif",
       "needsApproval": "Onay gerekiyor",
       "needsReconnect": "Cüzdan bağlantısı kesildi",
+      "offline": "Bunun bir internet bağlantısına ihtiyacı var.",
       "reconnectDescription": "Tek seferlik zincir üzerinde onayı tamamlamak için bu cüzdanı yeniden bağlayın.",
       "reconnectTitle": "Devam etmek için yeniden bağlanın",
       "signInHint": "Gas Sniper'ı açmak için cüzdanınızla oturum açın.",
@@ -500,71 +520,80 @@
     "hideBalances": "Bakiyeleri gizle",
     "mainnetStatus": "Flare Ana Ağı",
     "moreOptions": "Diğer seçenekler",
+    "offline": "Çevrim dışı",
     "openMenu": "Menüyü aç",
     "primaryWalletSection": "Birincil Cüzdan",
+    "shareAddress": "Share address",
+    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Bakiyeleri göster",
     "signIn": "Giriş Yap",
     "signInBackgroundHint": "Bağlı cüzdanınızın giriş yapması gerekiyor",
     "signingIn": "Giriş yapılıyor…",
+    "signInOffline": "Oturum açmak için internet bağlantısı gerekir.",
     "signInPrompt": "Devam etmek için bu cüzdanı doğrulayan bir mesajı imzalayın.",
     "watchlistSection": "İzleme Listesi ({{current}}/{{max}})"
   },
   "offline": {
-    "message": "Çevrimdışısınız. Otomatik olarak yeniden bağlanacağız.",
-    "backOnline": "Tekrar çevrimiçi"
+    "backOnline": "Tekrar çevrimiçi",
+    "message": "Çevrimdışısınız. Otomatik olarak yeniden bağlanacağız."
+  },
+  "onboarding": {
+    "welcomeMessage": "FlareGPT'ye hoş geldiniz. Portföyünüzü görmek için bir cüzdan bağlayın veya yapay zeka asistanına her şeyi sorun."
   },
   "rflrVesting": {
-    "description": "rFLR vesting ilerlemenizi, yaklaşan kilit açmaları ve ağ genelindeki emisyonları tek bir yerde takip edin.",
     "connectToSee": "Vesting durumunu görmek için bir cüzdan bağlayın veya seçin.",
     "couldntLoad": "Vesting verileriniz yüklenemedi.",
-    "noRflr": {
-      "title": "Henüz rFLR Ödülü Yok",
-      "description": "Bu cüzdan henüz herhangi bir rFLR ödülü kazanmadı, bu yüzden şu anda vesting yapılacak bir şey yok."
-    },
-    "stats": {
-      "totalBalance": "Toplam rFLR Bakiyesi",
-      "liquidNow": "Şu Anda Likit",
-      "lockedInVesting": "Vesting'de Kilitli",
-      "vestedProgress": "Vested"
-    },
-    "progress": {
-      "title": "Vesting İlerlemesi",
-      "vestedLabel": "Vested",
-      "nextUnlock": "Sonraki kilit açma: {{date}}",
-      "nextUnlockCaption": "likit hale gelecek",
-      "fullyVested": "Tamamen vested — açılacak başka bir şey kalmadı",
-      "earlyExitTitle": "Erken Çıkış",
-      "earlyExitNoneNeeded": "Hiçbir şey kilitli değil, bu yüzden erken çıkış için ceza yok.",
-      "efficiency": "%{{pct}} verimli",
-      "netPayout": "Şu Anki Net Ödeme",
-      "penaltyCost": "Çıkış Cezası"
-    },
-    "timeline": {
-      "title": "Kilit Açma Zaman Çizelgesi",
-      "subtitle": "Zaman içinde kümülatif olarak kilidi açılan rFLR",
-      "historicalNote": "Tam kilit açma geçmişini gösterir — başka bir yerde zaten talep edilmiş tutarları içerebilir, bu nedenle toplam yukarıdaki mevcut bakiyenizi aşabilir.",
-      "emptyTitle": "Henüz kilit açma geçmişi yok",
-      "loadingTitle": "Kilit açma geçmişi yükleniyor…",
-      "loadingHint": "Bir cüzdanı ilk kez kontrol ederken bu işlem 30 saniyeye kadar sürebilir.",
-      "couldntLoad": "Kilit açma geçmişi yüklenemedi.",
-      "statusLiquid": "Likit",
-      "statusLocked": "Kilitli",
-      "viewFullSchedule": "Tam programı görüntüle ({{count}} kayıt)"
-    },
+    "description": "rFLR vesting ilerlemenizi, yaklaşan kilit açmaları ve ağ genelindeki emisyonları tek bir yerde takip edin.",
     "network": {
-      "title": "Ağ Nabzı",
-      "subtitle": "Ağ genelindeki emisyonlar ve epoch durumu",
+      "allocated": "Tahsis Edildi",
+      "claimedToVesting": "Vesting'e Talep Edildi",
       "couldntLoad": "Ağ durumu yüklenemedi.",
-      "nextDistribution": "Sonraki Dağıtım",
       "countdownDays": "{{days}}g {{hours}}s sonra",
       "countdownHours": "{{hours}}s sonra",
+      "currentlyLocked": "Şu Anda Kilitli",
       "epochCaption": "{{epoch}} epoch'u {{date}} tarihinde başladı",
+      "nextDistribution": "Sonraki Dağıtım",
       "poolUtilization": "Teşvik Havuzu Kullanımı",
-      "allocated": "Tahsis Edildi",
       "remaining": "{{amount}} tahsis edilmeyi bekliyor",
-      "claimedToVesting": "Vesting'e Talep Edildi",
-      "withdrawnLiquid": "Likit Olarak Çekildi",
-      "currentlyLocked": "Şu Anda Kilitli"
+      "subtitle": "Ağ genelindeki emisyonlar ve epoch durumu",
+      "title": "Ağ Nabzı",
+      "withdrawnLiquid": "Likit Olarak Çekildi"
+    },
+    "noRflr": {
+      "description": "Bu cüzdan henüz herhangi bir rFLR ödülü kazanmadı, bu yüzden şu anda vesting yapılacak bir şey yok.",
+      "title": "Henüz rFLR Ödülü Yok"
+    },
+    "progress": {
+      "earlyExitNoneNeeded": "Hiçbir şey kilitli değil, bu yüzden erken çıkış için ceza yok.",
+      "earlyExitTitle": "Erken Çıkış",
+      "efficiency": "%{{pct}} verimli",
+      "fullyVested": "Tamamen vested — açılacak başka bir şey kalmadı",
+      "netPayout": "Şu Anki Net Ödeme",
+      "nextUnlock": "Sonraki kilit açma: {{date}}",
+      "nextUnlockCaption": "likit hale gelecek",
+      "penaltyCost": "Çıkış Cezası",
+      "title": "Vesting İlerlemesi",
+      "vestedLabel": "Vested"
+    },
+    "stats": {
+      "liquidNow": "Şu Anda Likit",
+      "lockedInVesting": "Vesting'de Kilitli",
+      "totalBalance": "Toplam rFLR Bakiyesi",
+      "vestedProgress": "Vested"
+    },
+    "timeline": {
+      "couldntLoad": "Kilit açma geçmişi yüklenemedi.",
+      "emptyTitle": "Henüz kilit açma geçmişi yok",
+      "historicalNote": "Tam kilit açma geçmişini gösterir — başka bir yerde zaten talep edilmiş tutarları içerebilir, bu nedenle toplam yukarıdaki mevcut bakiyenizi aşabilir.",
+      "loadingHint": "Bir cüzdanı ilk kez kontrol ederken bu işlem 30 saniyeye kadar sürebilir.",
+      "loadingTitle": "Kilit açma geçmişi yükleniyor…",
+      "statusLiquid": "Likit",
+      "statusLocked": "Kilitli",
+      "subtitle": "Zaman içinde kümülatif olarak kilidi açılan rFLR",
+      "title": "Kilit Açma Zaman Çizelgesi",
+      "viewFullSchedule": "Tam programı görüntüle ({{count}} kayıt)",
+      "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -606,6 +635,7 @@
       "conversationsDescription": "Hesabınızdaki FlareGPT sohbet geçmişini temizler. Bu işlem geri alınamaz.",
       "localSubtitle": "Yalnızca bu tarayıcıda depolanır. Temizlenmesi anında ve güvenlidir.",
       "localTitle": "Yerel Veri",
+      "offline": "Çevrimdışısınız. Bunun için internet bağlantısı gerekiyor.",
       "walletCache": "Cüzdan Etkinliği Önbelleği",
       "walletCacheCleared": "Önbellek temizlendi",
       "walletCacheDescription": "Önbelleğe alınmış işlem geçmişini temizler. Bir sonraki ziyaret bunu yeniden getirecektir."
@@ -636,6 +666,14 @@
       "account": "Hesap",
       "personalization": "Kişiselleştirme",
       "walletsAndData": "Cüzdanlar ve Veri"
+    },
+    "install": {
+      "button": "Kur",
+      "descriptionAvailable": "Daha hızlı erişim ve yerel, tam ekran deneyimi için FlareGPT'yi yükleyin.",
+      "descriptionInstalled": "Bu cihazda FlareGPT kurulu.",
+      "descriptionIOS": "Safari'de Paylaş simgesine, ardından “Ana Ekrana Ekle” ye dokunun.",
+      "installedBadge": "Kurulu",
+      "title": "Uygulama Kur"
     },
     "links": {
       "docs": "Dokümanlar",
@@ -725,6 +763,7 @@
       "noLimit": "İstediğiniz kadar cüzdan ekleyin.",
       "noSearchResults": "Aramanızla eşleşen cüzdan yok.",
       "notFoundError": "Bu cüzdan artık izleme listenizde değil.",
+      "offline": "Çevrimdışısınız. Bunun için internet bağlantısı gerekiyor.",
       "readOnly": "Salt Okunur",
       "registrationFailed": "Adres kaydı başarısız oldu. Yinelenen olup olmadığını veya yuvaların dolu olup olmadığını kontrol edin.",
       "remainingSlots": "Kalan Yuvalar",
@@ -765,6 +804,15 @@
     "walletConnected": "Cüzdan Bağlandı",
     "yield": "Getiri"
   },
+  "staleData": {
+    "justNow": "Dakikalar öncesinden önbelleğe alınmış veriler gösteriliyor",
+    "minutesAgo": "{{minutes}} dakika önce önbelleğe alınmış veriler gösteriliyor"
+  },
+  "update": {
+    "available": "FlareGPT'nin yeni bir sürümü mevcut.",
+    "reload": "Tekrar Yükle",
+    "waitingForReply": "Mevcut yanıtınız biter bitmez güncelleme uygulanacaktır."
+  },
   "wallet": {
     "activity": {
       "charts": {
@@ -790,8 +838,11 @@
         "close": "Kapat",
         "copyFailed": "Hash kopyalanamadı",
         "hashCopied": "İşlem hash'i kopyalandı",
+        "linkCopied": "Explorer link copied",
         "next": "Sonraki işlem",
         "previous": "Önceki işlem",
+        "shareTitle": "FlareGPT transaction",
+        "shareTransaction": "Share transaction",
         "timestamp": "Zaman Damgası",
         "title": "İşlem Ayrıntıları",
         "transactionHash": "İşlem Hash'i",
@@ -885,8 +936,5 @@
       "received": "Gelen",
       "sent": "Gönderildi"
     }
-  },
-  "a11y": {
-    "skipToContent": "Ana içeriğe geç"
   }
 }

@@ -1,4 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
+import { useSearchParams } from "react-router";
 import { http, HttpResponse, type PathParams, type JsonBodyType } from "msw";
 
 import ProtocolExplorer from "@/pages/DefiProtocols/components/ProtocolExplorer";
@@ -119,5 +120,75 @@ describe("ProtocolExplorer", () => {
     // is a master-detail panel (one active protocol at a time on desktop),
     // not an accumulating list of every protocol ever opened.
     expect(desktop.queryByText("Your Receipt Shares")).not.toBeInTheDocument();
+  });
+});
+
+// Phase 10 — added specifically so a Share button has a real link to hand
+// out (see this file's own top-of-file comment on `PROTOCOL_PARAM`):
+// before this, every `/app/defi` link landed on MXRPY regardless of what
+// the sender actually had open.
+describe("ProtocolExplorer — ?protocol= deep link", () => {
+  it("opens directly to the protocol named in the URL, not the default first protocol", async () => {
+    mockVaultEndpoint("/api/v1/defi/vaults/mxrpy", MXRPY_RESPONSE, vi.fn());
+    mockVaultEndpoint("/api/v1/defi/vaults/sceptre", SCEPTRE_RESPONSE, vi.fn());
+    mockVaultEndpoint("/api/v1/defi/vaults/firelight", {}, vi.fn());
+    mockVaultEndpoint("/api/v1/defi/vaults/spectra", { markets: [] }, vi.fn());
+
+    renderWithProviders(<ProtocolExplorer />, {
+      route: "/app/defi?protocol=sceptre",
+      wagmi: { connected: true, address: TEST_ADDRESSES.primary },
+    });
+
+    expect(await getDesktopPanel().findByText("sFLR / FLR rate")).toBeInTheDocument();
+    expect(getDesktopPanel().queryByText("Your Receipt Shares")).not.toBeInTheDocument();
+  });
+
+  it("falls back to the default protocol for an unknown/garbage ?protocol= value instead of breaking", async () => {
+    mockVaultEndpoint("/api/v1/defi/vaults/mxrpy", MXRPY_RESPONSE, vi.fn());
+    mockVaultEndpoint("/api/v1/defi/vaults/sceptre", SCEPTRE_RESPONSE, vi.fn());
+    mockVaultEndpoint("/api/v1/defi/vaults/firelight", {}, vi.fn());
+    mockVaultEndpoint("/api/v1/defi/vaults/spectra", { markets: [] }, vi.fn());
+
+    renderWithProviders(<ProtocolExplorer />, {
+      route: "/app/defi?protocol=not-a-real-protocol",
+      wagmi: { connected: true, address: TEST_ADDRESSES.primary },
+    });
+
+    expect(await getDesktopPanel().findByText("Your Receipt Shares")).toBeInTheDocument();
+  });
+
+  it("selecting a different protocol updates the URL's ?protocol= param", async () => {
+    mockVaultEndpoint("/api/v1/defi/vaults/mxrpy", MXRPY_RESPONSE, vi.fn());
+    mockVaultEndpoint("/api/v1/defi/vaults/sceptre", SCEPTRE_RESPONSE, vi.fn());
+    mockVaultEndpoint("/api/v1/defi/vaults/firelight", {}, vi.fn());
+    mockVaultEndpoint("/api/v1/defi/vaults/spectra", { markets: [] }, vi.fn());
+
+    // This app's router is a MemoryRouter in tests (see test-utils.tsx),
+    // which never touches the real `window.location` — a probe reading
+    // useSearchParams() itself (same "mount a small real consumer of the
+    // hook" pattern as GasSniperCard.test.tsx's DisconnectProbe) is what
+    // actually proves the param round-trips, not just that Sceptre's own
+    // content happens to render afterward.
+    function SearchParamsProbe() {
+      const [params] = useSearchParams();
+      return <div data-testid="protocol-param">{params.get("protocol") ?? "(none)"}</div>;
+    }
+
+    renderWithProviders(
+      <>
+        <ProtocolExplorer />
+        <SearchParamsProbe />
+      </>,
+      { wagmi: { connected: true, address: TEST_ADDRESSES.primary } },
+    );
+
+    const desktop = getDesktopPanel();
+    await desktop.findByText("Your Receipt Shares");
+    expect(screen.getByTestId("protocol-param")).toHaveTextContent("(none)");
+
+    fireEvent.click(desktop.getByRole("button", { name: /Sceptre Liquid Staking/ }));
+    await desktop.findByText("sFLR / FLR rate");
+
+    expect(screen.getByTestId("protocol-param")).toHaveTextContent("sceptre");
   });
 });

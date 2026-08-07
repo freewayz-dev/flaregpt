@@ -73,6 +73,31 @@ html.dark {
     font-family: Inter, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Removes the gray tap-flash Chrome/Safari draw on every touch of a
+       link/button by default — every interactive element here already
+       has its own deliberate hover/active state (`hover:bg-*`,
+       `active:scale-95`, ...), so the browser's own generic flash on top
+       just reads as an unstyled, non-native blemish instead of feedback. */
+    -webkit-tap-highlight-color: transparent;
+    /* Stops the whole-page rubber-band bounce / pull-to-reveal-chrome
+       gesture at the true browser-chrome level — distinct from (and
+       complementary to) the `overscroll-contain` already set on individual
+       scroll containers (DashboardLayout's `main`, MessageList, tables,
+       ...), which only stops scroll *chaining* from those into whatever's
+       behind them. This is the one that makes the standalone-installed app
+       stop feeling like a scrolled webpage at the very top/bottom edge. */
+    overscroll-behavior-y: none;
+  }
+
+  /* Removes the ~300ms tap-delay browsers reserve for detecting a
+     double-tap-to-zoom gesture, and disables that gesture on the elements
+     it was never meant for anyway — every button/link here already has
+     its own explicit `active:` feedback state, so faster, single-purpose
+     taps are strictly better than leaving room for an accidental zoom. */
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
   }
 }
 

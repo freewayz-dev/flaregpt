@@ -16,6 +16,18 @@ interface AuthState {
   // `token`/`authenticatedAddress` itself to enforce that — see
   // apiClient.js.
   connectedAddress: Address | null;
+  // Same "hasn't heard from storage yet" gap useWalletHubStore.ts's own
+  // `hasHydrated` documents at length, and the same fix — zustand-persist's
+  // hydration is deferred to a microtask, so `token` reads its in-code
+  // default (`null`) for a beat on every fresh load, even for an
+  // already-signed-in user. useWalletHubStore's `reconcileActiveAddress`
+  // reads `hasSession` (derived from this store's `token`) as one of the
+  // signals deciding whether it's safe to treat an empty wallet list as
+  // "genuinely nothing there" rather than "still waiting to hear back" —
+  // without this flag, that check had no way to tell "not signed in" apart
+  // from "don't know yet," and could reconcile against a momentarily-wrong
+  // `hasSession=false` before this store had actually finished rehydrating.
+  hasHydrated: boolean;
 
   beginAuthenticating: () => void;
   setSession: (token: string, address: Address) => void;
@@ -28,9 +40,14 @@ interface AuthState {
 // Disconnecting a wallet (see useDisconnectAllWallets) must never touch
 // this store — only an explicit logout (see useAuthSync.js's exported
 // `logout`) clears it. Persisted so the token survives reloads and even
-// the browser restarting, matching the backend's "token does not expire"
-// contract: the token is the actual source of truth for "am I signed in",
-// not whatever wagmi's connector happens to report at a given moment.
+// the browser restarting — the backend's own `/auth/verify` response
+// confirms tokens expire after 30 days (`expires_in: 2592000`), not never
+// (see apiClient.ts's 401 interceptor and useAuthSync.js's mount-time
+// check, which are what actually notice an expired/revoked token and
+// clear this store; persisting here just means a still-valid token
+// doesn't need a fresh sign-in on every reload). The token is still the
+// actual source of truth for "am I signed in" in the meantime, not
+// whatever wagmi's connector happens to report at a given moment.
 // `persist`'s own generics don't infer the state creator's type through a
 // curried `create<AuthState>()(persist((set) => (...), options))` call by
 // themselves — the explicit `: AuthState` return annotation below (and on
@@ -43,6 +60,7 @@ export const useAuthStore = create<AuthState>()(
       authenticatedAddress: null,
       isAuthenticating: false,
       connectedAddress: null,
+      hasHydrated: false,
 
       beginAuthenticating: () => set({ isAuthenticating: true }),
       setSession: (token, address) =>
@@ -57,6 +75,9 @@ export const useAuthStore = create<AuthState>()(
         token: state.token,
         authenticatedAddress: state.authenticatedAddress,
       }),
+      onRehydrateStorage: () => (state) => {
+        if (state) state.hasHydrated = true;
+      },
     },
   ),
 );

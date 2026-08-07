@@ -9,6 +9,7 @@ import {
   ClipboardIcon,
   CheckIcon,
   ArrowTopRightOnSquareIcon,
+  ShareIcon,
 } from "@heroicons/react/24/outline";
 
 import type { ReactNode } from "react";
@@ -16,6 +17,7 @@ import type { ReactNode } from "react";
 import TokenIcon from "@/components/common/TokenIcon";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import { getFlarescanTxUrl } from "@/config/web3Config";
+import { shareOrCopy } from "@/utils/share";
 import { getActionDirection, formatActionLabel } from "@/pages/WalletActivity/utils/deriveActivity";
 import type { ActivityItem } from "@/pages/WalletActivity/utils/deriveActivity";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
@@ -215,15 +217,41 @@ export default function TransactionDrawer({ item, hasPrev, hasNext, onPrev, onNe
             </p>
             <CopyableHash hash={item.transaction_hash} />
 
-            <a
-              href={getFlarescanTxUrl(item.transaction_hash)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 flex items-center justify-center gap-1.5 rounded-xl border border-line px-4 py-2.5 text-sm font-medium text-ink-secondary transition-colors hover:bg-surface-card-hover hover:text-ink-primary cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
-            >
-              {t("wallet.activity.drawer.viewOnExplorer")}
-              <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
-            </a>
+            <div className="mt-5 flex items-center gap-2">
+              <a
+                href={getFlarescanTxUrl(item.transaction_hash)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-line px-4 py-2.5 text-sm font-medium text-ink-secondary transition-colors hover:bg-surface-card-hover hover:text-ink-primary cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+              >
+                {t("wallet.activity.drawer.viewOnExplorer")}
+                <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
+              </a>
+              <button
+                type="button"
+                // Shares the explorer link, not this app's own `?tx=`
+                // deep link — that param is a session-derived id (hash +
+                // asset + fetch-order index, see withActionIds in
+                // deriveActivity.ts), not a stable identifier, so it
+                // isn't guaranteed to resolve to the same transaction (or
+                // resolve at all) in whoever receives the link's own
+                // session. The explorer URL, keyed by the raw transaction
+                // hash, works for anyone regardless of this app.
+                onClick={async () => {
+                  const result = await shareOrCopy({
+                    title: t("wallet.activity.drawer.shareTitle"),
+                    url: getFlarescanTxUrl(item.transaction_hash),
+                  });
+                  if (result === "copied") toast.success(t("wallet.activity.drawer.linkCopied"));
+                  else if (result === "failed") toast.error(t("wallet.activity.drawer.copyFailed"));
+                }}
+                aria-label={t("wallet.activity.drawer.shareTransaction")}
+                title={t("wallet.activity.drawer.shareTransaction")}
+                className="shrink-0 rounded-xl border border-line p-2.5 text-ink-secondary transition-colors hover:bg-surface-card-hover hover:text-ink-primary cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+              >
+                <ShareIcon className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         )}
       </aside>

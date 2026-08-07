@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { http, HttpResponse, type PathParams } from "msw";
 import { Routes, Route, Outlet } from "react-router";
 import { decodeFunctionData, encodeFunctionResult } from "viem";
@@ -344,5 +344,45 @@ describe("GasSniperCard — approval rejected in the wallet", () => {
     // The app is still alive and usable — the Approve button is back,
     // re-enabled, ready for a retry, not a blank page.
     expect(screen.getByRole("button", { name: "Approve on Coston2" })).toBeEnabled();
+  });
+});
+
+describe("GasSniperCard — offline", () => {
+  const originalOnLine = window.navigator.onLine;
+
+  afterEach(() => {
+    Object.defineProperty(window.navigator, "onLine", { value: originalOnLine, configurable: true });
+  });
+
+  it("disables the toggle for an already-approved wallet while offline", async () => {
+    mockGasSniperBackend();
+    mockCoston2Rpc({ isApproved: true });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+    Object.defineProperty(window.navigator, "onLine", { value: false, configurable: true });
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+
+    // Toggle.tsx is a styled <button>, not a real <input type="checkbox">
+    // — it signals disabled state via aria-disabled, not the native
+    // `disabled` attribute (see its own comment on why), so that's what
+    // this asserts against rather than jest-dom's toBeDisabled().
+    const toggle = await screen.findByRole("switch");
+    expect(toggle).toHaveAttribute("aria-disabled", "true");
+  });
+
+  it("disables the Approve button while offline", async () => {
+    mockGasSniperBackend();
+    mockCoston2Rpc({ isApproved: false });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    fireEvent.click(toggle);
+    await screen.findByRole("button", { name: "Approve on Coston2" });
+
+    Object.defineProperty(window.navigator, "onLine", { value: false, configurable: true });
+    fireEvent(window, new Event("offline"));
+
+    expect(screen.getByRole("button", { name: "Approve on Coston2" })).toBeDisabled();
   });
 });

@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "تخطى إلى المحتوى الرئيسي"
+  },
   "comingSoon": {
     "badge": "قريباً",
     "description": "نحن نبني هذه الميزة. تحقَّق مرة أخرى قريباً."
@@ -24,6 +27,7 @@
     "install": "تثبيت",
     "installHint": "لا زلت لا ترى محفظتك؟ قد يساعد تحديث الصفحة.",
     "mobileHint": "على الهاتف المحمول، افتح FlareGPT في متصفح محفظتك المدمج للحصول على أفضل تجربة اتصال. عند مسح رمز QR، استخدم ماسح تطبيق محفظتك بدلاً من كاميرا هاتفك للحصول على اتصال أكثر موثوقية.",
+    "offline": "أنت غير متصل بالإنترنت. يحتاج توصيل المحفظة إلى اتصال بالإنترنت.",
     "recommended": "الخيار المقترح",
     "refresh": "تحديث",
     "subtitle": "اختر محفظتك المفضلة للاتصال بشبكة Flare.",
@@ -38,7 +42,11 @@
     },
     "chart": {
       "couldntLoad": "تعذر تحميل سجل أسعار الطابق الأرضي",
+      "viewData_zero": "",
       "viewData_one": "عرض سجل الأسعار (نقطة واحدة {{count}})",
+      "viewData_two": "",
+      "viewData_few": "",
+      "viewData_many": "",
       "viewData_other": "عرض سجل الأسعار ({{count}} نقطة)"
     },
     "claimsHistory": {
@@ -84,7 +92,11 @@
       "live": "[ترجمة المصطلح: Live]",
       "title": "نشاط الشبكة.",
       "tps": "مستشعر موضع الدواسة / مستشعر موضع البخاخ",
+      "viewData_zero": "",
       "viewData_one": "عرض عينات سعر الغاز (عينة واحدة {{count}})",
+      "viewData_two": "",
+      "viewData_few": "",
+      "viewData_many": "",
       "viewData_other": "عرض عينات سعر الغاز ({{count}} عينة)"
     },
     "stats": {
@@ -114,6 +126,9 @@
     },
     "description": "قارن استراتيجيات العائد وتتبّع مراكزك في خزائن MXRPY وSceptre وFirelight وSpectra.",
     "explorer": {
+      "linkCopied": "Link copied",
+      "shareFailed": "Couldn't share this protocol",
+      "shareProtocol": "Share this protocol",
       "subtitle": "اختر بروتوكولاً لعرض مركزك والتفاصيل",
       "title": "مستكشف البروتوكولات"
     },
@@ -230,7 +245,10 @@
       "copyFailed": "تعذر نسخ العنوان",
       "multisigNote": "محمية بمحفظة متعددة التوقيع",
       "qrTitle": "رمز QR لعنوان محفظة التبرعات بعملة {{symbol}}",
+      "shareAddress": "Share Address",
+      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "اضغط للنسخ",
+      "tapToShare": "Tap to share",
       "viewOnExplorer": "عرض على {{explorer}}"
     },
     "received": {
@@ -266,6 +284,7 @@
     },
     "composer": {
       "disclaimer": "قد يرتكب FlareGPT أخطاء. تحقق من المعلومات المهمة قبل التصرف بناءً عليها.",
+      "offlinePlaceholder": "أنت غير متصل بالإنترنت — لا يمكن إرسال الرسائل الآن",
       "placeholder": "اسأل FlareGPT...",
       "send": "إرسال",
       "stop": "إيقاف التوليد"
@@ -289,11 +308,12 @@
       "close": "إغلاق",
       "delete": "حذف",
       "empty": "لا توجد محادثات بعد",
-      "loading": "جارٍ تحميل المحادثة…",
       "loadFailed": "تعذّر تحميل محادثاتك.",
+      "loading": "جارٍ تحميل المحادثة…",
       "moreActions": "إجراءات إضافية",
       "newChat": "محادثة جديدة",
       "noResults": "لا توجد محادثات مطابقة لبحثك",
+      "offline": "أنت غير متصل بالإنترنت. هذا يحتاج إلى اتصال بالإنترنت.",
       "openButton": "السجل",
       "pin": "تثبيت",
       "pinLimitReached": "يمكنك تثبيت حتى {{count}} محادثات",
@@ -345,49 +365,57 @@
     "terms": "الشروط وإخلاء المسؤولية"
   },
   "ftsoRewards": {
-    "description": "تتبّع مكافآت تفويض FTSO الخاصة بك، وسرعة تراكم المكافآت، وتخصيصات مزودي الخدمة في مكان واحد.",
     "connectToSee": "قم بتوصيل أو اختيار محفظة لعرض مكافآت FTSO الخاصة بها.",
     "couldntLoad": "تعذّر تحميل مكافآت FTSO الخاصة بك.",
-    "stats": {
-      "wflrBalance": "رصيد WFLR",
-      "unclaimed": "المكافآت غير المُطالَب بها",
-      "hourlyEarning": "الأرباح المقدّرة بالساعة",
-      "targetEpochYield": "العائد المستهدف لهذه الحقبة"
-    },
-    "velocity": {
-      "title": "سرعة المكافآت",
-      "methodLive": "تقدير مباشر",
-      "methodHistorical": "تقدير تاريخي",
-      "inactiveTitle": "غير مكتسبة حاليًا",
-      "inactiveDescription": "هذه المحفظة لا تفوّض WFLR بعد، لذا لا توجد سرعة مكافآت لتقديرها.",
-      "perHour": "في الساعة",
-      "perDay": "في اليوم",
-      "thisEpoch": "هذه الحقبة",
-      "sourceEpoch": "مُقدَّر من بيانات شبكة الحقبة {{epoch}}"
-    },
     "delegations": {
-      "title": "التفويضات النشطة",
+      "count_zero": "",
       "count_one": "{{count}} مزوّد",
+      "count_two": "",
+      "count_few": "",
+      "count_many": "",
       "count_other": "{{count}} مزوّدين",
+      "emptyDescription": "فوّض WFLR الخاص بك إلى أحد مزوّدي بيانات FTSO لبدء كسب المكافآت.",
       "emptyTitle": "لا توجد تفويضات نشطة",
-      "emptyDescription": "فوّض WFLR الخاص بك إلى أحد مزوّدي بيانات FTSO لبدء كسب المكافآت."
+      "title": "التفويضات النشطة"
     },
+    "description": "تتبّع مكافآت تفويض FTSO الخاصة بك، وسرعة تراكم المكافآت، وتخصيصات مزودي الخدمة في مكان واحد.",
     "epochs": {
-      "title": "الحقب غير المُطالَب بها",
-      "subtitle": "مكافآت في انتظار المطالبة، حسب الحقبة",
-      "emptyTitle": "لا يوجد شيء غير مُطالَب به",
       "emptyDescription": "كل شيء محدّث — لا توجد مكافآت حقبة معلّقة الآن.",
+      "emptyTitle": "لا يوجد شيء غير مُطالَب به",
       "epochLabel": "الحقبة {{id}}",
+      "subtitle": "مكافآت في انتظار المطالبة، حسب الحقبة",
+      "title": "الحقب غير المُطالَب بها",
+      "viewFullLedger_zero": "",
       "viewFullLedger_one": "عرض السجل الكامل ({{count}} إدخال)",
+      "viewFullLedger_two": "",
+      "viewFullLedger_few": "",
+      "viewFullLedger_many": "",
       "viewFullLedger_other": "عرض السجل الكامل ({{count}} إدخالات)"
     },
     "providers": {
-      "title": "مزودو FTSO",
-      "description": "قارن بين مزودي البيانات من حيث الأداء والرسوم بمجرد ربط تصنيفات المزودين."
+      "description": "قارن بين مزودي البيانات من حيث الأداء والرسوم بمجرد ربط تصنيفات المزودين.",
+      "title": "مزودو FTSO"
+    },
+    "stats": {
+      "hourlyEarning": "الأرباح المقدّرة بالساعة",
+      "targetEpochYield": "العائد المستهدف لهذه الحقبة",
+      "unclaimed": "المكافآت غير المُطالَب بها",
+      "wflrBalance": "رصيد WFLR"
     },
     "validators": {
-      "title": "تصنيف مدققي المصادقة",
-      "description": "اطّلع على أفضل المدققين أداءً بمجرد ربط تصنيفات المصادقة."
+      "description": "اطّلع على أفضل المدققين أداءً بمجرد ربط تصنيفات المصادقة.",
+      "title": "تصنيف مدققي المصادقة"
+    },
+    "velocity": {
+      "inactiveDescription": "هذه المحفظة لا تفوّض WFLR بعد، لذا لا توجد سرعة مكافآت لتقديرها.",
+      "inactiveTitle": "غير مكتسبة حاليًا",
+      "methodHistorical": "تقدير تاريخي",
+      "methodLive": "تقدير مباشر",
+      "perDay": "في اليوم",
+      "perHour": "في الساعة",
+      "sourceEpoch": "مُقدَّر من بيانات شبكة الحقبة {{epoch}}",
+      "thisEpoch": "هذه الحقبة",
+      "title": "سرعة المكافآت"
     }
   },
   "gasSniperStatus": {
@@ -469,15 +497,22 @@
     "stillNeedHelp": "هل ما زلت بحاجة إلى مساعدة؟",
     "supportDesc": "أسرع طريقة للتواصل معنا حاليًا هي عبر X. دعم البريد الإلكتروني وتيليجرام قادم قريبًا."
   },
+  "install": {
+    "bannerDescriptionAndroid": "أضف FlareGPT إلى شاشتك الرئيسية للوصول بشكل أسرع وتجربة ملء الشاشة.",
+    "bannerDescriptionIOS": "اضغط على مشاركة، ثم \"إضافة إلى الشاشة الرئيسية\" للوصول السريع.",
+    "dismiss": "تجاهل",
+    "installButton": "[ترجمة المصطلح: Install]",
+    "installing": "[ترجمة المصطلح: Installing]"
+  },
   "loops": {
     "description": "خدمات خلفية آلية تراقب الشبكة وتتصرف نيابة عنك.",
     "gasSniper": {
       "active": "نشط",
       "approveCta": "الموافقة على Coston2",
+      "approved": "تمت الموافقة. يمكنك الآن تفعيل Gas Sniper.",
       "approveDescription": "يجب على هذه المحفظة أولاً الموافقة على منفذ Gas Sniper الخاص بـ Flare كمنفذ مطالبات على Coston2. هذه موافقة لمرة واحدة على السلسلة. قد تطلب منك محفظتك التبديل إلى شبكة Coston2 أو إضافتها.",
       "approveFailed": "تعذّر إتمام الموافقة. حاول مرة أخرى.",
       "approveTitle": "مطلوب موافقة لمرة واحدة",
-      "approved": "تمت الموافقة. يمكنك الآن تفعيل Gas Sniper.",
       "approving": "أكّد في محفظتك…",
       "confirmingApproval": "جارٍ التأكيد…",
       "description": "يطالب تلقائيًا بمكافآت FTSO الخاصة بك بمجرد انخفاض رسوم الغاز بما يكفي، ويعمل بهدوء في الخلفية مثل إضافة المتصفح حتى تُعطّله.",
@@ -487,6 +522,7 @@
       "inactive": "غير نشط",
       "needsApproval": "تتطلب موافقة",
       "needsReconnect": "المحفظة غير متصلة",
+      "offline": "هذا يحتاج إلى اتصال بالإنترنت.",
       "reconnectDescription": "أعد توصيل هذه المحفظة لإكمال الموافقة لمرة واحدة على السلسلة.",
       "reconnectTitle": "أعد الاتصال للمتابعة",
       "signInHint": "سجّل الدخول بمحفظتك لتفعيل Gas Sniper.",
@@ -512,71 +548,84 @@
     "hideBalances": "إخفاء الأرصدة",
     "mainnetStatus": "شبكة Flare الرئيسية",
     "moreOptions": "خيارات إضافية",
+    "offline": "من خلال المنافذ التقليدية",
     "openMenu": "فتح القائمة",
     "primaryWalletSection": "المحفظة الأساسية",
+    "shareAddress": "Share address",
+    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "إظهار الأرصدة",
     "signIn": "تسجيل الدخول",
     "signInBackgroundHint": "محفظتك المتصلة بحاجة إلى تسجيل الدخول",
     "signingIn": "جارٍ تسجيل الدخول…",
+    "signInOffline": "يحتاج تسجيل الدخول إلى اتصال بالإنترنت.",
     "signInPrompt": "وقّع رسالة للتحقق من هذه المحفظة والمتابعة.",
     "watchlistSection": "قائمة المراقبة ({{current}}/{{max}})"
   },
   "offline": {
-    "message": "أنت غير متصل. سنعيد الاتصال تلقائيًا.",
-    "backOnline": "تم استعادة الاتصال"
+    "backOnline": "تم استعادة الاتصال",
+    "message": "أنت غير متصل. سنعيد الاتصال تلقائيًا."
+  },
+  "onboarding": {
+    "welcomeMessage": "مرحبًا بك في FlareGPT. اربط محفظة لرؤية محفظتك، أو اسأل مساعد الذكاء الاصطناعي عن أي شيء."
   },
   "rflrVesting": {
-    "description": "تتبّع تقدّم استحقاق rFLR الخاص بك، وحالات الإفراج القادمة، وانبعاثات الشبكة بالكامل في مكان واحد.",
     "connectToSee": "قم بتوصيل أو اختيار محفظة لعرض حالة الاستحقاق الخاصة بها.",
     "couldntLoad": "تعذّر تحميل بيانات الاستحقاق الخاصة بك.",
-    "noRflr": {
-      "title": "لا توجد مكافآت rFLR بعد",
-      "description": "لم تكسب هذه المحفظة أي مكافآت rFLR بعد، لذا لا يوجد شيء لاستحقاقه حتى الآن."
-    },
-    "stats": {
-      "totalBalance": "إجمالي رصيد rFLR",
-      "liquidNow": "سائل الآن",
-      "lockedInVesting": "مقفل في الاستحقاق",
-      "vestedProgress": "المستحق"
-    },
-    "progress": {
-      "title": "تقدّم الاستحقاق",
-      "vestedLabel": "مستحق",
-      "nextUnlock": "الإفراج التالي في {{date}}",
-      "nextUnlockCaption": "يصبح سائلاً",
-      "fullyVested": "مستحق بالكامل — لا يوجد شيء آخر للإفراج عنه",
-      "earlyExitTitle": "الخروج المبكر",
-      "earlyExitNoneNeeded": "لا يوجد شيء مقفل، لذا لا توجد غرامة للخروج المبكر.",
-      "efficiency": "كفاءة {{pct}}%",
-      "netPayout": "صافي الدفع الآن",
-      "penaltyCost": "غرامة الخروج"
-    },
-    "timeline": {
-      "title": "الجدول الزمني للإفراج",
-      "subtitle": "إجمالي rFLR المُفرج عنه تراكميًا عبر الزمن",
-      "historicalNote": "يعكس السجل الكامل لجدول الإفراج، والذي قد يتضمن مبالغ تمت المطالبة بها بالفعل في مكان آخر — لذا قد يتجاوز الإجمالي رصيدك الحالي أعلاه.",
-      "emptyTitle": "لا يوجد سجل إفراج بعد",
-      "loadingTitle": "جارٍ تحميل سجل الإفراج…",
-      "loadingHint": "قد يستغرق هذا حتى 30 ثانية في أول مرة نتحقق فيها من محفظة.",
-      "couldntLoad": "تعذّر تحميل سجل الإفراج.",
-      "statusLiquid": "سائل",
-      "statusLocked": "مقفل",
-      "viewFullSchedule": "عرض الجدول الكامل ({{count}} إدخالات)"
-    },
+    "description": "تتبّع تقدّم استحقاق rFLR الخاص بك، وحالات الإفراج القادمة، وانبعاثات الشبكة بالكامل في مكان واحد.",
     "network": {
-      "title": "نبض الشبكة",
-      "subtitle": "انبعاثات الشبكة وحالة الحقبة على مستوى الشبكة",
+      "allocated": "مخصَّص",
+      "claimedToVesting": "المُطالَب به للاستحقاق",
       "couldntLoad": "تعذّر تحميل حالة الشبكة.",
-      "nextDistribution": "التوزيع التالي",
       "countdownDays": "خلال {{days}} يوم {{hours}} ساعة",
       "countdownHours": "خلال {{hours}} ساعة",
+      "currentlyLocked": "المقفل حاليًا",
       "epochCaption": "بدأت الحقبة {{epoch}} في {{date}}",
+      "nextDistribution": "التوزيع التالي",
       "poolUtilization": "استخدام مجمّع الحوافز",
-      "allocated": "مخصَّص",
       "remaining": "{{amount}} متبقٍ لم يُخصَّص بعد",
-      "claimedToVesting": "المُطالَب به للاستحقاق",
-      "withdrawnLiquid": "السائل المسحوب",
-      "currentlyLocked": "المقفل حاليًا"
+      "subtitle": "انبعاثات الشبكة وحالة الحقبة على مستوى الشبكة",
+      "title": "نبض الشبكة",
+      "withdrawnLiquid": "السائل المسحوب"
+    },
+    "noRflr": {
+      "description": "لم تكسب هذه المحفظة أي مكافآت rFLR بعد، لذا لا يوجد شيء لاستحقاقه حتى الآن.",
+      "title": "لا توجد مكافآت rFLR بعد"
+    },
+    "progress": {
+      "earlyExitNoneNeeded": "لا يوجد شيء مقفل، لذا لا توجد غرامة للخروج المبكر.",
+      "earlyExitTitle": "الخروج المبكر",
+      "efficiency": "كفاءة {{pct}}%",
+      "fullyVested": "مستحق بالكامل — لا يوجد شيء آخر للإفراج عنه",
+      "netPayout": "صافي الدفع الآن",
+      "nextUnlock": "الإفراج التالي في {{date}}",
+      "nextUnlockCaption": "يصبح سائلاً",
+      "penaltyCost": "غرامة الخروج",
+      "title": "تقدّم الاستحقاق",
+      "vestedLabel": "مستحق"
+    },
+    "stats": {
+      "liquidNow": "سائل الآن",
+      "lockedInVesting": "مقفل في الاستحقاق",
+      "totalBalance": "إجمالي رصيد rFLR",
+      "vestedProgress": "المستحق"
+    },
+    "timeline": {
+      "couldntLoad": "تعذّر تحميل سجل الإفراج.",
+      "emptyTitle": "لا يوجد سجل إفراج بعد",
+      "historicalNote": "يعكس السجل الكامل لجدول الإفراج، والذي قد يتضمن مبالغ تمت المطالبة بها بالفعل في مكان آخر — لذا قد يتجاوز الإجمالي رصيدك الحالي أعلاه.",
+      "loadingHint": "قد يستغرق هذا حتى 30 ثانية في أول مرة نتحقق فيها من محفظة.",
+      "loadingTitle": "جارٍ تحميل سجل الإفراج…",
+      "statusLiquid": "سائل",
+      "statusLocked": "مقفل",
+      "subtitle": "إجمالي rFLR المُفرج عنه تراكميًا عبر الزمن",
+      "title": "الجدول الزمني للإفراج",
+      "viewFullSchedule": "عرض الجدول الكامل ({{count}} إدخالات)",
+      "viewFullSchedule_zero": "",
+      "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_two": "",
+      "viewFullSchedule_few": "",
+      "viewFullSchedule_many": "",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -618,6 +667,7 @@
       "conversationsDescription": "يمسح سجل محادثات FlareGPT من حسابك. لا يمكن التراجع عن هذا الإجراء.",
       "localSubtitle": "يُخزَّن في هذا المتصفح فقط. مسحه فوري وآمن.",
       "localTitle": "البيانات المحلية",
+      "offline": "أنت غير متصل بالإنترنت. هذا يحتاج إلى اتصال بالإنترنت.",
       "walletCache": "ذاكرة التخزين المؤقت لنشاط المحفظة",
       "walletCacheCleared": "تم مسح ذاكرة التخزين المؤقت",
       "walletCacheDescription": "يمسح سجل المعاملات المخزَّن مؤقتًا. سيتم إعادة جلبه عند الزيارة التالية."
@@ -648,6 +698,14 @@
       "account": "الحساب",
       "personalization": "التخصيص",
       "walletsAndData": "المحافظ والبيانات"
+    },
+    "install": {
+      "button": "[ترجمة المصطلح: Install]",
+      "descriptionAvailable": "قم بتثبيت FlareGPT للوصول بشكل أسرع وتجربة أصلية بملء الشاشة.",
+      "descriptionInstalled": "تم تثبيت FlareGPT على هذا الجهاز.",
+      "descriptionIOS": "اضغط على أيقونة المشاركة في Safari، ثم \"إضافة إلى الشاشة الرئيسية\".",
+      "installedBadge": "تم التركيب",
+      "title": "تثبيت التطبيق"
     },
     "links": {
       "docs": "مستندات",
@@ -737,6 +795,7 @@
       "noLimit": "أضف أي عدد تريده من المحافظ.",
       "noSearchResults": "لا توجد محافظ تطابق بحثك.",
       "notFoundError": "لم تعد هذه المحفظة ضمن قائمة المتابعة الخاصة بك.",
+      "offline": "أنت غير متصل بالإنترنت. هذا يحتاج إلى اتصال بالإنترنت.",
       "readOnly": "للقراءة فقط",
       "registrationFailed": "فشل تسجيل العنوان. تحقق مما إذا كان مكررًا أو إذا تم ملء الخانات.",
       "remainingSlots": "الفتحات المتبقية",
@@ -780,6 +839,15 @@
     "walletActivity": "نشاط المحفظة",
     "walletConnected": "المحفظة متصلة"
   },
+  "staleData": {
+    "justNow": "عرض البيانات المخزنة مؤقتًا منذ لحظات",
+    "minutesAgo": "عرض البيانات المخزنة مؤقتًا من {{minutes}} دقيقة مضت"
+  },
+  "update": {
+    "available": "يتوفر إصدار جديد من FlareGPT.",
+    "reload": "إعادة التحميل",
+    "waitingForReply": "سيتم تطبيق التحديث بمجرد انتهاء ردك الحالي."
+  },
   "wallet": {
     "activity": {
       "charts": {
@@ -792,7 +860,11 @@
         "tabActions": "الإجراءات",
         "tabActivity": "النشاط",
         "tabAssets": "الأصول",
+        "viewData_zero": "",
         "viewData_one": "عرض البيانات (صف واحد {{count}})",
+        "viewData_two": "",
+        "viewData_few": "",
+        "viewData_many": "",
         "viewData_other": "عرض البيانات ({{count}} صف)"
       },
       "connectToSee": "اتصل بمحفظة أو اخترها لرؤية نشاط معاملاتها.",
@@ -805,8 +877,11 @@
         "close": "إغلاق",
         "copyFailed": "تعذّر نسخ الهاش",
         "hashCopied": "تم نسخ هاش المعاملة",
+        "linkCopied": "Explorer link copied",
         "next": "المعاملة التالية",
         "previous": "المعاملة السابقة",
+        "shareTitle": "FlareGPT transaction",
+        "shareTransaction": "Share transaction",
         "timestamp": "الطابع الزمني",
         "title": "تفاصيل المعاملة",
         "transactionHash": "هاش المعاملة",
@@ -916,8 +991,5 @@
       "received": "استلمه",
       "sent": "مُرسل"
     }
-  },
-  "a11y": {
-    "skipToContent": "تخطى إلى المحتوى الرئيسي"
   }
 }

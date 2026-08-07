@@ -6,9 +6,10 @@ import { MotionConfig } from "framer-motion";
 import BlueLightOverlay from "./components/common/BlueLightOverlay";
 import ErrorFallback from "./components/common/ErrorFallback";
 import AppRoutes from "./routes/AppRoutes";
-import { useUIStore } from "./store/useUIStore";
+import { useUIStore, applyThemeColorMeta } from "./store/useUIStore";
 import { useAuthSync } from "./hooks/useAuthSync";
 import { useWatchlistSync } from "./hooks/useWatchlistSync";
+import { usePwaInstallListeners } from "./hooks/usePwaInstallListeners";
 
 function App() {
   const reduceMotionOverride = useUIStore((state) => state.reduceMotionOverride);
@@ -26,6 +27,10 @@ function App() {
   // (see useWatchlistSync.js) needs to react to a sign-in wherever it
   // happens, not just from inside the dashboard.
   useWatchlistSync();
+  // Same reasoning again — `beforeinstallprompt` can fire while on the
+  // landing page, before DashboardLayout (where the install UI actually
+  // renders) ever mounts, and the browser only offers it once.
+  usePwaInstallListeners();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -36,6 +41,7 @@ function App() {
       // Follow OS only until the user manually changes the theme.
       if (!hasThemeOverride) {
         document.documentElement.classList.toggle("dark", e.matches);
+        applyThemeColorMeta(e.matches);
 
         useUIStore.setState({
           darkMode: e.matches,

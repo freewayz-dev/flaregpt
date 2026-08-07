@@ -8,6 +8,7 @@ import { isAxiosError } from "axios";
 import {
   useFlareGptStore,
   makeId,
+  isChatGenerating,
   type ChatMessage,
   type TextBlock,
   type AssistantChatMessage,
@@ -121,8 +122,7 @@ export function useFlareGptConversation() {
   // beyond the single POST /api/v1/chat per message.
   const hasSession = useAuthStore((s) => Boolean(s.token));
 
-  const lastMessage = messages[messages.length - 1];
-  const isGenerating = lastMessage?.role === "assistant" && lastMessage.status !== "complete";
+  const isGenerating = isChatGenerating(messages);
 
   // Signing in mid-session (started as a guest, then connected + signed)
   // must discard whatever ephemeral, never-persisted transcript was on

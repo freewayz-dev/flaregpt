@@ -1,0 +1,24 @@
+{
+  /* Type-checks src/sw.ts and src/sw.emergency.ts on their own — see
+     tsconfig.json's `exclude` entry for why they can't share that program.
+     Not a `references`/project-composite setup: these are two small,
+     independent files with no imports from the rest of the app's own
+     source (only workbox-* packages, in sw.ts's case), so there's nothing
+     for project references to actually share, and a second `tsc` build
+     mode would be more machinery than two files need. */
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "WebWorker"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    "strict": false,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/sw.ts", "src/sw.emergency.ts"]
+}

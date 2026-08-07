@@ -67,6 +67,14 @@ interface UIState {
   // Settings for discoverability; both drive the same value.
   hideBalances: boolean;
 
+  // A single permanent flag, not a multi-step tour's worth of state — the
+  // dashboard's first-launch onboarding is one dismissible toast (see
+  // DashboardLayout.tsx), shown once ever per browser and never again
+  // after that, matching the roadmap's "lightweight... avoid unnecessary
+  // onboarding" instruction directly rather than building a reusable
+  // step-tracking mechanism nothing else here needs yet.
+  hasSeenWelcome: boolean;
+
   setAppearance: (mode: Appearance) => void;
   updateBlueLightLevel: (level: BlueLightLevel) => void;
   setSettingsActiveTab: (tabId: SettingsTab) => void;
@@ -79,10 +87,25 @@ interface UIState {
   setTableDensity: (density: TableDensity) => void;
   setReduceMotionOverride: (value: boolean) => void;
   toggleHideBalances: () => void;
+  markWelcomeSeen: () => void;
 }
 
 const getSystemPreference = () =>
   window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+// Matches DashboardLayout.tsx's own root background classes
+// (`bg-[#F0F4F9] dark:bg-[#101115]`) and public/theme-init.js's identical
+// pre-paint logic — kept as one shared function (not copy-pasted at each
+// of this file's two call sites plus App.tsx's OS-preference listener)
+// specifically so the three can't drift to different colors from each
+// other the way theme-init.js's own history already shows duplicated
+// theme logic tends to. A native app's status bar/task-switcher chrome
+// blends into its current background; this is what keeps that true here
+// too instead of leaving it a fixed brand color regardless of theme.
+export function applyThemeColorMeta(isDark: boolean) {
+  const meta = document.querySelector('meta[name="theme-color"]');
+  meta?.setAttribute("content", isDark ? "#101115" : "#F0F4F9");
+}
 
 // See useAuthStore.ts for why the state creator and `partialize`/
 // `onRehydrateStorage` below need explicit parameter/return type
@@ -112,6 +135,8 @@ export const useUIStore = create<UIState>()(
 
       hideBalances: false,
 
+      hasSeenWelcome: false,
+
       // Same three-state model the FOUC-prevention script in index.html
       // and this store's own onRehydrateStorage already read — this just
       // exposes it as an explicit, re-selectable action instead of the
@@ -124,6 +149,7 @@ export const useUIStore = create<UIState>()(
 
         document.documentElement.classList.add("no-transition");
         document.documentElement.classList.toggle("dark", nextDarkMode);
+        applyThemeColorMeta(nextDarkMode);
 
         set({
           darkMode: nextDarkMode,
@@ -164,6 +190,7 @@ export const useUIStore = create<UIState>()(
         set({ reduceMotionOverride: value });
       },
       toggleHideBalances: () => set((state) => ({ hideBalances: !state.hideBalances })),
+      markWelcomeSeen: () => set({ hasSeenWelcome: true }),
     }),
     {
       name: "flaregpt_ui_preferences",
@@ -173,6 +200,7 @@ export const useUIStore = create<UIState>()(
         const isDark = state.hasThemeOverride ? state.darkMode : getSystemPreference();
 
         document.documentElement.classList.toggle("dark", isDark);
+        applyThemeColorMeta(isDark);
         document.documentElement.classList.toggle("reduce-motion", Boolean(state.reduceMotionOverride));
 
         // Keep Zustand in sync
