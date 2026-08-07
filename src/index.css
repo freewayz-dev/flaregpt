@@ -113,6 +113,28 @@ html.dark {
   }
 }
 
+/* Same hiding technique as `.scrollbar-none` above, applied to the outer
+   document scrollbar itself but only once installed and launched as a
+   standalone app (matches site.webmanifest's own `display_override` list)
+   — a persistent OS/browser-chrome scrollbar on the right edge is exactly
+   what makes an installed app still read as "a website in a frame" rather
+   than a native one. Deliberately scoped to these display modes only: a
+   regular browser tab keeps its normal, expected scrollbar untouched.
+   `/app/*` routes never actually need this in practice (DashboardLayout's
+   own shell is a fixed `h-dvh overflow-hidden`, with all real scrolling
+   happening in an inner container — see its own comment), but the
+   installed app's `start_url` (site.webmanifest) lands on the landing
+   page first, which — like `/terms` — scrolls the document normally, the
+   same as any other website. */
+@media (display-mode: standalone), (display-mode: window-controls-overlay) {
+  html {
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 * {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-duration: 300ms;
@@ -127,10 +149,53 @@ html.dark {
 
 html {
   color-scheme: light;
+  /* Matches GlobalSpinner.tsx/DashboardLayout.tsx's own light background
+     exactly — a plain CSS rule, not something that waits on React. Public/
+     theme-init.js (a blocking, synchronous script — see its own comment on
+     why) already adds/removes `.dark` on <html> before any paint happens,
+     but that alone did nothing *visible* on its own: neither <html> nor
+     <body> had a background-color of their own before this, so the actual
+     pixels on screen were just the browser's default white canvas — for
+     however long it took `main.tsx`'s `initI18n()` to resolve and React to
+     mount its own first `dark:bg-*` element, which is measurably longer
+     than "instant" on a cold/mobile load. That gap was the real "flashes
+     light, then shows a loading logo, then goes dark" sequence — this
+     rule closes it by making the *correct* themed background a function
+     of the `.dark` class alone, painted the instant that class is set,
+     with nothing waiting on JavaScript having rendered anything at all.
+     A background-color set here (not on `body`, and with no explicit
+     height rule needed) propagates to the whole canvas per the CSS
+     spec's own root-element background propagation, not just to
+     whatever height <html>'s own (empty, pre-React) box happens to be. */
+  background-color: #f0f4f9;
+}
+
+/* Covers the one gap the plain `.dark`-class rule below still has on its
+   own: theme-init.js is a *body*-level script (see index.html's own
+   comment on why it has to run there), so there's a real — if brief —
+   window, while <head> and the top of <body> are still parsing, where
+   this stylesheet is already active but that script hasn't reached
+   `classList.add("dark")` yet. Without this, a dark-system visitor with
+   no saved override (the common case — nothing in localStorage to read
+   yet) would still see this rule block's plain light background for that
+   window, a smaller but real version of the exact flash this file exists
+   to close. A pure CSS media query needs no script to have run at all, so
+   it's correct from the very first paint. It only ever *disagrees* with
+   the real decision in one narrow case — an explicit in-app override that
+   differs from the OS preference (e.g. OS set to dark, user picked light
+   in Settings) — and even then, `.no-transition` (already active this
+   early — see theme-init.js) is what keeps that brief correction from
+   reading as an animated flash of its own: the moment `.dark` actually
+   gets added or not, the swap is instant, not a 300ms transition. */
+@media (prefers-color-scheme: dark) {
+  html:not(.dark) {
+    background-color: #101115;
+  }
 }
 
 html.dark {
   color-scheme: dark;
+  background-color: #101115;
 }
 
 html {

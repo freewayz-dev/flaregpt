@@ -198,6 +198,30 @@ export const useWalletHubStore = create<WalletHubState>()(
         // watchlist even had a chance to load.
         if (isResolving && activeAddress) return;
 
+        // Auto-selecting a substitute wallet only makes sense while a
+        // wallet is actually connected right now — otherwise the vanished
+        // `activeAddress` could just as easily be *because* a live
+        // connection was lost, and silently falling back to some other
+        // tracked/watchlist wallet in its place is indistinguishable, on
+        // screen, from "my wallet's data is still showing," just for
+        // someone else's account (the real incident this guards against:
+        // disconnecting a primary wallet that also has watchlist entries
+        // used to leave every wallet-scoped card rendering a *different*,
+        // still-available wallet's real data instead of resetting to "no
+        // wallet active"). Derived straight from `allWallets` itself
+        // (whether it currently contains a `type: "connected"` entry)
+        // rather than a separate tracked "did a disconnect just happen"
+        // flag — a flag like that would only be accurate for the single
+        // render right after the transition, and this function can run
+        // more than once while still disconnected (e.g. once more when an
+        // unrelated re-render recomputes `allWallets`), which is exactly
+        // the gap a one-shot signal would silently fall through.
+        const hasLiveConnection = allWallets.some((w) => w.type === "connected");
+        if (!hasLiveConnection) {
+          if (activeAddress) set({ activeAddress: "" });
+          return;
+        }
+
         const fallback = allWallets[0]?.address || "";
         if (fallback !== activeAddress) set({ activeAddress: fallback });
       },

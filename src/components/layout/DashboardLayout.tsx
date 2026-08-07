@@ -111,6 +111,50 @@ export default function DashboardLayout() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Warms every other dashboard route's JS chunk once this layout mounts
+  // (i.e. once the user has actually reached `/app/*`, same signal
+  // InstallAppBanner's own "once per visit" effect uses) — same
+  // requestIdleCallback pattern LandingPage.tsx already uses to prefetch
+  // the Dashboard chunk before "Launch App" is even clicked, just applied
+  // to every *sibling* route instead of one. Without this, a page you
+  // never happened to click into before going offline has no cached JS to
+  // load from at all: sw.ts's CacheFirst script route only ever populates
+  // a chunk the first time something actually requests it, so an
+  // unvisited route's dynamic `import()` genuinely has nothing to fall
+  // back to offline and throws (surfacing as "Importing module script
+  // failed" — confirmed reproducible for exactly this reason). This
+  // doesn't change *when* a route's own code is needed for it to render,
+  // only pre-populates the cache in the background well before offline
+  // navigation would ever need it; a real navigation's own `import()` call
+  // for an already-warmed chunk just resolves instantly from the same
+  // cache instead of hitting the network again.
+  useEffect(() => {
+    const prefetch = () =>
+      Promise.all([
+        import("@/pages/Dashboard"),
+        import("@/pages/Flrgpt"),
+        import("@/pages/Settings"),
+        import("@/pages/Help"),
+        import("@/pages/DefiProtocols"),
+        import("@/pages/Loops"),
+        import("@/pages/RflrVesting"),
+        import("@/pages/FtsoRewards"),
+        import("@/pages/WalletActivity"),
+        import("@/pages/Donate"),
+      ]).catch(() => {
+        // Best-effort warming only — a failed prefetch here (e.g. genuinely
+        // offline already) isn't a user-facing error; the route's own
+        // Suspense/ErrorBoundary is what actually handles a real failed
+        // navigation later.
+      });
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(prefetch);
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = setTimeout(prefetch, 2000);
+    return () => clearTimeout(id);
+  }, []);
+
   // React Router's own <ScrollRestoration> needs a data router
   // (createBrowserRouter) — this app deliberately stays on plain
   // <BrowserRouter>/<Routes> (see the React Router v8 migration plan; not

@@ -327,7 +327,26 @@ const CURRENT_CACHES = new Set([
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(OFFLINE_CACHE).then((cache) => cache.addAll([OFFLINE_URL, APP_SHELL_URL])),
+    Promise.all([
+      caches.open(OFFLINE_CACHE).then((cache) => cache.addAll([OFFLINE_URL, APP_SHELL_URL])),
+      // `site.webmanifest`'s `start_url` is "/" — every standalone launch
+      // from the home screen navigates here first, before anything else
+      // has had a chance to populate `pageHandler`'s own cache (`NetworkFirst`
+      // only ever caches "/" opportunistically, the first time a live fetch
+      // for it actually succeeds). Without this, launching the installed
+      // app offline for the first time (or simply never having revisited
+      // "/" while online since installing) fell all the way through to the
+      // generic OFFLINE_URL fallback — "you need a connection" — even
+      // though this app's whole PWA offline story is built around the
+      // opposite promise. Written into `cacheName("pages")` specifically
+      // (the exact cache `pageHandler`'s NetworkFirst strategy already
+      // reads from below), not a separate cache, so it's found as an
+      // ordinary cache hit with no extra routing logic needed — the same
+      // pattern this project already uses for APP_SHELL_URL above, just
+      // keyed by the real URL instead of a normalized one, since (unlike
+      // `/app/*`) every `/`-navigation is already the same single URL.
+      caches.open(cacheName("pages")).then((cache) => cache.addAll(["/"])),
+    ]),
   );
   // Deliberately no `self.skipWaiting()` here. A new service worker
   // version staying in "waiting" until the app itself decides it's safe
