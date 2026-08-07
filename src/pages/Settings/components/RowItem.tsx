@@ -16,7 +16,7 @@ export default function RowItem({ icon: Icon, title, description, children }: Ro
         )}
         <div>
           <h4 className="text-xs font-semibold text-ink-primary">{title}</h4>
-          <p className="text-[11px] text-[#475569] dark:text-[#6D7A86] mt-0.5 leading-relaxed">
+          <p className="text-[11px] text-ink-secondary mt-0.5 leading-relaxed">
             {description}
           </p>
         </div>

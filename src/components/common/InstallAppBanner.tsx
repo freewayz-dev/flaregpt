@@ -55,7 +55,7 @@ export default function InstallAppBanner() {
   };
 
   return (
-    <div className="flex shrink-0 items-center justify-center gap-3 bg-brand/10 px-4 py-2 text-xs font-medium text-brand">
+    <div className="flex shrink-0 items-center justify-center gap-3 bg-brand/10 px-4 py-2 text-xs font-medium text-brand-text">
       <ArrowDownTrayIcon className="h-3.5 w-3.5 shrink-0" />
       <span>{isIOS ? t("install.bannerDescriptionIOS") : t("install.bannerDescriptionAndroid")}</span>
       {canInstall && (

@@ -436,7 +436,7 @@ export default function ConversationHistoryPanel({
                         ) : (
                           <p
                             className={`text-sm font-medium truncate ${
-                              isActive ? "text-brand" : "text-ink-primary"
+                              isActive ? "text-brand-text" : "text-ink-primary"
                             }`}
                           >
                             {conv.title || t("flrgpt.history.untitled")}

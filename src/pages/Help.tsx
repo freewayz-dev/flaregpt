@@ -127,7 +127,7 @@ export default function Help() {
             <h2 className="text-base font-semibold text-ink-primary">
               {t("help.searchTitle")}
             </h2>
-            <p className="mt-1 text-xs text-[#475569] dark:text-[#6D7A86]">
+            <p className="mt-1 text-xs text-ink-secondary">
               {t("help.searchSub")}
             </p>
 
@@ -177,14 +177,14 @@ export default function Help() {
             <div className="relative flex-1 border-l border-[#E5E7EB] dark:border-[#2B2F36] ml-3.5 space-y-6">
               {stepsList.map((item, index) => (
                 <div key={index} className="relative pl-6 group">
-                  <div className="absolute -left-[15px] top-0.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#FFFFFF] bg-surface-subtle text-[10px] font-bold text-[#475569] transition-colors duration-150 group-hover:border-brand/30 group-hover:bg-brand/10 group-hover:text-brand dark:border-[#161619] dark:text-[#6D7A86] dark:group-hover:text-brand">
+                  <div className="absolute -left-[15px] top-0.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#FFFFFF] bg-surface-subtle text-[10px] font-bold text-ink-secondary transition-colors duration-150 group-hover:border-brand/30 group-hover:bg-brand/10 group-hover:text-brand dark:border-[#161619] dark:group-hover:text-brand">
                     {item.step}
                   </div>
                   <div>
                     <h4 className="text-xs font-medium text-[#475569] dark:text-[#FAFAFA] transition-colors group-hover:text-brand">
                       {item.title}
                     </h4>
-                    <p className="mt-1 text-[11px] leading-relaxed text-[#94A3B8] dark:text-[#6D7A86]">
+                    <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
                       {item.text}
                     </p>
                   </div>
@@ -224,7 +224,7 @@ export default function Help() {
                         <h4 className="text-xs font-semibold text-ink-primary">
                           {t(`sidebar.${link.translationKey}`)}
                         </h4>
-                        <p className="mt-1 text-[11px] leading-relaxed text-[#475569] dark:text-[#6D7A86]">
+                        <p className="mt-1 text-[11px] leading-relaxed text-ink-secondary">
                           {t(link.guideDescriptionKey)}
                         </p>
                       </Link>
@@ -303,7 +303,7 @@ export default function Help() {
                           className="overflow-hidden"
                         >
                           <div className="px-4 pb-4 pt-1 border-t border-line/60">
-                            <p className="text-xs leading-relaxed text-[#475569] dark:text-[#6D7A86]">
+                            <p className="text-xs leading-relaxed text-ink-secondary">
                               {faq.answer}
                             </p>
                           </div>
@@ -329,7 +329,7 @@ export default function Help() {
               {t("help.stillNeedHelp")}
             </h3>
           </div>
-          <p className="text-xs text-[#475569] dark:text-[#6D7A86] max-w-lg">
+          <p className="text-xs text-ink-secondary max-w-lg">
             {t("help.supportDesc")}
           </p>
 

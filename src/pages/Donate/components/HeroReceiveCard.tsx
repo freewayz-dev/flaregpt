@@ -97,7 +97,7 @@ export default function HeroReceiveCard({ coin }: HeroReceiveCardProps) {
 
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-100 bg-slate-50 px-2.5 py-1 text-slate-500 dark:border-none dark:bg-[#191A1F] dark:text-[#6D7A86]">
+              <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-100 bg-slate-50 px-2.5 py-1 text-ink-muted dark:border-none dark:bg-[#191A1F]">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-[9px] font-bold uppercase tracking-wide">
                   {coin.network}

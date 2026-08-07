@@ -2,7 +2,6 @@ import { Routes, Route, Navigate } from "react-router";
 import { lazy, Suspense, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import DashboardLayout from "@/components/layout/DashboardLayout";
 import GlobalSpinner from "@/components/common/GlobalSpinner";
 import DashboardSkeleton from "@/pages/Dashboard/DashboardSkeleton";
 import DefiProtocolsSkeleton from "@/pages/DefiProtocols/DefiProtocolsSkeleton";
@@ -14,6 +13,25 @@ import type { LandingPage } from "@/store/useUIStore";
 
 const LandingPage = lazy(() => import("@/pages/LandingPage"));
 const Terms = lazy(() => import("@/pages/Terms"));
+
+// Was a static top-level import — the one route element in this file that
+// wasn't already `lazy()`, like every sibling below. DashboardLayout only
+// ever renders behind `/app/*`, but a static import still folds its whole
+// module graph into the single eager main-entry chunk every route shares
+// (see main.tsx), because Rollup can't know it's route-gated from an
+// `import` statement alone. That graph reaches much further than layout
+// chrome: DashboardLayout -> FlareWidget (the floating chat button) ->
+// ChatPane -> MessageList -> AssistantMessage -> ChartBlock -> recharts —
+// pulling the entire charting library (~118KB gzip) and the dashboard chat
+// widget into every landing-page visit, confirmed via a real production
+// build's network trace (recharts' own bundle, `vendor-charts`, loading on
+// "/" despite nothing the landing page renders using a chart — it has its
+// own separate, chart-free LandingAIDemo component for the guest chat demo).
+// `lazy()` here is the same fix already applied to every other route
+// component; the shared `<Suspense fallback={<GlobalSpinner />}>` this
+// already renders inside (see the return below) already covers it, so no
+// new fallback or Suspense boundary is needed.
+const DashboardLayout = lazy(() => import("@/components/layout/DashboardLayout"));
 
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const FLRGPT = lazy(() => import("@/pages/Flrgpt"));

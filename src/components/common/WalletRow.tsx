@@ -73,7 +73,7 @@ export default function WalletRow({
             ? "bg-brand/10 border-brand/20 text-brand font-bold"
             : "bg-brand/10 text-brand font-bold"
           : isMobile
-            ? "bg-slate-50/50 dark:bg-[#21242B] border-transparent text-slate-600 dark:text-[#6D7A86]"
+            ? "bg-slate-50/50 dark:bg-[#21242B] border-transparent text-ink-secondary"
             : "hover:bg-slate-50 dark:hover:bg-[#1B1B1F] text-ink-secondary"
       }`}
     >

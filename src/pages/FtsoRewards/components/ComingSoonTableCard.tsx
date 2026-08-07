@@ -45,7 +45,7 @@ export default function ComingSoonTableCard({
           {Icon && <Icon className="h-4 w-4 text-ink-muted shrink-0" />}
           <h3 className="text-sm font-semibold text-ink-primary truncate">{title}</h3>
         </div>
-        <span className="shrink-0 rounded-full bg-brand/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-brand">
+        <span className="shrink-0 rounded-full bg-brand/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-brand-text">
           {t("comingSoon.badge")}
         </span>
       </div>

@@ -18,7 +18,7 @@ export default function ComingSoon({ title }: ComingSoonProps) {
         <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand">
           <SparklesIcon className="h-5 w-5" />
         </div>
-        <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-text">
           {t("comingSoon.badge")}
         </p>
         <p className="mt-2 text-sm text-ink-secondary">

@@ -224,7 +224,7 @@ export default function WalletContextPill({ onOpenWalletModal }: WalletContextPi
             : "invisible opacity-0 scale-95 translate-y-1 pointer-events-none"
         }`}
       >
-        <p className="px-1.5 pb-0.5 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
+        <p className="px-1.5 pb-0.5 text-[8.5px] uppercase tracking-wider text-ink-muted font-bold">
           {t("navbar.primaryWalletSection")}
         </p>
         {primaryWallet ? (
@@ -251,7 +251,7 @@ export default function WalletContextPill({ onOpenWalletModal }: WalletContextPi
 
         {watchlistWallets.length > 0 && (
           <div className="border-t border-line pt-1 mt-1">
-            <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
+            <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-ink-muted font-bold">
               {t("navbar.watchlistSection", {
                 current: watchlistWallets.length,
                 max: Number.isFinite(maxSlots) ? maxSlots : "∞",

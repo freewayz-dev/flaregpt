@@ -55,7 +55,7 @@ function VerdictCallout({ strategy, t }: VerdictCalloutProps) {
   return (
     <div className="px-5 py-4 sm:px-8">
       <div className="flex items-center gap-1.5">
-        <p className="text-[11px] font-semibold uppercase tracking-wide text-brand">
+        <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-text">
           {t("defiProtocols.strategies.verdict")}
         </p>
       </div>
@@ -115,14 +115,14 @@ function StrategyMobileCard({
         </div>
 
         {isBest && (
-          <span className="inline-flex w-fit shrink-0 items-center gap-1 rounded-md bg-brand/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand">
+          <span className="inline-flex w-fit shrink-0 items-center gap-1 rounded-md bg-brand/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand-text">
             <ArrowTrendingUpIcon className="h-3 w-3" />
             {t("defiProtocols.strategies.highestApr")}
           </span>
         )}
 
         <div className="flex items-center gap-3">
-          <span className="text-lg font-bold tabular-nums text-brand">
+          <span className="text-lg font-bold tabular-nums text-brand-text">
             {aprValue.toFixed(1)}%
           </span>
           <span className="flex items-center gap-1 text-sm font-medium tabular-nums text-emerald-500">
@@ -345,7 +345,7 @@ export default function StrategyComparisonTable() {
                               {strategy.display_name}
                             </span>
                             {isBest && (
-                              <span className="inline-flex shrink-0 items-center gap-1 rounded-md bg-brand/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand">
+                              <span className="inline-flex shrink-0 items-center gap-1 rounded-md bg-brand/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand-text">
                                 <ArrowTrendingUpIcon className="h-3 w-3" />
                                 {t("defiProtocols.strategies.highestApr")}
                               </span>
@@ -354,7 +354,7 @@ export default function StrategyComparisonTable() {
                         </td>
                         <td className="py-3.5">
                           <div className="flex items-center gap-2.5">
-                            <span className="text-sm font-bold tabular-nums text-brand">
+                            <span className="text-sm font-bold tabular-nums text-brand-text">
                               {aprValue.toFixed(1)}%
                             </span>
                             <AprMeter value={aprValue} max={maxApr} />

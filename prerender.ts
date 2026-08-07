@@ -43,6 +43,66 @@ function waitFor(predicate: () => boolean, timeoutMs = 10000): Promise<void> {
   });
 }
 
+// Renders through `vite.ssrLoadModule()` below — a dev-transform module
+// loader, not the real production `vite build` (Rollup) pass that already
+// finished by the time this script runs. Dev transforms resolve a static
+// asset import (e.g. `import x from "@/assets/foo.webp"`) to a dev-server
+// URL like `/src/assets/foo.webp` — real for Vite's own dev server, but
+// nonexistent in `dist/`, since the real build either content-hashes the
+// file into `dist/assets/` or (below this app's default 4KB
+// `assetsInlineLimit`, never overridden in vite.config.ts) inlines it as a
+// base64 data URI directly in the JS bundle instead of emitting a file at
+// all. Confirmed live: every prerendered page's own `<img src>` for a
+// locally-imported asset 404'd once served from `dist/`, and Lighthouse
+// flagged the resulting console errors as a real Best Practices failure —
+// not cosmetic, since the browser starts that failing fetch immediately
+// on parse, before React ever gets a chance to hydrate and correct it.
+// This replicates Vite's own real decision for each such reference —
+// inline base64 under the same size threshold, otherwise find the
+// content-hashed file Vite's real build already emitted — so the
+// prerendered HTML matches what the actual production bundle would show,
+// instead of a dev-only path that only ever worked against `vite dev`.
+const ASSETS_INLINE_LIMIT = 4096; // Vite's own default; not overridden in vite.config.ts.
+const SRC_ASSET_PATTERN = /\/src\/(assets\/[^"']+)/g;
+const MIME_TYPES: Record<string, string> = {
+  ".png": "image/png",
+  ".webp": "image/webp",
+  ".svg": "image/svg+xml",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+};
+
+async function resolveSourceAssetUrl(relPath: string): Promise<string> {
+  const sourceFile = path.join(__dirname, "src", relPath);
+  const { name, ext } = path.parse(relPath);
+  const buffer = await fs.readFile(sourceFile);
+
+  if (buffer.length < ASSETS_INLINE_LIMIT) {
+    const mime = MIME_TYPES[ext] ?? "application/octet-stream";
+    return `data:${mime};base64,${buffer.toString("base64")}`;
+  }
+
+  const distAssetsDir = path.join(DIST, "assets");
+  const files = await fs.readdir(distAssetsDir);
+  // Vite's own content-hash naming: `<name>-<hash><ext>`, flattened into
+  // one directory regardless of the source file's own subfolder.
+  const match = files.find((f) => f.startsWith(`${name}-`) && f.endsWith(ext));
+  if (!match) {
+    throw new Error(`prerender: no dist/assets file found for ${relPath} (looked for "${name}-*${ext}")`);
+  }
+  return `/assets/${match}`;
+}
+
+async function fixSourceAssetPaths(html: string): Promise<string> {
+  const relPaths = new Set(Array.from(html.matchAll(SRC_ASSET_PATTERN), (m) => m[1]));
+  let result = html;
+  for (const relPath of relPaths) {
+    const resolved = await resolveSourceAssetUrl(relPath);
+    result = result.split(`/src/${relPath}`).join(resolved);
+  }
+  return result;
+}
+
 async function main(): Promise<void> {
   // Preserve the pristine, empty-#root SPA shell *before* anything below
   // overwrites dist/index.html with the landing page's actual rendered
@@ -95,7 +155,20 @@ async function main(): Promise<void> {
     // parse time.
     const { teardown } = await builtinEnvironments.jsdom.setup(globalThis, {
       jsdom: {
-        html: '<!doctype html><html><head></head><body><div id="root"></div></body></html>',
+        // `lang="en"` here, not just in the real index.html this seed is
+        // otherwise a stand-in for — `document.head/body.innerHTML =`
+        // below only ever replaces what's *inside* those two elements,
+        // never attributes on `<html>` itself, so whatever this seed
+        // string starts with is exactly what ends up in the final
+        // prerendered output (`document.documentElement.outerHTML`,
+        // captured further down). Without this, dist/index.html and
+        // dist/terms/index.html — the two actual prerendered pages a real
+        // visitor (or Lighthouse) hits — silently shipped `<html>` with no
+        // `lang` at all, even though the real index.html this is seeded
+        // from has always had one; only the non-prerendered app-shell.html
+        // (a raw copy of that real file, never round-tripped through this
+        // seed) was ever unaffected.
+        html: '<!doctype html><html lang="en"><head></head><body><div id="root"></div></body></html>',
         url: "https://www.flaregpt.io/",
       },
     });
@@ -122,7 +195,8 @@ async function main(): Promise<void> {
           return Boolean(h1 && route.check(h1.textContent ?? ""));
         });
 
-        const html = "<!doctype html>\n" + document.documentElement.outerHTML;
+        const rawHtml = "<!doctype html>\n" + document.documentElement.outerHTML;
+        const html = await fixSourceAssetPaths(rawHtml);
         const outPath = path.join(DIST, route.outFile);
         await fs.mkdir(path.dirname(outPath), { recursive: true });
         await fs.writeFile(outPath, html);

@@ -25,7 +25,7 @@ export default function PageHeader({
         </div>
 
         {description && (
-          <p className="text-xs text-[#475569] dark:text-[#6D7A86] max-w-2xl">
+          <p className="text-xs text-ink-secondary max-w-2xl">
             {description}
           </p>
         )}

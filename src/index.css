@@ -10,13 +10,26 @@
  * for how these map to utility classes (brand, ink-*, line, surface-*).
  */
 :root {
-  --color-brand: 230 32 88; /* #E62058 */
+  /* Was 230 32 88 (#E62058): measured 4.45:1 for white text on this fill
+     (every solid brand button — "Launch App", "Install", "Connect
+     Wallet", chart timeframe toggles, ...), just short of WCAG AA's 4.5:1
+     — confirmed live via Lighthouse against the real production build,
+     not assumed. A 2-unit nudge on the red channel alone (imperceptible;
+     same hue, same hover/text variants below untouched) is enough to
+     clear 4.5:1 with a small margin. The earlier assumption that
+     "buttons/badges/fills aren't text-on-background pairs" (see
+     --color-brand-text below, added for a different, text-only case) only
+     holds for an empty color swatch — every one of these buttons has a
+     real text label sitting directly on this fill. */
+  --color-brand: 228 32 88; /* #E42058 */
   --color-brand-hover: 240 58 111; /* #F03A6F */
   /* Darkened brand variant for small/bold text on light surfaces — the raw
      brand value measures ~4.05:1 against our inset background at text
      sizes, short of WCAG AA's 4.5:1. Same hue, just deep enough to read
-     reliably at 12-14px (e.g. APR figures). Buttons/badges/fills keep using
-     --color-brand unchanged since those aren't text-on-background pairs. */
+     reliably at 12-14px (e.g. APR figures). Distinct from the button fill
+     above: this is for --color-brand used *as text color* against a
+     neutral surface (a badge label, a stat suffix, ...), not as a solid
+     fill with white text on top of it. */
   --color-brand-text: 200 26 73; /* #C81A49 */
 
   --color-ink-primary: 15 23 42; /* #0F172A */

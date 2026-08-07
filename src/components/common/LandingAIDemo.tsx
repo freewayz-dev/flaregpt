@@ -158,7 +158,7 @@ export default function LandingAIDemo({ onOpenWalletModal }: LandingAIDemoProps)
           <FlareGptMark className="h-7 w-7" />
           <span className="text-sm font-bold text-ink-primary">FlareGPT</span>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-text">
           <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
           Live demo
         </span>

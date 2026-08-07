@@ -184,7 +184,7 @@ function WalletListRow({
             ) : (
               <>
                 <p className="text-sm font-medium text-ink-primary truncate">{wallet.label}</p>
-                <p className="text-xs font-mono text-[#94A3B8] dark:text-[#6D7A86] mt-0.5 truncate">
+                <p className="text-xs font-mono text-ink-muted mt-0.5 truncate">
                   {wallet.address}
                 </p>
               </>
@@ -259,7 +259,7 @@ function WalletListRow({
                   className={`flex items-center gap-1 rounded-lg px-1.5 py-1.5 text-[11px] font-semibold transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
                     confirmingAddress === wallet.address
                       ? "bg-red-500/10 text-red-500"
-                      : "text-[#94A3B8] hover:text-brand hover:bg-brand/10 dark:text-[#6D7A86] dark:hover:text-brand dark:hover:bg-brand/10"
+                      : "text-ink-muted hover:text-brand hover:bg-brand/10 dark:hover:text-brand dark:hover:bg-brand/10"
                   }`}
                 >
                   {removePending ? (
@@ -579,7 +579,7 @@ export default function Wallets() {
             <p className="text-sm font-medium text-ink-primary">
               {t("settings.wallets.loadFailed")}
             </p>
-            <p className="mt-0.5 text-xs text-[#475569] dark:text-[#6D7A86]">
+            <p className="mt-0.5 text-xs text-ink-secondary">
               {t("dashboard.common.networkHiccup")}
             </p>
             <button
@@ -597,7 +597,7 @@ export default function Wallets() {
             <p className="text-sm font-medium text-ink-primary">
               {t("settings.wallets.emptyTerminal")}
             </p>
-            <p className="mt-0.5 text-xs text-[#475569] dark:text-[#6D7A86]">
+            <p className="mt-0.5 text-xs text-ink-secondary">
               {isUnlimited
                 ? t("settings.wallets.noLimit")
                 : t("settings.wallets.limit", { max: maxSlots })}
@@ -813,7 +813,7 @@ export default function Wallets() {
         <div className="space-y-4">
           <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
             <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#21242B]">
-              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#94A3B8] dark:text-[#6D7A86]">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-ink-muted">
                 {t("settings.wallets.maximum")}
               </p>
               <p className="text-base sm:text-lg font-semibold text-ink-primary mt-0.5">
@@ -821,7 +821,7 @@ export default function Wallets() {
               </p>
             </div>
             <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#21242B]">
-              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#94A3B8] dark:text-[#6D7A86]">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-ink-muted">
                 {t("settings.wallets.tracked")}
               </p>
               <p className="text-base sm:text-lg font-semibold text-ink-primary mt-0.5">
@@ -829,7 +829,7 @@ export default function Wallets() {
               </p>
             </div>
             <div className="p-2 sm:p-3 rounded-xl bg-[#F3F4F6] dark:bg-[#21242B]">
-              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#94A3B8] dark:text-[#6D7A86]">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-ink-muted">
                 {t("settings.wallets.remainingSlots")}
               </p>
               <p className="text-base sm:text-lg font-semibold text-brand mt-0.5">

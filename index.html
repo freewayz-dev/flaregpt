@@ -156,21 +156,17 @@
          page load. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Inter (body/UI face) + Plus Jakarta Sans (display face for large
+         headings only, weights trimmed to the only two ever applied —
+         font-semibold/font-bold, grep-confirmed, never font-medium) — one
+         request with two `family=` params, not two separate
+         `<link rel="stylesheet">` tags to the same host. Both used to be
+         two independent render-blocking requests; Google's own CSS2 API
+         accepts multiple families in one call, so this is one fewer
+         render-blocking round trip on the critical path before first
+         paint, for the exact same fonts. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Plus Jakarta Sans — display face for large headings only; Inter
-         above remains the body/UI face everywhere. Served from Google
-         Fonts (same host as Inter above) rather than a boutique foundry's
-         own CDN, so it isn't a second, less-proven point of failure.
-         Weights trimmed the same way as Inter above: every `font-display`
-         heading in the app pairs with either `font-semibold` or
-         `font-bold` (grep-confirmed), never `font-medium` — 500 was
-         requested but never actually rendered. -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
       rel="stylesheet"
     />
   </head>

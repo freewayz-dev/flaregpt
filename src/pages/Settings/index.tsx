@@ -143,7 +143,7 @@ export default function Settings() {
           ${
             isActive
               ? "bg-surface-card text-brand font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.01)]"
-              : "text-[#475569] hover:text-ink-primary dark:text-[#6D7A86] dark:hover:text-white hover:bg-surface-card-hover font-medium"
+              : "text-ink-secondary hover:text-ink-primary dark:hover:text-white hover:bg-surface-card-hover font-medium"
           }
           after:content-[attr(data-text)] after:block after:font-semibold after:h-0 after:overflow-hidden after:visibility-hidden`}
       >
@@ -156,7 +156,7 @@ export default function Settings() {
 
         <IconComponent
           className={`h-4 w-4 shrink-0 index-10 transition-transform duration-200 ease-out group-hover:scale-105 ${
-            isActive ? "text-brand" : "text-[#94A3B8] dark:text-[#6D7A86]"
+            isActive ? "text-brand" : "text-ink-muted"
           }`}
         />
 

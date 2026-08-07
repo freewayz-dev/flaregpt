@@ -362,13 +362,13 @@ export default function Navbar({
               <button
                 type="button"
                 onClick={onToggleFlareWidget}
-                className="px-2.5 py-1.5 rounded-lg border border-brand/30 bg-brand/10 text-brand text-[10px] lg:text-[10.5px] font-semibold hover:bg-brand hover:text-white transition-all shadow-sm cursor-pointer"
+                className="px-2.5 py-1.5 rounded-lg border border-brand/30 bg-brand/10 text-brand-text text-[10px] lg:text-[10.5px] font-semibold hover:bg-brand hover:text-white transition-all shadow-sm cursor-pointer"
               >
                 {t("navbar.askFlareGPT")}
               </button>
             )}
 
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-50 dark:bg-[#191A1F] border border-slate-100 dark:border-none text-slate-500 dark:text-[#6D7A86] shrink-0">
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-50 dark:bg-[#191A1F] border border-slate-100 dark:border-none text-ink-muted shrink-0">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="tracking-wide uppercase text-[8.5px] font-bold">
                 {t("navbar.mainnetStatus")}
@@ -444,7 +444,7 @@ export default function Navbar({
                     : "invisible opacity-0 scale-95 -translate-y-1 pointer-events-none"
                 }`}
               >
-                <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
+                <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-ink-muted font-bold">
                   {t("navbar.primaryWalletSection")}
                 </p>
 
@@ -519,7 +519,7 @@ export default function Navbar({
 
                 {watchlistWallets.length > 0 && (
                   <div className="border-t border-line mt-1 pt-1.5">
-                    <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] font-bold">
+                    <p className="px-1.5 pb-1 text-[8.5px] uppercase tracking-wider text-ink-muted font-bold">
                       {t("navbar.watchlistSection", {
                         current: watchlistWallets.length,
                         max: Number.isFinite(maxSlots) ? maxSlots : "∞",
@@ -606,7 +606,7 @@ export default function Navbar({
           <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-[#2B2F36]">
             <div className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              <span className="text-[10px] font-black tracking-wider uppercase text-slate-400 dark:text-[#6D7A86]">
+              <span className="text-[10px] font-black tracking-wider uppercase text-ink-muted">
                 {t("navbar.mainnetStatus")}
               </span>
             </div>
@@ -623,7 +623,7 @@ export default function Navbar({
 
           <div className="space-y-3">
             <div className="space-y-1.5">
-              <label className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] block px-1">
+              <label className="text-[9px] font-bold uppercase tracking-wider text-ink-muted block px-1">
                 {t("navbar.primaryWalletSection")}
               </label>
 
@@ -699,7 +699,7 @@ export default function Navbar({
 
             {watchlistWallets.length > 0 && (
               <div className="space-y-1.5 pt-1 border-t border-slate-100 dark:border-[#2B2F36]">
-                <label className="text-[9px] font-bold uppercase tracking-wider text-[#94A3B8] dark:text-[#6D7A86] block px-1 pt-2">
+                <label className="text-[9px] font-bold uppercase tracking-wider text-ink-muted block px-1 pt-2">
                   {t("navbar.watchlistSection", {
                     current: watchlistWallets.length,
                     max: Number.isFinite(maxSlots) ? maxSlots : "∞",

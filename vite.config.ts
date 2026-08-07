@@ -182,6 +182,28 @@ export default defineConfig({
           if (id.includes("react-dom") || id.includes("/react/") || id.includes("react-router")) {
             return "vendor-react";
           }
+          // Checked *before* the recharts/d3 bucket below, not after — both
+          // packages are also genuine recharts dependencies (recharts pulls
+          // `eventemitter3` via its own internal react-redux store; the
+          // `use-sync-external-store` shim comes from that same chain), so
+          // without this carve-out Rollup physically embeds them inside the
+          // vendor-charts chunk. That's fine for a page that actually
+          // renders a chart, but wagmi's `createConfig()` (web3Config.ts,
+          // imported eagerly by main.tsx on every route) also needs
+          // `eventemitter3` for its own connector event emitter, and every
+          // zustand store in this app (useUIStore, useAuthStore, ...) needs
+          // the sync-external-store shim — confirmed via a real production
+          // build's network trace: both eagerly-needed exports were only
+          // reachable via a cross-chunk import into vendor-charts, which
+          // dragged the entire ~118KB-gzip chart library into every route's
+          // initial load, landing page included, even though nothing
+          // outside the actual chart pages ever touches recharts itself.
+          // Routing them into vendor-react instead — already unconditionally
+          // loaded everywhere per the comment above — keeps them shared
+          // exactly once without vendor-charts coming along for the ride.
+          if (id.includes("eventemitter3") || id.includes("use-sync-external-store")) {
+            return "vendor-react";
+          }
           if (id.includes("recharts") || id.includes("d3-")) {
             return "vendor-charts";
           }

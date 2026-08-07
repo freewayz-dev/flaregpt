@@ -166,7 +166,7 @@ export default function CustomSelect({
                 ${
                   isSelected
                     ? "bg-brand/10 text-brand dark:bg-brand/10 dark:text-brand font-medium"
-                    : "text-[#475569] hover:bg-[#F3F4F6] hover:text-ink-primary dark:text-[#6D7A86] dark:hover:bg-[#252A31] "
+                    : "text-ink-secondary hover:bg-[#F3F4F6] hover:text-ink-primary dark:hover:bg-[#252A31] "
                 }`}
             >
               {option.flag && <span className="shrink-0">{option.flag}</span>}

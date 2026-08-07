@@ -90,7 +90,7 @@ export default function NetworkPulseSection() {
               <p className="text-lg font-semibold text-ink-primary">
                 {formatDate(statusData.next_distribution_date)}
               </p>
-              <p className="mt-0.5 text-xs font-medium text-brand">
+              <p className="mt-0.5 text-xs font-medium text-brand-text">
                 {formatCountdown(statusData.seconds_until_next_epoch, t)}
               </p>
               <p className="mt-2 text-[11px] text-ink-muted">

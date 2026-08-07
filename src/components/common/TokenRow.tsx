@@ -20,7 +20,7 @@ export default function TokenRow({ symbol, label, value, highlight = false }: To
         {label}
       </span>
       <span
-        className={`text-sm font-semibold ${highlight ? "text-brand" : "text-ink-primary"}`}
+        className={`text-sm font-semibold ${highlight ? "text-brand-text" : "text-ink-primary"}`}
       >
         {value}
       </span>

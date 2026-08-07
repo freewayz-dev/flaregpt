@@ -311,7 +311,7 @@ export default function LandingPage() {
                         {item.value}
 
                         {item.suffix && (
-                          <span className="ml-1 text-sm font-bold text-brand">
+                          <span className="ml-1 text-sm font-bold text-brand-text">
                             {item.suffix}
                           </span>
                         )}
@@ -356,7 +356,7 @@ export default function LandingPage() {
                   <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-[#161619]/80 lg:hidden">
                     <SparklesIcon className="h-3.5 w-3.5 text-brand" />
 
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-text">
                       AI Assistant
                     </span>
                   </div>
@@ -374,7 +374,7 @@ export default function LandingPage() {
                       <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-[#161619]/80">
                         <SparklesIcon className="h-3.5 w-3.5 text-brand" />
 
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-text">
                           AI Assistant
                         </span>
                       </div>
@@ -497,7 +497,7 @@ export default function LandingPage() {
               <div className="relative overflow-hidden rounded-2xl border-2 border-brand/25 bg-gradient-to-br from-brand/[0.07] via-surface-card to-surface-card p-6 sm:p-8">
                 <div className="grid gap-8 sm:grid-cols-2 sm:items-center">
                   <div>
-                    <div className="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-brand">
+                    <div className="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-text">
                       <BoltIcon className="h-3 w-3" />
                       Flagship automation
                     </div>
@@ -886,7 +886,7 @@ export default function LandingPage() {
 
                   <Link
                     to={ROUTES.donate}
-                    className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-brand transition-all hover:bg-brand hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+                    className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-brand-text transition-all hover:bg-brand hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     Donate
                     <HeartIcon className="h-3 w-3" />

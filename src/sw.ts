@@ -189,8 +189,27 @@ registerRoute(
 // stays a runtime concern rather than a build-time one here).
 // ---------------------------------------------------------------------
 
+// Same-origin only — this app's own hashed JS/CSS bundle files, the one
+// thing this route was ever meant for. Without the origin check, this also
+// matched the cross-origin Google Fonts CSS (`request.destination` is
+// `"style"` for that `<link>` too, and Workbox evaluates routes in
+// registration order, so this route — registered first — claimed it
+// before the dedicated, already-origin-scoped `fonts` route below ever got
+// a chance to). Confirmed live: once this service worker actually
+// controlled the page, both Google Fonts CSS requests failed outright
+// (`net::ERR_FAILED`) on every load, while the exact same requests
+// succeeded normally before the SW took control — a service worker's own
+// `fetch()` call is CSP-evaluated against `connect-src`, not the original
+// request's `style-src` context, and `fonts.googleapis.com` is only
+// listed under `style-src` in vercel.json's CSP, not `connect-src`. The
+// browser's own native HTTP cache already handles this CSS fine on its
+// own (Google's CDN sends long-lived cache headers); the actual font
+// *files* it references (`fonts.gstatic.com`) are unaffected by any of
+// this and stay correctly cached via the dedicated `fonts` route below.
 registerRoute(
-  ({ request }) => request.destination === "script" || request.destination === "style",
+  ({ request, url }) =>
+    url.origin === self.location.origin &&
+    (request.destination === "script" || request.destination === "style"),
   new CacheFirst({
     cacheName: cacheName("static-resources"),
     plugins: [new ExpirationPlugin({ maxEntries: 120, maxAgeSeconds: 30 * 24 * 60 * 60 })],

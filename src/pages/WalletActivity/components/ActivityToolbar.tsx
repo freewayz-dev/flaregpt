@@ -130,7 +130,7 @@ function Chip({ active, onClick, children }: ChipProps) {
       onClick={onClick}
       aria-pressed={active}
       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
-        active ? "bg-brand/10 text-brand" : "bg-surface-inset text-ink-secondary hover:text-ink-primary"
+        active ? "bg-brand/10 text-brand-text" : "bg-surface-inset text-ink-secondary hover:text-ink-primary"
       }`}
     >
       {children}
