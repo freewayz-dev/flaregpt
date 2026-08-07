@@ -8,6 +8,8 @@ import DefiProtocolsSkeleton from "@/pages/DefiProtocols/DefiProtocolsSkeleton";
 import WalletActivitySkeleton from "@/pages/WalletActivity/WalletActivitySkeleton";
 import RflrVestingPageSkeleton from "@/pages/RflrVesting/RflrVestingPageSkeleton";
 import FtsoRewardsPageSkeleton from "@/pages/FtsoRewards/FtsoRewardsPageSkeleton";
+import FlrgptPageSkeleton from "@/pages/Flrgpt/FlrgptPageSkeleton";
+import LoopsPageSkeleton from "@/pages/Loops/LoopsPageSkeleton";
 import { ROUTES, APP_SEGMENTS } from "@/config/routes";
 import type { LandingPage } from "@/store/useUIStore";
 
@@ -123,7 +125,14 @@ export default function AppRoutes() {
 
         <Route path={ROUTES.app} element={<DashboardLayout />}>
           <Route index element={<DashboardIndexRoute />} />
-          <Route path={APP_SEGMENTS.flareGpt} element={<FLRGPT />} />
+          <Route
+            path={APP_SEGMENTS.flareGpt}
+            element={
+              <Suspense fallback={<FlrgptPageSkeleton />}>
+                <FLRGPT />
+              </Suspense>
+            }
+          />
           <Route
             path={APP_SEGMENTS.walletActivity}
             element={
@@ -142,7 +151,14 @@ export default function AppRoutes() {
               </Suspense>
             }
           />
-          <Route path={APP_SEGMENTS.loops} element={<Loops />} />
+          <Route
+            path={APP_SEGMENTS.loops}
+            element={
+              <Suspense fallback={<LoopsPageSkeleton />}>
+                <Loops />
+              </Suspense>
+            }
+          />
           <Route
             path={APP_SEGMENTS.rflrTracker}
             element={

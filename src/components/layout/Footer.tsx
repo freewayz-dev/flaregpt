@@ -53,7 +53,7 @@ export default function Footer() {
             <button
               type="button"
               onClick={() => navigate(ROUTES.donate)}
-              className="inline-flex items-center text-[10px] gap-1 text-brand hover:text-brand-hover transition-colors cursor-pointer"
+              className="inline-flex items-center text-[10px] gap-1 text-brand-text hover:text-brand-hover transition-colors cursor-pointer"
             >
               <span>{t("footer.donate")}</span>
               <span className="text-[8px] px-1 rounded bg-brand/10">♥</span>

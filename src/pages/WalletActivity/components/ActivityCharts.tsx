@@ -185,7 +185,7 @@ interface ChartTabsProps {
 
 function ChartTabs({ tabs, active, onChange }: ChartTabsProps) {
   return (
-    <div className="flex items-center gap-1 rounded-xl bg-surface-inset p-1">
+    <div className="flex items-center gap-1 rounded-xl bg-surface-inset p-1" role="tablist">
       {tabs.map((tab) => (
         <button
           key={tab.id}

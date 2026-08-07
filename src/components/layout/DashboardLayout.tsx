@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ErrorBoundary } from "react-error-boundary";
 import { useQueryClient, type QueryClient } from "@tanstack/react-query";
@@ -248,7 +248,19 @@ export default function DashboardLayout() {
   // footer control and Navbar's wallet dropdown can open the same single
   // modal instance instead of each mounting its own.
   const [walletModalOpen, setWalletModalOpen] = useState(false);
-  const openWalletModal = () => setWalletModalOpen(true);
+  // Both memoized (not a fresh function + fresh object literal every
+  // render) — `<Outlet context={...}>` below hands this to every routed
+  // page via `useOutletContext()` (Flrgpt, Settings/Wallets,
+  // Settings/FlareGpt, Loops/GasSniperCard all read it), and React treats a
+  // new context *value* as a real change regardless of whether anything a
+  // consumer actually cares about moved. Unmemoized, this component's own
+  // local UI state — sidebarOpen, flareWidgetOpen, walletModalOpen, even a
+  // route change — rerendered every one of those pages on every toggle,
+  // none of which have anything to do with e.g. the sidebar's open/closed
+  // state. `setWalletModalOpen` is a stable dispatch function (React
+  // guarantees this), so an empty dependency array is correct, not a lie.
+  const openWalletModal = useCallback(() => setWalletModalOpen(true), []);
+  const outletContext = useMemo(() => ({ openWalletModal }), [openWalletModal]);
 
   return (
     <div className="h-dvh overflow-hidden bg-[#F0F4F9] dark:bg-[#101115] flex flex-col pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
@@ -352,18 +364,18 @@ export default function DashboardLayout() {
               <div className="h-full flex flex-col px-4 pt-4 pb-2 md:px-6 md:pt-6 md:pb-3 lg:pt-3 lg:pb-1">
                 <PageErrorBoundary pathname={location.pathname} queryClient={queryClient}>
                   <Suspense fallback={<RouteLoadingFallback />}>
-                    <Outlet context={{ openWalletModal }} />
+                    <Outlet context={outletContext} />
                   </Suspense>
                 </PageErrorBoundary>
               </div>
             </main>
           ) : (
-            <main ref={mainScrollRef} id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto overscroll-contain focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:-outline-offset-2">
+            <main ref={mainScrollRef} id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto overscroll-contain scrollbar-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:-outline-offset-2">
               <div className="flex min-h-full flex-col md:p-6 p-4">
                 <div className="flex-1">
                   <PageErrorBoundary pathname={location.pathname} queryClient={queryClient}>
                     <Suspense fallback={<RouteLoadingFallback />}>
-                      <Outlet context={{ openWalletModal }} />
+                      <Outlet context={outletContext} />
                     </Suspense>
                   </PageErrorBoundary>
                 </div>

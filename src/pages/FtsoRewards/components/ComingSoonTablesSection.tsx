@@ -22,7 +22,7 @@ export default function ComingSoonTablesSection() {
   return (
     <>
       <div className="lg:hidden">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" role="tablist">
           {TABS.map((tab) => (
             <button
               key={tab.id}

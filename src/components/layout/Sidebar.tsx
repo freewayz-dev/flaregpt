@@ -169,7 +169,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }: SidebarPro
                   px-3 gap-3 ${collapsed ? "lg:justify-center lg:px-2 lg:gap-0" : ""}
                   ${
                     active
-                      ? "relative bg-brand/15 text-brand-text"
+                      ? "relative bg-brand/15 text-brand"
                       : "text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary dark:hover:text-white"
                   }
                 `}

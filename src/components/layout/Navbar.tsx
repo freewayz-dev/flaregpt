@@ -362,7 +362,7 @@ export default function Navbar({
               <button
                 type="button"
                 onClick={onToggleFlareWidget}
-                className="px-2.5 py-1.5 rounded-lg border border-brand/30 bg-brand/10 text-brand-text text-[10px] lg:text-[10.5px] font-semibold hover:bg-brand hover:text-white transition-all shadow-sm cursor-pointer"
+                className="px-2.5 py-1.5 rounded-lg border border-brand/30 bg-brand/10 text-brand text-[10px] lg:text-[10.5px] font-semibold hover:bg-brand hover:text-white transition-all shadow-sm cursor-pointer"
               >
                 {t("navbar.askFlareGPT")}
               </button>

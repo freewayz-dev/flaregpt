@@ -116,6 +116,50 @@ const cacheHitMarkerPlugin: WorkboxPlugin = {
 // fall back to cache with the staleness marker rather than showing an
 // error — a 30-minute expiry on the fallback itself keeps a *very* stale
 // number from lingering indefinitely if someone's been offline for hours.
+// Two specific endpoints in the tier below are genuine, documented latency
+// outliers — confirmed live (see rflrService.ts / walletActivityService.ts):
+// melt-schedule can take ~30s the first time a wallet is looked up, and
+// portfolio activity for a large wallet's full history can take up to 6
+// minutes. Both already carry their own generous per-request axios timeout
+// (35s and 6 minutes respectively) for exactly that reason. Registered
+// *before* the general financial-reads route below — Workbox matches
+// registerRoute calls in registration order, first match wins — with no
+// `networkTimeoutSeconds` of their own, so the SW never races the network
+// on a timer at all; axios's own per-request timeout (already correctly
+// tuned per endpoint) is left as the single source of truth for how long
+// to wait. Without this, the general route's blanket 4-second
+// `networkTimeoutSeconds` (correct for every *other* financial-reads
+// endpoint, which really is fast) silently overrode both of these much
+// longer client timeouts: the SW gave up and rejected at 4s regardless of
+// how long axios was told to wait, so a cold melt-schedule/activity lookup
+// could never complete through the SW on a first attempt — only "succeeding"
+// on a later Retry if the backend happened to have finished and cached the
+// result server-side from an earlier, SW-abandoned-but-still-processing
+// attempt. That's the exact "spinner, fails, Retry, spinner, fails again"
+// loop this was causing on rFLR Vesting's Unlock Timeline card.
+registerRoute(
+  ({ url }) => url.origin === FLAREGPT_API && url.pathname.startsWith("/api/v1/rflr/melt-schedule/"),
+  new NetworkFirst({
+    cacheName: cacheName("financial-reads"),
+    plugins: [
+      cacheHitMarkerPlugin,
+      new CacheableResponsePlugin({ statuses: [200] }),
+      new ExpirationPlugin({ maxEntries: 60, maxAgeSeconds: 30 * 60 }),
+    ],
+  }),
+);
+registerRoute(
+  ({ url }) => url.origin === FLAREGPT_API && url.pathname.startsWith("/api/v1/portfolio/activity/"),
+  new NetworkFirst({
+    cacheName: cacheName("financial-reads"),
+    plugins: [
+      cacheHitMarkerPlugin,
+      new CacheableResponsePlugin({ statuses: [200] }),
+      new ExpirationPlugin({ maxEntries: 60, maxAgeSeconds: 30 * 60 }),
+    ],
+  }),
+);
+
 registerRoute(
   ({ url }) =>
     url.origin === FLAREGPT_API &&
