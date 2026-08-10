@@ -8,6 +8,7 @@ import type { ReactElement, ReactNode } from "react";
 import type { Address } from "viem";
 
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
+import { mipdStore } from "@/config/web3Config";
 import { renderWithProviders, screen, render, fireEvent, waitFor } from "@/test/test-utils";
 
 // A hand-rolled stand-in for wagmi's real `walletConnect()` connector —
@@ -161,14 +162,20 @@ function renderWithResolvingMetaMask(ui: ReactElement) {
 // own JS was suspended for it. `settleSession()` flips both `isAuthorized()`
 // (what the reconciliation effect probes) and `connect()`'s own fast-path
 // branch (mirroring @wagmi/connectors' real walletConnect.ts, which checks
-// `provider.session` and skips pairing once one exists) — so a *second*
+// `provider.session` and skips pairing once one exists) — so a *later*
 // connect() call for the same connector resolves off the settled session
-// instead of hanging like the first one did.
+// instead of hanging like the first one did. `failPendingAttempt()`
+// separately simulates the *original* attempt finally giving up on its own
+// (a real relay eventually erroring, or ConnectWalletModal's own
+// CONNECT_TIMEOUT_MS aborting it) — reconciliation is only ever supposed to
+// act after that happens, never while the original call is still
+// outstanding (see isConnectingRef's own comment in the component).
 function createResumeReconciliationStub(id: string) {
   const modalClose = vi.fn();
   const disconnect = vi.fn().mockResolvedValue(undefined);
   const connectSpy = vi.fn();
   let sessionSettled = false;
+  let pendingReject: ((error: Error) => void) | null = null;
   const connector = createConnector(() => ({
     id,
     name: id,
@@ -180,7 +187,9 @@ function createResumeReconciliationStub(id: string) {
       if (sessionSettled) {
         return { accounts: [TEST_ADDRESS], chainId: mainnet.id };
       }
-      return new Promise<never>(() => {});
+      return new Promise<never>((_resolve, reject) => {
+        pendingReject = reject;
+      });
     }) as unknown as Connector["connect"],
     async disconnect() {
       await disconnect();
@@ -208,6 +217,10 @@ function createResumeReconciliationStub(id: string) {
     connectSpy,
     settleSession: () => {
       sessionSettled = true;
+    },
+    failPendingAttempt: () => {
+      pendingReject?.(new Error("stub: original attempt gave up"));
+      pendingReject = null;
     },
   };
 }
@@ -247,48 +260,93 @@ function simulateAppForegrounded() {
   document.dispatchEvent(new Event("visibilitychange"));
 }
 
+// The reconciliation effect's own guard chain is several microtasks deep
+// (isAuthorized() -> .then() -> runConnect() -> connectAsync() -> the
+// connector's own connect()) — asserting a call count immediately after
+// simulateAppForegrounded() (no await at all) checks before any of that has
+// had a chance to run, which would make a "this must NOT happen" assertion
+// pass for the wrong reason (nothing ran yet) rather than because the guard
+// actually held. Draining several microtask turns first is what makes these
+// assertions genuinely discriminating — confirmed by deliberately removing
+// the guard being tested and re-running: without this flush the test still
+// passed (checking nothing), with it the test correctly failed.
+async function flushMicrotasks() {
+  for (let i = 0; i < 10; i++) {
+    await Promise.resolve();
+  }
+}
+
 describe("ConnectWalletModal — WalletConnect resume-reconciliation (the PWA bug fix)", () => {
-  it("picks up a session that settled while backgrounded, without a second wallet interaction", async () => {
+  // The core race-condition fix: while the *original* connectAsync() call is
+  // still genuinely outstanding, a foreground event must never start a
+  // second one against the same connector — even once the underlying
+  // session is confirmed settled. This is the exact scenario an earlier,
+  // less careful version of this effect got wrong (it called runConnect()
+  // again as soon as isAuthorized() said yes, regardless of whether the
+  // original call was still running) — a genuinely discriminating test,
+  // not a mock that hides the race: this stub's connect() only ever settles
+  // when the test explicitly tells it to, so a second call within the same
+  // test would be caught immediately by the call-count assertion.
+  it("never calls connect() again while the original attempt is still pending, even once the session settles", async () => {
+    const { wc } = renderWithReconciliationStub(<ConnectWalletModal isOpen onClose={vi.fn()} />);
+
+    fireEvent.click(screen.getByText("WalletConnect").closest("button")!);
+    await waitFor(() => expect(wc.connectSpy).toHaveBeenCalledTimes(1));
+    expect(screen.getByText("Connecting…")).toBeInTheDocument();
+
+    // The wallet approved while the tab/PWA was backgrounded — the session
+    // is now real and settled — but the original connect() call above is
+    // deliberately still hanging (nothing has released it).
+    wc.settleSession();
+    simulateAppForegrounded();
+    simulateAppForegrounded();
+    await flushMicrotasks();
+
+    expect(wc.connectSpy).toHaveBeenCalledTimes(1);
+    expect(screen.getByText("Connecting…")).toBeInTheDocument();
+  });
+
+  it("picks up a session that settled while backgrounded, once the original attempt has finished", async () => {
     const onClose = vi.fn();
     const { wc } = renderWithReconciliationStub(<ConnectWalletModal isOpen onClose={onClose} />);
 
     fireEvent.click(screen.getByText("WalletConnect").closest("button")!);
     await waitFor(() => expect(wc.connectSpy).toHaveBeenCalledTimes(1));
-    // Still hanging — this is the exact "returned to the PWA, nothing
-    // happens" moment from the bug report.
-    expect(screen.getByText("Connecting…")).toBeInTheDocument();
 
-    // The wallet approved while the tab/PWA was backgrounded — the session
-    // is now real and settled, independent of the still-hanging first
-    // connect() call above.
     wc.settleSession();
-    simulateAppForegrounded();
+    // The original attempt finally gives up on its own — mirrors a relay
+    // that eventually errors, or ConnectWalletModal's own
+    // CONNECT_TIMEOUT_MS aborting it. This is what frees the mutex.
+    wc.failPendingAttempt();
+    await waitFor(() => expect(wc.connectSpy).toHaveBeenCalledTimes(1));
 
     // No refresh, no minimize/reopen, no second tap on any wallet button —
-    // just the resume event. isConnected flipping true is what triggers the
-    // modal's own existing auto-close effect (onClose — the parent, e.g.
-    // Sidebar/Navbar, owns actually flipping the `isOpen` prop off it gets
-    // called with, same as every other test in this file).
+    // just the resume event, after the original attempt is no longer
+    // running. A single, fresh, non-concurrent connect() call resolves off
+    // the settled session.
+    simulateAppForegrounded();
+    await waitFor(() => expect(wc.connectSpy).toHaveBeenCalledTimes(2));
     await waitFor(() => expect(onClose).toHaveBeenCalled());
   });
 
-  it("does not re-attempt or show an error when the session has not actually settled yet", async () => {
+  it("does not re-attempt or show an error when the session genuinely never settled", async () => {
     const { wc } = renderWithReconciliationStub(<ConnectWalletModal isOpen onClose={vi.fn()} />);
 
     fireEvent.click(screen.getByText("WalletConnect").closest("button")!);
     await waitFor(() => expect(wc.connectSpy).toHaveBeenCalledTimes(1));
 
-    // A resume event with nothing to reconcile yet — e.g. the user just
-    // glanced at a notification and came straight back, the wallet app
-    // never actually approved anything.
-    simulateAppForegrounded();
-    simulateAppForegrounded();
+    // The original attempt finished (mutex is free) but the wallet never
+    // actually approved anything — e.g. the user just glanced at a
+    // notification and came straight back.
+    wc.failPendingAttempt();
+    await flushMicrotasks();
 
-    // Still just the one original attempt — no duplicate connect() calls,
-    // and the dialog is still showing the normal "connecting" state, not
-    // an error.
+    simulateAppForegrounded();
+    simulateAppForegrounded();
+    await flushMicrotasks();
+
+    // No second connect() call, since isAuthorized() still reports false.
     expect(wc.connectSpy).toHaveBeenCalledTimes(1);
-    expect(screen.getByText("Connecting…")).toBeInTheDocument();
     expect(screen.queryByText("You're offline. Connecting a wallet needs an internet connection.")).not.toBeInTheDocument();
   });
 
@@ -318,11 +376,8 @@ describe("ConnectWalletModal — WalletConnect resume-reconciliation (the PWA bu
     simulateAppForegrounded();
     simulateAppForegrounded();
 
-    // Both of the reconciliation guard's checks are already false by this
-    // point: runConnect's own `finally` already cleared
-    // pendingConnectorRef.current once the connector resolved (regardless
-    // of isOpen), and isConnected is true — either guard alone is enough
-    // to make resume events after a real connection pure no-ops, not extra
+    // isConnected is already true by this point — enough on its own to make
+    // resume events after a real connection pure no-ops, not extra
     // connect() calls.
     expect(wc.connectSpy.mock.calls.length).toBe(callsAfterConnect);
   });
@@ -407,6 +462,100 @@ describe("ConnectWalletModal — MetaMask uses its dedicated connector, other wa
 
     await waitFor(() => expect(wc.connectSpy).toHaveBeenCalledTimes(1));
     expect(metaMaskSDK.connectSpy).not.toHaveBeenCalled();
+  });
+});
+
+// Regression coverage for the real desktop bug this app already fixed once
+// (see findRdnsConnector's own comment): a wallet other than MetaMask
+// (Rabby, in the original incident) occupying window.ethereum can make a
+// genuinely-installed MetaMask undiscoverable via any window.ethereum-based
+// check — only EIP-6963 finds it regardless of who owns that global. Adding
+// MetaMask's dedicated mobile connector (metaMaskSDK, which declares its own
+// `rdns: ["io.metamask", ...]`) stops wagmi from auto-generating its usual
+// "io.metamask" passthrough connector for this — see web3Config.ts's own
+// comment — so this suite exercises the replacement mechanism directly:
+// mipdStore, the same EIP-6963 registry, queried straight from its source.
+describe("ConnectWalletModal — MetaMask EIP-6963 detection survives another wallet occupying window.ethereum", () => {
+  const METAMASK_RDNS = "io.metamask";
+
+  const originalEthereum = window.ethereum;
+
+  afterEach(() => {
+    mipdStore.clear();
+    Object.defineProperty(window, "ethereum", { value: originalEthereum, configurable: true });
+  });
+
+  function announceMetaMaskViaEip6963() {
+    window.dispatchEvent(
+      new CustomEvent("eip6963:announceProvider", {
+        detail: Object.freeze({
+          info: {
+            uuid: "test-metamask-uuid",
+            name: "MetaMask",
+            icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>",
+            rdns: METAMASK_RDNS,
+          },
+          provider: { isMetaMask: true, request: vi.fn(), on: vi.fn(), removeListener: vi.fn() },
+        }),
+      }),
+    );
+  }
+
+  function renderWithMetaMaskConnector(ui: ReactElement) {
+    const metaMask = createHangingConnectorStub("metaMask");
+    const wc = createHangingConnectorStub("walletConnect");
+    const wagmiConfig = createConfig({
+      chains: [mainnet],
+      connectors: [metaMask.connector, wc.connector],
+      transports: { [mainnet.id]: http() },
+    });
+    const testQueryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    });
+    function Wrapper({ children }: { children: ReactNode }) {
+      return (
+        <WagmiProvider config={wagmiConfig}>
+          <QueryClientProvider client={testQueryClient}>
+            <MemoryRouter>{children}</MemoryRouter>
+          </QueryClientProvider>
+        </WagmiProvider>
+      );
+    }
+    const utils = render(ui, { wrapper: Wrapper });
+    return { ...utils, metaMask, wc };
+  }
+
+  it("shows MetaMask as not detected (Install) with no EIP-6963 announcement and no window.ethereum flag", () => {
+    // Baseline for the test below — confirms detection genuinely depends on
+    // the EIP-6963 announcement, not some other unrelated path silently
+    // marking every wallet "detected."
+    renderWithMetaMaskConnector(<ConnectWalletModal isOpen onClose={vi.fn()} />);
+
+    expect(screen.getByText("MetaMask").closest("button")).toHaveTextContent("Install");
+  });
+
+  it("detects and connects to MetaMask via EIP-6963 even while Rabby occupies window.ethereum", async () => {
+    // Rabby (or any other wallet) claiming the shared window.ethereum global
+    // — the exact condition that hid a real MetaMask from window.ethereum-
+    // based detection in the original incident.
+    Object.defineProperty(window, "ethereum", {
+      value: { isRabby: true, request: vi.fn(), on: vi.fn(), removeListener: vi.fn() },
+      configurable: true,
+    });
+    announceMetaMaskViaEip6963();
+
+    const { metaMask, wc } = renderWithMetaMaskConnector(
+      <ConnectWalletModal isOpen onClose={vi.fn()} />,
+    );
+
+    // Detected — no "Install" badge despite window.ethereum belonging to a
+    // different wallet.
+    expect(screen.getByText("MetaMask").closest("button")).not.toHaveTextContent("Install");
+
+    fireEvent.click(screen.getByText("MetaMask").closest("button")!);
+
+    await waitFor(() => expect(metaMask.connectSpy).toHaveBeenCalledTimes(1));
+    expect(wc.connectSpy).not.toHaveBeenCalled();
   });
 });
 
@@ -512,6 +661,121 @@ describe("ConnectWalletModal — stuck WalletConnect attempt cleanup", () => {
     // The new attempt itself is untouched — only the stale one was cleaned up.
     expect(metaMask.modalClose).not.toHaveBeenCalled();
     expect(metaMask.disconnect).not.toHaveBeenCalled();
+  });
+});
+
+// Regression coverage for a real, confirmed bug: CONNECT_TIMEOUT_MS fires
+// identically for every connector, but the error copy used to hardcode
+// WalletConnect wording regardless of which connector actually stalled — a
+// stuck MetaMask (or any injected) attempt showed "Couldn't reach
+// WalletConnect" despite never touching WalletConnect at all. Each case
+// below drives a *different* connector id through the same 30s timeout and
+// asserts the message that's actually specific to it.
+describe("ConnectWalletModal — timeout message matches the connector that actually stalled", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  function renderWithThreeConnectors(ui: ReactElement) {
+    const wc = createHangingConnectorStub("walletConnect");
+    const metaMaskSDK = createHangingConnectorStub("metaMaskSDK");
+    const rabby = createHangingConnectorStub("rabby");
+    const wagmiConfig = createConfig({
+      chains: [mainnet],
+      connectors: [wc.connector, metaMaskSDK.connector, rabby.connector],
+      transports: { [mainnet.id]: http() },
+    });
+    const testQueryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    });
+    function Wrapper({ children }: { children: ReactNode }) {
+      return (
+        <WagmiProvider config={wagmiConfig}>
+          <QueryClientProvider client={testQueryClient}>
+            <MemoryRouter>{children}</MemoryRouter>
+          </QueryClientProvider>
+        </WagmiProvider>
+      );
+    }
+    const utils = render(ui, { wrapper: Wrapper });
+    return { ...utils, wc, metaMaskSDK, rabby };
+  }
+
+  it("a stuck WalletConnect attempt shows the WalletConnect-specific message", async () => {
+    vi.useFakeTimers();
+    renderWithThreeConnectors(<ConnectWalletModal isOpen onClose={vi.fn()} />);
+
+    fireEvent.click(screen.getByText("WalletConnect").closest("button")!);
+    await vi.advanceTimersByTimeAsync(30_000);
+
+    expect(
+      screen.getByText("Couldn't reach WalletConnect. Please check your connection and try again."),
+    ).toBeInTheDocument();
+  });
+
+  it("a stuck MetaMask attempt shows the MetaMask-specific message, not WalletConnect's", async () => {
+    vi.useFakeTimers();
+    // No injected/EIP-6963 MetaMask provider stubbed, and a mobile UA — so
+    // handleConnect's dedicatedConnectorId branch routes straight to the
+    // "metaMaskSDK" stub, the same path a real mobile MetaMask click takes.
+    vi.stubGlobal("navigator", {
+      ...window.navigator,
+      userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15",
+      onLine: true,
+    });
+    const { metaMaskSDK } = renderWithThreeConnectors(
+      <ConnectWalletModal isOpen onClose={vi.fn()} />,
+    );
+
+    fireEvent.click(screen.getByText("MetaMask").closest("button")!);
+    await flushMicrotasks();
+    expect(metaMaskSDK.connectSpy).toHaveBeenCalledTimes(1);
+    await vi.advanceTimersByTimeAsync(30_000);
+
+    expect(
+      screen.getByText("Couldn't reach MetaMask. Please check your connection and try again."),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("Couldn't reach WalletConnect. Please check your connection and try again."),
+    ).not.toBeInTheDocument();
+
+    vi.unstubAllGlobals();
+  });
+
+  it("a stuck attempt on an injected connector (e.g. Rabby) shows the generic message, not WalletConnect's", async () => {
+    vi.useFakeTimers();
+    // Rabby detected as injected — handleConnect's `detected` branch
+    // resolves straight to the real connector (resolveConnector's
+    // connectorId fallback finds this stub via wallet.connectorId
+    // "rabby"), the same path a real desktop extension click takes.
+    const originalEthereum = window.ethereum;
+    Object.defineProperty(window, "ethereum", {
+      value: { isRabby: true, request: vi.fn(), on: vi.fn(), removeListener: vi.fn() },
+      configurable: true,
+    });
+
+    const { rabby, wc, metaMaskSDK } = renderWithThreeConnectors(
+      <ConnectWalletModal isOpen onClose={vi.fn()} />,
+    );
+
+    fireEvent.click(screen.getByText("Rabby Wallet").closest("button")!);
+    await flushMicrotasks();
+    expect(rabby.connectSpy).toHaveBeenCalledTimes(1);
+    await vi.advanceTimersByTimeAsync(30_000);
+
+    expect(
+      screen.getByText("Couldn't complete the connection. Please check your connection and try again."),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("Couldn't reach WalletConnect. Please check your connection and try again."),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Couldn't reach MetaMask. Please check your connection and try again."),
+    ).not.toBeInTheDocument();
+    expect(wc.connectSpy).not.toHaveBeenCalled();
+    expect(metaMaskSDK.connectSpy).not.toHaveBeenCalled();
+
+    Object.defineProperty(window, "ethereum", { value: originalEthereum, configurable: true });
   });
 });
 

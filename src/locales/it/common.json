@@ -17,7 +17,9 @@
       "pending": "Una richiesta di connessione è già aperta. Apri il pannello delle estensioni del portafoglio.",
       "providerGone": "Questo wallet non sembra più rispondere. Potrebbe essere stato aggiornato o rimosso. Aggiornare la pagina dovrebbe risolvere il problema.",
       "rejected": "La richiesta di connessione è stata annullata nel tuo portafoglio.",
-      "timeout": "Impossibile raggiungere WalletConnect. Controlla la tua connessione e riprova.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "Impossibile raggiungere WalletConnect. Controlla la tua connessione e riprova.",
       "wrongNetwork": "Passa alla rete attiva del tuo portafoglio su Flare Mainnet."
     },
     "install": "Installa",

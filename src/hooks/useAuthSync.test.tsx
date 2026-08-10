@@ -1,7 +1,8 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { http, HttpResponse } from "msw";
+import { toast } from "react-toastify";
 
-import { useAuthSync, logout } from "@/hooks/useAuthSync";
+import { useAuthSync, logout, signIn } from "@/hooks/useAuthSync";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 import { useAuthStore } from "@/store/useAuthStore";
@@ -364,5 +365,155 @@ describe("wallet disconnect", () => {
     // leave the guard stuck true, which would silently block every future
     // sign-in attempt for the rest of the session.
     await waitFor(() => expect(useAuthStore.getState().isAuthenticating).toBe(false));
+  });
+});
+
+// Regression coverage for the reported "stuck on Signing…" bug: nothing in
+// wagmi/viem's own signMessage action bounds how long a wallet's own
+// signature request can hang (confirmed by reading @wagmi/core's
+// signMessage.ts — a bare `await` on the connector's provider request, no
+// timeout anywhere), so a dropped relay or a backgrounded wallet app that
+// never resumes the request previously left `isAuthenticating` stuck `true`
+// forever with no recovery. These tests drive `signIn` directly with a
+// hand-controlled `signMessageAsync` (never resolving, or resolving late)
+// rather than through the mock wagmi connector — wagmi's own `mock`
+// connector's `signMessageError` feature can only fail synchronously, not
+// hang, so it can't exercise a timeout at all. Nothing here renders a
+// component (so there's no ToastContainer to assert rendered text against)
+// — a direct spy on `toast.error` is the discriminating signal instead.
+// `connectedAddress` is set explicitly before each call to mirror what
+// useAuthSync's own other effect already does in real use (it always runs
+// before the sign-in effect on the same render) — the stale-wallet guard
+// added alongside this timeout treats an unset connectedAddress as a
+// mismatch, so leaving it out would make every one of these direct calls
+// look stale regardless of the timeout logic under test.
+describe("useAuthSync — signing timeout", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
+
+  it("gives up after the sign timeout, clears isAuthenticating, and shows a timeout-specific error", async () => {
+    const toastErrorSpy = vi.spyOn(toast, "error");
+    vi.useFakeTimers();
+    useAuthStore.getState().setConnectedAddress(TEST_ADDRESSES.primary);
+    // Never resolves — simulates a wallet that never responds (dropped
+    // relay, backgrounded app that never resumes the request).
+    const hangingSignMessageAsync = vi.fn(() => new Promise<never>(() => {}));
+
+    const signInPromise = signIn(
+      TEST_ADDRESSES.primary,
+      hangingSignMessageAsync as unknown as Parameters<typeof signIn>[1],
+    );
+    await vi.waitFor(() => expect(useAuthStore.getState().isAuthenticating).toBe(true));
+
+    // Still waiting just before the timeout — a real, if slow, signature
+    // request must not be cut off early.
+    await vi.advanceTimersByTimeAsync(29_000);
+    expect(useAuthStore.getState().isAuthenticating).toBe(true);
+
+    await vi.advanceTimersByTimeAsync(1_000);
+    await signInPromise;
+
+    expect(useAuthStore.getState().isAuthenticating).toBe(false);
+    expect(useAuthStore.getState().token).toBeNull();
+    expect(toastErrorSpy).toHaveBeenCalledWith("Sign-in timed out. Please try again.");
+  });
+
+  it("lets a manual retry succeed immediately after a timeout — the guard is not left poisoned", async () => {
+    vi.useFakeTimers();
+    useAuthStore.getState().setConnectedAddress(TEST_ADDRESSES.primary);
+    const hangingSignMessageAsync = vi.fn(() => new Promise<never>(() => {}));
+
+    const timedOutAttempt = signIn(
+      TEST_ADDRESSES.primary,
+      hangingSignMessageAsync as unknown as Parameters<typeof signIn>[1],
+    );
+    await vi.waitFor(() => expect(useAuthStore.getState().isAuthenticating).toBe(true));
+    await vi.advanceTimersByTimeAsync(30_000);
+    await timedOutAttempt;
+    expect(useAuthStore.getState().isAuthenticating).toBe(false);
+
+    vi.useRealTimers();
+    const workingSignMessageAsync = vi.fn().mockResolvedValue(
+      "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1b",
+    );
+    await signIn(
+      TEST_ADDRESSES.primary,
+      workingSignMessageAsync as unknown as Parameters<typeof signIn>[1],
+    );
+
+    expect(useAuthStore.getState().token).toBe(MOCK_AUTH_TOKEN);
+  });
+
+  it("a signature that resolves after the timeout must not authenticate — the attempt already gave up", async () => {
+    vi.useFakeTimers();
+    useAuthStore.getState().setConnectedAddress(TEST_ADDRESSES.primary);
+    let resolveSign!: (signature: string) => void;
+    const lateSignMessageAsync = vi.fn(
+      () => new Promise<string>((resolve) => { resolveSign = resolve; }),
+    );
+    let verifyRequests = 0;
+    server.use(
+      http.post(`${API}/api/v1/auth/verify`, () => {
+        verifyRequests += 1;
+        return HttpResponse.json({ token: MOCK_AUTH_TOKEN });
+      }),
+    );
+
+    const signInPromise = signIn(
+      TEST_ADDRESSES.primary,
+      lateSignMessageAsync as unknown as Parameters<typeof signIn>[1],
+    );
+    await vi.waitFor(() => expect(useAuthStore.getState().isAuthenticating).toBe(true));
+    await vi.advanceTimersByTimeAsync(30_000);
+    await signInPromise;
+    expect(useAuthStore.getState().isAuthenticating).toBe(false);
+    expect(useAuthStore.getState().token).toBeNull();
+
+    // The wallet finally responds, well after this attempt already gave up
+    // — Promise settlement is single-shot (a promise that already rejected
+    // via the timeout ignores any later resolve() call), so this must never
+    // reach verifySignature/setSession.
+    resolveSign(
+      "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1b",
+    );
+    await vi.advanceTimersByTimeAsync(0);
+
+    expect(verifyRequests).toBe(0);
+    expect(useAuthStore.getState().token).toBeNull();
+  });
+
+  it("does not authenticate a stale wallet if the connected address changes before its signature resolves", async () => {
+    // Starts genuinely matching — Wallet A is the actually-connected wallet
+    // when its own sign-in begins, exactly like real use (useAuthSync's
+    // other effect sets this before the sign-in effect ever runs).
+    useAuthStore.getState().setConnectedAddress(TEST_ADDRESSES.primary);
+    let resolveSign!: (signature: string) => void;
+    const signMessageAsync = vi.fn(
+      () => new Promise<string>((resolve) => { resolveSign = resolve; }),
+    );
+
+    const signInPromise = signIn(
+      TEST_ADDRESSES.primary,
+      signMessageAsync as unknown as Parameters<typeof signIn>[1],
+    );
+    await waitFor(() => expect(useAuthStore.getState().isAuthenticating).toBe(true));
+
+    // The user switched to a different wallet while Wallet A's signature was
+    // still pending — connectedAddress (kept in sync by useAuthSync's own
+    // other effect during real use) now points elsewhere.
+    useAuthStore.getState().setConnectedAddress(TEST_ADDRESSES.watchlist);
+
+    // Wallet A's signature finally comes back — genuinely valid for A, just
+    // too late; A is no longer the connected wallet.
+    resolveSign(
+      "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc1b",
+    );
+    await signInPromise;
+
+    expect(useAuthStore.getState().isAuthenticating).toBe(false);
+    expect(useAuthStore.getState().token).toBeNull();
+    expect(useAuthStore.getState().authenticatedAddress).toBeNull();
   });
 });

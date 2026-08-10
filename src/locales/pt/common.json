@@ -17,7 +17,9 @@
       "pending": "Um pedido de ligação já está aberto. Abra o painel de extensão da sua carteira.",
       "providerGone": "Esta carteira parece não estar mais respondendo. Pode ter sido atualizado ou removido. Atualizar a página deve corrigir isso.",
       "rejected": "O pedido de ligação foi cancelado na sua carteira.",
-      "timeout": "Não foi possível alcançar o WalletConnect. Verifique sua conexão e tente novamente.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "Não foi possível alcançar o WalletConnect. Verifique sua conexão e tente novamente.",
       "wrongNetwork": "Mude a rede ativa da sua carteira para a Flare Mainnet."
     },
     "install": "Instalar",

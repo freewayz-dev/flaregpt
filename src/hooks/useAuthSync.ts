@@ -35,6 +35,57 @@ function isUserRejectionError(error: unknown): boolean {
   return lower.includes("user rejected") || lower.includes("user denied");
 }
 
+// Thrown by withSignTimeout below — distinguished from a real wallet/network
+// error so the catch block in attemptSignIn can show a message that's
+// actually true ("the wallet never responded") instead of the generic
+// failure copy.
+class SignInTimeoutError extends Error {
+  constructor() {
+    super("Sign-in timed out waiting for the wallet to respond.");
+    this.name = "SignInTimeoutError";
+  }
+}
+
+// How long a wallet's own signature request is allowed to hang before this
+// flow gives up and lets the user retry. Nothing in wagmi/viem's own
+// signMessage action bounds this call (confirmed by reading @wagmi/core's
+// signMessage.ts — it's a bare `await` on the connector's provider request,
+// no timeout anywhere), and neither does the underlying WalletConnect/
+// MetaMask transport from our side — so without this, a dropped relay or a
+// backgrounded wallet app that never resumes the request left
+// `isAuthenticating` (and the "Signing…" label) stuck forever, with no way
+// to recover except a page reload. 30s matches ConnectWalletModal.tsx's own
+// CONNECT_TIMEOUT_MS — the same class of "did the wallet app respond" wait,
+// so the same user-patience budget applies: long enough for a real approval
+// tap plus a slow mobile relay round-trip, short enough that "stuck on
+// Signing…" now has a bounded, recoverable end.
+const SIGN_MESSAGE_TIMEOUT_MS = 30_000;
+
+// Races `promise` against a timer. Deliberately does NOT cancel `promise`
+// itself (there is no cancellation API for a wallet's own signature
+// request) — it only stops *this flow* from waiting on it any longer. If
+// `promise` later resolves anyway, that resolution lands on a promise
+// nothing is still awaiting (Promise.race/manual racing both settle only
+// once — a second settlement attempt after the timer already won is a
+// standard, safe no-op), so a late signature can never silently continue
+// past the point where attemptSignIn already gave up and moved to its catch
+// block.
+function withSignTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(new SignInTimeoutError()), ms);
+    promise.then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (error: unknown) => {
+        clearTimeout(timer);
+        reject(error as Error);
+      },
+    );
+  });
+}
+
 // The actual nonce -> sign -> verify -> setSession dance, factored out of
 // the effect below so it can also be called directly by a manual "Sign In"
 // action (see the exported `signIn`) — connected-but-signed-out is a real,
@@ -61,9 +112,31 @@ async function attemptSignIn(address: Address, signMessageAsync: SignMessageAsyn
     // workaround): it signs as the address this flow is verifying, not
     // "whatever wagmi happens to consider connected at the moment this
     // resolves," which matters given how easily those two can diverge
-    // during a fast wallet switch.
-    const signature = await signMessageAsync({ account: address, message });
+    // during a fast wallet switch. The timeout wraps only this call — the
+    // one genuinely unbounded step (requestNonce/verifySignature below both
+    // go through apiClient.ts's axios instance, which already has its own
+    // 15s timeout).
+    const signature = await withSignTimeout(
+      signMessageAsync({ account: address, message }),
+      SIGN_MESSAGE_TIMEOUT_MS,
+    );
     const { token } = await authService.verifySignature(address, signature);
+    // Re-checked right before committing the session: `connectedAddress` is
+    // wagmi's live address, kept in sync by this file's other effect below.
+    // A slow signature (right up against SIGN_MESSAGE_TIMEOUT_MS, or one
+    // that raced a wallet switch) can resolve successfully *after* the user
+    // has already moved on to a different wallet — without this check, that
+    // late-but-genuine signature for the *old* address would still call
+    // setSession and silently authenticate this device as the wallet that's
+    // no longer even connected, exactly the "old wallet session reused"
+    // state this app's wallet-switch rule forbids. A mismatch here isn't an
+    // error — it just means this specific attempt is stale and its result
+    // is discarded; the wallet that's actually connected now still shows
+    // its own correct "Sign In" prompt.
+    if (useAuthStore.getState().connectedAddress?.toLowerCase() !== address.toLowerCase()) {
+      useAuthStore.getState().stopAuthenticating();
+      return;
+    }
     useAuthStore.getState().setSession(token, address);
   } catch (error) {
     useAuthStore.getState().stopAuthenticating();
@@ -72,7 +145,9 @@ async function attemptSignIn(address: Address, signMessageAsync: SignMessageAsyn
     // this failed (nonce request, the wallet, or verify can each throw for
     // very different reasons).
     console.error("[useAuthSync] sign-in failed", error);
-    if (isUserRejectionError(error)) {
+    if (error instanceof SignInTimeoutError) {
+      toast.error("Sign-in timed out. Please try again.");
+    } else if (isUserRejectionError(error)) {
       toast.error("Sign-in cancelled.");
     } else {
       toast.error("Sign-in failed. Try again.");

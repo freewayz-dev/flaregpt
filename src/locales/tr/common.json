@@ -17,7 +17,9 @@
       "pending": "Bir bağlantı isteği zaten açık. Lütfen cüzdan uzantı panelinizi açın.",
       "providerGone": "Bu cüzdan artık yanıt vermiyor gibi görünüyor. Güncellenmiş veya kaldırılmış olabilir. Sayfayı yenilemek bunu düzeltecektir.",
       "rejected": "Cüzdanınızdaki bağlantı isteği iptal edildi.",
-      "timeout": "WalletConnect'e ulaşılamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "WalletConnect'e ulaşılamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
       "wrongNetwork": "Lütfen cüzdanınızın aktif ağını Flare Mainnet olarak değiştirin."
     },
     "install": "Yükle",

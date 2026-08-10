@@ -16,7 +16,10 @@
       "Bash(node /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/debug-wallet.mjs)",
       "Bash(node /tmp/debug-wallet-local.mjs)",
       "Bash(node ./debug-wallet-local.mjs)",
-      "Bash(cd /Users/macbookpro/Fred/Codebase/flr-gpt-dashboard/flr-gpt-dashboard *)"
+      "Bash(cd /Users/macbookpro/Fred/Codebase/flr-gpt-dashboard/flr-gpt-dashboard *)",
+      "Bash(grep -oE \"createDelayedPromise[^;]{0,400}\" /Users/macbookpro/.claude/projects/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/tool-results/bp41dmth1.txt)",
+      "Bash(grep -oE \"gd=[^;]{0,300}\" /Users/macbookpro/.claude/projects/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/tool-results/bp41dmth1.txt)",
+      "Bash(awk -F: '$1 > 607')"
     ],
     "additionalDirectories": [
       "/tmp"

@@ -3,8 +3,25 @@ import type { Address, Chain, EIP1193Provider, Hash } from "viem";
 import { createConfig, http } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { injected, metaMask, walletConnect } from "wagmi/connectors";
+import { createStore } from "mipd";
 
 import { isStandaloneDisplayMode } from "@/utils/platform";
+
+// The same EIP-6963 provider registry wagmi's own `multiInjectedProviderDiscovery`
+// (on by default in createConfig below) builds internally — created directly
+// here too so this file's own MetaMask detection (see the "metaMask"
+// connector's `target.provider` below) doesn't depend on wagmi auto-generating
+// a separate connector for `io.metamask`, which it deliberately does NOT do
+// once another connector (metaMaskSDK, below) already declares that rdns —
+// see that connector's own comment for why. Two independent `mipd` stores
+// (this one and wagmi's internal one) both listening for the same
+// `eip6963:announceProvider`/`eip6963:requestProvider` events is normal,
+// spec-supported behavior, not a workaround — every listener receives the
+// same event with the same `detail.provider` object reference, so both
+// stores end up holding the exact same provider instance for a given
+// wallet, which is what keeps wagmi's own reconnect() dedup (`providers.some(x => x === provider)`)
+// correct regardless of which store found it first.
+export const mipdStore = createStore();
 
 // `as const satisfies Chain` (not just a plain object) — without it, `id`
 // widens to `number` instead of the literal `14`, which loses wagmi's
@@ -176,6 +193,23 @@ function isRealMetaMask(provider: InjectedProvider): boolean {
   return !METAMASK_IMPERSONATOR_FLAGS.some((flag) => provider[flag]);
 }
 
+// Direct EIP-6963 lookup for the "metaMask" injected() connector's own
+// `target.provider` below — checked first, same reasoning
+// ConnectWalletModal.tsx's own findRdnsConnector originally documented:
+// EIP-6963 finds a real MetaMask extension regardless of which wallet
+// currently occupies `window.ethereum` (confirmed in testing: Rabby
+// installed alongside a real MetaMask can hide it from any window.ethereum-
+// based check). Still run through isRealMetaMask — an EIP-6963 announcement
+// is a stronger identity signal than a window.ethereum flag, but not
+// infallible, and this keeps exactly one impersonator check for MetaMask
+// instead of two different ones for two different discovery paths.
+function findMetaMaskEip6963Provider(): InjectedProvider | undefined {
+  const provider = mipdStore.findProvider({ rdns: "io.metamask" })?.provider as
+    | InjectedProvider
+    | undefined;
+  return provider && isRealMetaMask(provider) ? provider : undefined;
+}
+
 // Extracted to its own function purely so this decision is directly
 // unit-testable (see web3Config.test.ts) without having to reach into
 // wagmi's own internal connector construction — `createConfig` below is a
@@ -215,33 +249,6 @@ export function getWalletConnectMetadata() {
   };
 }
 
-// `metaMask()`'s own returned connector declares `rdns: ["io.metamask",
-// "io.metamask.mobile"]` (see @wagmi/connectors' metaMask.ts). wagmi's own
-// createConfig() collects every static connector's declared `.rdns` into a
-// set and, for any EIP-6963-announced provider whose rdns is already in
-// that set, skips auto-generating its usual `injected({target: {id: rdns,
-// provider}})` passthrough connector (see @wagmi/core's createConfig.ts —
-// the `rdnsSet`/`if (rdnsSet.has(...)) continue` logic around its internal
-// `connectors` store). That auto-generated "io.metamask"-id connector is
-// exactly what findRdnsConnector() below relies on to detect (and connect
-// to) a real MetaMask extension even when another wallet has claimed
-// `window.ethereum` (confirmed in testing: Rabby installed alongside a real
-// MetaMask can do this) — losing it would silently regress that fix and
-// send desktop MetaMask through metaMaskSDK's own connect() instead, which
-// always loads the full MetaMask SDK, a different and untested flow for
-// existing extension users. Stripping `.rdns` off the connector object
-// wagmi actually receives keeps metaMaskSDK purely as the mobile,
-// no-injected-provider fallback it's meant to be (see dedicatedConnectorId
-// in ConnectWalletModal.tsx), while leaving wagmi free to keep
-// auto-generating the "io.metamask" passthrough connector exactly as it
-// did before this dedicated connector was added.
-function metaMaskWithoutRdnsClaim(
-  parameters: Parameters<typeof metaMask>[0],
-): ReturnType<typeof metaMask> {
-  const factory = metaMask(parameters);
-  return ((config) => ({ ...factory(config), rdns: undefined })) as ReturnType<typeof metaMask>;
-}
-
 export const web3Config = createConfig({
   chains: [flare, mainnet, coston2, songbird],
   connectors: [
@@ -257,7 +264,11 @@ export const web3Config = createConfig({
       target: {
         id: "metaMask",
         name: "MetaMask",
-        provider: (win) => findInjectedProvider(win, isRealMetaMask),
+        // EIP-6963 first (findMetaMaskEip6963Provider — finds a real
+        // MetaMask extension regardless of who currently occupies
+        // window.ethereum), window.ethereum flag-probing as the fallback
+        // for a provider that never announced itself that way.
+        provider: (win) => findMetaMaskEip6963Provider() ?? findInjectedProvider(win, isRealMetaMask),
       },
     }),
     injected({
@@ -280,15 +291,32 @@ export const web3Config = createConfig({
     // This one (id: "metaMaskSDK", fixed by the library) is specifically
     // for mobile Safari/Chrome with no injected provider at all, where
     // ConnectWalletModal.tsx's fallback used to route MetaMask through the
-    // generic walletConnect connector below. MetaMask's own SDK
-    // (@metamask/connect-evm) owns its own mobile deep-link/reconnection
-    // lifecycle instead of going through WalletConnect's generic multi-
-    // wallet session-proposal path — see this file's git history/PR
-    // description for the investigation this is based on. Wrapped via
-    // metaMaskWithoutRdnsClaim (see its comment above) so this stays
-    // purely additive on desktop instead of silently taking over
-    // detection/connection of an EIP-6963-announced MetaMask extension.
-    metaMaskWithoutRdnsClaim({
+    // generic walletConnect connector below. MetaMask's own Mobile Wallet
+    // Protocol (@metamask/connect-evm, confirmed by reading its actual
+    // dependency chain down to @metamask/mobile-wallet-protocol-core, which
+    // uses its own `centrifuge`-based relay — not @walletconnect/*) owns its
+    // own mobile deep-link/reconnection lifecycle instead of going through
+    // WalletConnect's generic multi-wallet session-proposal path.
+    //
+    // Passed through unmodified — no rdns-stripping wrapper. An earlier
+    // version of this file wrapped this in a `metaMaskWithoutRdnsClaim`
+    // helper that deleted this connector's own `rdns: ["io.metamask", ...]`
+    // to stop it from suppressing wagmi's auto-generated "io.metamask"
+    // EIP-6963 connector. That "fixed" the desktop detection regression but
+    // broke something worse: this connector's own getProvider()/
+    // getAccounts()/isAuthorized() (see @wagmi/connectors' metaMask.ts) each
+    // have a pre-connect fast path that reads `config.providers[0]?.provider`
+    // — populated *from this connector's own declared rdns* — specifically so
+    // wagmi's reconnect() (which probes every connector on every single page
+    // load, confirmed by reading @wagmi/core's reconnect.ts) never has to
+    // dynamically import and initialize the full SDK just to answer "is this
+    // wallet authorized." Stripping rdns silently defeated that fast path,
+    // forcing a real dynamic import + SDK client construction on every page
+    // load for every user, MetaMask or not. Detection is fixed the other way
+    // instead — see findMetaMaskEip6963Provider() above and the "metaMask"
+    // injected() connector's own `target.provider` — so this connector keeps
+    // its natural rdns and its intended fast path.
+    metaMask({
       dapp: {
         name: "FlareGPT",
         url: "https://www.flaregpt.io",

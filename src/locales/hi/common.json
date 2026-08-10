@@ -17,7 +17,9 @@
       "pending": "कनेक्शन का अनुरोध पहले से ही खुला है। कृपया अपना वॉलेट एक्सटेंशन पैनल खोलें।",
       "providerGone": "यह वॉलेट अब जवाब नहीं दे रहा है। हो सकता है इसे अपडेट या हटा दिया गया हो। पेज रीफ्रेश करने से यह समस्या ठीक हो सकती है।",
       "rejected": "आपके वॉलेट में कनेक्शन का अनुरोध कैंसिल कर दिया गया था।",
-      "timeout": "WalletConnect तक नहीं पहुंच सका। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "WalletConnect तक नहीं पहुंच सका। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।",
       "wrongNetwork": "कृपया अपने वॉलेट के सक्रिय नेटवर्क को फ्लेयर मेननेट पर स्विच करें।"
     },
     "install": "इंस्टॉल करें",

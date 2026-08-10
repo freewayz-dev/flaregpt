@@ -17,7 +17,9 @@
       "pending": "طلب الاتصال مفتوح بالفعل. يرجى فتح لوحة تمديد محفظتك.",
       "providerGone": "يبدو أن هذه المحفظة لم تعد تستجيب. ربما تم تحديثها أو إزالتها. قد يؤدي تحديث الصفحة إلى حل هذه المشكلة.",
       "rejected": "تم إلغاء طلب الاتصال في محفظتك.",
-      "timeout": "تعذّر الوصول إلى WalletConnect. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "تعذّر الوصول إلى WalletConnect. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
       "wrongNetwork": "يرجى تبديل شبكة محفظتك النشطة إلى Flare Mainnet."
     },
     "install": "تثبيت",

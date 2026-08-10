@@ -17,7 +17,9 @@
       "pending": "A connection request is already open. Please open your wallet extension panel.",
       "providerGone": "This wallet doesn't seem to be responding anymore. It may have been updated or removed. Refreshing the page should fix this.",
       "rejected": "Connection request was cancelled in your wallet.",
-      "timeout": "Couldn't reach WalletConnect. Please check your connection and try again.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "Couldn't reach WalletConnect. Please check your connection and try again.",
       "wrongNetwork": "Please switch your wallet's active network to Flare Mainnet."
     },
     "install": "Install",

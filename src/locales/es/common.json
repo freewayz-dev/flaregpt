@@ -17,7 +17,9 @@
       "pending": "Ya hay una solicitud de conexión abierta. Abre el panel de extensión de tu monedero.",
       "providerGone": "Parece que este monedero ya no responde. Es posible que se haya actualizado o eliminado. Actualizar la página debería solucionar este problema.",
       "rejected": "La solicitud de conexión se ha cancelado en tu monedero.",
-      "timeout": "No se pudo conectar con WalletConnect. Comprueba tu conexión e inténtalo de nuevo.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "No se pudo conectar con WalletConnect. Comprueba tu conexión e inténtalo de nuevo.",
       "wrongNetwork": "Cambia la red activa de tu monedero a Flare Mainnet."
     },
     "install": "Instalar",

@@ -17,7 +17,9 @@
       "pending": "连接请求已打开。请打开您的钱包扩展面板。",
       "providerGone": "此钱包似乎不再响应。它可能已被更新或删除。刷新页面应该可以解决此问题。",
       "rejected": "您的钱包中的连接请求已取消。",
-      "timeout": "无法连接到WalletConnect。请检查您的网络连接后重试。",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "无法连接到WalletConnect。请检查您的网络连接后重试。",
       "wrongNetwork": "请将钱包的活动网络切换到Flare主网。"
     },
     "install": "安装",

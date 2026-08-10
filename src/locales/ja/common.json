@@ -17,7 +17,9 @@
       "pending": "接続要求はすでに開いています。ウォレット拡張パネルを開いてください。",
       "providerGone": "このウォレットは応答していないようです。更新または削除された可能性があります。ページを更新すると解決する場合があります。",
       "rejected": "ウォレットで接続リクエストがキャンセルされました。",
-      "timeout": "WalletConnectに接続できませんでした。接続を確認して再試行してください。",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "WalletConnectに接続できませんでした。接続を確認して再試行してください。",
       "wrongNetwork": "ウォレットのアクティブなネットワークをFlare Mainnetに切り替えてください。"
     },
     "install": "インストール",

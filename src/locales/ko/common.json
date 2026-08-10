@@ -17,7 +17,9 @@
       "pending": "연결 요청이 이미 열려 있습니다. 지갑 확장 패널을 여십시오.",
       "providerGone": "이 지갑이 더 이상 응답하지 않는 것 같습니다. 업데이트되었거나 제거되었을 수 있습니다. 페이지를 새로고침하면 해결될 수 있습니다.",
       "rejected": "지갑에서 연결 요청이 취소되었습니다.",
-      "timeout": "WalletConnect에 연결할 수 없습니다. 연결 상태를 확인하고 다시 시도하세요.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "WalletConnect에 연결할 수 없습니다. 연결 상태를 확인하고 다시 시도하세요.",
       "wrongNetwork": "지갑의 활성 네트워크를 Flare Mainnet으로 전환하십시오."
     },
     "install": "설치",

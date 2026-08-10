@@ -17,7 +17,9 @@
       "pending": "Eine Verbindungsanfrage ist bereits offen. Bitte öffnen Sie Ihre Brieftaschenerweiterung.",
       "providerGone": "Dieses Wallet scheint nicht mehr zu reagieren. Es wurde möglicherweise aktualisiert oder entfernt. Ein Neuladen der Seite sollte das Problem beheben.",
       "rejected": "Die Verbindungsanfrage in Ihrem Wallet wurde abgebrochen.",
-      "timeout": "WalletConnect konnte nicht erreicht werden. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "WalletConnect konnte nicht erreicht werden. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
       "wrongNetwork": "Bitte schalten Sie das aktive Netzwerk Ihrer Brieftasche auf Flare Mainnet um."
     },
     "install": "Installieren",

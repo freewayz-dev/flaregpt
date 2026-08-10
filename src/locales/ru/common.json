@@ -17,7 +17,9 @@
       "pending": "Запрос на подключение уже открыт. Откройте панель расширения кошелька.",
       "providerGone": "Похоже, этот кошелёк больше не отвечает. Возможно, он был обновлён или удалён. Обновление страницы должно решить проблему.",
       "rejected": "Запрос на подключение отменен в вашем кошельке.",
-      "timeout": "Не удалось подключиться к WalletConnect. Проверьте соединение и повторите попытку.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "Не удалось подключиться к WalletConnect. Проверьте соединение и повторите попытку.",
       "wrongNetwork": "Переключите активную сеть вашего кошелька на Flare Mainnet."
     },
     "install": "Установить",

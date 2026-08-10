@@ -17,7 +17,9 @@
       "pending": "Permintaan koneksi sudah terbuka. Silakan buka panel ekstensi dompet Anda.",
       "providerGone": "Dompet ini sepertinya tidak lagi merespons. Mungkin telah diperbarui atau dihapus. Menyegarkan halaman seharusnya dapat memperbaikinya.",
       "rejected": "Permintaan koneksi dibatalkan di dompet Anda.",
-      "timeout": "Tidak dapat menjangkau WalletConnect. Periksa koneksi Anda dan coba lagi.",
+      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
+      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
+      "timeoutWalletConnect": "Tidak dapat menjangkau WalletConnect. Periksa koneksi Anda dan coba lagi.",
       "wrongNetwork": "Harap alihkan jaringan aktif dompet Anda ke Flare Mainnet."
     },
     "install": "Instal",
