@@ -49,6 +49,12 @@ interface VisualWallet {
   src: string;
   recommended: boolean;
   installUrl?: string;
+  // Only set for MetaMask. When this wallet isn't detected as injected
+  // (the mobile case), handleConnect uses this connector id instead of
+  // falling through to the generic walletConnect connector every other
+  // undetected wallet uses — see web3Config.ts's own comment on the
+  // "metaMaskSDK" connector for why MetaMask specifically gets this.
+  dedicatedConnectorId?: string;
 }
 
 // A stuck relay/network on WalletConnect's side leaves its connect() promise
@@ -117,6 +123,7 @@ const VISUAL_WALLETS: VisualWallet[] = [
     src: metamask,
     recommended: false,
     installUrl: "https://metamask.io/download/",
+    dedicatedConnectorId: "metaMaskSDK",
   },
   {
     id: "rabby",
@@ -265,6 +272,22 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
   // tracked separately from `pendingWalletId` because cleanup needs the
   // actual connector object, not just its id, to reach into its provider.
   const pendingConnectorRef = useRef<Connector | null>(null);
+  // The current attempt's own CONNECT_TIMEOUT_MS timer — tracked so a
+  // *second* runConnect() call for the same connector (specifically the
+  // resume-reconciliation path below) can cancel the first attempt's timer
+  // before it fires. Without this, the original attempt's timeout still
+  // goes off on its own schedule and calls abortPendingConnector — which
+  // calls disconnect() — on the connection the reconciliation call just
+  // successfully established, tearing it back down out from under the
+  // sign-in flow that had just started. Same class of race the `!isConnected`
+  // guard below already exists to prevent, one layer earlier.
+  const pendingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Guards the resume-reconciliation check itself (see the visibility/focus
+  // effect below) against overlapping runs if `focus` and `visibilitychange`
+  // both fire for the same resume, or the user backgrounds/foregrounds
+  // again before the previous check finished its (async) isAuthorized()
+  // probe.
+  const isReconcilingRef = useRef(false);
 
   useFocusTrap(dialogRef, shouldRender);
 
@@ -299,6 +322,76 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
     }
     connector.disconnect?.().catch(() => {});
   }, []);
+
+  // Moved above the modal's `if (!shouldRender) return null` early return
+  // (it used to live below it, alongside handleConnect) specifically so the
+  // resume-reconciliation effect further down — which must itself stay
+  // above that same early return, since it needs to keep running even for
+  // a render where the modal briefly isn't visible mid-close-animation —
+  // can call this directly instead of going through a ref-forwarding
+  // workaround. Wrapped in useCallback for the same reason
+  // abortPendingConnector above is: a stable identity that effect can list
+  // as a real dependency.
+  const runConnect = useCallback(
+    async (connector: Connector, walletId: string) => {
+      // Every wallet button stays independently clickable while another is
+      // mid-attempt (see the `disabled` check below), so tapping a second
+      // wallet before the first settles is a real, reachable path —
+      // without this, both attempts would race against the same
+      // underlying WalletConnect modal/pairing. Clean up whatever was
+      // still pending first, exactly the same way a timeout or closing
+      // the modal would.
+      if (pendingConnectorRef.current && pendingConnectorRef.current !== connector) {
+        await abortPendingConnector(pendingConnectorRef.current);
+      }
+      // A second runConnect() for the *same* connector (the resume-
+      // reconciliation path below, superseding a first attempt that's
+      // still technically pending) — cancel that first attempt's own
+      // timer before scheduling this one's, so it can never fire against
+      // the connection this call is about to (re)establish. See
+      // pendingTimeoutRef's own comment.
+      if (pendingTimeoutRef.current) {
+        clearTimeout(pendingTimeoutRef.current);
+        pendingTimeoutRef.current = null;
+      }
+      pendingConnectorRef.current = connector;
+
+      reset();
+      setTimeoutKind(null);
+      setPendingWalletId(walletId);
+
+      let timedOut = false;
+      const timeoutId = setTimeout(async () => {
+        timedOut = true;
+        reset();
+        setPendingWalletId(null);
+        // A stuck WalletConnect attempt is the exact symptom of Brave
+        // Shields (or a similar tracker/ad blocker) silently dropping its
+        // relay traffic — only worth checking (and only relevant to show)
+        // when WalletConnect is the connector that actually got stuck,
+        // not an injected-wallet attempt timing out for some unrelated
+        // reason.
+        const brave =
+          connector.id === "walletConnect" && (await isBraveBrowser());
+        setTimeoutKind(brave ? "brave" : "generic");
+        await abortPendingConnector(connector);
+      }, CONNECT_TIMEOUT_MS);
+      pendingTimeoutRef.current = timeoutId;
+
+      try {
+        await connectAsync({ connector });
+      } catch {
+        // Real rejections (user cancelled, wrong network, etc.) already
+        // surface through wagmi's own `error` state below.
+      } finally {
+        clearTimeout(timeoutId);
+        if (pendingTimeoutRef.current === timeoutId) pendingTimeoutRef.current = null;
+        if (!timedOut) setPendingWalletId(null);
+        if (pendingConnectorRef.current === connector) pendingConnectorRef.current = null;
+      }
+    },
+    [abortPendingConnector, connectAsync, reset],
+  );
 
   useEffect(() => {
     if (isOpen) {
@@ -376,73 +469,81 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
   // support waking up in an already-open tab) and, if the user specifically
   // just clicked "Install" for a wallet that's still undetected, a targeted
   // one-time hint instead of silence.
+  //
+  // Also where WalletConnect resume-reconciliation lives — the actual fix
+  // for the reported PWA bug: connect from the installed app, approve in
+  // MetaMask/Trust Wallet/Bifrost/etc., and the session settles while the
+  // PWA is backgrounded, but this component's own in-flight connectAsync()
+  // call (still awaiting whatever WalletConnect's relay was mid-handshake
+  // on when the WebSocket dropped/suspended) never resolves on its own —
+  // the modal is left showing a stale "connecting"/error state until the
+  // user minimizes and reopens the app, which forces a fresh mount and
+  // lets wagmi's own reconnectOnMount pick up the by-then-settled session
+  // from storage. This closes that gap without needing a remount:
+  //
+  // On regaining visibility, if there's still a genuinely pending
+  // WalletConnect attempt (pendingConnectorRef — never set for any other
+  // reason) and wagmi doesn't yet consider itself connected, ask that
+  // *specific* connector's own isAuthorized() (a side-effect-free read of
+  // its already-live session state, not a network call of its own) whether
+  // a session has actually settled. Only if it has do we act — by calling
+  // runConnect() again for the same connector, which is not "another
+  // connection attempt" in any meaningful sense: @wagmi/connectors'
+  // walletConnect.ts connect() checks `provider.session` first and skips
+  // pairing entirely when one already exists, so this resolves off the
+  // settled session in place of the orphaned original promise, instead of
+  // prompting the wallet again. If the session hasn't settled yet, nothing
+  // happens — the user simply isn't back yet from the wallet's side, and
+  // the existing CONNECT_TIMEOUT_MS/error UI still applies exactly as
+  // before. Also listens for `pageshow` (fires on a bfcache restore,
+  // distinct from a cold reload) for the same reason.
   useEffect(() => {
     if (!isOpen) return;
     const recheck = () => {
       if (document.visibilityState !== "visible") return;
       setRefreshTick((tick) => tick + 1);
-      if (!awaitingInstallId) return;
-      const wallet = VISUAL_WALLETS.find((w) => w.id === awaitingInstallId);
-      if (wallet && isWalletDetected(connectors, wallet)) {
-        setAwaitingInstallId(null);
-        setShowInstallHint(false);
-      } else {
-        setShowInstallHint(true);
+      if (awaitingInstallId) {
+        const wallet = VISUAL_WALLETS.find((w) => w.id === awaitingInstallId);
+        if (wallet && isWalletDetected(connectors, wallet)) {
+          setAwaitingInstallId(null);
+          setShowInstallHint(false);
+        } else {
+          setShowInstallHint(true);
+        }
       }
+
+      const pending = pendingConnectorRef.current;
+      if (!pending || pending.id !== "walletConnect" || isConnected || isReconcilingRef.current) {
+        return;
+      }
+      isReconcilingRef.current = true;
+      Promise.resolve(pending.isAuthorized())
+        .then((authorized) => {
+          if (authorized && pendingConnectorRef.current === pending && !isConnected) {
+            runConnect(pending, pendingWalletId ?? pending.id);
+          }
+        })
+        .catch(() => {
+          // Not authorized (yet), or the probe itself failed — either way
+          // this is not a real error, just "nothing to reconcile right
+          // now." The user's own still-pending attempt (and its existing
+          // timeout/error handling) is untouched.
+        })
+        .finally(() => {
+          isReconcilingRef.current = false;
+        });
     };
     window.addEventListener("focus", recheck);
+    window.addEventListener("pageshow", recheck);
     document.addEventListener("visibilitychange", recheck);
     return () => {
       window.removeEventListener("focus", recheck);
+      window.removeEventListener("pageshow", recheck);
       document.removeEventListener("visibilitychange", recheck);
     };
-  }, [isOpen, awaitingInstallId, connectors]);
+  }, [isOpen, awaitingInstallId, connectors, isConnected, pendingWalletId, runConnect]);
 
   if (!shouldRender) return null;
-
-  const runConnect = async (connector: Connector, walletId: string) => {
-    // Every wallet button stays independently clickable while another is
-    // mid-attempt (see the `disabled` check below), so tapping a second
-    // wallet before the first settles is a real, reachable path — without
-    // this, both attempts would race against the same underlying
-    // WalletConnect modal/pairing. Clean up whatever was still pending
-    // first, exactly the same way a timeout or closing the modal would.
-    if (pendingConnectorRef.current && pendingConnectorRef.current !== connector) {
-      await abortPendingConnector(pendingConnectorRef.current);
-    }
-    pendingConnectorRef.current = connector;
-
-    reset();
-    setTimeoutKind(null);
-    setPendingWalletId(walletId);
-
-    let timedOut = false;
-    const timeoutId = setTimeout(async () => {
-      timedOut = true;
-      reset();
-      setPendingWalletId(null);
-      // A stuck WalletConnect attempt is the exact symptom of Brave Shields
-      // (or a similar tracker/ad blocker) silently dropping its relay
-      // traffic — only worth checking (and only relevant to show) when
-      // WalletConnect is the connector that actually got stuck, not an
-      // injected-wallet attempt timing out for some unrelated reason.
-      const brave =
-        connector.id === "walletConnect" && (await isBraveBrowser());
-      setTimeoutKind(brave ? "brave" : "generic");
-      await abortPendingConnector(connector);
-    }, CONNECT_TIMEOUT_MS);
-
-    try {
-      await connectAsync({ connector });
-    } catch {
-      // Real rejections (user cancelled, wrong network, etc.) already
-      // surface through wagmi's own `error` state below.
-    } finally {
-      clearTimeout(timeoutId);
-      if (!timedOut) setPendingWalletId(null);
-      if (pendingConnectorRef.current === connector) pendingConnectorRef.current = null;
-    }
-  };
 
   const handleConnect = (wallet: VisualWallet) => {
     const detected = isWalletDetected(connectors, wallet);
@@ -465,6 +566,21 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
       setAwaitingInstallId(wallet.id);
       setShowInstallHint(false);
       return;
+    }
+
+    // MetaMask specifically has its own dedicated connector for exactly
+    // this case (see web3Config.ts's "metaMaskSDK" connector) — its own
+    // SDK owns the mobile deep-link/reconnection lifecycle instead of
+    // going through WalletConnect's generic multi-wallet session-proposal
+    // path. Every other undetected wallet (Bifrost, Rabby with no
+    // extension, "Other wallets" via the WalletConnect button itself)
+    // keeps using WalletConnect's own modal exactly as before.
+    if (wallet.dedicatedConnectorId) {
+      const dedicated = connectors.find((c) => c.id === wallet.dedicatedConnectorId);
+      if (dedicated) {
+        runConnect(dedicated, wallet.id);
+        return;
+      }
     }
 
     // Mobile fallback (or a desktop wallet with no extension to install,
@@ -536,14 +652,16 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
             const willInstall =
               !isConnectingThis && wallet.installUrl && !mobile && !isDetected;
             // Any undetected wallet other than an installable desktop
-            // extension is reached through WalletConnect's own modal —
-            // flagged up front rather than only discovering it after
-            // tapping, since it's a different flow from every other
+            // extension or one with its own dedicated connector (MetaMask —
+            // see dedicatedConnectorId) is reached through WalletConnect's
+            // own modal — flagged up front rather than only discovering it
+            // after tapping, since it's a different flow from every other
             // button's "connect directly" behavior.
             const willUseWalletConnect =
               !isConnectingThis &&
               !willInstall &&
               !isDetected &&
+              !wallet.dedicatedConnectorId &&
               wallet.connectorId !== "walletConnect";
 
             return (

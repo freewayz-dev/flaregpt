@@ -2,7 +2,7 @@
 import type { Address, Chain, EIP1193Provider, Hash } from "viem";
 import { createConfig, http } from "wagmi";
 import { mainnet } from "wagmi/chains";
-import { injected, walletConnect } from "wagmi/connectors";
+import { injected, metaMask, walletConnect } from "wagmi/connectors";
 
 import { isStandaloneDisplayMode } from "@/utils/platform";
 
@@ -215,6 +215,33 @@ export function getWalletConnectMetadata() {
   };
 }
 
+// `metaMask()`'s own returned connector declares `rdns: ["io.metamask",
+// "io.metamask.mobile"]` (see @wagmi/connectors' metaMask.ts). wagmi's own
+// createConfig() collects every static connector's declared `.rdns` into a
+// set and, for any EIP-6963-announced provider whose rdns is already in
+// that set, skips auto-generating its usual `injected({target: {id: rdns,
+// provider}})` passthrough connector (see @wagmi/core's createConfig.ts —
+// the `rdnsSet`/`if (rdnsSet.has(...)) continue` logic around its internal
+// `connectors` store). That auto-generated "io.metamask"-id connector is
+// exactly what findRdnsConnector() below relies on to detect (and connect
+// to) a real MetaMask extension even when another wallet has claimed
+// `window.ethereum` (confirmed in testing: Rabby installed alongside a real
+// MetaMask can do this) — losing it would silently regress that fix and
+// send desktop MetaMask through metaMaskSDK's own connect() instead, which
+// always loads the full MetaMask SDK, a different and untested flow for
+// existing extension users. Stripping `.rdns` off the connector object
+// wagmi actually receives keeps metaMaskSDK purely as the mobile,
+// no-injected-provider fallback it's meant to be (see dedicatedConnectorId
+// in ConnectWalletModal.tsx), while leaving wagmi free to keep
+// auto-generating the "io.metamask" passthrough connector exactly as it
+// did before this dedicated connector was added.
+function metaMaskWithoutRdnsClaim(
+  parameters: Parameters<typeof metaMask>[0],
+): ReturnType<typeof metaMask> {
+  const factory = metaMask(parameters);
+  return ((config) => ({ ...factory(config), rdns: undefined })) as ReturnType<typeof metaMask>;
+}
+
 export const web3Config = createConfig({
   chains: [flare, mainnet, coston2, songbird],
   connectors: [
@@ -245,6 +272,26 @@ export const web3Config = createConfig({
         id: "bifrost",
         name: "Bifrost Wallet",
         provider: (win) => findInjectedProvider(win, "isBifrost"),
+      },
+    }),
+    // Separate from the "metaMask" injected() connector above — that one
+    // only ever talks to an already-injected provider (desktop extension,
+    // or MetaMask's own in-app mobile browser) and is untouched by this.
+    // This one (id: "metaMaskSDK", fixed by the library) is specifically
+    // for mobile Safari/Chrome with no injected provider at all, where
+    // ConnectWalletModal.tsx's fallback used to route MetaMask through the
+    // generic walletConnect connector below. MetaMask's own SDK
+    // (@metamask/connect-evm) owns its own mobile deep-link/reconnection
+    // lifecycle instead of going through WalletConnect's generic multi-
+    // wallet session-proposal path — see this file's git history/PR
+    // description for the investigation this is based on. Wrapped via
+    // metaMaskWithoutRdnsClaim (see its comment above) so this stays
+    // purely additive on desktop instead of silently taking over
+    // detection/connection of an EIP-6963-announced MetaMask extension.
+    metaMaskWithoutRdnsClaim({
+      dapp: {
+        name: "FlareGPT",
+        url: "https://www.flaregpt.io",
       },
     }),
     walletConnect({

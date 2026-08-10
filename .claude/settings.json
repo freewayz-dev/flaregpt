@@ -3,7 +3,23 @@
     "allow": [
       "Bash(python3 -c ' *)",
       "Bash(node verify-mobile-modal.tmp.mjs)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://www.flarewatch.io/en/overview\" -o /tmp/flarewatch.html)",
+      "Bash(node -e \"console.log\\(require.resolve\\('@wagmi/connectors'\\)\\)\")",
+      "Bash(node -e \"console.log\\(require.resolve\\('@metamask/sdk'\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\({k:v for k,v in list\\(d.items\\(\\)\\)[-8:]}\\)\")",
+      "WebFetch(domain:docs.metamask.io)",
+      "Bash(python3 -c \"import json,sys; v=json.load\\(sys.stdin\\); print\\(v[-10:]\\)\")",
+      "Bash(node -e \"console.log\\(require.resolve\\('@metamask/connect-evm'\\)\\)\")",
+      "Bash(python3 -c \"import json; json.load\\(open\\('vercel.json'\\)\\); print\\('valid JSON'\\)\")",
+      "Bash(sed -i '' 's|http://localhost:4173/app|http://localhost:4500/app|' /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/debug-wallet.mjs)",
+      "Bash(node /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/debug-wallet.mjs)",
+      "Bash(node /tmp/debug-wallet-local.mjs)",
+      "Bash(node ./debug-wallet-local.mjs)",
+      "Bash(cd /Users/macbookpro/Fred/Codebase/flr-gpt-dashboard/flr-gpt-dashboard *)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
     ]
   }
 }
