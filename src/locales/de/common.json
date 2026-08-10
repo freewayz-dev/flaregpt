@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "Zum Hauptinhalt springen"
   },
-  "comingSoon": {
-    "badge": "Demnächst verfügbar",
-    "description": "Wir entwickeln diese Funktion. Schau bald wieder vorbei."
-  },
   "connectModal": {
     "close": "Schließen",
     "connecting": "Verbinde…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "Über WalletConnect"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "Abbrechen",
+      "submit": "Wallet hinzufügen",
+      "subtitle": "Geben Sie eine Wallet-Adresse ein, um deren Dashboard-Daten zu sehen. Dies verbindet die Wallet nicht und erfordert keine Signatur.",
+      "title": "Flare-Wallet verfolgen",
+      "toastBody": "\"{{label}}\" wurde zu Ihrer Watchlist hinzugefügt.",
+      "toastBodyActive": "\"{{label}}\" wurde hinzugefügt und ist jetzt Ihre aktive Wallet.",
+      "toastTitle": "Wallet hinzugefügt"
+    },
     "apiStatus": {
       "checking": "API-Status wird überprüft...",
       "degraded": "API verschlechtert",
@@ -53,6 +58,8 @@
       "title": "Schadenverlauf:"
     },
     "common": {
+      "addWalletToTrack": "+ Wallet verfolgen",
+      "manageWallets": "Ihre Wallets verwalten →",
       "networkHiccup": "Dies ist in der Regel ein vorübergehender Netzwerk-Schluckauf.",
       "no": "Nr.",
       "noWalletSelected": "Kein Wallet ausgewählt",
@@ -102,6 +109,11 @@
       "connectToSeeBalances": "Verbinden oder fügen Sie ein Wallet in den Einstellungen hinzu, um Salden anzuzeigen.",
       "couldntLoad": "Wallet-Salden konnten nicht geladen werden",
       "title": "Wallet-Guthaben"
+    },
+    "walletTracking": {
+      "description": "Sehen Sie Guthaben, Rewards und Aktivität für jede Wallet-Adresse. Keine Wallet-Verbindung oder Signatur erforderlich.",
+      "manageDescription": "Fügen Sie jederzeit weitere Wallets zu Ihrer Watchlist hinzu.",
+      "title": "Jede Flare-Wallet verfolgen"
     }
   },
   "defiProtocols": {
@@ -181,6 +193,7 @@
     "strategies": {
       "amountLabel": "Vergleichen für",
       "apr": "APR",
+      "colActions": "Aktionen",
       "colStrategy": "Strategie",
       "colTerms": "Konditionen",
       "colYield": "Gesch. Ertrag (FLR)",
@@ -214,29 +227,21 @@
       "message": "Danke, dass du hilfst, FlareGPT unabhängig zu halten. Jeder Beitrag, ob groß oder klein, hilft wirklich."
     },
     "description": "Deine Unterstützung hilft, FlareGPT kostenlos, unabhängig und stetig verbessert zu halten.",
-    "funding": {
-      "developmentFund": "Entwicklungsfonds",
-      "monthlyInfrastructure": "Monatliche Infrastruktur",
-      "raisedOfGoal": "{{raised}} von {{goal}} Ziel gesammelt",
-      "subtitle": "Ein offener Einblick in die Kosten für den Betrieb von FlareGPT. Kein Druck, nur Transparenz.",
-      "title": "Finanzierungstransparenz"
-    },
     "hero": {
       "addressCopied": "Adresse kopiert",
       "addressLabel": "Wallet-Adresse",
       "copied": "Kopiert",
       "copyAddress": "Adresse kopieren",
       "copyFailed": "Adresse konnte nicht kopiert werden",
-      "multisigNote": "Durch eine Multisig-Wallet gesichert",
       "qrTitle": "QR-Code für die {{symbol}}-Spendenwallet-Adresse",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Zum Kopieren tippen",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "Auf {{explorer}} ansehen"
     },
     "received": {
-      "demoData": "Demodaten",
+      "empty": {
+        "description": "Sobald jemand spendet, erscheint es hier.",
+        "title": "Noch keine Spenden"
+      },
       "subtitle": "Gesamte Beiträge, die über alle unterstützten Netzwerke eingegangen sind.",
       "title": "Erhaltene Spenden"
     },
@@ -251,7 +256,8 @@
     "warning": {
       "body": "Sende nur {{symbol}} oder andere {{network}}-Token an diese Adresse. Von anderen Netzwerken gesendete Assets können nicht wiederhergestellt werden.",
       "title": "Nur {{network}}-Assets."
-    }
+    },
+    "funding": {}
   },
   "flareWidget": {
     "close": "Schließen",
@@ -396,6 +402,81 @@
     "enabled": "Automatisch von Gas Sniper beansprucht",
     "nudge": "Gas Sniper für automatische Beanspruchung aktivieren"
   },
+  "governance": {
+    "active": {
+      "couldntLoad": "Aktive Vorschläge konnten nicht geladen werden",
+      "emptyDescription": "Derzeit steht nichts zur Abstimmung an. Sehen Sie in der Governance-Historie unten, was bereits entschieden wurde.",
+      "emptyTitle": "Keine aktiven Vorschläge",
+      "title": "Aktive Vorschläge"
+    },
+    "description": "Governance-Vorschläge und wie jedes Netzwerk darüber abstimmt, direkt aus dem On-Chain-PollingFoundation-Contract gelesen.",
+    "drawer": {
+      "circulatingSupply": "Umlaufversorgung",
+      "close": "Schließen",
+      "majorityRequired": "Erforderliche Mehrheit",
+      "proposer": "Antragsteller",
+      "quorum": "Quorum",
+      "quorumNotRequired": "Nicht erforderlich",
+      "readFullProposal": "Vollständigen Vorschlag lesen",
+      "title": "Vorschlagsdetails",
+      "viewProposerOnExplorer": "Antragsteller im Explorer ansehen",
+      "votingPeriod": "Abstimmungszeitraum",
+      "yourVote": "Ihre Stimme",
+      "yourVotingPower": "Ihre Stimmkraft"
+    },
+    "endsInDays": "Endet in {{days}}T {{hours}}Std",
+    "endsInHours": "Endet in {{hours}}Std",
+    "historicalBadge": "Historisch",
+    "history": {
+      "columnEnded": "Beendet",
+      "columnProposal": "Vorschlag",
+      "columnResult": "Ergebnis",
+      "columnStatus": "Status",
+      "columnYourVote": "Ihre Stimme",
+      "emptyDescription": "Sobald ein Vorschlag abgeschlossen ist, erscheint er hier.",
+      "emptyTitle": "Noch keine Governance-Historie",
+      "subtitle": "Jeder abgeschlossene Governance-Vorschlag, neueste zuerst.",
+      "title": "Governance-Historie"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "Nicht abgestimmt",
+    "notVotedYet": "Noch nicht abgestimmt",
+    "stats": {
+      "active": "Derzeit aktiv",
+      "defeated": "Abgelehnt",
+      "passed": "Angenommen",
+      "total": "Vorschläge insgesamt"
+    },
+    "status": {
+      "active": "Aktiv",
+      "canceled": "Abgebrochen",
+      "defeated": "Abgelehnt",
+      "executed": "Ausgeführt",
+      "passed": "Angenommen",
+      "pending": "Ausstehend",
+      "unknown": "Unbekannt"
+    },
+    "voteSplit": {
+      "against": "Dagegen {{percent}}%",
+      "againstCount": "Dagegen",
+      "for": "Dafür {{percent}}%",
+      "forCount": "Dafür",
+      "label": "Stimmen",
+      "noVotesYet": "Noch keine Stimmen"
+    },
+    "voted": "Abgestimmt",
+    "votingEnded": "Abstimmung beendet",
+    "yours": {
+      "noWalletDescription": "Verbinden Sie eine Wallet oder fügen Sie eine hinzu, um Ihre Stimmkraft und Beteiligung an diesen Vorschlägen zu sehen.",
+      "noWalletTitle": "Ihre Governance-Aktivität ansehen",
+      "participation": "Ihre Beteiligung",
+      "votingPower": "Ihre Stimmkraft"
+    },
+    "youVoted": "Sie haben abgestimmt"
+  },
   "help": {
     "askFlareGptCta": "FlareGPT um Hilfe bitten",
     "askFlareGptLead": "Nicht gefunden, wonach Sie gesucht haben?",
@@ -523,8 +604,6 @@
     "offline": "Offline",
     "openMenu": "Menü öffnen",
     "primaryWalletSection": "Primäre Wallet",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Guthaben anzeigen",
     "signIn": "Anmelden",
     "signInBackgroundHint": "Deine verbundene Wallet muss sich anmelden",
@@ -774,6 +853,11 @@
       "searchPlaceholder": "{{count}} Wallets durchsuchen...",
       "searchPlaceholder_one": "{{count}} Wallet durchsuchen...",
       "searchPlaceholder_other": "{{count}} Wallets durchsuchen...",
+      "syncCta": {
+        "title": "Verbinden Sie Ihre Wallet, um geräteübergreifend zu synchronisieren"
+      },
+      "syncStatusAuthenticated": "Angemeldet. Ihre verfolgten Wallets werden geräteübergreifend synchronisiert.",
+      "syncStatusGuest": "Sie können bis zu {{max}} Wallets verfolgen, ohne sich anzumelden. Diese Wallets werden auf diesem Gerät gespeichert und synchronisieren sich nicht mit Ihren anderen Geräten.",
       "tracked": "Verfolgt"
     }
   },
@@ -935,5 +1019,6 @@
       "received": "Erhalten",
       "sent": "Gesendet"
     }
-  }
+  },
+  "comingSoon": {}
 }

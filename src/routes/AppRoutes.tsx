@@ -1,8 +1,24 @@
 import { Routes, Route, Navigate } from "react-router";
 import { lazy, Suspense, useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 
 import GlobalSpinner from "@/components/common/GlobalSpinner";
+// Deliberately a static import, not `lazy()` — Sidebar/Navbar/Footer must
+// be visible immediately on every /app/* navigation, never hidden behind
+// the top-level `<Suspense fallback={<GlobalSpinner />}>` below (that
+// fallback is the full-page logo splash, meant only for the very first
+// load before *any* layout exists — see GlobalSpinner.tsx). A prior change
+// made this `lazy()` specifically to keep recharts (~118KB gzip, pulled in
+// transitively via FlareWidget -> ChatPane -> ChartBlock) out of the
+// landing page's eager bundle — a real bundle-size concern, but the fix
+// was too broad: it also lazy-loaded the entire dashboard chrome, so every
+// fresh /app/* navigation (not just the landing page) briefly replaced
+// Sidebar/Navbar with the full-screen logo splash before anything else
+// could mount. Reverted to restore "sidebar and navbar stay visible
+// immediately, only page content shows a loading state" — if the
+// recharts-in-landing-bundle issue needs solving again, the correct scope
+// is lazy-loading FlareWidget (or its chart-dependent chain) specifically,
+// not this entire layout.
+import DashboardLayout from "@/components/layout/DashboardLayout";
 import DashboardSkeleton from "@/pages/Dashboard/DashboardSkeleton";
 import DefiProtocolsSkeleton from "@/pages/DefiProtocols/DefiProtocolsSkeleton";
 import WalletActivitySkeleton from "@/pages/WalletActivity/WalletActivitySkeleton";
@@ -10,30 +26,12 @@ import RflrVestingPageSkeleton from "@/pages/RflrVesting/RflrVestingPageSkeleton
 import FtsoRewardsPageSkeleton from "@/pages/FtsoRewards/FtsoRewardsPageSkeleton";
 import FlrgptPageSkeleton from "@/pages/Flrgpt/FlrgptPageSkeleton";
 import LoopsPageSkeleton from "@/pages/Loops/LoopsPageSkeleton";
+import GovernancePageSkeleton from "@/pages/Governance/GovernancePageSkeleton";
 import { ROUTES, APP_SEGMENTS } from "@/config/routes";
 import type { LandingPage } from "@/store/useUIStore";
 
 const LandingPage = lazy(() => import("@/pages/LandingPage"));
 const Terms = lazy(() => import("@/pages/Terms"));
-
-// Was a static top-level import — the one route element in this file that
-// wasn't already `lazy()`, like every sibling below. DashboardLayout only
-// ever renders behind `/app/*`, but a static import still folds its whole
-// module graph into the single eager main-entry chunk every route shares
-// (see main.tsx), because Rollup can't know it's route-gated from an
-// `import` statement alone. That graph reaches much further than layout
-// chrome: DashboardLayout -> FlareWidget (the floating chat button) ->
-// ChatPane -> MessageList -> AssistantMessage -> ChartBlock -> recharts —
-// pulling the entire charting library (~118KB gzip) and the dashboard chat
-// widget into every landing-page visit, confirmed via a real production
-// build's network trace (recharts' own bundle, `vendor-charts`, loading on
-// "/" despite nothing the landing page renders using a chart — it has its
-// own separate, chart-free LandingAIDemo component for the guest chat demo).
-// `lazy()` here is the same fix already applied to every other route
-// component; the shared `<Suspense fallback={<GlobalSpinner />}>` this
-// already renders inside (see the return below) already covers it, so no
-// new fallback or Suspense boundary is needed.
-const DashboardLayout = lazy(() => import("@/components/layout/DashboardLayout"));
 
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const FLRGPT = lazy(() => import("@/pages/Flrgpt"));
@@ -45,7 +43,7 @@ const RflrVesting = lazy(() => import("@/pages/RflrVesting"));
 const FtsoRewards = lazy(() => import("@/pages/FtsoRewards"));
 const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Donate = lazy(() => import("@/pages/Donate"));
-const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
+const Governance = lazy(() => import("@/pages/Governance"));
 
 const LANDING_PAGE_PATHS: Partial<Record<LandingPage, string>> = {
   "flare-gpt": ROUTES.flareGpt,
@@ -115,8 +113,6 @@ function DashboardIndexRoute() {
 }
 
 export default function AppRoutes() {
-  const { t } = useTranslation();
-
   return (
     <Suspense fallback={<GlobalSpinner />}>
       <Routes>
@@ -177,7 +173,11 @@ export default function AppRoutes() {
           />
           <Route
             path={APP_SEGMENTS.governance}
-            element={<ComingSoon title={t("sidebar.governance")} />}
+            element={
+              <Suspense fallback={<GovernancePageSkeleton />}>
+                <Governance />
+              </Suspense>
+            }
           />
           <Route path={APP_SEGMENTS.donate} element={<Donate />} />
         </Route>

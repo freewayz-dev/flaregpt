@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 import TokenIcon from "@/components/common/TokenIcon";
+import { copyWalletAddress } from "@/utils/address";
 import type { DonationCoin } from "@/config/donation";
 
 // Informational only — there's no payment logic to wire since this is a
@@ -30,12 +31,12 @@ export default function SuggestedAmounts({ coin }: SuggestedAmountsProps) {
   const { t } = useTranslation();
 
   const handleSelect = async (amount: number) => {
-    try {
-      await navigator.clipboard.writeText(coin.address);
+    const success = await copyWalletAddress(coin.address);
+    if (success) {
       toast.success(
         t("donate.amounts.copiedToast", { amount, symbol: coin.symbol }),
       );
-    } catch {
+    } else {
       toast.error(t("donate.hero.copyFailed"));
     }
   };

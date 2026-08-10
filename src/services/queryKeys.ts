@@ -82,4 +82,15 @@ export const queryKeys = {
     conversation: (conversationId: string) =>
       [...queryKeys.chat.all, "conversation", conversationId] as const,
   },
+  // Current-contract proposal ids/info go through wagmi's own
+  // useReadContract/useReadContracts (which manage their own cache keys) —
+  // this namespace is only for the one piece that isn't a plain contract
+  // read: a historical proposal's title, fetched via a single-block
+  // eth_getLogs call (see useGovernanceQueries.ts's useHistoricalProposals
+  // and config/governance.ts's HISTORICAL_PROPOSALS).
+  governance: {
+    all: ["governance"] as const,
+    historicalTitle: (chainId: number, contractAddress: string, proposalId: string) =>
+      [...queryKeys.governance.all, "historicalTitle", chainId, contractAddress, proposalId] as const,
+  },
 };

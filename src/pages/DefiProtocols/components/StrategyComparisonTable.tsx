@@ -310,7 +310,14 @@ export default function StrategyComparisonTable() {
                   >
                     {t("defiProtocols.strategies.colTerms")}
                   </th>
-                  <th scope="col" className="py-2.5 pr-5 sm:pr-8" />
+                  {/* Visually empty (this column is just the row's expand
+                      chevron) but needs a real accessible name — an empty
+                      <th> doesn't give its <td>s a usable header
+                      association for screen readers (Lighthouse's
+                      td-has-header, confirmed failing without this). */}
+                  <th scope="col" className="py-2.5 pr-5 sm:pr-8">
+                    <span className="sr-only">{t("defiProtocols.strategies.colActions")}</span>
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-divider">

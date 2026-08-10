@@ -7,12 +7,10 @@ import {
   ClipboardIcon,
   CheckIcon,
   ArrowTopRightOnSquareIcon,
-  ShieldCheckIcon,
-  ShareIcon,
 } from "@heroicons/react/24/outline";
 
 import TokenIcon from "@/components/common/TokenIcon";
-import { shareOrCopy, isWebShareSupported } from "@/utils/share";
+import { copyWalletAddress } from "@/utils/address";
 import type { DonationCoin } from "@/config/donation";
 
 // The one "receive" moment the whole page exists for — full address (never
@@ -47,23 +45,17 @@ export default function HeroReceiveCard({ coin }: HeroReceiveCardProps) {
 
   const explorerUrl = coin.explorerUrl(coin.address);
 
-  const canShare = isWebShareSupported();
-
-  // A donation address is, by definition, meant to be handed to someone
-  // else — the single clearest "genuinely improves the experience"
-  // Web Share candidate in this app (see docs/pwa/phase-10-deep-linking.md).
-  // Falls back to the exact same clipboard behavior this button already
-  // had on every browser without `navigator.share`.
-  const handleShare = async () => {
-    const result = await shareOrCopy({
-      title: t("donate.hero.shareTitle", { coin: coin.symbol }),
-      text: coin.address,
-    });
-    if (result === "copied") {
+  // Always a direct clipboard copy — see copyWalletAddress in
+  // utils/address.ts for why a donation address can't be routed through
+  // navigator.share()'s native "Copy" affordance and still guarantee only
+  // the bare address ends up on the clipboard.
+  const handleCopy = async () => {
+    const success = await copyWalletAddress(coin.address);
+    if (success) {
       setCopied(true);
       toast.success(t("donate.hero.addressCopied"));
       setTimeout(() => setCopied(false), 2000);
-    } else if (result === "failed") {
+    } else {
       toast.error(t("donate.hero.copyFailed"));
     }
   };
@@ -115,16 +107,16 @@ export default function HeroReceiveCard({ coin }: HeroReceiveCardProps) {
               {t("donate.hero.addressLabel")}
             </p>
             <div
-              onClick={handleShare}
+              onClick={handleCopy}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  handleShare();
+                  handleCopy();
                 }
               }}
               role="button"
               tabIndex={0}
-              title={canShare ? t("donate.hero.tapToShare") : t("donate.hero.tapToCopy")}
+              title={t("donate.hero.tapToCopy")}
               className="mt-1.5 cursor-pointer rounded-xl bg-surface-inset px-4 py-3.5 transition-colors hover:bg-surface-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
             >
               <p className="select-all break-all font-mono text-sm tracking-wide text-ink-primary sm:text-base">
@@ -135,21 +127,15 @@ export default function HeroReceiveCard({ coin }: HeroReceiveCardProps) {
             <div className="mt-4 flex flex-col gap-3 sm:flex-row">
               <button
                 type="button"
-                onClick={handleShare}
+                onClick={handleCopy}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white transition-colors cursor-pointer hover:bg-brand-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 {copied ? (
                   <CheckIcon className="h-4 w-4" />
-                ) : canShare ? (
-                  <ShareIcon className="h-4 w-4" />
                 ) : (
                   <ClipboardIcon className="h-4 w-4" />
                 )}
-                {copied
-                  ? t("donate.hero.copied")
-                  : canShare
-                    ? t("donate.hero.shareAddress")
-                    : t("donate.hero.copyAddress")}
+                {copied ? t("donate.hero.copied") : t("donate.hero.copyAddress")}
               </button>
               <a
                 href={explorerUrl}
@@ -161,13 +147,6 @@ export default function HeroReceiveCard({ coin }: HeroReceiveCardProps) {
                 <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
               </a>
             </div>
-
-            {coin.isMultisig && (
-              <p className="mt-4 flex items-center gap-1.5 text-xs text-ink-muted">
-                <ShieldCheckIcon className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
-                {t("donate.hero.multisigNote")}
-              </p>
-            )}
           </div>
         </motion.div>
       </AnimatePresence>

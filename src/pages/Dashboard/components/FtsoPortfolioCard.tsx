@@ -7,6 +7,7 @@ import { useFtsoPortfolio } from "@/hooks/queries/useDashboardQueries";
 import TokenRow from "@/components/common/TokenRow";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import GasSniperClaimStatus from "@/components/common/GasSniperClaimStatus";
+import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
 import FtsoPortfolioCardSkeleton from "@/pages/Dashboard/components/skeletons/FtsoPortfolioCardSkeleton";
 import { formatAmount } from "@/utils/format";
 
@@ -62,15 +63,14 @@ export default function FtsoPortfolioCard() {
       </div>
 
       {!activeAddress ? (
-        <div className="py-8 text-center rounded-2xl bg-surface-inset px-4">
-          <GiftIcon className="h-8 w-8 mx-auto text-ink-muted mb-2" />
-          <p className="text-sm font-medium text-ink-primary">
-            {t("dashboard.common.noWalletSelected")}
-          </p>
-          <p className="mt-0.5 text-xs text-ink-muted">
-            {t("dashboard.ftso.connectToSeeRewards")}
-          </p>
-        </div>
+        // No per-card "add wallet" action here anymore — see
+        // WalletBalancesCard's own comment (same reasoning, WalletTrackingBanner
+        // at the top of Overview is the one entry point now).
+        <WalletEmptyState
+          icon={GiftIcon}
+          title={t("dashboard.common.noWalletSelected")}
+          description={t("dashboard.ftso.connectToSeeRewards")}
+        />
       ) : isError ? (
         <div role="alert" className="py-6 text-center rounded-2xl bg-surface-inset px-4">
           <p className="text-sm font-medium text-ink-primary">
@@ -103,7 +103,7 @@ export default function FtsoPortfolioCard() {
               symbol="FLR"
               label={t("dashboard.ftso.unclaimedFlr")}
               value={<SensitiveValue>{formatAmount(unclaimed)}</SensitiveValue>}
-              highlight
+              valueClassName="text-brand"
             />
             <TokenRow
               label={t("dashboard.ftso.activeDelegations")}

@@ -6,6 +6,7 @@ import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useWalletBalances } from "@/hooks/queries/useDashboardQueries";
 import TokenIcon from "@/components/common/TokenIcon";
 import SensitiveValue from "@/components/common/SensitiveValue";
+import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
 import WalletBalancesCardSkeleton from "@/pages/Dashboard/components/skeletons/WalletBalancesCardSkeleton";
 import { formatAmount } from "@/utils/format";
 
@@ -27,15 +28,15 @@ export default function WalletBalancesCard() {
       </h3>
 
       {!activeAddress ? (
-        <div className="py-8 text-center rounded-2xl bg-surface-inset px-4">
-          <WalletIcon className="h-8 w-8 mx-auto text-ink-muted mb-2" />
-          <p className="text-sm font-medium text-ink-primary">
-            {t("dashboard.common.noWalletSelected")}
-          </p>
-          <p className="mt-0.5 text-xs text-ink-muted">
-            {t("dashboard.walletBalances.connectToSeeBalances")}
-          </p>
-        </div>
+        // No per-card "add wallet" action here anymore — WalletTrackingBanner
+        // at the top of Overview is the one entry point now (see its own
+        // comment for why consolidating into a single, immediately-visible
+        // action replaced one scattered across every wallet-dependent card).
+        <WalletEmptyState
+          icon={WalletIcon}
+          title={t("dashboard.common.noWalletSelected")}
+          description={t("dashboard.walletBalances.connectToSeeBalances")}
+        />
       ) : isError ? (
         <div role="alert" className="py-6 text-center rounded-2xl bg-surface-inset px-4">
           <p className="text-sm font-medium text-ink-primary">

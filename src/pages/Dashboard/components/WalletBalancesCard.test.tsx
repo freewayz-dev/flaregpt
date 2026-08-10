@@ -7,11 +7,16 @@ import { TEST_ADDRESSES } from "@/test/fixtures";
 // Representative Overview card — Dashboard has no single page-level gate,
 // each card self-gates independently via useDerivedWalletHub, so this one
 // (the simplest of them) stands in for "Overview" as a whole.
+// No "+ Add wallet to track" / "Manage your wallets" assertions here
+// anymore — that action moved to WalletTrackingBanner at the top of
+// Overview (see WalletTrackingBanner.test.tsx), this card's own empty
+// state is plain title+description again, same as every other
+// wallet-dependent card.
 describe("WalletBalancesCard", () => {
   it("shows the connect-wallet empty state with no active wallet", async () => {
     renderWithProviders(<WalletBalancesCard />);
     expect(
-      await screen.findByText("Connect or add a wallet in Settings to see balances."),
+      await screen.findByText("Connect a wallet or add one to your watchlist to see balances."),
     ).toBeInTheDocument();
   });
 
@@ -22,7 +27,7 @@ describe("WalletBalancesCard", () => {
 
     expect(await screen.findByText("FLR")).toBeInTheDocument();
     expect(
-      screen.queryByText("Connect or add a wallet in Settings to see balances."),
+      screen.queryByText("Connect a wallet or add one to your watchlist to see balances."),
     ).not.toBeInTheDocument();
   });
 });

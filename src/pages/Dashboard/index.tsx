@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 
+import { useAddWalletModalStore } from "@/store/useAddWalletModalStore";
 import PageHeader from "@/components/common/PageHeader";
 import ApiStatusBadge from "@/pages/Dashboard/components/ApiStatusBadge";
 import StatRow from "@/pages/Dashboard/components/StatRow";
@@ -8,6 +9,8 @@ import NetworkActivityChart from "@/pages/Dashboard/components/NetworkActivityCh
 import WalletBalancesCard from "@/pages/Dashboard/components/WalletBalancesCard";
 import FtsoPortfolioCard from "@/pages/Dashboard/components/FtsoPortfolioCard";
 import ClaimsAndDelegationsSection from "@/pages/Dashboard/components/ClaimsAndDelegationsSection";
+import WalletTrackingBanner from "@/pages/Dashboard/components/WalletTrackingBanner";
+import AddWalletModal from "@/pages/Dashboard/components/AddWalletModal";
 
 // Deliberately does not fetch or gate on any query itself. Every section
 // below (StatRow, FlrPriceChart, NetworkActivityChart, the wallet cards,
@@ -22,6 +25,8 @@ import ClaimsAndDelegationsSection from "@/pages/Dashboard/components/ClaimsAndD
 // skeleton (the JS hasn't downloaded yet, not "a request is slow").
 export default function Dashboard() {
   const { t } = useTranslation();
+  const isAddWalletModalOpen = useAddWalletModalStore((state) => state.isOpen);
+  const closeAddWalletModal = useAddWalletModalStore((state) => state.close);
 
   return (
     <div className="space-y-5 sm:space-y-6 pb-14">
@@ -32,6 +37,12 @@ export default function Dashboard() {
           rightContent={<ApiStatusBadge />}
         />
       </div>
+
+      {/* First thing on the page after the title, deliberately — see this
+          component's own comment for why: a first-time visitor previously
+          had to scroll past StatRow, both charts, and into Wallet Balances
+          before finding any way to add a wallet at all. */}
+      <WalletTrackingBanner />
 
       <StatRow />
 
@@ -50,6 +61,13 @@ export default function Dashboard() {
       </div>
 
       <ClaimsAndDelegationsSection />
+
+      {/* One instance for the whole page, opened via useAddWalletModalStore
+          — currently only WalletTrackingBanner's own button triggers it,
+          but the store (not a prop) is what lets any future trigger point
+          reach the same single instance without threading a callback down
+          through this page's component tree. */}
+      <AddWalletModal isOpen={isAddWalletModalOpen} onClose={closeAddWalletModal} />
     </div>
   );
 }

@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "メインコンテンツへスキップ"
   },
-  "comingSoon": {
-    "badge": "近日公開",
-    "description": "この機能は現在開発中です。しばらくしてから再度ご確認ください。"
-  },
   "connectModal": {
     "close": "閉じる",
     "connecting": "接続中…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "WalletConnect経由"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "キャンセル",
+      "submit": "ウォレットを追加",
+      "subtitle": "ウォレットアドレスを入力すると、そのダッシュボードデータを確認できます。ウォレットは接続されず、署名も必要ありません。",
+      "title": "Flareウォレットを追跡",
+      "toastBody": "「{{label}}」がウォッチリストに追加されました。",
+      "toastBodyActive": "「{{label}}」が追加され、現在アクティブなウォレットになりました。",
+      "toastTitle": "ウォレットが追加されました"
+    },
     "apiStatus": {
       "checking": "APIステータスを確認しています...",
       "degraded": "APIが低下しました",
@@ -53,6 +58,8 @@
       "title": "クレーム履歴"
     },
     "common": {
+      "addWalletToTrack": "+ ウォレットを追跡",
+      "manageWallets": "ウォレットを管理 →",
       "networkHiccup": "これは通常、一時的なネットワーク障害です。",
       "no": "なし",
       "noWalletSelected": "ウォレットが選択されていません",
@@ -102,6 +109,11 @@
       "connectToSeeBalances": "[設定]でウォレットを接続または追加して、残高を確認します。",
       "couldntLoad": "ウォレットの残高を読み込めませんでした",
       "title": "ウォレット残高"
+    },
+    "walletTracking": {
+      "description": "任意のウォレットアドレスの残高、報酬、アクティビティを確認できます。ウォレットの接続も署名も不要です。",
+      "manageDescription": "いつでもウォッチリストにウォレットを追加できます。",
+      "title": "任意のFlareウォレットを追跡"
     }
   },
   "defiProtocols": {
@@ -181,6 +193,7 @@
     "strategies": {
       "amountLabel": "比較する金額",
       "apr": "APR",
+      "colActions": "操作",
       "colStrategy": "戦略",
       "colTerms": "条件",
       "colYield": "予想利回り (FLR)",
@@ -214,29 +227,21 @@
       "message": "FlareGPTの独立性を保つのにご協力いただきありがとうございます。大小を問わず、すべてのご支援が本当に助けになります。"
     },
     "description": "あなたのご支援がFlareGPTを無料かつ独立した形で維持し、継続的な改善を可能にします。",
-    "funding": {
-      "developmentFund": "開発資金",
-      "monthlyInfrastructure": "月次インフラ費用",
-      "raisedOfGoal": "目標{{goal}}のうち{{raised}}達成",
-      "subtitle": "FlareGPTの運営コストを公開しています。プレッシャーではなく、透明性のためです。",
-      "title": "資金の透明性"
-    },
     "hero": {
       "addressCopied": "アドレスをコピーしました",
       "addressLabel": "ウォレットアドレス",
       "copied": "コピーしました",
       "copyAddress": "アドレスをコピー",
       "copyFailed": "アドレスをコピーできませんでした",
-      "multisigNote": "マルチシグウォレットにより保護されています",
       "qrTitle": "{{symbol}}寄付用ウォレットアドレスのQRコード",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "タップしてコピー",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "{{explorer}}で見る"
     },
     "received": {
-      "demoData": "デモデータ",
+      "empty": {
+        "description": "誰かが寄付すると、ここに表示されます。",
+        "title": "まだ寄付はありません"
+      },
       "subtitle": "サポートされているすべてのネットワークで受け取った合計貢献額。",
       "title": "受け取った寄付"
     },
@@ -251,7 +256,8 @@
     "warning": {
       "body": "このアドレスには{{symbol}}または他の{{network}}トークンのみを送金してください。他のネットワークから送られた資産は復元できません。",
       "title": "{{network}}の資産のみ。"
-    }
+    },
+    "funding": {}
   },
   "flareWidget": {
     "close": "閉じる",
@@ -396,6 +402,81 @@
     "enabled": "Gas Sniperにより自動請求済み",
     "nudge": "自動請求するにはGas Sniperをオンにしてください"
   },
+  "governance": {
+    "active": {
+      "couldntLoad": "アクティブな提案を読み込めませんでした",
+      "emptyDescription": "現在投票中の提案はありません。すでに決定した内容については、下のガバナンス履歴をご確認ください。",
+      "emptyTitle": "アクティブな提案はありません",
+      "title": "アクティブな提案"
+    },
+    "description": "ガバナンス提案と各ネットワークがどのように投票するかを、オンチェーンのPollingFoundationコントラクトから直接読み取ります。",
+    "drawer": {
+      "circulatingSupply": "循環供給量",
+      "close": "閉じる",
+      "majorityRequired": "必要な過半数",
+      "proposer": "提案者",
+      "quorum": "定足数",
+      "quorumNotRequired": "不要",
+      "readFullProposal": "提案全文を読む",
+      "title": "提案の詳細",
+      "viewProposerOnExplorer": "エクスプローラーで提案者を見る",
+      "votingPeriod": "投票期間",
+      "yourVote": "あなたの投票",
+      "yourVotingPower": "あなたの投票権"
+    },
+    "endsInDays": "{{days}}日{{hours}}時間で終了",
+    "endsInHours": "{{hours}}時間で終了",
+    "historicalBadge": "過去",
+    "history": {
+      "columnEnded": "終了日",
+      "columnProposal": "提案",
+      "columnResult": "結果",
+      "columnStatus": "ステータス",
+      "columnYourVote": "あなたの投票",
+      "emptyDescription": "提案が終了すると、ここに表示されます。",
+      "emptyTitle": "まだガバナンス履歴はありません",
+      "subtitle": "終了したすべてのガバナンス提案（新しい順）。",
+      "title": "ガバナンス履歴"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "未投票",
+    "notVotedYet": "まだ投票していません",
+    "stats": {
+      "active": "現在アクティブ",
+      "defeated": "否決",
+      "passed": "可決",
+      "total": "提案の総数"
+    },
+    "status": {
+      "active": "アクティブ",
+      "canceled": "キャンセル済み",
+      "defeated": "否決",
+      "executed": "実行済み",
+      "passed": "可決",
+      "pending": "保留中",
+      "unknown": "不明"
+    },
+    "voteSplit": {
+      "against": "反対 {{percent}}%",
+      "againstCount": "反対",
+      "for": "賛成 {{percent}}%",
+      "forCount": "賛成",
+      "label": "投票",
+      "noVotesYet": "まだ投票はありません"
+    },
+    "voted": "投票済み",
+    "votingEnded": "投票終了",
+    "yours": {
+      "noWalletDescription": "これらの提案における投票権と参加状況を確認するには、ウォレットを接続または追加してください。",
+      "noWalletTitle": "あなたのガバナンス活動を見る",
+      "participation": "あなたの参加",
+      "votingPower": "あなたの投票権"
+    },
+    "youVoted": "投票しました"
+  },
   "help": {
     "askFlareGptCta": "FlareGPTに聞いてみる",
     "askFlareGptLead": "お探しのものが見つかりませんでしたか？",
@@ -523,8 +604,6 @@
     "offline": "オフライン",
     "openMenu": "メニューを開く",
     "primaryWalletSection": "プライマリウォレット",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "残高を表示",
     "signIn": "サインイン",
     "signInBackgroundHint": "接続中のウォレットはサインインが必要です",
@@ -774,6 +853,11 @@
       "searchPlaceholder": "{{count}}件のウォレットを検索...",
       "searchPlaceholder_one": "{{count}}件のウォレットを検索...",
       "searchPlaceholder_other": "{{count}}件のウォレットを検索...",
+      "syncCta": {
+        "title": "デバイス間で同期するにはウォレットを接続してください"
+      },
+      "syncStatusAuthenticated": "サインイン済みです。追跡中のウォレットはデバイス間で同期されます。",
+      "syncStatusGuest": "サインインせずに最大{{max}}個のウォレットを追跡できます。これらのウォレットはこのデバイスに保存され、他のデバイスとは同期されません。",
       "tracked": "追跡済み"
     }
   },
@@ -936,5 +1020,6 @@
       "received": "受け取り完了",
       "sent": "送信済み"
     }
-  }
+  },
+  "comingSoon": {}
 }

@@ -22,6 +22,64 @@ function renderWallets(openWalletModal = vi.fn()) {
   return { ...result, openWalletModal };
 }
 
+// A guest and a signed-in user store/sync their tracked wallets
+// differently (local-only, capped at 3, vs. server-side and synced) — the
+// Wallets tab must say so plainly, without ever claiming "unlimited"
+// (there's no confirmed backend cap, but also no confirmed absence of
+// one, so the wording stays literal instead of promising something the
+// backend hasn't actually committed to).
+describe("Wallets — guest vs authenticated sync-status messaging", () => {
+  it("tells a guest their wallets are local-only, capped at 3, and won't sync", async () => {
+    renderWallets();
+
+    expect(
+      await screen.findByText(
+        "You can track up to 3 wallets without signing in. These wallets are stored on this device and won't sync across your other devices.",
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("tells a signed-in user their wallets sync across devices, without ever using the word 'unlimited'", async () => {
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+
+    renderWallets();
+
+    expect(
+      await screen.findByText("Signed in. Your tracked wallets sync across your devices."),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/unlimited/i)).not.toBeInTheDocument();
+  });
+});
+
+// "It's now in the list" is not confirmation enough on its own — a
+// dedicated toast must fire immediately so the user has explicit proof
+// the add succeeded, independent of whether they're even looking at the
+// list at that moment.
+describe("Wallets — add-wallet success toast", () => {
+  it("shows a success toast naming the wallet's nickname after a guest adds one", async () => {
+    renderWallets();
+    await screen.findByText("Add Watchlist Portfolio Account");
+
+    fireEvent.change(screen.getByLabelText("Wallet nickname"), {
+      target: { value: "My Main Wallet" },
+    });
+    fireEvent.change(screen.getByLabelText("Wallet address"), {
+      target: { value: TEST_ADDRESSES.watchlist },
+    });
+    // The dynamic "(N Connected, N Remaining)"/"(N Tracked)" suffix is what
+    // distinguishes the form's own submit button from the unrelated
+    // "Connect Wallet" CTA the sync-status card above it also renders for a
+    // guest (see Wallets.tsx) — both would otherwise match a bare
+    // /Connect Wallet|Add Wallet/i.
+    fireEvent.click(screen.getByRole("button", { name: /(Connect Wallet|Add Wallet) \(/i }));
+
+    expect(await screen.findByText("Wallet added")).toBeInTheDocument();
+    expect(
+      await screen.findByText('"My Main Wallet" has been added to your watchlist.'),
+    ).toBeInTheDocument();
+  });
+});
+
 describe("Wallets — guest confirm-then-remove", () => {
   // handleRemoveClick is a real two-click state machine (arm, then
   // confirm-or-expire) specifically so a single mis-tap can never delete a

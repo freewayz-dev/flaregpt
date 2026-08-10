@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "Ana içeriğe geç"
   },
-  "comingSoon": {
-    "badge": "Çok Yakında",
-    "description": "Bu özelliği geliştiriyoruz. Kısa süre sonra tekrar kontrol edin."
-  },
   "connectModal": {
     "close": "Kapat",
     "connecting": "Bağlanıyor…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "WalletConnect üzerinden"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "İptal",
+      "submit": "Cüzdan ekle",
+      "subtitle": "Panel verilerini görmek için bir cüzdan adresi girin. Bu, cüzdanı bağlamaz veya imza gerektirmez.",
+      "title": "Bir Flare cüzdanını izle",
+      "toastBody": "\"{{label}}\" izleme listenize eklendi.",
+      "toastBodyActive": "\"{{label}}\" eklendi ve şimdi aktif cüzdanınız.",
+      "toastTitle": "Cüzdan eklendi"
+    },
     "apiStatus": {
       "checking": "API durumu kontrol ediliyor...",
       "degraded": "API bozulmuş",
@@ -53,6 +58,8 @@
       "title": "Talep Geçmişi"
     },
     "common": {
+      "addWalletToTrack": "+ Bir cüzdanı izle",
+      "manageWallets": "Cüzdanlarınızı yönetin →",
       "networkHiccup": "Bu genellikle geçici bir ağ hıçkırığıdır.",
       "no": "Hayır",
       "noWalletSelected": "Cüzdan seçilmedi",
@@ -102,6 +109,11 @@
       "connectToSeeBalances": "Bakiyeleri görmek için Ayarlar bölümünden bir cüzdan bağlayın veya ekleyin.",
       "couldntLoad": "Cüzdan bakiyeleri yüklenemedi",
       "title": "Cüzdan Bakiyeleri"
+    },
+    "walletTracking": {
+      "description": "Herhangi bir cüzdan adresinin bakiyelerini, ödüllerini ve etkinliğini görün. Cüzdan bağlantısı veya imza gerekmez.",
+      "manageDescription": "İzleme listenize istediğiniz zaman daha fazla cüzdan ekleyin.",
+      "title": "Herhangi bir Flare cüzdanını izleyin"
     }
   },
   "defiProtocols": {
@@ -181,6 +193,7 @@
     "strategies": {
       "amountLabel": "Karşılaştırma tutarı",
       "apr": "APR",
+      "colActions": "İşlemler",
       "colStrategy": "Strateji",
       "colTerms": "Koşullar",
       "colYield": "Tah. Getiri (FLR)",
@@ -214,29 +227,21 @@
       "message": "FlareGPT'yi bağımsız tutmaya yardımcı olduğunuz için teşekkürler. Büyük ya da küçük, her katkı gerçekten yardımcı oluyor."
     },
     "description": "Desteğiniz FlareGPT'nin ücretsiz, bağımsız kalmasına ve sürekli gelişmesine yardımcı olur.",
-    "funding": {
-      "developmentFund": "Geliştirme Fonu",
-      "monthlyInfrastructure": "Aylık Altyapı",
-      "raisedOfGoal": "{{goal}} hedefinden {{raised}} toplandı",
-      "subtitle": "FlareGPT'yi çalışır durumda tutmanın maliyetine açık bir bakış. Baskı yok, sadece görünürlük.",
-      "title": "Finansman Şeffaflığı"
-    },
     "hero": {
       "addressCopied": "Adres kopyalandı",
       "addressLabel": "Cüzdan Adresi",
       "copied": "Kopyalandı",
       "copyAddress": "Adresi Kopyala",
       "copyFailed": "Adres kopyalanamadı",
-      "multisigNote": "Çoklu imza cüzdanla korunmaktadır",
       "qrTitle": "{{symbol}} bağış cüzdan adresi için QR kodu",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Kopyalamak için dokun",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "{{explorer}}'de Görüntüle"
     },
     "received": {
-      "demoData": "Demo veri",
+      "empty": {
+        "description": "Biri bağış yaptığında burada görünecek.",
+        "title": "Henüz bağış yok"
+      },
       "subtitle": "Desteklenen her ağda alınan toplam katkılar.",
       "title": "Alınan Bağışlar"
     },
@@ -251,7 +256,8 @@
     "warning": {
       "body": "Bu adrese yalnızca {{symbol}} veya diğer {{network}} tokenlerini gönderin. Başka ağlardan gönderilen varlıklar kurtarılamaz.",
       "title": "Yalnızca {{network}} varlıkları."
-    }
+    },
+    "funding": {}
   },
   "flareWidget": {
     "close": "Kapat",
@@ -396,6 +402,81 @@
     "enabled": "Gas Sniper tarafından otomatik talep edildi",
     "nudge": "Otomatik talep için Gas Sniper'ı açın"
   },
+  "governance": {
+    "active": {
+      "couldntLoad": "Aktif teklifler yüklenemedi",
+      "emptyDescription": "Şu anda oylamada hiçbir şey yok. Zaten karara bağlanmış olanlar için aşağıdaki Yönetişim Geçmişine bakın.",
+      "emptyTitle": "Aktif teklif yok",
+      "title": "Aktif Teklifler"
+    },
+    "description": "Yönetişim teklifleri ve her ağın bunlar üzerinde nasıl oy kullandığı, doğrudan zincir üzerindeki PollingFoundation kontratından okunur.",
+    "drawer": {
+      "circulatingSupply": "Dolaşımdaki arz",
+      "close": "Kapat",
+      "majorityRequired": "Gerekli çoğunluk",
+      "proposer": "Teklif sahibi",
+      "quorum": "Yeter sayı",
+      "quorumNotRequired": "Gerekli değil",
+      "readFullProposal": "Teklifin tamamını oku",
+      "title": "Teklif Detayları",
+      "viewProposerOnExplorer": "Teklif sahibini explorer'da görüntüle",
+      "votingPeriod": "Oylama dönemi",
+      "yourVote": "Oyunuz",
+      "yourVotingPower": "Oy gücünüz"
+    },
+    "endsInDays": "{{days}}g {{hours}}s içinde sona erer",
+    "endsInHours": "{{hours}}s içinde sona erer",
+    "historicalBadge": "Geçmiş",
+    "history": {
+      "columnEnded": "Sona erdi",
+      "columnProposal": "Teklif",
+      "columnResult": "Sonuç",
+      "columnStatus": "Durum",
+      "columnYourVote": "Oyunuz",
+      "emptyDescription": "Bir teklif sonuçlandığında burada görünecek.",
+      "emptyTitle": "Henüz yönetişim geçmişi yok",
+      "subtitle": "Sonuçlanan tüm yönetişim teklifleri, en yeniden en eskiye.",
+      "title": "Yönetişim Geçmişi"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "Oy kullanılmadı",
+    "notVotedYet": "Henüz oy kullanılmadı",
+    "stats": {
+      "active": "Şu An Aktif",
+      "defeated": "Reddedildi",
+      "passed": "Kabul Edildi",
+      "total": "Toplam Teklif"
+    },
+    "status": {
+      "active": "Aktif",
+      "canceled": "İptal Edildi",
+      "defeated": "Reddedildi",
+      "executed": "Uygulandı",
+      "passed": "Kabul Edildi",
+      "pending": "Beklemede",
+      "unknown": "Bilinmiyor"
+    },
+    "voteSplit": {
+      "against": "Karşı {{percent}}%",
+      "againstCount": "Karşı",
+      "for": "Lehte {{percent}}%",
+      "forCount": "Lehte",
+      "label": "Oylar",
+      "noVotesYet": "Henüz oy yok"
+    },
+    "voted": "Oy kullanıldı",
+    "votingEnded": "Oylama sona erdi",
+    "yours": {
+      "noWalletDescription": "Bu tekliflerdeki oy gücünüzü ve katılımınızı görmek için bir cüzdan bağlayın veya ekleyin.",
+      "noWalletTitle": "Yönetişim etkinliğinizi görün",
+      "participation": "Katılımınız",
+      "votingPower": "Oy Gücünüz"
+    },
+    "youVoted": "Oy kullandınız"
+  },
   "help": {
     "askFlareGptCta": "FlareGPT'ye sorun",
     "askFlareGptLead": "Aradığınızı bulamadınız mı?",
@@ -523,8 +604,6 @@
     "offline": "Çevrim dışı",
     "openMenu": "Menüyü aç",
     "primaryWalletSection": "Birincil Cüzdan",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Bakiyeleri göster",
     "signIn": "Giriş Yap",
     "signInBackgroundHint": "Bağlı cüzdanınızın giriş yapması gerekiyor",
@@ -774,6 +853,11 @@
       "searchPlaceholder": "{{count}} cüzdanda ara...",
       "searchPlaceholder_one": "{{count}} cüzdanda ara...",
       "searchPlaceholder_other": "{{count}} cüzdanda ara...",
+      "syncCta": {
+        "title": "Cihazlar arasında senkronize etmek için cüzdanınızı bağlayın"
+      },
+      "syncStatusAuthenticated": "Oturum açıldı. İzlenen cüzdanlarınız cihazlarınız arasında senkronize edilir.",
+      "syncStatusGuest": "Oturum açmadan en fazla {{max}} cüzdanı izleyebilirsiniz. Bu cüzdanlar bu cihazda saklanır ve diğer cihazlarınızla senkronize edilmez.",
       "tracked": "İzlenen"
     }
   },
@@ -936,5 +1020,6 @@
       "received": "Gelen",
       "sent": "Gönderildi"
     }
-  }
+  },
+  "comingSoon": {}
 }

@@ -28,7 +28,7 @@ export default function Footer() {
 
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-ink-secondary select-none">
             <a
-              href="https://x.com"
+              href="https://x.com/Flare_GPT"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 hover:text-brand dark:hover:text-brand transition-colors group"
@@ -53,7 +53,7 @@ export default function Footer() {
             <button
               type="button"
               onClick={() => navigate(ROUTES.donate)}
-              className="inline-flex items-center text-[10px] gap-1 text-brand-text hover:text-brand-hover transition-colors cursor-pointer"
+              className="inline-flex items-center text-[10px] gap-1 text-brand hover:text-brand-hover transition-colors cursor-pointer"
             >
               <span>{t("footer.donate")}</span>
               <span className="text-[8px] px-1 rounded bg-brand/10">♥</span>

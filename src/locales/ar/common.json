@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "تخطى إلى المحتوى الرئيسي"
   },
-  "comingSoon": {
-    "badge": "قريباً",
-    "description": "نحن نبني هذه الميزة. تحقَّق مرة أخرى قريباً."
-  },
   "connectModal": {
     "close": "إغلاق",
     "connecting": "جارٍ الاتصال…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "عبر WalletConnect"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "إلغاء",
+      "submit": "إضافة محفظة",
+      "subtitle": "أدخل عنوان محفظة لعرض بيانات لوحة التحكم الخاصة به. هذا لا يربط المحفظة ولا يتطلب توقيعًا.",
+      "title": "تتبّع محفظة Flare",
+      "toastBody": "تمت إضافة \"{{label}}\" إلى قائمة المتابعة الخاصة بك.",
+      "toastBodyActive": "تمت إضافة \"{{label}}\" وهي الآن محفظتك النشطة.",
+      "toastTitle": "تمت إضافة المحفظة"
+    },
     "apiStatus": {
       "checking": "جارٍ التحقق من حالة واجهة برمجة التطبيقات...",
       "degraded": "API متدهور",
@@ -42,12 +47,12 @@
     },
     "chart": {
       "couldntLoad": "تعذر تحميل سجل أسعار الطابق الأرضي",
-      "viewData_zero": "",
       "viewData_one": "عرض سجل الأسعار (نقطة واحدة {{count}})",
+      "viewData_other": "عرض سجل الأسعار ({{count}} نقطة)",
+      "viewData_zero": "",
       "viewData_two": "",
       "viewData_few": "",
-      "viewData_many": "",
-      "viewData_other": "عرض سجل الأسعار ({{count}} نقطة)"
+      "viewData_many": ""
     },
     "claimsHistory": {
       "connectToSee": "قم بتوصيل محفظة أو إضافتها في الإعدادات للاطلاع على سجل المطالبات.",
@@ -57,6 +62,8 @@
       "title": "سجل المطالبات"
     },
     "common": {
+      "addWalletToTrack": "+ تتبّع محفظة",
+      "manageWallets": "إدارة محافظك ←",
       "networkHiccup": "عادة ما يكون هذا زوبعة مؤقتة في الشبكة.",
       "no": "لا",
       "noWalletSelected": "لم يتم تحديد محفظة",
@@ -92,12 +99,12 @@
       "live": "[ترجمة المصطلح: Live]",
       "title": "نشاط الشبكة.",
       "tps": "مستشعر موضع الدواسة / مستشعر موضع البخاخ",
-      "viewData_zero": "",
       "viewData_one": "عرض عينات سعر الغاز (عينة واحدة {{count}})",
+      "viewData_other": "عرض عينات سعر الغاز ({{count}} عينة)",
+      "viewData_zero": "",
       "viewData_two": "",
       "viewData_few": "",
-      "viewData_many": "",
-      "viewData_other": "عرض عينات سعر الغاز ({{count}} عينة)"
+      "viewData_many": ""
     },
     "stats": {
       "couldntLoad": "تعذر تحميل نظرة عامة على السوق",
@@ -110,6 +117,11 @@
       "connectToSeeBalances": "قم بتوصيل أو إضافة محفظة في الإعدادات لرؤية الأرصدة.",
       "couldntLoad": "تعذر تحميل أرصدة المحفظة",
       "title": "أرصدة المحفظة"
+    },
+    "walletTracking": {
+      "description": "اطّلع على الأرصدة والمكافآت والنشاط لأي عنوان محفظة. لا حاجة إلى ربط المحفظة أو التوقيع.",
+      "manageDescription": "أضف المزيد من المحافظ إلى قائمة المتابعة في أي وقت.",
+      "title": "تتبّع أي محفظة Flare"
     }
   },
   "defiProtocols": {
@@ -189,6 +201,7 @@
     "strategies": {
       "amountLabel": "قارن مقابل",
       "apr": "معدل العائد السنوي",
+      "colActions": "إجراءات",
       "colStrategy": "الاستراتيجية",
       "colTerms": "الشروط",
       "colYield": "العائد المقدر (FLR)",
@@ -196,24 +209,24 @@
       "couldntLoad": "تعذر تحميل مقارنة الاستراتيجيات",
       "highestApr": "أعلى معدل عائد سنوي",
       "lockupDays": "قفل لمدة {{count}} يوم",
-      "lockupDays_zero": "",
       "lockupDays_one": "قفل ليوم واحد",
-      "lockupDays_two": "",
-      "lockupDays_few": "",
-      "lockupDays_many": "",
       "lockupDays_other": "قفل لمدة {{count}} يوم",
       "lockupHours": "قفل لمدة {{count}} ساعة",
-      "lockupHours_zero": "",
       "lockupHours_one": "قفل لمدة {{count}} ساعة",
-      "lockupHours_two": "",
-      "lockupHours_few": "",
-      "lockupHours_many": "",
       "lockupHours_other": "قفل لمدة {{count}} ساعة",
       "noLockup": "بدون قفل",
       "subtitle": "اطّلع على أداء FLR المحتمل عبر الاستراتيجيات المختلفة",
       "title": "مقارنة الاستراتيجيات",
       "toggleDetails": "إظهار تفاصيل {{strategy}}",
-      "verdict": "تقييم FlareGPT"
+      "verdict": "تقييم FlareGPT",
+      "lockupDays_zero": "",
+      "lockupDays_two": "",
+      "lockupDays_few": "",
+      "lockupDays_many": "",
+      "lockupHours_zero": "",
+      "lockupHours_two": "",
+      "lockupHours_few": "",
+      "lockupHours_many": ""
     }
   },
   "donate": {
@@ -230,29 +243,21 @@
       "message": "شكرًا لمساعدتك في إبقاء FlareGPT مستقلاً. كل مساهمة، كبيرة كانت أم صغيرة، تُحدث فرقًا حقيقيًا."
     },
     "description": "دعمك يساعد في إبقاء FlareGPT مجانيًا ومستقلاً ومتطورًا باستمرار.",
-    "funding": {
-      "developmentFund": "صندوق التطوير",
-      "monthlyInfrastructure": "البنية التحتية الشهرية",
-      "raisedOfGoal": "تم جمع {{raised}} من هدف {{goal}}",
-      "subtitle": "نظرة شفافة على تكلفة تشغيل FlareGPT. لا ضغط، فقط شفافية.",
-      "title": "شفافية التمويل"
-    },
     "hero": {
       "addressCopied": "تم نسخ العنوان",
       "addressLabel": "عنوان المحفظة",
       "copied": "تم النسخ",
       "copyAddress": "نسخ العنوان",
       "copyFailed": "تعذر نسخ العنوان",
-      "multisigNote": "محمية بمحفظة متعددة التوقيع",
       "qrTitle": "رمز QR لعنوان محفظة التبرعات بعملة {{symbol}}",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "اضغط للنسخ",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "عرض على {{explorer}}"
     },
     "received": {
-      "demoData": "بيانات تجريبية",
+      "empty": {
+        "description": "بمجرد أن يتبرع أحدهم، سيظهر ذلك هنا.",
+        "title": "لا توجد تبرعات بعد"
+      },
       "subtitle": "إجمالي المساهمات المستلمة عبر كل شبكة مدعومة.",
       "title": "التبرعات المستلمة"
     },
@@ -267,7 +272,8 @@
     "warning": {
       "body": "أرسل فقط {{symbol}} أو رموز {{network}} الأخرى إلى هذا العنوان. الأصول المُرسلة من شبكات أخرى لا يمكن استردادها.",
       "title": "أصول {{network}} فقط."
-    }
+    },
+    "funding": {}
   },
   "flareWidget": {
     "close": "خاتمة",
@@ -317,11 +323,7 @@
       "openButton": "السجل",
       "pin": "تثبيت",
       "pinLimitReached": "يمكنك تثبيت حتى {{count}} محادثات",
-      "pinLimitReached_zero": "",
       "pinLimitReached_one": "يمكنك تثبيت محادثة واحدة كحد أقصى",
-      "pinLimitReached_two": "",
-      "pinLimitReached_few": "",
-      "pinLimitReached_many": "",
       "pinLimitReached_other": "يمكنك تثبيت حتى {{count}} محادثات",
       "rename": "إعادة تسمية",
       "renameFailed": "تعذّرت إعادة تسمية هذه المحادثة.",
@@ -330,7 +332,11 @@
       "searchPlaceholder": "البحث في المحادثات...",
       "title": "سجل المحادثات",
       "unpin": "إلغاء التثبيت",
-      "untitled": "بلا عنوان"
+      "untitled": "بلا عنوان",
+      "pinLimitReached_zero": "",
+      "pinLimitReached_two": "",
+      "pinLimitReached_few": "",
+      "pinLimitReached_many": ""
     },
     "historyLoadFailed": "تعذّر تحميل سجل الدردشة.",
     "jumpToLatest": "الانتقال إلى الأحدث",
@@ -368,15 +374,15 @@
     "connectToSee": "قم بتوصيل أو اختيار محفظة لعرض مكافآت FTSO الخاصة بها.",
     "couldntLoad": "تعذّر تحميل مكافآت FTSO الخاصة بك.",
     "delegations": {
-      "count_zero": "",
       "count_one": "{{count}} مزوّد",
-      "count_two": "",
-      "count_few": "",
-      "count_many": "",
       "count_other": "{{count}} مزوّدين",
       "emptyDescription": "فوّض WFLR الخاص بك إلى أحد مزوّدي بيانات FTSO لبدء كسب المكافآت.",
       "emptyTitle": "لا توجد تفويضات نشطة",
-      "title": "التفويضات النشطة"
+      "title": "التفويضات النشطة",
+      "count_zero": "",
+      "count_two": "",
+      "count_few": "",
+      "count_many": ""
     },
     "description": "تتبّع مكافآت تفويض FTSO الخاصة بك، وسرعة تراكم المكافآت، وتخصيصات مزودي الخدمة في مكان واحد.",
     "epochs": {
@@ -385,12 +391,12 @@
       "epochLabel": "الحقبة {{id}}",
       "subtitle": "مكافآت في انتظار المطالبة، حسب الحقبة",
       "title": "الحقب غير المُطالَب بها",
-      "viewFullLedger_zero": "",
       "viewFullLedger_one": "عرض السجل الكامل ({{count}} إدخال)",
+      "viewFullLedger_other": "عرض السجل الكامل ({{count}} إدخالات)",
+      "viewFullLedger_zero": "",
       "viewFullLedger_two": "",
       "viewFullLedger_few": "",
-      "viewFullLedger_many": "",
-      "viewFullLedger_other": "عرض السجل الكامل ({{count}} إدخالات)"
+      "viewFullLedger_many": ""
     },
     "providers": {
       "description": "قارن بين مزودي البيانات من حيث الأداء والرسوم بمجرد ربط تصنيفات المزودين.",
@@ -423,6 +429,81 @@
     "checking": "جارٍ التحقق من حالة Gas Sniper…",
     "enabled": "تتم المطالبة تلقائيًا بواسطة Gas Sniper",
     "nudge": "فعّل Gas Sniper للمطالبة التلقائية"
+  },
+  "governance": {
+    "active": {
+      "couldntLoad": "تعذّر تحميل المقترحات النشطة",
+      "emptyDescription": "لا يوجد شيء معروض للتصويت حاليًا. راجع سجل الحوكمة أدناه لمعرفة ما تم البت فيه بالفعل.",
+      "emptyTitle": "لا توجد مقترحات نشطة",
+      "title": "المقترحات النشطة"
+    },
+    "description": "مقترحات الحوكمة وكيفية تصويت كل شبكة عليها، تُقرأ مباشرةً من عقد PollingFoundation على السلسلة.",
+    "drawer": {
+      "circulatingSupply": "المعروض المتداول",
+      "close": "إغلاق",
+      "majorityRequired": "الأغلبية المطلوبة",
+      "proposer": "مقدّم المقترح",
+      "quorum": "النصاب القانوني",
+      "quorumNotRequired": "غير مطلوب",
+      "readFullProposal": "قراءة المقترح كاملاً",
+      "title": "تفاصيل المقترح",
+      "viewProposerOnExplorer": "عرض مقدّم المقترح في المستكشف",
+      "votingPeriod": "فترة التصويت",
+      "yourVote": "تصويتك",
+      "yourVotingPower": "قوتك التصويتية"
+    },
+    "endsInDays": "ينتهي خلال {{days}} يوم {{hours}} ساعة",
+    "endsInHours": "ينتهي خلال {{hours}} ساعة",
+    "historicalBadge": "تاريخي",
+    "history": {
+      "columnEnded": "انتهى",
+      "columnProposal": "المقترح",
+      "columnResult": "النتيجة",
+      "columnStatus": "الحالة",
+      "columnYourVote": "تصويتك",
+      "emptyDescription": "بمجرد اختتام أي مقترح، سيظهر هنا.",
+      "emptyTitle": "لا يوجد سجل حوكمة بعد",
+      "subtitle": "كل مقترح حوكمة مختتم، الأحدث أولاً.",
+      "title": "سجل الحوكمة"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "لم يتم التصويت",
+    "notVotedYet": "لم يتم التصويت بعد",
+    "stats": {
+      "active": "نشطة الآن",
+      "defeated": "مرفوضة",
+      "passed": "مُقرّة",
+      "total": "إجمالي المقترحات"
+    },
+    "status": {
+      "active": "نشط",
+      "canceled": "أُلغي",
+      "defeated": "رُفض",
+      "executed": "نُفّذ",
+      "passed": "أُقرّ",
+      "pending": "قيد الانتظار",
+      "unknown": "غير معروف"
+    },
+    "voteSplit": {
+      "against": "ضد {{percent}}%",
+      "againstCount": "ضد",
+      "for": "مع {{percent}}%",
+      "forCount": "مع",
+      "label": "الأصوات",
+      "noVotesYet": "لا توجد أصوات بعد"
+    },
+    "voted": "تم التصويت",
+    "votingEnded": "انتهى التصويت",
+    "yours": {
+      "noWalletDescription": "اربط محفظة أو أضِفها لعرض قوتك التصويتية ومشاركتك في هذه المقترحات.",
+      "noWalletTitle": "اطّلع على نشاطك في الحوكمة",
+      "participation": "مشاركتك",
+      "votingPower": "قوتك التصويتية"
+    },
+    "youVoted": "لقد صوّتَ"
   },
   "help": {
     "askFlareGptCta": "اسأل FlareGPT للمساعدة",
@@ -551,8 +632,6 @@
     "offline": "من خلال المنافذ التقليدية",
     "openMenu": "فتح القائمة",
     "primaryWalletSection": "المحفظة الأساسية",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "إظهار الأرصدة",
     "signIn": "تسجيل الدخول",
     "signInBackgroundHint": "محفظتك المتصلة بحاجة إلى تسجيل الدخول",
@@ -620,12 +699,12 @@
       "subtitle": "إجمالي rFLR المُفرج عنه تراكميًا عبر الزمن",
       "title": "الجدول الزمني للإفراج",
       "viewFullSchedule": "عرض الجدول الكامل ({{count}} إدخالات)",
-      "viewFullSchedule_zero": "",
       "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_zero": "",
       "viewFullSchedule_two": "",
       "viewFullSchedule_few": "",
-      "viewFullSchedule_many": "",
-      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
+      "viewFullSchedule_many": ""
     }
   },
   "settings": {
@@ -804,13 +883,18 @@
       "rename": "إعادة تسمية",
       "saveEdit": "حفظ",
       "searchPlaceholder": "بحث في {{count}} محفظة...",
-      "searchPlaceholder_zero": "",
       "searchPlaceholder_one": "بحث في محفظة واحدة...",
+      "searchPlaceholder_other": "بحث في {{count}} محفظة...",
+      "syncCta": {
+        "title": "اربط محفظتك للمزامنة عبر الأجهزة"
+      },
+      "syncStatusAuthenticated": "تم تسجيل الدخول. تتم مزامنة محافظك المتابَعة عبر أجهزتك.",
+      "syncStatusGuest": "يمكنك متابعة حتى {{max}} محفظة دون تسجيل الدخول. تُخزَّن هذه المحافظ على هذا الجهاز ولن تتم مزامنتها مع أجهزتك الأخرى.",
+      "tracked": "متعقب",
+      "searchPlaceholder_zero": "",
       "searchPlaceholder_two": "",
       "searchPlaceholder_few": "",
-      "searchPlaceholder_many": "",
-      "searchPlaceholder_other": "بحث في {{count}} محفظة...",
-      "tracked": "متعقب"
+      "searchPlaceholder_many": ""
     }
   },
   "sidebar": {
@@ -860,12 +944,12 @@
         "tabActions": "الإجراءات",
         "tabActivity": "النشاط",
         "tabAssets": "الأصول",
-        "viewData_zero": "",
         "viewData_one": "عرض البيانات (صف واحد {{count}})",
+        "viewData_other": "عرض البيانات ({{count}} صف)",
+        "viewData_zero": "",
         "viewData_two": "",
         "viewData_few": "",
-        "viewData_many": "",
-        "viewData_other": "عرض البيانات ({{count}} صف)"
+        "viewData_many": ""
       },
       "connectToSee": "اتصل بمحفظة أو اخترها لرؤية نشاط معاملاتها.",
       "couldntLoad": "تعذّر تحميل نشاط المحفظة.",
@@ -901,43 +985,43 @@
         "mostUsedAsset": "الأصل الأكثر استخدامًا",
         "title": "رؤى سريعة",
         "txCount": "{{count}} معاملة",
-        "txCount_zero": "",
         "txCount_one": "معاملة واحدة",
+        "txCount_other": "{{count}} معاملة",
+        "txCount_zero": "",
         "txCount_two": "",
         "txCount_few": "",
-        "txCount_many": "",
-        "txCount_other": "{{count}} معاملة"
+        "txCount_many": ""
       },
       "kpi": {
         "daysAgo": "منذ {{count}} يوم",
-        "daysAgo_zero": "",
         "daysAgo_one": "منذ {{count}} يوم",
-        "daysAgo_two": "",
-        "daysAgo_few": "",
-        "daysAgo_many": "",
         "daysAgo_other": "منذ {{count}} يوم",
         "hoursAgo": "منذ {{count}} ساعة",
-        "hoursAgo_zero": "",
         "hoursAgo_one": "منذ {{count}} ساعة",
-        "hoursAgo_two": "",
-        "hoursAgo_few": "",
-        "hoursAgo_many": "",
         "hoursAgo_other": "منذ {{count}} ساعة",
         "justNow": "الآن",
         "lastActive": "آخر نشاط",
         "minutesAgo": "منذ {{count}} دقيقة",
-        "minutesAgo_zero": "",
         "minutesAgo_one": "منذ {{count}} دقيقة",
-        "minutesAgo_two": "",
-        "minutesAgo_few": "",
-        "minutesAgo_many": "",
         "minutesAgo_other": "منذ {{count}} دقيقة",
         "totalTransactions": "إجمالي المعاملات",
         "uniqueAssets": "الأصول الفريدة",
         "walletAge": "عمر المحفظة",
         "walletAgeDays": "{{count}} أيام",
         "walletAgeMonths": "{{count}} أشهر",
-        "walletAgeYears": "{{count}} سنة"
+        "walletAgeYears": "{{count}} سنة",
+        "daysAgo_zero": "",
+        "daysAgo_two": "",
+        "daysAgo_few": "",
+        "daysAgo_many": "",
+        "hoursAgo_zero": "",
+        "hoursAgo_two": "",
+        "hoursAgo_few": "",
+        "hoursAgo_many": "",
+        "minutesAgo_zero": "",
+        "minutesAgo_two": "",
+        "minutesAgo_few": "",
+        "minutesAgo_many": ""
       },
       "loading": {
         "elapsed": "مرّت {{seconds}} ثانية",
@@ -991,5 +1075,6 @@
       "received": "استلمه",
       "sent": "مُرسل"
     }
-  }
+  },
+  "comingSoon": {}
 }

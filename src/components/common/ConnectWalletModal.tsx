@@ -1,5 +1,5 @@
 import type { TFunction } from "i18next";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useConnect, useConnectors, useConnection } from "wagmi";
 import { useTranslation } from "react-i18next";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -26,6 +26,18 @@ import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 type Connectors = ReturnType<typeof useConnectors>;
 type Connector = Connectors[number];
 type ConnectError = ReturnType<typeof useConnect>["error"];
+
+// The one piece of @walletconnect/ethereum-provider's runtime shape this
+// file needs that wagmi's own connector types don't declare — `.modal` is
+// the actual AppKit instance rendering the "Open in app" / QR screen the
+// user sees. Not exported by wagmi's Connector type (getProvider() is
+// generic, `provider = unknown`, since each connector's provider shape
+// differs), same reason InjectedProvider in web3Config.ts hand-declares
+// the slice of window.ethereum it actually reads instead of importing a
+// full third-party type.
+interface WalletConnectProvider {
+  modal?: { close?: () => void };
+}
 
 interface VisualWallet {
   id: string;
@@ -249,8 +261,44 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  // Which connector (if any) currently has a real, in-flight attempt —
+  // tracked separately from `pendingWalletId` because cleanup needs the
+  // actual connector object, not just its id, to reach into its provider.
+  const pendingConnectorRef = useRef<Connector | null>(null);
 
   useFocusTrap(dialogRef, shouldRender);
+
+  // wagmi's connector.disconnect() only tears down an *established*
+  // session (confirmed in @walletconnect/ethereum-provider's own source:
+  // `this.session && await this.signer.disconnect()`) — for an attempt
+  // that never got that far, which is exactly the stuck-spinner/disabled-
+  // "Open"-button case, it's a no-op. The actual on-screen overlay is
+  // AppKit's own `.modal` on the underlying EthereumProvider instance, and
+  // that instance is a per-page singleton wagmi caches for the lifetime of
+  // this connector (never recreated), so a modal left open here doesn't
+  // just linger visually — it silently breaks every later WalletConnect
+  // attempt too, for any wallet, since they all share the same poisoned
+  // instance. `.modal.close()` is not a workaround: AppKit's own connect()
+  // already wires a `subscribeState` listener that treats the modal
+  // closing as the user backing out — it calls the SDK's own
+  // `abortPairingAttempt()` and rejects the original connect() promise
+  // itself, the same clean teardown a manual close click gets. Using that
+  // existing mechanism, rather than reimplementing pairing cleanup, is
+  // deliberate — wagmi gives no supported way to force a fresh provider
+  // instance instead.
+  const abortPendingConnector = useCallback(async (connector: Connector) => {
+    try {
+      const provider = (await connector
+        .getProvider?.()
+        .catch(() => null)) as WalletConnectProvider | null | undefined;
+      provider?.modal?.close?.();
+    } catch {
+      // Best-effort cleanup only — connector.disconnect() below still runs
+      // regardless, and a failure here just means the visual overlay (if
+      // any) has to wait for the user to close it by hand.
+    }
+    connector.disconnect?.().catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -284,16 +332,37 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
   // (and therefore every wallet button) stuck disabled for the rest of the
   // session. Resetting the mutation whenever the modal closes guarantees a
   // clean slate the next time it opens, regardless of whether that
-  // underlying promise ever actually settles.
+  // underlying promise ever actually settles. Also aborts any connector
+  // still genuinely mid-attempt (see abortPendingConnector above) — closing
+  // *this* modal (backdrop tap, Escape, the X button) previously left
+  // AppKit's own separately-rendered overlay on screen underneath/on top of
+  // it if a WalletConnect attempt was still pending, since dismissing our
+  // own React modal was never wired to that one at all.
+  //
+  // `!isConnected` guards the abort specifically: this modal *also*
+  // auto-closes itself the instant a connector succeeds (the effect right
+  // above this one), and that state update can land before runConnect's own
+  // `finally` clears `pendingConnectorRef.current` — without this guard,
+  // the connector that just connected got immediately torn back down via
+  // its own disconnect() (confirmed live: it fires the same
+  // `wallet_revokePermissions` call disconnect() always makes), corrupting
+  // the connection out from under the sign-in flow that had just started
+  // for it. This only exists to abort a connector that's still genuinely
+  // stuck — a connector that already succeeded is never what this cleanup
+  // is for.
   useEffect(() => {
     if (!isOpen) {
+      if (pendingConnectorRef.current && !isConnected) {
+        abortPendingConnector(pendingConnectorRef.current);
+      }
+      pendingConnectorRef.current = null;
       reset();
       setPendingWalletId(null);
       setTimeoutKind(null);
       setAwaitingInstallId(null);
       setShowInstallHint(false);
     }
-  }, [isOpen, reset]);
+  }, [isOpen, isConnected, reset, abortPendingConnector]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -332,6 +401,17 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
   if (!shouldRender) return null;
 
   const runConnect = async (connector: Connector, walletId: string) => {
+    // Every wallet button stays independently clickable while another is
+    // mid-attempt (see the `disabled` check below), so tapping a second
+    // wallet before the first settles is a real, reachable path — without
+    // this, both attempts would race against the same underlying
+    // WalletConnect modal/pairing. Clean up whatever was still pending
+    // first, exactly the same way a timeout or closing the modal would.
+    if (pendingConnectorRef.current && pendingConnectorRef.current !== connector) {
+      await abortPendingConnector(pendingConnectorRef.current);
+    }
+    pendingConnectorRef.current = connector;
+
     reset();
     setTimeoutKind(null);
     setPendingWalletId(walletId);
@@ -349,11 +429,7 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
       const brave =
         connector.id === "walletConnect" && (await isBraveBrowser());
       setTimeoutKind(brave ? "brave" : "generic");
-      // reset() only clears our own mutation state — WalletConnect's QR
-      // modal is a separate widget that doesn't know we gave up, so it'd
-      // otherwise stay open on top of our error message. Tearing down the
-      // stuck session closes it too.
-      connector.disconnect?.().catch(() => {});
+      await abortPendingConnector(connector);
     }, CONNECT_TIMEOUT_MS);
 
     try {
@@ -364,6 +440,7 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
     } finally {
       clearTimeout(timeoutId);
       if (!timedOut) setPendingWalletId(null);
+      if (pendingConnectorRef.current === connector) pendingConnectorRef.current = null;
     }
   };
 

@@ -52,6 +52,8 @@ function MobileTabs() {
 
       <div className="mt-4 rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
         {!activeAddress ? (
+          // No per-card "add wallet" action here anymore — see
+          // WalletBalancesCard's own comment.
           <WalletEmptyState
             icon={icon}
             title={t("dashboard.common.noWalletSelected")}

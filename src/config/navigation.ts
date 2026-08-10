@@ -41,10 +41,10 @@ const prefetchWalletActivity = () => import("@/pages/WalletActivity");
 // fix for how Help's guides previously drifted from reality (a "Yield"
 // guide for a page that no longer exists, DeFi Protocols and Donate never
 // added). `guideDescriptionKey` is deliberately only set on pages with
-// real, shipped functionality — Settings, Help, and the still-`ComingSoon`
-// stubs (FTSO Rewards, Governance, Loops, rFLR Vesting) simply don't have
-// one, which is what keeps them out of the guides list without needing a
-// second flag to track separately from this one.
+// real, shipped functionality — Settings, Help, and a few pages that
+// simply haven't had a guide written yet (FTSO Rewards, Loops, rFLR
+// Vesting) don't have one, which is what keeps them out of the guides
+// list without needing a second flag to track separately from this one.
 //
 // Ordered by expected importance/frequency: the home view, then the
 // fully-functional core features (AI chat, wallet tracking, reward

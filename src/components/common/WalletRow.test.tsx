@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 
 import WalletRow from "@/components/common/WalletRow";
 import { renderWithProviders, screen, fireEvent } from "@/test/test-utils";
@@ -10,34 +10,21 @@ const wallet: WalletHubEntry = {
   label: "Primary Wallet",
 };
 
-function renderRow(onShare = vi.fn()) {
+function renderRow(onCopy = vi.fn()) {
   renderWithProviders(
-    <WalletRow wallet={wallet} isActive={false} copiedAddress={null} onSelect={vi.fn()} onShare={onShare} />,
+    <WalletRow wallet={wallet} isActive={false} copiedAddress={null} onSelect={vi.fn()} onCopy={onCopy} />,
   );
-  return { onShare };
+  return { onCopy };
 }
 
-afterEach(() => {
-  vi.unstubAllGlobals();
-});
+describe("WalletRow — copy button", () => {
+  it("always shows Copy address and calls onCopy with the wallet's address", () => {
+    const { onCopy } = renderRow();
 
-describe("WalletRow — share/copy button", () => {
-  it("shows Share (not Copy) and calls onShare when navigator.share is supported", () => {
-    vi.stubGlobal("navigator", { ...window.navigator, share: vi.fn() });
-    const { onShare } = renderRow();
-
-    const button = screen.getByRole("button", { name: "Share address" });
+    const button = screen.getByRole("button", { name: "Copy address" });
     fireEvent.click(button);
 
-    expect(onShare).toHaveBeenCalledTimes(1);
-    expect(onShare.mock.calls[0][1]).toBe(wallet.address);
-  });
-
-  it("falls back to Copy address labeling when navigator.share isn't supported", () => {
-    vi.stubGlobal("navigator", { ...window.navigator, share: undefined });
-    renderRow();
-
-    expect(screen.getByRole("button", { name: "Copy address" })).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Share address" })).not.toBeInTheDocument();
+    expect(onCopy).toHaveBeenCalledTimes(1);
+    expect(onCopy.mock.calls[0][1]).toBe(wallet.address);
   });
 });

@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "주 내용으로 건너뛰기"
   },
-  "comingSoon": {
-    "badge": "개봉 예정작",
-    "description": "이 기능을 구축하고 있습니다. 잠시 후 다시 확인하세요."
-  },
   "connectModal": {
     "close": "닫기",
     "connecting": "연결 중…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "WalletConnect 경유"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "취소",
+      "submit": "지갑 추가",
+      "subtitle": "지갑 주소를 입력하면 대시보드 데이터를 확인할 수 있습니다. 지갑이 연결되지 않으며 서명도 필요하지 않습니다.",
+      "title": "Flare 지갑 추적하기",
+      "toastBody": "\"{{label}}\"이(가) 관심 목록에 추가되었습니다.",
+      "toastBodyActive": "\"{{label}}\"이(가) 추가되었으며 이제 활성 지갑입니다.",
+      "toastTitle": "지갑이 추가되었습니다"
+    },
     "apiStatus": {
       "checking": "API 상태 확인 중...",
       "degraded": "API 성능 저하",
@@ -53,6 +58,8 @@
       "title": "\"보너스 포인트\" 이용 내역"
     },
     "common": {
+      "addWalletToTrack": "+ 지갑 추적하기",
+      "manageWallets": "지갑 관리하기 →",
       "networkHiccup": "이것은 일반적으로 일시적인 네트워크 문제입니다.",
       "no": "아니오",
       "noWalletSelected": "지갑이 선택되지 않았습니다",
@@ -102,6 +109,11 @@
       "connectToSeeBalances": "잔액을 보려면 설정에서 지갑을 연결하거나 추가하세요.",
       "couldntLoad": "지갑 잔액을 로드할 수 없습니다",
       "title": "지갑 잔액"
+    },
+    "walletTracking": {
+      "description": "모든 지갑 주소의 잔액, 보상, 활동을 확인하세요. 지갑 연결이나 서명이 필요하지 않습니다.",
+      "manageDescription": "언제든지 관심 목록에 지갑을 더 추가하세요.",
+      "title": "모든 Flare 지갑을 추적하세요"
     }
   },
   "defiProtocols": {
@@ -181,6 +193,7 @@
     "strategies": {
       "amountLabel": "비교 금액",
       "apr": "APR",
+      "colActions": "작업",
       "colStrategy": "전략",
       "colTerms": "조건",
       "colYield": "예상 수익 (FLR)",
@@ -214,29 +227,21 @@
       "message": "FlareGPT의 독립성을 지켜주셔서 감사합니다. 크든 작든 모든 후원이 진심으로 큰 도움이 됩니다."
     },
     "description": "여러분의 후원은 FlareGPT를 무료로, 독립적으로, 그리고 계속해서 발전하도록 돕습니다.",
-    "funding": {
-      "developmentFund": "개발 기금",
-      "monthlyInfrastructure": "월간 인프라",
-      "raisedOfGoal": "목표 {{goal}} 중 {{raised}} 모금",
-      "subtitle": "FlareGPT 운영 비용을 투명하게 공개합니다. 부담 없이, 그저 투명성을 위한 것입니다.",
-      "title": "자금 투명성"
-    },
     "hero": {
       "addressCopied": "주소가 복사되었습니다",
       "addressLabel": "지갑 주소",
       "copied": "복사됨",
       "copyAddress": "주소 복사",
       "copyFailed": "주소를 복사하지 못했습니다",
-      "multisigNote": "다중 서명 지갑으로 보호됨",
       "qrTitle": "{{symbol}} 후원 지갑 주소 QR 코드",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "탭하여 복사",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "{{explorer}}에서 보기"
     },
     "received": {
-      "demoData": "데모 데이터",
+      "empty": {
+        "description": "누군가 기부하면 여기에 표시됩니다.",
+        "title": "아직 기부 내역이 없습니다"
+      },
       "subtitle": "지원되는 모든 네트워크에서 받은 총 후원금입니다.",
       "title": "받은 후원금"
     },
@@ -251,7 +256,8 @@
     "warning": {
       "body": "이 주소로는 {{symbol}} 또는 다른 {{network}} 토큰만 보내주세요. 다른 네트워크에서 보낸 자산은 복구할 수 없습니다.",
       "title": "{{network}} 자산만 가능합니다."
-    }
+    },
+    "funding": {}
   },
   "flareWidget": {
     "close": "닫기",
@@ -396,6 +402,81 @@
     "enabled": "Gas Sniper가 자동 청구함",
     "nudge": "자동 청구하려면 Gas Sniper를 켜세요"
   },
+  "governance": {
+    "active": {
+      "couldntLoad": "활성 제안을 불러올 수 없습니다",
+      "emptyDescription": "현재 투표 중인 항목이 없습니다. 이미 결정된 사항은 아래의 거버넌스 기록을 확인하세요.",
+      "emptyTitle": "활성 제안이 없습니다",
+      "title": "활성 제안"
+    },
+    "description": "거버넌스 제안과 각 네트워크가 이에 대해 투표하는 방식으로, 온체인 PollingFoundation 컨트랙트에서 직접 읽어옵니다.",
+    "drawer": {
+      "circulatingSupply": "유통 공급량",
+      "close": "닫기",
+      "majorityRequired": "필요한 다수",
+      "proposer": "제안자",
+      "quorum": "정족수",
+      "quorumNotRequired": "필요 없음",
+      "readFullProposal": "전체 제안 읽기",
+      "title": "제안 세부 정보",
+      "viewProposerOnExplorer": "탐색기에서 제안자 보기",
+      "votingPeriod": "투표 기간",
+      "yourVote": "내 투표",
+      "yourVotingPower": "내 투표 권한"
+    },
+    "endsInDays": "{{days}}일 {{hours}}시간 후 종료",
+    "endsInHours": "{{hours}}시간 후 종료",
+    "historicalBadge": "지난",
+    "history": {
+      "columnEnded": "종료됨",
+      "columnProposal": "제안",
+      "columnResult": "결과",
+      "columnStatus": "상태",
+      "columnYourVote": "내 투표",
+      "emptyDescription": "제안이 종료되면 여기에 표시됩니다.",
+      "emptyTitle": "아직 거버넌스 기록이 없습니다",
+      "subtitle": "종료된 모든 거버넌스 제안, 최신순.",
+      "title": "거버넌스 기록"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "투표 안 함",
+    "notVotedYet": "아직 투표하지 않음",
+    "stats": {
+      "active": "현재 활성",
+      "defeated": "부결됨",
+      "passed": "가결됨",
+      "total": "총 제안 수"
+    },
+    "status": {
+      "active": "활성",
+      "canceled": "취소됨",
+      "defeated": "부결됨",
+      "executed": "실행됨",
+      "passed": "가결됨",
+      "pending": "대기 중",
+      "unknown": "알 수 없음"
+    },
+    "voteSplit": {
+      "against": "반대 {{percent}}%",
+      "againstCount": "반대",
+      "for": "찬성 {{percent}}%",
+      "forCount": "찬성",
+      "label": "투표",
+      "noVotesYet": "아직 투표가 없습니다"
+    },
+    "voted": "투표함",
+    "votingEnded": "투표 종료",
+    "yours": {
+      "noWalletDescription": "이 제안들에 대한 투표 권한과 참여 현황을 보려면 지갑을 연결하거나 추가하세요.",
+      "noWalletTitle": "내 거버넌스 활동 보기",
+      "participation": "내 참여",
+      "votingPower": "내 투표 권한"
+    },
+    "youVoted": "투표하셨습니다"
+  },
   "help": {
     "askFlareGptCta": "FlareGPT에게 물어보기",
     "askFlareGptLead": "찾으시는 답을 찾지 못하셨나요?",
@@ -523,8 +604,6 @@
     "offline": "오프라인",
     "openMenu": "메뉴 열기",
     "primaryWalletSection": "기본 지갑",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "잔액 표시",
     "signIn": "로그인",
     "signInBackgroundHint": "연결된 지갑이 로그인해야 합니다",
@@ -774,6 +853,11 @@
       "searchPlaceholder": "{{count}}개 지갑 검색...",
       "searchPlaceholder_one": "{{count}}개 지갑 검색...",
       "searchPlaceholder_other": "{{count}}개 지갑 검색...",
+      "syncCta": {
+        "title": "기기 간 동기화를 위해 지갑을 연결하세요"
+      },
+      "syncStatusAuthenticated": "로그인됨. 추적 중인 지갑이 기기 간에 동기화됩니다.",
+      "syncStatusGuest": "로그인하지 않고도 최대 {{max}}개의 지갑을 추적할 수 있습니다. 이 지갑들은 이 기기에 저장되며 다른 기기와 동기화되지 않습니다.",
       "tracked": "추적됨"
     }
   },
@@ -936,5 +1020,6 @@
       "received": "받음",
       "sent": "보냄"
     }
-  }
+  },
+  "comingSoon": {}
 }

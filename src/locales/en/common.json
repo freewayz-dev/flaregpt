@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "Skip to main content"
   },
-  "comingSoon": {
-    "badge": "Coming Soon",
-    "description": "We're building this feature. Check back soon."
-  },
   "connectModal": {
     "close": "Close",
     "connecting": "Connecting…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "Via WalletConnect"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "Cancel",
+      "submit": "Add wallet",
+      "subtitle": "Enter a wallet address to view its dashboard data. This does not connect the wallet or require a signature.",
+      "title": "Track a Flare wallet",
+      "toastBody": "\"{{label}}\" has been added to your watchlist.",
+      "toastBodyActive": "\"{{label}}\" has been added and is now your active wallet.",
+      "toastTitle": "Wallet added"
+    },
     "apiStatus": {
       "checking": "Checking API status...",
       "degraded": "API degraded",
@@ -46,13 +51,15 @@
       "viewData_other": "View price history ({{count}} points)"
     },
     "claimsHistory": {
-      "connectToSee": "Connect or add a wallet in Settings to see claim history.",
+      "connectToSee": "Connect a wallet or add one to your watchlist to see claim history.",
       "couldntLoad": "Couldn't load claims history",
       "emptyDescription": "You're all caught up. There are no pending reward epochs to claim.",
       "emptyTitle": "No unclaimed epochs",
       "title": "Claims History"
     },
     "common": {
+      "addWalletToTrack": "+ Track a wallet",
+      "manageWallets": "Manage your wallets →",
       "networkHiccup": "This is usually a temporary network hiccup.",
       "no": "No",
       "noWalletSelected": "No wallet selected",
@@ -61,7 +68,7 @@
       "yes": "Yes"
     },
     "delegationsBreakdown": {
-      "connectToSee": "Connect or add a wallet in Settings to see delegations.",
+      "connectToSee": "Connect a wallet or add one to your watchlist to see delegations.",
       "couldntLoad": "Couldn't load delegations",
       "emptyDescription": "Delegate WFLR to an FTSO provider to start earning rewards.",
       "emptyTitle": "No active delegations",
@@ -72,7 +79,7 @@
     "ftso": {
       "activeDelegations": "Active Delegations",
       "connected": "Connected",
-      "connectToSeeRewards": "Connect or add a wallet in Settings to see rewards.",
+      "connectToSeeRewards": "Connect a wallet or add one to your watchlist to see rewards.",
       "couldntLoad": "Couldn't load FTSO portfolio",
       "delegatedWflr": "Delegated WFLR",
       "estHourlyEarning": "Est. Hourly Earning",
@@ -99,9 +106,14 @@
       "volume24h": "24h Volume"
     },
     "walletBalances": {
-      "connectToSeeBalances": "Connect or add a wallet in Settings to see balances.",
+      "connectToSeeBalances": "Connect a wallet or add one to your watchlist to see balances.",
       "couldntLoad": "Couldn't load wallet balances",
       "title": "Wallet Balances"
+    },
+    "walletTracking": {
+      "description": "View balances, rewards, and activity for any wallet address. No wallet connection or signature required.",
+      "manageDescription": "Add more wallets to your watchlist anytime.",
+      "title": "Track any Flare wallet"
     }
   },
   "defiProtocols": {
@@ -181,6 +193,7 @@
     "strategies": {
       "amountLabel": "Compare for",
       "apr": "APR",
+      "colActions": "Actions",
       "colStrategy": "Strategy",
       "colTerms": "Terms",
       "colYield": "Est. Yield (FLR)",
@@ -214,29 +227,21 @@
       "message": "Thank you for helping keep FlareGPT independent. Every contribution, big or small, genuinely helps."
     },
     "description": "Your support helps keep FlareGPT free, independent, and constantly improving.",
-    "funding": {
-      "developmentFund": "Development Fund",
-      "monthlyInfrastructure": "Monthly Infrastructure",
-      "raisedOfGoal": "{{raised}} raised of {{goal}} goal",
-      "subtitle": "An open look at what it costs to keep FlareGPT running. No pressure, just visibility.",
-      "title": "Funding Transparency"
-    },
     "hero": {
       "addressCopied": "Address copied",
       "addressLabel": "Wallet Address",
       "copied": "Copied",
       "copyAddress": "Copy Address",
       "copyFailed": "Couldn't copy address",
-      "multisigNote": "Secured by a multi-signature wallet",
       "qrTitle": "QR code for the {{symbol}} donation wallet address",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Tap to copy",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "View on {{explorer}}"
     },
     "received": {
-      "demoData": "Demo data",
+      "empty": {
+        "description": "Once someone donates, it'll show up here.",
+        "title": "No donations yet"
+      },
       "subtitle": "Total contributions received across every supported network.",
       "title": "Donations Received"
     },
@@ -396,6 +401,81 @@
     "enabled": "Auto-claimed by Gas Sniper",
     "nudge": "Turn on Gas Sniper to auto-claim"
   },
+  "governance": {
+    "active": {
+      "couldntLoad": "Couldn't load active proposals",
+      "emptyDescription": "There's nothing up for a vote right now. Check Governance History below for what's already been decided.",
+      "emptyTitle": "No active proposals",
+      "title": "Active Proposals"
+    },
+    "description": "Governance proposals and how each network votes on them, read directly from the on-chain PollingFoundation contract.",
+    "drawer": {
+      "circulatingSupply": "Circulating supply",
+      "close": "Close",
+      "majorityRequired": "Majority required",
+      "proposer": "Proposer",
+      "quorum": "Quorum",
+      "quorumNotRequired": "Not required",
+      "readFullProposal": "Read full proposal",
+      "title": "Proposal Details",
+      "viewProposerOnExplorer": "View proposer on explorer",
+      "votingPeriod": "Voting period",
+      "yourVote": "Your vote",
+      "yourVotingPower": "Your voting power"
+    },
+    "endsInDays": "Ends in {{days}}d {{hours}}h",
+    "endsInHours": "Ends in {{hours}}h",
+    "historicalBadge": "Historical",
+    "history": {
+      "columnEnded": "Ended",
+      "columnProposal": "Proposal",
+      "columnResult": "Result",
+      "columnStatus": "Status",
+      "columnYourVote": "Your vote",
+      "emptyDescription": "Once a proposal concludes, it'll show up here.",
+      "emptyTitle": "No governance history yet",
+      "subtitle": "Every concluded governance proposal, most recent first.",
+      "title": "Governance History"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "Not voted",
+    "notVotedYet": "Not voted yet",
+    "stats": {
+      "active": "Active Now",
+      "defeated": "Defeated",
+      "passed": "Passed",
+      "total": "Total Proposals"
+    },
+    "status": {
+      "active": "Active",
+      "canceled": "Canceled",
+      "defeated": "Defeated",
+      "executed": "Executed",
+      "passed": "Passed",
+      "pending": "Pending",
+      "unknown": "Unknown"
+    },
+    "voteSplit": {
+      "against": "Against {{percent}}%",
+      "againstCount": "Against",
+      "for": "For {{percent}}%",
+      "forCount": "For",
+      "label": "Votes",
+      "noVotesYet": "No votes yet"
+    },
+    "voted": "Voted",
+    "votingEnded": "Voting ended",
+    "yours": {
+      "noWalletDescription": "Connect or add a wallet to see your voting power and participation across these proposals.",
+      "noWalletTitle": "See your governance activity",
+      "participation": "Your Participation",
+      "votingPower": "Your Voting Power"
+    },
+    "youVoted": "You voted"
+  },
   "help": {
     "askFlareGptCta": "Ask FlareGPT for help",
     "askFlareGptLead": "Didn't find what you're looking for?",
@@ -523,8 +603,6 @@
     "offline": "Offline",
     "openMenu": "Open menu",
     "primaryWalletSection": "Primary Wallet",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Show balances",
     "signIn": "Sign In",
     "signInBackgroundHint": "Your connected wallet needs to sign in",
@@ -774,6 +852,11 @@
       "searchPlaceholder": "Search {{count}} wallets...",
       "searchPlaceholder_one": "Search {{count}} wallet...",
       "searchPlaceholder_other": "Search {{count}} wallets...",
+      "syncCta": {
+        "title": "Connect your wallet to sync across devices"
+      },
+      "syncStatusAuthenticated": "Signed in. Your tracked wallets sync across your devices.",
+      "syncStatusGuest": "You can track up to {{max}} wallets without signing in. These wallets are stored on this device and won't sync across your other devices.",
       "tracked": "Tracked"
     }
   },
@@ -796,7 +879,7 @@
     "mainNavigation": "Main navigation",
     "notConnected": "Not connected",
     "overview": "Overview",
-    "rflrTracker": "rFLR Vesting",
+    "rflrTracker": "$rFLR Vesting",
     "settings": "Settings",
     "signInRequired": "Sign in required",
     "signInRequiredHint": "Use the wallet menu in the top bar to sign in.",

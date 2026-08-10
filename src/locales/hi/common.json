@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "मुख्य कंटेंट छोड़ें"
   },
-  "comingSoon": {
-    "badge": "जल्द ही आ रही हैं",
-    "description": "हम यह सुविधा बना रहे हैं। जल्द ही फिर से देखें।"
-  },
   "connectModal": {
     "close": "बंद करें",
     "connecting": "कनेक्ट हो रहा है…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "WalletConnect के ज़रिए"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "रद्द करें",
+      "submit": "वॉलेट जोड़ें",
+      "subtitle": "इसका डैशबोर्ड डेटा देखने के लिए एक वॉलेट पता दर्ज करें। इससे वॉलेट कनेक्ट नहीं होता और न ही हस्ताक्षर की आवश्यकता होती है।",
+      "title": "Flare वॉलेट ट्रैक करें",
+      "toastBody": "\"{{label}}\" को आपकी वॉचलिस्ट में जोड़ दिया गया है।",
+      "toastBodyActive": "\"{{label}}\" जोड़ दिया गया है और अब यह आपका सक्रिय वॉलेट है।",
+      "toastTitle": "वॉलेट जोड़ा गया"
+    },
     "apiStatus": {
       "checking": "एपीआई स्थिति की जांच की जा रही है...",
       "degraded": "एपीआई (API) को खराब किया गया",
@@ -53,6 +58,8 @@
       "title": "दावा इतिहास"
     },
     "common": {
+      "addWalletToTrack": "+ वॉलेट ट्रैक करें",
+      "manageWallets": "अपने वॉलेट प्रबंधित करें →",
       "networkHiccup": "यह आमतौर पर एक अस्थायी नेटवर्क हिचकी है।",
       "no": "नहीं",
       "noWalletSelected": "कोई वॉलेट नहीं चुना गया",
@@ -102,6 +109,11 @@
       "connectToSeeBalances": "बैलेंस देखने के लिए सेटिंग में वॉलेट कनेक्ट करें या जोड़ें।",
       "couldntLoad": "वॉलेट बैलेंस लोड नहीं किया जा सका",
       "title": "वॉलेट बैलेंस"
+    },
+    "walletTracking": {
+      "description": "किसी भी वॉलेट पते की बैलेंस, रिवॉर्ड्स और गतिविधि देखें। किसी वॉलेट कनेक्शन या हस्ताक्षर की आवश्यकता नहीं।",
+      "manageDescription": "कभी भी अपनी वॉचलिस्ट में और वॉलेट जोड़ें।",
+      "title": "किसी भी Flare वॉलेट को ट्रैक करें"
     }
   },
   "defiProtocols": {
@@ -181,6 +193,7 @@
     "strategies": {
       "amountLabel": "इसके लिए तुलना करें",
       "apr": "APR",
+      "colActions": "कार्रवाइयाँ",
       "colStrategy": "स्ट्रैटेजी",
       "colTerms": "शर्तें",
       "colYield": "अनुमानित प्रतिफल (FLR)",
@@ -214,29 +227,21 @@
       "message": "FlareGPT को स्वतंत्र बनाए रखने में मदद करने के लिए धन्यवाद। हर योगदान, छोटा हो या बड़ा, वाकई मददगार है।"
     },
     "description": "आपका समर्थन FlareGPT को मुफ़्त, स्वतंत्र और लगातार बेहतर बनाए रखने में मदद करता है।",
-    "funding": {
-      "developmentFund": "विकास कोष",
-      "monthlyInfrastructure": "मासिक इंफ्रास्ट्रक्चर",
-      "raisedOfGoal": "{{goal}} लक्ष्य में से {{raised}} जुटाए गए",
-      "subtitle": "FlareGPT को चलाने की लागत का खुला नज़रिया। कोई दबाव नहीं, बस पारदर्शिता।",
-      "title": "फंडिंग पारदर्शिता"
-    },
     "hero": {
       "addressCopied": "पता कॉपी किया गया",
       "addressLabel": "वॉलेट पता",
       "copied": "कॉपी हो गया",
       "copyAddress": "पता कॉपी करें",
       "copyFailed": "पता कॉपी नहीं हो सका",
-      "multisigNote": "मल्टी-सिग्नेचर वॉलेट द्वारा सुरक्षित",
       "qrTitle": "{{symbol}} दान वॉलेट पते के लिए QR कोड",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "कॉपी करने के लिए टैप करें",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "{{explorer}} पर देखें"
     },
     "received": {
-      "demoData": "डेमो डेटा",
+      "empty": {
+        "description": "जैसे ही कोई दान करेगा, यह यहाँ दिखाई देगा।",
+        "title": "अभी तक कोई दान नहीं"
+      },
       "subtitle": "हर समर्थित नेटवर्क पर प्राप्त कुल योगदान।",
       "title": "प्राप्त दान"
     },
@@ -251,7 +256,8 @@
     "warning": {
       "body": "इस पते पर केवल {{symbol}} या अन्य {{network}} टोकन भेजें। अन्य नेटवर्क से भेजे गए एसेट्स की भरपाई नहीं हो सकती।",
       "title": "केवल {{network}} एसेट्स।"
-    }
+    },
+    "funding": {}
   },
   "flareWidget": {
     "close": "बंद करें",
@@ -396,6 +402,81 @@
     "enabled": "Gas Sniper द्वारा ऑटो-क्लेम किया गया",
     "nudge": "ऑटो-क्लेम के लिए Gas Sniper चालू करें"
   },
+  "governance": {
+    "active": {
+      "couldntLoad": "सक्रिय प्रस्ताव लोड नहीं हो सके",
+      "emptyDescription": "अभी वोट के लिए कुछ भी उपलब्ध नहीं है। पहले से तय हो चुके प्रस्तावों के लिए नीचे गवर्नेंस इतिहास देखें।",
+      "emptyTitle": "कोई सक्रिय प्रस्ताव नहीं",
+      "title": "सक्रिय प्रस्ताव"
+    },
+    "description": "गवर्नेंस प्रस्ताव और प्रत्येक नेटवर्क उन पर कैसे वोट करता है, सीधे ऑन-चेन PollingFoundation कॉन्ट्रैक्ट से पढ़ा गया।",
+    "drawer": {
+      "circulatingSupply": "प्रचलन आपूर्ति",
+      "close": "बंद करें",
+      "majorityRequired": "आवश्यक बहुमत",
+      "proposer": "प्रस्तावक",
+      "quorum": "कोरम",
+      "quorumNotRequired": "आवश्यक नहीं",
+      "readFullProposal": "पूरा प्रस्ताव पढ़ें",
+      "title": "प्रस्ताव विवरण",
+      "viewProposerOnExplorer": "एक्सप्लोरर पर प्रस्तावक देखें",
+      "votingPeriod": "मतदान अवधि",
+      "yourVote": "आपका वोट",
+      "yourVotingPower": "आपकी वोटिंग शक्ति"
+    },
+    "endsInDays": "{{days}}दिन {{hours}}घंटे में समाप्त होता है",
+    "endsInHours": "{{hours}}घंटे में समाप्त होता है",
+    "historicalBadge": "ऐतिहासिक",
+    "history": {
+      "columnEnded": "समाप्त हुआ",
+      "columnProposal": "प्रस्ताव",
+      "columnResult": "परिणाम",
+      "columnStatus": "स्थिति",
+      "columnYourVote": "आपका वोट",
+      "emptyDescription": "जैसे ही कोई प्रस्ताव समाप्त होगा, वह यहाँ दिखाई देगा।",
+      "emptyTitle": "अभी तक कोई गवर्नेंस इतिहास नहीं",
+      "subtitle": "हर समाप्त हुआ गवर्नेंस प्रस्ताव, सबसे हाल का पहले।",
+      "title": "गवर्नेंस इतिहास"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "वोट नहीं दिया",
+    "notVotedYet": "अभी तक वोट नहीं दिया",
+    "stats": {
+      "active": "अभी सक्रिय",
+      "defeated": "अस्वीकृत",
+      "passed": "पारित",
+      "total": "कुल प्रस्ताव"
+    },
+    "status": {
+      "active": "सक्रिय",
+      "canceled": "रद्द किया गया",
+      "defeated": "अस्वीकृत",
+      "executed": "क्रियान्वित",
+      "passed": "पारित",
+      "pending": "लंबित",
+      "unknown": "अज्ञात"
+    },
+    "voteSplit": {
+      "against": "विरोध में {{percent}}%",
+      "againstCount": "विरोध में",
+      "for": "पक्ष में {{percent}}%",
+      "forCount": "पक्ष में",
+      "label": "वोट",
+      "noVotesYet": "अभी तक कोई वोट नहीं"
+    },
+    "voted": "वोट दिया",
+    "votingEnded": "मतदान समाप्त",
+    "yours": {
+      "noWalletDescription": "इन प्रस्तावों में अपनी वोटिंग शक्ति और भागीदारी देखने के लिए एक वॉलेट कनेक्ट करें या जोड़ें।",
+      "noWalletTitle": "अपनी गवर्नेंस गतिविधि देखें",
+      "participation": "आपकी भागीदारी",
+      "votingPower": "आपकी वोटिंग शक्ति"
+    },
+    "youVoted": "आपने वोट दिया"
+  },
   "help": {
     "askFlareGptCta": "मदद के लिए FlareGPT से पूछें",
     "askFlareGptLead": "जो आप ढूंढ रहे थे वह नहीं मिला?",
@@ -523,8 +604,6 @@
     "offline": "Offline",
     "openMenu": "मेनू खोलें",
     "primaryWalletSection": "प्राइमरी वॉलेट",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "बैलेंस दिखाएं",
     "signIn": "साइन इन करें",
     "signInBackgroundHint": "आपके कनेक्टेड वॉलेट को साइन इन करने की आवश्यकता है",
@@ -774,6 +853,11 @@
       "searchPlaceholder": "{{count}} वॉलेट में खोजें...",
       "searchPlaceholder_one": "{{count}} वॉलेट में खोजें...",
       "searchPlaceholder_other": "{{count}} वॉलेट में खोजें...",
+      "syncCta": {
+        "title": "डिवाइसों के बीच सिंक करने के लिए अपना वॉलेट कनेक्ट करें"
+      },
+      "syncStatusAuthenticated": "साइन इन किया गया। आपके ट्रैक किए गए वॉलेट आपके डिवाइसों के बीच सिंक होते हैं।",
+      "syncStatusGuest": "आप साइन इन किए बिना अधिकतम {{max}} वॉलेट ट्रैक कर सकते हैं। ये वॉलेट इस डिवाइस पर संग्रहीत हैं और आपके अन्य डिवाइसों के साथ सिंक नहीं होंगे।",
       "tracked": "ट्रैक किया गया"
     }
   },
@@ -936,5 +1020,6 @@
       "received": "प्राप्त किया गया",
       "sent": "भेजी- डाक"
     }
-  }
+  },
+  "comingSoon": {}
 }

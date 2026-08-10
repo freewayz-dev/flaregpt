@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { WalletIcon, ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline";
 
-import { shortenAddress } from "@/utils/address";
+import { shortenAddress, copyWalletAddress } from "@/utils/address";
 
 // A compact inline reference — for when an assistant response points at a
 // specific wallet address — rather than raw plain text, so responses stay
@@ -18,12 +18,12 @@ export default function WalletAddressBadge({ address }: WalletAddressBadgeProps)
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(address);
+    const success = await copyWalletAddress(address);
+    if (success) {
       setCopied(true);
       toast.success(t("navbar.addressCopied"));
       setTimeout(() => setCopied(false), 2000);
-    } catch {
+    } else {
       toast.error(t("navbar.copyFailed"));
     }
   };

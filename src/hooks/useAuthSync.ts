@@ -12,6 +12,29 @@ import * as authService from "@/services/authService";
 // isn't worth re-deriving by hand when the real hook already has it.
 type SignMessageAsync = ReturnType<typeof useSignMessage>["mutateAsync"];
 
+// EIP-1193's own rejection code (4001) is the most reliable signal — every
+// wallet that follows the standard sets it regardless of provider-specific
+// wording. `name`/message checks are a fallback for viem's own wrapped
+// error shape (`UserRejectedRequestError`) and for wallets that only set
+// the message. A rejection is an expected, ordinary outcome (the user
+// backed out of the wallet's own approval popup), not a failure — it must
+// read differently from a real error below.
+function isUserRejectionError(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+  if ("code" in error && (error as { code?: unknown }).code === 4001) return true;
+  if ("name" in error && (error as { name?: unknown }).name === "UserRejectedRequestError") {
+    return true;
+  }
+  const message =
+    "shortMessage" in error && typeof (error as { shortMessage?: unknown }).shortMessage === "string"
+      ? (error as { shortMessage: string }).shortMessage
+      : error instanceof Error
+        ? error.message
+        : "";
+  const lower = message.toLowerCase();
+  return lower.includes("user rejected") || lower.includes("user denied");
+}
+
 // The actual nonce -> sign -> verify -> setSession dance, factored out of
 // the effect below so it can also be called directly by a manual "Sign In"
 // action (see the exported `signIn`) — connected-but-signed-out is a real,
@@ -42,9 +65,18 @@ async function attemptSignIn(address: Address, signMessageAsync: SignMessageAsyn
     const signature = await signMessageAsync({ account: address, message });
     const { token } = await authService.verifySignature(address, signature);
     useAuthStore.getState().setSession(token, address);
-  } catch {
+  } catch (error) {
     useAuthStore.getState().stopAuthenticating();
-    toast.error("Sign-in failed. Try again.");
+    // Preserve the real cause instead of discarding it — the generic toast
+    // below is user-facing copy, not a substitute for actually knowing why
+    // this failed (nonce request, the wallet, or verify can each throw for
+    // very different reasons).
+    console.error("[useAuthSync] sign-in failed", error);
+    if (isUserRejectionError(error)) {
+      toast.error("Sign-in cancelled.");
+    } else {
+      toast.error("Sign-in failed. Try again.");
+    }
   }
 }
 
@@ -169,8 +201,27 @@ export function useAuthSync() {
     // initial restore happened to be silent.
     if (isFirstConnectionEver && hadSilentAutoReconnectRef.current) return;
 
+    // Reaching here with a `token` still set means it belongs to a
+    // *different* wallet than the one that just connected (the same-wallet
+    // case already returned above) — a real wallet switch, not a fresh
+    // connect. apiClient.ts's own request interceptor already refuses to
+    // attach this stale token to any outgoing request once
+    // `connectedAddress` stops matching `authenticatedAddress`, so no
+    // request can ever act as the old wallet — but leaving `token`/
+    // `authenticatedAddress` sitting in the store until *some* request
+    // happens to 401 and clean it up (apiClient's other interceptor) is
+    // reactive and timing-dependent: `hasSession` (derived from `token`
+    // alone — see useAuthStatus.ts) would keep reading `true` for a wallet
+    // that was never actually authenticated, for however long it takes for
+    // that to happen. Clearing it synchronously, right here, the instant a
+    // real switch is detected, means a cancelled/failed sign-in for the
+    // new wallet always leaves this device in the exact "connected, not
+    // authenticated" state that state ought to describe — never a stale
+    // "still looks signed in, just as someone else" one.
+    if (token) clearAuth();
+
     attemptSignIn(address, signMessageAsync);
-  }, [isConnected, address, token, authenticatedAddress, signMessageAsync]);
+  }, [isConnected, address, token, authenticatedAddress, signMessageAsync, clearAuth]);
 }
 
 // Manual trigger for "Sign In" (connected but not authenticated) — see

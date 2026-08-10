@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "Langsung ke konten utama"
   },
-  "comingSoon": {
-    "badge": "Segera",
-    "description": "Kami sedang membangun fitur ini. Segera periksa kembali."
-  },
   "connectModal": {
     "close": "Tutup",
     "connecting": "Menghubungkan…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "Melalui WalletConnect"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "Batal",
+      "submit": "Tambah dompet",
+      "subtitle": "Masukkan alamat dompet untuk melihat data dasbornya. Ini tidak menghubungkan dompet atau memerlukan tanda tangan.",
+      "title": "Lacak dompet Flare",
+      "toastBody": "\"{{label}}\" telah ditambahkan ke daftar pantau Anda.",
+      "toastBodyActive": "\"{{label}}\" telah ditambahkan dan kini menjadi dompet aktif Anda.",
+      "toastTitle": "Dompet ditambahkan"
+    },
     "apiStatus": {
       "checking": "Memeriksa status api...",
       "degraded": "Api terdegradasi",
@@ -53,6 +58,8 @@
       "title": "Riwayat Klaim"
     },
     "common": {
+      "addWalletToTrack": "+ Lacak dompet",
+      "manageWallets": "Kelola dompet Anda →",
       "networkHiccup": "Ini biasanya cegukan jaringan sementara.",
       "no": "No",
       "noWalletSelected": "Tidak ada dompet dipilih",
@@ -102,6 +109,11 @@
       "connectToSeeBalances": "Hubungkan atau tambahkan dompet di Pengaturan untuk melihat saldo.",
       "couldntLoad": "Tidak dapat memuat saldo dompet",
       "title": "Saldo Dompet"
+    },
+    "walletTracking": {
+      "description": "Lihat saldo, reward, dan aktivitas untuk alamat dompet mana pun. Tanpa perlu koneksi dompet atau tanda tangan.",
+      "manageDescription": "Tambahkan lebih banyak dompet ke daftar pantau Anda kapan saja.",
+      "title": "Lacak dompet Flare apa pun"
     }
   },
   "defiProtocols": {
@@ -181,6 +193,7 @@
     "strategies": {
       "amountLabel": "Bandingkan untuk",
       "apr": "APR",
+      "colActions": "Tindakan",
       "colStrategy": "Strategi",
       "colTerms": "Ketentuan",
       "colYield": "Est. Imbal Hasil (FLR)",
@@ -214,29 +227,21 @@
       "message": "Terima kasih telah membantu menjaga FlareGPT tetap independen. Setiap kontribusi, besar atau kecil, sungguh membantu."
     },
     "description": "Dukungan Anda membantu menjaga FlareGPT tetap gratis, independen, dan terus berkembang.",
-    "funding": {
-      "developmentFund": "Dana Pengembangan",
-      "monthlyInfrastructure": "Infrastruktur Bulanan",
-      "raisedOfGoal": "{{raised}} terkumpul dari target {{goal}}",
-      "subtitle": "Gambaran terbuka tentang biaya menjalankan FlareGPT. Tanpa tekanan, hanya transparansi.",
-      "title": "Transparansi Pendanaan"
-    },
     "hero": {
       "addressCopied": "Alamat disalin",
       "addressLabel": "Alamat Wallet",
       "copied": "Tersalin",
       "copyAddress": "Salin Alamat",
       "copyFailed": "Gagal menyalin alamat",
-      "multisigNote": "Diamankan oleh wallet multi-tanda tangan",
       "qrTitle": "Kode QR untuk alamat wallet donasi {{symbol}}",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Ketuk untuk menyalin",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "Lihat di {{explorer}}"
     },
     "received": {
-      "demoData": "Data demo",
+      "empty": {
+        "description": "Begitu seseorang berdonasi, itu akan muncul di sini.",
+        "title": "Belum ada donasi"
+      },
       "subtitle": "Total kontribusi yang diterima di setiap jaringan yang didukung.",
       "title": "Donasi Diterima"
     },
@@ -251,7 +256,8 @@
     "warning": {
       "body": "Hanya kirim {{symbol}} atau token {{network}} lainnya ke alamat ini. Aset yang dikirim dari jaringan lain tidak dapat dipulihkan.",
       "title": "Hanya aset {{network}}."
-    }
+    },
+    "funding": {}
   },
   "flareWidget": {
     "close": "Tutup",
@@ -396,6 +402,81 @@
     "enabled": "Diklaim otomatis oleh Gas Sniper",
     "nudge": "Aktifkan Gas Sniper untuk klaim otomatis"
   },
+  "governance": {
+    "active": {
+      "couldntLoad": "Tidak dapat memuat proposal aktif",
+      "emptyDescription": "Saat ini tidak ada yang sedang dalam pemungutan suara. Lihat Riwayat Tata Kelola di bawah untuk hal-hal yang sudah diputuskan.",
+      "emptyTitle": "Tidak ada proposal aktif",
+      "title": "Proposal Aktif"
+    },
+    "description": "Proposal tata kelola dan cara setiap jaringan memberikan suara, dibaca langsung dari kontrak on-chain PollingFoundation.",
+    "drawer": {
+      "circulatingSupply": "Suplai beredar",
+      "close": "Tutup",
+      "majorityRequired": "Mayoritas yang diperlukan",
+      "proposer": "Pengusul",
+      "quorum": "Kuorum",
+      "quorumNotRequired": "Tidak diperlukan",
+      "readFullProposal": "Baca proposal lengkap",
+      "title": "Detail Proposal",
+      "viewProposerOnExplorer": "Lihat pengusul di explorer",
+      "votingPeriod": "Periode pemungutan suara",
+      "yourVote": "Suara Anda",
+      "yourVotingPower": "Kekuatan suara Anda"
+    },
+    "endsInDays": "Berakhir dalam {{days}}h {{hours}}j",
+    "endsInHours": "Berakhir dalam {{hours}}j",
+    "historicalBadge": "Historis",
+    "history": {
+      "columnEnded": "Berakhir",
+      "columnProposal": "Proposal",
+      "columnResult": "Hasil",
+      "columnStatus": "Status",
+      "columnYourVote": "Suara Anda",
+      "emptyDescription": "Begitu sebuah proposal selesai, itu akan muncul di sini.",
+      "emptyTitle": "Belum ada riwayat tata kelola",
+      "subtitle": "Setiap proposal tata kelola yang selesai, terbaru lebih dulu.",
+      "title": "Riwayat Tata Kelola"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "Belum memilih",
+    "notVotedYet": "Belum memberikan suara",
+    "stats": {
+      "active": "Aktif Sekarang",
+      "defeated": "Ditolak",
+      "passed": "Disetujui",
+      "total": "Total Proposal"
+    },
+    "status": {
+      "active": "Aktif",
+      "canceled": "Dibatalkan",
+      "defeated": "Ditolak",
+      "executed": "Dieksekusi",
+      "passed": "Disetujui",
+      "pending": "Tertunda",
+      "unknown": "Tidak diketahui"
+    },
+    "voteSplit": {
+      "against": "Menolak {{percent}}%",
+      "againstCount": "Menolak",
+      "for": "Mendukung {{percent}}%",
+      "forCount": "Mendukung",
+      "label": "Suara",
+      "noVotesYet": "Belum ada suara"
+    },
+    "voted": "Memilih",
+    "votingEnded": "Pemungutan suara berakhir",
+    "yours": {
+      "noWalletDescription": "Hubungkan atau tambahkan dompet untuk melihat kekuatan suara dan partisipasi Anda dalam proposal ini.",
+      "noWalletTitle": "Lihat aktivitas tata kelola Anda",
+      "participation": "Partisipasi Anda",
+      "votingPower": "Kekuatan Suara Anda"
+    },
+    "youVoted": "Anda telah memilih"
+  },
   "help": {
     "askFlareGptCta": "Tanyakan pada FlareGPT",
     "askFlareGptLead": "Tidak menemukan yang Anda cari?",
@@ -523,8 +604,6 @@
     "offline": "Offline",
     "openMenu": "Buka menu",
     "primaryWalletSection": "Dompet Utama",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Tampilkan saldo",
     "signIn": "Masuk",
     "signInBackgroundHint": "Dompet Anda yang terhubung perlu masuk",
@@ -774,6 +853,11 @@
       "searchPlaceholder": "Cari di {{count}} dompet...",
       "searchPlaceholder_one": "Cari di {{count}} dompet...",
       "searchPlaceholder_other": "Cari di {{count}} dompet...",
+      "syncCta": {
+        "title": "Hubungkan dompet Anda untuk sinkronisasi di berbagai perangkat"
+      },
+      "syncStatusAuthenticated": "Sudah masuk. Dompet yang Anda lacak akan sinkron di semua perangkat Anda.",
+      "syncStatusGuest": "Anda dapat melacak hingga {{max}} dompet tanpa masuk. Dompet ini disimpan di perangkat ini dan tidak akan sinkron dengan perangkat Anda yang lain.",
       "tracked": "Dilacak"
     }
   },
@@ -936,5 +1020,6 @@
       "received": "Diterima",
       "sent": "Terkirim"
     }
-  }
+  },
+  "comingSoon": {}
 }

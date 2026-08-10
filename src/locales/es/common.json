@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "Saltar al menú principal"
   },
-  "comingSoon": {
-    "badge": "Próximamente",
-    "description": "Estamos desarrollando esta función. Vuelve a consultar pronto."
-  },
   "connectModal": {
     "close": "Cerrar",
     "connecting": "Conectando…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "Vía WalletConnect"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "Cancelar",
+      "submit": "Añadir wallet",
+      "subtitle": "Introduce una dirección de wallet para ver sus datos del panel. Esto no conecta la wallet ni requiere firma.",
+      "title": "Seguir una wallet de Flare",
+      "toastBody": "\"{{label}}\" se ha añadido a tu lista de seguimiento.",
+      "toastBodyActive": "\"{{label}}\" se ha añadido y ahora es tu wallet activa.",
+      "toastTitle": "Wallet añadida"
+    },
     "apiStatus": {
       "checking": "Comprobando el estado de la API...",
       "degraded": "API degradada",
@@ -43,8 +48,8 @@
     "chart": {
       "couldntLoad": "No se ha podido cargar el historial de precios de FLR",
       "viewData_one": "Ver historial de precios ({{count}} punto)",
-      "viewData_many": "",
-      "viewData_other": "Ver historial de precios ({{count}} puntos)"
+      "viewData_other": "Ver historial de precios ({{count}} puntos)",
+      "viewData_many": ""
     },
     "claimsHistory": {
       "connectToSee": "Conecta o añade un monedero en Configuración para ver el historial de reclamaciones.",
@@ -54,6 +59,8 @@
       "title": "Historial de reclamaciones"
     },
     "common": {
+      "addWalletToTrack": "+ Seguir una wallet",
+      "manageWallets": "Gestiona tus wallets →",
       "networkHiccup": "Esto suele ser un contratiempo temporal de la red.",
       "no": "No",
       "noWalletSelected": "No se ha seleccionado ningún monedero",
@@ -90,8 +97,8 @@
       "title": "Actividad de la red",
       "tps": "TPS",
       "viewData_one": "Ver muestras de precio del gas ({{count}} muestra)",
-      "viewData_many": "",
-      "viewData_other": "Ver muestras de precio del gas ({{count}} muestras)"
+      "viewData_other": "Ver muestras de precio del gas ({{count}} muestras)",
+      "viewData_many": ""
     },
     "stats": {
       "couldntLoad": "No se ha podido cargar la descripción general del mercado",
@@ -104,6 +111,11 @@
       "connectToSeeBalances": "Conecta o añade un monedero en Configuración para ver los saldos.",
       "couldntLoad": "No se han podido cargar los saldos del monedero",
       "title": "Saldos de billetera"
+    },
+    "walletTracking": {
+      "description": "Consulta saldos, recompensas y actividad de cualquier dirección de wallet. No se requiere conexión de wallet ni firma.",
+      "manageDescription": "Añade más wallets a tu lista de seguimiento cuando quieras.",
+      "title": "Sigue cualquier wallet de Flare"
     }
   },
   "defiProtocols": {
@@ -183,6 +195,7 @@
     "strategies": {
       "amountLabel": "Comparar para",
       "apr": "APR",
+      "colActions": "Acciones",
       "colStrategy": "Estrategia",
       "colTerms": "Condiciones",
       "colYield": "Rendimiento Est. (FLR)",
@@ -191,17 +204,17 @@
       "highestApr": "APR más alto",
       "lockupDays": "{{count}} días de bloqueo",
       "lockupDays_one": "{{count}} día de bloqueo",
-      "lockupDays_many": "",
       "lockupDays_other": "{{count}} días de bloqueo",
       "lockupHours": "{{count}}h de bloqueo",
       "lockupHours_one": "{{count}}h de bloqueo",
-      "lockupHours_many": "",
       "lockupHours_other": "{{count}}h de bloqueo",
       "noLockup": "Sin bloqueo",
       "subtitle": "Descubre cómo podría rendir tu FLR en distintas estrategias",
       "title": "Comparación de Estrategias",
       "toggleDetails": "Mostrar detalles de {{strategy}}",
-      "verdict": "Veredicto de FlareGPT"
+      "verdict": "Veredicto de FlareGPT",
+      "lockupDays_many": "",
+      "lockupHours_many": ""
     }
   },
   "donate": {
@@ -218,29 +231,21 @@
       "message": "Gracias por ayudar a mantener FlareGPT independiente. Cada contribución, grande o pequeña, realmente ayuda."
     },
     "description": "Tu apoyo ayuda a mantener FlareGPT gratuito, independiente y en constante mejora.",
-    "funding": {
-      "developmentFund": "Fondo de Desarrollo",
-      "monthlyInfrastructure": "Infraestructura Mensual",
-      "raisedOfGoal": "{{raised}} recaudados de la meta de {{goal}}",
-      "subtitle": "Una mirada abierta a lo que cuesta mantener FlareGPT en funcionamiento. Sin presión, solo visibilidad.",
-      "title": "Transparencia de Financiamiento"
-    },
     "hero": {
       "addressCopied": "Copiada la dirección del enlace",
       "addressLabel": "Dirección de la Wallet",
       "copied": "Copiado",
       "copyAddress": "Copiar Dirección",
       "copyFailed": "No se pudo copiar la dirección",
-      "multisigNote": "Protegida por una wallet multifirma",
       "qrTitle": "Código QR de la dirección de la wallet de donaciones en {{symbol}}",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Toca para copiar",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "Ver en {{explorer}}"
     },
     "received": {
-      "demoData": "Datos de demostración",
+      "empty": {
+        "description": "En cuanto alguien done, aparecerá aquí.",
+        "title": "Aún no hay donaciones"
+      },
       "subtitle": "Contribuciones totales recibidas en cada red compatible.",
       "title": "Donaciones Recibidas"
     },
@@ -255,7 +260,8 @@
     "warning": {
       "body": "Envía únicamente {{symbol}} u otros tokens de {{network}} a esta dirección. Los activos enviados desde otras redes no se pueden recuperar.",
       "title": "Solo activos de {{network}}."
-    }
+    },
+    "funding": {}
   },
   "flareWidget": {
     "close": "Cerrar",
@@ -306,7 +312,6 @@
       "pin": "Fijar",
       "pinLimitReached": "Puedes fijar hasta {{count}} conversaciones",
       "pinLimitReached_one": "Puedes fijar hasta {{count}} conversación",
-      "pinLimitReached_many": "",
       "pinLimitReached_other": "Puedes fijar hasta {{count}} conversaciones",
       "rename": "Cambiar nombre",
       "renameFailed": "No se pudo cambiar el nombre de esta conversación.",
@@ -315,7 +320,8 @@
       "searchPlaceholder": "Buscar conversaciones...",
       "title": "Historial de chat",
       "unpin": "Desfijar",
-      "untitled": "Sin título"
+      "untitled": "Sin título",
+      "pinLimitReached_many": ""
     },
     "historyLoadFailed": "No se ha podido cargar el historial del chat.",
     "jumpToLatest": "Ir a lo último",
@@ -354,11 +360,11 @@
     "couldntLoad": "No se pudieron cargar tus recompensas FTSO.",
     "delegations": {
       "count_one": "{{count}} proveedor",
-      "count_many": "",
       "count_other": "{{count}} proveedores",
       "emptyDescription": "Delega tu WFLR a un proveedor de datos FTSO para empezar a ganar recompensas.",
       "emptyTitle": "Sin Delegaciones Activas",
-      "title": "Delegaciones Activas"
+      "title": "Delegaciones Activas",
+      "count_many": ""
     },
     "description": "Sigue las recompensas de delegación FTSO, la velocidad de recompensas y las asignaciones de proveedores en un solo lugar.",
     "epochs": {
@@ -368,8 +374,8 @@
       "subtitle": "Recompensas pendientes de reclamar, por época",
       "title": "Épocas Sin Reclamar",
       "viewFullLedger_one": "Ver registro completo ({{count}} entrada)",
-      "viewFullLedger_many": "",
-      "viewFullLedger_other": "Ver registro completo ({{count}} entradas)"
+      "viewFullLedger_other": "Ver registro completo ({{count}} entradas)",
+      "viewFullLedger_many": ""
     },
     "providers": {
       "description": "Compara proveedores de datos por rendimiento y comisiones una vez conectadas las clasificaciones de proveedores.",
@@ -402,6 +408,81 @@
     "checking": "Comprobando el estado de Gas Sniper…",
     "enabled": "Reclamado automáticamente por Gas Sniper",
     "nudge": "Activa Gas Sniper para reclamar automáticamente"
+  },
+  "governance": {
+    "active": {
+      "couldntLoad": "No se pudieron cargar las propuestas activas",
+      "emptyDescription": "No hay nada en votación ahora mismo. Consulta el Historial de Gobernanza más abajo para ver lo que ya se ha decidido.",
+      "emptyTitle": "No hay propuestas activas",
+      "title": "Propuestas Activas"
+    },
+    "description": "Propuestas de gobernanza y cómo vota cada red, leídas directamente del contrato PollingFoundation on-chain.",
+    "drawer": {
+      "circulatingSupply": "Suministro circulante",
+      "close": "Cerrar",
+      "majorityRequired": "Mayoría requerida",
+      "proposer": "Proponente",
+      "quorum": "Quórum",
+      "quorumNotRequired": "No requerido",
+      "readFullProposal": "Leer propuesta completa",
+      "title": "Detalles de la Propuesta",
+      "viewProposerOnExplorer": "Ver proponente en el explorador",
+      "votingPeriod": "Periodo de votación",
+      "yourVote": "Tu voto",
+      "yourVotingPower": "Tu poder de voto"
+    },
+    "endsInDays": "Termina en {{days}}d {{hours}}h",
+    "endsInHours": "Termina en {{hours}}h",
+    "historicalBadge": "Histórica",
+    "history": {
+      "columnEnded": "Finalizó",
+      "columnProposal": "Propuesta",
+      "columnResult": "Resultado",
+      "columnStatus": "Estado",
+      "columnYourVote": "Tu voto",
+      "emptyDescription": "En cuanto concluya una propuesta, aparecerá aquí.",
+      "emptyTitle": "Aún no hay historial de gobernanza",
+      "subtitle": "Todas las propuestas de gobernanza concluidas, las más recientes primero.",
+      "title": "Historial de Gobernanza"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "Sin voto",
+    "notVotedYet": "Aún sin votar",
+    "stats": {
+      "active": "Activas Ahora",
+      "defeated": "Rechazadas",
+      "passed": "Aprobadas",
+      "total": "Propuestas Totales"
+    },
+    "status": {
+      "active": "Activa",
+      "canceled": "Cancelada",
+      "defeated": "Rechazada",
+      "executed": "Ejecutada",
+      "passed": "Aprobada",
+      "pending": "Pendiente",
+      "unknown": "Desconocido"
+    },
+    "voteSplit": {
+      "against": "En contra {{percent}}%",
+      "againstCount": "En contra",
+      "for": "A favor {{percent}}%",
+      "forCount": "A favor",
+      "label": "Votos",
+      "noVotesYet": "Aún no hay votos"
+    },
+    "voted": "Votado",
+    "votingEnded": "Votación finalizada",
+    "yours": {
+      "noWalletDescription": "Conecta o añade una wallet para ver tu poder de voto y participación en estas propuestas.",
+      "noWalletTitle": "Consulta tu actividad de gobernanza",
+      "participation": "Tu Participación",
+      "votingPower": "Tu Poder de Voto"
+    },
+    "youVoted": "Has votado"
   },
   "help": {
     "askFlareGptCta": "Pídele ayuda a FlareGPT",
@@ -530,8 +611,6 @@
     "offline": "Sin conexión",
     "openMenu": "Abrir menú",
     "primaryWalletSection": "Billetera Principal",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Mostrar saldos",
     "signIn": "Iniciar sesión",
     "signInBackgroundHint": "Tu billetera conectada necesita iniciar sesión",
@@ -600,8 +679,8 @@
       "title": "Cronología de Desbloqueos",
       "viewFullSchedule": "Ver calendario completo ({{count}} entradas)",
       "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
-      "viewFullSchedule_many": "",
-      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_many": ""
     }
   },
   "settings": {
@@ -781,9 +860,14 @@
       "saveEdit": "Guardar",
       "searchPlaceholder": "Buscar entre {{count}} billeteras...",
       "searchPlaceholder_one": "Buscar entre {{count}} billetera...",
-      "searchPlaceholder_many": "",
       "searchPlaceholder_other": "Buscar entre {{count}} billeteras...",
-      "tracked": "Monitorizado"
+      "syncCta": {
+        "title": "Conecta tu wallet para sincronizar entre dispositivos"
+      },
+      "syncStatusAuthenticated": "Sesión iniciada. Tus wallets rastreadas se sincronizan entre tus dispositivos.",
+      "syncStatusGuest": "Puedes seguir hasta {{max}} wallets sin iniciar sesión. Estas wallets se guardan en este dispositivo y no se sincronizarán con tus otros dispositivos.",
+      "tracked": "Monitorizado",
+      "searchPlaceholder_many": ""
     }
   },
   "sidebar": {
@@ -834,8 +918,8 @@
         "tabActivity": "Actividad",
         "tabAssets": "Activos",
         "viewData_one": "Ver datos ({{count}} fila)",
-        "viewData_many": "",
-        "viewData_other": "Ver datos ({{count}} filas)"
+        "viewData_other": "Ver datos ({{count}} filas)",
+        "viewData_many": ""
       },
       "connectToSee": "Conecta o selecciona una wallet para ver su actividad de transacciones.",
       "couldntLoad": "No se pudo cargar la actividad de la wallet.",
@@ -872,30 +956,30 @@
         "title": "Datos rápidos",
         "txCount": "{{count}} transacciones",
         "txCount_one": "{{count}} transacción",
-        "txCount_many": "",
-        "txCount_other": "{{count}} transacciones"
+        "txCount_other": "{{count}} transacciones",
+        "txCount_many": ""
       },
       "kpi": {
         "daysAgo": "hace {{count}} d",
         "daysAgo_one": "hace {{count}} d",
-        "daysAgo_many": "",
         "daysAgo_other": "hace {{count}} d",
         "hoursAgo": "hace {{count}} h",
         "hoursAgo_one": "hace {{count}} h",
-        "hoursAgo_many": "",
         "hoursAgo_other": "hace {{count}} h",
         "justNow": "Justo ahora",
         "lastActive": "Última actividad",
         "minutesAgo": "hace {{count}} min",
         "minutesAgo_one": "hace {{count}} min",
-        "minutesAgo_many": "",
         "minutesAgo_other": "hace {{count}} min",
         "totalTransactions": "Transacciones totales",
         "uniqueAssets": "Activos únicos",
         "walletAge": "Antigüedad de la wallet",
         "walletAgeDays": "{{count}} días",
         "walletAgeMonths": "{{count}} meses",
-        "walletAgeYears": "{{count}} años"
+        "walletAgeYears": "{{count}} años",
+        "daysAgo_many": "",
+        "hoursAgo_many": "",
+        "minutesAgo_many": ""
       },
       "loading": {
         "elapsed": "{{seconds}}s transcurridos",
@@ -949,5 +1033,6 @@
       "received": "Recibido",
       "sent": "Enviado"
     }
-  }
+  },
+  "comingSoon": {}
 }

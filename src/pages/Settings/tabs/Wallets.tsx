@@ -16,7 +16,12 @@ import {
   ArrowPathIcon,
 } from "@heroicons/react/24/outline";
 
-import { useDerivedWalletHub, type WalletHubEntry } from "@/store/useWalletHubStore";
+import {
+  useDerivedWalletHub,
+  DEFAULT_TRACKED_LABEL,
+  GUEST_MAX_SLOTS,
+  type WalletHubEntry,
+} from "@/store/useWalletHubStore";
 import {
   useAddWatchlistWallet,
   useRemoveWatchlistWallet,
@@ -24,6 +29,9 @@ import {
 } from "@/hooks/queries/useWatchlistQueries";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
+import { isValidTrackedWalletAddress } from "@/utils/address";
+import { interpretWatchlistError } from "@/utils/watchlistErrors";
+import { WalletAddedToastContent } from "@/components/common/WalletAddedToastContent";
 import Card from "@/pages/Settings/components/Card";
 import type { DashboardOutletContext } from "@/components/layout/DashboardLayout";
 
@@ -58,34 +66,6 @@ const LIST_MAX_HEIGHT_CLASS = "max-h-[45vh] sm:max-h-[420px]";
 // "would this actually overflow" check, not a precise measurement) — a
 // short list that fits within the cap shouldn't fade its own last row.
 const APPROX_VISIBLE_ROWS = 5;
-
-// The backend distinguishes a duplicate address from a duplicate nickname
-// only through this endpoint's own free-text `detail` — both cases share
-// the same 409 status, and the wording is the only thing that tells them
-// apart (confirmed live against both add and edit): "This address is
-// already on your watchlist." vs "Nickname '<name>' is already used for
-// another watched wallet." Showing the address-duplicate message for an
-// actual nickname collision (what a flat "409 -> duplicateAddress" mapping
-// used to do) is exactly the bug this exists to fix. If the backend ever
-// adds a distinct error code, that becomes the primary check and this
-// text sniff becomes the fallback.
-function interpretWatchlistError(error: unknown, t: TFunction) {
-  const status = isAxiosError(error) ? error.response?.status : undefined;
-  const detail = (isAxiosError(error) ? error.response?.data?.detail : "") || "";
-
-  if (status === 409) {
-    return /nickname/i.test(detail)
-      ? t("settings.wallets.duplicateNickname")
-      : t("settings.wallets.duplicateAddress");
-  }
-  if (status === 404) {
-    return t("settings.wallets.notFoundError");
-  }
-  if (status === 422) {
-    return t("settings.wallets.invalidAddress");
-  }
-  return t("settings.wallets.registrationFailed");
-}
 
 interface WalletListRowProps {
   wallet: WalletHubEntry;
@@ -408,7 +388,7 @@ export default function Wallets() {
     }
 
     const trimmedAddress = editAddress.trim();
-    if (!trimmedAddress.startsWith("0x") || trimmedAddress.length !== 42) {
+    if (!isValidTrackedWalletAddress(trimmedAddress)) {
       setEditError(t("settings.wallets.invalidAddress"));
       return;
     }
@@ -498,7 +478,7 @@ export default function Wallets() {
     e.preventDefault();
     setErrorText("");
 
-    if (!inputAddress.startsWith("0x") || inputAddress.length !== 42) {
+    if (!isValidTrackedWalletAddress(inputAddress)) {
       setErrorText(t("settings.wallets.invalidAddress"));
       return;
     }
@@ -523,9 +503,15 @@ export default function Wallets() {
         return;
       }
     } else {
+      // `undefined`, not a hardcoded literal — same reasoning as
+      // AddWalletModal.tsx's own guest path: the store already has a
+      // real, canonical default (DEFAULT_TRACKED_LABEL, "Watchlist
+      // Account") that a locally-typed fallback string here would
+      // silently shadow, producing a wallet whose list label and toast
+      // label disagree with each other for no reason.
       const success = addTrackedWallet(
         inputAddress.trim(),
-        inputLabel.trim() || "Watchlist Wallet",
+        inputLabel.trim() || undefined,
         connectedAddress,
         isConnected,
       );
@@ -535,6 +521,18 @@ export default function Wallets() {
         return;
       }
     }
+
+    // A toast, not just the new row appearing in the list below — see
+    // AddWalletModal.tsx's own identical comment for why this app treats
+    // "it's now in the list" as insufficient confirmation on its own.
+    // Settings' own add form never auto-selects a wallet (unlike
+    // Overview's), so `becameActive` is always false here.
+    toast.success(
+      <WalletAddedToastContent
+        label={inputLabel.trim() || DEFAULT_TRACKED_LABEL}
+        becameActive={false}
+      />,
+    );
 
     setInputAddress("");
     setInputLabel("");
@@ -569,6 +567,45 @@ export default function Wallets() {
         title={t("settings.cards.connectedWallets")}
         subtitle={t("settings.wallets.manageSubtitle")}
       >
+        {/* Immediately visible on landing, not buried below the wallet
+            list — a guest gets an obvious sync explanation with a real
+            CTA, using the same quiet card treatment the guest-limit
+            upsell further down already established (reused, not a new
+            design), just without needing to wait until they've hit the
+            cap to see it. An authenticated user gets the same quiet plain-
+            text confirmation as before — nothing to act on, so nothing
+            louder is warranted. Shown regardless of whether the list below
+            is empty or populated, since the storage-mode distinction
+            applies either way. */}
+        {hasSession ? (
+          <p className="text-[11px] text-ink-secondary mb-4">
+            {t("settings.wallets.syncStatusAuthenticated")}
+          </p>
+        ) : (
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-brand/5 border border-brand/15 p-3">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-ink-primary">
+                {t("settings.wallets.syncCta.title")}
+              </p>
+              <p className="mt-0.5 text-[11px] text-ink-secondary">
+                {t("settings.wallets.syncStatusGuest", { max: GUEST_MAX_SLOTS })}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleSignInPrompt}
+              disabled={isAuthenticating}
+              className="shrink-0 rounded-lg bg-brand px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-hover transition-colors cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {!isConnected
+                ? t("navbar.connectWallet")
+                : isAuthenticating
+                  ? t("navbar.signingIn")
+                  : t("navbar.signIn")}
+            </button>
+          </div>
+        )}
+
         {watchlistIsError && allWallets.length === 0 ? (
           // Checked before the genuine-empty branch below — a signed-in
           // user whose watchlist fetch failed (or is offline-paused) was

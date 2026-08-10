@@ -26,6 +26,8 @@ export default function DelegationsBreakdownCard() {
       </h3>
 
       {!activeAddress ? (
+        // No per-card "add wallet" action here anymore — see
+        // WalletBalancesCard's own comment.
         <WalletEmptyState
           icon={Square3Stack3DIcon}
           title={t("dashboard.common.noWalletSelected")}

@@ -64,7 +64,7 @@ function ProtocolListRow({ protocol, isActive, onClick, balance, t }: ProtocolLi
       <div className="min-w-0 flex-1">
         <p
           className={`truncate text-sm font-semibold ${
-            isActive ? "text-brand-text" : "text-ink-primary"
+            isActive ? "text-brand" : "text-ink-primary"
           }`}
         >
           {t(protocol.titleKey)}

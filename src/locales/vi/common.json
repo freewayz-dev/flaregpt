@@ -2,10 +2,6 @@
   "a11y": {
     "skipToContent": "Đến nội dung chính"
   },
-  "comingSoon": {
-    "badge": "Sắp chiếu",
-    "description": "Chúng tôi đang xây dựng tính năng này. Hãy kiểm tra lại sau ít phút."
-  },
   "connectModal": {
     "close": "Đóng",
     "connecting": "Đang kết nối…",
@@ -35,6 +31,15 @@
     "viaWalletConnect": "Qua WalletConnect"
   },
   "dashboard": {
+    "addWallet": {
+      "cancel": "Hủy",
+      "submit": "Thêm ví",
+      "subtitle": "Nhập một địa chỉ ví để xem dữ liệu bảng điều khiển của địa chỉ đó. Điều này không kết nối ví hoặc yêu cầu chữ ký.",
+      "title": "Theo dõi một ví Flare",
+      "toastBody": "\"{{label}}\" đã được thêm vào danh sách theo dõi của bạn.",
+      "toastBodyActive": "\"{{label}}\" đã được thêm và hiện là ví đang hoạt động của bạn.",
+      "toastTitle": "Đã thêm ví"
+    },
     "apiStatus": {
       "checking": "Đang kiểm tra trạng thái API...",
       "degraded": "API bị suy giảm",
@@ -53,6 +58,8 @@
       "title": "Lịch sử Xác nhận quyền sở hữu"
     },
     "common": {
+      "addWalletToTrack": "+ Theo dõi một ví",
+      "manageWallets": "Quản lý ví của bạn →",
       "networkHiccup": "Đây thường là trục trặc mạng tạm thời.",
       "no": "Không",
       "noWalletSelected": "Không có ví nào được chọn",
@@ -102,6 +109,11 @@
       "connectToSeeBalances": "Kết nối hoặc thêm ví trong Cài đặt để xem số dư.",
       "couldntLoad": "Không thể tải số dư ví",
       "title": "Số dư Ví"
+    },
+    "walletTracking": {
+      "description": "Xem số dư, phần thưởng và hoạt động của bất kỳ địa chỉ ví nào. Không cần kết nối ví hay chữ ký.",
+      "manageDescription": "Thêm nhiều ví hơn vào danh sách theo dõi của bạn bất cứ lúc nào.",
+      "title": "Theo dõi bất kỳ ví Flare nào"
     }
   },
   "defiProtocols": {
@@ -181,6 +193,7 @@
     "strategies": {
       "amountLabel": "So sánh cho",
       "apr": "APR",
+      "colActions": "Hành động",
       "colStrategy": "Chiến lược",
       "colTerms": "Điều khoản",
       "colYield": "Lợi nhuận Ư.tính (FLR)",
@@ -214,29 +227,21 @@
       "message": "Cảm ơn bạn đã giúp FlareGPT giữ được sự độc lập. Mọi đóng góp, dù lớn hay nhỏ, đều thực sự hữu ích."
     },
     "description": "Sự ủng hộ của bạn giúp FlareGPT luôn miễn phí, độc lập và không ngừng cải tiến.",
-    "funding": {
-      "developmentFund": "Quỹ Phát Triển",
-      "monthlyInfrastructure": "Hạ Tầng Hàng Tháng",
-      "raisedOfGoal": "Đã quyên góp {{raised}} trên mục tiêu {{goal}}",
-      "subtitle": "Cái nhìn minh bạch về chi phí vận hành FlareGPT. Không áp lực, chỉ là sự minh bạch.",
-      "title": "Minh Bạch Quỹ"
-    },
     "hero": {
       "addressCopied": "Đã sao chép địa chỉ",
       "addressLabel": "Địa chỉ Ví",
       "copied": "Đã sao chép",
       "copyAddress": "Sao chép Địa chỉ",
       "copyFailed": "Không thể sao chép địa chỉ",
-      "multisigNote": "Được bảo vệ bởi ví đa chữ ký",
       "qrTitle": "Mã QR cho địa chỉ ví quyên góp {{symbol}}",
-      "shareAddress": "Share Address",
-      "shareTitle": "{{coin}} donation address",
       "tapToCopy": "Chạm để sao chép",
-      "tapToShare": "Tap to share",
       "viewOnExplorer": "Xem trên {{explorer}}"
     },
     "received": {
-      "demoData": "Dữ liệu demo",
+      "empty": {
+        "description": "Ngay khi có người quyên góp, nó sẽ hiển thị ở đây.",
+        "title": "Chưa có khoản quyên góp nào"
+      },
       "subtitle": "Tổng đóng góp đã nhận trên mỗi mạng được hỗ trợ.",
       "title": "Quyên Góp Đã Nhận"
     },
@@ -251,7 +256,8 @@
     "warning": {
       "body": "Chỉ gửi {{symbol}} hoặc các token {{network}} khác đến địa chỉ này. Tài sản gửi từ các mạng khác không thể khôi phục.",
       "title": "Chỉ tài sản {{network}}."
-    }
+    },
+    "funding": {}
   },
   "flareWidget": {
     "close": "Đóng",
@@ -396,6 +402,81 @@
     "enabled": "Được Gas Sniper tự động nhận",
     "nudge": "Bật Gas Sniper để tự động nhận"
   },
+  "governance": {
+    "active": {
+      "couldntLoad": "Không thể tải các đề xuất đang hoạt động",
+      "emptyDescription": "Hiện không có gì để bỏ phiếu. Xem Lịch sử Quản trị bên dưới để biết những gì đã được quyết định.",
+      "emptyTitle": "Không có đề xuất đang hoạt động",
+      "title": "Đề Xuất Đang Hoạt Động"
+    },
+    "description": "Các đề xuất quản trị và cách mỗi mạng bỏ phiếu cho chúng, được đọc trực tiếp từ hợp đồng PollingFoundation on-chain.",
+    "drawer": {
+      "circulatingSupply": "Nguồn cung lưu hành",
+      "close": "Đóng",
+      "majorityRequired": "Đa số cần thiết",
+      "proposer": "Người đề xuất",
+      "quorum": "Số đại biểu tối thiểu",
+      "quorumNotRequired": "Không cần thiết",
+      "readFullProposal": "Đọc toàn bộ đề xuất",
+      "title": "Chi Tiết Đề Xuất",
+      "viewProposerOnExplorer": "Xem người đề xuất trên explorer",
+      "votingPeriod": "Thời gian bỏ phiếu",
+      "yourVote": "Phiếu của bạn",
+      "yourVotingPower": "Quyền biểu quyết của bạn"
+    },
+    "endsInDays": "Kết thúc sau {{days}} ngày {{hours}} giờ",
+    "endsInHours": "Kết thúc sau {{hours}} giờ",
+    "historicalBadge": "Lịch sử",
+    "history": {
+      "columnEnded": "Đã kết thúc",
+      "columnProposal": "Đề xuất",
+      "columnResult": "Kết quả",
+      "columnStatus": "Trạng thái",
+      "columnYourVote": "Phiếu của bạn",
+      "emptyDescription": "Ngay khi một đề xuất kết thúc, nó sẽ hiển thị ở đây.",
+      "emptyTitle": "Chưa có lịch sử quản trị",
+      "subtitle": "Mọi đề xuất quản trị đã kết thúc, mới nhất trước.",
+      "title": "Lịch Sử Quản Trị"
+    },
+    "network": {
+      "flare": "Flare",
+      "songbird": "Songbird"
+    },
+    "notVoted": "Chưa bỏ phiếu",
+    "notVotedYet": "Chưa bỏ phiếu",
+    "stats": {
+      "active": "Đang Hoạt Động",
+      "defeated": "Bị Từ Chối",
+      "passed": "Đã Thông Qua",
+      "total": "Tổng Số Đề Xuất"
+    },
+    "status": {
+      "active": "Đang hoạt động",
+      "canceled": "Đã hủy",
+      "defeated": "Bị từ chối",
+      "executed": "Đã thực thi",
+      "passed": "Đã thông qua",
+      "pending": "Đang chờ",
+      "unknown": "Không xác định"
+    },
+    "voteSplit": {
+      "against": "Phản đối {{percent}}%",
+      "againstCount": "Phản đối",
+      "for": "Ủng hộ {{percent}}%",
+      "forCount": "Ủng hộ",
+      "label": "Phiếu bầu",
+      "noVotesYet": "Chưa có phiếu bầu"
+    },
+    "voted": "Đã bỏ phiếu",
+    "votingEnded": "Bỏ phiếu đã kết thúc",
+    "yours": {
+      "noWalletDescription": "Kết nối hoặc thêm một ví để xem quyền biểu quyết và mức độ tham gia của bạn vào các đề xuất này.",
+      "noWalletTitle": "Xem hoạt động quản trị của bạn",
+      "participation": "Sự Tham Gia Của Bạn",
+      "votingPower": "Quyền Biểu Quyết Của Bạn"
+    },
+    "youVoted": "Bạn đã bỏ phiếu"
+  },
   "help": {
     "askFlareGptCta": "Hỏi FlareGPT để được trợ giúp",
     "askFlareGptLead": "Không tìm thấy điều bạn cần?",
@@ -523,8 +604,6 @@
     "offline": "Ngoại tuyến",
     "openMenu": "Mở menu",
     "primaryWalletSection": "Ví Chính",
-    "shareAddress": "Share address",
-    "shareAddressTitle": "My FlareGPT wallet address",
     "showBalances": "Hiện số dư",
     "signIn": "Đăng nhập",
     "signInBackgroundHint": "Ví đã kết nối của bạn cần đăng nhập",
@@ -774,6 +853,11 @@
       "searchPlaceholder": "Tìm kiếm trong {{count}} ví...",
       "searchPlaceholder_one": "Tìm kiếm trong {{count}} ví...",
       "searchPlaceholder_other": "Tìm kiếm trong {{count}} ví...",
+      "syncCta": {
+        "title": "Kết nối ví của bạn để đồng bộ trên các thiết bị"
+      },
+      "syncStatusAuthenticated": "Đã đăng nhập. Các ví bạn theo dõi sẽ đồng bộ trên các thiết bị của bạn.",
+      "syncStatusGuest": "Bạn có thể theo dõi tối đa {{max}} ví mà không cần đăng nhập. Các ví này được lưu trên thiết bị này và sẽ không đồng bộ với các thiết bị khác của bạn.",
       "tracked": "Đã theo"
     }
   },
@@ -936,5 +1020,6 @@
       "received": "Đã nhận",
       "sent": "Đã gửi"
     }
-  }
+  },
+  "comingSoon": {}
 }

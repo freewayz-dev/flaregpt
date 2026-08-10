@@ -26,6 +26,8 @@ export default function ClaimsHistoryCard() {
       </h3>
 
       {!activeAddress ? (
+        // No per-card "add wallet" action here anymore — see
+        // WalletBalancesCard's own comment.
         <WalletEmptyState
           icon={ClockIcon}
           title={t("dashboard.common.noWalletSelected")}

@@ -93,7 +93,17 @@ export default function GenericTable({
 
   return (
     <div
-      className="overflow-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none overscroll-contain"
+      // `overscroll-y-contain`, not the both-axis `overscroll-contain` —
+      // the vertical containment is the deliberate part (see this
+      // component's own comment above: a long table scrolls internally
+      // rather than growing the card, and once it's scrolled to its own
+      // top/bottom, that shouldn't also rubber-band/scroll the page behind
+      // it). The horizontal axis (many columns on a narrow viewport) has no
+      // such reason to be contained — blocking it too meant scrolling
+      // *vertically* while the cursor merely happened to be over this
+      // table could swallow the page scroll entirely, confirmed live as
+      // the same bug reported for GovernanceHistoryTable.tsx.
+      className="overflow-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none overscroll-y-contain"
       style={{ height }}
     >
       <table className="w-full text-left text-xs">

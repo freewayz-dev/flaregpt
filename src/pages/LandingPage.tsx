@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useConnection } from "wagmi";
 import {
@@ -23,7 +23,7 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 import { FadeIn } from "@/components/common/MotionWrapper";
-import LandingAIDemo from "@/components/common/LandingAIDemo";
+import LandingAIDemoSkeleton from "@/components/common/LandingAIDemoSkeleton";
 import LandingNavbar from "@/components/common/LandingNavbar";
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import { useUIStore } from "@/store/useUIStore";
@@ -57,6 +57,19 @@ import overviewLight from "@/assets/showcase/overview-light.webp";
 import overviewDark from "@/assets/showcase/overview-dark.webp";
 import defiLight from "@/assets/showcase/defi-light.webp";
 import defiDark from "@/assets/showcase/defi-dark.webp";
+
+// Lazy, not a static import — confirmed live via the production build's own
+// network trace: this one component's own imports (MarkdownContent, which
+// pulls react-markdown/remark/rehype) were the actual bulk of a ~160KB
+// chunk loaded unconditionally on every landing page visit, well before
+// anyone has typed a single message into it. Splitting it into its own
+// chunk doesn't change when it's needed (it's still the page's own visible
+// centerpiece, not deferred behind an interaction) — it changes how it
+// loads: in parallel with, rather than blocking parse/execute of, the
+// headline/CTA content around it, with LandingAIDemoSkeleton (matching its
+// real dimensions) standing in for the brief gap so nothing shifts layout
+// once the real component swaps in.
+const LandingAIDemo = lazy(() => import("@/components/common/LandingAIDemo"));
 
 export default function LandingPage() {
   const [open, setOpen] = useState<number | null>(null);
@@ -127,19 +140,50 @@ export default function LandingPage() {
     }
   }, [isConnected, navigate]);
 
-  // Warm the Dashboard route's JS chunk while the visitor is still reading
-  // the landing page, so clicking "Launch App" doesn't have to wait for a
-  // fresh network fetch + parse of that chunk on top of the route
-  // transition itself. Deferred with requestIdleCallback so it never
-  // competes with the landing page's own first paint for the main thread.
+  // Warm the Dashboard route's JS chunk (which pulls in recharts —
+  // confirmed ~390KB alone, see vendor-charts in vite.config.ts) while the
+  // visitor is still reading the landing page, so clicking "Launch App"
+  // doesn't have to wait for a fresh network fetch + parse of that chunk
+  // on top of the route transition itself.
+  //
+  // `requestIdleCallback` alone only guards against *main-thread* — CPU —
+  // contention; it fires as soon as the JS call stack is empty, which on a
+  // throttled connection can happen well before the landing page's own
+  // critical resources (fonts, the wagmi/WalletConnect core chunks) have
+  // actually finished downloading. Measured directly: this was landing
+  // page's dashboard-chunk prefetch racing its own LCP resources for the
+  // same throttled pipe, not just the main thread. Waiting for `load`
+  // first — confirmed everything on *this* page's own critical path has
+  // finished — before ever scheduling the idle callback closes that gap
+  // without giving up the instant-transition benefit; it only delays when
+  // the warm-up starts, never removes it.
   useEffect(() => {
-    const prefetch = () => import("@/pages/Dashboard");
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(prefetch);
-      return () => window.cancelIdleCallback(id);
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    const schedule = () => {
+      const prefetch = () => import("@/pages/Dashboard");
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(prefetch);
+      } else {
+        timeoutId = setTimeout(prefetch, 2000);
+      }
+    };
+
+    if (document.readyState === "complete") {
+      schedule();
+      return () => {
+        if (idleId !== undefined) window.cancelIdleCallback(idleId);
+        if (timeoutId !== undefined) clearTimeout(timeoutId);
+      };
     }
-    const id = setTimeout(prefetch, 2000);
-    return () => clearTimeout(id);
+
+    window.addEventListener("load", schedule, { once: true });
+    return () => {
+      window.removeEventListener("load", schedule);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
@@ -356,12 +400,14 @@ export default function LandingPage() {
                   <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-[#161619]/80 lg:hidden">
                     <SparklesIcon className="h-3.5 w-3.5 text-brand" />
 
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-text">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
                       AI Assistant
                     </span>
                   </div>
 
-                  <LandingAIDemo onOpenWalletModal={openWalletModal} />
+                  <Suspense fallback={<LandingAIDemoSkeleton />}>
+                    <LandingAIDemo onOpenWalletModal={openWalletModal} />
+                  </Suspense>
                 </div>
 
                 {/* Content — now the left column on desktop (`lg:order-1`),
@@ -374,7 +420,7 @@ export default function LandingPage() {
                       <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-[#161619]/80">
                         <SparklesIcon className="h-3.5 w-3.5 text-brand" />
 
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-text">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
                           AI Assistant
                         </span>
                       </div>
@@ -886,14 +932,14 @@ export default function LandingPage() {
 
                   <Link
                     to={ROUTES.donate}
-                    className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-brand-text transition-all hover:bg-brand hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+                    className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-brand transition-all hover:bg-brand hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     Donate
                     <HeartIcon className="h-3 w-3" />
                   </Link>
 
                   <a
-                    href="https://x.com"
+                    href="https://x.com/Flare_GPT"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="X (formerly Twitter)"
@@ -982,7 +1028,7 @@ const features = [
   {
     id: "06",
     icon: ClockIcon,
-    title: "rFLR Vesting Tracker",
+    title: "$rFLR Vesting Tracker",
     subtitle: "Know exactly when it unlocks",
     desc: "Follow your rFLR vesting schedule, upcoming unlocks, and early-exit terms alongside live network-wide emission data.",
   },

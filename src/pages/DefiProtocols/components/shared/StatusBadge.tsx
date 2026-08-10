@@ -2,12 +2,19 @@
 // ApiStatusBadge, FtsoPortfolioCard's "Connected"/"Read-only") — no filled
 // pill/chip badge exists for this in the design system, so this matches
 // that rather than introducing a new visual language.
-export type StatusTone = "success" | "warning" | "neutral";
+//
+// "danger" added for Governance's "Defeated" proposal status — the one
+// outcome none of the existing three tones honestly represent (not a
+// warning/caution, a genuinely negative result), using the same red-500
+// the app already uses everywhere else for negative/destructive meaning
+// (StatCard's negative delta, outbound transactions, ErrorFallback).
+export type StatusTone = "success" | "warning" | "neutral" | "danger";
 
 const TONE_CLASSES: Record<StatusTone, string> = {
   success: "text-emerald-500",
   warning: "text-amber-500",
   neutral: "text-ink-muted",
+  danger: "text-red-500",
 };
 
 interface StatusBadgeProps {
@@ -28,7 +35,9 @@ export default function StatusBadge({ label, tone = "neutral", dot = false }: St
               ? "bg-emerald-500 animate-pulse"
               : tone === "warning"
                 ? "bg-amber-500"
-                : "bg-ink-muted"
+                : tone === "danger"
+                  ? "bg-red-500"
+                  : "bg-ink-muted"
           }`}
         />
       )}

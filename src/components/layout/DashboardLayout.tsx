@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
-import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ErrorBoundary } from "react-error-boundary";
 import { useQueryClient, type QueryClient } from "@tanstack/react-query";
@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import FlareWidget from "@/components/common/FlareWidget";
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import ErrorFallback from "@/components/common/ErrorFallback";
 import OfflineBanner from "@/components/common/OfflineBanner";
@@ -18,6 +17,20 @@ import InstallAppBanner from "@/components/common/InstallAppBanner";
 import { useWalletActivityNotifier } from "@/hooks/useWalletActivityNotifier";
 import { useUIStore } from "@/store/useUIStore";
 import { ROUTES } from "@/config/routes";
+
+// Lazy, not a static import — FlareWidget statically imports ChatPane,
+// which transitively imports MessageList -> AssistantMessage -> ChartBlock
+// -> recharts (~118KB gzip). DashboardLayout itself must stay a static
+// import (see AppRoutes.tsx's own comment on why — Sidebar/Navbar can't be
+// hidden behind a loading state), but nothing requires the floating chat
+// button's own chunk to be part of that same eager bundle: it's a
+// below-the-fold, closed-by-default widget on every dashboard page,
+// confirmed via a real Lighthouse trace to pull in the entire charting
+// library on pages that never render a single chart (e.g. Governance).
+// No Suspense fallback below — it's fine for this floating button to pop
+// in a beat after the rest of the page, unlike the page-content skeletons
+// this app's loading architecture is actually built around.
+const FlareWidget = lazy(() => import("@/components/common/FlareWidget"));
 
 // The shape passed to every routed page via <Outlet context={...}> below —
 // shared here (not redefined per page) since useOutletContext<T>() has no
@@ -128,31 +141,62 @@ export default function DashboardLayout() {
   // navigation would ever need it; a real navigation's own `import()` call
   // for an already-warmed chunk just resolves instantly from the same
   // cache instead of hitting the network again.
+  // `requestIdleCallback` alone only guards against main-thread — CPU —
+  // contention; it fires as soon as the call stack is empty, which can
+  // happen well before the current page's own critical resources have
+  // actually finished downloading. On a throttled connection this backlog
+  // of *every other route's* chunks (charts, markdown, WalletConnect
+  // included transitively) competes with the current page's own LCP for
+  // the same pipe — confirmed directly via this same fix on
+  // LandingPage.tsx's single-chunk version of this prefetch. Waiting for
+  // `load` first closes that gap without giving up the offline-resilience
+  // benefit above; it only delays when warming starts.
   useEffect(() => {
-    const prefetch = () =>
-      Promise.all([
-        import("@/pages/Dashboard"),
-        import("@/pages/Flrgpt"),
-        import("@/pages/Settings"),
-        import("@/pages/Help"),
-        import("@/pages/DefiProtocols"),
-        import("@/pages/Loops"),
-        import("@/pages/RflrVesting"),
-        import("@/pages/FtsoRewards"),
-        import("@/pages/WalletActivity"),
-        import("@/pages/Donate"),
-      ]).catch(() => {
-        // Best-effort warming only — a failed prefetch here (e.g. genuinely
-        // offline already) isn't a user-facing error; the route's own
-        // Suspense/ErrorBoundary is what actually handles a real failed
-        // navigation later.
-      });
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(prefetch);
-      return () => window.cancelIdleCallback(id);
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    const schedule = () => {
+      const prefetch = () =>
+        Promise.all([
+          import("@/pages/Dashboard"),
+          import("@/pages/Flrgpt"),
+          import("@/pages/Settings"),
+          import("@/pages/Help"),
+          import("@/pages/DefiProtocols"),
+          import("@/pages/Loops"),
+          import("@/pages/RflrVesting"),
+          import("@/pages/FtsoRewards"),
+          import("@/pages/WalletActivity"),
+          import("@/pages/Donate"),
+          import("@/pages/Governance"),
+          import("@/components/common/FlareWidget"),
+        ]).catch(() => {
+          // Best-effort warming only — a failed prefetch here (e.g. genuinely
+          // offline already) isn't a user-facing error; the route's own
+          // Suspense/ErrorBoundary is what actually handles a real failed
+          // navigation later.
+        });
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(prefetch);
+      } else {
+        timeoutId = setTimeout(prefetch, 2000);
+      }
+    };
+
+    if (document.readyState === "complete") {
+      schedule();
+      return () => {
+        if (idleId !== undefined) window.cancelIdleCallback(idleId);
+        if (timeoutId !== undefined) clearTimeout(timeoutId);
+      };
     }
-    const id = setTimeout(prefetch, 2000);
-    return () => clearTimeout(id);
+
+    window.addEventListener("load", schedule, { once: true });
+    return () => {
+      window.removeEventListener("load", schedule);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
   }, []);
 
   // React Router's own <ScrollRestoration> needs a data router
@@ -386,11 +430,13 @@ export default function DashboardLayout() {
           )}
 
           {!isFlareGptPage && (
-            <FlareWidget
-              open={flareWidgetOpen}
-              onClose={closeFlareWidget}
-              onOpenWalletModal={openWalletModal}
-            />
+            <Suspense fallback={null}>
+              <FlareWidget
+                open={flareWidgetOpen}
+                onClose={closeFlareWidget}
+                onOpenWalletModal={openWalletModal}
+              />
+            </Suspense>
           )}
         </div>
       </div>

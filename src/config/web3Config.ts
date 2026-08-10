@@ -1,5 +1,5 @@
 // src/config/web3Config.ts
-import type { Chain, EIP1193Provider, Hash } from "viem";
+import type { Address, Chain, EIP1193Provider, Hash } from "viem";
 import { createConfig, http } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { injected, walletConnect } from "wagmi/connectors";
@@ -42,11 +42,42 @@ export const coston2 = {
   testnet: true,
 } as const satisfies Chain;
 
+// Songbird — Flare's canary network, confirmed live (eth_chainId against
+// its public RPC returns 0x13 = 19). Registered read-only, for Governance's
+// SIP/STP support (see config/governance.ts) — nothing here requires a
+// connected wallet to actually be on this chain, since every governance
+// read is a plain public RPC call via this transport, the same way Flare
+// mainnet reads already work regardless of which chain a wallet happens to
+// be connected to.
+export const songbird = {
+  id: 19,
+  name: "Songbird",
+  nativeCurrency: { name: "Songbird", symbol: "SGB", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://songbird-api.flare.network/ext/C/rpc"] },
+  },
+  blockExplorers: {
+    default: { name: "Songbird Explorer", url: "https://songbird-explorer.flare.network" },
+  },
+} as const satisfies Chain;
+
 // Reads the same `blockExplorers.default.url` wagmi already uses for chain
 // metadata, rather than a second hardcoded "https://flarescan.com" string
 // living alongside it — one source of truth for the explorer's base URL.
 export function getFlarescanTxUrl(transactionHash: Hash): string {
   return `${flare.blockExplorers.default.url}/tx/${transactionHash}`;
+}
+
+// Same reasoning as getFlarescanTxUrl — used by Governance's proposal
+// detail drawer to link a proposal's proposer address out to FlareScan.
+export function getFlarescanAddressUrl(address: Address): string {
+  return `${flare.blockExplorers.default.url}/address/${address}`;
+}
+
+// Songbird counterparts to the two helpers above — used by Governance when
+// showing a Songbird (SIP/STP) proposal's proposer.
+export function getSongbirdExplorerAddressUrl(address: Address): string {
+  return `${songbird.blockExplorers.default.url}/address/${address}`;
 }
 
 // An injected wallet's real, on-the-wire provider — the standard EIP-1193
@@ -144,7 +175,7 @@ function isRealMetaMask(provider: InjectedProvider): boolean {
 }
 
 export const web3Config = createConfig({
-  chains: [flare, mainnet, coston2],
+  chains: [flare, mainnet, coston2, songbird],
   connectors: [
     // Each wallet gets its OWN connector, targeted at its actual injected
     // flag. Previously all three buttons shared a single untargeted
@@ -177,6 +208,31 @@ export const web3Config = createConfig({
     }),
     walletConnect({
       projectId: "771106bc829c38d05731ab4af6c2bc38", // Get from cloud.walletconnect.com
+      // Never set before — confirmed by reading @walletconnect/ethereum-
+      // provider's own source (the library actually constructing every
+      // session this app creates): when `metadata` is omitted, it falls
+      // back to `name: "WalletConnect"`, `url: "https://walletconnect.org"`
+      // and a generic icon. Every wallet's Verify API checks `url` against
+      // the real requesting origin, and some use it to construct their own
+      // return-redirect — this app's sessions were announcing themselves as
+      // generic "WalletConnect" from walletconnect.org instead of as
+      // FlareGPT from its own real, canonical origin. `url` must be
+      // absolute and match production exactly (see vercel.json's apex->www
+      // redirect — www.flaregpt.io is canonical, matching index.html's own
+      // canonical/og:url tags). `redirect.universal` (no `native` — this is
+      // a PWA/website, not a native app with its own URL scheme) is what
+      // tells a wallet how to navigate back here after approving, per
+      // Reown's own docs on the `metadata.redirect` option.
+      metadata: {
+        name: "FlareGPT",
+        description:
+          "Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio.",
+        url: "https://www.flaregpt.io",
+        icons: ["https://www.flaregpt.io/icon-512.png"],
+        redirect: {
+          universal: "https://www.flaregpt.io/",
+        },
+      },
       showQrModal: true,
       qrModalOptions: {
         // A genuine bug, caught by conversion, not a types gap: this
@@ -234,5 +290,6 @@ export const web3Config = createConfig({
     [flare.id]: http(),
     [mainnet.id]: http(),
     [coston2.id]: http(),
+    [songbird.id]: http(),
   },
 });

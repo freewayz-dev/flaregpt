@@ -20,7 +20,11 @@ export default function ProtocolExplorerSkeleton() {
 
       <div className="hidden lg:flex lg:mt-5">
         <div className="w-[260px] shrink-0 space-y-1 border-r border-divider p-3">
-          {Array.from({ length: 3 }).map((_, i) => (
+          {/* Matches PROTOCOLS' real length (see protocols.tsx's own
+              4-entry tuple type) — a shorter skeleton list here was
+              measurably causing a layout shift once the real 4 rows
+              replaced it. */}
+          {Array.from({ length: 4 }).map((_, i) => (
             <RowSkeleton key={i} />
           ))}
         </div>
@@ -38,7 +42,7 @@ export default function ProtocolExplorerSkeleton() {
       </div>
 
       <div className="mt-3 space-y-1 px-3 pb-3 lg:hidden">
-        {Array.from({ length: 3 }).map((_, i) => (
+        {Array.from({ length: 4 }).map((_, i) => (
           <RowSkeleton key={i} />
         ))}
       </div>

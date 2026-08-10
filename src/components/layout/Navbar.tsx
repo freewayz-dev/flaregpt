@@ -23,8 +23,7 @@ import { useFlareGptStore } from "@/store/useFlareGptStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
-import { shortenAddress } from "@/utils/address";
-import { shareOrCopy } from "@/utils/share";
+import { shortenAddress, copyWalletAddress } from "@/utils/address";
 import { ROUTES } from "@/config/routes";
 import WalletBadge, { type WalletBadgeTone } from "@/components/common/WalletBadge";
 import WalletRow from "@/components/common/WalletRow";
@@ -193,21 +192,19 @@ export default function Navbar({
     setMobileMenuOpen(false);
   };
 
-  const handleShareAddress = async (event: MouseEvent<HTMLButtonElement>, address: string) => {
-    // Rows are clickable (switches the active wallet), so the share/copy
-    // icon inside a row must stop that click from also firing — sharing
-    // an address shouldn't as a side effect also switch what's active.
+  const handleCopyAddress = async (event: MouseEvent<HTMLButtonElement>, address: string) => {
+    // Rows are clickable (switches the active wallet), so the copy icon
+    // inside a row must stop that click from also firing — copying an
+    // address shouldn't as a side effect also switch what's active.
     event.stopPropagation();
-    const result = await shareOrCopy({ title: t("navbar.shareAddressTitle"), text: address });
-    if (result === "copied") {
+    const success = await copyWalletAddress(address);
+    if (success) {
       setCopiedAddress(address);
       toast.success(t("navbar.addressCopied", "Address copied"));
       setTimeout(() => setCopiedAddress(null), 2000);
-    } else if (result === "failed") {
+    } else {
       toast.error(t("navbar.copyFailed", "Couldn't copy address"));
     }
-    // "shared": the native share sheet is its own confirmation, no toast
-    // needed. "cancelled": the user backed out on purpose, same.
   };
 
   // Primary (the connected wallet, if any) and watchlist wallets are
@@ -348,7 +345,15 @@ export default function Navbar({
             title={hideBalances ? t("navbar.showBalances") : t("navbar.hideBalances")}
             aria-label={hideBalances ? t("navbar.showBalances") : t("navbar.hideBalances")}
             aria-pressed={hideBalances}
-            className="relative p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] cursor-pointer shrink-0 before:content-[''] before:absolute before:-inset-1.5"
+            // Invisible tap-target padding shrinks on mobile only
+            // (`before:-inset-1`, vs the original `-inset-1.5` still used
+            // at `lg:`) — see the 3-dot button's own comment below for why:
+            // this button now sits closer to it on mobile, and the two
+            // paddings' combined reach has to stay under that new gap to
+            // avoid reintroducing the mis-tap bug that spacing originally
+            // fixed. Desktop never renders the 3-dot button at all, so its
+            // padding is untouched there.
+            className="relative p-1.5 rounded-lg text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-[#1B1B1F] cursor-pointer shrink-0 before:content-[''] before:absolute before:-inset-1 lg:before:-inset-1.5"
           >
             {hideBalances ? (
               <EyeSlashIcon className="h-[18px] w-[18px]" />
@@ -454,7 +459,7 @@ export default function Navbar({
                     isActive={activeAddress === primaryWallet.address}
                     copiedAddress={copiedAddress}
                     onSelect={() => handleSwitchActive(primaryWallet.address)}
-                    onShare={handleShareAddress}
+                    onCopy={handleCopyAddress}
                   />
                 ) : (
                   <button
@@ -533,7 +538,7 @@ export default function Navbar({
                           isActive={activeAddress === wallet.address}
                           copiedAddress={copiedAddress}
                           onSelect={() => handleSwitchActive(wallet.address)}
-                          onShare={handleShareAddress}
+                          onCopy={handleCopyAddress}
                         />
                       ))}
                     </div>
@@ -552,15 +557,19 @@ export default function Navbar({
             title={t("navbar.moreOptions")}
             aria-haspopup="true"
             aria-expanded={mobileMenuOpen}
-            // `ml-2` (only ever applied where this button itself renders,
-            // i.e. never on desktop) — this button's own invisible hit-area
-            // (`-inset-2`, 8px) plus the hide-balances button's (`-inset-1.5`,
-            // 6px) add up to more than the row's `gap-2` (8px) between them,
-            // so their invisible zones used to overlap by ~6px; this button's
-            // `z-50` won that overlap, meaning a tap aimed at hide-balances
-            // near the gap could open this menu instead. The extra margin
-            // restores real separation without shrinking either hit-area.
-            className="mobile-trigger-btn lg:hidden ml-2 rounded-lg p-1 text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-[#1B1B1F] transition-colors cursor-pointer z-50 relative focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 before:content-[''] before:absolute before:-inset-2"
+            // `ml-1` (only ever applied where this button itself renders,
+            // i.e. never on desktop) plus the row's own `gap-2` puts 12px
+            // of real space between this button and the hide-balances eye
+            // icon — visually grouped (they read as one cluster now,
+            // rather than the eye icon sitting off on its own), while
+            // still clearing this button's own invisible hit-area
+            // (`-inset-1.5`, 6px) plus the eye button's mobile-only one
+            // (`-inset-1`, 4px, see its own comment) by 2px, so neither
+            // zone can reach the other. Without that margin, a tap aimed
+            // at hide-balances near the gap could open this menu instead —
+            // this button's `z-50` would win the overlap, which is exactly
+            // the mis-tap bug this spacing exists to prevent.
+            className="mobile-trigger-btn lg:hidden ml-1 rounded-lg p-1 text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-[#1B1B1F] transition-colors cursor-pointer z-50 relative focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 before:content-[''] before:absolute before:-inset-1.5"
           >
             {mobileMenuOpen ? (
               <XMarkIcon className="h-6 w-6 text-brand" />
@@ -638,7 +647,7 @@ export default function Navbar({
                   isActive={activeAddress === primaryWallet.address}
                   copiedAddress={copiedAddress}
                   onSelect={() => handleSwitchActive(primaryWallet.address)}
-                  onShare={handleShareAddress}
+                  onCopy={handleCopyAddress}
                   variant="mobile"
                 />
               ) : (
@@ -713,7 +722,7 @@ export default function Navbar({
                       isActive={activeAddress === wallet.address}
                       copiedAddress={copiedAddress}
                       onSelect={() => handleSwitchActive(wallet.address)}
-                      onShare={handleShareAddress}
+                      onCopy={handleCopyAddress}
                       variant="mobile"
                     />
                   ))}

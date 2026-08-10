@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline";
 
-import { shortenAddress } from "@/utils/address";
+import { shortenAddress, copyWalletAddress } from "@/utils/address";
 
 interface AddressPillProps {
   label: string;
@@ -15,12 +15,12 @@ export default function AddressPill({ label, address }: AddressPillProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(address);
+    const success = await copyWalletAddress(address);
+    if (success) {
       setCopied(true);
       toast.success(t("defiProtocols.common.addressCopied"));
       setTimeout(() => setCopied(false), 2000);
-    } catch {
+    } else {
       toast.error(t("defiProtocols.common.copyFailed"));
     }
   };

@@ -8,7 +8,6 @@ import CoinSelector from "@/pages/Donate/components/CoinSelector";
 import HeroReceiveCard from "@/pages/Donate/components/HeroReceiveCard";
 import WarningCallout from "@/pages/Donate/components/WarningCallout";
 import SuggestedAmounts from "@/pages/Donate/components/SuggestedAmounts";
-import FundingProgress from "@/pages/Donate/components/FundingProgress";
 import DonationsReceived from "@/pages/Donate/components/DonationsReceived";
 import SupportGrid from "@/pages/Donate/components/SupportGrid";
 
@@ -43,7 +42,6 @@ export default function Donate() {
       <WarningCallout coin={selectedCoin} />
       <SuggestedAmounts coin={selectedCoin} />
 
-      <FundingProgress />
       <DonationsReceived />
       <SupportGrid />
 

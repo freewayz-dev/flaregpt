@@ -35,7 +35,7 @@ test("routing + wallet connect: disconnected empty state -> connected populated 
 
   await expect(page.getByText("No wallet selected").first()).toBeVisible();
   await expect(
-    page.getByText("Connect or add a wallet in Settings to see balances."),
+    page.getByText("Connect a wallet or add one to your watchlist to see balances."),
   ).toBeVisible();
 
   // The sidebar's "Connect Wallet" button opens the modal directly (see

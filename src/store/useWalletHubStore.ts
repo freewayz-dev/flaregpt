@@ -92,7 +92,11 @@ interface WalletHubState {
 // feel like a real upgrade rather than an arbitrary inconvenience.
 const GUEST_MAX_SLOTS = 3;
 
-const DEFAULT_TRACKED_LABEL = "Watchlist Account";
+// Exported so callers that need to predict a wallet's effective label
+// before the store/query has actually round-tripped (e.g. composing a
+// success toast right after adding one) use this exact same fallback
+// instead of a second, independently-typed "Watchlist Account" literal.
+export const DEFAULT_TRACKED_LABEL = "Watchlist Account";
 
 // See useAuthStore.ts for why the state creator below needs an explicit
 // `: WalletHubState` return annotation — the same `persist` generic-
