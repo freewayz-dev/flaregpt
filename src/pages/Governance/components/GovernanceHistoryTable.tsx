@@ -55,12 +55,13 @@ export default function GovernanceHistoryTable({
               columns without horizontal scroll, which reads as "maybe
               clickable, maybe not" on a touch screen. Every card is a real
               <button> (the entire card is the hit target, not just the
-              title), the title is styled exactly like MarkdownContent's
-              real inline links (text-brand-text + a permanent underline —
-              this app's one existing "this is a link" convention) rather
-              than only a hover color change that touch has no way to see,
-              and a trailing chevron matches TransactionRow's own
-              mobile-only "this opens something" affordance. */}
+              title), the title uses the main brand color (text-brand) with
+              a permanent underline — this app's one existing "this is a
+              link" convention — rather than only a hover color change that
+              touch has no way to see, and a trailing chevron matches
+              TransactionRow's own mobile-only "this opens something"
+              affordance. Desktop's own title styling (below) is untouched
+              by this — mobile only. */}
           <div className="mt-4 space-y-2 sm:hidden">
             {history.map((proposal) => {
               const status = getProposalStatusMeta(proposal.state, t);
@@ -81,7 +82,7 @@ export default function GovernanceHistoryTable({
                           <StatusBadge label={t("governance.historicalBadge")} tone="neutral" dot={false} />
                         )}
                       </div>
-                      <p className="mt-1 truncate text-sm font-medium text-brand-text underline underline-offset-2">
+                      <p className="mt-1 truncate text-sm font-medium text-brand underline underline-offset-2">
                         {proposal.title}
                       </p>
                     </div>

@@ -50,3 +50,28 @@ describe("useUIStore.setAppearance — theme-color side effect", () => {
     expect(themeColorContent()).toBe("#F0F4F9");
   });
 });
+
+// Regression test: Settings must always open on its default tab for a new
+// visit, never resume wherever the user last left it (e.g. Security) days
+// later — see the `partialize` exclusion this asserts against. Checking
+// the actual localStorage payload zustand-persist writes, not just the
+// live in-memory store, is what makes this a real regression guard: the
+// in-memory value is expected to change immediately (Settings still works
+// as a normal tab within the current session), only *persisting* it is
+// the behavior being removed.
+describe("useUIStore persistence — settingsActiveTab is excluded", () => {
+  it("never writes settingsActiveTab to localStorage, even after changing it", () => {
+    useUIStore.getState().setSettingsActiveTab("Security");
+    const raw = localStorage.getItem("flaregpt_ui_preferences");
+    expect(raw).not.toBeNull();
+    const persisted = JSON.parse(raw ?? "{}");
+    expect(persisted.state).not.toHaveProperty("settingsActiveTab");
+  });
+
+  it("still persists other preferences normally — the exclusion is scoped to this one field", () => {
+    useUIStore.getState().setCurrency("EUR");
+    const raw = localStorage.getItem("flaregpt_ui_preferences");
+    const persisted = JSON.parse(raw ?? "{}");
+    expect(persisted.state.currency).toBe("EUR");
+  });
+});

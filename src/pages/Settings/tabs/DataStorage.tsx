@@ -6,6 +6,7 @@ import { CircleStackIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/ou
 
 import { useFlareGptStore } from "@/store/useFlareGptStore";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
+import { useAuthStore } from "@/store/useAuthStore";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import * as chatService from "@/services/chatService";
 import { queryKeys } from "@/services/queryKeys";
@@ -67,6 +68,7 @@ export default function DataStorage() {
   const queryClient = useQueryClient();
   const clearMessages = useFlareGptStore((s) => s.clearMessages);
   const { hasSession } = useAuthStatus();
+  const authenticatedAddress = useAuthStore((state) => state.authenticatedAddress);
   // Clearing the wallet-activity query cache is purely local (no network
   // at all) and stays available offline; clearing synced conversations
   // calls chatService.clearAllConversations — one of sw.ts's explicit
@@ -124,7 +126,7 @@ export default function DataStorage() {
       await chatService.clearAllConversations();
       clearMessages();
       useFlareGptStore.getState().setActiveConversationId(null);
-      queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
+      queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations(authenticatedAddress) });
       toast.success(t("settings.dataStorage.conversationsCleared"));
     } catch {
       toast.error(t("settings.dataStorage.conversationsClearFailed"));

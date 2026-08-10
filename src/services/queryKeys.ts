@@ -69,16 +69,32 @@ export const queryKeys = {
   },
   // Authenticated users only (see useWalletHubStore.js) — a guest's
   // watchlist lives entirely in localStorage and never goes through
-  // react-query at all.
+  // react-query at all. Keyed by `authenticatedAddress` (not just
+  // `enabled`/`hasSession`) for the same reason every other per-wallet key
+  // in this file already takes an `address` — without it, switching from
+  // Wallet A to Wallet B within this query's own `staleTime` window served
+  // Wallet A's still-fresh cache entry to Wallet B's session (same key,
+  // same cache slot) until it happened to expire or a manual refresh threw
+  // the whole cache away. Scoping the key itself means a different
+  // identity is simply a different cache entry — no manual invalidation
+  // required on wallet switch.
   watchlist: {
     all: ["watchlist"] as const,
-    list: () => [...queryKeys.watchlist.all, "list"] as const,
+    list: (address: string | null | undefined) =>
+      [...queryKeys.watchlist.all, "list", address] as const,
   },
   // Authenticated users only — a guest's chat has no conversation concept
   // at all (see useFlareGptStore.js), just an ephemeral local transcript.
+  // `conversations` scoped by `authenticatedAddress` for the identical
+  // reason `watchlist.list` above is — same stale-cross-identity-cache
+  // risk, same fix. `conversation(id)` (a single conversation's messages)
+  // doesn't need this: it's always fetched with no `staleTime` (see
+  // useFlareGptConversation.ts), so it never serves a cached response
+  // across a switch regardless of key shape.
   chat: {
     all: ["chat"] as const,
-    conversations: () => [...queryKeys.chat.all, "conversations"] as const,
+    conversations: (address: string | null | undefined) =>
+      [...queryKeys.chat.all, "conversations", address] as const,
     conversation: (conversationId: string) =>
       [...queryKeys.chat.all, "conversation", conversationId] as const,
   },

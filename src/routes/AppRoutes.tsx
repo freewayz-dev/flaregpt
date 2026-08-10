@@ -24,7 +24,6 @@ import DefiProtocolsSkeleton from "@/pages/DefiProtocols/DefiProtocolsSkeleton";
 import WalletActivitySkeleton from "@/pages/WalletActivity/WalletActivitySkeleton";
 import RflrVestingPageSkeleton from "@/pages/RflrVesting/RflrVestingPageSkeleton";
 import FtsoRewardsPageSkeleton from "@/pages/FtsoRewards/FtsoRewardsPageSkeleton";
-import FlrgptPageSkeleton from "@/pages/Flrgpt/FlrgptPageSkeleton";
 import LoopsPageSkeleton from "@/pages/Loops/LoopsPageSkeleton";
 import GovernancePageSkeleton from "@/pages/Governance/GovernancePageSkeleton";
 import { ROUTES, APP_SEGMENTS } from "@/config/routes";
@@ -121,14 +120,7 @@ export default function AppRoutes() {
 
         <Route path={ROUTES.app} element={<DashboardLayout />}>
           <Route index element={<DashboardIndexRoute />} />
-          <Route
-            path={APP_SEGMENTS.flareGpt}
-            element={
-              <Suspense fallback={<FlrgptPageSkeleton />}>
-                <FLRGPT />
-              </Suspense>
-            }
-          />
+          <Route path={APP_SEGMENTS.flareGpt} element={<FLRGPT />} />
           <Route
             path={APP_SEGMENTS.walletActivity}
             element={

@@ -29,10 +29,11 @@ import About from "@/pages/Settings/tabs/About";
 // Tab `id`s deliberately keep their original values where a tab already
 // existed ("Preferences", "Display") even though their *displayed* label
 // changed (to "General"/"Dashboard", via the i18n string, not the key) —
-// `settingsActiveTab` is a persisted zustand field, and renaming the id
-// itself would strand any returning user's saved tab on a value that no
-// longer matches anything. Only genuinely new tabs get new ids, since
-// there's no prior persisted value that could collide with them anyway.
+// `settingsActiveTab` is deliberately NOT persisted (Settings always opens
+// on its default tab for a new visit — see useUIStore.ts's `partialize`),
+// but it's still live zustand state for the current session, and code
+// elsewhere (e.g. WalletTrackingBanner's "Manage" link) navigates here by
+// setting this id directly, so renaming one would silently break that.
 //
 // Grouped into three labeled sections rather than one flat list of ten —
 // this is exactly the "won't scale past a handful of tabs" ceiling flagged

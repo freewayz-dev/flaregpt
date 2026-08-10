@@ -195,6 +195,16 @@ export const useUIStore = create<UIState>()(
     {
       name: "flaregpt_ui_preferences",
 
+      // `settingsActiveTab` deliberately excluded — Settings should always
+      // open on its default tab for a new visit, never resume wherever the
+      // user last left it (e.g. Security) days later. Every other field
+      // here stays persisted exactly as before; this is the one exclusion.
+      partialize: (state) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars -- rest-sibling exclusion, not a genuinely unused binding
+        const { settingsActiveTab, ...rest } = state;
+        return rest;
+      },
+
       onRehydrateStorage: () => (state) => {
         if (!state) return;
         const isDark = state.hasThemeOverride ? state.darkMode : getSystemPreference();

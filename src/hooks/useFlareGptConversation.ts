@@ -121,6 +121,7 @@ export function useFlareGptConversation() {
   // ephemeral, client-context-only thread that never touches the network
   // beyond the single POST /api/v1/chat per message.
   const hasSession = useAuthStore((s) => Boolean(s.token));
+  const authenticatedAddress = useAuthStore((s) => s.authenticatedAddress);
 
   const isGenerating = isChatGenerating(messages);
 
@@ -331,7 +332,7 @@ export function useFlareGptConversation() {
         conversationId = created.id;
         justCreatedConversationId = conversationId;
         useFlareGptStore.getState().setActiveConversationId(conversationId);
-        queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
+        queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations(authenticatedAddress) });
       }
 
       // Once a conversation exists, the socket recalls its own server-side
@@ -374,7 +375,7 @@ export function useFlareGptConversation() {
       // Keeps the switcher's message_count/updated_at (and therefore
       // recency ordering) current without a manual refresh.
       if (hasSession) {
-        queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
+        queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations(authenticatedAddress) });
       }
     } catch (error) {
       if (error instanceof ChatCancelled) return; // stop() already handled the message
@@ -393,7 +394,7 @@ export function useFlareGptConversation() {
         // created until a message actually succeeds."
         useFlareGptStore.getState().setActiveConversationId(null);
         chatService.deleteConversation(justCreatedConversationId).catch(() => {});
-        queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations() });
+        queryClient.invalidateQueries({ queryKey: queryKeys.chat.conversations(authenticatedAddress) });
       }
 
       toast.error(t("flrgpt.sendError"));

@@ -16,11 +16,11 @@ test("Overview: add a watchlist wallet with no wallet connected — becomes acti
   await page.goto(ROUTES.app);
 
   await expect(page.getByText("No wallet selected").first()).toBeVisible();
-  const addButton = page.getByRole("button", { name: "+ Add wallet to track" }).first();
+  const addButton = page.getByRole("button", { name: "+ Track a wallet" }).first();
   await expect(addButton).toBeVisible();
   await addButton.click();
 
-  const dialog = page.getByRole("dialog", { name: "Add a wallet to track" });
+  const dialog = page.getByRole("dialog", { name: "Track a Flare wallet" });
   await expect(dialog).toBeVisible();
 
   await dialog.getByPlaceholder("0x... Flare Wallet Address").fill(WATCHLIST_ADDRESS);
@@ -67,8 +67,8 @@ test("Overview: add-wallet modal backdrop covers the full viewport even after sc
     document.getElementById("main-content")?.scrollTo(0, 300);
   });
 
-  await page.getByRole("button", { name: "+ Add wallet to track" }).first().click();
-  const dialog = page.getByRole("dialog", { name: "Add a wallet to track" });
+  await page.getByRole("button", { name: "+ Track a wallet" }).first().click();
+  const dialog = page.getByRole("dialog", { name: "Track a Flare wallet" });
   await expect(dialog).toBeVisible();
 
   // The backdrop is the dialog's previous sibling inside the portaled
