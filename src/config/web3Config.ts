@@ -4,6 +4,8 @@ import { createConfig, http } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { injected, walletConnect } from "wagmi/connectors";
 
+import { isStandaloneDisplayMode } from "@/utils/platform";
+
 // `as const satisfies Chain` (not just a plain object) — without it, `id`
 // widens to `number` instead of the literal `14`, which loses wagmi's
 // ability to narrow `chainId` against this specific registered chain at
@@ -174,6 +176,45 @@ function isRealMetaMask(provider: InjectedProvider): boolean {
   return !METAMASK_IMPERSONATOR_FLAGS.some((flag) => provider[flag]);
 }
 
+// Extracted to its own function purely so this decision is directly
+// unit-testable (see web3Config.test.ts) without having to reach into
+// wagmi's own internal connector construction — `createConfig` below is a
+// module-level singleton evaluated once at import time, so a test needs to
+// re-import the module fresh under each `isStandaloneDisplayMode()` mock,
+// which is far more reliable against this small, pure function's return
+// value than against whatever @walletconnect/ethereum-provider happens to
+// expose on its lazily-constructed internals.
+export function getWalletConnectMetadata() {
+  return {
+    name: "FlareGPT",
+    description:
+      "Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio.",
+    url: "https://www.flaregpt.io",
+    icons: ["https://www.flaregpt.io/icon-512.png"],
+    // `redirect.universal` is an instruction to physically navigate the
+    // user to that URL after a wallet approves — and on mobile that means
+    // the OS resolves it, which opens a *new* browser tab, not the
+    // already-open installed PWA (a plain https URL has no way to tell the
+    // OS "reopen the standalone instance specifically"). Setting it
+    // unconditionally regressed the PWA connect flow (confirmed live:
+    // connect from the installed app, approve in MetaMask, land back in
+    // Safari/Chrome instead of the PWA) — before this field existed at
+    // all, wallets fell back to their own default "return to previous
+    // app" UX (a prompt inside the wallet, resolved via the OS app-
+    // switcher rather than a URL navigation), which is exactly what
+    // correctly returns to whichever context — PWA or browser tab —
+    // actually initiated the connection. Only setting this for a plain-
+    // browser session restores that PWA behavior while keeping the
+    // deliberate universal-link redirect for the browser case it was
+    // actually added for (see the commit that introduced it: wallets'
+    // Verify API and default branding otherwise announced this app as
+    // generic "WalletConnect" from walletconnect.org).
+    ...(isStandaloneDisplayMode()
+      ? {}
+      : { redirect: { universal: "https://www.flaregpt.io/" } }),
+  };
+}
+
 export const web3Config = createConfig({
   chains: [flare, mainnet, coston2, songbird],
   connectors: [
@@ -208,31 +249,8 @@ export const web3Config = createConfig({
     }),
     walletConnect({
       projectId: "771106bc829c38d05731ab4af6c2bc38", // Get from cloud.walletconnect.com
-      // Never set before — confirmed by reading @walletconnect/ethereum-
-      // provider's own source (the library actually constructing every
-      // session this app creates): when `metadata` is omitted, it falls
-      // back to `name: "WalletConnect"`, `url: "https://walletconnect.org"`
-      // and a generic icon. Every wallet's Verify API checks `url` against
-      // the real requesting origin, and some use it to construct their own
-      // return-redirect — this app's sessions were announcing themselves as
-      // generic "WalletConnect" from walletconnect.org instead of as
-      // FlareGPT from its own real, canonical origin. `url` must be
-      // absolute and match production exactly (see vercel.json's apex->www
-      // redirect — www.flaregpt.io is canonical, matching index.html's own
-      // canonical/og:url tags). `redirect.universal` (no `native` — this is
-      // a PWA/website, not a native app with its own URL scheme) is what
-      // tells a wallet how to navigate back here after approving, per
-      // Reown's own docs on the `metadata.redirect` option.
-      metadata: {
-        name: "FlareGPT",
-        description:
-          "Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio.",
-        url: "https://www.flaregpt.io",
-        icons: ["https://www.flaregpt.io/icon-512.png"],
-        redirect: {
-          universal: "https://www.flaregpt.io/",
-        },
-      },
+      // See getWalletConnectMetadata's own comment for `url`/`redirect`.
+      metadata: getWalletConnectMetadata(),
       showQrModal: true,
       qrModalOptions: {
         // A genuine bug, caught by conversion, not a types gap: this
