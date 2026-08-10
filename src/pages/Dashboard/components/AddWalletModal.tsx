@@ -88,7 +88,18 @@ export default function AddWalletModal({ isOpen, onClose }: AddWalletModalProps)
       // `position: fixed` element was never meant to need any ancestor
       // scrolled on its behalf in the first place. Kept explicit here too so
       // this stays correct on its own even if the DOM location ever changes.
-      addressInputRef.current?.focus({ preventScroll: true });
+      //
+      // Skipped on touch devices — same "pointer: coarse" check and same
+      // reasoning as Composer.tsx's own mount-time focus effect: focusing a
+      // text input programmatically pops the on-screen keyboard immediately,
+      // before the visitor has actually tapped anything, which on mobile
+      // covered the just-opened bottom sheet before it could even be seen.
+      // Desktop keeps the immediate focus (real keyboard, no on-screen
+      // keyboard to fight with) exactly as before.
+      const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+      if (!isTouchDevice) {
+        addressInputRef.current?.focus({ preventScroll: true });
+      }
     } else if (previouslyFocusedRef.current) {
       previouslyFocusedRef.current.focus?.();
       previouslyFocusedRef.current = null;

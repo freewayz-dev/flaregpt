@@ -752,7 +752,7 @@ export default function Navbar({
               dismissFabHint();
               onToggleFlareWidget();
             }}
-            className="lg:hidden fixed bottom-[calc(2.5rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-gradient-to-br from-brand to-brand-hover text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
+            className="lg:hidden fixed bottom-[calc(2.5rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-brand text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
             aria-label={t("navbar.askFlareGPT")}
           >
             <SparklesIcon className="h-5 w-5" />

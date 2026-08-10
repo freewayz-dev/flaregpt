@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { http, HttpResponse, type PathParams } from "msw";
 
 import AddWalletModal from "@/pages/Dashboard/components/AddWalletModal";
@@ -197,5 +197,47 @@ describe("AddWalletModal — signed in", () => {
       await screen.findByText("This address is already on your watchlist."),
     ).toBeInTheDocument();
     expect(onClose).not.toHaveBeenCalled();
+  });
+});
+
+// Regression coverage for a real mobile/PWA bug: opening this modal used to
+// unconditionally call addressInputRef.current.focus() the instant it
+// rendered — on a touch device, focusing a text input programmatically
+// (not from a genuine tap) still pops the on-screen keyboard immediately,
+// before the visitor has tapped anything, covering the just-opened bottom
+// sheet before it could even be seen. Same "pointer: coarse" check and fix
+// as Composer.tsx's own mount-time focus effect (see that file's comment).
+// Desktop (matchMedia "matches: false", the test polyfill's default — see
+// src/test/polyfills.ts) keeps the original immediate-focus behavior.
+describe("AddWalletModal — auto-focus is skipped on touch devices", () => {
+  const originalMatchMedia = window.matchMedia;
+
+  afterEach(() => {
+    window.matchMedia = originalMatchMedia;
+  });
+
+  it("does not focus the address input on a touch device (pointer: coarse)", async () => {
+    window.matchMedia = (query: string) => ({
+      matches: query === "(pointer: coarse)",
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    });
+
+    renderWithProviders(<AddWalletModal isOpen onClose={vi.fn()} />);
+    const input = await screen.findByPlaceholderText("0x... Flare Wallet Address");
+
+    expect(document.activeElement).not.toBe(input);
+  });
+
+  it("still focuses the address input immediately on a non-touch device — desktop behavior unchanged", async () => {
+    renderWithProviders(<AddWalletModal isOpen onClose={vi.fn()} />);
+    const input = await screen.findByPlaceholderText("0x... Flare Wallet Address");
+
+    await waitFor(() => expect(document.activeElement).toBe(input));
   });
 });
