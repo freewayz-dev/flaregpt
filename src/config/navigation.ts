@@ -86,9 +86,11 @@ export const NAV_LINKS: NavLink[] = [
     icon: GiftIcon,
   },
   {
-    translationKey: "governance",
-    path: ROUTES.governance,
-    icon: ShieldCheckIcon,
+    translationKey: "defiProtocols",
+    path: ROUTES.defiProtocols,
+    icon: Square3Stack3DIcon,
+    prefetch: prefetchDefiProtocols,
+    guideDescriptionKey: "defiProtocols.description",
   },
   {
     translationKey: "loops",
@@ -101,11 +103,9 @@ export const NAV_LINKS: NavLink[] = [
     icon: ClockIcon,
   },
   {
-    translationKey: "defiProtocols",
-    path: ROUTES.defiProtocols,
-    icon: Square3Stack3DIcon,
-    prefetch: prefetchDefiProtocols,
-    guideDescriptionKey: "defiProtocols.description",
+    translationKey: "governance",
+    path: ROUTES.governance,
+    icon: ShieldCheckIcon,
   },
   {
     translationKey: "donate",
