@@ -24,7 +24,8 @@
       "Bash(curl -sI https://www.flaregpt.io/app-shell.html)",
       "Bash(curl -sI https://www.flaregpt.io/site.webmanifest)",
       "Bash(grep -oE \"SESSION_REQUEST_EXPIRY[^,;]{0,80}|REQUEST_EXPIRY[^,;]{0,80}\" node_modules/@walletconnect/sign-client/dist/index.js)",
-      "Bash(grep -oE \"Se=\\\\{[^}]{0,150}\\\\}\" node_modules/@walletconnect/sign-client/dist/index.js)"
+      "Bash(grep -oE \"Se=\\\\{[^}]{0,150}\\\\}\" node_modules/@walletconnect/sign-client/dist/index.js)",
+      "WebFetch(domain:developers.google.com)"
     ],
     "additionalDirectories": [
       "/tmp"

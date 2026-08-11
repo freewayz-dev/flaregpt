@@ -1,20 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) — GA4 direct, not Google Tag Manager (the
+         measurement ID's "G-" prefix is GA4's own format; a GTM container id
+         would read "GTM-..." instead). The loader script below is
+         necessarily cross-origin (it's Google's own hosted library, no
+         same-origin proxy for it), allowed via `script-src` in vercel.json's
+         CSP; the config script is same-origin (see gtag-init.js's own
+         comment for why) and needs no CSP exception at all. -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-Y88004SPTG"
     ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-Y88004SPTG");
-    </script>
+    <script src="/gtag-init.js"></script>
 
     <meta charset="UTF-8" />
     <!-- SVG favicon is what every current browser actually renders in the
