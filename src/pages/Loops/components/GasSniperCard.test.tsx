@@ -73,13 +73,20 @@ function renderCard({ wagmi, openWalletModal = vi.fn() }: RenderCardOptions = {}
 function mockCoston2Rpc({
   isApproved,
   rejectSendTransaction = false,
+  onRequest,
 }: {
   isApproved: boolean;
   rejectSendTransaction?: boolean;
+  // Lets a test prove a negative — "no on-chain call happened" — directly,
+  // rather than inferring it from the absence of an approval panel (which
+  // an unrelated UI bug could also produce). Called with every JSON-RPC
+  // method this mock sees, regardless of which branch below handles it.
+  onRequest?: (method: string) => void;
 }) {
   server.use(
     http.post<PathParams, JsonRpcRequestBody>(COSTON2_RPC, async ({ request }) => {
       const { method, params, id } = await request.json();
+      onRequest?.(method);
       const ok = (result: unknown) => HttpResponse.json({ jsonrpc: "2.0", id, result });
 
       // The real crash this protects: MetaMask reports a user-rejected
@@ -155,16 +162,32 @@ function mockCoston2Rpc({
 // Without this, a mocked "enable" that never changes what "status" reports
 // next would let a real wiring bug (enable succeeding but the UI never
 // finding out) pass silently.
-function mockGasSniperBackend({ initiallyOptedIn = [] as string[] } = {}) {
+function mockGasSniperBackend({
+  initiallyOptedIn = [] as string[],
+  // Lets a test make the status refetch that follows a successful enable/
+  // disable measurably slower than the enable/disable request itself —
+  // needed to make the actual regression here observable at all. Both
+  // requests are otherwise in-process/instant under MSW, so the buggy,
+  // un-awaited invalidateQueries() and the fixed, awaited one settle within
+  // the same handful of milliseconds either way — findByText/waitFor's own
+  // internal retrying then masks the difference regardless of which one
+  // the code actually does, since both eventually reach the same visible
+  // end state well inside any reasonable assertion timeout. A real,
+  // measurable delay on just this one endpoint is what turns "resolved
+  // before vs. after the refetch" into something a test can actually tell
+  // apart.
+  statusDelayMs = 0,
+} = {}) {
   let optedInWallets = [...initiallyOptedIn];
   server.use(
-    http.get(`${API_BASE}/api/v1/loops/gas-sniper/status`, () =>
-      HttpResponse.json({
+    http.get(`${API_BASE}/api/v1/loops/gas-sniper/status`, async () => {
+      if (statusDelayMs > 0) await new Promise((resolve) => setTimeout(resolve, statusDelayMs));
+      return HttpResponse.json({
         opted_in_count: optedInWallets.length,
         opted_in_wallets: optedInWallets,
         recent_dry_run_events: [],
-      }),
-    ),
+      });
+    }),
     http.post<PathParams, { user_wallet: string }>(
       `${API_BASE}/api/v1/loops/gas-sniper/enable`,
       async ({ request }) => {
@@ -352,6 +375,25 @@ describe("GasSniperCard — offline", () => {
 
   afterEach(() => {
     Object.defineProperty(window.navigator, "onLine", { value: originalOnLine, configurable: true });
+    // Restoring the property alone isn't enough to undo `fireEvent(window,
+    // new Event("offline"))` below: TanStack Query's own `onlineManager` is
+    // a module-level singleton (not scoped to any one QueryClient) that
+    // listens for real `online`/`offline` window events, independently of
+    // this app's own useOnlineStatus() hook. It only reacts to *events*,
+    // never re-reads `navigator.onLine` on its own — so without firing a
+    // matching "online" event here, every query in every *later* test in
+    // this file (any file, if they share a worker) stays paused under
+    // `networkMode: 'online'`'s default "don't fetch while offline"
+    // behavior, since the test QueryClient (see test-utils.tsx) — unlike
+    // the app's real one in main.tsx — never opts into `networkMode:
+    // 'offlineFirst'` to route around it. A paused, never-yet-fetched
+    // useReadContract (isClaimExecutor) settles as `isLoading: false,
+    // data: undefined`, i.e. "not approved" — confirmed live by the exact
+    // failure this caused: GasSniperCard.tsx's own needsApproval check
+    // reads that as true, so a later test's toggle click was silently
+    // treated as "needs approval" and never sent the enable/disable
+    // request it was actually testing.
+    fireEvent(window, new Event("online"));
   });
 
   it("disables the toggle for an already-approved wallet while offline", async () => {
@@ -384,5 +426,231 @@ describe("GasSniperCard — offline", () => {
     fireEvent(window, new Event("offline"));
 
     expect(screen.getByRole("button", { name: "Approve on Coston2" })).toBeDisabled();
+  });
+});
+
+// Regression coverage for the actual reported bug: useEnableGasSniper/
+// useDisableGasSniper's onSuccess fired queryClient.invalidateQueries()
+// without returning it, so mutateAsync() in handleToggle — and therefore
+// the success toast right after it — resolved as soon as the enable/
+// disable POST itself succeeded, before the status query's own background
+// refetch had actually landed. The toggle (checked={isEnabled}, derived
+// from that query) stayed showing the pre-click value until that refetch
+// happened to catch up on its own, which read as "needs a second click."
+//
+// A first version of these two tests skipped straight to
+// `findByText("Gas Sniper enabled")` with no artificial delay anywhere,
+// on the theory that skipping `waitFor` around the toggle's own state was
+// enough to catch the race. It wasn't: `findByText` is itself built on
+// `waitFor` and retries for up to a second by default, and every mock
+// response here is in-process/instant, so the buggy, un-awaited refetch
+// and the fixed, awaited one both land within a few milliseconds either
+// way — well inside that retry window regardless of which one the code
+// actually does. Genuinely reverting the `return` in useLoopsQueries.ts
+// left both tests passing, which is exactly how a non-discriminating test
+// hides a real bug. `statusDelayMs` closes that gap: it makes the status
+// refetch that follows a successful enable/disable measurably slower than
+// the enable/disable request itself, so "toast appeared while the refetch
+// was still in flight" becomes something a fixed 150ms mid-flight check
+// can actually observe instead of something a retry loop always ends up
+// tolerating.
+describe("GasSniperCard — single-click toggle completes without a second click", () => {
+  it("OFF → ON: the success toast never appears before the refreshed status does", async () => {
+    mockGasSniperBackend({ statusDelayMs: 300 });
+    mockCoston2Rpc({ isApproved: true });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    expect(toggle).toHaveAttribute("aria-checked", "false");
+
+    fireEvent.click(toggle);
+
+    // Mid-flight: the enable POST itself is instant, but the status
+    // refetch it triggers is still 150ms into its own deliberate 300ms
+    // delay. Neither the toast nor the toggle should have moved yet — if
+    // they have, the toast fired off the POST alone, without actually
+    // waiting for the refreshed status the toggle itself reads from.
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    expect(screen.queryByText("Gas Sniper enabled")).not.toBeInTheDocument();
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "false");
+
+    await screen.findByText("Gas Sniper enabled", {}, { timeout: 2000 });
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true");
+  });
+
+  it("ON → OFF: the success toast never appears before the refreshed status does", async () => {
+    mockGasSniperBackend({ initiallyOptedIn: [TEST_ADDRESSES.primary], statusDelayMs: 300 });
+    mockCoston2Rpc({ isApproved: true });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    expect(toggle).toHaveAttribute("aria-checked", "true");
+
+    fireEvent.click(toggle);
+
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    expect(screen.queryByText("Gas Sniper disabled")).not.toBeInTheDocument();
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true");
+
+    await screen.findByText("Gas Sniper disabled", {}, { timeout: 2000 });
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "false");
+  });
+});
+
+describe("GasSniperCard — failed toggle requests", () => {
+  it("a failed enable: no success toast, toggle stays OFF, and is usable again", async () => {
+    mockGasSniperBackend();
+    mockCoston2Rpc({ isApproved: true });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+    server.use(
+      http.post(`${API_BASE}/api/v1/loops/gas-sniper/enable`, () =>
+        HttpResponse.json({ detail: "Internal error" }, { status: 500 }),
+      ),
+    );
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    fireEvent.click(toggle);
+
+    expect(await screen.findByText("Couldn't update Gas Sniper. Try again.")).toBeInTheDocument();
+    expect(screen.queryByText("Gas Sniper enabled")).not.toBeInTheDocument();
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "false");
+    expect(screen.getByRole("switch")).not.toHaveAttribute("aria-disabled", "true");
+  });
+
+  it("a failed disable: no success toast, toggle stays ON, and is usable again", async () => {
+    mockGasSniperBackend({ initiallyOptedIn: [TEST_ADDRESSES.primary] });
+    mockCoston2Rpc({ isApproved: true });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+    server.use(
+      http.post(`${API_BASE}/api/v1/loops/gas-sniper/disable`, () =>
+        HttpResponse.json({ detail: "Internal error" }, { status: 500 }),
+      ),
+    );
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    expect(toggle).toHaveAttribute("aria-checked", "true");
+    fireEvent.click(toggle);
+
+    expect(await screen.findByText("Couldn't update Gas Sniper. Try again.")).toBeInTheDocument();
+    expect(screen.queryByText("Gas Sniper disabled")).not.toBeInTheDocument();
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true");
+    expect(screen.getByRole("switch")).not.toHaveAttribute("aria-disabled", "true");
+  });
+});
+
+describe("GasSniperCard — duplicate clicks while a request is pending", () => {
+  it("sends exactly one enable request even if the toggle is clicked again before the first resolves", async () => {
+    mockGasSniperBackend();
+    mockCoston2Rpc({ isApproved: true });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+    const enableSpy = vi.fn();
+    let resolveEnable: (() => void) | undefined;
+    server.use(
+      http.post(`${API_BASE}/api/v1/loops/gas-sniper/enable`, async () => {
+        enableSpy();
+        await new Promise<void>((resolve) => {
+          resolveEnable = resolve;
+        });
+        return HttpResponse.json({ status: "enabled" });
+      }),
+    );
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    fireEvent.click(toggle);
+
+    // Toggle.tsx's own handleClick returns early once `disabled` — this is
+    // what's actually supposed to stop a second click, not an assumption
+    // that the user simply won't try.
+    await waitFor(() => expect(toggle).toHaveAttribute("aria-disabled", "true"));
+    fireEvent.click(toggle);
+    fireEvent.click(toggle);
+
+    expect(enableSpy).toHaveBeenCalledTimes(1);
+
+    resolveEnable?.();
+    await waitFor(() => expect(toggle).not.toHaveAttribute("aria-disabled", "true"));
+  });
+});
+
+describe("GasSniperCard — enabled, then wallet disconnects while still authenticated", () => {
+  it("keeps showing Active — a plain disconnect must not silently disable it", async () => {
+    mockGasSniperBackend({ initiallyOptedIn: [TEST_ADDRESSES.primary] });
+    mockCoston2Rpc({ isApproved: true });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    expect(toggle).toHaveAttribute("aria-checked", "true");
+    expect(screen.getByText("Active")).toBeInTheDocument();
+
+    // A real wagmi disconnect — session persists through it (see
+    // useAuthStore.ts's "connection and auth are deliberately separate"
+    // design), so the toggle's own source of truth (the backend's status,
+    // gated on hasSession, not isConnected) is untouched by this.
+    fireEvent.click(screen.getByText("Disconnect"));
+    await waitFor(() => expect(screen.queryByText("Wallet disconnected")).not.toBeInTheDocument());
+
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true");
+    expect(screen.getByText("Active")).toBeInTheDocument();
+  });
+});
+
+describe("GasSniperCard — session expires mid-toggle", () => {
+  it("clears cleanly: no misleading active state, no duplicate toast on top of the session-expired one", async () => {
+    mockGasSniperBackend();
+    mockCoston2Rpc({ isApproved: true });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+    server.use(
+      http.post(`${API_BASE}/api/v1/loops/gas-sniper/enable`, () =>
+        HttpResponse.json({ detail: "Unauthorized" }, { status: 401 }),
+      ),
+    );
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    fireEvent.click(toggle);
+
+    // apiClient.ts's own response interceptor is what actually surfaces
+    // this (any 401 with a token present clears the session) — this only
+    // needs to prove GasSniperCard doesn't pile its own Gas-Sniper-specific
+    // toast on top of that, and that losing the session takes the toggle
+    // down with it instead of leaving a stale "on" reading behind.
+    expect(
+      await screen.findByText("Your session expired. Please sign in again."),
+    ).toBeInTheDocument();
+    expect(screen.queryByText("Couldn't update Gas Sniper. Try again.")).not.toBeInTheDocument();
+    expect(screen.queryByText("Gas Sniper enabled")).not.toBeInTheDocument();
+    await waitFor(() => expect(screen.queryByRole("switch")).not.toBeInTheDocument());
+    expect(await screen.findByRole("button", { name: "Sign In" })).toBeInTheDocument();
+  });
+});
+
+describe("GasSniperCard — already-approved wallet, normal toggling", () => {
+  it("never sends an on-chain transaction — the one-time approval is not repeated on every toggle", async () => {
+    mockGasSniperBackend();
+    const rpcMethods: string[] = [];
+    mockCoston2Rpc({ isApproved: true, onRequest: (method) => rpcMethods.push(method) });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    await screen.findByRole("switch");
+    // Clears the initial isClaimExecutor/getExecutorCurrentFeeValue reads
+    // this card issues on mount — this test only cares what happens from
+    // here, once toggling actually starts.
+    rpcMethods.length = 0;
+
+    const toggle = screen.getByRole("switch");
+    fireEvent.click(toggle);
+    await screen.findByText("Gas Sniper enabled");
+
+    fireEvent.click(toggle);
+    await screen.findByText("Gas Sniper disabled");
+
+    expect(rpcMethods).not.toContain("eth_sendTransaction");
   });
 });

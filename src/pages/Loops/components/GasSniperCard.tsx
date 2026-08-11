@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useOutletContext } from "react-router";
 import { toast } from "react-toastify";
+import { isAxiosError } from "axios";
 import {
   useConnection,
   useReadContract,
@@ -233,6 +234,15 @@ export default function GasSniperCard() {
         toast.success(t("loops.gasSniper.disabled"));
       }
     } catch (error) {
+      // A 401 here means the session expired mid-toggle — apiClient.ts's
+      // own response interceptor already clears the session and shows its
+      // own "Your session expired" toast for exactly this case (any 401,
+      // not just this endpoint), which also flips `hasSession` false and
+      // correctly swaps this toggle out for the sign-in prompt on the next
+      // render. A second, Gas-Sniper-specific "couldn't update" toast on
+      // top of that would just be confusing noise about the same event,
+      // not a distinct failure the user needs to act on separately.
+      if (isAxiosError(error) && error.response?.status === 401) return;
       // Defensive fallback, not the primary path — the approval check
       // above should mean nobody reaches this, but a race (e.g. the
       // keeper being unset again between the check and this click) still
