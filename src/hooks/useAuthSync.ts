@@ -50,16 +50,42 @@ class SignInTimeoutError extends Error {
 // flow gives up and lets the user retry. Nothing in wagmi/viem's own
 // signMessage action bounds this call (confirmed by reading @wagmi/core's
 // signMessage.ts — it's a bare `await` on the connector's provider request,
-// no timeout anywhere), and neither does the underlying WalletConnect/
-// MetaMask transport from our side — so without this, a dropped relay or a
-// backgrounded wallet app that never resumes the request left
-// `isAuthenticating` (and the "Signing…" label) stuck forever, with no way
-// to recover except a page reload. 30s matches ConnectWalletModal.tsx's own
-// CONNECT_TIMEOUT_MS — the same class of "did the wallet app respond" wait,
-// so the same user-patience budget applies: long enough for a real approval
-// tap plus a slow mobile relay round-trip, short enough that "stuck on
-// Signing…" now has a bounded, recoverable end.
-const SIGN_MESSAGE_TIMEOUT_MS = 30_000;
+// no timeout anywhere) — so without this, a dropped relay or a backgrounded
+// wallet app that never resumes the request left `isAuthenticating` (and
+// the "Signing…" label) stuck forever, with no way to recover except a page
+// reload.
+//
+// Connector-aware for the same reason ConnectWalletModal.tsx's own
+// CONNECT_TIMEOUT_MS is: each underlying transport already has its own
+// internal per-request timeout, confirmed by reading its installed source,
+// and a shorter external timeout than that is what let a genuinely healthy,
+// still-in-progress signature request get treated as failed.
+//   - metaMaskSDK / metaMask: MetaMask's Mobile Wallet Protocol
+//     (@metamask/connect-multichain's MWPTransport) uses
+//     `DEFAULT_REQUEST_TIMEOUT = 60s` for every post-connection request,
+//     signing included (confirmed in its installed source's
+//     `sendEip1193Message`). Set a few seconds past that so the SDK's own
+//     timeout is what fires first in the ordinary case.
+//   - walletConnect: WalletConnect session requests carry their own
+//     `SESSION_REQUEST_EXPIRY` (minimum five minutes per the protocol's own
+//     bounds — confirmed in @walletconnect/sign-client's installed
+//     constants) — kept shorter here than the five-minute *connect* budget
+//     since a user who has already connected and is now just signing is
+//     typically still engaged with the wallet, but still far more generous
+//     than the old flat 30s.
+//   - everything else (injected extensions): unchanged at 30s — a desktop
+//     extension answers a signature popup synchronously in-page.
+const SIGN_MESSAGE_TIMEOUT_MS: Record<"walletConnect" | "metaMask" | "default", number> = {
+  walletConnect: 120_000,
+  metaMask: 65_000,
+  default: 30_000,
+};
+
+function getSignTimeoutMs(connectorId: string | undefined): number {
+  if (connectorId === "walletConnect") return SIGN_MESSAGE_TIMEOUT_MS.walletConnect;
+  if (connectorId === "metaMaskSDK" || connectorId === "metaMask") return SIGN_MESSAGE_TIMEOUT_MS.metaMask;
+  return SIGN_MESSAGE_TIMEOUT_MS.default;
+}
 
 // Races `promise` against a timer. Deliberately does NOT cancel `promise`
 // itself (there is no cancellation API for a wallet's own signature
@@ -99,7 +125,11 @@ function withSignTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
 // Subscribing an effect to this value while the effect body also sets it
 // is exactly what caused an infinite mount/cleanup loop ("Maximum update
 // depth exceeded") the first time this was wired up.
-async function attemptSignIn(address: Address, signMessageAsync: SignMessageAsync) {
+async function attemptSignIn(
+  address: Address,
+  signMessageAsync: SignMessageAsync,
+  connectorId?: string,
+) {
   if (useAuthStore.getState().isAuthenticating) return;
   useAuthStore.getState().beginAuthenticating();
   try {
@@ -118,7 +148,7 @@ async function attemptSignIn(address: Address, signMessageAsync: SignMessageAsyn
     // 15s timeout).
     const signature = await withSignTimeout(
       signMessageAsync({ account: address, message }),
-      SIGN_MESSAGE_TIMEOUT_MS,
+      getSignTimeoutMs(connectorId),
     );
     const { token } = await authService.verifySignature(address, signature);
     // Re-checked right before committing the session: `connectedAddress` is
@@ -169,7 +199,7 @@ async function attemptSignIn(address: Address, signMessageAsync: SignMessageAsyn
 // already connected but unauthenticated) goes through the manual `signIn`
 // export instead, driven by a UI action rather than a connection event.
 export function useAuthSync() {
-  const { address, isConnected, isReconnecting } = useConnection();
+  const { address, isConnected, isReconnecting, connector } = useConnection();
   // `signMessage`/`signMessageAsync` on useSignMessage()'s own return are
   // deprecated in favor of the underlying mutation's `mutate`/`mutateAsync`
   // — same pattern already used for useConnect()/useDisconnect() elsewhere
@@ -295,14 +325,21 @@ export function useAuthSync() {
     // "still looks signed in, just as someone else" one.
     if (token) clearAuth();
 
-    attemptSignIn(address, signMessageAsync);
+    attemptSignIn(address, signMessageAsync, connector?.id);
+    // `connector?.id` deliberately left out of the dependency array: the
+    // connector reference/id is already implied by `address`/`isConnected`
+    // (a different connector connecting is what changes those), and adding
+    // it risks re-running this effect for a connector identity change that
+    // isn't a real reconnect — the existing `connectionChanged` guard above
+    // is what actually decides whether to act, not this array.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isConnected, address, token, authenticatedAddress, signMessageAsync, clearAuth]);
 }
 
 // Manual trigger for "Sign In" (connected but not authenticated) — see
 // useAuthStatus.js, which is what actually calls this from a button.
-export function signIn(address: Address, signMessageAsync: SignMessageAsync) {
-  return attemptSignIn(address, signMessageAsync);
+export function signIn(address: Address, signMessageAsync: SignMessageAsync, connectorId?: string) {
+  return attemptSignIn(address, signMessageAsync, connectorId);
 }
 
 // Exported standalone (not part of the hook above) since logout is a

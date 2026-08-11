@@ -14,12 +14,13 @@
         "useChrome": "Sử dụng Google Chrome hoặc trình duyệt được hỗ trợ khác nếu sự cố vẫn tiếp diễn."
       },
       "generic": "Đã xảy ra ma sát kết nối không mong muốn. Vui lòng thử lại hoặc sử dụng ví khác.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "Yêu cầu kết nối đã được mở. Vui lòng mở bảng điều khiển tiện ích mở rộng ví của bạn.",
       "providerGone": "Ví này có vẻ không còn phản hồi. Ví có thể đã được cập nhật hoặc gỡ bỏ. Tải lại trang có thể khắc phục sự cố này.",
       "rejected": "Yêu cầu kết nối đã bị hủy trong ví của bạn.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "Không thể kết nối với WalletConnect. Vui lòng kiểm tra kết nối của bạn và thử lại.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "Vui lòng chuyển mạng đang hoạt động của ví của bạn sang Flare Mainnet."
     },
     "install": "Cài đặt",

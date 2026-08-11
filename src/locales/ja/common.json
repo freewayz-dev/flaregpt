@@ -14,12 +14,13 @@
         "useChrome": "問題が解決しない場合は、Google Chromeまたは他のサポートされているブラウザをご利用ください。"
       },
       "generic": "予期せぬ接続摩擦が発生しました。もう一度お試しいただくか、別のウォレットをご利用ください。",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "接続要求はすでに開いています。ウォレット拡張パネルを開いてください。",
       "providerGone": "このウォレットは応答していないようです。更新または削除された可能性があります。ページを更新すると解決する場合があります。",
       "rejected": "ウォレットで接続リクエストがキャンセルされました。",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "WalletConnectに接続できませんでした。接続を確認して再試行してください。",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "ウォレットのアクティブなネットワークをFlare Mainnetに切り替えてください。"
     },
     "install": "インストール",

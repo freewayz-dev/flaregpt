@@ -14,12 +14,13 @@
         "useChrome": "Usa Google Chrome u otro navegador compatible si el problema persiste."
       },
       "generic": "Se ha producido una fricción de conexión inesperada. Inténtalo de nuevo o utiliza otro monedero.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "Ya hay una solicitud de conexión abierta. Abre el panel de extensión de tu monedero.",
       "providerGone": "Parece que este monedero ya no responde. Es posible que se haya actualizado o eliminado. Actualizar la página debería solucionar este problema.",
       "rejected": "La solicitud de conexión se ha cancelado en tu monedero.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "No se pudo conectar con WalletConnect. Comprueba tu conexión e inténtalo de nuevo.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "Cambia la red activa de tu monedero a Flare Mainnet."
     },
     "install": "Instalar",

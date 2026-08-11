@@ -14,12 +14,13 @@
         "useChrome": "Use o Google Chrome ou outro navegador compatível se o problema persistir."
       },
       "generic": "Ocorreu um atrito inesperado na ligação. Tente novamente ou use outra carteira.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "Um pedido de ligação já está aberto. Abra o painel de extensão da sua carteira.",
       "providerGone": "Esta carteira parece não estar mais respondendo. Pode ter sido atualizado ou removido. Atualizar a página deve corrigir isso.",
       "rejected": "O pedido de ligação foi cancelado na sua carteira.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "Não foi possível alcançar o WalletConnect. Verifique sua conexão e tente novamente.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "Mude a rede ativa da sua carteira para a Flare Mainnet."
     },
     "install": "Instalar",

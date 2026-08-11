@@ -14,12 +14,13 @@
         "useChrome": "استخدم Google Chrome أو متصفحًا آخر مدعومًا إذا استمرت المشكلة."
       },
       "generic": "حدث احتكاك غير متوقع في الاتصال. يرجى المحاولة مرة أخرى أو استخدام محفظة أخرى.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "طلب الاتصال مفتوح بالفعل. يرجى فتح لوحة تمديد محفظتك.",
       "providerGone": "يبدو أن هذه المحفظة لم تعد تستجيب. ربما تم تحديثها أو إزالتها. قد يؤدي تحديث الصفحة إلى حل هذه المشكلة.",
       "rejected": "تم إلغاء طلب الاتصال في محفظتك.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "تعذّر الوصول إلى WalletConnect. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "يرجى تبديل شبكة محفظتك النشطة إلى Flare Mainnet."
     },
     "install": "تثبيت",

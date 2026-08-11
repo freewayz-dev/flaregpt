@@ -14,12 +14,13 @@
         "useChrome": "Utilisez Google Chrome ou un autre navigateur pris en charge si le problème persiste."
       },
       "generic": "Une friction de connexion inattendue s'est produite. Veuillez réessayer ou utiliser un autre portefeuille.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "Une demande de connexion est déjà ouverte. Veuillez ouvrir le panneau d'extension de votre portefeuille.",
       "providerGone": "Ce portefeuille ne semble plus répondre. Il a peut-être été mis à jour ou supprimé. Actualiser la page devrait résoudre le problème.",
       "rejected": "La demande de connexion a été annulée dans votre portefeuille.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "Impossible de joindre WalletConnect. Vérifiez votre connexion et réessayez.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "Veuillez basculer le réseau actif de votre portefeuille vers Flare Mainnet."
     },
     "install": "Installer",

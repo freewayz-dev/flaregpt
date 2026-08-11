@@ -14,12 +14,13 @@
         "useChrome": "如果问题仍然存在，请使用 Google Chrome 或其他受支持的浏览器。"
       },
       "generic": "发生意外的连接摩擦。请重试或使用其他钱包。",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "连接请求已打开。请打开您的钱包扩展面板。",
       "providerGone": "此钱包似乎不再响应。它可能已被更新或删除。刷新页面应该可以解决此问题。",
       "rejected": "您的钱包中的连接请求已取消。",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "无法连接到WalletConnect。请检查您的网络连接后重试。",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "请将钱包的活动网络切换到Flare主网。"
     },
     "install": "安装",

@@ -10,6 +10,7 @@ import { useUIStore, applyThemeColorMeta } from "./store/useUIStore";
 import { useAuthSync } from "./hooks/useAuthSync";
 import { useWatchlistSync } from "./hooks/useWatchlistSync";
 import { usePwaInstallListeners } from "./hooks/usePwaInstallListeners";
+import { recoverFromChunkLoadError } from "./utils/chunkLoadRecovery";
 
 function App() {
   const reduceMotionOverride = useUIStore((state) => state.reduceMotionOverride);
@@ -75,6 +76,13 @@ function App() {
       onReset={() => queryClient.clear()}
       onError={(error, info) => {
         console.error("[ErrorBoundary:root]", error, info?.componentStack);
+        // A stale-chunk failure (see chunkLoadRecovery.ts) can't be fixed by
+        // this boundary's own "Try again" — only a real reload fetches a
+        // fresh bundle. Recovering here, at the point the error is caught,
+        // means the user sees a reload happen instead of a dead retry
+        // button for this specific, identifiable failure class; every
+        // other error still falls through to the normal fallback UI.
+        recoverFromChunkLoadError(error);
       }}
     >
       {/* "user" (the default) makes every Framer Motion animation app-wide

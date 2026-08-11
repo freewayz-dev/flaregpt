@@ -14,12 +14,13 @@
         "useChrome": "Sorun devam ederse Google Chrome veya desteklenen başka bir tarayıcı kullanın."
       },
       "generic": "Beklenmedik bir bağlantı sürtünmesi meydana geldi. Lütfen tekrar deneyin veya başka bir cüzdan kullanın.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "Bir bağlantı isteği zaten açık. Lütfen cüzdan uzantı panelinizi açın.",
       "providerGone": "Bu cüzdan artık yanıt vermiyor gibi görünüyor. Güncellenmiş veya kaldırılmış olabilir. Sayfayı yenilemek bunu düzeltecektir.",
       "rejected": "Cüzdanınızdaki bağlantı isteği iptal edildi.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "WalletConnect'e ulaşılamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "Lütfen cüzdanınızın aktif ağını Flare Mainnet olarak değiştirin."
     },
     "install": "Yükle",

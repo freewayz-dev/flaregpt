@@ -14,12 +14,13 @@
         "useChrome": "문제가 계속되면 Google Chrome이나 다른 지원되는 브라우저를 사용하세요."
       },
       "generic": "예기치 않은 연결 마찰이 발생했습니다. 다시 시도하거나 다른 지갑을 사용하세요.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "연결 요청이 이미 열려 있습니다. 지갑 확장 패널을 여십시오.",
       "providerGone": "이 지갑이 더 이상 응답하지 않는 것 같습니다. 업데이트되었거나 제거되었을 수 있습니다. 페이지를 새로고침하면 해결될 수 있습니다.",
       "rejected": "지갑에서 연결 요청이 취소되었습니다.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "WalletConnect에 연결할 수 없습니다. 연결 상태를 확인하고 다시 시도하세요.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "지갑의 활성 네트워크를 Flare Mainnet으로 전환하십시오."
     },
     "install": "설치",

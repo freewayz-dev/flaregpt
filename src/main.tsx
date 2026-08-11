@@ -12,6 +12,7 @@ import { initI18n } from "./i18n";
 import { retryUpTo } from "./hooks/queries/resilience";
 import { promptForUpdate } from "./components/common/UpdateAvailableToast";
 import { logWebVitalsInDev } from "./utils/webVitals";
+import { registerUpdatePolling } from "./utils/updatePolling";
 
 import "./index.css";
 
@@ -37,6 +38,9 @@ if (import.meta.env.DEV) {
 const updateSW = registerSW({
   immediate: true,
   onNeedRefresh: () => promptForUpdate(updateSW),
+  onRegisteredSW(_swScriptUrl, registration) {
+    if (registration) registerUpdatePolling(registration);
+  },
 });
 
 const queryClient = new QueryClient({

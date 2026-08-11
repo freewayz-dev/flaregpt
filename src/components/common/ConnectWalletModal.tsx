@@ -57,10 +57,54 @@ interface VisualWallet {
   dedicatedConnectorId?: string;
 }
 
-// A stuck relay/network on WalletConnect's side leaves its connect() promise
-// hanging forever with no error — this bounds how long any single attempt
-// gets before we give up and let the user retry.
-const CONNECT_TIMEOUT_MS = 30_000;
+// A stuck relay/network leaves a connector's connect() promise hanging
+// forever with no error — this bounds how long any single attempt gets
+// before we give up and let the user retry. Deliberately connector-aware,
+// not one flat number: a fixed 30s used to fire while the user was still
+// legitimately inside a wallet app waiting for the confirmation prompt to
+// even appear, well before either underlying transport considers the
+// attempt dead.
+//
+//   - walletConnect: WalletConnect's own session-PROPOSAL_EXPIRY is
+//     FIVE_MINUTES (confirmed by reading @walletconnect/sign-client's own
+//     constants) — the relay itself keeps a pairing proposal alive for 5
+//     minutes, so a UI timeout shorter than that can abort (via disconnect()/
+//     modal.close() below) a pairing that's still genuinely valid on the
+//     protocol's own terms. Matching it means our own timeout is never the
+//     reason a legitimately-still-open proposal gets torn down — by the
+//     time we'd act, the relay itself has already let it expire.
+//   - metaMask / metaMaskSDK: MetaMask's Mobile Wallet Protocol
+//     (@metamask/mobile-wallet-protocol-dapp-client's MWPTransport) uses its
+//     own internal `DEFAULT_CONNECTION_TIMEOUT` of
+//     `DEFAULT_REQUEST_TIMEOUT (60s) + CONNECTION_GRACE_PERIOD (60s)` = 120s
+//     for a fresh connection attempt, confirmed by reading its installed
+//     source. Set a few seconds past that so the SDK's *own* internal
+//     timeout is what actually fires first in the ordinary case — it
+//     rejects connectAsync() cleanly on its own, meaning our own
+//     abortPendingConnector() call becomes a backstop for the rare case the
+//     SDK's own timeout doesn't fire, not the primary mechanism.
+//   - everything else (injected extensions: Rabby, Bifrost, desktop
+//     MetaMask): unchanged at 30s. These resolve synchronously in-page (the
+//     extension answers or the user dismisses its own popup) — there's no
+//     OS app-switch or relay round-trip to wait out, so the original,
+//     shorter budget is still the right one.
+//
+// Deliberately NOT "just make it huge": a longer budget alone wouldn't stop
+// our own timeout from tearing down a still-valid pairing early, it would
+// just delay when that could happen. Aligning each budget with what the
+// underlying transport itself already promises is what actually fixes
+// that — see abortPendingConnector's own updated comment below.
+const CONNECT_TIMEOUT_MS: Record<"walletConnect" | "metaMask" | "default", number> = {
+  walletConnect: 5 * 60_000,
+  metaMask: 130_000,
+  default: 30_000,
+};
+
+function getConnectTimeoutMs(connectorId: string): number {
+  if (connectorId === "walletConnect") return CONNECT_TIMEOUT_MS.walletConnect;
+  if (connectorId === "metaMaskSDK" || connectorId === "metaMask") return CONNECT_TIMEOUT_MS.metaMask;
+  return CONNECT_TIMEOUT_MS.default;
+}
 
 const isMobileDevice = () =>
   typeof navigator !== "undefined" &&
@@ -208,6 +252,30 @@ const isProviderGoneError = (error: ConnectError) =>
   String(error?.name) === "ProviderNotFoundError" ||
   error?.message?.toLowerCase().includes("provider not found");
 
+// A genuine transport/network-layer failure — distinct from a wallet-side
+// rejection, a wrong-network prompt, or an unrecognized connector error.
+// `failed to fetch`/`networkerror` are the browser's own wording for a
+// fetch() that never reached a server at all (offline, DNS, CORS-as-
+// opaque-failure); `websocket`/`relay` cover a WalletConnect relay
+// connection failing to establish. The exact quoted string is what
+// @wagmi/connectors' metaMask.ts throws when its own dynamic import of
+// '@metamask/connect-evm' fails (confirmed in its installed source) — a
+// real failure to fetch the SDK's own chunk, not a wallet or user issue.
+// Deliberately does NOT match the bare word "network" — that would
+// collide with the wrongNetwork check below (a "switch your wallet's
+// network" prompt legitimately contains that word too).
+const isNetworkFailureError = (error: ConnectError) => {
+  if (!error?.message) return false;
+  const msg = error.message.toLowerCase();
+  return (
+    msg.includes("failed to fetch") ||
+    msg.includes("networkerror") ||
+    msg.includes("websocket") ||
+    msg.includes("relay") ||
+    msg.includes('dependency "@metamask/connect-evm" not found')
+  );
+};
+
 const getFriendlyErrorMessage = (error: ConnectError, t: TFunction) => {
   if (!error) return null;
   if (isProviderGoneError(error)) return t("connectModal.errors.providerGone");
@@ -217,6 +285,9 @@ const getFriendlyErrorMessage = (error: ConnectError, t: TFunction) => {
   }
   if (msg.includes("already pending")) {
     return t("connectModal.errors.pending");
+  }
+  if (isNetworkFailureError(error)) {
+    return t("connectModal.errors.networkFailure");
   }
   if (msg.includes("chain") || msg.includes("network")) {
     return t("connectModal.errors.wrongNetwork");
@@ -352,6 +423,14 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
   // existing mechanism, rather than reimplementing pairing cleanup, is
   // deliberate — wagmi gives no supported way to force a fresh provider
   // instance instead.
+  //
+  // Only ever called from two places now: the connector-specific
+  // CONNECT_TIMEOUT_MS below (see its own comment — by the time that fires,
+  // the underlying protocol's own natural expiry has already elapsed too,
+  // so there's no still-good pairing left for this to prematurely tear
+  // down) and the user explicitly picking a different wallet/closing the
+  // modal mid-attempt (a real, deliberate abandonment, not a timing
+  // assumption).
   const abortPendingConnector = useCallback(async (connector: Connector) => {
     try {
       const provider = (await connector
@@ -410,11 +489,11 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
         reset();
         setPendingWalletId(null);
         // Which wording to show depends on which connector actually
-        // stalled — CONNECT_TIMEOUT_MS fires for any connector, and showing
-        // WalletConnect-specific copy for a stuck MetaMask/injected attempt
-        // is misleading (this connector never touched WalletConnect at
-        // all). Brave-Shields-blocking-the-relay is specifically a
-        // WalletConnect symptom, so only checked for that connector.
+        // stalled — showing WalletConnect-specific copy for a stuck
+        // MetaMask/injected attempt is misleading (this connector never
+        // touched WalletConnect at all). Brave-Shields-blocking-the-relay is
+        // specifically a WalletConnect symptom, so only checked for that
+        // connector.
         if (connector.id === "walletConnect") {
           const brave = await isBraveBrowser();
           setTimeoutKind(brave ? "brave" : "walletconnect");
@@ -428,7 +507,7 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
           setTimeoutKind("generic");
         }
         await abortPendingConnector(connector);
-      }, CONNECT_TIMEOUT_MS);
+      }, getConnectTimeoutMs(connector.id));
       pendingTimeoutRef.current = timeoutId;
 
       try {
@@ -446,6 +525,49 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
     },
     [abortPendingConnector, connectAsync, reset],
   );
+
+  // Pre-warms MetaMask's dedicated mobile connector the moment this modal
+  // opens, *before* the user has tapped anything — the actual root cause
+  // behind "tap MetaMask, UI says Connecting…, MetaMask never opens":
+  // metaMaskSDK's own connect() (see @wagmi/connectors' metaMask.ts)
+  // starts with `await this.getInstance()`, which dynamically imports
+  // '@metamask/connect-evm' and that package's own createEVMClient() does
+  // *further* dynamic imports of its own ('./ui/modals/web',
+  // './store/adapters/web' — confirmed by reading its installed source).
+  // Each is a real network fetch if not already cached. By the time all of
+  // that resolves, the click that started it is no longer a synchronous
+  // browser event — it's several async hops and real wall-clock time
+  // removed, which is exactly the situation iOS Safari (especially inside
+  // an installed PWA's standalone context) can silently refuse to honor as
+  // a trusted-gesture app handoff, with no JS-level error to show for it.
+  //
+  // Calling getProvider() here does the identical dynamic-import/SDK-
+  // construction work ahead of time, off the critical path of any tap —
+  // getInstance() memoizes its result in module-level `metamask`/
+  // `metamaskPromise` variables (confirmed in its source), so once this
+  // resolves, the *real* connect() call later — if the user does pick
+  // MetaMask — reuses the already-built instance and reaches the actual
+  // OS handoff much closer to the synchronous click, instead of after a
+  // slow chunk fetch. getProvider() itself only constructs the SDK client;
+  // it does not open MetaMask or show any UI, so this is safe to fire
+  // speculatively with no user-visible effect either way.
+  //
+  // Deliberately scoped tight, not "every page load": only fires once this
+  // modal is actually open (a real, if early, signal of intent to connect
+  // a wallet — most visitors never open this modal at all), and only on
+  // mobile where the dedicated connector would actually be used and where
+  // this problem actually occurs (desktop's injected "metaMask" connector
+  // never touches connect-evm — see web3Config.ts). Best-effort: any
+  // failure here (offline, blocked request) is silently swallowed — the
+  // user's *real* tap, later, still goes through the normal connect flow
+  // and its own error handling exactly as if this had never run.
+  useEffect(() => {
+    if (!isOpen || !isMobileDevice()) return;
+    const metaMaskWallet = VISUAL_WALLETS.find((w) => w.id === "metamask");
+    if (!metaMaskWallet || isWalletDetected(connectors, metaMaskWallet)) return;
+    const dedicated = connectors.find((c) => c.id === metaMaskWallet.dedicatedConnectorId);
+    dedicated?.getProvider?.().catch(() => {});
+  }, [isOpen, connectors]);
 
   useEffect(() => {
     if (isOpen) {

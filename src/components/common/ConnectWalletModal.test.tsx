@@ -26,6 +26,7 @@ function createHangingConnectorStub(id: string) {
   const modalClose = vi.fn();
   const disconnect = vi.fn().mockResolvedValue(undefined);
   const connectSpy = vi.fn();
+  const getProviderSpy = vi.fn();
   const connector = createConnector(() => ({
     id,
     name: id,
@@ -40,6 +41,7 @@ function createHangingConnectorStub(id: string) {
       await disconnect();
     },
     async getProvider() {
+      getProviderSpy();
       return { modal: { close: modalClose } };
     },
     async getAccounts() {
@@ -55,7 +57,7 @@ function createHangingConnectorStub(id: string) {
     onChainChanged() {},
     onDisconnect() {},
   }));
-  return { connector, modalClose, disconnect, connectSpy };
+  return { connector, modalClose, disconnect, connectSpy, getProviderSpy };
 }
 
 // Same shape as createHangingConnectorStub, except `connect()` actually
@@ -99,6 +101,38 @@ function createResolvingConnectorStub(id: string) {
     onDisconnect() {},
   }));
   return { connector, modalClose, disconnect };
+}
+
+// A connector whose connect() rejects immediately with a caller-supplied
+// error — for exercising getFriendlyErrorMessage's own classification
+// logic (network failure / provider gone / rejected / generic) against a
+// real wagmi `error` state, not a hand-built one.
+function createFailingConnectorStub(id: string, error: Error) {
+  const connector = createConnector(() => ({
+    id,
+    name: id,
+    type: "walletConnect",
+    connect: (async () => {
+      throw error;
+    }) as unknown as Connector["connect"],
+    async disconnect() {},
+    async getProvider() {
+      return {};
+    },
+    async getAccounts() {
+      return [];
+    },
+    async getChainId() {
+      return mainnet.id;
+    },
+    async isAuthorized() {
+      return false;
+    },
+    onAccountsChanged() {},
+    onChainChanged() {},
+    onDisconnect() {},
+  }));
+  return { connector };
 }
 
 function renderWithHangingWalletConnect(ui: ReactElement) {
@@ -609,14 +643,21 @@ describe("ConnectWalletModal — stuck WalletConnect attempt cleanup", () => {
     vi.useRealTimers();
   });
 
-  it("closes AppKit's modal and disconnects the connector after the 30s timeout", async () => {
+  it("closes AppKit's modal and disconnects the connector after WalletConnect's own 5-minute timeout", async () => {
     vi.useFakeTimers();
     const { wc } = renderWithHangingWalletConnect(<ConnectWalletModal isOpen onClose={vi.fn()} />);
 
     fireEvent.click(screen.getByText("WalletConnect").closest("button")!);
     expect(wc.modalClose).not.toHaveBeenCalled();
 
+    // Not yet — WalletConnect's own session-PROPOSAL_EXPIRY is 5 minutes,
+    // so a 30s-only wait (the old, too-aggressive budget) must not abort a
+    // pairing that's still genuinely within its protocol-level window.
     await vi.advanceTimersByTimeAsync(30_000);
+    expect(wc.modalClose).not.toHaveBeenCalled();
+    expect(wc.disconnect).not.toHaveBeenCalled();
+
+    await vi.advanceTimersByTimeAsync(5 * 60_000 - 30_000);
 
     expect(wc.modalClose).toHaveBeenCalledTimes(1);
     expect(wc.disconnect).toHaveBeenCalledTimes(1);
@@ -664,13 +705,13 @@ describe("ConnectWalletModal — stuck WalletConnect attempt cleanup", () => {
   });
 });
 
-// Regression coverage for a real, confirmed bug: CONNECT_TIMEOUT_MS fires
-// identically for every connector, but the error copy used to hardcode
-// WalletConnect wording regardless of which connector actually stalled — a
-// stuck MetaMask (or any injected) attempt showed "Couldn't reach
-// WalletConnect" despite never touching WalletConnect at all. Each case
-// below drives a *different* connector id through the same 30s timeout and
-// asserts the message that's actually specific to it.
+// Regression coverage for a real, confirmed bug: the error copy used to
+// hardcode WalletConnect wording regardless of which connector actually
+// stalled — a stuck MetaMask (or any injected) attempt showed "Couldn't
+// reach WalletConnect" despite never touching WalletConnect at all. Each
+// case below drives a *different* connector id through its own
+// connector-specific timeout (see getConnectTimeoutMs) and asserts the
+// message that's actually specific to it.
 describe("ConnectWalletModal — timeout message matches the connector that actually stalled", () => {
   afterEach(() => {
     vi.useRealTimers();
@@ -701,19 +742,19 @@ describe("ConnectWalletModal — timeout message matches the connector that actu
     return { ...utils, wc, metaMaskSDK, rabby };
   }
 
-  it("a stuck WalletConnect attempt shows the WalletConnect-specific message", async () => {
+  it("a stuck WalletConnect attempt shows the WalletConnect-specific message after its own 5-minute budget", async () => {
     vi.useFakeTimers();
     renderWithThreeConnectors(<ConnectWalletModal isOpen onClose={vi.fn()} />);
 
     fireEvent.click(screen.getByText("WalletConnect").closest("button")!);
-    await vi.advanceTimersByTimeAsync(30_000);
+    await vi.advanceTimersByTimeAsync(5 * 60_000);
 
     expect(
-      screen.getByText("Couldn't reach WalletConnect. Please check your connection and try again."),
+      screen.getByText("WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done."),
     ).toBeInTheDocument();
   });
 
-  it("a stuck MetaMask attempt shows the MetaMask-specific message, not WalletConnect's", async () => {
+  it("a stuck MetaMask attempt shows the MetaMask-specific message after its own ~130s budget, not WalletConnect's", async () => {
     vi.useFakeTimers();
     // No injected/EIP-6963 MetaMask provider stubbed, and a mobile UA — so
     // handleConnect's dedicatedConnectorId branch routes straight to the
@@ -730,19 +771,19 @@ describe("ConnectWalletModal — timeout message matches the connector that actu
     fireEvent.click(screen.getByText("MetaMask").closest("button")!);
     await flushMicrotasks();
     expect(metaMaskSDK.connectSpy).toHaveBeenCalledTimes(1);
-    await vi.advanceTimersByTimeAsync(30_000);
+    await vi.advanceTimersByTimeAsync(130_000);
 
     expect(
-      screen.getByText("Couldn't reach MetaMask. Please check your connection and try again."),
+      screen.getByText("MetaMask took too long to respond. If you're still approving in the app, please try again once you're done."),
     ).toBeInTheDocument();
     expect(
-      screen.queryByText("Couldn't reach WalletConnect. Please check your connection and try again."),
+      screen.queryByText("WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done."),
     ).not.toBeInTheDocument();
 
     vi.unstubAllGlobals();
   });
 
-  it("a stuck attempt on an injected connector (e.g. Rabby) shows the generic message, not WalletConnect's", async () => {
+  it("a stuck attempt on an injected connector (e.g. Rabby) shows the generic message after 30s, not WalletConnect's", async () => {
     vi.useFakeTimers();
     // Rabby detected as injected — handleConnect's `detected` branch
     // resolves straight to the real connector (resolveConnector's
@@ -761,21 +802,256 @@ describe("ConnectWalletModal — timeout message matches the connector that actu
     fireEvent.click(screen.getByText("Rabby Wallet").closest("button")!);
     await flushMicrotasks();
     expect(rabby.connectSpy).toHaveBeenCalledTimes(1);
+    // Injected/extension connectors keep the original, shorter 30s budget
+    // — no OS handoff or relay round-trip to wait out for these.
     await vi.advanceTimersByTimeAsync(30_000);
 
     expect(
-      screen.getByText("Couldn't complete the connection. Please check your connection and try again."),
+      screen.getByText("This wallet took too long to respond. Please try again."),
     ).toBeInTheDocument();
     expect(
-      screen.queryByText("Couldn't reach WalletConnect. Please check your connection and try again."),
+      screen.queryByText("WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done."),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText("Couldn't reach MetaMask. Please check your connection and try again."),
+      screen.queryByText("MetaMask took too long to respond. If you're still approving in the app, please try again once you're done."),
     ).not.toBeInTheDocument();
     expect(wc.connectSpy).not.toHaveBeenCalled();
     expect(metaMaskSDK.connectSpy).not.toHaveBeenCalled();
 
     Object.defineProperty(window, "ethereum", { value: originalEthereum, configurable: true });
+  });
+});
+
+// Regression coverage for the actual reported bug: a fixed 30s budget was
+// firing while the user was still legitimately inside the wallet app
+// waiting for the confirmation prompt. These prove the *extended* per-
+// connector budgets from getConnectTimeoutMs actually take effect — not
+// just that the timeout eventually fires (already covered above), but
+// that it deliberately does NOT fire early anymore.
+describe("ConnectWalletModal — extended per-connector budgets tolerate a slow wallet confirmation", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("a MetaMask attempt taking longer than 30s (but under its own ~130s budget) is still shown as connecting, not timed out", async () => {
+    vi.useFakeTimers();
+    vi.stubGlobal("navigator", {
+      ...window.navigator,
+      userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15",
+      onLine: true,
+    });
+    const metaMaskSDK = createHangingConnectorStub("metaMaskSDK");
+    const wagmiConfig = createConfig({
+      chains: [mainnet],
+      connectors: [metaMaskSDK.connector],
+      transports: { [mainnet.id]: http() },
+    });
+    const testQueryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    });
+    render(<ConnectWalletModal isOpen onClose={vi.fn()} />, {
+      wrapper: ({ children }) => (
+        <WagmiProvider config={wagmiConfig}>
+          <QueryClientProvider client={testQueryClient}>
+            <MemoryRouter>{children}</MemoryRouter>
+          </QueryClientProvider>
+        </WagmiProvider>
+      ),
+    });
+
+    fireEvent.click(screen.getByText("MetaMask").closest("button")!);
+    await flushMicrotasks();
+
+    // Well past the old flat 30s budget — the exact scenario reported live
+    // ("I took a while to approve, then got an error the moment I came
+    // back") — but still short of MetaMask's own ~130s budget.
+    await vi.advanceTimersByTimeAsync(100_000);
+
+    expect(screen.getByText("Connecting…")).toBeInTheDocument();
+    expect(
+      screen.queryByText("MetaMask took too long to respond. If you're still approving in the app, please try again once you're done."),
+    ).not.toBeInTheDocument();
+
+    vi.unstubAllGlobals();
+  });
+
+  it("a WalletConnect attempt taking longer than 30s eventually succeeds instead of being cut off", async () => {
+    vi.useFakeTimers();
+    const wc = createResumeReconciliationStub("walletConnect");
+    const wagmiConfig = createConfig({
+      chains: [mainnet],
+      connectors: [wc.connector],
+      transports: { [mainnet.id]: http() },
+    });
+    const testQueryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    });
+    const onClose = vi.fn();
+    render(<ConnectWalletModal isOpen onClose={onClose} />, {
+      wrapper: ({ children }) => (
+        <WagmiProvider config={wagmiConfig}>
+          <QueryClientProvider client={testQueryClient}>
+            <MemoryRouter>{children}</MemoryRouter>
+          </QueryClientProvider>
+        </WagmiProvider>
+      ),
+    });
+
+    fireEvent.click(screen.getByText("WalletConnect").closest("button")!);
+    await flushMicrotasks();
+    await vi.advanceTimersByTimeAsync(45_000);
+
+    // The wallet approves well past the old 30s budget — connect()'s own
+    // fast path (checked in the real @wagmi/connectors source: `if
+    // (!provider.session) ...`) means this stub's hanging connect() call
+    // can't resolve on its own without the test driving it, so this
+    // exercises the same "wallet finally responds" moment directly rather
+    // than needing the resume-reconciliation machinery to be involved.
+    wc.settleSession();
+    wc.failPendingAttempt();
+    await flushMicrotasks();
+
+    expect(
+      screen.queryByText("WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done."),
+    ).not.toBeInTheDocument();
+  });
+
+  // Pre-warming (see the modal's own useEffect) — proves the actual root
+  // cause fix for "tap MetaMask, UI says Connecting…, MetaMask never
+  // opens": by the time a real tap happens, the dynamic import chain
+  // should already be resolved rather than starting cold.
+  it("pre-warms the dedicated MetaMask connector's provider as soon as the modal opens on mobile, before any tap", async () => {
+    vi.stubGlobal("navigator", {
+      ...window.navigator,
+      userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15",
+      onLine: true,
+    });
+    const metaMaskSDK = createHangingConnectorStub("metaMaskSDK");
+    const wagmiConfig = createConfig({
+      chains: [mainnet],
+      connectors: [metaMaskSDK.connector],
+      transports: { [mainnet.id]: http() },
+    });
+    const testQueryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    });
+    render(<ConnectWalletModal isOpen onClose={vi.fn()} />, {
+      wrapper: ({ children }) => (
+        <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
+          <QueryClientProvider client={testQueryClient}>
+            <MemoryRouter>{children}</MemoryRouter>
+          </QueryClientProvider>
+        </WagmiProvider>
+      ),
+    });
+
+    await waitFor(() => expect(metaMaskSDK.getProviderSpy).toHaveBeenCalled());
+    // Prewarming reads the provider only — it must never itself start a
+    // real connection attempt (that's still exclusively a tap's job).
+    expect(metaMaskSDK.connectSpy).not.toHaveBeenCalled();
+
+    vi.unstubAllGlobals();
+  });
+
+  it("does not pre-warm anything on desktop (not mobile) even with MetaMask undetected", async () => {
+    // Default jsdom UA — not mobile. handleConnect would send an
+    // undetected desktop MetaMask to the install-page branch, never to
+    // metaMaskSDK, so pre-warming it here would be pure waste.
+    const metaMaskSDK = createHangingConnectorStub("metaMaskSDK");
+    const wagmiConfig = createConfig({
+      chains: [mainnet],
+      connectors: [metaMaskSDK.connector],
+      transports: { [mainnet.id]: http() },
+    });
+    const testQueryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    });
+    render(<ConnectWalletModal isOpen onClose={vi.fn()} />, {
+      wrapper: ({ children }) => (
+        <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
+          <QueryClientProvider client={testQueryClient}>
+            <MemoryRouter>{children}</MemoryRouter>
+          </QueryClientProvider>
+        </WagmiProvider>
+      ),
+    });
+
+    await flushMicrotasks();
+    expect(metaMaskSDK.getProviderSpy).not.toHaveBeenCalled();
+  });
+
+  it("does not pre-warm the dedicated connector when MetaMask is already detected as injected, even on a mobile UA", async () => {
+    // MetaMask's own in-app mobile browser: a mobile UA, but the real
+    // extension-equivalent injected provider is already present — the
+    // detected branch (handleConnect's own `detected` check) would use it
+    // directly, never touching metaMaskSDK at all.
+    vi.stubGlobal("navigator", {
+      ...window.navigator,
+      userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15",
+      onLine: true,
+    });
+    const originalEthereum = window.ethereum;
+    Object.defineProperty(window, "ethereum", {
+      value: { isMetaMask: true, request: vi.fn(), on: vi.fn(), removeListener: vi.fn() },
+      configurable: true,
+    });
+    const metaMaskSDK = createHangingConnectorStub("metaMaskSDK");
+    const metaMask = createHangingConnectorStub("metaMask");
+    const wagmiConfig = createConfig({
+      chains: [mainnet],
+      connectors: [metaMask.connector, metaMaskSDK.connector],
+      transports: { [mainnet.id]: http() },
+    });
+    const testQueryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    });
+    render(<ConnectWalletModal isOpen onClose={vi.fn()} />, {
+      wrapper: ({ children }) => (
+        <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
+          <QueryClientProvider client={testQueryClient}>
+            <MemoryRouter>{children}</MemoryRouter>
+          </QueryClientProvider>
+        </WagmiProvider>
+      ),
+    });
+
+    await flushMicrotasks();
+    expect(metaMaskSDK.getProviderSpy).not.toHaveBeenCalled();
+
+    Object.defineProperty(window, "ethereum", { value: originalEthereum, configurable: true });
+    vi.unstubAllGlobals();
+  });
+});
+
+describe("ConnectWalletModal — network/transport failure gets its own message", () => {
+  it("shows the network-failure message, not the generic one, for a fetch-style failure", async () => {
+    const failing = createFailingConnectorStub("walletConnect", new Error("Failed to fetch"));
+    const wagmiConfig = createConfig({
+      chains: [mainnet],
+      connectors: [failing.connector],
+      transports: { [mainnet.id]: http() },
+    });
+    const testQueryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
+    });
+    render(<ConnectWalletModal isOpen onClose={vi.fn()} />, {
+      wrapper: ({ children }) => (
+        <WagmiProvider config={wagmiConfig}>
+          <QueryClientProvider client={testQueryClient}>
+            <MemoryRouter>{children}</MemoryRouter>
+          </QueryClientProvider>
+        </WagmiProvider>
+      ),
+    });
+
+    fireEvent.click(screen.getByText("WalletConnect").closest("button")!);
+
+    expect(
+      await screen.findByText("Couldn't reach the network. Please check your connection and try again."),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText("An unexpected connection error occurred. Please try again or use another wallet."),
+    ).not.toBeInTheDocument();
   });
 });
 

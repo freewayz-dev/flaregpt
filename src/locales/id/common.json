@@ -14,12 +14,13 @@
         "useChrome": "Gunakan Google Chrome atau browser lain yang didukung jika masalah berlanjut."
       },
       "generic": "Terjadi gesekan koneksi yang tidak terduga. Silakan coba lagi atau gunakan dompet lain.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "Permintaan koneksi sudah terbuka. Silakan buka panel ekstensi dompet Anda.",
       "providerGone": "Dompet ini sepertinya tidak lagi merespons. Mungkin telah diperbarui atau dihapus. Menyegarkan halaman seharusnya dapat memperbaikinya.",
       "rejected": "Permintaan koneksi dibatalkan di dompet Anda.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "Tidak dapat menjangkau WalletConnect. Periksa koneksi Anda dan coba lagi.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "Harap alihkan jaringan aktif dompet Anda ke Flare Mainnet."
     },
     "install": "Instal",

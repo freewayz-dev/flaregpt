@@ -14,12 +14,13 @@
         "useChrome": "Используйте Google Chrome или другой поддерживаемый браузер, если проблема сохраняется."
       },
       "generic": "Произошло неожиданное трение соединения. Повторите попытку или воспользуйтесь другим кошельком.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "Запрос на подключение уже открыт. Откройте панель расширения кошелька.",
       "providerGone": "Похоже, этот кошелёк больше не отвечает. Возможно, он был обновлён или удалён. Обновление страницы должно решить проблему.",
       "rejected": "Запрос на подключение отменен в вашем кошельке.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "Не удалось подключиться к WalletConnect. Проверьте соединение и повторите попытку.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "Переключите активную сеть вашего кошелька на Flare Mainnet."
     },
     "install": "Установить",

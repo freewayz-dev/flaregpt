@@ -517,3 +517,93 @@ describe("useAuthSync — signing timeout", () => {
     expect(useAuthStore.getState().authenticatedAddress).toBeNull();
   });
 });
+
+// Regression coverage for the same root cause as ConnectWalletModal.tsx's
+// own connector-aware CONNECT_TIMEOUT_MS: a flat 30s signing budget was
+// shorter than either transport's own internal per-request timeout
+// (MetaMask's MWPTransport: 60s DEFAULT_REQUEST_TIMEOUT; WalletConnect:
+// a minimum five-minute SESSION_REQUEST_EXPIRY — both confirmed by reading
+// their installed source), so a genuinely healthy, still-in-progress
+// signature request through either could get treated as failed well before
+// the wallet itself would have given up.
+describe("useAuthSync — signing timeout is connector-aware", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("a MetaMask-connected signature taking longer than 30s (but under its own ~65s budget) does not time out", async () => {
+    vi.useFakeTimers();
+    useAuthStore.getState().setConnectedAddress(TEST_ADDRESSES.primary);
+    const hangingSignMessageAsync = vi.fn(() => new Promise<never>(() => {}));
+
+    const signInPromise = signIn(
+      TEST_ADDRESSES.primary,
+      hangingSignMessageAsync as unknown as Parameters<typeof signIn>[1],
+      "metaMaskSDK",
+    );
+    await vi.waitFor(() => expect(useAuthStore.getState().isAuthenticating).toBe(true));
+
+    // Well past the generic 30s budget — still well under MetaMask's own.
+    await vi.advanceTimersByTimeAsync(60_000);
+    expect(useAuthStore.getState().isAuthenticating).toBe(true);
+
+    // Let the still-pending attempt settle cleanly so it doesn't leak a
+    // dangling timer into the next test.
+    await vi.advanceTimersByTimeAsync(10_000);
+    await signInPromise;
+  });
+
+  it("a MetaMask-connected signature times out once its own ~65s budget elapses", async () => {
+    vi.useFakeTimers();
+    useAuthStore.getState().setConnectedAddress(TEST_ADDRESSES.primary);
+    const hangingSignMessageAsync = vi.fn(() => new Promise<never>(() => {}));
+
+    const signInPromise = signIn(
+      TEST_ADDRESSES.primary,
+      hangingSignMessageAsync as unknown as Parameters<typeof signIn>[1],
+      "metaMaskSDK",
+    );
+    await vi.waitFor(() => expect(useAuthStore.getState().isAuthenticating).toBe(true));
+    await vi.advanceTimersByTimeAsync(65_000);
+    await signInPromise;
+
+    expect(useAuthStore.getState().isAuthenticating).toBe(false);
+  });
+
+  it("a WalletConnect-connected signature taking longer than MetaMask's budget (but under its own ~120s budget) does not time out", async () => {
+    vi.useFakeTimers();
+    useAuthStore.getState().setConnectedAddress(TEST_ADDRESSES.primary);
+    const hangingSignMessageAsync = vi.fn(() => new Promise<never>(() => {}));
+
+    const signInPromise = signIn(
+      TEST_ADDRESSES.primary,
+      hangingSignMessageAsync as unknown as Parameters<typeof signIn>[1],
+      "walletConnect",
+    );
+    await vi.waitFor(() => expect(useAuthStore.getState().isAuthenticating).toBe(true));
+
+    await vi.advanceTimersByTimeAsync(100_000);
+    expect(useAuthStore.getState().isAuthenticating).toBe(true);
+
+    await vi.advanceTimersByTimeAsync(20_000);
+    await signInPromise;
+  });
+
+  it("a WalletConnect-connected signature times out once its own ~120s budget elapses", async () => {
+    vi.useFakeTimers();
+    useAuthStore.getState().setConnectedAddress(TEST_ADDRESSES.primary);
+    const hangingSignMessageAsync = vi.fn(() => new Promise<never>(() => {}));
+
+    const signInPromise = signIn(
+      TEST_ADDRESSES.primary,
+      hangingSignMessageAsync as unknown as Parameters<typeof signIn>[1],
+      "walletConnect",
+    );
+    await vi.waitFor(() => expect(useAuthStore.getState().isAuthenticating).toBe(true));
+    await vi.advanceTimersByTimeAsync(120_000);
+    await signInPromise;
+
+    expect(useAuthStore.getState().isAuthenticating).toBe(false);
+  });
+
+});

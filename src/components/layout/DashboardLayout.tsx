@@ -17,6 +17,7 @@ import InstallAppBanner from "@/components/common/InstallAppBanner";
 import { useWalletActivityNotifier } from "@/hooks/useWalletActivityNotifier";
 import { useUIStore } from "@/store/useUIStore";
 import { ROUTES } from "@/config/routes";
+import { recoverFromChunkLoadError } from "@/utils/chunkLoadRecovery";
 
 // Lazy, not a static import — FlareWidget statically imports ChatPane,
 // which transitively imports MessageList -> AssistantMessage -> ChartBlock
@@ -81,6 +82,13 @@ function PageErrorBoundary({ pathname, queryClient, children }: PageErrorBoundar
       onReset={() => queryClient.clear()}
       onError={(error, info) => {
         console.error("[ErrorBoundary:page]", pathname, error, info?.componentStack);
+        // A lazy route chunk that no longer exists server-side (see
+        // chunkLoadRecovery.ts) is exactly the kind of error a page-level
+        // boundary is most likely to actually catch, since every route's
+        // own content is itself a lazy import — this boundary's normal
+        // "Try again" (resetErrorBoundary) would just remount the same
+        // stale bundle and hit the identical missing chunk again.
+        recoverFromChunkLoadError(error);
       }}
     >
       {children}

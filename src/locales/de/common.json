@@ -14,12 +14,13 @@
         "useChrome": "Verwenden Sie Google Chrome oder einen anderen unterstützten Browser, falls das Problem weiterhin besteht."
       },
       "generic": "Eine unerwartete Verbindungsreibung ist aufgetreten. Bitte versuchen Sie es erneut oder verwenden Sie ein anderes Wallet.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "Eine Verbindungsanfrage ist bereits offen. Bitte öffnen Sie Ihre Brieftaschenerweiterung.",
       "providerGone": "Dieses Wallet scheint nicht mehr zu reagieren. Es wurde möglicherweise aktualisiert oder entfernt. Ein Neuladen der Seite sollte das Problem beheben.",
       "rejected": "Die Verbindungsanfrage in Ihrem Wallet wurde abgebrochen.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "WalletConnect konnte nicht erreicht werden. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "Bitte schalten Sie das aktive Netzwerk Ihrer Brieftasche auf Flare Mainnet um."
     },
     "install": "Installieren",

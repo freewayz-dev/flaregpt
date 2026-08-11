@@ -13,13 +13,14 @@
         "tryTitle": "Try one of the following:",
         "useChrome": "Use Google Chrome or another supported browser if the issue persists."
       },
-      "generic": "An unexpected connection friction occurred. Please try again or use another wallet.",
+      "generic": "An unexpected connection error occurred. Please try again or use another wallet.",
+      "networkFailure": "Couldn't reach the network. Please check your connection and try again.",
       "pending": "A connection request is already open. Please open your wallet extension panel.",
       "providerGone": "This wallet doesn't seem to be responding anymore. It may have been updated or removed. Refreshing the page should fix this.",
       "rejected": "Connection request was cancelled in your wallet.",
-      "timeoutGeneric": "Couldn't complete the connection. Please check your connection and try again.",
-      "timeoutMetaMask": "Couldn't reach MetaMask. Please check your connection and try again.",
-      "timeoutWalletConnect": "Couldn't reach WalletConnect. Please check your connection and try again.",
+      "timeoutGeneric": "This wallet took too long to respond. Please try again.",
+      "timeoutMetaMask": "MetaMask took too long to respond. If you're still approving in the app, please try again once you're done.",
+      "timeoutWalletConnect": "WalletConnect took too long to respond. If you're still approving in your wallet, please try again once you're done.",
       "wrongNetwork": "Please switch your wallet's active network to Flare Mainnet."
     },
     "install": "Install",

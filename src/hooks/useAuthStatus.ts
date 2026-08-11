@@ -9,7 +9,7 @@ import { signIn as triggerSignIn } from "@/hooks/useAuthSync";
 // mutation hooks don't need to be the same instance to drive the same
 // underlying wallet.
 export function useAuthStatus() {
-  const { address, isConnected } = useConnection();
+  const { address, isConnected, connector } = useConnection();
   const { mutateAsync: signMessageAsync } = useSignMessage();
 
   const token = useAuthStore((state) => state.token);
@@ -34,7 +34,7 @@ export function useAuthStatus() {
 
   const signIn = () => {
     if (!isConnected || !address) return;
-    return triggerSignIn(address, signMessageAsync);
+    return triggerSignIn(address, signMessageAsync, connector?.id);
   };
 
   return {

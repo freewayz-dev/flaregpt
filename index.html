@@ -1,6 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Y88004SPTG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-Y88004SPTG");
+    </script>
+
     <meta charset="UTF-8" />
     <!-- SVG favicon is what every current browser actually renders in the
          tab; the PNG sizes and apple-touch-icon below are fallbacks for
@@ -27,7 +42,10 @@
          background_color/theme_color show through the status bar area
          instead of Safari drawing a default opaque one over it. -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <meta name="apple-mobile-web-app-title" content="FlareGPT" />
     <meta name="mobile-web-app-capable" content="yes" />
 
@@ -63,7 +81,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.flaregpt.io/" />
     <meta property="og:site_name" content="FlareGPT" />
-    <meta property="og:title" content="FlareGPT: AI-Powered Dashboard for the Flare Network" />
+    <meta
+      property="og:title"
+      content="FlareGPT: AI-Powered Dashboard for the Flare Network"
+    />
     <meta
       property="og:description"
       content="Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio. No wallet required to start."
@@ -77,7 +98,10 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="FlareGPT: AI-Powered Dashboard for the Flare Network" />
+    <meta
+      name="twitter:title"
+      content="FlareGPT: AI-Powered Dashboard for the Flare Network"
+    />
     <meta
       name="twitter:description"
       content="Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio. No wallet required to start."
@@ -142,7 +166,8 @@
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD"
-        }
+        },
+        "sameAs": ["https://x.com/Flare_GPT"]
       }
     </script>
 
@@ -188,22 +213,37 @@
          the gap for exactly the audience Google's own crawler doesn't
          need this for. -->
     <noscript>
-      <main style="max-width: 640px; margin: 0 auto; padding: 48px 24px; font-family: -apple-system, sans-serif; color: #0f172a; line-height: 1.6;">
+      <main
+        style="
+          max-width: 640px;
+          margin: 0 auto;
+          padding: 48px 24px;
+          font-family: -apple-system, sans-serif;
+          color: #0f172a;
+          line-height: 1.6;
+        "
+      >
         <h1>FlareGPT: AI-Powered Dashboard for the Flare Network</h1>
         <p>
           FlareGPT is an AI-powered dashboard for the Flare Network. Track
-          wallets, claim FTSO rewards, monitor governance, and chat with an
-          AI assistant that understands your Flare portfolio — no wallet
-          required to start.
+          wallets, claim FTSO rewards, monitor governance, and chat with an AI
+          assistant that understands your Flare portfolio — no wallet required
+          to start.
         </p>
         <ul>
           <li>Track wallet balances and activity across the Flare Network.</li>
           <li>Claim and monitor FTSO delegation rewards.</li>
           <li>Follow Flare Network governance proposals.</li>
           <li>Explore DeFi protocols and yield strategies built on Flare.</li>
-          <li>Ask FlareGPT, an AI assistant with direct knowledge of your connected wallet.</li>
+          <li>
+            Ask FlareGPT, an AI assistant with direct knowledge of your
+            connected wallet.
+          </li>
         </ul>
-        <p>Enable JavaScript to use the full interactive dashboard at www.flaregpt.io.</p>
+        <p>
+          Enable JavaScript to use the full interactive dashboard at
+          www.flaregpt.io.
+        </p>
       </main>
     </noscript>
 
