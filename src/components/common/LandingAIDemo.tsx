@@ -195,7 +195,6 @@ export default function LandingAIDemo({ onOpenWalletModal }: LandingAIDemoProps)
                 </div>
               ) : (
                 <div key={message.id} className="flex gap-2.5">
-                  <FlareGptMark className="mt-0.5 h-6 w-6 shrink-0" />
                   <div className="min-w-0 flex-1">
                     {message.status === "thinking" ? (
                       <ThinkingIndicator label={message.statusText} />

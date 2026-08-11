@@ -395,7 +395,15 @@ export default function LandingPage() {
                     taking the left. `lg:pr-20` (was `lg:pl-20` when this
                     was the left column) now pulls it inward from its new
                     right edge instead. */}
-                <div className="order-1 flex flex-col items-center lg:order-2 lg:pr-20">
+                {/* `min-w-0` is required here: this is a grid item, whose
+                    default automatic min-width is its content's min-content
+                    size — without the override, the demo card's table
+                    (min-w-[420px] in MarkdownContent) pushes this item wider
+                    than the viewport instead of letting the card's own
+                    max-w-lg + the table's overflow-x-auto contain it, which
+                    is what made the card's borders bleed past the screen
+                    edges and the table appear clipped instead of scrollable. */}
+                <div className="order-1 flex flex-col items-center lg:order-2 lg:pr-20 min-w-0">
                   {/* Mobile Badge */}
                   <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-[#161619]/80 lg:hidden">
                     <SparklesIcon className="h-3.5 w-3.5 text-brand" />

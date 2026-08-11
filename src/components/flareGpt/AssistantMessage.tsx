@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { ClipboardIcon, CheckIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
-import FlareGptMark from "@/components/common/FlareGptMark";
 import MarkdownContent from "@/components/flareGpt/MarkdownContent";
 import WalletAddressBadge, {
   type WalletAddressBadgeProps,
@@ -87,8 +86,6 @@ function AssistantMessage({ message, isLast, onRegenerate }: AssistantMessagePro
 
   return (
     <div className="flex gap-3">
-      <FlareGptMark className="h-7 w-7 shrink-0 shadow-sm mt-0.5" />
-
       <div className="min-w-0 flex-1 group">
         {isThinking ? (
           <ThinkingIndicator label={message.statusText} />

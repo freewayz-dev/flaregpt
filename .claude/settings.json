@@ -33,7 +33,9 @@
       "Bash(curl -s -o /dev/null -w \"explorer-api response: %{http_code} in %{time_total}s\\\\n\" --max-time 20 \"https://explorer-api.walletconnect.com/v3/wallets?projectId=771106bc829c38d05731ab4af6c2bc38&entries=1\")",
       "Bash(git log *)",
       "Bash(node ./screenshot-sidebar-local.mjs)",
-      "Bash(kill 5202)"
+      "Bash(kill 5202)",
+      "Bash(node /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/inspect-demo.mjs)",
+      "Bash(node .scratch-visual/inspect-demo.mjs)"
     ],
     "additionalDirectories": [
       "/tmp"
