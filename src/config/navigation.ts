@@ -2,14 +2,14 @@ import type { ComponentType, SVGProps } from "react";
 import {
   WalletIcon,
   SparklesIcon,
-  ClockIcon,
+  CalendarDateRangeIcon,
   ShieldCheckIcon,
   Cog6ToothIcon,
   QuestionMarkCircleIcon,
   Square3Stack3DIcon,
   Squares2X2Icon,
   ArrowPathIcon,
-  GiftIcon,
+  TrophyIcon,
   HeartIcon,
 } from "@heroicons/react/24/outline";
 
@@ -83,7 +83,11 @@ export const NAV_LINKS: NavLink[] = [
   {
     translationKey: "ftsoRewards",
     path: ROUTES.ftsoRewards,
-    icon: GiftIcon,
+    // Label shortened from "FTSO Rewards" to "FTSO" — the page itself is
+    // still entirely about delegation rewards you've earned, not a gift
+    // someone gave you, so a trophy reads as the actually-earned-it
+    // reward this represents rather than the more generic gift box.
+    icon: TrophyIcon,
   },
   {
     translationKey: "defiProtocols",
@@ -100,7 +104,13 @@ export const NAV_LINKS: NavLink[] = [
   {
     translationKey: "rflrTracker",
     path: ROUTES.rflrTracker,
-    icon: ClockIcon,
+    // Label shortened from "rFLR Vesting"/"$rFLR Vesting" to "$rFLR", but
+    // the page itself is still the melt/unlock timeline (see
+    // RflrVesting/index.tsx's own Unlock Timeline card) — a schedule
+    // unlocking gradually across a start-to-end date range, which this
+    // icon depicts directly, rather than a plain clock face's "current
+    // time"/countdown connotation.
+    icon: CalendarDateRangeIcon,
   },
   {
     translationKey: "governance",

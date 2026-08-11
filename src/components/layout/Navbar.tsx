@@ -363,6 +363,21 @@ export default function Navbar({
           </button>
 
           <div className="hidden lg:flex items-center gap-2 lg:gap-3">
+            {/* Network status — purely a passive readout (no click handler,
+                no menu), so it's the lowest-priority item in this cluster
+                and sits farthest from the account-selector anchor. Ask
+                FlareGPT (a primary, actively-clicked CTA — the product's
+                own headline feature) used to sit *behind* this static pill,
+                which put the cluster's least-interactive item closer to the
+                anchor than one of its most-interactive ones — the opposite
+                of the ordering this group is meant to follow. */}
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-50 dark:bg-[#191A1F] border border-slate-100 dark:border-none text-ink-muted shrink-0">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="tracking-wide uppercase text-[8.5px] font-bold">
+                {t("navbar.mainnetStatus")}
+              </span>
+            </div>
+
             {!hideAskFlareGpt && (
               <button
                 type="button"
@@ -373,20 +388,17 @@ export default function Navbar({
               </button>
             )}
 
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-slate-50 dark:bg-[#191A1F] border border-slate-100 dark:border-none text-ink-muted shrink-0">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="tracking-wide uppercase text-[8.5px] font-bold">
-                {t("navbar.mainnetStatus")}
-              </span>
-            </div>
-
             {/* Account Selector Dropdown — rightmost: the highest-consequence,
                 most interactive control in this cluster (it changes what the
                 entire dashboard shows), so it anchors the position closest to
                 where users expect an account/profile menu to live. Everything
-                to its left decreases in either frequency of use (the privacy
-                eye toggle) or interactivity (the network badge has no menu at
-                all) as it moves away from that anchor. */}
+                to its left decreases in either frequency of use or
+                interactivity as it moves away from that anchor — the privacy
+                eye toggle (shared with mobile, so it sits outside this
+                desktop-only group entirely) is the app's true lowest-priority
+                item here; within this group, Ask FlareGPT (a primary,
+                frequently-used CTA) is deliberately the item closest to the
+                anchor, with the purely-static network badge farthest away. */}
             {walletStateIsSettling ? (
               // Same footprint as the real trigger button below (height,
               // rounded shape) so nothing shifts once the real one takes
@@ -413,7 +425,15 @@ export default function Navbar({
                     : undefined
                 }
                 className={`relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-all border text-[10px] lg:text-[10.5px] cursor-pointer ${
-                  activeWalletNeedsSignIn
+                  // Same brand-tinted treatment already used for "needs sign
+                  // in" above (and for the Ask FlareGPT CTA elsewhere in this
+                  // file) — reused, not reinvented, for "nothing connected
+                  // yet" too: both are states where there's something for
+                  // the user to actually do here, so both get the same
+                  // eye-catching styling. A wallet that's already connected
+                  // and signed in is the calm, settled state and keeps the
+                  // neutral gray it always had.
+                  activeWalletNeedsSignIn || !activeWalletObject
                     ? "border-brand/30 bg-brand/10 text-brand hover:bg-brand hover:text-white"
                     : "dark:border-none bg-slate-100 dark:bg-[#1B1B1F] text-slate-600 dark:text-zinc-300"
                 }`}
@@ -429,7 +449,7 @@ export default function Navbar({
                         ? "bg-emerald-500 animate-pulse"
                         : activeWalletObject?.type === "tracked"
                           ? "bg-amber-500"
-                          : "bg-slate-400 dark:bg-zinc-600"
+                          : "bg-brand animate-pulse"
                   }`}
                 />
                 <span className="max-w-[92px] truncate">{buttonLabel}</span>

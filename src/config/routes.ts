@@ -21,7 +21,7 @@ const APP_ROOT = "/app";
 export const APP_SEGMENTS = {
   flareGpt: "flare-gpt",
   walletActivity: "wallet",
-  ftsoRewards: "rewards",
+  ftsoRewards: "ftso",
   governance: "governance",
   loops: "loops",
   rflrTracker: "rflr",

@@ -9,12 +9,41 @@
 export {};
 declare const self: ServiceWorkerGlobalScope;
 
+// Injected by vite.config.ts's `define` (`resolveBuildId()`) — a real,
+// non-optional global, not a `?? "fallback"` value, so a missing definition
+// fails loudly (a build-time ReferenceError in this file's own Rollup pass)
+// rather than silently compiling to the string "undefined" and defeating
+// the whole point without anyone noticing.
+declare const __SW_BUILD_ID__: string;
+
 import { cleanupOutdatedCaches, precacheAndRoute } from "workbox-precaching";
 import { NavigationRoute, registerRoute } from "workbox-routing";
 import { CacheFirst, NetworkFirst, NetworkOnly, StaleWhileRevalidate } from "workbox-strategies";
 import { ExpirationPlugin } from "workbox-expiration";
 import { CacheableResponsePlugin } from "workbox-cacheable-response";
 import type { WorkboxPlugin } from "workbox-core";
+
+// A browser's service-worker update check is a byte-comparison of this
+// compiled file against whatever's currently installed — see this
+// project's PWA update-notification investigation. This project's own
+// precache manifest below is deliberately scoped to just CSS/webmanifest
+// (see its own comment), so a deployment that only changes application JS
+// touches neither that manifest nor anything else in this file, producing
+// a byte-identical sw.js the browser correctly (but unhelpfully) concludes
+// needs no update — no `registration.update()` call, however frequent (see
+// updatePolling.ts), can detect an update that genuinely isn't there.
+// `__SW_BUILD_ID__` (vite.config.ts's `resolveBuildId()`, the deployment's
+// real git commit SHA) exists in this file for exactly one reason: to
+// guarantee this file's own compiled output differs on every real
+// deployment, regardless of whether anything else about it changed, so the
+// browser's comparison always has something genuine to find. A real
+// `console.log` call, not a bare unused `const` — this value is otherwise
+// never read anywhere, which is exactly the shape of code a minifier is
+// free to strip as dead, silently defeating the whole point; a call with
+// an observable side effect never gets removed. (Visible in DevTools'
+// Application > Service Workers console, incidentally useful for
+// confirming which build is actually active.)
+console.log(`[sw] build ${__SW_BUILD_ID__}`);
 
 // Populated at build time by vite-plugin-pwa's `injectManifest` step (see
 // vite.config.ts's `globPatterns`) — deliberately scoped to just CSS and

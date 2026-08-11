@@ -7,6 +7,7 @@ import react from "@vitejs/plugin-react-swc";
 import svgr from "vite-plugin-svgr";
 import { VitePWA } from "vite-plugin-pwa";
 import { visualizer } from "rollup-plugin-visualizer";
+import { execSync } from "node:child_process";
 import path from "node:path";
 
 // `import.meta.dirname` (Node 20.11+/21.2+, stable) replaces the old
@@ -20,6 +21,34 @@ const __dirname = import.meta.dirname;
 // code edits under incident pressure. Off (the default) for every normal
 // build and deploy.
 const EMERGENCY_SW = process.env.VITE_PWA_EMERGENCY_SW === "1";
+
+// A browser's service-worker update check is a byte-comparison of the
+// compiled service-worker script against whatever's currently installed —
+// see src/sw.ts's own use of this value for the full reasoning. This is
+// what makes that comparison meaningful on every deploy, not just ones that
+// happen to touch CSS or sw.ts's own logic.
+//
+// `VERCEL_GIT_COMMIT_SHA` is Vercel's own documented build-time env var for
+// exactly this purpose — but it's only populated when a project has
+// "Automatically expose System Environment Variables" enabled in its
+// Vercel dashboard settings, a per-project toggle this file can't see or
+// assume is on. `git rev-parse HEAD` is the fallback specifically because
+// it needs no such toggle: Vercel's build container always has the real
+// repository checked out to run the build at all, so this resolves
+// correctly there regardless of that setting, and identically in any local
+// clone — same commit in, same id out, changing only when a real commit
+// does. The final `"dev"` fallback is only for the true edge case of
+// building from a source tree with no `.git` at all (e.g. a downloaded
+// tarball) — without it, that scenario would otherwise fail the build
+// outright over a value that only ever needs to be *some* string.
+function resolveBuildId(): string {
+  if (process.env.VERCEL_GIT_COMMIT_SHA) return process.env.VERCEL_GIT_COMMIT_SHA;
+  try {
+    return execSync("git rev-parse HEAD", { cwd: __dirname }).toString().trim();
+  } catch {
+    return "dev";
+  }
+}
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -109,6 +138,18 @@ export default defineConfig({
         template: "treemap",
       }),
   ],
+  // A plain top-level `define` (not something nested under VitePWA's own
+  // options) is enough to reach src/sw.ts's own separate build too:
+  // vite-plugin-pwa's `injectManifest` strategy runs the service worker
+  // through its own Rollup pass, but explicitly reuses several of the main
+  // config's own resolved Vite plugins for it — confirmed by reading its
+  // installed source (`defaultInjectManifestVitePlugins`, in
+  // `vite-plugin-pwa/dist/chunk-*.js`) — and `"vite:define"`, Vite's own
+  // built-in plugin that performs this exact substitution, is one of them.
+  // No `injectManifest.vitePlugins` override needed for that reason.
+  define: {
+    __SW_BUILD_ID__: JSON.stringify(resolveBuildId()),
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
