@@ -35,7 +35,16 @@
       "Bash(node ./screenshot-sidebar-local.mjs)",
       "Bash(kill 5202)",
       "Bash(node /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/inspect-demo.mjs)",
-      "Bash(node .scratch-visual/inspect-demo.mjs)"
+      "Bash(node .scratch-visual/inspect-demo.mjs)",
+      "Bash(node -e \"const swc = require\\('@swc/core'\\); console.log\\('swc ok', swc.transformSync\\('const x = 1', {jsc:{parser:{syntax:'ecmascript', jsx:true}}}\\).code\\)\")",
+      "Bash(node -e \"const ts = require\\('typescript'\\); console.log\\('ts version', ts.version\\)\")",
+      "Bash(node /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/codemod.cjs src/sw.ts)",
+      "Bash(node .codemod-tmp/codemod.cjs src/sw.ts)",
+      "Bash(node .codemod-tmp/dryrun.cjs)",
+      "Bash(grep -rlE \"\\\\.tsx?['\\\\\"\\\\`]\" --include=\"*.json\" --include=\"*.html\" --include=\"*.js\" --include=\"*.cjs\" --include=\"*.mjs\" --include=\"*.yml\" --include=\"*.yaml\" .)",
+      "Bash(grep -rn \"\\\\.tsx\\\\?['\\\\\"\\\\`]\" src --include=\"*.ts\" --include=\"*.tsx\")",
+      "Bash(node .codemod-tmp/apply.cjs)",
+      "Bash(awk '{print $1}')"
     ],
     "additionalDirectories": [
       "/tmp"

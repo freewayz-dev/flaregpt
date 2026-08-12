@@ -1,17 +1,8 @@
-// Kept .js, not .ts, even though every other tooling config in this repo
-// (tailwind/postcss/i18next-parser) converted cleanly — verified empirically
-// that ESLint 9's own .ts config loading needs jiti >=2, while the jiti
-// actually resolved in this tree (deduped across eslint/tailwindcss/vite)
-// is 1.21.7, satisfying Tailwind/Vite's older requirement. Forcing a newer
-// jiti here would mean either a second copy in the tree or bumping the
-// shared, deduped one project-wide on the strength of one small config
-// file — not worth it for a file that's just an array of plugin configs
-// with little real typing to gain.
 import js from '@eslint/js'
 import globals from 'globals'
+import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
@@ -23,33 +14,21 @@ export default defineConfig([
       reactHooks.configs["recommended-latest"],
       reactRefresh.configs.vite,
     ],
+    plugins: { react },
     languageOptions: {
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
-  },
-  {
-    // Mirrors the .js/.jsx block above exactly (same React rules, same
-    // globals) so a file behaves identically whichever side of a rename it
-    // ends up on — deliberately the non-type-checked `recommended` preset,
-    // not `recommendedTypeChecked`, for two reasons: it needs no
-    // `parserOptions.project` wiring (tsconfig.json's `include` covers all
-    // of src/, but nothing here asks ESLint to build a full type-checked
-    // program yet, which is real cost across ~190 files for a project
-    // that's still 100% .js/.jsx), and it keeps this phase's linting
-    // strictness matched to the tsconfig's own Stage 1 (noImplicitAny
-    // only, not strict) rather than jumping ahead of it. Moving to
-    // type-checked rules is a deliberate later-phase decision, not a side
-    // effect of this file existing.
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      tseslint.configs.recommended,
-      reactHooks.configs["recommended-latest"],
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      globals: globals.browser,
-      parserOptions: { ecmaFeatures: { jsx: true } },
+    rules: {
+      // Base ESLint's `no-unused-vars` (the JS/JSX block's own rule above,
+      // via js.configs.recommended) has no idea a JSXIdentifier like
+      // `<Dashboard />` references the `Dashboard` binding — that
+      // understanding used to come for free from the .tsx side (TS's own
+      // checker natively treats JSX element names as real references,
+      // which is what typescript-eslint's no-unused-vars relied on). This
+      // is the standard, minimal fix: it only marks JSX-referenced
+      // bindings as used, it adds no other opinions.
+      'react/jsx-uses-vars': 'error',
     },
   },
   {
@@ -69,25 +48,37 @@ export default defineConfig([
   {
     // Genuinely Node-context files (build/tooling scripts and configs) —
     // distinct from the app/test code above, which runs in a browser (or
-    // jsdom, which mirrors one) and gets `globals.browser` instead. This is
-    // a real fix, not just relying on typescript-eslint's `no-undef` being
-    // off by default for .ts files to mask the symptom: `process`,
+    // jsdom, which mirrors one) and gets `globals.browser` instead. `process`,
     // `__dirname`-equivalents, etc. now resolve as real Node globals here
-    // regardless of which rule ends up checking for them — including this
-    // file itself, the one Node-context file that's still .js.
+    // regardless of which rule ends up checking for them.
     files: [
-      'vite.config.ts',
-      'playwright.config.ts',
+      'vite.config.js',
+      'playwright.config.js',
       'eslint.config.js',
-      'tailwind.config.ts',
-      'postcss.config.ts',
-      'i18next-parser.config.ts',
-      'prerender.ts',
-      'translate-locales.ts',
-      'e2e/static-server.ts',
+      'tailwind.config.js',
+      'postcss.config.js',
+      'i18next-parser.config.js',
+      'prerender.js',
+      'translate-locales.js',
+      'e2e/static-server.js',
     ],
     languageOptions: {
       globals: globals.node,
+    },
+  },
+  {
+    // `__SW_BUILD_ID__` is injected purely at build time by vite.config.js's
+    // `define` (see resolveBuildId()) — there's no source-level declaration
+    // of it to teach ESLint about, the same way there's no source-level
+    // declaration of any other build-time-substituted constant. Previously
+    // covered by `declare const __SW_BUILD_ID__: string;` in sw.ts, which
+    // also had the side effect of exempting this file from `no-undef`
+    // entirely under typescript-eslint's recommended config; this is the
+    // narrower, JS-native equivalent — just the one real global, `no-undef`
+    // still fully on for everything else in the file.
+    files: ['src/sw.js'],
+    languageOptions: {
+      globals: { __SW_BUILD_ID__: 'readonly' },
     },
   },
 ])
