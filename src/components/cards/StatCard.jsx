@@ -72,14 +72,20 @@ export default function StatCard({
           {change ? (
             <span
               className={`text-xs font-medium ${
-                isNegative ? "text-red-500" : "text-emerald-500"
+                // text-*-500 alone measured 2.53:1 (emerald) / 3.76:1 (red)
+                // against this card's white background — both short of
+                // WCAG AA's 4.5:1 (confirmed via axe/Lighthouse). Both
+                // colors are already fine against the dark surface
+                // (6.85:1 / 4.62:1), so only the light-mode shade moves,
+                // one step darker within the same Tailwind scale.
+                isNegative ? "text-red-700 dark:text-red-500" : "text-emerald-700 dark:text-emerald-500"
               }`}
             >
               {change}
             </span>
           ) : live ? (
-            <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-500">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-500">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-700 dark:bg-emerald-500 animate-pulse" />
               Live
             </span>
           ) : null}

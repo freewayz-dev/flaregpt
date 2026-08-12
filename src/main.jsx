@@ -14,6 +14,7 @@ import { promptForUpdate } from "./components/common/UpdateAvailableToast";
 import { logWebVitalsInDev } from "./utils/webVitals";
 import { registerUpdatePolling } from "./utils/updatePolling";
 
+import "./fonts.css";
 import "./index.css";
 
 // Dev-only (see webVitals.ts's own comment on why this can never reach a

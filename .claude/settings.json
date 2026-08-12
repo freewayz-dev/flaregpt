@@ -50,7 +50,21 @@
       "Bash(git status *)",
       "Bash(git show *)",
       "Bash(git config *)",
-      "Bash(curl -s \"https://api.github.com/repos/freewayz-dev/flaregpt/actions/runs?per_page=5\")"
+      "Bash(curl -s \"https://api.github.com/repos/freewayz-dev/flaregpt/actions/runs?per_page=5\")",
+      "Bash(npx --no-install lighthouse --version)",
+      "Bash(curl -sI https://unpkg.com/axe-core@4/axe.min.js)",
+      "Bash(E2E_PORT=4500 nohup node e2e/static-server.js)",
+      "Bash(curl -s https://unpkg.com/axe-core@4/axe.min.js -o /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/audit/axe.min.js)",
+      "Bash(curl -sL https://unpkg.com/axe-core@4/axe.min.js -o /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/audit/axe.min.js)",
+      "Bash(pkill -f \"e2e/static-server.js\")",
+      "Bash(curl -s -A 'Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0.0.0 Safari/537.36' 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Plus+Jakarta+Sans:wght@600;700&display=swap' -o /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/fonts.css)",
+      "Bash(node -e \"let d='';process.stdin.on\\('data',c=>d+=c\\);process.stdin.on\\('end',\\(\\)=>{const v=JSON.parse\\(d\\);console.log\\(v.slice\\(-15\\)\\);}\\)\")",
+      "Bash(node /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/build-fonts.mjs)",
+      "Bash(shasum src/assets/fonts/*.woff2)",
+      "Bash(curl -s http://localhost:4500/site.webmanifest)",
+      "Bash(node /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/measure-heights.mjs)",
+      "Bash(node .measure-heights.mjs)",
+      "Bash(rm /Users/macbookpro/Fred/Codebase/flr-gpt-dashboard/flr-gpt-dashboard/e2e/zz-verify.spec.js *)"
     ],
     "additionalDirectories": [
       "/tmp"

@@ -29,8 +29,14 @@
      reliably at 12-14px (e.g. APR figures). Distinct from the button fill
      above: this is for --color-brand used *as text color* against a
      neutral surface (a badge label, a stat suffix, ...), not as a solid
-     fill with white text on top of it. */
-  --color-brand-text: 200 26 73; /* #C81A49 */
+     fill with white text on top of it.
+     Was 200 26 73 (#C81A49): measured 4.43-4.51:1 against the specific
+     bg-brand/10 and bg-brand/15 tint colors these badges actually render
+     against (e.g. Navbar's "Ask FlareGPT"/wallet-trigger pills, Sidebar's
+     active nav item) — under, or right at the edge of, WCAG AA's 4.5:1.
+     Same small single-channel-style nudge as --color-brand above, now
+     clearing both real backgrounds with a small margin (4.69/4.77:1). */
+  --color-brand-text: 194 24 63; /* #C2183F */
 
   --color-ink-primary: 15 23 42; /* #0F172A */
   --color-ink-secondary: 71 85 105; /* #475569 */

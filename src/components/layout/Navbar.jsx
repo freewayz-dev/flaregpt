@@ -399,9 +399,15 @@ export default function Navbar({
               // rounded shape) so nothing shifts once the real one takes
               // its place a moment later — a neutral "still figuring this
               // out" placeholder instead of asserting a wallet state that
-              // isn't confirmed yet either way.
+              // isn't confirmed yet either way. h-[30px] matches the real
+              // button's own measured offsetHeight exactly (px-2.5 py-1.5
+              // padding + 1px border, text-[10.5px]/15.75px line-height at
+              // the lg breakpoint) — was h-[27px], a stale value that no
+              // longer matched once the real button's own sizing was last
+              // touched, causing a brief but real 3px height jump the
+              // moment the placeholder swapped for the real button.
               <div
-                className="h-[27px] w-24 shrink-0 animate-pulse rounded-lg bg-slate-100 dark:bg-[#1B1B1F]"
+                className="h-[30px] w-24 shrink-0 animate-pulse rounded-lg bg-slate-100 dark:bg-[#1B1B1F]"
                 aria-hidden="true"
               />
             ) : (

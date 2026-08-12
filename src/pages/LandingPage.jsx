@@ -25,7 +25,6 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { FadeIn } from "@/components/common/MotionWrapper";
 import LandingAIDemoSkeleton from "@/components/common/LandingAIDemoSkeleton";
 import LandingNavbar from "@/components/common/LandingNavbar";
-import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import { useUIStore } from "@/store/useUIStore";
 import { shortenAddress } from "@/utils/address";
 import { ROUTES } from "@/config/routes";
@@ -71,9 +70,24 @@ import defiDark from "@/assets/showcase/defi-dark.webp";
 // once the real component swaps in.
 const LandingAIDemo = lazy(() => import("@/components/common/LandingAIDemo"));
 
+// Also lazy, same reasoning as LandingAIDemo above — confirmed via a real
+// network trace that this ~970-line component (plus its own wallet-icon
+// images) was loaded unconditionally on every landing page visit even
+// though the modal starts closed and most visitors never open it. Unlike
+// LandingAIDemo, it can't simply be gated behind `walletModalOpen &&` at
+// the render site: ConnectWalletModal manages its own open/close fade via
+// internal `shouldRender`/`animate` state, so unmounting it the instant
+// `walletModalOpen` goes false would cut its own close animation short.
+// `hasOpenedWalletModal` mounts it lazily on first open and then never
+// unmounts it again — identical behavior to before for every open/close
+// after the first, and the dynamic import only fires once real intent
+// (a click) exists, not on page load.
+const ConnectWalletModal = lazy(() => import("@/components/common/ConnectWalletModal"));
+
 export default function LandingPage() {
   const [open, setOpen] = useState(null);
   const [walletModalOpen, setWalletModalOpen] = useState(false);
+  const [hasOpenedWalletModal, setHasOpenedWalletModal] = useState(false);
   const navigate = useNavigate();
   const darkMode = useUIStore((s) => s.darkMode);
   const { address, isConnected } = useConnection();
@@ -123,6 +137,7 @@ export default function LandingPage() {
 
   const openWalletModal = () => {
     awaitingConnectRef.current = true;
+    setHasOpenedWalletModal(true);
     setWalletModalOpen(true);
   };
 
@@ -361,7 +376,7 @@ export default function LandingPage() {
                         )}
                       </div>
 
-                      <div className="mt-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#64748B] dark:text-[#A1A1AA]">
+                      <div className="mt-3 text-[10px] font-bold uppercase tracking-[0.18em] text-ink-muted">
                         {item.title}
                       </div>
                     </div>
@@ -786,7 +801,7 @@ export default function LandingPage() {
                       >
                         <div className="overflow-hidden">
                           <div
-                            className={`px-5 pb-5 text-sm leading-6 text-[#64748B] dark:text-[#A1A1AA] transition-opacity duration-150 ${
+                            className={`px-5 pb-5 text-sm leading-6 text-ink-muted transition-opacity duration-150 ${
                               isOpen ? "opacity-100 delay-75" : "opacity-0"
                             }`}
                           >
@@ -845,7 +860,7 @@ export default function LandingPage() {
           <div className="mx-auto max-w-5xl py-12 px-4 xl:px-0">
             {/* Ecosystem */}
             <div className="flex flex-col items-center gap-8 pb-12">
-              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#64748B] dark:text-[#A1A1AA]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-ink-muted">
                 Built with industry-leading technologies
               </p>
 
@@ -868,7 +883,7 @@ export default function LandingPage() {
                       />
                     </div>
 
-                    <span className="text-center text-[9px] font-semibold leading-tight text-[#64748B] dark:text-[#A1A1AA]">
+                    <span className="text-center text-[9px] font-semibold leading-tight text-ink-muted">
                       {partner.name}
                     </span>
                   </div>
@@ -916,14 +931,14 @@ export default function LandingPage() {
                       FlareGPT
                     </p>
 
-                    <p className="font-mono text-[10px] font-medium text-[#64748B] dark:text-[#A1A1AA]">
+                    <p className="font-mono text-[10px] font-medium text-ink-muted">
                       © 2026 All Rights Reserved
                     </p>
                   </div>
                 </div>
 
                 {/* Navigation */}
-                <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 font-mono text-[11px] font-bold text-[#64748B] dark:text-[#A1A1AA] sm:justify-end">
+                <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 font-mono text-[11px] font-bold text-ink-muted sm:justify-end">
                   <Link
                     to={ROUTES.app}
                     className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
@@ -964,7 +979,11 @@ export default function LandingPage() {
         </footer>
       </FadeIn>
 
-      <ConnectWalletModal isOpen={walletModalOpen} onClose={closeWalletModal} />
+      {hasOpenedWalletModal && (
+        <Suspense fallback={null}>
+          <ConnectWalletModal isOpen={walletModalOpen} onClose={closeWalletModal} />
+        </Suspense>
+      )}
     </div>
   );
 }

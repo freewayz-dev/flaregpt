@@ -12,7 +12,7 @@
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-Y88004SPTG"
     ></script>
-    <script src="/gtag-init.js"></script>
+    <script src="/gtag-init.js" defer></script>
 
     <meta charset="UTF-8" />
     <!-- SVG favicon is what every current browser actually renders in the
@@ -169,29 +169,15 @@
       }
     </script>
 
-    <!-- Google Font Inter — weight list trimmed to what's actually used
-         (confirmed via `grep` across every `font-*` Tailwind utility in
-         src/, not guessed): 400 is the implicit default for any text with
-         no explicit weight class, plus 500/600/700/900 are the only
-         `font-medium`/`font-semibold`/`font-bold`/`font-black` weights
-         this app ever applies. The previous request pulled all 9 weights
-         100-900 — every one of 100/200/300/800 was dead weight on every
-         page load. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Inter (body/UI face) + Plus Jakarta Sans (display face for large
-         headings only, weights trimmed to the only two ever applied —
-         font-semibold/font-bold, grep-confirmed, never font-medium) — one
-         request with two `family=` params, not two separate
-         `<link rel="stylesheet">` tags to the same host. Both used to be
-         two independent render-blocking requests; Google's own CSS2 API
-         accepts multiple families in one call, so this is one fewer
-         render-blocking round trip on the critical path before first
-         paint, for the exact same fonts. -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
+         headings only) are self-hosted — see src/fonts.css, imported from
+         main.jsx — rather than linked from Google Fonts. Same weights
+         (400/500/600/700/900 for Inter, 600/700 for Plus Jakarta Sans,
+         confirmed via `grep` across every `font-*` Tailwind utility in
+         src/), same glyph coverage, same font-display: swap; the only
+         change is removing the extra render-blocking cross-origin round
+         trip a <link rel="stylesheet"> to fonts.googleapis.com forced
+         before first paint. -->
   </head>
   <body>
     <div id="root"></div>

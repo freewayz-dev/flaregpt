@@ -179,6 +179,19 @@ export default defineConfig({
     exclude: [...configDefaults.exclude, "e2e/**"],
   },
   build: {
+    // Without this, Vite's default 4KB inline threshold turns several of
+    // src/fonts.css's smaller woff2 subsets (cyrillic, greek, vietnamese,
+    // ...) into `data:font/woff2;base64,...` URIs baked directly into the
+    // CSS — confirmed live via a real CSP-violation E2E failure the moment
+    // self-hosting was added: `font-src` (vercel.json) allows this app's
+    // own origin and the two font CDNs it used to load from, not `data:`.
+    // Excluding font files from inlining (kept as normal hashed same-origin
+    // files instead) fixes that without loosening the CSP itself — same
+    // reasoning either way results in a real network request the browser
+    // makes anyway once real text needs that glyph, and every one of them
+    // is small (1-85KB) and covered by vercel.json's `/assets/(.*)`
+    // immutable long-cache rule once fetched.
+    assetsInlineLimit: (filePath) => (/\.(woff2?|ttf|otf|eot)$/i.test(filePath) ? false : undefined),
     // Confirmed empirically via a real Lighthouse run against the built
     // landing page (not assumed): Vite's default modulepreload generation
     // adds a `<link rel="modulepreload">` for `vendor-charts` (recharts +

@@ -48,7 +48,7 @@
       "name": "FTSO Rewards",
       "short_name": "Rewards",
       "description": "Track and claim FTSO delegation rewards",
-      "url": "/app/rewards",
+      "url": "/app/ftso",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
