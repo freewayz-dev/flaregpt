@@ -44,7 +44,12 @@
       "Bash(grep -rlE \"\\\\.tsx?['\\\\\"\\\\`]\" --include=\"*.json\" --include=\"*.html\" --include=\"*.js\" --include=\"*.cjs\" --include=\"*.mjs\" --include=\"*.yml\" --include=\"*.yaml\" .)",
       "Bash(grep -rn \"\\\\.tsx\\\\?['\\\\\"\\\\`]\" src --include=\"*.ts\" --include=\"*.tsx\")",
       "Bash(node .codemod-tmp/apply.cjs)",
-      "Bash(awk '{print $1}')"
+      "Bash(awk '{print $1}')",
+      "Bash(git fetch *)",
+      "Bash(git rev-list *)",
+      "Bash(git status *)",
+      "Bash(git show *)",
+      "Bash(git config *)"
     ],
     "additionalDirectories": [
       "/tmp"

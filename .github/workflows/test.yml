@@ -28,7 +28,7 @@ jobs:
       - run: npx playwright install chromium --with-deps
       - run: npm run test:e2e
 
-  typecheck:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,4 +37,4 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm run typecheck
+      - run: npm run lint
