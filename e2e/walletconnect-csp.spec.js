@@ -17,6 +17,17 @@ import { ROUTES } from "../src/config/routes";
 test("mobile: opening WalletConnect's own wallet grid produces no CSP violations and its icons actually load", async ({
   browser,
 }) => {
+  // This test's own defining feature is hitting WalletConnect's real
+  // explorer API for AppKit's wallet grid (see the top-of-file comment —
+  // a mock would defeat the point). GitHub Actions' runner network path to
+  // that third-party API has measurably higher latency than a local dev
+  // machine (observed: still under 4 images at the previous 15s sub-
+  // timeout, but the grid did finish loading by ~25s total) — this raises
+  // both the sub-assertion's patience and this test's own Playwright
+  // timeout (default 30s) to match, without weakening what's actually
+  // asserted.
+  test.setTimeout(60_000);
+
   const context = await browser.newContext({ ...devices["Pixel 7"] });
   const page = await context.newPage();
 
@@ -47,7 +58,7 @@ test("mobile: opening WalletConnect's own wallet grid produces no CSP violations
   const allImages = page.locator("img");
   await expect(async () => {
     expect(await allImages.count()).toBeGreaterThan(4); // this app's own 4 + AppKit's own grid
-  }).toPass({ timeout: 15_000 });
+  }).toPass({ timeout: 30_000 });
 
   const imgStates = await allImages.evaluateAll((imgs) =>
     (imgs).map((img) => ({
