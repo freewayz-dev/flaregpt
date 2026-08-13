@@ -758,10 +758,15 @@ export default function Navbar({
       {!hideAskFlareGpt && (
         <>
           {showFabHint && (
+            // bottom offset stays FAB-bottom + FAB-height + the same 12px
+            // gap this had before the FAB below grew and moved up (was
+            // 104px = 40px + 52px + 12px; now 48px + 56px + 12px) — keeps
+            // the callout arrow pointing at the same spot just above the
+            // button, not floating off from it.
             <div
               role="status"
               onClick={dismissFabHint}
-              className="lg:hidden fixed bottom-[calc(104px+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-30 max-w-[190px] rounded-xl bg-ink-primary px-3 py-2 text-[11px] font-medium leading-snug text-white shadow-xl cursor-pointer"
+              className="lg:hidden fixed bottom-[calc(116px+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-30 max-w-[190px] rounded-xl bg-ink-primary px-3 py-2 text-[11px] font-medium leading-snug text-white shadow-xl cursor-pointer"
             >
               {t("navbar.flareGptFabHint")}
               <span className="absolute -bottom-1 right-6 h-2.5 w-2.5 rotate-45 bg-ink-primary" />
@@ -773,10 +778,10 @@ export default function Navbar({
               dismissFabHint();
               onToggleFlareWidget();
             }}
-            className="lg:hidden fixed bottom-[calc(2.5rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-30 flex items-center justify-center h-[52px] w-[52px] rounded-full bg-brand text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
+            className="lg:hidden fixed bottom-[calc(3rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-30 flex items-center justify-center h-14 w-14 rounded-full bg-brand text-white shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10"
             aria-label={t("navbar.askFlareGPT")}
           >
-            <SparklesIcon className="h-5 w-5" />
+            <SparklesIcon className="h-6 w-6" />
           </button>
         </>
       )}

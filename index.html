@@ -117,6 +117,33 @@
          instant before theme-init.js runs ever sees. -->
     <meta name="theme-color" content="#101115" />
 
+    <!-- Same-origin external file, not inline — moved out specifically so
+         the Content-Security-Policy's `script-src` can be `'self'` alone,
+         with no `'unsafe-inline'` and no hash pinned against this script's
+         exact formatting (see public/theme-init.js's own comment for why).
+         Loaded without async/defer, so it still runs synchronously at this
+         exact point in the document.
+         Lives in the document head, right after the meta tag above (its
+         own dependency — it reads that tag back out) — not at the very
+         end of the document, where it used to sit: this page's own root
+         element is prerendered with real, already-styled markup (see
+         prerender.js), not an empty div waiting for React, so on any
+         connection where the HTML streams in rather than arriving in one
+         instant chunk (the normal case on a real mobile network), a
+         script positioned after all of that content had a real window to
+         let the browser paint it in light mode's default colors before
+         ever reaching this script and adding the dark-mode class. Moving
+         the same script earlier, unchanged, closes that window instead of
+         opening a new one.
+         Note for future edits: prerender.js locates the document head and
+         body by searching this file's raw text for the literal tag
+         strings, not by parsing it — a comment anywhere in the head that
+         happens to spell out the body tag (or vice versa) is enough to
+         make that search match itself instead of the real element. Kept
+         out of this comment on purpose; keep it out of future ones here
+         too. -->
+    <script src="/theme-init.js"></script>
+
     <!-- Organization + WebSite structured data — static and site-wide, so
          it lives here rather than in a component; FAQPage structured data
          (which needs to stay in sync with the actual FAQ content) is
@@ -232,15 +259,5 @@
     </noscript>
 
     <script type="module" src="/src/main.jsx"></script>
-
-    <!-- Same-origin external file, not inline — moved out specifically so
-         the Content-Security-Policy's `script-src` can be `'self'` alone,
-         with no `'unsafe-inline'` and no hash pinned against this script's
-         exact formatting (see vercel.json's `headers` config, and
-         public/theme-init.js's own comment for why). Loaded without
-         async/defer, so it still runs synchronously at this exact point in
-         the document — identical timing to the inline version it
-         replaces. -->
-    <script src="/theme-init.js"></script>
   </body>
 </html>

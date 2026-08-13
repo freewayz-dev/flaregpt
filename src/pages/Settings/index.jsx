@@ -120,6 +120,31 @@ export default function Settings() {
     };
   }, []);
 
+  // Keeps the mobile tab strip's own scroll position in sync with whichever
+  // tab is active — covers a click on the strip itself, but also every
+  // other way `settingsActiveTab` can change (WalletTrackingBanner's
+  // "Manage"/"add to watchlist" links set it directly before navigating
+  // here, so the very first render can already land on a tab scrolled out
+  // of view). `isFirstRunRef` skips the scroll animation on that initial
+  // mount specifically — arriving already positioned on the right tab
+  // should look like it was always there, not visibly scroll into place;
+  // an explicit tab click still gets the smooth motion. Desktop's own
+  // `<nav>` is a separate, non-scrolling element `mobileNavRef` never
+  // touches, so this is a no-op there.
+  const isFirstRunRef = useRef(true);
+  useEffect(() => {
+    const container = mobileNavRef.current;
+    if (!container) return;
+    const activeButton = container.querySelector(`[data-tab-id="${activeTab}"]`);
+    if (!activeButton) return;
+    activeButton.scrollIntoView({
+      behavior: isFirstRunRef.current ? "auto" : "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+    isFirstRunRef.current = false;
+  }, [activeTab]);
+
   const renderTabButton = (tab) => {
     const isActive = activeTab === tab.id;
     const tabLabel = t(`settings.tabs.${tab.id}`);
@@ -131,6 +156,7 @@ export default function Settings() {
         type="button"
         onClick={() => setActiveTab(tab.id)}
         aria-current={isActive ? "true" : undefined}
+        data-tab-id={tab.id}
         data-text={tabLabel}
         className={`
           relative flex items-center gap-2.5 px-3.5 py-2.5 md:py-3 text-xs rounded-xl cursor-pointer group shrink-0 snap-center transition-colors duration-150 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2
