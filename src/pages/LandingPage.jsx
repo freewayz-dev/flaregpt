@@ -1055,7 +1055,7 @@ const features = [
   {
     id: "06",
     icon: ClockIcon,
-    title: "$rFLR Vesting Tracker",
+    title: "$rFLR Tracker",
     subtitle: "Know exactly when it unlocks",
     desc: "Follow your rFLR vesting schedule, upcoming unlocks, and early-exit terms alongside live network-wide emission data.",
   },

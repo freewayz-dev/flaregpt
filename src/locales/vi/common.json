@@ -883,7 +883,7 @@
     "mainNavigation": "Điều hướng chính",
     "notConnected": "Chưa kết nối",
     "overview": "Tổng quan",
-    "rflrTracker": "Theo dõi rFLR",
+    "rflrTracker": "$rFLR",
     "settings": "Cài đặt",
     "signInRequired": "Cần đăng nhập",
     "signInRequiredHint": "Sử dụng menu ví ở thanh trên cùng để đăng nhập.",

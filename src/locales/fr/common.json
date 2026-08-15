@@ -892,7 +892,7 @@
     "mainNavigation": "Navigation principale",
     "notConnected": "Non connecté",
     "overview": "Aperçu",
-    "rflrTracker": "Suivi rFLR",
+    "rflrTracker": "$rFLR",
     "settings": "Paramètres",
     "signInRequired": "Connexion requise",
     "signInRequiredHint": "Utilisez le menu du portefeuille dans la barre supérieure pour vous connecter.",

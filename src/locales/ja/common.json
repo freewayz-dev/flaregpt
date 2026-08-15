@@ -883,7 +883,7 @@
     "mainNavigation": "メインナビゲーション",
     "notConnected": "未接続",
     "overview": "概要",
-    "rflrTracker": "rFLRトラッカー",
+    "rflrTracker": "$rFLR",
     "settings": "設定",
     "signInRequired": "サインインが必要です",
     "signInRequiredHint": "サインインするには、上部バーのウォレットメニューを使用してください。",

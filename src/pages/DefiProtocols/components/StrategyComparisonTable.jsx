@@ -217,7 +217,18 @@ export default function StrategyComparisonTable() {
               inputMode="decimal"
               value={rawAmount}
               onChange={(e) => setRawAmount(e.target.value)}
-              className="w-32 rounded-lg bg-surface-inset py-1.5 pl-3 pr-11 text-sm font-semibold tabular-nums text-ink-primary focus:outline-none focus:ring-2 focus:ring-brand/30"
+              // text-base (16px), not text-sm (14px), specifically below the
+              // `sm:` breakpoint — any font-size under 16px on an <input>
+              // makes iOS Safari auto-zoom the whole page on focus, which is
+              // exactly the "page shifts when I tap this" bug this fixes.
+              // `sm:text-sm` keeps desktop's existing 14px untouched, since
+              // that auto-zoom behavior only exists on mobile Safari.
+              // `border-line` (invisible-ish but present at rest, same
+              // token this app's other real inputs like AddWalletModal use)
+              // is what actually signals "this is a field" instead of a
+              // static number — the old borderless version was easy to
+              // mistake for plain text next to the FLR suffix.
+              className="w-32 rounded-lg border border-line bg-surface-inset py-1.5 pl-3 pr-11 text-base sm:text-sm font-semibold tabular-nums text-ink-primary transition-colors focus:outline-none focus:border-brand/40 focus:ring-2 focus:ring-brand/30"
             />
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[11px] text-ink-muted">
               FLR

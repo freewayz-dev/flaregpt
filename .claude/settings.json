@@ -65,7 +65,8 @@
       "Bash(node /private/tmp/claude-501/-Users-macbookpro-Fred-Codebase-flr-gpt-dashboard-flr-gpt-dashboard/cbe3c03f-7f0b-41aa-9587-54df78bae36a/scratchpad/measure-heights.mjs)",
       "Bash(node .measure-heights.mjs)",
       "Bash(rm /Users/macbookpro/Fred/Codebase/flr-gpt-dashboard/flr-gpt-dashboard/e2e/zz-verify.spec.js *)",
-      "Bash(awk '/<style>/{print NR\": \"$0; found=1; next} found && /<\\\\/style>/{print NR\": \"$0; exit} found{print NR\": \"$0}' dist/index.html)"
+      "Bash(awk '/<style>/{print NR\": \"$0; found=1; next} found && /<\\\\/style>/{print NR\": \"$0; exit} found{print NR\": \"$0}' dist/index.html)",
+      "Bash(pkill -f \"e2e/static-server.js\" 2>/dev/null *)"
     ],
     "additionalDirectories": [
       "/tmp"

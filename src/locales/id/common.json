@@ -883,7 +883,7 @@
     "mainNavigation": "Navigasi utama",
     "notConnected": "Belum Terhubung",
     "overview": "Ikhtisar",
-    "rflrTracker": "Pelacak rFLR",
+    "rflrTracker": "$rFLR",
     "settings": "Pengaturan",
     "signInRequired": "Perlu masuk",
     "signInRequiredHint": "Gunakan menu dompet di bilah atas untuk masuk.",

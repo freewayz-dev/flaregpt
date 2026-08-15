@@ -892,7 +892,7 @@
     "mainNavigation": "Navigazione principale",
     "notConnected": "Non connesso",
     "overview": "Panoramica",
-    "rflrTracker": "Tracker rFLR",
+    "rflrTracker": "$rFLR",
     "settings": "Impostazioni",
     "signInRequired": "Accesso richiesto",
     "signInRequiredHint": "Usa il menu del wallet nella barra superiore per accedere.",

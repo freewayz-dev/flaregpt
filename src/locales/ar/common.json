@@ -919,7 +919,7 @@
     "mainNavigation": "التنقل الرئيسي",
     "notConnected": "غير متصل",
     "overview": "نظرة عامة",
-    "rflrTracker": "متتبع rFLR",
+    "rflrTracker": "$rFLR",
     "settings": "الإعدادات",
     "signInRequired": "التسجيل مطلوب",
     "signInRequiredHint": "استخدم قائمة المحفظة في الشريط العلوي لتسجيل الدخول.",

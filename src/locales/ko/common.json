@@ -883,7 +883,7 @@
     "mainNavigation": "주 탐색",
     "notConnected": "연결 안 됨",
     "overview": "개요",
-    "rflrTracker": "rFLR 추적기",
+    "rflrTracker": "$rFLR",
     "settings": "설정",
     "signInRequired": "로그인 필요",
     "signInRequiredHint": "로그인하려면 상단 표시줄의 지갑 메뉴를 사용하세요.",

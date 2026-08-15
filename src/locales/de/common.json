@@ -883,7 +883,7 @@
     "mainNavigation": "Hauptnavigation",
     "notConnected": "Nicht verbunden",
     "overview": "Übersicht",
-    "rflrTracker": "rFLR-Tracker",
+    "rflrTracker": "$rFLR",
     "settings": "Einstellungen",
     "signInRequired": "Anmeldung erforderlich",
     "signInRequiredHint": "Nutze das Wallet-Menü in der oberen Leiste, um dich anzumelden.",

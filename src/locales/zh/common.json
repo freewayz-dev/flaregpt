@@ -883,7 +883,7 @@
     "mainNavigation": "主导航",
     "notConnected": "未连接",
     "overview": "概述",
-    "rflrTracker": "rFLR tracker",
+    "rflrTracker": "$rFLR",
     "settings": "设置",
     "signInRequired": "需要登录",
     "signInRequiredHint": "使用顶部栏中的钱包菜单登录。",

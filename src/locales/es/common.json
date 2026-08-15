@@ -892,7 +892,7 @@
     "mainNavigation": "Navegación principal",
     "notConnected": "No conectado",
     "overview": "Resumen",
-    "rflrTracker": "Rastreador rFLR",
+    "rflrTracker": "$rFLR",
     "settings": "Configuración",
     "signInRequired": "Se requiere iniciar sesión",
     "signInRequiredHint": "Usa el menú de la billetera en la barra superior para iniciar sesión.",

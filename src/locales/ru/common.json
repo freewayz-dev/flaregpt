@@ -901,7 +901,7 @@
     "mainNavigation": "Основная навигация",
     "notConnected": "Не подключено",
     "overview": "Обзор",
-    "rflrTracker": "Трекер rFLR",
+    "rflrTracker": "$rFLR",
     "settings": "Настройки",
     "signInRequired": "Требуется вход",
     "signInRequiredHint": "Используйте меню кошелька в верхней панели, чтобы войти.",
