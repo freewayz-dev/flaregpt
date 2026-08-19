@@ -19,6 +19,28 @@ const NAV_ITEMS = [
 // the reported scroll jank. Writing `transform` directly to the DOM node
 // keeps this to a single compositor-thread update per frame, independent of
 // React's render cycle.
+//
+// `sticky`, not `fixed` — confirmed live: installed as a home-screen iOS
+// PWA specifically (not a regular Safari/Chrome tab, where `fixed` worked
+// fine), this nav scrolled away with the page instead of staying pinned.
+// That's a long-documented WebKit/WKWebView quirk, not a bug in this
+// component's own logic — `position: fixed` inside the standalone/home-
+// screen-launched rendering context iOS uses for installed web apps has a
+// history of not compositing reliably the way it does in an ordinary
+// browser tab, even with the usual mitigations already in place here
+// (`will-change-transform`, its own compositing layer). `position: sticky`
+// with `top-0` is the standard, well-documented workaround: since this nav
+// sits at the very top of the page with nothing above it, it starts
+// "stuck" at the first pixel of scroll, visually indistinguishable from
+// `fixed` in every context that already worked (desktop, a regular mobile
+// browser tab) — but sticky positioning doesn't share `fixed`'s WKWebView
+// compositing history, so it holds in the PWA context too. The trade-off:
+// unlike `fixed` (removed from flow entirely), a sticky element still
+// occupies its own space in normal flow, which is why its own `mb-8
+// md:mb-10` below replaces what used to be compensating top padding on
+// `<main>` in LandingPage.jsx — that padding is gone now, this margin is
+// what keeps the hero content the same distance below the nav it always
+// was.
 export default function LandingNavbar() {
   const navRef = useRef(null);
   const lastScrollY = useRef(0);
@@ -83,7 +105,7 @@ export default function LandingNavbar() {
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 inset-x-0 z-50 mt-[calc(1rem+env(safe-area-inset-top))] pl-[calc(1rem+env(safe-area-inset-left))] pr-[calc(1rem+env(safe-area-inset-right))] xl:pl-0 xl:pr-0 transition-transform duration-300 ease-out will-change-transform"
+      className="sticky top-0 inset-x-0 z-50 mt-[calc(1rem+env(safe-area-inset-top))] mb-8 md:mb-10 pl-[calc(1rem+env(safe-area-inset-left))] pr-[calc(1rem+env(safe-area-inset-right))] xl:pl-0 xl:pr-0 transition-transform duration-300 ease-out will-change-transform"
     >
       <div className="mx-auto grid h-[64px] md:h-[72px] w-full max-w-5xl grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center rounded-2xl border border-line/70 bg-white/5 dark:bg-white/[0.03] backdrop-blur-md px-3 md:px-4 shadow-lg shadow-black/5 dark:shadow-black/20">
         {/* Logo */}

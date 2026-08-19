@@ -604,7 +604,7 @@
       "statusUnknown": "Status tidak diketahui",
       "title": "Gas Sniper",
       "toggleFailed": "Tidak dapat memperbarui Gas Sniper. Coba lagi.",
-      "walletConnectChainUnsupported": "Koneksi dompet Anda tidak mendukung jaringan Coston2 yang diperlukan untuk persetujuan ini. Putuskan dan sambungkan kembali dompet Anda, lalu coba lagi.",
+      "walletConnectSessionStale": "Koneksi dompet Anda saat ini tidak merespons apa pun. Putuskan sepenuhnya koneksi dompet Anda, muat ulang halaman ini, lalu sambungkan kembali dan coba lagi.",
       "walletConnectTimeout": "Dompet Anda tidak merespons. Buka aplikasi dompet Anda untuk memeriksa permintaan yang tertunda, atau coba lagi."
     }
   },

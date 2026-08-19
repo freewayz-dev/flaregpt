@@ -23,9 +23,11 @@ import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { coston2 } from "@/config/web3Config";
 import {
   switchToConston2ViaRawRequest,
+  assertWalletConnectSessionIsResponsive,
   assertConston2InWalletConnectSession,
   addConston2ToWalletConnectSession,
   withWalletConnectTimeout,
+  WalletConnectSessionStaleError,
   WalletConnectChainUnsupportedError,
   WalletConnectRequestTimeoutError,
 } from "@/utils/walletConnectChainSwitch";
@@ -266,7 +268,7 @@ export default function GasSniperCard() {
     // error detail in the toast below — both come out once the actual
     // cause is confirmed, not meant to be the permanent, plain-language
     // copy this flow ships with.
-    let step = "check";
+    let step = "health";
     // Only WalletConnect-connected wallets have the missing-event bug
     // switchToConston2ViaRawRequest exists for — MetaMask's own SDK
     // connector and every injected/extension connector (MetaMask, Rabby,
@@ -274,6 +276,22 @@ export default function GasSniperCard() {
     // switchChainAsync exactly as before, completely untouched.
     const isWalletConnect = connector?.type === "walletConnect";
     try {
+      // Confirmed by a fourth real-device round: neither the switch nor
+      // the add-chain request below ever produced a popup either — two
+      // different request methods failing identically means this almost
+      // certainly isn't about Coston2 specifically anymore, but about the
+      // underlying WalletConnect session/relay connection itself being
+      // unresponsive (a real, previously-undetected possibility — this
+      // connector's own transport is a module-level singleton a same-tab
+      // disconnect/reconnect can never actually rebuild, see
+      // walletConnectChainSwitch.js's own comment). A cheap, silent
+      // `eth_chainId` probe up front tells the two apart immediately
+      // instead of burning through the slower Coston2-specific steps
+      // first only to time out identically either way.
+      if (isWalletConnect) {
+        await assertWalletConnectSessionIsResponsive(connector);
+      }
+      step = "check";
       // Confirmed against a second real-device round: the raw-request
       // bypass above wasn't the whole fix — the same "taken to the wallet,
       // nothing to approve, forever" symptom persisted. Root cause is one
@@ -357,8 +375,12 @@ export default function GasSniperCard() {
       // above) — the transaction is sent but not yet mined.
     } catch (error) {
       console.error(`Gas Sniper approval failed at step "${step}":`, error);
-      if (error instanceof WalletConnectChainUnsupportedError) {
-        toast.error(t("loops.gasSniper.walletConnectChainUnsupported"));
+      // WalletConnectChainUnsupportedError never reaches here — the only
+      // place it's thrown (assertConston2InWalletConnectSession) is always
+      // caught locally above and turned into an addConston2ToWalletConnectSession
+      // attempt instead, not re-surfaced as-is.
+      if (error instanceof WalletConnectSessionStaleError) {
+        toast.error(t("loops.gasSniper.walletConnectSessionStale"));
       } else if (error instanceof WalletConnectRequestTimeoutError) {
         toast.error(t("loops.gasSniper.walletConnectTimeout"));
       } else {

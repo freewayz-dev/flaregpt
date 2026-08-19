@@ -604,7 +604,7 @@
       "statusUnknown": "状态未知",
       "title": "Gas Sniper",
       "toggleFailed": "无法更新 Gas Sniper，请重试。",
-      "walletConnectChainUnsupported": "您的钱包连接不支持此次批准所需的 Coston2 网络。请断开并重新连接您的钱包，然后重试。",
+      "walletConnectSessionStale": "您的钱包连接目前对任何请求都没有响应。请完全断开您的钱包连接，刷新此页面，然后重新连接并重试。",
       "walletConnectTimeout": "您的钱包没有响应。请打开钱包应用查看是否有待处理的请求，或重试。"
     }
   },

@@ -41,9 +41,8 @@ import { coston2 } from "@/config/web3Config";
 // own SDK don't have this bug, don't need this workaround, and this
 // doesn't touch anything else about how they connect or sign.
 //
-// STILL NOT THE WHOLE STORY, confirmed by a second real device round: the
-// same "nothing ever pops up" symptom persisted on Trust Wallet/Bifrost
-// even with this bypass in place. Traced further, into
+// ROUND 2: the same "nothing ever pops up" symptom persisted on Trust
+// Wallet/Bifrost even with this bypass in place. Traced further, into
 // `@wagmi/connectors`' own `connect()` (the code that runs once, at the
 // very first pairing): it calls `provider.connect({ optionalChains:
 // [targetChainId, ...everyOtherConfiguredChain], ... })` — `coston2` IS
@@ -60,63 +59,56 @@ import { coston2 } from "@/config/web3Config";
 // trying anyway. With it `false` (this app's setting, chosen so a
 // disconnect isn't forced just for adding a chain to `config.chains`),
 // nothing ever re-validates that Coston2 actually made it into the live
-// session before this flow tries to use it. If a wallet's own WalletConnect
-// v2 implementation quietly dropped Coston2 as an optional chain it
-// doesn't support switching into (rather than rejecting it outright,
-// which would at least surface as a JSON-RPC error) — plausible, since
-// wallet-side WalletConnect v2 implementations are inconsistent about
-// which of their own supported chains they'll actually add to a live
-// session versus only ever offering at pairing time — then every request
-// this flow sends afterward (the raw switch above, and the write below)
-// is asking the wallet to act on a chain its own session was never told
-// about, with nothing in the request/response cycle itself distinguishing
-// that from "the human just hasn't tapped Approve yet." That reads, from
-// here, as exactly what's being seen: taken to the wallet app, nothing to
-// approve, forever.
+// session before this flow tries to use it.
 //
-// Two changes address this without needing to guess further: (1) a
-// pre-flight check (assertConston2InWalletConnectSession, below) against
-// this exact connector method — getNamespaceChainsIds(), which reads the
-// live session's own namespaces directly (see walletConnect.ts) — surfaces
-// a clear, immediate, actionable error the moment this app can tell
-// Coston2 isn't actually in the wallet's approved namespace, instead of
-// silently trying and hanging; (2) withWalletConnectTimeout wraps the two
-// requests that can hang with no built-in timeout of their own
-// (provider.request has none — it awaits the relay indefinitely), so even
-// the residual case this app has no way to detect in advance (the
-// namespace check is empty/inconclusive, or something else entirely
-// stalls) still surfaces a clear failure instead of leaving the button
-// reading "Confirm in your wallet…" forever with no way out but a reload.
+// ROUND 3: the pre-flight namespace check (assertConston2InWalletConnectSession,
+// below) now fires the "doesn't support Coston2" error reliably, *even
+// right after an explicit disconnect + fresh reconnect* — a genuinely new
+// pairing re-offering Coston2, consistently declined. That's exactly the
+// scenario EIP-3085 (`wallet_addEthereumChain`) exists for: a wallet that
+// doesn't yet recognize a chain isn't asked to silently support it, it's
+// asked to *add* it, which is expected to surface its own "Add network?"
+// confirmation UI regardless of prior chain knowledge.
+// addConston2ToWalletConnectSession (below) does that directly.
 //
-// STILL NOT DONE — confirmed by a third round: the pre-flight check itself
-// now fires the "doesn't support Coston2" error reliably, *even right
-// after an explicit disconnect + fresh reconnect*, which is a genuinely
-// new, useful data point. A fresh pairing means `optionalChains` really
-// was re-offered with Coston2 in it (see above); the wallet consistently
-// declining to grant it anyway — rather than this being a stale-session
-// artifact — is exactly the scenario EIP-3085 (`wallet_addEthereumChain`)
-// exists for: a wallet that doesn't yet recognize a chain isn't asked to
-// silently support it, it's asked to *add* it, which is expected to
-// surface its own "Add network?" confirmation UI. Notably, wagmi's own
-// (buggy, see above) switchChain already has this exact fallback built
-// in — `wallet_switchEthereumChain` failing triggers a `wallet_
-// addEthereumChain` retry — but that fallback is only reachable from an
-// actual *rejection*, and the whole reason this bypass exists is that the
-// wallets in question never reject, they hang. Nothing before this
-// attempted the add-chain step proactively. addConston2ToWalletConnectSession
-// does that directly: same request shape wagmi's own fallback builds,
-// called the moment the pre-flight check confirms Coston2 is missing,
-// *before* giving up — see GasSniperCard.jsx's handleApprove for exactly
-// where this sits in the sequence (check -> add if missing -> switch ->
-// write). If the wallet still doesn't respond to the add request either,
-// that's caught by the same timeout as everything else here.
-export class WalletConnectChainUnsupportedError extends Error {
-  constructor() {
-    super("Coston2 is not in this WalletConnect session's approved chains.");
-    this.name = "WalletConnectChainUnsupportedError";
-  }
-}
-
+// ROUND 4: the add-chain step also produced zero popup — identical to the
+// switch it was meant to fix. Two completely different request methods
+// producing the identical "opens the wallet app, shows nothing, times
+// out" result stops looking like a Coston2-specific problem and starts
+// looking like *no* request reaches this wallet's UI at all, regardless
+// of method — the underlying WalletConnect session/relay pipe itself, not
+// any one chain.
+//
+// A concrete, previously-unconsidered mechanism for exactly that: this
+// connector's own `provider_` (the actual EthereumProvider/SignClient
+// instance — see @wagmi/connectors' walletConnect.ts) is a MODULE-LEVEL
+// SINGLETON, created once and never torn down. Confirmed directly in that
+// source: `disconnect()` calls `provider?.disconnect()` on the existing
+// instance but never sets `provider_ = undefined`; the next `connect()`
+// call's `getProvider()` sees `provider_` still truthy and reuses the
+// *same* instance rather than constructing a fresh one. That instance
+// owns its own relay WebSocket connection — if that connection (or the
+// SignClient's internal pairing/session bookkeeping) has gotten into a
+// broken state for any reason, no amount of UI-level "Disconnect" then
+// "Connect" clicking can ever recover it within the same page load, since
+// every one of those calls operates on the identical already-broken
+// object. Only a genuine full page reload re-evaluates web3Config.js from
+// scratch and constructs a brand-new provider with a fresh relay
+// connection — something neither this app's disconnect button nor a
+// same-tab reconnect actually does.
+//
+// assertWalletConnectSessionIsResponsive (below) probes for exactly this,
+// cheaply and safely, before spending any more time on Coston2
+// specifically: `eth_chainId` is a plain read most wallets answer
+// silently, with no user-facing UI at all, so it should resolve almost
+// immediately if the underlying transport is genuinely alive — a short
+// timeout here (12s, well under the 60s used for requests that genuinely
+// need a human to look at their phone) is a meaningful, load-bearing
+// signal, not a generous allowance. If even this hangs, the session
+// itself is the problem, and the clear, correct next step for the user is
+// a full disconnect + page reload + fresh reconnect (see
+// GasSniperCard.jsx's handleApprove for exactly where this check sits:
+// first, before anything Coston2-specific).
 export class WalletConnectRequestTimeoutError extends Error {
   constructor() {
     super("The wallet did not respond to the WalletConnect request in time.");
@@ -136,6 +128,37 @@ export function withWalletConnectTimeout(promise, timeoutMs = WALLETCONNECT_REQU
     timeoutId = setTimeout(() => reject(new WalletConnectRequestTimeoutError()), timeoutMs);
   });
   return Promise.race([promise, timeout]).finally(() => clearTimeout(timeoutId));
+}
+
+export class WalletConnectSessionStaleError extends Error {
+  constructor() {
+    super("This WalletConnect session isn't responding to any request, not just Coston2-specific ones.");
+    this.name = "WalletConnectSessionStaleError";
+  }
+}
+
+const WALLETCONNECT_HEALTH_PROBE_TIMEOUT_MS = 12_000;
+
+export async function assertWalletConnectSessionIsResponsive(connector) {
+  const provider = await connector.getProvider();
+  try {
+    await withWalletConnectTimeout(
+      provider.request({ method: "eth_chainId" }),
+      WALLETCONNECT_HEALTH_PROBE_TIMEOUT_MS,
+    );
+  } catch (error) {
+    if (error instanceof WalletConnectRequestTimeoutError) {
+      throw new WalletConnectSessionStaleError();
+    }
+    throw error;
+  }
+}
+
+export class WalletConnectChainUnsupportedError extends Error {
+  constructor() {
+    super("Coston2 is not in this WalletConnect session's approved chains.");
+    this.name = "WalletConnectChainUnsupportedError";
+  }
 }
 
 // Empty is treated as "unknown, proceed anyway" rather than "unsupported"

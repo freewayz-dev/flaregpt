@@ -204,11 +204,30 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-dvh bg-[#F0F4F9] dark:bg-[#101115] transition-colors duration-300">
-      {/* Grid + ambient glow layer is scoped to this wrapper (nav + main
-          only), not the whole page, and fades out over its last 15% via the
-          mask below — so it never shows through behind the footer, which
-          has its own (near-transparent) background that's meant to read as
-          "the grid has ended" rather than have the grid bleed through it. */}
+      {/* LandingNavbar is `position: sticky`, not `fixed` (see its own
+          comment for why), and deliberately rendered *outside* the
+          overflow-x-hidden wrapper below, not nested inside it as before —
+          confirmed live: any ancestor with a non-`visible` overflow on
+          either axis becomes its own scroll container and sticky-
+          positioning context per the CSS overflow spec (setting the other
+          axis to `visible` explicitly doesn't override this; the spec
+          forces it back to `auto`), so the nav was tracking that div's own
+          (permanently zero) internal scroll instead of the real page
+          scroll, and scrolled away with the page instead of sticking.
+          Moving it to a true sibling of that div, rather than a child, is
+          the actual fix; z-50 and its own `inset-x-0` mean nothing about
+          its visual placement depends on being nested inside. It now
+          occupies real space in normal flow too, so <main> no longer needs
+          compensating top padding to clear it — the nav's own mb-8/md:mb-10
+          provides that gap instead. */}
+      <LandingNavbar />
+
+      {/* Grid + ambient glow layer is scoped to this wrapper (visually sits
+          behind the navbar and hero), not the whole page, and fades out
+          over its last 15% via the mask below — so it never shows through
+          behind the footer, which has its own (near-transparent)
+          background that's meant to read as "the grid has ended" rather
+          than have the grid bleed through it. */}
       <div className="relative overflow-x-hidden">
         {/* All ambient glows sit at z-0, and the grid sits at z-[5] — above
             every glow, below all real content (main is z-10). That ordering
@@ -248,9 +267,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <LandingNavbar />
-
-        <main className="relative z-10 pt-24 md:pt-28">
+        <main className="relative z-10">
         <FadeIn>
           <section className="flex flex-col items-center px-4 xl:px-0 justify-center text-center max-w-5xl mx-auto pt-20 md:pt-28 pb-28">
             <div className="inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-xl px-4 py-1.5 shadow-sm">

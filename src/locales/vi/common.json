@@ -604,7 +604,7 @@
       "statusUnknown": "Không rõ trạng thái",
       "title": "Gas Sniper",
       "toggleFailed": "Không thể cập nhật Gas Sniper. Vui lòng thử lại.",
-      "walletConnectChainUnsupported": "Kết nối ví của bạn không hỗ trợ mạng Coston2 mà việc phê duyệt này cần. Ngắt kết nối rồi kết nối lại ví của bạn, sau đó thử lại.",
+      "walletConnectSessionStale": "Kết nối ví của bạn hiện không phản hồi bất kỳ yêu cầu nào. Ngắt kết nối hoàn toàn ví của bạn, tải lại trang này, sau đó kết nối lại và thử lại.",
       "walletConnectTimeout": "Ví của bạn không phản hồi. Hãy mở ứng dụng ví để kiểm tra yêu cầu đang chờ xử lý, hoặc thử lại."
     }
   },
