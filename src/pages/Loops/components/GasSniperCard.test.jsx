@@ -401,8 +401,11 @@ describe("GasSniperCard — approval rejected in the wallet", () => {
     const approveButton = await screen.findByRole("button", { name: "Approve on Coston2" });
     fireEvent.click(approveButton);
 
+    // Substring match, not exact — the toast currently also appends a
+    // temporary `[step: detail]` diagnostic suffix (see handleApprove's
+    // own comment on why) that this test doesn't need to pin down.
     expect(
-      await screen.findByText("Couldn't complete the approval. Try again."),
+      await screen.findByText(/Couldn't complete the approval\. Try again\./),
     ).toBeInTheDocument();
     // The app is still alive and usable — the Approve button is back,
     // re-enabled, ready for a retry, not a blank page.

@@ -250,11 +250,21 @@ export default function GasSniperCard() {
 
   const handleApprove = async () => {
     setIsApproving(true);
+    // Tracks which of the two wallet round trips was in flight when this
+    // failed — the two report identically to the user ("nothing happened
+    // in the wallet, then this app shows an error") but have completely
+    // different real causes, and there's no other way to tell them apart
+    // on a real device with no console attached. Temporary, alongside the
+    // error detail in the toast below — both come out once the actual
+    // cause is confirmed, not meant to be the permanent, plain-language
+    // copy this flow ships with.
+    let step = "switch";
     try {
       if (connectedChainId !== coston2.id) {
         reassertWindowFocus();
         await switchChainAsync({ chainId: coston2.id });
       }
+      step = "write";
       reassertWindowFocus();
       const hash = await writeContractAsync({
         address: CLAIM_SETUP_MANAGER_ADDRESS,
@@ -278,8 +288,10 @@ export default function GasSniperCard() {
       setApproveTxHash(hash);
       // isApproving stays true until the receipt confirms (see the effect
       // above) — the transaction is sent but not yet mined.
-    } catch {
-      toast.error(t("loops.gasSniper.approveFailed"));
+    } catch (error) {
+      console.error(`Gas Sniper approval failed at step "${step}":`, error);
+      const detail = error?.shortMessage ?? error?.message ?? String(error);
+      toast.error(`${t("loops.gasSniper.approveFailed")} [${step}: ${detail}]`);
       setIsApproving(false);
     }
   };
