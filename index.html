@@ -30,7 +30,15 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- `viewport-fit=cover` is what actually lets this app's own
+         `env(safe-area-inset-*)` CSS (see Sidebar.jsx, DashboardLayout.jsx,
+         Navbar.jsx, ...) resolve to real, non-zero values instead of 0 —
+         without it, the page is never told it can extend under the notch/
+         Dynamic Island/home-indicator area in the first place, so there's
+         nothing for that CSS to inset around. Needed for a true edge-to-
+         edge "looks like an installed app" presentation on both iOS and
+         Android standalone/PWA mode. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <!-- iOS Safari never reads display/theme_color/name from the web
          manifest for its own "Add to Home Screen" behavior — these
@@ -46,6 +54,72 @@
     />
     <meta name="apple-mobile-web-app-title" content="FlareGPT" />
     <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- iOS's home-screen launch splash: unlike everything else on this
+         page, this can't be a single asset — iOS matches one exact,
+         pre-rendered PNG per (device-width, device-height,
+         -webkit-device-pixel-ratio, orientation, prefers-color-scheme)
+         media query, with no scaling fallback, so every covered iPhone
+         screen size needs its own entry in both orientations and both
+         themes. Covers every current Dynamic-Island model (14 Pro onward)
+         plus iPhone 11/12/13's notch-era panels, still common enough to be
+         worth it (the match is purely on physical screen size/DPR, not on
+         whether the device has a notch or an island, so this needs no
+         separate branch for either). Without this, iOS shows a blank
+         OS-level splash before this app's own JS
+         (and its dark/light `theme-init.js` shim) ever runs — the exact
+         source of the white/black flash on opening the installed PWA.
+         Generated, not hand-typed — see
+         scripts/generate-apple-splash-screens.mjs, which also documents
+         which physical iPhone models share each entry (several models
+         across generations share an identical panel size) and regenerates
+         this whole block if Apple ships a new screen size. -->
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1320x2868-portrait-dark.png" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1320x2868-portrait-light.png" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1320x2868-landscape-dark.png" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1320x2868-landscape-light.png" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1206x2622-portrait-dark.png" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1206x2622-portrait-light.png" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1206x2622-landscape-dark.png" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1206x2622-landscape-light.png" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1290x2796-portrait-dark.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1290x2796-portrait-light.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1290x2796-landscape-dark.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1290x2796-landscape-light.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1179x2556-portrait-dark.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1179x2556-portrait-light.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1179x2556-landscape-dark.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1179x2556-landscape-light.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: light)" />
+    <!-- 390x844 @3x — also iPhone 12 / 12 Pro / 13 / 13 Pro / 14's exact
+         panel size, not just 16e/17's. -->
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1170x2532-portrait-dark.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1170x2532-portrait-light.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1170x2532-landscape-dark.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1170x2532-landscape-light.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: light)" />
+    <!-- iPhone 12 mini / 13 mini (also X / XS / 11 Pro's panel size) -->
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1125x2436-portrait-dark.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1125x2436-portrait-light.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1125x2436-landscape-dark.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1125x2436-landscape-light.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: light)" />
+    <!-- iPhone 12 Pro Max / 13 Pro Max — NOT the same panel as XS Max/11
+         Pro Max below despite both reading "Max"; this one is 428x926. -->
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1284x2778-portrait-dark.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1284x2778-portrait-light.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1284x2778-landscape-dark.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1284x2778-landscape-light.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: light)" />
+    <!-- iPhone XS Max / 11 Pro Max — 414x896 @3x, a distinct, smaller
+         panel than 12/13 Pro Max's 428x926 above. -->
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1242x2688-portrait-dark.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1242x2688-portrait-light.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1242x2688-landscape-dark.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-1242x2688-landscape-light.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) and (prefers-color-scheme: light)" />
+    <!-- iPhone XR / 11 — same 414x896 CSS viewport as XS Max/11 Pro Max
+         above, but the LCD panel is @2x, not @3x; the pixel-ratio clause
+         is what tells these two apart. -->
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-828x1792-portrait-dark.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-828x1792-portrait-light.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) and (prefers-color-scheme: light)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-828x1792-landscape-dark.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape) and (prefers-color-scheme: dark)" />
+    <link rel="apple-touch-startup-image" href="/splash/apple-splash-828x1792-landscape-light.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape) and (prefers-color-scheme: light)" />
 
     <!-- SEO — production domain is https://www.flaregpt.io (canonical,
          og:url, og:image, twitter:image, and both JSON-LD blocks below all

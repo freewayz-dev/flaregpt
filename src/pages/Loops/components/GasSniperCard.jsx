@@ -21,6 +21,7 @@ import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { coston2 } from "@/config/web3Config";
+import { switchToConston2ViaRawRequest } from "@/utils/walletConnectChainSwitch";
 import {
   CLAIM_SETUP_MANAGER_ADDRESS,
   CLAIM_SETUP_MANAGER_ABI,
@@ -130,7 +131,7 @@ export default function GasSniperCard() {
   const { hasSession, isConnected, isCurrentWalletSignedIn, isAuthenticating, signIn } =
     useAuthStatus();
   const authenticatedAddress = useAuthStore((s) => s.authenticatedAddress);
-  const { chainId: connectedChainId } = useConnection();
+  const { chainId: connectedChainId, connector } = useConnection();
   // Enabling/disabling hits the backend (useLoopsQueries.ts) and approving
   // is an on-chain write — both genuinely need connectivity, unlike the
   // status *read* above (StaleWhileRevalidate, so it's fine showing a
@@ -259,10 +260,20 @@ export default function GasSniperCard() {
     // cause is confirmed, not meant to be the permanent, plain-language
     // copy this flow ships with.
     let step = "switch";
+    // Only WalletConnect-connected wallets have the missing-event bug
+    // switchToConston2ViaRawRequest exists for — MetaMask's own SDK
+    // connector and every injected/extension connector (MetaMask, Rabby,
+    // Bifrost-via-its-own-extension) go through wagmi's normal
+    // switchChainAsync exactly as before, completely untouched.
+    const isWalletConnect = connector?.type === "walletConnect";
     try {
       if (connectedChainId !== coston2.id) {
         reassertWindowFocus();
-        await switchChainAsync({ chainId: coston2.id });
+        if (isWalletConnect) {
+          await switchToConston2ViaRawRequest(connector);
+        } else {
+          await switchChainAsync({ chainId: coston2.id });
+        }
       }
       step = "write";
       reassertWindowFocus();
@@ -271,7 +282,15 @@ export default function GasSniperCard() {
         abi: CLAIM_SETUP_MANAGER_ABI,
         functionName: "setClaimExecutors",
         args: [[GAS_SNIPER_KEEPER_ADDRESS]],
-        chainId: coston2.id,
+        // `chainId` deliberately omitted for WalletConnect — passing one
+        // here is what makes wagmi's own `getConnectorClient` re-run the
+        // exact same buggy switchChain a second time internally (see
+        // switchToConston2ViaRawRequest's own comment), even though the
+        // switch above already genuinely succeeded. `chain` below still
+        // gets viem to the right chain for this request; the
+        // provider/config sync already done above is what makes that
+        // correct without also needing this.
+        ...(isWalletConnect ? {} : { chainId: coston2.id }),
         // `chain`/`account` passed explicitly, not left to wagmi's own
         // connected-client inference — confirmed via a minimal reproduction
         // that this exact wagmi/viem generic chain (SelectChains ->

@@ -380,6 +380,11 @@ describe("GasSniperCard — mobile wallet-confirmation fix", () => {
   });
 });
 
+// switchToConston2ViaRawRequest itself (the actual reported-bug fix — see
+// its own comment in src/utils/walletConnectChainSwitch.js for the full
+// trace) has its own direct unit coverage there, colocated with the
+// function rather than with this component.
+
 describe("GasSniperCard — approval rejected in the wallet", () => {
   // The real bug this protects: clicking Approve, then rejecting the
   // transaction in the wallet, crashed the entire app with an uncaught

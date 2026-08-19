@@ -39,6 +39,11 @@
   // again at runtime by useUIStore.ts's setAppearance (the in-app toggle)
   // and App.tsx's OS-preference-change listener; this is only what covers
   // the gap between this script running and either of those ever firing.
+  // Canonical source is src/config/theme.js's THEME_SURFACE_COLOR — this
+  // is a literal copy, not an import, since this script must stay a
+  // plain, synchronous, non-module `<script>` (see the top-of-file
+  // comment); if THEME_SURFACE_COLOR ever changes, update these two
+  // literals to match.
   var themeColorMeta = document.querySelector('meta[name="theme-color"]');
   if (themeColorMeta) themeColorMeta.setAttribute("content", isDark ? "#101115" : "#F0F4F9");
 

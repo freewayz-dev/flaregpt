@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import { THEME_SURFACE_COLOR } from "@/config/theme";
+
 
 
 
@@ -31,7 +33,7 @@ const getSystemPreference = () =>
 // too instead of leaving it a fixed brand color regardless of theme.
 export function applyThemeColorMeta(isDark) {
   const meta = document.querySelector('meta[name="theme-color"]');
-  meta?.setAttribute("content", isDark ? "#101115" : "#F0F4F9");
+  meta?.setAttribute("content", isDark ? THEME_SURFACE_COLOR.dark : THEME_SURFACE_COLOR.light);
 }
 
 // See useAuthStore.ts for why the state creator and `partialize`/
