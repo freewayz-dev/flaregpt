@@ -1,6 +1,12 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 
-import { switchToConston2ViaRawRequest } from "@/utils/walletConnectChainSwitch";
+import {
+  switchToConston2ViaRawRequest,
+  assertConston2InWalletConnectSession,
+  withWalletConnectTimeout,
+  WalletConnectChainUnsupportedError,
+  WalletConnectRequestTimeoutError,
+} from "@/utils/walletConnectChainSwitch";
 import { coston2 } from "@/config/web3Config";
 
 // Direct unit coverage for the actual reported bug: on WalletConnect-
@@ -45,5 +51,90 @@ describe("switchToConston2ViaRawRequest", () => {
     );
     expect(provider.chainId).toBe(14);
     expect(emitter.emit).not.toHaveBeenCalled();
+  });
+
+  it("rejects with WalletConnectRequestTimeoutError if the wallet never responds", async () => {
+    vi.useFakeTimers();
+    try {
+      const request = vi.fn(() => new Promise(() => {})); // never resolves
+      const provider = { chainId: 14, request };
+      const connector = { getProvider: vi.fn().mockResolvedValue(provider), emitter: { emit: vi.fn() } };
+
+      const result = switchToConston2ViaRawRequest(connector);
+      const assertion = expect(result).rejects.toThrow(WalletConnectRequestTimeoutError);
+      await vi.advanceTimersByTimeAsync(60_000);
+      await assertion;
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+});
+
+// Direct unit coverage for the second real cause found on a follow-up
+// device round, after switchToConston2ViaRawRequest alone turned out not
+// to fix Bifrost/Trust Wallet: Coston2 is only ever *offered* to a wallet
+// as an optional chain at pairing time, and this app's own
+// `isNewChainsStale: false` setting (see web3Config.js) means nothing
+// re-validates it actually made it into the wallet's approved session
+// namespace before this flow tries to use it. See
+// assertConston2InWalletConnectSession's own comment for the full trace.
+describe("assertConston2InWalletConnectSession", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("does not throw when Coston2 is in the session's approved chains", async () => {
+    const connector = {
+      getProvider: vi.fn().mockResolvedValue({}),
+      getNamespaceChainsIds: vi.fn().mockReturnValue([14, coston2.id]),
+    };
+    await expect(assertConston2InWalletConnectSession(connector)).resolves.toBeUndefined();
+  });
+
+  it("throws WalletConnectChainUnsupportedError when the session's approved chains don't include Coston2", async () => {
+    const connector = {
+      getProvider: vi.fn().mockResolvedValue({}),
+      getNamespaceChainsIds: vi.fn().mockReturnValue([14, 19]),
+    };
+    await expect(assertConston2InWalletConnectSession(connector)).rejects.toThrow(
+      WalletConnectChainUnsupportedError,
+    );
+  });
+
+  it("treats an empty/unknown chain list as inconclusive, not unsupported — matches walletConnect.ts's own isChainsStale() guard", async () => {
+    const connector = {
+      getProvider: vi.fn().mockResolvedValue({}),
+      getNamespaceChainsIds: vi.fn().mockReturnValue([]),
+    };
+    await expect(assertConston2InWalletConnectSession(connector)).resolves.toBeUndefined();
+  });
+
+  it("ensures the provider is initialized before reading namespace chains, since getNamespaceChainsIds() reads from it", async () => {
+    const connector = {
+      getProvider: vi.fn().mockResolvedValue({}),
+      getNamespaceChainsIds: vi.fn().mockReturnValue([]),
+    };
+    await assertConston2InWalletConnectSession(connector);
+    expect(connector.getProvider).toHaveBeenCalled();
+  });
+});
+
+describe("withWalletConnectTimeout", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("resolves with the wrapped promise's value when it settles before the timeout", async () => {
+    await expect(withWalletConnectTimeout(Promise.resolve("ok"))).resolves.toBe("ok");
+  });
+
+  it("rejects with WalletConnectRequestTimeoutError once the timeout elapses with no response", async () => {
+    vi.useFakeTimers();
+    const neverResolves = new Promise(() => {});
+    const assertion = expect(withWalletConnectTimeout(neverResolves, 1_000)).rejects.toThrow(
+      WalletConnectRequestTimeoutError,
+    );
+    await vi.advanceTimersByTimeAsync(1_000);
+    await assertion;
   });
 });

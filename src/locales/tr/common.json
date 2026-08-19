@@ -603,7 +603,9 @@
       "statusCheckFailed": "Gas Sniper durumu kontrol edilemedi.",
       "statusUnknown": "Durum bilinmiyor",
       "title": "Gas Sniper",
-      "toggleFailed": "Gas Sniper güncellenemedi. Tekrar deneyin."
+      "toggleFailed": "Gas Sniper güncellenemedi. Tekrar deneyin.",
+      "walletConnectChainUnsupported": "Cüzdanınızın bağlantısı, bu onay için gereken Coston2 ağını desteklemiyor. Cüzdanınızın bağlantısını kesip yeniden bağlayın, ardından tekrar deneyin.",
+      "walletConnectTimeout": "Cüzdanınız yanıt vermedi. Bekleyen bir istek olup olmadığını kontrol etmek için cüzdan uygulamanızı açın veya tekrar deneyin."
     }
   },
   "navbar": {

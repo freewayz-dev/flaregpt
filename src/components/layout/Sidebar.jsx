@@ -135,6 +135,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
           TransactionDrawer, rather than nesting it here. */}
       <aside
         className={`fixed inset-y-0 left-0 z-50 flex flex-col bg-surface-card shadow-[0_1px_3px_rgba(0,0,0,0.01)] border-r border-line lg:static
+          rounded-tr-3xl rounded-br-3xl lg:rounded-none
           pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)]
           transition-[width,transform] duration-300 ease-in-out
           h-dvh lg:h-full

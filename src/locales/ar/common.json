@@ -631,7 +631,9 @@
       "statusCheckFailed": "تعذّر التحقق من حالة Gas Sniper.",
       "statusUnknown": "الحالة غير معروفة",
       "title": "Gas Sniper",
-      "toggleFailed": "تعذّر تحديث Gas Sniper. حاول مرة أخرى."
+      "toggleFailed": "تعذّر تحديث Gas Sniper. حاول مرة أخرى.",
+      "walletConnectChainUnsupported": "اتصال محفظتك لا يدعم شبكة Coston2 التي تتطلبها هذه الموافقة. افصل محفظتك ثم أعد توصيلها، وحاول مرة أخرى.",
+      "walletConnectTimeout": "لم تستجب محفظتك. افتح تطبيق محفظتك للتحقق من وجود طلب معلق، أو حاول مرة أخرى."
     }
   },
   "navbar": {

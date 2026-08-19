@@ -603,7 +603,9 @@
       "statusCheckFailed": "Gas Sniperのステータスを確認できませんでした。",
       "statusUnknown": "ステータス不明",
       "title": "Gas Sniper",
-      "toggleFailed": "Gas Sniperを更新できませんでした。もう一度お試しください。"
+      "toggleFailed": "Gas Sniperを更新できませんでした。もう一度お試しください。",
+      "walletConnectChainUnsupported": "ウォレットの接続が、この承認に必要なCoston2ネットワークに対応していません。ウォレットを切断してから再接続し、もう一度お試しください。",
+      "walletConnectTimeout": "ウォレットが応答しませんでした。保留中のリクエストがないか、ウォレットアプリを開いて確認するか、もう一度お試しください。"
     }
   },
   "navbar": {

@@ -610,7 +610,9 @@
       "statusCheckFailed": "Não foi possível verificar o status do Gas Sniper.",
       "statusUnknown": "Status desconhecido",
       "title": "Gas Sniper",
-      "toggleFailed": "Não foi possível atualizar o Gas Sniper. Tente novamente."
+      "toggleFailed": "Não foi possível atualizar o Gas Sniper. Tente novamente.",
+      "walletConnectChainUnsupported": "A conexão da sua carteira não é compatível com a rede Coston2 que esta aprovação exige. Desconecte e reconecte sua carteira e tente novamente.",
+      "walletConnectTimeout": "Sua carteira não respondeu. Abra o app da sua carteira para verificar se há uma solicitação pendente, ou tente novamente."
     }
   },
   "navbar": {

@@ -21,7 +21,13 @@ import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { coston2 } from "@/config/web3Config";
-import { switchToConston2ViaRawRequest } from "@/utils/walletConnectChainSwitch";
+import {
+  switchToConston2ViaRawRequest,
+  assertConston2InWalletConnectSession,
+  withWalletConnectTimeout,
+  WalletConnectChainUnsupportedError,
+  WalletConnectRequestTimeoutError,
+} from "@/utils/walletConnectChainSwitch";
 import {
   CLAIM_SETUP_MANAGER_ADDRESS,
   CLAIM_SETUP_MANAGER_ABI,
@@ -259,7 +265,7 @@ export default function GasSniperCard() {
     // error detail in the toast below — both come out once the actual
     // cause is confirmed, not meant to be the permanent, plain-language
     // copy this flow ships with.
-    let step = "switch";
+    let step = "check";
     // Only WalletConnect-connected wallets have the missing-event bug
     // switchToConston2ViaRawRequest exists for — MetaMask's own SDK
     // connector and every injected/extension connector (MetaMask, Rabby,
@@ -267,6 +273,24 @@ export default function GasSniperCard() {
     // switchChainAsync exactly as before, completely untouched.
     const isWalletConnect = connector?.type === "walletConnect";
     try {
+      // Confirmed against a second real-device round: the raw-request
+      // bypass above wasn't the whole fix — the same "taken to the wallet,
+      // nothing to approve, forever" symptom persisted. Root cause is one
+      // level up: Coston2 is *offered* to the wallet as an optional chain
+      // at initial pairing (see web3Config.js's walletConnect() connector),
+      // but the wallet decides which optional chains it actually grants,
+      // and this app's `isNewChainsStale: false` setting means nothing
+      // re-validates that before trying to use it. If a wallet's own
+      // session never actually granted Coston2, every request this flow
+      // sends afterward asks it to act on a chain its session doesn't
+      // know — indistinguishable, from here, from "the human hasn't
+      // tapped Approve yet." This check surfaces that immediately instead
+      // of silently hanging; see walletConnectChainSwitch.js's own comment
+      // for the full trace.
+      if (isWalletConnect) {
+        await assertConston2InWalletConnectSession(connector);
+      }
+      step = "switch";
       if (connectedChainId !== coston2.id) {
         reassertWindowFocus();
         if (isWalletConnect) {
@@ -277,7 +301,7 @@ export default function GasSniperCard() {
       }
       step = "write";
       reassertWindowFocus();
-      const hash = await writeContractAsync({
+      const writePromise = writeContractAsync({
         address: CLAIM_SETUP_MANAGER_ADDRESS,
         abi: CLAIM_SETUP_MANAGER_ABI,
         functionName: "setClaimExecutors",
@@ -304,13 +328,26 @@ export default function GasSniperCard() {
         account: authenticatedAddress,
         value: keeperFee ?? 0n,
       });
+      // Same reasoning as the raw switch request — provider.request() (and
+      // by extension writeContractAsync, which ultimately calls it) has no
+      // built-in timeout of its own for a WalletConnect connector, so a
+      // wallet that never processes the request leaves this awaiting
+      // forever with nothing to show for it. Injected/MetaMask-SDK
+      // connectors are untouched — they don't have this failure mode.
+      const hash = isWalletConnect ? await withWalletConnectTimeout(writePromise) : await writePromise;
       setApproveTxHash(hash);
       // isApproving stays true until the receipt confirms (see the effect
       // above) — the transaction is sent but not yet mined.
     } catch (error) {
       console.error(`Gas Sniper approval failed at step "${step}":`, error);
-      const detail = error?.shortMessage ?? error?.message ?? String(error);
-      toast.error(`${t("loops.gasSniper.approveFailed")} [${step}: ${detail}]`);
+      if (error instanceof WalletConnectChainUnsupportedError) {
+        toast.error(t("loops.gasSniper.walletConnectChainUnsupported"));
+      } else if (error instanceof WalletConnectRequestTimeoutError) {
+        toast.error(t("loops.gasSniper.walletConnectTimeout"));
+      } else {
+        const detail = error?.shortMessage ?? error?.message ?? String(error);
+        toast.error(`${t("loops.gasSniper.approveFailed")} [${step}: ${detail}]`);
+      }
       setIsApproving(false);
     }
   };

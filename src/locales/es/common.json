@@ -610,7 +610,9 @@
       "statusCheckFailed": "No se pudo comprobar el estado de Gas Sniper.",
       "statusUnknown": "Estado desconocido",
       "title": "Gas Sniper",
-      "toggleFailed": "No se pudo actualizar Gas Sniper. Inténtalo de nuevo."
+      "toggleFailed": "No se pudo actualizar Gas Sniper. Inténtalo de nuevo.",
+      "walletConnectChainUnsupported": "La conexión de tu monedero no admite la red Coston2 que necesita esta aprobación. Desconecta y vuelve a conectar tu monedero, luego inténtalo de nuevo.",
+      "walletConnectTimeout": "Tu monedero no respondió. Abre la app de tu monedero para comprobar si hay una solicitud pendiente, o inténtalo de nuevo."
     }
   },
   "navbar": {
