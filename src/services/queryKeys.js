@@ -55,6 +55,29 @@ export const queryKeys = {
     all: ["loops"],
     gasSniperStatus: () => [...queryKeys.loops.all, "gasSniperStatus"],
   },
+  // Provider rankings are a single global leaderboard (no address
+  // dimension) — matches loops.gasSniperStatus's own reasoning above.
+  ftso: {
+    all: ["ftso"],
+    providerRankings: () => [...queryKeys.ftso.all, "providerRankings"],
+  },
+  // validatorRankings is the same global-leaderboard shape as
+  // ftso.providerRankings; validatorStakes is per-wallet, same reasoning as
+  // dashboard.ftsoPortfolio (own cache entry per address, not shared).
+  network: {
+    all: ["network"],
+    validatorRankings: () => [...queryKeys.network.all, "validatorRankings"],
+    validatorStakes: (address) =>
+      [...queryKeys.network.all, "validatorStakes", address],
+  },
+  // Global, unauthenticated reference data — category is part of the key
+  // since it's a real server-side filter (see linksService.js), not a
+  // client-side derivation of the unfiltered list.
+  links: {
+    all: ["links"],
+    list: (category) => [...queryKeys.links.all, "list", category ?? null],
+    categories: () => [...queryKeys.links.all, "categories"],
+  },
   // meltSchedule/exitQuote are per-wallet; networkEmissions/networkStatus
   // are global (no address dimension) — same "all" root either way so a
   // wallet switch could invalidate everything under it at once if needed.

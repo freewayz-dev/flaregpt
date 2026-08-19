@@ -30,6 +30,7 @@ import { shortenAddress } from "@/utils/address";
 import { ROUTES } from "@/config/routes";
 
 import FlareGptMark from "@/components/common/FlareGptMark";
+import XLogo from "@/components/common/XLogo";
 // "Flare" here is the Flare Network blockchain (an ecosystem partner listed
 // alongside OpenAI/WalletConnect/Claude below), not FlareGPT's own brand —
 // intentionally NOT the new FlareGPT mark, which would misrepresent whose
@@ -968,9 +969,7 @@ export default function LandingPage() {
                     aria-label="X (formerly Twitter)"
                     className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
-                    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
+                    <XLogo className="h-4 w-4" />
                   </a>
                 </div>
               </div>

@@ -140,4 +140,117 @@ export const handlers = [
   http.delete(`${API}/api/v1/chat/conversations/:id`, ({ params }) => {
     return HttpResponse.json({ status: "deleted", id: params.id });
   }),
+
+  // FTSO Providers / Validators ranking tables + "Your Validator Stake" +
+  // the Links page — shapes mirror the real backend responses confirmed
+  // live against api.flaregpt.io directly (including the "Unknown
+  // Provider"/no-name-resolution quirks), not guessed. `validator-stakes`
+  // only ever returns NOT_STAKED here — the populated shape was never
+  // observed against the real backend either (see networkService.js).
+  http.get(`${API}/api/v1/ftso/provider-rankings`, () => {
+    return HttpResponse.json({
+      providers: [
+        { address: "0x111246F191a2A20012723369d3CEc77777E774E9", name: "Flare.Space", weight_share_pct: 3.632, fee_pct: 20.0 },
+        { address: "0x7e9bc5C2d12711bAB79e93eb5a6e6c6D9A084f8C", name: "Unknown Provider", weight_share_pct: 3.044, fee_pct: 20.0 },
+      ],
+    });
+  }),
+
+  http.get(`${API}/api/v1/network/validator-rankings`, () => {
+    return HttpResponse.json({
+      validators: [
+        {
+          node_id: "NodeID-8qMWVar3hLdLSSgbTV57brpqUNjJuU2H8",
+          connected: true,
+          uptime_pct: 100.0,
+          stake_flr: 13340000.0,
+          delegator_count: 25,
+          fee_pct: 20.0,
+        },
+      ],
+    });
+  }),
+
+  // NOT_STAKED is the default for every address except the one real staked
+  // wallet found live via the PChainStakeMirror contract (see
+  // YourValidatorStakeCard.jsx's top comment) — this trimmed sample mirrors
+  // that wallet's real response shape (one "mirrored" aggregate entry +
+  // "native" per-tranche entries, each with its own `end_time`).
+  http.get(`${API}/api/v1/network/validator-stakes/:address`, ({ params }) => {
+    if (params.address.toLowerCase() === "0x725789badfeda0de546e3d91f2e64115ba4face3") {
+      return HttpResponse.json({
+        status: "STAKED",
+        wallet: "0x725789badFeda0de546e3d91f2E64115bA4FaCe3",
+        p_chain_identity: "f4eaabbb9c4018112e16a956fa6a085d2bc7673d",
+        stakes: [
+          {
+            source: "mirrored",
+            node_id: "NodeID-AW81N9vGQttoQMMdpqbihU5hEwH793YXj",
+            name: null,
+            amount_flr: 981705.0,
+            end_time: null,
+            potential_reward_flr: null,
+            uptime_pct: null,
+            connected: null,
+            fee_pct: null,
+          },
+          {
+            source: "native",
+            node_id: "NodeID-AW81N9vGQttoQMMdpqbihU5hEwH793YXj",
+            name: null,
+            amount_flr: 816425.0,
+            end_time: "2026-08-30T07:00:00+00:00",
+            potential_reward_flr: 0.0,
+            uptime_pct: null,
+            connected: null,
+            fee_pct: null,
+          },
+        ],
+      });
+    }
+    return HttpResponse.json({
+      status: "NOT_STAKED",
+      wallet: params.address,
+      p_chain_identity: null,
+      stakes: [],
+    });
+  }),
+
+  http.get(`${API}/api/v1/links`, () => {
+    return HttpResponse.json({
+      links: [
+        {
+          id: "flare-portal",
+          name: "Flare Portal",
+          category: "core",
+          description: "Official app for wrapping FLR/SGB, delegating to FTSO providers, staking, and governance voting.",
+          official_site: "https://portal.flare.network/",
+          docs_url: "https://dev.flare.network/",
+          twitter: "https://twitter.com/FlareNetworks",
+          discord: null,
+          verified_at: "2026-08-09",
+        },
+        {
+          id: "sceptre",
+          name: "Sceptre",
+          category: "defi-staking",
+          description: "Liquid staking on Flare — stake FLR to receive sFLR, usable across other Flare DeFi apps.",
+          official_site: "https://www.sceptre.fi/",
+          docs_url: "https://romeblockchain.gitbook.io/sceptre-liquid-staking-documentation",
+          twitter: "https://twitter.com/SceptreLS",
+          discord: null,
+          verified_at: "2026-08-09",
+        },
+        // The real API currently also returns one malformed, all-empty
+        // record (confirmed live) — included here too so tests exercise
+        // the same filtering the real page has to do, not a cleaner list
+        // than what's actually served.
+        { id: "", name: "", category: "", description: "", official_site: "https://", docs_url: "https://", twitter: "https://x.com/", discord: null, verified_at: "" },
+      ],
+    });
+  }),
+
+  http.get(`${API}/api/v1/links/categories`, () => {
+    return HttpResponse.json({ categories: ["core", "defi-staking"] });
+  }),
 ];

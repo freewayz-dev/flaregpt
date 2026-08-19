@@ -19,7 +19,8 @@ import RewardsOverviewStats from "@/pages/FtsoRewards/components/RewardsOverview
 import RewardVelocityCard from "@/pages/FtsoRewards/components/RewardVelocityCard";
 import DelegationsCard from "@/pages/FtsoRewards/components/DelegationsCard";
 import UnclaimedEpochsCard from "@/pages/FtsoRewards/components/UnclaimedEpochsCard";
-import ComingSoonTablesSection from "@/pages/FtsoRewards/components/ComingSoonTablesSection";
+import RankingTablesSection from "@/pages/FtsoRewards/components/RankingTablesSection";
+import YourValidatorStakeCard from "@/pages/FtsoRewards/components/YourValidatorStakeCard";
 
 // Single endpoint (GET /api/v1/portfolio/ftso/{wallet}) backs the whole
 // personal-rewards half of this page, so — unlike rFLR Vesting's two
@@ -112,7 +113,17 @@ export default function FtsoRewards() {
         </>
       )}
 
-      <ComingSoonTablesSection />
+      {/* Independent of the FTSO portfolio query above (`portfolioQuery`) —
+          validator staking is a separate P-Chain mechanism from FTSO
+          delegation, with its own endpoint and its own loading/error/no-
+          wallet handling, so it isn't gated by that query's own
+          hasData/isError state the way the rest of this page's personal
+          cards are. Placed between the personal FTSO content and the
+          public rankings below specifically so "yours" and "everyone's"
+          never visually blur together. */}
+      <YourValidatorStakeCard activeAddress={activeAddress} />
+
+      <RankingTablesSection />
     </div>
   );
 }

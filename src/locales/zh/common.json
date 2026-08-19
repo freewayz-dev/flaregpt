@@ -259,8 +259,7 @@
     "warning": {
       "body": "请仅向此地址发送 {{symbol}} 或其他 {{network}} 代币。从其他网络发送的资产将无法找回。",
       "title": "仅限 {{network}} 资产。"
-    },
-    "funding": {}
+    }
   },
   "flareWidget": {
     "close": "关闭",
@@ -277,7 +276,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT 可能会出错。在采取重要行动前请核实相关信息。",
-      "offlinePlaceholder": "您已离线—当前无法发送消息",
+      "offlinePlaceholder": "您处于离线状态，因此当前无法发送消息",
       "placeholder": "向 FlareGPT 提问...",
       "send": "发送",
       "stop": "停止生成"
@@ -365,7 +364,7 @@
     },
     "description": "在一个地方跟踪您的 FTSO 委托奖励、奖励增速和提供商分配情况。",
     "epochs": {
-      "emptyDescription": "一切都已更新——目前没有待处理的纪元奖励。",
+      "emptyDescription": "全部补齐，目前没有悬而未决的纪元奖励。",
       "emptyTitle": "没有待领取项目",
       "epochLabel": "第 {{id}} 纪元",
       "subtitle": "按纪元列出的待领取奖励",
@@ -374,7 +373,8 @@
       "viewFullLedger_other": "查看完整台账（{{count}} 条）"
     },
     "providers": {
-      "description": "提供商排名连接后，可按表现和费用比较数据提供商。",
+      "description": "按授权重量和费用排名，而不是按奖励绩效排名，奖励绩效在链上不可靠地测量。",
+      "emptyDescription": "目前没有可用的提供商排名数据。",
       "title": "FTSO 提供商"
     },
     "stats": {
@@ -384,7 +384,8 @@
       "wflrBalance": "WFLR 余额"
     },
     "validators": {
-      "description": "质押排名连接后，可查看表现最佳的验证者。",
+      "description": "按连接状态和正常运行时间排名。验证者没有注册名称，只有NodeID。",
+      "emptyDescription": "目前没有可用的验证者排名数据。",
       "title": "质押验证者排名"
     },
     "velocity": {
@@ -462,6 +463,7 @@
       "pending": "待定",
       "unknown": "未知"
     },
+    "voted": "已投票",
     "voteSplit": {
       "against": "反对 {{percent}}%",
       "againstCount": "反对",
@@ -470,7 +472,6 @@
       "label": "投票",
       "noVotesYet": "暂无投票"
     },
-    "voted": "已投票",
     "votingEnded": "投票已结束",
     "yours": {
       "noWalletDescription": "连接或添加钱包以查看您在这些提案中的投票权和参与情况。",
@@ -490,28 +491,28 @@
       "twitterHint": "关注我们并给我们发消息",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": [
-      {
+    "faqs": {
+      "0": {
         "answer": "您的钱包可能未连接，或者控制面板仍在同步区块链数据。请核对是否选择了正确的钱包和网络。",
         "question": "为什么我的钱包余额不显示？"
       },
-      {
+      "1": {
         "answer": "在“概览”页面打开期间，每 60 秒更新一次。",
         "question": "FLR 价格多长时间更新一次？"
       },
-      {
+      "2": {
         "answer": "请确保您的 WFLR 已进行委托，并且该纪元符合奖励条件。某些奖励可能需要在分发后手动领取。",
         "question": "为什么我没有收到奖励？"
       },
-      {
+      "3": {
         "answer": "浏览器扩展形式的 MetaMask、Rabby Wallet 和 Bifrost Wallet，以及适用于移动端或硬件钱包的任何兼容 WalletConnect 的钱包。",
         "question": "支持哪些钱包？"
       },
-      {
+      "4": {
         "answer": "导航至钱包区域并选择“断开连接”。这只会清除控制面板的登录状态，不会影响您的资金。",
         "question": "如何断开我的钱包连接？"
       }
-    ],
+    },
     "faqTitle": "常见问题解答",
     "featureGuides": "功能指南",
     "flareGptGuideDescription": "用自然语言询问你的钱包、奖励和 Flare 网络相关问题。",
@@ -523,33 +524,33 @@
     "searchPlaceholder": "搜索指南或常见问题...",
     "searchSub": "搜索功能指南和常见问题，或通过其他方式联系我们。",
     "searchTitle": "开始使用所需的一切",
-    "steps": [
-      {
+    "steps": {
+      "0": {
         "step": "01",
         "text": "在整个仪表盘中访问余额、奖励和协议数据。",
         "title": "连接您的钱包"
       },
-      {
+      "1": {
         "step": "02",
         "text": "在同一处追踪 FLR、WFLR、sFLR 及其他受支持的资产。",
         "title": "查看您的资产"
       },
-      {
+      "2": {
         "step": "03",
         "text": "将代币委托给 FTSO 提供商以赚取奖励。",
         "title": "委托 WFLR"
       },
-      {
+      "3": {
         "step": "04",
         "text": "监控纪元（Epoch）、累计情况和奖励领取状态。",
         "title": "追踪奖励"
       },
-      {
+      "4": {
         "step": "05",
         "text": "询问关于 Flare 网络数据和活动的问题。",
         "title": "使用 FlareGPT"
       }
-    ],
+    },
     "stillNeedHelp": "仍然需要帮助？",
     "supportDesc": "目前联系我们最快的方式是通过 X。邮箱与 Telegram 支持即将上线。"
   },
@@ -559,6 +560,23 @@
     "dismiss": "解散",
     "installButton": "安装",
     "installing": "安装…"
+  },
+  "links": {
+    "card": {
+      "discord": "Discord",
+      "docs": "文档批注",
+      "twitter": "X",
+      "verifiedOn": "Verified {{date}}",
+      "website": "網站"
+    },
+    "couldntLoad": "无法加载链接。",
+    "description": "经过精心策划和验证的官方Flare应用程序、文档和社区资源链接。",
+    "empty": {
+      "description": "还没有与此类别匹配的链接。",
+      "title": "没有找到的链接"
+    },
+    "filterAll": "所有食谱",
+    "filterLabel": "按类别筛选"
   },
   "loops": {
     "description": "自动后台服务，监控网络并代表您采取行动。",
@@ -622,6 +640,27 @@
   "onboarding": {
     "welcomeMessage": "欢迎使用FlareGPT。连接钱包以查看您的投资组合，或向AI助手询问任何事情。"
   },
+  "rankings": {
+    "connected": "已連線",
+    "couldntLoad": "无法加载排名数据。",
+    "disconnected": "已中斷連線",
+    "noData": "无可用数据",
+    "validators": {
+      "delegatorCount_other": "{{count}}位代表",
+      "fee": "用费",
+      "uptime": "正常运行时间",
+      "delegatorCount": "{{count}}位代表",
+      "delegatorCount_one": "{{count}}个委托人"
+    },
+    "yourStake": {
+      "connectToSee": "连接或选择钱包以查看您的验证器质押状态。",
+      "nextUnlock": "下次解锁时间： {{date}}",
+      "notStakedDescription": "此钱包没有有效的P-Chain验证者权益。",
+      "notStakedTitle": "有效押注",
+      "stakeCta": "质押Flare门户",
+      "title": "您的验证者权益"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "连接或选择一个钱包以查看其归属状态。",
     "couldntLoad": "无法加载您的归属数据。",
@@ -649,7 +688,7 @@
       "earlyExitNoneNeeded": "没有任何锁定部分，因此提前退出没有罚金。",
       "earlyExitTitle": "提前退出",
       "efficiency": "效率 {{pct}}%",
-      "fullyVested": "已完全归属 — 没有剩余待解锁部分",
+      "fullyVested": "全权归属，无需解锁",
       "netPayout": "当前净支付额",
       "nextUnlock": "下次解锁：{{date}}",
       "nextUnlockCaption": "将变为可流通",
@@ -666,7 +705,7 @@
     "timeline": {
       "couldntLoad": "无法加载解锁记录。",
       "emptyTitle": "暂无解锁记录",
-      "historicalNote": "显示完整的解锁历史记录——可能包含已在别处领取的金额，因此总计可能超过上方显示的当前余额。",
+      "historicalNote": "此完整的解锁历史记录可能包含已在其他地方领取的金额，因此总金额可能超过您当前的上述余额。",
       "loadingHint": "首次检查某个钱包时，这可能需要长达 30 秒。",
       "loadingTitle": "正在加载解锁记录…",
       "statusLiquid": "可流通",
@@ -879,6 +918,7 @@
     "ftsoRewards": "FTSO",
     "governance": "治理",
     "helpCenter": "帮助中心",
+    "links": "Links",
     "loops": "循环",
     "mainNavigation": "主导航",
     "notConnected": "未连接",
@@ -1023,6 +1063,5 @@
       "received": "已发放",
       "sent": "发件箱"
     }
-  },
-  "comingSoon": {}
+  }
 }

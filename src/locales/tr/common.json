@@ -26,7 +26,7 @@
     "install": "Yükle",
     "installHint": "Hâlâ cüzdanınızı görmüyor musunuz? Sayfayı yenilemek yardımcı olabilir.",
     "mobileHint": "Mobil cihazlarda, en iyi bağlantı deneyimi için cüzdanınızın yerleşik tarayıcısında FlareGPT'yi açın. Bir QR kodunu tararken, daha güvenilir bir bağlantı için telefonunuzun kamerası yerine cüzdan uygulamanızın kendi tarayıcısını kullanın.",
-    "offline": "",
+    "offline": "Çevrimdışısınız. Bir cüzdan bağlamak için internet bağlantısı gerekir.",
     "recommended": "Önerilen",
     "refresh": "Yenile",
     "subtitle": "Flare Ağına bağlanmak için tercih ettiğiniz cüzdanı seçin.",
@@ -259,8 +259,7 @@
     "warning": {
       "body": "Bu adrese yalnızca {{symbol}} veya diğer {{network}} tokenlerini gönderin. Başka ağlardan gönderilen varlıklar kurtarılamaz.",
       "title": "Yalnızca {{network}} varlıkları."
-    },
-    "funding": {}
+    }
   },
   "flareWidget": {
     "close": "Kapat",
@@ -277,7 +276,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT hata yapabilir. Harekete geçmeden önce önemli bilgileri doğrulayın.",
-      "offlinePlaceholder": "Çevrimdışısınız, şu anda mesaj gönderilemiyor",
+      "offlinePlaceholder": "Çevrimdışısınız, bu nedenle şu anda mesaj gönderilemiyor",
       "placeholder": "FlareGPT'ye sor...",
       "send": "Gönder",
       "stop": "Üretimi durdur"
@@ -365,7 +364,7 @@
     },
     "description": "FTSO delegasyon ödüllerinizi, ödül hızını ve sağlayıcı tahsislerini tek bir yerde takip edin.",
     "epochs": {
-      "emptyDescription": "Her şey güncel — şu anda bekleyen epoch ödülü yok.",
+      "emptyDescription": "Hepsi yakalandı, şu anda bekleyen bir çağ ödülü yok.",
       "emptyTitle": "Talep Edilecek Bir Şey Yok",
       "epochLabel": "Epoch {{id}}",
       "subtitle": "Epoch'a göre talep edilmeyi bekleyen ödüller",
@@ -374,7 +373,8 @@
       "viewFullLedger_other": "Tam kaydı görüntüle ({{count}} girdi)"
     },
     "providers": {
-      "description": "Sağlayıcı sıralamaları bağlandığında veri sağlayıcılarını performans ve ücretlere göre karşılaştırın.",
+      "description": "Zincir üzerinde güvenilir bir şekilde ölçülebilen ödül performansına göre değil, devredilen ağırlık ve ücrete göre sıralanır.",
+      "emptyDescription": "Şu anda sağlayıcı sıralamasına ilişkin herhangi bir veri mevcut değil.",
       "title": "FTSO Sağlayıcıları"
     },
     "stats": {
@@ -384,7 +384,8 @@
       "wflrBalance": "WFLR Bakiyesi"
     },
     "validators": {
-      "description": "Staking sıralamaları bağlandığında en iyi performans gösteren validatörleri görün.",
+      "description": "Bağlantı durumuna ve çalışma süresine göre sıralanır. Doğrulayıcıların kayıtlı adları yoktur, yalnızca NodeID'ler vardır.",
+      "emptyDescription": "Şu anda hiçbir doğrulayıcı sıralama verisi mevcut değil.",
       "title": "Staking Validator Sıralaması"
     },
     "velocity": {
@@ -462,6 +463,7 @@
       "pending": "Beklemede",
       "unknown": "Bilinmiyor"
     },
+    "voted": "Oy kullanıldı",
     "voteSplit": {
       "against": "Karşı {{percent}}%",
       "againstCount": "Karşı",
@@ -470,7 +472,6 @@
       "label": "Oylar",
       "noVotesYet": "Henüz oy yok"
     },
-    "voted": "Oy kullanıldı",
     "votingEnded": "Oylama sona erdi",
     "yours": {
       "noWalletDescription": "Bu tekliflerdeki oy gücünüzü ve katılımınızı görmek için bir cüzdan bağlayın veya ekleyin.",
@@ -490,28 +491,28 @@
       "twitterHint": "Bizi takip edin ve mesaj gönderin",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": [
-      {
+    "faqs": {
+      "0": {
         "answer": "Cüzdanınız bağlı olmayabilir veya panel henüz blokzincir verilerini senkronize ediyor olabilir. Doğru cüzdan ve ağın seçildiğinden emin olun.",
         "question": "Cüzdan bakiyem neden görünmüyor?"
       },
-      {
+      "1": {
         "answer": "Genel Bakış sayfası açıkken her 60 saniyede bir.",
         "question": "FLR fiyatı ne sıklıkla güncellenir?"
       },
-      {
+      "2": {
         "answer": "WFLR'nizin delege edildiğinden ve dönemin ödüller için uygun olduğundan emin olun. Bazı ödüller dağıtımdan sonra talep edilmeyi gerektirebilir.",
         "question": "Neden ödül alamıyorum?"
       },
-      {
+      "3": {
         "answer": "Tarayıcı eklentisi olarak MetaMask, Rabby Wallet ve Bifrost Wallet; mobil veya donanım cüzdanları için ise WalletConnect uyumlu herhangi bir cüzdan.",
         "question": "Hangi cüzdanlar destekleniyor?"
       },
-      {
+      "4": {
         "answer": "Cüzdan bölümüne gidin ve Bağlantıyı Kes'i seçin. Bu işlem yalnızca panel oturumunu kaldırır ve fonlarınızı etkilemez.",
         "question": "Cüzdanımı nasıl kesebilirim?"
       }
-    ],
+    },
     "faqTitle": "Sıkça Sorulan Sorular",
     "featureGuides": "Özellik Kılavuzları",
     "flareGptGuideDescription": "Cüzdanınız, ödülleriniz ve Flare ağı hakkında sade bir dille soru sorun.",
@@ -523,33 +524,33 @@
     "searchPlaceholder": "Rehberlerde veya SSS'de ara...",
     "searchSub": "Özellik rehberlerinde ve SSS'de arama yapın veya bize ulaşmanın başka bir yolunu bulun.",
     "searchTitle": "Başlamak için ihtiyacınız olan her şey",
-    "steps": [
-      {
+    "steps": {
+      "0": {
         "step": "01",
         "text": "Panonun tamamında bakiyelere, ödüllere ve protokol verilerine erişin.",
         "title": "Cüzdanınızı Bağlayın"
       },
-      {
+      "1": {
         "step": "02",
         "text": "FLR, WFLR, sFLR ve desteklenen diğer varlıkları tek bir yerden takip edin.",
         "title": "Varlıklarınızı Görüntüleyin"
       },
-      {
+      "2": {
         "step": "03",
         "text": "Ödül kazanmak için tokenleri FTSO sağlayıcılarına delege edin.",
         "title": "WFLR Delege Edin"
       },
-      {
+      "3": {
         "step": "04",
         "text": "Dönemleri, tahakkukları ve ödül taleplerini izleyin.",
         "title": "Ödülleri Takip Edin"
       },
-      {
+      "4": {
         "step": "05",
         "text": "Flare Network verileri ve aktiviteleri hakkında sorular sorun.",
         "title": "FlareGPT'yi kullanın"
       }
-    ],
+    },
     "stillNeedHelp": "Hâlâ yardıma mı ihtiyacınız var?",
     "supportDesc": "Şu anda bize ulaşmanın en hızlı yolu X. E-posta ve Telegram desteği yakında geliyor."
   },
@@ -559,6 +560,23 @@
     "dismiss": "Yok say",
     "installButton": "Kur",
     "installing": "Kuruluyor…"
+  },
+  "links": {
+    "card": {
+      "discord": "Discord",
+      "docs": "Dokümanlar",
+      "twitter": "X",
+      "verifiedOn": "Verified {{date}}",
+      "website": "Web sitesi"
+    },
+    "couldntLoad": "Bağlantılar yüklenemedi.",
+    "description": "Resmi Flare uygulamalarına, dokümanlara ve topluluk kaynaklarına düzenlenmiş, doğrulanmış bağlantılar.",
+    "empty": {
+      "description": "Bu kategoriye uyan hiçbir bağlantı henüz bulunamadı.",
+      "title": "Bağlantı bulunamadı."
+    },
+    "filterAll": "Tümü",
+    "filterLabel": "Kategoriye göre filtrele"
   },
   "loops": {
     "description": "Ağı izleyen ve sizin adınıza işlem yapan otomatik arka plan hizmetleri.",
@@ -622,6 +640,27 @@
   "onboarding": {
     "welcomeMessage": "FlareGPT'ye hoş geldiniz. Portföyünüzü görmek için bir cüzdan bağlayın veya yapay zeka asistanına her şeyi sorun."
   },
+  "rankings": {
+    "connected": "Bağlandı",
+    "couldntLoad": "Sıralama verileri yüklenemedi.",
+    "disconnected": "Bağlantı kesildi",
+    "noData": "Veri mevcut değil",
+    "validators": {
+      "delegatorCount_one": "{{count}} temsilci",
+      "delegatorCount_other": "{{count}} temsilci",
+      "fee": "harç",
+      "uptime": "çalışma zamanı",
+      "delegatorCount": "{{count}} delege eden"
+    },
+    "yourStake": {
+      "connectToSee": "Doğrulayıcı staking durumunuzu görmek için bir cüzdan bağlayın veya seçin.",
+      "nextUnlock": "{{date}} tarihinde kilidini aç",
+      "notStakedDescription": "Bu cüzdanda aktif P - Zinciri doğrulayıcı hissesi yok.",
+      "notStakedTitle": "Aktif Bahis Yok",
+      "stakeCta": "Flare Portalında Bahis Yapın",
+      "title": "Doğrulayıcı Payınız"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "Vesting durumunu görmek için bir cüzdan bağlayın veya seçin.",
     "couldntLoad": "Vesting verileriniz yüklenemedi.",
@@ -649,7 +688,7 @@
       "earlyExitNoneNeeded": "Hiçbir şey kilitli değil, bu yüzden erken çıkış için ceza yok.",
       "earlyExitTitle": "Erken Çıkış",
       "efficiency": "%{{pct}} verimli",
-      "fullyVested": "Tamamen vested — açılacak başka bir şey kalmadı",
+      "fullyVested": "Tamamen kazanılmış, kilidini açacak hiçbir şey kalmadı",
       "netPayout": "Şu Anki Net Ödeme",
       "nextUnlock": "Sonraki kilit açma: {{date}}",
       "nextUnlockCaption": "likit hale gelecek",
@@ -666,7 +705,7 @@
     "timeline": {
       "couldntLoad": "Kilit açma geçmişi yüklenemedi.",
       "emptyTitle": "Henüz kilit açma geçmişi yok",
-      "historicalNote": "Tam kilit açma geçmişini gösterir — başka bir yerde zaten talep edilmiş tutarları içerebilir, bu nedenle toplam yukarıdaki mevcut bakiyenizi aşabilir.",
+      "historicalNote": "Bu tam kilit açma geçmişi, başka bir yerde talep edilen tutarları içerebilir, bu nedenle toplamlar yukarıdaki mevcut bakiyenizi aşabilir.",
       "loadingHint": "Bir cüzdanı ilk kez kontrol ederken bu işlem 30 saniyeye kadar sürebilir.",
       "loadingTitle": "Kilit açma geçmişi yükleniyor…",
       "statusLiquid": "Likit",
@@ -879,6 +918,7 @@
     "ftsoRewards": "FTSO",
     "governance": "Yönetişim",
     "helpCenter": "Yardım Merkezi",
+    "links": "Bağlantılar",
     "loops": "Döngüler",
     "mainNavigation": "Ana gezinme",
     "notConnected": "Bağlı değil",
@@ -1023,6 +1063,5 @@
       "received": "Gelen",
       "sent": "Gönderildi"
     }
-  },
-  "comingSoon": {}
+  }
 }

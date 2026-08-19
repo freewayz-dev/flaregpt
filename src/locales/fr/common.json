@@ -51,8 +51,8 @@
     "chart": {
       "couldntLoad": "Impossible de charger l'historique des prix FLR",
       "viewData_one": "Voir l'historique des prix ({{count}} point)",
-      "viewData_other": "Voir l'historique des prix ({{count}} points)",
-      "viewData_many": ""
+      "viewData_many": "Voir l'historique des prix ({{count}} points)",
+      "viewData_other": "Voir l'historique des prix ({{count}} points)"
     },
     "claimsHistory": {
       "connectToSee": "Connectez-vous ou ajoutez un portefeuille dans les paramètres pour voir l'historique des réclamations.",
@@ -100,8 +100,8 @@
       "title": "Activité réseau",
       "tps": "TPS",
       "viewData_one": "Voir les échantillons de prix du gaz ({{count}} échantillon)",
-      "viewData_other": "Voir les échantillons de prix du gaz ({{count}} échantillons)",
-      "viewData_many": ""
+      "viewData_many": "Voir les échantillons de prix du gaz ({{count}} échantillons)",
+      "viewData_other": "Voir les échantillons de prix du gaz ({{count}} échantillons)"
     },
     "stats": {
       "couldntLoad": "Impossible de charger la vue d'ensemble du marché",
@@ -207,17 +207,17 @@
       "highestApr": "APR le plus élevé",
       "lockupDays": "{{count}} jours de blocage",
       "lockupDays_one": "{{count}} jour de blocage",
+      "lockupDays_many": "{{count}} jours de blocage",
       "lockupDays_other": "{{count}} jours de blocage",
       "lockupHours": "{{count}}h de blocage",
       "lockupHours_one": "{{count}}h de blocage",
+      "lockupHours_many": "{{count}}h de blocage",
       "lockupHours_other": "{{count}}h de blocage",
       "noLockup": "Aucun blocage",
       "subtitle": "Découvre comment ton FLR pourrait performer selon les stratégies",
       "title": "Comparaison des Stratégies",
       "toggleDetails": "Afficher les détails de {{strategy}}",
-      "verdict": "Verdict de FlareGPT",
-      "lockupDays_many": "",
-      "lockupHours_many": ""
+      "verdict": "Verdict de FlareGPT"
     }
   },
   "donate": {
@@ -263,8 +263,7 @@
     "warning": {
       "body": "N'envoie que du {{symbol}} ou d'autres tokens {{network}} à cette adresse. Les actifs envoyés depuis d'autres réseaux ne peuvent pas être récupérés.",
       "title": "Actifs {{network}} uniquement."
-    },
-    "funding": {}
+    }
   },
   "flareWidget": {
     "close": "Fermer",
@@ -281,7 +280,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT peut faire des erreurs. Vérifiez les informations importantes avant d'agir en conséquence.",
-      "offlinePlaceholder": "Vous êtes hors ligne — les messages ne peuvent pas être envoyés pour le moment",
+      "offlinePlaceholder": "Vous êtes hors ligne, donc les messages ne peuvent pas être envoyés pour le moment",
       "placeholder": "Demander à FlareGPT...",
       "send": "Envoyer",
       "stop": "Arrêter la génération"
@@ -315,6 +314,7 @@
       "pin": "Épingler",
       "pinLimitReached": "Vous pouvez épingler jusqu'à {{count}} conversations",
       "pinLimitReached_one": "Vous pouvez épingler jusqu'à {{count}} conversation",
+      "pinLimitReached_many": "Vous pouvez épingler jusqu'à {{count}} conversations",
       "pinLimitReached_other": "Vous pouvez épingler jusqu'à {{count}} conversations",
       "rename": "Renommer",
       "renameFailed": "Impossible de renommer cette conversation.",
@@ -323,8 +323,7 @@
       "searchPlaceholder": "Rechercher des conversations...",
       "title": "Historique des discussions",
       "unpin": "Désépingler",
-      "untitled": "Sans titre",
-      "pinLimitReached_many": ""
+      "untitled": "Sans titre"
     },
     "historyLoadFailed": "Impossible de charger l'historique des discussions.",
     "jumpToLatest": "Aller au dernier message",
@@ -363,25 +362,26 @@
     "couldntLoad": "Impossible de charger vos récompenses FTSO.",
     "delegations": {
       "count_one": "{{count}} fournisseur",
+      "count_many": "{{count}} fournisseurs",
       "count_other": "{{count}} fournisseurs",
       "emptyDescription": "Déléguez votre WFLR à un fournisseur de données FTSO pour commencer à gagner des récompenses.",
       "emptyTitle": "Aucune Délégation Active",
-      "title": "Délégations Actives",
-      "count_many": ""
+      "title": "Délégations Actives"
     },
     "description": "Suivez vos récompenses de délégation FTSO, la vitesse des récompenses et les allocations aux fournisseurs, le tout au même endroit.",
     "epochs": {
-      "emptyDescription": "Tout est à jour — aucune récompense d'époque en attente pour le moment.",
+      "emptyDescription": "Tous rattrapés, sans récompenses Epoch en attente pour le moment.",
       "emptyTitle": "Rien à Réclamer",
       "epochLabel": "Époque {{id}}",
       "subtitle": "Récompenses en attente de réclamation, par époque",
       "title": "Époques Non Réclamées",
       "viewFullLedger_one": "Voir le registre complet ({{count}} entrée)",
-      "viewFullLedger_other": "Voir le registre complet ({{count}} entrées)",
-      "viewFullLedger_many": ""
+      "viewFullLedger_many": "Voir le registre complet ({{count}} entrées)",
+      "viewFullLedger_other": "Voir le registre complet ({{count}} entrées)"
     },
     "providers": {
-      "description": "Comparez les fournisseurs de données par performance et frais une fois les classements de fournisseurs connectés.",
+      "description": "Classé en fonction du poids et des frais délégués, et non en fonction de la performance de la récompense, qui n'est pas mesurable de manière fiable sur la chaîne.",
+      "emptyDescription": "Aucune donnée de classement des fournisseurs n'est disponible pour le moment.",
       "title": "Fournisseurs FTSO"
     },
     "stats": {
@@ -391,7 +391,8 @@
       "wflrBalance": "Solde WFLR"
     },
     "validators": {
-      "description": "Consultez les validateurs les plus performants une fois les classements de staking connectés.",
+      "description": "Classé par statut de connexion et disponibilité. Les validateurs n'ont pas de noms enregistrés, seulement des NodeID.",
+      "emptyDescription": "Aucune donnée de classement du validateur n'est disponible pour le moment.",
       "title": "Classement des Validateurs de Staking"
     },
     "velocity": {
@@ -469,6 +470,7 @@
       "pending": "En attente",
       "unknown": "Inconnu"
     },
+    "voted": "Voté",
     "voteSplit": {
       "against": "Contre {{percent}}%",
       "againstCount": "Contre",
@@ -477,7 +479,6 @@
       "label": "Votes",
       "noVotesYet": "Aucun vote pour le moment"
     },
-    "voted": "Voté",
     "votingEnded": "Vote terminé",
     "yours": {
       "noWalletDescription": "Connectez ou ajoutez un portefeuille pour voir votre pouvoir de vote et votre participation à ces propositions.",
@@ -497,28 +498,28 @@
       "twitterHint": "Suivez-nous et envoyez-nous un message",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": [
-      {
+    "faqs": {
+      "0": {
         "answer": "Votre portefeuille n'est peut-être pas connecté, ou le tableau de bord est encore en train de synchroniser les données de la blockchain. Vérifiez que le bon portefeuille et le bon réseau sont sélectionnés.",
         "question": "Pourquoi le solde de mon portefeuille ne s'affiche-t-il pas ?"
       },
-      {
+      "1": {
         "answer": "Toutes les 60 secondes tant que la page Aperçu est ouverte.",
         "question": "À quelle fréquence le prix du FLR est-il mis à jour ?"
       },
-      {
+      "2": {
         "answer": "Assurez-vous que vos WFLR sont délégués et que l'époque est éligible. Certaines récompenses nécessitent d'être réclamées après distribution.",
         "question": "Pourquoi ne reçois-je pas de récompenses ?"
       },
-      {
+      "3": {
         "answer": "MetaMask, Rabby Wallet et Bifrost Wallet en tant qu'extensions de navigateur, ainsi que tout portefeuille compatible WalletConnect pour mobile ou portefeuille matériel.",
         "question": "Quels portefeuilles sont pris en charge ?"
       },
-      {
+      "4": {
         "answer": "Accédez à la section portefeuille et sélectionnez Déconnecter. Cela supprime uniquement la session du tableau de bord sans affecter vos fonds.",
         "question": "Comment déconnecter mon portefeuille ?"
       }
-    ],
+    },
     "faqTitle": "Foire Aux Questions",
     "featureGuides": "Guides des Fonctionnalités",
     "flareGptGuideDescription": "Posez des questions sur votre portefeuille, vos récompenses et le réseau Flare en langage simple.",
@@ -530,33 +531,33 @@
     "searchPlaceholder": "Rechercher des guides ou des FAQ...",
     "searchSub": "Recherchez des guides de fonctionnalités et des FAQ, ou trouvez un autre moyen de nous contacter.",
     "searchTitle": "Tout ce dont vous avez besoin pour commencer",
-    "steps": [
-      {
+    "steps": {
+      "0": {
         "step": "01",
         "text": "Accédez aux soldes, récompenses et données des protocoles dans tout le tableau de bord.",
         "title": "Connectez votre Portefeuille"
       },
-      {
+      "1": {
         "step": "02",
         "text": "Suivez FLR, WFLR, sFLR et d'autres actifs pris en charge en un seul endroit.",
         "title": "Consultez vos Avoirs"
       },
-      {
+      "2": {
         "step": "03",
         "text": "Déléguez des jetons aux fournisseurs FTSO pour gagner des récompenses.",
         "title": "Déléguez vos WFLR"
       },
-      {
+      "3": {
         "step": "04",
         "text": "Surveillez les époques, les cumuls et les réclamations de récompenses.",
         "title": "Suivez vos Récompenses"
       },
-      {
+      "4": {
         "step": "05",
         "text": "Posez des questions sur les données et l'activité du réseau Flare.",
         "title": "Utiliser FlareGPT"
       }
-    ],
+    },
     "stillNeedHelp": "Besoin d'aide supplémentaire ?",
     "supportDesc": "Pour l'instant, le moyen le plus rapide de nous joindre est X. L'assistance par e-mail et Telegram arrive bientôt."
   },
@@ -566,6 +567,23 @@
     "dismiss": "Ignorer",
     "installButton": "Installer",
     "installing": "Installation en cours..."
+  },
+  "links": {
+    "card": {
+      "discord": "Discord",
+      "docs": "Doc",
+      "twitter": "X",
+      "verifiedOn": "Verified {{date}}",
+      "website": "Site web"
+    },
+    "couldntLoad": "Impossible de charger les liens.",
+    "description": "Liens organisés et vérifiés vers les applications officielles de Flare, les documents et les ressources de la communauté.",
+    "empty": {
+      "description": "Aucun lien ne correspond à cette catégorie pour le moment.",
+      "title": "Aucun lien trouvé"
+    },
+    "filterAll": "Tous",
+    "filterLabel": "Filtrer par forme pharmaceutique"
   },
   "loops": {
     "description": "Services automatisés en arrière-plan qui surveillent le réseau et agissent en votre nom.",
@@ -629,6 +647,28 @@
   "onboarding": {
     "welcomeMessage": "Bienvenue sur FlareGPT. Connectez un portefeuille pour voir votre portfolio ou demandez quoi que ce soit à l'assistant IA."
   },
+  "rankings": {
+    "connected": "Connecté",
+    "couldntLoad": "Impossible de charger les données de classement.",
+    "disconnected": "Déconnecté",
+    "noData": "Aucune donnée disponible",
+    "validators": {
+      "delegatorCount_one": "{{count}} délégataire",
+      "delegatorCount_many": "{{count}} délégués",
+      "delegatorCount_other": "{{count}} délégués",
+      "fee": "prix",
+      "uptime": "uptime",
+      "delegatorCount": "{{count}} délégués"
+    },
+    "yourStake": {
+      "connectToSee": "Connectez-vous ou sélectionnez un portefeuille pour voir l'état de jalonnement de votre valideur.",
+      "nextUnlock": "Prochain déverrouillage {{date}}",
+      "notStakedDescription": "Ce portefeuille n'a pas d'enjeu de validation P-Chain actif.",
+      "notStakedTitle": "Aucun enjeu actif",
+      "stakeCta": "Stake sur Flare Portal",
+      "title": "Votre mise de validateur"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "Connectez ou sélectionnez un portefeuille pour voir son statut de vesting.",
     "couldntLoad": "Impossible de charger vos données de vesting.",
@@ -656,7 +696,7 @@
       "earlyExitNoneNeeded": "Rien n'est bloqué, donc aucune pénalité pour une sortie anticipée.",
       "earlyExitTitle": "Sortie Anticipée",
       "efficiency": "{{pct}}% d'efficacité",
-      "fullyVested": "Entièrement acquis — plus rien à débloquer",
+      "fullyVested": "Entièrement dévêtu, plus rien à débloquer",
       "netPayout": "Paiement net maintenant",
       "nextUnlock": "Prochain déblocage le {{date}}",
       "nextUnlockCaption": "devient liquide",
@@ -673,7 +713,7 @@
     "timeline": {
       "couldntLoad": "Impossible de charger l'historique des déblocages.",
       "emptyTitle": "Aucun historique de déblocage pour le moment",
-      "historicalNote": "Affiche l'historique complet des déblocages — peut inclure des montants déjà réclamés ailleurs, donc le total peut dépasser votre solde actuel ci-dessus.",
+      "historicalNote": "Cet historique de déblocage complet peut inclure des montants déjà réclamés ailleurs, de sorte que les totaux peuvent dépasser votre solde actuel ci-dessus.",
       "loadingHint": "Cela peut prendre jusqu'à 30 secondes la première fois que nous vérifions un portefeuille.",
       "loadingTitle": "Chargement de l'historique des déblocages…",
       "statusLiquid": "Liquide",
@@ -682,8 +722,8 @@
       "title": "Calendrier des Déblocages",
       "viewFullSchedule": "Voir le calendrier complet ({{count}} entrées)",
       "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
-      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule",
-      "viewFullSchedule_many": ""
+      "viewFullSchedule_many": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -863,14 +903,14 @@
       "saveEdit": "Enregistrer",
       "searchPlaceholder": "Rechercher parmi {{count}} portefeuilles...",
       "searchPlaceholder_one": "Rechercher parmi {{count}} portefeuille...",
+      "searchPlaceholder_many": "Rechercher parmi {{count}} portefeuilles...",
       "searchPlaceholder_other": "Rechercher parmi {{count}} portefeuilles...",
       "syncCta": {
         "title": "Connectez votre portefeuille pour synchroniser entre appareils"
       },
       "syncStatusAuthenticated": "Connecté. Vos portefeuilles suivis se synchronisent entre vos appareils.",
       "syncStatusGuest": "Vous pouvez suivre jusqu'à {{max}} portefeuilles sans vous connecter. Ces portefeuilles sont stockés sur cet appareil et ne se synchroniseront pas avec vos autres appareils.",
-      "tracked": "Suivi",
-      "searchPlaceholder_many": ""
+      "tracked": "Suivi"
     }
   },
   "sidebar": {
@@ -888,6 +928,7 @@
     "ftsoRewards": "FTSO",
     "governance": "Gouvernance",
     "helpCenter": "Centre d'Aide",
+    "links": "Liens",
     "loops": "Rendement",
     "mainNavigation": "Navigation principale",
     "notConnected": "Non connecté",
@@ -921,8 +962,8 @@
         "tabActivity": "Activité",
         "tabAssets": "Actifs",
         "viewData_one": "Voir les données ({{count}} ligne)",
-        "viewData_other": "Voir les données ({{count}} lignes)",
-        "viewData_many": ""
+        "viewData_many": "Voir les données ({{count}} lignes)",
+        "viewData_other": "Voir les données ({{count}} lignes)"
       },
       "connectToSee": "Connectez ou sélectionnez un wallet pour voir son activité de transactions.",
       "couldntLoad": "Impossible de charger l'activité du wallet.",
@@ -959,30 +1000,30 @@
         "title": "Aperçus rapides",
         "txCount": "{{count}} transactions",
         "txCount_one": "{{count}} transaction",
-        "txCount_other": "{{count}} transactions",
-        "txCount_many": ""
+        "txCount_many": "{{count}} transactions",
+        "txCount_other": "{{count}} transactions"
       },
       "kpi": {
         "daysAgo": "il y a {{count}} j",
         "daysAgo_one": "il y a {{count}} j",
+        "daysAgo_many": "il y a {{count}} j",
         "daysAgo_other": "il y a {{count}} j",
         "hoursAgo": "il y a {{count}} h",
         "hoursAgo_one": "il y a {{count}} h",
+        "hoursAgo_many": "il y a {{count}} h",
         "hoursAgo_other": "il y a {{count}} h",
         "justNow": "À l'instant",
         "lastActive": "Dernière activité",
         "minutesAgo": "il y a {{count}} min",
         "minutesAgo_one": "il y a {{count}} min",
+        "minutesAgo_many": "il y a {{count}} min",
         "minutesAgo_other": "il y a {{count}} min",
         "totalTransactions": "Transactions totales",
         "uniqueAssets": "Actifs uniques",
         "walletAge": "Ancienneté du wallet",
         "walletAgeDays": "{{count}} jours",
         "walletAgeMonths": "{{count}} mois",
-        "walletAgeYears": "{{count}} ans",
-        "daysAgo_many": "",
-        "hoursAgo_many": "",
-        "minutesAgo_many": ""
+        "walletAgeYears": "{{count}} ans"
       },
       "loading": {
         "elapsed": "{{seconds}}s écoulées",
@@ -1036,6 +1077,5 @@
       "received": "Reçues",
       "sent": "Envoyé"
     }
-  },
-  "comingSoon": {}
+  }
 }

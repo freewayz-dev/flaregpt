@@ -51,9 +51,9 @@
     "chart": {
       "couldntLoad": "Не удалось загрузить историю цен FLR",
       "viewData_one": "Показать историю цен ({{count}} точка)",
-      "viewData_other": "Показать историю цен ({{count}} точек)",
-      "viewData_few": "",
-      "viewData_many": ""
+      "viewData_few": "Показать историю цен ({{count}} точек)",
+      "viewData_many": "Показать историю цен ({{count}} точек)",
+      "viewData_other": "Показать историю цен ({{count}} точек)"
     },
     "claimsHistory": {
       "connectToSee": "Подключите или добавьте кошелек в настройках, чтобы просмотреть историю заявок.",
@@ -101,9 +101,9 @@
       "title": "Сетевая активность",
       "tps": "ТСЗ",
       "viewData_one": "Показать образцы цены газа ({{count}} образец)",
-      "viewData_other": "Показать образцы цены газа ({{count}} образцов)",
-      "viewData_few": "",
-      "viewData_many": ""
+      "viewData_few": "Показать образцы цены газа ({{count}} образцов)",
+      "viewData_many": "Показать образцы цены газа ({{count}} образцов)",
+      "viewData_other": "Показать образцы цены газа ({{count}} образцов)"
     },
     "stats": {
       "couldntLoad": "Не удалось загрузить обзор рынка",
@@ -209,19 +209,19 @@
       "highestApr": "Наивысший APR",
       "lockupDays": "Блокировка на {{count}} дн.",
       "lockupDays_one": "Блокировка на {{count}} день",
+      "lockupDays_few": "Блокировка на {{count}} дн.",
+      "lockupDays_many": "Блокировка на {{count}} дн.",
       "lockupDays_other": "Блокировка на {{count}} дн.",
       "lockupHours": "Блокировка на {{count}} ч.",
       "lockupHours_one": "Блокировка на {{count}} ч.",
+      "lockupHours_few": "Блокировка на {{count}} ч.",
+      "lockupHours_many": "Блокировка на {{count}} ч.",
       "lockupHours_other": "Блокировка на {{count}} ч.",
       "noLockup": "Без блокировки",
       "subtitle": "Узнайте, как ваш FLR может работать в разных стратегиях",
       "title": "Сравнение стратегий",
       "toggleDetails": "Показать детали {{strategy}}",
-      "verdict": "Заключение FlareGPT",
-      "lockupDays_few": "",
-      "lockupDays_many": "",
-      "lockupHours_few": "",
-      "lockupHours_many": ""
+      "verdict": "Заключение FlareGPT"
     }
   },
   "donate": {
@@ -267,8 +267,7 @@
     "warning": {
       "body": "Отправляйте на этот адрес только {{symbol}} или другие токены {{network}}. Активы, отправленные из других сетей, невозможно восстановить.",
       "title": "Только активы {{network}}."
-    },
-    "funding": {}
+    }
   },
   "flareWidget": {
     "close": "Закрыть",
@@ -285,7 +284,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT может допускать ошибки. Проверяйте важную информацию, прежде чем действовать на её основе.",
-      "offlinePlaceholder": "Вы не в сети. Сообщения не могут быть отправлены",
+      "offlinePlaceholder": "Вы не в сети, поэтому отправка сообщений невозможна",
       "placeholder": "Спросить FlareGPT...",
       "send": "Отправить",
       "stop": "Остановить генерацию"
@@ -319,6 +318,8 @@
       "pin": "Закрепить",
       "pinLimitReached": "Можно закрепить до {{count}} разговоров",
       "pinLimitReached_one": "Можно закрепить до {{count}} разговора",
+      "pinLimitReached_few": "Можно закрепить до {{count}} разговоров",
+      "pinLimitReached_many": "Можно закрепить до {{count}} разговоров",
       "pinLimitReached_other": "Можно закрепить до {{count}} разговоров",
       "rename": "Переименовать",
       "renameFailed": "Не удалось переименовать этот разговор.",
@@ -327,9 +328,7 @@
       "searchPlaceholder": "Поиск разговоров...",
       "title": "История чата",
       "unpin": "Открепить",
-      "untitled": "Без названия",
-      "pinLimitReached_few": "",
-      "pinLimitReached_many": ""
+      "untitled": "Без названия"
     },
     "historyLoadFailed": "Не удалось загрузить историю чата.",
     "jumpToLatest": "Перейти к последнему",
@@ -368,27 +367,28 @@
     "couldntLoad": "Не удалось загрузить ваши вознаграждения FTSO.",
     "delegations": {
       "count_one": "{{count}} провайдер",
+      "count_few": "{{count}} провайдеров",
+      "count_many": "{{count}} провайдеров",
       "count_other": "{{count}} провайдеров",
       "emptyDescription": "Делегируйте свой WFLR провайдеру данных FTSO, чтобы начать получать вознаграждения.",
       "emptyTitle": "Нет Активных Делегирований",
-      "title": "Активные Делегирования",
-      "count_few": "",
-      "count_many": ""
+      "title": "Активные Делегирования"
     },
     "description": "Отслеживайте свои вознаграждения за делегирование FTSO, скорость начисления вознаграждений и распределение по провайдерам в одном месте.",
     "epochs": {
-      "emptyDescription": "Всё актуально — сейчас нет ожидающих вознаграждений за эпохи.",
+      "emptyDescription": "Все наверстали упущенное, без ожидающих наград эпохи прямо сейчас.",
       "emptyTitle": "Нечего Получать",
       "epochLabel": "Эпоха {{id}}",
       "subtitle": "Вознаграждения, ожидающие получения, по эпохам",
       "title": "Невостребованные Эпохи",
       "viewFullLedger_one": "Посмотреть полный реестр ({{count}} запись)",
-      "viewFullLedger_other": "Посмотреть полный реестр ({{count}} записей)",
-      "viewFullLedger_few": "",
-      "viewFullLedger_many": ""
+      "viewFullLedger_few": "Посмотреть полный реестр ({{count}} записей)",
+      "viewFullLedger_many": "Посмотреть полный реестр ({{count}} записей)",
+      "viewFullLedger_other": "Посмотреть полный реестр ({{count}} записей)"
     },
     "providers": {
-      "description": "Сравнивайте провайдеров данных по эффективности и комиссиям, как только будут подключены рейтинги провайдеров.",
+      "description": "Ранжируется по делегированному весу и гонорару, а не по производительности вознаграждения, что не поддается надежному измерению в сети.",
+      "emptyDescription": "На данный момент данные о рейтинге провайдеров недоступны.",
       "title": "Провайдеры FTSO"
     },
     "stats": {
@@ -398,7 +398,8 @@
       "wflrBalance": "Баланс WFLR"
     },
     "validators": {
-      "description": "Смотрите самых эффективных валидаторов, как только будут подключены рейтинги стейкинга.",
+      "description": "Ранжируется по статусу подключения и времени безотказной работы. У валидаторов нет зарегистрированных имен, только NodeID.",
+      "emptyDescription": "В настоящее время нет данных о ранжировании валидатора.",
       "title": "Рейтинг Валидаторов Стейкинга"
     },
     "velocity": {
@@ -476,6 +477,7 @@
       "pending": "Ожидает",
       "unknown": "Неизвестно"
     },
+    "voted": "Проголосовал",
     "voteSplit": {
       "against": "Против {{percent}}%",
       "againstCount": "Против",
@@ -484,7 +486,6 @@
       "label": "Голоса",
       "noVotesYet": "Голосов пока нет"
     },
-    "voted": "Проголосовал",
     "votingEnded": "Голосование завершено",
     "yours": {
       "noWalletDescription": "Подключите или добавьте кошелёк, чтобы увидеть свою силу голоса и участие в этих предложениях.",
@@ -504,28 +505,28 @@
       "twitterHint": "Подпишитесь и напишите нам",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": [
-      {
+    "faqs": {
+      "0": {
         "answer": "Возможно, ваш кошелек не подключен или панель управления все еще синхронизирует данные блокчейна. Убедитесь, что выбраны правильный кошелек и сеть.",
         "question": "Почему не отображается баланс моего кошелька?"
       },
-      {
+      "1": {
         "answer": "Каждые 60 секунд, пока открыта страница обзора.",
         "question": "Как часто обновляется цена FLR?"
       },
-      {
+      "2": {
         "answer": "Убедитесь, что ваш WFLR делегирован и текущая эпоха подходит для получения наград. Некоторые награды необходимо запрашивать после распределения.",
         "question": "Почему я не получаю вознаграждения?"
       },
-      {
+      "3": {
         "answer": "MetaMask, Rabby Wallet и Bifrost Wallet в виде расширений браузера, а также любой кошелек, совместимый с WalletConnect, для мобильных устройств и аппаратных кошельков.",
         "question": "Какие кошельки поддерживаются?"
       },
-      {
+      "4": {
         "answer": "Перейдите в раздел кошелька и выберите «Отключить». Это приведет лишь к удалению сессии панели управления и не повлияет на ваши средства.",
         "question": "Как мне отключить свой кошелек?"
       }
-    ],
+    },
     "faqTitle": "Часто задаваемые вопросы",
     "featureGuides": "Руководства по функциям",
     "flareGptGuideDescription": "Задавайте вопросы о своем кошельке, наградах и сети Flare простым языком.",
@@ -537,33 +538,33 @@
     "searchPlaceholder": "Поиск по руководствам или вопросам...",
     "searchSub": "Найдите руководства по функциям и ответы на частые вопросы или свяжитесь с нами другим способом.",
     "searchTitle": "Все, что нужно для начала работы",
-    "steps": [
-      {
+    "steps": {
+      "0": {
         "step": "01",
         "text": "Получите доступ к балансам, наградам и данным протоколов на всей панели.",
         "title": "Подключите кошелек"
       },
-      {
+      "1": {
         "step": "02",
         "text": "Отслеживайте FLR, WFLR, sFLR и другие поддерживаемые активы в одном месте.",
         "title": "Просмотр активов"
       },
-      {
+      "2": {
         "step": "03",
         "text": "Делегируйте токены провайдерам FTSO для получения вознаграждений.",
         "title": "Делегирование WFLR"
       },
-      {
+      "3": {
         "step": "04",
         "text": "Мониторинг эпох, начислений и востребования вознаграждений.",
         "title": "Отслеживание наград"
       },
-      {
+      "4": {
         "step": "05",
         "text": "Задавайте вопросы о данных и активности сети Flare.",
         "title": "Используйте FlareGPT"
       }
-    ],
+    },
     "stillNeedHelp": "Все еще нужна помощь?",
     "supportDesc": "Сейчас быстрее всего связаться с нами через X. Поддержка по электронной почте и в Telegram появится позже."
   },
@@ -573,6 +574,23 @@
     "dismiss": "Пропустить",
     "installButton": "Установка",
     "installing": "Установка…"
+  },
+  "links": {
+    "card": {
+      "discord": "Discord",
+      "docs": "Документы",
+      "twitter": "X",
+      "verifiedOn": "Verified {{date}}",
+      "website": "Сайт"
+    },
+    "couldntLoad": "Не удалось загрузить ссылки.",
+    "description": "Кураторские, проверенные ссылки на официальные приложения Flare, документы и ресурсы сообщества.",
+    "empty": {
+      "description": "Ссылок, соответствующих этой категории, пока нет.",
+      "title": "Ссылок не найдено"
+    },
+    "filterAll": "Все",
+    "filterLabel": "Фильтр по рубрике"
   },
   "loops": {
     "description": "Автоматизированные фоновые сервисы, которые следят за сетью и действуют от вашего имени.",
@@ -636,6 +654,29 @@
   "onboarding": {
     "welcomeMessage": "Добро пожаловать в FlareGPT. Подключите кошелек, чтобы увидеть свое портфолио, или спросите помощника ИИ о чем угодно."
   },
+  "rankings": {
+    "connected": "Подключено",
+    "couldntLoad": "Не удалось загрузить данные ранжирования.",
+    "disconnected": "Отключено",
+    "noData": "Данные отсутствуют",
+    "validators": {
+      "delegatorCount_one": "{{count}} делегат",
+      "delegatorCount_few": "{{count}} участников",
+      "delegatorCount_many": "{{count}} участников",
+      "delegatorCount_other": "{{count}} участников",
+      "fee": "комиссия",
+      "uptime": "время бесперебойной работы",
+      "delegatorCount": "{{count}} участников"
+    },
+    "yourStake": {
+      "connectToSee": "Подключите или выберите кошелек, чтобы увидеть статус стейкинга вашего валидатора.",
+      "nextUnlock": "Следующая разблокировка {{date}}",
+      "notStakedDescription": "Этот кошелек не имеет активной ставки валидатора P-Chain.",
+      "notStakedTitle": "Активная ставка",
+      "stakeCta": "Ставка на факельном портале",
+      "title": "Ваша ставка валидатора"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "Подключите или выберите кошелёк, чтобы увидеть его статус вестинга.",
     "couldntLoad": "Не удалось загрузить данные о вестинге.",
@@ -663,7 +704,7 @@
       "earlyExitNoneNeeded": "Ничего не заблокировано, поэтому штрафа за досрочный выход нет.",
       "earlyExitTitle": "Досрочный выход",
       "efficiency": "эффективность {{pct}}%",
-      "fullyVested": "Полностью разблокировано — разблокировать больше нечего",
+      "fullyVested": "Полностью одет, разблокировать нечего",
       "netPayout": "Чистая выплата сейчас",
       "nextUnlock": "Следующая разблокировка {{date}}",
       "nextUnlockCaption": "станет доступным",
@@ -680,7 +721,7 @@
     "timeline": {
       "couldntLoad": "Не удалось загрузить историю разблокировок.",
       "emptyTitle": "Пока нет истории разблокировок",
-      "historicalNote": "Показывает полную историю разблокировок — может включать суммы, уже полученные в другом месте, поэтому итог может превышать ваш текущий баланс выше.",
+      "historicalNote": "Эта полная история разблокировки может включать суммы, уже заявленные в другом месте, поэтому общая сумма может превышать ваш текущий баланс выше.",
       "loadingHint": "Это может занять до 30 секунд при первой проверке кошелька.",
       "loadingTitle": "Загрузка истории разблокировок…",
       "statusLiquid": "Доступно",
@@ -689,9 +730,9 @@
       "title": "График разблокировок",
       "viewFullSchedule": "Смотреть полный график ({{count}} записей)",
       "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule;",
-      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule;",
-      "viewFullSchedule_few": "",
-      "viewFullSchedule_many": ""
+      "viewFullSchedule_few": "rflrVesting.timeline.viewFullSchedule;",
+      "viewFullSchedule_many": "rflrVesting.timeline.viewFullSchedule;",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule;"
     }
   },
   "settings": {
@@ -871,15 +912,15 @@
       "saveEdit": "Сохранить",
       "searchPlaceholder": "Поиск среди {{count}} кошельков...",
       "searchPlaceholder_one": "Поиск среди {{count}} кошелька",
+      "searchPlaceholder_few": "Поиск среди {{count}} кошельков...",
+      "searchPlaceholder_many": "Поиск среди {{count}} кошельков...",
       "searchPlaceholder_other": "Поиск среди {{count}} кошельков...",
       "syncCta": {
         "title": "Подключите кошелёк для синхронизации между устройствами"
       },
       "syncStatusAuthenticated": "Вы вошли в систему. Ваши отслеживаемые кошельки синхронизируются между устройствами.",
       "syncStatusGuest": "Вы можете отслеживать до {{max}} кошельков без входа в систему. Эти кошельки хранятся на этом устройстве и не будут синхронизироваться с другими вашими устройствами.",
-      "tracked": "Отслеживается",
-      "searchPlaceholder_few": "",
-      "searchPlaceholder_many": ""
+      "tracked": "Отслеживается"
     }
   },
   "sidebar": {
@@ -897,6 +938,7 @@
     "ftsoRewards": "FTSO",
     "governance": "Управление",
     "helpCenter": "Справочный центр",
+    "links": "Ссылки",
     "loops": "Циклы",
     "mainNavigation": "Основная навигация",
     "notConnected": "Не подключено",
@@ -931,9 +973,9 @@
         "tabActivity": "Активность",
         "tabAssets": "Активы",
         "viewData_one": "Показать данные ({{count}} строка)",
-        "viewData_other": "Показать данные ({{count}} строк)",
-        "viewData_few": "",
-        "viewData_many": ""
+        "viewData_few": "Показать данные ({{count}} строк)",
+        "viewData_many": "Показать данные ({{count}} строк)",
+        "viewData_other": "Показать данные ({{count}} строк)"
       },
       "connectToSee": "Подключите или выберите кошелёк, чтобы увидеть его историю транзакций.",
       "couldntLoad": "Не удалось загрузить активность кошелька.",
@@ -970,34 +1012,34 @@
         "title": "Краткая аналитика",
         "txCount": "{{count}} транзакций",
         "txCount_one": "{{count}} транзакция",
-        "txCount_other": "{{count}} транзакций",
-        "txCount_few": "",
-        "txCount_many": ""
+        "txCount_few": "{{count}} транзакций",
+        "txCount_many": "{{count}} транзакций",
+        "txCount_other": "{{count}} транзакций"
       },
       "kpi": {
         "daysAgo": "{{count}} дн назад",
         "daysAgo_one": "{{count}} дн назад",
+        "daysAgo_few": "{{count}} дн назад",
+        "daysAgo_many": "{{count}} дн назад",
         "daysAgo_other": "{{count}} дн назад",
         "hoursAgo": "{{count}} ч назад",
         "hoursAgo_one": "{{count}} ч назад",
+        "hoursAgo_few": "{{count}} ч назад",
+        "hoursAgo_many": "{{count}} ч назад",
         "hoursAgo_other": "{{count}} ч назад",
         "justNow": "Только что",
         "lastActive": "Последняя активность",
         "minutesAgo": "{{count}} мин назад",
         "minutesAgo_one": "{{count}} мин назад",
+        "minutesAgo_few": "{{count}} мин назад",
+        "minutesAgo_many": "{{count}} мин назад",
         "minutesAgo_other": "{{count}} мин назад",
         "totalTransactions": "Всего транзакций",
         "uniqueAssets": "Уникальные активы",
         "walletAge": "Возраст кошелька",
         "walletAgeDays": "{{count}} дн.",
         "walletAgeMonths": "{{count}} мес.",
-        "walletAgeYears": "{{count}} лет",
-        "daysAgo_few": "",
-        "daysAgo_many": "",
-        "hoursAgo_few": "",
-        "hoursAgo_many": "",
-        "minutesAgo_few": "",
-        "minutesAgo_many": ""
+        "walletAgeYears": "{{count}} лет"
       },
       "loading": {
         "elapsed": "прошло {{seconds}} с",
@@ -1051,6 +1093,5 @@
       "received": "Принято",
       "sent": "Отправлено"
     }
-  },
-  "comingSoon": {}
+  }
 }

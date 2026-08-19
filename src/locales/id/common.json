@@ -259,8 +259,7 @@
     "warning": {
       "body": "Hanya kirim {{symbol}} atau token {{network}} lainnya ke alamat ini. Aset yang dikirim dari jaringan lain tidak dapat dipulihkan.",
       "title": "Hanya aset {{network}}."
-    },
-    "funding": {}
+    }
   },
   "flareWidget": {
     "close": "Tutup",
@@ -277,7 +276,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT dapat membuat kesalahan. Verifikasi informasi penting sebelum menindaklanjutinya.",
-      "offlinePlaceholder": "Anda offline — pesan tidak dapat dikirim saat ini",
+      "offlinePlaceholder": "Anda offline, jadi pesan tidak dapat dikirim saat ini",
       "placeholder": "Tanya FlareGPT...",
       "send": "Kirim",
       "stop": "Hentikan pembuatan"
@@ -365,7 +364,7 @@
     },
     "description": "Lacak reward delegasi FTSO, kecepatan reward, dan alokasi penyedia Anda di satu tempat.",
     "epochs": {
-      "emptyDescription": "Semua sudah beres — tidak ada reward epoch yang tertunda saat ini.",
+      "emptyDescription": "Semua berhasil, tanpa imbalan zaman yang tertunda saat ini.",
       "emptyTitle": "Tidak Ada yang Belum Diklaim",
       "epochLabel": "Epoch {{id}}",
       "subtitle": "Reward yang menunggu diklaim, per epoch",
@@ -374,7 +373,8 @@
       "viewFullLedger_other": "Lihat buku besar lengkap ({{count}} entri)"
     },
     "providers": {
-      "description": "Bandingkan penyedia data berdasarkan performa dan biaya setelah peringkat penyedia terhubung.",
+      "description": "Diberi peringkat berdasarkan bobot dan biaya yang didelegasikan, bukan berdasarkan kinerja imbalan, yang tidak dapat diukur secara andal secara on - chain.",
+      "emptyDescription": "Tidak ada data peringkat penyedia yang tersedia saat ini.",
       "title": "Penyedia FTSO"
     },
     "stats": {
@@ -384,7 +384,8 @@
       "wflrBalance": "Saldo WFLR"
     },
     "validators": {
-      "description": "Lihat validator berperforma terbaik setelah peringkat staking terhubung.",
+      "description": "Diberi peringkat berdasarkan status koneksi dan waktu aktif. Validator tidak memiliki nama terdaftar, hanya NodeID.",
+      "emptyDescription": "Tidak ada data peringkat validator yang tersedia saat ini.",
       "title": "Peringkat Validator Staking"
     },
     "velocity": {
@@ -462,6 +463,7 @@
       "pending": "Tertunda",
       "unknown": "Tidak diketahui"
     },
+    "voted": "Memilih",
     "voteSplit": {
       "against": "Menolak {{percent}}%",
       "againstCount": "Menolak",
@@ -470,7 +472,6 @@
       "label": "Suara",
       "noVotesYet": "Belum ada suara"
     },
-    "voted": "Memilih",
     "votingEnded": "Pemungutan suara berakhir",
     "yours": {
       "noWalletDescription": "Hubungkan atau tambahkan dompet untuk melihat kekuatan suara dan partisipasi Anda dalam proposal ini.",
@@ -560,6 +561,23 @@
     "installButton": "Instal",
     "installing": "Pasangkan"
   },
+  "links": {
+    "card": {
+      "discord": "Discord",
+      "docs": "Hasilkan Dokumen PDF",
+      "twitter": "X",
+      "verifiedOn": "Terverifikasi {{date}}",
+      "website": "Situs web"
+    },
+    "couldntLoad": "Tidak dapat memuat tautan.",
+    "description": "Tautan yang dikurasi dan diverifikasi ke aplikasi Flare resmi, dokumen, dan sumber daya komunitas.",
+    "empty": {
+      "description": "Belum ada tautan yang cocok dengan kategori ini.",
+      "title": "Tidak ada tautan yang ditemukan"
+    },
+    "filterAll": "Semua",
+    "filterLabel": "Saring menurut kategori"
+  },
   "loops": {
     "description": "Layanan latar belakang otomatis yang memantau jaringan dan bertindak atas nama Anda.",
     "gasSniper": {
@@ -622,6 +640,27 @@
   "onboarding": {
     "welcomeMessage": "Selamat datang di FlareGPT. Hubungkan dompet untuk melihat portofolio Anda, atau tanyakan apa pun kepada asisten AI."
   },
+  "rankings": {
+    "connected": "Tersambung",
+    "couldntLoad": "Tidak dapat memuat data peringkat.",
+    "disconnected": "Terputus",
+    "noData": "Tidak ada data yang tersedia",
+    "validators": {
+      "delegatorCount_other": "{{count}} delegasi",
+      "fee": "manajemen 10%.",
+      "uptime": "waktu aktif",
+      "delegatorCount": "{{count}} delegasi",
+      "delegatorCount_one": "{{count}} delegasi"
+    },
+    "yourStake": {
+      "connectToSee": "Hubungkan atau pilih dompet untuk melihat status taruhan validator Anda.",
+      "nextUnlock": "Buka kunci berikutnya {{date}}",
+      "notStakedDescription": "Dompet ini tidak memiliki saham validator P - Chain aktif.",
+      "notStakedTitle": "Tidak Ada Taruhan Aktif",
+      "stakeCta": "Pasak di Portal Flare",
+      "title": "Taruhan Validator Anda"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "Sambungkan atau pilih dompet untuk melihat status vesting-nya.",
     "couldntLoad": "Data vesting Anda tidak dapat dimuat.",
@@ -649,7 +688,7 @@
       "earlyExitNoneNeeded": "Tidak ada yang terkunci, jadi tidak ada penalti untuk keluar lebih awal.",
       "earlyExitTitle": "Keluar Lebih Awal",
       "efficiency": "{{pct}}% efisien",
-      "fullyVested": "Vested sepenuhnya — tidak ada lagi yang perlu dibuka",
+      "fullyVested": "Sepenuhnya dipegang, tidak ada yang tersisa untuk dibuka",
       "netPayout": "Pembayaran Bersih Sekarang",
       "nextUnlock": "Pembukaan kunci berikutnya pada {{date}}",
       "nextUnlockCaption": "menjadi likuid",
@@ -666,7 +705,7 @@
     "timeline": {
       "couldntLoad": "Riwayat pembukaan kunci tidak dapat dimuat.",
       "emptyTitle": "Belum ada riwayat pembukaan kunci",
-      "historicalNote": "Menampilkan riwayat pembukaan kunci lengkap — dapat mencakup jumlah yang sudah diklaim di tempat lain, sehingga totalnya bisa melebihi saldo Anda saat ini di atas.",
+      "historicalNote": "Riwayat buka kunci lengkap ini mungkin termasuk jumlah yang sudah diklaim di tempat lain, sehingga total dapat melebihi saldo Anda saat ini di atas.",
       "loadingHint": "Ini bisa memakan waktu hingga 30 detik saat pertama kali kami memeriksa dompet.",
       "loadingTitle": "Memuat riwayat pembukaan kunci…",
       "statusLiquid": "Likuid",
@@ -879,6 +918,7 @@
     "ftsoRewards": "FTSO",
     "governance": "Tata Kelola",
     "helpCenter": "Pusat Bantuan",
+    "links": "Link",
     "loops": "Loop",
     "mainNavigation": "Navigasi utama",
     "notConnected": "Belum Terhubung",
@@ -1023,6 +1063,5 @@
       "received": "Diterima",
       "sent": "Terkirim"
     }
-  },
-  "comingSoon": {}
+  }
 }

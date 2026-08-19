@@ -11,6 +11,7 @@ import {
   ArrowPathIcon,
   TrophyIcon,
   HeartIcon,
+  LinkIcon,
 } from "@heroicons/react/24/outline";
 
 import { ROUTES } from "@/config/routes";
@@ -25,6 +26,7 @@ const prefetchHelp = () => import("@/pages/Help");
 const prefetchDonate = () => import("@/pages/Donate");
 const prefetchDefiProtocols = () => import("@/pages/DefiProtocols");
 const prefetchWalletActivity = () => import("@/pages/WalletActivity");
+const prefetchLinks = () => import("@/pages/Links");
 
 // The single source of truth for every top-level page — both Sidebar's nav
 // list and the Help Center's Feature Guides are derived from this one
@@ -107,6 +109,13 @@ export const NAV_LINKS = [
     translationKey: "governance",
     path: ROUTES.governance,
     icon: ShieldCheckIcon,
+  },
+  {
+    translationKey: "links",
+    path: ROUTES.links,
+    icon: LinkIcon,
+    prefetch: prefetchLinks,
+    guideDescriptionKey: "links.description",
   },
   {
     translationKey: "donate",

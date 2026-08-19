@@ -50,12 +50,12 @@
     },
     "chart": {
       "couldntLoad": "تعذر تحميل سجل أسعار الطابق الأرضي",
+      "viewData_zero": "عرض سجل الأسعار ({{count}} نقطة)",
       "viewData_one": "عرض سجل الأسعار (نقطة واحدة {{count}})",
-      "viewData_other": "عرض سجل الأسعار ({{count}} نقطة)",
-      "viewData_zero": "",
-      "viewData_two": "",
-      "viewData_few": "",
-      "viewData_many": ""
+      "viewData_two": "عرض سجل الأسعار ({{count}} نقطة)",
+      "viewData_few": "عرض سجل الأسعار ({{count}} نقطة)",
+      "viewData_many": "عرض سجل الأسعار ({{count}} نقطة)",
+      "viewData_other": "عرض سجل الأسعار ({{count}} نقطة)"
     },
     "claimsHistory": {
       "connectToSee": "قم بتوصيل محفظة أو إضافتها في الإعدادات للاطلاع على سجل المطالبات.",
@@ -102,12 +102,12 @@
       "live": "[ترجمة المصطلح: Live]",
       "title": "نشاط الشبكة.",
       "tps": "مستشعر موضع الدواسة / مستشعر موضع البخاخ",
+      "viewData_zero": "عرض عينات سعر الغاز ({{count}} عينة)",
       "viewData_one": "عرض عينات سعر الغاز (عينة واحدة {{count}})",
-      "viewData_other": "عرض عينات سعر الغاز ({{count}} عينة)",
-      "viewData_zero": "",
-      "viewData_two": "",
-      "viewData_few": "",
-      "viewData_many": ""
+      "viewData_two": "عرض عينات سعر الغاز ({{count}} عينة)",
+      "viewData_few": "عرض عينات سعر الغاز ({{count}} عينة)",
+      "viewData_many": "عرض عينات سعر الغاز ({{count}} عينة)",
+      "viewData_other": "عرض عينات سعر الغاز ({{count}} عينة)"
     },
     "stats": {
       "couldntLoad": "تعذر تحميل نظرة عامة على السوق",
@@ -212,24 +212,24 @@
       "couldntLoad": "تعذر تحميل مقارنة الاستراتيجيات",
       "highestApr": "أعلى معدل عائد سنوي",
       "lockupDays": "قفل لمدة {{count}} يوم",
-      "lockupDays_one": "قفل ليوم واحد",
+      "lockupDays_zero": "قفل لمدة {{count}} يوم",
+      "lockupDays_one": "{{count}} day lock-up",
+      "lockupDays_two": "قفل لمدة {{count}} يوم",
+      "lockupDays_few": "قفل لمدة {{count}} يوم",
+      "lockupDays_many": "قفل لمدة {{count}} يوم",
       "lockupDays_other": "قفل لمدة {{count}} يوم",
       "lockupHours": "قفل لمدة {{count}} ساعة",
+      "lockupHours_zero": "قفل لمدة {{count}} ساعة",
       "lockupHours_one": "قفل لمدة {{count}} ساعة",
+      "lockupHours_two": "قفل لمدة {{count}} ساعة",
+      "lockupHours_few": "قفل لمدة {{count}} ساعة",
+      "lockupHours_many": "قفل لمدة {{count}} ساعة",
       "lockupHours_other": "قفل لمدة {{count}} ساعة",
       "noLockup": "بدون قفل",
       "subtitle": "اطّلع على أداء FLR المحتمل عبر الاستراتيجيات المختلفة",
       "title": "مقارنة الاستراتيجيات",
       "toggleDetails": "إظهار تفاصيل {{strategy}}",
-      "verdict": "تقييم FlareGPT",
-      "lockupDays_zero": "",
-      "lockupDays_two": "",
-      "lockupDays_few": "",
-      "lockupDays_many": "",
-      "lockupHours_zero": "",
-      "lockupHours_two": "",
-      "lockupHours_few": "",
-      "lockupHours_many": ""
+      "verdict": "تقييم FlareGPT"
     }
   },
   "donate": {
@@ -275,8 +275,7 @@
     "warning": {
       "body": "أرسل فقط {{symbol}} أو رموز {{network}} الأخرى إلى هذا العنوان. الأصول المُرسلة من شبكات أخرى لا يمكن استردادها.",
       "title": "أصول {{network}} فقط."
-    },
-    "funding": {}
+    }
   },
   "flareWidget": {
     "close": "خاتمة",
@@ -293,7 +292,7 @@
     },
     "composer": {
       "disclaimer": "قد يرتكب FlareGPT أخطاء. تحقق من المعلومات المهمة قبل التصرف بناءً عليها.",
-      "offlinePlaceholder": "أنت غير متصل بالإنترنت — لا يمكن إرسال الرسائل الآن",
+      "offlinePlaceholder": "أنت غير متصل بالإنترنت، لذلك لا يمكن إرسال الرسائل الآن",
       "placeholder": "اسأل FlareGPT...",
       "send": "إرسال",
       "stop": "إيقاف التوليد"
@@ -326,7 +325,11 @@
       "openButton": "السجل",
       "pin": "تثبيت",
       "pinLimitReached": "يمكنك تثبيت حتى {{count}} محادثات",
-      "pinLimitReached_one": "يمكنك تثبيت محادثة واحدة كحد أقصى",
+      "pinLimitReached_zero": "يمكنك تثبيت حتى {{count}} محادثات",
+      "pinLimitReached_one": "You can pin up to {{count}} conversation",
+      "pinLimitReached_two": "يمكنك تثبيت حتى {{count}} محادثات",
+      "pinLimitReached_few": "يمكنك تثبيت حتى {{count}} محادثات",
+      "pinLimitReached_many": "يمكنك تثبيت حتى {{count}} محادثات",
       "pinLimitReached_other": "يمكنك تثبيت حتى {{count}} محادثات",
       "rename": "إعادة تسمية",
       "renameFailed": "تعذّرت إعادة تسمية هذه المحادثة.",
@@ -335,11 +338,7 @@
       "searchPlaceholder": "البحث في المحادثات...",
       "title": "سجل المحادثات",
       "unpin": "إلغاء التثبيت",
-      "untitled": "بلا عنوان",
-      "pinLimitReached_zero": "",
-      "pinLimitReached_two": "",
-      "pinLimitReached_few": "",
-      "pinLimitReached_many": ""
+      "untitled": "بلا عنوان"
     },
     "historyLoadFailed": "تعذّر تحميل سجل الدردشة.",
     "jumpToLatest": "الانتقال إلى الأحدث",
@@ -377,32 +376,33 @@
     "connectToSee": "قم بتوصيل أو اختيار محفظة لعرض مكافآت FTSO الخاصة بها.",
     "couldntLoad": "تعذّر تحميل مكافآت FTSO الخاصة بك.",
     "delegations": {
+      "count_zero": "{{count}} مزوّدين",
       "count_one": "{{count}} مزوّد",
+      "count_two": "{{count}} مزوّدين",
+      "count_few": "{{count}} مزوّدين",
+      "count_many": "{{count}} مزوّدين",
       "count_other": "{{count}} مزوّدين",
       "emptyDescription": "فوّض WFLR الخاص بك إلى أحد مزوّدي بيانات FTSO لبدء كسب المكافآت.",
       "emptyTitle": "لا توجد تفويضات نشطة",
-      "title": "التفويضات النشطة",
-      "count_zero": "",
-      "count_two": "",
-      "count_few": "",
-      "count_many": ""
+      "title": "التفويضات النشطة"
     },
     "description": "تتبّع مكافآت تفويض FTSO الخاصة بك، وسرعة تراكم المكافآت، وتخصيصات مزودي الخدمة في مكان واحد.",
     "epochs": {
-      "emptyDescription": "كل شيء محدّث — لا توجد مكافآت حقبة معلّقة الآن.",
+      "emptyDescription": "كل شيء محاصر، مع عدم وجود مكافآت عصر معلقة في الوقت الحالي.",
       "emptyTitle": "لا يوجد شيء غير مُطالَب به",
       "epochLabel": "الحقبة {{id}}",
       "subtitle": "مكافآت في انتظار المطالبة، حسب الحقبة",
       "title": "الحقب غير المُطالَب بها",
+      "viewFullLedger_zero": "عرض السجل الكامل ({{count}} إدخالات)",
       "viewFullLedger_one": "عرض السجل الكامل ({{count}} إدخال)",
-      "viewFullLedger_other": "عرض السجل الكامل ({{count}} إدخالات)",
-      "viewFullLedger_zero": "",
-      "viewFullLedger_two": "",
-      "viewFullLedger_few": "",
-      "viewFullLedger_many": ""
+      "viewFullLedger_two": "عرض السجل الكامل ({{count}} إدخالات)",
+      "viewFullLedger_few": "عرض السجل الكامل ({{count}} إدخالات)",
+      "viewFullLedger_many": "عرض السجل الكامل ({{count}} إدخالات)",
+      "viewFullLedger_other": "عرض السجل الكامل ({{count}} إدخالات)"
     },
     "providers": {
-      "description": "قارن بين مزودي البيانات من حيث الأداء والرسوم بمجرد ربط تصنيفات المزودين.",
+      "description": "مصنفة حسب الوزن والرسوم المفوضة، وليس حسب أداء المكافأة، والتي لا يمكن قياسها بشكل موثوق على السلسلة.",
+      "emptyDescription": "لا تتوفر بيانات تصنيف مزود الخدمة في الوقت الحالي.",
       "title": "مزودو FTSO"
     },
     "stats": {
@@ -412,7 +412,8 @@
       "wflrBalance": "رصيد WFLR"
     },
     "validators": {
-      "description": "اطّلع على أفضل المدققين أداءً بمجرد ربط تصنيفات المصادقة.",
+      "description": "مرتبة حسب حالة الاتصال ووقت التشغيل. المدققون ليس لديهم أسماء مسجلة، فقط NodeIDs.",
+      "emptyDescription": "لا تتوفر بيانات تصنيف المدقق في الوقت الحالي.",
       "title": "تصنيف مدققي المصادقة"
     },
     "velocity": {
@@ -490,6 +491,7 @@
       "pending": "قيد الانتظار",
       "unknown": "غير معروف"
     },
+    "voted": "تم التصويت",
     "voteSplit": {
       "against": "ضد {{percent}}%",
       "againstCount": "ضد",
@@ -498,7 +500,6 @@
       "label": "الأصوات",
       "noVotesYet": "لا توجد أصوات بعد"
     },
-    "voted": "تم التصويت",
     "votingEnded": "انتهى التصويت",
     "yours": {
       "noWalletDescription": "اربط محفظة أو أضِفها لعرض قوتك التصويتية ومشاركتك في هذه المقترحات.",
@@ -518,28 +519,28 @@
       "twitterHint": "تابعنا وأرسل لنا رسالة",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": [
-      {
+    "faqs": {
+      "0": {
         "answer": "قد لا تكون محفظتك متصلة، أو قد لا تزال لوحة التحكم تقوم بمزامنة بيانات البلوكشين. تحقق من اختيار المحفظة والشبكة الصحيحتين.",
         "question": "لماذا لا يظهر رصيد محفظتي؟"
       },
-      {
+      "1": {
         "answer": "كل 60 ثانية طالما صفحة النظرة العامة مفتوحة.",
         "question": "كم مرة يتم تحديث سعر FLR؟"
       },
-      {
+      "2": {
         "answer": "تأكد من تفويض رموز WFLR الخاصة بك وأن الفترة الزمنية مؤهلة للحصول على المكافآت. قد تتطلب بعض المكافآت المطالبة بها بعد التوزيع.",
         "question": "لماذا لا أتلقى المكافآت؟"
       },
-      {
+      "3": {
         "answer": "MetaMask وRabby Wallet وBifrost Wallet كإضافات متصفح، بالإضافة إلى أي محفظة متوافقة مع WalletConnect للجوال أو المحافظ المادية.",
         "question": "ما هي المحافظ المدعومة؟"
       },
-      {
+      "4": {
         "answer": "انتقل إلى قسم المحفظة واختر 'فصل'. يؤدي هذا فقط إلى إزالة جلسة لوحة التحكم ولا يؤثر على أموالك.",
         "question": "كيف أقوم بفصل محفظتي؟"
       }
-    ],
+    },
     "faqTitle": "الأسئلة الشائعة",
     "featureGuides": "أدلة الميزات",
     "flareGptGuideDescription": "اطرح أسئلة حول محفظتك ومكافآتك وشبكة Flare بلغة بسيطة وطبيعية.",
@@ -551,33 +552,33 @@
     "searchPlaceholder": "ابحث في الأدلة أو الأسئلة الشائعة...",
     "searchSub": "ابحث في أدلة الميزات والأسئلة الشائعة، أو اعثر على طريقة أخرى للتواصل معنا.",
     "searchTitle": "كل ما تحتاجه للبدء",
-    "steps": [
-      {
+    "steps": {
+      "0": {
         "step": "01",
         "text": "الوصول إلى الأرصدة والمكافآت وبيانات البروتوكولات عبر لوحة التحكم بالكامل.",
         "title": "ربط محفظتك"
       },
-      {
+      "1": {
         "step": "02",
         "text": "تتبّع FLR وWFLR وsFLR وغيرها من الأصول المدعومة في مكان واحد.",
         "title": "عرض أصولك"
       },
-      {
+      "2": {
         "step": "03",
         "text": "قم بتفويض الرموز لمزودي FTSO لكسب المكافآت.",
         "title": "تفويض WFLR"
       },
-      {
+      "3": {
         "step": "04",
         "text": "مراقبة الفترات الزمنية (Epochs)، والمستحقات، ومطالبات المكافآت.",
         "title": "تتبع المكافآت"
       },
-      {
+      "4": {
         "step": "05",
         "text": "اطرح أسئلة حول بيانات وأنشطة شبكة Flare.",
         "title": "استخدم FlareGPT"
       }
-    ],
+    },
     "stillNeedHelp": "هل ما زلت بحاجة إلى مساعدة؟",
     "supportDesc": "أسرع طريقة للتواصل معنا حاليًا هي عبر X. دعم البريد الإلكتروني وتيليجرام قادم قريبًا."
   },
@@ -587,6 +588,23 @@
     "dismiss": "تجاهل",
     "installButton": "[ترجمة المصطلح: Install]",
     "installing": "[ترجمة المصطلح: Installing]"
+  },
+  "links": {
+    "card": {
+      "discord": "‫Discord‬",
+      "docs": "مستندات",
+      "twitter": "X",
+      "verifiedOn": "Verified {{date}}",
+      "website": "الموقع الالكتروني:"
+    },
+    "couldntLoad": "تعذر تحميل الروابط.",
+    "description": "روابط منسقة ومتحقق منها لتطبيقات Flare الرسمية والمستندات وموارد المجتمع.",
+    "empty": {
+      "description": "لا توجد روابط تطابق هذه الفئة حتى الآن.",
+      "title": "لا يوجد الروابط."
+    },
+    "filterAll": "الكل",
+    "filterLabel": "تصنيف حسب الفئة"
   },
   "loops": {
     "description": "خدمات خلفية آلية تراقب الشبكة وتتصرف نيابة عنك.",
@@ -650,6 +668,31 @@
   "onboarding": {
     "welcomeMessage": "مرحبًا بك في FlareGPT. اربط محفظة لرؤية محفظتك، أو اسأل مساعد الذكاء الاصطناعي عن أي شيء."
   },
+  "rankings": {
+    "connected": "[ترجمة المصطلح: Connected]",
+    "couldntLoad": "تعذر تحميل بيانات الترتيب.",
+    "disconnected": "غير متصل",
+    "noData": "لا تتوفر بيانات",
+    "validators": {
+      "delegatorCount_zero": "{{count}} من المندوبين",
+      "delegatorCount_one": "{{count}} مفوض",
+      "delegatorCount_two": "{{count}} من المندوبين",
+      "delegatorCount_few": "{{count}} من المندوبين",
+      "delegatorCount_many": "{{count}} من المندوبين",
+      "delegatorCount_other": "{{count}} من المندوبين",
+      "fee": "رسوم التسجيل",
+      "uptime": "مدة التشغيل",
+      "delegatorCount": "{{count}} من المندوبين"
+    },
+    "yourStake": {
+      "connectToSee": "اتصل أو حدد محفظة للاطلاع على حالة حجز المدقق.",
+      "nextUnlock": "الفتح التالي {{date}}",
+      "notStakedDescription": "لا تحتوي هذه المحفظة على حصة مدقق P - Chain نشطة.",
+      "notStakedTitle": "التعدين النشط",
+      "stakeCta": "الرهان على بوابة التوهج",
+      "title": "رهان المدقق الخاص بك"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "قم بتوصيل أو اختيار محفظة لعرض حالة الاستحقاق الخاصة بها.",
     "couldntLoad": "تعذّر تحميل بيانات الاستحقاق الخاصة بك.",
@@ -677,7 +720,7 @@
       "earlyExitNoneNeeded": "لا يوجد شيء مقفل، لذا لا توجد غرامة للخروج المبكر.",
       "earlyExitTitle": "الخروج المبكر",
       "efficiency": "كفاءة {{pct}}%",
-      "fullyVested": "مستحق بالكامل — لا يوجد شيء آخر للإفراج عنه",
+      "fullyVested": "مكتملة الحقوق، لا شيء متبقٍ لفتحه",
       "netPayout": "صافي الدفع الآن",
       "nextUnlock": "الإفراج التالي في {{date}}",
       "nextUnlockCaption": "يصبح سائلاً",
@@ -694,7 +737,7 @@
     "timeline": {
       "couldntLoad": "تعذّر تحميل سجل الإفراج.",
       "emptyTitle": "لا يوجد سجل إفراج بعد",
-      "historicalNote": "يعكس السجل الكامل لجدول الإفراج، والذي قد يتضمن مبالغ تمت المطالبة بها بالفعل في مكان آخر — لذا قد يتجاوز الإجمالي رصيدك الحالي أعلاه.",
+      "historicalNote": "قد يتضمن سجل الفتح الكامل هذا المبالغ المطالب بها بالفعل في مكان آخر، لذلك يمكن أن تتجاوز المجاميع رصيدك الحالي أعلاه.",
       "loadingHint": "قد يستغرق هذا حتى 30 ثانية في أول مرة نتحقق فيها من محفظة.",
       "loadingTitle": "جارٍ تحميل سجل الإفراج…",
       "statusLiquid": "سائل",
@@ -702,12 +745,12 @@
       "subtitle": "إجمالي rFLR المُفرج عنه تراكميًا عبر الزمن",
       "title": "الجدول الزمني للإفراج",
       "viewFullSchedule": "عرض الجدول الكامل ({{count}} إدخالات)",
+      "viewFullSchedule_zero": "rflrVesting.timeline.viewFullSchedule",
       "viewFullSchedule_one": "rflrVesting.timeline.viewFullSchedule",
-      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule",
-      "viewFullSchedule_zero": "",
-      "viewFullSchedule_two": "",
-      "viewFullSchedule_few": "",
-      "viewFullSchedule_many": ""
+      "viewFullSchedule_two": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_few": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_many": "rflrVesting.timeline.viewFullSchedule",
+      "viewFullSchedule_other": "rflrVesting.timeline.viewFullSchedule"
     }
   },
   "settings": {
@@ -886,18 +929,18 @@
       "rename": "إعادة تسمية",
       "saveEdit": "حفظ",
       "searchPlaceholder": "بحث في {{count}} محفظة...",
-      "searchPlaceholder_one": "بحث في محفظة واحدة...",
+      "searchPlaceholder_zero": "بحث في {{count}} محفظة...",
+      "searchPlaceholder_one": "Search {{count}} wallet...",
+      "searchPlaceholder_two": "بحث في {{count}} محفظة...",
+      "searchPlaceholder_few": "بحث في {{count}} محفظة...",
+      "searchPlaceholder_many": "بحث في {{count}} محفظة...",
       "searchPlaceholder_other": "بحث في {{count}} محفظة...",
       "syncCta": {
         "title": "اربط محفظتك للمزامنة عبر الأجهزة"
       },
       "syncStatusAuthenticated": "تم تسجيل الدخول. تتم مزامنة محافظك المتابَعة عبر أجهزتك.",
       "syncStatusGuest": "يمكنك متابعة حتى {{max}} محفظة دون تسجيل الدخول. تُخزَّن هذه المحافظ على هذا الجهاز ولن تتم مزامنتها مع أجهزتك الأخرى.",
-      "tracked": "متعقب",
-      "searchPlaceholder_zero": "",
-      "searchPlaceholder_two": "",
-      "searchPlaceholder_few": "",
-      "searchPlaceholder_many": ""
+      "tracked": "متعقب"
     }
   },
   "sidebar": {
@@ -915,6 +958,7 @@
     "ftsoRewards": "FTSO",
     "governance": "الحوكمة",
     "helpCenter": "مركز المساعدة",
+    "links": "روابط",
     "loops": "العائد",
     "mainNavigation": "التنقل الرئيسي",
     "notConnected": "غير متصل",
@@ -947,12 +991,12 @@
         "tabActions": "الإجراءات",
         "tabActivity": "النشاط",
         "tabAssets": "الأصول",
+        "viewData_zero": "عرض البيانات ({{count}} صف)",
         "viewData_one": "عرض البيانات (صف واحد {{count}})",
-        "viewData_other": "عرض البيانات ({{count}} صف)",
-        "viewData_zero": "",
-        "viewData_two": "",
-        "viewData_few": "",
-        "viewData_many": ""
+        "viewData_two": "عرض البيانات ({{count}} صف)",
+        "viewData_few": "عرض البيانات ({{count}} صف)",
+        "viewData_many": "عرض البيانات ({{count}} صف)",
+        "viewData_other": "عرض البيانات ({{count}} صف)"
       },
       "connectToSee": "اتصل بمحفظة أو اخترها لرؤية نشاط معاملاتها.",
       "couldntLoad": "تعذّر تحميل نشاط المحفظة.",
@@ -988,43 +1032,43 @@
         "mostUsedAsset": "الأصل الأكثر استخدامًا",
         "title": "رؤى سريعة",
         "txCount": "{{count}} معاملة",
-        "txCount_one": "معاملة واحدة",
-        "txCount_other": "{{count}} معاملة",
-        "txCount_zero": "",
-        "txCount_two": "",
-        "txCount_few": "",
-        "txCount_many": ""
+        "txCount_zero": "{{count}} معاملة",
+        "txCount_one": "{{count}} transaction",
+        "txCount_two": "{{count}} معاملة",
+        "txCount_few": "{{count}} معاملة",
+        "txCount_many": "{{count}} معاملة",
+        "txCount_other": "{{count}} معاملة"
       },
       "kpi": {
         "daysAgo": "منذ {{count}} يوم",
+        "daysAgo_zero": "منذ {{count}} يوم",
         "daysAgo_one": "منذ {{count}} يوم",
+        "daysAgo_two": "منذ {{count}} يوم",
+        "daysAgo_few": "منذ {{count}} يوم",
+        "daysAgo_many": "منذ {{count}} يوم",
         "daysAgo_other": "منذ {{count}} يوم",
         "hoursAgo": "منذ {{count}} ساعة",
+        "hoursAgo_zero": "منذ {{count}} ساعة",
         "hoursAgo_one": "منذ {{count}} ساعة",
+        "hoursAgo_two": "منذ {{count}} ساعة",
+        "hoursAgo_few": "منذ {{count}} ساعة",
+        "hoursAgo_many": "منذ {{count}} ساعة",
         "hoursAgo_other": "منذ {{count}} ساعة",
         "justNow": "الآن",
         "lastActive": "آخر نشاط",
         "minutesAgo": "منذ {{count}} دقيقة",
+        "minutesAgo_zero": "منذ {{count}} دقيقة",
         "minutesAgo_one": "منذ {{count}} دقيقة",
+        "minutesAgo_two": "منذ {{count}} دقيقة",
+        "minutesAgo_few": "منذ {{count}} دقيقة",
+        "minutesAgo_many": "منذ {{count}} دقيقة",
         "minutesAgo_other": "منذ {{count}} دقيقة",
         "totalTransactions": "إجمالي المعاملات",
         "uniqueAssets": "الأصول الفريدة",
         "walletAge": "عمر المحفظة",
         "walletAgeDays": "{{count}} أيام",
         "walletAgeMonths": "{{count}} أشهر",
-        "walletAgeYears": "{{count}} سنة",
-        "daysAgo_zero": "",
-        "daysAgo_two": "",
-        "daysAgo_few": "",
-        "daysAgo_many": "",
-        "hoursAgo_zero": "",
-        "hoursAgo_two": "",
-        "hoursAgo_few": "",
-        "hoursAgo_many": "",
-        "minutesAgo_zero": "",
-        "minutesAgo_two": "",
-        "minutesAgo_few": "",
-        "minutesAgo_many": ""
+        "walletAgeYears": "{{count}} سنة"
       },
       "loading": {
         "elapsed": "مرّت {{seconds}} ثانية",
@@ -1078,6 +1122,5 @@
       "received": "استلمه",
       "sent": "مُرسل"
     }
-  },
-  "comingSoon": {}
+  }
 }

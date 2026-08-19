@@ -27,12 +27,12 @@ describe("Composer — offline", () => {
     Object.defineProperty(window.navigator, "onLine", { value: false, configurable: true });
     const { onSend } = renderComposer();
 
-    const textarea = screen.getByPlaceholderText("You're offline — messages can't be sent right now");
+    const textarea = screen.getByPlaceholderText("You're offline, so messages can't be sent right now");
     expect(textarea).not.toBeDisabled();
     fireEvent.change(textarea, { target: { value: "Still here?" } });
     expect(textarea).toHaveValue("Still here?");
 
-    const sendButton = screen.getByTitle("You're offline — messages can't be sent right now");
+    const sendButton = screen.getByTitle("You're offline, so messages can't be sent right now");
     expect(sendButton).toBeDisabled();
     fireEvent.click(sendButton);
     expect(onSend).not.toHaveBeenCalled();
@@ -42,7 +42,7 @@ describe("Composer — offline", () => {
     Object.defineProperty(window.navigator, "onLine", { value: false, configurable: true });
     const { onSend } = renderComposer();
 
-    fireEvent.change(screen.getByPlaceholderText("You're offline — messages can't be sent right now"), {
+    fireEvent.change(screen.getByPlaceholderText("You're offline, so messages can't be sent right now"), {
       target: { value: "Hello" },
     });
 

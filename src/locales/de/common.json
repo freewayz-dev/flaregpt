@@ -259,8 +259,7 @@
     "warning": {
       "body": "Sende nur {{symbol}} oder andere {{network}}-Token an diese Adresse. Von anderen Netzwerken gesendete Assets können nicht wiederhergestellt werden.",
       "title": "Nur {{network}}-Assets."
-    },
-    "funding": {}
+    }
   },
   "flareWidget": {
     "close": "Schließen",
@@ -277,7 +276,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT kann Fehler machen. Überprüfe wichtige Informationen, bevor du danach handelst.",
-      "offlinePlaceholder": "Sie sind offline — Nachrichten können derzeit nicht gesendet werden",
+      "offlinePlaceholder": "Du bist offline, daher können im Moment keine Nachrichten gesendet werden",
       "placeholder": "Frag FlareGPT...",
       "send": "Senden",
       "stop": "Generierung stoppen"
@@ -365,7 +364,7 @@
     },
     "description": "Verfolge deine FTSO-Delegationsbelohnungen, die Belohnungsgeschwindigkeit und Anbieterzuteilungen an einem Ort.",
     "epochs": {
-      "emptyDescription": "Alles erledigt — derzeit keine ausstehenden Epochenbelohnungen.",
+      "emptyDescription": "Alles aufgeholt, ohne ausstehende Epochenbelohnungen im Moment.",
       "emptyTitle": "Nichts offen",
       "epochLabel": "Epoche {{id}}",
       "subtitle": "Belohnungen, die auf Beanspruchung warten, nach Epoche",
@@ -374,7 +373,8 @@
       "viewFullLedger_other": "Vollständiges Ledger ansehen ({{count}} Einträge)"
     },
     "providers": {
-      "description": "Vergleiche Datenanbieter nach Leistung und Gebühren, sobald die Anbieter-Ranglisten verbunden sind.",
+      "description": "Bewertet nach delegiertem Gewicht und Gebühr, nicht nach Belohnungsleistung, die in der Kette nicht zuverlässig messbar ist.",
+      "emptyDescription": "Derzeit sind keine Anbieter-Ranking-Daten verfügbar.",
       "title": "FTSO-Anbieter"
     },
     "stats": {
@@ -384,7 +384,8 @@
       "wflrBalance": "WFLR-Guthaben"
     },
     "validators": {
-      "description": "Sieh die leistungsstärksten Validatoren, sobald die Staking-Ranglisten verbunden sind.",
+      "description": "Nach Verbindungsstatus und Betriebszeit geordnet. Validatoren haben keine registrierten Namen, nur NodeIDs.",
+      "emptyDescription": "Derzeit sind keine Validator-Ranking-Daten verfügbar.",
       "title": "Staking-Validator-Rangliste"
     },
     "velocity": {
@@ -462,6 +463,7 @@
       "pending": "Ausstehend",
       "unknown": "Unbekannt"
     },
+    "voted": "Abgestimmt",
     "voteSplit": {
       "against": "Dagegen {{percent}}%",
       "againstCount": "Dagegen",
@@ -470,7 +472,6 @@
       "label": "Stimmen",
       "noVotesYet": "Noch keine Stimmen"
     },
-    "voted": "Abgestimmt",
     "votingEnded": "Abstimmung beendet",
     "yours": {
       "noWalletDescription": "Verbinden Sie eine Wallet oder fügen Sie eine hinzu, um Ihre Stimmkraft und Beteiligung an diesen Vorschlägen zu sehen.",
@@ -490,28 +491,28 @@
       "twitterHint": "Folgen Sie uns und schreiben Sie uns eine Nachricht",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": [
-      {
+    "faqs": {
+      "0": {
         "answer": "Ihr Wallet ist möglicherweise nicht verbunden oder das Dashboard synchronisiert noch Blockchain-Daten. Überprüfen Sie das ausgewählte Wallet und Netzwerk.",
         "question": "Warum wird mein Wallet-Guthaben nicht angezeigt?"
       },
-      {
+      "1": {
         "answer": "Alle 60 Sekunden, solange die Übersichtsseite geöffnet ist.",
         "question": "Wie oft wird der FLR-Preis aktualisiert?"
       },
-      {
+      "2": {
         "answer": "Stellen Sie sicher, dass Ihr WFLR delegiert ist und die Epoche für Belohnungen berechtigt ist. Einige Belohnungen müssen nach der Verteilung beansprucht werden.",
         "question": "Warum erhalte ich keine Belohnungen?"
       },
-      {
+      "3": {
         "answer": "MetaMask, Rabby Wallet und Bifrost Wallet als Browsererweiterungen sowie jede WalletConnect-kompatible Wallet für Mobilgeräte oder Hardware-Wallets.",
         "question": "Welche Wallets werden unterstützt?"
       },
-      {
+      "4": {
         "answer": "Navigieren Sie zum Wallet-Bereich und wählen Sie Trennen. Dadurch wird nur die Dashboard-Sitzung entfernt und Ihr Guthaben nicht beeinflusst.",
         "question": "Wie trenne ich mein Wallet?"
       }
-    ],
+    },
     "faqTitle": "Häufig gestellte Fragen",
     "featureGuides": "Funktionsleitfäden",
     "flareGptGuideDescription": "Stellen Sie in einfacher Sprache Fragen zu Ihrem Wallet, Prämien und dem Flare-Netzwerk.",
@@ -523,33 +524,33 @@
     "searchPlaceholder": "Anleitungen oder FAQs durchsuchen ...",
     "searchSub": "Durchsuchen Sie Funktionsanleitungen und FAQs oder finden Sie einen anderen Weg, uns zu erreichen.",
     "searchTitle": "Alles, was Sie für den Einstieg brauchen",
-    "steps": [
-      {
+    "steps": {
+      "0": {
         "step": "01",
         "text": "Erhalten Sie Zugriff auf Guthaben, Prämien und Protokolldaten im gesamten Dashboard.",
         "title": "Wallet verbinden"
       },
-      {
+      "1": {
         "step": "02",
         "text": "Behalten Sie FLR, WFLR, sFLR und weitere unterstützte Assets an einem Ort im Blick.",
         "title": "Bestände anzeigen"
       },
-      {
+      "2": {
         "step": "03",
         "text": "Delegieren Sie Token an FTSO-Anbieter, um Belohnungen zu verdienen.",
         "title": "WFLR delegieren"
       },
-      {
+      "3": {
         "step": "04",
         "text": "Überwachen Sie Epochen, Abgrenzungen und Belohnungsansprüche.",
         "title": "Belohnungen verfolgen"
       },
-      {
+      "4": {
         "step": "05",
         "text": "Stellen Sie Fragen zu Daten und Aktivitäten des Flare-Netzwerks.",
         "title": "FlareGPT nutzen"
       }
-    ],
+    },
     "stillNeedHelp": "Brauchen Sie immer noch Hilfe?",
     "supportDesc": "Der schnellste Weg, uns aktuell zu erreichen, ist X. E-Mail- und Telegram-Support folgen in Kürze."
   },
@@ -559,6 +560,23 @@
     "dismiss": "Ablehnen",
     "installButton": "Installieren",
     "installing": "Installieren..."
+  },
+  "links": {
+    "card": {
+      "discord": "Discord",
+      "docs": "Docs",
+      "twitter": "X",
+      "verifiedOn": "Verified {{date}}",
+      "website": "Webseite"
+    },
+    "couldntLoad": "Links konnten nicht geladen werden.",
+    "description": "Kuratierte, verifizierte Links zu offiziellen Flare-Apps, -Dokumenten und Community-Ressourcen.",
+    "empty": {
+      "description": "Es gibt noch keine Links, die dieser Kategorie entsprechen.",
+      "title": "Keine Links gefunden"
+    },
+    "filterAll": "Alle",
+    "filterLabel": "Nach Kategorie filtern"
   },
   "loops": {
     "description": "Automatisierte Hintergrunddienste, die das Netzwerk beobachten und in deinem Namen handeln.",
@@ -622,6 +640,27 @@
   "onboarding": {
     "welcomeMessage": "Willkommen bei FlareGPT. Verbinde eine Wallet, um dein Portfolio zu sehen, oder frage den KI-Assistenten nach allem."
   },
+  "rankings": {
+    "connected": "Verbunden",
+    "couldntLoad": "Rankingdaten konnten nicht geladen werden.",
+    "disconnected": "Nicht verbunden",
+    "noData": "Keine Daten vorhanden",
+    "validators": {
+      "delegatorCount_one": "{{count}} Delegierender",
+      "delegatorCount_other": "{{count}} Delegierende",
+      "fee": "pflichtig",
+      "uptime": "nutzbare Maschinenzeit",
+      "delegatorCount": "{{count}} Delegierende"
+    },
+    "yourStake": {
+      "connectToSee": "Stellen Sie eine Verbindung her oder wählen Sie eine Wallet aus, um Ihren Validator-Status zu sehen.",
+      "nextUnlock": "Nächste Freischaltung: {{date}}",
+      "notStakedDescription": "Dieses Wallet hat keinen aktiven P-Chain-Validator-Einsatz.",
+      "notStakedTitle": "Kein aktiver Einsatz",
+      "stakeCta": "Einsatz am Flare-Portal",
+      "title": "Ihr Validator-Einsatz"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "Verbinde oder wähle ein Wallet, um dessen Vesting-Status zu sehen.",
     "couldntLoad": "Deine Vesting-Daten konnten nicht geladen werden.",
@@ -649,7 +688,7 @@
       "earlyExitNoneNeeded": "Nichts gesperrt, daher keine Strafe für einen vorzeitigen Ausstieg.",
       "earlyExitTitle": "Vorzeitiger Ausstieg",
       "efficiency": "{{pct}}% effizient",
-      "fullyVested": "Vollständig vested — nichts mehr freizuschalten",
+      "fullyVested": "Vollständig unverfallbar, nichts mehr zu entsperren",
       "netPayout": "Netto-Auszahlung jetzt",
       "nextUnlock": "Nächste Freischaltung am {{date}}",
       "nextUnlockCaption": "wird liquide",
@@ -666,7 +705,7 @@
     "timeline": {
       "couldntLoad": "Freischaltungsverlauf konnte nicht geladen werden.",
       "emptyTitle": "Noch keine Freischaltungshistorie",
-      "historicalNote": "Zeigt den vollständigen Freischaltungsverlauf — kann bereits anderweitig beanspruchte Beträge enthalten, daher kann die Summe deinen aktuellen Saldo oben übersteigen.",
+      "historicalNote": "Dieser vollständige Freischaltverlauf kann Beträge enthalten, die bereits an anderer Stelle beansprucht wurden, sodass die Gesamtsummen dein aktuelles Guthaben oben übersteigen können.",
       "loadingHint": "Dies kann beim ersten Prüfen eines Wallets bis zu 30 Sekunden dauern.",
       "loadingTitle": "Freischaltungsverlauf wird geladen…",
       "statusLiquid": "Liquide",
@@ -879,6 +918,7 @@
     "ftsoRewards": "FTSO",
     "governance": "Regierungsführung",
     "helpCenter": "Hilfe-Center",
+    "links": "Links",
     "loops": "Rendite",
     "mainNavigation": "Hauptnavigation",
     "notConnected": "Nicht verbunden",
@@ -1022,6 +1062,5 @@
       "received": "Erhalten",
       "sent": "Gesendet"
     }
-  },
-  "comingSoon": {}
+  }
 }

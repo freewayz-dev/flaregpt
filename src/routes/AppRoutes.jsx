@@ -26,6 +26,7 @@ import RflrVestingPageSkeleton from "@/pages/RflrVesting/RflrVestingPageSkeleton
 import FtsoRewardsPageSkeleton from "@/pages/FtsoRewards/FtsoRewardsPageSkeleton";
 import LoopsPageSkeleton from "@/pages/Loops/LoopsPageSkeleton";
 import GovernancePageSkeleton from "@/pages/Governance/GovernancePageSkeleton";
+import LinksPageSkeleton from "@/pages/Links/LinksPageSkeleton";
 import { ROUTES, APP_SEGMENTS } from "@/config/routes";
 
 
@@ -43,6 +44,7 @@ const FtsoRewards = lazy(() => import("@/pages/FtsoRewards"));
 const WalletActivity = lazy(() => import("@/pages/WalletActivity"));
 const Donate = lazy(() => import("@/pages/Donate"));
 const Governance = lazy(() => import("@/pages/Governance"));
+const Links = lazy(() => import("@/pages/Links"));
 
 const LANDING_PAGE_PATHS = {
   "flare-gpt": ROUTES.flareGpt,
@@ -172,6 +174,14 @@ export default function AppRoutes() {
             }
           />
           <Route path={APP_SEGMENTS.donate} element={<Donate />} />
+          <Route
+            path={APP_SEGMENTS.links}
+            element={
+              <Suspense fallback={<LinksPageSkeleton />}>
+                <Links />
+              </Suspense>
+            }
+          />
         </Route>
 
         <Route path="*" element={<Navigate to={ROUTES.landing} replace />} />

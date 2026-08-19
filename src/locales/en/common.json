@@ -276,7 +276,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT can make mistakes. Verify important information before acting on it.",
-      "offlinePlaceholder": "You're offline — messages can't be sent right now",
+      "offlinePlaceholder": "You're offline, so messages can't be sent right now",
       "placeholder": "Ask FlareGPT...",
       "send": "Send",
       "stop": "Stop generating"
@@ -364,7 +364,7 @@
     },
     "description": "Track your FTSO delegation rewards, reward velocity, and provider allocations in one place.",
     "epochs": {
-      "emptyDescription": "All caught up — no pending epoch rewards right now.",
+      "emptyDescription": "All caught up, with no pending epoch rewards right now.",
       "emptyTitle": "Nothing Unclaimed",
       "epochLabel": "Epoch {{id}}",
       "subtitle": "Rewards waiting to be claimed, by epoch",
@@ -373,7 +373,8 @@
       "viewFullLedger_other": "View full ledger ({{count}} entries)"
     },
     "providers": {
-      "description": "Compare data providers by performance and fees once provider rankings are connected.",
+      "description": "Ranked by delegated weight and fee, not by reward performance, which isn't reliably measurable on-chain.",
+      "emptyDescription": "No provider ranking data is available right now.",
       "title": "FTSO Providers"
     },
     "stats": {
@@ -383,7 +384,8 @@
       "wflrBalance": "WFLR Balance"
     },
     "validators": {
-      "description": "See top-performing validators once staking rankings are connected.",
+      "description": "Ranked by connection status and uptime. Validators have no registered names, only NodeIDs.",
+      "emptyDescription": "No validator ranking data is available right now.",
       "title": "Staking Validators Ranking"
     },
     "velocity": {
@@ -461,6 +463,7 @@
       "pending": "Pending",
       "unknown": "Unknown"
     },
+    "voted": "Voted",
     "voteSplit": {
       "against": "Against {{percent}}%",
       "againstCount": "Against",
@@ -469,7 +472,6 @@
       "label": "Votes",
       "noVotesYet": "No votes yet"
     },
-    "voted": "Voted",
     "votingEnded": "Voting ended",
     "yours": {
       "noWalletDescription": "Connect or add a wallet to see your voting power and participation across these proposals.",
@@ -559,6 +561,23 @@
     "installButton": "Install",
     "installing": "Installing…"
   },
+  "links": {
+    "card": {
+      "discord": "Discord",
+      "docs": "Docs",
+      "twitter": "X",
+      "verifiedOn": "Verified {{date}}",
+      "website": "Website"
+    },
+    "couldntLoad": "Couldn't load links.",
+    "description": "Curated, verified links to official Flare apps, docs, and community resources.",
+    "empty": {
+      "description": "No links match this category yet.",
+      "title": "No links found"
+    },
+    "filterAll": "All",
+    "filterLabel": "Filter by category"
+  },
   "loops": {
     "description": "Automated background services that watch the network and act on your behalf.",
     "gasSniper": {
@@ -621,6 +640,27 @@
   "onboarding": {
     "welcomeMessage": "Welcome to FlareGPT. Connect a wallet to see your portfolio, or ask the AI assistant anything."
   },
+  "rankings": {
+    "connected": "Connected",
+    "couldntLoad": "Couldn't load ranking data.",
+    "disconnected": "Disconnected",
+    "noData": "No data available",
+    "validators": {
+      "delegatorCount": "{{count}} delegators",
+      "delegatorCount_one": "{{count}} delegator",
+      "delegatorCount_other": "{{count}} delegators",
+      "fee": "fee",
+      "uptime": "uptime"
+    },
+    "yourStake": {
+      "connectToSee": "Connect or select a wallet to see your validator staking status.",
+      "nextUnlock": "Next unlock {{date}}",
+      "notStakedDescription": "This wallet has no active P-Chain validator stake.",
+      "notStakedTitle": "No Active Stake",
+      "stakeCta": "Stake on Flare Portal",
+      "title": "Your Validator Stake"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "Connect or select a wallet to see its vesting status.",
     "couldntLoad": "Couldn't load your vesting data.",
@@ -648,7 +688,7 @@
       "earlyExitNoneNeeded": "Nothing locked, so there's no penalty for exiting early.",
       "earlyExitTitle": "Early Exit",
       "efficiency": "{{pct}}% efficient",
-      "fullyVested": "Fully vested — nothing left to unlock",
+      "fullyVested": "Fully vested, nothing left to unlock",
       "netPayout": "Net Payout Now",
       "nextUnlock": "Next unlock on {{date}}",
       "nextUnlockCaption": "becomes liquid",
@@ -665,7 +705,7 @@
     "timeline": {
       "couldntLoad": "Couldn't load the unlock history.",
       "emptyTitle": "No unlock history yet",
-      "historicalNote": "Full unlock history — may include amounts already claimed elsewhere, so totals can exceed your current balance above.",
+      "historicalNote": "This full unlock history may include amounts already claimed elsewhere, so totals can exceed your current balance above.",
       "loadingHint": "This can take up to 30 seconds the first time we check a wallet.",
       "loadingTitle": "Loading unlock history…",
       "statusLiquid": "Liquid",
@@ -878,6 +918,7 @@
     "ftsoRewards": "FTSO",
     "governance": "Governance",
     "helpCenter": "Help Center",
+    "links": "Links",
     "loops": "Loops",
     "mainNavigation": "Main navigation",
     "notConnected": "Not connected",

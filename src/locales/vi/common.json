@@ -259,8 +259,7 @@
     "warning": {
       "body": "Chỉ gửi {{symbol}} hoặc các token {{network}} khác đến địa chỉ này. Tài sản gửi từ các mạng khác không thể khôi phục.",
       "title": "Chỉ tài sản {{network}}."
-    },
-    "funding": {}
+    }
   },
   "flareWidget": {
     "close": "Đóng",
@@ -277,7 +276,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPT có thể mắc lỗi. Hãy xác minh thông tin quan trọng trước khi hành động theo đó.",
-      "offlinePlaceholder": "Bạn đang ngoại tuyến — không thể gửi tin nhắn ngay bây giờ",
+      "offlinePlaceholder": "Bạn đang ngoại tuyến, vì vậy tin nhắn không thể được gửi ngay bây giờ",
       "placeholder": "Hỏi FlareGPT...",
       "send": "Gửi",
       "stop": "Dừng tạo phản hồi"
@@ -365,7 +364,7 @@
     },
     "description": "Theo dõi phần thưởng ủy quyền FTSO, tốc độ tích lũy phần thưởng và phân bổ nhà cung cấp tại một nơi.",
     "epochs": {
-      "emptyDescription": "Mọi thứ đã được cập nhật — hiện không có phần thưởng epoch nào đang chờ.",
+      "emptyDescription": "Tất cả đã bắt kịp, không có phần thưởng kỷ nguyên đang chờ xử lý nào ngay bây giờ.",
       "emptyTitle": "Không Có Gì Chưa Nhận",
       "epochLabel": "Epoch {{id}}",
       "subtitle": "Phần thưởng đang chờ được nhận, theo epoch",
@@ -374,7 +373,8 @@
       "viewFullLedger_other": "Xem sổ cái đầy đủ ({{count}} mục)"
     },
     "providers": {
-      "description": "So sánh các nhà cung cấp dữ liệu theo hiệu suất và phí sau khi bảng xếp hạng nhà cung cấp được kết nối.",
+      "description": "Được xếp hạng theo trọng lượng và phí được ủy quyền, chứ không phải theo hiệu suất phần thưởng, vốn không thể đo lường được trên chuỗi một cách đáng tin cậy.",
+      "emptyDescription": "Hiện không có dữ liệu xếp hạng nhà cung cấp nào.",
       "title": "Nhà Cung Cấp FTSO"
     },
     "stats": {
@@ -384,7 +384,8 @@
       "wflrBalance": "Số Dư WFLR"
     },
     "validators": {
-      "description": "Xem các validator có hiệu suất tốt nhất sau khi bảng xếp hạng staking được kết nối.",
+      "description": "Được xếp hạng theo trạng thái kết nối và thời gian hoạt động. Trình xác thực không có tên đã đăng ký, chỉ có NodeID.",
+      "emptyDescription": "Hiện không có dữ liệu xếp hạng trình xác thực nào.",
       "title": "Bảng Xếp Hạng Validator Staking"
     },
     "velocity": {
@@ -462,6 +463,7 @@
       "pending": "Đang chờ",
       "unknown": "Không xác định"
     },
+    "voted": "Đã bỏ phiếu",
     "voteSplit": {
       "against": "Phản đối {{percent}}%",
       "againstCount": "Phản đối",
@@ -470,7 +472,6 @@
       "label": "Phiếu bầu",
       "noVotesYet": "Chưa có phiếu bầu"
     },
-    "voted": "Đã bỏ phiếu",
     "votingEnded": "Bỏ phiếu đã kết thúc",
     "yours": {
       "noWalletDescription": "Kết nối hoặc thêm một ví để xem quyền biểu quyết và mức độ tham gia của bạn vào các đề xuất này.",
@@ -560,6 +561,23 @@
     "installButton": "Cài đặt",
     "installing": "Đang cài đặt..."
   },
+  "links": {
+    "card": {
+      "discord": "Bất hòa",
+      "docs": "Tài liệu",
+      "twitter": "X",
+      "verifiedOn": "Đã xác minh {{date}}",
+      "website": "Trang web"
+    },
+    "couldntLoad": "Không thể tải liên kết.",
+    "description": "Các liên kết được tuyển chọn, xác minh đến các ứng dụng Flare chính thức, tài liệu và tài nguyên cộng đồng.",
+    "empty": {
+      "description": "Chưa có liên kết nào khớp với danh mục này.",
+      "title": "Không tìm thấy liên kết"
+    },
+    "filterAll": "Tất cả",
+    "filterLabel": "Lọc theo chuyên mục"
+  },
   "loops": {
     "description": "Các dịch vụ nền tự động theo dõi mạng lưới và hành động thay cho bạn.",
     "gasSniper": {
@@ -622,6 +640,27 @@
   "onboarding": {
     "welcomeMessage": "Chào mừng bạn đến với FlareGPT. Kết nối ví để xem danh mục đầu tư của bạn hoặc hỏi trợ lý AI bất cứ điều gì."
   },
+  "rankings": {
+    "connected": "Đã kết nối",
+    "couldntLoad": "Không thể tải dữ liệu xếp hạng.",
+    "disconnected": "Đã ngắt kết nối",
+    "noData": "Không có dữ liệu",
+    "validators": {
+      "delegatorCount_other": "{{count}} đại biểu",
+      "fee": "tiền thù lao, học phí",
+      "uptime": "Thời gian hoạt động",
+      "delegatorCount": "{{count}} đại biểu",
+      "delegatorCount_one": "{{count}} người ủy quyền"
+    },
+    "yourStake": {
+      "connectToSee": "Kết nối hoặc chọn một ví để xem trạng thái staking của người xác thực.",
+      "nextUnlock": "Lần mở khóa tiếp theo {{date}}",
+      "notStakedDescription": "Ví này không có cổ phần xác thực P-Chain đang hoạt động.",
+      "notStakedTitle": "Không có Staking đang hoạt động",
+      "stakeCta": "Stake trên Flare Portal",
+      "title": "Cổ phần của người xác thực của bạn"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "Kết nối hoặc chọn một ví để xem trạng thái vesting của ví đó.",
     "couldntLoad": "Không thể tải dữ liệu vesting của bạn.",
@@ -649,7 +688,7 @@
       "earlyExitNoneNeeded": "Không có gì bị khóa, vì vậy không có hình phạt khi rút sớm.",
       "earlyExitTitle": "Rút Sớm",
       "efficiency": "hiệu suất {{pct}}%",
-      "fullyVested": "Đã vest hoàn toàn — không còn gì để mở khóa",
+      "fullyVested": "Được giao đầy đủ, không còn gì để mở khóa",
       "netPayout": "Số Tiền Nhận Ròng Hiện Tại",
       "nextUnlock": "Lần mở khóa tiếp theo vào {{date}}",
       "nextUnlockCaption": "sẽ trở thành thanh khoản",
@@ -666,7 +705,7 @@
     "timeline": {
       "couldntLoad": "Không thể tải lịch sử mở khóa.",
       "emptyTitle": "Chưa có lịch sử mở khóa",
-      "historicalNote": "Hiển thị toàn bộ lịch sử mở khóa — có thể bao gồm các khoản đã được yêu cầu ở nơi khác, vì vậy tổng số có thể vượt quá số dư hiện tại của bạn ở trên.",
+      "historicalNote": "Lịch sử mở khóa đầy đủ này có thể bao gồm số tiền đã được yêu cầu thanh toán ở nơi khác, vì vậy tổng số tiền có thể vượt quá số dư hiện tại của bạn ở trên.",
       "loadingHint": "Việc này có thể mất đến 30 giây trong lần đầu tiên chúng tôi kiểm tra một ví.",
       "loadingTitle": "Đang tải lịch sử mở khóa…",
       "statusLiquid": "Thanh Khoản",
@@ -879,6 +918,7 @@
     "ftsoRewards": "FTSO",
     "governance": "Quản trị",
     "helpCenter": "Trung tâm Trợ giúp",
+    "links": "Liên kết",
     "loops": "Vòng lặp",
     "mainNavigation": "Điều hướng chính",
     "notConnected": "Chưa kết nối",
@@ -1023,6 +1063,5 @@
       "received": "Đã nhận",
       "sent": "Đã gửi"
     }
-  },
-  "comingSoon": {}
+  }
 }

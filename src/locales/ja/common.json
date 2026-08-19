@@ -259,8 +259,7 @@
     "warning": {
       "body": "このアドレスには{{symbol}}または他の{{network}}トークンのみを送金してください。他のネットワークから送られた資産は復元できません。",
       "title": "{{network}}の資産のみ。"
-    },
-    "funding": {}
+    }
   },
   "flareWidget": {
     "close": "閉じる",
@@ -277,7 +276,7 @@
     },
     "composer": {
       "disclaimer": "FlareGPTは間違えることがあります。重要な情報は行動する前に確認してください。",
-      "offlinePlaceholder": "オフラインです。現在メッセージを送信できません",
+      "offlinePlaceholder": "オフラインのため、現在メッセージを送信できません",
       "placeholder": "FlareGPTに質問...",
       "send": "送信",
       "stop": "生成を停止"
@@ -365,7 +364,7 @@
     },
     "description": "FTSOデリゲーション報酬、報酬速度、プロバイダーへの配分を一か所で確認できます。",
     "epochs": {
-      "emptyDescription": "すべて完了しています — 現在保留中のエポック報酬はありません。",
+      "emptyDescription": "現在、保留中のエポック報酬はありません。",
       "emptyTitle": "未請求はありません",
       "epochLabel": "エポック{{id}}",
       "subtitle": "エポックごとの請求待ち報酬",
@@ -374,7 +373,8 @@
       "viewFullLedger_other": "完全な台帳を表示（{{count}}件）"
     },
     "providers": {
-      "description": "プロバイダーランキングが接続されたら、パフォーマンスと手数料でデータプロバイダーを比較できます。",
+      "description": "オンチェーンでは信頼性の高い測定ができない報酬パフォーマンスではなく、委任された重量と料金でランク付けされます。",
+      "emptyDescription": "現在、プロバイダーのランキングデータは利用できません。",
       "title": "FTSOプロバイダー"
     },
     "stats": {
@@ -384,7 +384,8 @@
       "wflrBalance": "WFLR残高"
     },
     "validators": {
-      "description": "ステーキングランキングが接続されたら、最もパフォーマンスの高いバリデーターを確認できます。",
+      "description": "接続ステータスと稼働時間でランク付けされています。バリデータには名前が登録されておらず、NodeIDのみが登録されています。",
+      "emptyDescription": "現在利用可能なバリデータはありません。",
       "title": "ステーキングバリデーターランキング"
     },
     "velocity": {
@@ -462,6 +463,7 @@
       "pending": "保留中",
       "unknown": "不明"
     },
+    "voted": "投票済み",
     "voteSplit": {
       "against": "反対 {{percent}}%",
       "againstCount": "反対",
@@ -470,7 +472,6 @@
       "label": "投票",
       "noVotesYet": "まだ投票はありません"
     },
-    "voted": "投票済み",
     "votingEnded": "投票終了",
     "yours": {
       "noWalletDescription": "これらの提案における投票権と参加状況を確認するには、ウォレットを接続または追加してください。",
@@ -560,6 +561,23 @@
     "installButton": "インストール",
     "installing": "インストール中…"
   },
+  "links": {
+    "card": {
+      "discord": "Discord",
+      "docs": "ドックス",
+      "twitter": "X",
+      "verifiedOn": "{{date}}に認証済み",
+      "website": "ウェブサイト"
+    },
+    "couldntLoad": "リンクを読み込めませんでした。",
+    "description": "Flare公式アプリ、ドキュメント、コミュニティリソースへの厳選された検証済みのリンク。",
+    "empty": {
+      "description": "このカテゴリーに一致するリンクはまだありません。",
+      "title": "リンクが見つかりません"
+    },
+    "filterAll": "すべて",
+    "filterLabel": "カテゴリーで絞り込む"
+  },
   "loops": {
     "description": "ネットワークを監視し、あなたに代わって行動する自動バックグラウンドサービスです。",
     "gasSniper": {
@@ -622,6 +640,27 @@
   "onboarding": {
     "welcomeMessage": "FlareGPTへようこそ。ウォレットを接続してポートフォリオを確認するか、AIアシスタントに何でもお尋ねください。"
   },
+  "rankings": {
+    "connected": "接続済み",
+    "couldntLoad": "ランキングデータを読み込めませんでした。",
+    "disconnected": "接続解除済み",
+    "noData": "データがありません",
+    "validators": {
+      "delegatorCount_other": "{{count}}人の委任者",
+      "fee": "手数料",
+      "uptime": "稼働時間",
+      "delegatorCount": "{{count}}人の委任者",
+      "delegatorCount_one": "{{count}}人のデリゲーター"
+    },
+    "yourStake": {
+      "connectToSee": "ウォレットを接続または選択すると、バリデータのステーキングステータスが表示されます。",
+      "nextUnlock": "次のロック解除は{{date}}です",
+      "notStakedDescription": "このウォレットには有効なPチェーンバリデーターステークがありません。",
+      "notStakedTitle": "Active stake - アクティブステーク",
+      "stakeCta": "フレアポータルへのステーク",
+      "title": "あなたのバリデーターステーク"
+    }
+  },
   "rflrVesting": {
     "connectToSee": "ベスティング状況を表示するには、ウォレットを接続または選択してください。",
     "couldntLoad": "ベスティングデータを読み込めませんでした。",
@@ -649,7 +688,7 @@
       "earlyExitNoneNeeded": "ロックされているものがないため、早期エグジットのペナルティはありません。",
       "earlyExitTitle": "早期エグジット",
       "efficiency": "効率 {{pct}}%",
-      "fullyVested": "完全にベスト済み — アンロック待ちはありません",
+      "fullyVested": "完全に権利が確保されています。解除できるものはもう何もありません",
       "netPayout": "現在の正味支払額",
       "nextUnlock": "次回のアンロック: {{date}}",
       "nextUnlockCaption": "が流動化します",
@@ -666,7 +705,7 @@
     "timeline": {
       "couldntLoad": "アンロック履歴を読み込めませんでした。",
       "emptyTitle": "アンロック履歴はまだありません",
-      "historicalNote": "完全なアンロック履歴を表示します。他ですでに請求済みの金額が含まれる場合があるため、合計が上記の現在の残高を超えることがあります。",
+      "historicalNote": "この完全なロック解除履歴には、すでに別の場所で請求された金額が含まれている可能性があるため、合計金額が上記の現在の残高を超える可能性があります。",
       "loadingHint": "ウォレットを初めて確認する際は、最大30秒かかることがあります。",
       "loadingTitle": "アンロック履歴を読み込み中…",
       "statusLiquid": "流動",
@@ -879,6 +918,7 @@
     "ftsoRewards": "FTSO",
     "governance": "ガバナンス",
     "helpCenter": "ヘルプセンター",
+    "links": "リンク",
     "loops": "ループ",
     "mainNavigation": "メインナビゲーション",
     "notConnected": "未接続",
@@ -1023,6 +1063,5 @@
       "received": "受け取り完了",
       "sent": "送信済み"
     }
-  },
-  "comingSoon": {}
+  }
 }
