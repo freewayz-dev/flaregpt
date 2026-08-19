@@ -215,7 +215,7 @@ export function getWalletConnectMetadata() {
   return {
     name: "FlareGPT",
     description:
-      "Track wallets, claim FTSO rewards, monitor governance, and chat with an AI that understands your Flare portfolio.",
+      "An AI assistant built for the Flare ecosystem — live network data, wallets, FTSO rewards, and DeFi tools in one place.",
     url: "https://www.flaregpt.io",
     icons: ["https://www.flaregpt.io/icon-512.png"],
     // `redirect.universal` is an instruction to physically navigate the

@@ -25,7 +25,7 @@ test("landing page hydrates — FAQ accordion responds to a click", async ({ pag
   await expect(question).toHaveAttribute("aria-expanded", "true");
   await expect(
     page.getByText(
-      "FlareGPT is an AI layer that connects to your wallets and turns on-chain data into simple, actionable insights in real time.",
+      "FlareGPT is an AI assistant built specifically for the Flare ecosystem. It combines real-time Flare network data, ecosystem knowledge, and built-in tools for wallets, FTSO rewards, DeFi, and more.",
     ),
   ).toBeVisible();
 });
