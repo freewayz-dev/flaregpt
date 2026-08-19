@@ -491,28 +491,28 @@
       "twitterHint": "Bizi takip edin ve mesaj gönderin",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": {
-      "0": {
+    "faqs": [
+      {
         "answer": "Cüzdanınız bağlı olmayabilir veya panel henüz blokzincir verilerini senkronize ediyor olabilir. Doğru cüzdan ve ağın seçildiğinden emin olun.",
         "question": "Cüzdan bakiyem neden görünmüyor?"
       },
-      "1": {
+      {
         "answer": "Genel Bakış sayfası açıkken her 60 saniyede bir.",
         "question": "FLR fiyatı ne sıklıkla güncellenir?"
       },
-      "2": {
+      {
         "answer": "WFLR'nizin delege edildiğinden ve dönemin ödüller için uygun olduğundan emin olun. Bazı ödüller dağıtımdan sonra talep edilmeyi gerektirebilir.",
         "question": "Neden ödül alamıyorum?"
       },
-      "3": {
+      {
         "answer": "Tarayıcı eklentisi olarak MetaMask, Rabby Wallet ve Bifrost Wallet; mobil veya donanım cüzdanları için ise WalletConnect uyumlu herhangi bir cüzdan.",
         "question": "Hangi cüzdanlar destekleniyor?"
       },
-      "4": {
+      {
         "answer": "Cüzdan bölümüne gidin ve Bağlantıyı Kes'i seçin. Bu işlem yalnızca panel oturumunu kaldırır ve fonlarınızı etkilemez.",
         "question": "Cüzdanımı nasıl kesebilirim?"
       }
-    },
+    ],
     "faqTitle": "Sıkça Sorulan Sorular",
     "featureGuides": "Özellik Kılavuzları",
     "flareGptGuideDescription": "Cüzdanınız, ödülleriniz ve Flare ağı hakkında sade bir dille soru sorun.",
@@ -524,33 +524,33 @@
     "searchPlaceholder": "Rehberlerde veya SSS'de ara...",
     "searchSub": "Özellik rehberlerinde ve SSS'de arama yapın veya bize ulaşmanın başka bir yolunu bulun.",
     "searchTitle": "Başlamak için ihtiyacınız olan her şey",
-    "steps": {
-      "0": {
+    "steps": [
+      {
         "step": "01",
         "text": "Panonun tamamında bakiyelere, ödüllere ve protokol verilerine erişin.",
         "title": "Cüzdanınızı Bağlayın"
       },
-      "1": {
+      {
         "step": "02",
         "text": "FLR, WFLR, sFLR ve desteklenen diğer varlıkları tek bir yerden takip edin.",
         "title": "Varlıklarınızı Görüntüleyin"
       },
-      "2": {
+      {
         "step": "03",
         "text": "Ödül kazanmak için tokenleri FTSO sağlayıcılarına delege edin.",
         "title": "WFLR Delege Edin"
       },
-      "3": {
+      {
         "step": "04",
         "text": "Dönemleri, tahakkukları ve ödül taleplerini izleyin.",
         "title": "Ödülleri Takip Edin"
       },
-      "4": {
+      {
         "step": "05",
         "text": "Flare Network verileri ve aktiviteleri hakkında sorular sorun.",
         "title": "FlareGPT'yi kullanın"
       }
-    },
+    ],
     "stillNeedHelp": "Hâlâ yardıma mı ihtiyacınız var?",
     "supportDesc": "Şu anda bize ulaşmanın en hızlı yolu X. E-posta ve Telegram desteği yakında geliyor."
   },
@@ -909,13 +909,13 @@
     "closeMenu": "Menüyü kapat",
     "collapseSidebar": "Kenar çubuğunu daralt",
     "connectWallet": "Cüzdan Bağla",
-    "defiProtocols": "Defi Protokolleri",
+    "defiProtocols": "DeFi Protokolleri",
     "disconnect": "Bağlantıyı Kes",
     "donate": "Bağış yap",
     "expandSidebar": "Kenar çubuğunu genişlet",
     "feeds": "Bildirimler",
     "FlareGPT": "FlareGPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "FTSO Ödülleri",
     "governance": "Yönetişim",
     "helpCenter": "Yardım Merkezi",
     "links": "Bağlantılar",
@@ -929,7 +929,12 @@
     "signInRequiredHint": "Giriş yapmak için üst çubuktaki cüzdan menüsünü kullanın.",
     "walletActivity": "Cüzdan Aktivitesi",
     "walletConnected": "Cüzdan Bağlandı",
-    "yield": "Getiri"
+    "yield": "Getiri",
+    "groups": {
+      "ecosystem": "Ekosistem",
+      "general": "Genel",
+      "portfolio": "Portföy"
+    }
   },
   "staleData": {
     "justNow": "Dakikalar öncesinden önbelleğe alınmış veriler gösteriliyor",

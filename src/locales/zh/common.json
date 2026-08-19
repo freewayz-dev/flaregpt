@@ -491,28 +491,28 @@
       "twitterHint": "关注我们并给我们发消息",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": {
-      "0": {
+    "faqs": [
+      {
         "answer": "您的钱包可能未连接，或者控制面板仍在同步区块链数据。请核对是否选择了正确的钱包和网络。",
         "question": "为什么我的钱包余额不显示？"
       },
-      "1": {
+      {
         "answer": "在“概览”页面打开期间，每 60 秒更新一次。",
         "question": "FLR 价格多长时间更新一次？"
       },
-      "2": {
+      {
         "answer": "请确保您的 WFLR 已进行委托，并且该纪元符合奖励条件。某些奖励可能需要在分发后手动领取。",
         "question": "为什么我没有收到奖励？"
       },
-      "3": {
+      {
         "answer": "浏览器扩展形式的 MetaMask、Rabby Wallet 和 Bifrost Wallet，以及适用于移动端或硬件钱包的任何兼容 WalletConnect 的钱包。",
         "question": "支持哪些钱包？"
       },
-      "4": {
+      {
         "answer": "导航至钱包区域并选择“断开连接”。这只会清除控制面板的登录状态，不会影响您的资金。",
         "question": "如何断开我的钱包连接？"
       }
-    },
+    ],
     "faqTitle": "常见问题解答",
     "featureGuides": "功能指南",
     "flareGptGuideDescription": "用自然语言询问你的钱包、奖励和 Flare 网络相关问题。",
@@ -524,33 +524,33 @@
     "searchPlaceholder": "搜索指南或常见问题...",
     "searchSub": "搜索功能指南和常见问题，或通过其他方式联系我们。",
     "searchTitle": "开始使用所需的一切",
-    "steps": {
-      "0": {
+    "steps": [
+      {
         "step": "01",
         "text": "在整个仪表盘中访问余额、奖励和协议数据。",
         "title": "连接您的钱包"
       },
-      "1": {
+      {
         "step": "02",
         "text": "在同一处追踪 FLR、WFLR、sFLR 及其他受支持的资产。",
         "title": "查看您的资产"
       },
-      "2": {
+      {
         "step": "03",
         "text": "将代币委托给 FTSO 提供商以赚取奖励。",
         "title": "委托 WFLR"
       },
-      "3": {
+      {
         "step": "04",
         "text": "监控纪元（Epoch）、累计情况和奖励领取状态。",
         "title": "追踪奖励"
       },
-      "4": {
+      {
         "step": "05",
         "text": "询问关于 Flare 网络数据和活动的问题。",
         "title": "使用 FlareGPT"
       }
-    },
+    ],
     "stillNeedHelp": "仍然需要帮助？",
     "supportDesc": "目前联系我们最快的方式是通过 X。邮箱与 Telegram 支持即将上线。"
   },
@@ -909,13 +909,13 @@
     "closeMenu": "关闭菜单",
     "collapseSidebar": "收起侧边栏",
     "connectWallet": "连接钱包",
-    "defiProtocols": "Defi方案",
+    "defiProtocols": "DeFi协议",
     "disconnect": "断开连接",
     "donate": "捐献",
     "expandSidebar": "展开侧边栏",
     "feeds": "馈送",
     "FlareGPT": "耀斑GPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "FTSO奖励",
     "governance": "治理",
     "helpCenter": "帮助中心",
     "links": "Links",
@@ -929,7 +929,12 @@
     "signInRequiredHint": "使用顶部栏中的钱包菜单登录。",
     "walletActivity": "钱包活动",
     "walletConnected": "钱包已连接",
-    "yield": "收益率"
+    "yield": "收益率",
+    "groups": {
+      "ecosystem": "生态系统",
+      "general": "通用",
+      "portfolio": "投资组合"
+    }
   },
   "staleData": {
     "justNow": "显示刚才的缓存数据",

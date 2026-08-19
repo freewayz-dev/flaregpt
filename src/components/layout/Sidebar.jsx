@@ -16,8 +16,21 @@ import { shortenAddress } from "@/utils/address";
 import { useUIStore } from "@/store/useUIStore";
 import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 import { useAuthStatus } from "@/hooks/useAuthStatus";
-import { NAV_LINKS as links } from "@/config/navigation";
+import { NAV_LINKS as links, NAV_GROUPS } from "@/config/navigation";
 import { ROUTES } from "@/config/routes";
+
+// Buckets NAV_LINKS by its `group` tag, preserving the array's own
+// relative order within each bucket (and for the pinned/ungrouped items)
+// rather than re-sorting — `NAV_GROUPS` only supplies section order and
+// labels, not membership.
+function groupNavLinks(navLinks) {
+  const pinned = navLinks.filter((link) => !link.group);
+  const byGroup = new Map(NAV_GROUPS.map((g) => [g.id, []]));
+  for (const link of navLinks) {
+    if (link.group) byGroup.get(link.group)?.push(link);
+  }
+  return { pinned, byGroup };
+}
 
 
 
@@ -46,6 +59,38 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
   const needsSignIn = isConnected && !isCurrentWalletSignedIn;
 
   const isActive = (path) => location.pathname === path;
+
+  const { pinned, byGroup } = groupNavLinks(links);
+
+  const renderNavLink = (link) => {
+    const Icon = link.icon;
+    const active = isActive(link.path);
+
+    return (
+      <Link
+        key={link.translationKey}
+        to={link.path}
+        aria-current={active ? "page" : undefined}
+        onMouseEnter={link.prefetch}
+        onFocus={link.prefetch}
+        onClick={() => setOpen(false)}
+        className={`
+          ${link.hideOnMobile ? "hidden lg:flex" : "flex"} items-center rounded-xl py-3 text-xs font-medium transition-colors duration-150
+          px-3 gap-3 ${collapsed ? "lg:justify-center lg:px-2 lg:gap-0" : ""}
+          ${
+            active
+              ? "relative bg-brand/15 text-brand"
+              : "text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary dark:hover:text-white"
+          }
+        `}
+      >
+        <Icon className="h-[18px] w-[18px] shrink-0" />
+        <span className={`truncate ${collapsed ? "lg:hidden" : ""}`}>
+          {t(`sidebar.${link.translationKey}`)}
+        </span>
+      </Link>
+    );
+  };
 
   // Matches every other dismissible overlay in the app — a keyboard user
   // shouldn't need to tab to the explicit close button to get out of the
@@ -148,33 +193,27 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
 
         {/* Dynamic Navigation Interface Menu list */}
         <nav aria-label={t("sidebar.mainNavigation")} className="mt-4 flex-1 space-y-1 px-2 overflow-y-auto scrollbar-none">
-          {links.map((link) => {
-            const Icon = link.icon;
-            const active = isActive(link.path);
+          {pinned.map(renderNavLink)}
+
+          {NAV_GROUPS.map((group) => {
+            const groupLinks = byGroup.get(group.id) ?? [];
+            if (groupLinks.length === 0) return null;
 
             return (
-              <Link
-                key={link.translationKey}
-                to={link.path}
-                aria-current={active ? "page" : undefined}
-                onMouseEnter={link.prefetch}
-                onFocus={link.prefetch}
-                onClick={() => setOpen(false)}
-                className={`
-                  ${link.hideOnMobile ? "hidden lg:flex" : "flex"} items-center rounded-xl py-3 text-xs font-medium transition-colors duration-150
-                  px-3 gap-3 ${collapsed ? "lg:justify-center lg:px-2 lg:gap-0" : ""}
-                  ${
-                    active
-                      ? "relative bg-brand/15 text-brand"
-                      : "text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary dark:hover:text-white"
-                  }
-                `}
-              >
-                <Icon className="h-[18px] w-[18px] shrink-0" />
-                <span className={`truncate ${collapsed ? "lg:hidden" : ""}`}>
-                  {t(`sidebar.${link.translationKey}`)}
-                </span>
-              </Link>
+              <div key={group.id} className="pt-3 space-y-1">
+                {/* Collapsed rail has no room for a label — same fallback
+                    Settings' own mobile tab strip uses when it hits the
+                    same "no space for headers" constraint: drop the label,
+                    keep the items. */}
+                <p
+                  className={`px-3.5 pb-1 text-[10px] font-bold uppercase tracking-wider text-ink-muted ${
+                    collapsed ? "lg:hidden" : ""
+                  }`}
+                >
+                  {t(group.labelKey)}
+                </p>
+                {groupLinks.map(renderNavLink)}
+              </div>
             );
           })}
         </nav>

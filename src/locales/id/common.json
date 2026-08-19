@@ -909,13 +909,13 @@
     "closeMenu": "Tutup menu",
     "collapseSidebar": "Ciutkan sidebar",
     "connectWallet": "Hubungkan Dompet",
-    "defiProtocols": "Protokol Defi",
+    "defiProtocols": "Protokol DeFi",
     "disconnect": "Putuskan Koneksi",
     "donate": "Beri donasi",
     "expandSidebar": "Perluas sidebar",
     "feeds": "Umpan",
     "FlareGPT": "FlareGPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "Hadiah FTSO",
     "governance": "Tata Kelola",
     "helpCenter": "Pusat Bantuan",
     "links": "Link",
@@ -929,7 +929,12 @@
     "signInRequiredHint": "Gunakan menu dompet di bilah atas untuk masuk.",
     "walletActivity": "Aktivitas Dompet",
     "walletConnected": "Dompet Terhubung",
-    "yield": "Imbal Hasil"
+    "yield": "Imbal Hasil",
+    "groups": {
+      "ecosystem": "Ekosistem",
+      "general": "Umum",
+      "portfolio": "Portfolio"
+    }
   },
   "staleData": {
     "justNow": "Menampilkan data yang di - cache dari beberapa saat yang lalu",

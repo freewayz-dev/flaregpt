@@ -498,28 +498,28 @@
       "twitterHint": "Síguenos y envíanos un mensaje",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": {
-      "0": {
+    "faqs": [
+      {
         "answer": "Es posible que su billetera no esté conectada o que el tablero aún esté sincronizando los datos de la cadena de bloques. Verifique que la billetera y la red seleccionadas sean las correctas.",
         "question": "¿Por qué no se muestra el saldo de mi billetera?"
       },
-      "1": {
+      {
         "answer": "Cada 60 segundos mientras la página de resumen esté abierta.",
         "question": "¿Con qué frecuencia se actualiza el precio de FLR?"
       },
-      "2": {
+      {
         "answer": "Asegúrese de que su WFLR esté delegado y que la época sea elegible para recibir recompensas. Algunas de ellas pueden requerir ser reclamadas después de la distribución.",
         "question": "¿Por qué no recibo recompensas?"
       },
-      "3": {
+      {
         "answer": "MetaMask, Rabby Wallet y Bifrost Wallet como extensiones de navegador, además de cualquier billetera compatible con WalletConnect para móviles o billeteras de hardware.",
         "question": "¿Qué billeteras son compatibles?"
       },
-      "4": {
+      {
         "answer": "Navegue a la sección de la billetera y seleccione Desconectar. Esto solo elimina la sesión del tablero y no afecta sus fondos.",
         "question": "¿Cómo desconecto mi billetera?"
       }
-    },
+    ],
     "faqTitle": "Preguntas Frecuentes",
     "featureGuides": "Guías de Funciones",
     "flareGptGuideDescription": "Haz preguntas sobre tu billetera, tus recompensas y la red Flare en lenguaje sencillo.",
@@ -531,33 +531,33 @@
     "searchPlaceholder": "Buscar guías o preguntas frecuentes...",
     "searchSub": "Busca guías de funciones y preguntas frecuentes, o encuentra otra forma de contactarnos.",
     "searchTitle": "Todo lo que necesitas para empezar",
-    "steps": {
-      "0": {
+    "steps": [
+      {
         "step": "01",
         "text": "Accede a saldos, recompensas y datos de protocolos en todo el panel.",
         "title": "Conecte su Billetera"
       },
-      "1": {
+      {
         "step": "02",
         "text": "Sigue FLR, WFLR, sFLR y otros activos compatibles en un solo lugar.",
         "title": "Ver sus Activos"
       },
-      "2": {
+      {
         "step": "03",
         "text": "Delege tokens a proveedores de FTSO para ganar recompensas.",
         "title": "Delegar WFLR"
       },
-      "3": {
+      {
         "step": "04",
         "text": "Monitoree épocas, acumulaciones y reclamos de recompensas.",
         "title": "Rastrear Recompensas"
       },
-      "4": {
+      {
         "step": "05",
         "text": "Haga preguntas sobre los datos y la actividad de Flare Network.",
         "title": "Usa FlareGPT"
       }
-    },
+    ],
     "stillNeedHelp": "¿Aún necesitas ayuda?",
     "supportDesc": "Ahora mismo, la forma más rápida de contactarnos es en X. El soporte por correo electrónico y Telegram llegará pronto."
   },
@@ -919,13 +919,13 @@
     "closeMenu": "Cerrar menú",
     "collapseSidebar": "Contraer barra lateral",
     "connectWallet": "Conectar Billetera",
-    "defiProtocols": "Defi Protocols",
+    "defiProtocols": "Protocolos DeFi",
     "disconnect": "Desconectar",
     "donate": "Donar",
     "expandSidebar": "Expandir barra lateral",
     "feeds": "Feeds",
     "FlareGPT": "LlamaradaGPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "Recompensas FTSO",
     "governance": "Gobernanza",
     "helpCenter": "Centro de Ayuda",
     "links": "Enlaces",
@@ -938,7 +938,12 @@
     "signInRequired": "Se requiere iniciar sesión",
     "signInRequiredHint": "Usa el menú de la billetera en la barra superior para iniciar sesión.",
     "walletActivity": "Actividad de Billetera",
-    "walletConnected": "Billetera Conectada"
+    "walletConnected": "Billetera Conectada",
+    "groups": {
+      "ecosystem": "Ecosistema",
+      "general": "General",
+      "portfolio": "Portafolio"
+    }
   },
   "staleData": {
     "justNow": "Mostrando datos en caché de hace unos momentos",

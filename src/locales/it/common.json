@@ -498,28 +498,28 @@
       "twitterHint": "Seguici e inviaci un messaggio",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": {
-      "0": {
+    "faqs": [
+      {
         "answer": "Il wallet potrebbe non essere connesso o la dashboard potrebbe essere ancora in fase di sincronizzazione con la blockchain. Verifica che siano selezionati il wallet e la rete corretti.",
         "question": "Perché il saldo del mio wallet no viene visualizzato?"
       },
-      "1": {
+      {
         "answer": "Ogni 60 secondi mentre la pagina Panoramica è aperta.",
         "question": "Ogni quanto viene aggiornato il prezzo di FLR?"
       },
-      "2": {
+      {
         "answer": "Assicurati che i tuoi WFLR siano delegati e che l'epoca sia idonea per i premi. Alcuni premi potrebbero richiedere un riscatto manuale dopo la distribuzione.",
         "question": "Perché non ricevo i premi?"
       },
-      "3": {
+      {
         "answer": "MetaMask, Rabby Wallet e Bifrost Wallet come estensioni del browser, oltre a qualsiasi wallet compatibile con WalletConnect per dispositivi mobili o wallet hardware.",
         "question": "Quali wallet sono supportati?"
       },
-      "4": {
+      {
         "answer": "Vai alla sezione del wallet e seleziona Disconnetti. Questo rimuove solo la sessione dalla dashboard e non influisce sui tuoi fondi.",
         "question": "Come posso disconnettere il mio wallet?"
       }
-    },
+    ],
     "faqTitle": "Domande Frequenti",
     "featureGuides": "Guide alle Funzionalità",
     "flareGptGuideDescription": "Fai domande sul tuo wallet, sulle ricompense e sulla rete Flare in linguaggio semplice.",
@@ -531,33 +531,33 @@
     "searchPlaceholder": "Cerca guide o FAQ...",
     "searchSub": "Cerca guide alle funzionalità e FAQ, oppure trova un altro modo per contattarci.",
     "searchTitle": "Tutto ciò di cui hai bisogno per iniziare",
-    "steps": {
-      "0": {
+    "steps": [
+      {
         "step": "01",
         "text": "Accedi a saldi, ricompense e dati sui protocolli in tutta la dashboard.",
         "title": "Connetti il tuo Wallet"
       },
-      "1": {
+      {
         "step": "02",
         "text": "Monitora FLR, WFLR, sFLR e altri asset supportati in un unico posto.",
         "title": "Visualizza i tuoi Asset"
       },
-      "2": {
+      {
         "step": "03",
         "text": "Delega i token ai fornitori FTSO per guadagnare premi.",
         "title": "Delega WFLR"
       },
-      "3": {
+      {
         "step": "04",
         "text": "Controlla epoche, accumuli e richieste di premi.",
         "title": "Monitora i Premi"
       },
-      "4": {
+      {
         "step": "05",
         "text": "Fai domande sui dati e sulle attività di Flare Network.",
         "title": "Usa FlareGPT"
       }
-    },
+    ],
     "stillNeedHelp": "Hai ancora bisogno di aiuto?",
     "supportDesc": "Al momento il modo più rapido per contattarci è X. Il supporto via email e Telegram arriverà presto."
   },
@@ -919,13 +919,13 @@
     "closeMenu": "Chiudi menu",
     "collapseSidebar": "Comprimi barra laterale",
     "connectWallet": "Connetti Wallet",
-    "defiProtocols": "Protocolli Defi",
+    "defiProtocols": "Protocolli DeFi",
     "disconnect": "Disconnetti",
     "donate": "Dona",
     "expandSidebar": "Espandi barra laterale",
     "feeds": "Feeds",
     "FlareGPT": "FlareGPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "Ricompense FTSO",
     "governance": "Governance",
     "helpCenter": "Centro Assistenza",
     "links": "Link",
@@ -939,7 +939,12 @@
     "signInRequiredHint": "Usa il menu del wallet nella barra superiore per accedere.",
     "walletActivity": "Attività Wallet",
     "walletConnected": "Wallet Connesso",
-    "yield": "Rendimento"
+    "yield": "Rendimento",
+    "groups": {
+      "ecosystem": "Ecosistema",
+      "general": "Generale",
+      "portfolio": "Portfolio"
+    }
   },
   "staleData": {
     "justNow": "Visualizzazione dei dati memorizzati nella cache di pochi istanti fa",

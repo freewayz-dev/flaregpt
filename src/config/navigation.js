@@ -39,11 +39,21 @@ const prefetchLinks = () => import("@/pages/Links");
 // Vesting) don't have one, which is what keeps them out of the guides
 // list without needing a second flag to track separately from this one.
 //
-// Ordered by expected importance/frequency: the home view, then the
-// fully-functional core features (AI chat, wallet tracking, reward
-// claiming, governance), then the not-yet-built "coming soon" stubs grouped
-// together, then the utility pages (settings/help) that convention places
-// last in most dashboard products.
+// `group` is Sidebar-only — Help's own guide grid ignores it entirely and
+// just keeps reading this array flat, in order, same as before. Entries
+// with no `group` (Overview, FlareGPT) render pinned above every section,
+// ungrouped: they're the two default entry points, not really "a
+// category," so a label over them would just add a scan-step to the two
+// things people click most. Everything below is grouped into three
+// sections once flat-list length actually earns it — the same "won't
+// scale past a handful" threshold Settings' own tab grouping was added
+// for (see Settings/index.jsx's `groups`) — grouped by what the page is
+// *about* rather than by build status: "portfolio" is everything that
+// tracks or grows what's in your wallet, "ecosystem" is wallet-independent
+// Flare-wide activity, "general" is about the app itself, not a Flare
+// feature. Order within the array is still each group's own display
+// order — `group` only tags membership, Sidebar.jsx preserves this
+// array's relative order when it buckets by group rather than resorting.
 export const NAV_LINKS = [
   {
     translationKey: "overview",
@@ -72,15 +82,21 @@ export const NAV_LINKS = [
     icon: WalletIcon,
     prefetch: prefetchWalletActivity,
     guideDescriptionKey: "wallet.activity.description",
+    group: "portfolio",
   },
   {
     translationKey: "ftsoRewards",
     path: ROUTES.ftsoRewards,
-    // Label shortened from "FTSO Rewards" to "FTSO" — the page itself is
-    // still entirely about delegation rewards you've earned, not a gift
-    // someone gave you, so a trophy reads as the actually-earned-it
-    // reward this represents rather than the more generic gift box.
+    // Full "FTSO Rewards" label, not the shorter "FTSO" this used to show
+    // — grouped under "Portfolio" now, sitting right next to Wallet
+    // Activity/DeFi Protocols/$rFLR, so it needs to read as a destination
+    // on its own rather than assuming the page it opens will explain
+    // itself. The page itself is still entirely about delegation rewards
+    // you've earned, not a gift someone gave you, so a trophy reads as the
+    // actually-earned-it reward this represents rather than the more
+    // generic gift box.
     icon: TrophyIcon,
+    group: "portfolio",
   },
   {
     translationKey: "defiProtocols",
@@ -88,11 +104,13 @@ export const NAV_LINKS = [
     icon: Square3Stack3DIcon,
     prefetch: prefetchDefiProtocols,
     guideDescriptionKey: "defiProtocols.description",
+    group: "portfolio",
   },
   {
     translationKey: "loops",
     path: ROUTES.loops,
     icon: ArrowPathIcon,
+    group: "portfolio",
   },
   {
     translationKey: "rflrTracker",
@@ -104,11 +122,13 @@ export const NAV_LINKS = [
     // icon depicts directly, rather than a plain clock face's "current
     // time"/countdown connotation.
     icon: CalendarDateRangeIcon,
+    group: "portfolio",
   },
   {
     translationKey: "governance",
     path: ROUTES.governance,
     icon: ShieldCheckIcon,
+    group: "ecosystem",
   },
   {
     translationKey: "links",
@@ -116,6 +136,7 @@ export const NAV_LINKS = [
     icon: LinkIcon,
     prefetch: prefetchLinks,
     guideDescriptionKey: "links.description",
+    group: "ecosystem",
   },
   {
     translationKey: "donate",
@@ -123,17 +144,30 @@ export const NAV_LINKS = [
     icon: HeartIcon,
     prefetch: prefetchDonate,
     guideDescriptionKey: "donate.description",
+    group: "general",
   },
   {
     translationKey: "settings",
     path: ROUTES.settings,
     icon: Cog6ToothIcon,
     prefetch: prefetchSettings,
+    group: "general",
   },
   {
     translationKey: "helpCenter",
     path: ROUTES.help,
     icon: QuestionMarkCircleIcon,
     prefetch: prefetchHelp,
+    group: "general",
   },
+];
+
+// Display order + i18n key for each Sidebar section header — kept
+// separate from the items themselves (`group` above only tags
+// membership) so this is the one place that defines both the section
+// order and its label, rather than inferring order from array position.
+export const NAV_GROUPS = [
+  { id: "portfolio", labelKey: "sidebar.groups.portfolio" },
+  { id: "ecosystem", labelKey: "sidebar.groups.ecosystem" },
+  { id: "general", labelKey: "sidebar.groups.general" },
 ];

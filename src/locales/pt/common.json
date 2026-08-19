@@ -498,28 +498,28 @@
       "twitterHint": "Siga-nos e envie uma mensagem",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": {
-      "0": {
+    "faqs": [
+      {
         "answer": "Sua carteira pode não estar conectada ou o painel ainda pode estar sincronizando os dados do blockchain. Verifique se a carteira e a rede corretas estão selecionadas.",
         "question": "Por que o saldo da minha carteira não está aparecendo?"
       },
-      "1": {
+      {
         "answer": "A cada 60 segundos enquanto a página Visão Geral estiver aberta.",
         "question": "Com que frequência o preço do FLR é atualizado?"
       },
-      "2": {
+      {
         "answer": "Certifique-se de que seu WFLR está delegado e que a época é elegível para prêmios. Algumas recompensas podem exigir reivindicação após a distribuição.",
         "question": "Por que não estou recebendo recompensas?"
       },
-      "3": {
+      {
         "answer": "MetaMask, Rabby Wallet e Bifrost Wallet como extensões de navegador, além de qualquer carteira compatível com WalletConnect para dispositivos móveis ou carteiras de hardware.",
         "question": "Quais carteiras são suportadas?"
       },
-      "4": {
+      {
         "answer": "Navegue até a seção da carteira e selecione Desconectar. Isso apenas remove a sessão do painel e não afeta seus fundos.",
         "question": "Como faço para desconectar minha carteira?"
       }
-    },
+    ],
     "faqTitle": "Perguntas Frequentes",
     "featureGuides": "Guias de Recursos",
     "flareGptGuideDescription": "Faça perguntas sobre sua carteira, recompensas e a rede Flare em linguagem natural.",
@@ -531,33 +531,33 @@
     "searchPlaceholder": "Pesquisar guias ou perguntas frequentes...",
     "searchSub": "Pesquise guias de funcionalidades e perguntas frequentes, ou encontre outra forma de nos contatar.",
     "searchTitle": "Tudo o que você precisa para começar",
-    "steps": {
-      "0": {
+    "steps": [
+      {
         "step": "01",
         "text": "Acesse saldos, recompensas e dados de protocolos em todo o painel.",
         "title": "Conectar sua Carteira"
       },
-      "1": {
+      {
         "step": "02",
         "text": "Acompanhe FLR, WFLR, sFLR e outros ativos suportados em um só lugar.",
         "title": "Ver seus Ativos"
       },
-      "2": {
+      {
         "step": "03",
         "text": "Delegue tokens para provedores FTSO para ganhar recompensas.",
         "title": "Delegar WFLR"
       },
-      "3": {
+      {
         "step": "04",
         "text": "Monitore épocas, acúmulos e reivindicações de recompensas.",
         "title": "Rastrear Recompensas"
       },
-      "4": {
+      {
         "step": "05",
         "text": "Faça perguntas sobre dados e atividades da Flare Network.",
         "title": "Use o FlareGPT"
       }
-    },
+    ],
     "stillNeedHelp": "Ainda precisa de ajuda?",
     "supportDesc": "No momento, a forma mais rápida de falar conosco é pelo X. O suporte por e-mail e Telegram está a caminho."
   },
@@ -919,13 +919,13 @@
     "closeMenu": "Fechar menu",
     "collapseSidebar": "Recolher barra lateral",
     "connectWallet": "Conectar Carteira",
-    "defiProtocols": "Protocolos Defi",
+    "defiProtocols": "Protocolos DeFi",
     "disconnect": "Desconectar",
     "donate": "Doar",
     "expandSidebar": "Expandir barra lateral",
     "feeds": "Rações",
     "FlareGPT": "FlareGPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "Recompensas FTSO",
     "governance": "Governança",
     "helpCenter": "Central de Ajuda",
     "links": "Ligações",
@@ -939,7 +939,12 @@
     "signInRequiredHint": "Use o menu da carteira na barra superior para entrar.",
     "walletActivity": "Atividade da Carteira",
     "walletConnected": "Carteira Conectada",
-    "yield": "Rendimento"
+    "yield": "Rendimento",
+    "groups": {
+      "ecosystem": "Ecossistema",
+      "general": "Geral",
+      "portfolio": "Portefólio"
+    }
   },
   "staleData": {
     "justNow": "A mostrar dados em cache de momentos atrás",

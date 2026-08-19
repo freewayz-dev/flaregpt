@@ -909,13 +909,13 @@
     "closeMenu": "メニューを閉じる",
     "collapseSidebar": "サイドバーを折りたたむ",
     "connectWallet": "ウォレットを接続",
-    "defiProtocols": "Defiプロトコル",
+    "defiProtocols": "DeFiプロトコル",
     "disconnect": "接続解除",
     "donate": "寄付",
     "expandSidebar": "サイドバーを展開する",
     "feeds": "RSSフィード",
     "FlareGPT": "フレアGPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "FTSO報酬",
     "governance": "ガバナンス",
     "helpCenter": "ヘルプセンター",
     "links": "リンク",
@@ -929,7 +929,12 @@
     "signInRequiredHint": "サインインするには、上部バーのウォレットメニューを使用してください。",
     "walletActivity": "ウォレット活動",
     "walletConnected": "ウォレット接続済",
-    "yield": "利回り"
+    "yield": "利回り",
+    "groups": {
+      "ecosystem": "エコシステム",
+      "general": "一般",
+      "portfolio": "ポートフォリオ"
+    }
   },
   "staleData": {
     "justNow": "数分前からキャッシュされたデータを表示しています",

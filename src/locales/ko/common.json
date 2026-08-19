@@ -909,13 +909,13 @@
     "closeMenu": "메뉴 닫기",
     "collapseSidebar": "사이드바 접기",
     "connectWallet": "지갑 연결",
-    "defiProtocols": "Defi 프로토콜",
+    "defiProtocols": "DeFi 프로토콜",
     "disconnect": "연결 해제",
     "donate": "기부",
     "expandSidebar": "사이드바 펼치기",
     "feeds": "피드",
     "FlareGPT": "FlareGPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "FTSO 보상",
     "governance": "거버넌스",
     "helpCenter": "고객센터",
     "links": "링크",
@@ -929,7 +929,12 @@
     "signInRequiredHint": "로그인하려면 상단 표시줄의 지갑 메뉴를 사용하세요.",
     "walletActivity": "지갑 활동",
     "walletConnected": "지갑 연결됨",
-    "yield": "수익률"
+    "yield": "수익률",
+    "groups": {
+      "ecosystem": "생태계",
+      "general": "일반",
+      "portfolio": "포트폴리오"
+    }
   },
   "staleData": {
     "justNow": "잠시 전의 캐시된 데이터 표시",

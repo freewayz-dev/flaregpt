@@ -909,13 +909,13 @@
     "closeMenu": "Đóng menu",
     "collapseSidebar": "Thu gọn thanh bên",
     "connectWallet": "Kết nối Ví",
-    "defiProtocols": "Giao thức DEFI",
+    "defiProtocols": "Giao thức DeFi",
     "disconnect": "Ngắt kết nối",
     "donate": "Ủng hộ",
     "expandSidebar": "Mở rộng thanh bên",
     "feeds": "Các nguồn dữ liệu",
     "FlareGPT": "FlareGPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "Phần thưởng FTSO",
     "governance": "Quản trị",
     "helpCenter": "Trung tâm Trợ giúp",
     "links": "Liên kết",
@@ -929,7 +929,12 @@
     "signInRequiredHint": "Sử dụng menu ví ở thanh trên cùng để đăng nhập.",
     "walletActivity": "Hoạt động Ví",
     "walletConnected": "Ví đã kết nối",
-    "yield": "Lợi nhuận"
+    "yield": "Lợi nhuận",
+    "groups": {
+      "ecosystem": "Hệ sinh thái",
+      "general": "Chung",
+      "portfolio": "Danh mục"
+    }
   },
   "staleData": {
     "justNow": "Hiển thị dữ liệu được lưu trong bộ nhớ cache từ khoảnh khắc trước",

@@ -498,28 +498,28 @@
       "twitterHint": "Suivez-nous et envoyez-nous un message",
       "twitterLabel": "X (Twitter)"
     },
-    "faqs": {
-      "0": {
+    "faqs": [
+      {
         "answer": "Votre portefeuille n'est peut-être pas connecté, ou le tableau de bord est encore en train de synchroniser les données de la blockchain. Vérifiez que le bon portefeuille et le bon réseau sont sélectionnés.",
         "question": "Pourquoi le solde de mon portefeuille ne s'affiche-t-il pas ?"
       },
-      "1": {
+      {
         "answer": "Toutes les 60 secondes tant que la page Aperçu est ouverte.",
         "question": "À quelle fréquence le prix du FLR est-il mis à jour ?"
       },
-      "2": {
+      {
         "answer": "Assurez-vous que vos WFLR sont délégués et que l'époque est éligible. Certaines récompenses nécessitent d'être réclamées après distribution.",
         "question": "Pourquoi ne reçois-je pas de récompenses ?"
       },
-      "3": {
+      {
         "answer": "MetaMask, Rabby Wallet et Bifrost Wallet en tant qu'extensions de navigateur, ainsi que tout portefeuille compatible WalletConnect pour mobile ou portefeuille matériel.",
         "question": "Quels portefeuilles sont pris en charge ?"
       },
-      "4": {
+      {
         "answer": "Accédez à la section portefeuille et sélectionnez Déconnecter. Cela supprime uniquement la session du tableau de bord sans affecter vos fonds.",
         "question": "Comment déconnecter mon portefeuille ?"
       }
-    },
+    ],
     "faqTitle": "Foire Aux Questions",
     "featureGuides": "Guides des Fonctionnalités",
     "flareGptGuideDescription": "Posez des questions sur votre portefeuille, vos récompenses et le réseau Flare en langage simple.",
@@ -531,33 +531,33 @@
     "searchPlaceholder": "Rechercher des guides ou des FAQ...",
     "searchSub": "Recherchez des guides de fonctionnalités et des FAQ, ou trouvez un autre moyen de nous contacter.",
     "searchTitle": "Tout ce dont vous avez besoin pour commencer",
-    "steps": {
-      "0": {
+    "steps": [
+      {
         "step": "01",
         "text": "Accédez aux soldes, récompenses et données des protocoles dans tout le tableau de bord.",
         "title": "Connectez votre Portefeuille"
       },
-      "1": {
+      {
         "step": "02",
         "text": "Suivez FLR, WFLR, sFLR et d'autres actifs pris en charge en un seul endroit.",
         "title": "Consultez vos Avoirs"
       },
-      "2": {
+      {
         "step": "03",
         "text": "Déléguez des jetons aux fournisseurs FTSO pour gagner des récompenses.",
         "title": "Déléguez vos WFLR"
       },
-      "3": {
+      {
         "step": "04",
         "text": "Surveillez les époques, les cumuls et les réclamations de récompenses.",
         "title": "Suivez vos Récompenses"
       },
-      "4": {
+      {
         "step": "05",
         "text": "Posez des questions sur les données et l'activité du réseau Flare.",
         "title": "Utiliser FlareGPT"
       }
-    },
+    ],
     "stillNeedHelp": "Besoin d'aide supplémentaire ?",
     "supportDesc": "Pour l'instant, le moyen le plus rapide de nous joindre est X. L'assistance par e-mail et Telegram arrive bientôt."
   },
@@ -919,13 +919,13 @@
     "closeMenu": "Fermer le menu",
     "collapseSidebar": "Réduire la barre latérale",
     "connectWallet": "Connecter le Portefeuille",
-    "defiProtocols": "Protocoles Defi",
+    "defiProtocols": "Protocoles DeFi",
     "disconnect": "Déconnecter",
     "donate": "Faire un don",
     "expandSidebar": "Développer la barre latérale",
     "feeds": "Flux",
     "FlareGPT": "FlareGPT",
-    "ftsoRewards": "FTSO",
+    "ftsoRewards": "Récompenses FTSO",
     "governance": "Gouvernance",
     "helpCenter": "Centre d'Aide",
     "links": "Liens",
@@ -938,7 +938,12 @@
     "signInRequired": "Connexion requise",
     "signInRequiredHint": "Utilisez le menu du portefeuille dans la barre supérieure pour vous connecter.",
     "walletActivity": "Activité du Portefeuille",
-    "walletConnected": "Portefeuille Connecté"
+    "walletConnected": "Portefeuille Connecté",
+    "groups": {
+      "ecosystem": "Écosystème",
+      "general": "Général",
+      "portfolio": "Portefeuille"
+    }
   },
   "staleData": {
     "justNow": "Affichage des données en cache d'il y a quelques instants",
