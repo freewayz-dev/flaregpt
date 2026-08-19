@@ -325,6 +325,34 @@ describe("GasSniperCard — approval succeeds", () => {
   });
 });
 
+describe("GasSniperCard — mobile wallet-confirmation fix", () => {
+  // The real bug: on mobile, clicking Approve never showed anything in the
+  // wallet app at all — no prompt, no rejection, just silence, and the
+  // action eventually failed. Root cause, confirmed by reading the
+  // installed WalletConnect SDK directly: every wallet request is deep-
+  // linked to the wallet app only if `document.hasFocus()` is true at that
+  // exact moment (@walletconnect/utils's handleDeeplinkRedirect); it
+  // silently skips the deep link otherwise. `window.focus()` right before
+  // each wallet round trip is the fix — this asserts it's actually called,
+  // for both the chain-switch and the write, not just one of them.
+  it("reasserts window focus before both the chain switch and the contract write", async () => {
+    mockGasSniperBackend();
+    mockCoston2Rpc({ isApproved: false });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+    const focusSpy = vi.spyOn(window, "focus");
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    fireEvent.click(toggle);
+
+    const approveButton = await screen.findByRole("button", { name: "Approve on Coston2" });
+    fireEvent.click(approveButton);
+
+    await waitFor(() => expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true"));
+    expect(focusSpy.mock.calls.length).toBeGreaterThanOrEqual(2);
+  });
+});
+
 describe("GasSniperCard — approval rejected in the wallet", () => {
   // The real bug this protects: clicking Approve, then rejecting the
   // transaction in the wallet, crashed the entire app with an uncaught

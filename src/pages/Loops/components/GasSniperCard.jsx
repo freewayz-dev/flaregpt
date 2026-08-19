@@ -37,6 +37,38 @@ import Toggle from "@/pages/Settings/components/Toggle";
 
 import { zeroAddress} from "viem";
 
+// Mobile-only fix for a real bug: on a phone, opening the wallet's
+// confirmation UI for `switchChainAsync`/`writeContractAsync` below never
+// happened at all — not a rejection, not a timeout, just silence, and the
+// call eventually failed with nothing for the user to have acted on.
+// Confirmed by reading the actual installed WalletConnect SDK
+// (@walletconnect/utils's `handleDeeplinkRedirect`, which every single
+// wallet request — not just the first — routes through): it deep-links to
+// the wallet app only if `document.hasFocus()` is true at that exact
+// moment, and silently no-ops (one console.warn, nothing the user ever
+// sees) otherwise. On desktop this is never false — the wallet lives on a
+// separate device (phone, scanning a QR), so the desktop tab keeps focus
+// the whole time regardless of what the phone is doing. On mobile the
+// wallet is a *different app on the same phone*; by the time someone
+// reaches this flow (several screens past the initial connect, not
+// immediately after it), the browser tab can easily have lost focus for
+// reasons that have nothing to do with this app, silently defeating the
+// exact redirect this flow depends on to show the user anything at all.
+// `window.focus()` on a page's own current window is one of the few
+// focus-steal cases browsers reliably honor — it's the tab reasserting
+// itself, not stealing focus from a *different* one — and this is called
+// synchronously, as the immediate consequence of the click that starts
+// handleApprove (and again right before the write), not after crossing
+// another `await` first, which is what keeps each call inside the same
+// trusted-gesture window a mobile browser expects for a real user-
+// initiated action. Harmless on desktop: calling focus() on an already-
+// focused tab does nothing.
+function reassertWindowFocus() {
+  if (typeof window !== "undefined" && typeof window.focus === "function") {
+    window.focus();
+  }
+}
+
 // The backend enforces `user_wallet` as the caller's own authenticated
 // address specifically (confirmed live: a mismatched address 403s) — never
 // a watchlist pick the way DeFi Protocols' wallet context can be, so
@@ -183,8 +215,10 @@ export default function GasSniperCard() {
     setIsApproving(true);
     try {
       if (connectedChainId !== coston2.id) {
+        reassertWindowFocus();
         await switchChainAsync({ chainId: coston2.id });
       }
+      reassertWindowFocus();
       const hash = await writeContractAsync({
         address: CLAIM_SETUP_MANAGER_ADDRESS,
         abi: CLAIM_SETUP_MANAGER_ABI,
