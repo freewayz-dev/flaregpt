@@ -3,6 +3,7 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import {
   switchToConston2ViaRawRequest,
   assertConston2InWalletConnectSession,
+  addConston2ToWalletConnectSession,
   withWalletConnectTimeout,
   WalletConnectChainUnsupportedError,
   WalletConnectRequestTimeoutError,
@@ -67,6 +68,59 @@ describe("switchToConston2ViaRawRequest", () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+});
+
+// Direct unit coverage for the third real cause found on a follow-up
+// device round: the pre-flight namespace check kept failing even right
+// after an explicit disconnect + fresh reconnect, meaning a genuinely new
+// pairing offering Coston2 was still consistently declined by the wallet.
+// See addConston2ToWalletConnectSession's own comment for the full trace.
+describe("addConston2ToWalletConnectSession", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("sends a well-formed wallet_addEthereumChain request for Coston2", async () => {
+    const request = vi.fn().mockResolvedValue(null);
+    const provider = { request };
+    const connector = { getProvider: vi.fn().mockResolvedValue(provider) };
+
+    await addConston2ToWalletConnectSession(connector);
+
+    expect(request).toHaveBeenCalledWith({
+      method: "wallet_addEthereumChain",
+      params: [
+        expect.objectContaining({
+          chainId: `0x${coston2.id.toString(16)}`,
+          chainName: coston2.name,
+          nativeCurrency: coston2.nativeCurrency,
+          rpcUrls: [...coston2.rpcUrls.default.http],
+        }),
+      ],
+    });
+  });
+
+  it("propagates a real rejection (e.g. the user declining the add-network prompt) as-is", async () => {
+    const request = vi.fn().mockRejectedValue(new Error("User rejected the request."));
+    const provider = { request };
+    const connector = { getProvider: vi.fn().mockResolvedValue(provider) };
+
+    await expect(addConston2ToWalletConnectSession(connector)).rejects.toThrow(
+      "User rejected the request.",
+    );
+  });
+
+  it("rejects with WalletConnectRequestTimeoutError if the wallet never responds to the add-chain request either", async () => {
+    vi.useFakeTimers();
+    const request = vi.fn(() => new Promise(() => {}));
+    const provider = { request };
+    const connector = { getProvider: vi.fn().mockResolvedValue(provider) };
+
+    const result = addConston2ToWalletConnectSession(connector);
+    const assertion = expect(result).rejects.toThrow(WalletConnectRequestTimeoutError);
+    await vi.advanceTimersByTimeAsync(60_000);
+    await assertion;
   });
 });
 

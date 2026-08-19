@@ -24,6 +24,7 @@ import { coston2 } from "@/config/web3Config";
 import {
   switchToConston2ViaRawRequest,
   assertConston2InWalletConnectSession,
+  addConston2ToWalletConnectSession,
   withWalletConnectTimeout,
   WalletConnectChainUnsupportedError,
   WalletConnectRequestTimeoutError,
@@ -288,7 +289,23 @@ export default function GasSniperCard() {
       // of silently hanging; see walletConnectChainSwitch.js's own comment
       // for the full trace.
       if (isWalletConnect) {
-        await assertConston2InWalletConnectSession(connector);
+        try {
+          await assertConston2InWalletConnectSession(connector);
+        } catch (checkError) {
+          if (!(checkError instanceof WalletConnectChainUnsupportedError)) throw checkError;
+          // Confirmed by a third real-device round: the check above still
+          // fails even right after an explicit disconnect + fresh
+          // reconnect — a genuinely fresh pairing offering Coston2 again,
+          // consistently declined. That's exactly the case EIP-3085 exists
+          // for: ask the wallet to *add* the chain instead of assuming it
+          // already can use it. See walletConnectChainSwitch.js's own
+          // comment for the full trace. If this also fails/times out, it
+          // throws and falls through to the same catch below as
+          // everything else in this flow.
+          step = "addChain";
+          reassertWindowFocus();
+          await addConston2ToWalletConnectSession(connector);
+        }
       }
       step = "switch";
       if (connectedChainId !== coston2.id) {

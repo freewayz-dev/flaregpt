@@ -51,8 +51,33 @@ export default function LandingNavbar() {
       }
     };
 
+    // A backgrounded tab/PWA instance suspends requestAnimationFrame
+    // entirely — standard browser behavior, not a bug — so if a scroll
+    // event sets `ticking.current = true` right as that happens, the
+    // *queued* rAF callback that would normally flip it back to `false`
+    // can be dropped instead of merely delayed. Either way, `ticking.current`
+    // is then left stuck `true`, which makes onScroll's own guard silently
+    // stop scheduling any future frame — the nav freezes in whatever state
+    // it was last in and never updates again, even once scrolling resumes
+    // normally. Backgrounding (switching apps, locking the screen, a
+    // notification pull-down) is routine on mobile/PWA, not an edge case,
+    // which is exactly where this reads as "stuck at the top." Resetting
+    // both refs the moment the page becomes visible again — re-syncing
+    // lastScrollY to wherever the page actually is now, since scroll
+    // position can legitimately change while backgrounded — recovers
+    // cleanly instead of leaving the listener permanently wedged.
+    const onVisibilityChange = () => {
+      if (document.visibilityState !== "visible") return;
+      ticking.current = false;
+      lastScrollY.current = window.scrollY;
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
   }, []);
 
   return (

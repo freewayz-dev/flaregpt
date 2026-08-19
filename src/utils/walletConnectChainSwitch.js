@@ -87,6 +87,29 @@ import { coston2 } from "@/config/web3Config";
 // namespace check is empty/inconclusive, or something else entirely
 // stalls) still surfaces a clear failure instead of leaving the button
 // reading "Confirm in your wallet…" forever with no way out but a reload.
+//
+// STILL NOT DONE — confirmed by a third round: the pre-flight check itself
+// now fires the "doesn't support Coston2" error reliably, *even right
+// after an explicit disconnect + fresh reconnect*, which is a genuinely
+// new, useful data point. A fresh pairing means `optionalChains` really
+// was re-offered with Coston2 in it (see above); the wallet consistently
+// declining to grant it anyway — rather than this being a stale-session
+// artifact — is exactly the scenario EIP-3085 (`wallet_addEthereumChain`)
+// exists for: a wallet that doesn't yet recognize a chain isn't asked to
+// silently support it, it's asked to *add* it, which is expected to
+// surface its own "Add network?" confirmation UI. Notably, wagmi's own
+// (buggy, see above) switchChain already has this exact fallback built
+// in — `wallet_switchEthereumChain` failing triggers a `wallet_
+// addEthereumChain` retry — but that fallback is only reachable from an
+// actual *rejection*, and the whole reason this bypass exists is that the
+// wallets in question never reject, they hang. Nothing before this
+// attempted the add-chain step proactively. addConston2ToWalletConnectSession
+// does that directly: same request shape wagmi's own fallback builds,
+// called the moment the pre-flight check confirms Coston2 is missing,
+// *before* giving up — see GasSniperCard.jsx's handleApprove for exactly
+// where this sits in the sequence (check -> add if missing -> switch ->
+// write). If the wallet still doesn't respond to the add request either,
+// that's caught by the same timeout as everything else here.
 export class WalletConnectChainUnsupportedError extends Error {
   constructor() {
     super("Coston2 is not in this WalletConnect session's approved chains.");
@@ -129,6 +152,32 @@ export async function assertConston2InWalletConnectSession(connector) {
   if (approvedChainIds.length && !approvedChainIds.includes(coston2.id)) {
     throw new WalletConnectChainUnsupportedError();
   }
+}
+
+// Same request shape @wagmi/connectors' own switchChain builds for its
+// (unreachable-in-this-scenario, see above) add-chain fallback — not
+// guessed independently. A wallet that accepts this is expected to show
+// its own "Add network" confirmation; one that rejects it throws normally
+// (a real rejection, not a hang, since this is a *new* request the wallet
+// hasn't already silently ignored once).
+export async function addConston2ToWalletConnectSession(connector) {
+  const provider = await connector.getProvider();
+  await withWalletConnectTimeout(
+    provider.request({
+      method: "wallet_addEthereumChain",
+      params: [
+        {
+          chainId: `0x${coston2.id.toString(16)}`,
+          chainName: coston2.name,
+          nativeCurrency: coston2.nativeCurrency,
+          rpcUrls: [...coston2.rpcUrls.default.http],
+          blockExplorerUrls: coston2.blockExplorers?.default.url
+            ? [coston2.blockExplorers.default.url]
+            : [],
+        },
+      ],
+    }),
+  );
 }
 
 export async function switchToConston2ViaRawRequest(connector) {
