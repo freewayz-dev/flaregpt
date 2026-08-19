@@ -89,7 +89,13 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
     setHistoryOpen(false);
   };
 
-  const handleNewChatFromHistory = () => {
+  // Shared by the toolbar's own New Chat button and the history panel's
+  // internal one — starting a new chat should always close the history
+  // list along with it, not just when triggered from inside the panel.
+  // Previously only the panel's own button went through this; the
+  // toolbar button called `startNewChat` directly, so starting a new chat
+  // from there left the history list open behind it.
+  const handleNewChat = () => {
     startNewChat();
     setHistoryOpen(false);
   };
@@ -142,7 +148,7 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
           <div className="flex items-center gap-0.5 rounded-lg bg-surface-subtle p-0.5">
             <button
               type="button"
-              onClick={startNewChat}
+              onClick={handleNewChat}
               className="rounded-md p-1 transition-colors hover:bg-surface-card-hover cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               title={t("flrgpt.newChat")}
               aria-label={t("flrgpt.newChat")}
@@ -217,7 +223,7 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
             activeConversationId={activeConversationId}
             pinnedIds={pinnedConversationIds}
             onSelect={handleSelectFromHistory}
-            onNewChat={handleNewChatFromHistory}
+            onNewChat={handleNewChat}
             onTogglePin={togglePinnedConversation}
             onRename={(id, title) =>
               renameMutation.mutateAsync({ conversationId: id, title })

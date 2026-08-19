@@ -141,6 +141,33 @@ export const handlers = [
     return HttpResponse.json({ status: "deleted", id: params.id });
   }),
 
+  // The conversation list itself — powers useConversations()/the history
+  // panel (see FlareWidget.test.jsx). One fixed conversation is enough for
+  // that panel to have something real to render; tests that need more
+  // override this per-test via `server.use(...)`.
+  http.get(`${API}/api/v1/chat/conversations`, () => {
+    return HttpResponse.json({
+      conversations: [
+        { id: MOCK_CONVERSATION_ID, title: "Existing conversation", created_at: 0, updated_at: 0, message_count: 2 },
+      ],
+    });
+  }),
+
+  // The full transcript for that one conversation — hit when switching
+  // into it from the history panel (see FlareWidget.test.jsx).
+  http.get(`${API}/api/v1/chat/conversations/${MOCK_CONVERSATION_ID}`, () => {
+    return HttpResponse.json({
+      id: MOCK_CONVERSATION_ID,
+      title: "Existing conversation",
+      created_at: 0,
+      updated_at: 0,
+      messages: [
+        { role: "user", content: "hi", timestamp: 0 },
+        { role: "assistant", content: "hello", timestamp: 0 },
+      ],
+    });
+  }),
+
   // FTSO Providers / Validators ranking tables + "Your Validator Stake" +
   // the Links page — shapes mirror the real backend responses confirmed
   // live against api.flaregpt.io directly (including the "Unknown

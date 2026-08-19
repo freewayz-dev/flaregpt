@@ -134,10 +134,11 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
           instead, the same fix already used for WalletActivity's
           TransactionDrawer, rather than nesting it here. */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 h-full flex flex-col bg-surface-card shadow-[0_1px_3px_rgba(0,0,0,0.01)] border-r border-line lg:static
+        className={`fixed inset-y-0 left-0 z-50 flex flex-col bg-surface-card shadow-[0_1px_3px_rgba(0,0,0,0.01)] border-r border-line lg:static
           pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)]
           transition-[width,transform] duration-300 ease-in-out
-          w-[240px] ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
+          h-dvh lg:h-full
+          w-full ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
           ${open ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0
         `}
       >
@@ -206,7 +207,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
                     same "no space for headers" constraint: drop the label,
                     keep the items. */}
                 <p
-                  className={`px-3.5 pb-1 text-[10px] font-bold uppercase tracking-wider text-ink-muted ${
+                  className={`px-3.5 pb-1 text-xs font-medium text-ink-muted ${
                     collapsed ? "lg:hidden" : ""
                   }`}
                 >

@@ -100,7 +100,13 @@ export default function FLRGPT() {
     setHistoryOpen(false);
   };
 
-  const handleNewChatFromHistory = () => {
+  // Shared by the toolbar's own New Chat button and the history panel's
+  // internal one — starting a new chat should always close the history
+  // list along with it, not just when triggered from inside the panel.
+  // Previously only the panel's own button went through this; the
+  // toolbar button called `startNewChat` directly, so starting a new chat
+  // from there left the history list open behind it.
+  const handleNewChat = () => {
     startNewChat();
     setHistoryOpen(false);
   };
@@ -125,7 +131,7 @@ export default function FLRGPT() {
         <div className="flex items-center gap-0.5 rounded-xl bg-surface-subtle p-0.5">
           <button
             type="button"
-            onClick={startNewChat}
+            onClick={handleNewChat}
             title={t("flrgpt.newChat")}
             aria-label={t("flrgpt.newChat")}
             className="flex h-7 w-7 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary transition-colors cursor-pointer"
@@ -176,7 +182,7 @@ export default function FLRGPT() {
             activeConversationId={activeConversationId}
             pinnedIds={pinnedConversationIds}
             onSelect={handleSelectFromHistory}
-            onNewChat={handleNewChatFromHistory}
+            onNewChat={handleNewChat}
             onTogglePin={togglePinnedConversation}
             onRename={(id, title) => renameMutation.mutateAsync({ conversationId: id, title })}
             onDelete={deleteConversation}

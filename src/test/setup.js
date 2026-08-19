@@ -1,10 +1,21 @@
 import "@testing-library/jest-dom/vitest";
-import { afterAll, afterEach, beforeAll } from "vitest";
+import { afterAll, afterEach, beforeAll, vi } from "vitest";
 import { cleanup } from "@testing-library/react";
 import { toast } from "react-toastify";
 
 import { server } from "@/test/mocks/server";
 import { initI18n } from "@/i18n";
+
+// Unlike `window.scrollTo` (which jsdom stubs as a no-op that just logs a
+// "not implemented" warning), jsdom doesn't implement
+// `Element.prototype.scrollIntoView` at all — calling it throws
+// `TypeError: ... is not a function`. Any test that renders a live
+// message list (MessageList.jsx's own autoscroll effect calls this on
+// mount) hits this, and an uncaught error there crashes past the
+// component boundary and unmounts the whole render — not a bug in any one
+// test, an infrastructure gap the first test to render real chat content
+// was always going to hit.
+Element.prototype.scrollIntoView = vi.fn();
 
 
 
