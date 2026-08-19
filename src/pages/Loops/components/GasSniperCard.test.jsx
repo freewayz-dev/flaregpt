@@ -333,13 +333,22 @@ describe("GasSniperCard — mobile wallet-confirmation fix", () => {
   // linked to the wallet app only if `document.hasFocus()` is true at that
   // exact moment (@walletconnect/utils's handleDeeplinkRedirect); it
   // silently skips the deep link otherwise. `window.focus()` right before
-  // each wallet round trip is the fix — this asserts it's actually called,
-  // for both the chain-switch and the write, not just one of them.
-  it("reasserts window focus before both the chain switch and the contract write", async () => {
+  // each wallet round trip is the fix — guarded on `!document.hasFocus()`
+  // (see reassertWindowFocus's own comment for why an earlier,
+  // unconditional version of this regressed the plain toggle). Both tests
+  // below explicitly control `document.hasFocus()` rather than relying on
+  // jsdom's own default for it, so this suite doesn't silently start
+  // testing something else the day that default changes.
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("calls window.focus() before both the chain switch and the contract write when the tab isn't focused", async () => {
     mockGasSniperBackend();
     mockCoston2Rpc({ isApproved: false });
     useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
-    const focusSpy = vi.spyOn(window, "focus");
+    vi.spyOn(document, "hasFocus").mockReturnValue(false);
+    const focusSpy = vi.spyOn(window, "focus").mockImplementation(() => {});
 
     renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
     const toggle = await screen.findByRole("switch");
@@ -350,6 +359,24 @@ describe("GasSniperCard — mobile wallet-confirmation fix", () => {
 
     await waitFor(() => expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true"));
     expect(focusSpy.mock.calls.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("never calls window.focus() when the tab already has focus — the exact regression this protects", async () => {
+    mockGasSniperBackend();
+    mockCoston2Rpc({ isApproved: false });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+    vi.spyOn(document, "hasFocus").mockReturnValue(true);
+    const focusSpy = vi.spyOn(window, "focus").mockImplementation(() => {});
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    fireEvent.click(toggle);
+
+    const approveButton = await screen.findByRole("button", { name: "Approve on Coston2" });
+    fireEvent.click(approveButton);
+
+    await waitFor(() => expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true"));
+    expect(focusSpy).not.toHaveBeenCalled();
   });
 });
 
@@ -442,7 +469,7 @@ describe("GasSniperCard — offline", () => {
   });
 });
 
-// Regression coverage for the actual reported bug: useEnableGasSniper/
+// Regression coverage for the original reported bug: useEnableGasSniper/
 // useDisableGasSniper's onSuccess fired queryClient.invalidateQueries()
 // without returning it, so mutateAsync() in handleToggle — and therefore
 // the success toast right after it — resolved as soon as the enable/
@@ -451,24 +478,29 @@ describe("GasSniperCard — offline", () => {
 // from that query) stayed showing the pre-click value until that refetch
 // happened to catch up on its own, which read as "needs a second click."
 //
-// A first version of these two tests skipped straight to
-// `findByText("Gas Sniper enabled")` with no artificial delay anywhere,
-// on the theory that skipping `waitFor` around the toggle's own state was
-// enough to catch the race. It wasn't: `findByText` is itself built on
-// `waitFor` and retries for up to a second by default, and every mock
-// response here is in-process/instant, so the buggy, un-awaited refetch
-// and the fixed, awaited one both land within a few milliseconds either
-// way — well inside that retry window regardless of which one the code
-// actually does. Genuinely reverting the `return` in useLoopsQueries.ts
-// left both tests passing, which is exactly how a non-discriminating test
-// hides a real bug. `statusDelayMs` closes that gap: it makes the status
-// refetch that follows a successful enable/disable measurably slower than
-// the enable/disable request itself, so "toast appeared while the refetch
-// was still in flight" becomes something a fixed 150ms mid-flight check
-// can actually observe instead of something a retry loop always ends up
-// tolerating.
+// That was fixed once by awaiting invalidateQueries() (still true below —
+// the toast still doesn't fire until it resolves). It broke a second time
+// for an unrelated reason: this app's QueryClient defaults every query to
+// `refetchOnWindowFocus: true` (see main.jsx), and a later, unrelated
+// mobile fix elsewhere in this same card started calling window.focus()
+// unconditionally — which can itself fire a real `focus` event, fanning
+// out into a refetch of every mounted query including this status read,
+// racing against the toggle's own invalidate-triggered refetch and
+// occasionally losing, landing stale data right as the toggle re-rendered.
+// The fix this time doesn't depend on that refetch's timing at all:
+// onSuccess now also calls setQueryData with the outcome the mutation
+// itself already knows happened (see useLoopsQueries.js), so the toggle
+// flips the instant the enable/disable call succeeds — before the slower,
+// separately-delayed status refetch even lands, not after it.
+//
+// `statusDelayMs` still exists to make that ordering observable: it slows
+// only the GET this card's toggle used to depend on, not the POST the
+// toggle now updates from directly. Every mock response is otherwise
+// in-process/instant, so without a real gap between the two, a retrying
+// `findByText` can't tell "updated immediately from the POST" apart from
+// "happened to also catch the GET landing a few ms later."
 describe("GasSniperCard — single-click toggle completes without a second click", () => {
-  it("OFF → ON: the success toast never appears before the refreshed status does", async () => {
+  it("OFF → ON: the toggle flips immediately from the enable call itself, the toast confirms once the slower status refetch also lands", async () => {
     mockGasSniperBackend({ statusDelayMs: 300 });
     mockCoston2Rpc({ isApproved: true });
     useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
@@ -479,20 +511,24 @@ describe("GasSniperCard — single-click toggle completes without a second click
 
     fireEvent.click(toggle);
 
-    // Mid-flight: the enable POST itself is instant, but the status
-    // refetch it triggers is still 150ms into its own deliberate 300ms
-    // delay. Neither the toast nor the toggle should have moved yet — if
-    // they have, the toast fired off the POST alone, without actually
-    // waiting for the refreshed status the toggle itself reads from.
+    // Well before the 300ms-delayed status GET could possibly have
+    // resolved — if the toggle hasn't moved by here, it's still depending
+    // on that slow refetch instead of the enable call's own known outcome.
+    await waitFor(() => expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true"));
+
+    // Mid-flight, 150ms into the still-in-progress 300ms status refetch:
+    // the toggle is already correct, but the toast — gated on
+    // invalidateQueries() actually resolving, same as before — must not
+    // have fired yet. If it has, onSuccess stopped awaiting that refetch
+    // again, the original regression this describe block exists for.
     await new Promise((resolve) => setTimeout(resolve, 150));
     expect(screen.queryByText("Gas Sniper enabled")).not.toBeInTheDocument();
-    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "false");
 
     await screen.findByText("Gas Sniper enabled", {}, { timeout: 2000 });
     expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true");
   });
 
-  it("ON → OFF: the success toast never appears before the refreshed status does", async () => {
+  it("ON → OFF: the toggle flips immediately from the disable call itself, the toast confirms once the slower status refetch also lands", async () => {
     mockGasSniperBackend({ initiallyOptedIn: [TEST_ADDRESSES.primary], statusDelayMs: 300 });
     mockCoston2Rpc({ isApproved: true });
     useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
@@ -503,9 +539,10 @@ describe("GasSniperCard — single-click toggle completes without a second click
 
     fireEvent.click(toggle);
 
+    await waitFor(() => expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "false"));
+
     await new Promise((resolve) => setTimeout(resolve, 150));
     expect(screen.queryByText("Gas Sniper disabled")).not.toBeInTheDocument();
-    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true");
 
     await screen.findByText("Gas Sniper disabled", {}, { timeout: 2000 });
     expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "false");

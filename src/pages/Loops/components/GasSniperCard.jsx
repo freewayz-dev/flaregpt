@@ -54,6 +54,27 @@ import { zeroAddress} from "viem";
 // immediately after it), the browser tab can easily have lost focus for
 // reasons that have nothing to do with this app, silently defeating the
 // exact redirect this flow depends on to show the user anything at all.
+//
+// Guarded on `!document.hasFocus()` now — an earlier version called
+// window.focus() unconditionally on every attempt, which caused a real
+// regression: an already-focused tab (the common case — most of this flow
+// still runs with the tab genuinely focused) doesn't need reasserting at
+// all, and doing it anyway turned out to have two costly side effects
+// elsewhere in this same app. First, this app's QueryClient defaults to
+// `refetchOnWindowFocus: true` (see main.jsx) — a redundant focus() call
+// can still fire a real `focus` event, which fans out into a refetch of
+// every mounted query, including this card's own status/approval reads,
+// racing against whatever the toggle click right after it was expecting
+// to land. Second, at least one mobile browser is documented to sometimes
+// swallow the very next tap anywhere on the page as a focus-recovery
+// gesture rather than deliver it as a real click after a redundant
+// self-focus call — which is exactly what "the first click after Approve
+// does nothing, the second one works" looks like from the outside. Only
+// calling this when focus is actually missing removes both side effects
+// in the (common) case they were happening in, while still firing for the
+// one case that actually matters: a backgrounded mobile tab, right before
+// the wallet round trip that needs the deep link.
+//
 // `window.focus()` on a page's own current window is one of the few
 // focus-steal cases browsers reliably honor — it's the tab reasserting
 // itself, not stealing focus from a *different* one — and this is called
@@ -61,12 +82,16 @@ import { zeroAddress} from "viem";
 // handleApprove (and again right before the write), not after crossing
 // another `await` first, which is what keeps each call inside the same
 // trusted-gesture window a mobile browser expects for a real user-
-// initiated action. Harmless on desktop: calling focus() on an already-
-// focused tab does nothing.
-function reassertWindowFocus() {
-  if (typeof window !== "undefined" && typeof window.focus === "function") {
-    window.focus();
-  }
+// initiated action. The follow-up tick is a deliberate wait, not
+// decoration: focus() is a request, not a synchronous guarantee, so this
+// gives the browser one turn of the event loop to actually apply it
+// before the WalletConnect SDK's own check runs on the very next await.
+async function reassertWindowFocus() {
+  if (typeof document === "undefined" || typeof window === "undefined") return;
+  if (document.hasFocus?.() !== false) return;
+  if (typeof window.focus !== "function") return;
+  window.focus();
+  await new Promise((resolve) => setTimeout(resolve, 0));
 }
 
 // The backend enforces `user_wallet` as the caller's own authenticated
@@ -215,10 +240,10 @@ export default function GasSniperCard() {
     setIsApproving(true);
     try {
       if (connectedChainId !== coston2.id) {
-        reassertWindowFocus();
+        await reassertWindowFocus();
         await switchChainAsync({ chainId: coston2.id });
       }
-      reassertWindowFocus();
+      await reassertWindowFocus();
       const hash = await writeContractAsync({
         address: CLAIM_SETUP_MANAGER_ADDRESS,
         abi: CLAIM_SETUP_MANAGER_ABI,
