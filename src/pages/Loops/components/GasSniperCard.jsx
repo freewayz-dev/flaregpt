@@ -82,16 +82,28 @@ import { zeroAddress} from "viem";
 // handleApprove (and again right before the write), not after crossing
 // another `await` first, which is what keeps each call inside the same
 // trusted-gesture window a mobile browser expects for a real user-
-// initiated action. The follow-up tick is a deliberate wait, not
-// decoration: focus() is a request, not a synchronous guarantee, so this
-// gives the browser one turn of the event loop to actually apply it
-// before the WalletConnect SDK's own check runs on the very next await.
-async function reassertWindowFocus() {
+// initiated action. Deliberately no artificial wait after calling
+// focus() — an earlier version added one on the theory that focus() is a
+// request, not a synchronous guarantee, and the browser might need a
+// moment to actually apply it. That's true, but it traded one problem for
+// a worse one: the actual redirect this whole thing exists to trigger
+// (@walletconnect/utils's own `handleDeeplinkRedirect`, once its
+// document.hasFocus() check passes) ends in a plain `window.open(url,
+// target, "noreferrer noopener")` — and *that* call is itself gated by
+// the browser's own popup-blocker/user-activation heuristics, which get
+// stricter the further removed a call is from the original click. Every
+// extra tick between the tap and that window.open() is one more chance
+// for it to be silently blocked, no error, nothing the user ever sees —
+// the same failure mode as the focus gate, just a different gate,
+// downstream of it, inside code this app has no way to patch (it's
+// buried in the SDK's own internals, not something exposed to callers).
+// Keeping this whole function synchronous minimizes that distance instead
+// of adding to it.
+function reassertWindowFocus() {
   if (typeof document === "undefined" || typeof window === "undefined") return;
   if (document.hasFocus?.() !== false) return;
   if (typeof window.focus !== "function") return;
   window.focus();
-  await new Promise((resolve) => setTimeout(resolve, 0));
 }
 
 // The backend enforces `user_wallet` as the caller's own authenticated
@@ -240,10 +252,10 @@ export default function GasSniperCard() {
     setIsApproving(true);
     try {
       if (connectedChainId !== coston2.id) {
-        await reassertWindowFocus();
+        reassertWindowFocus();
         await switchChainAsync({ chainId: coston2.id });
       }
-      await reassertWindowFocus();
+      reassertWindowFocus();
       const hash = await writeContractAsync({
         address: CLAIM_SETUP_MANAGER_ADDRESS,
         abi: CLAIM_SETUP_MANAGER_ABI,
