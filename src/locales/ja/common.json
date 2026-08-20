@@ -594,6 +594,7 @@
       "enabled": "Gas Sniperを有効にしました",
       "executorNotSet": "このウォレットはまだGas Sniperオートメーションをオンチェーンで承認していないため、その一度限りの承認が完了するまで有効にできません。",
       "inactive": "無効",
+      "insufficientGasBalance": "このウォレットはネットワーク手数料をカバーするのに十分なC2FLRを持っていません。約{{required}} C2FLRが必要で、現在{{available}}を保有しています。",
       "needsApproval": "承認が必要です",
       "needsReconnect": "ウォレット未接続",
       "offline": "これにはインターネット接続が必要です。",
@@ -604,6 +605,7 @@
       "statusUnknown": "ステータス不明",
       "title": "Gas Sniper",
       "toggleFailed": "Gas Sniperを更新できませんでした。もう一度お試しください。",
+      "walletConnectAddChainUnsupported": "このウォレットはCoston2（チェーンID{{chainId}}）の自動追加に対応していません。このウォレットのネットワーク設定から手動で追加してから、もう一度お試しください。",
       "walletConnectSessionStale": "ウォレットの接続が現在まったく応答していないため、切断しました。このページを再読み込みしてから再接続し、もう一度お試しください。",
       "walletConnectTimeout": "ウォレットが時間内に応答しなかったため、切断しました。ウォレットを再接続してもう一度お試しください。"
     }

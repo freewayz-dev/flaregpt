@@ -594,6 +594,7 @@
       "enabled": "Gas Sniper 已启用",
       "executorNotSet": "此钱包尚未在链上批准 Gas Sniper 自动化，因此在完成该一次性批准之前无法启用。",
       "inactive": "未启用",
+      "insufficientGasBalance": "此钱包没有足够的 C2FLR 来支付网络费用。大约需要 {{required}} C2FLR，目前有 {{available}}。",
       "needsApproval": "需要批准",
       "needsReconnect": "钱包已断开连接",
       "offline": "这需要互联网连接。",
@@ -604,6 +605,7 @@
       "statusUnknown": "状态未知",
       "title": "Gas Sniper",
       "toggleFailed": "无法更新 Gas Sniper，请重试。",
+      "walletConnectAddChainUnsupported": "此钱包不支持自动添加 Coston2 网络（链 ID {{chainId}}）。请在该钱包的网络设置中手动添加，然后重试。",
       "walletConnectSessionStale": "您的钱包连接目前对任何请求都没有响应，因此我们已断开该连接。请刷新此页面，然后重新连接并重试。",
       "walletConnectTimeout": "您的钱包未能及时响应，因此我们已断开该连接。请重新连接您的钱包并重试。"
     }

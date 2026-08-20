@@ -87,4 +87,47 @@ describe("LandingNavbar — hide/show on scroll", () => {
 
     expect(getNav().style.transform).toBe("translateY(-120%)");
   });
+
+  // The actual root cause behind a separate real report: "scrolling up
+  // reveals the nav only partially, over and over, until reaching the very
+  // top." Real touch/momentum scrolling isn't monotonic frame-to-frame —
+  // individual frames can briefly move the "wrong" way (deceleration
+  // noise, sub-pixel rounding) even during an unambiguous overall gesture.
+  // A naive per-frame delta reacts to every one of those, repeatedly
+  // re-triggering the hide transform mid-reveal and restarting its CSS
+  // transition before it can finish — it only ever completed once the
+  // gesture physically had to stop, at the top of the page. This
+  // simulates exactly that: a scroll-up gesture with several small
+  // downward blips mixed in, none individually reversing the overall
+  // trend, none of which should re-trigger the hide transform.
+  it("keeps revealing the nav through a jittery-but-overall-upward scroll gesture, without flipping back to hidden mid-reveal", () => {
+    const raf = stubControllableRaf();
+    renderWithProviders(<LandingNavbar />);
+
+    // Get it into the hidden state first, comfortably past the threshold.
+    setScrollY(1200);
+    window.dispatchEvent(new Event("scroll"));
+    raf.flush();
+    expect(getNav().style.transform).toBe("translateY(-120%)");
+
+    // A jittery upward gesture, net trending up but with several
+    // individual steps moving slightly back down from the previous one —
+    // all still within the hysteresis band around the 1200 commit point
+    // (1200 - 32 = 1168), so none of them should flip anything yet.
+    const jitterPositions = [1195, 1198, 1188, 1192, 1178, 1182, 1172, 1176, 1170];
+    for (const y of jitterPositions) {
+      setScrollY(y);
+      window.dispatchEvent(new Event("scroll"));
+      raf.flush();
+      expect(getNav().style.transform).toBe("translateY(-120%)");
+    }
+
+    // Finally past the threshold (1200 - 1080 = 120 > 32) — reveals in one
+    // clean commit, not something the user had to keep scrolling through
+    // repeated partial reveals to reach.
+    setScrollY(1080);
+    window.dispatchEvent(new Event("scroll"));
+    raf.flush();
+    expect(getNav().style.transform).toBe("translateY(0)");
+  });
 });

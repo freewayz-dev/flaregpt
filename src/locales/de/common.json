@@ -594,6 +594,7 @@
       "enabled": "Gas Sniper aktiviert",
       "executorNotSet": "Dieses Wallet hat die Gas-Sniper-Automatisierung noch nicht on-chain genehmigt, daher kann sie erst nach dieser einmaligen Genehmigung aktiviert werden.",
       "inactive": "Inaktiv",
+      "insufficientGasBalance": "Dieses Wallet hat nicht genug C2FLR, um die Netzwerkgebühr zu decken. Benötigt etwa {{required}} C2FLR, hat {{available}}.",
       "needsApproval": "Genehmigung erforderlich",
       "needsReconnect": "Wallet getrennt",
       "offline": "Dies erfordert eine Internetverbindung.",
@@ -604,6 +605,7 @@
       "statusUnknown": "Status unbekannt",
       "title": "Gas Sniper",
       "toggleFailed": "Gas Sniper konnte nicht aktualisiert werden. Versuch es erneut.",
+      "walletConnectAddChainUnsupported": "Dieses Wallet unterstützt das automatische Hinzufügen von Coston2 (Chain-ID {{chainId}}) nicht. Füge es manuell in den Netzwerkeinstellungen deines Wallets hinzu, dann versuch es erneut.",
       "walletConnectSessionStale": "Die Verbindung deines Wallets reagiert im Moment auf gar nichts mehr, deshalb haben wir sie getrennt. Lade diese Seite neu, verbinde dich dann erneut und versuch es noch einmal.",
       "walletConnectTimeout": "Dein Wallet hat nicht rechtzeitig reagiert, deshalb haben wir es getrennt. Verbinde dein Wallet erneut und versuch es noch einmal."
     }

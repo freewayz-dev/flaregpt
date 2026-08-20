@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { isAxiosError } from "axios";
 import {
   useConnection,
+  usePublicClient,
   useReadContract,
   useSwitchChain,
   useWriteContract,
@@ -30,8 +31,14 @@ import {
   withWalletConnectTimeout,
   WalletConnectSessionStaleError,
   WalletConnectChainUnsupportedError,
+  WalletConnectAddChainUnsupportedError,
   WalletConnectRequestTimeoutError,
 } from "@/utils/walletConnectChainSwitch";
+import {
+  assertSufficientCoston2GasBalance,
+  InsufficientGasBalanceError,
+  formatC2FlrShortfall,
+} from "@/utils/gasSniperGasCheck";
 import {
   CLAIM_SETUP_MANAGER_ADDRESS,
   CLAIM_SETUP_MANAGER_ABI,
@@ -143,6 +150,11 @@ export default function GasSniperCard() {
   const authenticatedAddress = useAuthStore((s) => s.authenticatedAddress);
   const disconnectAllForStaleWalletConnectSession = useDisconnectAllWallets();
   const { chainId: connectedChainId, connector } = useConnection();
+  // A plain, read-only client scoped to Coston2 — independent of the
+  // connected wallet's own provider (irrelevant for a WalletConnect
+  // connector not yet switched to Coston2), used only for the balance
+  // pre-check below (see gasSniperGasCheck.js's own comment for why).
+  const coston2PublicClient = usePublicClient({ chainId: coston2.id });
   // Enabling/disabling hits the backend (useLoopsQueries.ts) and approving
   // is an on-chain write — both genuinely need connectivity, unlike the
   // status *read* above (StaleWhileRevalidate, so it's fine showing a
@@ -327,6 +339,23 @@ export default function GasSniperCard() {
           await addConston2ToWalletConnectSession(connector);
         }
       }
+      step = "balanceCheck";
+      // Confirmed live, not assumed: `keeperFee` genuinely is 0 right now
+      // (a direct eth_call against Coston2's own RPC), so this isn't about
+      // an inflated `value` — it's that Coston2's current gas price makes
+      // this specific call cost real C2FLR (~0.075 at time of writing),
+      // which a wallet funded with only a small testnet-faucet amount can
+      // genuinely fall short of. Checked here, against a plain public RPC
+      // client, before spending a wallet round trip on a transaction
+      // that's already known to fail — see gasSniperGasCheck.js's own
+      // comment for the full trace, including why this applies to every
+      // connector, not just WalletConnect (MetaMask hits the identical
+      // shortfall, just with a clearer built-in warning of its own).
+      await assertSufficientCoston2GasBalance({
+        publicClient: coston2PublicClient,
+        account: authenticatedAddress,
+        value: keeperFee ?? 0n,
+      });
       step = "switch";
       if (connectedChainId !== coston2.id) {
         reassertWindowFocus();
@@ -404,6 +433,22 @@ export default function GasSniperCard() {
         toast.error(t("loops.gasSniper.walletConnectSessionStale"));
       } else if (error instanceof WalletConnectRequestTimeoutError) {
         toast.error(t("loops.gasSniper.walletConnectTimeout"));
+      } else if (error instanceof WalletConnectAddChainUnsupportedError) {
+        // Confirmed live: this specific wallet's own WalletConnect
+        // integration declines to add Coston2 at all — a real, wallet-
+        // side policy, not something this app's request can work around
+        // (see addConston2ToWalletConnectSession's own comment). The only
+        // real fix is the user adding it themselves, once, in the
+        // wallet's own network settings — this message says so plainly
+        // instead of surfacing the wallet's own raw rejection text.
+        toast.error(t("loops.gasSniper.walletConnectAddChainUnsupported", { chainId: coston2.id }));
+      } else if (error instanceof InsufficientGasBalanceError) {
+        toast.error(
+          t("loops.gasSniper.insufficientGasBalance", {
+            required: formatC2FlrShortfall(error.required),
+            available: formatC2FlrShortfall(error.available),
+          }),
+        );
       } else {
         const detail = error?.shortMessage ?? error?.message ?? String(error);
         toast.error(`${t("loops.gasSniper.approveFailed")} [${step}: ${detail}]`);

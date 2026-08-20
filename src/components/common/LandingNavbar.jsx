@@ -61,27 +61,61 @@ const NAV_ITEMS = [
 // removed by construction.
 export default function LandingNavbar() {
   const navRef = useRef(null);
-  const lastScrollY = useRef(0);
   const ticking = useRef(false);
+  // The scroll position where the nav last actually committed to hiding
+  // or showing — not the previous frame's raw position. See updateNav's
+  // own comment for why this distinction is the actual fix here.
+  const referenceY = useRef(0);
+  const isHidden = useRef(false);
 
   useEffect(() => {
-    lastScrollY.current = window.scrollY;
+    referenceY.current = window.scrollY;
 
     const updateNav = () => {
       ticking.current = false;
       const nav = navRef.current;
       if (!nav) return;
 
-      const currentY = window.scrollY;
-      const delta = currentY - lastScrollY.current;
+      const currentY = Math.max(0, window.scrollY);
 
-      if (currentY <= 80 || delta < -4) {
+      if (currentY <= 80) {
         nav.style.transform = "translateY(0)";
-      } else if (delta > 4) {
-        nav.style.transform = "translateY(-120%)";
+        isHidden.current = false;
+        referenceY.current = currentY;
+        return;
       }
 
-      lastScrollY.current = currentY;
+      // Reacting to raw frame-to-frame delta (the original approach) isn't
+      // robust enough — confirmed as the actual cause of a real report:
+      // scrolling up revealed the nav only partially, over and over, until
+      // the page reached the very top. Real touch/momentum scrolling
+      // naturally produces individual frames whose delta briefly points
+      // the "wrong" way even mid-gesture (deceleration noise, sub-pixel
+      // rounding) — a handful of down-pointing frames inside an overall
+      // upward gesture kept re-triggering the hide transform, restarting
+      // its 300ms CSS transition each time before it could finish; it only
+      // ever completed once the gesture physically had to stop, at the
+      // top of the page. Comparing against the position where the nav
+      // last actually committed (referenceY), instead of the previous
+      // frame, absorbs that noise by construction: a single down-pointing
+      // frame during an upward gesture only moves currentY a few px away
+      // from a referenceY that's already dozens of px off in the *other*
+      // direction — nowhere near flipping which side of the threshold
+      // it's on. The nav only ever commits once movement in one direction
+      // has been sustained past THRESHOLD px from its last commit point,
+      // not on any single frame's own sign.
+      const distanceFromReference = currentY - referenceY.current;
+      const THRESHOLD = 32;
+
+      if (!isHidden.current && distanceFromReference > THRESHOLD) {
+        nav.style.transform = "translateY(-120%)";
+        isHidden.current = true;
+        referenceY.current = currentY;
+      } else if (isHidden.current && distanceFromReference < -THRESHOLD) {
+        nav.style.transform = "translateY(0)";
+        isHidden.current = false;
+        referenceY.current = currentY;
+      }
     };
 
     const onScroll = () => {
@@ -103,13 +137,13 @@ export default function LandingNavbar() {
     // notification pull-down) is routine on mobile/PWA, not an edge case,
     // which is exactly where this reads as "stuck at the top." Resetting
     // both refs the moment the page becomes visible again — re-syncing
-    // lastScrollY to wherever the page actually is now, since scroll
+    // referenceY to wherever the page actually is now, since scroll
     // position can legitimately change while backgrounded — recovers
     // cleanly instead of leaving the listener permanently wedged.
     const onVisibilityChange = () => {
       if (document.visibilityState !== "visible") return;
       ticking.current = false;
-      lastScrollY.current = window.scrollY;
+      referenceY.current = window.scrollY;
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });

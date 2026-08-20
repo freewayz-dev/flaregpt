@@ -601,6 +601,7 @@
       "enabled": "Gas Sniper ativado",
       "executorNotSet": "Esta carteira ainda não aprovou a automação do Gas Sniper on-chain, então não é possível ativá-la até que essa aprovação única seja feita.",
       "inactive": "Inativo",
+      "insufficientGasBalance": "Esta carteira não tem C2FLR suficiente para cobrir a taxa de rede. Precisa de cerca de {{required}} C2FLR, tem {{available}}.",
       "needsApproval": "Requer aprovação",
       "needsReconnect": "Carteira desconectada",
       "offline": "Isto precisa de uma ligação à Internet.",
@@ -611,6 +612,7 @@
       "statusUnknown": "Status desconhecido",
       "title": "Gas Sniper",
       "toggleFailed": "Não foi possível atualizar o Gas Sniper. Tente novamente.",
+      "walletConnectAddChainUnsupported": "Esta carteira não suporta a adição automática da Coston2 (Chain ID {{chainId}}). Adicione manualmente nas configurações de rede da sua carteira e tente novamente.",
       "walletConnectSessionStale": "A conexão da sua carteira não está respondendo a nada no momento, então nós a desconectamos. Recarregue esta página e, em seguida, reconecte e tente novamente.",
       "walletConnectTimeout": "Sua carteira não respondeu a tempo, então nós a desconectamos. Reconecte sua carteira e tente novamente."
     }

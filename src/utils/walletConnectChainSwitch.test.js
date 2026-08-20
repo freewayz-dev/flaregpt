@@ -6,6 +6,7 @@ import {
   addConston2ToWalletConnectSession,
   withWalletConnectTimeout,
   WalletConnectChainUnsupportedError,
+  WalletConnectAddChainUnsupportedError,
   WalletConnectRequestTimeoutError,
 } from "@/utils/walletConnectChainSwitch";
 import { coston2 } from "@/config/web3Config";
@@ -121,6 +122,26 @@ describe("addConston2ToWalletConnectSession", () => {
     const assertion = expect(result).rejects.toThrow(WalletConnectRequestTimeoutError);
     await vi.advanceTimersByTimeAsync(60_000);
     await assertion;
+  });
+
+  // Direct unit coverage for the actual live-device response, confirmed
+  // real rather than assumed: a wallet's own WalletConnect integration
+  // rejecting the add-chain request outright — fast, not a hang — because
+  // it doesn't support adding custom/unrecognized chains at all, not
+  // because a human declined a prompt that was shown. See this function's
+  // own comment for the full trace, including why this is treated
+  // differently from a genuine user rejection.
+  it("wraps a real wallet-side decline (not a user rejection) in WalletConnectAddChainUnsupportedError", async () => {
+    const walletError = new Error("Chain with id 0x72 (114) is not possible to add.");
+    const request = vi.fn().mockRejectedValue(walletError);
+    const provider = { request };
+    const connector = { getProvider: vi.fn().mockResolvedValue(provider) };
+
+    const promise = addConston2ToWalletConnectSession(connector);
+    await expect(promise).rejects.toThrow(WalletConnectAddChainUnsupportedError);
+    await promise.catch((error) => {
+      expect(error.cause).toBe(walletError);
+    });
   });
 });
 

@@ -218,30 +218,68 @@ export async function assertConston2InWalletConnectSession(connector) {
   }
 }
 
+// ROUND 6 — confirmed by direct live-device evidence, finally a real
+// wallet-native response instead of silence: the add-chain request above
+// now comes back fast with the wallet's own explicit rejection, "Chain
+// with id 0x72 (114) is not possible to add." Not a hang, not a timeout —
+// a real, fast, wallet-side policy decision. This is a genuinely
+// documented limitation of at least Trust Wallet's WalletConnect
+// integration specifically (community-reported, matching this exact
+// phrasing): unlike an injected/extension connection, it restricts
+// `wallet_addEthereumChain` over WalletConnect to chains it already
+// recognizes internally, rejecting arbitrary/custom ones outright,
+// regardless of what EIP-3085 itself allows — an anti-phishing policy
+// choice, not a bug in this app's request (confirmed correct against the
+// spec — see this function's own params below, matching what wagmi's own
+// switchChain fallback builds). There is no code-side fix for a wallet
+// that has decided not to support this at all: the real, correct next
+// step is what EIP-3085 itself exists to route around — the user adding
+// Coston2 to that wallet by hand, once, in its own network settings.
+// WalletConnectAddChainUnsupportedError carries the original rejection as
+// `cause` so the caller can still fall back to showing it verbatim for a
+// wallet that rejects for some *other*, unanticipated reason.
+export class WalletConnectAddChainUnsupportedError extends Error {
+  constructor(cause) {
+    super("This wallet declined to add Coston2 over WalletConnect.");
+    this.name = "WalletConnectAddChainUnsupportedError";
+    this.cause = cause;
+  }
+}
+
 // Same request shape @wagmi/connectors' own switchChain builds for its
 // (unreachable-in-this-scenario, see above) add-chain fallback — not
 // guessed independently. A wallet that accepts this is expected to show
 // its own "Add network" confirmation; one that rejects it throws normally
 // (a real rejection, not a hang, since this is a *new* request the wallet
-// hasn't already silently ignored once).
+// hasn't already silently ignored once) — surfaced as
+// WalletConnectAddChainUnsupportedError unless it's specifically the user
+// explicitly declining a prompt that *did* show (a real "user rejected"
+// response, left as-is so it reads correctly as a cancellation, not a
+// wallet limitation).
 export async function addConston2ToWalletConnectSession(connector) {
   const provider = await connector.getProvider();
-  await withWalletConnectTimeout(
-    provider.request({
-      method: "wallet_addEthereumChain",
-      params: [
-        {
-          chainId: `0x${coston2.id.toString(16)}`,
-          chainName: coston2.name,
-          nativeCurrency: coston2.nativeCurrency,
-          rpcUrls: [...coston2.rpcUrls.default.http],
-          blockExplorerUrls: coston2.blockExplorers?.default.url
-            ? [coston2.blockExplorers.default.url]
-            : [],
-        },
-      ],
-    }),
-  );
+  try {
+    await withWalletConnectTimeout(
+      provider.request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            chainId: `0x${coston2.id.toString(16)}`,
+            chainName: coston2.name,
+            nativeCurrency: coston2.nativeCurrency,
+            rpcUrls: [...coston2.rpcUrls.default.http],
+            blockExplorerUrls: coston2.blockExplorers?.default.url
+              ? [coston2.blockExplorers.default.url]
+              : [],
+          },
+        ],
+      }),
+    );
+  } catch (error) {
+    if (error instanceof WalletConnectRequestTimeoutError) throw error;
+    if (/user rejected|user denied|rejected the request/i.test(error?.message ?? "")) throw error;
+    throw new WalletConnectAddChainUnsupportedError(error);
+  }
 }
 
 export async function switchToConston2ViaRawRequest(connector) {

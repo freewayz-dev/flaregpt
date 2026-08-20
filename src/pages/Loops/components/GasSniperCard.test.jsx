@@ -66,6 +66,14 @@ function renderCard({ wagmi, openWalletModal = vi.fn() } = {}) {
 function mockCoston2Rpc({
   isApproved,
   rejectSendTransaction = false,
+  // Generous by default (1 C2FLR) so every existing test — none of which
+  // are about balance — clears the pre-flight gas-balance check without
+  // having to know about it. Coston2's own live gas price/estimate for
+  // this exact call (~650 gwei × ~116,000 gas, confirmed live — see
+  // gasSniperGasCheck.js) is what the two fixed values below mirror;
+  // dedicated insufficient-balance tests override this down to something
+  // that genuinely falls short instead.
+  balanceWei = 1_000_000_000_000_000_000n,
   onRequest,
 }) {
   server.use(
@@ -84,6 +92,13 @@ function mockCoston2Rpc({
           error: { code: 4001, message: "User rejected the request." },
         });
       }
+
+      // The pre-flight balance check (gasSniperGasCheck.js) — a plain
+      // public-RPC read, not routed through any wallet, so it needs
+      // mocking here regardless of which wallet/connector a test uses.
+      if (method === "eth_gasPrice") return ok("0x975704e400"); // 650 gwei
+      if (method === "eth_estimateGas") return ok("0x1c520"); // 116,000
+      if (method === "eth_getBalance") return ok(`0x${balanceWei.toString(16)}`);
 
       if (method === "eth_call") {
         const { functionName } = decodeFunctionData({
@@ -415,6 +430,43 @@ describe("GasSniperCard — approval rejected in the wallet", () => {
     // The app is still alive and usable — the Approve button is back,
     // re-enabled, ready for a retry, not a blank page.
     expect(screen.getByRole("button", { name: "Approve on Coston2" })).toBeEnabled();
+  });
+});
+
+// Direct coverage for a real user-reported "insufficient balance" case,
+// investigated live rather than assumed to be a wallet UI quirk — see
+// gasSniperGasCheck.js's own comment for the full trace (the keeper's fee
+// really is 0; the real cost is Coston2's own live gas price). Checked
+// before ever asking the wallet to sign anything, so a wallet funded with
+// too little C2FLR gets a clear, specific message and never reaches the
+// wallet round trip at all — no deep link, nothing to reject.
+describe("GasSniperCard — insufficient balance for the network fee", () => {
+  it("shows the exact shortfall and leaves the Approve button usable again, without ever contacting the wallet", async () => {
+    mockGasSniperBackend();
+    let sawSendTransaction = false;
+    // Enough for a plain transfer's worth of gas, nowhere near the
+    // ~0.075 C2FLR this specific call's live-confirmed cost actually is.
+    mockCoston2Rpc({
+      isApproved: false,
+      balanceWei: 1_000_000_000_000_000n,
+      onRequest: (method) => {
+        if (method === "eth_sendTransaction") sawSendTransaction = true;
+      },
+    });
+    useAuthStore.setState({ token: "t", authenticatedAddress: TEST_ADDRESSES.primary });
+
+    renderCard({ wagmi: { connected: true, address: TEST_ADDRESSES.primary } });
+    const toggle = await screen.findByRole("switch");
+    fireEvent.click(toggle);
+
+    const approveButton = await screen.findByRole("button", { name: "Approve on Coston2" });
+    fireEvent.click(approveButton);
+
+    expect(
+      await screen.findByText(/doesn't have enough C2FLR to cover the network fee/),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Approve on Coston2" })).toBeEnabled();
+    expect(sawSendTransaction).toBe(false);
   });
 });
 

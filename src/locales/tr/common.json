@@ -594,6 +594,7 @@
       "enabled": "Gas Sniper etkinleştirildi",
       "executorNotSet": "Bu cüzdan Gas Sniper otomasyonunu zincir üzerinde henüz onaylamadı, bu yüzden bu tek seferlik onay yapılmadan etkinleştirilemez.",
       "inactive": "Pasif",
+      "insufficientGasBalance": "Bu cüzdanda ağ ücretini karşılamaya yetecek kadar C2FLR yok. Yaklaşık {{required}} C2FLR gerekiyor, {{available}} var.",
       "needsApproval": "Onay gerekiyor",
       "needsReconnect": "Cüzdan bağlantısı kesildi",
       "offline": "Bunun bir internet bağlantısına ihtiyacı var.",
@@ -604,6 +605,7 @@
       "statusUnknown": "Durum bilinmiyor",
       "title": "Gas Sniper",
       "toggleFailed": "Gas Sniper güncellenemedi. Tekrar deneyin.",
+      "walletConnectAddChainUnsupported": "Bu cüzdan Coston2 ağını (zincir kimliği {{chainId}}) otomatik olarak eklemeyi desteklemiyor. Cüzdanınızın ağ ayarlarından manuel olarak ekleyin, ardından tekrar deneyin.",
       "walletConnectSessionStale": "Cüzdanınızın bağlantısı şu anda hiçbir şeye yanıt vermiyor, bu yüzden bağlantısını kestik. Bu sayfayı yenileyin, ardından yeniden bağlanıp tekrar deneyin.",
       "walletConnectTimeout": "Cüzdanınız zamanında yanıt vermedi, bu yüzden bağlantısını kestik. Cüzdanınızı yeniden bağlayıp tekrar deneyin."
     }

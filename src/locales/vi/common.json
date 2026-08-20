@@ -594,6 +594,7 @@
       "enabled": "Đã bật Gas Sniper",
       "executorNotSet": "Ví này chưa phê duyệt tự động hóa Gas Sniper trên chuỗi, vì vậy không thể bật cho đến khi hoàn tất phê duyệt một lần đó.",
       "inactive": "Không hoạt động",
+      "insufficientGasBalance": "Ví này không có đủ C2FLR để trang trải phí mạng. Cần khoảng {{required}} C2FLR, hiện có {{available}}.",
       "needsApproval": "Cần phê duyệt",
       "needsReconnect": "Ví đã ngắt kết nối",
       "offline": "Việc này cần có kết nối internet.",
@@ -604,6 +605,7 @@
       "statusUnknown": "Không rõ trạng thái",
       "title": "Gas Sniper",
       "toggleFailed": "Không thể cập nhật Gas Sniper. Vui lòng thử lại.",
+      "walletConnectAddChainUnsupported": "Ví này không hỗ trợ tự động thêm Coston2 (ID chuỗi {{chainId}}). Hãy thêm thủ công trong phần cài đặt mạng trên ví của bạn, sau đó thử lại.",
       "walletConnectSessionStale": "Kết nối ví của bạn hiện không phản hồi bất kỳ yêu cầu nào, vì vậy chúng tôi đã ngắt kết nối ví. Hãy tải lại trang này, sau đó kết nối lại và thử lại.",
       "walletConnectTimeout": "Ví của bạn không phản hồi kịp thời, vì vậy chúng tôi đã ngắt kết nối ví. Hãy kết nối lại ví của bạn và thử lại."
     }

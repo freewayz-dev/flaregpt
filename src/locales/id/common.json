@@ -594,6 +594,7 @@
       "enabled": "Gas Sniper diaktifkan",
       "executorNotSet": "Dompet ini belum menyetujui otomatisasi Gas Sniper on-chain, jadi tidak dapat diaktifkan sampai persetujuan satu kali itu selesai.",
       "inactive": "Tidak Aktif",
+      "insufficientGasBalance": "Dompet ini tidak memiliki cukup C2FLR untuk menutupi biaya jaringan. Membutuhkan sekitar {{required}} C2FLR, memiliki {{available}}.",
       "needsApproval": "Perlu persetujuan",
       "needsReconnect": "Dompet terputus",
       "offline": "This needs an internet connection.",
@@ -604,6 +605,7 @@
       "statusUnknown": "Status tidak diketahui",
       "title": "Gas Sniper",
       "toggleFailed": "Tidak dapat memperbarui Gas Sniper. Coba lagi.",
+      "walletConnectAddChainUnsupported": "Dompet ini tidak mendukung penambahan otomatis jaringan Coston2 (Chain ID {{chainId}}). Tambahkan secara manual di pengaturan jaringan dompet Anda, lalu coba lagi.",
       "walletConnectSessionStale": "Koneksi dompet Anda saat ini tidak merespons apa pun, jadi kami telah memutuskannya. Muat ulang halaman ini, lalu sambungkan kembali dan coba lagi.",
       "walletConnectTimeout": "Dompet Anda tidak merespons tepat waktu, jadi kami telah memutuskannya. Sambungkan kembali dompet Anda dan coba lagi."
     }
