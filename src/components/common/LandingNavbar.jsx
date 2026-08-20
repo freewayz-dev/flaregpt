@@ -38,9 +38,28 @@ const NAV_ITEMS = [
 // unlike `fixed` (removed from flow entirely), a sticky element still
 // occupies its own space in normal flow, which is why its own `mb-8
 // md:mb-10` below replaces what used to be compensating top padding on
-// `<main>` in LandingPage.jsx — that padding is gone now, this margin is
+// `<main>` in LandingPage.jsx — that spacing is gone now, this margin is
 // what keeps the hero content the same distance below the nav it always
 // was.
+//
+// The *top* offset (the gap above the nav, clearing the status bar/
+// Dynamic Island) is `pt-*` (padding), deliberately not `mt-*` (margin) —
+// confirmed live, on a real iPhone, not just this file's own Playwright/
+// WebKit approximation of one: with margin, the gap rendered correctly at
+// the very top of the page (not yet "stuck"), but vanished the moment the
+// nav actually became sticky after scrolling — it rendered flush against
+// the true viewport top, overlapping the status bar/Dynamic Island,
+// looking cut off. That's a real, documented WebKit bug: Safari's sticky-
+// positioning implementation doesn't reliably honor a stuck element's
+// margin the same way it honors the identical box's margin while still in
+// normal flow — the margin can silently drop out once the element is
+// actually stuck, even though `top` and padding are still respected.
+// Padding doesn't have this gap: it's inside the box sticky positioning
+// is already placing, not a separate layer stuck positioning can drop, so
+// it renders identically whether the nav is stuck or not. The wrapper
+// itself stays background-free (nothing to render in that padding strip
+// either way), so this reads identically to the old margin in every case
+// that already worked — it just also works in the one case that didn't.
 //
 // `position: sticky` and the show/hide `transform` are deliberately on
 // TWO DIFFERENT elements, not the same one — confirmed live: with both on
@@ -173,7 +192,7 @@ export default function LandingNavbar() {
   }, []);
 
   return (
-    <div className="sticky top-0 inset-x-0 z-50 mt-[calc(1rem+env(safe-area-inset-top))] mb-8 md:mb-10">
+    <div className="sticky top-0 inset-x-0 z-50 pt-[calc(1rem+env(safe-area-inset-top))] mb-8 md:mb-10">
       <nav
         ref={navRef}
         className="pl-[calc(1rem+env(safe-area-inset-left))] pr-[calc(1rem+env(safe-area-inset-right))] xl:pl-0 xl:pr-0 transition-transform duration-300 ease-out will-change-transform"
