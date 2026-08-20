@@ -130,4 +130,43 @@ describe("LandingNavbar — hide/show on scroll", () => {
     raf.flush();
     expect(getNav().style.transform).toBe("translateY(0)");
   });
+
+  // A real regression this app already shipped once, in an earlier attempt
+  // at the jitter fix above: freezing the hysteresis reference point at
+  // wherever the nav *first* committed to hiding, then never updating it
+  // again until the *next* commit, meant a long downward scroll followed
+  // by a reversal was measured against that original, often near-the-top
+  // commit point — not against how far down the gesture actually went. A
+  // user who scrolled deep into the page and then reversed had to scroll
+  // nearly all the way back up before crossing that stale threshold,
+  // reproducing the exact "must reach the very top before the nav
+  // reappears" bug this hysteresis logic exists to fix, just through a
+  // different mechanism. The reference point has to track the deepest
+  // point reached *continuously*, not just at commit time — this proves
+  // it does: a long scroll far past the original hide point, then a small
+  // (not full-distance) reversal, must reveal the nav immediately.
+  it("reveals immediately on a small reversal after a long downward scroll — not only once scrolled back near where hiding first began", () => {
+    const raf = stubControllableRaf();
+    renderWithProviders(<LandingNavbar />);
+
+    setScrollY(200);
+    window.dispatchEvent(new Event("scroll"));
+    raf.flush();
+    expect(getNav().style.transform).toBe("translateY(-120%)");
+
+    // Keeps scrolling down, far past the original hide point — if the
+    // reference point were still frozen at 200 (the bug), nothing below
+    // would need to happen until scrollY dropped back under ~168.
+    setScrollY(5000);
+    window.dispatchEvent(new Event("scroll"));
+    raf.flush();
+    expect(getNav().style.transform).toBe("translateY(-120%)");
+
+    // A small reversal — 40px, nowhere near back to 200, let alone the
+    // top of the page — must still reveal it right away.
+    setScrollY(4960);
+    window.dispatchEvent(new Event("scroll"));
+    raf.flush();
+    expect(getNav().style.transform).toBe("translateY(0)");
+  });
 });

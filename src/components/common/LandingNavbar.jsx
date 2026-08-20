@@ -62,9 +62,11 @@ const NAV_ITEMS = [
 export default function LandingNavbar() {
   const navRef = useRef(null);
   const ticking = useRef(false);
-  // The scroll position where the nav last actually committed to hiding
-  // or showing — not the previous frame's raw position. See updateNav's
-  // own comment for why this distinction is the actual fix here.
+  // The extremum scroll position reached since the nav's current
+  // hidden/shown state began — the deepest scrollY seen while hidden, the
+  // shallowest while shown — continuously updated every frame, not frozen
+  // at the last commit point. See updateNav's own comment for why that
+  // distinction matters.
   const referenceY = useRef(0);
   const isHidden = useRef(false);
 
@@ -86,35 +88,51 @@ export default function LandingNavbar() {
       }
 
       // Reacting to raw frame-to-frame delta (the original approach) isn't
-      // robust enough — confirmed as the actual cause of a real report:
-      // scrolling up revealed the nav only partially, over and over, until
-      // the page reached the very top. Real touch/momentum scrolling
-      // naturally produces individual frames whose delta briefly points
-      // the "wrong" way even mid-gesture (deceleration noise, sub-pixel
-      // rounding) — a handful of down-pointing frames inside an overall
-      // upward gesture kept re-triggering the hide transform, restarting
-      // its 300ms CSS transition each time before it could finish; it only
-      // ever completed once the gesture physically had to stop, at the
-      // top of the page. Comparing against the position where the nav
-      // last actually committed (referenceY), instead of the previous
-      // frame, absorbs that noise by construction: a single down-pointing
-      // frame during an upward gesture only moves currentY a few px away
-      // from a referenceY that's already dozens of px off in the *other*
-      // direction — nowhere near flipping which side of the threshold
-      // it's on. The nav only ever commits once movement in one direction
-      // has been sustained past THRESHOLD px from its last commit point,
-      // not on any single frame's own sign.
-      const distanceFromReference = currentY - referenceY.current;
+      // robust enough on its own — real touch/momentum scrolling naturally
+      // produces individual frames whose delta briefly points the "wrong"
+      // way even mid-gesture (deceleration noise, sub-pixel rounding), and
+      // reacting to every one of those repeatedly re-triggers the hide
+      // transform, restarting its 300ms CSS transition before it can
+      // finish. Comparing against a reference point instead of the
+      // previous frame absorbs that noise — THRESHOLD px of *sustained*
+      // movement in one direction is what actually commits a change, not
+      // any single frame's own sign.
+      //
+      // The reference point itself has to be the *extremum* reached since
+      // the last commit — the deepest scrollY while hidden, the shallowest
+      // while shown — continuously tracked on every frame that continues
+      // in the same direction, not just frozen at wherever the last commit
+      // happened. Getting this wrong is a real regression this app already
+      // shipped once: freezing the reference at the hide commit point (and
+      // only ever updating it again on the *next* commit) meant that
+      // scrolling down for a long stretch, then reversing, measured the
+      // reversal against wherever hiding *first* triggered — often near
+      // the top of the page — instead of against how far down the gesture
+      // actually went. That silently reproduced the exact "have to scroll
+      // nearly all the way back up before the nav reappears" bug this
+      // hysteresis logic exists to fix in the first place, just gated on
+      // total distance travelled instead of on jitter. Tracking the
+      // extremum continuously (Math.max while hidden, Math.min while
+      // shown) means any *reversal* of at least THRESHOLD px — regardless
+      // of how far the preceding scroll went — reveals the nav
+      // immediately, which is the actual intended behavior: hide on
+      // scrolling down, show the moment scrolling up resumes.
       const THRESHOLD = 32;
 
-      if (!isHidden.current && distanceFromReference > THRESHOLD) {
-        nav.style.transform = "translateY(-120%)";
-        isHidden.current = true;
-        referenceY.current = currentY;
-      } else if (isHidden.current && distanceFromReference < -THRESHOLD) {
-        nav.style.transform = "translateY(0)";
-        isHidden.current = false;
-        referenceY.current = currentY;
+      if (isHidden.current) {
+        referenceY.current = Math.max(referenceY.current, currentY);
+        if (referenceY.current - currentY > THRESHOLD) {
+          nav.style.transform = "translateY(0)";
+          isHidden.current = false;
+          referenceY.current = currentY;
+        }
+      } else {
+        referenceY.current = Math.min(referenceY.current, currentY);
+        if (currentY - referenceY.current > THRESHOLD) {
+          nav.style.transform = "translateY(-120%)";
+          isHidden.current = true;
+          referenceY.current = currentY;
+        }
       }
     };
 

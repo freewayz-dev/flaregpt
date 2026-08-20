@@ -189,6 +189,33 @@ registerRoute(
   }),
 );
 
+// `/api/v1/loops/gas-sniper/status` belongs here, not in the semi-static
+// StaleWhileRevalidate tier below where it used to sit — confirmed live as
+// the actual root cause of a real, repeatedly-reported bug: toggling Gas
+// Sniper on/off correctly updates the app's own React Query cache the
+// instant the enable/disable call succeeds (see useLoopsQueries.js's own
+// setQueryData), but that success handler also awaits a real refetch of
+// this exact endpoint (`invalidateQueries`) — and StaleWhileRevalidate's
+// entire point is to answer *any* request, including that one, from
+// whatever it already has cached *first*, only correcting the cache in
+// the background afterward. That cached copy is, by construction, the
+// pre-toggle state — so the refetch the app was relying on to reconcile
+// with the backend instead overwrote the just-applied optimistic update
+// with stale data, reverting the toggle right after it had briefly shown
+// the correct state. A second click "worked" only because the SW's own
+// background revalidation from the first click had usually finished
+// catching up by then. This reproduced on the production site and PWA
+// (where the service worker actually runs) but never on a plain `npm run
+// dev` session (`devOptions.enabled: false` below — no SW there at all)
+// and survived a hard refresh or clearing ordinary browser cache, since
+// neither touches the SW's own Cache Storage — exactly the reported
+// symptoms. `/api/v1/network/*` and `compare-strategies` are unaffected
+// by this same risk and stay on StaleWhileRevalidate below: genuinely
+// slow-changing, network-wide data nothing in this app ever mutates
+// through its own actions and then immediately re-reads. NetworkFirst
+// keeps the same "fine offline" behavior gas-sniper status is explicitly
+// meant to have (see useLoopsQueries.js) — cache is still a fallback, not
+// the answer, whenever the network actually succeeds.
 registerRoute(
   ({ url }) =>
     url.origin === FLAREGPT_API &&
@@ -196,7 +223,8 @@ registerRoute(
       url.pathname.startsWith("/api/v1/rflr/") ||
       url.pathname.startsWith("/api/v1/defi/vaults/") ||
       url.pathname === "/api/v1/overview/market" ||
-      url.pathname === "/gas-price"),
+      url.pathname === "/gas-price" ||
+      url.pathname === "/api/v1/loops/gas-sniper/status"),
   new NetworkFirst({
     cacheName: cacheName("financial-reads"),
     networkTimeoutSeconds: 4,
@@ -224,16 +252,19 @@ registerRoute(
 
 // Semi-static: changes slowly, and — unlike the tier above — none of these
 // are wallet- or session-scoped at all (network emissions/status are
-// network-wide; gas-sniper status is explicitly a public, no-auth, "who's
-// opted in" view per loopsService.ts's own comment; compare-strategies is
-// a pure calculator keyed on an amount, not an account). Stale-while-
-// revalidate is the right fit specifically because it's genuinely low-risk
-// here — instant from cache, corrected in the background.
+// network-wide; compare-strategies is a pure calculator keyed on an
+// amount, not an account). Stale-while-revalidate is the right fit
+// specifically because it's genuinely low-risk here — instant from cache,
+// corrected in the background — for data nothing in this app mutates
+// through its own actions and then immediately re-reads. `gas-sniper/
+// status` used to sit here too; it doesn't anymore — see the NetworkFirst
+// tier above for why serving a guaranteed-stale cached copy first is
+// exactly wrong for an endpoint the app itself expects to reflect a
+// change it just made.
 registerRoute(
   ({ url }) =>
     url.origin === FLAREGPT_API &&
     (url.pathname.startsWith("/api/v1/network/") ||
-      url.pathname === "/api/v1/loops/gas-sniper/status" ||
       url.pathname === "/api/v1/defi/compare-strategies"),
   new StaleWhileRevalidate({
     cacheName: cacheName("semi-static-api"),
