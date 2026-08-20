@@ -611,8 +611,8 @@
       "statusUnknown": "Estado desconocido",
       "title": "Gas Sniper",
       "toggleFailed": "No se pudo actualizar Gas Sniper. Inténtalo de nuevo.",
-      "walletConnectSessionStale": "La conexión de tu monedero no responde a nada en este momento. Desconecta completamente tu monedero, recarga esta página, vuelve a conectarlo y luego inténtalo de nuevo.",
-      "walletConnectTimeout": "Tu monedero no respondió. Abre la app de tu monedero para comprobar si hay una solicitud pendiente, o inténtalo de nuevo."
+      "walletConnectSessionStale": "La conexión de tu monedero no responde a nada en este momento, así que lo hemos desconectado. Recarga esta página y vuelve a conectarte, luego inténtalo de nuevo.",
+      "walletConnectTimeout": "Tu monedero no respondió a tiempo, así que lo hemos desconectado. Vuelve a conectar tu monedero e inténtalo de nuevo."
     }
   },
   "navbar": {

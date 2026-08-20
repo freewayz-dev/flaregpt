@@ -109,6 +109,29 @@ import { coston2 } from "@/config/web3Config";
 // a full disconnect + page reload + fresh reconnect (see
 // GasSniperCard.jsx's handleApprove for exactly where this check sits:
 // first, before anything Coston2-specific).
+//
+// ROUND 5 — the real bug in the timeout itself, confirmed by a live device
+// report with new detail: the wallet DID engage (showed its own "this may
+// take a while" message), then, after a real wait, reported its *own*
+// session as disconnected and told the user to reconnect — while this
+// app's own state still showed connected, and the button stayed stuck on
+// "Confirm in your wallet…" indefinitely, well past the 60s this file
+// already waits. That's not this app failing to add a timeout — it's the
+// timeout itself never firing. `setTimeout` is scheduled the instant a
+// WalletConnect request starts, which is the exact moment the deep link
+// backgrounds this tab/PWA to open the wallet app — and mobile browsers
+// throttle or fully suspend JS timers on a backgrounded page (the same
+// class of bug already fixed for LandingNavbar's requestAnimationFrame
+// listener). A timer created right before backgrounding can't be trusted
+// to fire *during* it; it may not fire until long after, if it ever fires
+// promptly at all once the user returns. `Date.now()`, unlike a timer
+// callback, keeps real wall-clock time regardless of whether the page was
+// suspended — so the actual fix isn't a longer or shorter timeout, it's
+// not depending solely on the timer to notice: `visibilitychange` firing
+// when the user returns to this tab is re-checked against real elapsed
+// time immediately, which is the first reliable moment this app can act
+// again after being backgrounded for the wallet round trip regardless of
+// whether the underlying setTimeout ever actually ran.
 export class WalletConnectRequestTimeoutError extends Error {
   constructor() {
     super("The wallet did not respond to the WalletConnect request in time.");
@@ -123,11 +146,29 @@ export class WalletConnectRequestTimeoutError extends Error {
 const WALLETCONNECT_REQUEST_TIMEOUT_MS = 60_000;
 
 export function withWalletConnectTimeout(promise, timeoutMs = WALLETCONNECT_REQUEST_TIMEOUT_MS) {
+  const startedAt = Date.now();
   let timeoutId;
+  let onVisible;
+
   const timeout = new Promise((_resolve, reject) => {
-    timeoutId = setTimeout(() => reject(new WalletConnectRequestTimeoutError()), timeoutMs);
+    const fail = () => reject(new WalletConnectRequestTimeoutError());
+
+    timeoutId = setTimeout(fail, timeoutMs);
+
+    // The backstop described above — fires immediately on return to this
+    // tab/PWA, not dependent on the (possibly-suspended-while-backgrounded)
+    // setTimeout above ever having run.
+    onVisible = () => {
+      if (document.visibilityState !== "visible") return;
+      if (Date.now() - startedAt >= timeoutMs) fail();
+    };
+    document.addEventListener("visibilitychange", onVisible);
   });
-  return Promise.race([promise, timeout]).finally(() => clearTimeout(timeoutId));
+
+  return Promise.race([promise, timeout]).finally(() => {
+    clearTimeout(timeoutId);
+    document.removeEventListener("visibilitychange", onVisible);
+  });
 }
 
 export class WalletConnectSessionStaleError extends Error {

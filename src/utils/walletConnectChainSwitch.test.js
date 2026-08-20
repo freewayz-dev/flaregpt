@@ -191,4 +191,45 @@ describe("withWalletConnectTimeout", () => {
     await vi.advanceTimersByTimeAsync(1_000);
     await assertion;
   });
+
+  // Direct coverage for the actual reported bug: a live device showed the
+  // wallet itself reporting its session as disconnected, well past this
+  // timeout's own threshold, while this app's button stayed stuck — the
+  // scheduled setTimeout never fired, because it was scheduled the instant
+  // this tab/PWA got backgrounded for the wallet app-switch, and mobile
+  // browsers suspend/throttle timers on a backgrounded page. This
+  // simulates exactly that: real time passes (vi.setSystemTime, which
+  // moves Date.now() without running any queued timer callback — the same
+  // as a backgrounded page's frozen event loop), the scheduled setTimeout
+  // is deliberately never advanced/flushed, and only `visibilitychange`
+  // firing (the moment the user returns to the tab) is what recovers.
+  it("recovers via visibilitychange even if the scheduled setTimeout itself never fires — the actual backgrounded-tab bug", async () => {
+    vi.useFakeTimers();
+    const neverResolves = new Promise(() => {});
+    const assertion = expect(withWalletConnectTimeout(neverResolves, 60_000)).rejects.toThrow(
+      WalletConnectRequestTimeoutError,
+    );
+
+    // Real wall-clock time passes while "backgrounded" — Date.now() moves
+    // forward, but the setTimeout callback itself is never allowed to run
+    // (no vi.advanceTimersByTimeAsync call), matching a suspended
+    // background-tab event loop exactly.
+    vi.setSystemTime(Date.now() + 60_000);
+    Object.defineProperty(document, "visibilityState", { value: "visible", configurable: true });
+    document.dispatchEvent(new Event("visibilitychange"));
+
+    await assertion;
+  });
+
+  it("does not reject early on visibilitychange if not enough real time has actually passed yet", async () => {
+    vi.useFakeTimers();
+    const request = vi.fn().mockResolvedValue("ok");
+    const result = withWalletConnectTimeout(request(), 60_000);
+
+    vi.setSystemTime(Date.now() + 5_000);
+    Object.defineProperty(document, "visibilityState", { value: "visible", configurable: true });
+    document.dispatchEvent(new Event("visibilitychange"));
+
+    await expect(result).resolves.toBe("ok");
+  });
 });

@@ -139,7 +139,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
           pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)]
           transition-[width,transform] duration-300 ease-in-out
           h-dvh lg:h-full
-          w-[80%] min-w-[280px] max-w-[360px] ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
+          w-[74%] min-w-[270px] max-w-[340px] ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
           ${open ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0
         `}
       >

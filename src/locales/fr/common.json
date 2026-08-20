@@ -611,8 +611,8 @@
       "statusUnknown": "Statut inconnu",
       "title": "Gas Sniper",
       "toggleFailed": "Impossible de mettre à jour Gas Sniper. Réessayez.",
-      "walletConnectSessionStale": "La connexion de votre portefeuille ne répond plus à rien pour le moment. Déconnectez complètement votre portefeuille, actualisez cette page, puis reconnectez-le et réessayez.",
-      "walletConnectTimeout": "Votre portefeuille n'a pas répondu. Ouvrez votre application de portefeuille pour vérifier une demande en attente, ou réessayez."
+      "walletConnectSessionStale": "La connexion de votre portefeuille ne répond plus à rien pour le moment, nous l'avons donc déconnecté. Actualisez cette page, puis reconnectez-vous et réessayez.",
+      "walletConnectTimeout": "Votre portefeuille n'a pas répondu à temps, nous l'avons donc déconnecté. Reconnectez votre portefeuille et réessayez."
     }
   },
   "navbar": {

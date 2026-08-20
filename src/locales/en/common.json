@@ -604,8 +604,8 @@
       "statusUnknown": "Status unknown",
       "title": "Gas Sniper",
       "toggleFailed": "Couldn't update Gas Sniper. Try again.",
-      "walletConnectSessionStale": "Your wallet connection isn't responding to anything right now. Fully disconnect your wallet, reload this page, then reconnect and try again.",
-      "walletConnectTimeout": "Your wallet didn't respond. Open your wallet app to check for a pending request, or try again."
+      "walletConnectSessionStale": "Your wallet connection isn't responding to anything right now, so we've disconnected it. Reload this page, then reconnect and try again.",
+      "walletConnectTimeout": "Your wallet didn't respond in time, so we've disconnected it. Reconnect your wallet and try again."
     }
   },
   "navbar": {

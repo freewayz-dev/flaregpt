@@ -604,8 +604,8 @@
       "statusUnknown": "Status tidak diketahui",
       "title": "Gas Sniper",
       "toggleFailed": "Tidak dapat memperbarui Gas Sniper. Coba lagi.",
-      "walletConnectSessionStale": "Koneksi dompet Anda saat ini tidak merespons apa pun. Putuskan sepenuhnya koneksi dompet Anda, muat ulang halaman ini, lalu sambungkan kembali dan coba lagi.",
-      "walletConnectTimeout": "Dompet Anda tidak merespons. Buka aplikasi dompet Anda untuk memeriksa permintaan yang tertunda, atau coba lagi."
+      "walletConnectSessionStale": "Koneksi dompet Anda saat ini tidak merespons apa pun, jadi kami telah memutuskannya. Muat ulang halaman ini, lalu sambungkan kembali dan coba lagi.",
+      "walletConnectTimeout": "Dompet Anda tidak merespons tepat waktu, jadi kami telah memutuskannya. Sambungkan kembali dompet Anda dan coba lagi."
     }
   },
   "navbar": {

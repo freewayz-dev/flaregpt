@@ -604,8 +604,8 @@
       "statusUnknown": "Durum bilinmiyor",
       "title": "Gas Sniper",
       "toggleFailed": "Gas Sniper güncellenemedi. Tekrar deneyin.",
-      "walletConnectSessionStale": "Cüzdanınızın bağlantısı şu anda hiçbir şeye yanıt vermiyor. Cüzdanınızın bağlantısını tamamen kesin, bu sayfayı yenileyin, ardından yeniden bağlanıp tekrar deneyin.",
-      "walletConnectTimeout": "Cüzdanınız yanıt vermedi. Bekleyen bir istek olup olmadığını kontrol etmek için cüzdan uygulamanızı açın veya tekrar deneyin."
+      "walletConnectSessionStale": "Cüzdanınızın bağlantısı şu anda hiçbir şeye yanıt vermiyor, bu yüzden bağlantısını kestik. Bu sayfayı yenileyin, ardından yeniden bağlanıp tekrar deneyin.",
+      "walletConnectTimeout": "Cüzdanınız zamanında yanıt vermedi, bu yüzden bağlantısını kestik. Cüzdanınızı yeniden bağlayıp tekrar deneyin."
     }
   },
   "navbar": {

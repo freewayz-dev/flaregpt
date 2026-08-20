@@ -611,8 +611,8 @@
       "statusUnknown": "Status desconhecido",
       "title": "Gas Sniper",
       "toggleFailed": "Não foi possível atualizar o Gas Sniper. Tente novamente.",
-      "walletConnectSessionStale": "A conexão da sua carteira não está respondendo a nada no momento. Desconecte completamente sua carteira, recarregue esta página e, em seguida, reconecte e tente novamente.",
-      "walletConnectTimeout": "Sua carteira não respondeu. Abra o app da sua carteira para verificar se há uma solicitação pendente, ou tente novamente."
+      "walletConnectSessionStale": "A conexão da sua carteira não está respondendo a nada no momento, então nós a desconectamos. Recarregue esta página e, em seguida, reconecte e tente novamente.",
+      "walletConnectTimeout": "Sua carteira não respondeu a tempo, então nós a desconectamos. Reconecte sua carteira e tente novamente."
     }
   },
   "navbar": {

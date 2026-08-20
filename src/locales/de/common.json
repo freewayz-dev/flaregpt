@@ -604,8 +604,8 @@
       "statusUnknown": "Status unbekannt",
       "title": "Gas Sniper",
       "toggleFailed": "Gas Sniper konnte nicht aktualisiert werden. Versuch es erneut.",
-      "walletConnectSessionStale": "Die Verbindung deines Wallets reagiert im Moment auf gar nichts mehr. Trenne dein Wallet vollständig, lade diese Seite neu, verbinde dich dann erneut und versuch es noch einmal.",
-      "walletConnectTimeout": "Dein Wallet hat nicht reagiert. Öffne deine Wallet-App, um nach einer ausstehenden Anfrage zu suchen, oder versuch es erneut."
+      "walletConnectSessionStale": "Die Verbindung deines Wallets reagiert im Moment auf gar nichts mehr, deshalb haben wir sie getrennt. Lade diese Seite neu, verbinde dich dann erneut und versuch es noch einmal.",
+      "walletConnectTimeout": "Dein Wallet hat nicht rechtzeitig reagiert, deshalb haben wir es getrennt. Verbinde dein Wallet erneut und versuch es noch einmal."
     }
   },
   "navbar": {

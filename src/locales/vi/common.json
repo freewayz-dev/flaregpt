@@ -604,8 +604,8 @@
       "statusUnknown": "Không rõ trạng thái",
       "title": "Gas Sniper",
       "toggleFailed": "Không thể cập nhật Gas Sniper. Vui lòng thử lại.",
-      "walletConnectSessionStale": "Kết nối ví của bạn hiện không phản hồi bất kỳ yêu cầu nào. Ngắt kết nối hoàn toàn ví của bạn, tải lại trang này, sau đó kết nối lại và thử lại.",
-      "walletConnectTimeout": "Ví của bạn không phản hồi. Hãy mở ứng dụng ví để kiểm tra yêu cầu đang chờ xử lý, hoặc thử lại."
+      "walletConnectSessionStale": "Kết nối ví của bạn hiện không phản hồi bất kỳ yêu cầu nào, vì vậy chúng tôi đã ngắt kết nối ví. Hãy tải lại trang này, sau đó kết nối lại và thử lại.",
+      "walletConnectTimeout": "Ví của bạn không phản hồi kịp thời, vì vậy chúng tôi đã ngắt kết nối ví. Hãy kết nối lại ví của bạn và thử lại."
     }
   },
   "navbar": {

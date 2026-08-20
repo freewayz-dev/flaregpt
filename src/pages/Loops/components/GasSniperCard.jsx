@@ -20,6 +20,7 @@ import {
 import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
+import { useDisconnectAllWallets } from "@/hooks/useDisconnectAllWallets";
 import { coston2 } from "@/config/web3Config";
 import {
   switchToConston2ViaRawRequest,
@@ -140,6 +141,7 @@ export default function GasSniperCard() {
   const { hasSession, isConnected, isCurrentWalletSignedIn, isAuthenticating, signIn } =
     useAuthStatus();
   const authenticatedAddress = useAuthStore((s) => s.authenticatedAddress);
+  const disconnectAllForStaleWalletConnectSession = useDisconnectAllWallets();
   const { chainId: connectedChainId, connector } = useConnection();
   // Enabling/disabling hits the backend (useLoopsQueries.ts) and approving
   // is an on-chain write — both genuinely need connectivity, unlike the
@@ -379,6 +381,25 @@ export default function GasSniperCard() {
       // place it's thrown (assertConston2InWalletConnectSession) is always
       // caught locally above and turned into an addConston2ToWalletConnectSession
       // attempt instead, not re-surfaced as-is.
+      const isWalletConnectFailure =
+        error instanceof WalletConnectSessionStaleError || error instanceof WalletConnectRequestTimeoutError;
+      if (isWalletConnectFailure) {
+        // A real, confirmed live-device case for exactly this: the wallet
+        // reported *its own* session as disconnected (a "go back and
+        // reconnect" message shown inside the wallet app itself) while
+        // this app's own connection state still showed connected —
+        // nothing here ever received a session_delete/disconnect event to
+        // react to, because the wallet's side genuinely tore the session
+        // down without one ever reaching this app (see
+        // walletConnectChainSwitch.js's own comment on the timeout fix
+        // itself for the mechanism). Forcing a disconnect here reconciles
+        // this app's state with what the wallet already believes, instead
+        // of leaving a zombie "connected" UI that would just fail
+        // identically on the next attempt against the same broken
+        // session — the reconnect the user is asked to do only actually
+        // helps once this app agrees it's disconnected too.
+        await disconnectAllForStaleWalletConnectSession().catch(() => {});
+      }
       if (error instanceof WalletConnectSessionStaleError) {
         toast.error(t("loops.gasSniper.walletConnectSessionStale"));
       } else if (error instanceof WalletConnectRequestTimeoutError) {

@@ -604,8 +604,8 @@
       "statusUnknown": "状态未知",
       "title": "Gas Sniper",
       "toggleFailed": "无法更新 Gas Sniper，请重试。",
-      "walletConnectSessionStale": "您的钱包连接目前对任何请求都没有响应。请完全断开您的钱包连接，刷新此页面，然后重新连接并重试。",
-      "walletConnectTimeout": "您的钱包没有响应。请打开钱包应用查看是否有待处理的请求，或重试。"
+      "walletConnectSessionStale": "您的钱包连接目前对任何请求都没有响应，因此我们已断开该连接。请刷新此页面，然后重新连接并重试。",
+      "walletConnectTimeout": "您的钱包未能及时响应，因此我们已断开该连接。请重新连接您的钱包并重试。"
     }
   },
   "navbar": {
