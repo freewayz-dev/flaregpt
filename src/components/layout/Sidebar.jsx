@@ -4,7 +4,6 @@ import { useLocation, Link, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
 import {
-  XMarkIcon,
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
   WalletIcon,
@@ -132,14 +131,32 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
           today — logo, nav links, footer wallet button only); if that ever
           changes, render the new element via createPortal(document.body)
           instead, the same fix already used for WalletActivity's
-          TransactionDrawer, rather than nesting it here. */}
+          TransactionDrawer, rather than nesting it here.
+
+          `lg:min-w-0 lg:max-w-none` below is load-bearing, not redundant —
+          a real regression this app already shipped once. `min-w-[260px]`/
+          `max-w-[320px]` exist to clamp the *mobile* drawer's `w-[70%]`
+          (so it doesn't get absurdly narrow/wide across phone sizes), but
+          `min-width`/`max-width` are different CSS properties from
+          `width` — the desktop `lg:w-[72px]`/`lg:w-[240px]` toggle below
+          overrides `width` alone and does nothing to that leftover
+          260-320px floor/ceiling from the mobile tier. Without resetting
+          them here, the desktop collapse button hid the nav labels (a
+          separate, correctly-scoped `lg:hidden` on each label) while the
+          `<aside>` itself stayed clamped to its 260px min-width in *both*
+          states — collapsed and expanded rendering at visually the same
+          width, empty space where the labels used to be. The fix has to
+          reset both at `lg:`, not just raise the mobile min-width's
+          number, since any mobile-only sizing on this line will keep
+          leaking into desktop the same way unless it's explicitly undone
+          here. */}
       <aside
         className={`fixed inset-y-0 left-0 z-50 flex flex-col bg-surface-card shadow-[0_1px_3px_rgba(0,0,0,0.01)] border-r border-line lg:static
           rounded-tr-3xl rounded-br-3xl lg:rounded-none
           pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)]
           transition-[width,transform] duration-300 ease-in-out
           h-dvh lg:h-full
-          w-[70%] min-w-[260px] max-w-[320px] ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
+          w-[70%] min-w-[260px] max-w-[320px] lg:min-w-0 lg:max-w-none ${collapsed ? "lg:w-[72px]" : "lg:w-[240px]"}
           ${open ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0
         `}
       >
@@ -161,16 +178,6 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
                 className="hidden lg:flex h-8 w-8 items-center justify-center rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
                 <ChevronDoubleLeftIcon className="h-4 w-4" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                aria-label={t("sidebar.closeMenu")}
-                title={t("sidebar.closeMenu")}
-                className="relative lg:hidden p-1 rounded-lg text-ink-secondary hover:bg-surface-card-hover cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 before:content-[''] before:absolute before:-inset-2"
-              >
-                <XMarkIcon className="h-5 w-5" />
               </button>
             </div>
           </div>
