@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 
 import { useUIStore, applyThemeColorMeta } from "@/store/useUIStore";
 
@@ -38,6 +38,22 @@ describe("useUIStore.setAppearance — theme-color side effect", () => {
     meta.setAttribute("name", "theme-color");
     meta.setAttribute("content", "#E62058");
     document.head.appendChild(meta);
+    vi.useFakeTimers();
+  });
+
+  // setAppearance schedules a real `setTimeout` (removing the
+  // `no-transition` class after 50ms — see useUIStore.js) that neither
+  // test below ever waits for. Left as a real timer, it fires 50ms of
+  // *wall-clock* time later, well after this synchronous test — and often
+  // this file — has already finished, landing in whatever test file
+  // happens to be running by then and throwing `document is not defined`
+  // once its own jsdom environment has already been torn down. Faking
+  // timers and flushing them before the test ends keeps the timeout's
+  // entire lifecycle inside this test's own execution window, so nothing
+  // is left pending to fire later into a torn-down environment.
+  afterEach(() => {
+    vi.runOnlyPendingTimers();
+    vi.useRealTimers();
   });
 
   it("updates theme-color to the dark surface when switching to dark mode", () => {
