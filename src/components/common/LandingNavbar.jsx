@@ -78,6 +78,34 @@ const NAV_ITEMS = [
 // context). No arbitrary offsets or size changes — this is the same
 // visual behavior as before, just with the one WebKit-specific ambiguity
 // removed by construction.
+//
+// The hidden-state transform distance is `calc(-100% - 1rem -
+// env(safe-area-inset-top) - 24px)`, not a plain `-120%` — confirmed live,
+// specifically on the installed PWA on a Dynamic-Island iPhone (not a
+// regular Safari/Chrome tab): scrolling down stopped hiding the nav at
+// all, leaving most of it stuck on screen. Unlike the three quirks above,
+// this isn't WebKit misrendering — it's this component's own arithmetic.
+// `translateY(-120%)` moves the nav up by a fixed 120% of *its own
+// height* only, with no relationship to how far down the page the nav
+// actually starts. In a regular browser tab, `env(safe-area-inset-top)`
+// is 0 (the browser's real chrome — its actual URL bar — occupies that
+// space, not this page), so the nav's resting position is just the
+// wrapper's `1rem` padding, small enough that clearing the nav's own
+// height happened to also clear that. But the installed PWA renders
+// edge-to-edge under the status bar/Dynamic Island (see the `pt-*` note
+// above), so `env(safe-area-inset-top)` there adds another ~50-59px on
+// top of that same `1rem` — distance the fixed `-120%` never knew to
+// cover, so it left a growing remainder on screen as the safe-area inset
+// grew, roughly the entire nav on a Dynamic-Island device. The fix moves
+// the nav up by its own height *plus* the exact `1rem +
+// env(safe-area-inset-top)` the wrapper's padding pushed it down by in
+// the first place — so the two cancel out regardless of the inset's
+// actual value on any given device — plus a small fixed buffer. If the
+// wrapper's own top padding below is ever changed, this needs to change
+// with it.
+const HIDDEN_TRANSFORM =
+  "translateY(calc(-100% - 1rem - env(safe-area-inset-top) - 24px))";
+
 export default function LandingNavbar() {
   const navRef = useRef(null);
   const ticking = useRef(false);
@@ -148,7 +176,7 @@ export default function LandingNavbar() {
       } else {
         referenceY.current = Math.min(referenceY.current, currentY);
         if (currentY - referenceY.current > THRESHOLD) {
-          nav.style.transform = "translateY(-120%)";
+          nav.style.transform = HIDDEN_TRANSFORM;
           isHidden.current = true;
           referenceY.current = currentY;
         }

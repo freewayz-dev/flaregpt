@@ -3,6 +3,11 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import LandingNavbar from "@/components/common/LandingNavbar";
 import { renderWithProviders, screen } from "@/test/test-utils";
 
+// Must match LandingNavbar.jsx's own HIDDEN_TRANSFORM exactly — see that
+// file's top comment for why this isn't a plain `translateY(-120%)`.
+const HIDDEN_TRANSFORM =
+  "translateY(calc(-100% - 1rem - env(safe-area-inset-top) - 24px))";
+
 function setScrollY(value) {
   Object.defineProperty(window, "scrollY", { value, configurable: true, writable: true });
 }
@@ -43,7 +48,7 @@ describe("LandingNavbar — hide/show on scroll", () => {
     setScrollY(200);
     window.dispatchEvent(new Event("scroll"));
     raf.flush();
-    expect(getNav().style.transform).toBe("translateY(-120%)");
+    expect(getNav().style.transform).toBe(HIDDEN_TRANSFORM);
 
     setScrollY(100);
     window.dispatchEvent(new Event("scroll"));
@@ -85,7 +90,7 @@ describe("LandingNavbar — hide/show on scroll", () => {
     window.dispatchEvent(new Event("scroll"));
     raf.flush();
 
-    expect(getNav().style.transform).toBe("translateY(-120%)");
+    expect(getNav().style.transform).toBe(HIDDEN_TRANSFORM);
   });
 
   // The actual root cause behind a separate real report: "scrolling up
@@ -108,7 +113,7 @@ describe("LandingNavbar — hide/show on scroll", () => {
     setScrollY(1200);
     window.dispatchEvent(new Event("scroll"));
     raf.flush();
-    expect(getNav().style.transform).toBe("translateY(-120%)");
+    expect(getNav().style.transform).toBe(HIDDEN_TRANSFORM);
 
     // A jittery upward gesture, net trending up but with several
     // individual steps moving slightly back down from the previous one —
@@ -119,7 +124,7 @@ describe("LandingNavbar — hide/show on scroll", () => {
       setScrollY(y);
       window.dispatchEvent(new Event("scroll"));
       raf.flush();
-      expect(getNav().style.transform).toBe("translateY(-120%)");
+      expect(getNav().style.transform).toBe(HIDDEN_TRANSFORM);
     }
 
     // Finally past the threshold (1200 - 1080 = 120 > 32) — reveals in one
@@ -152,7 +157,7 @@ describe("LandingNavbar — hide/show on scroll", () => {
     setScrollY(200);
     window.dispatchEvent(new Event("scroll"));
     raf.flush();
-    expect(getNav().style.transform).toBe("translateY(-120%)");
+    expect(getNav().style.transform).toBe(HIDDEN_TRANSFORM);
 
     // Keeps scrolling down, far past the original hide point — if the
     // reference point were still frozen at 200 (the bug), nothing below
@@ -160,7 +165,7 @@ describe("LandingNavbar — hide/show on scroll", () => {
     setScrollY(5000);
     window.dispatchEvent(new Event("scroll"));
     raf.flush();
-    expect(getNav().style.transform).toBe("translateY(-120%)");
+    expect(getNav().style.transform).toBe(HIDDEN_TRANSFORM);
 
     // A small reversal — 40px, nowhere near back to 200, let alone the
     // top of the page — must still reveal it right away.
