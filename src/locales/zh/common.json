@@ -262,11 +262,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "迄今销毁量",
+      "valueLabel": "{{total}} 中的 {{burned}}"
+    },
+    "chart": {
+      "subtitle": "按费用类别划分的 USD 价值，截至目前",
+      "title": "按类别划分的收入"
+    },
     "couldntLoad": "无法加载 FIRE 收入数据。",
     "description": "实时跟踪 FIRE（Flare Income Reinvestment Entity）收入，该收入通过协议费用在链上收取，并最终用于资助代币销毁。",
     "empty": {
       "description": "目前没有正在跟踪的收入池。",
       "title": "暂无 FIRE 数据"
+    },
+    "explainer": {
+      "body": "FIRE（Flare Income Reinvestment Entity）是 Flare 的收入机制。某些协议费用，例如数据认证和铸造 FXRP 产生的费用，会被收集到专用钱包中，而不是流向任何单一方。此后，计划是这些收入最终将用于资助代币销毁，从而减少 FLR 的供应量。",
+      "label": "什么是 FIRE？"
     },
     "stats": {
       "feeCategories": "涵盖的费用类别",
@@ -279,6 +291,7 @@
       "caption": "按费用类别划分的 FIRE 收入池",
       "category": "类别",
       "explorer": "在浏览器中查看",
+      "percentOfTotal": "占总数的比例（%）",
       "title": "已跟踪的费用类别",
       "token": "代币",
       "value": "价值",

@@ -262,11 +262,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "Đã Đốt Đến Nay",
+      "valueLabel": "{{burned}} trên {{total}}"
+    },
+    "chart": {
+      "subtitle": "Giá trị USD được theo dõi cho đến nay, theo danh mục phí",
+      "title": "Doanh Thu Theo Danh Mục"
+    },
     "couldntLoad": "Không thể tải dữ liệu doanh thu FIRE.",
     "description": "Theo dõi trực tiếp doanh thu FIRE (Flare Income Reinvestment Entity), được thu thập on-chain từ phí giao thức và cuối cùng được dùng để tài trợ cho việc đốt token.",
     "empty": {
       "description": "Hiện không có quỹ doanh thu nào được theo dõi.",
       "title": "Chưa Có Dữ Liệu FIRE"
+    },
+    "explainer": {
+      "body": "FIRE (Flare Income Reinvestment Entity) là cơ chế doanh thu của Flare. Một số phí giao thức nhất định, như phí từ việc xác thực dữ liệu và từ việc đúc FXRP, được thu vào các ví chuyên dụng thay vì chuyển cho một bên duy nhất. Từ đó, kế hoạch là khoản doanh thu này cuối cùng sẽ tài trợ cho việc đốt token, làm giảm nguồn cung FLR.",
+      "label": "FIRE là gì?"
     },
     "stats": {
       "feeCategories": "Danh Mục Phí Được Bao Gồm",
@@ -279,6 +291,7 @@
       "caption": "Các quỹ doanh thu FIRE theo danh mục phí",
       "category": "Danh Mục",
       "explorer": "Xem trên Explorer",
+      "percentOfTotal": "% Trên Tổng",
       "title": "Danh Mục Phí Được Theo Dõi",
       "token": "Token",
       "value": "Giá Trị",

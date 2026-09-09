@@ -262,11 +262,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "Terbakar Sejauh Ini",
+      "valueLabel": "{{burned}} dari {{total}}"
+    },
+    "chart": {
+      "subtitle": "Nilai USD yang dilacak sejauh ini, berdasarkan kategori biaya",
+      "title": "Pendapatan Berdasarkan Kategori"
+    },
     "couldntLoad": "Gagal memuat data pendapatan FIRE.",
     "description": "Pelacakan langsung pendapatan FIRE (Flare Income Reinvestment Entity), yang dikumpulkan secara on-chain dari biaya protokol dan pada akhirnya digunakan untuk mendanai pembakaran token.",
     "empty": {
       "description": "Saat ini tidak ada pool pendapatan yang dilacak.",
       "title": "Belum Ada Data FIRE"
+    },
+    "explainer": {
+      "body": "FIRE (Flare Income Reinvestment Entity) adalah mekanisme pendapatan Flare. Biaya protokol tertentu, seperti biaya dari atestasi data dan dari minting FXRP, dikumpulkan ke dalam dompet khusus, bukan diberikan kepada satu pihak saja. Dari situ, rencananya pendapatan tersebut akan digunakan untuk mendanai pembakaran token, mengurangi pasokan FLR.",
+      "label": "Apa itu FIRE?"
     },
     "stats": {
       "feeCategories": "Kategori Biaya yang Dicakup",
@@ -279,6 +291,7 @@
       "caption": "Pool pendapatan FIRE berdasarkan kategori biaya",
       "category": "Kategori",
       "explorer": "Lihat di Explorer",
+      "percentOfTotal": "% dari Total",
       "title": "Kategori Biaya yang Dilacak",
       "token": "Token",
       "value": "Nilai",

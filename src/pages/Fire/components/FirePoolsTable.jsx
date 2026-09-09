@@ -1,11 +1,22 @@
 import { useTranslation } from "react-i18next";
 import { ArrowTopRightOnSquareIcon, FireIcon } from "@heroicons/react/24/outline";
 
+import TokenIcon from "@/components/common/TokenIcon";
 import { useCurrency } from "@/hooks/useCurrency";
 import { getFlarescanAddressUrl } from "@/config/web3Config";
 
 function formatBalance(value) {
   return Number(value).toLocaleString(undefined, { maximumFractionDigits: 2 });
+}
+
+// `totalUsd` guarded against 0/undefined — division by either would
+// produce NaN/Infinity, not a real percentage. That's not a hypothetical:
+// the empty state (0 pools) never reaches this component at all, but a
+// future response with pools whose values happen to sum to exactly 0
+// isn't impossible.
+function percentOfTotal(usdValue, totalUsd) {
+  if (!totalUsd) return 0;
+  return (usdValue / totalUsd) * 100;
 }
 
 function ExplorerLink({ address, label }) {
@@ -34,20 +45,34 @@ function ExplorerLink({ address, label }) {
 // size/color (the USD value is the one bold, largest figure) and the
 // FireIcon next to "burned" stands in for a text label the same way
 // StrategyMobileCard uses lock icons instead of writing "Liquid"/"Locked".
-function PoolMobileCard({ pool, t, formatCurrency }) {
+function PoolMobileCard({ pool, totalUsd, t, formatCurrency }) {
   return (
     <div className="rounded-xl bg-surface-inset p-3">
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
           <p className="text-sm font-medium text-ink-primary truncate">{pool.label}</p>
-          <p className="text-[11px] font-mono text-ink-muted">{pool.token}</p>
+          <div className="mt-0.5 flex items-center gap-1">
+            <TokenIcon symbol={pool.token} size={12} />
+            <p className="text-[11px] font-mono text-ink-muted">{pool.token}</p>
+          </div>
         </div>
         <ExplorerLink address={pool.address} label={t("fire.table.viewOnExplorer")} />
       </div>
 
       <div className="mt-2 flex items-baseline justify-between gap-2">
-        <span className="text-lg font-bold tabular-nums text-ink-primary">
-          {formatCurrency(pool.usd_value)}
+        {/* The percentage rides directly on the USD value it describes
+            (matching this card's own "no literal Label: value pairs"
+            idiom above) rather than a separate labeled row — a bare
+            number right next to a dollar amount already reads as "share
+            of the total" in this context, the same way weightSharePct
+            reads unlabeled next to a value in the FTSO ranking cards. */}
+        <span className="flex items-baseline gap-1.5">
+          <span className="text-lg font-bold tabular-nums text-ink-primary">
+            {formatCurrency(pool.usd_value)}
+          </span>
+          <span className="text-xs font-medium tabular-nums text-ink-muted">
+            {percentOfTotal(pool.usd_value, totalUsd).toFixed(1)}%
+          </span>
         </span>
         <span className="text-xs tabular-nums text-ink-secondary">
           {formatBalance(pool.balance)} {pool.token}
@@ -70,7 +95,7 @@ function PoolMobileCard({ pool, t, formatCurrency }) {
 // Object.keys() and can only render plain formatted cells, but this needs
 // a real <a> explorer-link cell and currency-converted USD formatting,
 // neither of which its auto-column machinery supports.
-export default function FirePoolsTable({ pools }) {
+export default function FirePoolsTable({ pools, totalUsd }) {
   const { t } = useTranslation();
   const { formatCurrency } = useCurrency();
 
@@ -78,7 +103,13 @@ export default function FirePoolsTable({ pools }) {
     <>
       <div className="space-y-2 sm:hidden">
         {pools.map((pool) => (
-          <PoolMobileCard key={pool.id} pool={pool} t={t} formatCurrency={formatCurrency} />
+          <PoolMobileCard
+            key={pool.id}
+            pool={pool}
+            totalUsd={totalUsd}
+            t={t}
+            formatCurrency={formatCurrency}
+          />
         ))}
       </div>
 
@@ -91,6 +122,7 @@ export default function FirePoolsTable({ pools }) {
               <th className="text-left font-medium py-2 pr-3">{t("fire.table.token")}</th>
               <th className="text-right font-medium py-2 pr-3">{t("fire.table.balance")}</th>
               <th className="text-right font-medium py-2 pr-3">{t("fire.table.value")}</th>
+              <th className="text-right font-medium py-2 pr-3">{t("fire.table.percentOfTotal")}</th>
               <th className="text-right font-medium py-2 pr-3">{t("fire.table.burned")}</th>
               <th className="text-right font-medium py-2">
                 <span className="sr-only">{t("fire.table.explorer")}</span>
@@ -101,12 +133,20 @@ export default function FirePoolsTable({ pools }) {
             {pools.map((pool) => (
               <tr key={pool.id}>
                 <td className="py-2.5 pr-3 text-ink-primary whitespace-nowrap">{pool.label}</td>
-                <td className="py-2.5 pr-3 text-ink-secondary font-mono text-xs">{pool.token}</td>
+                <td className="py-2.5 pr-3 text-ink-secondary font-mono text-xs">
+                  <span className="inline-flex items-center gap-1.5">
+                    <TokenIcon symbol={pool.token} size={14} />
+                    {pool.token}
+                  </span>
+                </td>
                 <td className="py-2.5 pr-3 text-right tabular-nums text-ink-primary">
                   {formatBalance(pool.balance)}
                 </td>
                 <td className="py-2.5 pr-3 text-right tabular-nums font-semibold text-ink-primary">
                   {formatCurrency(pool.usd_value)}
+                </td>
+                <td className="py-2.5 pr-3 text-right tabular-nums text-ink-secondary">
+                  {percentOfTotal(pool.usd_value, totalUsd).toFixed(1)}%
                 </td>
                 <td className="py-2.5 pr-3 text-right tabular-nums text-ink-muted">
                   {pool.burned > 0

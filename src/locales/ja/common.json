@@ -262,11 +262,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "これまでのバーン量",
+      "valueLabel": "{{total}}のうち{{burned}}"
+    },
+    "chart": {
+      "subtitle": "手数料カテゴリー別に追跡された、これまでのUSD価値",
+      "title": "カテゴリー別収益"
+    },
     "couldntLoad": "FIRE収益データを読み込めませんでした。",
     "description": "FIRE（Flare Income Reinvestment Entity）収益のライブ追跡。プロトコル手数料からオンチェーンで収集され、最終的にトークンバーンの資金として使用されます。",
     "empty": {
       "description": "現在、追跡されている収益プールはありません。",
       "title": "FIREデータはまだありません"
+    },
+    "explainer": {
+      "body": "FIRE（Flare Income Reinvestment Entity）は、Flareの収益メカニズムです。データのアテステーションやFXRPのミンティングなど、特定のプロトコル手数料は、特定の一者に渡ることなく、専用のウォレットに集められます。そこから、この収益は最終的にトークンバーンの資金として使われ、FLRの供給量を減らす計画です。",
+      "label": "FIREとは？"
     },
     "stats": {
       "feeCategories": "対象の手数料カテゴリー",
@@ -279,6 +291,7 @@
       "caption": "手数料カテゴリー別のFIRE収益プール",
       "category": "カテゴリー",
       "explorer": "エクスプローラーで見る",
+      "percentOfTotal": "合計に占める割合（%）",
       "title": "追跡対象の手数料カテゴリー",
       "token": "トークン",
       "value": "価値",

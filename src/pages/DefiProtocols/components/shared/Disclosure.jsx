@@ -27,7 +27,18 @@ function findScrollParent(el) {
 // where a top rule would read as a stray line rather than a section break.
 
 
-export default function Disclosure({ label, children, bordered = true }) {
+// `align="start"` is opt-in — every existing caller keeps the exact
+// original `justify-between` layout (chevron pinned to the trigger's far
+// right edge, label at the left). That works fine at the bottom of a
+// narrow data card, but the Fire page's own "What is FIRE?" explainer
+// sits at the top of a full-width page — on desktop the label and its own
+// chevron end up 700px+ apart, easy to miss as one interactive control.
+// "start" keeps the full-width click target (still `w-full`, same real
+// hit area) but visually groups the chevron right next to the label, and
+// swaps the muted secondary color for brand color so the text itself
+// reads as an actionable control at a glance, not just a caption that
+// happens to be clickable.
+export default function Disclosure({ label, children, bordered = true, align = "between" }) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const triggerRef = useRef(null);
@@ -64,7 +75,11 @@ export default function Disclosure({ label, children, bordered = true }) {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-controls={panelId}
-        className="flex w-full items-center justify-between text-xs font-medium text-ink-secondary hover:text-ink-primary transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 rounded"
+        className={`flex w-full items-center text-xs font-medium transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 rounded ${
+          align === "start"
+            ? "justify-start gap-1.5 text-brand hover:text-brand-hover"
+            : "justify-between text-ink-secondary hover:text-ink-primary"
+        }`}
       >
         <span>{label}</span>
         <ChevronDownIcon

@@ -266,11 +266,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "Détruit Jusqu'à Présent",
+      "valueLabel": "{{burned}} sur {{total}}"
+    },
+    "chart": {
+      "subtitle": "Valeur en USD suivie jusqu'à présent, par catégorie de frais",
+      "title": "Revenus par Catégorie"
+    },
     "couldntLoad": "Impossible de charger les données de revenus FIRE.",
     "description": "Suivi en direct des revenus FIRE (Flare Income Reinvestment Entity), collectés on-chain à partir des frais du protocole et finalement utilisés pour financer des destructions de jetons.",
     "empty": {
       "description": "Aucun pool de revenus n'est suivi pour le moment.",
       "title": "Pas Encore de Données FIRE"
+    },
+    "explainer": {
+      "body": "FIRE (Flare Income Reinvestment Entity) est le mécanisme de revenus de Flare. Certains frais de protocole, comme les frais d'attestation de données et de frappe de FXRP, sont collectés dans des portefeuilles dédiés plutôt que d'aller à une seule partie. À partir de là, l'idée est que ces revenus finissent par financer des destructions de jetons, réduisant l'offre de FLR.",
+      "label": "Qu'est-ce que FIRE ?"
     },
     "stats": {
       "feeCategories": "Catégories de Frais Couvertes",
@@ -283,6 +295,7 @@
       "caption": "Pools de revenus FIRE par catégorie de frais",
       "category": "Catégorie",
       "explorer": "Voir sur l'explorateur",
+      "percentOfTotal": "% du total",
       "title": "Catégories de Frais Suivies",
       "token": "Jeton",
       "value": "Valeur",

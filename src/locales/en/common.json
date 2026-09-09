@@ -262,11 +262,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "Burned So Far",
+      "valueLabel": "{{burned}} of {{total}}"
+    },
+    "chart": {
+      "subtitle": "USD value tracked so far, by fee category",
+      "title": "Revenue by Category"
+    },
     "couldntLoad": "Couldn't load FIRE revenue data.",
     "description": "Live tracking of FIRE (Flare Income Reinvestment Entity) revenue, collected on-chain from protocol fees and eventually used to fund token burns.",
     "empty": {
       "description": "No revenue pools are being tracked right now.",
       "title": "No FIRE Data Yet"
+    },
+    "explainer": {
+      "body": "FIRE (Flare Income Reinvestment Entity) is Flare's revenue mechanism. Certain protocol fees, like fees from data attestation and from minting FXRP, get collected into dedicated wallets instead of going to any single party. From there, the plan is for that revenue to eventually fund token burns, reducing FLR supply.",
+      "label": "What is FIRE?"
     },
     "stats": {
       "feeCategories": "Fee Categories Covered",
@@ -279,6 +291,7 @@
       "caption": "FIRE revenue pools by fee category",
       "category": "Category",
       "explorer": "View on Explorer",
+      "percentOfTotal": "% of Total",
       "title": "Fee Categories Tracked",
       "token": "Token",
       "value": "Value",

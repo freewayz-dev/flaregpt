@@ -262,11 +262,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "Bisher Verbrannt",
+      "valueLabel": "{{burned}} von {{total}}"
+    },
+    "chart": {
+      "subtitle": "Bisher erfasster USD-Wert, nach Gebührenkategorie",
+      "title": "Umsatz nach Kategorie"
+    },
     "couldntLoad": "FIRE-Umsatzdaten konnten nicht geladen werden.",
     "description": "Live-Nachverfolgung der FIRE-Einnahmen (Flare Income Reinvestment Entity), die On-Chain aus Protokollgebühren erhoben und letztlich zur Finanzierung von Token-Burns verwendet werden.",
     "empty": {
       "description": "Derzeit werden keine Einnahmepools verfolgt.",
       "title": "Noch keine FIRE-Daten"
+    },
+    "explainer": {
+      "body": "FIRE (Flare Income Reinvestment Entity) ist Flares Umsatzmechanismus. Bestimmte Protokollgebühren, etwa aus der Datenattestierung und der FXRP-Prägung, werden in dedizierten Wallets gesammelt, anstatt an eine einzelne Partei zu gehen. Der Plan ist, dass diese Einnahmen künftig Token-Burns finanzieren und so das FLR-Angebot verringern.",
+      "label": "Was ist FIRE?"
     },
     "stats": {
       "feeCategories": "Erfasste Gebührenkategorien",
@@ -279,6 +291,7 @@
       "caption": "FIRE-Einnahmepools nach Gebührenkategorie",
       "category": "Kategorie",
       "explorer": "Im Explorer ansehen",
+      "percentOfTotal": "% der Gesamtmenge",
       "title": "Erfasste Gebührenkategorien",
       "token": "Token",
       "value": "Wert",

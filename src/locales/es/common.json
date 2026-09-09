@@ -266,11 +266,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "Quemado Hasta Ahora",
+      "valueLabel": "{{burned}} de {{total}}"
+    },
+    "chart": {
+      "subtitle": "Valor en USD monitoreado hasta ahora, por categoría de comisión",
+      "title": "Ingresos por Categoría"
+    },
     "couldntLoad": "No se pudieron cargar los datos de ingresos de FIRE.",
     "description": "Seguimiento en vivo de los ingresos de FIRE (Flare Income Reinvestment Entity), recaudados en cadena a partir de las comisiones del protocolo y utilizados finalmente para financiar quemas de tokens.",
     "empty": {
       "description": "Actualmente no se está monitoreando ningún fondo de ingresos.",
       "title": "Aún No Hay Datos de FIRE"
+    },
+    "explainer": {
+      "body": "FIRE (Flare Income Reinvestment Entity) es el mecanismo de ingresos de Flare. Ciertas comisiones del protocolo, como las de la atestación de datos y la acuñación de FXRP, se recaudan en billeteras dedicadas en lugar de ir a una sola parte. A partir de ahí, el plan es que esos ingresos financien eventualmente quemas de tokens, reduciendo el suministro de FLR.",
+      "label": "¿Qué es FIRE?"
     },
     "stats": {
       "feeCategories": "Categorías de Comisiones Cubiertas",
@@ -283,6 +295,7 @@
       "caption": "Fondos de ingresos de FIRE por categoría de comisión",
       "category": "Categoría",
       "explorer": "Ver en el Explorador",
+      "percentOfTotal": "% del Total",
       "title": "Categorías de Comisiones Monitoreadas",
       "token": "Token",
       "value": "Valor",

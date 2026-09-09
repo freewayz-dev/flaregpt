@@ -262,11 +262,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "지금까지 소각된 양",
+      "valueLabel": "{{total}} 중 {{burned}}"
+    },
+    "chart": {
+      "subtitle": "수수료 카테고리별로 지금까지 추적된 USD 가치",
+      "title": "카테고리별 수익"
+    },
     "couldntLoad": "FIRE 수익 데이터를 불러올 수 없습니다.",
     "description": "FIRE(Flare Income Reinvestment Entity) 수익에 대한 실시간 추적으로, 프로토콜 수수료에서 온체인으로 수집되며 최종적으로 토큰 소각 자금으로 사용됩니다.",
     "empty": {
       "description": "현재 추적 중인 수익 풀이 없습니다.",
       "title": "아직 FIRE 데이터가 없습니다"
+    },
+    "explainer": {
+      "body": "FIRE(Flare Income Reinvestment Entity)는 Flare의 수익 메커니즘입니다. 데이터 검증(attestation) 및 FXRP 발행에서 발생하는 특정 프로토콜 수수료는 특정 당사자에게 귀속되지 않고 전용 지갑에 모입니다. 이렇게 모인 수익은 궁극적으로 토큰 소각 자금으로 사용되어 FLR 공급량을 줄이는 데 쓰일 계획입니다.",
+      "label": "FIRE란 무엇인가요?"
     },
     "stats": {
       "feeCategories": "포함된 수수료 카테고리",
@@ -279,6 +291,7 @@
       "caption": "수수료 카테고리별 FIRE 수익 풀",
       "category": "카테고리",
       "explorer": "탐색기에서 보기",
+      "percentOfTotal": "전체 대비 %",
       "title": "추적된 수수료 카테고리",
       "token": "토큰",
       "value": "값",

@@ -266,11 +266,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "Distrutto Finora",
+      "valueLabel": "{{burned}} di {{total}}"
+    },
+    "chart": {
+      "subtitle": "Valore in USD monitorato finora, per categoria di commissione",
+      "title": "Ricavi per Categoria"
+    },
     "couldntLoad": "Impossibile caricare i dati sui ricavi FIRE.",
     "description": "Monitoraggio in tempo reale dei ricavi FIRE (Flare Income Reinvestment Entity), raccolti on-chain dalle commissioni del protocollo e infine utilizzati per finanziare le distruzioni di token.",
     "empty": {
       "description": "Al momento non viene monitorato alcun pool di ricavi.",
       "title": "Nessun Dato FIRE Ancora"
+    },
+    "explainer": {
+      "body": "FIRE (Flare Income Reinvestment Entity) è il meccanismo di ricavi di Flare. Alcune commissioni del protocollo, come quelle derivanti dall'attestazione dei dati e dal conio di FXRP, vengono raccolte in wallet dedicati anziché andare a una singola parte. Da lì, il piano è che questi ricavi finanzino infine le distruzioni di token, riducendo l'offerta di FLR.",
+      "label": "Cos'è FIRE?"
     },
     "stats": {
       "feeCategories": "Categorie di Commissioni Coperte",
@@ -283,6 +295,7 @@
       "caption": "Pool di ricavi FIRE per categoria di commissione",
       "category": "Categoria",
       "explorer": "Visualizza sull'explorer",
+      "percentOfTotal": "% del Totale",
       "title": "Categorie di Commissioni Monitorate",
       "token": "Token",
       "value": "Valore",

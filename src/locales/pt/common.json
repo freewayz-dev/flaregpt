@@ -266,11 +266,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "Queimado Até Agora",
+      "valueLabel": "{{burned}} de {{total}}"
+    },
+    "chart": {
+      "subtitle": "Valor em USD monitorado até agora, por categoria de taxa",
+      "title": "Receita por Categoria"
+    },
     "couldntLoad": "Não foi possível carregar os dados de receita do FIRE.",
     "description": "Acompanhamento em tempo real da receita do FIRE (Flare Income Reinvestment Entity), coletada on-chain a partir das taxas do protocolo e eventualmente usada para financiar queimas de tokens.",
     "empty": {
       "description": "Nenhum pool de receita está sendo monitorado no momento.",
       "title": "Ainda Não Há Dados do FIRE"
+    },
+    "explainer": {
+      "body": "O FIRE (Flare Income Reinvestment Entity) é o mecanismo de receita da Flare. Certas taxas do protocolo, como as taxas de atestação de dados e de cunhagem de FXRP, são recolhidas em carteiras dedicadas em vez de irem para uma única parte. A partir daí, o plano é que essa receita eventualmente financie queimas de tokens, reduzindo o fornecimento de FLR.",
+      "label": "O que é o FIRE?"
     },
     "stats": {
       "feeCategories": "Categorias de Taxas Cobertas",
@@ -283,6 +295,7 @@
       "caption": "Pools de receita do FIRE por categoria de taxa",
       "category": "Categoria",
       "explorer": "Ver no Explorador",
+      "percentOfTotal": "% do Total",
       "title": "Categorias de Taxas Monitoradas",
       "token": "Token",
       "value": "Valor",

@@ -262,11 +262,23 @@
     }
   },
   "fire": {
+    "burnedProgress": {
+      "label": "Şimdiye Kadar Yakılan",
+      "valueLabel": "{{total}} üzerinden {{burned}}"
+    },
+    "chart": {
+      "subtitle": "Şimdiye kadar takip edilen USD değeri, ücret kategorisine göre",
+      "title": "Kategoriye Göre Gelir"
+    },
     "couldntLoad": "FIRE gelir verileri yüklenemedi.",
     "description": "FIRE (Flare Income Reinvestment Entity) gelirinin canlı takibi; protokol ücretlerinden zincir üzerinde toplanır ve nihayetinde token yakımlarını finanse etmek için kullanılır.",
     "empty": {
       "description": "Şu anda takip edilen herhangi bir gelir havuzu yok.",
       "title": "Henüz FIRE Verisi Yok"
+    },
+    "explainer": {
+      "body": "FIRE (Flare Income Reinvestment Entity), Flare'ın gelir mekanizmasıdır. Veri onaylama (attestation) ve FXRP darbından elde edilen ücretler gibi belirli protokol ücretleri, tek bir tarafa gitmek yerine özel cüzdanlarda toplanır. Buradan itibaren plan, bu gelirin nihayetinde token yakımlarını finanse ederek FLR arzını azaltmasıdır.",
+      "label": "FIRE nedir?"
     },
     "stats": {
       "feeCategories": "Kapsanan Ücret Kategorileri",
@@ -279,6 +291,7 @@
       "caption": "Ücret kategorisine göre FIRE gelir havuzları",
       "category": "Kategori",
       "explorer": "Explorer'da Görüntüle",
+      "percentOfTotal": "Toplamın %'si",
       "title": "Takip Edilen Ücret Kategorileri",
       "token": "Token",
       "value": "Değer",

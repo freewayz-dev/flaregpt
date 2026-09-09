@@ -41,14 +41,15 @@ describe("Fire", () => {
     );
     renderWithProviders(<Fire />);
 
-    // Two matches per pool, not one — FirePoolsTable renders both a
-    // mobile card list and a desktop table for the same data (see
+    // Three matches for the first pool, not two — FirePoolsTable renders
+    // both a mobile card list and a desktop table for the same data (see
     // FirePoolsTable.jsx); jsdom doesn't evaluate the `sm:hidden`/
     // `hidden sm:block` breakpoint classes that keep only one visible in
-    // a real browser, so both are present in the test DOM. Same pattern
+    // a real browser, so both are present in the test DOM (same pattern
     // already used by Governance/index.test.jsx for its own responsive
-    // table/card split.
-    expect(await screen.findAllByText("FDC (attestation fees)")).toHaveLength(2);
+    // table/card split). The third comes from FireBreakdownChart's own
+    // Y-axis category tick, which also renders this pool's label.
+    expect(await screen.findAllByText("FDC (attestation fees)")).toHaveLength(3);
     expect(screen.getAllByText("FAsset minting fees")).toHaveLength(2);
     expect(screen.getByText("2")).toBeInTheDocument(); // fee categories covered — stat row renders once, not per-layout
     expect(
@@ -63,6 +64,22 @@ describe("Fire", () => {
       "href",
       "https://flarescan.com/address/0x0ce6831DF00A6018c4d316009980DbAa6c44E525",
     );
+
+    // The breakdown chart (2+ pools) and a freshness note both render too.
+    expect(screen.getByText("Revenue by Category")).toBeInTheDocument();
+    expect(screen.getByText("Showing cached data from moments ago")).toBeInTheDocument();
+  });
+
+  it("doesn't show the breakdown chart when there's only a single pool to compare", async () => {
+    server.use(
+      http.get(`${API}/api/v1/fire/overview`, () =>
+        HttpResponse.json({ ...OVERVIEW_RESPONSE, pools: [OVERVIEW_RESPONSE.pools[0]] }),
+      ),
+    );
+    renderWithProviders(<Fire />);
+
+    expect(await screen.findAllByText("FDC (attestation fees)")).toHaveLength(2);
+    expect(screen.queryByText("Revenue by Category")).not.toBeInTheDocument();
   });
 
   it("shows an error state with a working retry button when the request fails", async () => {
