@@ -261,6 +261,30 @@
       "title": "仅限 {{network}} 资产。"
     }
   },
+  "fire": {
+    "couldntLoad": "无法加载 FIRE 收入数据。",
+    "description": "实时跟踪 FIRE（Flare Income Reinvestment Entity）收入，该收入通过协议费用在链上收取，并最终用于资助代币销毁。",
+    "empty": {
+      "description": "目前没有正在跟踪的收入池。",
+      "title": "暂无 FIRE 数据"
+    },
+    "stats": {
+      "feeCategories": "涵盖的费用类别",
+      "totalBurned": "从这些池中销毁的数量",
+      "totalTracked": "总跟踪收入"
+    },
+    "table": {
+      "balance": "余额",
+      "burned": "已销毁",
+      "caption": "按费用类别划分的 FIRE 收入池",
+      "category": "类别",
+      "explorer": "在浏览器中查看",
+      "title": "已跟踪的费用类别",
+      "token": "代币",
+      "value": "价值",
+      "viewOnExplorer": "在浏览器中查看"
+    }
+  },
   "flareWidget": {
     "close": "关闭",
     "collapse": "折叠",
@@ -353,6 +377,31 @@
     "terms": "条款与免责声明"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "高度集中",
+        "moderatelyConcentrated": "中度集中",
+        "unconcentrated": "不集中"
+      },
+      "chart": {
+        "empty": "历史数据尚不足以绘制趋势图。"
+      },
+      "couldntLoad": "无法加载委托集中度。",
+      "description": "全网范围内，FTSO 委托权重在各提供商之间的分散程度。",
+      "stats": {
+        "activeProviders": "活跃 FTSO 提供商",
+        "effectiveProviders": "有效提供商数量",
+        "hhi": "HHI 集中度得分"
+      },
+      "table": {
+        "caption": "委托权重的分布情况，按提供商分组",
+        "group": "分组",
+        "share": "委托权重占比",
+        "top10": "前 10 大提供商",
+        "top5": "前 5 大提供商"
+      },
+      "title": "委托集中度"
+    },
     "connectToSee": "连接或选择一个钱包以查看其 FTSO 奖励。",
     "couldntLoad": "无法加载您的 FTSO 奖励。",
     "delegations": {
@@ -384,7 +433,7 @@
       "wflrBalance": "WFLR 余额"
     },
     "validators": {
-      "description": "按连接状态和正常运行时间排名。验证者没有注册名称，只有NodeID。",
+      "description": "按连接状态和正常运行时间排名。",
       "emptyDescription": "目前没有可用的验证者排名数据。",
       "title": "质押验证者排名"
     },
@@ -918,6 +967,7 @@
     "donate": "捐献",
     "expandSidebar": "展开侧边栏",
     "feeds": "馈送",
+    "fire": "火",
     "FlareGPT": "耀斑GPT",
     "ftsoRewards": "FTSO奖励",
     "governance": "治理",

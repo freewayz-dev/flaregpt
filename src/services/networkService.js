@@ -29,6 +29,17 @@ export async function fetchValidatorRankings(limit = 20, signal) {
   return data;
 }
 
+// How spread out FTSO delegation weight is across providers, network-wide
+// — a single daily snapshot plus a short (currently growing by one point
+// per day) history for a trend chart. No auth, no params — confirmed
+// live.
+export async function fetchDelegationConcentration(signal) {
+  const { data } = await flareApi.get("/api/v1/ftso/delegation-concentration", {
+    signal,
+  });
+  return data;
+}
+
 // A wallet's P-Chain staking position — confirmed live against 8 real
 // addresses (7 real FTSO/staking-infra providers plus Sceptre's sFLR
 // contract), all returning the same not-staked shape:

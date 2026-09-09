@@ -2,21 +2,34 @@ import { useTranslation } from "react-i18next";
 import { TrophyIcon } from "@heroicons/react/24/outline";
 
 import RankingCardShell from "@/pages/FtsoRewards/components/RankingCardShell";
+import RankingAvatar from "@/pages/FtsoRewards/components/RankingAvatar";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
 import { useValidatorRankings } from "@/hooks/queries/useNetworkQueries";
-import { computeValidatorRows, shortenNodeId } from "@/pages/FtsoRewards/utils/deriveRankings";
+import { computeValidatorRows, shortenNodeId, nodeIdInitial } from "@/pages/FtsoRewards/utils/deriveRankings";
 import { formatFlr } from "@/utils/format";
 
-function ValidatorRow({ row, rank, t }) {
+function ValidatorRow({ row, t }) {
   return (
     <div className="flex items-center gap-3 py-2.5">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-surface-inset text-[11px] font-semibold text-ink-muted">
-        {rank}
-      </div>
+      <RankingAvatar name={row.name} fallbackInitial={nodeIdInitial(row.nodeId)} />
       <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-mono font-medium text-ink-primary">
-          {shortenNodeId(row.nodeId)}
-        </p>
+        {/* `name` is real (confirmed live) for only some validators — the
+            backend returns a literal `null` for the rest (~40% of today's
+            live set, not a rare edge case), meaning there's genuinely no
+            registered display name to show, not a loading gap. Falling
+            back to the NodeID as the *primary* line for those keeps this
+            single-line and honest, instead of rendering a blank name line
+            with the NodeID awkwardly demoted below it. */}
+        {row.name ? (
+          <>
+            <p className="truncate text-sm font-medium text-ink-primary">{row.name}</p>
+            <p className="truncate text-[11px] font-mono text-ink-muted">{shortenNodeId(row.nodeId)}</p>
+          </>
+        ) : (
+          <p className="truncate text-sm font-mono font-medium text-ink-primary">
+            {shortenNodeId(row.nodeId)}
+          </p>
+        )}
         <div className="flex items-center gap-2 mt-0.5">
           <StatusBadge
             label={row.connected ? t("rankings.connected") : t("rankings.disconnected")}
@@ -40,10 +53,6 @@ function ValidatorRow({ row, rank, t }) {
   );
 }
 
-// No name resolution exists for validators (confirmed via the backend's
-// own OpenAPI description and live data — only `node_id`), unlike
-// providers' real `name` field, so the primary label here is the
-// (shortened) NodeID itself rather than a made-up display name.
 export default function ValidatorRankingCard() {
   const { t } = useTranslation();
   const query = useValidatorRankings(20);
@@ -62,8 +71,8 @@ export default function ValidatorRankingCard() {
       emptyTitle={t("rankings.noData")}
       emptyDescription={t("ftsoRewards.validators.emptyDescription")}
     >
-      {rows.map((row, i) => (
-        <ValidatorRow key={row.key} row={row} rank={i + 1} t={t} />
+      {rows.map((row) => (
+        <ValidatorRow key={row.key} row={row} t={t} />
       ))}
     </RankingCardShell>
   );

@@ -261,6 +261,30 @@
       "title": "{{network}} assets only."
     }
   },
+  "fire": {
+    "couldntLoad": "Couldn't load FIRE revenue data.",
+    "description": "Live tracking of FIRE (Flare Income Reinvestment Entity) revenue, collected on-chain from protocol fees and eventually used to fund token burns.",
+    "empty": {
+      "description": "No revenue pools are being tracked right now.",
+      "title": "No FIRE Data Yet"
+    },
+    "stats": {
+      "feeCategories": "Fee Categories Covered",
+      "totalBurned": "Burned From These Pools",
+      "totalTracked": "Total Tracked Revenue"
+    },
+    "table": {
+      "balance": "Balance",
+      "burned": "Burned",
+      "caption": "FIRE revenue pools by fee category",
+      "category": "Category",
+      "explorer": "View on Explorer",
+      "title": "Fee Categories Tracked",
+      "token": "Token",
+      "value": "Value",
+      "viewOnExplorer": "View on Explorer"
+    }
+  },
   "flareWidget": {
     "close": "Close",
     "collapse": "Collapse",
@@ -353,6 +377,31 @@
     "terms": "Terms & Disclaimer"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "Highly Concentrated",
+        "moderatelyConcentrated": "Moderately Concentrated",
+        "unconcentrated": "Unconcentrated"
+      },
+      "chart": {
+        "empty": "Not enough history yet to chart a trend."
+      },
+      "couldntLoad": "Couldn't load delegation concentration.",
+      "description": "How spread out FTSO delegation weight is across providers, network-wide.",
+      "stats": {
+        "activeProviders": "Active FTSO Providers",
+        "effectiveProviders": "Effective Providers",
+        "hhi": "HHI Concentration Score"
+      },
+      "table": {
+        "caption": "Where delegated weight sits, by group of providers",
+        "group": "Group",
+        "share": "Share of Delegated Weight",
+        "top10": "Top 10 Providers",
+        "top5": "Top 5 Providers"
+      },
+      "title": "Delegation Concentration"
+    },
     "connectToSee": "Connect or select a wallet to see its FTSO rewards.",
     "couldntLoad": "Couldn't load your FTSO rewards.",
     "delegations": {
@@ -384,7 +433,7 @@
       "wflrBalance": "WFLR Balance"
     },
     "validators": {
-      "description": "Ranked by connection status and uptime. Validators have no registered names, only NodeIDs.",
+      "description": "Ranked by connection status and uptime.",
       "emptyDescription": "No validator ranking data is available right now.",
       "title": "Staking Validators Ranking"
     },
@@ -918,6 +967,7 @@
     "donate": "Donate",
     "expandSidebar": "Expand sidebar",
     "feeds": "Feeds",
+    "fire": "Fire",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Rewards",
     "governance": "Governance",

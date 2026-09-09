@@ -261,6 +261,30 @@
       "title": "{{network}} 자산만 가능합니다."
     }
   },
+  "fire": {
+    "couldntLoad": "FIRE 수익 데이터를 불러올 수 없습니다.",
+    "description": "FIRE(Flare Income Reinvestment Entity) 수익에 대한 실시간 추적으로, 프로토콜 수수료에서 온체인으로 수집되며 최종적으로 토큰 소각 자금으로 사용됩니다.",
+    "empty": {
+      "description": "현재 추적 중인 수익 풀이 없습니다.",
+      "title": "아직 FIRE 데이터가 없습니다"
+    },
+    "stats": {
+      "feeCategories": "포함된 수수료 카테고리",
+      "totalBurned": "이 풀에서 소각된 금액",
+      "totalTracked": "총 추적 수익"
+    },
+    "table": {
+      "balance": "잔액",
+      "burned": "소각됨",
+      "caption": "수수료 카테고리별 FIRE 수익 풀",
+      "category": "카테고리",
+      "explorer": "탐색기에서 보기",
+      "title": "추적된 수수료 카테고리",
+      "token": "토큰",
+      "value": "값",
+      "viewOnExplorer": "탐색기에서 보기"
+    }
+  },
   "flareWidget": {
     "close": "닫기",
     "collapse": "접기",
@@ -353,6 +377,31 @@
     "terms": "이용약관 및 면책조항"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "고도로 집중됨",
+        "moderatelyConcentrated": "적정하게 집중됨",
+        "unconcentrated": "집중되지 않음"
+      },
+      "chart": {
+        "empty": "트렌드를 차트로 표시할 만큼 아직 기록이 충분하지 않습니다."
+      },
+      "couldntLoad": "위임 집중도를 불러올 수 없습니다.",
+      "description": "네트워크 전체적으로 FTSO 위임 가중치가 제공자들 사이에 얼마나 분산되어 있는지를 나타냅니다.",
+      "stats": {
+        "activeProviders": "활성 FTSO 제공자",
+        "effectiveProviders": "유효 제공자 수",
+        "hhi": "HHI 집중도 점수"
+      },
+      "table": {
+        "caption": "위임된 가중치의 분포, 제공자 그룹별",
+        "group": "그룹",
+        "share": "위임된 가중치의 비율",
+        "top10": "상위 10개 제공자",
+        "top5": "상위 5개 제공자"
+      },
+      "title": "위임 집중도"
+    },
     "connectToSee": "FTSO 보상을 보려면 지갑을 연결하거나 선택하세요.",
     "couldntLoad": "FTSO 보상을 불러올 수 없습니다.",
     "delegations": {
@@ -384,7 +433,7 @@
       "wflrBalance": "WFLR 잔액"
     },
     "validators": {
-      "description": "연결 상태와 가동 시간에 따라 순위가 매겨집니다. 유효성 검사기에는 등록된 이름이 없고 NodeID만 있습니다.",
+      "description": "연결 상태와 가동 시간에 따라 순위가 매겨집니다.",
       "emptyDescription": "현재 검증인 순위 데이터를 사용할 수 없습니다.",
       "title": "스테이킹 검증인 순위"
     },
@@ -918,6 +967,7 @@
     "donate": "기부",
     "expandSidebar": "사이드바 펼치기",
     "feeds": "피드",
+    "fire": "불",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO 보상",
     "governance": "거버넌스",

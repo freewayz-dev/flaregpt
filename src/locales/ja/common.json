@@ -261,6 +261,30 @@
       "title": "{{network}}の資産のみ。"
     }
   },
+  "fire": {
+    "couldntLoad": "FIRE収益データを読み込めませんでした。",
+    "description": "FIRE（Flare Income Reinvestment Entity）収益のライブ追跡。プロトコル手数料からオンチェーンで収集され、最終的にトークンバーンの資金として使用されます。",
+    "empty": {
+      "description": "現在、追跡されている収益プールはありません。",
+      "title": "FIREデータはまだありません"
+    },
+    "stats": {
+      "feeCategories": "対象の手数料カテゴリー",
+      "totalBurned": "これらのプールからバーンされた額",
+      "totalTracked": "追跡された総収益"
+    },
+    "table": {
+      "balance": "残高",
+      "burned": "バーン済み",
+      "caption": "手数料カテゴリー別のFIRE収益プール",
+      "category": "カテゴリー",
+      "explorer": "エクスプローラーで見る",
+      "title": "追跡対象の手数料カテゴリー",
+      "token": "トークン",
+      "value": "価値",
+      "viewOnExplorer": "エクスプローラーで見る"
+    }
+  },
   "flareWidget": {
     "close": "閉じる",
     "collapse": "折りたたむ",
@@ -353,6 +377,31 @@
     "terms": "利用規約と免責事項"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "高集中",
+        "moderatelyConcentrated": "中程度の集中",
+        "unconcentrated": "非集中"
+      },
+      "chart": {
+        "empty": "トレンドをグラフ化するにはまだ十分な履歴がありません。"
+      },
+      "couldntLoad": "デリゲーション集中度を読み込めませんでした。",
+      "description": "ネットワーク全体で、FTSOのデリゲーションウェイトがプロバイダー間でどれだけ分散しているか。",
+      "stats": {
+        "activeProviders": "アクティブなFTSOプロバイダー",
+        "effectiveProviders": "実効プロバイダー数",
+        "hhi": "HHI集中度スコア"
+      },
+      "table": {
+        "caption": "デリゲートされたウェイトの分布（プロバイダーグループ別）",
+        "group": "グループ",
+        "share": "デリゲートされたウェイトの割合",
+        "top10": "上位10プロバイダー",
+        "top5": "上位5プロバイダー"
+      },
+      "title": "デリゲーション集中度"
+    },
     "connectToSee": "FTSO報酬を表示するには、ウォレットを接続または選択してください。",
     "couldntLoad": "FTSO報酬を読み込めませんでした。",
     "delegations": {
@@ -384,7 +433,7 @@
       "wflrBalance": "WFLR残高"
     },
     "validators": {
-      "description": "接続ステータスと稼働時間でランク付けされています。バリデータには名前が登録されておらず、NodeIDのみが登録されています。",
+      "description": "接続ステータスと稼働時間でランク付けされています。",
       "emptyDescription": "現在利用可能なバリデータはありません。",
       "title": "ステーキングバリデーターランキング"
     },
@@ -918,6 +967,7 @@
     "donate": "寄付",
     "expandSidebar": "サイドバーを展開する",
     "feeds": "RSSフィード",
+    "fire": "火",
     "FlareGPT": "フレアGPT",
     "ftsoRewards": "FTSO報酬",
     "governance": "ガバナンス",

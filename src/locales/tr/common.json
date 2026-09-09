@@ -261,6 +261,30 @@
       "title": "Yalnızca {{network}} varlıkları."
     }
   },
+  "fire": {
+    "couldntLoad": "FIRE gelir verileri yüklenemedi.",
+    "description": "FIRE (Flare Income Reinvestment Entity) gelirinin canlı takibi; protokol ücretlerinden zincir üzerinde toplanır ve nihayetinde token yakımlarını finanse etmek için kullanılır.",
+    "empty": {
+      "description": "Şu anda takip edilen herhangi bir gelir havuzu yok.",
+      "title": "Henüz FIRE Verisi Yok"
+    },
+    "stats": {
+      "feeCategories": "Kapsanan Ücret Kategorileri",
+      "totalBurned": "Bu Havuzlardan Yakılan",
+      "totalTracked": "Toplam Takip Edilen Gelir"
+    },
+    "table": {
+      "balance": "Bakiye",
+      "burned": "Yakıldı",
+      "caption": "Ücret kategorisine göre FIRE gelir havuzları",
+      "category": "Kategori",
+      "explorer": "Explorer'da Görüntüle",
+      "title": "Takip Edilen Ücret Kategorileri",
+      "token": "Token",
+      "value": "Değer",
+      "viewOnExplorer": "Explorer'da Görüntüle"
+    }
+  },
   "flareWidget": {
     "close": "Kapat",
     "collapse": "Çökme",
@@ -353,6 +377,31 @@
     "terms": "Şartlar ve Sorumluluk Reddi"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "Yüksek Yoğunlaşmış",
+        "moderatelyConcentrated": "Orta Düzeyde Yoğunlaşmış",
+        "unconcentrated": "Yoğunlaşmamış"
+      },
+      "chart": {
+        "empty": "Bir eğilim grafiği çizmek için henüz yeterli geçmiş yok."
+      },
+      "couldntLoad": "Delegasyon yoğunlaşması yüklenemedi.",
+      "description": "FTSO delegasyon ağırlığının sağlayıcılar arasında ağ genelinde ne kadar dağıldığı.",
+      "stats": {
+        "activeProviders": "Aktif FTSO Sağlayıcıları",
+        "effectiveProviders": "Etkin Sağlayıcılar",
+        "hhi": "HHI Yoğunlaşma Skoru"
+      },
+      "table": {
+        "caption": "Devredilen ağırlığın nerede olduğu, sağlayıcı grubuna göre",
+        "group": "Grup",
+        "share": "Devredilen Ağırlığın Payı",
+        "top10": "İlk 10 Sağlayıcı",
+        "top5": "İlk 5 Sağlayıcı"
+      },
+      "title": "Delegasyon Yoğunlaşması"
+    },
     "connectToSee": "FTSO ödüllerini görmek için bir cüzdan bağlayın veya seçin.",
     "couldntLoad": "FTSO ödülleriniz yüklenemedi.",
     "delegations": {
@@ -384,7 +433,7 @@
       "wflrBalance": "WFLR Bakiyesi"
     },
     "validators": {
-      "description": "Bağlantı durumuna ve çalışma süresine göre sıralanır. Doğrulayıcıların kayıtlı adları yoktur, yalnızca NodeID'ler vardır.",
+      "description": "Bağlantı durumuna ve çalışma süresine göre sıralanır.",
       "emptyDescription": "Şu anda hiçbir doğrulayıcı sıralama verisi mevcut değil.",
       "title": "Staking Validator Sıralaması"
     },
@@ -918,6 +967,7 @@
     "donate": "Bağış yap",
     "expandSidebar": "Kenar çubuğunu genişlet",
     "feeds": "Bildirimler",
+    "fire": "Ateş",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO Ödülleri",
     "governance": "Yönetişim",

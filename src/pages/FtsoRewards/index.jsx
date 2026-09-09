@@ -20,6 +20,7 @@ import RewardVelocityCard from "@/pages/FtsoRewards/components/RewardVelocityCar
 import DelegationsCard from "@/pages/FtsoRewards/components/DelegationsCard";
 import UnclaimedEpochsCard from "@/pages/FtsoRewards/components/UnclaimedEpochsCard";
 import RankingTablesSection from "@/pages/FtsoRewards/components/RankingTablesSection";
+import DelegationConcentrationCard from "@/pages/FtsoRewards/components/DelegationConcentrationCard";
 import YourValidatorStakeCard from "@/pages/FtsoRewards/components/YourValidatorStakeCard";
 
 // Single endpoint (GET /api/v1/portfolio/ftso/{wallet}) backs the whole
@@ -113,12 +114,24 @@ export default function FtsoRewards() {
         </>
       )}
 
+      {/* Public/ecosystem-wide, not wallet-scoped — a network-wide daily
+          snapshot of how spread out FTSO delegation weight is across
+          providers, not a per-wallet figure. Placed here specifically
+          (not last, and not directly before the rankings below either)
+          because it's topically an FTSO-delegation metric, same subject
+          as the personal FTSO rewards content directly above it — keeping
+          that thread contiguous, rather than splitting it by sandwiching
+          this between two *validator*-staking blocks (YourValidatorStakeCard
+          below, then the validator ranking further down), a genuinely
+          different P-Chain mechanism this card has nothing to do with. */}
+      <DelegationConcentrationCard />
+
       {/* Independent of the FTSO portfolio query above (`portfolioQuery`) —
           validator staking is a separate P-Chain mechanism from FTSO
           delegation, with its own endpoint and its own loading/error/no-
           wallet handling, so it isn't gated by that query's own
           hasData/isError state the way the rest of this page's personal
-          cards are. Placed between the personal FTSO content and the
+          cards are. Placed between the personal content above and the
           public rankings below specifically so "yours" and "everyone's"
           never visually blur together. */}
       <YourValidatorStakeCard activeAddress={activeAddress} />

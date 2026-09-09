@@ -261,6 +261,30 @@
       "title": "Hanya aset {{network}}."
     }
   },
+  "fire": {
+    "couldntLoad": "Gagal memuat data pendapatan FIRE.",
+    "description": "Pelacakan langsung pendapatan FIRE (Flare Income Reinvestment Entity), yang dikumpulkan secara on-chain dari biaya protokol dan pada akhirnya digunakan untuk mendanai pembakaran token.",
+    "empty": {
+      "description": "Saat ini tidak ada pool pendapatan yang dilacak.",
+      "title": "Belum Ada Data FIRE"
+    },
+    "stats": {
+      "feeCategories": "Kategori Biaya yang Dicakup",
+      "totalBurned": "Terbakar Dari Pool Ini",
+      "totalTracked": "Total Pendapatan yang Dilacak"
+    },
+    "table": {
+      "balance": "Saldo",
+      "burned": "Terbakar",
+      "caption": "Pool pendapatan FIRE berdasarkan kategori biaya",
+      "category": "Kategori",
+      "explorer": "Lihat di Explorer",
+      "title": "Kategori Biaya yang Dilacak",
+      "token": "Token",
+      "value": "Nilai",
+      "viewOnExplorer": "Lihat di Explorer"
+    }
+  },
   "flareWidget": {
     "close": "Tutup",
     "collapse": "Ciutkan",
@@ -353,6 +377,31 @@
     "terms": "Ketentuan & Penafian"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "Sangat Terkonsentrasi",
+        "moderatelyConcentrated": "Cukup Terkonsentrasi",
+        "unconcentrated": "Tidak Terkonsentrasi"
+      },
+      "chart": {
+        "empty": "Belum ada cukup riwayat untuk membuat grafik tren."
+      },
+      "couldntLoad": "Gagal memuat konsentrasi delegasi.",
+      "description": "Seberapa tersebar bobot delegasi FTSO di antara penyedia, di seluruh jaringan.",
+      "stats": {
+        "activeProviders": "Penyedia FTSO Aktif",
+        "effectiveProviders": "Penyedia Efektif",
+        "hhi": "Skor Konsentrasi HHI"
+      },
+      "table": {
+        "caption": "Di mana bobot yang didelegasikan berada, berdasarkan kelompok penyedia",
+        "group": "Kelompok",
+        "share": "Persentase Bobot yang Didelegasikan",
+        "top10": "10 Penyedia Teratas",
+        "top5": "5 Penyedia Teratas"
+      },
+      "title": "Konsentrasi Delegasi"
+    },
     "connectToSee": "Sambungkan atau pilih dompet untuk melihat reward FTSO-nya.",
     "couldntLoad": "Reward FTSO Anda tidak dapat dimuat.",
     "delegations": {
@@ -384,7 +433,7 @@
       "wflrBalance": "Saldo WFLR"
     },
     "validators": {
-      "description": "Diberi peringkat berdasarkan status koneksi dan waktu aktif. Validator tidak memiliki nama terdaftar, hanya NodeID.",
+      "description": "Diberi peringkat berdasarkan status koneksi dan waktu aktif.",
       "emptyDescription": "Tidak ada data peringkat validator yang tersedia saat ini.",
       "title": "Peringkat Validator Staking"
     },
@@ -918,6 +967,7 @@
     "donate": "Beri donasi",
     "expandSidebar": "Perluas sidebar",
     "feeds": "Umpan",
+    "fire": "Api",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Hadiah FTSO",
     "governance": "Tata Kelola",

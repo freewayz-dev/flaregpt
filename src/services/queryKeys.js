@@ -57,9 +57,12 @@ export const queryKeys = {
   },
   // Provider rankings are a single global leaderboard (no address
   // dimension) — matches loops.gasSniperStatus's own reasoning above.
+  // delegationConcentration is the same global-snapshot shape (one shared
+  // network-wide value, not per-wallet).
   ftso: {
     all: ["ftso"],
     providerRankings: () => [...queryKeys.ftso.all, "providerRankings"],
+    delegationConcentration: () => [...queryKeys.ftso.all, "delegationConcentration"],
   },
   // validatorRankings is the same global-leaderboard shape as
   // ftso.providerRankings; validatorStakes is per-wallet, same reasoning as
@@ -120,6 +123,12 @@ export const queryKeys = {
       [...queryKeys.chat.all, "conversations", address],
     conversation: (conversationId) =>
       [...queryKeys.chat.all, "conversation", conversationId],
+  },
+  // FIRE revenue overview is a single global snapshot (no address
+  // dimension) — same "all" root pattern as ftso.providerRankings.
+  fire: {
+    all: ["fire"],
+    overview: () => [...queryKeys.fire.all, "overview"],
   },
   // Current-contract proposal ids/info go through wagmi's own
   // useReadContract/useReadContracts (which manage their own cache keys) —

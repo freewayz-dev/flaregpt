@@ -277,6 +277,30 @@
       "title": "أصول {{network}} فقط."
     }
   },
+  "fire": {
+    "couldntLoad": "تعذّر تحميل بيانات إيرادات FIRE.",
+    "description": "تتبُّع مباشر لإيرادات FIRE (Flare Income Reinvestment Entity)، والتي تُجمَع على السلسلة من رسوم البروتوكول وتُستخدم في النهاية لتمويل عمليات حرق الرموز.",
+    "empty": {
+      "description": "لا يتم تتبُّع أي مجمعات إيرادات في الوقت الحالي.",
+      "title": "لا توجد بيانات FIRE بعد"
+    },
+    "stats": {
+      "feeCategories": "فئات الرسوم المشمولة",
+      "totalBurned": "المحروق من هذه المجمعات",
+      "totalTracked": "إجمالي الإيرادات المتتبَّعة"
+    },
+    "table": {
+      "balance": "الرصيد",
+      "burned": "محروق",
+      "caption": "مجمعات إيرادات FIRE حسب فئة الرسوم",
+      "category": "الفئة",
+      "explorer": "عرض على المستكشف",
+      "title": "فئات الرسوم المتتبَّعة",
+      "token": "الرمز",
+      "value": "القيمة",
+      "viewOnExplorer": "عرض على المستكشف"
+    }
+  },
   "flareWidget": {
     "close": "خاتمة",
     "collapse": "هبوط",
@@ -373,6 +397,31 @@
     "terms": "الشروط وإخلاء المسؤولية"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "تركُّز مرتفع",
+        "moderatelyConcentrated": "تركُّز متوسط",
+        "unconcentrated": "غير مركَّز"
+      },
+      "chart": {
+        "empty": "لا يوجد سجل كافٍ حتى الآن لرسم اتجاه."
+      },
+      "couldntLoad": "تعذّر تحميل تركُّز التفويض.",
+      "description": "مدى انتشار وزن تفويض FTSO بين المزودين، على مستوى الشبكة بالكامل.",
+      "stats": {
+        "activeProviders": "مزودو FTSO النشطون",
+        "effectiveProviders": "المزودون الفعليون",
+        "hhi": "درجة تركُّز HHI"
+      },
+      "table": {
+        "caption": "أين يقع الوزن المفوَّض، حسب مجموعة المزودين",
+        "group": "المجموعة",
+        "share": "نسبة الوزن المفوَّض",
+        "top10": "أفضل 10 مزودين",
+        "top5": "أفضل 5 مزودين"
+      },
+      "title": "تركُّز التفويض"
+    },
     "connectToSee": "قم بتوصيل أو اختيار محفظة لعرض مكافآت FTSO الخاصة بها.",
     "couldntLoad": "تعذّر تحميل مكافآت FTSO الخاصة بك.",
     "delegations": {
@@ -412,7 +461,7 @@
       "wflrBalance": "رصيد WFLR"
     },
     "validators": {
-      "description": "مرتبة حسب حالة الاتصال ووقت التشغيل. المدققون ليس لديهم أسماء مسجلة، فقط NodeIDs.",
+      "description": "مرتبة حسب حالة الاتصال ووقت التشغيل.",
       "emptyDescription": "لا تتوفر بيانات تصنيف المدقق في الوقت الحالي.",
       "title": "تصنيف مدققي المصادقة"
     },
@@ -958,6 +1007,7 @@
     "donate": "تَبرَّع",
     "expandSidebar": "توسيع الشريط الجانبي",
     "feeds": "خلاصات",
+    "fire": "نار",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "مكافآت FTSO",
     "governance": "الحوكمة",

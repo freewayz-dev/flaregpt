@@ -183,18 +183,97 @@ export const handlers = [
     });
   }),
 
+  // `name` confirmed live for only *some* validators — the backend added
+  // name resolution after this fixture was first written, but a full
+  // check of the real 20-entry response found a literal `name: null` on
+  // 8 of them, not a rare edge case. Both real entries kept here so tests
+  // exercise the fallback path too, not just the happy one.
   http.get(`${API}/api/v1/network/validator-rankings`, () => {
     return HttpResponse.json({
       validators: [
         {
           node_id: "NodeID-8qMWVar3hLdLSSgbTV57brpqUNjJuU2H8",
+          name: "ITB Validator",
           connected: true,
           uptime_pct: 100.0,
           stake_flr: 13340000.0,
           delegator_count: 25,
           fee_pct: 20.0,
         },
+        {
+          node_id: "NodeID-6Ww2bagQbUaZppGWFdBcGamtNDtjap1sD",
+          name: null,
+          connected: true,
+          uptime_pct: 100.0,
+          stake_flr: 1090000.0,
+          delegator_count: 8,
+          fee_pct: 20.0,
+        },
       ],
+    });
+  }),
+
+  http.get(`${API}/api/v1/ftso/delegation-concentration`, () => {
+    return HttpResponse.json({
+      current: {
+        hhi: 163.3,
+        concentration_band: "unconcentrated",
+        effective_num_providers: 61.24,
+        num_active_providers: 98,
+        top5_share_pct: 16.32,
+        top10_share_pct: 28.55,
+      },
+      history: [
+        {
+          date: "2026-09-08",
+          hhi: 164.2,
+          concentration_band: "unconcentrated",
+          effective_num_providers: 60.89,
+          num_active_providers: 100,
+          top5_share_pct: 15.77,
+          top10_share_pct: 28.86,
+        },
+        {
+          date: "2026-09-09",
+          hhi: 163.3,
+          concentration_band: "unconcentrated",
+          effective_num_providers: 61.24,
+          num_active_providers: 98,
+          top5_share_pct: 16.32,
+          top10_share_pct: 28.55,
+        },
+      ],
+      note: "HHI measures how concentrated FTSO delegation weight is across providers.",
+    });
+  }),
+
+  http.get(`${API}/api/v1/fire/overview`, () => {
+    return HttpResponse.json({
+      pools: [
+        {
+          id: "fdc",
+          label: "FDC (attestation fees)",
+          address: "0x0ce6831DF00A6018c4d316009980DbAa6c44E525",
+          token: "FLR",
+          balance: 2211064.386317,
+          usd_value: 14342.09,
+          burned: 0.0,
+          burned_usd: 0.0,
+        },
+        {
+          id: "fasset_minting_fee",
+          label: "FAsset minting fees",
+          address: "0xF55bcAd5568d1584ab6f013f144e1e433Ee551C7",
+          token: "FXRP",
+          balance: 14096.617233,
+          usd_value: 20017.2,
+          burned: 0.0,
+          burned_usd: 0.0,
+        },
+      ],
+      total_usd: 34359.29,
+      total_burned_usd: 0.0,
+      note: "Covers confirmed FIRE revenue pools — not necessarily all of them.",
     });
   }),
 

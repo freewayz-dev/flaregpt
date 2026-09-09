@@ -4,6 +4,7 @@ import {
   fetchFtsoProviderRankings,
   fetchValidatorRankings,
   fetchValidatorStakes,
+  fetchDelegationConcentration,
 } from "@/services/networkService";
 import { queryKeys } from "@/services/queryKeys";
 import { QUICK_RESILIENCE, WALLET_QUERY_RESILIENCE } from "@/hooks/queries/resilience";
@@ -27,6 +28,19 @@ export function useValidatorRankings(limit = 20) {
     queryKey: queryKeys.network.validatorRankings(),
     queryFn: ({ signal }) => fetchValidatorRankings(limit, signal),
     staleTime: 60_000,
+    ...QUICK_RESILIENCE,
+  });
+}
+
+// Global, single daily snapshot (not wallet-specific) — a much longer
+// staleTime than the ranking leaderboards above since this only actually
+// changes once a day server-side; no point refetching more often than
+// that in practice.
+export function useDelegationConcentration() {
+  return useQuery({
+    queryKey: queryKeys.ftso.delegationConcentration(),
+    queryFn: ({ signal }) => fetchDelegationConcentration(signal),
+    staleTime: 30 * 60_000,
     ...QUICK_RESILIENCE,
   });
 }

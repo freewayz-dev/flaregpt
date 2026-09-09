@@ -12,6 +12,7 @@ import {
   TrophyIcon,
   HeartIcon,
   LinkIcon,
+  FireIcon,
 } from "@heroicons/react/24/outline";
 
 import { ROUTES } from "@/config/routes";
@@ -136,6 +137,16 @@ export const NAV_LINKS = [
     icon: LinkIcon,
     prefetch: prefetchLinks,
     guideDescriptionKey: "links.description",
+    group: "ecosystem",
+  },
+  {
+    // FIRE (Flare Income Reinvestment Entity) revenue tracking — a
+    // protocol-level mechanism (collected fees, eventual token burns), not
+    // personal portfolio data, so it sits in "ecosystem" alongside
+    // Governance/Links rather than "portfolio".
+    translationKey: "fire",
+    path: ROUTES.fire,
+    icon: FireIcon,
     group: "ecosystem",
   },
   {

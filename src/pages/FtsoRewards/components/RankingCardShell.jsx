@@ -11,7 +11,7 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 function SkeletonRow() {
   return (
     <div className="flex items-center gap-3 py-2.5">
-      <div className="skeleton h-8 w-8 shrink-0 rounded-lg" />
+      <div className="skeleton h-8 w-8 shrink-0 rounded-full" />
       <div className="flex-1 space-y-1.5">
         <div className="skeleton h-2.5 w-28 rounded" />
         <div className="skeleton h-2 w-16 rounded" />

@@ -261,6 +261,30 @@
       "title": "Nur {{network}}-Assets."
     }
   },
+  "fire": {
+    "couldntLoad": "FIRE-Umsatzdaten konnten nicht geladen werden.",
+    "description": "Live-Nachverfolgung der FIRE-Einnahmen (Flare Income Reinvestment Entity), die On-Chain aus Protokollgebühren erhoben und letztlich zur Finanzierung von Token-Burns verwendet werden.",
+    "empty": {
+      "description": "Derzeit werden keine Einnahmepools verfolgt.",
+      "title": "Noch keine FIRE-Daten"
+    },
+    "stats": {
+      "feeCategories": "Erfasste Gebührenkategorien",
+      "totalBurned": "Aus diesen Pools verbrannt",
+      "totalTracked": "Gesamte erfasste Einnahmen"
+    },
+    "table": {
+      "balance": "Guthaben",
+      "burned": "Verbrannt",
+      "caption": "FIRE-Einnahmepools nach Gebührenkategorie",
+      "category": "Kategorie",
+      "explorer": "Im Explorer ansehen",
+      "title": "Erfasste Gebührenkategorien",
+      "token": "Token",
+      "value": "Wert",
+      "viewOnExplorer": "Im Explorer ansehen"
+    }
+  },
   "flareWidget": {
     "close": "Schließen",
     "collapse": "Ausblenden",
@@ -353,6 +377,31 @@
     "terms": "Nutzungsbedingungen & Haftungsausschluss"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "Stark konzentriert",
+        "moderatelyConcentrated": "Mäßig konzentriert",
+        "unconcentrated": "Nicht konzentriert"
+      },
+      "chart": {
+        "empty": "Noch nicht genug Verlauf, um einen Trend darzustellen."
+      },
+      "couldntLoad": "Delegationskonzentration konnte nicht geladen werden.",
+      "description": "Wie breit das FTSO-Delegationsgewicht netzwerkweit über die Anbieter verteilt ist.",
+      "stats": {
+        "activeProviders": "Aktive FTSO-Anbieter",
+        "effectiveProviders": "Effektive Anbieter",
+        "hhi": "HHI-Konzentrationswert"
+      },
+      "table": {
+        "caption": "Wo das delegierte Gewicht liegt, nach Anbietergruppe",
+        "group": "Gruppe",
+        "share": "Anteil am delegierten Gewicht",
+        "top10": "Top-10-Anbieter",
+        "top5": "Top-5-Anbieter"
+      },
+      "title": "Delegationskonzentration"
+    },
     "connectToSee": "Verbinde oder wähle ein Wallet, um dessen FTSO-Belohnungen zu sehen.",
     "couldntLoad": "Deine FTSO-Belohnungen konnten nicht geladen werden.",
     "delegations": {
@@ -384,7 +433,7 @@
       "wflrBalance": "WFLR-Guthaben"
     },
     "validators": {
-      "description": "Nach Verbindungsstatus und Betriebszeit geordnet. Validatoren haben keine registrierten Namen, nur NodeIDs.",
+      "description": "Nach Verbindungsstatus und Betriebszeit geordnet.",
       "emptyDescription": "Derzeit sind keine Validator-Ranking-Daten verfügbar.",
       "title": "Staking-Validator-Rangliste"
     },
@@ -918,6 +967,7 @@
     "donate": "Spenden",
     "expandSidebar": "Seitenleiste ausklappen",
     "feeds": "Feeds",
+    "fire": "Feuer",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "FTSO-Belohnungen",
     "governance": "Regierungsführung",

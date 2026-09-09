@@ -261,6 +261,30 @@
       "title": "Chỉ tài sản {{network}}."
     }
   },
+  "fire": {
+    "couldntLoad": "Không thể tải dữ liệu doanh thu FIRE.",
+    "description": "Theo dõi trực tiếp doanh thu FIRE (Flare Income Reinvestment Entity), được thu thập on-chain từ phí giao thức và cuối cùng được dùng để tài trợ cho việc đốt token.",
+    "empty": {
+      "description": "Hiện không có quỹ doanh thu nào được theo dõi.",
+      "title": "Chưa Có Dữ Liệu FIRE"
+    },
+    "stats": {
+      "feeCategories": "Danh Mục Phí Được Bao Gồm",
+      "totalBurned": "Đã Đốt Từ Các Quỹ Này",
+      "totalTracked": "Tổng Doanh Thu Được Theo Dõi"
+    },
+    "table": {
+      "balance": "Số Dư",
+      "burned": "Đã Đốt",
+      "caption": "Các quỹ doanh thu FIRE theo danh mục phí",
+      "category": "Danh Mục",
+      "explorer": "Xem trên Explorer",
+      "title": "Danh Mục Phí Được Theo Dõi",
+      "token": "Token",
+      "value": "Giá Trị",
+      "viewOnExplorer": "Xem trên Explorer"
+    }
+  },
   "flareWidget": {
     "close": "Đóng",
     "collapse": "Thu gọn",
@@ -353,6 +377,31 @@
     "terms": "Điều khoản & Tuyên bố miễn trừ trách nhiệm"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "Tập Trung Cao",
+        "moderatelyConcentrated": "Tập Trung Vừa Phải",
+        "unconcentrated": "Không Tập Trung"
+      },
+      "chart": {
+        "empty": "Chưa có đủ lịch sử để vẽ biểu đồ xu hướng."
+      },
+      "couldntLoad": "Không thể tải mức độ tập trung ủy quyền.",
+      "description": "Mức độ phân tán trọng lượng ủy quyền FTSO giữa các nhà cung cấp, trên toàn mạng.",
+      "stats": {
+        "activeProviders": "Nhà Cung Cấp FTSO Đang Hoạt Động",
+        "effectiveProviders": "Nhà Cung Cấp Hiệu Quả",
+        "hhi": "Điểm Tập Trung HHI"
+      },
+      "table": {
+        "caption": "Trọng lượng được ủy quyền nằm ở đâu, theo nhóm nhà cung cấp",
+        "group": "Nhóm",
+        "share": "Tỷ Lệ Trọng Lượng Được Ủy Quyền",
+        "top10": "10 Nhà Cung Cấp Hàng Đầu",
+        "top5": "5 Nhà Cung Cấp Hàng Đầu"
+      },
+      "title": "Mức Độ Tập Trung Ủy Quyền"
+    },
     "connectToSee": "Kết nối hoặc chọn một ví để xem phần thưởng FTSO của ví đó.",
     "couldntLoad": "Không thể tải phần thưởng FTSO của bạn.",
     "delegations": {
@@ -384,7 +433,7 @@
       "wflrBalance": "Số Dư WFLR"
     },
     "validators": {
-      "description": "Được xếp hạng theo trạng thái kết nối và thời gian hoạt động. Trình xác thực không có tên đã đăng ký, chỉ có NodeID.",
+      "description": "Được xếp hạng theo trạng thái kết nối và thời gian hoạt động.",
       "emptyDescription": "Hiện không có dữ liệu xếp hạng trình xác thực nào.",
       "title": "Bảng Xếp Hạng Validator Staking"
     },
@@ -918,6 +967,7 @@
     "donate": "Ủng hộ",
     "expandSidebar": "Mở rộng thanh bên",
     "feeds": "Các nguồn dữ liệu",
+    "fire": "Lửa",
     "FlareGPT": "FlareGPT",
     "ftsoRewards": "Phần thưởng FTSO",
     "governance": "Quản trị",

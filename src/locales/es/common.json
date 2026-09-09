@@ -265,6 +265,30 @@
       "title": "Solo activos de {{network}}."
     }
   },
+  "fire": {
+    "couldntLoad": "No se pudieron cargar los datos de ingresos de FIRE.",
+    "description": "Seguimiento en vivo de los ingresos de FIRE (Flare Income Reinvestment Entity), recaudados en cadena a partir de las comisiones del protocolo y utilizados finalmente para financiar quemas de tokens.",
+    "empty": {
+      "description": "Actualmente no se está monitoreando ningún fondo de ingresos.",
+      "title": "Aún No Hay Datos de FIRE"
+    },
+    "stats": {
+      "feeCategories": "Categorías de Comisiones Cubiertas",
+      "totalBurned": "Quemado de Estos Fondos",
+      "totalTracked": "Ingresos Totales Monitoreados"
+    },
+    "table": {
+      "balance": "Saldo",
+      "burned": "Quemado",
+      "caption": "Fondos de ingresos de FIRE por categoría de comisión",
+      "category": "Categoría",
+      "explorer": "Ver en el Explorador",
+      "title": "Categorías de Comisiones Monitoreadas",
+      "token": "Token",
+      "value": "Valor",
+      "viewOnExplorer": "Ver en el Explorador"
+    }
+  },
   "flareWidget": {
     "close": "Cerrar",
     "collapse": "Contraer",
@@ -358,6 +382,31 @@
     "terms": "Términos y Descargo de Responsabilidad"
   },
   "ftsoRewards": {
+    "concentration": {
+      "band": {
+        "highlyConcentrated": "Muy Concentrado",
+        "moderatelyConcentrated": "Moderadamente Concentrado",
+        "unconcentrated": "No Concentrado"
+      },
+      "chart": {
+        "empty": "Aún no hay suficiente historial para graficar una tendencia."
+      },
+      "couldntLoad": "No se pudo cargar la concentración de delegación.",
+      "description": "Qué tan repartido está el peso de delegación de FTSO entre los proveedores, en toda la red.",
+      "stats": {
+        "activeProviders": "Proveedores FTSO Activos",
+        "effectiveProviders": "Proveedores Efectivos",
+        "hhi": "Puntaje de Concentración HHI"
+      },
+      "table": {
+        "caption": "Dónde se ubica el peso delegado, por grupo de proveedores",
+        "group": "Grupo",
+        "share": "Porcentaje del Peso Delegado",
+        "top10": "Los 10 Principales Proveedores",
+        "top5": "Los 5 Principales Proveedores"
+      },
+      "title": "Concentración de Delegación"
+    },
     "connectToSee": "Conecta o selecciona un monedero para ver sus recompensas FTSO.",
     "couldntLoad": "No se pudieron cargar tus recompensas FTSO.",
     "delegations": {
@@ -391,7 +440,7 @@
       "wflrBalance": "Saldo de WFLR"
     },
     "validators": {
-      "description": "Clasificado por estado de conexión y tiempo de actividad. Los validadores no tienen nombres registrados, solo NodeIDs.",
+      "description": "Clasificado por estado de conexión y tiempo de actividad.",
       "emptyDescription": "No hay datos de clasificación de validadores disponibles en este momento.",
       "title": "Ranking de Validadores de Staking"
     },
@@ -928,6 +977,7 @@
     "donate": "Donar",
     "expandSidebar": "Expandir barra lateral",
     "feeds": "Feeds",
+    "fire": "Fuego",
     "FlareGPT": "LlamaradaGPT",
     "ftsoRewards": "Recompensas FTSO",
     "governance": "Gobernanza",
