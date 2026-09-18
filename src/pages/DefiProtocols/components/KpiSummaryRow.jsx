@@ -11,6 +11,7 @@ import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useCompareStrategies } from "@/hooks/queries/useDefiProtocolsQueries";
 import StatCard from "@/components/cards/StatCard";
 import StatCardSkeleton from "@/pages/Dashboard/components/skeletons/StatCardSkeleton";
+import InfoHint from "@/components/common/InfoHint";
 import { PROTOCOLS} from "@/pages/DefiProtocols/protocols";
 
 // Same deliberate erasure boundary as ProtocolExplorer.tsx's `AnyProtocol`
@@ -128,6 +129,11 @@ export default function KpiSummaryRow() {
       // to stand out from the other two, which are context for it rather
       // than equally important on their own.
       emphasis: true,
+      hint: (
+        <InfoHint label={t("defiProtocols.kpis.help.label")}>
+          {t("defiProtocols.kpis.help.body")}
+        </InfoHint>
+      ),
     },
     {
       title: t("defiProtocols.kpis.activePositions"),

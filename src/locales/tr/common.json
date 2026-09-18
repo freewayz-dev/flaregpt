@@ -95,6 +95,10 @@
       "couldntLoad": "Ağ verileri yüklenemedi",
       "gasPrice": "Gaz ücreti",
       "gwei": "Gwei",
+      "help": {
+        "label": "Gas Fiyatı ve Ağ Hızı",
+        "body": "Gwei, gas fiyatlarının ölçüldüğü birimdir. TPS, ağın saniyede işlediği işlem sayısını gösterir. İkisi de canlı olarak güncellenir."
+      },
       "live": "Canlı",
       "title": "Ağ Etkinliği",
       "tps": "TPS",
@@ -104,6 +108,12 @@
     "stats": {
       "couldntLoad": "Pazara genel bakış yüklenemedi",
       "flrPrice": "FLR Fiyatı",
+      "help": {
+        "tvl": {
+          "label": "TVL",
+          "body": "TVL, Total Value Locked (Toplam Kilitli Değer) anlamına gelir: burada takip edilen DeFi protokollerinde tutulan toplam USD değeridir."
+        }
+      },
       "marketCap": "Dolaşımdaki Coin",
       "tvl": "TVL",
       "volume24h": "24 saatlik Hacim"
@@ -144,6 +154,10 @@
       "category": "Sigorta",
       "circulatingSupply": "Dolaşımdaki Arz",
       "couldntLoad": "Firelight pozisyonunuz yüklenemedi",
+      "help": {
+        "label": "Varlık Teminat Çarpanı",
+        "body": "Rezervde her bir STXRP'yi ne kadar fXRP'nin desteklediğini gösterir. 1 veya üzeri bir çarpan, kasada dolaşımdaki her token için yeterli teminat bulunduğu anlamına gelir."
+      },
       "insuranceRobust": "Sigorta: Güçlü",
       "subtitle": "Sermaye koruma kasası",
       "title": "Firelight Kasası",
@@ -152,6 +166,10 @@
     "kpis": {
       "activePositions": "Aktif Pozisyonlar",
       "bestApr": "Mevcut En İyi APR",
+      "help": {
+        "label": "Mevcut En İyi APR",
+        "body": "Burada karşılaştırılan stratejiler arasında, standart 10.000 $'lık bir mevduata dayalı en yüksek APR. Bu, kendi pozisyonunuzdaki oran olmak zorunda değildir."
+      },
       "protocolsTracked": "Takip Edilen Protokoller"
     },
     "mxrpy": {
@@ -167,6 +185,10 @@
       "category": "Likit Stake",
       "couldntLoad": "Sceptre pozisyonunuz yüklenemedi",
       "exchangeRateLabel": "sFLR / FLR kuru",
+      "help": {
+        "label": "sFLR'den FLR'ye Değişim Oranı",
+        "body": "Şu anda her bir sFLR'nin kaç FLR değerinde olduğunu gösterir. Staking ödülleri biriktikçe zamanla yükselir, bu yüzden 1'in üzerine çıkabilir."
+      },
       "subtitle": "sFLR likit stake",
       "title": "Sceptre Liquid Staking",
       "totalMinted": "Toplam Basılan Pay"
@@ -176,6 +198,12 @@
       "claimableYield": "Talep Edilebilir Getiri",
       "couldntLoad": "Spectra piyasa verileri yüklenemedi",
       "daysToMaturity": "vadeye kalan gün",
+      "help": {
+        "tokens": {
+          "label": "IBT, PT ve YT",
+          "body": "IBT (Interest-Bearing Token), yatırılan temel varlığı temsil eder. PT (Principal Token), orijinal yatırımınızı temsil eder. YT (Yield Token), bu yatırımın zaman içinde kazandırdığı getiriyi temsil eder."
+        }
+      },
       "ibtContract": "IBT Kontratı",
       "ibtLocked": "Kilitli IBT",
       "matured": "Vadesi Doldu",
@@ -298,6 +326,10 @@
       "viewOnExplorer": "Explorer'da Görüntüle"
     },
     "trend": {
+      "help": {
+        "label": "Tahakkuk Eden Gelir",
+        "body": "Tahakkuk eden, protokolün şimdiye kadar değerlendirdiği tutardır, mutlaka zaten ödenmiş veya yakılmış olanı göstermez. Bu fark beklenen bir durumdur, hata değildir."
+      },
       "subtitle": "Son 30 gündeki günlük tahakkuk eden gelir, token bazında",
       "title": "Gelir Trendi",
       "tokenLabel": "Günde tahakkuk eden {{token}}"
@@ -406,6 +438,12 @@
       },
       "couldntLoad": "Delegasyon yoğunlaşması yüklenemedi.",
       "description": "FTSO delegasyon ağırlığının sağlayıcılar arasında ağ genelinde ne kadar dağıldığı.",
+      "help": {
+        "hhi": {
+          "label": "HHI Yoğunlaşma Skoru",
+          "body": "Delegasyon ağırlığının sağlayıcılar arasında ne kadar dağıldığını ölçen standart bir yöntemdir. Skor yükseldikçe ağırlık daha az sayıda sağlayıcıda yoğunlaşır; skor düştükçe dağılım daha dengeli olur."
+        }
+      },
       "stats": {
         "activeProviders": "Aktif FTSO Sağlayıcıları",
         "effectiveProviders": "Etkin Sağlayıcılar",
@@ -431,6 +469,10 @@
       "count_other": "{{count}} Sağlayıcı",
       "emptyDescription": "Ödül kazanmaya başlamak için WFLR'nizi bir FTSO veri sağlayıcısına delege edin.",
       "emptyTitle": "Aktif Delegasyon Yok",
+      "help": {
+        "label": "Sizin Ağırlığınız ve Ağ Ağırlığı",
+        "body": "Buradaki her sağlayıcının yanındaki yüzde, sizin kendi delegasyon dağılımınızdır. Bu, bir sağlayıcının yoğunlaşma bandından farklıdır; o bant yalnızca sizin payınızı değil, o sağlayıcının tüm ağdaki payını gösterir."
+      },
       "title": "Aktif Delegasyonlar"
     },
     "description": "FTSO delegasyon ödüllerinizi, ödül hızını ve sağlayıcı tahsislerini tek bir yerde takip edin.",
@@ -446,6 +488,10 @@
     "providers": {
       "description": "Zincir üzerinde güvenilir bir şekilde ölçülebilen ödül performansına göre değil, devredilen ağırlık ve ücrete göre sıralanır.",
       "emptyDescription": "Şu anda sağlayıcı sıralamasına ilişkin herhangi bir veri mevcut değil.",
+      "help": {
+        "label": "Yoğunlaşmış ile İyi Dağılmış",
+        "body": "Bir sağlayıcının ağ genelindeki delege edilmiş ağırlığının diğerleriyle nasıl karşılaştırıldığını gösterir; on-chain olarak güvenilir şekilde ölçülemeyen ödül performansını göstermez."
+      },
       "title": "FTSO Sağlayıcıları"
     },
     "stats": {
@@ -460,6 +506,10 @@
       "title": "Staking Validator Sıralaması"
     },
     "velocity": {
+      "help": {
+        "label": "Bu Tahmin Nasıl Hesaplanıyor",
+        "body": "Mevcut olduğunda canlı talep edilmemiş ödül kaydınızı kullanır, aksi halde geçmiş bloklara dayalı bir tahmine döner. Her iki durumda da bu bir projeksiyondur, garantili bir ödeme değildir."
+      },
       "inactiveDescription": "Bu cüzdan henüz WFLR delege etmiyor, bu yüzden tahmin edilecek bir ödül hızı yok.",
       "inactiveTitle": "Şu Anda Kazanç Yok",
       "methodHistorical": "Geçmişe Dayalı Tahmin",
@@ -488,6 +538,12 @@
     "drawer": {
       "circulatingSupply": "Dolaşımdaki arz",
       "close": "Kapat",
+      "help": {
+        "quorum": {
+          "label": "Yeter Sayı ve Çoğunluk",
+          "body": "Yeter sayı, bir oylamanın sayılması için gereken minimum katılımdır. Gerekli çoğunluk, yeter sayı sağlandıktan sonra kabul için gereken oy payıdır."
+        }
+      },
       "majorityRequired": "Gerekli çoğunluk",
       "proposer": "Teklif sahibi",
       "quorum": "Yeter sayı",
@@ -508,6 +564,10 @@
       "columnResult": "Sonuç",
       "columnStatus": "Durum",
       "columnYourVote": "Oyunuz",
+      "help": {
+        "label": "Lehte ve Aleyhte",
+        "body": "İki yüzde, sırasıyla Lehte ve Aleyhte oyların payını gösterir."
+      },
       "emptyDescription": "Bir teklif sonuçlandığında burada görünecek.",
       "emptyTitle": "Henüz yönetişim geçmişi yok",
       "subtitle": "Sonuçlanan tüm yönetişim teklifleri, en yeniden en eskiye.",
@@ -545,6 +605,10 @@
     },
     "votingEnded": "Oylama sona erdi",
     "yours": {
+      "help": {
+        "label": "Oylama Gücünüz",
+        "body": "Cüzdanınızın yönetişim için şu anda sahip olduğu oy ağırlığıdır ve doğrudan ağdan okunur. Belirli bir teklifin kendi snapshot bloğundaki oylama gücünüzden farklı olabilir; bu değer o teklifin detaylarında gösterilir."
+      },
       "noWalletDescription": "Bu tekliflerdeki oy gücünüzü ve katılımınızı görmek için bir cüzdan bağlayın veya ekleyin.",
       "noWalletTitle": "Yönetişim etkinliğinizi görün",
       "participation": "Katılımınız",
@@ -748,6 +812,12 @@
       "countdownHours": "{{hours}}s sonra",
       "currentlyLocked": "Şu Anda Kilitli",
       "epochCaption": "{{epoch}} epoch'u {{date}} tarihinde başladı",
+      "help": {
+        "poolUtilization": {
+          "label": "Teşvik Havuzu Kullanımı",
+          "body": "Ağın toplam rFLR teşvik tahsisinin bu epoch'ta cüzdanlara şimdiye kadar ne kadarının atandığı."
+        }
+      },
       "nextDistribution": "Sonraki Dağıtım",
       "poolUtilization": "Teşvik Havuzu Kullanımı",
       "remaining": "{{amount}} tahsis edilmeyi bekliyor",
@@ -764,6 +834,12 @@
       "earlyExitTitle": "Erken Çıkış",
       "efficiency": "%{{pct}} verimli",
       "fullyVested": "Tamamen kazanılmış, kilidini açacak hiçbir şey kalmadı",
+      "help": {
+        "earlyExit": {
+          "label": "Erken Çıkış",
+          "body": "rFLR'ınız tamamen vest olmadan çıkmak, kilitli tutarın bir kısmının ceza olarak kaybedilmesine yol açar. Verimlilik, şimdi çıksanız kilitli bakiyenizden elinizde kalacak payı ifade eder."
+        }
+      },
       "netPayout": "Şu Anki Net Ödeme",
       "nextUnlock": "Sonraki kilit açma: {{date}}",
       "nextUnlockCaption": "likit hale gelecek",

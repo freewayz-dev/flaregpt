@@ -95,6 +95,10 @@
       "couldntLoad": "Couldn't load network data",
       "gasPrice": "Gas Price",
       "gwei": "Gwei",
+      "help": {
+        "label": "Gas Price and Network Speed",
+        "body": "Gwei is the unit gas prices are measured in. TPS is how many transactions the network is processing per second. Both update live."
+      },
       "live": "Live",
       "title": "Network Activity",
       "tps": "TPS",
@@ -104,6 +108,12 @@
     "stats": {
       "couldntLoad": "Couldn't load market overview",
       "flrPrice": "FLR Price",
+      "help": {
+        "tvl": {
+          "label": "TVL",
+          "body": "TVL stands for Total Value Locked: the combined USD value held across the DeFi protocols tracked here."
+        }
+      },
       "marketCap": "Market Cap",
       "tvl": "TVL",
       "volume24h": "24h Volume"
@@ -144,6 +154,10 @@
       "category": "Insurance",
       "circulatingSupply": "Circulating Supply",
       "couldntLoad": "Couldn't load your Firelight position",
+      "help": {
+        "label": "Asset Backing Multiplier",
+        "body": "How much fXRP backs each STXRP in reserve. A multiplier of 1 or higher means the vault holds enough backing for every token in circulation."
+      },
       "insuranceRobust": "Insurance: Robust",
       "subtitle": "Capital protection vault",
       "title": "Firelight Vault",
@@ -152,6 +166,10 @@
     "kpis": {
       "activePositions": "Active Positions",
       "bestApr": "Best APR Available",
+      "help": {
+        "label": "Best APR Available",
+        "body": "The highest APR among the strategies compared here, based on a standard $10,000 deposit. It isn't necessarily the rate on your own position."
+      },
       "protocolsTracked": "Protocols Tracked"
     },
     "mxrpy": {
@@ -167,6 +185,10 @@
       "category": "Liquid Staking",
       "couldntLoad": "Couldn't load your Sceptre position",
       "exchangeRateLabel": "sFLR / FLR rate",
+      "help": {
+        "label": "SFLR to FLR Exchange Rate",
+        "body": "How much FLR each sFLR is worth right now. It rises over time as staking rewards accrue, which is why it can go above 1."
+      },
       "subtitle": "sFLR liquid staking",
       "title": "Sceptre Liquid Staking",
       "totalMinted": "Total Minted Shares"
@@ -176,6 +198,12 @@
       "claimableYield": "Claimable Yield",
       "couldntLoad": "Couldn't load Spectra market data",
       "daysToMaturity": "days to maturity",
+      "help": {
+        "tokens": {
+          "label": "IBT, PT and YT",
+          "body": "IBT (Interest-Bearing Token) represents the underlying deposited asset. PT (Principal Token) represents your original deposit. YT (Yield Token) represents the yield that deposit earns over time."
+        }
+      },
       "ibtContract": "IBT Contract",
       "ibtLocked": "IBT Locked",
       "matured": "Matured",
@@ -298,6 +326,10 @@
       "viewOnExplorer": "View on Explorer"
     },
     "trend": {
+      "help": {
+        "label": "Accrued Revenue",
+        "body": "Accrued is the amount assessed by the protocol so far, not necessarily what's already been paid out or burned. That gap is expected, not an error."
+      },
       "subtitle": "Daily accrued revenue over the last 30 days, by token",
       "title": "Revenue Trend",
       "tokenLabel": "{{token}} accrued per day"
@@ -406,6 +438,12 @@
       },
       "couldntLoad": "Couldn't load delegation concentration.",
       "description": "How spread out FTSO delegation weight is across providers, network-wide.",
+      "help": {
+        "hhi": {
+          "label": "HHI Concentration Score",
+          "body": "A standard measure of how spread out delegation weight is across providers. A higher score means weight is concentrated among fewer providers; a lower score means it's more evenly spread."
+        }
+      },
       "stats": {
         "activeProviders": "Active FTSO Providers",
         "effectiveProviders": "Effective Providers",
@@ -431,6 +469,10 @@
       "count_other": "{{count}} Providers",
       "emptyDescription": "Delegate your WFLR to an FTSO data provider to start earning rewards.",
       "emptyTitle": "No Active Delegations",
+      "help": {
+        "label": "Your Weight vs Network Weight",
+        "body": "The percentage next to each provider here is your own delegation split. It's different from a provider's concentration band, which describes that provider's share of the entire network, not just yours."
+      },
       "title": "Active Delegations"
     },
     "description": "Track your FTSO delegation rewards, reward velocity, and provider allocations in one place.",
@@ -446,6 +488,10 @@
     "providers": {
       "description": "Ranked by delegated weight and fee, not by reward performance, which isn't reliably measurable on-chain.",
       "emptyDescription": "No provider ranking data is available right now.",
+      "help": {
+        "label": "Concentrated vs Well Distributed",
+        "body": "Describes how a provider's network-wide delegated weight compares to others, not its reward performance, which isn't reliably measurable on-chain."
+      },
       "title": "FTSO Providers"
     },
     "stats": {
@@ -460,6 +506,10 @@
       "title": "Staking Validators Ranking"
     },
     "velocity": {
+      "help": {
+        "label": "How This Estimate Is Calculated",
+        "body": "Uses your live unclaimed reward ledger when it's available, falling back to a historical block-based estimate otherwise. Either way, it's a projection, not a guaranteed payout."
+      },
       "inactiveDescription": "This wallet isn't delegating WFLR yet, so there's no reward velocity to estimate.",
       "inactiveTitle": "Not Currently Earning",
       "methodHistorical": "Historical Estimate",
@@ -488,6 +538,12 @@
     "drawer": {
       "circulatingSupply": "Circulating supply",
       "close": "Close",
+      "help": {
+        "quorum": {
+          "label": "Quorum and Majority",
+          "body": "Quorum is the minimum participation needed for a vote to count at all. Majority required is the share of votes needed to pass, once quorum is met."
+        }
+      },
       "majorityRequired": "Majority required",
       "proposer": "Proposer",
       "quorum": "Quorum",
@@ -510,6 +566,10 @@
       "columnYourVote": "Your vote",
       "emptyDescription": "Once a proposal concludes, it'll show up here.",
       "emptyTitle": "No governance history yet",
+      "help": {
+        "label": "For vs Against",
+        "body": "The two percentages show the share of votes For and Against, in that order."
+      },
       "subtitle": "Every concluded governance proposal, most recent first.",
       "title": "Governance History"
     },
@@ -545,6 +605,10 @@
     },
     "votingEnded": "Voting ended",
     "yours": {
+      "help": {
+        "label": "Your Voting Power",
+        "body": "The vote weight your wallet currently holds for governance, read directly from the network. It can differ from your voting power at a specific proposal's own snapshot block, shown in that proposal's details."
+      },
       "noWalletDescription": "Connect or add a wallet to see your voting power and participation across these proposals.",
       "noWalletTitle": "See your governance activity",
       "participation": "Your Participation",
@@ -748,6 +812,12 @@
       "countdownHours": "in {{hours}}h",
       "currentlyLocked": "Currently Locked",
       "epochCaption": "Epoch {{epoch}} started {{date}}",
+      "help": {
+        "poolUtilization": {
+          "label": "Incentive Pool Utilization",
+          "body": "How much of the network's total rFLR incentive allocation has been assigned to wallets so far this epoch."
+        }
+      },
       "nextDistribution": "Next Distribution",
       "poolUtilization": "Incentive Pool Utilization",
       "remaining": "{{amount}} left to be assigned",
@@ -764,6 +834,12 @@
       "earlyExitTitle": "Early Exit",
       "efficiency": "{{pct}}% efficient",
       "fullyVested": "Fully vested, nothing left to unlock",
+      "help": {
+        "earlyExit": {
+          "label": "Early Exit",
+          "body": "Exiting before your rFLR is fully vested forfeits a portion of the locked amount as a penalty. Efficiency is the share of your locked balance you'd keep if you exited right now."
+        }
+      },
       "netPayout": "Net Payout Now",
       "nextUnlock": "Next unlock on {{date}}",
       "nextUnlockCaption": "becomes liquid",

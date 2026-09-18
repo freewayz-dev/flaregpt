@@ -251,7 +251,11 @@ describe("Governance — watchlist wallet (not connected)", () => {
 
     renderGovernance();
 
-    expect(await screen.findByText("Your Voting Power")).toBeInTheDocument();
+    // The stat's own title and the new InfoHint popover next to it render
+    // the same "Your Voting Power" text (visible title + hidden popover
+    // heading) — findAllByText()[0] reliably picks the title, which always
+    // renders first in DOM order (see StatCard.jsx: title, then `hint`).
+    expect((await screen.findAllByText("Your Voting Power"))[0]).toBeInTheDocument();
     await waitFor(() => expect(screen.getByText("37.8K FLR")).toBeInTheDocument());
     // 1 of 1 concluded proposals voted on, from the real hasVoted() read.
     expect(await screen.findByText("1/1")).toBeInTheDocument();
@@ -281,7 +285,7 @@ describe("Governance — connected wallet", () => {
 
     renderGovernance({ connected: true, address: TEST_ADDRESSES.primary });
 
-    expect(await screen.findByText("Your Voting Power")).toBeInTheDocument();
+    expect((await screen.findAllByText("Your Voting Power"))[0]).toBeInTheDocument();
     const table = await screen.findByRole("table");
     expect(within(table).getByText("Not voted")).toBeInTheDocument();
   });

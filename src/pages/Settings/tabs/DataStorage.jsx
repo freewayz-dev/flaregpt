@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { CircleStackIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 

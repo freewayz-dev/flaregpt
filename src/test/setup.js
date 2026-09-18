@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom/vitest";
 import { afterAll, afterEach, beforeAll, vi } from "vitest";
 import { cleanup } from "@testing-library/react";
-import { toast } from "react-toastify";
 
 import { server } from "@/test/mocks/server";
 import { initI18n } from "@/i18n";
@@ -76,12 +75,10 @@ const initialStates = stores.map((store) => store.getState());
 // triggered.
 afterEach(() => {
   server.resetHandlers();
-  // react-toastify's queue is a module-level singleton (not owned by
-  // whichever ToastContainer happens to be mounted right now) — without
-  // this, a toast triggered by one test but never awaited/dismissed could
-  // still be active when the next test's fresh ToastContainer mounts,
-  // leaking into an unrelated test's DOM.
-  toast.dismiss();
   cleanup();
+  // Covers useNotificationStore too (it's a plain store under src/store/,
+  // auto-discovered by the glob above) — a notification triggered by one
+  // test but never dismissed is cleared here rather than leaking into the
+  // next test's fresh NotificationCenter mount.
   stores.forEach((store, i) => store.setState(initialStates[i], true));
 });

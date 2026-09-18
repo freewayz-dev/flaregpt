@@ -7,6 +7,7 @@ import { useLiveSeries } from "@/hooks/useLiveSeries";
 import NetworkActivityChartSkeleton from "@/pages/Dashboard/components/skeletons/NetworkActivityChartSkeleton";
 import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
 import GenericTable from "@/pages/Dashboard/components/shared/GenericTable";
+import InfoHint from "@/components/common/InfoHint";
 
 export default function NetworkActivityChart() {
   const { t } = useTranslation();
@@ -67,7 +68,12 @@ export default function NetworkActivityChart() {
   return (
     <div className="h-full flex flex-col rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-ink-primary">{t("dashboard.networkActivity.title")}</h3>
+        <span className="flex items-center gap-1">
+          <h3 className="text-sm font-semibold text-ink-primary">{t("dashboard.networkActivity.title")}</h3>
+          <InfoHint label={t("dashboard.networkActivity.help.label")}>
+            {t("dashboard.networkActivity.help.body")}
+          </InfoHint>
+        </span>
         <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-500">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
           {t("dashboard.networkActivity.live")}

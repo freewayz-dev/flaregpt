@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
 import { useSearchParams } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import { ChevronRightIcon, ShareIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";

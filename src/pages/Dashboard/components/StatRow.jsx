@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import StatCard from "@/components/cards/StatCard";
+import InfoHint from "@/components/common/InfoHint";
 import { useCurrency } from "@/hooks/useCurrency";
 import { useMarketOverview } from "@/hooks/queries/useDashboardQueries";
 import StatCardSkeleton from "@/pages/Dashboard/components/skeletons/StatCardSkeleton";
@@ -106,6 +107,11 @@ export default function StatRow() {
       title: t("dashboard.stats.tvl"),
       value: formatCompact(tvl),
       icon: BanknotesIcon,
+      hint: (
+        <InfoHint label={t("dashboard.stats.help.tvl.label")}>
+          {t("dashboard.stats.help.tvl.body")}
+        </InfoHint>
+      ),
     },
   ];
 

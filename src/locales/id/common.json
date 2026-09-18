@@ -95,6 +95,10 @@
       "couldntLoad": "Tidak dapat memuat data jaringan",
       "gasPrice": "harga gas",
       "gwei": "Gwei",
+      "help": {
+        "label": "Harga Gas dan Kecepatan Jaringan",
+        "body": "Gwei adalah satuan pengukuran harga gas. TPS menunjukkan berapa banyak transaksi yang diproses jaringan per detik. Keduanya diperbarui secara live."
+      },
       "live": "Langsung",
       "title": "Aktivitas Jaringan",
       "tps": "TPS",
@@ -104,6 +108,12 @@
     "stats": {
       "couldntLoad": "Tidak dapat memuat ikhtisar pasar",
       "flrPrice": "Harga FLR",
+      "help": {
+        "tvl": {
+          "label": "TVL",
+          "body": "TVL adalah singkatan dari Total Value Locked: total nilai USD gabungan yang tersimpan di seluruh protokol DeFi yang dilacak di sini."
+        }
+      },
       "marketCap": "Kap Pasar",
       "tvl": "TVL",
       "volume24h": "Volume 24 jam"
@@ -144,6 +154,10 @@
       "category": "Asuransi",
       "circulatingSupply": "Pasokan Beredar",
       "couldntLoad": "Posisi Firelight Anda gagal dimuat",
+      "help": {
+        "label": "Pengganda Dukungan Aset",
+        "body": "Seberapa besar fXRP yang mendukung setiap STXRP sebagai cadangan. Pengganda 1 atau lebih berarti vault memiliki dukungan yang cukup untuk setiap token yang beredar."
+      },
       "insuranceRobust": "Asuransi: Kuat",
       "subtitle": "Vault perlindungan modal",
       "title": "Firelight Vault",
@@ -152,6 +166,10 @@
     "kpis": {
       "activePositions": "Posisi Aktif",
       "bestApr": "APR Terbaik Tersedia",
+      "help": {
+        "label": "APR Terbaik yang Tersedia",
+        "body": "APR tertinggi di antara strategi yang dibandingkan di sini, berdasarkan setoran standar $10.000. Ini belum tentu merupakan rate pada posisi Anda sendiri."
+      },
       "protocolsTracked": "Protokol Terlacak"
     },
     "mxrpy": {
@@ -167,6 +185,10 @@
       "category": "Liquid Staking",
       "couldntLoad": "Posisi Sceptre Anda gagal dimuat",
       "exchangeRateLabel": "Kurs sFLR / FLR",
+      "help": {
+        "label": "Kurs Tukar sFLR ke FLR",
+        "body": "Berapa banyak FLR yang setara dengan setiap sFLR saat ini. Nilainya naik seiring waktu seiring terkumpulnya reward staking, itulah sebabnya nilainya bisa melebihi 1."
+      },
       "subtitle": "Liquid staking sFLR",
       "title": "Sceptre Liquid Staking",
       "totalMinted": "Total Saham Diterbitkan"
@@ -176,6 +198,12 @@
       "claimableYield": "Yield yang Dapat Diklaim",
       "couldntLoad": "Tidak dapat memuat data pasar Spectra",
       "daysToMaturity": "hari menuju jatuh tempo",
+      "help": {
+        "tokens": {
+          "label": "IBT, PT, dan YT",
+          "body": "IBT (Interest-Bearing Token) mewakili aset dasar yang disetorkan. PT (Principal Token) mewakili setoran awal Anda. YT (Yield Token) mewakili imbal hasil yang dihasilkan setoran tersebut seiring waktu."
+        }
+      },
       "ibtContract": "Kontrak IBT",
       "ibtLocked": "IBT Terkunci",
       "matured": "Jatuh Tempo",
@@ -298,6 +326,10 @@
       "viewOnExplorer": "Lihat di Explorer"
     },
     "trend": {
+      "help": {
+        "label": "Pendapatan Terakumulasi",
+        "body": "Terakumulasi adalah jumlah yang telah dinilai oleh protokol sejauh ini, belum tentu yang sudah benar-benar dibayarkan atau dibakar. Selisih itu memang wajar, bukan kesalahan."
+      },
       "subtitle": "Pendapatan yang terkumpul setiap hari selama 30 hari terakhir, berdasarkan token",
       "title": "Tren Pendapatan",
       "tokenLabel": "{{token}} terkumpul per hari"
@@ -406,6 +438,12 @@
       },
       "couldntLoad": "Gagal memuat konsentrasi delegasi.",
       "description": "Seberapa tersebar bobot delegasi FTSO di antara penyedia, di seluruh jaringan.",
+      "help": {
+        "hhi": {
+          "label": "Skor Konsentrasi HHI",
+          "body": "Ukuran standar untuk melihat seberapa merata bobot delegasi tersebar di antara para penyedia. Skor yang lebih tinggi berarti bobot terkonsentrasi pada lebih sedikit penyedia; skor yang lebih rendah berarti penyebarannya lebih merata."
+        }
+      },
       "stats": {
         "activeProviders": "Penyedia FTSO Aktif",
         "effectiveProviders": "Penyedia Efektif",
@@ -431,6 +469,10 @@
       "count_other": "{{count}} Penyedia",
       "emptyDescription": "Delegasikan WFLR Anda ke penyedia data FTSO untuk mulai mendapatkan reward.",
       "emptyTitle": "Tidak Ada Delegasi Aktif",
+      "help": {
+        "label": "Bobot Anda vs Bobot Jaringan",
+        "body": "Persentase di samping setiap penyedia di sini adalah pembagian delegasi Anda sendiri. Ini berbeda dari band konsentrasi suatu penyedia, yang menggambarkan porsi penyedia tersebut di seluruh jaringan, bukan hanya porsi Anda."
+      },
       "title": "Delegasi Aktif"
     },
     "description": "Lacak reward delegasi FTSO, kecepatan reward, dan alokasi penyedia Anda di satu tempat.",
@@ -446,6 +488,10 @@
     "providers": {
       "description": "Diberi peringkat berdasarkan bobot dan biaya yang didelegasikan, bukan berdasarkan kinerja imbalan, yang tidak dapat diukur secara andal secara on - chain.",
       "emptyDescription": "Tidak ada data peringkat penyedia yang tersedia saat ini.",
+      "help": {
+        "label": "Terkonsentrasi vs Tersebar Merata",
+        "body": "Menggambarkan bagaimana bobot delegasi suatu penyedia di seluruh jaringan dibandingkan dengan penyedia lain, bukan performa reward-nya, yang tidak dapat diukur secara andal on-chain."
+      },
       "title": "Penyedia FTSO"
     },
     "stats": {
@@ -460,6 +506,10 @@
       "title": "Peringkat Validator Staking"
     },
     "velocity": {
+      "help": {
+        "label": "Cara Estimasi Ini Dihitung",
+        "body": "Menggunakan ledger reward belum diklaim Anda secara live jika tersedia, atau beralih ke estimasi historis berbasis blok jika tidak. Bagaimanapun, ini adalah proyeksi, bukan pembayaran yang dijamin."
+      },
       "inactiveDescription": "Dompet ini belum mendelegasikan WFLR, jadi tidak ada kecepatan reward untuk diperkirakan.",
       "inactiveTitle": "Belum Menghasilkan",
       "methodHistorical": "Estimasi Historis",
@@ -488,6 +538,12 @@
     "drawer": {
       "circulatingSupply": "Suplai beredar",
       "close": "Tutup",
+      "help": {
+        "quorum": {
+          "label": "Kuorum dan Mayoritas",
+          "body": "Kuorum adalah partisipasi minimum yang diperlukan agar sebuah voting dapat dihitung. Mayoritas yang diperlukan adalah porsi suara yang dibutuhkan untuk lolos, setelah kuorum terpenuhi."
+        }
+      },
       "majorityRequired": "Mayoritas yang diperlukan",
       "proposer": "Pengusul",
       "quorum": "Kuorum",
@@ -508,6 +564,10 @@
       "columnResult": "Hasil",
       "columnStatus": "Status",
       "columnYourVote": "Suara Anda",
+      "help": {
+        "label": "Setuju vs Menolak",
+        "body": "Kedua persentase ini menunjukkan porsi suara Setuju dan Menolak, dalam urutan tersebut."
+      },
       "emptyDescription": "Begitu sebuah proposal selesai, itu akan muncul di sini.",
       "emptyTitle": "Belum ada riwayat tata kelola",
       "subtitle": "Setiap proposal tata kelola yang selesai, terbaru lebih dulu.",
@@ -545,6 +605,10 @@
     },
     "votingEnded": "Pemungutan suara berakhir",
     "yours": {
+      "help": {
+        "label": "Kekuatan Voting Anda",
+        "body": "Bobot suara yang saat ini dimiliki wallet Anda untuk governance, dibaca langsung dari jaringan. Nilainya bisa berbeda dari kekuatan voting Anda pada blok snapshot milik proposal tertentu, yang ditampilkan di detail proposal tersebut."
+      },
       "noWalletDescription": "Hubungkan atau tambahkan dompet untuk melihat kekuatan suara dan partisipasi Anda dalam proposal ini.",
       "noWalletTitle": "Lihat aktivitas tata kelola Anda",
       "participation": "Partisipasi Anda",
@@ -748,6 +812,12 @@
       "countdownHours": "dalam {{hours}}j",
       "currentlyLocked": "Saat Ini Terkunci",
       "epochCaption": "Epoch {{epoch}} dimulai {{date}}",
+      "help": {
+        "poolUtilization": {
+          "label": "Pemanfaatan Pool Insentif",
+          "body": "Seberapa besar alokasi insentif rFLR total jaringan yang telah ditetapkan ke wallet sejauh ini pada epoch ini."
+        }
+      },
       "nextDistribution": "Distribusi Berikutnya",
       "poolUtilization": "Utilisasi Kumpulan Insentif",
       "remaining": "{{amount}} tersisa untuk dialokasikan",
@@ -764,6 +834,12 @@
       "earlyExitTitle": "Keluar Lebih Awal",
       "efficiency": "{{pct}}% efisien",
       "fullyVested": "Sepenuhnya dipegang, tidak ada yang tersisa untuk dibuka",
+      "help": {
+        "earlyExit": {
+          "label": "Keluar Lebih Awal",
+          "body": "Keluar sebelum rFLR Anda sepenuhnya vested akan menghilangkan sebagian jumlah yang terkunci sebagai penalti. Efisiensi adalah porsi saldo terkunci Anda yang akan tetap Anda miliki jika keluar sekarang."
+        }
+      },
       "netPayout": "Pembayaran Bersih Sekarang",
       "nextUnlock": "Pembukaan kunci berikutnya pada {{date}}",
       "nextUnlockCaption": "menjadi likuid",

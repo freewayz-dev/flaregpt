@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLocation, useNavigate } from "react-router";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import { useTranslation } from "react-i18next";
 
 import { queryKeys } from "@/services/queryKeys";

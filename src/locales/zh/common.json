@@ -95,6 +95,10 @@
       "couldntLoad": "无法加载网络数据",
       "gasPrice": "用气价格",
       "gwei": "Gwei",
+      "help": {
+        "label": "Gas 价格与网络速度",
+        "body": "Gwei 是衡量 Gas 价格的单位。TPS 是网络每秒处理的交易数量。两者都会实时更新。"
+      },
       "live": "Live",
       "title": "网络活动",
       "tps": "第三人射击游戏",
@@ -104,6 +108,12 @@
     "stats": {
       "couldntLoad": "无法加载市场概览",
       "flrPrice": "FLR价格",
+      "help": {
+        "tvl": {
+          "label": "TVL",
+          "body": "TVL 即 Total Value Locked(总锁仓价值):这里追踪的所有 DeFi 协议中锁定资产的美元总价值。"
+        }
+      },
       "marketCap": "市场价值",
       "tvl": "TVL",
       "volume24h": "24小时量"
@@ -144,6 +154,10 @@
       "category": "保险",
       "circulatingSupply": "流通供应量",
       "couldntLoad": "无法加载您的 Firelight 持仓",
+      "help": {
+        "label": "资产支持倍数",
+        "body": "储备中每个 STXRP 背后有多少 fXRP 作为支持。倍数达到 1 或以上,意味着金库为流通中的每一枚代币都持有足够的支持。"
+      },
       "insuranceRobust": "保险: 稳健",
       "subtitle": "资本保护金库",
       "title": "Firelight 金库",
@@ -152,6 +166,10 @@
     "kpis": {
       "activePositions": "活跃持仓",
       "bestApr": "最佳可用年化收益率",
+      "help": {
+        "label": "可获得的最佳 APR",
+        "body": "此处比较的策略中最高的 APR,基于标准的 10,000 美元存款计算。这不一定是您自己仓位的实际利率。"
+      },
       "protocolsTracked": "已追踪协议"
     },
     "mxrpy": {
@@ -167,6 +185,10 @@
       "category": "流动性质押",
       "couldntLoad": "无法加载您的 Sceptre 持仓",
       "exchangeRateLabel": "sFLR / FLR 汇率",
+      "help": {
+        "label": "sFLR 兑 FLR 汇率",
+        "body": "目前每个 sFLR 值多少 FLR。随着质押奖励的累积,该数值会随时间上升,这就是它可能超过 1 的原因。"
+      },
       "subtitle": "sFLR 流动性质押",
       "title": "Sceptre 流动性质押",
       "totalMinted": "已铸造份额总量"
@@ -176,6 +198,12 @@
       "claimableYield": "可领取收益",
       "couldntLoad": "无法加载 Spectra 市场数据",
       "daysToMaturity": "距到期天数",
+      "help": {
+        "tokens": {
+          "label": "IBT、PT 和 YT",
+          "body": "IBT(生息代币)代表存入的基础资产。PT(本金代币)代表您的原始存款。YT(收益代币)代表该存款随时间产生的收益。"
+        }
+      },
       "ibtContract": "IBT 合约",
       "ibtLocked": "已锁定 IBT",
       "matured": "已到期",
@@ -298,6 +326,10 @@
       "viewOnExplorer": "在浏览器中查看"
     },
     "trend": {
+      "help": {
+        "label": "应计收入",
+        "body": "应计金额是协议目前评估出的数额,不一定是已经实际支付或销毁的金额。这一差异是正常现象,并非错误。"
+      },
       "subtitle": "过去30天按代币计算的每日累计收入",
       "title": "收入趋势",
       "tokenLabel": "每日累计 {{token}}"
@@ -406,6 +438,12 @@
       },
       "couldntLoad": "无法加载委托集中度。",
       "description": "全网范围内，FTSO 委托权重在各提供商之间的分散程度。",
+      "help": {
+        "hhi": {
+          "label": "HHI 集中度评分",
+          "body": "衡量委托权重在各服务商之间分散程度的标准指标。分数越高,表示权重集中在越少的服务商手中;分数越低,表示分布越均匀。"
+        }
+      },
       "stats": {
         "activeProviders": "活跃 FTSO 提供商",
         "effectiveProviders": "有效提供商数量",
@@ -431,6 +469,10 @@
       "count_other": "{{count}} 个提供商",
       "emptyDescription": "将您的 WFLR 委托给 FTSO 数据提供商以开始赚取奖励。",
       "emptyTitle": "暂无委托",
+      "help": {
+        "label": "您的权重与网络权重",
+        "body": "这里每个服务商旁边的百分比是您自己的委托分配比例。这与服务商的集中度区间不同,后者描述的是该服务商在整个网络中的份额,而不仅仅是您的份额。"
+      },
       "title": "当前委托"
     },
     "description": "在一个地方跟踪您的 FTSO 委托奖励、奖励增速和提供商分配情况。",
@@ -446,6 +488,10 @@
     "providers": {
       "description": "按授权重量和费用排名，而不是按奖励绩效排名，奖励绩效在链上不可靠地测量。",
       "emptyDescription": "目前没有可用的提供商排名数据。",
+      "help": {
+        "label": "集中 与 分布良好",
+        "body": "描述的是某服务商在全网范围内的委托权重与其他服务商相比的情况,而非其奖励表现,后者无法在链上可靠地衡量。"
+      },
       "title": "FTSO 提供商"
     },
     "stats": {
@@ -460,6 +506,10 @@
       "title": "质押验证者排名"
     },
     "velocity": {
+      "help": {
+        "label": "此估算如何计算",
+        "body": "在可用时使用您的实时未领取奖励账本,否则回退到基于历史区块的估算。无论哪种方式,这都只是预测,并非有保证的收益。"
+      },
       "inactiveDescription": "此钱包尚未委托 WFLR，因此没有可估算的奖励增速。",
       "inactiveTitle": "当前无收益",
       "methodHistorical": "历史估算",
@@ -488,6 +538,12 @@
     "drawer": {
       "circulatingSupply": "流通供应量",
       "close": "关闭",
+      "help": {
+        "quorum": {
+          "label": "法定人数与多数票",
+          "body": "法定人数是投票被计入生效所需的最低参与度。所需多数票是在达到法定人数后,通过提案所需的票数占比。"
+        }
+      },
       "majorityRequired": "所需多数",
       "proposer": "提案人",
       "quorum": "法定人数",
@@ -508,6 +564,10 @@
       "columnResult": "结果",
       "columnStatus": "状态",
       "columnYourVote": "您的投票",
+      "help": {
+        "label": "赞成与反对",
+        "body": "这两个百分比依次显示赞成票和反对票的占比。"
+      },
       "emptyDescription": "提案结束后将显示在这里。",
       "emptyTitle": "暂无治理历史",
       "subtitle": "所有已结束的治理提案，按最新排序。",
@@ -545,6 +605,10 @@
     },
     "votingEnded": "投票已结束",
     "yours": {
+      "help": {
+        "label": "您的投票权",
+        "body": "您的钱包当前在治理中持有的投票权重,直接从链上读取。它可能与您在某个提案自身快照区块时的投票权不同,后者显示在该提案的详情中。"
+      },
       "noWalletDescription": "连接或添加钱包以查看您在这些提案中的投票权和参与情况。",
       "noWalletTitle": "查看您的治理活动",
       "participation": "您的参与",
@@ -748,6 +812,12 @@
       "countdownHours": "{{hours}} 小时后",
       "currentlyLocked": "当前锁定",
       "epochCaption": "第 {{epoch}} 纪元开始于 {{date}}",
+      "help": {
+        "poolUtilization": {
+          "label": "激励池使用率",
+          "body": "本纪元中,网络总 rFLR 激励分配已分配给各钱包的比例。"
+        }
+      },
       "nextDistribution": "下次分发",
       "poolUtilization": "激励池使用率",
       "remaining": "还剩 {{amount}} 待分配",
@@ -764,6 +834,12 @@
       "earlyExitTitle": "提前退出",
       "efficiency": "效率 {{pct}}%",
       "fullyVested": "全权归属，无需解锁",
+      "help": {
+        "earlyExit": {
+          "label": "提前退出",
+          "body": "在您的 rFLR 完全归属之前退出,将会损失部分锁仓金额作为罚金。效率是指如果您现在退出,能够保留的锁仓余额比例。"
+        }
+      },
       "netPayout": "当前净支付额",
       "nextUnlock": "下次解锁：{{date}}",
       "nextUnlockCaption": "将变为可流通",

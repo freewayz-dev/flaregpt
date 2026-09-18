@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
 import { useOutletContext } from "react-router";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import { isAxiosError } from "axios";
 import {
   WalletIcon,

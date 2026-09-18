@@ -4,7 +4,7 @@ import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } fro
 import { useTranslation } from "react-i18next";
 import { ErrorBoundary } from "react-error-boundary";
 import { useQueryClient} from "@tanstack/react-query";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
@@ -12,7 +12,6 @@ import Footer from "./Footer";
 import ConnectWalletModal from "@/components/common/ConnectWalletModal";
 import ErrorFallback from "@/components/common/ErrorFallback";
 import OfflineBanner from "@/components/common/OfflineBanner";
-import StaleDataBanner from "@/components/common/StaleDataBanner";
 import InstallAppBanner from "@/components/common/InstallAppBanner";
 import { useWalletActivityNotifier } from "@/hooks/useWalletActivityNotifier";
 import { useUIStore } from "@/store/useUIStore";
@@ -324,7 +323,6 @@ export default function DashboardLayout() {
           each apply their own `safe-area-inset-bottom`, and adding a
           third here would stack a redundant gap on top of theirs. */}
       <OfflineBanner />
-      <StaleDataBanner />
       <InstallAppBanner />
       {/* `transform-gpu` (a pre-existing, GPU-compositing hint that isn't
           animating anything on this specific box) used to sit here. A CSS

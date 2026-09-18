@@ -95,6 +95,10 @@
       "couldntLoad": "네트워크 데이터를 로드할 수 없습니다",
       "gasPrice": "가스 가격",
       "gwei": "Gwei",
+      "help": {
+        "label": "가스 가격 및 네트워크 속도",
+        "body": "Gwei는 가스 가격을 측정하는 단위입니다. TPS는 네트워크가 초당 처리하는 트랜잭션 수를 나타냅니다. 두 값 모두 실시간으로 업데이트됩니다."
+      },
       "live": "라이브",
       "title": "네트워크 활동 정지",
       "tps": "TPS",
@@ -104,6 +108,12 @@
     "stats": {
       "couldntLoad": "시장 개요를 로드할 수 없습니다",
       "flrPrice": "FLR 가격",
+      "help": {
+        "tvl": {
+          "label": "TVL",
+          "body": "TVL은 Total Value Locked(총 예치 자산)의 약자로, 여기서 추적하는 DeFi 프로토콜 전체에 예치된 USD 기준 총 가치입니다."
+        }
+      },
       "marketCap": "시가총액",
       "tvl": "보유하고 있습니다.",
       "volume24h": "24H 거래량"
@@ -144,6 +154,10 @@
       "category": "보험",
       "circulatingSupply": "유통 공급량",
       "couldntLoad": "Firelight 포지션을 불러오지 못했습니다",
+      "help": {
+        "label": "자산 담보 배수",
+        "body": "준비금에서 각 STXRP를 얼마의 fXRP가 뒷받침하는지를 나타냅니다. 배수가 1 이상이면 볼트가 유통 중인 모든 토큰에 대해 충분한 담보를 보유하고 있다는 의미입니다."
+      },
       "insuranceRobust": "보험: 견고함",
       "subtitle": "자본 보호 볼트",
       "title": "Firelight 볼트",
@@ -152,6 +166,10 @@
     "kpis": {
       "activePositions": "활성 포지션",
       "bestApr": "이용 가능한 최고 APR",
+      "help": {
+        "label": "이용 가능한 최고 APR",
+        "body": "여기서 비교된 전략 중 가장 높은 APR로, 표준 10,000달러 예치금을 기준으로 합니다. 반드시 본인 포지션의 수익률은 아닙니다."
+      },
       "protocolsTracked": "추적 중인 프로토콜"
     },
     "mxrpy": {
@@ -167,6 +185,10 @@
       "category": "리퀴드 스테이킹",
       "couldntLoad": "Sceptre 포지션을 불러오지 못했습니다",
       "exchangeRateLabel": "sFLR / FLR 환율",
+      "help": {
+        "label": "sFLR 대 FLR 환율",
+        "body": "현재 각 sFLR이 얼마의 FLR 가치를 가지는지를 나타냅니다. 스테이킹 보상이 누적됨에 따라 시간이 지나면서 상승하며, 그래서 1을 넘을 수도 있습니다."
+      },
       "subtitle": "sFLR 리퀴드 스테이킹",
       "title": "Sceptre 리퀴드 스테이킹",
       "totalMinted": "총 발행 지분"
@@ -176,6 +198,12 @@
       "claimableYield": "청구 가능한 수익",
       "couldntLoad": "Spectra 시장 데이터를 불러올 수 없습니다",
       "daysToMaturity": "만기까지 남은 일수",
+      "help": {
+        "tokens": {
+          "label": "IBT, PT, YT",
+          "body": "IBT(이자 발생 토큰)는 기초 예치 자산을 나타냅니다. PT(원금 토큰)는 원래 예치금을 나타냅니다. YT(수익 토큰)는 해당 예치금이 시간이 지나면서 발생시키는 수익을 나타냅니다."
+        }
+      },
       "ibtContract": "IBT 계약",
       "ibtLocked": "잠긴 IBT",
       "matured": "만기됨",
@@ -298,6 +326,10 @@
       "viewOnExplorer": "탐색기에서 보기"
     },
     "trend": {
+      "help": {
+        "label": "발생 수익",
+        "body": "발생액은 프로토콜이 지금까지 산정한 금액이며, 이미 지급되었거나 소각된 금액과 반드시 일치하지는 않습니다. 이 차이는 예상된 것이며 오류가 아닙니다."
+      },
       "subtitle": "최근 30일간 토큰별 일일 누적 수익",
       "title": "수익 트렌드",
       "tokenLabel": "일일 누적 {{token}}"
@@ -406,6 +438,12 @@
       },
       "couldntLoad": "위임 집중도를 불러올 수 없습니다.",
       "description": "네트워크 전체적으로 FTSO 위임 가중치가 제공자들 사이에 얼마나 분산되어 있는지를 나타냅니다.",
+      "help": {
+        "hhi": {
+          "label": "HHI 집중도 점수",
+          "body": "위임 가중치가 제공자들 사이에 얼마나 고르게 분산되어 있는지를 나타내는 표준 지표입니다. 점수가 높을수록 소수의 제공자에게 가중치가 집중되어 있고, 낮을수록 더 고르게 분산되어 있음을 의미합니다."
+        }
+      },
       "stats": {
         "activeProviders": "활성 FTSO 제공자",
         "effectiveProviders": "유효 제공자 수",
@@ -431,6 +469,10 @@
       "count_other": "{{count}}개 제공자",
       "emptyDescription": "보상을 받으려면 WFLR을 FTSO 데이터 제공자에게 위임하세요.",
       "emptyTitle": "활성 위임 없음",
+      "help": {
+        "label": "내 가중치 대 네트워크 가중치",
+        "body": "여기서 각 제공자 옆에 표시되는 비율은 나 자신의 위임 배분입니다. 이는 제공자의 집중도 구간과는 다른데, 그 구간은 나만의 비중이 아니라 네트워크 전체에서 해당 제공자가 차지하는 비중을 나타냅니다."
+      },
       "title": "활성 위임"
     },
     "description": "FTSO 위임 보상, 보상 속도, 제공자 배분을 한곳에서 확인하세요.",
@@ -446,6 +488,10 @@
     "providers": {
       "description": "온체인에서 안정적으로 측정할 수 없는 보상 성과가 아닌 위임된 가중치와 수수료로 순위를 매겼습니다.",
       "emptyDescription": "현재 제공업체 순위 데이터를 사용할 수 없습니다.",
+      "help": {
+        "label": "집중 대 고른 분산",
+        "body": "제공자의 네트워크 전체 위임 가중치가 다른 제공자와 비교해 어떤지를 나타낼 뿐, 온체인에서 신뢰성 있게 측정할 수 없는 보상 성과를 나타내지는 않습니다."
+      },
       "title": "FTSO 제공자"
     },
     "stats": {
@@ -460,6 +506,10 @@
       "title": "스테이킹 검증인 순위"
     },
     "velocity": {
+      "help": {
+        "label": "이 추정치의 계산 방식",
+        "body": "가능한 경우 실시간 미청구 보상 장부를 사용하고, 그렇지 않으면 과거 블록 기반 추정치를 사용합니다. 어느 쪽이든 이는 예상치이며 보장된 지급액이 아닙니다."
+      },
       "inactiveDescription": "이 지갑은 아직 WFLR을 위임하지 않아 추정할 보상 속도가 없습니다.",
       "inactiveTitle": "현재 수익 없음",
       "methodHistorical": "과거 데이터 기반 추정",
@@ -488,6 +538,12 @@
     "drawer": {
       "circulatingSupply": "유통 공급량",
       "close": "닫기",
+      "help": {
+        "quorum": {
+          "label": "정족수와 과반수",
+          "body": "정족수는 투표가 성립되기 위해 필요한 최소 참여율입니다. 필요 과반수는 정족수를 충족한 후 통과에 필요한 득표 비율입니다."
+        }
+      },
       "majorityRequired": "필요한 다수",
       "proposer": "제안자",
       "quorum": "정족수",
@@ -508,6 +564,10 @@
       "columnResult": "결과",
       "columnStatus": "상태",
       "columnYourVote": "내 투표",
+      "help": {
+        "label": "찬성 대 반대",
+        "body": "두 퍼센트는 순서대로 찬성표와 반대표의 비율을 나타냅니다."
+      },
       "emptyDescription": "제안이 종료되면 여기에 표시됩니다.",
       "emptyTitle": "아직 거버넌스 기록이 없습니다",
       "subtitle": "종료된 모든 거버넌스 제안, 최신순.",
@@ -545,6 +605,10 @@
     },
     "votingEnded": "투표 종료",
     "yours": {
+      "help": {
+        "label": "나의 투표권",
+        "body": "현재 내 지갑이 거버넌스를 위해 보유한 투표 가중치로, 네트워크에서 직접 읽어옵니다. 이는 특정 제안 자체의 스냅샷 블록에서의 투표권과 다를 수 있으며, 그 값은 해당 제안의 세부 정보에 표시됩니다."
+      },
       "noWalletDescription": "이 제안들에 대한 투표 권한과 참여 현황을 보려면 지갑을 연결하거나 추가하세요.",
       "noWalletTitle": "내 거버넌스 활동 보기",
       "participation": "내 참여",
@@ -748,6 +812,12 @@
       "countdownHours": "{{hours}}시간 후",
       "currentlyLocked": "현재 잠김",
       "epochCaption": "에포크 {{epoch}}은(는) {{date}}에 시작됨",
+      "help": {
+        "poolUtilization": {
+          "label": "인센티브 풀 활용률",
+          "body": "이번 에포크에서 네트워크 전체 rFLR 인센티브 배분 중 지금까지 지갑에 할당된 비율입니다."
+        }
+      },
       "nextDistribution": "다음 분배",
       "poolUtilization": "인센티브 풀 활용률",
       "remaining": "{{amount}} 할당 대기 중",
@@ -764,6 +834,12 @@
       "earlyExitTitle": "조기 종료",
       "efficiency": "효율 {{pct}}%",
       "fullyVested": "완전한 기득권, 잠금을 해제할 수 있는 아무것도 남지 않음",
+      "help": {
+        "earlyExit": {
+          "label": "조기 종료",
+          "body": "rFLR이 완전히 베스팅되기 전에 종료하면 잠긴 금액의 일부를 페널티로 잃게 됩니다. 효율성은 지금 종료할 경우 잠긴 잔액 중 실제로 보유하게 될 비율입니다."
+        }
+      },
       "netPayout": "현재 순 지급액",
       "nextUnlock": "다음 언락: {{date}}",
       "nextUnlockCaption": "이(가) 유동화됩니다",

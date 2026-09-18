@@ -10,6 +10,7 @@ import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
 import TokenIcon from "@/components/common/TokenIcon";
 import TokenRow from "@/components/common/TokenRow";
 import SensitiveValue from "@/components/common/SensitiveValue";
+import InfoHint from "@/components/common/InfoHint";
 import DetailSkeleton from "@/pages/DefiProtocols/components/skeletons/DetailSkeleton";
 import { formatAmount } from "@/utils/format";
 
@@ -190,11 +191,16 @@ export default function SpectraDetail({
 
           {/* At xl+ this becomes its own column alongside the position
               summary instead of one more thing stacked below it. */}
-          <div className="mt-5 border-t border-divider pt-4 xl:mt-0 xl:border-t-0 xl:pt-0">
-            <Disclosure
-              label={t("defiProtocols.common.protocolDetails")}
-              bordered={false}
-            >
+          <div className="mt-5 border-t border-divider pt-4 xl:mt-0 xl:border-t-0 xl:pt-0 flex items-start gap-1">
+            {/* The hint sits outside Disclosure's own toggle button (a
+                <button> can't nest another interactive control) rather
+                than being folded into its `label` prop — a plain flex
+                sibling, not a change to Disclosure itself. */}
+            <div className="min-w-0 flex-1">
+              <Disclosure
+                label={t("defiProtocols.common.protocolDetails")}
+                bordered={false}
+              >
               <div className="grid grid-cols-2 gap-3 xl:grid-cols-1">
                 <MetricTile
                   icon={(props) => <TokenIcon symbol="STXRP" size={14} {...props} />}
@@ -221,7 +227,11 @@ export default function SpectraDetail({
                 label={t("defiProtocols.spectra.ibtContract")}
                 address={market.ibt_contract}
               />
-            </Disclosure>
+              </Disclosure>
+            </div>
+            <InfoHint label={t("defiProtocols.spectra.help.tokens.label")} align="right" className="mt-0.5">
+              {t("defiProtocols.spectra.help.tokens.body")}
+            </InfoHint>
           </div>
         </div>
       )}

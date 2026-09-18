@@ -2,7 +2,7 @@ import { useEffect, useRef, useState} from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import { XMarkIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 
 import { useDerivedWalletHub, DEFAULT_TRACKED_LABEL } from "@/store/useWalletHubStore";

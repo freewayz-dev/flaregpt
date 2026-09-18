@@ -10,6 +10,7 @@ import TokenIcon from "@/components/common/TokenIcon";
 import TokenRow from "@/components/common/TokenRow";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import DetailSkeleton from "@/pages/DefiProtocols/components/skeletons/DetailSkeleton";
+import InfoHint from "@/components/common/InfoHint";
 import { formatAmount } from "@/utils/format";
 
 
@@ -92,6 +93,9 @@ export default function SceptreDetail({
           <p className="text-sm text-ink-muted">
             {t("defiProtocols.sceptre.exchangeRateLabel")}
           </p>
+          <InfoHint label={t("defiProtocols.sceptre.help.label")}>
+            {t("defiProtocols.sceptre.help.body")}
+          </InfoHint>
           {exchangeRate >= 1 && (
             <ShieldCheckIcon className="h-4 w-4 shrink-0 text-emerald-500" />
           )}

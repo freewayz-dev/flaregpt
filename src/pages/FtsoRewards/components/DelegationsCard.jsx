@@ -3,18 +3,9 @@ import { UserGroupIcon, ScaleIcon } from "@heroicons/react/24/outline";
 
 import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwnershipBar";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
+import InfoHint from "@/components/common/InfoHint";
 import { shortenAddress } from "@/utils/address";
-
-// Per the Delegation Concentration handoff's own explicit rule: this is a
-// label describing network weight distribution, not a verdict on reward
-// performance (which isn't reliably knowable on-chain) — so both values
-// get the exact same tag styling below, never a tone/color/icon swap.
-// `null` (provider not currently in rankings) simply renders nothing,
-// same as `d.name` above it.
-const CONCENTRATION_LABEL_KEYS = {
-  concentrated: "ftsoRewards.delegations.concentrationBand.concentrated",
-  well_distributed: "ftsoRewards.delegations.concentrationBand.wellDistributed",
-};
+import { CONCENTRATION_BAND_LABEL_KEYS } from "@/pages/FtsoRewards/utils/deriveRankings";
 
 
 
@@ -28,9 +19,14 @@ export default function DelegationsCard({ delegations }) {
   return (
     <div className="h-full rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none flex flex-col">
       <div className="flex items-center justify-between gap-2">
-        <h3 className="text-sm font-semibold text-ink-primary">
-          {t("ftsoRewards.delegations.title")}
-        </h3>
+        <span className="flex items-center gap-1">
+          <h3 className="text-sm font-semibold text-ink-primary">
+            {t("ftsoRewards.delegations.title")}
+          </h3>
+          <InfoHint label={t("ftsoRewards.delegations.help.label")}>
+            {t("ftsoRewards.delegations.help.body")}
+          </InfoHint>
+        </span>
         {delegations.length > 0 && (
           <span className="text-[10px] font-semibold uppercase tracking-wide text-ink-muted shrink-0">
             {t("ftsoRewards.delegations.count", { count: delegations.length })}
@@ -73,7 +69,7 @@ export default function DelegationsCard({ delegations }) {
                     ScaleIcon matches DelegationConcentrationCard's own
                     header icon for the same "concentration" concept
                     elsewhere on this page. */}
-                {d.concentrationBand && CONCENTRATION_LABEL_KEYS[d.concentrationBand] && (
+                {d.concentrationBand && CONCENTRATION_BAND_LABEL_KEYS[d.concentrationBand] && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-surface-inset px-2 py-0.5 text-[11px] font-semibold text-ink-secondary shrink-0">
                     <ScaleIcon className="h-3 w-3 text-ink-muted" />
                     {/* One plain text run, not a nested span for the rank —
@@ -82,7 +78,7 @@ export default function DelegationsCard({ delegations }) {
                         combined text as its parent would make both match
                         an exact-text query. A single string with a real
                         space keeps exactly one element matching it. */}
-                    {t(CONCENTRATION_LABEL_KEYS[d.concentrationBand])}
+                    {t(CONCENTRATION_BAND_LABEL_KEYS[d.concentrationBand])}
                     {d.networkRank != null ? ` · #${d.networkRank}` : ""}
                   </span>
                 )}

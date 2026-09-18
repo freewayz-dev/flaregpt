@@ -1,13 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
-import { ToastContainer } from "react-toastify";
 import { WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { registerSW } from "virtual:pwa-register";
 
 import { web3Config } from "./config/web3Config";
 import App from "./App";
+import NotificationCenter from "./components/common/NotificationCenter";
 import { initI18n } from "./i18n";
 import { retryUpTo } from "./hooks/queries/resilience";
 import { promptForUpdate } from "./components/common/UpdateAvailableToast";
@@ -73,8 +73,8 @@ const queryClient = new QueryClient({
       // allowed to happen in the first place. With the default mode, a
       // genuinely-offline reload never reaches the service worker at
       // all — every financial card would sit paused/loading forever
-      // instead of showing the last cached numbers with StaleDataBanner's
-      // "showing cached data" marker. `'offlineFirst'` still pauses
+      // instead of showing the last cached numbers apiClient.js's own
+      // cache-freshness tracking already marks as such. `'offlineFirst'` still pauses
       // *retries* while offline (no pointless retry storm the instant
       // connectivity is confirmed gone), it just lets the first attempt
       // through so the service worker gets its chance.
@@ -91,12 +91,7 @@ initI18n().then(() => {
       <WagmiProvider config={web3Config}>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
-            <ToastContainer
-              position="top-center"
-              autoClose={3000}
-              theme="light"
-              toastClassName="app-toast"
-            />
+            <NotificationCenter />
             <App />
           </BrowserRouter>
         </QueryClientProvider>

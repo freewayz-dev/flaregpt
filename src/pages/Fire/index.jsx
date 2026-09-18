@@ -10,7 +10,6 @@ import { useCurrency } from "@/hooks/useCurrency";
 import { computeDailyTrend } from "@/pages/Fire/utils/deriveFireOverview";
 import FireSkeleton from "@/pages/Fire/components/FireSkeleton";
 import FireStatsRow from "@/pages/Fire/components/FireStatsRow";
-import FireFreshnessNote from "@/pages/Fire/components/FireFreshnessNote";
 import FireBreakdownChart from "@/pages/Fire/components/FireBreakdownChart";
 import FireTrendChart from "@/pages/Fire/components/FireTrendChart";
 import FirePoolsTable from "@/pages/Fire/components/FirePoolsTable";
@@ -73,17 +72,14 @@ export default function Fire() {
         <>
           <FireStatsRow overview={overview} />
 
-          <div className="space-y-1">
-            {/* The API's own `note` field is a live, self-updating caveat
-                (which fee categories are/aren't covered, how "burned" is
-                computed) — always rendered near the total rather than
-                assumed static copy, so it stays accurate if the backend
-                adds more pools later without a frontend change. */}
-            {overview.note && (
-              <p className="text-[11px] text-ink-muted max-w-2xl">{overview.note}</p>
-            )}
-            <FireFreshnessNote dataUpdatedAt={query.dataUpdatedAt} />
-          </div>
+          {/* The API's own `note` field is a live, self-updating caveat
+              (which fee categories are/aren't covered, how "burned" is
+              computed) — always rendered near the total rather than
+              assumed static copy, so it stays accurate if the backend
+              adds more pools later without a frontend change. */}
+          {overview.note && (
+            <p className="text-[11px] text-ink-muted max-w-2xl">{overview.note}</p>
+          )}
 
           {/* PoolOwnershipBar reused as-is (see its own header comment) —
               a horizontal fill bar was deliberately chosen there over a

@@ -4,6 +4,7 @@ import { CalendarDaysIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwnershipBar";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
 import SensitiveValue from "@/components/common/SensitiveValue";
+import InfoHint from "@/components/common/InfoHint";
 import { formatFlr, formatDate } from "@/utils/format";
 
 
@@ -69,6 +70,9 @@ export default function VestingProgressCard({
             <p className="text-xs font-semibold text-ink-primary">
               {t("rflrVesting.progress.earlyExitTitle")}
             </p>
+            <InfoHint label={t("rflrVesting.progress.help.earlyExit.label")}>
+              {t("rflrVesting.progress.help.earlyExit.body")}
+            </InfoHint>
           </div>
           {!summary.isFullyVested && efficiencyPct != null && (
             <StatusBadge

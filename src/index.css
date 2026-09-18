@@ -249,44 +249,6 @@ html {
   animation: skeleton-shimmer 1.8s ease-in-out infinite;
 }
 
-/* Theme-aware toast — react-toastify's "light"/"colored" themes hardcode
-   their own colors (including a solid green success fill) that never match
-   our design tokens or respond to dark mode. Overriding with our own
-   surface/ink variables keeps toasts feeling like part of the app rather
-   than a bolted-on library default; the per-type accent moves from a solid
-   background fill to a small colored bar + icon instead. */
-.Toastify__toast.app-toast {
-  background-color: rgb(var(--color-surface-card));
-  color: rgb(var(--color-ink-primary));
-  border: 1px solid rgb(var(--color-line));
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  font-family: Inter, sans-serif;
-  font-size: 0.8125rem;
-  padding: 0.5rem;
-}
-.Toastify__close-button {
-  color: rgb(var(--color-ink-muted));
-  opacity: 1;
-}
-.Toastify__close-button:hover {
-  color: rgb(var(--color-ink-primary));
-}
-.Toastify__progress-bar {
-  background: rgb(var(--color-brand));
-  opacity: 0.6;
-}
-.Toastify__toast--success .Toastify__toast-icon svg {
-  fill: #10b981;
-}
-.Toastify__toast--error .Toastify__toast-icon svg {
-  fill: rgb(var(--color-brand));
-}
-.Toastify__toast--info .Toastify__toast-icon svg,
-.Toastify__toast--warning .Toastify__toast-icon svg {
-  fill: rgb(var(--color-ink-muted));
-}
-
 /* Landing page mount-in fade — a pure-CSS replacement for what used to be a
    framer-motion animation applied to ~10+ separate elements on one page.
    CSS animations run on the compositor without waiting for JS to hydrate and

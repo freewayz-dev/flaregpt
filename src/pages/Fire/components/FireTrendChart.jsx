@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { AreaChart, Area, ResponsiveContainer, YAxis, Tooltip } from "recharts";
 
+import InfoHint from "@/components/common/InfoHint";
+
 // Headline "latest value + % change since the start of the visible
 // window" over a small chart — same pattern FlrPriceChart already
 // establishes on the Dashboard (big bold current value, a colored delta
@@ -90,7 +92,10 @@ export default function FireTrendChart({ series }) {
 
   return (
     <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
-      <h3 className="text-sm font-semibold text-ink-primary">{t("fire.trend.title")}</h3>
+      <span className="flex items-center gap-1">
+        <h3 className="text-sm font-semibold text-ink-primary">{t("fire.trend.title")}</h3>
+        <InfoHint label={t("fire.trend.help.label")}>{t("fire.trend.help.body")}</InfoHint>
+      </span>
       <p className="mt-0.5 text-xs text-ink-muted">{t("fire.trend.subtitle")}</p>
       <div className={`mt-4 grid gap-3 ${series.length > 1 ? "sm:grid-cols-2" : "grid-cols-1"}`}>
         {series.map(({ token, points }) => (

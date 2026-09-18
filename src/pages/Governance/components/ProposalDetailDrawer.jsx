@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 
 
 import {
@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { useFocusTrap } from "@/hooks/useFocusTrap";
+import InfoHint from "@/components/common/InfoHint";
 import { copyWalletAddress, shortenAddress } from "@/utils/address";
 import { getFlarescanAddressUrl, getSongbirdExplorerAddressUrl } from "@/config/web3Config";
 import { useVotesAtBlock } from "@/hooks/queries/useGovernanceQueries";
@@ -27,10 +28,13 @@ import {
 
 
 
-function DetailRow({ label, children }) {
+function DetailRow({ label, hint, children }) {
   return (
     <div className="flex items-center justify-between gap-3 py-2.5 border-b border-divider last:border-0">
-      <span className="text-xs text-ink-muted">{label}</span>
+      <span className="flex items-center gap-1 text-xs text-ink-muted">
+        {label}
+        {hint}
+      </span>
       <span className="text-sm font-medium text-ink-primary text-right">{children}</span>
     </div>
   );
@@ -162,7 +166,14 @@ export default function ProposalDetailDrawer({
               <DetailRow label={t("governance.drawer.votingPeriod")}>
                 {formatDate(proposal.voteStartTime)} – {formatDate(proposal.voteEndTime)}
               </DetailRow>
-              <DetailRow label={t("governance.drawer.quorum")}>
+              <DetailRow
+                label={t("governance.drawer.quorum")}
+                hint={
+                  <InfoHint label={t("governance.drawer.help.quorum.label")}>
+                    {t("governance.drawer.help.quorum.body")}
+                  </InfoHint>
+                }
+              >
                 {proposal.thresholdBips === 0
                   ? t("governance.drawer.quorumNotRequired")
                   : bipsToPercentLabel(proposal.thresholdBips)}

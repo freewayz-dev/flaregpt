@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 
 import { useFlareGptStore, isChatGenerating } from "@/store/useFlareGptStore";
 import { UpdateToastContent } from "@/components/common/UpdateToastContent";
@@ -9,8 +9,8 @@ const TOAST_ID = "pwa-update-available";
 // Called once, from main.tsx's `registerSW({ onNeedRefresh })` — not
 // itself a component, since that callback fires whenever a new service
 // worker enters the "waiting" state, entirely outside React's render
-// cycle. Reuses the app's existing react-toastify setup (see main.tsx's
-// own ToastContainer) rather than a second notification system.
+// cycle. Reuses the app's existing notification system (see main.tsx's
+// own NotificationCenter) rather than a second one.
 //
 // Deliberately not dismissible: no close button, `closeOnClick: false`,
 // `draggable: false`, `autoClose: false` — the whole point is "you're one

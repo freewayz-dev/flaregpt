@@ -4,6 +4,7 @@ import { AreaChart, Area, ResponsiveContainer, YAxis, Tooltip } from "recharts";
 
 import StatCard from "@/components/cards/StatCard";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
+import InfoHint from "@/components/common/InfoHint";
 import { useDelegationConcentration } from "@/hooks/queries/useNetworkQueries";
 
 // concentration_band comes straight off the API as a raw label
@@ -126,6 +127,11 @@ export default function DelegationConcentrationCard() {
               title={t("ftsoRewards.concentration.stats.hhi")}
               value={current.hhi}
               compact
+              hint={
+                <InfoHint label={t("ftsoRewards.concentration.help.hhi.label")}>
+                  {t("ftsoRewards.concentration.help.hhi.body")}
+                </InfoHint>
+              }
             />
             <StatCard
               title={t("ftsoRewards.concentration.stats.effectiveProviders")}

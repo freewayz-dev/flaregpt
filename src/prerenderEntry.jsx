@@ -2,9 +2,9 @@ import { createRoot} from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider } from "wagmi";
 import { MemoryRouter } from "react-router";
-import { ToastContainer } from "react-toastify";
 
 import App from "@/App";
+import NotificationCenter from "@/components/common/NotificationCenter";
 import { initI18n } from "@/i18n";
 import { createTestWagmiConfig } from "@/test/mocks/wagmi";
 
@@ -16,9 +16,9 @@ import { createTestWagmiConfig } from "@/test/mocks/wagmi";
 // to get away from.
 //
 // Mirrors main.tsx's real provider tree as closely as possible — same
-// QueryClientProvider/WagmiProvider/ToastContainer/App nesting — with two
-// deliberate substitutions, both scoped to *how the tree is driven*, not
-// *what it renders*:
+// QueryClientProvider/WagmiProvider/NotificationCenter/App nesting — with
+// two deliberate substitutions, both scoped to *how the tree is driven*,
+// not *what it renders*:
 //
 // 1. `createTestWagmiConfig()` (wagmi's own `mock` connector, already
 //    proven across the whole Vitest suite) instead of the real
@@ -49,12 +49,7 @@ export async function renderRoute(path) {
     <WagmiProvider config={createTestWagmiConfig()}>
       <QueryClientProvider client={queryClient}>
         <MemoryRouter initialEntries={[path]}>
-          <ToastContainer
-            position="top-center"
-            autoClose={3000}
-            theme="light"
-            toastClassName="app-toast"
-          />
+          <NotificationCenter />
           <App />
         </MemoryRouter>
       </QueryClientProvider>

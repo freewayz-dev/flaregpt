@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import {
   XMarkIcon,
   ChevronUpIcon,

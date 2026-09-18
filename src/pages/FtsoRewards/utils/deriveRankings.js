@@ -2,6 +2,19 @@
 // kept separate from rendering the same way deriveFtsoRewards.js already
 // is for the rest of this page.
 
+// Shared with DelegationsCard.jsx, the other place this same field/value
+// pair is rendered (a wallet's own delegation, rather than a row in the
+// global rankings list here) — one mapping, not two independently-typed
+// copies. Per the Delegation Concentration handoff's own explicit rule:
+// this describes network weight distribution, not a verdict on reward
+// performance (which isn't reliably knowable on-chain), so both values
+// get the exact same tag treatment wherever they're shown — never a
+// tone/color/icon swap based on which one it is.
+export const CONCENTRATION_BAND_LABEL_KEYS = {
+  concentrated: "ftsoRewards.delegations.concentrationBand.concentrated",
+  well_distributed: "ftsoRewards.delegations.concentrationBand.wellDistributed",
+};
+
 // `shortenAddress` (built for 0x addresses) isn't the right fit for a
 // NodeID: it would eat into the "NodeID-" prefix instead of the actual
 // identifier. This keeps the prefix intact and only truncates the base58
@@ -36,6 +49,14 @@ export function nodeIdInitial(nodeId) {
 // `weight_share_pct`/`fee_pct` are already plain numbers (confirmed live,
 // e.g. 3.632, 20.0) — formatted here, not trusted to already be display-
 // ready strings.
+//
+// `concentration_band` ("concentrated"/"well_distributed") confirmed live
+// on every entry — same field, same two values, as the one already shown
+// per-delegation on DelegationsCard (FTSO Rewards' own personal section).
+// `rank` is also real and live (1-indexed, already reflected in the
+// array's own order) but deliberately not mapped here — the rows are
+// already sorted by it, so labeling every row "#N" would mostly restate
+// the list's own position rather than add real information.
 export function computeProviderRows(data) {
   return (data?.providers ?? []).map((p) => ({
     key: p.address,
@@ -43,6 +64,7 @@ export function computeProviderRows(data) {
     name: p.name,
     weightSharePct: p.weight_share_pct,
     feePct: p.fee_pct,
+    concentrationBand: p.concentration_band ?? null,
   }));
 }
 

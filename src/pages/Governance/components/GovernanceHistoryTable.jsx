@@ -3,6 +3,7 @@ import { ClockIcon, CheckIcon, ChevronRightIcon } from "@heroicons/react/24/outl
 
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
+import InfoHint from "@/components/common/InfoHint";
 import {
   computeVoteSplit,
   getProposalStatusMeta,
@@ -132,7 +133,12 @@ export default function GovernanceHistoryTable({
                     {t("governance.history.columnStatus")}
                   </th>
                   <th scope="col" className="py-2 pr-4 font-semibold text-ink-muted uppercase tracking-wide text-[10px] whitespace-nowrap">
-                    {t("governance.history.columnResult")}
+                    <span className="inline-flex items-center gap-1">
+                      {t("governance.history.columnResult")}
+                      <InfoHint label={t("governance.history.help.label")}>
+                        {t("governance.history.help.body")}
+                      </InfoHint>
+                    </span>
                   </th>
                   <th scope="col" className="py-2 pr-4 font-semibold text-ink-muted uppercase tracking-wide text-[10px] whitespace-nowrap">
                     {t("governance.history.columnEnded")}

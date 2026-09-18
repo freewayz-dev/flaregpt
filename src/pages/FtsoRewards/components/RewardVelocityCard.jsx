@@ -5,6 +5,7 @@ import { BoltIcon } from "@heroicons/react/24/outline";
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
 import MetricTile from "@/pages/DefiProtocols/components/shared/MetricTile";
 import SensitiveValue from "@/components/common/SensitiveValue";
+import InfoHint from "@/components/common/InfoHint";
 import { formatFlr } from "@/utils/format";
 
 
@@ -60,7 +61,12 @@ export default function RewardVelocityCard({ summary }) {
   return (
     <div className="h-full rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none flex flex-col">
       <div className="flex items-center justify-between gap-2">
-        <h3 className="text-sm font-semibold text-ink-primary">{t("ftsoRewards.velocity.title")}</h3>
+        <span className="flex items-center gap-1">
+          <h3 className="text-sm font-semibold text-ink-primary">{t("ftsoRewards.velocity.title")}</h3>
+          <InfoHint label={t("ftsoRewards.velocity.help.label")}>
+            {t("ftsoRewards.velocity.help.body")}
+          </InfoHint>
+        </span>
         {methodInfo && <StatusBadge label={methodInfo.label} tone={methodInfo.tone} dot />}
       </div>
 

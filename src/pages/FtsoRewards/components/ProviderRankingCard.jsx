@@ -1,10 +1,14 @@
 import { useTranslation } from "react-i18next";
-import { BuildingLibraryIcon } from "@heroicons/react/24/outline";
+import { BuildingLibraryIcon, ScaleIcon } from "@heroicons/react/24/outline";
 
 import RankingCardShell from "@/pages/FtsoRewards/components/RankingCardShell";
 import RankingAvatar from "@/pages/FtsoRewards/components/RankingAvatar";
+import InfoHint from "@/components/common/InfoHint";
 import { useFtsoProviderRankings } from "@/hooks/queries/useNetworkQueries";
-import { computeProviderRows } from "@/pages/FtsoRewards/utils/deriveRankings";
+import {
+  computeProviderRows,
+  CONCENTRATION_BAND_LABEL_KEYS,
+} from "@/pages/FtsoRewards/utils/deriveRankings";
 import { shortenAddress } from "@/utils/address";
 
 import bifrostWalletUrl from "@/assets/providers/bifrost-wallet.png";
@@ -81,13 +85,27 @@ function providerLogo(address) {
   return match ? PROVIDER_LOGOS[match] : undefined;
 }
 
-function ProviderRow({ row }) {
+function ProviderRow({ row, t }) {
   return (
     <div className="flex items-center gap-3 py-2.5">
       <RankingAvatar name={row.name} logoSrc={providerLogo(row.address)} />
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium text-ink-primary">{row.name}</p>
-        <p className="truncate text-[11px] font-mono text-ink-muted">{shortenAddress(row.address)}</p>
+        <div className="mt-0.5 flex items-center gap-1.5">
+          <p className="truncate text-[11px] font-mono text-ink-muted">{shortenAddress(row.address)}</p>
+          {/* Same neutral pill DelegationsCard already uses for this exact
+              field on a wallet's own delegations — one tag style for both
+              band values, never a tone/color swap (see the handoff's own
+              rule, restated in deriveRankings.js). The *explanation* of
+              what this means lives once, on the card title above, not
+              repeated on every row. */}
+          {row.concentrationBand && CONCENTRATION_BAND_LABEL_KEYS[row.concentrationBand] && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-surface-inset px-2 py-0.5 text-[11px] font-semibold text-ink-secondary shrink-0">
+              <ScaleIcon className="h-3 w-3 text-ink-muted" />
+              {t(CONCENTRATION_BAND_LABEL_KEYS[row.concentrationBand])}
+            </span>
+          )}
+        </div>
       </div>
       <div className="shrink-0 text-right">
         <p className="text-sm font-semibold tabular-nums text-ink-primary">
@@ -115,6 +133,11 @@ export default function ProviderRankingCard() {
       icon={BuildingLibraryIcon}
       title={t("ftsoRewards.providers.title")}
       caption={t("ftsoRewards.providers.description")}
+      titleHint={
+        <InfoHint label={t("ftsoRewards.providers.help.label")}>
+          {t("ftsoRewards.providers.help.body")}
+        </InfoHint>
+      }
       isLoading={query.isLoading}
       isError={query.isError}
       isFetching={query.isFetching}
@@ -124,7 +147,7 @@ export default function ProviderRankingCard() {
       emptyDescription={t("ftsoRewards.providers.emptyDescription")}
     >
       {rows.map((row) => (
-        <ProviderRow key={row.key} row={row} />
+        <ProviderRow key={row.key} row={row} t={t} />
       ))}
     </RankingCardShell>
   );

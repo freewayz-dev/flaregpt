@@ -4,6 +4,7 @@ import { ClockIcon, GlobeAltIcon, ArrowPathIcon } from "@heroicons/react/24/outl
 import { useNetworkStatus, useNetworkEmissions } from "@/hooks/queries/useRflrQueries";
 import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwnershipBar";
 import MetricTile from "@/pages/DefiProtocols/components/shared/MetricTile";
+import InfoHint from "@/components/common/InfoHint";
 import NetworkPulseSkeleton from "@/pages/RflrVesting/components/skeletons/NetworkPulseSkeleton";
 import { formatDate } from "@/utils/format";
 
@@ -102,8 +103,11 @@ export default function NetworkPulseSection() {
             </div>
 
             <div className="rounded-xl bg-surface-inset p-4">
-              <p className="text-xs text-ink-muted mb-2.5">
+              <p className="flex items-center gap-1 text-xs text-ink-muted mb-2.5">
                 {t("rflrVesting.network.poolUtilization")}
+                <InfoHint label={t("rflrVesting.network.help.poolUtilization.label")}>
+                  {t("rflrVesting.network.help.poolUtilization.body")}
+                </InfoHint>
               </p>
               <PoolOwnershipBar
                 label={t("rflrVesting.network.allocated")}

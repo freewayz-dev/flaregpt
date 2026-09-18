@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, afterEach, vi } from "vitest";
 import { http, HttpResponse } from "msw";
 
 import TransactionLookup from "@/pages/TransactionLookup";
@@ -12,6 +12,18 @@ function search(hash) {
   fireEvent.change(screen.getByLabelText("Transaction Hash"), { target: { value: hash } });
   fireEvent.click(screen.getByRole("button", { name: "Search" }));
 }
+
+// Same stub pattern HeroReceiveCard.test.jsx already uses for the exact
+// same `copyWalletAddress` utility.
+function stubClipboard() {
+  const writeText = vi.fn().mockResolvedValue(undefined);
+  vi.stubGlobal("navigator", { ...window.navigator, clipboard: { writeText } });
+  return writeText;
+}
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
 
 describe("TransactionLookup", () => {
   it("shows the idle prompt before any search, with no wallet connection required", () => {
@@ -53,6 +65,34 @@ describe("TransactionLookup", () => {
       "href",
       `https://flarescan.com/tx/${TX_HASH}`,
     );
+  });
+
+  it("copies the From/To addresses and shows the notification pill", async () => {
+    const writeText = stubClipboard();
+    server.use(
+      http.get(`${API}/api/v1/transaction/:txHash`, () =>
+        HttpResponse.json({
+          tx_hash: TX_HASH,
+          found: true,
+          from: "0xFa712128E01CF5fcd210b0F530c216218944a83E",
+          to: "0x1D80c49BbBCd1C0911346656B529DF9E5c2F783d",
+          value_flr: 992908.12278721,
+          status: "success",
+          note: "Covers C-chain transactions only.",
+        }),
+      ),
+    );
+    renderWithProviders(<TransactionLookup />);
+
+    search(TX_HASH);
+    await screen.findByText("Success");
+
+    fireEvent.click(screen.getByTitle("0xFa712128E01CF5fcd210b0F530c216218944a83E"));
+    expect(writeText).toHaveBeenCalledWith("0xFa712128E01CF5fcd210b0F530c216218944a83E");
+    expect(await screen.findByText("Address copied")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByTitle("0x1D80c49BbBCd1C0911346656B529DF9E5c2F783d"));
+    expect(writeText).toHaveBeenCalledWith("0x1D80c49BbBCd1C0911346656B529DF9E5c2F783d");
   });
 
   it("shows a pending transaction with only its known fields", async () => {

@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { ArrowTopRightOnSquareIcon, ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 import StatusBadge from "@/pages/DefiProtocols/components/shared/StatusBadge";
 import { formatActionLabel } from "@/pages/WalletActivity/utils/deriveActivity";
 import { getFlarescanTxUrl } from "@/config/web3Config";
-import { shortenAddress } from "@/utils/address";
+import { shortenAddress, copyWalletAddress } from "@/utils/address";
+import { toast } from "@/utils/toast";
 
 // `success`/`failed`/`pending` are real, meaningfully different outcomes
 // here (unlike the delegation concentration_band, which the backend's own
@@ -19,6 +21,45 @@ function DetailRow({ label, children }) {
       <span className="text-xs text-ink-muted">{label}</span>
       <span className="text-sm font-medium text-ink-primary text-right">{children}</span>
     </div>
+  );
+}
+
+// Same copy pattern already used everywhere else in the app an address is
+// shown next to a copy affordance (AddressPill, WalletAddressBadge) —
+// `copyWalletAddress` (the one clipboard write every "copy this address"
+// call site already goes through) plus the icon-swap-to-checkmark
+// confirmation and the same reused `navbar.addressCopied`/`copyFailed`
+// feedback strings, rather than a new local clipboard implementation or
+// new copy-feedback copy.
+function CopyableAddress({ address }) {
+  const { t } = useTranslation();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    const success = await copyWalletAddress(address);
+    if (success) {
+      setCopied(true);
+      toast.success(t("navbar.addressCopied"));
+      setTimeout(() => setCopied(false), 2000);
+    } else {
+      toast.error(t("navbar.copyFailed"));
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      title={address}
+      className="inline-flex items-center gap-1.5 rounded-md px-1.5 py-0.5 text-sm font-medium text-ink-primary hover:bg-surface-card-hover hover:text-brand transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+    >
+      <span className="font-mono tracking-tight">{shortenAddress(address)}</span>
+      {copied ? (
+        <CheckIcon className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+      ) : (
+        <ClipboardIcon className="h-3.5 w-3.5 shrink-0" />
+      )}
+    </button>
   );
 }
 
@@ -50,14 +91,16 @@ export default function TransactionResultCard({ result }) {
 
       <div className="mt-4">
         <DetailRow label={t("transactionLookup.result.from")}>
-          {shortenAddress(result.from)}
+          <CopyableAddress address={result.from} />
         </DetailRow>
         <DetailRow label={t(isContractCreation ? "transactionLookup.result.contractAddress" : "transactionLookup.result.to")}>
-          {isContractCreation
-            ? shortenAddress(result.contract_address)
-            : result.to
-              ? shortenAddress(result.to)
-              : "—"}
+          {isContractCreation ? (
+            <CopyableAddress address={result.contract_address} />
+          ) : result.to ? (
+            <CopyableAddress address={result.to} />
+          ) : (
+            "—"
+          )}
         </DetailRow>
         <DetailRow label={t("transactionLookup.result.value")}>
           {result.value_flr.toLocaleString(undefined, { maximumFractionDigits: 6 })} FLR

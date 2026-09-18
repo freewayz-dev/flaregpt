@@ -2,7 +2,7 @@ import { isAddress } from "viem";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useQueryClient } from "@tanstack/react-query";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import { isAxiosError } from "axios";
 
 import {

@@ -4,6 +4,7 @@ import { UserCircleIcon, WalletIcon } from "@heroicons/react/24/outline";
 import StatCard from "@/components/cards/StatCard";
 import StatCardSkeleton from "@/pages/Dashboard/components/skeletons/StatCardSkeleton";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
+import InfoHint from "@/components/common/InfoHint";
 import { formatVotePowerCompact} from "@/pages/Governance/utils/deriveGovernance";
 
 
@@ -53,6 +54,11 @@ export default function YourGovernance({
           title={t("governance.yours.votingPower")}
           value={votingPower !== undefined ? formatVotePowerCompact(votingPower) : "—"}
           icon={UserCircleIcon}
+          hint={
+            <InfoHint label={t("governance.yours.help.label")}>
+              {t("governance.yours.help.body")}
+            </InfoHint>
+          }
         />
       )}
       <StatCard

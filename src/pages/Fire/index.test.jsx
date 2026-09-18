@@ -65,9 +65,8 @@ describe("Fire", () => {
       "https://flarescan.com/address/0x0ce6831DF00A6018c4d316009980DbAa6c44E525",
     );
 
-    // The breakdown chart (2+ pools) and a freshness note both render too.
+    // The breakdown chart (2+ pools) renders too.
     expect(screen.getByText("Revenue by Category")).toBeInTheDocument();
-    expect(screen.getByText("Showing cached data from moments ago")).toBeInTheDocument();
 
     // v2's own default mock (unrelated to the v1 override above — see
     // handlers.js) has FLR daily_history, so the trend chart renders too,

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 
 import { useAuthStore } from "@/store/useAuthStore";
 import { useCacheStatusStore } from "@/store/useCacheStatusStore";

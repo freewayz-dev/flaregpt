@@ -14,6 +14,10 @@ export default function StatCard({
   // unused (compact), rather than a change to StatCard's default look.
   emphasis = false,
   compact = false,
+  // Optional <InfoHint/>, rendered next to the title — undefined for every
+  // existing caller that doesn't pass one, so nothing here changes for
+  // them.
+  hint,
 }) {
   const isNegative = typeof change === "string" && change.trim().startsWith("-");
 
@@ -34,7 +38,10 @@ export default function StatCard({
   return (
     <div className="h-full rounded-2xl bg-surface-card hover:bg-surface-card-hover p-4 shadow-sm border border-[#E5E7EB] dark:border-none shrink-0 transition-colors duration-150">
       <div className="flex items-center justify-between gap-2">
-        <p className="text-xs text-ink-secondary truncate">{title}</p>
+        <span className="flex items-center gap-1 min-w-0">
+          <p className="text-xs text-ink-secondary truncate">{title}</p>
+          {hint}
+        </span>
         {Icon && (
           <Icon
             className={`h-3.5 w-3.5 shrink-0 ${emphasis ? "text-brand" : "text-ink-muted"}`}

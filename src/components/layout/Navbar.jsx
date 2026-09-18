@@ -2,7 +2,7 @@ import { useState, useRef, useEffect} from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import {
   ChevronDownIcon,
   WalletIcon,

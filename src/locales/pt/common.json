@@ -96,6 +96,10 @@
       "couldntLoad": "Não foi possível carregar os dados da rede",
       "gasPrice": "Preço do gás",
       "gwei": "Gwei",
+      "help": {
+        "label": "Preço do Gas e Velocidade da Rede",
+        "body": "Gwei é a unidade em que o preço do gas é medido. TPS indica quantas transações a rede está processando por segundo. Ambos são atualizados em tempo real."
+      },
       "live": "Disponível",
       "title": "Atividade de Disco / Rede",
       "tps": "TPS",
@@ -106,6 +110,12 @@
     "stats": {
       "couldntLoad": "Não foi possível carregar a visão geral do mercado",
       "flrPrice": "Preço FLR",
+      "help": {
+        "tvl": {
+          "label": "TVL",
+          "body": "TVL significa Total Value Locked (valor total bloqueado): o valor combinado em USD mantido nos protocolos DeFi rastreados aqui."
+        }
+      },
       "marketCap": "Market Cap",
       "tvl": "TVL",
       "volume24h": "Volume 24h"
@@ -146,6 +156,10 @@
       "category": "Seguro",
       "circulatingSupply": "Oferta em Circulação",
       "couldntLoad": "Não foi possível carregar sua posição no Firelight",
+      "help": {
+        "label": "Multiplicador de lastro de ativos",
+        "body": "Quanto fXRP lastreia cada STXRP em reserva. Um multiplicador igual ou superior a 1 significa que o vault mantém lastro suficiente para cada token em circulação."
+      },
       "insuranceRobust": "Seguro: Robusto",
       "subtitle": "Vault de proteção de capital",
       "title": "Firelight Vault",
@@ -154,6 +168,10 @@
     "kpis": {
       "activePositions": "Posições Ativas",
       "bestApr": "Melhor APR Disponível",
+      "help": {
+        "label": "Melhor APR disponível",
+        "body": "O maior APR entre as estratégias comparadas aqui, com base em um depósito padrão de US$ 10.000. Não é necessariamente a taxa da sua própria posição."
+      },
       "protocolsTracked": "Protocolos Rastreados"
     },
     "mxrpy": {
@@ -169,6 +187,10 @@
       "category": "Staking Líquido",
       "couldntLoad": "Não foi possível carregar sua posição no Sceptre",
       "exchangeRateLabel": "Taxa sFLR / FLR",
+      "help": {
+        "label": "Taxa de câmbio sFLR para FLR",
+        "body": "Quanto FLR cada sFLR vale agora. Esse valor sobe ao longo do tempo à medida que as recompensas de staking se acumulam, por isso pode ultrapassar 1."
+      },
       "subtitle": "Staking líquido de sFLR",
       "title": "Sceptre Liquid Staking",
       "totalMinted": "Total de Cotas Emitidas"
@@ -178,6 +200,12 @@
       "claimableYield": "Rendimento Resgatável",
       "couldntLoad": "Não foi possível carregar os dados do mercado Spectra",
       "daysToMaturity": "dias para o vencimento",
+      "help": {
+        "tokens": {
+          "label": "IBT, PT e YT",
+          "body": "O IBT (Interest-Bearing Token) representa o ativo depositado subjacente. O PT (Principal Token) representa seu depósito original. O YT (Yield Token) representa o rendimento que esse depósito gera ao longo do tempo."
+        }
+      },
       "ibtContract": "Contrato IBT",
       "ibtLocked": "IBT Bloqueado",
       "matured": "Vencido",
@@ -302,6 +330,10 @@
       "viewOnExplorer": "Ver no Explorador"
     },
     "trend": {
+      "help": {
+        "label": "Receita Acumulada",
+        "body": "O acumulado é o valor apurado pelo protocolo até agora, não necessariamente o que já foi pago ou queimado. Essa diferença é esperada, não um erro."
+      },
       "subtitle": "Receita acumulada diariamente nos últimos 30 dias, por token",
       "title": "Tendência de Receita",
       "tokenLabel": "{{token}} acumulado por dia"
@@ -411,6 +443,12 @@
       },
       "couldntLoad": "Não foi possível carregar a concentração de delegação.",
       "description": "O quanto o peso de delegação FTSO está distribuído entre os provedores, em toda a rede.",
+      "help": {
+        "hhi": {
+          "label": "Pontuação de Concentração HHI",
+          "body": "Uma medida padrão de quão distribuído está o peso de delegação entre os provedores. Uma pontuação mais alta significa que o peso está concentrado em menos provedores; uma pontuação mais baixa significa uma distribuição mais uniforme."
+        }
+      },
       "stats": {
         "activeProviders": "Provedores FTSO Ativos",
         "effectiveProviders": "Provedores Efetivos",
@@ -437,6 +475,10 @@
       "count_other": "{{count}} provedores",
       "emptyDescription": "Delegue seu WFLR a um provedor de dados FTSO para começar a ganhar recompensas.",
       "emptyTitle": "Nenhuma Delegação Ativa",
+      "help": {
+        "label": "Seu Peso vs Peso da Rede",
+        "body": "A porcentagem ao lado de cada provedor aqui é sua própria divisão de delegação. É diferente da faixa de concentração de um provedor, que descreve a participação dele em toda a rede, não apenas a sua."
+      },
       "title": "Delegações Ativas"
     },
     "description": "Acompanhe suas recompensas de delegação FTSO, a velocidade de recompensas e as alocações de provedores em um só lugar.",
@@ -453,6 +495,10 @@
     "providers": {
       "description": "Classificado por peso e taxa delegados, não por desempenho de recompensa, que não é mensurável de forma confiável na cadeia.",
       "emptyDescription": "Nenhum dado de classificação do provedor está disponível no momento.",
+      "help": {
+        "label": "Concentrado vs Bem Distribuído",
+        "body": "Descreve como o peso delegado de um provedor em toda a rede se compara aos demais, não o desempenho de recompensas dele, que não pode ser medido de forma confiável on-chain."
+      },
       "title": "Provedores FTSO"
     },
     "stats": {
@@ -467,6 +513,10 @@
       "title": "Ranking de Validadores de Staking"
     },
     "velocity": {
+      "help": {
+        "label": "Como Esta Estimativa É Calculada",
+        "body": "Usa seu livro-razão de recompensas não reivindicadas em tempo real quando disponível, recorrendo a uma estimativa histórica baseada em blocos caso contrário. De qualquer forma, é uma projeção, não um pagamento garantido."
+      },
       "inactiveDescription": "Esta carteira ainda não está delegando WFLR, então não há velocidade de recompensa para estimar.",
       "inactiveTitle": "Sem Ganhos no Momento",
       "methodHistorical": "Estimativa Histórica",
@@ -495,6 +545,12 @@
     "drawer": {
       "circulatingSupply": "Oferta em circulação",
       "close": "Fechar",
+      "help": {
+        "quorum": {
+          "label": "Quórum e Maioria",
+          "body": "O quórum é a participação mínima necessária para que um voto conte. A maioria exigida é a fração de votos necessária para aprovação, uma vez atingido o quórum."
+        }
+      },
       "majorityRequired": "Maioria necessária",
       "proposer": "Proponente",
       "quorum": "Quórum",
@@ -515,6 +571,10 @@
       "columnResult": "Resultado",
       "columnStatus": "Status",
       "columnYourVote": "Seu voto",
+      "help": {
+        "label": "A favor vs Contra",
+        "body": "As duas porcentagens mostram a fração de votos A favor e Contra, nessa ordem."
+      },
       "emptyDescription": "Assim que uma proposta for concluída, aparecerá aqui.",
       "emptyTitle": "Ainda sem histórico de governança",
       "subtitle": "Todas as propostas de governança concluídas, mais recentes primeiro.",
@@ -552,6 +612,10 @@
     },
     "votingEnded": "Votação encerrada",
     "yours": {
+      "help": {
+        "label": "Seu poder de voto",
+        "body": "O peso de voto que sua wallet detém atualmente para a governança, lido diretamente da rede. Pode ser diferente do seu poder de voto no bloco de snapshot específico de uma proposta, mostrado nos detalhes dessa proposta."
+      },
       "noWalletDescription": "Conecte ou adicione uma carteira para ver seu poder de voto e participação nessas propostas.",
       "noWalletTitle": "Veja sua atividade de governança",
       "participation": "Sua Participação",
@@ -756,6 +820,12 @@
       "countdownHours": "em {{hours}}h",
       "currentlyLocked": "Atualmente Bloqueado",
       "epochCaption": "A época {{epoch}} começou em {{date}}",
+      "help": {
+        "poolUtilization": {
+          "label": "Utilização do Pool de Incentivos",
+          "body": "Quanto da alocação total de incentivos rFLR da rede já foi atribuído a wallets até agora nesta época."
+        }
+      },
       "nextDistribution": "Próxima Distribuição",
       "poolUtilization": "Utilização do Fundo de Incentivo",
       "remaining": "{{amount}} restante para alocar",
@@ -772,6 +842,12 @@
       "earlyExitTitle": "Saída Antecipada",
       "efficiency": "{{pct}}% de eficiência",
       "fullyVested": "Totalmente investido, nada mais para desbloquear",
+      "help": {
+        "earlyExit": {
+          "label": "Saída Antecipada",
+          "body": "Sair antes que seu rFLR esteja totalmente vested resulta na perda de parte do valor bloqueado como penalidade. Eficiência é a fração do seu saldo bloqueado que você manteria se saísse agora."
+        }
+      },
       "netPayout": "Pagamento Líquido Agora",
       "nextUnlock": "Próximo desbloqueio em {{date}}",
       "nextUnlockCaption": "se torna líquido",

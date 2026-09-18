@@ -33,6 +33,10 @@ export default function RankingCardShell({
   emptyTitle,
   emptyDescription,
   children,
+  // Optional <InfoHint/> next to the title — undefined for every existing
+  // caller (ValidatorRankingCard) that doesn't pass one, so nothing
+  // changes there.
+  titleHint,
 }) {
   const { t } = useTranslation();
 
@@ -42,6 +46,7 @@ export default function RankingCardShell({
         <div className="flex items-center gap-2 min-w-0">
           {Icon && <Icon className="h-4 w-4 text-ink-muted shrink-0" />}
           <h3 className="text-sm font-semibold text-ink-primary truncate">{title}</h3>
+          {titleHint}
         </div>
       </div>
       {caption && <p className="mt-1 text-xs text-ink-muted max-w-md">{caption}</p>}

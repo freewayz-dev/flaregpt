@@ -2,7 +2,7 @@ import { isAddress } from "viem";
 import { useEffect, useRef, useState} from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import { ChevronUpIcon, WalletIcon, Cog6ToothIcon, LockClosedIcon } from "@heroicons/react/24/outline";
 
 import { useFlareGptWalletContext } from "@/hooks/useFlareGptWalletContext";

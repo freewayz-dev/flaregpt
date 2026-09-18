@@ -111,9 +111,9 @@ registerRoute(
   new NetworkOnly(),
 );
 
-// Tags a cache-served response so the app can show a visible "this isn't
-// live" indicator (see useCacheStatusStore.ts / StaleDataBanner.tsx /
-// apiClient.ts's response interceptor, the reader of this header).
+// Tags a cache-served response so the app can track "this isn't live"
+// (see useCacheStatusStore.ts / apiClient.ts's response interceptor, the
+// reader of this header).
 // Financial data must never look live when it isn't. Applied only to the
 // NetworkFirst routes below, deliberately not the StaleWhileRevalidate
 // ones — SWR serving its cached copy immediately while it revalidates in

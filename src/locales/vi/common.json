@@ -95,6 +95,10 @@
       "couldntLoad": "Không thể tải dữ liệu mạng",
       "gasPrice": "giá gas",
       "gwei": "Gwei",
+      "help": {
+        "label": "Giá Gas và Tốc độ Mạng",
+        "body": "Gwei là đơn vị đo giá gas. TPS là số giao dịch mạng xử lý được mỗi giây. Cả hai đều được cập nhật trực tiếp."
+      },
       "live": "Trực tiếp",
       "title": "Hoạt động thông tin mạng",
       "tps": "TPS",
@@ -104,6 +108,12 @@
     "stats": {
       "couldntLoad": "Không thể tải tổng quan thị trường",
       "flrPrice": "Giá FLR",
+      "help": {
+        "tvl": {
+          "label": "TVL",
+          "body": "TVL là viết tắt của Total Value Locked: tổng giá trị USD được nắm giữ trên các giao thức DeFi được theo dõi ở đây."
+        }
+      },
       "marketCap": "Vốn hóa thị trường",
       "tvl": "TVL",
       "volume24h": "Khối lượng 24h"
@@ -144,6 +154,10 @@
       "category": "Bảo hiểm",
       "circulatingSupply": "Nguồn cung Lưu hành",
       "couldntLoad": "Không thể tải vị thế Firelight của bạn",
+      "help": {
+        "label": "Hệ số Bảo chứng Tài sản",
+        "body": "Bao nhiêu fXRP bảo chứng cho mỗi STXRP trong dự trữ. Hệ số từ 1 trở lên nghĩa là vault nắm giữ đủ bảo chứng cho mọi token đang lưu hành."
+      },
       "insuranceRobust": "Bảo hiểm: Vững chắc",
       "subtitle": "Vault bảo vệ vốn",
       "title": "Firelight Vault",
@@ -152,6 +166,10 @@
     "kpis": {
       "activePositions": "Vị thế Đang hoạt động",
       "bestApr": "APR Tốt nhất Hiện có",
+      "help": {
+        "label": "APR Tốt nhất Hiện có",
+        "body": "APR cao nhất trong số các chiến lược được so sánh ở đây, dựa trên khoản gửi chuẩn 10.000 đô la. Đây không nhất thiết là mức lãi suất trên chính vị thế của bạn."
+      },
       "protocolsTracked": "Giao thức Đang theo dõi"
     },
     "mxrpy": {
@@ -167,6 +185,10 @@
       "category": "Staking Thanh khoản",
       "couldntLoad": "Không thể tải vị thế Sceptre của bạn",
       "exchangeRateLabel": "Tỷ giá sFLR / FLR",
+      "help": {
+        "label": "Tỷ giá sFLR sang FLR",
+        "body": "Mỗi sFLR hiện đáng giá bao nhiêu FLR. Giá trị này tăng dần theo thời gian khi phần thưởng staking tích lũy, đó là lý do nó có thể vượt quá 1."
+      },
       "subtitle": "Staking thanh khoản sFLR",
       "title": "Sceptre Liquid Staking",
       "totalMinted": "Tổng Cổ phần Đã phát hành"
@@ -176,6 +198,12 @@
       "claimableYield": "Lợi Suất Có Thể Nhận",
       "couldntLoad": "Không thể tải dữ liệu thị trường Spectra",
       "daysToMaturity": "ngày đến đáo hạn",
+      "help": {
+        "tokens": {
+          "label": "IBT, PT và YT",
+          "body": "IBT (Interest-Bearing Token) đại diện cho tài sản gốc đã gửi. PT (Principal Token) đại diện cho khoản gửi ban đầu của bạn. YT (Yield Token) đại diện cho lợi suất mà khoản gửi đó tạo ra theo thời gian."
+        }
+      },
       "ibtContract": "Hợp Đồng IBT",
       "ibtLocked": "IBT Bị Khóa",
       "matured": "Đã Đáo Hạn",
@@ -298,6 +326,10 @@
       "viewOnExplorer": "Xem trên Explorer"
     },
     "trend": {
+      "help": {
+        "label": "Doanh thu Dồn tích",
+        "body": "Khoản dồn tích là số tiền giao thức đã ghi nhận cho đến nay, không nhất thiết là số đã thực sự được chi trả hoặc đốt. Sự chênh lệch này là bình thường, không phải lỗi."
+      },
       "subtitle": "Doanh thu tích lũy hàng ngày trong 30 ngày qua, theo token",
       "title": "Xu Hướng Doanh Thu",
       "tokenLabel": "{{token}} tích lũy mỗi ngày"
@@ -406,6 +438,12 @@
       },
       "couldntLoad": "Không thể tải mức độ tập trung ủy quyền.",
       "description": "Mức độ phân tán trọng lượng ủy quyền FTSO giữa các nhà cung cấp, trên toàn mạng.",
+      "help": {
+        "hhi": {
+          "label": "Điểm Tập trung HHI",
+          "body": "Một thước đo tiêu chuẩn cho biết trọng số ủy quyền được phân tán như thế nào giữa các nhà cung cấp. Điểm càng cao nghĩa là trọng số càng tập trung vào ít nhà cung cấp hơn; điểm càng thấp nghĩa là phân bổ càng đồng đều hơn."
+        }
+      },
       "stats": {
         "activeProviders": "Nhà Cung Cấp FTSO Đang Hoạt Động",
         "effectiveProviders": "Nhà Cung Cấp Hiệu Quả",
@@ -431,6 +469,10 @@
       "count_other": "{{count}} nhà cung cấp",
       "emptyDescription": "Ủy quyền WFLR của bạn cho một nhà cung cấp dữ liệu FTSO để bắt đầu kiếm phần thưởng.",
       "emptyTitle": "Không Có Ủy Quyền Đang Hoạt Động",
+      "help": {
+        "label": "Trọng số của bạn so với Trọng số mạng",
+        "body": "Tỷ lệ phần trăm bên cạnh mỗi nhà cung cấp ở đây là phần chia ủy quyền của riêng bạn. Nó khác với dải tập trung của một nhà cung cấp, vốn mô tả thị phần của nhà cung cấp đó trên toàn mạng, chứ không chỉ phần của bạn."
+      },
       "title": "Ủy Quyền Đang Hoạt Động"
     },
     "description": "Theo dõi phần thưởng ủy quyền FTSO, tốc độ tích lũy phần thưởng và phân bổ nhà cung cấp tại một nơi.",
@@ -446,6 +488,10 @@
     "providers": {
       "description": "Được xếp hạng theo trọng lượng và phí được ủy quyền, chứ không phải theo hiệu suất phần thưởng, vốn không thể đo lường được trên chuỗi một cách đáng tin cậy.",
       "emptyDescription": "Hiện không có dữ liệu xếp hạng nhà cung cấp nào.",
+      "help": {
+        "label": "Tập trung so với Phân bổ tốt",
+        "body": "Mô tả trọng số ủy quyền trên toàn mạng của một nhà cung cấp so với những nhà cung cấp khác, không phải hiệu suất phần thưởng của họ, vốn không thể đo lường đáng tin cậy on-chain."
+      },
       "title": "Nhà Cung Cấp FTSO"
     },
     "stats": {
@@ -460,6 +506,10 @@
       "title": "Bảng Xếp Hạng Validator Staking"
     },
     "velocity": {
+      "help": {
+        "label": "Cách Tính Ước Tính Này",
+        "body": "Sử dụng sổ cái phần thưởng chưa nhận trực tiếp của bạn khi có sẵn, nếu không sẽ dùng ước tính lịch sử dựa trên block. Dù bằng cách nào, đây cũng chỉ là một dự phóng, không phải khoản chi trả được đảm bảo."
+      },
       "inactiveDescription": "Ví này chưa ủy quyền WFLR, vì vậy không có tốc độ phần thưởng nào để ước tính.",
       "inactiveTitle": "Hiện Không Có Thu Nhập",
       "methodHistorical": "Ước Tính Theo Lịch Sử",
@@ -488,6 +538,12 @@
     "drawer": {
       "circulatingSupply": "Nguồn cung lưu hành",
       "close": "Đóng",
+      "help": {
+        "quorum": {
+          "label": "Túc số và Đa số",
+          "body": "Túc số là mức tham gia tối thiểu cần thiết để một cuộc bỏ phiếu được tính. Đa số cần thiết là tỷ lệ phiếu bầu cần để thông qua, sau khi đạt túc số."
+        }
+      },
       "majorityRequired": "Đa số cần thiết",
       "proposer": "Người đề xuất",
       "quorum": "Số đại biểu tối thiểu",
@@ -508,6 +564,10 @@
       "columnResult": "Kết quả",
       "columnStatus": "Trạng thái",
       "columnYourVote": "Phiếu của bạn",
+      "help": {
+        "label": "Đồng ý so với Phản đối",
+        "body": "Hai tỷ lệ phần trăm này cho thấy tỷ lệ phiếu Đồng ý và Phản đối, theo thứ tự đó."
+      },
       "emptyDescription": "Ngay khi một đề xuất kết thúc, nó sẽ hiển thị ở đây.",
       "emptyTitle": "Chưa có lịch sử quản trị",
       "subtitle": "Mọi đề xuất quản trị đã kết thúc, mới nhất trước.",
@@ -545,6 +605,10 @@
     },
     "votingEnded": "Bỏ phiếu đã kết thúc",
     "yours": {
+      "help": {
+        "label": "Quyền Biểu quyết của Bạn",
+        "body": "Trọng số biểu quyết mà ví của bạn hiện đang nắm giữ cho quản trị, được đọc trực tiếp từ mạng lưới. Con số này có thể khác với quyền biểu quyết của bạn tại block snapshot riêng của một đề xuất cụ thể, được hiển thị trong chi tiết đề xuất đó."
+      },
       "noWalletDescription": "Kết nối hoặc thêm một ví để xem quyền biểu quyết và mức độ tham gia của bạn vào các đề xuất này.",
       "noWalletTitle": "Xem hoạt động quản trị của bạn",
       "participation": "Sự Tham Gia Của Bạn",
@@ -748,6 +812,12 @@
       "countdownHours": "còn {{hours}} giờ",
       "currentlyLocked": "Hiện Đang Bị Khóa",
       "epochCaption": "Epoch {{epoch}} bắt đầu vào {{date}}",
+      "help": {
+        "poolUtilization": {
+          "label": "Mức Sử dụng Quỹ Khuyến khích",
+          "body": "Bao nhiêu phần trong tổng phân bổ khuyến khích rFLR của mạng đã được gán cho các ví tính đến hiện tại trong epoch này."
+        }
+      },
       "nextDistribution": "Đợt Phân Phối Tiếp Theo",
       "poolUtilization": "Mức Sử Dụng Quỹ Khuyến Khích",
       "remaining": "còn {{amount}} chưa được phân bổ",
@@ -764,6 +834,12 @@
       "earlyExitTitle": "Rút Sớm",
       "efficiency": "hiệu suất {{pct}}%",
       "fullyVested": "Được giao đầy đủ, không còn gì để mở khóa",
+      "help": {
+        "earlyExit": {
+          "label": "Thoát Sớm",
+          "body": "Thoát trước khi rFLR của bạn được vest đầy đủ sẽ mất một phần số tiền bị khóa như một khoản phạt. Hiệu suất là phần số dư bị khóa mà bạn sẽ giữ lại được nếu thoát ngay bây giờ."
+        }
+      },
       "netPayout": "Số Tiền Nhận Ròng Hiện Tại",
       "nextUnlock": "Lần mở khóa tiếp theo vào {{date}}",
       "nextUnlockCaption": "sẽ trở thành thanh khoản",

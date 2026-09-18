@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { http, HttpResponse } from "msw";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 
 import { useAuthSync, logout, signIn } from "@/hooks/useAuthSync";
 import { useAuthStatus } from "@/hooks/useAuthStatus";

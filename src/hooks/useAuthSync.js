@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import { useConnection, useSignMessage } from "wagmi";
 import { isAxiosError } from "axios";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 
 import { useAuthStore } from "@/store/useAuthStore";
 import * as authService from "@/services/authService";

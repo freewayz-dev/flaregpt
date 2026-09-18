@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 import { ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 

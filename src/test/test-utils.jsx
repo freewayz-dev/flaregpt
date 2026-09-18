@@ -2,10 +2,10 @@ import { useEffect} from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider, useConnect, useConnectors } from "wagmi";
 import { MemoryRouter } from "react-router";
-import { ToastContainer } from "react-toastify";
 import { render} from "@testing-library/react";
 
 import { createTestWagmiConfig } from "@/test/mocks/wagmi";
+import NotificationCenter from "@/components/common/NotificationCenter";
 
 
 // Drives a real connect through wagmi's own useConnect() on mount, against
@@ -47,20 +47,16 @@ function createTestQueryClient() {
 // Shared render wrapper — QueryClientProvider + a mocked WagmiProvider +
 // MemoryRouter (BrowserRouter needs a real browser URL bar; MemoryRouter
 // is the standard router-testing substitute, and lets each test start at
-// whatever route it needs via `initialEntries`) + a real ToastContainer,
+// whatever route it needs via `initialEntries`) + a real NotificationCenter,
 // mirroring main.jsx's own tree exactly rather than only the pieces a test
-// happens to assert on. Its absence here is what let a genuine react-
-// toastify + React 19 incompatibility (an uncaught crash the instant any
-// toast rendered — see git history) sail through every test in this suite
-// undetected: `toast.error(...)`/`toast.success(...)` calls succeeded at
-// the call-site every time (queuing an event), but nothing was ever
-// mounted to actually render one. A real ToastContainer here means any
-// test that triggers a toast now actually exercises that render path.
-//
-
-
-
-
+// happens to assert on. This used to be react-toastify's own
+// <ToastContainer/>, kept mounted here for the same reason: without a real
+// notification host actually rendering, a test asserting on
+// `toast.success(...)`'s visible text would pass for the wrong reason (the
+// call succeeds either way) while never exercising the real render path —
+// exactly how a genuine react-toastify + React 19 incompatibility (an
+// uncaught crash the instant any toast rendered) once sailed through this
+// entire suite undetected.
 // `wagmi` options are forwarded to createTestWagmiConfig (see
 // src/test/mocks/wagmi.ts) — e.g. `renderWithProviders(<Page />, {
 // wagmi: { connected: true, address: "0x..." } })` to simulate an
@@ -80,7 +76,7 @@ export function renderWithProviders(
       <WagmiProvider config={wagmiConfig}>
         <QueryClientProvider client={testQueryClient}>
           <MemoryRouter initialEntries={initialEntries ?? [route]}>
-            <ToastContainer />
+            <NotificationCenter />
             {content}
           </MemoryRouter>
         </QueryClientProvider>

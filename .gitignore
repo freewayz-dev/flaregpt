@@ -25,6 +25,8 @@ dist-ssr
 
 # Claude Code local project config/state — machine-specific, not shared
 .claude/
+# Project memory/instructions for Claude Code — kept local, not pushed
+CLAUDE.md
 .DS_Store
 *.suo
 *.ntvs*

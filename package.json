@@ -31,7 +31,6 @@
     "react-i18next": "^17.0.8",
     "react-markdown": "^10.1.0",
     "react-router": "^8.3.0",
-    "react-toastify": "^11.1.0",
     "recharts": "^3.10.0",
     "remark-gfm": "^4.0.1",
     "viem": "^2.53.1",

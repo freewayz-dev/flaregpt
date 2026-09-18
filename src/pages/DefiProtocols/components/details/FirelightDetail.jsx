@@ -10,6 +10,7 @@ import TokenIcon from "@/components/common/TokenIcon";
 import TokenRow from "@/components/common/TokenRow";
 import SensitiveValue from "@/components/common/SensitiveValue";
 import DetailSkeleton from "@/pages/DefiProtocols/components/skeletons/DetailSkeleton";
+import InfoHint from "@/components/common/InfoHint";
 import { formatAmount } from "@/utils/format";
 
 
@@ -92,6 +93,9 @@ export default function FirelightDetail({
           <p className="text-sm text-ink-muted">
             {t("defiProtocols.firelight.backingLabel")}
           </p>
+          <InfoHint label={t("defiProtocols.firelight.help.label")}>
+            {t("defiProtocols.firelight.help.body")}
+          </InfoHint>
           {backingMultiplier >= 1 && (
             <ShieldCheckIcon className="h-4 w-4 shrink-0 text-emerald-500" />
           )}

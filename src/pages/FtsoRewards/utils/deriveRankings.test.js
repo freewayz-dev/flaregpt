@@ -16,8 +16,31 @@ describe("computeProviderRows", () => {
     });
 
     expect(rows).toEqual([
-      { key: "0xAbC", address: "0xAbC", name: "Flare.Space", weightSharePct: 3.632, feePct: 20.0 },
+      {
+        key: "0xAbC",
+        address: "0xAbC",
+        name: "Flare.Space",
+        weightSharePct: 3.632,
+        feePct: 20.0,
+        concentrationBand: null,
+      },
     ]);
+  });
+
+  it("maps concentration_band through when the API provides it", () => {
+    const rows = computeProviderRows({
+      providers: [
+        {
+          address: "0xAbC",
+          name: "Flare.Space",
+          weight_share_pct: 3.632,
+          fee_pct: 20.0,
+          concentration_band: "well_distributed",
+        },
+      ],
+    });
+
+    expect(rows[0].concentrationBand).toBe("well_distributed");
   });
 
   it("returns an empty array when there's no data yet (still loading)", () => {

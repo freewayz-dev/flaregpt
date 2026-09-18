@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import { toast } from "@/utils/toast";
 
 import TokenIcon from "@/components/common/TokenIcon";
 import { copyWalletAddress } from "@/utils/address";
