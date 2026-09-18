@@ -300,6 +300,11 @@
       "token": "Token",
       "value": "Valor",
       "viewOnExplorer": "Ver no Explorador"
+    },
+    "trend": {
+      "subtitle": "Receita acumulada diariamente nos últimos 30 dias, por token",
+      "title": "Tendência de Receita",
+      "tokenLabel": "{{token}} acumulado por dia"
     }
   },
   "flareWidget": {
@@ -423,6 +428,10 @@
     "connectToSee": "Conecte ou selecione uma carteira para ver suas recompensas FTSO.",
     "couldntLoad": "Não foi possível carregar suas recompensas FTSO.",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "Concentrado",
+        "wellDistributed": "Bem Distribuído"
+      },
       "count_one": "{{count}} provedor",
       "count_many": "{{count}} provedores",
       "count_other": "{{count}} provedores",
@@ -1004,6 +1013,7 @@
     "settings": "Configurações",
     "signInRequired": "Login necessário",
     "signInRequiredHint": "Use o menu da carteira na barra superior para entrar.",
+    "transactionLookup": "Consulta de Transações",
     "walletActivity": "Atividade da Carteira",
     "walletConnected": "Carteira Conectada",
     "yield": "Rendimento",
@@ -1016,6 +1026,44 @@
   "staleData": {
     "justNow": "A mostrar dados em cache de momentos atrás",
     "minutesAgo": "A mostrar dados em cache de {{minutes}} minutos atrás"
+  },
+  "transactionLookup": {
+    "couldntLoad": "Não foi possível carregar esta transação.",
+    "description": "Consulte qualquer transação da C-chain da Flare pelo seu hash para ver o status e o que ela fez.",
+    "form": {
+      "label": "Hash da Transação",
+      "placeholder": "0x...",
+      "search": "Pesquisar",
+      "searching": "Pesquisando…"
+    },
+    "idle": {
+      "description": "Cole um hash de transação acima para ver o status, as confirmações e o que ela fez.",
+      "title": "Consultar uma Transação"
+    },
+    "invalidFormat": {
+      "description": "Isso não parece um hash de transação válido da C-chain.",
+      "title": "Hash Inválido"
+    },
+    "notFound": {
+      "description": "Nenhuma transação foi encontrada com esse hash.",
+      "title": "Transação Não Encontrada"
+    },
+    "result": {
+      "blockNumber": "Bloco",
+      "confirmations": "Confirmações",
+      "contractAddress": "Contrato Criado",
+      "fee": "Taxa",
+      "from": "De",
+      "timestamp": "Hora",
+      "to": "Para",
+      "value": "Valor",
+      "viewOnExplorer": "Ver no Explorador"
+    },
+    "status": {
+      "failed": "Falhou",
+      "pending": "Pendente",
+      "success": "Bem-sucedida"
+    }
   },
   "update": {
     "available": "Uma nova versão do FlareGPT está disponível.",
@@ -1103,6 +1151,8 @@
         "subtitle": "Carteiras grandes podem levar alguns minutos na primeira carga. Sinta-se à vontade para explorar o resto do painel. Avisaremos quando estiver pronto.",
         "title": "Indexando a atividade da sua wallet"
       },
+      "lookupTransactionCta": "Consultar uma transação",
+      "lookupTransactionLead": "Procurando uma transação específica, mesmo uma que não seja sua?",
       "noResults": {
         "description": "Tente ajustar sua busca ou filtros.",
         "title": "Nenhuma transação correspondente"

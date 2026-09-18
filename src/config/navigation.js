@@ -13,6 +13,7 @@ import {
   HeartIcon,
   LinkIcon,
   FireIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
 import { ROUTES } from "@/config/routes";
@@ -147,6 +148,17 @@ export const NAV_LINKS = [
     translationKey: "fire",
     path: ROUTES.fire,
     icon: FireIcon,
+    group: "ecosystem",
+  },
+  {
+    // Paste any C-chain transaction hash, look up its status — wallet-
+    // independent (works for a hash that has nothing to do with any
+    // wallet the user has ever connected), so this sits in "ecosystem"
+    // alongside Fire/Governance/Links rather than inside Wallet Activity,
+    // which is specifically about *this* wallet's own transaction history.
+    translationKey: "transactionLookup",
+    path: ROUTES.transactionLookup,
+    icon: MagnifyingGlassIcon,
     group: "ecosystem",
   },
   {

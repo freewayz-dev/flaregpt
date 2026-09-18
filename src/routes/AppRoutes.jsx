@@ -28,6 +28,7 @@ import LoopsPageSkeleton from "@/pages/Loops/LoopsPageSkeleton";
 import GovernancePageSkeleton from "@/pages/Governance/GovernancePageSkeleton";
 import LinksPageSkeleton from "@/pages/Links/LinksPageSkeleton";
 import FirePageSkeleton from "@/pages/Fire/FirePageSkeleton";
+import TransactionLookupPageSkeleton from "@/pages/TransactionLookup/TransactionLookupPageSkeleton";
 import { ROUTES, APP_SEGMENTS } from "@/config/routes";
 
 
@@ -47,6 +48,7 @@ const Donate = lazy(() => import("@/pages/Donate"));
 const Governance = lazy(() => import("@/pages/Governance"));
 const Links = lazy(() => import("@/pages/Links"));
 const Fire = lazy(() => import("@/pages/Fire"));
+const TransactionLookup = lazy(() => import("@/pages/TransactionLookup"));
 
 const LANDING_PAGE_PATHS = {
   "flare-gpt": ROUTES.flareGpt,
@@ -189,6 +191,14 @@ export default function AppRoutes() {
             element={
               <Suspense fallback={<FirePageSkeleton />}>
                 <Fire />
+              </Suspense>
+            }
+          />
+          <Route
+            path={APP_SEGMENTS.transactionLookup}
+            element={
+              <Suspense fallback={<TransactionLookupPageSkeleton />}>
+                <TransactionLookup />
               </Suspense>
             }
           />

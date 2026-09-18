@@ -296,6 +296,11 @@
       "token": "Token",
       "value": "Değer",
       "viewOnExplorer": "Explorer'da Görüntüle"
+    },
+    "trend": {
+      "subtitle": "Son 30 gündeki günlük tahakkuk eden gelir, token bazında",
+      "title": "Gelir Trendi",
+      "tokenLabel": "Günde tahakkuk eden {{token}}"
     }
   },
   "flareWidget": {
@@ -418,6 +423,10 @@
     "connectToSee": "FTSO ödüllerini görmek için bir cüzdan bağlayın veya seçin.",
     "couldntLoad": "FTSO ödülleriniz yüklenemedi.",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "Yoğunlaşmış",
+        "wellDistributed": "İyi Dağılmış"
+      },
       "count_one": "{{count}} Sağlayıcı",
       "count_other": "{{count}} Sağlayıcı",
       "emptyDescription": "Ödül kazanmaya başlamak için WFLR'nizi bir FTSO veri sağlayıcısına delege edin.",
@@ -994,6 +1003,7 @@
     "settings": "Ayarlar",
     "signInRequired": "Giriş gerekli",
     "signInRequiredHint": "Giriş yapmak için üst çubuktaki cüzdan menüsünü kullanın.",
+    "transactionLookup": "İşlem Sorgulama",
     "walletActivity": "Cüzdan Aktivitesi",
     "walletConnected": "Cüzdan Bağlandı",
     "yield": "Getiri",
@@ -1006,6 +1016,44 @@
   "staleData": {
     "justNow": "Dakikalar öncesinden önbelleğe alınmış veriler gösteriliyor",
     "minutesAgo": "{{minutes}} dakika önce önbelleğe alınmış veriler gösteriliyor"
+  },
+  "transactionLookup": {
+    "couldntLoad": "Bu işlem yüklenemedi.",
+    "description": "Durumunu ve ne yaptığını görmek için hash'i ile herhangi bir Flare C-chain işlemini arayın.",
+    "form": {
+      "label": "İşlem Hash'i",
+      "placeholder": "0x...",
+      "search": "Ara",
+      "searching": "Aranıyor…"
+    },
+    "idle": {
+      "description": "Durumunu, onay sayısını ve ne yaptığını görmek için yukarıya bir işlem hash'i yapıştırın.",
+      "title": "Bir İşlem Ara"
+    },
+    "invalidFormat": {
+      "description": "Bu geçerli bir C-chain işlem hash'ine benzemiyor.",
+      "title": "Geçersiz Hash"
+    },
+    "notFound": {
+      "description": "Bu hash'e sahip bir işlem bulunamadı.",
+      "title": "İşlem Bulunamadı"
+    },
+    "result": {
+      "blockNumber": "Blok",
+      "confirmations": "Onaylar",
+      "contractAddress": "Oluşturulan Sözleşme",
+      "fee": "Ücret",
+      "from": "Gönderen",
+      "timestamp": "Saat",
+      "to": "Alıcı",
+      "value": "Değer",
+      "viewOnExplorer": "Explorer'da Görüntüle"
+    },
+    "status": {
+      "failed": "Başarısız",
+      "pending": "Beklemede",
+      "success": "Başarılı"
+    }
   },
   "update": {
     "available": "FlareGPT'nin yeni bir sürümü mevcut.",
@@ -1088,6 +1136,8 @@
         "subtitle": "Büyük cüzdanlar ilk yüklemede birkaç dakika sürebilir. Gösterge panosunun geri kalanını keşfetmekten çekinmeyin. Hazır olduğunda size haber vereceğiz.",
         "title": "Cüzdan etkinliğiniz dizine ekleniyor"
       },
+      "lookupTransactionCta": "Bir işlem ara",
+      "lookupTransactionLead": "Sizin olmayan bir işlem dahil, belirli bir işlem mi arıyorsunuz?",
       "noResults": {
         "description": "Arama veya filtrelerinizi ayarlamayı deneyin.",
         "title": "Eşleşen işlem yok"

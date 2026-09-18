@@ -312,6 +312,11 @@
       "token": "الرمز",
       "value": "القيمة",
       "viewOnExplorer": "عرض على المستكشف"
+    },
+    "trend": {
+      "subtitle": "الإيرادات المتراكمة يوميًا خلال آخر 30 يومًا، حسب الرمز",
+      "title": "اتجاه الإيرادات",
+      "tokenLabel": "{{token}} المتراكم يوميًا"
     }
   },
   "flareWidget": {
@@ -438,6 +443,10 @@
     "connectToSee": "قم بتوصيل أو اختيار محفظة لعرض مكافآت FTSO الخاصة بها.",
     "couldntLoad": "تعذّر تحميل مكافآت FTSO الخاصة بك.",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "مركَّز",
+        "wellDistributed": "موزَّع بشكل جيد"
+      },
       "count_zero": "{{count}} مزوّدين",
       "count_one": "{{count}} مزوّد",
       "count_two": "{{count}} مزوّدين",
@@ -1034,6 +1043,7 @@
     "settings": "الإعدادات",
     "signInRequired": "التسجيل مطلوب",
     "signInRequiredHint": "استخدم قائمة المحفظة في الشريط العلوي لتسجيل الدخول.",
+    "transactionLookup": "بحث المعاملات",
     "walletActivity": "نشاط المحفظة",
     "walletConnected": "المحفظة متصلة",
     "groups": {
@@ -1045,6 +1055,44 @@
   "staleData": {
     "justNow": "عرض البيانات المخزنة مؤقتًا منذ لحظات",
     "minutesAgo": "عرض البيانات المخزنة مؤقتًا من {{minutes}} دقيقة مضت"
+  },
+  "transactionLookup": {
+    "couldntLoad": "تعذّر تحميل هذه المعاملة.",
+    "description": "ابحث عن أي معاملة على C-chain في Flare عبر هاشها لمعرفة حالتها وما قامت به.",
+    "form": {
+      "label": "هاش المعاملة",
+      "placeholder": "0x...",
+      "search": "بحث",
+      "searching": "جارٍ البحث…"
+    },
+    "idle": {
+      "description": "ألصق هاش معاملة أعلاه لمعرفة حالتها وعدد تأكيداتها وما قامت به.",
+      "title": "البحث عن معاملة"
+    },
+    "invalidFormat": {
+      "description": "هذا لا يبدو هاش معاملة صالحًا على C-chain.",
+      "title": "هاش غير صالح"
+    },
+    "notFound": {
+      "description": "لم يتم العثور على معاملة بهذا الهاش.",
+      "title": "المعاملة غير موجودة"
+    },
+    "result": {
+      "blockNumber": "الكتلة",
+      "confirmations": "التأكيدات",
+      "contractAddress": "العقد المُنشأ",
+      "fee": "الرسوم",
+      "from": "من",
+      "timestamp": "الوقت",
+      "to": "إلى",
+      "value": "القيمة",
+      "viewOnExplorer": "عرض على المستكشف"
+    },
+    "status": {
+      "failed": "فاشلة",
+      "pending": "قيد الانتظار",
+      "success": "ناجحة"
+    }
   },
   "update": {
     "available": "يتوفر إصدار جديد من FlareGPT.",
@@ -1147,6 +1195,8 @@
         "subtitle": "قد تستغرق المحافظ الكبيرة بضع دقائق عند التحميل الأول. لا تتردد في استكشاف بقية لوحة التحكم. سنُعلمك عندما تصبح جاهزة.",
         "title": "جارٍ فهرسة نشاط محفظتك"
       },
+      "lookupTransactionCta": "البحث عن معاملة",
+      "lookupTransactionLead": "هل تبحث عن معاملة معيّنة، حتى لو لم تكن معاملتك؟",
       "noResults": {
         "description": "حاول تعديل بحثك أو عوامل التصفية.",
         "title": "لا توجد معاملات مطابقة"

@@ -1,9 +1,20 @@
 import { useTranslation } from "react-i18next";
-import { UserGroupIcon } from "@heroicons/react/24/outline";
+import { UserGroupIcon, ScaleIcon } from "@heroicons/react/24/outline";
 
 import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwnershipBar";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
 import { shortenAddress } from "@/utils/address";
+
+// Per the Delegation Concentration handoff's own explicit rule: this is a
+// label describing network weight distribution, not a verdict on reward
+// performance (which isn't reliably knowable on-chain) — so both values
+// get the exact same tag styling below, never a tone/color/icon swap.
+// `null` (provider not currently in rankings) simply renders nothing,
+// same as `d.name` above it.
+const CONCENTRATION_LABEL_KEYS = {
+  concentrated: "ftsoRewards.delegations.concentrationBand.concentrated",
+  well_distributed: "ftsoRewards.delegations.concentrationBand.wellDistributed",
+};
 
 
 
@@ -44,15 +55,38 @@ export default function DelegationsCard({ delegations }) {
                 percentage={d.weightPercent}
                 valueLabel={d.weightLabel}
               />
-              {/* Only shown alongside a name — when there's no name, the
-                  truncated address is already doing double duty as the
-                  bar's own label above, so repeating it here would just
-                  be the same text twice. */}
-              {d.name && (
-                <p className="mt-1 text-[10px] text-ink-muted font-mono">
-                  {shortenAddress(d.address)}
-                </p>
-              )}
+              <div className="mt-1.5 flex items-center justify-between gap-2">
+                {/* Only shown alongside a name — when there's no name, the
+                    truncated address is already doing double duty as the
+                    bar's own label above, so repeating it here would just
+                    be the same text twice. */}
+                {d.name && (
+                  <p className="text-[10px] text-ink-muted font-mono truncate">
+                    {shortenAddress(d.address)}
+                  </p>
+                )}
+                {/* A filled pill, not a plain caption — deliberately more
+                    visually prominent than the address line beside it, but
+                    still a single neutral gray/muted treatment regardless
+                    of which band value this is (per the handoff's rule:
+                    never a tone/color signal, just more legible metadata).
+                    ScaleIcon matches DelegationConcentrationCard's own
+                    header icon for the same "concentration" concept
+                    elsewhere on this page. */}
+                {d.concentrationBand && CONCENTRATION_LABEL_KEYS[d.concentrationBand] && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-surface-inset px-2 py-0.5 text-[11px] font-semibold text-ink-secondary shrink-0">
+                    <ScaleIcon className="h-3 w-3 text-ink-muted" />
+                    {/* One plain text run, not a nested span for the rank —
+                        flex `gap` is layout-only (adds nothing to
+                        textContent), and a nested element sharing the same
+                        combined text as its parent would make both match
+                        an exact-text query. A single string with a real
+                        space keeps exactly one element matching it. */}
+                    {t(CONCENTRATION_LABEL_KEYS[d.concentrationBand])}
+                    {d.networkRank != null ? ` · #${d.networkRank}` : ""}
+                  </span>
+                )}
+              </div>
             </div>
           ))}
         </div>

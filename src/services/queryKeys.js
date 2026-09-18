@@ -126,9 +126,15 @@ export const queryKeys = {
   },
   // FIRE revenue overview is a single global snapshot (no address
   // dimension) — same "all" root pattern as ftso.providerRankings.
+  // overviewV2 is a separate cache entry, not a variant of overview() —
+  // the two are fetched independently (v1 stays the page's source of
+  // truth; v2 only backs the historical trend chart), so they need their
+  // own key rather than sharing one and risking a v2 response ever
+  // serving where v1 is expected or vice versa.
   fire: {
     all: ["fire"],
     overview: () => [...queryKeys.fire.all, "overview"],
+    overviewV2: () => [...queryKeys.fire.all, "overviewV2"],
   },
   // Current-contract proposal ids/info go through wagmi's own
   // useReadContract/useReadContracts (which manage their own cache keys) —
@@ -140,5 +146,11 @@ export const queryKeys = {
     all: ["governance"],
     historicalTitle: (chainId, contractAddress, proposalId) =>
       [...queryKeys.governance.all, "historicalTitle", chainId, contractAddress, proposalId],
+  },
+  // Keyed by the hash itself, not a wallet — this lookup has no address
+  // dimension at all, unlike every per-wallet namespace above.
+  transaction: {
+    all: ["transaction"],
+    lookup: (txHash) => [...queryKeys.transaction.all, "lookup", txHash],
   },
 };

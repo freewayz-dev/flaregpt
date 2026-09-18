@@ -68,6 +68,48 @@ describe("Fire", () => {
     // The breakdown chart (2+ pools) and a freshness note both render too.
     expect(screen.getByText("Revenue by Category")).toBeInTheDocument();
     expect(screen.getByText("Showing cached data from moments ago")).toBeInTheDocument();
+
+    // v2's own default mock (unrelated to the v1 override above — see
+    // handlers.js) has FLR daily_history, so the trend chart renders too,
+    // entirely independent of whichever v1 response this test set up.
+    expect(await screen.findByText("Revenue Trend")).toBeInTheDocument();
+    expect(screen.getByText("FLR accrued per day")).toBeInTheDocument();
+  });
+
+  it("hides the trend chart when v2 comes back degraded with no daily_history, without disturbing v1-driven content", async () => {
+    server.use(
+      http.get(`${API}/api/v1/fire/overview`, () => HttpResponse.json(OVERVIEW_RESPONSE)),
+      http.get(`${API}/api/v1/fire/overview/v2`, () =>
+        HttpResponse.json({
+          source: "flaremetrics",
+          degraded: true,
+          degraded_reason: "flaremetrics_partial",
+          pools: [],
+          latest_epoch: null,
+          daily_history: null,
+        }),
+      ),
+    );
+    renderWithProviders(<Fire />);
+
+    expect(await screen.findByText("Revenue by Category")).toBeInTheDocument();
+    expect(screen.queryByText("Revenue Trend")).not.toBeInTheDocument();
+  });
+
+  it("hides the trend chart (without an error state) when the v2 request itself fails", async () => {
+    server.use(
+      http.get(`${API}/api/v1/fire/overview`, () => HttpResponse.json(OVERVIEW_RESPONSE)),
+      http.get(`${API}/api/v1/fire/overview/v2`, () =>
+        HttpResponse.json({ error: "boom" }, { status: 500 }),
+      ),
+    );
+    renderWithProviders(<Fire />);
+
+    expect(await screen.findByText("Revenue by Category")).toBeInTheDocument();
+    expect(screen.queryByText("Revenue Trend")).not.toBeInTheDocument();
+    // The page's own error state (tied to v1's query, not v2's) never
+    // shows — a failed v2 fetch is not a page-level failure.
+    expect(screen.queryByText("Couldn't load FIRE revenue data.")).not.toBeInTheDocument();
   });
 
   it("doesn't show the breakdown chart when there's only a single pool to compare", async () => {

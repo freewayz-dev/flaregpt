@@ -296,6 +296,11 @@
       "token": "Token",
       "value": "Value",
       "viewOnExplorer": "View on Explorer"
+    },
+    "trend": {
+      "subtitle": "Daily accrued revenue over the last 30 days, by token",
+      "title": "Revenue Trend",
+      "tokenLabel": "{{token}} accrued per day"
     }
   },
   "flareWidget": {
@@ -418,6 +423,10 @@
     "connectToSee": "Connect or select a wallet to see its FTSO rewards.",
     "couldntLoad": "Couldn't load your FTSO rewards.",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "Concentrated",
+        "wellDistributed": "Well Distributed"
+      },
       "count_one": "{{count}} Provider",
       "count_other": "{{count}} Providers",
       "emptyDescription": "Delegate your WFLR to an FTSO data provider to start earning rewards.",
@@ -999,12 +1008,51 @@
     "settings": "Settings",
     "signInRequired": "Sign in required",
     "signInRequiredHint": "Use the wallet menu in the top bar to sign in.",
+    "transactionLookup": "Transaction Lookup",
     "walletActivity": "Wallet Activity",
     "walletConnected": "Wallet Connected"
   },
   "staleData": {
     "justNow": "Showing cached data from moments ago",
     "minutesAgo": "Showing cached data from {{minutes}} minutes ago"
+  },
+  "transactionLookup": {
+    "couldntLoad": "Couldn't load this transaction.",
+    "description": "Look up any Flare C-chain transaction by its hash to see its status and what it did.",
+    "form": {
+      "label": "Transaction Hash",
+      "placeholder": "0x...",
+      "search": "Search",
+      "searching": "Searching…"
+    },
+    "idle": {
+      "description": "Paste a transaction hash above to see its status, confirmations, and what it did.",
+      "title": "Look Up a Transaction"
+    },
+    "invalidFormat": {
+      "description": "That doesn't look like a valid C-chain transaction hash.",
+      "title": "Not a Valid Hash"
+    },
+    "notFound": {
+      "description": "No transaction was found with that hash.",
+      "title": "Transaction Not Found"
+    },
+    "result": {
+      "blockNumber": "Block",
+      "confirmations": "Confirmations",
+      "contractAddress": "Contract Created",
+      "fee": "Fee",
+      "from": "From",
+      "timestamp": "Time",
+      "to": "To",
+      "value": "Value",
+      "viewOnExplorer": "View on Explorer"
+    },
+    "status": {
+      "failed": "Failed",
+      "pending": "Pending",
+      "success": "Success"
+    }
   },
   "update": {
     "available": "A new version of FlareGPT is available.",
@@ -1087,6 +1135,8 @@
         "subtitle": "Large wallets can take a few minutes on first load. Feel free to explore the rest of the dashboard. We'll let you know when it's ready.",
         "title": "Indexing your wallet activity"
       },
+      "lookupTransactionCta": "Look up a transaction",
+      "lookupTransactionLead": "Looking for a specific transaction, including one that isn't yours?",
       "noResults": {
         "description": "Try adjusting your search or filters.",
         "title": "No matching transactions"

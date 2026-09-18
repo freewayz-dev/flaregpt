@@ -22,4 +22,16 @@ describe("FtsoRewards", () => {
       screen.queryByText("Connect or select a wallet to see its FTSO rewards."),
     ).not.toBeInTheDocument();
   });
+
+  it("shows the delegation's network rank and concentration band as neutral metadata", async () => {
+    renderWithProviders(<FtsoRewards />, {
+      wagmi: { connected: true, address: TEST_ADDRESSES.primary },
+    });
+
+    // Same styled tag regardless of value (per the Delegation Concentration
+    // handoff's own rule — no color/tone difference), just this one live
+    // case (see the shared portfolio/ftso mock: network_rank 5,
+    // concentration_band "concentrated").
+    expect(await screen.findByText("Concentrated · #5")).toBeInTheDocument();
+  });
 });

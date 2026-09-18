@@ -296,6 +296,11 @@
       "token": "代币",
       "value": "价值",
       "viewOnExplorer": "在浏览器中查看"
+    },
+    "trend": {
+      "subtitle": "过去30天按代币计算的每日累计收入",
+      "title": "收入趋势",
+      "tokenLabel": "每日累计 {{token}}"
     }
   },
   "flareWidget": {
@@ -418,6 +423,10 @@
     "connectToSee": "连接或选择一个钱包以查看其 FTSO 奖励。",
     "couldntLoad": "无法加载您的 FTSO 奖励。",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "集中",
+        "wellDistributed": "分布均匀"
+      },
       "count_one": "{{count}} 个提供商",
       "count_other": "{{count}} 个提供商",
       "emptyDescription": "将您的 WFLR 委托给 FTSO 数据提供商以开始赚取奖励。",
@@ -994,6 +1003,7 @@
     "settings": "设置",
     "signInRequired": "需要登录",
     "signInRequiredHint": "使用顶部栏中的钱包菜单登录。",
+    "transactionLookup": "交易查询",
     "walletActivity": "钱包活动",
     "walletConnected": "钱包已连接",
     "yield": "收益率",
@@ -1006,6 +1016,44 @@
   "staleData": {
     "justNow": "显示刚才的缓存数据",
     "minutesAgo": "显示{{minutes}}分钟前的缓存数据"
+  },
+  "transactionLookup": {
+    "couldntLoad": "无法加载此交易。",
+    "description": "通过哈希查询任意 Flare C-chain 交易，查看其状态和具体操作。",
+    "form": {
+      "label": "交易哈希",
+      "placeholder": "0x...",
+      "search": "搜索",
+      "searching": "搜索中…"
+    },
+    "idle": {
+      "description": "在上方粘贴交易哈希，即可查看其状态、确认数和具体操作。",
+      "title": "查询交易"
+    },
+    "invalidFormat": {
+      "description": "这看起来不是有效的 C-chain 交易哈希。",
+      "title": "哈希格式无效"
+    },
+    "notFound": {
+      "description": "未找到具有该哈希的交易。",
+      "title": "未找到交易"
+    },
+    "result": {
+      "blockNumber": "区块",
+      "confirmations": "确认数",
+      "contractAddress": "创建的合约",
+      "fee": "手续费",
+      "from": "发送方",
+      "timestamp": "时间",
+      "to": "接收方",
+      "value": "价值",
+      "viewOnExplorer": "在浏览器中查看"
+    },
+    "status": {
+      "failed": "失败",
+      "pending": "待处理",
+      "success": "成功"
+    }
   },
   "update": {
     "available": "FlareGPT有新版本可用。",
@@ -1088,6 +1136,8 @@
         "subtitle": "大型钱包首次加载可能需要几分钟。您可以随意浏览仪表板的其他部分，准备好后我们会通知您。",
         "title": "正在为您的钱包活动建立索引"
       },
+      "lookupTransactionCta": "查询交易",
+      "lookupTransactionLead": "在寻找特定交易吗？即使不是你自己的交易也可以查询。",
       "noResults": {
         "description": "请尝试调整搜索或筛选条件。",
         "title": "没有匹配的交易"

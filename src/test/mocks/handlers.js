@@ -46,7 +46,13 @@ export const handlers = [
         calculation_method: "LIVE_UNCLAIMED_LEDGER_VELOCITY",
       },
       active_delegations: [
-        { provider_address: "0xProvider1", provider_name: "Test Provider", allocated_bips: 10000 },
+        {
+          provider_address: "0xProvider1",
+          provider_name: "Test Provider",
+          allocated_bips: 10000,
+          network_rank: 5,
+          concentration_band: "concentrated",
+        },
       ],
       unclaimed_epochs_ledger: [],
     });
@@ -274,6 +280,42 @@ export const handlers = [
       total_usd: 34359.29,
       total_burned_usd: 0.0,
       note: "Covers confirmed FIRE revenue pools — not necessarily all of them.",
+    });
+  }),
+
+  // Default: the normal, healthy "flaremetrics" state (source/degraded
+  // both match what Fire/index.jsx branches on) with a short daily_history
+  // so any test exercising the page's happy path also gets a resolvable
+  // trend-chart query by default, without needing a per-test override.
+  // Fire's own test file overrides this per-case for the states it
+  // actually asserts on (degraded/partial, onchain_fallback, no history).
+  http.get(`${API}/api/v1/fire/overview/v2`, () => {
+    return HttpResponse.json({
+      source: "flaremetrics",
+      generated_at: "2026-09-17T23:15:28Z",
+      attribution: "Data provided by FlareMetrics (flaremetrics.io)",
+      degraded: false,
+      degraded_reason: null,
+      pools: [
+        {
+          id: "fdc",
+          label: "FDC (attestation fees)",
+          token: "FLR",
+          recipient: "0x0ce6831df00a6018c4d316009980dbaa6c44e525",
+          accrued: "2667634200000000000000000",
+          claimed: "2509006500000000000000000",
+        },
+      ],
+      latest_epoch: {
+        rewardEpochId: 434,
+        estimatedWei: "7407000000000000000000",
+        claimedWei: "0",
+        deltaWei: "7407000000000000000000",
+      },
+      daily_history: [
+        { stream: "fdc", token: "FLR", periodId: "2026-09-16", accrued: "1000000000000000000000", claimed: "0" },
+        { stream: "fdc", token: "FLR", periodId: "2026-09-17", accrued: "1200000000000000000000", claimed: "0" },
+      ],
     });
   }),
 

@@ -66,6 +66,15 @@ export function computeDelegationRows(portfolio) {
       bips: d.allocated_bips ?? 0,
       weightLabel: d.weight_percentage ?? `${((d.allocated_bips ?? 0) / 100).toFixed(1)}%`,
       weightPercent: (d.allocated_bips ?? 0) / 100,
+      // Delegation Concentration handoff additions — this provider's
+      // position in the network-wide provider-rankings leaderboard, not
+      // anything about this wallet's own split (that's weightPercent
+      // above). `network_rank`/`concentration_band` can both be null if
+      // the provider isn't in current rankings, per the handoff doc —
+      // kept as `null`, not coerced to a fallback value, so the UI can
+      // tell "not ranked" apart from an actual rank.
+      networkRank: d.network_rank ?? null,
+      concentrationBand: d.concentration_band ?? null,
     }))
     .sort((a, b) => b.weightPercent - a.weightPercent);
 }

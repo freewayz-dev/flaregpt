@@ -296,6 +296,11 @@
       "token": "Token",
       "value": "Giá Trị",
       "viewOnExplorer": "Xem trên Explorer"
+    },
+    "trend": {
+      "subtitle": "Doanh thu tích lũy hàng ngày trong 30 ngày qua, theo token",
+      "title": "Xu Hướng Doanh Thu",
+      "tokenLabel": "{{token}} tích lũy mỗi ngày"
     }
   },
   "flareWidget": {
@@ -418,6 +423,10 @@
     "connectToSee": "Kết nối hoặc chọn một ví để xem phần thưởng FTSO của ví đó.",
     "couldntLoad": "Không thể tải phần thưởng FTSO của bạn.",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "Tập Trung",
+        "wellDistributed": "Phân Bổ Đồng Đều"
+      },
       "count_one": "{{count}} nhà cung cấp",
       "count_other": "{{count}} nhà cung cấp",
       "emptyDescription": "Ủy quyền WFLR của bạn cho một nhà cung cấp dữ liệu FTSO để bắt đầu kiếm phần thưởng.",
@@ -994,6 +1003,7 @@
     "settings": "Cài đặt",
     "signInRequired": "Cần đăng nhập",
     "signInRequiredHint": "Sử dụng menu ví ở thanh trên cùng để đăng nhập.",
+    "transactionLookup": "Tra cứu giao dịch",
     "walletActivity": "Hoạt động Ví",
     "walletConnected": "Ví đã kết nối",
     "yield": "Lợi nhuận",
@@ -1006,6 +1016,44 @@
   "staleData": {
     "justNow": "Hiển thị dữ liệu được lưu trong bộ nhớ cache từ khoảnh khắc trước",
     "minutesAgo": "Hiển thị dữ liệu được lưu trong bộ nhớ cache từ {{minutes}} phút trước"
+  },
+  "transactionLookup": {
+    "couldntLoad": "Không thể tải giao dịch này.",
+    "description": "Tra cứu bất kỳ giao dịch C-chain nào của Flare theo hash để xem trạng thái và nội dung của nó.",
+    "form": {
+      "label": "Hash Giao Dịch",
+      "placeholder": "0x...",
+      "search": "Tìm kiếm",
+      "searching": "Đang tìm kiếm…"
+    },
+    "idle": {
+      "description": "Dán hash giao dịch ở trên để xem trạng thái, số lần xác nhận và nội dung của nó.",
+      "title": "Tra Cứu Giao Dịch"
+    },
+    "invalidFormat": {
+      "description": "Đây không phải là hash giao dịch C-chain hợp lệ.",
+      "title": "Hash Không Hợp Lệ"
+    },
+    "notFound": {
+      "description": "Không tìm thấy giao dịch nào với hash đó.",
+      "title": "Không Tìm Thấy Giao Dịch"
+    },
+    "result": {
+      "blockNumber": "Khối",
+      "confirmations": "Xác Nhận",
+      "contractAddress": "Hợp Đồng Đã Tạo",
+      "fee": "Phí",
+      "from": "Từ",
+      "timestamp": "Thời Gian",
+      "to": "Đến",
+      "value": "Giá Trị",
+      "viewOnExplorer": "Xem trên Explorer"
+    },
+    "status": {
+      "failed": "Thất Bại",
+      "pending": "Đang Chờ",
+      "success": "Thành Công"
+    }
   },
   "update": {
     "available": "Đã có phiên bản FlareGPT mới.",
@@ -1088,6 +1136,8 @@
         "subtitle": "Ví lớn có thể mất vài phút để tải lần đầu. Hãy thoải mái khám phá phần còn lại của bảng điều khiển. Chúng tôi sẽ thông báo khi mọi thứ đã sẵn sàng.",
         "title": "Đang lập chỉ mục hoạt động ví của bạn"
       },
+      "lookupTransactionCta": "Tra cứu một giao dịch",
+      "lookupTransactionLead": "Bạn đang tìm một giao dịch cụ thể, kể cả giao dịch không phải của bạn?",
       "noResults": {
         "description": "Hãy thử điều chỉnh tìm kiếm hoặc bộ lọc của bạn.",
         "title": "Không có giao dịch phù hợp"

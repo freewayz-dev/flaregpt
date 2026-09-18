@@ -5,12 +5,14 @@ import PageHeader from "@/components/common/PageHeader";
 import Disclosure from "@/pages/DefiProtocols/components/shared/Disclosure";
 import PoolOwnershipBar from "@/pages/DefiProtocols/components/shared/PoolOwnershipBar";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
-import { useFireOverview } from "@/hooks/queries/useFireQueries";
+import { useFireOverview, useFireOverviewV2 } from "@/hooks/queries/useFireQueries";
 import { useCurrency } from "@/hooks/useCurrency";
+import { computeDailyTrend } from "@/pages/Fire/utils/deriveFireOverview";
 import FireSkeleton from "@/pages/Fire/components/FireSkeleton";
 import FireStatsRow from "@/pages/Fire/components/FireStatsRow";
 import FireFreshnessNote from "@/pages/Fire/components/FireFreshnessNote";
 import FireBreakdownChart from "@/pages/Fire/components/FireBreakdownChart";
+import FireTrendChart from "@/pages/Fire/components/FireTrendChart";
 import FirePoolsTable from "@/pages/Fire/components/FirePoolsTable";
 
 // Public, no-auth, no-wallet-gating page — modeled directly on
@@ -22,6 +24,14 @@ export default function Fire() {
   const { formatCurrency } = useCurrency();
   const query = useFireOverview();
   const overview = query.data;
+
+  // Entirely independent of `query`/`overview` above — v1 keeps backing
+  // everything else on this page unchanged. This only ever feeds
+  // FireTrendChart below, and its own loading/error states never affect
+  // anything else here: a slow or failed v2 fetch just means the trend
+  // chart doesn't render, not a page-level error.
+  const trendQuery = useFireOverviewV2();
+  const trendSeries = computeDailyTrend(trendQuery.data?.daily_history);
 
   return (
     <div className="space-y-5 sm:space-y-6 pb-14">
@@ -96,6 +106,16 @@ export default function Fire() {
               stat tile above didn't already say more plainly, same
               reasoning ActivityCharts.jsx already applies to its own
               action-breakdown chart. */}
+          {/* v2-only addition, entirely separate from the v1-driven content
+              elsewhere on this page — absent whenever v2 hasn't loaded yet,
+              failed, or came back degraded with no daily_history (the
+              "flaremetrics_partial" case per the v2 handoff), same as how
+              FireBreakdownChart below simply isn't rendered rather than
+              showing an empty/error chart. Placed before the category
+              breakdown — "how it's moved over time" reads first, "how it
+              splits right now" second. */}
+          {trendSeries.length > 0 && <FireTrendChart series={trendSeries} />}
+
           {overview.pools.length > 1 && <FireBreakdownChart pools={overview.pools} />}
 
           <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">

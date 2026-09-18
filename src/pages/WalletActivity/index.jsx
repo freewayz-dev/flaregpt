@@ -1,10 +1,11 @@
 import { useMemo, useState} from "react";
 import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
-import { useSearchParams } from "react-router";
-import { ArrowPathIcon, WalletIcon, InboxIcon } from "@heroicons/react/24/outline";
+import { useSearchParams, Link } from "react-router";
+import { ArrowPathIcon, WalletIcon, InboxIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 import PageHeader from "@/components/common/PageHeader";
+import { ROUTES } from "@/config/routes";
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useWalletActivity } from "@/hooks/queries/useWalletActivityQueries";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
@@ -141,6 +142,24 @@ export default function WalletActivity() {
             )
           }
         />
+        {/* This page is specifically about *this* wallet's own history —
+            a hash that belongs to someone else's wallet, or one that
+            isn't in the currently-loaded/filtered list, has nowhere to go
+            here. Quiet single-line handoff to the wallet-independent
+            lookup tool, same "lead text + link" pattern as Help.jsx's own
+            AskFlareGptHandoff, rendered unconditionally (unlike the
+            wallet-gated content below) since it's useful even with no
+            wallet connected at all. */}
+        <div className="mt-2 flex flex-wrap items-baseline gap-x-1.5 gap-y-1 text-xs">
+          <span className="text-ink-muted">{t("wallet.activity.lookupTransactionLead")}</span>
+          <Link
+            to={ROUTES.transactionLookup}
+            className="inline-flex items-center gap-0.5 font-semibold text-brand hover:text-brand-hover transition-colors rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+          >
+            {t("wallet.activity.lookupTransactionCta")}
+            <ChevronRightIcon className="h-3 w-3" />
+          </Link>
+        </div>
       </div>
 
       {!activeAddress ? (

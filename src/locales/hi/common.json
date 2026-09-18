@@ -296,6 +296,11 @@
       "token": "टोकन",
       "value": "वैल्यू",
       "viewOnExplorer": "एक्सप्लोरर पर देखें"
+    },
+    "trend": {
+      "subtitle": "पिछले 30 दिनों में टोकन के अनुसार दैनिक अर्जित रेवेन्यू",
+      "title": "रेवेन्यू ट्रेंड",
+      "tokenLabel": "प्रतिदिन अर्जित {{token}}"
     }
   },
   "flareWidget": {
@@ -418,6 +423,10 @@
     "connectToSee": "इसके FTSO रिवॉर्ड्स देखने के लिए वॉलेट कनेक्ट करें या चुनें।",
     "couldntLoad": "आपके FTSO रिवॉर्ड्स लोड नहीं हो सके।",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "केंद्रित",
+        "wellDistributed": "अच्छी तरह वितरित"
+      },
       "count_one": "{{count}} प्रोवाइडर",
       "count_other": "{{count}} प्रोवाइडर्स",
       "emptyDescription": "रिवॉर्ड्स कमाना शुरू करने के लिए अपने WFLR को किसी FTSO डेटा प्रोवाइडर को डेलिगेट करें।",
@@ -994,6 +1003,7 @@
     "settings": "सेटिंग्स",
     "signInRequired": "साइन इन आवश्यक",
     "signInRequiredHint": "साइन इन करने के लिए ऊपर की पट्टी में वॉलेट मेनू का उपयोग करें।",
+    "transactionLookup": "लेनदेन खोज",
     "walletActivity": "वॉलेट गतिविधि",
     "walletConnected": "वॉलेट कनेक्ट हो गया",
     "yield": "यील्ड",
@@ -1006,6 +1016,44 @@
   "staleData": {
     "justNow": "कुछ समय पहले का कैश किया गया डेटा दिखाया जा रहा है",
     "minutesAgo": "{{minutes}} मिनट पहले से कैश किया गया डेटा दिखाया जा रहा है"
+  },
+  "transactionLookup": {
+    "couldntLoad": "यह लेनदेन लोड नहीं हो सका।",
+    "description": "इसकी स्थिति और इसने क्या किया, यह देखने के लिए किसी भी Flare C-chain लेनदेन को उसके हैश से खोजें।",
+    "form": {
+      "label": "लेनदेन हैश",
+      "placeholder": "0x...",
+      "search": "खोजें",
+      "searching": "खोजा जा रहा है…"
+    },
+    "idle": {
+      "description": "इसकी स्थिति, पुष्टियों और इसने क्या किया, यह देखने के लिए ऊपर एक लेनदेन हैश पेस्ट करें।",
+      "title": "एक लेनदेन खोजें"
+    },
+    "invalidFormat": {
+      "description": "यह एक मान्य C-chain लेनदेन हैश जैसा नहीं दिखता।",
+      "title": "अमान्य हैश"
+    },
+    "notFound": {
+      "description": "उस हैश से कोई लेनदेन नहीं मिला।",
+      "title": "लेनदेन नहीं मिला"
+    },
+    "result": {
+      "blockNumber": "ब्लॉक",
+      "confirmations": "पुष्टियाँ",
+      "contractAddress": "बनाया गया कॉन्ट्रैक्ट",
+      "fee": "फीस",
+      "from": "से",
+      "timestamp": "समय",
+      "to": "को",
+      "value": "वैल्यू",
+      "viewOnExplorer": "एक्सप्लोरर पर देखें"
+    },
+    "status": {
+      "failed": "विफल",
+      "pending": "लंबित",
+      "success": "सफल"
+    }
   },
   "update": {
     "available": "FlareGPT का एक नया संस्करण उपलब्ध है।",
@@ -1088,6 +1136,8 @@
         "subtitle": "बड़े वॉलेट को पहली बार लोड होने में कुछ मिनट लग सकते हैं। बेझिझक डैशबोर्ड के बाकी हिस्से को देखें। तैयार होने पर हम आपको बता देंगे।",
         "title": "आपकी वॉलेट गतिविधि इंडेक्स की जा रही है"
       },
+      "lookupTransactionCta": "एक लेनदेन खोजें",
+      "lookupTransactionLead": "कोई खास लेनदेन ढूंढ रहे हैं, तब भी जब वह आपका न हो?",
       "noResults": {
         "description": "अपनी खोज या फ़िल्टर समायोजित करने का प्रयास करें।",
         "title": "कोई मिलान लेनदेन नहीं"

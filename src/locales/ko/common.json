@@ -296,6 +296,11 @@
       "token": "토큰",
       "value": "값",
       "viewOnExplorer": "탐색기에서 보기"
+    },
+    "trend": {
+      "subtitle": "최근 30일간 토큰별 일일 누적 수익",
+      "title": "수익 트렌드",
+      "tokenLabel": "일일 누적 {{token}}"
     }
   },
   "flareWidget": {
@@ -418,6 +423,10 @@
     "connectToSee": "FTSO 보상을 보려면 지갑을 연결하거나 선택하세요.",
     "couldntLoad": "FTSO 보상을 불러올 수 없습니다.",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "집중됨",
+        "wellDistributed": "잘 분산됨"
+      },
       "count_one": "{{count}}개 제공자",
       "count_other": "{{count}}개 제공자",
       "emptyDescription": "보상을 받으려면 WFLR을 FTSO 데이터 제공자에게 위임하세요.",
@@ -994,6 +1003,7 @@
     "settings": "설정",
     "signInRequired": "로그인 필요",
     "signInRequiredHint": "로그인하려면 상단 표시줄의 지갑 메뉴를 사용하세요.",
+    "transactionLookup": "트랜잭션 조회",
     "walletActivity": "지갑 활동",
     "walletConnected": "지갑 연결됨",
     "yield": "수익률",
@@ -1006,6 +1016,44 @@
   "staleData": {
     "justNow": "잠시 전의 캐시된 데이터 표시",
     "minutesAgo": "{{minutes}} 분 전의 캐시된 데이터 표시"
+  },
+  "transactionLookup": {
+    "couldntLoad": "이 거래를 불러올 수 없습니다.",
+    "description": "해시로 Flare C-chain 거래를 조회하여 상태와 내용을 확인하세요.",
+    "form": {
+      "label": "거래 해시",
+      "placeholder": "0x...",
+      "search": "검색",
+      "searching": "검색 중…"
+    },
+    "idle": {
+      "description": "위에 거래 해시를 붙여넣으면 상태, 확인 수, 내용을 확인할 수 있습니다.",
+      "title": "거래 조회하기"
+    },
+    "invalidFormat": {
+      "description": "유효한 C-chain 거래 해시가 아닌 것 같습니다.",
+      "title": "유효하지 않은 해시"
+    },
+    "notFound": {
+      "description": "해당 해시로 된 거래를 찾을 수 없습니다.",
+      "title": "거래를 찾을 수 없음"
+    },
+    "result": {
+      "blockNumber": "블록",
+      "confirmations": "확인 수",
+      "contractAddress": "생성된 컨트랙트",
+      "fee": "수수료",
+      "from": "보낸 주소",
+      "timestamp": "시간",
+      "to": "받는 주소",
+      "value": "값",
+      "viewOnExplorer": "탐색기에서 보기"
+    },
+    "status": {
+      "failed": "실패",
+      "pending": "대기 중",
+      "success": "성공"
+    }
   },
   "update": {
     "available": "FlareGPT의 새 버전을 사용할 수 있습니다.",
@@ -1088,6 +1136,8 @@
         "subtitle": "대형 지갑은 처음 로드할 때 몇 분 정도 걸릴 수 있습니다. 그동안 대시보드의 다른 부분을 자유롭게 둘러보세요. 준비되면 알려드리겠습니다.",
         "title": "지갑 활동 색인 중"
       },
+      "lookupTransactionCta": "거래 조회하기",
+      "lookupTransactionLead": "본인 것이 아니더라도 특정 거래를 찾고 있나요?",
       "noResults": {
         "description": "검색어나 필터를 조정해 보세요.",
         "title": "일치하는 거래가 없습니다"

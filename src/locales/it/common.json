@@ -300,6 +300,11 @@
       "token": "Token",
       "value": "Valore",
       "viewOnExplorer": "Visualizza sull'explorer"
+    },
+    "trend": {
+      "subtitle": "Ricavi maturati giornalmente negli ultimi 30 giorni, per token",
+      "title": "Andamento dei Ricavi",
+      "tokenLabel": "{{token}} maturato al giorno"
     }
   },
   "flareWidget": {
@@ -423,6 +428,10 @@
     "connectToSee": "Collega o seleziona un wallet per vedere le sue ricompense FTSO.",
     "couldntLoad": "Impossibile caricare le tue ricompense FTSO.",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "Concentrato",
+        "wellDistributed": "Ben Distribuito"
+      },
       "count_one": "{{count}} provider",
       "count_many": "{{count}} provider",
       "count_other": "{{count}} provider",
@@ -1004,6 +1013,7 @@
     "settings": "Impostazioni",
     "signInRequired": "Accesso richiesto",
     "signInRequiredHint": "Usa il menu del wallet nella barra superiore per accedere.",
+    "transactionLookup": "Ricerca Transazioni",
     "walletActivity": "Attività Wallet",
     "walletConnected": "Wallet Connesso",
     "yield": "Rendimento",
@@ -1016,6 +1026,44 @@
   "staleData": {
     "justNow": "Visualizzazione dei dati memorizzati nella cache di pochi istanti fa",
     "minutesAgo": "Visualizzazione dei dati memorizzati nella cache di {{minutes}} minuti fa"
+  },
+  "transactionLookup": {
+    "couldntLoad": "Impossibile caricare questa transazione.",
+    "description": "Cerca qualsiasi transazione sulla C-chain di Flare tramite il suo hash per vedere il suo stato e cosa ha fatto.",
+    "form": {
+      "label": "Hash della Transazione",
+      "placeholder": "0x...",
+      "search": "Cerca",
+      "searching": "Ricerca in corso…"
+    },
+    "idle": {
+      "description": "Incolla un hash di transazione sopra per vedere il suo stato, le conferme e cosa ha fatto.",
+      "title": "Cerca una Transazione"
+    },
+    "invalidFormat": {
+      "description": "Questo non sembra un hash di transazione C-chain valido.",
+      "title": "Hash Non Valido"
+    },
+    "notFound": {
+      "description": "Nessuna transazione trovata con quell'hash.",
+      "title": "Transazione Non Trovata"
+    },
+    "result": {
+      "blockNumber": "Blocco",
+      "confirmations": "Conferme",
+      "contractAddress": "Contratto Creato",
+      "fee": "Commissione",
+      "from": "Da",
+      "timestamp": "Ora",
+      "to": "A",
+      "value": "Valore",
+      "viewOnExplorer": "Visualizza sull'explorer"
+    },
+    "status": {
+      "failed": "Fallita",
+      "pending": "In Attesa",
+      "success": "Riuscita"
+    }
   },
   "update": {
     "available": "È disponibile una nuova  versione di %@. ",
@@ -1103,6 +1151,8 @@
         "subtitle": "I wallet più grandi possono richiedere qualche minuto al primo caricamento. Esplora pure il resto della dashboard. Ti avviseremo quando sarà pronto.",
         "title": "Indicizzazione dell'attività del wallet"
       },
+      "lookupTransactionCta": "Cerca una transazione",
+      "lookupTransactionLead": "Stai cercando una transazione specifica, anche una che non è tua?",
       "noResults": {
         "description": "Prova a modificare la ricerca o i filtri.",
         "title": "Nessuna transazione corrispondente"

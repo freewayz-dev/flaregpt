@@ -296,6 +296,11 @@
       "token": "トークン",
       "value": "価値",
       "viewOnExplorer": "エクスプローラーで見る"
+    },
+    "trend": {
+      "subtitle": "過去30日間のトークン別日次累積収益",
+      "title": "収益トレンド",
+      "tokenLabel": "1日あたりの{{token}}累積額"
     }
   },
   "flareWidget": {
@@ -418,6 +423,10 @@
     "connectToSee": "FTSO報酬を表示するには、ウォレットを接続または選択してください。",
     "couldntLoad": "FTSO報酬を読み込めませんでした。",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "集中",
+        "wellDistributed": "均等に分散"
+      },
       "count_one": "{{count}}プロバイダー",
       "count_other": "{{count}}プロバイダー",
       "emptyDescription": "報酬を得るには、WFLRをFTSOデータプロバイダーに委任してください。",
@@ -994,6 +1003,7 @@
     "settings": "設定",
     "signInRequired": "サインインが必要です",
     "signInRequiredHint": "サインインするには、上部バーのウォレットメニューを使用してください。",
+    "transactionLookup": "トランザクション検索",
     "walletActivity": "ウォレット活動",
     "walletConnected": "ウォレット接続済",
     "yield": "利回り",
@@ -1006,6 +1016,44 @@
   "staleData": {
     "justNow": "数分前からキャッシュされたデータを表示しています",
     "minutesAgo": "{{minutes}}分前のキャッシュデータを表示しています"
+  },
+  "transactionLookup": {
+    "couldntLoad": "この取引を読み込めませんでした。",
+    "description": "ハッシュを使ってFlareのC-chain取引を検索し、そのステータスと内容を確認できます。",
+    "form": {
+      "label": "取引ハッシュ",
+      "placeholder": "0x...",
+      "search": "検索",
+      "searching": "検索中…"
+    },
+    "idle": {
+      "description": "上に取引ハッシュを入力すると、ステータス、確認数、内容を確認できます。",
+      "title": "取引を検索"
+    },
+    "invalidFormat": {
+      "description": "有効なC-chain取引ハッシュではないようです。",
+      "title": "無効なハッシュです"
+    },
+    "notFound": {
+      "description": "そのハッシュに一致する取引は見つかりませんでした。",
+      "title": "取引が見つかりません"
+    },
+    "result": {
+      "blockNumber": "ブロック",
+      "confirmations": "確認数",
+      "contractAddress": "作成されたコントラクト",
+      "fee": "手数料",
+      "from": "送信元",
+      "timestamp": "時刻",
+      "to": "送信先",
+      "value": "価値",
+      "viewOnExplorer": "エクスプローラーで見る"
+    },
+    "status": {
+      "failed": "失敗",
+      "pending": "保留中",
+      "success": "成功"
+    }
   },
   "update": {
     "available": "FlareGPTの新しいバージョンが利用可能です。",
@@ -1088,6 +1136,8 @@
         "subtitle": "大きなウォレットは初回読み込みに数分かかることがあります。その間はダッシュボードの他の部分をご自由にご覧ください。準備ができたらお知らせします。",
         "title": "ウォレットアクティビティをインデックス中"
       },
+      "lookupTransactionCta": "取引を検索する",
+      "lookupTransactionLead": "自分のものでない取引も含めて、特定の取引をお探しですか？",
       "noResults": {
         "description": "検索条件やフィルターを調整してみてください。",
         "title": "一致する取引がありません"

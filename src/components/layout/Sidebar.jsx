@@ -74,7 +74,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
         onFocus={link.prefetch}
         onClick={() => setOpen(false)}
         className={`
-          ${link.hideOnMobile ? "hidden lg:flex" : "flex"} items-center rounded-xl py-3 text-xs font-medium transition-colors duration-150
+          ${link.hideOnMobile ? "hidden lg:flex" : "flex"} items-center rounded-xl py-2.5 text-xs font-medium transition-colors duration-150
           px-3 gap-3 ${collapsed ? "lg:justify-center lg:px-2 lg:gap-0" : ""}
           ${
             active
@@ -209,18 +209,23 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
             if (groupLinks.length === 0) return null;
 
             return (
-              <div key={group.id} className="pt-3 space-y-1">
-                {/* Collapsed rail has no room for a label — same fallback
-                    Settings' own mobile tab strip uses when it hits the
-                    same "no space for headers" constraint: drop the label,
-                    keep the items. */}
-                <p
-                  className={`px-3.5 pb-1 text-xs font-medium text-ink-muted ${
-                    collapsed ? "lg:hidden" : ""
-                  }`}
-                >
-                  {t(group.labelKey)}
-                </p>
+              // `role="group"` + `aria-label` keep the logical grouping
+              // available to assistive tech even though the visible text
+              // label is gone — see the sidebar UX review this replaces:
+              // a returning user navigates by remembered icon/position,
+              // not by re-reading "Portfolio"/"Ecosystem"/"General" every
+              // visit, so a full label row × 3 forever outweighed its
+              // one-time discoverability value. A hairline divider keeps
+              // the visual chunking without spending a text row on it.
+              <div key={group.id} role="group" aria-label={t(group.labelKey)} className="space-y-1">
+                {/* `my-2` always applies (mobile drawer + desktop expanded);
+                    collapsed adds a tighter `lg:my-1` override on top of
+                    it, same base-class-plus-lg-override pattern the link's
+                    own `collapsed` styling above already uses. This is the
+                    actual fix for the rail mode: the old label wrapper's
+                    `pt-3` stayed fixed even with the label hidden, so
+                    collapsing never got any more compact than expanded. */}
+                <div className={`my-2 border-t border-line ${collapsed ? "lg:my-1" : ""}`} aria-hidden="true" />
                 {groupLinks.map(renderNavLink)}
               </div>
             );

@@ -296,6 +296,11 @@
       "token": "Token",
       "value": "Nilai",
       "viewOnExplorer": "Lihat di Explorer"
+    },
+    "trend": {
+      "subtitle": "Pendapatan yang terkumpul setiap hari selama 30 hari terakhir, berdasarkan token",
+      "title": "Tren Pendapatan",
+      "tokenLabel": "{{token}} terkumpul per hari"
     }
   },
   "flareWidget": {
@@ -418,6 +423,10 @@
     "connectToSee": "Sambungkan atau pilih dompet untuk melihat reward FTSO-nya.",
     "couldntLoad": "Reward FTSO Anda tidak dapat dimuat.",
     "delegations": {
+      "concentrationBand": {
+        "concentrated": "Terkonsentrasi",
+        "wellDistributed": "Terdistribusi dengan Baik"
+      },
       "count_one": "{{count}} Penyedia",
       "count_other": "{{count}} Penyedia",
       "emptyDescription": "Delegasikan WFLR Anda ke penyedia data FTSO untuk mulai mendapatkan reward.",
@@ -994,6 +1003,7 @@
     "settings": "Pengaturan",
     "signInRequired": "Perlu masuk",
     "signInRequiredHint": "Gunakan menu dompet di bilah atas untuk masuk.",
+    "transactionLookup": "Pencarian Transaksi",
     "walletActivity": "Aktivitas Dompet",
     "walletConnected": "Dompet Terhubung",
     "yield": "Imbal Hasil",
@@ -1006,6 +1016,44 @@
   "staleData": {
     "justNow": "Menampilkan data yang di - cache dari beberapa saat yang lalu",
     "minutesAgo": "Menampilkan data cache dari {{minutes}} menit yang lalu"
+  },
+  "transactionLookup": {
+    "couldntLoad": "Transaksi ini tidak dapat dimuat.",
+    "description": "Cari transaksi C-chain Flare apa pun berdasarkan hash-nya untuk melihat statusnya dan apa yang dilakukannya.",
+    "form": {
+      "label": "Hash Transaksi",
+      "placeholder": "0x...",
+      "search": "Cari",
+      "searching": "Mencari…"
+    },
+    "idle": {
+      "description": "Tempelkan hash transaksi di atas untuk melihat status, konfirmasi, dan apa yang dilakukannya.",
+      "title": "Cari Transaksi"
+    },
+    "invalidFormat": {
+      "description": "Ini tidak terlihat seperti hash transaksi C-chain yang valid.",
+      "title": "Hash Tidak Valid"
+    },
+    "notFound": {
+      "description": "Tidak ada transaksi yang ditemukan dengan hash tersebut.",
+      "title": "Transaksi Tidak Ditemukan"
+    },
+    "result": {
+      "blockNumber": "Blok",
+      "confirmations": "Konfirmasi",
+      "contractAddress": "Kontrak Dibuat",
+      "fee": "Biaya",
+      "from": "Dari",
+      "timestamp": "Waktu",
+      "to": "Ke",
+      "value": "Nilai",
+      "viewOnExplorer": "Lihat di Explorer"
+    },
+    "status": {
+      "failed": "Gagal",
+      "pending": "Tertunda",
+      "success": "Berhasil"
+    }
   },
   "update": {
     "available": "Versi baru FlareGPT tersedia.",
@@ -1088,6 +1136,8 @@
         "subtitle": "Dompet besar bisa memakan waktu beberapa menit saat pertama kali dimuat. Jangan ragu untuk menjelajahi bagian lain dashboard. Kami akan memberi tahu Anda saat sudah siap.",
         "title": "Mengindeks aktivitas wallet Anda"
       },
+      "lookupTransactionCta": "Cari transaksi",
+      "lookupTransactionLead": "Mencari transaksi tertentu, termasuk yang bukan milik Anda?",
       "noResults": {
         "description": "Coba sesuaikan pencarian atau filter Anda.",
         "title": "Tidak ada transaksi yang cocok"
