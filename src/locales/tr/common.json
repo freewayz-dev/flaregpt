@@ -696,6 +696,172 @@
     "installButton": "Kur",
     "installing": "Kuruluyor…"
   },
+  "landing": {
+    "ai": {
+      "badge": "Yapay Zeka Asistanı",
+      "description": "Bir veya birden fazla cüzdan bağlayın, FlareGPT bakiyelerinizi, ödüllerinizi, yönetişim etkinliğinizi ve delegasyon ile staking pozisyonunuzu anında anlasın. Panolarda arama yapmak yerine sorularınızı doğal bir şekilde sorun.",
+      "point1": "Bağlı her cüzdanı anlar.",
+      "point2": "Ödülleri sade bir dille açıklar.",
+      "point3": "Talep edilmeye hazır ödülleri bulur.",
+      "point4": "Gaz ücretleri düşük olduğunda sizi uyarır.",
+      "point5": "Flare ile ilgili her soruyu anında yanıtlar.",
+      "titleLine1": "Cüzdanınızdaki her şey için",
+      "titleLine2": "en akıllı rehber."
+    },
+    "cta": {
+      "connectWallet": "Cüzdan Bağla",
+      "continueAs": "{{address}} olarak devam et",
+      "launchApp": "Uygulamayı Başlat"
+    },
+    "faq": {
+      "items": {
+        "custodial": {
+          "a": "Hayır. FlareGPT tamamen saklama gerektirmez. Cüzdan verilerinizi okuyabilir ancak fonlarınızı asla elinde tutmaz veya taşımaz.",
+          "q": "FlareGPT saklama hizmeti mi sunuyor?"
+        },
+        "dataUsage": {
+          "a": "Verileriniz yalnızca içgörü ve yanıt oluşturmak için kullanılır. Hiçbir şey satılmaz, paylaşılmaz veya oturum bağlamınızın dışında kullanılmaz.",
+          "q": "FlareGPT verilerimi nasıl kullanıyor?"
+        },
+        "multipleWallets": {
+          "a": "Hayır. Tek bir cüzdan veya birden fazla cüzdan bağlayabilirsiniz. FlareGPT her şeyi tek bir birleşik görünümde toplar.",
+          "q": "Kullanmak için birden fazla cüzdana ihtiyacım var mı?"
+        },
+        "transactions": {
+          "a": "Doğrudan değil. Size yol gösterebilir ve öneriler hazırlayabilir ancak tüm işlemleri cüzdanınızda siz onaylamalısınız.",
+          "q": "FlareGPT işlem gerçekleştirebilir mi?"
+        },
+        "wallets": {
+          "a": "FlareGPT başlıca Web3 cüzdanlarıyla çalışır ve öncelikle Flare ekosistemi için geliştirilmiştir; zamanla daha fazla entegrasyon eklenmektedir.",
+          "q": "Hangi cüzdanlar ve ağlar destekleniyor?"
+        },
+        "whatIs": {
+          "a": "FlareGPT, özellikle Flare ekosistemi için geliştirilmiş bir yapay zeka asistanıdır. Flare ağının gerçek zamanlı verilerini, ekosistem bilgisini ve cüzdanlar, FTSO ödülleri, DeFi ve daha fazlası için yerleşik araçları bir araya getirir.",
+          "q": "FlareGPT nedir?"
+        }
+      },
+      "subtitle": "Başlamadan önce FlareGPT hakkında bilmeniz gereken her şey.",
+      "titleLine1": "Sık sorulan",
+      "titleLine2": "sorular."
+    },
+    "features": {
+      "gasSniper": {
+        "badge": "Amiral gemisi otomasyon",
+        "description": "Bir kez açın ve unutun. Gas Sniper ağ koşullarını kesintisiz izler ve gerçekten değdiği anda FTSO ödüllerinizi talep eder, böylece zamanlamayı hiçbir zaman kendiniz yapmak zorunda kalmazsınız.",
+        "point1": "FTSO ödüllerinizi otomatik olarak talep eder — manuel işlem gerekmez",
+        "point2": "Arka planda 7/24 kesintisiz çalışır",
+        "point3": "Yalnızca gaz ücretleri buna değdiğinde talep eder",
+        "point4": "Ağı izlemek için harcayacağınız zamanı size geri verir",
+        "point5": "Flare ekosistemine yerleşik olarak entegre edilmiştir, üçüncü taraf araç gerekmez",
+        "subtitle": "FTSO ödülleriniz, sizin için talep ediliyor",
+        "title": "Gas Sniper"
+      },
+      "items": {
+        "alerts": {
+          "desc": "Düşük gaz ücretleri, ödül fırsatları, cüzdan etkinliği ve önemli ekosistem olayları için uyarılar alın, böylece önemli hiçbir şeyi kaçırmazsınız.",
+          "subtitle": "Doğru zamanda haberdar olun",
+          "title": "Akıllı Uyarılar"
+        },
+        "assistant": {
+          "desc": "Flare ekosistemini anlayan bir yapay zekayla sohbet edin. Portföyünüzü analiz edin, işlemlerinizi anlayın, fırsatları keşfedin ve takip etmeyi seçtiğiniz cüzdanlara özel yanıtlar alın.",
+          "subtitle": "Cüzdanlarınızla ilgili her şeyi sorun",
+          "title": "Kişisel Yapay Zeka Asistanı"
+        },
+        "defiYield": {
+          "desc": "Sceptre, Firelight, MXRPY ve Spectra arasındaki yatırım stratejilerini, APR'leri, koşulları ve ödemeleri yan yana karşılaştırarak güvenle seçim yapın.",
+          "subtitle": "Protokolleri yan yana karşılaştırın",
+          "title": "DeFi Getiri Stratejileri"
+        },
+        "multiWallet": {
+          "desc": "Bakiyeleri, varlıkları, ödülleri ve etkinliği tek bir panodan takip etmek için bir veya birden fazla cüzdan ekleyin. Artık explorer'lar veya araçlar arasında geçiş yapmaya gerek yok.",
+          "subtitle": "Her şeyi tek yerden izleyin",
+          "title": "Çoklu Cüzdan Takibi"
+        },
+        "rewards": {
+          "desc": "Biriken FTSO ödüllerini, sağlayıcılar arasındaki delegasyon ağırlığını ve talep edilmemiş bakiyeleri takip edin; taleple ilgilenmeyi Gas Sniper otomatik olarak halleder.",
+          "subtitle": "Durumunuzu tam olarak görün",
+          "title": "Ödüller ve Delegasyonlar"
+        },
+        "rflrTracker": {
+          "desc": "rFLR hak ediş takviminizi, yaklaşan kilit açılışlarını ve erken çıkış koşullarını, ağ genelindeki canlı emisyon verileriyle birlikte takip edin.",
+          "subtitle": "Ne zaman açılacağını tam olarak bilin",
+          "title": "$rFLR Takipçisi"
+        }
+      },
+      "showcase": {
+        "defiAlt": "Sceptre, Firelight ve MXRPY arasındaki getiri stratejilerini gösteren FlareGPT DeFi protokol karşılaştırması",
+        "defiCaption": "Getiri stratejilerini tek bakışta karşılaştırın",
+        "overviewAlt": "Canlı FLR fiyatını ve ağ istatistiklerini gösteren FlareGPT pano genel görünümü",
+        "overviewCaption": "Her zaman güncel, canlı ağ verileri"
+      },
+      "subtitle": "Cüzdanları yönetin, ödül talebini otomatikleştirin, yönetişime katılın ve yapay zeka destekli içgörüler edinin, hepsi tek bir yerden.",
+      "titleHighlight": "Flare",
+      "titleLine1": "Tek panoda",
+      "titleLine2Suffix": "'nin sunduğu her şey."
+    },
+    "finalCta": {
+      "description": "FlareGPT'ye erişin, ödülleri izleyin, yönetişime katılın, cüzdanlarınızı takip edin ve Flare ekosistemini keşfedin, hepsi tek bir panodan.",
+      "footnote": "Güvenli cüzdan bağlantısı • Kurulum kılavuzu dahil • Kurulum gerekmez",
+      "titleLine1": "Flare portföyünüzü yönetmek için",
+      "titleLine2": "ihtiyacınız olan her şey."
+    },
+    "footer": {
+      "builtWith": "Sektör lideri teknolojilerle geliştirildi",
+      "copyright": "© 2026 Tüm Hakları Saklıdır",
+      "donate": "Bağış Yap",
+      "terms": "Koşullar",
+      "twitterAriaLabel": "X (eski adıyla Twitter)"
+    },
+    "hero": {
+      "badge": "Flare Ağı için geliştirildi",
+      "nonCustodial": "Saklama gerektirmez. FlareGPT fonlarınızı asla elinde tutmaz veya taşımaz.",
+      "subtitle": "Cüzdanları takip edin, ödül talebini otomatikleştirin, gaz ücreti uyarıları alın, yönetişimi izleyin ve Flare portföyünüzü anlayan bir yapay zekayla sohbet edin, hepsi tek bir akıllı platformda.",
+      "titleHighlight": "Flare.",
+      "titlePart1": "Her şey:",
+      "titlePart2": "Basitleştirildi.",
+      "trustLiveData": "Canlı Flare verileriyle çalışır",
+      "trustMultiWallet": "Birden fazla cüzdanı destekler",
+      "trustNoWallet": "Cüzdan gerekmez"
+    },
+    "howItWorks": {
+      "stepLabel": "{{number}}. Adım",
+      "steps": {
+        "ask": {
+          "desc": "Bakiyeleriniz, ödülleriniz ve etkinliğinizle ilgili sade yanıtlar alın.",
+          "title": "FlareGPT'ye sorun"
+        },
+        "automate": {
+          "desc": "FTSO ödüllerini otomatik olarak talep etmek için Gas Sniper'ı açın veya delegasyonları kendiniz yönetin.",
+          "title": "Ödüllerinizi otomatikleştirin"
+        },
+        "connect": {
+          "desc": "İstediğiniz zaman bir veya birkaç tane ekleyin. Baştan hiçbir şey gerekmez.",
+          "title": "Bir cüzdan bağlayın"
+        },
+        "explore": {
+          "desc": "Herhangi bir şey bağlamadan önce canlı ağ verilerine, protokollere ve ödüllere göz atın.",
+          "title": "Anında keşfedin"
+        },
+        "launch": {
+          "desc": "Kayıt yok, kurulum yok. Panoyu doğrudan tarayıcınızdan açın.",
+          "title": "Uygulamayı başlatın"
+        }
+      },
+      "subtitle": "Başlamak için kayıt veya cüzdan gerekmez. Kişiselleştirilmiş yanıtlara hazır olduğunuzda bir tane bağlayın.",
+      "title": "Dakikalar içinde sıfırdan içgörülere."
+    },
+    "navbar": {
+      "navAi": "Yapay Zeka",
+      "navFaq": "SSS",
+      "navFeatures": "Özellikler"
+    },
+    "stats": {
+      "ftsoProviders": "FTSO Sağlayıcıları",
+      "networkHealth": "Ağ Sağlığı",
+      "rewardsTracked": "Takip Edilen Ödüller",
+      "walletsMonitored": "İzlenen Cüzdanlar"
+    }
+  },
   "links": {
     "card": {
       "discord": "Discord",

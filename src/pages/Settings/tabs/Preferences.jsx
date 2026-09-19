@@ -1,8 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { GlobeAltIcon, SparklesIcon, CurrencyDollarIcon } from "@heroicons/react/24/outline";
 
-import { loadLanguage } from "@/i18n";
+import { changeLanguage } from "@/i18n";
 import { useUIStore} from "@/store/useUIStore";
+import { LANGUAGE_OPTIONS } from "@/config/languages";
 import CustomSelect from "@/components/common/CustomSelect";
 import Card from "@/pages/Settings/components/Card";
 import RowItem from "@/pages/Settings/components/RowItem";
@@ -16,23 +17,7 @@ import RowItem from "@/pages/Settings/components/RowItem";
 export default function Preferences() {
   const { t, i18n } = useTranslation();
 
-  const languageOptions = [
-    { value: "en", code: "en", labelKey: "English", flag: "🇺🇸" },
-    { value: "tr", code: "tr", labelKey: "Türkçe", flag: "🇹🇷" },
-    { value: "es", code: "es", labelKey: "Español", flag: "🇪🇸" },
-    { value: "pt", code: "pt", labelKey: "Português", flag: "🇧🇷" },
-    { value: "it", code: "it", labelKey: "Italiano", flag: "🇮🇹" },
-    { value: "fr", code: "fr", labelKey: "Français", flag: "🇫🇷" },
-    { value: "de", code: "de", labelKey: "Deutsch", flag: "🇩🇪" },
-    { value: "ru", code: "ru", labelKey: "Русский", flag: "🇷🇺" },
-    { value: "vi", code: "vi", labelKey: "Tiếng Việt", flag: "🇻🇳" },
-    { value: "id", code: "id", labelKey: "Bahasa Indonesia", flag: "🇮🇩" },
-    { value: "hi", code: "hi", labelKey: "हिन्दी", flag: "🇮🇳" },
-    { value: "zh", code: "zh", labelKey: "中文", flag: "🇨🇳" },
-    { value: "ja", code: "ja", labelKey: "日本語", flag: "🇯🇵" },
-    { value: "ko", code: "ko", labelKey: "한국어", flag: "🇰🇷" },
-    { value: "ar", code: "ar", labelKey: "العربية", flag: "🇦🇪" },
-  ];
+  const languageOptions = LANGUAGE_OPTIONS;
 
   const currencyOptions = [
     { value: "AUD", labelKey: "AUD" },
@@ -74,11 +59,7 @@ export default function Preferences() {
   // `blueLightOptions` values, never anything CustomSelect invents itself.
   const handleBlueLightChange = (option) =>
     updateBlueLightLevel(option.value);
-  const handleLanguageChange = async (selectedOption) => {
-    await loadLanguage(selectedOption.code);
-    i18n.changeLanguage(selectedOption.code);
-    localStorage.setItem("language", selectedOption.code);
-  };
+  const handleLanguageChange = (selectedOption) => changeLanguage(selectedOption.code);
 
   return (
     <Card

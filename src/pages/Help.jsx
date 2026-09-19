@@ -251,7 +251,7 @@ export default function Help() {
                       aria-controls={panelId}
                       className={`flex w-full items-center justify-between gap-4 px-4 py-3.5 text-left cursor-pointer group rounded-xl ${FOCUS_RING}`}
                     >
-                      <span className="text-xs font-medium text-[#475569] group-hover:text-ink-primary dark:group-hover:text-[#FAFAFA] transition-colors">
+                      <span className="text-xs font-medium text-ink-secondary group-hover:text-ink-primary transition-colors">
                         {faq.question}
                       </span>
                       <div

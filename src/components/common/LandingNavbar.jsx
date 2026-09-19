@@ -1,14 +1,16 @@
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import { ROUTES } from "@/config/routes";
 import FlareGptMark from "@/components/common/FlareGptMark";
+import LanguageSelector from "@/components/common/LanguageSelector";
 
 const NAV_ITEMS = [
-  { label: "Features", id: "features" },
-  { label: "AI", id: "ai" },
-  { label: "FAQ", id: "faq" },
+  { labelKey: "landing.navbar.navFeatures", id: "features" },
+  { labelKey: "landing.navbar.navAi", id: "ai" },
+  { labelKey: "landing.navbar.navFaq", id: "faq" },
 ];
 
 // Hides on scroll-down, reappears immediately on any scroll-up — driven
@@ -107,6 +109,7 @@ const HIDDEN_TRANSFORM =
   "translateY(calc(-100% - 1rem - env(safe-area-inset-top) - 24px))";
 
 export default function LandingNavbar() {
+  const { t } = useTranslation();
   const navRef = useRef(null);
   const ticking = useRef(false);
   // The extremum scroll position reached since the nav's current
@@ -254,20 +257,32 @@ export default function LandingNavbar() {
                 }
                 className="group relative rounded-full px-5 py-2 text-[13px] font-medium text-ink-secondary transition-colors hover:text-brand dark:hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
-                {item.label}
+                {t(item.labelKey)}
 
                 <span className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-brand transition-all duration-300 group-hover:w-8" />
               </button>
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="justify-self-end">
+          {/* CTA — `relative` here (not just on LanguageSelector's own inner
+              trigger wrapper) is what the language popover's `right-0`
+              actually anchors against. Anchored to the trigger's own
+              (button-width-only) wrapper instead, the popover's right edge
+              landed wherever the flag button happened to sit — *before*
+              Launch App and this row's own gap, not at this row's true
+              right edge — so on a narrow phone the fixed-width popover
+              extended far enough left to go negative and clip its own
+              flags/first letters off the viewport. Anchoring to this whole
+              row's real right edge (which already correctly sits inside
+              the nav's own padding) recovers that wasted width. */}
+          <div className="relative flex items-center gap-2 md:gap-3 justify-self-end">
+            <LanguageSelector />
+
             <Link
               to={ROUTES.app}
               className="group flex items-center gap-1.5 md:gap-2 rounded-full bg-brand px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-[13px] font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
             >
-              Launch App
+              {t("landing.cta.launchApp")}
               <ArrowRightIcon className="h-3.5 w-3.5 md:h-4 md:w-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
           </div>

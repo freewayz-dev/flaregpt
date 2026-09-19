@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useQueryClient } from "@tanstack/react-query";
 import { MotionConfig } from "framer-motion";
@@ -11,6 +11,15 @@ import { useAuthSync } from "./hooks/useAuthSync";
 import { useWatchlistSync } from "./hooks/useWatchlistSync";
 import { usePwaInstallListeners } from "./hooks/usePwaInstallListeners";
 import { recoverFromChunkLoadError } from "./utils/chunkLoadRecovery";
+
+// Same lazy/dev-gated treatment as `logWebVitalsInDev` (see webVitals.ts) —
+// the dynamic `import()` only ever executes behind `import.meta.env.DEV`
+// below, so this component's chunk is never fetched by a production build,
+// not just hidden from view. Mounted at the app root, not inside
+// DashboardLayout, for the same reason useAuthSync/BlueLightOverlay are:
+// it needs to work on the landing page too, before DashboardLayout (or any
+// wallet connection) ever exists.
+const DevQuickSettings = lazy(() => import("./components/common/DevQuickSettings"));
 
 function App() {
   const reduceMotionOverride = useUIStore((state) => state.reduceMotionOverride);
@@ -95,6 +104,11 @@ function App() {
       <MotionConfig reducedMotion={reduceMotionOverride ? "always" : "user"}>
         <BlueLightOverlay />
         <AppRoutes />
+        {import.meta.env.DEV && (
+          <Suspense fallback={null}>
+            <DevQuickSettings />
+          </Suspense>
+        )}
       </MotionConfig>
     </ErrorBoundary>
   );

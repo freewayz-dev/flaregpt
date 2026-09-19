@@ -126,14 +126,28 @@ export default function HeroReceiveCard({ coin }) {
               <button
                 type="button"
                 onClick={handleCopy}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white transition-colors cursor-pointer hover:bg-brand-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+                className="relative grid place-items-center rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white transition-colors cursor-pointer hover:bg-brand-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
-                {copied ? (
-                  <CheckIcon className="h-4 w-4" />
-                ) : (
+                {/* Both label states sit in the same grid cell (one hidden,
+                    one visible) so the button always sizes to the wider of
+                    the two — fixed width without hardcoding a pixel value
+                    that could clip in a longer-translated locale. */}
+                <span className="invisible col-start-1 row-start-1 inline-flex items-center gap-2 whitespace-nowrap">
                   <ClipboardIcon className="h-4 w-4" />
-                )}
-                {copied ? t("donate.hero.copied") : t("donate.hero.copyAddress")}
+                  {t("donate.hero.copyAddress")}
+                </span>
+                <span className="invisible col-start-1 row-start-1 inline-flex items-center gap-2 whitespace-nowrap">
+                  <CheckIcon className="h-4 w-4" />
+                  {t("donate.hero.copied")}
+                </span>
+                <span className="col-start-1 row-start-1 inline-flex items-center gap-2 whitespace-nowrap">
+                  {copied ? (
+                    <CheckIcon className="h-4 w-4" />
+                  ) : (
+                    <ClipboardIcon className="h-4 w-4" />
+                  )}
+                  {copied ? t("donate.hero.copied") : t("donate.hero.copyAddress")}
+                </span>
               </button>
               <a
                 href={explorerUrl}

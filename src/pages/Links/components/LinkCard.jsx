@@ -34,7 +34,7 @@ export default function LinkCard({ link }) {
   const { t } = useTranslation();
 
   return (
-    <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none flex flex-col gap-3">
+    <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none flex flex-col gap-4">
       <div className="flex items-start gap-3">
         <LinkLogo id={link.id} name={link.name} />
         <div className="min-w-0 flex-1">
@@ -50,22 +50,35 @@ export default function LinkCard({ link }) {
       </div>
 
       {link.description && (
-        <p className="text-xs text-ink-secondary leading-relaxed flex-1">{cleanDescription(link.description)}</p>
+        <p className="text-xs text-ink-secondary leading-relaxed">{cleanDescription(link.description)}</p>
       )}
 
-      <div className="flex flex-wrap items-center gap-1.5 pt-1">
-        <LinkAction href={link.official_site} label={t("links.card.website")} Icon={GlobeAltIcon} />
-        <LinkAction href={link.docs_url} label={t("links.card.docs")} Icon={DocumentTextIcon} />
-        <LinkAction href={link.twitter} label={t("links.card.twitter")} Icon={XLogo} iconOnly />
-        <LinkAction href={link.discord} label={t("links.card.discord")} Icon={ChatBubbleLeftRightIcon} />
-      </div>
-
-      {link.verified_at && (
-        <div className="flex items-center gap-1 text-[11px] text-ink-muted">
-          <ShieldCheckIcon className="h-3 w-3" />
-          {t("links.card.verifiedOn", { date: link.verified_at })}
+      {/* Actions and the verified line were previously two more blocks
+          stacked at the same uniform gap as everything above them, which is
+          what made the card read as one undifferentiated pile of elements.
+          A hairline + extra top padding groups them as one distinct
+          "what you can do with this" zone, separate from the identity
+          content above — same info, but it no longer competes with the
+          name/description for the same visual weight. `mt-auto` pins this
+          zone to the card's bottom regardless of description length, so
+          action rows still line up across a grid row the way the previous
+          flex-1-on-the-description trick did, just without depending on a
+          description existing at all. */}
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-t border-divider pt-3.5">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <LinkAction href={link.official_site} label={t("links.card.website")} Icon={GlobeAltIcon} />
+          <LinkAction href={link.docs_url} label={t("links.card.docs")} Icon={DocumentTextIcon} />
+          <LinkAction href={link.twitter} label={t("links.card.twitter")} Icon={XLogo} iconOnly />
+          <LinkAction href={link.discord} label={t("links.card.discord")} Icon={ChatBubbleLeftRightIcon} />
         </div>
-      )}
+
+        {link.verified_at && (
+          <div className="flex shrink-0 items-center gap-1 text-[11px] text-ink-muted">
+            <ShieldCheckIcon className="h-3 w-3" />
+            {t("links.card.verifiedOn", { date: link.verified_at })}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -703,6 +703,172 @@
     "installButton": "Install",
     "installing": "A instalar..."
   },
+  "landing": {
+    "ai": {
+      "badge": "Assistente de IA",
+      "description": "Conecte uma ou várias carteiras e a FlareGPT entende instantaneamente seus saldos, recompensas, atividade de governança e sua posição de delegação e staking. Faça perguntas naturalmente em vez de vasculhar painéis.",
+      "point1": "Entende cada carteira conectada.",
+      "point2": "Explica as recompensas em linguagem simples.",
+      "point3": "Encontra recompensas prontas para resgate.",
+      "point4": "Avisa você quando as taxas de gás estão baixas.",
+      "point5": "Responde qualquer pergunta sobre a Flare instantaneamente.",
+      "titleLine1": "Seu guia mais inteligente para",
+      "titleLine2": "tudo o que há na sua carteira."
+    },
+    "cta": {
+      "connectWallet": "Conectar Carteira",
+      "continueAs": "Continuar como {{address}}",
+      "launchApp": "Iniciar App"
+    },
+    "faq": {
+      "items": {
+        "custodial": {
+          "a": "Não. A FlareGPT é totalmente não custodial. Ela pode ler os dados da sua carteira, mas nunca retém nem movimenta seus fundos.",
+          "q": "A FlareGPT é custodial?"
+        },
+        "dataUsage": {
+          "a": "Seus dados são usados apenas para gerar insights e respostas. Nada é vendido, compartilhado ou usado fora do contexto da sua sessão.",
+          "q": "Como a FlareGPT usa meus dados?"
+        },
+        "multipleWallets": {
+          "a": "Não. Você pode conectar uma única carteira ou várias. A FlareGPT reúne tudo em uma visão unificada.",
+          "q": "Preciso de várias carteiras para usar?"
+        },
+        "transactions": {
+          "a": "Não diretamente. Ela pode te orientar e preparar recomendações, mas todas as ações devem ser confirmadas por você na sua carteira.",
+          "q": "A FlareGPT pode executar transações?"
+        },
+        "wallets": {
+          "a": "A FlareGPT funciona com as principais carteiras Web3 e é criada principalmente para o ecossistema Flare, com mais integrações sendo adicionadas ao longo do tempo.",
+          "q": "Quais carteiras e redes são suportadas?"
+        },
+        "whatIs": {
+          "a": "A FlareGPT é uma assistente de IA criada especificamente para o ecossistema Flare. Ela combina dados em tempo real da rede Flare, conhecimento do ecossistema e ferramentas integradas para carteiras, recompensas FTSO, DeFi e muito mais.",
+          "q": "O que é a FlareGPT?"
+        }
+      },
+      "subtitle": "Tudo o que você precisa saber sobre a FlareGPT antes de começar.",
+      "titleLine1": "Perguntas",
+      "titleLine2": "frequentes."
+    },
+    "features": {
+      "gasSniper": {
+        "badge": "Automação principal",
+        "description": "Ative uma vez e esqueça. O Gas Sniper monitora as condições da rede o tempo todo e resgata suas recompensas FTSO no momento em que realmente vale a pena, para que você nunca precise calcular o momento certo sozinho.",
+        "point1": "Resgata suas recompensas FTSO automaticamente, sem nenhuma ação manual",
+        "point2": "Roda continuamente em segundo plano, 24 horas por dia, 7 dias por semana",
+        "point3": "Só resgata quando as taxas de gás compensam",
+        "point4": "Devolve a você o tempo que gastaria monitorando a rede",
+        "point5": "Integrado nativamente ao ecossistema Flare, sem ferramentas de terceiros",
+        "subtitle": "Suas recompensas FTSO, resgatadas para você",
+        "title": "Gas Sniper"
+      },
+      "items": {
+        "alerts": {
+          "desc": "Receba alertas de taxas de gás baixas, oportunidades de recompensa, atividade da carteira e eventos importantes do ecossistema, para nunca perder o que importa.",
+          "subtitle": "Seja avisado na hora certa",
+          "title": "Alertas inteligentes"
+        },
+        "assistant": {
+          "desc": "Converse com uma IA que entende o ecossistema Flare. Analise seu portfólio, entenda suas transações, descubra oportunidades e obtenha respostas personalizadas para as carteiras que você escolher acompanhar.",
+          "subtitle": "Pergunte qualquer coisa sobre suas carteiras",
+          "title": "Assistente de IA pessoal"
+        },
+        "defiYield": {
+          "desc": "Compare estratégias de depósito entre Sceptre, Firelight, MXRPY e Spectra, APR, condições e pagamentos lado a lado, para escolher com confiança.",
+          "subtitle": "Compare protocolos lado a lado",
+          "title": "Estratégias de rendimento DeFi"
+        },
+        "multiWallet": {
+          "desc": "Adicione uma ou várias carteiras para acompanhar saldos, ativos, recompensas e atividade em um único painel. Chega de alternar entre exploradores ou ferramentas.",
+          "subtitle": "Monitore tudo em um só lugar",
+          "title": "Rastreamento multi-carteira"
+        },
+        "rewards": {
+          "desc": "Acompanhe as recompensas FTSO acumuladas, o peso de delegação entre provedores e os saldos não resgatados, enquanto o Gas Sniper cuida do resgate automaticamente.",
+          "subtitle": "Veja exatamente onde você está",
+          "title": "Recompensas e delegações"
+        },
+        "rflrTracker": {
+          "desc": "Acompanhe o cronograma de vesting do seu rFLR, os próximos desbloqueios e as condições de saída antecipada, junto com dados de emissão ao vivo de toda a rede.",
+          "subtitle": "Saiba exatamente quando desbloqueia",
+          "title": "Rastreador $rFLR"
+        }
+      },
+      "showcase": {
+        "defiAlt": "Comparação de protocolos DeFi no FlareGPT mostrando estratégias de rendimento entre Sceptre, Firelight e MXRPY",
+        "defiCaption": "Compare estratégias de rendimento rapidamente",
+        "overviewAlt": "Visão geral do painel FlareGPT mostrando o preço ao vivo do FLR e estatísticas da rede",
+        "overviewCaption": "Dados de rede ao vivo, sempre atualizados"
+      },
+      "subtitle": "Gerencie carteiras, automatize o resgate de recompensas, participe da governança e obtenha insights com IA, tudo em um só lugar.",
+      "titleHighlight": "Flare",
+      "titleLine1": "Um painel para tudo o que",
+      "titleLine2Suffix": "tem a oferecer."
+    },
+    "finalCta": {
+      "description": "Acesse a FlareGPT, monitore recompensas, participe da governança, acompanhe suas carteiras e explore o ecossistema Flare, tudo em um único painel.",
+      "footnote": "Conexão de carteira segura • Guia de configuração incluído • Nenhuma instalação necessária",
+      "titleLine1": "Tudo o que você precisa para gerenciar",
+      "titleLine2": "seu portfólio Flare."
+    },
+    "footer": {
+      "builtWith": "Construído com tecnologias líderes do setor",
+      "copyright": "© 2026 Todos os direitos reservados",
+      "donate": "Doar",
+      "terms": "Termos",
+      "twitterAriaLabel": "X (antigo Twitter)"
+    },
+    "hero": {
+      "badge": "Criado para a rede Flare",
+      "nonCustodial": "Não custodial. A FlareGPT nunca retém nem movimenta seus fundos.",
+      "subtitle": "Acompanhe carteiras, automatize o resgate de recompensas, receba alertas de taxas de gás, monitore a governança e converse com uma IA que entende seu portfólio Flare, tudo em uma única plataforma inteligente.",
+      "titleHighlight": "Flare.",
+      "titlePart1": "Tudo sobre a",
+      "titlePart2": "Simplificado.",
+      "trustLiveData": "Baseado em dados ao vivo da Flare",
+      "trustMultiWallet": "Suporta múltiplas carteiras",
+      "trustNoWallet": "Nenhuma carteira necessária"
+    },
+    "howItWorks": {
+      "stepLabel": "Etapa {{number}}",
+      "steps": {
+        "ask": {
+          "desc": "Receba respostas claras e simples sobre seus saldos, recompensas e atividade.",
+          "title": "Pergunte à FlareGPT"
+        },
+        "automate": {
+          "desc": "Ative o Gas Sniper para resgatar recompensas FTSO automaticamente, ou gerencie as delegações você mesmo.",
+          "title": "Automatize suas recompensas"
+        },
+        "connect": {
+          "desc": "Adicione uma ou várias, a qualquer momento. Nada é necessário de antemão.",
+          "title": "Conecte uma carteira"
+        },
+        "explore": {
+          "desc": "Navegue por dados de rede ao vivo, protocolos e recompensas antes de conectar qualquer coisa.",
+          "title": "Explore instantaneamente"
+        },
+        "launch": {
+          "desc": "Sem cadastro, sem instalação. Abra o painel direto do seu navegador.",
+          "title": "Inicie o app"
+        }
+      },
+      "subtitle": "Sem cadastro, sem carteira necessária para começar. Conecte uma quando estiver pronto para respostas personalizadas.",
+      "title": "Do zero a insights em minutos."
+    },
+    "navbar": {
+      "navAi": "IA",
+      "navFaq": "Perguntas frequentes",
+      "navFeatures": "Recursos"
+    },
+    "stats": {
+      "ftsoProviders": "Provedores FTSO",
+      "networkHealth": "Saúde da rede",
+      "rewardsTracked": "Recompensas rastreadas",
+      "walletsMonitored": "Carteiras monitoradas"
+    }
+  },
   "links": {
     "card": {
       "discord": "Discord",

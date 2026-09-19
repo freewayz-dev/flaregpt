@@ -696,6 +696,172 @@
     "installButton": "Cài đặt",
     "installing": "Đang cài đặt..."
   },
+  "landing": {
+    "ai": {
+      "badge": "Trợ lý AI",
+      "description": "Kết nối một hoặc nhiều ví, FlareGPT sẽ ngay lập tức hiểu số dư, phần thưởng, hoạt động quản trị cũng như vị thế ủy quyền và staking của bạn. Đặt câu hỏi một cách tự nhiên thay vì tìm kiếm trong các bảng điều khiển.",
+      "point1": "Hiểu mọi ví đã kết nối.",
+      "point2": "Giải thích phần thưởng bằng ngôn ngữ dễ hiểu.",
+      "point3": "Tìm ra các phần thưởng sẵn sàng để nhận.",
+      "point4": "Cảnh báo bạn khi phí gas thấp.",
+      "point5": "Trả lời ngay lập tức mọi câu hỏi về Flare.",
+      "titleLine1": "Người hướng dẫn thông minh nhất của bạn cho",
+      "titleLine2": "mọi thứ trong ví của bạn."
+    },
+    "cta": {
+      "connectWallet": "Kết nối Ví",
+      "continueAs": "Tiếp tục với tư cách {{address}}",
+      "launchApp": "Khởi chạy Ứng dụng"
+    },
+    "faq": {
+      "items": {
+        "custodial": {
+          "a": "Không. FlareGPT hoàn toàn không lưu ký. Nó có thể đọc dữ liệu ví của bạn nhưng không bao giờ giữ hoặc di chuyển tiền của bạn.",
+          "q": "FlareGPT có lưu ký tài sản không?"
+        },
+        "dataUsage": {
+          "a": "Dữ liệu của bạn chỉ được dùng để tạo ra thông tin chi tiết và câu trả lời. Không có gì bị bán, chia sẻ hoặc sử dụng ngoài phạm vi phiên làm việc của bạn.",
+          "q": "FlareGPT sử dụng dữ liệu của tôi như thế nào?"
+        },
+        "multipleWallets": {
+          "a": "Không. Bạn có thể kết nối một ví duy nhất hoặc nhiều ví. FlareGPT tổng hợp mọi thứ vào một góc nhìn thống nhất.",
+          "q": "Tôi có cần nhiều ví để sử dụng không?"
+        },
+        "transactions": {
+          "a": "Không trực tiếp. Nó có thể hướng dẫn bạn và chuẩn bị các đề xuất, nhưng mọi hành động đều phải do chính bạn xác nhận trong ví của mình.",
+          "q": "FlareGPT có thể thực hiện giao dịch không?"
+        },
+        "wallets": {
+          "a": "FlareGPT hoạt động với các ví Web3 phổ biến và được xây dựng chủ yếu cho hệ sinh thái Flare, với ngày càng nhiều tích hợp được bổ sung theo thời gian.",
+          "q": "Những ví và mạng nào được hỗ trợ?"
+        },
+        "whatIs": {
+          "a": "FlareGPT là một trợ lý AI được xây dựng riêng cho hệ sinh thái Flare. Nó kết hợp dữ liệu mạng Flare theo thời gian thực, kiến thức về hệ sinh thái và các công cụ tích hợp sẵn cho ví, phần thưởng FTSO, DeFi và nhiều hơn nữa.",
+          "q": "FlareGPT là gì?"
+        }
+      },
+      "subtitle": "Mọi điều bạn cần biết về FlareGPT trước khi bắt đầu.",
+      "titleLine1": "Câu hỏi",
+      "titleLine2": "thường gặp."
+    },
+    "features": {
+      "gasSniper": {
+        "badge": "Tự động hóa chủ lực",
+        "description": "Bật một lần và quên nó đi. Gas Sniper theo dõi tình trạng mạng liên tục suốt ngày đêm và nhận phần thưởng FTSO của bạn ngay khi thực sự đáng làm, để bạn không bao giờ phải tự canh thời điểm.",
+        "point1": "Tự động nhận phần thưởng FTSO của bạn, không cần thao tác thủ công",
+        "point2": "Chạy liên tục trong nền, 24/7",
+        "point3": "Chỉ nhận thưởng khi phí gas khiến việc đó đáng giá",
+        "point4": "Trả lại cho bạn thời gian mà bạn sẽ dành để theo dõi mạng",
+        "point5": "Được tích hợp sẵn trong hệ sinh thái Flare, không cần công cụ bên thứ ba",
+        "subtitle": "Phần thưởng FTSO của bạn, được nhận thay bạn",
+        "title": "Gas Sniper"
+      },
+      "items": {
+        "alerts": {
+          "desc": "Nhận cảnh báo về phí gas thấp, cơ hội nhận thưởng, hoạt động ví và các sự kiện quan trọng trong hệ sinh thái, để bạn không bao giờ bỏ lỡ điều quan trọng.",
+          "subtitle": "Được thông báo đúng lúc",
+          "title": "Cảnh báo thông minh"
+        },
+        "assistant": {
+          "desc": "Trò chuyện với AI hiểu rõ hệ sinh thái Flare. Phân tích danh mục của bạn, giải thích giao dịch, khám phá cơ hội và nhận câu trả lời phù hợp với các ví bạn chọn theo dõi.",
+          "subtitle": "Hỏi bất cứ điều gì về ví của bạn",
+          "title": "Trợ lý AI cá nhân"
+        },
+        "defiYield": {
+          "desc": "So sánh các chiến lược gửi tiền giữa Sceptre, Firelight, MXRPY và Spectra, APR, điều khoản và mức chi trả song song, giúp bạn lựa chọn tự tin.",
+          "subtitle": "So sánh các giao thức song song",
+          "title": "Chiến lược lợi suất DeFi"
+        },
+        "multiWallet": {
+          "desc": "Thêm một hoặc nhiều ví để theo dõi số dư, tài sản, phần thưởng và hoạt động từ một bảng điều khiển duy nhất. Không còn phải chuyển đổi giữa các trình khám phá hay công cụ khác nhau.",
+          "subtitle": "Giám sát mọi thứ tại một nơi",
+          "title": "Theo dõi đa ví"
+        },
+        "rewards": {
+          "desc": "Theo dõi phần thưởng FTSO đang tích lũy, trọng số ủy quyền giữa các nhà cung cấp và số dư chưa nhận, trong khi Gas Sniper tự động xử lý việc nhận thưởng.",
+          "subtitle": "Xem chính xác vị thế của bạn",
+          "title": "Phần thưởng & Ủy quyền"
+        },
+        "rflrTracker": {
+          "desc": "Theo dõi lịch trình vesting rFLR, các đợt mở khóa sắp tới và điều khoản rút sớm, cùng với dữ liệu phát hành trực tiếp trên toàn mạng.",
+          "subtitle": "Biết chính xác khi nào mở khóa",
+          "title": "Trình theo dõi $rFLR"
+        }
+      },
+      "showcase": {
+        "defiAlt": "So sánh giao thức DeFi trên FlareGPT hiển thị các chiến lược lợi suất giữa Sceptre, Firelight và MXRPY",
+        "defiCaption": "So sánh chiến lược lợi suất chỉ trong nháy mắt",
+        "overviewAlt": "Tổng quan bảng điều khiển FlareGPT hiển thị giá FLR trực tiếp và số liệu thống kê mạng",
+        "overviewCaption": "Dữ liệu mạng trực tiếp, luôn cập nhật"
+      },
+      "subtitle": "Quản lý ví, tự động hóa việc nhận thưởng, tham gia quản trị và nhận thông tin chi tiết do AI cung cấp, tất cả từ một nơi duy nhất.",
+      "titleHighlight": "Flare",
+      "titleLine1": "Một bảng điều khiển cho mọi thứ mà",
+      "titleLine2Suffix": "mang lại."
+    },
+    "finalCta": {
+      "description": "Truy cập FlareGPT, theo dõi phần thưởng, tham gia quản trị, theo dõi ví của bạn và khám phá hệ sinh thái Flare, tất cả từ một bảng điều khiển duy nhất.",
+      "footnote": "Kết nối ví an toàn • Có kèm hướng dẫn thiết lập • Không cần cài đặt",
+      "titleLine1": "Mọi thứ bạn cần để quản lý",
+      "titleLine2": "danh mục Flare của bạn."
+    },
+    "footer": {
+      "builtWith": "Được xây dựng bằng các công nghệ hàng đầu ngành",
+      "copyright": "© 2026 Bảo lưu mọi quyền",
+      "donate": "Quyên góp",
+      "terms": "Điều khoản",
+      "twitterAriaLabel": "X (trước đây là Twitter)"
+    },
+    "hero": {
+      "badge": "Được xây dựng cho mạng Flare",
+      "nonCustodial": "Không lưu ký. FlareGPT không bao giờ giữ hoặc di chuyển tiền của bạn.",
+      "subtitle": "Theo dõi ví, tự động hóa việc nhận thưởng, nhận cảnh báo phí gas, giám sát quản trị và trò chuyện với AI hiểu rõ danh mục Flare của bạn, tất cả trên một nền tảng thông minh duy nhất.",
+      "titleHighlight": "Flare.",
+      "titlePart1": "Mọi thứ về",
+      "titlePart2": "Đơn giản hóa.",
+      "trustLiveData": "Được hỗ trợ bởi dữ liệu Flare trực tiếp",
+      "trustMultiWallet": "Hỗ trợ nhiều ví",
+      "trustNoWallet": "Không cần ví"
+    },
+    "howItWorks": {
+      "stepLabel": "Bước {{number}}",
+      "steps": {
+        "ask": {
+          "desc": "Nhận câu trả lời rõ ràng, dễ hiểu về số dư, phần thưởng và hoạt động của bạn.",
+          "title": "Hỏi FlareGPT"
+        },
+        "automate": {
+          "desc": "Bật Gas Sniper để tự động nhận phần thưởng FTSO, hoặc tự quản lý ủy quyền.",
+          "title": "Tự động hóa phần thưởng của bạn"
+        },
+        "connect": {
+          "desc": "Thêm một hoặc nhiều ví, bất cứ lúc nào. Không cần gì trước cả.",
+          "title": "Kết nối một ví"
+        },
+        "explore": {
+          "desc": "Duyệt dữ liệu mạng trực tiếp, giao thức và phần thưởng trước khi kết nối bất cứ thứ gì.",
+          "title": "Khám phá ngay lập tức"
+        },
+        "launch": {
+          "desc": "Không cần đăng ký, không cần cài đặt. Mở bảng điều khiển ngay từ trình duyệt của bạn.",
+          "title": "Khởi chạy ứng dụng"
+        }
+      },
+      "subtitle": "Không cần đăng ký, không cần ví để bắt đầu. Kết nối một ví khi bạn sẵn sàng nhận câu trả lời cá nhân hóa.",
+      "title": "Từ con số không đến thông tin chi tiết chỉ trong vài phút."
+    },
+    "navbar": {
+      "navAi": "AI",
+      "navFaq": "Câu hỏi thường gặp",
+      "navFeatures": "Tính năng"
+    },
+    "stats": {
+      "ftsoProviders": "Nhà cung cấp FTSO",
+      "networkHealth": "Tình trạng mạng",
+      "rewardsTracked": "Phần thưởng đã theo dõi",
+      "walletsMonitored": "Ví đang giám sát"
+    }
+  },
   "links": {
     "card": {
       "discord": "Bất hòa",

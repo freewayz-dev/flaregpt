@@ -696,6 +696,172 @@
     "installButton": "Instal",
     "installing": "Pasangkan"
   },
+  "landing": {
+    "ai": {
+      "badge": "Asisten AI",
+      "description": "Hubungkan satu atau beberapa dompet, dan FlareGPT langsung memahami saldo, reward, aktivitas tata kelola, serta posisi delegasi dan staking Anda. Ajukan pertanyaan secara alami alih-alih mencari-cari di dashboard.",
+      "point1": "Memahami setiap dompet yang terhubung.",
+      "point2": "Menjelaskan reward dengan bahasa yang sederhana.",
+      "point3": "Menemukan reward yang siap diklaim.",
+      "point4": "Memberi tahu Anda saat biaya gas rendah.",
+      "point5": "Menjawab pertanyaan apa pun tentang Flare secara instan.",
+      "titleLine1": "Panduan tercerdas Anda untuk",
+      "titleLine2": "semua yang ada di dompet Anda."
+    },
+    "cta": {
+      "connectWallet": "Hubungkan Dompet",
+      "continueAs": "Lanjutkan sebagai {{address}}",
+      "launchApp": "Luncurkan Aplikasi"
+    },
+    "faq": {
+      "items": {
+        "custodial": {
+          "a": "Tidak. FlareGPT sepenuhnya non-custodial. Ia dapat membaca data dompet Anda tetapi tidak pernah menyimpan atau memindahkan dana Anda.",
+          "q": "Apakah FlareGPT bersifat custodial?"
+        },
+        "dataUsage": {
+          "a": "Data Anda hanya digunakan untuk menghasilkan insight dan jawaban. Tidak ada yang dijual, dibagikan, atau digunakan di luar konteks sesi Anda.",
+          "q": "Bagaimana FlareGPT menggunakan data saya?"
+        },
+        "multipleWallets": {
+          "a": "Tidak. Anda bisa menghubungkan satu dompet atau beberapa dompet. FlareGPT menggabungkan semuanya menjadi satu tampilan terpadu.",
+          "q": "Apakah saya perlu banyak dompet untuk menggunakannya?"
+        },
+        "transactions": {
+          "a": "Tidak secara langsung. Ia dapat memandu Anda dan menyiapkan rekomendasi, tetapi semua tindakan harus Anda konfirmasi sendiri di dompet Anda.",
+          "q": "Bisakah FlareGPT menjalankan transaksi?"
+        },
+        "wallets": {
+          "a": "FlareGPT bekerja dengan dompet Web3 utama dan dibuat terutama untuk ekosistem Flare, dengan semakin banyak integrasi yang ditambahkan seiring waktu.",
+          "q": "Dompet dan jaringan apa saja yang didukung?"
+        },
+        "whatIs": {
+          "a": "FlareGPT adalah asisten AI yang dibuat khusus untuk ekosistem Flare. Ia menggabungkan data jaringan Flare secara real-time, pengetahuan ekosistem, dan alat bawaan untuk dompet, reward FTSO, DeFi, dan lainnya.",
+          "q": "Apa itu FlareGPT?"
+        }
+      },
+      "subtitle": "Semua yang perlu Anda ketahui tentang FlareGPT sebelum memulai.",
+      "titleLine1": "Pertanyaan yang sering",
+      "titleLine2": "diajukan."
+    },
+    "features": {
+      "gasSniper": {
+        "badge": "Otomasi Andalan",
+        "description": "Aktifkan sekali dan lupakan. Gas Sniper memantau kondisi jaringan sepanjang waktu dan mengklaim reward FTSO Anda tepat saat benar-benar sepadan, jadi Anda tidak perlu menentukan waktunya sendiri.",
+        "point1": "Otomatis mengklaim reward FTSO Anda, tanpa tindakan manual",
+        "point2": "Berjalan terus-menerus di latar belakang, 24/7",
+        "point3": "Hanya mengklaim saat biaya gas membuatnya sepadan",
+        "point4": "Mengembalikan waktu yang akan Anda habiskan untuk memantau jaringan",
+        "point5": "Terintegrasi secara native ke ekosistem Flare, tanpa alat pihak ketiga",
+        "subtitle": "Reward FTSO Anda, diklaim untuk Anda",
+        "title": "Gas Sniper"
+      },
+      "items": {
+        "alerts": {
+          "desc": "Terima notifikasi untuk biaya gas rendah, peluang reward, aktivitas dompet, dan peristiwa penting ekosistem, agar Anda tidak pernah melewatkan hal yang penting.",
+          "subtitle": "Dapatkan info di waktu yang tepat",
+          "title": "Notifikasi Cerdas"
+        },
+        "assistant": {
+          "desc": "Chat dengan AI yang memahami ekosistem Flare. Analisis portfolio Anda, pahami transaksi, temukan peluang, dan dapatkan jawaban yang disesuaikan dengan dompet yang Anda pilih untuk dilacak.",
+          "subtitle": "Tanyakan apa saja tentang dompet Anda",
+          "title": "Asisten AI Pribadi"
+        },
+        "defiYield": {
+          "desc": "Bandingkan strategi deposit di Sceptre, Firelight, MXRPY, dan Spectra, APR, ketentuan, dan pembayaran secara berdampingan, agar Anda bisa memilih dengan percaya diri.",
+          "subtitle": "Bandingkan protokol secara berdampingan",
+          "title": "Strategi Yield DeFi"
+        },
+        "multiWallet": {
+          "desc": "Tambahkan satu atau beberapa dompet untuk melacak saldo, kepemilikan, reward, dan aktivitas dari satu dashboard. Tidak perlu lagi berpindah-pindah antar explorer atau alat lain.",
+          "subtitle": "Pantau semuanya di satu tempat",
+          "title": "Pelacakan Multi-Dompet"
+        },
+        "rewards": {
+          "desc": "Lacak reward FTSO yang terus bertambah, bobot delegasi di berbagai penyedia, dan saldo yang belum diklaim, sementara Gas Sniper menangani klaim secara otomatis.",
+          "subtitle": "Lihat persis posisi Anda",
+          "title": "Reward & Delegasi"
+        },
+        "rflrTracker": {
+          "desc": "Ikuti jadwal vesting rFLR Anda, pembukaan kunci mendatang, dan ketentuan keluar lebih awal, bersama data emisi jaringan secara langsung.",
+          "subtitle": "Tahu persis kapan terbuka",
+          "title": "Pelacak $rFLR"
+        }
+      },
+      "showcase": {
+        "defiAlt": "Perbandingan protokol DeFi FlareGPT yang menampilkan strategi yield di Sceptre, Firelight, dan MXRPY",
+        "defiCaption": "Bandingkan strategi yield sekilas",
+        "overviewAlt": "Gambaran umum dashboard FlareGPT yang menampilkan harga FLR langsung dan statistik jaringan",
+        "overviewCaption": "Data jaringan langsung, selalu terkini"
+      },
+      "subtitle": "Kelola dompet, otomatiskan klaim reward, berpartisipasi dalam tata kelola, dan dapatkan insight bertenaga AI, semua dari satu tempat.",
+      "titleHighlight": "Flare",
+      "titleLine1": "Satu dashboard untuk semua yang",
+      "titleLine2Suffix": "tawarkan."
+    },
+    "finalCta": {
+      "description": "Akses FlareGPT, pantau reward, berpartisipasi dalam tata kelola, lacak dompet Anda, dan jelajahi ekosistem Flare, semua dari satu dashboard.",
+      "footnote": "Koneksi dompet yang aman • Panduan pengaturan disertakan • Tidak perlu instalasi",
+      "titleLine1": "Semua yang Anda butuhkan untuk mengelola",
+      "titleLine2": "portfolio Flare Anda."
+    },
+    "footer": {
+      "builtWith": "Dibangun dengan teknologi terdepan di industri",
+      "copyright": "© 2026 Hak Cipta Dilindungi",
+      "donate": "Donasi",
+      "terms": "Ketentuan",
+      "twitterAriaLabel": "X (sebelumnya Twitter)"
+    },
+    "hero": {
+      "badge": "Dibuat untuk Jaringan Flare",
+      "nonCustodial": "Non-custodial. FlareGPT tidak pernah menyimpan atau memindahkan dana Anda.",
+      "subtitle": "Lacak dompet, otomatiskan klaim reward, dapatkan notifikasi biaya gas, pantau tata kelola, dan chat dengan AI yang memahami portfolio Flare Anda, semua dari satu platform cerdas.",
+      "titleHighlight": "Flare.",
+      "titlePart1": "Semua tentang",
+      "titlePart2": "Disederhanakan.",
+      "trustLiveData": "Didukung oleh data Flare secara langsung",
+      "trustMultiWallet": "Mendukung banyak dompet",
+      "trustNoWallet": "Tidak perlu dompet"
+    },
+    "howItWorks": {
+      "stepLabel": "Langkah {{number}}",
+      "steps": {
+        "ask": {
+          "desc": "Dapatkan jawaban yang jelas dan sederhana tentang saldo, reward, dan aktivitas Anda.",
+          "title": "Tanya FlareGPT"
+        },
+        "automate": {
+          "desc": "Aktifkan Gas Sniper untuk mengklaim reward FTSO secara otomatis, atau kelola delegasi sendiri.",
+          "title": "Otomatiskan reward Anda"
+        },
+        "connect": {
+          "desc": "Tambahkan satu atau beberapa, kapan saja. Tidak ada yang diperlukan di awal.",
+          "title": "Hubungkan dompet"
+        },
+        "explore": {
+          "desc": "Telusuri data jaringan langsung, protokol, dan reward sebelum menghubungkan apa pun.",
+          "title": "Jelajahi secara instan"
+        },
+        "launch": {
+          "desc": "Tidak perlu daftar, tidak perlu instalasi. Buka dashboard langsung dari browser Anda.",
+          "title": "Luncurkan aplikasi"
+        }
+      },
+      "subtitle": "Tidak perlu daftar, tidak perlu dompet untuk memulai. Hubungkan dompet kapan pun Anda siap untuk jawaban yang dipersonalisasi.",
+      "title": "Dari nol hingga insight dalam hitungan menit."
+    },
+    "navbar": {
+      "navAi": "AI",
+      "navFaq": "FAQ",
+      "navFeatures": "Fitur"
+    },
+    "stats": {
+      "ftsoProviders": "Penyedia FTSO",
+      "networkHealth": "Kesehatan Jaringan",
+      "rewardsTracked": "Reward Terlacak",
+      "walletsMonitored": "Dompet Terpantau"
+    }
+  },
   "links": {
     "card": {
       "discord": "Discord",

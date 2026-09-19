@@ -665,7 +665,7 @@ export default function Wallets() {
                   <div
                     ref={scrollParentRef}
                     data-testid="watchlist-scroll-container"
-                    className={`${LIST_MAX_HEIGHT_CLASS} overflow-y-auto overscroll-contain scrollbar-none`}
+                    className={`${LIST_MAX_HEIGHT_CLASS} overflow-y-auto scrollbar-none`}
                     style={
                       isScrollable
                         ? {

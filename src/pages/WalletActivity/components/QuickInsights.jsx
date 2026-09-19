@@ -11,9 +11,7 @@ function InsightCard({ icon: Icon, label, value, tokenSymbol, countLabel }) {
   return (
     <div className="h-full rounded-2xl bg-surface-card p-4 shadow-sm border border-[#E5E7EB] dark:border-none">
       <div className="flex items-center gap-2">
-        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
-          <Icon className="h-3.5 w-3.5" />
-        </div>
+        <Icon className="h-4 w-4 shrink-0 text-ink-muted" />
         <p className="text-xs text-ink-secondary leading-tight">{label}</p>
       </div>
       <div className="mt-3 flex items-center gap-1.5 min-w-0">

@@ -696,6 +696,172 @@
     "installButton": "安装",
     "installing": "安装…"
   },
+  "landing": {
+    "ai": {
+      "badge": "AI 助手",
+      "description": "连接一个或多个钱包，FlareGPT 会立即了解您的余额、奖励、治理活动，以及委托和质押情况。用自然的方式提问，而不必在仪表盘中四处查找。",
+      "point1": "理解每个已连接的钱包。",
+      "point2": "用通俗易懂的语言解释奖励。",
+      "point3": "找出可领取的奖励。",
+      "point4": "在燃料费较低时提醒您。",
+      "point5": "即时回答任何关于 Flare 的问题。",
+      "titleLine1": "关于您钱包中一切的",
+      "titleLine2": "最智能向导。"
+    },
+    "cta": {
+      "connectWallet": "连接钱包",
+      "continueAs": "以 {{address}} 继续",
+      "launchApp": "启动应用"
+    },
+    "faq": {
+      "items": {
+        "custodial": {
+          "a": "不是。FlareGPT 完全非托管。它可以读取您的钱包数据，但绝不会持有或转移您的资金。",
+          "q": "FlareGPT 是托管型的吗？"
+        },
+        "dataUsage": {
+          "a": "您的数据仅用于生成洞察和解答。任何信息都不会被出售、共享，也不会在您的会话上下文之外使用。",
+          "q": "FlareGPT 如何使用我的数据？"
+        },
+        "multipleWallets": {
+          "a": "不需要。您可以连接单个钱包，也可以连接多个钱包。FlareGPT 会将一切汇总到一个统一视图中。",
+          "q": "使用它需要多个钱包吗？"
+        },
+        "transactions": {
+          "a": "不能直接执行。它可以为您提供指导并准备建议，但所有操作都必须由您本人在钱包中确认。",
+          "q": "FlareGPT 可以执行交易吗？"
+        },
+        "wallets": {
+          "a": "FlareGPT 支持主流 Web3 钱包，主要为 Flare 生态系统打造，并会随着时间推移添加更多集成。",
+          "q": "支持哪些钱包和网络？"
+        },
+        "whatIs": {
+          "a": "FlareGPT 是专为 Flare 生态系统打造的 AI 助手。它结合了 Flare 网络的实时数据、生态系统知识，以及针对钱包、FTSO 奖励、DeFi 等的内置工具。",
+          "q": "什么是 FlareGPT？"
+        }
+      },
+      "subtitle": "在开始之前，您需要了解的关于 FlareGPT 的一切。",
+      "titleLine1": "常见",
+      "titleLine2": "问题。"
+    },
+    "features": {
+      "gasSniper": {
+        "badge": "旗舰自动化功能",
+        "description": "只需开启一次，之后便无需操心。Gas Sniper 全天候监控网络状况，在真正划算的那一刻为您领取 FTSO 奖励，您再也不用自己把握时机。",
+        "point1": "自动领取您的 FTSO 奖励，无需任何手动操作",
+        "point2": "在后台持续运行，全年 24/7 不间断",
+        "point3": "仅在燃料费划算时才进行领取",
+        "point4": "把您原本要花在盯盘上的时间还给您",
+        "point5": "原生集成于 Flare 生态系统，无需任何第三方工具",
+        "subtitle": "您的 FTSO 奖励，为您代领",
+        "title": "Gas Sniper"
+      },
+      "items": {
+        "alerts": {
+          "desc": "接收关于低燃料费、奖励机会、钱包活动和重要生态事件的提醒，让您不再错过任何重要信息。",
+          "subtitle": "在合适的时机收到通知",
+          "title": "智能提醒"
+        },
+        "assistant": {
+          "desc": "与理解 Flare 生态系统的 AI 对话。分析您的投资组合，解读交易记录，发现机会，并获得针对您所追踪钱包量身定制的解答。",
+          "subtitle": "询问关于您钱包的任何问题",
+          "title": "个人 AI 助手"
+        },
+        "defiYield": {
+          "desc": "并排比较 Sceptre、Firelight、MXRPY 和 Spectra 之间的存款策略、APR、条款和收益，让您自信地做出选择。",
+          "subtitle": "并排比较各协议",
+          "title": "DeFi 收益策略"
+        },
+        "multiWallet": {
+          "desc": "添加一个或多个钱包，从单一仪表盘追踪余额、持仓、奖励和活动。再也不用在不同的浏览器或工具之间切换。",
+          "subtitle": "在一处监控所有内容",
+          "title": "多钱包追踪"
+        },
+        "rewards": {
+          "desc": "追踪正在累积的 FTSO 奖励、各提供商之间的委托权重，以及未领取的余额，Gas Sniper 会自动为您处理领取。",
+          "subtitle": "清楚了解您的现状",
+          "title": "奖励与委托"
+        },
+        "rflrTracker": {
+          "desc": "跟踪您的 rFLR 归属时间表、即将到来的解锁，以及提前退出条款，同时查看全网实时发行数据。",
+          "subtitle": "确切了解何时解锁",
+          "title": "$rFLR 追踪器"
+        }
+      },
+      "showcase": {
+        "defiAlt": "FlareGPT DeFi 协议比较，展示 Sceptre、Firelight 和 MXRPY 之间的收益策略",
+        "defiCaption": "一目了然地比较收益策略",
+        "overviewAlt": "FlareGPT 仪表盘概览，显示 FLR 实时价格和网络统计数据",
+        "overviewCaption": "实时网络数据，始终保持最新"
+      },
+      "subtitle": "管理钱包、自动领取奖励、参与治理，并获取 AI 驱动的洞察，所有功能尽在一处。",
+      "titleHighlight": "Flare",
+      "titleLine1": "一个仪表盘，涵盖",
+      "titleLine2Suffix": "的一切。"
+    },
+    "finalCta": {
+      "description": "访问 FlareGPT，监控奖励，参与治理，追踪您的钱包，并探索 Flare 生态系统，所有功能尽在一个仪表盘中。",
+      "footnote": "安全的钱包连接 • 附带设置指南 • 无需安装",
+      "titleLine1": "管理您的 Flare 投资组合",
+      "titleLine2": "所需的一切。"
+    },
+    "footer": {
+      "builtWith": "采用业界领先技术构建",
+      "copyright": "© 2026 版权所有",
+      "donate": "捐赠",
+      "terms": "条款",
+      "twitterAriaLabel": "X（原 Twitter）"
+    },
+    "hero": {
+      "badge": "为 Flare 网络打造",
+      "nonCustodial": "非托管。FlareGPT 绝不持有或转移您的资金。",
+      "subtitle": "追踪钱包、自动领取奖励、接收燃料费提醒、监控治理动态，并与理解您 Flare 投资组合的 AI 对话，所有功能尽在一个智能平台。",
+      "titleHighlight": "Flare.",
+      "titlePart1": "一切关于",
+      "titlePart2": "化繁为简。",
+      "trustLiveData": "基于 Flare 实时数据",
+      "trustMultiWallet": "支持多个钱包",
+      "trustNoWallet": "无需钱包"
+    },
+    "howItWorks": {
+      "stepLabel": "第 {{number}} 步",
+      "steps": {
+        "ask": {
+          "desc": "获得关于您余额、奖励和活动的清晰易懂的解答。",
+          "title": "询问 FlareGPT"
+        },
+        "automate": {
+          "desc": "开启 Gas Sniper 自动领取 FTSO 奖励，或自行管理委托。",
+          "title": "自动化您的奖励"
+        },
+        "connect": {
+          "desc": "随时添加一个或多个钱包。事先无需任何准备。",
+          "title": "连接钱包"
+        },
+        "explore": {
+          "desc": "在连接任何内容之前，浏览实时网络数据、协议和奖励。",
+          "title": "即刻探索"
+        },
+        "launch": {
+          "desc": "无需注册，无需安装。直接从浏览器打开仪表盘。",
+          "title": "启动应用"
+        }
+      },
+      "subtitle": "无需注册，也无需钱包即可开始。当您准备好获取个性化解答时，随时连接钱包。",
+      "title": "几分钟内从零开始获得洞察。"
+    },
+    "navbar": {
+      "navAi": "AI",
+      "navFaq": "常见问题",
+      "navFeatures": "功能"
+    },
+    "stats": {
+      "ftsoProviders": "FTSO 提供商",
+      "networkHealth": "网络健康度",
+      "rewardsTracked": "已追踪奖励",
+      "walletsMonitored": "已监控钱包"
+    }
+  },
   "links": {
     "card": {
       "discord": "Discord",

@@ -34,9 +34,29 @@ const localeLoaders = {
   hi: () => import("@/locales/hi/common.json"),
 };
 
-const savedLanguage = localStorage.getItem("language") || "en";
+// Every supported code — "en" plus whatever's in localeLoaders — shared by
+// both the saved-language check below and detectBrowserLanguage, so a
+// locale added to one is automatically recognized by the other.
+const SUPPORTED_LANGUAGES = new Set(["en", ...Object.keys(localeLoaders)]);
+
+// Step 3 of this app's language priority (saved -> browser -> supported? ->
+// English): `navigator.language` is a full BCP-47 tag ("fr-FR", "pt-BR"),
+// so only its base subtag is compared against what this app actually
+// ships. Never itself written to localStorage — an auto-detected guess
+// only ever drives the in-memory `initialLanguage` below; it becomes
+// "saved" only once a real explicit choice goes through `changeLanguage`.
+function detectBrowserLanguage() {
+  const raw = typeof navigator !== "undefined" ? navigator.language : undefined;
+  if (!raw) return "en";
+  const base = raw.split("-")[0].toLowerCase();
+  return SUPPORTED_LANGUAGES.has(base) ? base : "en";
+}
+
+const savedLanguage = localStorage.getItem("language");
 const initialLanguage =
-  savedLanguage === "en" || localeLoaders[savedLanguage] ? savedLanguage : "en";
+  savedLanguage && SUPPORTED_LANGUAGES.has(savedLanguage)
+    ? savedLanguage
+    : detectBrowserLanguage();
 
 export async function loadLanguage(lng) {
   if (i18n.hasResourceBundle(lng, "translation")) return;
@@ -50,6 +70,19 @@ export async function loadLanguage(lng) {
   }
   const { default: resources } = await loader();
   i18n.addResourceBundle(lng, "translation", resources);
+}
+
+// The one place a language change is actually committed — loads its
+// bundle, switches i18next over to it, and persists the choice, in that
+// order. Every language-selection UI in the app (Settings > Preferences,
+// the landing page's LanguageSelector, DevQuickSettings) calls this
+// instead of repeating the same three calls, so there is exactly one
+// mechanism and one persisted preference shared across all of them — never
+// a per-surface language state.
+export async function changeLanguage(lng) {
+  await loadLanguage(lng);
+  await i18n.changeLanguage(lng);
+  localStorage.setItem("language", lng);
 }
 
 export async function initI18n() {

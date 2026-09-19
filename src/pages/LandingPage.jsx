@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 import { useConnection } from "wagmi";
 import {
   ArrowRightIcon,
@@ -86,6 +87,7 @@ const LandingAIDemo = lazy(() => import("@/components/common/LandingAIDemo"));
 const ConnectWalletModal = lazy(() => import("@/components/common/ConnectWalletModal"));
 
 export default function LandingPage() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(null);
   const [walletModalOpen, setWalletModalOpen] = useState(false);
   const [hasOpenedWalletModal, setHasOpenedWalletModal] = useState(false);
@@ -120,6 +122,16 @@ export default function LandingPage() {
   // exist because *other* crawlers don't run JS at all), so there's no
   // real cost to keeping this here instead of duplicating the content
   // statically.
+  const faqs = useMemo(
+    () =>
+      FAQ_ITEM_KEYS.map((key) => ({
+        key,
+        q: t(`landing.faq.items.${key}.q`),
+        a: t(`landing.faq.items.${key}.a`),
+      })),
+    [t],
+  );
+
   const faqJsonLd = useMemo(
     () => ({
       "@context": "https://schema.org",
@@ -133,7 +145,30 @@ export default function LandingPage() {
         },
       })),
     }),
-    [],
+    [faqs],
+  );
+
+  const howItWorks = useMemo(
+    () =>
+      HOW_IT_WORKS_KEYS.map(({ key, icon }) => ({
+        key,
+        icon,
+        title: t(`landing.howItWorks.steps.${key}.title`),
+        desc: t(`landing.howItWorks.steps.${key}.desc`),
+      })),
+    [t],
+  );
+
+  const features = useMemo(
+    () =>
+      FEATURE_ITEM_KEYS.map(({ key, icon }) => ({
+        key,
+        icon,
+        title: t(`landing.features.items.${key}.title`),
+        subtitle: t(`landing.features.items.${key}.subtitle`),
+        desc: t(`landing.features.items.${key}.desc`),
+      })),
+    [t],
   );
 
   const openWalletModal = () => {
@@ -272,23 +307,21 @@ export default function LandingPage() {
           <section className="flex flex-col items-center px-4 xl:px-0 justify-center text-center max-w-5xl mx-auto pt-20 md:pt-28 pb-28">
             <div className="inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-xl px-4 py-1.5 shadow-sm">
               <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-secondary">
-                Built for the Flare Network
+                {t("landing.hero.badge")}
               </span>
             </div>
 
             <h1 className="mt-7 max-w-3xl font-display text-5xl sm:text-6xl font-bold leading-[1.05] tracking-tight text-ink-primary select-none">
-              Everything{" "}
+              {t("landing.hero.titlePart1")}{" "}
               <span className="bg-gradient-to-r from-brand to-brand-hover bg-clip-text text-transparent">
-                Flare.
+                {t("landing.hero.titleHighlight")}
               </span>
               <br />
-              Simplified.
+              {t("landing.hero.titlePart2")}
             </h1>
 
             <p className="mt-7 max-w-xl text-sm sm:text-sm md:leading-8 leading-6 text-ink-secondary">
-              Track wallets, automate reward claiming, receive gas fee alerts,
-              monitor governance, and chat with an AI that understands your
-              Flare portfolio, all from one intelligent platform.
+              {t("landing.hero.subtitle")}
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-5">
@@ -296,7 +329,7 @@ export default function LandingPage() {
                 to={ROUTES.app}
                 className="rounded-full bg-brand px-7 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/20 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
               >
-                Launch App
+                {t("landing.cta.launchApp")}
               </Link>
 
               <button
@@ -307,10 +340,10 @@ export default function LandingPage() {
                 {isConnected ? (
                   <>
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Continue as {shortenAddress(address)}
+                    {t("landing.cta.continueAs", { address: shortenAddress(address) })}
                   </>
                 ) : (
-                  "Connect Wallet"
+                  t("landing.cta.connectWallet")
                 )}
                 <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
@@ -324,15 +357,15 @@ export default function LandingPage() {
             <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/60 dark:bg-[#161619]/60 backdrop-blur-md px-4 py-1.5">
               <ShieldCheckIcon className="h-3.5 w-3.5 text-emerald-500" />
               <span className="text-[11px] font-medium text-ink-secondary">
-                Non-custodial. FlareGPT never holds or moves your funds.
+                {t("landing.hero.nonCustodial")}
               </span>
             </div>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-[10px] text-ink-muted">
               {[
-                "No wallet required",
-                "Supports multiple wallets",
-                "Powered by live Flare data",
+                t("landing.hero.trustNoWallet"),
+                t("landing.hero.trustMultiWallet"),
+                t("landing.hero.trustLiveData"),
               ].map((item, index) => (
                 <div key={item} className="flex items-center gap-2">
                   <span>{item}</span>
@@ -365,19 +398,19 @@ export default function LandingPage() {
                     {
                       value: "1.42M",
                       suffix: "FLR",
-                      title: "Rewards Tracked",
+                      title: t("landing.stats.rewardsTracked"),
                     },
                     {
                       value: "4,321",
-                      title: "Wallets Monitored",
+                      title: t("landing.stats.walletsMonitored"),
                     },
                     {
                       value: "167",
-                      title: "FTSO Providers",
+                      title: t("landing.stats.ftsoProviders"),
                     },
                     {
                       value: "98.7%",
-                      title: "Network Health",
+                      title: t("landing.stats.networkHealth"),
                     },
                   ].map((item) => (
                     <div
@@ -442,7 +475,7 @@ export default function LandingPage() {
                     <SparklesIcon className="h-3.5 w-3.5 text-brand" />
 
                     <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
-                      AI Assistant
+                      {t("landing.ai.badge")}
                     </span>
                   </div>
 
@@ -462,31 +495,28 @@ export default function LandingPage() {
                         <SparklesIcon className="h-3.5 w-3.5 text-brand" />
 
                         <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
-                          AI Assistant
+                          {t("landing.ai.badge")}
                         </span>
                       </div>
                     </div>
 
                     <h2 className="mt-6 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-[#0F172A] dark:text-white lg:pl-20">
-                      Your smartest guide to
-                      <span className="block">everything in your wallet.</span>
+                      {t("landing.ai.titleLine1")}
+                      <span className="block">{t("landing.ai.titleLine2")}</span>
                     </h2>
 
                     <p className="mx-auto mt-6 max-w-lg text-sm leading-7 text-ink-secondary lg:mx-0 lg:pl-20">
-                      Connect one or multiple wallets and FlareGPT instantly
-                      understands your balances, rewards, governance activity,
-                      delegation and staking position. Ask questions naturally
-                      instead of searching through dashboards.
+                      {t("landing.ai.description")}
                     </p>
 
                     <div className="mt-10 flex justify-center lg:block lg:pl-20">
                       <div className="inline-flex flex-col items-start gap-3 lg:flex">
                         {[
-                          "Understands every connected wallet.",
-                          "Explains rewards in plain English.",
-                          "Finds rewards ready to claim.",
-                          "Alerts you when gas fees are low.",
-                          "Answers any Flare question instantly.",
+                          t("landing.ai.point1"),
+                          t("landing.ai.point2"),
+                          t("landing.ai.point3"),
+                          t("landing.ai.point4"),
+                          t("landing.ai.point5"),
                         ].map((item) => (
                           <div key={item} className="flex items-start gap-3">
                             <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10">
@@ -515,14 +545,14 @@ export default function LandingPage() {
             <FadeIn>
               <div className="mb-10 text-center max-w-2xl mx-auto">
                 <h2 className="font-display max-w-xl pt-4 mx-auto text-2xl sm:text-3xl font-semibold tracking-tight text-ink-primary">
-                  One dashboard for the whole
+                  {t("landing.features.titleLine1")}
                   <br />
-                  <span className="text-brand">Flare</span> ecosystem.
+                  <span className="text-brand">{t("landing.features.titleHighlight")}</span>{" "}
+                  {t("landing.features.titleLine2Suffix")}
                 </h2>
 
                 <p className="mt-4 max-w-xl mx-auto text-sm leading-6 text-ink-secondary">
-                  Manage wallets, automate reward claiming, participate in
-                  governance, and get AI-powered insights, all from one place.
+                  {t("landing.features.subtitle")}
                 </p>
               </div>
             </FadeIn>
@@ -545,11 +575,21 @@ export default function LandingPage() {
                 doing it implicitly here would just read as an oversight. */}
             <FadeIn className="mb-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
               {[
-                { src: darkMode ? overviewDark : overviewLight, alt: "FlareGPT dashboard overview showing live FLR price and network stats", caption: "Live network data, always current" },
-                { src: darkMode ? defiDark : defiLight, alt: "FlareGPT DeFi protocol comparison showing yield strategies across Sceptre, Firelight, and MXRPY", caption: "Compare yield strategies at a glance" },
+                {
+                  key: "overview",
+                  src: darkMode ? overviewDark : overviewLight,
+                  alt: t("landing.features.showcase.overviewAlt"),
+                  caption: t("landing.features.showcase.overviewCaption"),
+                },
+                {
+                  key: "defi",
+                  src: darkMode ? defiDark : defiLight,
+                  alt: t("landing.features.showcase.defiAlt"),
+                  caption: t("landing.features.showcase.defiCaption"),
+                },
               ].map((shot) => (
                 <div
-                  key={shot.caption}
+                  key={shot.key}
                   className="overflow-hidden rounded-2xl border-2 border-brand/30 bg-surface-card shadow-sm"
                 >
                   <div className="overflow-hidden border-b border-brand/30">
@@ -586,32 +626,29 @@ export default function LandingPage() {
                   <div>
                     <div className="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-text">
                       <BoltIcon className="h-3 w-3" />
-                      Flagship automation
+                      {t("landing.features.gasSniper.badge")}
                     </div>
 
                     <h3 className="mt-4 font-display text-xl sm:text-2xl font-semibold tracking-tight text-ink-primary">
-                      Gas Sniper
+                      {t("landing.features.gasSniper.title")}
                     </h3>
 
                     <p className="mt-1 text-sm font-medium text-ink-secondary">
-                      Your FTSO rewards, claimed for you
+                      {t("landing.features.gasSniper.subtitle")}
                     </p>
 
                     <p className="mt-4 max-w-md text-sm leading-7 text-ink-secondary">
-                      Turn it on once and forget about it. Gas Sniper watches
-                      network conditions around the clock and claims your
-                      FTSO rewards the moment it's actually worth doing, so
-                      you never have to time it yourself.
+                      {t("landing.features.gasSniper.description")}
                     </p>
                   </div>
 
                   <div className="space-y-3">
                     {[
-                      "Automatically claims your FTSO rewards — no manual action needed",
-                      "Runs continuously in the background, 24/7",
-                      "Claims only when gas fees make it worth it",
-                      "Gives you back the time you'd spend watching the network",
-                      "Built natively into the Flare ecosystem, no third-party tools",
+                      t("landing.features.gasSniper.point1"),
+                      t("landing.features.gasSniper.point2"),
+                      t("landing.features.gasSniper.point3"),
+                      t("landing.features.gasSniper.point4"),
+                      t("landing.features.gasSniper.point5"),
                     ].map((item) => (
                       <div key={item} className="flex items-start gap-3">
                         <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10">
@@ -662,11 +699,10 @@ export default function LandingPage() {
           <section className="w-full max-w-5xl mx-auto pt-28 md:pt-32 px-4 xl:px-0">
             <div className="mb-14 text-center max-w-xl mx-auto">
               <h2 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-ink-primary">
-                From zero to insights in minutes.
+                {t("landing.howItWorks.title")}
               </h2>
               <p className="mt-4 text-sm leading-6 text-ink-secondary">
-                No signup, no wallet required to start. Connect one whenever
-                you're ready for personalized answers.
+                {t("landing.howItWorks.subtitle")}
               </p>
             </div>
 
@@ -685,7 +721,7 @@ export default function LandingPage() {
                 const Icon = step.icon;
                 const isLast = idx === howItWorks.length - 1;
                 return (
-                  <div key={step.title} className="flex gap-4">
+                  <div key={step.key} className="flex gap-4">
                     <div className="flex flex-col items-center">
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface-card shadow-sm">
                         <Icon className="h-5 w-5 text-brand" />
@@ -694,7 +730,7 @@ export default function LandingPage() {
                     </div>
                     <div className={isLast ? "pb-1" : "pb-8"}>
                       <span className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
-                        Step {idx + 1}
+                        {t("landing.howItWorks.stepLabel", { number: idx + 1 })}
                       </span>
                       <h3 className="mt-1 text-sm font-semibold text-ink-primary">
                         {step.title}
@@ -717,13 +753,13 @@ export default function LandingPage() {
               {howItWorks.map((step, idx) => {
                 const Icon = step.icon;
                 return (
-                  <div key={step.title} className="relative flex flex-col items-center text-center">
+                  <div key={step.key} className="relative flex flex-col items-center text-center">
                     <div className="relative z-10 flex flex-col items-center">
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface-card shadow-sm">
                         <Icon className="h-5 w-5 text-brand" />
                       </div>
                       <span className="mt-3 text-[11px] font-bold uppercase tracking-wider text-ink-muted">
-                        Step {idx + 1}
+                        {t("landing.howItWorks.stepLabel", { number: idx + 1 })}
                       </span>
                     </div>
 
@@ -751,13 +787,12 @@ export default function LandingPage() {
 
               <div className="text-center">
                 <h2 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-[#0F172A] dark:text-white">
-                  Frequently asked
-                  <span className="block">questions.</span>
+                  {t("landing.faq.titleLine1")}
+                  <span className="block">{t("landing.faq.titleLine2")}</span>
                 </h2>
 
                 <p className="mt-5 text-sm leading-7 text-ink-secondary">
-                  Everything you need to know about FlareGPT before you get
-                  started.
+                  {t("landing.faq.subtitle")}
                 </p>
               </div>
 
@@ -770,7 +805,7 @@ export default function LandingPage() {
 
                   return (
                     <div
-                      key={item.q}
+                      key={item.key}
                       className="rounded-2xl border border-line bg-white/90 dark:bg-[#191A1F] overflow-hidden"
                     >
                       {/* Question */}
@@ -841,15 +876,13 @@ export default function LandingPage() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand/10 dark:bg-brand/5 blur-[80px] rounded-full pointer-events-none" />
 
               <h2 className="mt-3 font-display text-3xl sm:text-4xl font-semibold tracking-tight text-ink-primary max-w-lg mx-auto leading-tight">
-                Everything you need to manage
-                <span className="block">your Flare portfolio.</span>
+                {t("landing.finalCta.titleLine1")}
+                <span className="block">{t("landing.finalCta.titleLine2")}</span>
               </h2>
 
 
               <p className="mt-5 max-w-md mx-auto text-sm leading-7 text-ink-secondary">
-                Access FlareGPT, monitor rewards, participate in governance,
-                track your wallets, and explore the Flare ecosystem, all from
-                one dashboard.
+                {t("landing.finalCta.description")}
               </p>
 
 
@@ -858,13 +891,12 @@ export default function LandingPage() {
                   to={ROUTES.app}
                   className="rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-brand-hover shadow-lg shadow-brand/20 hover:shadow-brand/30 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                 >
-                  Launch App
+                  {t("landing.cta.launchApp")}
                 </Link>
 
 
                 <p className="mt-2 text-[11px] text-ink-muted">
-                  Secure wallet connection • Setup guide included • No
-                  installation required
+                  {t("landing.finalCta.footnote")}
                 </p>
               </div>
             </div>
@@ -879,7 +911,7 @@ export default function LandingPage() {
             {/* Ecosystem */}
             <div className="flex flex-col items-center gap-8 pb-12">
               <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-ink-muted">
-                Built with industry-leading technologies
+                {t("landing.footer.builtWith")}
               </p>
 
               {/* Mobile */}
@@ -950,7 +982,7 @@ export default function LandingPage() {
                     </p>
 
                     <p className="font-mono text-[10px] font-medium text-ink-muted">
-                      © 2026 All Rights Reserved
+                      {t("landing.footer.copyright")}
                     </p>
                   </div>
                 </div>
@@ -961,21 +993,21 @@ export default function LandingPage() {
                     to={ROUTES.app}
                     className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
-                    Launch App
+                    {t("landing.cta.launchApp")}
                   </Link>
 
                   <Link
                     to={ROUTES.terms}
                     className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
-                    Terms
+                    {t("landing.footer.terms")}
                   </Link>
 
                   <Link
                     to={ROUTES.donate}
                     className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-brand transition-all hover:bg-brand hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
-                    Donate
+                    {t("landing.footer.donate")}
                     <HeartIcon className="h-3 w-3" />
                   </Link>
 
@@ -983,7 +1015,7 @@ export default function LandingPage() {
                     href="https://x.com/Flare_GPT"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="X (formerly Twitter)"
+                    aria-label={t("landing.footer.twitterAriaLabel")}
                     className="rounded transition-colors hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                   >
                     <XLogo className="h-4 w-4" />
@@ -1004,110 +1036,28 @@ export default function LandingPage() {
   );
 }
 
-const howItWorks = [
-  {
-    icon: RocketLaunchIcon,
-    title: "Launch the app",
-    desc: "No signup, no install. Open the dashboard straight from your browser.",
-  },
-  {
-    icon: EyeIcon,
-    title: "Explore instantly",
-    desc: "Browse live network data, protocols, and rewards before connecting anything.",
-  },
-  {
-    icon: WalletIcon,
-    title: "Connect a wallet",
-    desc: "Add one or several, anytime. Nothing is required up front.",
-  },
-  {
-    icon: ChatBubbleLeftRightIcon,
-    title: "Ask FlareGPT",
-    desc: "Get plain-English answers about your balances, rewards, and activity.",
-  },
-  {
-    icon: GiftIcon,
-    title: "Automate your rewards",
-    desc: "Turn on Gas Sniper to claim FTSO rewards automatically, or manage delegations yourself.",
-  },
+// Icon + translation-key pairings only — the actual title/subtitle/desc
+// text is resolved via t() inside the component (see howItWorks/features/
+// faqs useMemo above), since module scope has no access to the active
+// locale. Order here is what drives render order.
+const HOW_IT_WORKS_KEYS = [
+  { key: "launch", icon: RocketLaunchIcon },
+  { key: "explore", icon: EyeIcon },
+  { key: "connect", icon: WalletIcon },
+  { key: "ask", icon: ChatBubbleLeftRightIcon },
+  { key: "automate", icon: GiftIcon },
 ];
 
-const features = [
-  {
-    id: "01",
-    icon: CpuChipIcon,
-    title: "Personal AI Assistant",
-    subtitle: "Ask anything about your wallets",
-    desc: "Chat with an AI that understands the Flare ecosystem. Analyze your portfolio, explain transactions, discover opportunities, and get answers tailored to the wallets you choose to track.",
-  },
-  {
-    id: "02",
-    icon: CircleStackIcon,
-    title: "Multi-Wallet Tracking",
-    subtitle: "Monitor everything in one place",
-    desc: "Add one or multiple wallets to track balances, holdings, rewards, and activity from a single dashboard. No more switching between explorers or tools.",
-  },
-  {
-    id: "03",
-    icon: ArrowTrendingUpIcon,
-    title: "Rewards & Delegations",
-    subtitle: "See exactly where you stand",
-    desc: "Track accruing FTSO rewards, delegation weight across providers, and unclaimed balances — while Gas Sniper handles the claiming automatically.",
-  },
-  {
-    id: "04",
-    icon: Square3Stack3DIcon,
-    title: "Smart Alerts",
-    subtitle: "Be notified at the right time",
-    desc: "Receive alerts for low gas fees, reward opportunities, wallet activity, and important ecosystem events so you never miss what matters.",
-  },
-  {
-    id: "05",
-    icon: BanknotesIcon,
-    title: "DeFi Yield Strategies",
-    subtitle: "Compare protocols side by side",
-    desc: "Compare deposit strategies across Sceptre, Firelight, MXRPY, and Spectra — APRs, terms, and payouts side by side, so you can choose with confidence.",
-  },
-  {
-    id: "06",
-    icon: ClockIcon,
-    title: "$rFLR Tracker",
-    subtitle: "Know exactly when it unlocks",
-    desc: "Follow your rFLR vesting schedule, upcoming unlocks, and early-exit terms alongside live network-wide emission data.",
-  },
+const FEATURE_ITEM_KEYS = [
+  { key: "assistant", icon: CpuChipIcon },
+  { key: "multiWallet", icon: CircleStackIcon },
+  { key: "rewards", icon: ArrowTrendingUpIcon },
+  { key: "alerts", icon: Square3Stack3DIcon },
+  { key: "defiYield", icon: BanknotesIcon },
+  { key: "rflrTracker", icon: ClockIcon },
 ];
 
-const faqs = [
-  {
-    q: "What is FlareGPT?",
-    a: "FlareGPT is an AI assistant built specifically for the Flare ecosystem. It combines real-time Flare network data, ecosystem knowledge, and built-in tools for wallets, FTSO rewards, DeFi, and more.",
-  },
-
-  {
-    q: "Is FlareGPT custodial?",
-    a: "No. FlareGPT is fully non-custodial. It can read your wallet data but never holds or moves your funds.",
-  },
-
-  {
-    q: "Which wallets and networks are supported?",
-    a: "FlareGPT works with major Web3 wallets and is built primarily for the Flare ecosystem, with more integrations being added over time.",
-  },
-
-  {
-    q: "Do I need multiple wallets to use it?",
-    a: "No. You can connect a single wallet or multiple wallets. FlareGPT aggregates everything into one unified view.",
-  },
-
-  {
-    q: "How does FlareGPT use my data?",
-    a: "Your data is used only to generate insights and responses. Nothing is sold, shared, or used outside your session context.",
-  },
-
-  {
-    q: "Can FlareGPT execute transactions?",
-    a: "Not directly. It can guide you and prepare recommendations, but all actions must be confirmed by you in your wallet.",
-  },
-];
+const FAQ_ITEM_KEYS = ["whatIs", "custodial", "wallets", "multipleWallets", "dataUsage", "transactions"];
 
 const EcosystemPartners = [
   {

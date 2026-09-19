@@ -696,6 +696,172 @@
     "installButton": "Installieren",
     "installing": "Installieren..."
   },
+  "landing": {
+    "ai": {
+      "badge": "KI-Assistent",
+      "description": "Verbinde eine oder mehrere Wallets, und FlareGPT versteht sofort deine Guthaben, Belohnungen, Governance-Aktivitäten sowie deine Delegations- und Staking-Position. Stelle Fragen ganz natürlich, statt Dashboards zu durchsuchen.",
+      "point1": "Versteht jede verbundene Wallet.",
+      "point2": "Erklärt Belohnungen in einfachen Worten.",
+      "point3": "Findet Belohnungen, die bereit zum Einfordern sind.",
+      "point4": "Benachrichtigt dich, wenn die Gasgebühren niedrig sind.",
+      "point5": "Beantwortet jede Frage zu Flare sofort.",
+      "titleLine1": "Dein schlauster Begleiter für",
+      "titleLine2": "alles in deiner Wallet."
+    },
+    "cta": {
+      "connectWallet": "Wallet verbinden",
+      "continueAs": "Weiter als {{address}}",
+      "launchApp": "App starten"
+    },
+    "faq": {
+      "items": {
+        "custodial": {
+          "a": "Nein. FlareGPT ist vollständig Non-Custodial. Es kann deine Wallet-Daten lesen, hält oder bewegt aber niemals dein Guthaben.",
+          "q": "Verwahrt FlareGPT meine Gelder?"
+        },
+        "dataUsage": {
+          "a": "Deine Daten werden ausschließlich zur Erstellung von Einblicken und Antworten verwendet. Nichts wird verkauft, weitergegeben oder außerhalb deines Sitzungskontexts genutzt.",
+          "q": "Wie nutzt FlareGPT meine Daten?"
+        },
+        "multipleWallets": {
+          "a": "Nein. Du kannst eine einzelne oder mehrere Wallets verbinden. FlareGPT fasst alles in einer einheitlichen Ansicht zusammen.",
+          "q": "Brauche ich mehrere Wallets, um es zu nutzen?"
+        },
+        "transactions": {
+          "a": "Nicht direkt. Es kann dich anleiten und Empfehlungen vorbereiten, aber alle Aktionen musst du selbst in deiner Wallet bestätigen.",
+          "q": "Kann FlareGPT Transaktionen ausführen?"
+        },
+        "wallets": {
+          "a": "FlareGPT funktioniert mit den gängigen Web3-Wallets und ist in erster Linie für das Flare-Ökosystem entwickelt, mit laufend neuen Integrationen.",
+          "q": "Welche Wallets und Netzwerke werden unterstützt?"
+        },
+        "whatIs": {
+          "a": "FlareGPT ist ein KI-Assistent, der speziell für das Flare-Ökosystem entwickelt wurde. Er kombiniert Echtzeit-Daten des Flare-Netzwerks, Ökosystemwissen und integrierte Tools für Wallets, FTSO-Belohnungen, DeFi und mehr.",
+          "q": "Was ist FlareGPT?"
+        }
+      },
+      "subtitle": "Alles, was du über FlareGPT wissen musst, bevor du loslegst.",
+      "titleLine1": "Häufig gestellte",
+      "titleLine2": "Fragen."
+    },
+    "features": {
+      "gasSniper": {
+        "badge": "Vorzeige-Automatisierung",
+        "description": "Einmal aktivieren und vergessen. Gas Sniper beobachtet rund um die Uhr die Netzwerkbedingungen und fordert deine FTSO-Belohnungen genau dann ein, wenn es sich wirklich lohnt, sodass du den Zeitpunkt nie selbst abpassen musst.",
+        "point1": "Fordert deine FTSO-Belohnungen automatisch ein — kein manueller Aufwand nötig",
+        "point2": "Läuft rund um die Uhr durchgehend im Hintergrund",
+        "point3": "Fordert nur ein, wenn die Gasgebühren es lohnenswert machen",
+        "point4": "Gibt dir die Zeit zurück, die du mit der Beobachtung des Netzwerks verbringen würdest",
+        "point5": "Nativ in das Flare-Ökosystem integriert, keine Tools von Drittanbietern",
+        "subtitle": "Deine FTSO-Belohnungen, für dich eingefordert",
+        "title": "Gas Sniper"
+      },
+      "items": {
+        "alerts": {
+          "desc": "Erhalte Benachrichtigungen bei niedrigen Gasgebühren, Belohnungschancen, Wallet-Aktivität und wichtigen Ereignissen im Ökosystem, damit dir nie etwas Wichtiges entgeht.",
+          "subtitle": "Zur richtigen Zeit informiert werden",
+          "title": "Intelligente Benachrichtigungen"
+        },
+        "assistant": {
+          "desc": "Chatte mit einer KI, die das Flare-Ökosystem versteht. Analysiere dein Portfolio, lass dir Transaktionen erklären, entdecke Chancen und erhalte Antworten, die auf die Wallets zugeschnitten sind, die du verfolgst.",
+          "subtitle": "Frag alles zu deinen Wallets",
+          "title": "Persönlicher KI-Assistent"
+        },
+        "defiYield": {
+          "desc": "Vergleiche Einlagestrategien bei Sceptre, Firelight, MXRPY und Spectra, APRs, Konditionen und Auszahlungen direkt nebeneinander, damit du sicher entscheiden kannst.",
+          "subtitle": "Vergleiche Protokolle nebeneinander",
+          "title": "DeFi-Ertragsstrategien"
+        },
+        "multiWallet": {
+          "desc": "Füge eine oder mehrere Wallets hinzu, um Guthaben, Bestände, Belohnungen und Aktivitäten in einem einzigen Dashboard zu verfolgen. Kein Wechseln zwischen Explorern oder Tools mehr.",
+          "subtitle": "Behalte alles an einem Ort im Blick",
+          "title": "Multi-Wallet-Tracking"
+        },
+        "rewards": {
+          "desc": "Verfolge anfallende FTSO-Belohnungen, das Delegationsgewicht über alle Anbieter hinweg und nicht eingeforderte Guthaben, während Gas Sniper das Einfordern automatisch übernimmt.",
+          "subtitle": "Sieh genau, wo du stehst",
+          "title": "Belohnungen & Delegationen"
+        },
+        "rflrTracker": {
+          "desc": "Verfolge deinen rFLR-Vesting-Zeitplan, anstehende Freischaltungen und Bedingungen für einen vorzeitigen Ausstieg, zusammen mit Live-Emissionsdaten für das gesamte Netzwerk.",
+          "subtitle": "Wisse genau, wann es freigeschaltet wird",
+          "title": "$rFLR-Tracker"
+        }
+      },
+      "showcase": {
+        "defiAlt": "FlareGPT-Vergleich von DeFi-Protokollen mit Ertragsstrategien bei Sceptre, Firelight und MXRPY",
+        "defiCaption": "Vergleiche Ertragsstrategien auf einen Blick",
+        "overviewAlt": "Übersicht des FlareGPT-Dashboards mit Live-FLR-Preis und Netzwerkstatistiken",
+        "overviewCaption": "Live-Netzwerkdaten, immer aktuell"
+      },
+      "subtitle": "Verwalte Wallets, automatisiere das Einfordern von Belohnungen, nimm an der Governance teil und erhalte KI-gestützte Einblicke, alles an einem Ort.",
+      "titleHighlight": "Flare",
+      "titleLine1": "Ein Dashboard für das gesamte",
+      "titleLine2Suffix": "-Ökosystem."
+    },
+    "finalCta": {
+      "description": "Greife auf FlareGPT zu, überwache Belohnungen, nimm an der Governance teil, verfolge deine Wallets und entdecke das Flare-Ökosystem, alles über ein einziges Dashboard.",
+      "footnote": "Sichere Wallet-Verbindung • Einrichtungsanleitung inklusive • Keine Installation erforderlich",
+      "titleLine1": "Alles, was du brauchst, um dein",
+      "titleLine2": "Flare-Portfolio zu verwalten."
+    },
+    "footer": {
+      "builtWith": "Entwickelt mit branchenführenden Technologien",
+      "copyright": "© 2026 Alle Rechte vorbehalten",
+      "donate": "Spenden",
+      "terms": "Bedingungen",
+      "twitterAriaLabel": "X (ehemals Twitter)"
+    },
+    "hero": {
+      "badge": "Entwickelt für das Flare-Netzwerk",
+      "nonCustodial": "Ohne Verwahrung. FlareGPT hält oder bewegt niemals deine Gelder.",
+      "subtitle": "Verfolge Wallets, automatisiere das Einfordern von Belohnungen, erhalte Gasgebühren-Benachrichtigungen, behalte die Governance im Blick und chatte mit einer KI, die dein Flare-Portfolio versteht, alles auf einer intelligenten Plattform.",
+      "titleHighlight": "Flare.",
+      "titlePart1": "Alles rund um",
+      "titlePart2": "Ganz einfach.",
+      "trustLiveData": "Basierend auf Live-Daten von Flare",
+      "trustMultiWallet": "Unterstützt mehrere Wallets",
+      "trustNoWallet": "Keine Wallet erforderlich"
+    },
+    "howItWorks": {
+      "stepLabel": "Schritt {{number}}",
+      "steps": {
+        "ask": {
+          "desc": "Erhalte verständliche Antworten zu deinen Guthaben, Belohnungen und Aktivitäten.",
+          "title": "Frag FlareGPT"
+        },
+        "automate": {
+          "desc": "Aktiviere Gas Sniper, um FTSO-Belohnungen automatisch einzufordern, oder verwalte Delegationen selbst.",
+          "title": "Automatisiere deine Belohnungen"
+        },
+        "connect": {
+          "desc": "Füge eine oder mehrere hinzu, jederzeit. Vorab ist nichts erforderlich.",
+          "title": "Eine Wallet verbinden"
+        },
+        "explore": {
+          "desc": "Durchstöbere Live-Netzwerkdaten, Protokolle und Belohnungen, bevor du überhaupt etwas verbindest.",
+          "title": "Sofort erkunden"
+        },
+        "launch": {
+          "desc": "Keine Anmeldung, keine Installation. Öffne das Dashboard direkt aus deinem Browser.",
+          "title": "Starte die App"
+        }
+      },
+      "subtitle": "Keine Anmeldung, keine Wallet nötig, um zu starten. Verbinde eine, sobald du bereit für persönliche Antworten bist.",
+      "title": "In wenigen Minuten von null zu Einblicken."
+    },
+    "navbar": {
+      "navAi": "KI",
+      "navFaq": "FAQ",
+      "navFeatures": "Funktionen"
+    },
+    "stats": {
+      "ftsoProviders": "FTSO-Anbieter",
+      "networkHealth": "Netzwerkzustand",
+      "rewardsTracked": "Erfasste Belohnungen",
+      "walletsMonitored": "Überwachte Wallets"
+    }
+  },
   "links": {
     "card": {
       "discord": "Discord",

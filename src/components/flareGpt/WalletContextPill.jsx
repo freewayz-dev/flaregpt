@@ -254,7 +254,7 @@ export default function WalletContextPill({ onOpenWalletModal }) {
                 max: Number.isFinite(maxSlots) ? maxSlots : "∞",
               })}
             </p>
-            <div className="max-h-32 overflow-y-auto space-y-0.5 scrollbar-none">
+            <div className="max-h-32 overflow-y-auto space-y-0.5 scrollbar-none divide-y divide-line">
               {watchlistWallets.map((wallet) => (
                 <WalletRow
                   key={wallet.address}

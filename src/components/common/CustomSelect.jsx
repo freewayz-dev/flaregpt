@@ -136,7 +136,7 @@ export default function CustomSelect({
 
       <ul
         role="listbox"
-        className={`absolute z-50 mt-1.5 max-h-60 w-full overflow-auto rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] p-1 shadow-lg dark:bg-[#21242B] dark:border-none transition-[opacity,transform,visibility] duration-200 ease-out 
+        className={`absolute z-50 mt-1.5 max-h-60 w-full overflow-auto scrollbar-none divide-y divide-line rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] p-1 shadow-lg dark:bg-[#21242B] dark:border-none transition-[opacity,transform,visibility] duration-200 ease-out
           ${isOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-1 invisible"}`}
       >
         {options?.map((option, index) => {

@@ -696,6 +696,172 @@
     "installButton": "Install",
     "installing": "Installing…"
   },
+  "landing": {
+    "ai": {
+      "badge": "AI Assistant",
+      "description": "Connect one or multiple wallets and FlareGPT instantly understands your balances, rewards, governance activity, delegation and staking position. Ask questions naturally instead of searching through dashboards.",
+      "point1": "Understands every connected wallet.",
+      "point2": "Explains rewards in plain English.",
+      "point3": "Finds rewards ready to claim.",
+      "point4": "Alerts you when gas fees are low.",
+      "point5": "Answers any Flare question instantly.",
+      "titleLine1": "Your smartest guide to",
+      "titleLine2": "everything in your wallet."
+    },
+    "cta": {
+      "connectWallet": "Connect Wallet",
+      "continueAs": "Continue as {{address}}",
+      "launchApp": "Launch App"
+    },
+    "faq": {
+      "items": {
+        "custodial": {
+          "a": "No. FlareGPT is fully non-custodial. It can read your wallet data but never holds or moves your funds.",
+          "q": "Is FlareGPT custodial?"
+        },
+        "dataUsage": {
+          "a": "Your data is used only to generate insights and responses. Nothing is sold, shared, or used outside your session context.",
+          "q": "How does FlareGPT use my data?"
+        },
+        "multipleWallets": {
+          "a": "No. You can connect a single wallet or multiple wallets. FlareGPT aggregates everything into one unified view.",
+          "q": "Do I need multiple wallets to use it?"
+        },
+        "transactions": {
+          "a": "Not directly. It can guide you and prepare recommendations, but all actions must be confirmed by you in your wallet.",
+          "q": "Can FlareGPT execute transactions?"
+        },
+        "wallets": {
+          "a": "FlareGPT works with major Web3 wallets and is built primarily for the Flare ecosystem, with more integrations being added over time.",
+          "q": "Which wallets and networks are supported?"
+        },
+        "whatIs": {
+          "a": "FlareGPT is an AI assistant built specifically for the Flare ecosystem. It combines real-time Flare network data, ecosystem knowledge, and built-in tools for wallets, FTSO rewards, DeFi, and more.",
+          "q": "What is FlareGPT?"
+        }
+      },
+      "subtitle": "Everything you need to know about FlareGPT before you get started.",
+      "titleLine1": "Frequently asked",
+      "titleLine2": "questions."
+    },
+    "features": {
+      "gasSniper": {
+        "badge": "Flagship automation",
+        "description": "Turn it on once and forget about it. Gas Sniper watches network conditions around the clock and claims your FTSO rewards the moment it's actually worth doing, so you never have to time it yourself.",
+        "point1": "Automatically claims your FTSO rewards — no manual action needed",
+        "point2": "Runs continuously in the background, 24/7",
+        "point3": "Claims only when gas fees make it worth it",
+        "point4": "Gives you back the time you'd spend watching the network",
+        "point5": "Built natively into the Flare ecosystem, no third-party tools",
+        "subtitle": "Your FTSO rewards, claimed for you",
+        "title": "Gas Sniper"
+      },
+      "items": {
+        "alerts": {
+          "desc": "Receive alerts for low gas fees, reward opportunities, wallet activity, and important ecosystem events so you never miss what matters.",
+          "subtitle": "Be notified at the right time",
+          "title": "Smart Alerts"
+        },
+        "assistant": {
+          "desc": "Chat with an AI that understands the Flare ecosystem. Analyze your portfolio, explain transactions, discover opportunities, and get answers tailored to the wallets you choose to track.",
+          "subtitle": "Ask anything about your wallets",
+          "title": "Personal AI Assistant"
+        },
+        "defiYield": {
+          "desc": "Compare deposit strategies across Sceptre, Firelight, MXRPY, and Spectra — APRs, terms, and payouts side by side, so you can choose with confidence.",
+          "subtitle": "Compare protocols side by side",
+          "title": "DeFi Yield Strategies"
+        },
+        "multiWallet": {
+          "desc": "Add one or multiple wallets to track balances, holdings, rewards, and activity from a single dashboard. No more switching between explorers or tools.",
+          "subtitle": "Monitor everything in one place",
+          "title": "Multi-Wallet Tracking"
+        },
+        "rewards": {
+          "desc": "Track accruing FTSO rewards, delegation weight across providers, and unclaimed balances — while Gas Sniper handles the claiming automatically.",
+          "subtitle": "See exactly where you stand",
+          "title": "Rewards & Delegations"
+        },
+        "rflrTracker": {
+          "desc": "Follow your rFLR vesting schedule, upcoming unlocks, and early-exit terms alongside live network-wide emission data.",
+          "subtitle": "Know exactly when it unlocks",
+          "title": "$rFLR Tracker"
+        }
+      },
+      "showcase": {
+        "defiAlt": "FlareGPT DeFi protocol comparison showing yield strategies across Sceptre, Firelight, and MXRPY",
+        "defiCaption": "Compare yield strategies at a glance",
+        "overviewAlt": "FlareGPT dashboard overview showing live FLR price and network stats",
+        "overviewCaption": "Live network data, always current"
+      },
+      "subtitle": "Manage wallets, automate reward claiming, participate in governance, and get AI-powered insights, all from one place.",
+      "titleHighlight": "Flare",
+      "titleLine1": "One dashboard for the whole",
+      "titleLine2Suffix": "ecosystem."
+    },
+    "finalCta": {
+      "description": "Access FlareGPT, monitor rewards, participate in governance, track your wallets, and explore the Flare ecosystem, all from one dashboard.",
+      "footnote": "Secure wallet connection • Setup guide included • No installation required",
+      "titleLine1": "Everything you need to manage",
+      "titleLine2": "your Flare portfolio."
+    },
+    "footer": {
+      "builtWith": "Built with industry-leading technologies",
+      "copyright": "© 2026 All Rights Reserved",
+      "donate": "Donate",
+      "terms": "Terms",
+      "twitterAriaLabel": "X (formerly Twitter)"
+    },
+    "hero": {
+      "badge": "Built for the Flare Network",
+      "nonCustodial": "Non-custodial. FlareGPT never holds or moves your funds.",
+      "subtitle": "Track wallets, automate reward claiming, receive gas fee alerts, monitor governance, and chat with an AI that understands your Flare portfolio, all from one intelligent platform.",
+      "titleHighlight": "Flare.",
+      "titlePart1": "Everything",
+      "titlePart2": "Simplified.",
+      "trustLiveData": "Powered by live Flare data",
+      "trustMultiWallet": "Supports multiple wallets",
+      "trustNoWallet": "No wallet required"
+    },
+    "howItWorks": {
+      "stepLabel": "Step {{number}}",
+      "steps": {
+        "ask": {
+          "desc": "Get plain-English answers about your balances, rewards, and activity.",
+          "title": "Ask FlareGPT"
+        },
+        "automate": {
+          "desc": "Turn on Gas Sniper to claim FTSO rewards automatically, or manage delegations yourself.",
+          "title": "Automate your rewards"
+        },
+        "connect": {
+          "desc": "Add one or several, anytime. Nothing is required up front.",
+          "title": "Connect a wallet"
+        },
+        "explore": {
+          "desc": "Browse live network data, protocols, and rewards before connecting anything.",
+          "title": "Explore instantly"
+        },
+        "launch": {
+          "desc": "No signup, no install. Open the dashboard straight from your browser.",
+          "title": "Launch the app"
+        }
+      },
+      "subtitle": "No signup, no wallet required to start. Connect one whenever you're ready for personalized answers.",
+      "title": "From zero to insights in minutes."
+    },
+    "navbar": {
+      "navAi": "AI",
+      "navFaq": "FAQ",
+      "navFeatures": "Features"
+    },
+    "stats": {
+      "ftsoProviders": "FTSO Providers",
+      "networkHealth": "Network Health",
+      "rewardsTracked": "Rewards Tracked",
+      "walletsMonitored": "Wallets Monitored"
+    }
+  },
   "links": {
     "card": {
       "discord": "Discord",

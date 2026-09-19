@@ -703,6 +703,172 @@
     "installButton": "Installer",
     "installing": "Installation en cours..."
   },
+  "landing": {
+    "ai": {
+      "badge": "Assistant IA",
+      "description": "Connectez un ou plusieurs portefeuilles, et FlareGPT comprend instantanément vos soldes, récompenses, activité de gouvernance et votre position de délégation et de staking. Posez vos questions naturellement au lieu de fouiller dans des tableaux de bord.",
+      "point1": "Comprend chaque portefeuille connecté.",
+      "point2": "Explique les récompenses en langage simple.",
+      "point3": "Trouve les récompenses prêtes à être réclamées.",
+      "point4": "Vous alerte quand les frais de gaz sont bas.",
+      "point5": "Répond instantanément à toute question sur Flare.",
+      "titleLine1": "Le guide le plus intelligent pour",
+      "titleLine2": "tout ce qui se trouve dans votre portefeuille."
+    },
+    "cta": {
+      "connectWallet": "Connecter le Portefeuille",
+      "continueAs": "Continuer en tant que {{address}}",
+      "launchApp": "Lancer l'App"
+    },
+    "faq": {
+      "items": {
+        "custodial": {
+          "a": "Non. FlareGPT est entièrement non dépositaire. Il peut lire les données de votre portefeuille, mais ne détient ni ne déplace jamais vos fonds.",
+          "q": "FlareGPT est-il dépositaire ?"
+        },
+        "dataUsage": {
+          "a": "Vos données ne sont utilisées que pour générer des analyses et des réponses. Rien n'est vendu, partagé, ni utilisé en dehors du contexte de votre session.",
+          "q": "Comment FlareGPT utilise-t-il mes données ?"
+        },
+        "multipleWallets": {
+          "a": "Non. Vous pouvez connecter un seul portefeuille ou plusieurs. FlareGPT regroupe tout en une vue unifiée.",
+          "q": "Ai-je besoin de plusieurs portefeuilles pour l'utiliser ?"
+        },
+        "transactions": {
+          "a": "Pas directement. Il peut vous guider et préparer des recommandations, mais toutes les actions doivent être confirmées par vous, dans votre portefeuille.",
+          "q": "FlareGPT peut-il exécuter des transactions ?"
+        },
+        "wallets": {
+          "a": "FlareGPT fonctionne avec les principaux portefeuilles Web3 et est conçu principalement pour l'écosystème Flare, avec de nouvelles intégrations ajoutées au fil du temps.",
+          "q": "Quels portefeuilles et réseaux sont pris en charge ?"
+        },
+        "whatIs": {
+          "a": "FlareGPT est un assistant IA conçu spécifiquement pour l'écosystème Flare. Il combine des données en temps réel du réseau Flare, une connaissance de l'écosystème et des outils intégrés pour les portefeuilles, les récompenses FTSO, la DeFi et plus encore.",
+          "q": "Qu'est-ce que FlareGPT ?"
+        }
+      },
+      "subtitle": "Tout ce que vous devez savoir sur FlareGPT avant de commencer.",
+      "titleLine1": "Questions",
+      "titleLine2": "fréquentes."
+    },
+    "features": {
+      "gasSniper": {
+        "badge": "Automatisation phare",
+        "description": "Activez-le une fois et n'y pensez plus. Gas Sniper surveille les conditions du réseau en continu et réclame vos récompenses FTSO dès que cela en vaut vraiment la peine, pour que vous n'ayez jamais à choisir le bon moment vous-même.",
+        "point1": "Réclame automatiquement vos récompenses FTSO, sans aucune action manuelle",
+        "point2": "Fonctionne en continu en arrière-plan, 24h/24 et 7j/7",
+        "point3": "Ne réclame que lorsque les frais de gaz en valent la peine",
+        "point4": "Vous rend le temps que vous auriez passé à surveiller le réseau",
+        "point5": "Intégré nativement à l'écosystème Flare, sans outil tiers",
+        "subtitle": "Vos récompenses FTSO, réclamées pour vous",
+        "title": "Gas Sniper"
+      },
+      "items": {
+        "alerts": {
+          "desc": "Recevez des alertes en cas de frais de gaz bas, d'opportunités de récompenses, d'activité sur vos portefeuilles et d'événements importants de l'écosystème, pour ne jamais manquer l'essentiel.",
+          "subtitle": "Soyez informé au bon moment",
+          "title": "Alertes intelligentes"
+        },
+        "assistant": {
+          "desc": "Discutez avec une IA qui comprend l'écosystème Flare. Analysez votre portefeuille, faites-vous expliquer vos transactions, découvrez des opportunités et obtenez des réponses adaptées aux portefeuilles que vous choisissez de suivre.",
+          "subtitle": "Posez toutes vos questions sur vos portefeuilles",
+          "title": "Assistant IA personnel"
+        },
+        "defiYield": {
+          "desc": "Comparez les stratégies de dépôt entre Sceptre, Firelight, MXRPY et Spectra, APR, conditions et versements, le tout côte à côte, pour choisir en toute confiance.",
+          "subtitle": "Comparez les protocoles côte à côte",
+          "title": "Stratégies de rendement DeFi"
+        },
+        "multiWallet": {
+          "desc": "Ajoutez un ou plusieurs portefeuilles pour suivre soldes, avoirs, récompenses et activité depuis un seul tableau de bord. Fini de jongler entre les explorateurs et les outils.",
+          "subtitle": "Surveillez tout au même endroit",
+          "title": "Suivi multi-portefeuilles"
+        },
+        "rewards": {
+          "desc": "Suivez les récompenses FTSO en cours d'accumulation, le poids de délégation entre fournisseurs et les soldes non réclamés, pendant que Gas Sniper s'occupe de la réclamation automatiquement.",
+          "subtitle": "Sachez exactement où vous en êtes",
+          "title": "Récompenses et délégations"
+        },
+        "rflrTracker": {
+          "desc": "Suivez le calendrier de vesting de votre rFLR, les prochains déblocages et les conditions de sortie anticipée, ainsi que les données d'émission en direct à l'échelle du réseau.",
+          "subtitle": "Sachez exactement quand ça se débloque",
+          "title": "Suivi $rFLR"
+        }
+      },
+      "showcase": {
+        "defiAlt": "Comparaison des protocoles DeFi sur FlareGPT montrant les stratégies de rendement entre Sceptre, Firelight et MXRPY",
+        "defiCaption": "Comparez les stratégies de rendement en un coup d'œil",
+        "overviewAlt": "Aperçu du tableau de bord FlareGPT affichant le prix du FLR en direct et les statistiques du réseau",
+        "overviewCaption": "Données réseau en direct, toujours à jour"
+      },
+      "subtitle": "Gérez vos portefeuilles, automatisez la réclamation des récompenses, participez à la gouvernance et bénéficiez d'analyses propulsées par l'IA, le tout depuis un seul endroit.",
+      "titleHighlight": "Flare",
+      "titleLine1": "Un tableau de bord pour tout ce que",
+      "titleLine2Suffix": "a à offrir."
+    },
+    "finalCta": {
+      "description": "Accédez à FlareGPT, surveillez vos récompenses, participez à la gouvernance, suivez vos portefeuilles et explorez l'écosystème Flare, le tout depuis un seul tableau de bord.",
+      "footnote": "Connexion de portefeuille sécurisée • Guide de configuration inclus • Aucune installation requise",
+      "titleLine1": "Tout ce dont vous avez besoin pour gérer",
+      "titleLine2": "votre portefeuille Flare."
+    },
+    "footer": {
+      "builtWith": "Conçu avec des technologies parmi les plus avancées du secteur",
+      "copyright": "© 2026 Tous droits réservés",
+      "donate": "Faire un don",
+      "terms": "Conditions",
+      "twitterAriaLabel": "X (anciennement Twitter)"
+    },
+    "hero": {
+      "badge": "Conçu pour le réseau Flare",
+      "nonCustodial": "Non dépositaire. FlareGPT ne détient ni ne déplace jamais vos fonds.",
+      "subtitle": "Suivez vos portefeuilles, automatisez la réclamation des récompenses, recevez des alertes sur les frais de gaz, surveillez la gouvernance et discutez avec une IA qui comprend votre portefeuille Flare, le tout depuis une seule plateforme intelligente.",
+      "titleHighlight": "Flare.",
+      "titlePart1": "Tout sur",
+      "titlePart2": "En toute simplicité.",
+      "trustLiveData": "Alimenté par les données Flare en direct",
+      "trustMultiWallet": "Prend en charge plusieurs portefeuilles",
+      "trustNoWallet": "Aucun portefeuille requis"
+    },
+    "howItWorks": {
+      "stepLabel": "Étape {{number}}",
+      "steps": {
+        "ask": {
+          "desc": "Obtenez des réponses claires et simples sur vos soldes, récompenses et activité.",
+          "title": "Interrogez FlareGPT"
+        },
+        "automate": {
+          "desc": "Activez Gas Sniper pour réclamer vos récompenses FTSO automatiquement, ou gérez vos délégations vous-même.",
+          "title": "Automatisez vos récompenses"
+        },
+        "connect": {
+          "desc": "Ajoutez-en un ou plusieurs, à tout moment. Rien n'est requis au départ.",
+          "title": "Connectez un portefeuille"
+        },
+        "explore": {
+          "desc": "Parcourez les données réseau en direct, les protocoles et les récompenses avant de connecter quoi que ce soit.",
+          "title": "Explorez instantanément"
+        },
+        "launch": {
+          "desc": "Aucune inscription, aucune installation. Ouvrez le tableau de bord directement depuis votre navigateur.",
+          "title": "Lancez l'application"
+        }
+      },
+      "subtitle": "Aucune inscription, aucun portefeuille requis pour commencer. Connectez-en un dès que vous êtes prêt pour des réponses personnalisées.",
+      "title": "De zéro à des analyses en quelques minutes."
+    },
+    "navbar": {
+      "navAi": "IA",
+      "navFaq": "FAQ",
+      "navFeatures": "Fonctionnalités"
+    },
+    "stats": {
+      "ftsoProviders": "Fournisseurs FTSO",
+      "networkHealth": "Santé du réseau",
+      "rewardsTracked": "Récompenses suivies",
+      "walletsMonitored": "Portefeuilles surveillés"
+    }
+  },
   "links": {
     "card": {
       "discord": "Discord",
