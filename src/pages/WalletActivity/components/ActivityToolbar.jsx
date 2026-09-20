@@ -84,7 +84,7 @@ function ExportMenu({ onExportCsv, onExportJson }) {
       </button>
 
       <div
-        className={`absolute right-0 top-full mt-1.5 w-40 origin-top-right rounded-xl border border-line bg-surface-card p-1 shadow-lg z-10 transition-all duration-200 ${
+        className={`absolute right-0 top-full mt-1.5 w-40 max-w-[calc(100vw-2rem)] origin-top-right rounded-xl border border-line bg-surface-card p-1 shadow-lg z-10 transition-all duration-200 ${
           open ? "opacity-100 scale-100" : "invisible pointer-events-none opacity-0 scale-95"
         }`}
       >
@@ -177,7 +177,9 @@ export default function ActivityToolbar({
             value={rawSearch}
             onChange={(e) => setRawSearch(e.target.value)}
             placeholder={t("wallet.activity.toolbar.searchPlaceholder")}
-            className="w-full rounded-xl bg-surface-inset pl-9 pr-3 py-2 text-sm text-ink-primary placeholder-ink-muted outline-none focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2"
+            // text-base (16px) below `sm:` — same iOS Safari auto-zoom fix
+            // as TransactionLookup's own search input.
+            className="w-full rounded-xl bg-surface-inset pl-9 pr-3 py-2 text-base sm:text-sm text-ink-primary placeholder-ink-muted outline-none focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2"
           />
         </div>
 

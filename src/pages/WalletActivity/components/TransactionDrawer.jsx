@@ -76,7 +76,7 @@ function DetailRow({ label, children }) {
 
 
 export default function TransactionDrawer({ item, hasPrev, hasNext, onPrev, onNext, onClose }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const open = Boolean(item);
   const returnFocusRef = useRef(null);
   const closeButtonRef = useRef(null);
@@ -134,7 +134,8 @@ export default function TransactionDrawer({ item, hasPrev, hasNext, onPrev, onNe
         aria-label={t("wallet.activity.drawer.title")}
         className={`fixed z-50 flex flex-col bg-[#FFFFFF] dark:bg-[#161619] border border-[#E5E7EB] dark:border-none shadow-xl
           inset-0 rounded-none
-          sm:inset-auto sm:right-4 sm:top-20 sm:bottom-4 sm:w-[420px] sm:rounded-2xl
+          pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]
+          sm:inset-auto sm:right-4 sm:top-20 sm:bottom-4 sm:w-[420px] sm:rounded-2xl sm:pt-0 sm:pl-0 sm:pr-0
           transition-all duration-300 ease-in-out
           ${open ? "translate-x-0 opacity-100" : "translate-x-full sm:translate-x-[120%] opacity-0 pointer-events-none"}`}
       >
@@ -172,7 +173,7 @@ export default function TransactionDrawer({ item, hasPrev, hasNext, onPrev, onNe
         </div>
 
         {item && (
-          <div className="flex-1 overflow-y-auto p-5">
+          <div className="flex-1 overflow-y-auto p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] sm:pb-5">
             <div className="flex items-center gap-2.5">
               <TokenIcon symbol={item.asset} size={28} />
               <div>
@@ -196,7 +197,7 @@ export default function TransactionDrawer({ item, hasPrev, hasNext, onPrev, onNe
                 {item.block_number.toLocaleString()}
               </DetailRow>
               <DetailRow label={t("wallet.activity.drawer.timestamp")}>
-                {new Date(item.timestamp * 1000).toLocaleString()}
+                {new Date(item.timestamp * 1000).toLocaleString(i18n.language)}
               </DetailRow>
             </div>
 

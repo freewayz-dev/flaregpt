@@ -10,7 +10,7 @@ import GenericTable from "@/pages/Dashboard/components/shared/GenericTable";
 import InfoHint from "@/components/common/InfoHint";
 
 export default function NetworkActivityChart() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { data, isLoading, isError, isFetching, dataUpdatedAt, refetch } =
     useGasPrice();
   // Builds a real rolling chart in-memory from each live poll of /gas-price
@@ -24,9 +24,14 @@ export default function NetworkActivityChart() {
   // pattern already used for UnlockTimelineCard/UnclaimedEpochsCard. `series`
   // itself is chronological (oldest first, same order the chart plots
   // left-to-right), reversed here to newest-first for the list.
+  // Lowercase keys — see FlrPriceChart.jsx's identical comment for why
+  // this can't use "Time"/"Gwei" as literal English words for the object
+  // keys GenericTable derives its (now-translated) column headers from.
+  // `i18n.language`, not the default browser-locale fallback — same fix as
+  // FlrPriceChart.jsx's own table, for the same reason.
   const tableRows = [...series].reverse().map((point) => ({
-    Time: new Date(point.time).toLocaleTimeString(),
-    Gwei: point.value == null ? "—" : point.value.toFixed(0),
+    time: new Date(point.time).toLocaleTimeString(i18n.language),
+    gwei: point.value == null ? "—" : point.value.toFixed(0),
   }));
 
   // isError must be checked before the "still loading" gate below — an
@@ -103,11 +108,11 @@ export default function NetworkActivityChart() {
               <YAxis hide domain={["auto", "auto"]} />
               <Tooltip
                 labelFormatter={(ts) =>
-                  typeof ts === "number" ? new Date(ts).toLocaleTimeString() : String(ts)
+                  typeof ts === "number" ? new Date(ts).toLocaleTimeString(i18n.language) : String(ts)
                 }
                 formatter={(v) => [
-                  typeof v === "number" ? `${v.toFixed(0)} Gwei` : "—",
-                  "Gas",
+                  typeof v === "number" ? `${v.toFixed(0)} ${t("dashboard.networkActivity.gwei")}` : "—",
+                  t("dashboard.networkActivity.gasPrice"),
                 ]}
                 contentStyle={{ borderRadius: 12, border: "none", fontSize: 12 }}
               />

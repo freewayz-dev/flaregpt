@@ -109,7 +109,7 @@ export default function DevQuickSettings() {
                   key={lang.code}
                   type="button"
                   onClick={() => handleLanguageChange(lang.code)}
-                  className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm transition-colors cursor-pointer ${
+                  className={`flex h-8 w-full shrink-0 items-center gap-2 rounded-lg px-2.5 text-left text-sm transition-colors cursor-pointer ${
                     isActive
                       ? "bg-brand/10 text-brand font-medium"
                       : "text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary"

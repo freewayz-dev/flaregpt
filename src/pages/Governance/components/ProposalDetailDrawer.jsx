@@ -55,7 +55,7 @@ export default function ProposalDetailDrawer({
   hasVoted,
   onClose,
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const open = Boolean(proposal);
   const returnFocusRef = useRef(null);
   const closeButtonRef = useRef(null);
@@ -120,7 +120,8 @@ export default function ProposalDetailDrawer({
         aria-label={t("governance.drawer.title")}
         className={`fixed z-50 flex flex-col bg-[#FFFFFF] dark:bg-[#161619] border border-[#E5E7EB] dark:border-none shadow-xl
           inset-0 rounded-none
-          sm:inset-auto sm:right-4 sm:top-20 sm:bottom-4 sm:w-[420px] sm:rounded-2xl
+          pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]
+          sm:inset-auto sm:right-4 sm:top-20 sm:bottom-4 sm:w-[420px] sm:rounded-2xl sm:pt-0 sm:pl-0 sm:pr-0
           transition-all duration-300 ease-in-out
           ${open ? "translate-x-0 opacity-100" : "translate-x-full sm:translate-x-[120%] opacity-0 pointer-events-none"}`}
       >
@@ -138,7 +139,7 @@ export default function ProposalDetailDrawer({
         </div>
 
         {proposal && status && split && (
-          <div className="flex-1 overflow-y-auto p-5">
+          <div className="flex-1 overflow-y-auto p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] sm:pb-5">
             <div className="flex flex-wrap items-center gap-1.5">
               <StatusBadge label={status.label} tone={status.tone} dot={status.dot} />
               {proposal.isHistorical && (
@@ -164,7 +165,7 @@ export default function ProposalDetailDrawer({
                 </button>
               </DetailRow>
               <DetailRow label={t("governance.drawer.votingPeriod")}>
-                {formatDate(proposal.voteStartTime)} – {formatDate(proposal.voteEndTime)}
+                {formatDate(proposal.voteStartTime, i18n.language)} – {formatDate(proposal.voteEndTime, i18n.language)}
               </DetailRow>
               <DetailRow
                 label={t("governance.drawer.quorum")}
@@ -234,8 +235,8 @@ export default function ProposalDetailDrawer({
   );
 }
 
-function formatDate(timestampSeconds) {
-  return new Date(timestampSeconds * 1000).toLocaleDateString(undefined, {
+function formatDate(timestampSeconds, locale) {
+  return new Date(timestampSeconds * 1000).toLocaleDateString(locale, {
     month: "short",
     day: "numeric",
     year: "numeric",

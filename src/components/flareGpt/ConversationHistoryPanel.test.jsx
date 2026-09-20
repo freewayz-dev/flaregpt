@@ -21,6 +21,8 @@ function renderPanel(overrides = {}) {
     <ConversationHistoryPanel
       open
       onClose={vi.fn()}
+      hasSession
+      onOpenWalletModal={vi.fn()}
       conversations={[conversation]}
       isLoading={false}
       isError={false}
@@ -126,5 +128,26 @@ describe("ConversationHistoryPanel — offline", () => {
     openRowMenu();
     fireEvent.click(screen.getByText("Delete"));
     expect(onDelete).toHaveBeenCalledWith("conv-1");
+  });
+});
+
+describe("ConversationHistoryPanel — guest (no session)", () => {
+  it("shows a sign-in prompt instead of the conversation list, with no search bar or row actions", () => {
+    renderPanel({ hasSession: false, conversations: [] });
+
+    expect(
+      screen.getByText("Guest mode · Conversations aren't saved.", { exact: false }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Sign in to sync history & unlock wallet analysis")).toBeInTheDocument();
+    expect(screen.queryByPlaceholderText("Search conversations...")).not.toBeInTheDocument();
+    expect(screen.queryByText("Test conversation")).not.toBeInTheDocument();
+  });
+
+  it("still shows and allows New Chat for a guest", () => {
+    const onNewChat = vi.fn();
+    renderPanel({ hasSession: false, conversations: [], onNewChat });
+
+    fireEvent.click(screen.getByText("New Chat"));
+    expect(onNewChat).toHaveBeenCalledTimes(1);
   });
 });

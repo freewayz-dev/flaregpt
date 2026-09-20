@@ -9,9 +9,13 @@ export function formatAmount(value, maxFractionDigits = 4) {
 }
 
 // Previously duplicated identically across rFLR Vesting's VestingProgressCard
-// and NetworkPulseSection.
-export function formatDate(dateStr) {
-  return new Date(dateStr).toLocaleDateString(undefined, {
+// and NetworkPulseSection. `locale` is optional (defaults to the runtime's
+// own locale via `toLocaleDateString`'s own `undefined` behavior) so every
+// existing call site keeps working unchanged — pass `i18n.language`
+// explicitly wherever this app's own selected language should win over
+// whatever the browser itself is set to (the two can genuinely differ).
+export function formatDate(dateStr, locale) {
+  return new Date(dateStr).toLocaleDateString(locale, {
     month: "short",
     day: "numeric",
     year: "numeric",

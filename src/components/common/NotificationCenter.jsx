@@ -22,12 +22,18 @@ const TONE_ICON = {
   info: InformationCircleIcon,
   default: null,
 };
+// `info`/`default` deliberately don't reuse `text-ink-muted` here (unlike
+// every other muted-icon spot in the app) — that token is tuned for
+// contrast against `surface-card`/page backgrounds, not against this
+// pill's own inverted `bg-ink-primary`. `text-surface-card/70` tracks the
+// pill's own (also inverted) body-text color instead, so it stays legible
+// in both themes without a new color.
 const TONE_ICON_CLASS = {
   success: "text-emerald-500",
   error: "text-brand",
   warning: "text-amber-500",
-  info: "text-ink-muted",
-  default: "text-ink-muted",
+  info: "text-surface-card/70",
+  default: "text-surface-card/70",
 };
 
 function NotificationPill({ notification }) {
@@ -49,7 +55,17 @@ function NotificationPill({ notification }) {
       transition={{ duration: 0.22, ease: "easeOut" }}
       onClick={isInteractive ? handleClick : undefined}
       role={notification.tone === "error" ? "alert" : "status"}
-      className={`pointer-events-auto flex w-full items-center gap-2 rounded-full border border-line bg-surface-card px-4 py-2.5 text-sm text-ink-primary shadow-lg dark:border-none sm:w-auto sm:max-w-sm ${
+      // `bg-ink-primary text-surface-card` — deliberately inverted from
+      // every card's own `bg-surface-card text-ink-primary`, using the
+      // exact same two tokens swapped. Since `ink-primary` and
+      // `surface-card` already flip appropriately between light/dark on
+      // their own (no new color, no per-theme override needed here), this
+      // pill renders as the *opposite* tone of whatever surface it's
+      // floating over in either theme — solid near-black on a light page,
+      // solid near-white on a dark one — instead of the near-identical
+      // `bg-surface-card` treatment it previously shared with every card
+      // behind it, which is what made it blend in.
+      className={`pointer-events-auto flex w-full items-center gap-2 rounded-full bg-ink-primary px-4 py-2.5 text-sm text-surface-card shadow-lg sm:w-auto sm:max-w-sm ${
         isInteractive ? "cursor-pointer" : ""
       }`}
     >

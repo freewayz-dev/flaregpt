@@ -83,9 +83,12 @@ export default function RankingCardShell({
         // internally instead of stretching the page into one long table.
         // The card's own header/caption above is already outside this
         // scrolling region, so it stays visible without needing its own
-        // sticky treatment.
+        // sticky treatment. Deliberately no `overscroll-y-contain` — see
+        // GenericTable.jsx's own comment for why that traps the gesture at
+        // this list's own scroll boundary on mobile instead of letting the
+        // page take over naturally.
         <div
-          className="mt-4 max-h-[420px] overflow-y-auto overscroll-y-contain scrollbar-none divide-y divide-divider"
+          className="mt-4 max-h-[420px] overflow-y-auto scrollbar-none divide-y divide-divider"
         >
           {children}
         </div>

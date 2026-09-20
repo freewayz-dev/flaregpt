@@ -246,7 +246,7 @@ export default function LandingNavbar() {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex justify-self-center items-center rounded-full border border-line bg-[#F8FAFC]/80 dark:bg-[#121214]/80 px-2 py-2 backdrop-blur-sm">
+          <div className="hidden md:flex justify-self-center items-center rounded-full border border-line bg-surface-card-hover/80 px-2 py-2 backdrop-blur-sm">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}

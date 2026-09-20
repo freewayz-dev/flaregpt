@@ -305,7 +305,7 @@ export default function LandingPage() {
         <main className="relative z-10">
         <FadeIn>
           <section className="flex flex-col items-center px-4 xl:px-0 justify-center text-center max-w-5xl mx-auto pt-20 md:pt-28 pb-28">
-            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/80 dark:bg-[#161619]/80 backdrop-blur-xl px-4 py-1.5 shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/80 dark:bg-surface-card/80 backdrop-blur-xl px-4 py-1.5 shadow-sm">
               <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-secondary">
                 {t("landing.hero.badge")}
               </span>
@@ -354,7 +354,7 @@ export default function LandingPage() {
                 right beside the CTAs, since custody is a primary anxiety
                 for exactly the audience landing on a wallet-connected
                 product, not a footnote to bury. */}
-            <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/60 dark:bg-[#161619]/60 backdrop-blur-md px-4 py-1.5">
+            <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-line bg-[#FFFFFF]/60 dark:bg-surface-card/60 backdrop-blur-md px-4 py-1.5">
               <ShieldCheckIcon className="h-3.5 w-3.5 text-emerald-500" />
               <span className="text-[11px] font-medium text-ink-secondary">
                 {t("landing.hero.nonCustodial")}
@@ -471,7 +471,7 @@ export default function LandingPage() {
                     edges and the table appear clipped instead of scrollable. */}
                 <div className="order-1 flex flex-col items-center lg:order-2 lg:pr-20 min-w-0">
                   {/* Mobile Badge */}
-                  <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-[#161619]/80 lg:hidden">
+                  <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-surface-card/80 lg:hidden">
                     <SparklesIcon className="h-3.5 w-3.5 text-brand" />
 
                     <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
@@ -491,7 +491,7 @@ export default function LandingPage() {
                   <div>
                     {/* Desktop Badge */}
                     <div className="lg:pl-20">
-                      <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-[#161619]/80">
+                      <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-line bg-white/80 px-4 py-1.5 shadow-sm backdrop-blur-md dark:bg-surface-card/80">
                         <SparklesIcon className="h-3.5 w-3.5 text-brand" />
 
                         <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
@@ -806,7 +806,7 @@ export default function LandingPage() {
                   return (
                     <div
                       key={item.key}
-                      className="rounded-2xl border border-line bg-white/90 dark:bg-[#191A1F] overflow-hidden"
+                      className="rounded-2xl border border-line bg-white/90 dark:bg-surface-card overflow-hidden"
                     >
                       {/* Question */}
 
@@ -921,7 +921,7 @@ export default function LandingPage() {
                     key={partner.name}
                     className="flex w-16 flex-col items-center gap-2"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-line bg-white dark:bg-[#161619]">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-line bg-white dark:bg-surface-card">
                       <img
                         src={partner.logo}
                         alt={partner.name}

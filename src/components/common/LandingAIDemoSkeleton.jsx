@@ -11,7 +11,7 @@ import FlareGptMark from "@/components/common/FlareGptMark";
 export default function LandingAIDemoSkeleton() {
   return (
     <div
-      className="w-full max-w-lg overflow-hidden rounded-3xl border border-line bg-white/80 shadow-xl backdrop-blur-xl dark:bg-[#111113]/90"
+      className="w-full max-w-lg overflow-hidden rounded-3xl border border-line bg-white/80 shadow-xl backdrop-blur-xl dark:bg-surface-card/90"
       aria-hidden="true"
     >
       <div className="flex items-center justify-between border-b border-line px-5 py-3.5">

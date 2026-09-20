@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 
 import MarkdownContent from "@/components/flareGpt/MarkdownContent";
@@ -38,14 +39,14 @@ import FlareGptMark from "@/components/common/FlareGptMark";
 // the real app gives a guest — nothing here fakes a connected wallet to
 // force a richer response.
 //
-// This page isn't part of the i18n pipeline (see LandingPage.jsx), so
-// every string here is plain English rather than a t() call, same as the
-// rest of this file always was.
-const DEMO_PROMPTS = [
-  { id: "increaseRewards", label: "How can I increase my FTSO rewards?" },
-  { id: "compareProtocols", label: "Compare Sceptre vs Firelight" },
-  { id: "stakingOpportunities", label: "Show my staking opportunities" },
-  { id: "flareCommunity", label: "What's the latest on Flare / Flare community?" },
+// Translation keys for the 4 default prompts — the actual label text is
+// resolved via t() inside the component (LandingPage.jsx's own AI demo is
+// now part of the i18n pipeline; this used to be plain English only).
+const DEMO_PROMPT_KEYS = [
+  { id: "increaseRewards", key: "landing.aiDemo.prompts.increaseRewards" },
+  { id: "compareProtocols", key: "landing.aiDemo.prompts.compareProtocols" },
+  { id: "stakingOpportunities", key: "landing.aiDemo.prompts.stakingOpportunities" },
+  { id: "flareCommunity", key: "landing.aiDemo.prompts.flareCommunity" },
 ];
 
 function makeId() {
@@ -59,6 +60,7 @@ function blocksToText(blocks) {
 
 
 export default function LandingAIDemo({ onOpenWalletModal }) {
+  const { t } = useTranslation();
   const { hasSession, isConnected, isAuthenticating, signIn } = useAuthStatus();
   const [messages, setMessages] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -121,7 +123,7 @@ export default function LandingAIDemo({ onOpenWalletModal }) {
         updateAssistant({
           status: "complete",
           statusText: null,
-          blocks: [{ type: "text", markdown: "Something went wrong on this demo. Please try again." }],
+          blocks: [{ type: "text", markdown: t("landing.aiDemo.errorFallback") }],
         });
         setIsGenerating(false);
       },
@@ -139,7 +141,7 @@ export default function LandingAIDemo({ onOpenWalletModal }) {
   const hasMessages = messages.length > 0;
 
   return (
-    <div className="w-full max-w-lg overflow-hidden rounded-3xl border border-line bg-white/80 shadow-xl backdrop-blur-xl dark:bg-[#111113]/90">
+    <div className="w-full max-w-lg overflow-hidden rounded-3xl border border-line bg-white/80 shadow-xl backdrop-blur-xl dark:bg-surface-card/90">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-line px-5 py-3.5">
         <div className="flex items-center gap-2">
@@ -148,7 +150,7 @@ export default function LandingAIDemo({ onOpenWalletModal }) {
         </div>
         <span className="inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand">
           <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
-          Live demo
+          {t("landing.aiDemo.badge")}
         </span>
       </div>
 
@@ -157,17 +159,17 @@ export default function LandingAIDemo({ onOpenWalletModal }) {
         {!hasMessages ? (
           <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
             <p className="text-sm text-ink-secondary">
-              Ask a real question. This is FlareGPT's actual AI, live.
+              {t("landing.aiDemo.intro")}
             </p>
             <div className="flex flex-col gap-2 w-full max-w-xs">
-              {DEMO_PROMPTS.map((p) => (
+              {DEMO_PROMPT_KEYS.map((p) => (
                 <button
                   key={p.id}
                   type="button"
-                  onClick={() => handleSend(p.label)}
+                  onClick={() => handleSend(t(p.key))}
                   className="rounded-xl bg-surface-inset px-3.5 py-2.5 text-left text-xs font-medium text-ink-secondary transition-colors hover:bg-surface-card-hover hover:text-ink-primary cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
                 >
-                  {p.label}
+                  {t(p.key)}
                 </button>
               ))}
             </div>
@@ -212,7 +214,7 @@ export default function LandingAIDemo({ onOpenWalletModal }) {
             type="text"
             id="landing-ai-demo-input"
             name="message"
-            aria-label="Ask FlareGPT"
+            aria-label={t("flrgpt.composer.placeholder")}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onKeyDown={(e) => {
@@ -221,15 +223,15 @@ export default function LandingAIDemo({ onOpenWalletModal }) {
                 handleSend(value);
               }
             }}
-            placeholder="Ask FlareGPT..."
+            placeholder={t("flrgpt.composer.placeholder")}
             className="flex-1 bg-transparent px-2.5 py-2 text-base sm:text-sm text-ink-primary placeholder-ink-muted outline-none"
           />
           <button
             type="button"
             disabled={!value.trim() || isGenerating}
             onClick={() => handleSend(value)}
-            aria-label="Send"
-            title="Send"
+            aria-label={t("flrgpt.composer.send")}
+            title={t("flrgpt.composer.send")}
             className={`shrink-0 flex h-9 w-9 items-center justify-center rounded-xl transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
               value.trim() && !isGenerating
                 ? "bg-brand text-white hover:bg-brand-hover cursor-pointer"
@@ -247,19 +249,19 @@ export default function LandingAIDemo({ onOpenWalletModal }) {
             to "sign in" would just be confusing. */}
         {!hasSession ? (
           <p className="mt-2 text-center text-[10px] text-ink-muted">
-            Guest mode · Not saved.{" "}
+            {t("flrgpt.guestMode.notice")}{" "}
             <button
               type="button"
               onClick={handleGuestCta}
               disabled={isAuthenticating}
               className="font-medium text-brand-text hover:underline disabled:opacity-70 cursor-pointer"
             >
-              {isAuthenticating ? "Confirm in your wallet…" : "Sign in for the full app"}
+              {isAuthenticating ? t("flrgpt.wallet.locked.signingIn") : t("landing.aiDemo.signInCta")}
             </button>
           </p>
         ) : (
           <p className="mt-2 text-center text-[10px] text-ink-muted">
-            Demo only. Not saved to your account. Open the app for your real conversation history.
+            {t("landing.aiDemo.demoOnlyNotice")}
           </p>
         )}
       </div>

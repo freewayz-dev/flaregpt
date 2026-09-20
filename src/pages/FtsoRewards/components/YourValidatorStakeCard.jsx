@@ -13,7 +13,7 @@ import { formatFlr, formatDate } from "@/utils/format";
 // directly here rather than a second query dependency just for one URL.
 const FLARE_PORTAL_URL = "https://portal.flare.network/";
 
-function NodeStakeRow({ node, connectedInfo, t }) {
+function NodeStakeRow({ node, connectedInfo, t, locale }) {
   return (
     <div className="flex items-center gap-3 py-2.5">
       <div className="min-w-0 flex-1">
@@ -28,7 +28,7 @@ function NodeStakeRow({ node, connectedInfo, t }) {
           )}
           {node.nextUnlock && (
             <span className="text-[11px] text-ink-muted">
-              {t("rankings.yourStake.nextUnlock", { date: formatDate(node.nextUnlock) })}
+              {t("rankings.yourStake.nextUnlock", { date: formatDate(node.nextUnlock, locale) })}
             </span>
           )}
         </div>
@@ -59,7 +59,7 @@ function NodeStakeRow({ node, connectedInfo, t }) {
 // (0x725789BAdFeDa0DE546e3D91f2E64115Ba4Face3) was then tested directly
 // against this endpoint and returned the shape this component renders.
 export default function YourValidatorStakeCard({ activeAddress }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const query = useValidatorStakes(activeAddress);
   // Same query/cache entry ValidatorRankingCard already holds open on this
   // page (identical queryKey) — this doesn't add a second network request,
@@ -124,9 +124,12 @@ export default function YourValidatorStakeCard({ activeAddress }) {
           </button>
         </div>
       ) : summary && summary.nodes.length > 0 ? (
-        <div className="mt-3 divide-y divide-divider max-h-[280px] overflow-y-auto overscroll-y-contain scrollbar-none">
+        // Deliberately no `overscroll-y-contain` — see GenericTable.jsx's
+        // own comment for why that traps a mobile scroll gesture at this
+        // list's own boundary instead of letting the page take over.
+        <div className="mt-3 divide-y divide-divider max-h-[280px] overflow-y-auto scrollbar-none">
           {summary.nodes.map((node) => (
-            <NodeStakeRow key={node.nodeId} node={node} connectedInfo={connectedByNodeId.get(node.nodeId)} t={t} />
+            <NodeStakeRow key={node.nodeId} node={node} connectedInfo={connectedByNodeId.get(node.nodeId)} t={t} locale={i18n.language} />
           ))}
         </div>
       ) : (

@@ -92,13 +92,13 @@ function CandlestickShape(props) {
 
 
 
-function CandlestickTooltip({ active, payload, formatPrice }) {
+function CandlestickTooltip({ active, payload, formatPrice, locale }) {
   if (!active || !payload?.length) return null;
   const { open, high, low, close, timestamp } = payload[0].payload;
 
   return (
     <div className="rounded-xl bg-surface-card px-3 py-2 text-xs shadow-lg border border-divider">
-      <p className="text-ink-muted mb-1">{new Date(timestamp).toLocaleString()}</p>
+      <p className="text-ink-muted mb-1">{new Date(timestamp).toLocaleString(locale)}</p>
       <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-ink-primary">
         <span>O: {formatPrice(open)}</span>
         <span>C: {formatPrice(close)}</span>
@@ -110,7 +110,7 @@ function CandlestickTooltip({ active, payload, formatPrice }) {
 }
 
 export default function FlrPriceChart() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const timeframe = useUIStore((state) => state.timeframe);
   const setTimeframe = useUIStore((state) => state.setTimeframe);
   const chartType = useUIStore((state) => state.chartType);
@@ -150,7 +150,7 @@ export default function FlrPriceChart() {
     "FLR",
   ];
   const formatTooltipLabel = (label) =>
-    typeof label === "number" ? new Date(label).toLocaleString() : String(label);
+    typeof label === "number" ? new Date(label).toLocaleString(i18n.language) : String(label);
 
   const latest = isCandlestick
     ? ohlcData?.[ohlcData.length - 1]?.close
@@ -167,21 +167,36 @@ export default function FlrPriceChart() {
   // left-to-right), but a list is read top-down, so it's reversed here to
   // newest-first — the order every other reverse-chronological list in
   // this app (activity feed, conversation history) already uses.
+  // Lowercase, stable keys — not literal capitalized English words like
+  // "Date"/"Open" used to be here. GenericTable derives its column headers
+  // directly from these object keys, so using an English word *as* the key
+  // meant the header could never be translated (there was no t() call to
+  // hook into — the key itself was the display text). GenericTable's own
+  // COLUMN_LABEL_KEYS map now looks up a translated header for each of
+  // these normalized names, matching the same fix applied to every other
+  // GenericTable producer that had this same problem.
+  // `i18n.language`, not the default `undefined` locale — an unspecified
+  // locale argument falls back to the *browser's* own language
+  // (navigator.language), which silently disagreed with this app's own
+  // selected language the moment the two differ (e.g. Chrome set to
+  // English, this app switched to French): the chart's own UI would read
+  // French while every date in this table still rendered in English
+  // formatting. Explicit locale keeps the two in sync.
   const tableRows = isCandlestick
     ? !ohlcData?.length
       ? []
       : [...ohlcData].reverse().map((d) => ({
-          Date: new Date(d.timestamp).toLocaleString(),
-          Open: formatPrice(d.open),
-          High: formatPrice(d.high),
-          Low: formatPrice(d.low),
-          Close: formatPrice(d.close),
+          date: new Date(d.timestamp).toLocaleString(i18n.language),
+          open: formatPrice(d.open),
+          high: formatPrice(d.high),
+          low: formatPrice(d.low),
+          close: formatPrice(d.close),
         }))
     : !priceData?.length
       ? []
       : [...priceData].reverse().map((d) => ({
-          Date: new Date(d.timestamp).toLocaleString(),
-          Price: formatPrice(d.price),
+          date: new Date(d.timestamp).toLocaleString(i18n.language),
+          price: formatPrice(d.price),
         }));
 
   // Deliberately `!isSuccess`, not `isLoading` — a paused (offline) query
@@ -278,7 +293,7 @@ export default function FlrPriceChart() {
                 width={56}
                 tickFormatter={formatTickPrice}
               />
-              <Tooltip content={<CandlestickTooltip formatPrice={formatPrice} />} />
+              <Tooltip content={<CandlestickTooltip formatPrice={formatPrice} locale={i18n.language} />} />
               <Bar
                 dataKey={(d) => [d.low, d.high]}
                 shape={(props) => <CandlestickShape {...props} />}

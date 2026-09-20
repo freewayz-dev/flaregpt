@@ -156,20 +156,21 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
               <PencilSquareIcon className="h-5 w-5 text-ink-secondary" />
             </button>
 
-            {hasSession && (
-              <button
-                type="button"
-                onClick={toggleHistory}
-                aria-pressed={historyOpen}
-                className={`rounded-md p-1 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
-                  historyOpen ? "bg-brand/10" : "hover:bg-surface-card-hover"
-                }`}
-                title={t("flrgpt.history.openButton")}
-                aria-label={t("flrgpt.history.openButton")}
-              >
-                <ClockIcon className={`h-5 w-5 ${historyOpen ? "text-brand" : "text-ink-secondary"}`} />
-              </button>
-            )}
+            {/* Always shown — see ConversationHistoryPanel's own guest
+                branch for why a guest still gets this control, just with a
+                sign-in prompt inside instead of a real conversation list. */}
+            <button
+              type="button"
+              onClick={toggleHistory}
+              aria-pressed={historyOpen}
+              className={`rounded-md p-1 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2 ${
+                historyOpen ? "bg-brand/10" : "hover:bg-surface-card-hover"
+              }`}
+              title={t("flrgpt.history.openButton")}
+              aria-label={t("flrgpt.history.openButton")}
+            >
+              <ClockIcon className={`h-5 w-5 ${historyOpen ? "text-brand" : "text-ink-secondary"}`} />
+            </button>
           </div>
 
           <button
@@ -212,25 +213,25 @@ export default function FlareWidget({ open, onClose, onOpenWalletModal }) {
           compactEmptyState
         />
 
-        {hasSession && (
-          <ConversationHistoryPanel
-            open={historyOpen}
-            onClose={() => setHistoryOpen(false)}
-            conversations={conversations}
-            isLoading={isLoadingConversations}
-            isError={isConversationsError}
-            onRetry={refetchConversations}
-            activeConversationId={activeConversationId}
-            pinnedIds={pinnedConversationIds}
-            onSelect={handleSelectFromHistory}
-            onNewChat={handleNewChat}
-            onTogglePin={togglePinnedConversation}
-            onRename={(id, title) =>
-              renameMutation.mutateAsync({ conversationId: id, title })
-            }
-            onDelete={deleteConversation}
-          />
-        )}
+        <ConversationHistoryPanel
+          open={historyOpen}
+          onClose={() => setHistoryOpen(false)}
+          hasSession={hasSession}
+          onOpenWalletModal={onOpenWalletModal}
+          conversations={conversations}
+          isLoading={isLoadingConversations}
+          isError={isConversationsError}
+          onRetry={refetchConversations}
+          activeConversationId={activeConversationId}
+          pinnedIds={pinnedConversationIds}
+          onSelect={handleSelectFromHistory}
+          onNewChat={handleNewChat}
+          onTogglePin={togglePinnedConversation}
+          onRename={(id, title) =>
+            renameMutation.mutateAsync({ conversationId: id, title })
+          }
+          onDelete={deleteConversation}
+        />
       </div>
     </aside>
   );

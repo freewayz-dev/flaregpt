@@ -23,7 +23,7 @@ export default function GovernanceHistoryTable({
   hasVotedById,
   onOpenDetail,
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const hasWalletOverlay = hasVotedById.size > 0;
 
   const history = proposals
@@ -89,7 +89,7 @@ export default function GovernanceHistoryTable({
                         ? "—"
                         : `${split.forPercent.toFixed(0)}% / ${split.againstPercent.toFixed(0)}%`}
                     </span>
-                    <span>{formatDate(proposal.voteEndTime)}</span>
+                    <span>{formatDate(proposal.voteEndTime, i18n.language)}</span>
                   </div>
                   {hasWalletOverlay && (
                     <div className="mt-1.5 text-xs">
@@ -193,7 +193,7 @@ export default function GovernanceHistoryTable({
                         {split.totalVotes === 0n ? "—" : `${split.forPercent.toFixed(0)}% / ${split.againstPercent.toFixed(0)}%`}
                       </td>
                       <td className="py-2.5 pr-4 whitespace-nowrap text-ink-secondary">
-                        {formatDate(proposal.voteEndTime)}
+                        {formatDate(proposal.voteEndTime, i18n.language)}
                       </td>
                       {hasWalletOverlay && (
                         <td className="py-2.5 pr-4 whitespace-nowrap">
@@ -219,8 +219,8 @@ export default function GovernanceHistoryTable({
   );
 }
 
-function formatDate(timestampSeconds) {
-  return new Date(timestampSeconds * 1000).toLocaleDateString(undefined, {
+function formatDate(timestampSeconds, locale) {
+  return new Date(timestampSeconds * 1000).toLocaleDateString(locale, {
     month: "short",
     day: "numeric",
     year: "numeric",

@@ -36,7 +36,7 @@ export default function StatCard({
     typeof value === "string" || typeof value === "number" ? `${title}: ${value}` : title;
 
   return (
-    <div className="h-full rounded-2xl bg-surface-card hover:bg-surface-card-hover p-4 shadow-sm border border-[#E5E7EB] dark:border-none shrink-0 transition-colors duration-150">
+    <div className="h-full min-w-0 rounded-2xl bg-surface-card hover:bg-surface-card-hover p-4 shadow-sm border border-[#E5E7EB] dark:border-none shrink-0 transition-colors duration-150">
       <div className="flex items-center justify-between gap-2">
         <span className="flex items-center gap-1 min-w-0">
           <p className="text-xs text-ink-secondary truncate">{title}</p>

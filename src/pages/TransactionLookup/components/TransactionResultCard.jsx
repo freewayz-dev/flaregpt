@@ -70,7 +70,7 @@ function CopyableAddress({ address }) {
 // Every field access below either has a plain fallback or is guarded by
 // presence (`in`), never assumed.
 export default function TransactionResultCard({ result }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const isContractCreation = result.action_tag === "CONTRACT_CREATION";
 
@@ -117,7 +117,7 @@ export default function TransactionResultCard({ result }) {
         )}
         {"timestamp" in result && (
           <DetailRow label={t("transactionLookup.result.timestamp")}>
-            {new Date(result.timestamp).toLocaleString()}
+            {new Date(result.timestamp).toLocaleString(i18n.language)}
           </DetailRow>
         )}
         {"tx_fee_flr" in result && (

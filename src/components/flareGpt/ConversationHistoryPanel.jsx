@@ -19,6 +19,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { PIN_LIMIT } from "@/store/useFlareGptStore";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
+import GuestModeCaption from "@/components/flareGpt/GuestModeCaption";
 
 
 function formatRelativeTime(unixSeconds, locale) {
@@ -137,6 +138,8 @@ function RowMenu({ isPinned, onTogglePin, onRename, onDelete, offlineBlocked, t 
 export default function ConversationHistoryPanel({
   open,
   onClose,
+  hasSession,
+  onOpenWalletModal,
   conversations,
   isLoading,
   isError,
@@ -151,9 +154,10 @@ export default function ConversationHistoryPanel({
 }) {
   const { t, i18n } = useTranslation();
   // Rename/delete both call the real backend (see Flrgpt/index.tsx and
-  // FlareWidget.tsx — this panel only ever renders once `hasSession` is
-  // true, so there's no local/guest fallback path to fall back to the way
-  // Wallets.tsx has). Pin stays unblocked below since it's purely local.
+  // FlareWidget.tsx) — a guest has no server-side conversation to rename or
+  // delete in the first place, so those actions simply aren't offered in
+  // the guest branch below rather than needing their own local fallback.
+  // Pin stays unblocked below since it's purely local.
   const isOnline = useOnlineStatus();
   const offlineBlocked = !isOnline;
   const [query, setQuery] = useState("");
@@ -332,7 +336,20 @@ export default function ConversationHistoryPanel({
           </div>
 
           <div className="flex-1 overflow-y-auto p-3 space-y-1 scrollbar-none">
-            {isError ? (
+            {!hasSession ? (
+              // A guest has exactly one ephemeral, in-memory thread (see
+              // useFlareGptStore.js's partialize) — there's no server-side
+              // list to fetch (useConversations' query is disabled for a
+              // guest, see Flrgpt/index.jsx), so this isn't "you have none
+              // yet" (flrgpt.history.empty below, which implies they could
+              // already have some) but "sign in to get this at all." Reuses
+              // GuestModeCaption verbatim — the exact same notice + sign-in
+              // action already shown in the composer — rather than writing
+              // new copy or a new sign-in affordance for this one surface.
+              <div className="py-10 px-4 text-center">
+                <GuestModeCaption onOpenWalletModal={onOpenWalletModal} />
+              </div>
+            ) : isError ? (
               // Checked before `sorted.length === 0` below — without this,
               // a failed (or offline-paused) fetch rendered the exact same
               // "No conversations yet" copy as a genuinely empty account,

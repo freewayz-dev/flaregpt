@@ -45,7 +45,7 @@ export default function VestingOverviewStats({ summary }) {
   ];
 
   return (
-    <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-2 xl:grid-cols-4 sm:overflow-visible scrollbar-none">
+    <div className="flex gap-3 overflow-x-auto touch-pan-x snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-2 xl:grid-cols-4 sm:overflow-visible scrollbar-none">
       {cards.map((card) => (
         <div key={card.title} className="min-w-[150px] sm:min-w-0 snap-start">
           <StatCard {...card} />

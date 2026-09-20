@@ -58,7 +58,12 @@ export default function TransactionLookup() {
               placeholder={t("transactionLookup.form.placeholder")}
               autoComplete="off"
               spellCheck="false"
-              className="w-full rounded-xl bg-surface-inset pl-9 pr-3 py-2.5 text-sm font-mono text-ink-primary placeholder-ink-muted outline-none focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2"
+              // text-base (16px), not text-sm, specifically below `sm:` —
+              // any font-size under 16px on an <input> makes iOS Safari
+              // auto-zoom the whole page on focus. Same fix already
+              // established for StrategyComparisonTable.jsx's amount
+              // input; `sm:text-sm` keeps desktop's existing 14px.
+              className="w-full rounded-xl bg-surface-inset pl-9 pr-3 py-2.5 text-base sm:text-sm font-mono text-ink-primary placeholder-ink-muted outline-none focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2"
             />
           </div>
           <button

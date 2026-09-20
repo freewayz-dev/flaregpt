@@ -70,7 +70,7 @@ export default function LanguageSelector({ align = "right", className = "" }) {
         aria-expanded={open}
         aria-label={t("settings.cards.language")}
         title={current.labelKey}
-        className="flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full border border-line bg-[#F8FAFC]/80 dark:bg-[#121214]/80 text-base backdrop-blur-sm transition-colors hover:border-brand/30 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
+        className="flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full border border-line bg-surface-card-hover/80 text-base backdrop-blur-sm transition-colors hover:border-brand/30 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:outline-offset-2"
       >
         <span aria-hidden="true">{current.flag}</span>
       </button>
@@ -90,7 +90,12 @@ export default function LanguageSelector({ align = "right", className = "" }) {
                 changeLanguage(lang.code);
                 setOpen(false);
               }}
-              className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm transition-colors cursor-pointer ${
+              // h-8 (32px), not padding-driven — matches the trigger's own
+              // height (and the navbar's "Launch App" button next to it)
+              // so every row is a consistent, predictable touch target
+              // instead of varying slightly (the active row's own border/
+              // background previously rendered 1px taller than the rest).
+              className={`flex h-8 w-full shrink-0 items-center gap-2 rounded-lg px-2.5 text-left text-sm transition-colors cursor-pointer ${
                 isActive
                   ? "bg-brand/10 text-brand font-medium"
                   : "text-ink-secondary hover:bg-surface-card-hover hover:text-ink-primary"

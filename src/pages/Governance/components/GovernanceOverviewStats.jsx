@@ -15,7 +15,7 @@ export default function GovernanceOverviewStats({ stats }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-4 sm:overflow-visible scrollbar-none">
+    <div className="flex gap-3 overflow-x-auto touch-pan-x snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-4 sm:overflow-visible scrollbar-none">
       <div className="w-40 shrink-0 snap-start sm:w-auto">
         <StatCard title={t("governance.stats.total")} value={stats.total} icon={DocumentTextIcon} />
       </div>

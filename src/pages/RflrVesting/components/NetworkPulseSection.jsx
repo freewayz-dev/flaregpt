@@ -26,7 +26,7 @@ function formatCountdown(seconds, t) {
 // (rather than receiving props from the page) since nothing here depends on
 // activeAddress or the per-wallet melt-schedule/exit-quote data above.
 export default function NetworkPulseSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const statusQuery = useNetworkStatus();
   const emissionsQuery = useNetworkEmissions();
 
@@ -89,7 +89,7 @@ export default function NetworkPulseSection() {
                 <p className="text-xs">{t("rflrVesting.network.nextDistribution")}</p>
               </div>
               <p className="text-lg font-semibold text-ink-primary">
-                {formatDate(statusData.next_distribution_date)}
+                {formatDate(statusData.next_distribution_date, i18n.language)}
               </p>
               <p className="mt-0.5 text-xs font-medium text-brand-text">
                 {formatCountdown(statusData.seconds_until_next_epoch, t)}
@@ -97,7 +97,7 @@ export default function NetworkPulseSection() {
               <p className="mt-2 text-[11px] text-ink-muted">
                 {t("rflrVesting.network.epochCaption", {
                   epoch: statusData.current_epoch_index,
-                  date: formatDate(statusData.epoch_start),
+                  date: formatDate(statusData.epoch_start, i18n.language),
                 })}
               </p>
             </div>

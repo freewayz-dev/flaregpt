@@ -20,7 +20,7 @@ export default function VestingProgressCard({
   nextUnlock,
   isNextUnlockLoading,
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const efficiencyPct = summary.efficiencyLabel ? parseFloat(summary.efficiencyLabel) : null;
 
   return (
@@ -48,7 +48,7 @@ export default function VestingProgressCard({
           ) : nextUnlock ? (
             <>
               <p className="text-xs font-medium text-ink-primary">
-                {t("rflrVesting.progress.nextUnlock", { date: formatDate(nextUnlock.date) })}
+                {t("rflrVesting.progress.nextUnlock", { date: formatDate(nextUnlock.date, i18n.language) })}
               </p>
               <p className="mt-0.5 text-xs text-ink-muted">
                 <SensitiveValue>{formatFlr(nextUnlock.amount)}</SensitiveValue>{" "}

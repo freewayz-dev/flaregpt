@@ -7,11 +7,59 @@ import SensitiveValue from "@/components/common/SensitiveValue";
 import { shortenAddress } from "@/utils/address";
 
 // Renders a table whose columns are derived from whatever keys are actually
-// present on the first item, rather than hardcoded field names. The FlareGPT
-// API's `unclaimed_epochs_ledger` and `active_delegations` arrays are always
-// empty in every sample response we have, so there's no confirmed shape to
-// build fixed columns against — this adapts to real data once it exists
-// instead of guessing field names and risking blank/broken cells.
+// present on the first item, rather than hardcoded field names — every real
+// caller passes either a raw API array (whose exact field names aren't
+// fixed ahead of time) or a locally-derived one, so this adapts to
+// whatever shape actually shows up instead of guessing field names and
+// risking blank/broken cells.
+//
+// `COLUMN_LABEL_KEYS` maps every field name confirmed live across this
+// component's actual callers (Overview's claims/delegations tables reading
+// raw `unclaimed_epochs_ledger`/`active_delegations` entries, the FLR/gas
+// charts' own derived rows, rFLR's melt-schedule rows, FTSO's epoch-ledger
+// rows, Wallet Activity's histogram/breakdown rows) to a real translation
+// key — this is what fixes column headers that used to be the untranslated,
+// English-only output of `humanizeKey` on a raw API field name. Any column
+// key not in this map (a genuinely new/unknown field) still falls back to
+// `humanizeKey` so an unrecognized field never renders blank — this is the
+// resilience the component was originally built for, just no longer the
+// *only* path for cases we already know about.
+const COLUMN_LABEL_KEYS = {
+  // FlrPriceChart.jsx (FLR price history table)
+  date: "dashboard.genericTable.columns.date",
+  open: "dashboard.genericTable.columns.open",
+  high: "dashboard.genericTable.columns.high",
+  low: "dashboard.genericTable.columns.low",
+  close: "dashboard.genericTable.columns.close",
+  price: "dashboard.genericTable.columns.price",
+  // NetworkActivityChart.jsx (gas price samples table)
+  time: "dashboard.genericTable.columns.time",
+  gwei: "dashboard.genericTable.columns.gwei",
+  // ActivityCharts.jsx (Wallet Activity's own "view data" tables)
+  label: "dashboard.genericTable.columns.label",
+  count: "dashboard.genericTable.columns.count",
+  asset: "dashboard.genericTable.columns.asset",
+  action: "dashboard.genericTable.columns.action",
+  // ClaimsHistoryCard.jsx (Overview) — raw `unclaimed_epochs_ledger` entries
+  epoch_id: "dashboard.genericTable.columns.epoch",
+  unclaimed_amount_flr: "dashboard.genericTable.columns.unclaimedFlr",
+  // DelegationsBreakdownCard.jsx (Overview) — raw `active_delegations` entries
+  provider_address: "dashboard.genericTable.columns.provider",
+  provider_name: "dashboard.genericTable.columns.providerName",
+  allocated_bips: "dashboard.genericTable.columns.allocation",
+  weight_percentage: "dashboard.genericTable.columns.weight",
+  network_rank: "dashboard.genericTable.columns.networkRank",
+  concentration_band: "dashboard.genericTable.columns.concentration",
+  // UnlockTimelineCard.jsx (rFLR melt-schedule rows)
+  unlock_date: "dashboard.genericTable.columns.unlockDate",
+  source: "dashboard.genericTable.columns.source",
+  amount_flr: "dashboard.genericTable.columns.amount",
+  status: "dashboard.genericTable.columns.status",
+  // UnclaimedEpochsCard.jsx (FTSO Rewards epoch-ledger rows)
+  epoch: "dashboard.genericTable.columns.epoch",
+  unclaimed_flr: "dashboard.genericTable.columns.unclaimedFlr",
+};
+
 function humanizeKey(key) {
   return key
     .replace(/_/g, " ")
@@ -80,17 +128,17 @@ export default function GenericTable({
 
   return (
     <div
-      // `overscroll-y-contain`, not the both-axis `overscroll-contain` —
-      // the vertical containment is the deliberate part (see this
-      // component's own comment above: a long table scrolls internally
-      // rather than growing the card, and once it's scrolled to its own
-      // top/bottom, that shouldn't also rubber-band/scroll the page behind
-      // it). The horizontal axis (many columns on a narrow viewport) has no
-      // such reason to be contained — blocking it too meant scrolling
-      // *vertically* while the cursor merely happened to be over this
-      // table could swallow the page scroll entirely, confirmed live as
-      // the same bug reported for GovernanceHistoryTable.tsx.
-      className="overflow-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none overscroll-y-contain"
+      // Deliberately no `overscroll-y-contain` here (an earlier version
+      // had one, reasoning that once this table hit its own top/bottom
+      // that shouldn't also rubber-band/scroll the page behind it) —
+      // confirmed live that containing it instead trapped the gesture: a
+      // mobile user scrolling down inside this table, on reaching its own
+      // bottom, had to lift their finger and place it *outside* the table
+      // before the page itself would continue scrolling. Default
+      // `overscroll-behavior: auto` lets that handoff happen naturally the
+      // instant this table can't scroll any further in that direction,
+      // which is the actually-expected mobile scrolling behavior.
+      className="overflow-auto -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none"
       style={{ height }}
     >
       <table className="w-full text-left text-xs">
@@ -102,7 +150,7 @@ export default function GenericTable({
                 scope="col"
                 className="py-2 pr-4 font-semibold text-ink-muted uppercase tracking-wide text-[10px] whitespace-nowrap"
               >
-                {humanizeKey(col)}
+                {COLUMN_LABEL_KEYS[col] ? t(COLUMN_LABEL_KEYS[col]) : humanizeKey(col)}
               </th>
             ))}
           </tr>

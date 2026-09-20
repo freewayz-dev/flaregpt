@@ -76,13 +76,35 @@ html.dark {
      Same hue, lightened enough to read reliably at 12-14px. */
   --color-brand-text: 240 87 138; /* #F0578A */
 
-  --color-line: 29 29 32; /* #1D1D20 */
-  --color-divider: 30 33 38; /* #1E2126 — subtle, low-contrast against surface-card */
+  /* Widened from #1D1D20/#1E2126 alongside the surface ladder below —
+     measured (WCAG relative-luminance) contrast against the old
+     surface-card was only ~1.03:1/1.08:1, close to imperceptible; these
+     values were nudged up in step so a border/divider stays visibly
+     lighter than the card it sits on/in rather than reading as almost the
+     same color. */
+  --color-line: 44 44 48; /* #2C2C30 */
+  --color-divider: 46 50 58; /* #2E323A */
 
-  --color-surface-card: 25 26 31; /* #191A1F */
-  --color-surface-subtle: 27 27 31; /* #1B1B1F */
-  --color-surface-inset: 33 36 43; /* #21242B — nested cards + skeleton shimmer */
-  --color-surface-card-hover: 37 42 49; /* #252A31 */
+  /* Dark-mode surface ladder widened (2026 dark-mode pass): the previous
+     values (#191A1F card / #1B1B1F subtle / #21242B inset / #252A31 hover)
+     measured only ~1.09:1/1.12:1/1.08:1 contrast step-to-step (WCAG
+     relative-luminance) — with cards also carrying no border in dark mode
+     (`dark:border-none`, see the card-shell convention), that was the
+     entire basis for "cards blend into the page" and "flat" feedback.
+     Widened each step (~1.15-1.2:1) while keeping the same cool,
+     blue-leaning near-black hue family and re-verifying every ink-* text
+     token still clears WCAG AA against the new values (ink-muted vs the
+     new surface-card: 5.3:1; vs the new surface-inset: 4.6:1 — both still
+     comfortably above 4.5:1, so none of the ink-* tokens themselves needed
+     to change). Page background (#101115) intentionally left as the one
+     unmoved anchor this ladder builds up from — it's also referenced
+     verbatim in three other places (the plain `html` rule and
+     `prefers-color-scheme` fallback above, and `body`'s own mirror further
+     below), which would all need to move in lockstep otherwise. */
+  --color-surface-card: 32 34 40; /* #202228 */
+  --color-surface-subtle: 29 30 35; /* #1D1E23 */
+  --color-surface-inset: 42 45 53; /* #2A2D35 — nested cards + skeleton shimmer */
+  --color-surface-card-hover: 52 56 65; /* #343841 */
 }
 
 @layer base {
@@ -219,6 +241,35 @@ html.dark {
 
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Same themed color as <html> above, mirrored onto <body> specifically —
+   a defensive redundancy for a real, reported bug: an inconsistent black
+   strip at the bottom of the mobile dashboard shell, on devices where
+   `100dvh` (DashboardLayout.tsx's own root height) doesn't track the
+   visual viewport in real time during an in-progress scroll (the browser
+   chrome — address bar — animating away mid-gesture is a well-documented
+   case where WebKit's own `dvh` value briefly lags a frame or more behind
+   the real screen). `<html>`'s own background-color above is supposed to
+   cover this via the CSS root-element canvas-propagation rule regardless
+   of any one element's box height, but that propagation silently stops
+   the moment `<body>` (or another element in the chain) ends up with its
+   own distinct background — which is exactly the layered "no shared
+   background all the way up" state this rule closes, matching each
+   theme's <html> value exactly so there is never a mismatched or
+   undefined color for that transient gap to expose. */
+body {
+  background-color: #f0f4f9;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not(.dark) body {
+    background-color: #101115;
+  }
+}
+
+html.dark body {
+  background-color: #101115;
 }
 
 /* index.css */

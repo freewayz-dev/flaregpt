@@ -652,7 +652,9 @@ export default function Wallets() {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder={t("settings.wallets.searchPlaceholder", { count: trackedList.length })}
-                      className="w-full rounded-xl bg-surface-inset pl-9 pr-3 py-2 text-sm text-ink-primary placeholder-ink-muted outline-none focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2"
+                      // text-base (16px) below `sm:` — same iOS Safari
+                      // auto-zoom fix as TransactionLookup's search input.
+                      className="w-full rounded-xl bg-surface-inset pl-9 pr-3 py-2 text-base sm:text-sm text-ink-primary placeholder-ink-muted outline-none focus-within:outline focus-within:outline-2 focus-within:outline-brand/50 focus-within:outline-offset-2"
                     />
                   </div>
                 )}
