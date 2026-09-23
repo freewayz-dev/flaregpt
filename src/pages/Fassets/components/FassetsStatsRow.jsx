@@ -46,14 +46,6 @@ export default function FassetsStatsRow({ supply, agents, proofOfReserve, holder
       icon: CurrencyDollarIcon,
     },
     {
-      title: t("fassets.stats.capUsed"),
-      value: `${supply.cap_used_pct.toFixed(1)}%`,
-      icon: Square3Stack3DIcon,
-      hint: (
-        <InfoHint label={t("fassets.stats.capUsed")}>{t("fassets.stats.capUsedHelp")}</InfoHint>
-      ),
-    },
-    {
       title: t("fassets.stats.agentCount"),
       value: agents.count,
       icon: BuildingLibraryIcon,
@@ -69,6 +61,24 @@ export default function FassetsStatsRow({ supply, agents, proofOfReserve, holder
       ),
     },
   ];
+
+  // `cap_used_pct` (unlike every other field above) is computed server-side
+  // from `minting_cap`, which is itself FlareMetrics-only — confirmed live
+  // null on the on-chain-fallback response (`degraded: true`), the same
+  // shape `proof_of_reserve`/`holders` already null out under. This one was
+  // missed when this page was first built (it crashed the whole page via
+  // `.toFixed` on `null`), so it now gets the identical conditional
+  // treatment those two already have.
+  if (supply.cap_used_pct != null) {
+    cards.push({
+      title: t("fassets.stats.capUsed"),
+      value: `${supply.cap_used_pct.toFixed(1)}%`,
+      icon: Square3Stack3DIcon,
+      hint: (
+        <InfoHint label={t("fassets.stats.capUsed")}>{t("fassets.stats.capUsedHelp")}</InfoHint>
+      ),
+    });
+  }
 
   if (proofOfReserve) {
     cards.push({
@@ -130,7 +140,19 @@ export default function FassetsStatsRow({ supply, agents, proofOfReserve, holder
           identical one-utility fix. */}
       <div className="isolate flex gap-3 overflow-x-auto overflow-y-hidden touch-pan-x overscroll-x-contain snap-x snap-mandatory scroll-pl-4 scroll-pr-4 md:scroll-pl-6 md:scroll-pr-6 -mx-4 px-4 md:-mx-6 md:px-6 pb-2 scrollbar-none">
         {cards.map((card) => (
-          <div key={card.title} className="min-w-[188px] snap-start">
+          // 150px on mobile — the same width every other stat row in this
+          // app already settles on for a scrollable card (Dashboard's
+          // StatRow, RewardsOverviewStats, FireStatsRow), matching this
+          // page's own cards to that established size instead of the wider
+          // 188px this row used at every breakpoint, which is what made
+          // each card (and the row as a whole) feel oversized on a phone
+          // compared to how the rest of the dashboard already looks. Still
+          // widens back to 188px at sm+ (unchanged from before) — only the
+          // mobile width was the actual complaint, and this row still stays
+          // scrollable rather than becoming a grid at any breakpoint (see
+          // this block's own comment above on why 7 cards don't fit a grid
+          // even on a wide desktop).
+          <div key={card.title} className="min-w-[150px] sm:min-w-[188px] snap-start">
             <StatCard {...card} />
           </div>
         ))}

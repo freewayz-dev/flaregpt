@@ -81,12 +81,18 @@ const OVERVIEW_RESPONSE = {
 // On-chain fallback only ever guarantees supply/agents — every other
 // section (proof of reserve, holders, limits, 24h flow, trend chart) is
 // null, same contract Fire's own v2 degraded/fallback response uses.
+// `cap_used_pct` (and the `minting_cap` it's derived from) is itself
+// FlareMetrics-only within `supply` — confirmed live null on the real
+// on-chain-fallback response, not just non-null-but-degraded the way this
+// fixture previously assumed by reusing OVERVIEW_RESPONSE.supply wholesale.
+// That mismatch is exactly what let a real `.toFixed` crash on this field
+// ship unnoticed (see FassetsStatsRow.jsx's own comment on the fix).
 const FALLBACK_RESPONSE = {
   source: "onchain_fallback",
   attribution: null,
   degraded: true,
   note: "FXRP amounts are in FXRP (6 decimals, already scaled).",
-  supply: OVERVIEW_RESPONSE.supply,
+  supply: { ...OVERVIEW_RESPONSE.supply, minting_cap: null, cap_used_pct: null },
   agents: { ...OVERVIEW_RESPONSE.agents, core_vault_supply_is_derived: true },
   proof_of_reserve: null,
   holders: null,
@@ -179,9 +185,13 @@ describe("Fassets", () => {
     expect(screen.queryByText("Mint Success Rate")).not.toBeInTheDocument();
     expect(screen.queryByText("Daily Minting Limit")).not.toBeInTheDocument();
     expect(screen.queryByText("Daily Trend")).not.toBeInTheDocument();
-    // Reserve ratio and holders are FlareMetrics-only — neither stat card renders.
+    // Reserve ratio, holders, and cap used are all FlareMetrics-only —
+    // none of the three stat cards render (cap_used_pct itself is the one
+    // that previously crashed the whole page here — see
+    // FassetsStatsRow.jsx's own comment).
     expect(screen.queryByText("Reserve Ratio")).not.toBeInTheDocument();
     expect(screen.queryByText("Holders")).not.toBeInTheDocument();
+    expect(screen.queryByText("Cap Used")).not.toBeInTheDocument();
     // `redeeming_fxrp` comes from the agents endpoint, which has no
     // fallback concept at all — pending redemptions still renders on its
     // own, independent of the overview's own degraded state (see
