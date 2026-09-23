@@ -321,6 +321,98 @@
       "title": "Apenas ativos da {{network}}."
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "Quanto colateral este agente reservou em comparação com o FXRP que cunhou. Um número mais alto significa uma margem de segurança maior.",
+      "collateralRatioMin": "mín. {{value}}",
+      "columns": {
+        "agent": "Agente",
+        "collateralRatio": "Índice de Colateral",
+        "fee": "Taxa",
+        "freeCapacity": "Capacidade Livre",
+        "minted": "Cunhado",
+        "status": "Status"
+      },
+      "couldntLoad": "Não foi possível carregar os vaults de agentes.",
+      "emptyDescription": "Nenhum vault de agente está reportando dados no momento.",
+      "emptyTitle": "Ainda Sem Agentes",
+      "feeHelp": "A taxa que este agente cobra para cunhar FXRP através dele.",
+      "freeCapacityHelp": "Quanto mais FXRP este agente ainda pode cunhar agora.",
+      "inLiquidation": "Em Liquidação",
+      "notPubliclyAvailable": "Não Disponível Publicamente",
+      "poolFeeShare": "Pool {{value}}%",
+      "poolRatio": "Pool {{value}}",
+      "sort": {
+        "collateral_ratio": "Índice de Colateral",
+        "fee": "Menor Taxa",
+        "free_capacity": "Capacidade Livre",
+        "minted": "Mais Cunhado"
+      },
+      "subtitle": "Cada agente de cunhagem de FXRP, atualizado diretamente a partir da rede.",
+      "title": "Vaults de Agentes",
+      "viewOnExplorer": "Ver no Explorador"
+    },
+    "couldntLoad": "Não foi possível carregar os dados do FAssets.",
+    "description": "Acompanhe o ecossistema FXRP, desde a oferta e reservas em toda a rede até os agentes de cunhagem individuais.",
+    "flow": {
+      "dailyLimit": "Limite Diário de Cunhagem",
+      "dailyLimitHelp": "A rede só permite que uma certa quantidade de novo FXRP seja cunhada a cada dia. Isso mostra quanto do limite de hoje já foi usado até agora.",
+      "dailyLimitUsed": "Usado",
+      "dailyLimitValue": "{{used}} de {{limit}}",
+      "mintSuccessRate": "Taxa de Sucesso da Cunhagem",
+      "mints": "Cunhado (24h)",
+      "netFlow": "Fluxo Líquido (24h)",
+      "paymentDefaults": "Inadimplências de Pagamento",
+      "paymentDefaultsCaption": "Reservas de cunhagem que expiraram sem pagamento",
+      "pendingRedemptions": "Resgates Pendentes",
+      "pendingRedemptionsCaption": "FXRP atualmente sendo resgatado em todos os agentes",
+      "redemptions": "Resgatado (24h)",
+      "subtitle": "Atividade de cunhagem e resgate nas últimas 24 horas.",
+      "title": "Fluxo de 24h",
+      "txCount_one": "{{count}} transação",
+      "txCount_many": "{{count}} transações",
+      "txCount_other": "{{count}} transações"
+    },
+    "info": {
+      "body": "Esta seção cobre a rede FXRP como um todo, não um agente específico ou a sua própria carteira. Alguns números aqui são calculados para se manterem precisos e consistentes, e os números de reservas e titulares vêm de uma fonte de dados parceira que não foi verificada de forma independente.",
+      "label": "O que esses números significam?"
+    },
+    "mintRedeemCta": "Cunhar ou Resgatar FXRP",
+    "myFxrp": {
+      "activityCouldntLoad": "Não foi possível carregar sua atividade de FXRP.",
+      "balance": "Saldo",
+      "balanceUnavailable": "Saldo indisponível no momento.",
+      "connectToSee": "Conecte ou selecione uma wallet para ver seu saldo e atividade de FXRP.",
+      "noActivity": "Ainda sem atividade de FXRP.",
+      "recentActivity": "Atividade Recente de FXRP",
+      "subtitle": "Seu próprio saldo e atividade recente de FXRP.",
+      "title": "Meu FXRP",
+      "viewAllInWalletActivity": "Ver tudo em Atividade da Carteira"
+    },
+    "stats": {
+      "agentCount": "Agentes",
+      "agentsInLiquidation_one": "{{count}} agente está atualmente em liquidação.",
+      "agentsInLiquidation_many": "{{count}} agentes estão atualmente em liquidação.",
+      "agentsInLiquidation_other": "{{count}} agentes estão atualmente em liquidação.",
+      "capUsed": "Limite Utilizado",
+      "capUsedHelp": "Quanto do total de FXRP permitido já foi cunhado.",
+      "coreVaultShare": "Participação do Core Vault",
+      "coreVaultShareHelp": "A parcela de todo o FXRP mantida na reserva compartilhada da Flare, em vez de em vaults individuais de agentes.",
+      "holders": "Titulares",
+      "price": "Preço do FXRP",
+      "reserveRatio": "Índice de Reservas",
+      "reserveRatioHelp": "Quanto de lastro em FXRP existe em comparação com o FXRP em circulação. 100% ou mais significa que está totalmente lastreado.",
+      "tvl": "Valor Total Bloqueado"
+    },
+    "trend": {
+      "facet": {
+        "minted": "Cunhado",
+        "redeemed": "Resgatado"
+      },
+      "subtitle": "FXRP cunhado e resgatado por dia.",
+      "title": "Tendência Diária"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "Queimado Até Agora",
@@ -1281,6 +1373,7 @@
     "disconnect": "Desconectar",
     "donate": "Doar",
     "expandSidebar": "Expandir barra lateral",
+    "fassets": "FAssets",
     "feeds": "Rações",
     "fire": "Fogo",
     "FlareGPT": "FlareGPT",

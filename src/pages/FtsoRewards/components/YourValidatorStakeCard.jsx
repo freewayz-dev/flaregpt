@@ -92,10 +92,16 @@ export default function YourValidatorStakeCard({ activeAddress }) {
 
   return (
     <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
-      <div className="flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
+      {/* `flex-wrap` — same fix as DelegationConcentrationCard.jsx's own
+          identical title+trailing-value header: at the narrowest phone
+          widths (~320px), "Your Validator Stake" plus a real stake total
+          on the same line had no room left, wrapping the title itself
+          mid-word. Letting the total drop to its own line instead keeps
+          the title intact. */}
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
           <ShieldCheckIcon className="h-4 w-4 text-ink-muted shrink-0" />
-          <h3 className="text-sm font-semibold text-ink-primary">{t("rankings.yourStake.title")}</h3>
+          <h3 className="text-sm font-semibold text-ink-primary truncate">{t("rankings.yourStake.title")}</h3>
         </div>
         {summary && summary.totalFlr > 0 && (
           <p className="text-sm font-semibold tabular-nums text-ink-primary">

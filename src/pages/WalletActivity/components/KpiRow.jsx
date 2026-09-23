@@ -55,8 +55,14 @@ export default function KpiRow({ kpis }) {
   // uncomfortably far down the page; one swipeable row gets there faster
   // and reads as consistent with the rest of the dashboard rather than as
   // this page's own layout.
+  // `overflow-y-hidden` alongside `overflow-x-auto` — without it, browsers
+  // compute `overflow-y` as `auto` too, and an `InfoHint`'s always-mounted
+  // (just invisible) popover panel makes that a real, scrollable vertical
+  // overflow. See Fassets/components/FassetsStatsRow.jsx's own comment for
+  // the full root-cause writeup — every stat row sharing this pattern gets
+  // the same one-utility fix.
   return (
-    <div className="flex gap-3 overflow-x-auto touch-pan-x snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-4 sm:overflow-visible scrollbar-none">
+    <div className="flex gap-3 overflow-x-auto overflow-y-hidden touch-pan-x snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-4 sm:overflow-visible scrollbar-none">
       {cards.map((card) => (
         <div key={card.title} className="min-w-[150px] sm:min-w-0 snap-start">
           <StatCard {...card} compact />

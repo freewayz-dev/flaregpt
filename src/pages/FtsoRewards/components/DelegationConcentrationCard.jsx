@@ -80,7 +80,13 @@ export default function DelegationConcentrationCard() {
 
   return (
     <div className="rounded-2xl bg-surface-card p-4 sm:p-6 shadow-sm border border-[#E5E7EB] dark:border-none">
-      <div className="flex items-center justify-between gap-2">
+      {/* `flex-wrap` lets the band badge drop to its own line on a narrow
+          phone instead of squeezing the title down to "Delegation C..." —
+          this card's title + badge text ("Moderately Concentrated") run
+          longer than any of this row's sibling cards (RewardVelocityCard's
+          own "Reward Velocity" + "Live Estimate" happens to fit, which is
+          why that one didn't need this). */}
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <ScaleIcon className="h-4 w-4 text-ink-muted shrink-0" />
           <h3 className="text-sm font-semibold text-ink-primary truncate">
@@ -122,7 +128,12 @@ export default function DelegationConcentrationCard() {
         </div>
       ) : (
         <>
-          <div className="mt-4 grid grid-cols-3 gap-3">
+          {/* Same fix as RewardVelocityCard.jsx's own identical trio —
+              `grid-cols-1 sm:grid-cols-3` instead of a flat `grid-cols-3`
+              with no responsive breakpoint, which truncated both the
+              title ("Delegation C...") and every stat label ("HHI ...",
+              "Effective...") on a phone-width card. */}
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
             <StatCard
               title={t("ftsoRewards.concentration.stats.hhi")}
               value={current.hhi}

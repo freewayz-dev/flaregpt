@@ -5,8 +5,10 @@ import { ClockIcon, Square3Stack3DIcon, ArrowPathIcon } from "@heroicons/react/2
 
 import { useDerivedWalletHub } from "@/store/useWalletHubStore";
 import { useFtsoPortfolio } from "@/hooks/queries/useDashboardQueries";
+import { computeDelegationRows } from "@/pages/FtsoRewards/utils/deriveFtsoRewards";
 import WalletEmptyState from "@/pages/Dashboard/components/shared/WalletEmptyState";
 import GenericTable from "@/pages/Dashboard/components/shared/GenericTable";
+import DelegationsList from "@/pages/FtsoRewards/components/DelegationsList";
 import ClaimsHistoryCard from "@/pages/Dashboard/components/ClaimsHistoryCard";
 import DelegationsBreakdownCard from "@/pages/Dashboard/components/DelegationsBreakdownCard";
 
@@ -99,8 +101,18 @@ function MobileTabs() {
             emptyDescription={t("dashboard.claimsHistory.emptyDescription")}
           />
         ) : (
-          <GenericTable
-            items={data.active_delegations}
+          // Not GenericTable here — active_delegations can carry up to six
+          // real fields (name/address, allocation, weight, network rank,
+          // concentration band), and GenericTable's auto-derived-column
+          // table only ever shows two of them at once on a phone width
+          // before requiring a horizontal scroll for the rest. FTSO
+          // Rewards' own DelegationsCard already solves this exact same
+          // data (same endpoint, same `active_delegations` field) with a
+          // labeled percentage bar + address/concentration-pill caption —
+          // reused here via DelegationsList rather than inventing a second
+          // presentation for identical data.
+          <DelegationsList
+            delegations={computeDelegationRows(data)}
             emptyIcon={Square3Stack3DIcon}
             emptyTitle={t("dashboard.delegationsBreakdown.emptyTitle")}
             emptyDescription={t("dashboard.delegationsBreakdown.emptyDescription")}

@@ -317,6 +317,96 @@
       "title": "Yalnızca {{network}} varlıkları."
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "Bu ajanın bastığı FXRP'ye kıyasla ne kadar teminat ayırdığı. Daha yüksek bir sayı, daha büyük bir güvenlik payı anlamına gelir.",
+      "collateralRatioMin": "min. {{value}}",
+      "columns": {
+        "agent": "Ajan",
+        "collateralRatio": "Teminat Oranı",
+        "fee": "Ücret",
+        "freeCapacity": "Boş Kapasite",
+        "minted": "Basılan",
+        "status": "Durum"
+      },
+      "couldntLoad": "Ajan kasaları yüklenemedi.",
+      "emptyDescription": "Şu anda veri bildiren hiçbir ajan kasası yok.",
+      "emptyTitle": "Henüz Ajan Yok",
+      "feeHelp": "Bu ajanın kendisi üzerinden FXRP basmak için aldığı ücret.",
+      "freeCapacityHelp": "Bu ajanın şu anda hâlâ ne kadar daha fazla FXRP basabileceği.",
+      "inLiquidation": "Tasfiyede",
+      "notPubliclyAvailable": "Herkese Açık Değil",
+      "poolFeeShare": "Havuz {{value}}%",
+      "poolRatio": "Havuz {{value}}",
+      "sort": {
+        "collateral_ratio": "Teminat Oranı",
+        "fee": "En Düşük Ücret",
+        "free_capacity": "Boş Kapasite",
+        "minted": "En Çok Basılan"
+      },
+      "subtitle": "Her FXRP darphane ajanı, doğrudan ağdan güncellenir.",
+      "title": "Ajan Kasaları",
+      "viewOnExplorer": "Explorer'da Görüntüle"
+    },
+    "couldntLoad": "FAssets verileri yüklenemedi.",
+    "description": "Ağ genelindeki arz ve rezervlerden bireysel darphane ajanlarına kadar FXRP ekosistemini takip edin.",
+    "flow": {
+      "dailyLimit": "Günlük Darphane Sınırı",
+      "dailyLimitHelp": "Ağ, her gün yalnızca belirli bir miktarda yeni FXRP basılmasına izin verir. Bu, bugünkü sınırın şu ana kadar ne kadarının kullanıldığını gösterir.",
+      "dailyLimitUsed": "Kullanılan",
+      "dailyLimitValue": "{{limit}} üzerinden {{used}}",
+      "mintSuccessRate": "Darphane Başarı Oranı",
+      "mints": "Basılan (24s)",
+      "netFlow": "Net Akış (24s)",
+      "paymentDefaults": "Ödeme Temerrütleri",
+      "paymentDefaultsCaption": "Ödemesiz süresi dolan darphane rezervasyonları",
+      "pendingRedemptions": "Bekleyen İtfalar",
+      "pendingRedemptionsCaption": "Şu anda tüm ajanlarda itfa edilmekte olan FXRP",
+      "redemptions": "İtfa Edilen (24s)",
+      "subtitle": "Son 24 saatteki darphane ve itfa etkinliği.",
+      "title": "24s Akış",
+      "txCount_one": "{{count}} işlem",
+      "txCount_other": "{{count}} işlem"
+    },
+    "info": {
+      "body": "Bu bölüm, tek bir ajanı veya kendi cüzdanınızı değil, FXRP ağının tamamını kapsar. Buradaki bazı sayılar doğru ve tutarlı kalmaları için hesaplanır, rezerv ve sahip sayıları ise bağımsız olarak doğrulanmamış bir iş ortağı veri kaynağından gelir.",
+      "label": "Bu sayılar ne anlama geliyor?"
+    },
+    "mintRedeemCta": "FXRP Bas veya İtfa Et",
+    "myFxrp": {
+      "activityCouldntLoad": "FXRP etkinliğiniz yüklenemedi.",
+      "balance": "Bakiye",
+      "balanceUnavailable": "Bakiye şu anda kullanılamıyor.",
+      "connectToSee": "FXRP bakiyenizi ve etkinliğinizi görmek için bir cüzdan bağlayın veya seçin.",
+      "noActivity": "Henüz FXRP etkinliği yok.",
+      "recentActivity": "Son FXRP Etkinliği",
+      "subtitle": "Kendi FXRP bakiyeniz ve son etkinliğiniz.",
+      "title": "FXRP'im",
+      "viewAllInWalletActivity": "Cüzdan Aktivitesinde tümünü görüntüle"
+    },
+    "stats": {
+      "agentCount": "Ajanlar",
+      "agentsInLiquidation_one": "{{count}} ajan şu anda tasfiyede.",
+      "agentsInLiquidation_other": "{{count}} ajan şu anda tasfiyede.",
+      "capUsed": "Kullanılan Sınır",
+      "capUsedHelp": "Var olmasına izin verilen toplam FXRP'nin ne kadarının çoktan basıldığı.",
+      "coreVaultShare": "Core Kasa Payı",
+      "coreVaultShareHelp": "Tüm FXRP'nin, ajanların kendi kasaları yerine Flare'in ortak rezervinde tutulan payı.",
+      "holders": "Sahipler",
+      "price": "FXRP Fiyatı",
+      "reserveRatio": "Rezerv Oranı",
+      "reserveRatioHelp": "Dolaşımdaki FXRP miktarına kıyasla ne kadar FXRP teminatı bulunduğu. %100 veya üzeri, tamamen teminatlandırıldığı anlamına gelir.",
+      "tvl": "Toplam Kilitli Değer"
+    },
+    "trend": {
+      "facet": {
+        "minted": "Basılan",
+        "redeemed": "İtfa Edilen"
+      },
+      "subtitle": "Günlük basılan ve itfa edilen FXRP.",
+      "title": "Günlük Trend"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "Şimdiye Kadar Yakılan",
@@ -1271,6 +1361,7 @@
     "disconnect": "Bağlantıyı Kes",
     "donate": "Bağış yap",
     "expandSidebar": "Kenar çubuğunu genişlet",
+    "fassets": "FAssets",
     "feeds": "Bildirimler",
     "fire": "Ateş",
     "FlareGPT": "FlareGPT",

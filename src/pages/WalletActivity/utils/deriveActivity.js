@@ -60,10 +60,23 @@ export function withActionIds(history) {
 // string rather than switching on a hardcoded enum, so an unconfirmed
 // future tag (e.g. "TOKEN_SWAP") degrades to "neutral" instead of being
 // silently miscategorized as a send or receive.
+//
+// MINT/REDEEM added for FAssets' FXRP_MINT/FXRP_REDEEM tags — a completed
+// mint is honestly a receive (FXRP newly arrives in the wallet) and a
+// redeem is honestly a send (FXRP leaves to be burned), so this extends the
+// same substring-matching approach rather than introducing a second
+// mechanism. FXRP_MINT_RESERVE contains "MINT" too but hasn't actually
+// delivered anything yet — excluded explicitly rather than falling through
+// by accident, so a merely-reserved mint doesn't render as if FXRP already
+// arrived. FXRP_CORE_VAULT_TRANSFER (an agent operator action, not a user
+// send/receive) correctly falls through to "neutral" on its own — it
+// contains none of these substrings.
 export function getActionDirection(actionTag) {
   const upper = (actionTag ?? "").toUpperCase();
-  if (upper.includes("RECEIVE")) return "in";
-  if (upper.includes("SEND")) return "out";
+  if (upper.includes("RECEIVE") || (upper.includes("MINT") && !upper.includes("RESERVE"))) {
+    return "in";
+  }
+  if (upper.includes("SEND") || upper.includes("REDEEM")) return "out";
   return "neutral";
 }
 

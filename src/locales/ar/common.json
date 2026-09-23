@@ -333,6 +333,104 @@
       "title": "أصول {{network}} فقط."
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "مقدار الضمان الذي خصصه هذا الوكيل مقارنة بكمية FXRP التي سكّها. كلما ارتفع الرقم، زاد هامش الأمان.",
+      "collateralRatioMin": "الحد الأدنى {{value}}",
+      "columns": {
+        "agent": "الوكيل",
+        "collateralRatio": "نسبة الضمان",
+        "fee": "الرسوم",
+        "freeCapacity": "السعة المتاحة",
+        "minted": "المسكوك",
+        "status": "الحالة"
+      },
+      "couldntLoad": "تعذر تحميل خزائن الوكلاء.",
+      "emptyDescription": "لا توجد خزائن وكلاء تُبلغ عن بيانات حاليًا.",
+      "emptyTitle": "لا يوجد وكلاء بعد",
+      "feeHelp": "الرسوم التي يتقاضاها هذا الوكيل مقابل سك FXRP من خلاله.",
+      "freeCapacityHelp": "مقدار FXRP الإضافي الذي يمكن لهذا الوكيل سكّه الآن.",
+      "inLiquidation": "قيد التصفية",
+      "notPubliclyAvailable": "غير متاح للعامة",
+      "poolFeeShare": "المجمع {{value}}%",
+      "poolRatio": "المجمع {{value}}",
+      "sort": {
+        "collateral_ratio": "نسبة الضمان",
+        "fee": "أقل رسوم",
+        "free_capacity": "السعة المتاحة",
+        "minted": "الأكثر سكًا"
+      },
+      "subtitle": "كل وكيل سك FXRP، محدّث مباشرة من الشبكة.",
+      "title": "خزائن الوكلاء",
+      "viewOnExplorer": "عرض على المستكشف"
+    },
+    "couldntLoad": "تعذر تحميل بيانات FAssets.",
+    "description": "تتبع نظام FXRP البيئي، من العرض والاحتياطيات على مستوى الشبكة إلى وكلاء السك الفرديين.",
+    "flow": {
+      "dailyLimit": "الحد اليومي للسك",
+      "dailyLimitHelp": "تسمح الشبكة بسك كمية محدودة فقط من FXRP الجديد كل يوم. يوضح هذا مقدار ما تم استخدامه من حد اليوم حتى الآن.",
+      "dailyLimitUsed": "المستخدم",
+      "dailyLimitValue": "{{used}} من {{limit}}",
+      "mintSuccessRate": "معدل نجاح السك",
+      "mints": "تم سكه (24 ساعة)",
+      "netFlow": "صافي التدفق (24 ساعة)",
+      "paymentDefaults": "حالات تعثر الدفع",
+      "paymentDefaultsCaption": "حجوزات سك انتهت دون دفع",
+      "pendingRedemptions": "طلبات الاسترداد المعلّقة",
+      "pendingRedemptionsCaption": "FXRP الجاري استرداده حاليًا عبر جميع الوكلاء",
+      "redemptions": "تم استرداده (24 ساعة)",
+      "subtitle": "نشاط السك والاسترداد خلال آخر 24 ساعة.",
+      "title": "التدفق خلال 24 ساعة",
+      "txCount_zero": "{{count}} معاملات",
+      "txCount_one": "{{count}} معاملة",
+      "txCount_two": "{{count}} معاملات",
+      "txCount_few": "{{count}} معاملات",
+      "txCount_many": "{{count}} معاملات",
+      "txCount_other": "{{count}} معاملات"
+    },
+    "info": {
+      "body": "يغطي هذا القسم شبكة FXRP ككل، وليس أي وكيل بعينه أو محفظتك الخاصة. بعض الأرقام هنا محسوبة للحفاظ على دقتها واتساقها، وتأتي أرقام الاحتياطي وعدد الحائزين من مصدر بيانات شريك لم يتم التحقق منه بشكل مستقل.",
+      "label": "ماذا تعني هذه الأرقام؟"
+    },
+    "mintRedeemCta": "سك أو استرداد FXRP",
+    "myFxrp": {
+      "activityCouldntLoad": "تعذر تحميل نشاط FXRP الخاص بك.",
+      "balance": "الرصيد",
+      "balanceUnavailable": "الرصيد غير متاح حاليًا.",
+      "connectToSee": "اتصل بمحفظة أو اخترها لرؤية رصيد FXRP الخاص بك ونشاطه.",
+      "noActivity": "لا يوجد نشاط FXRP بعد.",
+      "recentActivity": "نشاط FXRP الأخير",
+      "subtitle": "رصيدك ونشاطك الأخير في FXRP.",
+      "title": "FXRP الخاص بي",
+      "viewAllInWalletActivity": "عرض الكل في نشاط المحفظة"
+    },
+    "stats": {
+      "agentCount": "الوكلاء",
+      "agentsInLiquidation_zero": "{{count}} وكلاء قيد التصفية حاليًا.",
+      "agentsInLiquidation_one": "{{count}} وكيل قيد التصفية حاليًا.",
+      "agentsInLiquidation_two": "{{count}} وكلاء قيد التصفية حاليًا.",
+      "agentsInLiquidation_few": "{{count}} وكلاء قيد التصفية حاليًا.",
+      "agentsInLiquidation_many": "{{count}} وكلاء قيد التصفية حاليًا.",
+      "agentsInLiquidation_other": "{{count}} وكلاء قيد التصفية حاليًا.",
+      "capUsed": "السقف المستخدم",
+      "capUsedHelp": "مقدار FXRP الذي تم سكّه بالفعل من إجمالي الكمية المسموح بوجودها.",
+      "coreVaultShare": "حصة الخزنة الأساسية",
+      "coreVaultShareHelp": "حصة إجمالي FXRP المحتفظ بها في الاحتياطي المشترك لشبكة Flare، بدلاً من خزائن الوكلاء الفردية.",
+      "holders": "الحائزون",
+      "price": "سعر FXRP",
+      "reserveRatio": "نسبة الاحتياطي",
+      "reserveRatioHelp": "مقدار الغطاء من FXRP مقارنة بكمية FXRP المتداولة. 100% أو أكثر يعني أنه مغطى بالكامل.",
+      "tvl": "القيمة الإجمالية المقفلة"
+    },
+    "trend": {
+      "facet": {
+        "minted": "المسكوك",
+        "redeemed": "المسترد"
+      },
+      "subtitle": "FXRP المسكوك والمسترد يوميًا.",
+      "title": "الاتجاه اليومي"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "المحروق حتى الآن",
@@ -1311,6 +1409,7 @@
     "disconnect": "قطع الاتصال",
     "donate": "تَبرَّع",
     "expandSidebar": "توسيع الشريط الجانبي",
+    "fassets": "FAssets",
     "feeds": "خلاصات",
     "fire": "نار",
     "FlareGPT": "FlareGPT",

@@ -317,6 +317,96 @@
       "title": "{{network}} 자산만 가능합니다."
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "이 에이전트가 발행한 FXRP 대비 얼마나 많은 담보를 확보해 두었는지를 나타냅니다. 숫자가 높을수록 안전 여유가 더 크다는 의미입니다.",
+      "collateralRatioMin": "최소 {{value}}",
+      "columns": {
+        "agent": "에이전트",
+        "collateralRatio": "담보 비율",
+        "fee": "수수료",
+        "freeCapacity": "여유 용량",
+        "minted": "발행됨",
+        "status": "상태"
+      },
+      "couldntLoad": "에이전트 볼트를 불러올 수 없습니다.",
+      "emptyDescription": "현재 데이터를 보고하는 에이전트 볼트가 없습니다.",
+      "emptyTitle": "아직 에이전트가 없습니다",
+      "feeHelp": "이 에이전트가 FXRP를 발행할 때 부과하는 수수료입니다.",
+      "freeCapacityHelp": "이 에이전트가 지금 추가로 발행할 수 있는 FXRP의 양입니다.",
+      "inLiquidation": "청산 중",
+      "notPubliclyAvailable": "공개적으로 이용 불가",
+      "poolFeeShare": "풀 {{value}}%",
+      "poolRatio": "풀 {{value}}",
+      "sort": {
+        "collateral_ratio": "담보 비율",
+        "fee": "최저 수수료",
+        "free_capacity": "여유 용량",
+        "minted": "가장 많이 발행됨"
+      },
+      "subtitle": "모든 FXRP 발행 에이전트를 네트워크에서 직접 업데이트하여 보여줍니다.",
+      "title": "에이전트 볼트",
+      "viewOnExplorer": "탐색기에서 보기"
+    },
+    "couldntLoad": "FAssets 데이터를 불러올 수 없습니다.",
+    "description": "네트워크 전체 공급량과 준비금부터 개별 발행 에이전트까지 FXRP 생태계를 추적하세요.",
+    "flow": {
+      "dailyLimit": "일일 발행 한도",
+      "dailyLimitHelp": "네트워크는 매일 새로 발행할 수 있는 FXRP의 양을 제한합니다. 이는 오늘 한도 중 지금까지 얼마나 사용되었는지를 보여줍니다.",
+      "dailyLimitUsed": "사용됨",
+      "dailyLimitValue": "{{limit}} 중 {{used}}",
+      "mintSuccessRate": "발행 성공률",
+      "mints": "발행됨 (24시간)",
+      "netFlow": "순 유량 (24시간)",
+      "paymentDefaults": "지급 불이행",
+      "paymentDefaultsCaption": "미결제로 만료된 발행 예약",
+      "pendingRedemptions": "대기 중인 상환",
+      "pendingRedemptionsCaption": "현재 모든 에이전트에서 상환이 진행 중인 FXRP",
+      "redemptions": "상환됨 (24시간)",
+      "subtitle": "지난 24시간 동안의 발행 및 상환 활동.",
+      "title": "24시간 흐름",
+      "txCount_one": "{{count}}건의 거래",
+      "txCount_other": "{{count}}건의 거래"
+    },
+    "info": {
+      "body": "이 섹션은 특정 에이전트나 회원님의 지갑이 아닌 FXRP 네트워크 전체를 다룹니다. 일부 수치는 정확성과 일관성을 유지하기 위해 계산된 값이며, 준비금과 보유자 수치는 독립적으로 검증되지 않은 파트너 데이터 소스에서 제공됩니다.",
+      "label": "이 숫자들은 무엇을 의미하나요?"
+    },
+    "mintRedeemCta": "FXRP 발행 또는 상환",
+    "myFxrp": {
+      "activityCouldntLoad": "회원님의 FXRP 활동을 불러올 수 없습니다.",
+      "balance": "잔액",
+      "balanceUnavailable": "지금은 잔액을 이용할 수 없습니다.",
+      "connectToSee": "FXRP 잔액과 활동을 보려면 지갑을 연결하거나 선택하세요.",
+      "noActivity": "아직 FXRP 활동이 없습니다.",
+      "recentActivity": "최근 FXRP 활동",
+      "subtitle": "회원님의 FXRP 잔액과 최근 활동입니다.",
+      "title": "내 FXRP",
+      "viewAllInWalletActivity": "지갑 활동에서 전체 보기"
+    },
+    "stats": {
+      "agentCount": "에이전트",
+      "agentsInLiquidation_one": "{{count}}개 에이전트가 현재 청산 중입니다.",
+      "agentsInLiquidation_other": "{{count}}개 에이전트가 현재 청산 중입니다.",
+      "capUsed": "사용된 한도",
+      "capUsedHelp": "존재가 허용된 전체 FXRP 중 이미 발행된 양입니다.",
+      "coreVaultShare": "코어 볼트 비중",
+      "coreVaultShareHelp": "개별 에이전트 볼트가 아닌 Flare의 공유 준비금에 보관된 전체 FXRP의 비중입니다.",
+      "holders": "보유자",
+      "price": "FXRP 가격",
+      "reserveRatio": "준비금 비율",
+      "reserveRatioHelp": "유통 중인 FXRP 대비 얼마나 많은 FXRP 담보가 존재하는지를 나타냅니다. 100% 이상이면 완전히 담보되었다는 의미입니다.",
+      "tvl": "총 예치 자산"
+    },
+    "trend": {
+      "facet": {
+        "minted": "발행됨",
+        "redeemed": "상환됨"
+      },
+      "subtitle": "일별 FXRP 발행량 및 상환량.",
+      "title": "일별 추세"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "지금까지 소각된 양",
@@ -1271,6 +1361,7 @@
     "disconnect": "연결 해제",
     "donate": "기부",
     "expandSidebar": "사이드바 펼치기",
+    "fassets": "FAssets",
     "feeds": "피드",
     "fire": "불",
     "FlareGPT": "FlareGPT",

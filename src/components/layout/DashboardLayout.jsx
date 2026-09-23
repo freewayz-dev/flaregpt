@@ -414,7 +414,22 @@ export default function DashboardLayout() {
               </div>
             </main>
           ) : (
-            <main ref={mainScrollRef} id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto overscroll-contain scrollbar-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:-outline-offset-2">
+            // `overflow-x-hidden` is load-bearing, not decorative: with
+            // only `overflow-y-auto` set, browsers compute `overflow-x` as
+            // `auto` too (the same CSS Overflow Module rule documented in
+            // CLAUDE.md's Responsive regression prevention section) — this
+            // `main` is the ONE shared scroll container under every page
+            // in the app, so that silent auto-computed axis meant *any*
+            // page's transient horizontal overflow (even a sub-pixel
+            // rounding difference from one of the `-mx-4`-bled card rows,
+            // confirmed live) made the entire dashboard shell itself
+            // horizontally draggable — not a contained card row scrolling
+            // internally, but the whole page sliding sideways, with no
+            // scroll-snap or affordance to reliably get back. Explicit
+            // `overflow-x-hidden` removes that entire axis at the source
+            // rather than chasing every individual page that could
+            // transiently overflow by a pixel.
+            <main ref={mainScrollRef} id="main-content" tabIndex={-1} className="flex-1 overflow-x-hidden overflow-y-auto overscroll-contain scrollbar-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:-outline-offset-2">
               <div className="flex min-h-full flex-col md:p-6 p-4">
                 <div className="flex-1">
                   <PageErrorBoundary pathname={location.pathname} queryClient={queryClient}>

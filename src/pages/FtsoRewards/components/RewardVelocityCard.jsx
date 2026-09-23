@@ -70,7 +70,14 @@ export default function RewardVelocityCard({ summary }) {
         {methodInfo && <StatusBadge label={methodInfo.label} tone={methodInfo.tone} dot />}
       </div>
 
-      <div className="mt-4 grid grid-cols-3 gap-3">
+      {/* Stacks to one full-width tile per row below `sm` — matches
+          FassetsFlowCard.jsx's own identical "3 related metric tiles"
+          layout (`grid-cols-1 sm:grid-cols-3`). This card previously used a
+          flat `grid-cols-3` with no responsive breakpoint at all, which is
+          exactly what squeezed every value (a hourly figure formatted to 6
+          decimal places, e.g. "0.732145 FLR") into a ~100px-wide tile on a
+          phone, wrapping mid-number. */}
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
         <MetricTile
           label={t("ftsoRewards.velocity.perHour")}
           value={<SensitiveValue>{formatFlr(summary.hourlyEarning, { maximumFractionDigits: 6 })}</SensitiveValue>}

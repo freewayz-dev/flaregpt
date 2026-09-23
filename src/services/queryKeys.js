@@ -153,4 +153,13 @@ export const queryKeys = {
     all: ["transaction"],
     lookup: (txHash) => [...queryKeys.transaction.all, "lookup", txHash],
   },
+  // FAssets ecosystem overview is a single global snapshot (no address
+  // dimension) — same "all" root pattern as fire.overview. agents is keyed
+  // by `sort` since it's a real server-side param (the backend orders the
+  // response, not the client), same reasoning as links.list's `category`.
+  fassets: {
+    all: ["fassets"],
+    overview: () => [...queryKeys.fassets.all, "overview"],
+    agents: (sort) => [...queryKeys.fassets.all, "agents", sort],
+  },
 };

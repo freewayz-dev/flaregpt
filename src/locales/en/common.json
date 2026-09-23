@@ -317,6 +317,96 @@
       "title": "{{network}} assets only."
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "How much collateral this agent has set aside compared to the FXRP it has minted. A higher number means a bigger safety cushion.",
+      "collateralRatioMin": "min {{value}}",
+      "columns": {
+        "agent": "Agent",
+        "collateralRatio": "Collateral Ratio",
+        "fee": "Fee",
+        "freeCapacity": "Free Capacity",
+        "minted": "Minted",
+        "status": "Status"
+      },
+      "couldntLoad": "Couldn't load agent vaults.",
+      "emptyDescription": "No agent vaults are currently reporting data.",
+      "emptyTitle": "No Agents Yet",
+      "feeHelp": "The fee this agent charges to mint FXRP through it.",
+      "freeCapacityHelp": "How much more FXRP this agent can still mint right now.",
+      "inLiquidation": "In Liquidation",
+      "notPubliclyAvailable": "Not Publicly Available",
+      "poolFeeShare": "Pool {{value}}%",
+      "poolRatio": "Pool {{value}}",
+      "sort": {
+        "collateral_ratio": "Collateral Ratio",
+        "fee": "Lowest Fee",
+        "free_capacity": "Free Capacity",
+        "minted": "Most Minted"
+      },
+      "subtitle": "Every FXRP minting agent, updated directly from the network.",
+      "title": "Agent Vaults",
+      "viewOnExplorer": "View on explorer"
+    },
+    "couldntLoad": "Couldn't load FAssets data.",
+    "description": "Track the FXRP ecosystem, from network-wide supply and reserves to individual minting agents.",
+    "flow": {
+      "dailyLimit": "Daily Minting Limit",
+      "dailyLimitHelp": "The network allows only so much new FXRP to be minted each day. This shows how much of today's limit has been used so far.",
+      "dailyLimitUsed": "Used",
+      "dailyLimitValue": "{{used}} of {{limit}}",
+      "mintSuccessRate": "Mint Success Rate",
+      "mints": "Minted (24h)",
+      "netFlow": "Net Flow (24h)",
+      "paymentDefaults": "Payment Defaults",
+      "paymentDefaultsCaption": "Mint reservations that expired unpaid",
+      "pendingRedemptions": "Pending Redemptions",
+      "pendingRedemptionsCaption": "FXRP currently being redeemed across all agents",
+      "redemptions": "Redeemed (24h)",
+      "subtitle": "Mint and redemption activity over the last 24 hours.",
+      "title": "24h Flow",
+      "txCount_one": "{{count}} transaction",
+      "txCount_other": "{{count}} transactions"
+    },
+    "info": {
+      "body": "This section covers the FXRP network as a whole, not any single agent or your own wallet. Some numbers here are calculated to keep them accurate and consistent, and reserve and holder figures come from a partner data source that has not been independently verified.",
+      "label": "What do these numbers mean?"
+    },
+    "mintRedeemCta": "Mint or Redeem FXRP",
+    "myFxrp": {
+      "activityCouldntLoad": "Couldn't load your FXRP activity.",
+      "balance": "Balance",
+      "balanceUnavailable": "Balance unavailable right now.",
+      "connectToSee": "Connect or select a wallet to see your FXRP balance and activity.",
+      "noActivity": "No FXRP activity yet.",
+      "recentActivity": "Recent FXRP Activity",
+      "subtitle": "Your own FXRP balance and recent activity.",
+      "title": "My FXRP",
+      "viewAllInWalletActivity": "View all in Wallet Activity"
+    },
+    "stats": {
+      "agentCount": "Agents",
+      "agentsInLiquidation_one": "{{count}} agent is currently in liquidation.",
+      "agentsInLiquidation_other": "{{count}} agents are currently in liquidation.",
+      "capUsed": "Cap Used",
+      "capUsedHelp": "How much of the total FXRP that's allowed to exist has already been minted.",
+      "coreVaultShare": "Core Vault Share",
+      "coreVaultShareHelp": "The share of all FXRP being held in Flare's shared reserve, rather than in individual agent vaults.",
+      "holders": "Holders",
+      "price": "FXRP Price",
+      "reserveRatio": "Reserve Ratio",
+      "reserveRatioHelp": "How much FXRP backing exists compared to how much FXRP is in circulation. 100% or higher means it's fully backed.",
+      "tvl": "Total Value Locked"
+    },
+    "trend": {
+      "facet": {
+        "minted": "Minted",
+        "redeemed": "Redeemed"
+      },
+      "subtitle": "FXRP minted and redeemed per day.",
+      "title": "Daily Trend"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "Burned So Far",
@@ -1271,6 +1361,7 @@
     "disconnect": "Disconnect",
     "donate": "Donate",
     "expandSidebar": "Expand sidebar",
+    "fassets": "FAssets",
     "feeds": "Feeds",
     "fire": "Fire",
     "FlareGPT": "FlareGPT",

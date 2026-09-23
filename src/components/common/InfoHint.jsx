@@ -22,6 +22,18 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 // `aria-label` — every instance needs a distinct one anyway once there's
 // more than one info icon on a page, so there's no real saving in
 // splitting it into two props.
+//
+// The popover panel resets `normal-case`/`tracking-normal`/`whitespace-
+// normal` explicitly — `position: absolute` takes this out of normal
+// layout flow, but CSS inheritance still runs through the real DOM tree
+// regardless of position, so a trigger placed inside a `uppercase`/
+// `tracking-wide`/`whitespace-nowrap` ancestor (a table header cell is the
+// real case that surfaced this: `<th className="... uppercase whitespace-
+// nowrap">` around an InfoHint) would otherwise inherit all three into the
+// popover's own body text — the whitespace-nowrap case is the most
+// damaging of the three, since it silently renders the explanation as one
+// very long unwrapped line that runs off past the panel's own edge instead
+// of wrapping, rather than something merely cosmetic.
 export default function InfoHint({ label, children, align = "left", className = "" }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -58,7 +70,21 @@ export default function InfoHint({ label, children, align = "left", className = 
       </button>
 
       <div
-        className={`absolute z-20 top-full mt-1.5 w-60 rounded-xl border border-line bg-surface-card p-3 shadow-lg normal-case tracking-normal transition-all duration-150 ${
+        // `text-left` joins the same normal-case/tracking-normal/
+        // whitespace-normal reset above and for the same reason:
+        // `position: absolute` takes this panel out of normal layout, but
+        // CSS inheritance still runs through the real DOM tree regardless
+        // of position. `align="right"` only changes which edge the panel
+        // is anchored to (so it opens leftward instead of overflowing the
+        // viewport) — it says nothing about the text's own alignment, but
+        // without this explicit reset a trigger placed inside a
+        // `text-right` ancestor (a right-aligned table header, e.g.
+        // AgentsTable.jsx's Fee/Free Capacity/Collateral Ratio columns)
+        // would leak that alignment into the popover's own paragraphs,
+        // right-aligning explanatory prose that reads far worse ragged on
+        // the left than the default, deliberate left alignment every other
+        // InfoHint already has.
+        className={`absolute z-20 top-full mt-1.5 w-60 rounded-xl border border-line bg-surface-card p-3 shadow-lg normal-case tracking-normal whitespace-normal text-left transition-all duration-150 ${
           align === "right" ? "right-0 origin-top-right" : "left-0 origin-top-left"
         } ${open ? "opacity-100 scale-100" : "invisible opacity-0 scale-95 pointer-events-none"}`}
       >

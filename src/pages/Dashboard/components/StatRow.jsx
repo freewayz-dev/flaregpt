@@ -116,7 +116,17 @@ export default function StatRow() {
   ];
 
   return (
-    <div className="flex gap-3 overflow-x-auto touch-pan-x snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-2 xl:grid-cols-4 sm:overflow-visible scrollbar-none">
+    // `overflow-y-hidden` alongside `overflow-x-auto`: without an explicit
+    // `overflow-y`, browsers compute it as `auto` too (CSS Overflow Module
+    // rule), which quietly turns this row into a *vertical* scroll
+    // container as well — an `InfoHint`'s always-mounted (just invisible)
+    // popover panel is taller than a card and counts toward that
+    // scrollable height, so a mouse wheel or vertical drag over the cards
+    // could scroll the row up/down within itself. See
+    // Fassets/components/FassetsStatsRow.jsx's own comment for the full
+    // root-cause writeup — every stat row sharing this pattern gets the
+    // same one-utility fix.
+    <div className="flex gap-3 overflow-x-auto overflow-y-hidden touch-pan-x snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-2 xl:grid-cols-4 sm:overflow-visible scrollbar-none">
       {cards.map((card) => (
         <div key={card.title} className="min-w-[150px] sm:min-w-0 snap-start">
           <StatCard {...card} />

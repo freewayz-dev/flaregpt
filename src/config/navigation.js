@@ -13,6 +13,7 @@ import {
   HeartIcon,
   LinkIcon,
   FireIcon,
+  ArrowsRightLeftIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
@@ -127,6 +128,31 @@ export const NAV_LINKS = [
     group: "portfolio",
   },
   {
+    // FXRP ecosystem overview + agent vault rankings — protocol-level,
+    // wallet-independent data; a wallet's own FXRP balance/activity shows
+    // up in the existing Overview/Wallet Activity pages instead, not here.
+    // Ordered first within "ecosystem": live financial data (supply, mint/
+    // redeem flow, agent rates) a user is likely to check often, same
+    // reasoning Fire sits right after it and both sit ahead of the more
+    // occasional-use Governance/Links/Transaction Lookup below.
+    translationKey: "fassets",
+    path: ROUTES.fassets,
+    icon: ArrowsRightLeftIcon,
+    group: "ecosystem",
+  },
+  {
+    // FIRE (Flare Income Reinvestment Entity) revenue tracking — a
+    // protocol-level mechanism (collected fees, eventual token burns), not
+    // personal portfolio data, so it sits in "ecosystem" rather than
+    // "portfolio". Kept right after FAssets — both are live, frequently-
+    // checked network financial data, ahead of the more occasional-use
+    // items below.
+    translationKey: "fire",
+    path: ROUTES.fire,
+    icon: FireIcon,
+    group: "ecosystem",
+  },
+  {
     translationKey: "governance",
     path: ROUTES.governance,
     icon: ShieldCheckIcon,
@@ -141,21 +167,13 @@ export const NAV_LINKS = [
     group: "ecosystem",
   },
   {
-    // FIRE (Flare Income Reinvestment Entity) revenue tracking — a
-    // protocol-level mechanism (collected fees, eventual token burns), not
-    // personal portfolio data, so it sits in "ecosystem" alongside
-    // Governance/Links rather than "portfolio".
-    translationKey: "fire",
-    path: ROUTES.fire,
-    icon: FireIcon,
-    group: "ecosystem",
-  },
-  {
     // Paste any C-chain transaction hash, look up its status — wallet-
     // independent (works for a hash that has nothing to do with any
     // wallet the user has ever connected), so this sits in "ecosystem"
-    // alongside Fire/Governance/Links rather than inside Wallet Activity,
-    // which is specifically about *this* wallet's own transaction history.
+    // alongside the other Flare-wide pages rather than inside Wallet
+    // Activity, which is specifically about *this* wallet's own
+    // transaction history. Last in the group — a lookup tool reached
+    // occasionally, not something checked routinely like the items above.
     translationKey: "transactionLookup",
     path: ROUTES.transactionLookup,
     icon: MagnifyingGlassIcon,

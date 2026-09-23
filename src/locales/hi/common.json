@@ -317,6 +317,96 @@
       "title": "केवल {{network}} एसेट्स।"
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "इस एजेंट ने मिंट किए गए FXRP की तुलना में कितना कोलैटरल अलग रखा है। ज़्यादा संख्या का मतलब है बड़ा सुरक्षा कुशन।",
+      "collateralRatioMin": "न्यूनतम {{value}}",
+      "columns": {
+        "agent": "एजेंट",
+        "collateralRatio": "कोलैटरल रेश्यो",
+        "fee": "फीस",
+        "freeCapacity": "उपलब्ध क्षमता",
+        "minted": "मिंट किया गया",
+        "status": "स्टेटस"
+      },
+      "couldntLoad": "एजेंट वॉल्ट लोड नहीं हो सके।",
+      "emptyDescription": "फ़िलहाल कोई एजेंट वॉल्ट डेटा रिपोर्ट नहीं कर रहा है।",
+      "emptyTitle": "अभी तक कोई एजेंट नहीं",
+      "feeHelp": "यह फीस है जो यह एजेंट इसके ज़रिए FXRP मिंट करने पर लेता है।",
+      "freeCapacityHelp": "यह एजेंट अभी और कितना FXRP मिंट कर सकता है।",
+      "inLiquidation": "लिक्विडेशन में",
+      "notPubliclyAvailable": "सार्वजनिक रूप से उपलब्ध नहीं",
+      "poolFeeShare": "पूल {{value}}%",
+      "poolRatio": "पूल {{value}}",
+      "sort": {
+        "collateral_ratio": "कोलैटरल रेश्यो",
+        "fee": "सबसे कम फीस",
+        "free_capacity": "उपलब्ध क्षमता",
+        "minted": "सबसे ज़्यादा मिंट किया गया"
+      },
+      "subtitle": "हर FXRP मिंटिंग एजेंट, नेटवर्क से सीधे अपडेट किया गया।",
+      "title": "एजेंट वॉल्ट्स",
+      "viewOnExplorer": "एक्सप्लोरर पर देखें"
+    },
+    "couldntLoad": "FAssets डेटा लोड नहीं हो सका।",
+    "description": "FXRP इकोसिस्टम को ट्रैक करें, नेटवर्क-व्यापी सप्लाई और रिज़र्व से लेकर व्यक्तिगत मिंटिंग एजेंट तक।",
+    "flow": {
+      "dailyLimit": "दैनिक मिंटिंग लिमिट",
+      "dailyLimitHelp": "नेटवर्क हर दिन केवल एक तय मात्रा में नया FXRP मिंट करने की अनुमति देता है। यह दिखाता है कि आज की लिमिट में से अब तक कितना इस्तेमाल हो चुका है।",
+      "dailyLimitUsed": "इस्तेमाल हुआ",
+      "dailyLimitValue": "{{limit}} में से {{used}}",
+      "mintSuccessRate": "मिंट सक्सेस रेट",
+      "mints": "मिंट किया गया (24 घंटे)",
+      "netFlow": "नेट फ्लो (24 घंटे)",
+      "paymentDefaults": "पेमेंट डिफ़ॉल्ट",
+      "paymentDefaultsCaption": "मिंट रिज़र्वेशन जो बिना भुगतान के समाप्त हो गए",
+      "pendingRedemptions": "पेंडिंग रिडेंप्शन",
+      "pendingRedemptionsCaption": "सभी एजेंट में फ़िलहाल रिडीम किया जा रहा FXRP",
+      "redemptions": "रिडीम किया गया (24 घंटे)",
+      "subtitle": "पिछले 24 घंटों की मिंट और रिडेंप्शन गतिविधि।",
+      "title": "24 घंटे का फ्लो",
+      "txCount_one": "{{count}} ट्रांज़ैक्शन",
+      "txCount_other": "{{count}} ट्रांज़ैक्शंस"
+    },
+    "info": {
+      "body": "यह सेक्शन पूरे FXRP नेटवर्क को कवर करता है, न कि किसी एक एजेंट या आपके अपने वॉलेट को। यहां कुछ आंकड़े सटीक और सुसंगत बनाए रखने के लिए कैलकुलेट किए जाते हैं, और रिज़र्व व होल्डर के आंकड़े एक पार्टनर डेटा सोर्स से आते हैं जिसे स्वतंत्र रूप से सत्यापित नहीं किया गया है।",
+      "label": "इन आंकड़ों का क्या मतलब है?"
+    },
+    "mintRedeemCta": "FXRP मिंट या रिडीम करें",
+    "myFxrp": {
+      "activityCouldntLoad": "आपकी FXRP गतिविधि लोड नहीं हो सकी।",
+      "balance": "बैलेंस",
+      "balanceUnavailable": "बैलेंस अभी उपलब्ध नहीं है।",
+      "connectToSee": "अपना FXRP बैलेंस और गतिविधि देखने के लिए वॉलेट कनेक्ट करें या चुनें।",
+      "noActivity": "अभी तक कोई FXRP गतिविधि नहीं।",
+      "recentActivity": "हाल की FXRP गतिविधि",
+      "subtitle": "आपका अपना FXRP बैलेंस और हाल की गतिविधि।",
+      "title": "मेरा FXRP",
+      "viewAllInWalletActivity": "वॉलेट गतिविधि में सभी देखें"
+    },
+    "stats": {
+      "agentCount": "एजेंट",
+      "agentsInLiquidation_one": "{{count}} एजेंट फ़िलहाल लिक्विडेशन में है।",
+      "agentsInLiquidation_other": "{{count}} एजेंट फ़िलहाल लिक्विडेशन में हैं।",
+      "capUsed": "उपयोग की गई कैप",
+      "capUsedHelp": "कुल अनुमत FXRP में से अब तक कितना मिंट किया जा चुका है।",
+      "coreVaultShare": "कोर वॉल्ट हिस्सा",
+      "coreVaultShareHelp": "व्यक्तिगत एजेंट वॉल्ट्स के बजाय Flare के साझा रिज़र्व में रखे गए कुल FXRP का हिस्सा।",
+      "holders": "होल्डर",
+      "price": "FXRP कीमत",
+      "reserveRatio": "रिज़र्व रेश्यो",
+      "reserveRatioHelp": "प्रचलन में मौजूद FXRP की तुलना में कितना FXRP बैकिंग मौजूद है। 100% या उससे ज़्यादा का मतलब है कि यह पूरी तरह बैक्ड है।",
+      "tvl": "कुल लॉक की गई वैल्यू"
+    },
+    "trend": {
+      "facet": {
+        "minted": "मिंट किया गया",
+        "redeemed": "रिडीम किया गया"
+      },
+      "subtitle": "प्रतिदिन मिंट और रिडीम किया गया FXRP।",
+      "title": "दैनिक ट्रेंड"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "अब तक बर्न किया गया",
@@ -1271,6 +1361,7 @@
     "disconnect": "डिस्कनेक्ट करें",
     "donate": "दान करें",
     "expandSidebar": "साइडबार फैलाएं",
+    "fassets": "FAssets",
     "feeds": "फ़ीड्स",
     "fire": "आग",
     "FlareGPT": "FlareGPT",

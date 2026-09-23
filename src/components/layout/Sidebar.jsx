@@ -161,7 +161,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
         `}
       >
         {/* Header Block Panel */}
-        <div className="px-4 pt-2.5 pb-4">
+        <div className="px-4 pt-2.5 pb-3">
           <div
             className={`flex items-center justify-between pl-1 ${collapsed ? "lg:hidden" : ""}`}
           >
@@ -201,7 +201,7 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
         </div>
 
         {/* Dynamic Navigation Interface Menu list */}
-        <nav aria-label={t("sidebar.mainNavigation")} className="mt-4 flex-1 space-y-1 px-2 overflow-y-auto scrollbar-none">
+        <nav aria-label={t("sidebar.mainNavigation")} className="mt-3 flex-1 space-y-1 px-2 overflow-y-auto scrollbar-none">
           {pinned.map(renderNavLink)}
 
           {NAV_GROUPS.map((group) => {
@@ -218,14 +218,21 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
               // one-time discoverability value. A hairline divider keeps
               // the visual chunking without spending a text row on it.
               <div key={group.id} role="group" aria-label={t(group.labelKey)} className="space-y-1">
-                {/* `my-2` always applies (mobile drawer + desktop expanded);
-                    collapsed adds a tighter `lg:my-1` override on top of
-                    it, same base-class-plus-lg-override pattern the link's
-                    own `collapsed` styling above already uses. This is the
-                    actual fix for the rail mode: the old label wrapper's
-                    `pt-3` stayed fixed even with the label hidden, so
-                    collapsing never got any more compact than expanded. */}
-                <div className={`my-2 border-t border-line ${collapsed ? "lg:my-1" : ""}`} aria-hidden="true" />
+                {/* `my-1.5` always applies (mobile drawer + desktop
+                    expanded); collapsed adds a tighter `lg:my-1` override on
+                    top of it, same base-class-plus-lg-override pattern the
+                    link's own `collapsed` styling above already uses. This
+                    is the actual fix for the rail mode: the old label
+                    wrapper's `pt-3` stayed fixed even with the label
+                    hidden, so collapsing never got any more compact than
+                    expanded. Trimmed from `my-2` alongside a few other
+                    small chrome-only spacing values on this page (header
+                    bottom padding, footer top padding) — with 15 real nav
+                    items across 3 groups plus the header/footer, a
+                    13-inch MacBook's 800px-tall viewport clipped the last
+                    item or forced an unwanted scrollbar; none of these
+                    trims touch an actual link's own hit-target height. */}
+                <div className={`my-1.5 border-t border-line ${collapsed ? "lg:my-1" : ""}`} aria-hidden="true" />
                 {groupLinks.map(renderNavLink)}
               </div>
             );
@@ -233,8 +240,8 @@ export default function Sidebar({ open, setOpen, onOpenWalletModal }) {
         </nav>
 
         {/* Footer Configuration Panel Hub */}
-        <div className="px-4 pb-3 mt-auto">
-          <div className="pt-6">
+        <div className="px-4 pb-1 mt-auto">
+          <div className="pt-3">
             <div className={`space-y-2 ${collapsed ? "lg:hidden" : ""}`}>
               {!isConnected ? (
                 <>

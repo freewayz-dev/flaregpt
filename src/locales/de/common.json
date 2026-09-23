@@ -317,6 +317,96 @@
       "title": "Nur {{network}}-Assets."
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "Wie viel Sicherheiten dieser Agent im Vergleich zum geprägten FXRP hinterlegt hat. Ein höherer Wert bedeutet einen größeren Sicherheitspuffer.",
+      "collateralRatioMin": "min. {{value}}",
+      "columns": {
+        "agent": "Agent",
+        "collateralRatio": "Besicherungsquote",
+        "fee": "Gebühr",
+        "freeCapacity": "Freie Kapazität",
+        "minted": "Geprägt",
+        "status": "Status"
+      },
+      "couldntLoad": "Agent-Vaults konnten nicht geladen werden.",
+      "emptyDescription": "Derzeit melden keine Agent-Vaults Daten.",
+      "emptyTitle": "Noch keine Agents",
+      "feeHelp": "Die Gebühr, die dieser Agent für das Prägen von FXRP über ihn berechnet.",
+      "freeCapacityHelp": "Wie viel FXRP dieser Agent aktuell noch prägen kann.",
+      "inLiquidation": "In Liquidation",
+      "notPubliclyAvailable": "Nicht öffentlich verfügbar",
+      "poolFeeShare": "Pool {{value}}%",
+      "poolRatio": "Pool {{value}}",
+      "sort": {
+        "collateral_ratio": "Besicherungsquote",
+        "fee": "Niedrigste Gebühr",
+        "free_capacity": "Freie Kapazität",
+        "minted": "Am meisten geprägt"
+      },
+      "subtitle": "Jeder FXRP-Minting-Agent, direkt aus dem Netzwerk aktualisiert.",
+      "title": "Agent-Vaults",
+      "viewOnExplorer": "Im Explorer ansehen"
+    },
+    "couldntLoad": "FAssets-Daten konnten nicht geladen werden.",
+    "description": "Verfolge das FXRP-Ökosystem, vom netzwerkweiten Angebot und den Reserven bis zu einzelnen Minting-Agents.",
+    "flow": {
+      "dailyLimit": "Tägliches Prägelimit",
+      "dailyLimitHelp": "Das Netzwerk erlaubt pro Tag nur eine bestimmte Menge an neu geprägtem FXRP. Dies zeigt, wie viel vom heutigen Limit bereits genutzt wurde.",
+      "dailyLimitUsed": "Genutzt",
+      "dailyLimitValue": "{{used}} von {{limit}}",
+      "mintSuccessRate": "Minting-Erfolgsquote",
+      "mints": "Geprägt (24 Std.)",
+      "netFlow": "Nettofluss (24 Std.)",
+      "paymentDefaults": "Zahlungsausfälle",
+      "paymentDefaultsCaption": "Minting-Reservierungen, die unbezahlt abgelaufen sind",
+      "pendingRedemptions": "Ausstehende Einlösungen",
+      "pendingRedemptionsCaption": "FXRP, das derzeit über alle Agenten hinweg eingelöst wird",
+      "redemptions": "Eingelöst (24 Std.)",
+      "subtitle": "Minting- und Einlöseaktivität der letzten 24 Stunden.",
+      "title": "24-Std.-Fluss",
+      "txCount_one": "{{count}} Transaktion",
+      "txCount_other": "{{count}} Transaktionen"
+    },
+    "info": {
+      "body": "Dieser Bereich deckt das gesamte FXRP-Netzwerk ab, nicht einen einzelnen Agenten oder deine eigene Wallet. Manche Zahlen hier werden berechnet, um sie genau und konsistent zu halten, und die Reserve- und Halterzahlen stammen aus einer Partner-Datenquelle, die nicht unabhängig geprüft wurde.",
+      "label": "Was bedeuten diese Zahlen?"
+    },
+    "mintRedeemCta": "FXRP prägen oder einlösen",
+    "myFxrp": {
+      "activityCouldntLoad": "Deine FXRP-Aktivität konnte nicht geladen werden.",
+      "balance": "Guthaben",
+      "balanceUnavailable": "Guthaben derzeit nicht verfügbar.",
+      "connectToSee": "Verbinde oder wähle eine Wallet, um dein FXRP-Guthaben und deine Aktivität zu sehen.",
+      "noActivity": "Noch keine FXRP-Aktivität.",
+      "recentActivity": "Letzte FXRP-Aktivität",
+      "subtitle": "Dein eigenes FXRP-Guthaben und deine letzte Aktivität.",
+      "title": "Mein FXRP",
+      "viewAllInWalletActivity": "Alle in der Wallet-Aktivität anzeigen"
+    },
+    "stats": {
+      "agentCount": "Agents",
+      "agentsInLiquidation_one": "{{count}} Agent befindet sich derzeit in Liquidation.",
+      "agentsInLiquidation_other": "{{count}} Agenten befinden sich derzeit in Liquidation.",
+      "capUsed": "Genutztes Limit",
+      "capUsedHelp": "Wie viel vom insgesamt zulässigen FXRP bereits geprägt wurde.",
+      "coreVaultShare": "Anteil Core Vault",
+      "coreVaultShareHelp": "Der Anteil des gesamten FXRP, der in Flares gemeinsamer Reserve gehalten wird, statt in einzelnen Agent-Vaults.",
+      "holders": "Halter",
+      "price": "FXRP-Preis",
+      "reserveRatio": "Reservequote",
+      "reserveRatioHelp": "Wie viel FXRP-Deckung im Vergleich zur im Umlauf befindlichen Menge an FXRP besteht. 100% oder mehr bedeutet vollständige Deckung.",
+      "tvl": "Gesperrter Gesamtwert"
+    },
+    "trend": {
+      "facet": {
+        "minted": "Geprägt",
+        "redeemed": "Eingelöst"
+      },
+      "subtitle": "Täglich geprägtes und eingelöstes FXRP.",
+      "title": "Täglicher Verlauf"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "Bisher Verbrannt",
@@ -1271,6 +1361,7 @@
     "disconnect": "Trennen",
     "donate": "Spenden",
     "expandSidebar": "Seitenleiste ausklappen",
+    "fassets": "FAssets",
     "feeds": "Feeds",
     "fire": "Feuer",
     "FlareGPT": "FlareGPT",

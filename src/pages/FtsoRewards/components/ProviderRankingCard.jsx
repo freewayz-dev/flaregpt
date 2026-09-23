@@ -85,29 +85,40 @@ function providerLogo(address) {
   return match ? PROVIDER_LOGOS[match] : undefined;
 }
 
+// Below `sm`, the trailing weight/fee figures drop to their own line
+// (indented to align under the name, `pl-11` matching the 32px avatar +
+// gap-3) instead of squeezing into the same row as the avatar/name/address
+// — confirmed live that cramming both into one row on a phone made a long
+// provider name truncate hard and crowded the concentration-band pill
+// right up against the address. At `sm` and up there's already enough
+// room (this card sits alone or in a 2-column grid, never narrower than a
+// phone), so the row reverts to the original single-line layout exactly
+// as it was.
 function ProviderRow({ row, t }) {
   return (
-    <div className="flex items-center gap-3 py-2.5">
-      <RankingAvatar name={row.name} logoSrc={providerLogo(row.address)} />
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-ink-primary">{row.name}</p>
-        <div className="mt-0.5 flex items-center gap-1.5">
-          <p className="truncate text-[11px] font-mono text-ink-muted">{shortenAddress(row.address)}</p>
-          {/* Same neutral pill DelegationsCard already uses for this exact
-              field on a wallet's own delegations — one tag style for both
-              band values, never a tone/color swap (see the handoff's own
-              rule, restated in deriveRankings.js). The *explanation* of
-              what this means lives once, on the card title above, not
-              repeated on every row. */}
-          {row.concentrationBand && CONCENTRATION_BAND_LABEL_KEYS[row.concentrationBand] && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-surface-inset px-2 py-0.5 text-[11px] font-semibold text-ink-secondary shrink-0">
-              <ScaleIcon className="h-3 w-3 text-ink-muted" />
-              {t(CONCENTRATION_BAND_LABEL_KEYS[row.concentrationBand])}
-            </span>
-          )}
+    <div className="flex flex-col gap-2 py-2.5 sm:flex-row sm:items-center sm:gap-3">
+      <div className="flex items-center gap-3 min-w-0">
+        <RankingAvatar name={row.name} logoSrc={providerLogo(row.address)} />
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-medium text-ink-primary">{row.name}</p>
+          <div className="mt-0.5 flex items-center gap-1.5">
+            <p className="truncate text-[11px] font-mono text-ink-muted">{shortenAddress(row.address)}</p>
+            {/* Same neutral pill DelegationsCard already uses for this exact
+                field on a wallet's own delegations — one tag style for both
+                band values, never a tone/color swap (see the handoff's own
+                rule, restated in deriveRankings.js). The *explanation* of
+                what this means lives once, on the card title above, not
+                repeated on every row. */}
+            {row.concentrationBand && CONCENTRATION_BAND_LABEL_KEYS[row.concentrationBand] && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-surface-inset px-2 py-0.5 text-[11px] font-semibold text-ink-secondary shrink-0">
+                <ScaleIcon className="h-3 w-3 text-ink-muted" />
+                {t(CONCENTRATION_BAND_LABEL_KEYS[row.concentrationBand])}
+              </span>
+            )}
+          </div>
         </div>
       </div>
-      <div className="shrink-0 text-right">
+      <div className="pl-11 shrink-0 sm:pl-0 sm:text-right">
         <p className="text-sm font-semibold tabular-nums text-ink-primary">
           {row.weightSharePct.toFixed(2)}%
         </p>

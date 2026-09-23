@@ -40,8 +40,12 @@ export default function Fire() {
             anyone who hasn't read Flare's own FIP — collapsed by default
             (Disclosure's own established behavior everywhere else it's
             used) so it doesn't compete with the real numbers below for a
-            returning visitor who already knows what FIRE is. */}
-        <Disclosure label={t("fire.explainer.label")} align="start">
+            returning visitor who already knows what FIRE is. `bordered=
+            {false}` — sitting directly under PageHeader, Disclosure's
+            default top rule read as a stray line under the header rather
+            than a real section break, since there's nothing above it on
+            this page for a rule to actually separate. */}
+        <Disclosure label={t("fire.explainer.label")} align="start" bordered={false}>
           <p className="text-xs text-ink-secondary max-w-2xl">{t("fire.explainer.body")}</p>
         </Disclosure>
       </div>

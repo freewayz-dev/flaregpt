@@ -40,7 +40,13 @@ export default function QuickInsights({ insights }) {
       <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-ink-muted">
         {t("wallet.activity.insights.title")}
       </p>
-      <div className="flex gap-3 overflow-x-auto touch-pan-x snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-4 sm:overflow-visible scrollbar-none">
+      {/* `overflow-y-hidden` alongside `overflow-x-auto` — without it,
+          browsers compute `overflow-y` as `auto` too, silently making this
+          a vertical scroll container as well. See
+          Fassets/components/FassetsStatsRow.jsx's own comment for the full
+          root-cause writeup — every stat/card row sharing this pattern gets
+          the same one-utility fix. */}
+      <div className="flex gap-3 overflow-x-auto overflow-y-hidden touch-pan-x snap-x snap-mandatory scroll-pl-4 scroll-pr-4 -mx-4 px-4 pb-1 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-4 sm:overflow-visible scrollbar-none">
         {mostUsedAsset && (
           <div className="min-w-[150px] sm:min-w-0 snap-start">
             <InsightCard

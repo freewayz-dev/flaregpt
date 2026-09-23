@@ -319,6 +319,77 @@ export const handlers = [
     });
   }),
 
+  // Default: the normal, healthy "flaremetrics" state — Fassets/index.test.jsx
+  // overrides this per-case for the on-chain-fallback shape (no
+  // proof_of_reserve/flow_24h/trend_daily).
+  http.get(`${API}/api/v1/fassets/overview`, () => {
+    return HttpResponse.json({
+      source: "flaremetrics",
+      attribution: "Data provided by FlareMetrics (flaremetrics.io)",
+      degraded: false,
+      supply: {
+        fxrp_supply: 145363031.75,
+        minting_cap: 170000000,
+        cap_used_pct: 85.51,
+        price_usd: 1.534,
+        tvl_usd: 223052304.08,
+        lot_size_fxrp: 10.0,
+        lots: { all: 14615602, minted: 14536303, available: 79299 },
+        minted_lots_pct: 99.46,
+      },
+      agents: {
+        count: 6,
+        in_liquidation: 0,
+        agent_minted_fxrp: 1385896.68,
+        core_vault_supply_fxrp: 143977135.07,
+        core_vault_share_pct: 99.05,
+        core_vault_supply_is_derived: false,
+      },
+      proof_of_reserve: { total_fxrp: 145363031.75, ratio_pct: 100.01 },
+      flow_24h: {
+        mints_completed: { fxrp: 28230.0, tx: 36 },
+        payment_defaults: 8,
+        mint_success_rate_pct: 81.8,
+        redemptions: { fxrp: 219766.82, tx: 70 },
+        net_fxrp: -191536.82,
+      },
+      trend_daily: [
+        { date: "2026-09-14", minted_fxrp: 113480, redeemed_fxrp: 148181 },
+        { date: "2026-09-15", minted_fxrp: 98230, redeemed_fxrp: 120044 },
+      ],
+      note: "FXRP amounts are in FXRP (6 decimals, already scaled). minted_lots_pct and cap_used_pct are computed here, not taken from FlareMetrics.",
+    });
+  }),
+
+  // Confirmed live: `{ sorted_by, lot_size_fxrp, agents: [...] }`, not a
+  // bare array — the handoff doc's own single-row example didn't show the
+  // wrapping object. Real agent rows also carry `icon_url`/`terms_url`
+  // (deliberately never used — see AgentsTable.jsx's own comment).
+  http.get(`${API}/api/v1/fassets/agents`, ({ request }) => {
+    const sort = new URL(request.url).searchParams.get("sort");
+    return HttpResponse.json({
+      sorted_by: sort ?? "free_capacity",
+      lot_size_fxrp: 10.0,
+      agents: [
+        {
+          vault_address: "0x09011d2A11A40DB855Cb00B3AA5a0F5F3bd485FD",
+          name: "White Knight",
+          description: "Liquidating with good intentions",
+          icon_url: "https://example.com/icon.png",
+          terms_url: null,
+          publicly_available: true,
+          in_liquidation: false,
+          fee_pct: 0.1,
+          free_capacity_fxrp: 302750.0,
+          minted_fxrp: 75370.76,
+          vault_collateral_ratio: 7.0235,
+          underlying_address: "rGWGTbxqmpLJ3TYGjoCFDqY9mPQ4T1GTGb",
+          rank: 1,
+        },
+      ],
+    });
+  }),
+
   // NOT_STAKED is the default for every address except the one real staked
   // wallet found live via the PChainStakeMirror contract (see
   // YourValidatorStakeCard.jsx's top comment) — this trimmed sample mirrors

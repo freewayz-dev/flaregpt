@@ -317,6 +317,96 @@
       "title": "Chỉ tài sản {{network}}."
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "Số tài sản thế chấp mà đại lý này đã dành ra so với số FXRP mà đại lý đã đúc. Con số càng cao nghĩa là mức đệm an toàn càng lớn.",
+      "collateralRatioMin": "tối thiểu {{value}}",
+      "columns": {
+        "agent": "Đại Lý",
+        "collateralRatio": "Tỷ Lệ Thế Chấp",
+        "fee": "Phí",
+        "freeCapacity": "Dung Lượng Trống",
+        "minted": "Đã Đúc",
+        "status": "Trạng Thái"
+      },
+      "couldntLoad": "Không thể tải vault của đại lý.",
+      "emptyDescription": "Hiện không có vault đại lý nào đang báo cáo dữ liệu.",
+      "emptyTitle": "Chưa Có Đại Lý Nào",
+      "feeHelp": "Phí mà đại lý này thu khi đúc FXRP thông qua đại lý đó.",
+      "freeCapacityHelp": "Số FXRP mà đại lý này vẫn có thể đúc thêm ngay bây giờ.",
+      "inLiquidation": "Đang Thanh Lý",
+      "notPubliclyAvailable": "Không Công Khai",
+      "poolFeeShare": "Pool {{value}}%",
+      "poolRatio": "Pool {{value}}",
+      "sort": {
+        "collateral_ratio": "Tỷ Lệ Thế Chấp",
+        "fee": "Phí Thấp Nhất",
+        "free_capacity": "Dung Lượng Trống",
+        "minted": "Đúc Nhiều Nhất"
+      },
+      "subtitle": "Mọi đại lý đúc FXRP, được cập nhật trực tiếp từ mạng lưới.",
+      "title": "Vault Đại Lý",
+      "viewOnExplorer": "Xem trên Explorer"
+    },
+    "couldntLoad": "Không thể tải dữ liệu FAssets.",
+    "description": "Theo dõi hệ sinh thái FXRP, từ nguồn cung và dự trữ toàn mạng lưới đến từng đại lý đúc riêng lẻ.",
+    "flow": {
+      "dailyLimit": "Hạn Mức Đúc Hàng Ngày",
+      "dailyLimitHelp": "Mạng lưới chỉ cho phép đúc một lượng FXRP mới nhất định mỗi ngày. Điều này cho thấy hạn mức hôm nay đã được sử dụng bao nhiêu.",
+      "dailyLimitUsed": "Đã Dùng",
+      "dailyLimitValue": "{{used}} trên {{limit}}",
+      "mintSuccessRate": "Tỷ Lệ Đúc Thành Công",
+      "mints": "Đã Đúc (24 giờ)",
+      "netFlow": "Dòng Ròng (24 giờ)",
+      "paymentDefaults": "Vỡ Nợ Thanh Toán",
+      "paymentDefaultsCaption": "Các đặt chỗ đúc đã hết hạn mà không thanh toán",
+      "pendingRedemptions": "Đang Chờ Chuộc",
+      "pendingRedemptionsCaption": "FXRP hiện đang được chuộc trên tất cả các đại lý",
+      "redemptions": "Đã Chuộc (24 giờ)",
+      "subtitle": "Hoạt động đúc và chuộc trong 24 giờ qua.",
+      "title": "Dòng Chảy 24 Giờ",
+      "txCount_one": "{{count}} giao dịch",
+      "txCount_other": "{{count}} giao dịch"
+    },
+    "info": {
+      "body": "Phần này bao quát toàn bộ mạng lưới FXRP, không phải một đại lý cụ thể hay ví riêng của bạn. Một số con số ở đây được tính toán để giữ độ chính xác và nhất quán, và các số liệu về dự trữ cùng người nắm giữ đến từ một nguồn dữ liệu đối tác chưa được xác minh độc lập.",
+      "label": "Những con số này có nghĩa là gì?"
+    },
+    "mintRedeemCta": "Đúc hoặc Chuộc FXRP",
+    "myFxrp": {
+      "activityCouldntLoad": "Không thể tải hoạt động FXRP của bạn.",
+      "balance": "Số Dư",
+      "balanceUnavailable": "Số dư hiện không khả dụng.",
+      "connectToSee": "Kết nối hoặc chọn một ví để xem số dư và hoạt động FXRP của bạn.",
+      "noActivity": "Chưa có hoạt động FXRP nào.",
+      "recentActivity": "Hoạt Động FXRP Gần Đây",
+      "subtitle": "Số dư và hoạt động FXRP gần đây của riêng bạn.",
+      "title": "FXRP Của Tôi",
+      "viewAllInWalletActivity": "Xem tất cả trong Hoạt động Ví"
+    },
+    "stats": {
+      "agentCount": "Đại Lý",
+      "agentsInLiquidation_one": "Hiện có {{count}} đại lý đang thanh lý.",
+      "agentsInLiquidation_other": "Hiện có {{count}} đại lý đang thanh lý.",
+      "capUsed": "Hạn Mức Đã Dùng",
+      "capUsedHelp": "Số FXRP đã được đúc so với tổng lượng FXRP được phép tồn tại.",
+      "coreVaultShare": "Tỷ Trọng Core Vault",
+      "coreVaultShareHelp": "Tỷ trọng của toàn bộ FXRP được giữ trong quỹ dự trữ chung của Flare, thay vì trong các vault riêng của từng đại lý.",
+      "holders": "Người Nắm Giữ",
+      "price": "Giá FXRP",
+      "reserveRatio": "Tỷ Lệ Dự Trữ",
+      "reserveRatioHelp": "Lượng FXRP bảo chứng so với lượng FXRP đang lưu hành. 100% trở lên nghĩa là được bảo chứng đầy đủ.",
+      "tvl": "Tổng Giá Trị Bị Khóa"
+    },
+    "trend": {
+      "facet": {
+        "minted": "Đã Đúc",
+        "redeemed": "Đã Chuộc"
+      },
+      "subtitle": "FXRP được đúc và chuộc theo ngày.",
+      "title": "Xu Hướng Hàng Ngày"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "Đã Đốt Đến Nay",
@@ -1271,6 +1361,7 @@
     "disconnect": "Ngắt kết nối",
     "donate": "Ủng hộ",
     "expandSidebar": "Mở rộng thanh bên",
+    "fassets": "FAssets",
     "feeds": "Các nguồn dữ liệu",
     "fire": "Lửa",
     "FlareGPT": "FlareGPT",

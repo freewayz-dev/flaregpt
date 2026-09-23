@@ -317,6 +317,96 @@
       "title": "{{network}}の資産のみ。"
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "このエージェントがミントしたFXRPに対して、どれだけの担保を確保しているかを示します。数値が高いほど、安全余裕が大きいことを意味します。",
+      "collateralRatioMin": "最小 {{value}}",
+      "columns": {
+        "agent": "エージェント",
+        "collateralRatio": "担保比率",
+        "fee": "手数料",
+        "freeCapacity": "空き容量",
+        "minted": "ミント済み",
+        "status": "ステータス"
+      },
+      "couldntLoad": "エージェントボールトを読み込めませんでした。",
+      "emptyDescription": "現在データを報告しているエージェントボールトはありません。",
+      "emptyTitle": "まだエージェントがいません",
+      "feeHelp": "このエージェントを通じてFXRPをミントする際に課される手数料です。",
+      "freeCapacityHelp": "このエージェントが今すぐさらにミントできるFXRPの量です。",
+      "inLiquidation": "清算中",
+      "notPubliclyAvailable": "非公開",
+      "poolFeeShare": "プール {{value}}%",
+      "poolRatio": "プール {{value}}",
+      "sort": {
+        "collateral_ratio": "担保比率",
+        "fee": "手数料が最も低い",
+        "free_capacity": "空き容量",
+        "minted": "ミント数が最多"
+      },
+      "subtitle": "すべてのFXRPミンティングエージェントを、ネットワークから直接更新しています。",
+      "title": "エージェントボールト",
+      "viewOnExplorer": "エクスプローラーで見る"
+    },
+    "couldntLoad": "FAssetsデータを読み込めませんでした。",
+    "description": "ネットワーク全体の供給量や準備金から個々のミンティングエージェントまで、FXRPエコシステムを追跡します。",
+    "flow": {
+      "dailyLimit": "1日のミント上限",
+      "dailyLimitHelp": "ネットワークでは、1日に新規発行できるFXRPの量に上限があります。これは、今日の上限のうちどれだけ使用されたかを示します。",
+      "dailyLimitUsed": "使用済み",
+      "dailyLimitValue": "{{limit}}のうち{{used}}",
+      "mintSuccessRate": "ミント成功率",
+      "mints": "ミント済み(24時間)",
+      "netFlow": "純フロー(24時間)",
+      "paymentDefaults": "支払い不履行",
+      "paymentDefaultsCaption": "未払いのまま期限切れになったミント予約",
+      "pendingRedemptions": "保留中の償還",
+      "pendingRedemptionsCaption": "現在すべてのエージェントで償還処理中のFXRP",
+      "redemptions": "償還済み(24時間)",
+      "subtitle": "過去24時間のミントおよび償還アクティビティ。",
+      "title": "24時間フロー",
+      "txCount_one": "{{count}}件の取引",
+      "txCount_other": "{{count}}件の取引"
+    },
+    "info": {
+      "body": "このセクションでは、特定のエージェントやご自身のウォレットではなく、FXRPネットワーク全体を扱います。ここに表示される一部の数値は、正確性と一貫性を保つために算出されたものであり、準備金と保有者数の数値はパートナーのデータソースによるもので、独立した検証は行われていません。",
+      "label": "これらの数値は何を意味しますか?"
+    },
+    "mintRedeemCta": "FXRPをミントまたは償還",
+    "myFxrp": {
+      "activityCouldntLoad": "あなたのFXRPアクティビティを読み込めませんでした。",
+      "balance": "残高",
+      "balanceUnavailable": "現在、残高を利用できません。",
+      "connectToSee": "ご自身のFXRP残高とアクティビティを見るには、ウォレットを接続または選択してください。",
+      "noActivity": "まだFXRPアクティビティがありません。",
+      "recentActivity": "最近のFXRPアクティビティ",
+      "subtitle": "ご自身のFXRP残高と最近のアクティビティです。",
+      "title": "マイFXRP",
+      "viewAllInWalletActivity": "ウォレット活動ですべて見る"
+    },
+    "stats": {
+      "agentCount": "エージェント数",
+      "agentsInLiquidation_one": "{{count}}件のエージェントが現在清算中です。",
+      "agentsInLiquidation_other": "{{count}}件のエージェントが現在清算中です。",
+      "capUsed": "使用済み上限",
+      "capUsedHelp": "存在が許可されているFXRPの総量のうち、すでにミントされた量です。",
+      "coreVaultShare": "コアボールトの割合",
+      "coreVaultShareHelp": "個々のエージェントボールトではなく、Flareの共有準備金に保有されているFXRP全体の割合です。",
+      "holders": "保有者数",
+      "price": "FXRP価格",
+      "reserveRatio": "準備金比率",
+      "reserveRatioHelp": "流通しているFXRPの量に対して、どれだけの裏付けとなるFXRPが存在するかを示します。100%以上であれば完全に裏付けされていることを意味します。",
+      "tvl": "預かり資産総額"
+    },
+    "trend": {
+      "facet": {
+        "minted": "ミント済み",
+        "redeemed": "償還済み"
+      },
+      "subtitle": "1日あたりのFXRPミント量と償還量。",
+      "title": "日次トレンド"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "これまでのバーン量",
@@ -1271,6 +1361,7 @@
     "disconnect": "接続解除",
     "donate": "寄付",
     "expandSidebar": "サイドバーを展開する",
+    "fassets": "FAssets",
     "feeds": "RSSフィード",
     "fire": "火",
     "FlareGPT": "フレアGPT",

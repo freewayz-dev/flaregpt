@@ -25,6 +25,7 @@ import { useAuthStatus } from "@/hooks/useAuthStatus";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { shortenAddress, copyWalletAddress } from "@/utils/address";
 import { ROUTES } from "@/config/routes";
+import { NAV_LINKS } from "@/config/navigation";
 import WalletBadge from "@/components/common/WalletBadge";
 import WalletRow from "@/components/common/WalletRow";
 
@@ -146,20 +147,30 @@ export default function Navbar({
     return () => window.removeEventListener("keydown", handleEscape);
   }, []);
 
+  // Derived from `NAV_LINKS` (the single source of truth every route's
+  // page name already comes from — Sidebar.jsx's own nav list uses this
+  // exact `t(\`sidebar.${translationKey}\`)` pattern) rather than a second,
+  // hand-maintained path-to-title chain living only in this file. That
+  // duplication was the actual bug: this used to list a handful of routes
+  // explicitly and silently fall back to "FlareGPT" for anything it forgot
+  // to add — which is exactly what happened to Loops, Links, Fire, FAssets,
+  // Transaction Lookup, and Donate, each shipped as its own NAV_LINKS entry
+  // without ever being added here. Deriving from NAV_LINKS means a future
+  // new page can't reintroduce the same gap — it already needs a NAV_LINKS
+  // entry to appear in the sidebar at all, and that entry is now the only
+  // thing this title needs too.
+  //
+  // `|| ROUTES.app` covers the one edge case stripping a trailing slash can
+  // produce (a bare "/" reducing to ""), so the dashboard's own index route
+  // still resolves to its NAV_LINKS entry (`path: ROUTES.app`) instead of
+  // falling through. No route in this app is nested under a dynamic segment
+  // today, so an exact `path` match against `location.pathname` is enough —
+  // a future dynamic route (e.g. `/app/x/:id`) would need this to match by
+  // prefix instead, same as `NavLink`'s own `end`-less matching.
   const getNavbarTitle = () => {
-    const path = location.pathname.toLowerCase().replace(/\/$/, "");
-
-    if (path === "" || path === ROUTES.app) return t("sidebar.overview");
-    if (path === ROUTES.flareGpt) return t("sidebar.FlareGPT");
-    if (path === ROUTES.walletActivity) return t("sidebar.walletActivity");
-    if (path === ROUTES.ftsoRewards) return t("sidebar.ftsoRewards");
-    if (path === ROUTES.rflrTracker) return t("sidebar.rflrTracker");
-    if (path === ROUTES.governance) return t("sidebar.governance");
-    if (path === ROUTES.defiProtocols) return t("sidebar.defiProtocols");
-    if (path === ROUTES.settings) return t("sidebar.settings");
-    if (path === ROUTES.help) return t("sidebar.helpCenter");
-
-    return t("sidebar.FlareGPT");
+    const path = location.pathname.toLowerCase().replace(/\/$/, "") || ROUTES.app;
+    const navLink = NAV_LINKS.find((link) => link.path === path);
+    return navLink ? t(`sidebar.${navLink.translationKey}`) : t("sidebar.FlareGPT");
   };
 
   const handleConfigureWalletsRedirect = () => {

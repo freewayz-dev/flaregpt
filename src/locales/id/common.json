@@ -317,6 +317,96 @@
       "title": "Hanya aset {{network}}."
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "Seberapa banyak jaminan yang disisihkan agen ini dibandingkan dengan FXRP yang telah dicetaknya. Angka yang lebih tinggi berarti bantalan keamanan yang lebih besar.",
+      "collateralRatioMin": "min {{value}}",
+      "columns": {
+        "agent": "Agen",
+        "collateralRatio": "Rasio Jaminan",
+        "fee": "Biaya",
+        "freeCapacity": "Kapasitas Tersedia",
+        "minted": "Dicetak",
+        "status": "Status"
+      },
+      "couldntLoad": "Vault agen tidak dapat dimuat.",
+      "emptyDescription": "Saat ini tidak ada vault agen yang melaporkan data.",
+      "emptyTitle": "Belum Ada Agen",
+      "feeHelp": "Biaya yang dikenakan agen ini untuk mencetak FXRP melalui dirinya.",
+      "freeCapacityHelp": "Seberapa banyak FXRP tambahan yang masih bisa dicetak agen ini sekarang.",
+      "inLiquidation": "Dalam Likuidasi",
+      "notPubliclyAvailable": "Tidak Tersedia untuk Umum",
+      "poolFeeShare": "Pool {{value}}%",
+      "poolRatio": "Pool {{value}}",
+      "sort": {
+        "collateral_ratio": "Rasio Jaminan",
+        "fee": "Biaya Terendah",
+        "free_capacity": "Kapasitas Tersedia",
+        "minted": "Paling Banyak Dicetak"
+      },
+      "subtitle": "Setiap agen minting FXRP, diperbarui langsung dari jaringan.",
+      "title": "Vault Agen",
+      "viewOnExplorer": "Lihat di Explorer"
+    },
+    "couldntLoad": "Data FAssets tidak dapat dimuat.",
+    "description": "Pantau ekosistem FXRP, mulai dari pasokan dan cadangan di seluruh jaringan hingga masing-masing agen minting.",
+    "flow": {
+      "dailyLimit": "Batas Minting Harian",
+      "dailyLimitHelp": "Jaringan hanya mengizinkan sejumlah FXRP baru untuk dicetak setiap hari. Ini menunjukkan seberapa banyak batas hari ini yang telah digunakan sejauh ini.",
+      "dailyLimitUsed": "Terpakai",
+      "dailyLimitValue": "{{used}} dari {{limit}}",
+      "mintSuccessRate": "Tingkat Keberhasilan Minting",
+      "mints": "Dicetak (24 jam)",
+      "netFlow": "Arus Bersih (24 jam)",
+      "paymentDefaults": "Gagal Bayar",
+      "paymentDefaultsCaption": "Reservasi minting yang kedaluwarsa tanpa pembayaran",
+      "pendingRedemptions": "Penebusan Tertunda",
+      "pendingRedemptionsCaption": "FXRP yang sedang ditebus di semua agen saat ini",
+      "redemptions": "Ditebus (24 jam)",
+      "subtitle": "Aktivitas minting dan penebusan selama 24 jam terakhir.",
+      "title": "Arus 24 Jam",
+      "txCount_one": "{{count}} transaksi",
+      "txCount_other": "{{count}} transaksi"
+    },
+    "info": {
+      "body": "Bagian ini mencakup jaringan FXRP secara keseluruhan, bukan agen tertentu atau dompet Anda sendiri. Beberapa angka di sini dihitung agar tetap akurat dan konsisten, dan angka cadangan serta pemegang berasal dari sumber data mitra yang belum diverifikasi secara independen.",
+      "label": "Apa arti angka-angka ini?"
+    },
+    "mintRedeemCta": "Cetak atau Tebus FXRP",
+    "myFxrp": {
+      "activityCouldntLoad": "Aktivitas FXRP Anda tidak dapat dimuat.",
+      "balance": "Saldo",
+      "balanceUnavailable": "Saldo tidak tersedia saat ini.",
+      "connectToSee": "Hubungkan atau pilih wallet untuk melihat saldo dan aktivitas FXRP Anda.",
+      "noActivity": "Belum ada aktivitas FXRP.",
+      "recentActivity": "Aktivitas FXRP Terbaru",
+      "subtitle": "Saldo dan aktivitas FXRP terbaru Anda.",
+      "title": "FXRP Saya",
+      "viewAllInWalletActivity": "Lihat semua di Aktivitas Dompet"
+    },
+    "stats": {
+      "agentCount": "Agen",
+      "agentsInLiquidation_one": "{{count}} agen saat ini dalam likuidasi.",
+      "agentsInLiquidation_other": "{{count}} agen saat ini dalam likuidasi.",
+      "capUsed": "Batas Terpakai",
+      "capUsedHelp": "Seberapa banyak dari total FXRP yang diizinkan ada yang sudah dicetak.",
+      "coreVaultShare": "Pangsa Core Vault",
+      "coreVaultShareHelp": "Bagian dari semua FXRP yang disimpan di cadangan bersama Flare, bukan di vault agen masing-masing.",
+      "holders": "Pemegang",
+      "price": "Harga FXRP",
+      "reserveRatio": "Rasio Cadangan",
+      "reserveRatioHelp": "Seberapa banyak dukungan FXRP yang ada dibandingkan dengan FXRP yang beredar. 100% atau lebih berarti sepenuhnya didukung.",
+      "tvl": "Total Nilai Terkunci"
+    },
+    "trend": {
+      "facet": {
+        "minted": "Dicetak",
+        "redeemed": "Ditebus"
+      },
+      "subtitle": "FXRP yang dicetak dan ditebus per hari.",
+      "title": "Tren Harian"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "Terbakar Sejauh Ini",
@@ -1271,6 +1361,7 @@
     "disconnect": "Putuskan Koneksi",
     "donate": "Beri donasi",
     "expandSidebar": "Perluas sidebar",
+    "fassets": "FAssets",
     "feeds": "Umpan",
     "fire": "Api",
     "FlareGPT": "FlareGPT",

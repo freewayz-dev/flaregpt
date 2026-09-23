@@ -317,6 +317,96 @@
       "title": "仅限 {{network}} 资产。"
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "该代理相对于已铸造的 FXRP 预留了多少抵押品。数值越高,说明安全缓冲越大。",
+      "collateralRatioMin": "最低 {{value}}",
+      "columns": {
+        "agent": "代理",
+        "collateralRatio": "抵押率",
+        "fee": "费率",
+        "freeCapacity": "可用额度",
+        "minted": "已铸造",
+        "status": "状态"
+      },
+      "couldntLoad": "无法加载代理金库。",
+      "emptyDescription": "目前没有代理金库报告数据。",
+      "emptyTitle": "暂无代理",
+      "feeHelp": "该代理通过其铸造 FXRP 所收取的费用。",
+      "freeCapacityHelp": "该代理现在还能铸造多少 FXRP。",
+      "inLiquidation": "清算中",
+      "notPubliclyAvailable": "不公开",
+      "poolFeeShare": "资金池 {{value}}%",
+      "poolRatio": "资金池 {{value}}",
+      "sort": {
+        "collateral_ratio": "抵押率",
+        "fee": "费率最低",
+        "free_capacity": "可用额度",
+        "minted": "铸造最多"
+      },
+      "subtitle": "每个 FXRP 铸造代理,直接从网络更新。",
+      "title": "代理金库",
+      "viewOnExplorer": "在浏览器中查看"
+    },
+    "couldntLoad": "无法加载 FAssets 数据。",
+    "description": "追踪 FXRP 生态系统,从全网供应量和储备到各个铸造代理。",
+    "flow": {
+      "dailyLimit": "每日铸造上限",
+      "dailyLimitHelp": "网络每天只允许铸造一定数量的新 FXRP。此处显示今天的额度已使用了多少。",
+      "dailyLimitUsed": "已用",
+      "dailyLimitValue": "{{used}} / {{limit}}",
+      "mintSuccessRate": "铸造成功率",
+      "mints": "已铸造(24小时)",
+      "netFlow": "净流量(24小时)",
+      "paymentDefaults": "付款违约",
+      "paymentDefaultsCaption": "未付款过期的铸造预约",
+      "pendingRedemptions": "待处理赎回",
+      "pendingRedemptionsCaption": "目前所有代理正在赎回的 FXRP",
+      "redemptions": "已赎回(24小时)",
+      "subtitle": "过去 24 小时的铸造与赎回活动。",
+      "title": "24 小时流量",
+      "txCount_one": "{{count}} 笔交易",
+      "txCount_other": "{{count}} 笔交易"
+    },
+    "info": {
+      "body": "此部分涵盖整个 FXRP 网络,而非单个代理或您自己的钱包。这里的部分数字经过计算,以保持准确一致,储备和持有人数据来自一个尚未经过独立验证的合作方数据源。",
+      "label": "这些数字是什么意思?"
+    },
+    "mintRedeemCta": "铸造或赎回 FXRP",
+    "myFxrp": {
+      "activityCouldntLoad": "无法加载您的 FXRP 活动。",
+      "balance": "余额",
+      "balanceUnavailable": "余额暂时不可用。",
+      "connectToSee": "连接或选择一个钱包以查看您的 FXRP 余额和活动。",
+      "noActivity": "暂无 FXRP 活动。",
+      "recentActivity": "最近的 FXRP 活动",
+      "subtitle": "您自己的 FXRP 余额和最近活动。",
+      "title": "我的 FXRP",
+      "viewAllInWalletActivity": "在钱包活动中查看全部"
+    },
+    "stats": {
+      "agentCount": "代理数量",
+      "agentsInLiquidation_one": "目前有 {{count}} 个代理正在清算中。",
+      "agentsInLiquidation_other": "目前有 {{count}} 个代理正在清算中。",
+      "capUsed": "已用上限",
+      "capUsedHelp": "允许存在的 FXRP 总量中,已经铸造了多少。",
+      "coreVaultShare": "核心金库占比",
+      "coreVaultShareHelp": "所有 FXRP 中,存放在 Flare 共享储备中的份额,而非存放在各代理金库中的份额。",
+      "holders": "持有人",
+      "price": "FXRP 价格",
+      "reserveRatio": "储备率",
+      "reserveRatioHelp": "相对于流通中的 FXRP 数量,存在多少 FXRP 储备支持。100% 或更高说明完全有储备支持。",
+      "tvl": "总锁仓价值"
+    },
+    "trend": {
+      "facet": {
+        "minted": "已铸造",
+        "redeemed": "已赎回"
+      },
+      "subtitle": "每日 FXRP 铸造与赎回量。",
+      "title": "每日趋势"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "迄今销毁量",
@@ -1271,6 +1361,7 @@
     "disconnect": "断开连接",
     "donate": "捐献",
     "expandSidebar": "展开侧边栏",
+    "fassets": "FAssets",
     "feeds": "馈送",
     "fire": "火",
     "FlareGPT": "耀斑GPT",

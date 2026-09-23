@@ -321,6 +321,98 @@
       "title": "Solo asset {{network}}."
     }
   },
+  "fassets": {
+    "agents": {
+      "collateralRatioHelp": "Quanta garanzia questo agente ha messo da parte rispetto al FXRP che ha coniato. Un numero più alto significa un margine di sicurezza maggiore.",
+      "collateralRatioMin": "min. {{value}}",
+      "columns": {
+        "agent": "Agente",
+        "collateralRatio": "Rapporto di Garanzia",
+        "fee": "Commissione",
+        "freeCapacity": "Capacità Libera",
+        "minted": "Coniato",
+        "status": "Stato"
+      },
+      "couldntLoad": "Impossibile caricare i vault degli agenti.",
+      "emptyDescription": "Al momento nessun vault agente sta segnalando dati.",
+      "emptyTitle": "Ancora Nessun Agente",
+      "feeHelp": "La commissione che questo agente addebita per coniare FXRP tramite esso.",
+      "freeCapacityHelp": "Quanto FXRP in più questo agente può ancora coniare in questo momento.",
+      "inLiquidation": "In Liquidazione",
+      "notPubliclyAvailable": "Non Disponibile Pubblicamente",
+      "poolFeeShare": "Pool {{value}}%",
+      "poolRatio": "Pool {{value}}",
+      "sort": {
+        "collateral_ratio": "Rapporto di Garanzia",
+        "fee": "Commissione Più Bassa",
+        "free_capacity": "Capacità Libera",
+        "minted": "Più Coniato"
+      },
+      "subtitle": "Ogni agente di minting FXRP, aggiornato direttamente dalla rete.",
+      "title": "Vault degli Agenti",
+      "viewOnExplorer": "Visualizza sull'explorer"
+    },
+    "couldntLoad": "Impossibile caricare i dati FAssets.",
+    "description": "Monitora l'ecosistema FXRP, dall'offerta e dalle riserve a livello di rete fino ai singoli agenti di minting.",
+    "flow": {
+      "dailyLimit": "Limite Giornaliero di Minting",
+      "dailyLimitHelp": "La rete consente di coniare solo una certa quantità di nuovi FXRP ogni giorno. Questo mostra quanto del limite di oggi è stato utilizzato finora.",
+      "dailyLimitUsed": "Utilizzato",
+      "dailyLimitValue": "{{used}} di {{limit}}",
+      "mintSuccessRate": "Tasso di Successo del Minting",
+      "mints": "Coniato (24h)",
+      "netFlow": "Flusso Netto (24h)",
+      "paymentDefaults": "Inadempienze di Pagamento",
+      "paymentDefaultsCaption": "Prenotazioni di minting scadute senza pagamento",
+      "pendingRedemptions": "Riscatti in Sospeso",
+      "pendingRedemptionsCaption": "FXRP attualmente in fase di riscatto presso tutti gli agenti",
+      "redemptions": "Riscattato (24h)",
+      "subtitle": "Attività di minting e riscatto nelle ultime 24 ore.",
+      "title": "Flusso delle 24h",
+      "txCount_one": "{{count}} transazione",
+      "txCount_many": "{{count}} transazioni",
+      "txCount_other": "{{count}} transazioni"
+    },
+    "info": {
+      "body": "Questa sezione riguarda l'intera rete FXRP, non un singolo agente o il tuo portafoglio personale. Alcuni numeri qui sono calcolati per restare accurati e coerenti, e i dati su riserve e detentori provengono da una fonte dati di un partner che non è stata verificata in modo indipendente.",
+      "label": "Cosa significano questi numeri?"
+    },
+    "mintRedeemCta": "Conia o Riscatta FXRP",
+    "myFxrp": {
+      "activityCouldntLoad": "Impossibile caricare la tua attività FXRP.",
+      "balance": "Saldo",
+      "balanceUnavailable": "Saldo non disponibile al momento.",
+      "connectToSee": "Connetti o seleziona un wallet per vedere il tuo saldo e la tua attività FXRP.",
+      "noActivity": "Ancora nessuna attività FXRP.",
+      "recentActivity": "Attività FXRP Recente",
+      "subtitle": "Il tuo saldo FXRP e l'attività recente.",
+      "title": "Il Mio FXRP",
+      "viewAllInWalletActivity": "Vedi tutto in Attività Wallet"
+    },
+    "stats": {
+      "agentCount": "Agenti",
+      "agentsInLiquidation_one": "{{count}} agente è attualmente in liquidazione.",
+      "agentsInLiquidation_many": "{{count}} agenti sono attualmente in liquidazione.",
+      "agentsInLiquidation_other": "{{count}} agenti sono attualmente in liquidazione.",
+      "capUsed": "Limite Utilizzato",
+      "capUsedHelp": "Quanto del totale di FXRP consentito è già stato coniato.",
+      "coreVaultShare": "Quota Core Vault",
+      "coreVaultShareHelp": "La quota di tutto il FXRP detenuto nella riserva condivisa di Flare, anziché nei vault dei singoli agenti.",
+      "holders": "Detentori",
+      "price": "Prezzo FXRP",
+      "reserveRatio": "Rapporto di Riserva",
+      "reserveRatioHelp": "Quanta copertura in FXRP esiste rispetto al FXRP in circolazione. Il 100% o più significa che è completamente coperto.",
+      "tvl": "Valore Totale Bloccato"
+    },
+    "trend": {
+      "facet": {
+        "minted": "Coniato",
+        "redeemed": "Riscattato"
+      },
+      "subtitle": "FXRP coniato e riscattato al giorno.",
+      "title": "Andamento Giornaliero"
+    }
+  },
   "fire": {
     "burnedProgress": {
       "label": "Distrutto Finora",
@@ -1281,6 +1373,7 @@
     "disconnect": "Disconnetti",
     "donate": "Dona",
     "expandSidebar": "Espandi barra laterale",
+    "fassets": "FAssets",
     "feeds": "Feeds",
     "fire": "Fuoco",
     "FlareGPT": "FlareGPT",
