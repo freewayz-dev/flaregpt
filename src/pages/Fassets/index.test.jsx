@@ -159,6 +159,12 @@ describe("Fassets", () => {
     // `redeeming_fxrp`) sits inside the same 24h Flow card, not a new one.
     expect(screen.getByText("Pending Redemptions")).toBeInTheDocument();
     expect(screen.getByText("1,250.5 FXRP")).toBeInTheDocument();
+
+    // FxrpBalanceCard sits right after the stats row — no wallet connected
+    // in this render, so it shows the explicit "0" rather than being
+    // skipped entirely (see the component's own comment on why).
+    expect(screen.getByText("Your FXRP Balance")).toBeInTheDocument();
+    expect(screen.getByText("0 FXRP")).toBeInTheDocument();
   });
 
   it("omits the daily limit bar, mint/redeem flow tiles, and the trend chart on the on-chain-fallback response, without disturbing the stats row, the info disclosure, or pending redemptions", async () => {

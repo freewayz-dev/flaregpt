@@ -402,7 +402,8 @@
       "recentActivity": "نشاط FXRP الأخير",
       "subtitle": "رصيدك ونشاطك الأخير في FXRP.",
       "title": "FXRP الخاص بي",
-      "viewAllInWalletActivity": "عرض الكل في نشاط المحفظة"
+      "viewAllInWalletActivity": "عرض الكل في نشاط المحفظة",
+      "yourBalance": "رصيد FXRP الخاص بك"
     },
     "stats": {
       "agentCount": "الوكلاء",

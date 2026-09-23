@@ -382,7 +382,8 @@
       "recentActivity": "Aktivitas FXRP Terbaru",
       "subtitle": "Saldo dan aktivitas FXRP terbaru Anda.",
       "title": "FXRP Saya",
-      "viewAllInWalletActivity": "Lihat semua di Aktivitas Dompet"
+      "viewAllInWalletActivity": "Lihat semua di Aktivitas Dompet",
+      "yourBalance": "Saldo FXRP Anda"
     },
     "stats": {
       "agentCount": "Agen",

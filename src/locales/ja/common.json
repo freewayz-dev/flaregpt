@@ -382,7 +382,8 @@
       "recentActivity": "最近のFXRPアクティビティ",
       "subtitle": "ご自身のFXRP残高と最近のアクティビティです。",
       "title": "マイFXRP",
-      "viewAllInWalletActivity": "ウォレット活動ですべて見る"
+      "viewAllInWalletActivity": "ウォレット活動ですべて見る",
+      "yourBalance": "ご自身のFXRP残高"
     },
     "stats": {
       "agentCount": "エージェント数",

@@ -8,6 +8,7 @@ import { useFassetsOverview, useFassetsAgents } from "@/hooks/queries/useFassets
 import { computeFlowTrend, computePendingRedemptions } from "@/pages/Fassets/utils/deriveFassetsOverview";
 import FassetsSkeleton from "@/pages/Fassets/components/FassetsSkeleton";
 import FassetsStatsRow from "@/pages/Fassets/components/FassetsStatsRow";
+import FxrpBalanceCard from "@/pages/Fassets/components/FxrpBalanceCard";
 import FassetsFlowCard from "@/pages/Fassets/components/FassetsFlowCard";
 import FassetsTrendChart from "@/pages/Fassets/components/FassetsTrendChart";
 import AgentsTable from "@/pages/Fassets/components/AgentsTable";
@@ -123,6 +124,14 @@ export default function Fassets() {
             proofOfReserve={overview.proof_of_reserve}
             holders={overview.holders}
           />
+
+          {/* Right after the network-wide stats, ahead of everything else
+              personal or agent-level — a visitor's own FXRP position
+              should be visible on landing, not buried below the flow
+              card/trend chart/agent table. MyFxrpSection further down
+              keeps the full balance + activity detail unchanged; this is
+              only the headline number. */}
+          <FxrpBalanceCard />
 
           {/* No FlareMetrics attribution line here — the info Disclosure
               above (in the header block) already covers the "where this

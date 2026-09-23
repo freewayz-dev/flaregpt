@@ -387,7 +387,8 @@
       "recentActivity": "Activité FXRP Récente",
       "subtitle": "Votre propre solde et activité récente en FXRP.",
       "title": "Mon FXRP",
-      "viewAllInWalletActivity": "Voir tout dans Activité du Portefeuille"
+      "viewAllInWalletActivity": "Voir tout dans Activité du Portefeuille",
+      "yourBalance": "Votre Solde FXRP"
     },
     "stats": {
       "agentCount": "Agents",

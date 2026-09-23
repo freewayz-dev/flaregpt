@@ -382,7 +382,8 @@
       "recentActivity": "Son FXRP Etkinliği",
       "subtitle": "Kendi FXRP bakiyeniz ve son etkinliğiniz.",
       "title": "FXRP'im",
-      "viewAllInWalletActivity": "Cüzdan Aktivitesinde tümünü görüntüle"
+      "viewAllInWalletActivity": "Cüzdan Aktivitesinde tümünü görüntüle",
+      "yourBalance": "FXRP Bakiyeniz"
     },
     "stats": {
       "agentCount": "Ajanlar",

@@ -392,7 +392,8 @@
       "recentActivity": "Последняя активность по FXRP",
       "subtitle": "Ваш собственный баланс и последняя активность по FXRP.",
       "title": "Мой FXRP",
-      "viewAllInWalletActivity": "Смотреть все в разделе «Активность кошелька»"
+      "viewAllInWalletActivity": "Смотреть все в разделе «Активность кошелька»",
+      "yourBalance": "Ваш баланс по FXRP"
     },
     "stats": {
       "agentCount": "Агенты",

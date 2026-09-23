@@ -83,6 +83,22 @@ function ExplorerLink({ address, label }) {
 // and RankingAvatar already falls back to the initials circle on a missing
 // URL or a real load failure (`onError`), which is the "existing dashboard
 // pattern" this reuses rather than inventing a new fallback.
+//
+// That fallback is also what silently masked a real bug for a while: the
+// live agents endpoint's `icon_url` values point to real, working images
+// (confirmed live, 200 + correct content-type), but vercel.json's own
+// Content-Security-Policy `img-src` directive didn't list the hosts they
+// actually come from — every load was blocked by the browser itself
+// (confirmed by replaying the real production CSP header, which the local
+// dev/e2e static server never applies, so this never showed up in that
+// testing loop), silently falling back to initials instead of erroring
+// visibly. `https://raw.githubusercontent.com` (the same TowoLabs
+// FTSO-signal-providers CDN ProviderRankingCard.jsx's own bundled
+// PROVIDER_LOGOS already trusts) is now allowlisted in vercel.json,
+// covering every agent observed live except one whose `icon_url` points to
+// its own company domain instead — that one still correctly falls back to
+// initials rather than the CSP being loosened to an unbounded wildcard for
+// whatever host any future agent's registry entry happens to point to.
 // Every field the desktop table shows is still here — nothing dropped for
 // mobile — just laid out with more breathing room than the original tight
 // 2-column grid: a real divider separates identity from the numbers, the

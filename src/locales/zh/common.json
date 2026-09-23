@@ -382,7 +382,8 @@
       "recentActivity": "最近的 FXRP 活动",
       "subtitle": "您自己的 FXRP 余额和最近活动。",
       "title": "我的 FXRP",
-      "viewAllInWalletActivity": "在钱包活动中查看全部"
+      "viewAllInWalletActivity": "在钱包活动中查看全部",
+      "yourBalance": "您的 FXRP 余额"
     },
     "stats": {
       "agentCount": "代理数量",

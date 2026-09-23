@@ -382,7 +382,8 @@
       "recentActivity": "हाल की FXRP गतिविधि",
       "subtitle": "आपका अपना FXRP बैलेंस और हाल की गतिविधि।",
       "title": "मेरा FXRP",
-      "viewAllInWalletActivity": "वॉलेट गतिविधि में सभी देखें"
+      "viewAllInWalletActivity": "वॉलेट गतिविधि में सभी देखें",
+      "yourBalance": "आपका FXRP बैलेंस"
     },
     "stats": {
       "agentCount": "एजेंट",
