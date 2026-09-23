@@ -320,8 +320,24 @@ registerRoute(
   }),
 );
 
+// Same-origin only — same reason as the script/style route above: a
+// service worker's own `fetch()` inside a caching strategy is CSP-evaluated
+// against `connect-src`, not the original request's `img-src`. Without this
+// check, this route also intercepted cross-origin agent-logo images
+// (raw.githubusercontent.com, bifrostwallet.com — see AgentsTable.jsx's own
+// CSP comment) whose hosts are allowlisted under `img-src` but not
+// `connect-src`, so the SW's internal fetch for them was CSP-blocked.
+// Confirmed live via Playwright's real WebKit engine: every such image
+// request failed with "FetchEvent.respondWith received an error:
+// no-response" — a Safari-specific failure mode Chromium didn't reproduce,
+// which is why this was never caught by this project's usual
+// Chromium-based testing loop. Scoping to same-origin lets the browser
+// handle cross-origin images itself (correctly CSP-checked against
+// img-src, exactly as a plain unintercepted `<img>` load already works),
+// while this app's own bundled images still get the same CacheFirst
+// treatment as before.
 registerRoute(
-  ({ request }) => request.destination === "image",
+  ({ request, url }) => url.origin === self.location.origin && request.destination === "image",
   new CacheFirst({
     cacheName: cacheName("images"),
     plugins: [new ExpirationPlugin({ maxEntries: 120, maxAgeSeconds: 30 * 24 * 60 * 60 })],
