@@ -94,11 +94,15 @@ function ExplorerLink({ address, label }) {
 // testing loop), silently falling back to initials instead of erroring
 // visibly. `https://raw.githubusercontent.com` (the same TowoLabs
 // FTSO-signal-providers CDN ProviderRankingCard.jsx's own bundled
-// PROVIDER_LOGOS already trusts) is now allowlisted in vercel.json,
-// covering every agent observed live except one whose `icon_url` points to
-// its own company domain instead — that one still correctly falls back to
-// initials rather than the CSP being loosened to an unbounded wildcard for
-// whatever host any future agent's registry entry happens to point to.
+// PROVIDER_LOGOS already trusts) plus `https://bifrostwallet.com` (that
+// one agent's own domain — confirmed live, a real, working, non-executable
+// static image) are now allowlisted in vercel.json, covering every agent
+// observed live as of this fix. Deliberately two specific, named hosts —
+// each added because a real, currently-live agent's `icon_url` actually
+// points there — not an unbounded wildcard for whatever host some future
+// agent's registry entry might point to; a not-yet-allowlisted host still
+// correctly falls back to initials instead of silently breaking the CSP's
+// own guarantees.
 // Every field the desktop table shows is still here — nothing dropped for
 // mobile — just laid out with more breathing room than the original tight
 // 2-column grid: a real divider separates identity from the numbers, the
