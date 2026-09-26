@@ -127,8 +127,30 @@ export default function NetworkActivityChart() {
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <div className="h-full flex items-center justify-center text-xs text-ink-muted text-center px-4">
-            {t("dashboard.networkActivity.collectingSamples")}
+          // Same height as the real chart branch above (this container's
+          // own `flex-1 min-h-[7rem]` doesn't change) — that's load-bearing,
+          // not incidental: this card sits beside the FLR Price chart card
+          // in the same row, and both need to end up the same height for
+          // the row to align. What changes is only the placeholder's own
+          // content: a UX review flagged the previous plain centered
+          // message as reading like dead/broken space at this height rather
+          // than "actively working" — a row of shimmering bars (the same
+          // `.skeleton` shimmer every other loading state in this app
+          // already uses, not a new animation) sketches the outline of the
+          // sparkline that's about to exist, giving the empty state some of
+          // the same visual weight the real chart has instead of a flat
+          // line of text floating in a mostly-empty box.
+          <div className="h-full flex flex-col items-center justify-center gap-3 text-center px-4">
+            <div className="flex items-end gap-1 h-10" aria-hidden="true">
+              {[35, 55, 40, 70, 50, 65, 45, 60].map((height, i) => (
+                <span
+                  key={i}
+                  className="skeleton w-2 rounded-full"
+                  style={{ height: `${height}%` }}
+                />
+              ))}
+            </div>
+            <p className="text-xs text-ink-muted">{t("dashboard.networkActivity.collectingSamples")}</p>
           </div>
         )}
       </div>

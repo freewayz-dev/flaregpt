@@ -115,8 +115,21 @@ export default function DashboardLayout() {
   // doesn't need explaining. `hasSeenWelcome` persists in useUIStore, so a
   // page refresh or a later session never re-shows it.
   const hasSeenWelcome = useUIStore((state) => state.hasSeenWelcome);
+  // `hasFiredWelcomeToastRef` (not just the `hasSeenWelcome` check below) is
+  // what actually makes this fire once — confirmed live via a real UX
+  // review: React 19 StrictMode's dev-only mount -> effect -> cleanup ->
+  // effect-again cycle re-runs this effect body a second time before
+  // `markWelcomeSeen()`'s store update has propagated back into
+  // `hasSeenWelcome`, so the plain flag check alone let a second toast fire
+  // on top of the first one on every /app/* page load. A ref survives that
+  // simulated remount (same component instance, same fiber) and short-
+  // circuits the second invocation regardless of whether the store's read
+  // has caught up yet — production never double-invokes effects at all, but
+  // the ref guard is the correct fix either way, not a dev-only workaround.
+  const hasFiredWelcomeToastRef = useRef(false);
   useEffect(() => {
-    if (hasSeenWelcome) return;
+    if (hasSeenWelcome || hasFiredWelcomeToastRef.current) return;
+    hasFiredWelcomeToastRef.current = true;
     toast(t("onboarding.welcomeMessage"), { autoClose: 8000 });
     useUIStore.getState().markWelcomeSeen();
     // Deliberately fires once on mount only, regardless of hasSeenWelcome
@@ -430,7 +443,20 @@ export default function DashboardLayout() {
             // rather than chasing every individual page that could
             // transiently overflow by a pixel.
             <main ref={mainScrollRef} id="main-content" tabIndex={-1} className="flex-1 overflow-x-hidden overflow-y-auto overscroll-contain scrollbar-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand/50 focus-visible:-outline-offset-2">
-              <div className="flex min-h-full flex-col md:p-6 p-4">
+              {/* Extra bottom clearance below `lg` only, matching FlareWidget's
+                  own `lg:hidden` chat-launcher FAB (Navbar.jsx, `fixed bottom-8
+                  right-5 h-14 w-14`, ~88px of real footprint from the viewport
+                  bottom) — confirmed live via a UX review: without this, the
+                  FAB permanently sits on top of whatever content lands in that
+                  corner (a chart's bottom-right data on Overview, a stat
+                  figure on FAssets) with no scroll room to ever clear it,
+                  since it's the true end of the page's own scrollable area.
+                  `pb-24`/`md:pb-24` (96px, a little more than the FAB's own
+                  footprint) covers exactly the widths the FAB actually
+                  renders at; `lg:pb-6` restores the original plain bottom
+                  padding `md:p-6` already gives every other side once the FAB
+                  itself disappears. */}
+              <div className="flex min-h-full flex-col p-4 md:p-6 pb-24 md:pb-24 lg:pb-6">
                 <div className="flex-1">
                   <PageErrorBoundary pathname={location.pathname} queryClient={queryClient}>
                     <Suspense fallback={<RouteLoadingFallback />}>

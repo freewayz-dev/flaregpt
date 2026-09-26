@@ -140,19 +140,24 @@ export default function FassetsStatsRow({ supply, agents, proofOfReserve, holder
           identical one-utility fix. */}
       <div className="isolate flex gap-3 overflow-x-auto overflow-y-hidden touch-pan-x overscroll-x-contain snap-x snap-mandatory scroll-pl-4 scroll-pr-4 md:scroll-pl-6 md:scroll-pr-6 -mx-4 px-4 md:-mx-6 md:px-6 pb-2 scrollbar-none">
         {cards.map((card) => (
-          // 150px on mobile — the same width every other stat row in this
-          // app already settles on for a scrollable card (Dashboard's
-          // StatRow, RewardsOverviewStats, FireStatsRow), matching this
-          // page's own cards to that established size instead of the wider
-          // 188px this row used at every breakpoint, which is what made
-          // each card (and the row as a whole) feel oversized on a phone
-          // compared to how the rest of the dashboard already looks. Still
-          // widens back to 188px at sm+ (unchanged from before) — only the
-          // mobile width was the actual complaint, and this row still stays
-          // scrollable rather than becoming a grid at any breakpoint (see
-          // this block's own comment above on why 7 cards don't fit a grid
-          // even on a wide desktop).
-          <div key={card.title} className="min-w-[150px] sm:min-w-[188px] snap-start">
+          // 172px on mobile — narrower than the flat 188px this row used at
+          // every breakpoint before (confirmed via a UX review: that made
+          // each card, and the row as a whole, feel oversized on a phone
+          // compared to the rest of the dashboard), but not as narrow as the
+          // 150px every other stat row settles on (Dashboard's StatRow,
+          // RewardsOverviewStats, FireStatsRow) — this row's own "Total
+          // Value Locked" title (unlike those rows' shorter "TVL"/"Market
+          // Cap"-length labels) genuinely doesn't fit StatCard's truncating
+          // title at 150px, confirmed live: it clipped to "Total Value
+          // Lo…". Widening just enough to fit it, rather than truncating
+          // the visible text or shortening the label itself, matches the
+          // standing rule against solving a cramped layout by cutting
+          // content — 172px is the real minimum this row's longest title
+          // needs. Still widens to 188px at sm+ (unchanged from before) and
+          // stays scrollable rather than becoming a grid at any breakpoint
+          // (see this block's own comment above on why 7 cards don't fit a
+          // grid even on a wide desktop).
+          <div key={card.title} className="min-w-[172px] sm:min-w-[188px] snap-start">
             <StatCard {...card} />
           </div>
         ))}
