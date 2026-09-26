@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Turborepo local cache
+.turbo
+
 # Playwright
 /test-results/
 /playwright-report/

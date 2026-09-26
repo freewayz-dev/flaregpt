@@ -1,0 +1,16 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+# pnpm blocks postinstall/build scripts by default for packages it doesn't
+# already trust — all six below are well-known, official tooling whose
+# scripts fetch a required platform-native binary (esbuild, @swc/core) or
+# do standard first-party setup (msw's worker file, pnpm's own self-setup,
+# protobufjs, @reown/appkit as a transitive WalletConnect-ecosystem dep) —
+# not something to leave blocked by default.
+allowBuilds:
+  '@reown/appkit': true
+  '@swc/core': true
+  esbuild: true
+  msw: true
+  pnpm: true
+  protobufjs: true
