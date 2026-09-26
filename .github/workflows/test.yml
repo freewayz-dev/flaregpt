@@ -4,37 +4,49 @@ on:
   push:
   pull_request:
 
+# Package manager is pnpm (workspace monorepo, apps/web + packages/*), not
+# npm — see CLAUDE.md's "Monorepo migration" section. pnpm/action-setup
+# reads the exact version from the root package.json's own "packageManager"
+# field (no version pinned here too), and must run before actions/setup-node
+# so that step's own `cache: pnpm` can find the pnpm store to key off.
+# `pnpm install` runs once at the repo root (installs every workspace
+# package); every actual script then runs scoped to flaregpt-web via
+# `pnpm --filter`, since app-level scripts moved out of the root
+# package.json in Phase 1.
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
-      - run: npm ci
-      - run: npm test
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter flaregpt-web run test
 
   test-e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
-      - run: npm ci
-      - run: npx playwright install chromium --with-deps
-      - run: npm run test:e2e
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter flaregpt-web exec playwright install chromium --with-deps
+      - run: pnpm --filter flaregpt-web run test:e2e
 
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
-      - run: npm ci
-      - run: npm run lint
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter flaregpt-web run lint
