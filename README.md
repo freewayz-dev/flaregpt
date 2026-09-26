@@ -1,17 +1,19 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 # flaregpt
+
+pnpm + Turborepo monorepo.
+
+- `apps/web` — the FlareGPT web dashboard (Vite + React), deployed via Vercel. See its own README for app-specific commands.
+- `apps/mobile` — the FlareGPT mobile app (React Native + Expo), not yet scaffolded.
+- `packages/*` — shared packages consumed by both apps: `api`, `queries`, `state`, `i18n`, `design-tokens`, `wallet`, `domain-utils`. None exist yet — see the FlareGPT Mobile Architecture Plan for the full migration sequence.
+
+## Commands (from repo root)
+
+```bash
+pnpm install       # installs every workspace package
+pnpm dev           # turbo run dev, currently targets apps/web only
+pnpm build         # turbo run build
+pnpm lint          # turbo run lint
+pnpm test          # turbo run test
+```
+
+Per-app commands (e.g. `pnpm test:e2e`, `pnpm build:analyze`) are run from inside that app's own directory, or via `pnpm --filter <app-name> <script>` from the root.
